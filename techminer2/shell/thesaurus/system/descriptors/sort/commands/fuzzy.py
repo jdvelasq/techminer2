@@ -18,7 +18,7 @@ def execute_fuzzy_command():
     threshold = float(threshold)
 
     print()
-    SortByFuzzyMatch().having_pattern(pattern).using_match_threshold(threshold).run()
+    SortByFuzzyMatch().having_pattern(pattern).using_fuzzy_threshold(threshold).run()
 
 
 #

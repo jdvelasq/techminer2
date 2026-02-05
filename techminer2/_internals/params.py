@@ -38,7 +38,7 @@ class Params:
     core_area: Optional[str] = None
     correlation_method: str = "pearson"
     cumulative_sum: bool = False
-    cutoff_threshold: float = 85.0
+    similarity_cutoff: float = 85.0
 
     #
     # D
@@ -91,7 +91,7 @@ class Params:
     #
     manifold_algorithm: Optional[BaseEstimator] = None
     marker_size: float = 7
-    match_threshold: float = 95.0
+    fuzzy_threshold: float = 95.0
     maximum_occurrence: int = 10
     minimum_items_in_cluster: int = 5
     minimum_number_of_clusters: int = 10

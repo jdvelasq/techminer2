@@ -78,8 +78,8 @@ class CutoffFuzzyMerging(
                 thesaurus_file="descriptors.the.txt",
                 root_directory=self.params.root_directory,
                 tqdm_disable=self.params.tqdm_disable,
-                cutoff_threshold=self.params.cutoff_threshold,
-                match_threshold=self.params.match_threshold,
+                cutoff_threshold=self.params.similarity_cutoff,
+                match_threshold=self.params.fuzzy_threshold,
                 quiet=self.params.quiet,
             )
             .run()

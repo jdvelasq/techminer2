@@ -39,53 +39,35 @@ class ExactMatch(
 ):
     """:meta private:"""
 
-    def run(self) -> ThesaurusMatchResult:
-
-        dataframe = self.load_thesaurus_as_dataframe(params=self.params)
-        dataframe = self.compute_occurrences(params=self.params, dataframe=dataframe)
-        dataframe = self.normalize_keys(dataframe)
-        dataframe = self.select_duplicated_items(dataframe)
-
-        num_candidates = self.compute_num_candidates(dataframe)
-        num_groups = self.compute_num_groups(dataframe)
-
-        dataframe = self.add_occ_info(dataframe)
-
-        reporting_df = self.generate_reporting_dataframe(dataframe)
-        candidates_filepath = self.get_candidates_filepath()
-        self.generate_candidates_txt_file(
-            filepath=candidates_filepath, dataframe=reporting_df
-        )
-
-        return ThesaurusMatchResult(
-            colored_output=self.params.colored_output,
-            output_file=str(candidates_filepath),
-            thesaurus_file=self.params.thesaurus_file,
-            msg=f"Found {num_candidates} exact match candidates for merging.",
-            success=True,
-            field=self.params.field,
-            num_candidates=num_candidates,
-            num_groups=num_groups,
-        )
-
-    def normalize_keys(self, dataframe):
+    def normalize(self, dataframe):
 
         dataframe = dataframe.copy()
 
         dataframe[ThesaurusField.PREFERRED_NORM.value] = dataframe[
-            ThesaurusField.PREFERRED.value
-        ]
-        dataframe[ThesaurusField.PREFERRED_NORM.value] = dataframe[
             ThesaurusField.PREFERRED_NORM.value
         ].str.replace(r"\r\n|\r", "", regex=True)
+
         dataframe[ThesaurusField.PREFERRED_NORM.value] = dataframe[
             ThesaurusField.PREFERRED_NORM.value
         ].str.strip()
+
         dataframe[ThesaurusField.PREFERRED_NORM.value] = dataframe[
             ThesaurusField.PREFERRED_NORM.value
         ].map(lambda x: " ".join(x.split()), na_action="ignore")
+
         dataframe[ThesaurusField.PREFERRED_NORM.value] = dataframe[
             ThesaurusField.PREFERRED_NORM.value
         ].str.lower()
 
         return dataframe
+
+    def run(self) -> ThesaurusMatchResult:
+
+        dataframe = self.prepare_thesaurus_dataframe(params=self.params)
+        dataframe = self.normalize(dataframe)
+        dataframe = self.find_matches(dataframe)
+
+        return self.report_match_results(
+            params=self.params,
+            dataframe=dataframe,
+        )

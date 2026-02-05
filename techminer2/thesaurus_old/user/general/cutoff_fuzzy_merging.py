@@ -243,7 +243,7 @@ class CutoffFuzzyMerging(
             scores_per_word.append(best_match)
 
         score = min(scores_per_word)
-        match = all(score >= self.params.match_threshold for score in scores_per_word)
+        match = all(score >= self.params.fuzzy_threshold for score in scores_per_word)
 
         return score, match
 
@@ -288,7 +288,7 @@ class CutoffFuzzyMerging(
 
             # Preselect
             diff_in_length = (
-                int((1 - self.params.cutoff_threshold / 100.0) * len(key)) + 1
+                int((1 - self.params.similarity_cutoff / 100.0) * len(key)) + 1
             )
             min_key_length = max(len(key) - diff_in_length, 1)
             max_key_length = len(key) + diff_in_length
@@ -297,7 +297,7 @@ class CutoffFuzzyMerging(
 
             # Apply the cutoff rule
             df["cutoff"] = df["key"].apply(lambda x: fuzz.ratio(key, x))
-            df = df[df["cutoff"] >= self.params.cutoff_threshold]
+            df = df[df["cutoff"] >= self.params.similarity_cutoff]
 
             if df.empty:
                 continue

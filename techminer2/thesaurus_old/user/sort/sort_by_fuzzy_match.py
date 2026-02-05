@@ -97,7 +97,7 @@ class SortByFuzzyMatch(
 
             for potential_match in potential_matches:
 
-                if potential_match[1] >= self.params.match_threshold:
+                if potential_match[1] >= self.params.fuzzy_threshold:
 
                     self.data_frame.loc[
                         self.data_frame.key.str.contains(

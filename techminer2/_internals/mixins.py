@@ -284,6 +284,11 @@ class ParamsMixin:
         self.params.items_per_year = items_per_year
         return self
 
+    def having_items_with_stem(self, stem: str) -> Self:
+
+        self.params.pattern = stem
+        return self
+
     def having_word(self, word: str) -> Self:
         word = internal__check_required_str(
             value=word,
@@ -352,12 +357,12 @@ class ParamsMixin:
         self.params.colored_stderr = colored_stderr
         return self
 
-    def using_cutoff_threshold(self, cutoff_threshold: float) -> Self:
-        cutoff_threshold = internal__check_required_positive_float(
-            value=cutoff_threshold,
-            param_name="cutoff_threshold",
+    def using_similarity_cutoff(self, similarity_cutoff: float) -> Self:
+        similarity_cutoff = internal__check_required_positive_float(
+            value=similarity_cutoff,
+            param_name="similarity_cutoff",
         )
-        self.params.cutoff_threshold = cutoff_threshold
+        self.params.similarity_cutoff = similarity_cutoff
         return self
 
     def using_occurrence_threshold(self, occurrence_threshold: int) -> Self:
@@ -558,12 +563,12 @@ class ParamsMixin:
         self.params.marker_size = marker_size
         return self
 
-    def using_match_threshold(self, match_threshold: float) -> Self:
-        match_threshold = internal__check_required_positive_float(
-            value=match_threshold,
-            param_name="match_threshold",
+    def using_fuzzy_threshold(self, fuzzy_threshold: float) -> Self:
+        fuzzy_threshold = internal__check_required_positive_float(
+            value=fuzzy_threshold,
+            param_name="fuzzy_threshold",
         )
-        self.params.match_threshold = match_threshold
+        self.params.fuzzy_threshold = fuzzy_threshold
         return self
 
     def using_minimum_number_of_clusters(self, minimum_number_of_clusters: int) -> Self:
@@ -879,59 +884,6 @@ class ParamsMixin:
         return self
 
     # ==========================================================================
-    # WHERE_* → Data filtering (WHICH records?)
-    # ==========================================================================
-
-    def where_database(self, database: str) -> Self:
-        database = internal__check_required_str(
-            value=database,
-            param_name="database",
-        )
-        self.params.database = database
-        return self
-
-    def where_root_directory(self, root_directory: str) -> Self:
-        root_directory = internal__check_required_str(
-            value=root_directory,
-            param_name="root_directory",
-        )
-        self.params.root_directory = root_directory
-        return self
-
-    def where_record_citations_range(
-        self, start: Optional[int], end: Optional[int]
-    ) -> Self:
-        self.params.record_citations_range = (
-            internal__check_required_open_ended_int_range(
-                (start, end), "record_citations_range"
-            )
-        )
-        return self
-
-    def where_record_years_range(
-        self, start: Optional[int], end: Optional[int]
-    ) -> Self:
-        (start, end) = internal__check_required_open_ended_int_range(
-            (start, end), "record_years_range"
-        )
-        self.params.record_years_range = (start, end)
-        return self
-
-    def where_records_match(
-        self, records_match: Optional[Dict[str, List[str]]]
-    ) -> Self:
-        self.params.records_match = records_match
-        return self
-
-    def where_records_ordered_by(self, records_order_by: RecordsOrderBy) -> Self:
-        if not isinstance(records_order_by, RecordsOrderBy):
-            raise TypeError(
-                "records_order_by must be an instance of RecordsOrderBy enum"
-            )
-        self.params.records_order_by = records_order_by
-        return self
-
-    # ==========================================================================
     # WITH_* → Configuration (WHAT to analyze?)
     # ==========================================================================
 
@@ -1011,11 +963,6 @@ class ParamsMixin:
         self.params.target_field = field
         return self
 
-    def having_items_with_stem(self, stem: str) -> Self:
-
-        self.params.pattern = stem
-        return self
-
     def with_thesaurus_file(self, thesaurus_file: str) -> Self:
         thesaurus_file = internal__check_required_str(
             value=thesaurus_file,
@@ -1036,4 +983,57 @@ class ParamsMixin:
         self, transformation_function: Optional[Callable[[Any], Any]]
     ) -> Self:
         self.params.transformation_function = transformation_function
+        return self
+
+    # ==========================================================================
+    # WHERE_* → Data filtering (WHICH records?)
+    # ==========================================================================
+
+    def where_database(self, database: str) -> Self:
+        database = internal__check_required_str(
+            value=database,
+            param_name="database",
+        )
+        self.params.database = database
+        return self
+
+    def where_record_citations_range(
+        self, start: Optional[int], end: Optional[int]
+    ) -> Self:
+        self.params.record_citations_range = (
+            internal__check_required_open_ended_int_range(
+                (start, end), "record_citations_range"
+            )
+        )
+        return self
+
+    def where_record_years_range(
+        self, start: Optional[int], end: Optional[int]
+    ) -> Self:
+        (start, end) = internal__check_required_open_ended_int_range(
+            (start, end), "record_years_range"
+        )
+        self.params.record_years_range = (start, end)
+        return self
+
+    def where_records_match(
+        self, records_match: Optional[Dict[str, List[str]]]
+    ) -> Self:
+        self.params.records_match = records_match
+        return self
+
+    def where_records_ordered_by(self, records_order_by: RecordsOrderBy) -> Self:
+        if not isinstance(records_order_by, RecordsOrderBy):
+            raise TypeError(
+                "records_order_by must be an instance of RecordsOrderBy enum"
+            )
+        self.params.records_order_by = records_order_by
+        return self
+
+    def where_root_directory(self, root_directory: str) -> Self:
+        root_directory = internal__check_required_str(
+            value=root_directory,
+            param_name="root_directory",
+        )
+        self.params.root_directory = root_directory
         return self

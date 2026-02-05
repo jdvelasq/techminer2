@@ -4,12 +4,14 @@ from typing import Dict
 import pandas as pd
 
 from techminer2 import ThesaurusField
+from techminer2._internals import Params
 from techminer2._internals.data_access import (
     get_thesaurus_path,
     load_thesaurus_as_dataframe,
 )
 
 from .get_item_to_occ_mapping import get_item_to_occ_mapping
+from .thesaurus_match_result import ThesaurusMatchResult
 
 
 class MatchMixin:
@@ -27,6 +29,12 @@ class MatchMixin:
         )
 
         return dataframe
+
+    def compute_num_candidates(self, dataframe):
+        return dataframe.shape[0]
+
+    def compute_num_groups(self, dataframe):
+        return dataframe[ThesaurusField.PREFERRED_NORM.value].drop_duplicates().shape[0]
 
     def compute_occurrences(self, params, dataframe):
 
@@ -94,7 +102,31 @@ class MatchMixin:
 
         return dataframe
 
-    def select_duplicated_items(self, dataframe):
+    def report_match_results(
+        self, params: Params, dataframe: pd.DataFrame
+    ) -> ThesaurusMatchResult:
+
+        num_candidates = self.compute_num_candidates(dataframe)
+        num_groups = self.compute_num_groups(dataframe)
+        dataframe = self.add_occ_info(dataframe)
+        reporting_df = self.generate_reporting_dataframe(dataframe)
+        candidates_filepath = self.get_candidates_filepath()
+        self.generate_candidates_txt_file(
+            filepath=candidates_filepath, dataframe=reporting_df
+        )
+
+        return ThesaurusMatchResult(
+            colored_output=params.colored_output,
+            output_file=str(candidates_filepath),
+            thesaurus_file=params.thesaurus_file,
+            msg=f"Found {num_candidates} match candidates for merging.",
+            success=True,
+            field=params.field,
+            num_candidates=num_candidates,
+            num_groups=num_groups,
+        )
+
+    def find_matches(self, dataframe):
 
         dataframe = dataframe.copy()
 
@@ -108,8 +140,10 @@ class MatchMixin:
 
         return dataframe
 
-    def compute_num_groups(self, dataframe):
-        return dataframe[ThesaurusField.PREFERRED_NORM.value].drop_duplicates().shape[0]
-
-    def compute_num_candidates(self, dataframe):
-        return dataframe.shape[0]
+    def prepare_thesaurus_dataframe(self, params: Params) -> pd.DataFrame:
+        dataframe = self.load_thesaurus_as_dataframe(params=params)
+        dataframe = self.compute_occurrences(params=params, dataframe=dataframe)
+        dataframe[ThesaurusField.PREFERRED_NORM.value] = dataframe[
+            ThesaurusField.PREFERRED.value
+        ]
+        return dataframe

@@ -41,7 +41,7 @@ In VantagePoint, thesaurus management is implemented as an interactive, explorat
     Used as a baseline and for sanity checks.
     Case-senstive or insensitive based on configuration.
 
-- FuzzyCutoffMatch (words-based): 
+- FuzzyCutofffMatch (words-based): 
     Detects near-duplicate strings using surface-form fuzzy similarity with a cutoff threshold.
     Produces candidate pairs only, never merges.
     Scope: Keywords, noun phrases, organizations, sources (very conservative), authors (high cutoff).

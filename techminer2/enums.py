@@ -186,7 +186,8 @@ class CorpusField(Enum):
 
 class ThesaurusField(Enum):
 
-    PREFERRED = "preferred_term"
-    VARIANT = "variant"
+    KEY_LENGTH = "key_length"
     OCC = "occ"
+    PREFERRED = "preferred_term"
     PREFERRED_NORM = "preferred_term_norm"
+    VARIANT = "variant"

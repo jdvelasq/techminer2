@@ -3,6 +3,8 @@ TECHNOLOGY  # occ: 25
 FINTECH  # occ: 24
     FinTech  # occ: 10
     Fintech  # occ: 5
+FINANCIAL_TECHNOLOGY  # occ: 12
+    Financial technology  # occ: 2
 BANKING  # occ: 12
     Banking  # occ: 1
 FINANCE  # occ: 9
@@ -17,14 +19,22 @@ RISKS  # occ: 4
     Risks  # occ: 1
 PAYMENT  # occ: 3
     Payment  # occ: 1
+Information systems  # occ: 3
+    INFORMATION_SYSTEMS  # occ: 2
 BANK  # occ: 3
     Bank  # occ: 1
+THEORY_AND_PRACTICE  # occ: 2
+    Theory and practice  # occ: 1
+SUSTAINABLE_DEVELOPMENT  # occ: 2
+    Sustainable development  # occ: 1
 STUDENTS  # occ: 2
     Students  # occ: 1
 PLANNING  # occ: 2
     Planning  # occ: 1
 INTERNET  # occ: 2
     Internet  # occ: 1
+Financial information  # occ: 2
+    FINANCIAL_INFORMATION  # occ: 2
 ENTREPRENEURSHIP  # occ: 2
     Entrepreneurship  # occ: 1
 Digitalization  # occ: 2
@@ -37,12 +47,20 @@ AUTHENTICATION  # occ: 2
     Authentication  # occ: 1
 User-Generated content  # occ: 1
     User-generated content  # occ: 1
+Urban design  # occ: 1
+    URBAN_DESIGN  # occ: 1
 TRANSFER  # occ: 1
     Transfer  # occ: 1
-TENPAY  # occ: 1
-    Tenpay  # occ: 1
-PASSWORD  # occ: 1
-    Password  # occ: 1
+Tenpay  # occ: 1
+    TENPAY  # occ: 1
+PUBLIC_KEY_CRYPTOGRAPHY  # occ: 1
+    Public key cryptography  # occ: 1
+Policy implications  # occ: 1
+    POLICY_IMPLICATIONS  # occ: 1
+PERSONALLY_IDENTIFIABLE_INFORMATION  # occ: 1
+    Personally identifiable information  # occ: 1
+Password  # occ: 1
+    PASSWORD  # occ: 1
 Monetization  # occ: 1
     MONETIZATION  # occ: 1
 Japan  # occ: 1
@@ -53,19 +71,39 @@ Interoperability  # occ: 1
     INTEROPERABILITY  # occ: 1
 Insurance  # occ: 1
     INSURANCE  # occ: 1
-Financial services  # occ: 1
-    financial services  # occ: 1
-ETHIOPIA  # occ: 1
-    Ethiopia  # occ: 1
-ENTRY  # occ: 1
-    Entry  # occ: 1
-CURRICULA  # occ: 1
-    Curricula  # occ: 1
+INFORMATION_AND_COMMUNICATIONS_TECHNOLOGY  # occ: 1
+    Information and communications technology  # occ: 1
+GLOBAL_FINANCIAL_CRISIS  # occ: 1
+    Global financial crisis  # occ: 1
+Financial system  # occ: 1
+    FINANCIAL_SYSTEM  # occ: 1
+financial services  # occ: 1
+    Financial services  # occ: 1
+Explosive growth  # occ: 1
+    EXPLOSIVE_GROWTH  # occ: 1
+Ethiopia  # occ: 1
+    ETHIOPIA  # occ: 1
+Entry  # occ: 1
+    ENTRY  # occ: 1
+Elaboration likelihood model  # occ: 1
+    ELABORATION_LIKELIHOOD_MODEL  # occ: 1
+Developing countries  # occ: 1
+    DEVELOPING_COUNTRIES  # occ: 1
+customer relationship management  # occ: 1
+    CUSTOMER_RELATIONSHIP_MANAGEMENT  # occ: 1
+Curricula  # occ: 1
+    CURRICULA  # occ: 1
 CRYPTOGRAPHY  # occ: 1
     Cryptography  # occ: 1
-CROWDFUNDING  # occ: 1
-    Crowdfunding  # occ: 1
-BLOCKCHAIN  # occ: 1
-    Blockchain  # occ: 1
-ALIPAY  # occ: 1
-    Alipay  # occ: 1
+Crowdfunding  # occ: 1
+    CROWDFUNDING  # occ: 1
+Consumer behavior  # occ: 1
+    CONSUMER_BEHAVIOR  # occ: 1
+Building maintenance  # occ: 1
+    BUILDING_MAINTENANCE  # occ: 1
+Blockchain  # occ: 1
+    BLOCKCHAIN  # occ: 1
+Alipay  # occ: 1
+    ALIPAY  # occ: 1
+ACTOR_NETWORK_THEORY  # occ: 1
+    Actor network theory  # occ: 1
