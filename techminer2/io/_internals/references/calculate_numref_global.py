@@ -1,12 +1,12 @@
-from techminer2 import Field
+from techminer2 import CorpusField
 from techminer2.io._internals.operations import count_column_items
 
 
 def calculate_numref_global(root_directory: str) -> int:
 
     return count_column_items(
-        source=Field.REF_RAW,
-        target=Field.NUM_REF_GLOBAL,
+        source=CorpusField.REF_RAW,
+        target=CorpusField.NUM_REF_GLOBAL,
         root_directory=root_directory,
     )
 

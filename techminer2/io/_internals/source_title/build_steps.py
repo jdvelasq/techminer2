@@ -1,6 +1,6 @@
 # CODE_REVIEW: 2026-01-26
 
-from techminer2 import Field
+from techminer2 import CorpusField
 
 from ...._internals import Params
 from ..step import Step
@@ -16,19 +16,19 @@ def build_source_title_steps(params: Params) -> list[Step]:
 
     return [
         Step(
-            name=f"Normalizing {Field.SUBJ_AREA.value}",
+            name=f"Normalizing {CorpusField.SUBJ_AREA.value}",
             function=assign_subjarea,
             kwargs=common_kwargs,
             count_message="{count} records processed",
         ),
         Step(
-            name=f"Normalizing {Field.SRC_TITLE_ABBR_RAW.value}",
+            name=f"Normalizing {CorpusField.SRC_TITLE_ABBR_RAW.value}",
             function=normalize_srctitle_abbr_raw,
             kwargs=common_kwargs,
             count_message="{count} records processed",
         ),
         Step(
-            name=f"Normalizing {Field.SRC_TITLE_RAW.value}",
+            name=f"Normalizing {CorpusField.SRC_TITLE_RAW.value}",
             function=normalize_srctitle_raw,
             kwargs=common_kwargs,
             count_message="{count} records processed",

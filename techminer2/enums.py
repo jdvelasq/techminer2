@@ -15,7 +15,7 @@ class RecordsOrderBy(Enum):
     SRE_TITLE_Z_TO_A = "src_title_z_to_a"
 
 
-class Field(Enum):
+class CorpusField(Enum):
 
     #
     # A
@@ -182,3 +182,11 @@ class Field(Enum):
     #
     WORD_ABS_RAW = "word_abs_raw"
     WORD_TITLE_RAW = "word_title_raw"
+
+
+class ThesaurusField(Enum):
+
+    PREFERRED = "preferred_term"
+    VARIANT = "variant"
+    OCC = "occ"
+    PREFERRED_NORM = "preferred_term_norm"

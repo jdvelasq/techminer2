@@ -42,7 +42,7 @@ import re
 
 import pandas as pd  # type: ignore
 
-from techminer2 import Field
+from techminer2 import CorpusField
 from techminer2._internals import ParamsMixin
 from techminer2._internals.data_access import load_filtered_main_data
 
@@ -60,7 +60,9 @@ class ConcordanceUser(
 
         dataframe = dataframe.set_index(
             pd.Index(
-                dataframe[Field.REC_ID.value] + " / " + dataframe[Field.TITLE_RAW.value]
+                dataframe[CorpusField.REC_ID.value]
+                + " / "
+                + dataframe[CorpusField.TITLE_RAW.value]
             )
         )
 

@@ -38,7 +38,7 @@ Smoke test:
 
 """
 
-from techminer2 import Field
+from techminer2 import CorpusField
 from techminer2._internals import ParamsMixin
 
 __reviewed__ = "2026-01-29"
@@ -56,6 +56,6 @@ class ConcordanceTokenized(
         return (
             ConcordanceUser()
             .update(**self.params.__dict__)
-            .with_field(Field.ABS_TOK)
+            .with_field(CorpusField.ABS_TOK)
             .run()
         )

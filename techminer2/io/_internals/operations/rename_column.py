@@ -1,12 +1,12 @@
-from techminer2 import Field
+from techminer2 import CorpusField
 
 from ._file_dispatch import get_file_operations
 from .data_file import DataFile
 
 
 def rename_column(
-    source: Field,
-    target: Field,
+    source: CorpusField,
+    target: CorpusField,
     root_directory: str,
     file: DataFile = DataFile.MAIN,
 ) -> int:

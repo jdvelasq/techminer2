@@ -36,14 +36,14 @@ Smoke test:
 
 """
 
-from techminer2 import Field
+from techminer2 import CorpusField
 
 from ._file_dispatch import get_file_operations
 from .data_file import DataFile
 
 
 def delete_column(
-    column: Field,
+    column: CorpusField,
     root_directory: str,
     file: DataFile = DataFile.MAIN,
 ) -> int:

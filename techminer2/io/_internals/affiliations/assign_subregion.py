@@ -1,4 +1,4 @@
-from techminer2 import Field
+from techminer2 import CorpusField
 from techminer2._constants import COUNTRY_TO_SUBREGION
 from techminer2.operations.transform_column import transform_column
 
@@ -21,8 +21,8 @@ def _process(series):
 def assign_subregion(root_directory: str) -> int:
 
     return transform_column(
-        source=Field.COUNTRY,
-        target=Field.SUBREGION,
+        source=CorpusField.COUNTRY,
+        target=CorpusField.SUBREGION,
         function=_process,
         root_directory=root_directory,
     )

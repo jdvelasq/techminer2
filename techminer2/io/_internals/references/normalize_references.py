@@ -4,7 +4,7 @@ from pathlib import Path
 import pandas as pd  # type: ignore
 from tqdm import tqdm
 
-from techminer2 import Field
+from techminer2 import CorpusField
 from techminer2._internals.data_access import (
     get_references_data_path,
     load_main_data,
@@ -13,10 +13,10 @@ from techminer2._internals.data_access import (
 )
 
 _SELECTED_FIELDS = [
-    Field.REC_ID.value,
-    Field.TITLE_RAW.value,
-    Field.AUTH_RAW.value,
-    Field.PUBYEAR.value,
+    CorpusField.REC_ID.value,
+    CorpusField.TITLE_RAW.value,
+    CorpusField.AUTH_RAW.value,
+    CorpusField.PUBYEAR.value,
 ]
 
 
@@ -40,9 +40,9 @@ def _clean_text(text):
 def _prepare_cited_references(root_directory: str) -> pd.DataFrame:
 
     references = load_main_data(root_directory=root_directory)
-    references = references[[Field.REF_RAW.value]].copy()
+    references = references[[CorpusField.REF_RAW.value]].copy()
     references = references.dropna()
-    references = references.rename(columns={Field.REF_RAW.value: "text"})
+    references = references.rename(columns={CorpusField.REF_RAW.value: "text"})
     references["text"] = references["text"].str.split(";")
     references = references.explode("text")
     references["text"] = references["text"].str.strip()
@@ -68,16 +68,24 @@ def _prepare_main_documents(root_directory: str) -> pd.DataFrame:
     else:
         dataframe = main_df
 
-    dataframe[Field.FIRST_AUTH.value] = (
-        dataframe[Field.AUTH_RAW.value]
+    dataframe[CorpusField.FIRST_AUTH.value] = (
+        dataframe[CorpusField.AUTH_RAW.value]
         .str.split(" ")
         .map(lambda x: x[0].lower().replace(",", ""))
     )
-    dataframe[Field.TITLE_RAW.value] = dataframe[Field.TITLE_RAW.value].str.lower()
-    dataframe[Field.TITLE_RAW.value] = _clean_text(dataframe[Field.TITLE_RAW.value])
-    dataframe[Field.AUTH_RAW.value] = _clean_text(dataframe[Field.AUTH_RAW.value])
-    dataframe[Field.PUBYEAR.value] = dataframe[Field.PUBYEAR.value].astype(str)
-    dataframe = dataframe.sort_values(by=[Field.REC_ID.value])
+    dataframe[CorpusField.TITLE_RAW.value] = dataframe[
+        CorpusField.TITLE_RAW.value
+    ].str.lower()
+    dataframe[CorpusField.TITLE_RAW.value] = _clean_text(
+        dataframe[CorpusField.TITLE_RAW.value]
+    )
+    dataframe[CorpusField.AUTH_RAW.value] = _clean_text(
+        dataframe[CorpusField.AUTH_RAW.value]
+    )
+    dataframe[CorpusField.PUBYEAR.value] = dataframe[CorpusField.PUBYEAR.value].astype(
+        str
+    )
+    dataframe = dataframe.sort_values(by=[CorpusField.REC_ID.value])
 
     return dataframe
 
@@ -113,19 +121,24 @@ def _create_mapping(
         refs = remaining_references.copy()
 
         refs = refs.loc[
-            refs.key.str.lower().str.contains(row[Field.FIRST_AUTH.value].lower()), :
+            refs.key.str.lower().str.contains(
+                row[CorpusField.FIRST_AUTH.value].lower()
+            ),
+            :,
         ]
-        refs = refs.loc[refs.key.str.lower().str.contains(row[Field.PUBYEAR.value]), :]
+        refs = refs.loc[
+            refs.key.str.lower().str.contains(row[CorpusField.PUBYEAR.value]), :
+        ]
 
         refs = refs.loc[
             refs.key.str.lower().str.contains(
-                re.escape(row[Field.TITLE_RAW.value][:50].lower())
+                re.escape(row[CorpusField.TITLE_RAW.value][:50].lower())
             ),
             :,
         ]
 
         if len(refs) > 0:
-            mapping[row[Field.REC_ID.value]] = sorted(refs.text.tolist())
+            mapping[row[CorpusField.REC_ID.value]] = sorted(refs.text.tolist())
             remaining_references = remaining_references.drop(refs.index)
 
     return mapping
@@ -145,20 +158,24 @@ def _process_references(
 ) -> int:
 
     dataframe = load_main_data(root_directory=root_directory)
-    dataframe[Field.REF_NORM.value] = dataframe[Field.REF_RAW.value].copy()
-    dataframe[Field.REF_NORM.value] = dataframe[Field.REF_NORM.value].str.split(";")
-    dataframe[Field.REF_NORM.value] = dataframe[Field.REF_NORM.value].apply(
+    dataframe[CorpusField.REF_NORM.value] = dataframe[CorpusField.REF_RAW.value].copy()
+    dataframe[CorpusField.REF_NORM.value] = dataframe[
+        CorpusField.REF_NORM.value
+    ].str.split(";")
+    dataframe[CorpusField.REF_NORM.value] = dataframe[CorpusField.REF_NORM.value].apply(
         lambda refs: [y.strip() for y in refs] if isinstance(refs, list) else refs
     )
-    dataframe[Field.REF_NORM.value] = dataframe[Field.REF_NORM.value].map(
+    dataframe[CorpusField.REF_NORM.value] = dataframe[CorpusField.REF_NORM.value].map(
         lambda refs: [mapping[ref] for ref in refs if ref in mapping],
         na_action="ignore",
     )
-    dataframe[Field.REF_NORM.value] = dataframe[Field.REF_NORM.value].str.join("; ")
+    dataframe[CorpusField.REF_NORM.value] = dataframe[
+        CorpusField.REF_NORM.value
+    ].str.join("; ")
 
     save_main_data(df=dataframe, root_directory=root_directory)
 
-    non_null_count = int(dataframe[Field.REF_NORM.value].notna().sum())
+    non_null_count = int(dataframe[CorpusField.REF_NORM.value].notna().sum())
 
     return non_null_count
 

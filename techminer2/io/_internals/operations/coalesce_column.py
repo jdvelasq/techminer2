@@ -32,21 +32,21 @@ Smoke test:
 """
 
 
-from techminer2 import Field
+from techminer2 import CorpusField
 
 from ._file_dispatch import get_file_operations
 from .data_file import DataFile
 
 
 def coalesce_column(
-    source: Field,
-    target: Field,
+    source: CorpusField,
+    target: CorpusField,
     root_directory: str,
     file: DataFile = DataFile.MAIN,
 ) -> int:
 
-    assert isinstance(source, Field)
-    assert isinstance(target, Field)
+    assert isinstance(source, CorpusField)
+    assert isinstance(target, CorpusField)
     assert isinstance(root_directory, str)
     assert isinstance(file, DataFile)
 

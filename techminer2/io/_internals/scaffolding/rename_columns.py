@@ -2,100 +2,100 @@ from pathlib import Path
 
 import pandas as pd  # type: ignore
 
-from techminer2.enums import Field
+from techminer2.enums import CorpusField
 
 SCOPUS_TO_TM2 = {
     #
     # A
     #
-    "Abbreviated Source Title": Field.SRC_TITLE_ABBR_RAW.value,
-    "Abstract": Field.ABS_RAW.value,
-    "Affiliations": Field.AFFIL_RAW.value,
-    "Art. No.": Field.ART_NO.value,
-    "Author full names": Field.AUTH_FULL.value,
-    "Author Keywords": Field.AUTH_KEY_RAW.value,
-    "Author(s) ID": Field.AUTH_ID_RAW.value,
-    "Authors with affiliations": Field.AUTH_AFFIL.value,
-    "Authors": Field.AUTH_RAW.value,
+    "Abbreviated Source Title": CorpusField.SRC_TITLE_ABBR_RAW.value,
+    "Abstract": CorpusField.ABS_RAW.value,
+    "Affiliations": CorpusField.AFFIL_RAW.value,
+    "Art. No.": CorpusField.ART_NO.value,
+    "Author full names": CorpusField.AUTH_FULL.value,
+    "Author Keywords": CorpusField.AUTH_KEY_RAW.value,
+    "Author(s) ID": CorpusField.AUTH_ID_RAW.value,
+    "Authors with affiliations": CorpusField.AUTH_AFFIL.value,
+    "Authors": CorpusField.AUTH_RAW.value,
     #
     # C
     #
-    "Chemicals/CAS": Field.CAS_REG_NUMBER.value,
-    "Cited by": Field.CIT_COUNT_GLOBAL.value,
-    "CODEN": Field.CODEN.value,
-    "Conference code": Field.CONF_CODE.value,
-    "Conference date": Field.CONF_DATE.value,
-    "Conference location": Field.CONF_LOC.value,
-    "Conference name": Field.CONF_NAME.value,
-    "Correspondence Address": Field.CORRESP.value,
+    "Chemicals/CAS": CorpusField.CAS_REG_NUMBER.value,
+    "Cited by": CorpusField.CIT_COUNT_GLOBAL.value,
+    "CODEN": CorpusField.CODEN.value,
+    "Conference code": CorpusField.CONF_CODE.value,
+    "Conference date": CorpusField.CONF_DATE.value,
+    "Conference location": CorpusField.CONF_LOC.value,
+    "Conference name": CorpusField.CONF_NAME.value,
+    "Correspondence Address": CorpusField.CORRESP.value,
     #
     # D
     #
-    "Document Type": Field.DOC_TYPE_RAW.value,
-    "DOI": Field.DOI.value,
+    "Document Type": CorpusField.DOC_TYPE_RAW.value,
+    "DOI": CorpusField.DOI.value,
     #
     # E
     #
-    "Editors": Field.EDITOR.value,
-    "EID": Field.EID.value,
+    "Editors": CorpusField.EDITOR.value,
+    "EID": CorpusField.EID.value,
     #
     # F
     #
-    "Funding Details": Field.FUND_DETAILS.value,
-    "Funding Texts": Field.FUND_TEXTS.value,
+    "Funding Details": CorpusField.FUND_DETAILS.value,
+    "Funding Texts": CorpusField.FUND_TEXTS.value,
     #
     # I
     #
-    "Index Keywords": Field.IDX_KEY_RAW.value,
-    "ISBN": Field.ISBN.value,
-    "ISSN": Field.ISSN.value,
-    "Issue": Field.ISSUE.value,
+    "Index Keywords": CorpusField.IDX_KEY_RAW.value,
+    "ISBN": CorpusField.ISBN.value,
+    "ISSN": CorpusField.ISSN.value,
+    "Issue": CorpusField.ISSUE.value,
     #
     # L
     #
-    "Language of Original Document": Field.LANGUAGE.value,
-    "Link": Field.LINK.value,
+    "Language of Original Document": CorpusField.LANGUAGE.value,
+    "Link": CorpusField.LINK.value,
     #
     # M
     #
-    "Manufacturers": Field.MANUFACTURER.value,
-    "Molecular Sequence Numbers": Field.SEQ_NUM.value,
+    "Manufacturers": CorpusField.MANUFACTURER.value,
+    "Molecular Sequence Numbers": CorpusField.SEQ_NUM.value,
     #
     # O
     #
-    "Open Access": Field.OA.value,
+    "Open Access": CorpusField.OA.value,
     #
     # P
     #
-    "Page count": Field.PAGE_COUNT.value,
-    "Page end": Field.PAGE_LAST.value,
-    "Page start": Field.PAGE_FIRST.value,
-    "Publication Stage": Field.PUB_STAGE.value,
-    "Publisher": Field.PUBLISHER.value,
-    "PubMed ID": Field.PUBMED.value,
+    "Page count": CorpusField.PAGE_COUNT.value,
+    "Page end": CorpusField.PAGE_LAST.value,
+    "Page start": CorpusField.PAGE_FIRST.value,
+    "Publication Stage": CorpusField.PUB_STAGE.value,
+    "Publisher": CorpusField.PUBLISHER.value,
+    "PubMed ID": CorpusField.PUBMED.value,
     #
     # R
     #
-    "References": Field.REF_RAW.value,
+    "References": CorpusField.REF_RAW.value,
     #
     # S
     #
-    "Source title": Field.SRC_TITLE_RAW.value,
-    "Source": Field.SOURCE.value,
-    "Sponsors": Field.FUND_SPONSORS.value,
+    "Source title": CorpusField.SRC_TITLE_RAW.value,
+    "Source": CorpusField.SOURCE.value,
+    "Sponsors": CorpusField.FUND_SPONSORS.value,
     #
     # T
     #
-    "Title": Field.TITLE_RAW.value,
-    "Tradenames": Field.TRADENAME.value,
+    "Title": CorpusField.TITLE_RAW.value,
+    "Tradenames": CorpusField.TRADENAME.value,
     #
     # V
     #
-    "Volume": Field.VOL.value,
+    "Volume": CorpusField.VOL.value,
     #
     # Y
     #
-    "Year": Field.PUBYEAR.value,
+    "Year": CorpusField.PUBYEAR.value,
 }
 
 

@@ -1,6 +1,6 @@
 import pandas as pd  # type: ignore
 
-from techminer2 import Field
+from techminer2 import CorpusField
 from techminer2.io._internals.operations import DataFile, transform_column
 
 
@@ -24,8 +24,8 @@ def _normalize(series: pd.Series) -> pd.Series:
 def normalize_auth_id_raw(root_directory: str, file: DataFile) -> int:
 
     return transform_column(
-        source=Field.AUTH_ID_RAW,
-        target=Field.AUTH_ID_NORM,
+        source=CorpusField.AUTH_ID_RAW,
+        target=CorpusField.AUTH_ID_NORM,
         function=_normalize,
         root_directory=root_directory,
         file=file,

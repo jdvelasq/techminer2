@@ -2,38 +2,38 @@ from pathlib import Path
 
 import pandas as pd  # type: ignore
 
-from techminer2.enums import Field
+from techminer2.enums import CorpusField
 
 MAIN_COLUMNS = frozenset(
     [
-        Field.ABS_RAW.value,
-        Field.AUTH_ID_RAW.value,
-        Field.AUTH_RAW.value,
-        Field.AUTH_KEY_RAW.value,
-        Field.CIT_COUNT_GLOBAL.value,
-        Field.DOC_TYPE_RAW.value,
-        Field.DOI.value,
-        Field.IDX_KEY_RAW.value,
-        Field.PAGE_FIRST.value,
-        Field.PUBYEAR.value,
-        Field.REF_RAW.value,
-        Field.SRC_TITLE_ABBR_RAW.value,
-        Field.SRC_TITLE_RAW.value,
-        Field.TITLE_RAW.value,
-        Field.VOL.value,
+        CorpusField.ABS_RAW.value,
+        CorpusField.AUTH_ID_RAW.value,
+        CorpusField.AUTH_RAW.value,
+        CorpusField.AUTH_KEY_RAW.value,
+        CorpusField.CIT_COUNT_GLOBAL.value,
+        CorpusField.DOC_TYPE_RAW.value,
+        CorpusField.DOI.value,
+        CorpusField.IDX_KEY_RAW.value,
+        CorpusField.PAGE_FIRST.value,
+        CorpusField.PUBYEAR.value,
+        CorpusField.REF_RAW.value,
+        CorpusField.SRC_TITLE_ABBR_RAW.value,
+        CorpusField.SRC_TITLE_RAW.value,
+        CorpusField.TITLE_RAW.value,
+        CorpusField.VOL.value,
     ]
 )
 
 REF_COLUMNS = frozenset(
     [
-        Field.AUTH_ID_RAW.value,
-        Field.AUTH_RAW.value,
-        Field.PAGE_FIRST.value,
-        Field.PUBYEAR.value,
-        Field.SRC_TITLE_ABBR_RAW.value,
-        Field.SRC_TITLE_RAW.value,
-        Field.TITLE_RAW.value,
-        Field.VOL.value,
+        CorpusField.AUTH_ID_RAW.value,
+        CorpusField.AUTH_RAW.value,
+        CorpusField.PAGE_FIRST.value,
+        CorpusField.PUBYEAR.value,
+        CorpusField.SRC_TITLE_ABBR_RAW.value,
+        CorpusField.SRC_TITLE_RAW.value,
+        CorpusField.TITLE_RAW.value,
+        CorpusField.VOL.value,
     ]
 )
 

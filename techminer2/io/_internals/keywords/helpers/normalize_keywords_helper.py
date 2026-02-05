@@ -3,14 +3,14 @@ from pathlib import Path
 
 import pandas as pd  # type: ignore
 
-from techminer2 import Field
+from techminer2 import CorpusField
 
 KEYWORDS_MAX_LENGTH = 60
 
 
 def normalize_keywords_helper(
-    source: Field,
-    target: Field,
+    source: CorpusField,
+    target: CorpusField,
     root_directory: str,
 ) -> int:
 

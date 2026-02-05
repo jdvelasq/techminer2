@@ -97,7 +97,7 @@ from typing import Union
 import numpy as np
 import pandas as pd  # type: ignore
 
-from techminer2 import Field
+from techminer2 import CorpusField
 from techminer2._internals import ParamsMixin
 from techminer2._internals.data_access import load_filtered_main_data
 
@@ -128,7 +128,7 @@ class DataFrame(
         return stats
 
     # -------------------------------------------------------------------------
-    def count_unique_items(self, dataframe: pd.DataFrame, column: Field) -> int:
+    def count_unique_items(self, dataframe: pd.DataFrame, column: CorpusField) -> int:
 
         if column.value not in dataframe:
             return 0
@@ -159,14 +159,14 @@ class DataFrame(
         def annual_growth_rate():
             n_records = len(dataframe)
             n_years = (
-                max(dataframe[Field.PUBYEAR.value])
-                - min(dataframe[Field.PUBYEAR.value])
+                max(dataframe[CorpusField.PUBYEAR.value])
+                - min(dataframe[CorpusField.PUBYEAR.value])
                 + 1
             )
             po = len(
-                dataframe[Field.PUBYEAR.value][
-                    dataframe[Field.PUBYEAR.value]
-                    == min(dataframe[Field.PUBYEAR.value])
+                dataframe[CorpusField.PUBYEAR.value][
+                    dataframe[CorpusField.PUBYEAR.value]
+                    == min(dataframe[CorpusField.PUBYEAR.value])
                 ]
             )
             return round(100 * (np.power(n_records / po, 1 / n_years) - 1), 2)
@@ -181,10 +181,10 @@ class DataFrame(
         # ---------------------------------------------------------------------
         def average_annual_citations_per_document():
             return round(
-                dataframe[Field.CIT_COUNT_GLOBAL.value].mean()
+                dataframe[CorpusField.CIT_COUNT_GLOBAL.value].mean()
                 / (
-                    dataframe[Field.PUBYEAR.value].max()
-                    - dataframe[Field.PUBYEAR.value].min()
+                    dataframe[CorpusField.PUBYEAR.value].max()
+                    - dataframe[CorpusField.PUBYEAR.value].min()
                     + 1
                 ),
                 2,
@@ -199,7 +199,7 @@ class DataFrame(
 
         # ---------------------------------------------------------------------
         def average_citations_per_document():
-            return round(dataframe[Field.CIT_COUNT_GLOBAL.value].mean(), 2)
+            return round(dataframe[CorpusField.CIT_COUNT_GLOBAL.value].mean(), 2)
 
         stats = self.insert_stats(
             stats,
@@ -210,7 +210,7 @@ class DataFrame(
 
         # ---------------------------------------------------------------------
         def average_documents_per_source():
-            sources = dataframe[Field.SRC_TITLE_RAW.value].copy()
+            sources = dataframe[CorpusField.SRC_TITLE_RAW.value].copy()
             sources = sources.dropna()
             n_records = len(sources)
             sources = sources.drop_duplicates()
@@ -226,7 +226,7 @@ class DataFrame(
 
         # ---------------------------------------------------------------------
         def average_references_per_document():
-            num_references = dataframe[Field.REF_RAW.value].copy()
+            num_references = dataframe[CorpusField.REF_RAW.value].copy()
             num_references = num_references.dropna()
             num_references = num_references.str.split(";")
             num_references = num_references.map(len)
@@ -249,7 +249,7 @@ class DataFrame(
 
         # ---------------------------------------------------------------------
         def document_average_age():
-            mean_years = dataframe[Field.PUBYEAR.value].copy()
+            mean_years = dataframe[CorpusField.PUBYEAR.value].copy()
             mean_years = mean_years.dropna()
             mean_years = mean_years.mean()
             current_year = datetime.datetime.now().year
@@ -264,7 +264,7 @@ class DataFrame(
 
         # ---------------------------------------------------------------------
         def number_of_sources():
-            records = dataframe[Field.SRC_TITLE_RAW.value].copy()
+            records = dataframe[CorpusField.SRC_TITLE_RAW.value].copy()
             records = records.dropna()
             records = records.drop_duplicates()
             return len(records)
@@ -279,9 +279,9 @@ class DataFrame(
         # ---------------------------------------------------------------------
         def timespan():
             return (
-                str(min(dataframe[Field.PUBYEAR.value]))
+                str(min(dataframe[CorpusField.PUBYEAR.value]))
                 + ":"
-                + str(max(dataframe[Field.PUBYEAR.value]))
+                + str(max(dataframe[CorpusField.PUBYEAR.value]))
             )
 
         stats = self.insert_stats(
@@ -293,7 +293,7 @@ class DataFrame(
 
         # ---------------------------------------------------------------------
         def total_cited_references():
-            records = dataframe[Field.REF_RAW.value].copy()
+            records = dataframe[CorpusField.REF_RAW.value].copy()
             records = records.dropna()
             records = records.str.split(";")
             records = records.explode()
@@ -313,10 +313,10 @@ class DataFrame(
         #
         # =====================================================================
         def compute_document_type_stats(stats):
-            records = dataframe[[Field.DOC_TYPE_NORM.value]].dropna()
+            records = dataframe[[CorpusField.DOC_TYPE_NORM.value]].dropna()
             document_types_count = (
-                records[[Field.DOC_TYPE_NORM.value]]
-                .groupby(Field.DOC_TYPE_NORM.value)
+                records[[CorpusField.DOC_TYPE_NORM.value]]
+                .groupby(CorpusField.DOC_TYPE_NORM.value)
                 .size()
             )
             for document_type, count in zip(
@@ -340,7 +340,7 @@ class DataFrame(
         # =====================================================================
 
         def author_appearances(data_frame):
-            data_frame = data_frame[Field.AUTH_RAW.value].copy()
+            data_frame = data_frame[CorpusField.AUTH_RAW.value].copy()
             data_frame = data_frame.dropna()
             data_frame = data_frame.str.split(";")
             data_frame = data_frame.explode()
@@ -356,7 +356,7 @@ class DataFrame(
 
         # ---------------------------------------------------------------------
         def average_authors_per_document(data_frame):
-            num_authors = data_frame[Field.NUM_AUTH.value].dropna()
+            num_authors = data_frame[CorpusField.NUM_AUTH.value].dropna()
             return round(num_authors.mean(), 2)
 
         stats = self.insert_stats(
@@ -368,8 +368,8 @@ class DataFrame(
 
         # ---------------------------------------------------------------------
         def average_authors_per_multi_authored_documents(data_frame):
-            num_authors = data_frame[data_frame[Field.NUM_AUTH.value] > 1][
-                Field.NUM_AUTH.value
+            num_authors = data_frame[data_frame[CorpusField.NUM_AUTH.value] > 1][
+                CorpusField.NUM_AUTH.value
             ]
             return round(num_authors.mean(), 2)
 
@@ -382,10 +382,14 @@ class DataFrame(
 
         # ---------------------------------------------------------------------
         def collaboration_index(data_frame):
-            records = data_frame[[Field.AUTH_RAW.value, Field.NUM_AUTH.value]].dropna()
-            records = records[records[Field.NUM_AUTH.value] > 1]
+            records = data_frame[
+                [CorpusField.AUTH_RAW.value, CorpusField.NUM_AUTH.value]
+            ].dropna()
+            records = records[records[CorpusField.NUM_AUTH.value] > 1]
             n_records = len(records)
-            authors = records[Field.AUTH_RAW.value].str.split(";").explode().str.strip()
+            authors = (
+                records[CorpusField.AUTH_RAW.value].str.split(";").explode().str.strip()
+            )
             n_authors = int(authors.notna().sum())
             return round(n_authors / n_records, 2)
 
@@ -398,7 +402,7 @@ class DataFrame(
 
         # ---------------------------------------------------------------------
         def documents_per_author_appearance(data_frame):
-            data_frame = data_frame[Field.AUTH_RAW.value].copy()
+            data_frame = data_frame[CorpusField.AUTH_RAW.value].copy()
             data_frame = data_frame.dropna()
             n_records = len(data_frame)
             data_frame = data_frame.str.split(";")
@@ -415,7 +419,7 @@ class DataFrame(
 
         # ---------------------------------------------------------------------
         def internationally_co_authored_documents(data_frame):
-            countries = data_frame[Field.COUNTRY.value].copy()
+            countries = data_frame[CorpusField.COUNTRY.value].copy()
             countries = countries.dropna()
             countries = countries.str.split(";")
             countries = countries.map(len)
@@ -435,14 +439,14 @@ class DataFrame(
             item="Number of authors",
             value=self.count_unique_items(
                 dataframe,
-                Field.AUTH_RAW,
+                CorpusField.AUTH_RAW,
             ),
         )
 
         # ---------------------------------------------------------------------
         def number_of_authors_of_single_authored_documents(data_frame):
-            records = data_frame[data_frame[Field.NUM_AUTH.value] == 1]
-            authors = records[Field.AUTH_RAW.value].dropna()
+            records = data_frame[data_frame[CorpusField.NUM_AUTH.value] == 1]
+            authors = records[CorpusField.AUTH_RAW.value].dropna()
             authors = authors.drop_duplicates()
             return len(authors)
 
@@ -455,7 +459,7 @@ class DataFrame(
 
         # ---------------------------------------------------------------------
         def number_of_multi_authored_documents(data_frame):
-            return len(data_frame[data_frame[Field.NUM_AUTH.value] > 1])
+            return len(data_frame[data_frame[CorpusField.NUM_AUTH.value] > 1])
 
         stats = self.insert_stats(
             stats,
@@ -466,7 +470,7 @@ class DataFrame(
 
         # ---------------------------------------------------------------------
         def number_of_single_authored_documents(data_frame):
-            return len(data_frame[data_frame[Field.NUM_AUTH.value] == 1])
+            return len(data_frame[data_frame[CorpusField.NUM_AUTH.value] == 1])
 
         stats = self.insert_stats(
             stats,
@@ -487,7 +491,7 @@ class DataFrame(
             item="Number of countries",
             value=self.count_unique_items(
                 dataframe,
-                Field.COUNTRY,
+                CorpusField.COUNTRY,
             ),
         )
 
@@ -498,7 +502,7 @@ class DataFrame(
             item="Number of countries (1st author)",
             value=self.count_unique_items(
                 dataframe,
-                Field.FIRST_AUTH_COUNTRY,
+                CorpusField.FIRST_AUTH_COUNTRY,
             ),
         )
 
@@ -509,7 +513,7 @@ class DataFrame(
             item="Number of organizations",
             value=self.count_unique_items(
                 dataframe,
-                Field.ORGANIZATION,
+                CorpusField.ORGANIZATION,
             ),
         )
 
@@ -520,7 +524,7 @@ class DataFrame(
             item="Number of organizations (1st author)",
             value=self.count_unique_items(
                 dataframe,
-                Field.FIRST_AUTH_ORGANIZATION,
+                CorpusField.FIRST_AUTH_ORGANIZATION,
             ),
         )
 
@@ -532,7 +536,7 @@ class DataFrame(
             item="Number of regions",
             value=self.count_unique_items(
                 dataframe,
-                Field.REGION,
+                CorpusField.REGION,
             ),
         )
 
@@ -543,7 +547,7 @@ class DataFrame(
             item="Number of subregions",
             value=self.count_unique_items(
                 dataframe,
-                Field.SUBREGION,
+                CorpusField.SUBREGION,
             ),
         )
 
@@ -559,7 +563,7 @@ class DataFrame(
             item="Number of author keywords (norm)",
             value=self.count_unique_items(
                 dataframe,
-                Field.AUTH_KEY_NORM,
+                CorpusField.AUTH_KEY_NORM,
             ),
         )
 
@@ -569,7 +573,7 @@ class DataFrame(
             item="Number of author keywords (raw)",
             value=self.count_unique_items(
                 dataframe,
-                Field.AUTH_KEY_RAW,
+                CorpusField.AUTH_KEY_RAW,
             ),
         )
 
@@ -579,7 +583,7 @@ class DataFrame(
             item="Number of index keywords (norm)",
             value=self.count_unique_items(
                 dataframe,
-                Field.IDX_KEY_NORM,
+                CorpusField.IDX_KEY_NORM,
             ),
         )
 
@@ -589,7 +593,7 @@ class DataFrame(
             item="Number of index keywords (raw)",
             value=self.count_unique_items(
                 dataframe,
-                Field.IDX_KEY_RAW,
+                CorpusField.IDX_KEY_RAW,
             ),
         )
 
@@ -599,7 +603,7 @@ class DataFrame(
             item="Number of keywords (norm)",
             value=self.count_unique_items(
                 dataframe,
-                Field.ALL_KEY_NORM,
+                CorpusField.ALL_KEY_NORM,
             ),
         )
 
@@ -609,7 +613,7 @@ class DataFrame(
             item="Number of keywords (raw)",
             value=self.count_unique_items(
                 dataframe,
-                Field.ALL_KEY_RAW,
+                CorpusField.ALL_KEY_RAW,
             ),
         )
 
@@ -625,7 +629,7 @@ class DataFrame(
             item="Number of abstract words (raw)",
             value=self.count_unique_items(
                 dataframe,
-                Field.WORD_ABS_RAW,
+                CorpusField.WORD_ABS_RAW,
             ),
         )
 
@@ -635,7 +639,7 @@ class DataFrame(
             item="Number of abstract NP phrases (norm)",
             value=self.count_unique_items(
                 dataframe,
-                Field.NP_ABS_NORM,
+                CorpusField.NP_ABS_NORM,
             ),
         )
 
@@ -645,7 +649,7 @@ class DataFrame(
             item="Number of abstract NP phrases (raw)",
             value=self.count_unique_items(
                 dataframe,
-                Field.NP_ABS_RAW,
+                CorpusField.NP_ABS_RAW,
             ),
         )
 
@@ -655,7 +659,7 @@ class DataFrame(
             item="Number of NP phrases (norm)",
             value=self.count_unique_items(
                 dataframe,
-                Field.ALL_NP_NORM,
+                CorpusField.ALL_NP_NORM,
             ),
         )
 
@@ -665,7 +669,7 @@ class DataFrame(
             item="Number of NP phrases (raw)",
             value=self.count_unique_items(
                 dataframe,
-                Field.ALL_NP_RAW,
+                CorpusField.ALL_NP_RAW,
             ),
         )
 
@@ -675,7 +679,7 @@ class DataFrame(
             item="Number of SpaCy NP phrases",
             value=self.count_unique_items(
                 dataframe,
-                Field.NP_SPACY,
+                CorpusField.NP_SPACY,
             ),
         )
 
@@ -685,7 +689,7 @@ class DataFrame(
             item="Number of TextBlob NP phrases",
             value=self.count_unique_items(
                 dataframe,
-                Field.NP_TEXTBLOB,
+                CorpusField.NP_TEXTBLOB,
             ),
         )
 
@@ -695,7 +699,7 @@ class DataFrame(
             item="Number of title NP phrases (norm)",
             value=self.count_unique_items(
                 dataframe,
-                Field.NP_TITLE_NORM,
+                CorpusField.NP_TITLE_NORM,
             ),
         )
 
@@ -705,7 +709,7 @@ class DataFrame(
             item="Number of title NP phrases (raw)",
             value=self.count_unique_items(
                 dataframe,
-                Field.NP_TITLE_RAW,
+                CorpusField.NP_TITLE_RAW,
             ),
         )
 
@@ -715,7 +719,7 @@ class DataFrame(
             item="Number of title words (raw)",
             value=self.count_unique_items(
                 dataframe,
-                Field.WORD_TITLE_RAW,
+                CorpusField.WORD_TITLE_RAW,
             ),
         )
 
@@ -725,7 +729,7 @@ class DataFrame(
             item="Number of words (raw)",
             value=self.count_unique_items(
                 dataframe,
-                Field.ALL_WORD_RAW,
+                CorpusField.ALL_WORD_RAW,
             ),
         )
 
@@ -735,7 +739,7 @@ class DataFrame(
             item="Number of words (norm)",
             value=self.count_unique_items(
                 dataframe,
-                Field.ALL_WORD_NORM,
+                CorpusField.ALL_WORD_NORM,
             ),
         )
 
@@ -751,7 +755,7 @@ class DataFrame(
             item="Number of keywords + NP phrases (norm)",
             value=self.count_unique_items(
                 dataframe,
-                Field.ALL_KEY_NP_NORM,
+                CorpusField.ALL_KEY_NP_NORM,
             ),
         )
 
@@ -761,7 +765,7 @@ class DataFrame(
             item="Number of keywords + NP phrases (raw)",
             value=self.count_unique_items(
                 dataframe,
-                Field.ALL_KEY_NP_RAW,
+                CorpusField.ALL_KEY_NP_RAW,
             ),
         )
 
@@ -771,7 +775,7 @@ class DataFrame(
             item="Number of keywords + words (norm)",
             value=self.count_unique_items(
                 dataframe,
-                Field.ALL_KEY_WORD_NORM,
+                CorpusField.ALL_KEY_WORD_NORM,
             ),
         )
 
@@ -781,7 +785,7 @@ class DataFrame(
             item="Number of keywords + words (raw)",
             value=self.count_unique_items(
                 dataframe,
-                Field.ALL_KEY_WORD_RAW,
+                CorpusField.ALL_KEY_WORD_RAW,
             ),
         )
 

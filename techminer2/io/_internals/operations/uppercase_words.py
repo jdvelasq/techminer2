@@ -4,7 +4,7 @@ from functools import lru_cache
 import pandas as pd  # type: ignore
 from pandarallel import pandarallel  # type: ignore
 
-from techminer2 import Field
+from techminer2 import CorpusField
 from techminer2._internals import stdout_to_stderr
 from techminer2._internals.package_data.text_processing import (
     load_text_processing_terms,
@@ -90,8 +90,8 @@ def _normalize(text):
 
 
 def uppercase_words(
-    source: Field,
-    target: Field,
+    source: CorpusField,
+    target: CorpusField,
     root_directory: str,
     file: DataFile = DataFile.MAIN,
 ) -> int:

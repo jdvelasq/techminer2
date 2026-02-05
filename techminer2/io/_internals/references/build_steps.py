@@ -1,6 +1,6 @@
 # CODE_REVIEW: 2026-01-26
 
-from techminer2 import Field
+from techminer2 import CorpusField
 
 from ...._internals import Params
 from ..step import Step
@@ -19,37 +19,37 @@ def build_reference_steps(params: Params) -> list[Step]:
 
     return [
         Step(
-            name=f"Assigning '{Field.REC_NO.value}'",
+            name=f"Assigning '{CorpusField.REC_NO.value}'",
             function=assign_recno,
             kwargs=common_kwargs,
             count_message="{count} record numbers assigned",
         ),
         Step(
-            name=f"Assigning '{Field.REC_ID.value}'",
+            name=f"Assigning '{CorpusField.REC_ID.value}'",
             function=assign_recid,
             kwargs=common_kwargs,
             count_message="{count} record IDs assigned",
         ),
         Step(
-            name=f"Calculating '{Field.NUM_AUTH.value}'",
+            name=f"Calculating '{CorpusField.NUM_AUTH.value}'",
             function=calculate_numauth,
             kwargs=common_kwargs,
             count_message="{count} records calculated",
         ),
         Step(
-            name=f"Calculating '{Field.NUM_REF_GLOBAL.value}'",
+            name=f"Calculating '{CorpusField.NUM_REF_GLOBAL.value}'",
             function=calculate_numref_global,
             kwargs=common_kwargs,
             count_message="{count} reference counts calculated",
         ),
         Step(
-            name=f"Normalizing '{Field.REF_RAW.value}'",
+            name=f"Normalizing '{CorpusField.REF_RAW.value}'",
             function=normalize_references,
             kwargs=common_kwargs,
             count_message="{count} references normalized",
         ),
         Step(
-            name=f"Compute '{Field.CIT_COUNT_LOCAL.value}'",
+            name=f"Compute '{CorpusField.CIT_COUNT_LOCAL.value}'",
             function=compute_citcount_local,
             kwargs=common_kwargs,
             count_message="{count} records processed",

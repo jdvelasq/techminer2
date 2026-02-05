@@ -29,7 +29,7 @@ Smoke test:
 
 import pandas as pd  # type: ignore
 
-from techminer2 import Field
+from techminer2 import CorpusField
 from techminer2.operations.transform_column import transform_column
 
 
@@ -81,16 +81,16 @@ def normalize_auth_raw(root_directory, file: str) -> int:
     """Run authors importer."""
 
     transform_column(
-        source=Field.AUTH_RAW,
-        target=Field.AUTH_NORM,
+        source=CorpusField.AUTH_RAW,
+        target=CorpusField.AUTH_NORM,
         function=_normalize,
         root_directory=root_directory,
         file=file,
     )
 
     return transform_column(
-        source=Field.AUTH_NORM,
-        target=Field.FIRST_AUTH,
+        source=CorpusField.AUTH_NORM,
+        target=CorpusField.FIRST_AUTH,
         function=_extract_first_author,
         root_directory=root_directory,
         file=file,

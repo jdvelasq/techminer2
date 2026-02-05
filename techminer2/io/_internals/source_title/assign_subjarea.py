@@ -4,7 +4,7 @@ from pathlib import Path
 
 import pandas as pd  # type: ignore
 
-from techminer2 import Field
+from techminer2 import CorpusField
 
 
 @lru_cache(maxsize=1)
@@ -30,8 +30,8 @@ def assign_subjarea(root_directory: str) -> int:
     )
 
     if (
-        Field.ISSN.value not in dataframe.columns
-        and Field.EISSN.value not in dataframe.columns
+        CorpusField.ISSN.value not in dataframe.columns
+        and CorpusField.EISSN.value not in dataframe.columns
     ):
         return 0
 
@@ -39,28 +39,30 @@ def assign_subjarea(root_directory: str) -> int:
 
     issn_mapping = dict(
         zip(
-            subject_areas_df[Field.ISSN.value].dropna(),
-            subject_areas_df[Field.SUBJ_AREA.value].dropna(),
+            subject_areas_df[CorpusField.ISSN.value].dropna(),
+            subject_areas_df[CorpusField.SUBJ_AREA.value].dropna(),
         )
     )
     eissn_mapping = dict(
         zip(
-            subject_areas_df[Field.EISSN.value].dropna(),
-            subject_areas_df[Field.SUBJ_AREA.value].dropna(),
+            subject_areas_df[CorpusField.EISSN.value].dropna(),
+            subject_areas_df[CorpusField.SUBJ_AREA.value].dropna(),
         )
     )
 
-    dataframe[Field.SUBJ_AREA.value] = None
+    dataframe[CorpusField.SUBJ_AREA.value] = None
 
-    if Field.ISSN.value in dataframe.columns:
-        dataframe[Field.SUBJ_AREA.value] = dataframe[Field.ISSN.value].map(issn_mapping)
-
-    if Field.EISSN.value in dataframe.columns:
-        dataframe[Field.SUBJ_AREA.value] = dataframe[Field.SUBJ_AREA.value].fillna(
-            dataframe[Field.EISSN.value].map(eissn_mapping)
+    if CorpusField.ISSN.value in dataframe.columns:
+        dataframe[CorpusField.SUBJ_AREA.value] = dataframe[CorpusField.ISSN.value].map(
+            issn_mapping
         )
 
-    non_null_count = int(dataframe[Field.SUBJ_AREA.value].notna().sum())
+    if CorpusField.EISSN.value in dataframe.columns:
+        dataframe[CorpusField.SUBJ_AREA.value] = dataframe[
+            CorpusField.SUBJ_AREA.value
+        ].fillna(dataframe[CorpusField.EISSN.value].map(eissn_mapping))
+
+    non_null_count = int(dataframe[CorpusField.SUBJ_AREA.value].notna().sum())
 
     temp_file = database_file.with_suffix(".tmp")
     dataframe.to_csv(

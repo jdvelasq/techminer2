@@ -4,7 +4,7 @@ from typing import List
 
 import pandas as pd  # type: ignore
 
-from techminer2 import Field
+from techminer2 import CorpusField
 from techminer2._constants import COUNTRY_NAMES, COUNTRY_TO_ALPHA3
 from techminer2._internals.data_access import load_main_data, save_main_data
 
@@ -301,30 +301,34 @@ def _extract_organization_from_string(affiliation: str) -> str:
 
 def _get_affiliations_df(dataframe: pd.DataFrame) -> pd.DataFrame:
 
-    affil_df = dataframe[[Field.AFFIL_RAW.value]].copy()
+    affil_df = dataframe[[CorpusField.AFFIL_RAW.value]].copy()
     affil_df = affil_df.dropna()
-    affil_df[Field.AFFIL_RAW.value] = affil_df[Field.AFFIL_RAW.value].str.split("; ")
-    affil_df = affil_df.explode(Field.AFFIL_RAW.value)
-    affil_df[Field.AFFIL_RAW.value] = affil_df[Field.AFFIL_RAW.value].str.strip()
+    affil_df[CorpusField.AFFIL_RAW.value] = affil_df[
+        CorpusField.AFFIL_RAW.value
+    ].str.split("; ")
+    affil_df = affil_df.explode(CorpusField.AFFIL_RAW.value)
+    affil_df[CorpusField.AFFIL_RAW.value] = affil_df[
+        CorpusField.AFFIL_RAW.value
+    ].str.strip()
     affil_df = affil_df.drop_duplicates()
 
     return affil_df
 
 
 def _get_country_mapping(df: pd.DataFrame) -> dict[str, str]:
-    df = df[[Field.AFFIL_RAW.value, Field.COUNTRY.value]].dropna()
+    df = df[[CorpusField.AFFIL_RAW.value, CorpusField.COUNTRY.value]].dropna()
     df = df.drop_duplicates()
     mapping: dict[str, str] = pd.Series(
-        df[Field.COUNTRY.value].values, index=df[Field.AFFIL_RAW.value]
+        df[CorpusField.COUNTRY.value].values, index=df[CorpusField.AFFIL_RAW.value]
     ).to_dict()
     return mapping
 
 
 def _get_organization_mapping(df: pd.DataFrame) -> dict[str, str]:
-    df = df[[Field.AFFIL_RAW.value, Field.ORGANIZATION.value]].dropna()
+    df = df[[CorpusField.AFFIL_RAW.value, CorpusField.ORGANIZATION.value]].dropna()
     df = df.drop_duplicates()
     mapping: dict[str, str] = pd.Series(
-        df[Field.ORGANIZATION.value].values, index=df[Field.AFFIL_RAW.value]
+        df[CorpusField.ORGANIZATION.value].values, index=df[CorpusField.AFFIL_RAW.value]
     ).to_dict()
     return mapping
 
@@ -335,17 +339,17 @@ def _create_country_column(
 
     df = df.copy()
 
-    df[Field.COUNTRY.value] = df[Field.AFFIL_RAW.value].copy()
-    df[Field.COUNTRY.value] = df[Field.COUNTRY.value].fillna("[N/A]")
-    df[Field.COUNTRY.value] = df[Field.COUNTRY.value].str.split("; ")
-    df[Field.COUNTRY.value] = df[Field.COUNTRY.value].map(
+    df[CorpusField.COUNTRY.value] = df[CorpusField.AFFIL_RAW.value].copy()
+    df[CorpusField.COUNTRY.value] = df[CorpusField.COUNTRY.value].fillna("[N/A]")
+    df[CorpusField.COUNTRY.value] = df[CorpusField.COUNTRY.value].str.split("; ")
+    df[CorpusField.COUNTRY.value] = df[CorpusField.COUNTRY.value].map(
         lambda affils: [country_mapping.get(affil, "[N/A]") for affil in affils],
     )
-    df[Field.FIRST_AUTH_COUNTRY.value] = df[Field.COUNTRY.value].map(
+    df[CorpusField.FIRST_AUTH_COUNTRY.value] = df[CorpusField.COUNTRY.value].map(
         lambda countries: countries[0] if countries else "[N/A]",
     )
-    df[Field.COUNTRY.value] = df[Field.COUNTRY.value].map(set)
-    df[Field.COUNTRY.value] = df[Field.COUNTRY.value].str.join("; ")
+    df[CorpusField.COUNTRY.value] = df[CorpusField.COUNTRY.value].map(set)
+    df[CorpusField.COUNTRY.value] = df[CorpusField.COUNTRY.value].str.join("; ")
 
     return df
 
@@ -355,16 +359,22 @@ def _create_organization_column(
 ) -> pd.DataFrame:
     df = df.copy()
 
-    df[Field.ORGANIZATION.value] = df[Field.AFFIL_RAW.value].copy()
-    df[Field.ORGANIZATION.value] = df[Field.ORGANIZATION.value].fillna("[N/A]")
-    df[Field.ORGANIZATION.value] = df[Field.ORGANIZATION.value].str.split("; ")
-    df[Field.ORGANIZATION.value] = df[Field.ORGANIZATION.value].map(
+    df[CorpusField.ORGANIZATION.value] = df[CorpusField.AFFIL_RAW.value].copy()
+    df[CorpusField.ORGANIZATION.value] = df[CorpusField.ORGANIZATION.value].fillna(
+        "[N/A]"
+    )
+    df[CorpusField.ORGANIZATION.value] = df[CorpusField.ORGANIZATION.value].str.split(
+        "; "
+    )
+    df[CorpusField.ORGANIZATION.value] = df[CorpusField.ORGANIZATION.value].map(
         lambda affils: [organization_mapping.get(affil, "[N/A]") for affil in affils]
     )
-    df[Field.FIRST_AUTH_ORGANIZATION.value] = df[Field.ORGANIZATION.value].map(
-        lambda orgs: orgs[0] if orgs else "[N/A]"
+    df[CorpusField.FIRST_AUTH_ORGANIZATION.value] = df[
+        CorpusField.ORGANIZATION.value
+    ].map(lambda orgs: orgs[0] if orgs else "[N/A]")
+    df[CorpusField.ORGANIZATION.value] = df[CorpusField.ORGANIZATION.value].str.join(
+        "; "
     )
-    df[Field.ORGANIZATION.value] = df[Field.ORGANIZATION.value].str.join("; ")
 
     return df
 
@@ -393,10 +403,10 @@ def _create_thesaurus(
 def _assign_country_code(df: pd.DataFrame) -> pd.Series:
 
     df = df.copy()
-    df[Field.ORGANIZATION.value] += df[Field.COUNTRY.value].map(
+    df[CorpusField.ORGANIZATION.value] += df[CorpusField.COUNTRY.value].map(
         lambda country: " [" + COUNTRY_TO_ALPHA3.get(country, "N/A") + "]"
     )
-    return df[Field.ORGANIZATION.value]
+    return df[CorpusField.ORGANIZATION.value]
 
 
 def extract_organizations_and_countries(root_directory: str) -> int:
@@ -404,14 +414,14 @@ def extract_organizations_and_countries(root_directory: str) -> int:
     dataframe = load_main_data(root_directory=root_directory)
 
     affil_df = _get_affiliations_df(dataframe)
-    affil_df[Field.COUNTRY.value] = affil_df[Field.AFFIL_RAW.value].apply(
+    affil_df[CorpusField.COUNTRY.value] = affil_df[CorpusField.AFFIL_RAW.value].apply(
         _extract_country_from_string
     )
-    affil_df[Field.ORGANIZATION.value] = affil_df[Field.AFFIL_RAW.value].apply(
-        _extract_organization_from_string
-    )
+    affil_df[CorpusField.ORGANIZATION.value] = affil_df[
+        CorpusField.AFFIL_RAW.value
+    ].apply(_extract_organization_from_string)
 
-    affil_df[Field.ORGANIZATION.value] = _assign_country_code(affil_df)
+    affil_df[CorpusField.ORGANIZATION.value] = _assign_country_code(affil_df)
 
     country_mapping = _get_country_mapping(affil_df)
     organization_mapping = _get_organization_mapping(affil_df)
@@ -433,4 +443,4 @@ def extract_organizations_and_countries(root_directory: str) -> int:
         filename="organizations.the.txt",
     )
 
-    return int(dataframe[Field.AFFIL_RAW.value].notna().sum())
+    return int(dataframe[CorpusField.AFFIL_RAW.value].notna().sum())

@@ -2,7 +2,7 @@ from pathlib import Path
 
 import pandas as pd  # type: ignore
 
-from techminer2 import Field
+from techminer2 import CorpusField
 
 
 def assign_recno(root_directory):
@@ -20,7 +20,7 @@ def assign_recno(root_directory):
     )
 
     num_zeros = len(str(len(dataframe)))
-    dataframe[Field.REC_NO.value] = [
+    dataframe[CorpusField.REC_NO.value] = [
         f"{i:0{num_zeros}d}" for i in range(1, len(dataframe) + 1)
     ]
 

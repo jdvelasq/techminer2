@@ -55,7 +55,7 @@ Smoke test:
 
 import pandas as pd  # type: ignore
 
-from techminer2 import Field, RecordsOrderBy
+from techminer2 import CorpusField, RecordsOrderBy
 from techminer2._internals import Params
 from techminer2._internals.data_access.load_main_data import load_main_data
 
@@ -127,7 +127,7 @@ def _filter_dataframe_by_match(params: Params, dataframe: pd.DataFrame) -> pd.Da
 
     for filter_name, filter_value in filters.items():
 
-        if filter_name == Field.REC_ID.value:
+        if filter_name == CorpusField.REC_ID.value:
 
             dataframe = dataframe[dataframe["record_id"].isin(filter_value)]
 
@@ -161,36 +161,36 @@ def _sort_dataframe_by(params: Params, dataframe: pd.DataFrame) -> pd.DataFrame:
     if sort_by == RecordsOrderBy.PUBYEAR_NEWEST:
         dataframe = dataframe.sort_values(
             [
-                Field.PUBYEAR.value,
-                Field.CIT_COUNT_GLOBAL.value,
-                Field.CIT_COUNT_LOCAL.value,
+                CorpusField.PUBYEAR.value,
+                CorpusField.CIT_COUNT_GLOBAL.value,
+                CorpusField.CIT_COUNT_LOCAL.value,
             ],
             ascending=[False, False, False],
         )
     elif sort_by == RecordsOrderBy.PUBYEAR_OLDEST:
         dataframe = dataframe.sort_values(
             [
-                Field.PUBYEAR.value,
-                Field.CIT_COUNT_GLOBAL.value,
-                Field.CIT_COUNT_LOCAL.value,
+                CorpusField.PUBYEAR.value,
+                CorpusField.CIT_COUNT_GLOBAL.value,
+                CorpusField.CIT_COUNT_LOCAL.value,
             ],
             ascending=[True, False, False],
         )
     elif sort_by == RecordsOrderBy.CIT_COUNT_GLOBAL_BY_HIGHEST:
         dataframe = dataframe.sort_values(
             [
-                Field.CIT_COUNT_GLOBAL.value,
-                Field.PUBYEAR.value,
-                Field.CIT_COUNT_LOCAL.value,
+                CorpusField.CIT_COUNT_GLOBAL.value,
+                CorpusField.PUBYEAR.value,
+                CorpusField.CIT_COUNT_LOCAL.value,
             ],
             ascending=[False, False, False],
         )
     elif sort_by == RecordsOrderBy.CIT_COUNT_GLOBAL_BY_LOWEST:
         dataframe = dataframe.sort_values(
             [
-                Field.CIT_COUNT_GLOBAL.value,
-                Field.PUBYEAR.value,
-                Field.CIT_COUNT_LOCAL.value,
+                CorpusField.CIT_COUNT_GLOBAL.value,
+                CorpusField.PUBYEAR.value,
+                CorpusField.CIT_COUNT_LOCAL.value,
             ],
             ascending=[True, False, False],
         )
@@ -198,9 +198,9 @@ def _sort_dataframe_by(params: Params, dataframe: pd.DataFrame) -> pd.DataFrame:
     elif sort_by == RecordsOrderBy.CIT_COUNT_LOCAL_BY_HIGHEST:
         dataframe = dataframe.sort_values(
             [
-                Field.CIT_COUNT_LOCAL.value,
-                Field.PUBYEAR.value,
-                Field.CIT_COUNT_GLOBAL.value,
+                CorpusField.CIT_COUNT_LOCAL.value,
+                CorpusField.PUBYEAR.value,
+                CorpusField.CIT_COUNT_GLOBAL.value,
             ],
             ascending=[False, False, False],
         )
@@ -208,9 +208,9 @@ def _sort_dataframe_by(params: Params, dataframe: pd.DataFrame) -> pd.DataFrame:
     elif sort_by == RecordsOrderBy.CIT_COUNT_LOCAL_BY_LOWEST:
         dataframe = dataframe.sort_values(
             [
-                Field.CIT_COUNT_LOCAL.value,
-                Field.PUBYEAR.value,
-                Field.CIT_COUNT_GLOBAL.value,
+                CorpusField.CIT_COUNT_LOCAL.value,
+                CorpusField.PUBYEAR.value,
+                CorpusField.CIT_COUNT_GLOBAL.value,
             ],
             ascending=[True, False, False],
         )
@@ -218,9 +218,9 @@ def _sort_dataframe_by(params: Params, dataframe: pd.DataFrame) -> pd.DataFrame:
     elif sort_by == RecordsOrderBy.FIRST_AUTH_A_TO_Z:
         dataframe = dataframe.sort_values(
             [
-                Field.AUTH_NORM.value,
-                Field.CIT_COUNT_GLOBAL.value,
-                Field.CIT_COUNT_LOCAL.value,
+                CorpusField.AUTH_NORM.value,
+                CorpusField.CIT_COUNT_GLOBAL.value,
+                CorpusField.CIT_COUNT_LOCAL.value,
             ],
             ascending=[True, False, False],
         )
@@ -228,18 +228,18 @@ def _sort_dataframe_by(params: Params, dataframe: pd.DataFrame) -> pd.DataFrame:
     elif sort_by == RecordsOrderBy.FIRST_AUTH_Z_TO_A:
         dataframe = dataframe.sort_values(
             [
-                Field.AUTH_NORM.value,
-                Field.CIT_COUNT_GLOBAL.value,
-                Field.CIT_COUNT_LOCAL.value,
+                CorpusField.AUTH_NORM.value,
+                CorpusField.CIT_COUNT_GLOBAL.value,
+                CorpusField.CIT_COUNT_LOCAL.value,
             ],
             ascending=[False, False, False],
         )
     elif sort_by == RecordsOrderBy.SRC_TITLE_A_TO_Z:
         dataframe = dataframe.sort_values(
             [
-                Field.SRC_TITLE_NORM.value,
-                Field.CIT_COUNT_GLOBAL.value,
-                Field.CIT_COUNT_LOCAL.value,
+                CorpusField.SRC_TITLE_NORM.value,
+                CorpusField.CIT_COUNT_GLOBAL.value,
+                CorpusField.CIT_COUNT_LOCAL.value,
             ],
             ascending=[True, False, False],
         )
@@ -247,9 +247,9 @@ def _sort_dataframe_by(params: Params, dataframe: pd.DataFrame) -> pd.DataFrame:
     elif sort_by == RecordsOrderBy.SRE_TITLE_Z_TO_A:
         dataframe = dataframe.sort_values(
             [
-                Field.SRC_TITLE_NORM.value,
-                Field.CIT_COUNT_GLOBAL.value,
-                Field.CIT_COUNT_LOCAL.value,
+                CorpusField.SRC_TITLE_NORM.value,
+                CorpusField.CIT_COUNT_GLOBAL.value,
+                CorpusField.CIT_COUNT_LOCAL.value,
             ],
             ascending=[False, False, False],
         )

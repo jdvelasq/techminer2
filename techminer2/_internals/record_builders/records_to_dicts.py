@@ -1,4 +1,4 @@
-from techminer2 import Field
+from techminer2 import CorpusField
 
 
 def _get_existent_columns(records, candiate_columns):
@@ -27,15 +27,15 @@ def records_to_dicts(dataframe):
 
     names_mapping = {
         "record_no": "UT",
-        Field.REC_ID.value: "AR",
-        Field.TITLE_RAW.value: "TI",
-        Field.AUTH_NORM.value: "AU",
-        Field.CIT_COUNT_GLOBAL.value: "TC",
-        Field.SRCTITLE_ABBR.value: "SO",
-        Field.PUBYEAR.value: "PY",
-        Field.ABS_UPPER_NP.value: "AB",
-        Field.AUTH_KEY_RAW.value: "DE",
-        Field.IDX_KEY_RAW.value: "ID",
+        CorpusField.REC_ID.value: "AR",
+        CorpusField.TITLE_RAW.value: "TI",
+        CorpusField.AUTH_NORM.value: "AU",
+        CorpusField.CIT_COUNT_GLOBAL.value: "TC",
+        CorpusField.SRCTITLE_ABBR.value: "SO",
+        CorpusField.PUBYEAR.value: "PY",
+        CorpusField.ABS_UPPER_NP.value: "AB",
+        CorpusField.AUTH_KEY_RAW.value: "DE",
+        CorpusField.IDX_KEY_RAW.value: "ID",
     }
 
     candiate_columns = names_mapping.keys()

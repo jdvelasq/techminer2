@@ -1,14 +1,14 @@
 import pandas as pd  # type: ignore
 
-from techminer2 import Field
+from techminer2 import CorpusField
 
 from ._file_dispatch import get_file_operations
 from .data_file import DataFile
 
 
 def merge_columns(
-    sources: list[Field],
-    target: Field,
+    sources: list[CorpusField],
+    target: CorpusField,
     root_directory: str,
     file: DataFile = DataFile.MAIN,
 ) -> int:

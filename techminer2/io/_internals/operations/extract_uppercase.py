@@ -1,6 +1,6 @@
 import pandas as pd  # type: ignore
 
-from techminer2 import Field
+from techminer2 import CorpusField
 
 from ._file_dispatch import get_file_operations
 from .data_file import DataFile
@@ -14,8 +14,8 @@ def _extract_uppercase_words_and_np(text):
 
 
 def extract_uppercase(
-    source: Field,
-    target: Field,
+    source: CorpusField,
+    target: CorpusField,
     root_directory: str,
     file: DataFile = DataFile.MAIN,
 ) -> int:

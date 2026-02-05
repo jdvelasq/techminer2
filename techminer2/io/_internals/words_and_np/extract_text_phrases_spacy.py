@@ -6,7 +6,7 @@ import pandas as pd  # type: ignore
 import spacy
 from pandarallel import pandarallel  # type: ignore
 
-from techminer2 import Field
+from techminer2 import CorpusField
 from techminer2._internals import stdout_to_stderr
 
 spacy_nlp = spacy.load("en_core_web_lg")
@@ -16,14 +16,16 @@ def _process_row(row: pd.Series) -> Optional[str]:
 
     phrases: list[str] = []
 
-    if not pd.isna(row[Field.ABS_TOK.value]):
+    if not pd.isna(row[CorpusField.ABS_TOK.value]):
         phrases.extend(
-            chunk.text for chunk in spacy_nlp(row[Field.ABS_TOK.value]).noun_chunks
+            chunk.text
+            for chunk in spacy_nlp(row[CorpusField.ABS_TOK.value]).noun_chunks
         )
 
-    if not pd.isna(row[Field.TITLE_TOK.value]):
+    if not pd.isna(row[CorpusField.TITLE_TOK.value]):
         phrases.extend(
-            chunk.text for chunk in spacy_nlp(row[Field.TITLE_TOK.value]).noun_chunks
+            chunk.text
+            for chunk in spacy_nlp(row[CorpusField.TITLE_TOK.value]).noun_chunks
         )
 
     if not phrases:
@@ -60,7 +62,7 @@ def extract_text_phrases_spacy(root_directory: str) -> int:
     with stdout_to_stderr():
         progress_bar = True
         pandarallel.initialize(progress_bar=progress_bar, verbose=0)
-        dataframe[Field.NP_SPACY.value] = dataframe.parallel_apply(  # type: ignore
+        dataframe[CorpusField.NP_SPACY.value] = dataframe.parallel_apply(  # type: ignore
             _process_row,
             axis=1,
         )
@@ -73,7 +75,7 @@ def extract_text_phrases_spacy(root_directory: str) -> int:
         compression="zip",
     )
 
-    phrases = dataframe[Field.NP_SPACY.value].dropna()
+    phrases = dataframe[CorpusField.NP_SPACY.value].dropna()
     phrases = phrases.str.split("; ").explode()
     phrases = phrases.drop_duplicates()
     n_phrases = len(phrases)

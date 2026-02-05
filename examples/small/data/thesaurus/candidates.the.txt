@@ -1,0 +1,71 @@
+TECHNOLOGY  # occ: 25
+    Technology  # occ: 2
+FINTECH  # occ: 24
+    FinTech  # occ: 10
+    Fintech  # occ: 5
+BANKING  # occ: 12
+    Banking  # occ: 1
+FINANCE  # occ: 9
+    Finance  # occ: 5
+INNOVATION  # occ: 8
+    Innovation  # occ: 3
+CHINA  # occ: 6
+    China  # occ: 1
+RESEARCH  # occ: 5
+    Research  # occ: 1
+RISKS  # occ: 4
+    Risks  # occ: 1
+PAYMENT  # occ: 3
+    Payment  # occ: 1
+BANK  # occ: 3
+    Bank  # occ: 1
+STUDENTS  # occ: 2
+    Students  # occ: 1
+PLANNING  # occ: 2
+    Planning  # occ: 1
+INTERNET  # occ: 2
+    Internet  # occ: 1
+ENTREPRENEURSHIP  # occ: 2
+    Entrepreneurship  # occ: 1
+Digitalization  # occ: 2
+    DIGITALIZATION  # occ: 1
+Commerce  # occ: 2
+    COMMERCE  # occ: 1
+BIOMETRIC  # occ: 2
+    Biometric  # occ: 1
+AUTHENTICATION  # occ: 2
+    Authentication  # occ: 1
+User-Generated content  # occ: 1
+    User-generated content  # occ: 1
+TRANSFER  # occ: 1
+    Transfer  # occ: 1
+TENPAY  # occ: 1
+    Tenpay  # occ: 1
+PASSWORD  # occ: 1
+    Password  # occ: 1
+Monetization  # occ: 1
+    MONETIZATION  # occ: 1
+Japan  # occ: 1
+    JAPAN  # occ: 1
+Investments  # occ: 1
+    INVESTMENTS  # occ: 1
+Interoperability  # occ: 1
+    INTEROPERABILITY  # occ: 1
+Insurance  # occ: 1
+    INSURANCE  # occ: 1
+Financial services  # occ: 1
+    financial services  # occ: 1
+ETHIOPIA  # occ: 1
+    Ethiopia  # occ: 1
+ENTRY  # occ: 1
+    Entry  # occ: 1
+CURRICULA  # occ: 1
+    Curricula  # occ: 1
+CRYPTOGRAPHY  # occ: 1
+    Cryptography  # occ: 1
+CROWDFUNDING  # occ: 1
+    Crowdfunding  # occ: 1
+BLOCKCHAIN  # occ: 1
+    Blockchain  # occ: 1
+ALIPAY  # occ: 1
+    Alipay  # occ: 1

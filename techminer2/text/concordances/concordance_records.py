@@ -59,7 +59,7 @@ import re
 import pandas as pd  # type: ignore
 from textblob import TextBlob  # type: ignore
 
-from techminer2 import Field
+from techminer2 import CorpusField
 from techminer2._internals import ParamsMixin
 from techminer2._internals.data_access.load_filtered_main_data import (
     load_filtered_main_data,
@@ -77,7 +77,7 @@ class ConcordanceRecords(ParamsMixin):
     ) -> pd.DataFrame:
 
         found = (
-            dataframe[Field.ABS_TOK.value]
+            dataframe[CorpusField.ABS_TOK.value]
             .astype(str)
             .str.contains(search_for, regex=True)
         )
@@ -90,19 +90,21 @@ class ConcordanceRecords(ParamsMixin):
 
         dataframe = dataframe.copy()
 
-        dataframe[Field.ABS_TOK.value] = dataframe[Field.ABS_TOK.value].map(
+        dataframe[CorpusField.ABS_TOK.value] = dataframe[CorpusField.ABS_TOK.value].map(
             lambda x: TextBlob(x).sentences
         )
-        dataframe[Field.ABS_TOK.value] = dataframe[Field.ABS_TOK.value].map(
+        dataframe[CorpusField.ABS_TOK.value] = dataframe[CorpusField.ABS_TOK.value].map(
             lambda x: [str(y) for y in x]
         )
-        dataframe[Field.ABS_TOK.value] = dataframe[Field.ABS_TOK.value].map(
+        dataframe[CorpusField.ABS_TOK.value] = dataframe[CorpusField.ABS_TOK.value].map(
             lambda x: [y[:-2] if y[-2:] == " ." else y for y in x]
         )
-        dataframe[Field.ABS_TOK.value] = dataframe[Field.ABS_TOK.value].map(
+        dataframe[CorpusField.ABS_TOK.value] = dataframe[CorpusField.ABS_TOK.value].map(
             lambda x: [y for y in x if re.search(search_for, y)]
         )
-        dataframe[Field.ABS_TOK.value] = dataframe[Field.ABS_TOK.value].map(" . ".join)
+        dataframe[CorpusField.ABS_TOK.value] = dataframe[CorpusField.ABS_TOK.value].map(
+            " . ".join
+        )
 
         return dataframe
 

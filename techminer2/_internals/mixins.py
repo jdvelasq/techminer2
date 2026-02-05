@@ -4,7 +4,7 @@ import pandas as pd  # type: ignore
 from sklearn.base import BaseEstimator  # type: ignore
 from typing_extensions import Self
 
-from techminer2 import Field, RecordsOrderBy
+from techminer2 import CorpusField, RecordsOrderBy
 from techminer2._internals.validation import (
     internal__check_optional_base_estimator,
     internal__check_optional_color_list,
@@ -959,7 +959,7 @@ class ParamsMixin:
         self.params.correlation_method = correlation_method
         return self
 
-    def with_field(self, field: Field) -> Self:
+    def with_field(self, field: CorpusField) -> Self:
         field = internal__check_required_field(
             value=field,
             param_name="field",

@@ -1,4 +1,4 @@
-from techminer2 import Field
+from techminer2 import CorpusField
 from techminer2._internals.data_access import load_main_data, save_main_data
 
 
@@ -6,22 +6,28 @@ def compute_citcount_local(root_directory: str) -> int:
 
     dataframe = load_main_data(root_directory=root_directory, usecols=None)
 
-    rec_id = dataframe[Field.REC_ID.value].tolist()
+    rec_id = dataframe[CorpusField.REC_ID.value].tolist()
 
-    dataframe[Field.CIT_COUNT_LOCAL.value] = dataframe[Field.REF_NORM.value]
-    dataframe[Field.CIT_COUNT_LOCAL.value] = dataframe[
-        Field.CIT_COUNT_LOCAL.value
+    dataframe[CorpusField.CIT_COUNT_LOCAL.value] = dataframe[CorpusField.REF_NORM.value]
+    dataframe[CorpusField.CIT_COUNT_LOCAL.value] = dataframe[
+        CorpusField.CIT_COUNT_LOCAL.value
     ].fillna("")
-    dataframe[Field.CIT_COUNT_LOCAL.value] = dataframe[
-        Field.CIT_COUNT_LOCAL.value
+    dataframe[CorpusField.CIT_COUNT_LOCAL.value] = dataframe[
+        CorpusField.CIT_COUNT_LOCAL.value
     ].str.split("; ")
-    dataframe[Field.CIT_COUNT_LOCAL.value] = dataframe[Field.CIT_COUNT_LOCAL.value].map(
+    dataframe[CorpusField.CIT_COUNT_LOCAL.value] = dataframe[
+        CorpusField.CIT_COUNT_LOCAL.value
+    ].map(
         lambda refs: [ref.strip() for ref in refs],
     )
-    dataframe[Field.CIT_COUNT_LOCAL.value] = dataframe[Field.CIT_COUNT_LOCAL.value].map(
+    dataframe[CorpusField.CIT_COUNT_LOCAL.value] = dataframe[
+        CorpusField.CIT_COUNT_LOCAL.value
+    ].map(
         lambda refs: [ref for ref in refs if ref in rec_id],
     )
-    dataframe[Field.CIT_COUNT_LOCAL.value] = dataframe[Field.CIT_COUNT_LOCAL.value].map(
+    dataframe[CorpusField.CIT_COUNT_LOCAL.value] = dataframe[
+        CorpusField.CIT_COUNT_LOCAL.value
+    ].map(
         len,
     )
     save_main_data(df=dataframe, root_directory=root_directory)

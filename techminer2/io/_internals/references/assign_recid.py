@@ -3,11 +3,11 @@ from pathlib import Path
 import numpy as np
 import pandas as pd  # type: ignore
 
-from techminer2 import Field
+from techminer2 import CorpusField
 
 
 def _get_author(dataframe):
-    return dataframe[Field.AUTH_NORM.value].map(
+    return dataframe[CorpusField.AUTH_NORM.value].map(
         lambda x: (
             x.split("; ")[0].strip().split()[0] if not pd.isna(x) else "[Anonymous]"
         )
@@ -16,12 +16,12 @@ def _get_author(dataframe):
 
 def _get_source_title(dataframe):
 
-    source_title = dataframe[Field.SRC_TITLE_ABBR_NORM.value].copy()
+    source_title = dataframe[CorpusField.SRC_TITLE_ABBR_NORM.value].copy()
     source_title_isna = source_title.map(pd.isna)
     source_title = pd.Series(
         np.where(
             source_title_isna,
-            dataframe[Field.SRC_TITLE_NORM.value].str[:29],
+            dataframe[CorpusField.SRC_TITLE_NORM.value].str[:29],
             source_title,
         )
     )
@@ -40,17 +40,17 @@ def _get_source_title(dataframe):
 
 
 def _get_year(dataframe):
-    return dataframe[Field.PUBYEAR.value].map(str)
+    return dataframe[CorpusField.PUBYEAR.value].map(str)
 
 
 def _get_volume(dataframe):
-    return dataframe[Field.VOL.value].map(
+    return dataframe[CorpusField.VOL.value].map(
         lambda x: ", V" + str(x).replace(".0", "") if not pd.isna(x) else ""
     )
 
 
 def _get_page_start(dataframe):
-    return dataframe[Field.PAGE_FIRST.value].map(
+    return dataframe[CorpusField.PAGE_FIRST.value].map(
         lambda x: ", P" + str(x).replace(".0", "") if not pd.isna(x) else ""
     )
 
@@ -92,7 +92,7 @@ def assign_recid(root_directory: str) -> int:
 
         index = wos_ref[wos_ref.duplicated()].index
         if len(index) > 0:
-            wos_ref.loc[index] += ", " + dataframe[Field.TITLE_RAW.value].loc[
+            wos_ref.loc[index] += ", " + dataframe[CorpusField.TITLE_RAW.value].loc[
                 index
             ].str[:29].str.upper().str.replace(".", "").str.replace(
                 " - ", " "
@@ -106,10 +106,10 @@ def assign_recid(root_directory: str) -> int:
                 "'", ""
             )
 
-        dataframe[Field.REC_ID.value] = wos_ref.copy()
-        dataframe = dataframe.drop_duplicates(subset=[Field.REC_ID.value])
+        dataframe[CorpusField.REC_ID.value] = wos_ref.copy()
+        dataframe = dataframe.drop_duplicates(subset=[CorpusField.REC_ID.value])
 
-        non_null_count = int(dataframe[Field.REC_ID.value].notna().sum())
+        non_null_count = int(dataframe[CorpusField.REC_ID.value].notna().sum())
 
         dataframe.to_csv(
             database_file,

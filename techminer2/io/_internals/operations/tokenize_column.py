@@ -6,7 +6,7 @@ import contractions  # type: ignore
 import pandas as pd  # type: ignore
 from nltk.tokenize import word_tokenize  # type: ignore
 
-from techminer2 import Field
+from techminer2 import CorpusField
 
 from ._file_dispatch import get_file_operations
 from .data_file import DataFile
@@ -72,8 +72,8 @@ _NOUN_PHRASE_CORRECTIONS = [
 
 
 def tokenize_column(
-    source: Field,
-    target: Field,
+    source: CorpusField,
+    target: CorpusField,
     root_directory: str,
     file: DataFile = DataFile.MAIN,
 ) -> int:

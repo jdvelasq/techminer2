@@ -1,6 +1,6 @@
 # CODE_REVIEW: 2026-01-26
 
-from techminer2 import Field
+from techminer2 import CorpusField
 
 from ...._internals import Params
 from ..step import Step
@@ -16,19 +16,19 @@ def build_document_steps(params: Params) -> list[Step]:
 
     return [
         Step(
-            name=f"Repairing '{Field.CIT_COUNT_GLOBAL.value}'",
+            name=f"Repairing '{CorpusField.CIT_COUNT_GLOBAL.value}'",
             function=repair_citcount_global,
             kwargs=common_kwargs,
             count_message="{count} records repaired",
         ),
         Step(
-            name=f"Normalizing '{Field.DOC_TYPE_RAW.value}'",
+            name=f"Normalizing '{CorpusField.DOC_TYPE_RAW.value}'",
             function=normalize_doctype_raw,
             kwargs=common_kwargs,
             count_message="{count} records normalized",
         ),
         Step(
-            name=f"Repairing '{Field.DOI.value}'",
+            name=f"Repairing '{CorpusField.DOI.value}'",
             function=repair_doi,
             kwargs=common_kwargs,
             count_message="{count} records repaired",

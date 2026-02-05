@@ -1,15 +1,15 @@
 # CODE_REVIEW: 2025-01-27
 
-from techminer2 import Field
+from techminer2 import CorpusField
 from techminer2._internals.data_access import load_main_data
 
 
 def assert_no_empty_terms(
-    source: Field,
+    source: CorpusField,
     root_directory: str = "./",
 ) -> None:
 
-    assert isinstance(source, Field)
+    assert isinstance(source, CorpusField)
     assert isinstance(root_directory, str)
 
     dataframe = load_main_data(

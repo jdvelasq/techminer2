@@ -2,15 +2,15 @@ from typing import Callable
 
 from pandas import Series
 
-from techminer2 import Field
+from techminer2 import CorpusField
 
 from ._file_dispatch import get_file_operations
 from .data_file import DataFile
 
 
 def transform_column(
-    source: Field,
-    target: Field,
+    source: CorpusField,
+    target: CorpusField,
     function: Callable[[Series], Series],
     root_directory: str,
     file: DataFile = DataFile.MAIN,

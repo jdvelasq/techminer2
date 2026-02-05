@@ -41,7 +41,7 @@ import re
 import pandas as pd  # type: ignore
 from textblob import TextBlob  # type: ignore
 
-from techminer2 import Field
+from techminer2 import CorpusField
 from techminer2._internals import ParamsMixin
 from techminer2._internals.data_access import load_filtered_main_data
 
@@ -59,7 +59,9 @@ class ConcordanceSentences(
     def _set_dataframe_index(self, dataframe: pd.DataFrame) -> pd.DataFrame:
         return dataframe.set_index(
             pd.Index(
-                dataframe[Field.REC_ID.value] + " / " + dataframe[Field.TITLE_RAW.value]
+                dataframe[CorpusField.REC_ID.value]
+                + " / "
+                + dataframe[CorpusField.TITLE_RAW.value]
             )
         )
 
@@ -68,12 +70,12 @@ class ConcordanceSentences(
     ) -> pd.Series:
 
         found = (
-            dataframe[Field.ABS_UPPER_NP.value]
+            dataframe[CorpusField.ABS_UPPER_NP.value]
             .astype(str)
             .str.contains(search_for, regex=True, flags=re.IGNORECASE)
         )
         dataframe = dataframe[found]
-        abstracts = dataframe[Field.ABS_UPPER_NP.value]
+        abstracts = dataframe[CorpusField.ABS_UPPER_NP.value]
         return abstracts
 
     def _transform_abstracts_to_sentences(
