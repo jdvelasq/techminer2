@@ -5,12 +5,7 @@ import pandas as pd
 
 from techminer2 import ThesaurusField
 from techminer2._internals import Params
-from techminer2._internals.data_access import (
-    get_thesaurus_path,
-    load_thesaurus_as_dataframe,
-)
 
-from .get_item_to_occ_mapping import get_item_to_occ_mapping
 from .thesaurus_match_result import ThesaurusMatchResult
 
 
@@ -34,19 +29,7 @@ class MatchMixin:
         return dataframe.shape[0]
 
     def compute_num_groups(self, dataframe):
-        return dataframe[ThesaurusField.PREFERRED_NORM.value].drop_duplicates().shape[0]
-
-    def compute_occurrences(self, params, dataframe):
-
-        dataframe = dataframe.copy()
-        item_to_occ = get_item_to_occ_mapping(
-            root_directory=params.root_directory, column=params.field
-        )
-        dataframe[ThesaurusField.OCC.value] = dataframe[
-            ThesaurusField.PREFERRED.value
-        ].map(lambda x: item_to_occ.get(x, 0))
-
-        return dataframe
+        return dataframe[ThesaurusField.KEY.value].drop_duplicates().shape[0]
 
     def generate_candidates_txt_file(self, filepath, dataframe):
 
@@ -61,19 +44,19 @@ class MatchMixin:
         dataframe = dataframe[
             [
                 ThesaurusField.PREFERRED.value,
-                ThesaurusField.PREFERRED_NORM.value,
+                ThesaurusField.KEY.value,
                 ThesaurusField.OCC.value,
             ]
         ]
-        reporting_df = dataframe.groupby(
-            ThesaurusField.PREFERRED_NORM.value, as_index=False
-        ).agg(list)
+        reporting_df = dataframe.groupby(ThesaurusField.KEY.value, as_index=False).agg(
+            list
+        )
         reporting_df[ThesaurusField.OCC.value] = reporting_df[
             ThesaurusField.OCC.value
         ].map(lambda x: x[0])
 
         reporting_df = reporting_df.sort_values(
-            by=[ThesaurusField.OCC.value, ThesaurusField.PREFERRED_NORM.value],
+            by=[ThesaurusField.OCC.value, ThesaurusField.KEY.value],
             ascending=False,
         ).reset_index(drop=True)
 
@@ -87,24 +70,18 @@ class MatchMixin:
             / "candidates.the.txt"
         )
 
-    def load_thesaurus_as_dataframe(self, params):
-        filepath = get_thesaurus_path(
-            root_directory=params.root_directory,
-            file=params.thesaurus_file,
-        )
-        dataframe = load_thesaurus_as_dataframe(filepath=str(filepath))
-        dataframe = dataframe[
-            [
-                ThesaurusField.PREFERRED.value,
-                ThesaurusField.VARIANT.value,
-            ]
-        ]
-
-        return dataframe
-
     def report_match_results(
         self, params: Params, dataframe: pd.DataFrame
     ) -> ThesaurusMatchResult:
+
+        dataframe = dataframe.copy()
+
+        counting = dataframe[ThesaurusField.PREFERRED_TEMP.value].value_counts()
+        counting = counting[counting > 1]
+        duplicated_items = counting.index.to_list()
+        dataframe = dataframe[
+            dataframe[ThesaurusField.PREFERRED_TEMP.value].isin(duplicated_items)
+        ]
 
         num_candidates = self.compute_num_candidates(dataframe)
         num_groups = self.compute_num_groups(dataframe)
@@ -130,20 +107,12 @@ class MatchMixin:
 
         dataframe = dataframe.copy()
 
-        counting = dataframe[ThesaurusField.PREFERRED_NORM.value].value_counts()
+        counting = dataframe[ThesaurusField.KEY.value].value_counts()
         counting = counting[counting > 1]
         duplicated_items = counting.index.to_list()
 
         dataframe = dataframe[
-            dataframe[ThesaurusField.PREFERRED_NORM.value].isin(duplicated_items)
+            dataframe[ThesaurusField.KEY.value].isin(duplicated_items)
         ]
 
-        return dataframe
-
-    def prepare_thesaurus_dataframe(self, params: Params) -> pd.DataFrame:
-        dataframe = self.load_thesaurus_as_dataframe(params=params)
-        dataframe = self.compute_occurrences(params=params, dataframe=dataframe)
-        dataframe[ThesaurusField.PREFERRED_NORM.value] = dataframe[
-            ThesaurusField.PREFERRED.value
-        ]
         return dataframe

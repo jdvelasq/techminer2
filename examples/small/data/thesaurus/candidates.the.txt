@@ -1,109 +1,254 @@
-TECHNOLOGY  # occ: 25
-    Technology  # occ: 2
+A  # occ: 30
+    AS  # occ: 16
 FINTECH  # occ: 24
-    FinTech  # occ: 10
-    Fintech  # occ: 5
-FINANCIAL_TECHNOLOGY  # occ: 12
-    Financial technology  # occ: 2
-BANKING  # occ: 12
-    Banking  # occ: 1
-FINANCE  # occ: 9
-    Finance  # occ: 5
+    FINTECHS  # occ: 1
+IT  # occ: 19
+    ITS  # occ: 7
+DEVELOPMENT  # occ: 14
+    DEVELOPMENTS  # occ: 2
+SERVICES  # occ: 12
+    SERVICE  # occ: 9
+MARKET  # occ: 10
+    MARKETS  # occ: 2
+USE  # occ: 9
+    USES  # occ: 2
 INNOVATION  # occ: 8
-    Innovation  # occ: 3
-CHINA  # occ: 6
-    China  # occ: 1
-RESEARCH  # occ: 5
-    Research  # occ: 1
+    INNOVATIONS  # occ: 3
+BANKS  # occ: 8
+    BANK  # occ: 3
+ENVIRONMENT  # occ: 7
+    ENVIRONMENTS  # occ: 2
+CHALLENGES  # occ: 7
+    CHALLENGE  # occ: 2
+UP  # occ: 6
+    UPS  # occ: 1
+PROVIDE  # occ: 6
+    PROVIDES  # occ: 5
+CASE  # occ: 6
+    CASES  # occ: 1
+SYSTEM  # occ: 5
+    SYSTEMS  # occ: 4
+QUESTIONS  # occ: 5
+    QUESTION  # occ: 1
+PRACTICES  # occ: 5
+    PRACTICE  # occ: 3
+NEED  # occ: 5
+    NEEDS  # occ: 2
+MODELS  # occ: 5
+    MODEL  # occ: 5
+INSTITUTIONS  # occ: 5
+    INSTITUTION  # occ: 1
+CURRENT  # occ: 5
+    CURRENTS  # occ: 1
+CONSUMERS  # occ: 5
+    CONSUMER  # occ: 2
+USER  # occ: 4
+    USERS  # occ: 1
+SHARE  # occ: 4
+    SHARES  # occ: 1
 RISKS  # occ: 4
-    Risks  # occ: 1
-PAYMENT  # occ: 3
-    Payment  # occ: 1
-Information systems  # occ: 3
-    INFORMATION_SYSTEMS  # occ: 2
-BANK  # occ: 3
-    Bank  # occ: 1
-THEORY_AND_PRACTICE  # occ: 2
-    Theory and practice  # occ: 1
-SUSTAINABLE_DEVELOPMENT  # occ: 2
-    Sustainable development  # occ: 1
-STUDENTS  # occ: 2
-    Students  # occ: 1
-PLANNING  # occ: 2
-    Planning  # occ: 1
-INTERNET  # occ: 2
-    Internet  # occ: 1
-Financial information  # occ: 2
-    FINANCIAL_INFORMATION  # occ: 2
-ENTREPRENEURSHIP  # occ: 2
-    Entrepreneurship  # occ: 1
-Digitalization  # occ: 2
-    DIGITALIZATION  # occ: 1
-Commerce  # occ: 2
-    COMMERCE  # occ: 1
-BIOMETRIC  # occ: 2
-    Biometric  # occ: 1
-AUTHENTICATION  # occ: 2
-    Authentication  # occ: 1
-User-Generated content  # occ: 1
-    User-generated content  # occ: 1
-Urban design  # occ: 1
-    URBAN_DESIGN  # occ: 1
-TRANSFER  # occ: 1
-    Transfer  # occ: 1
-Tenpay  # occ: 1
-    TENPAY  # occ: 1
-PUBLIC_KEY_CRYPTOGRAPHY  # occ: 1
-    Public key cryptography  # occ: 1
-Policy implications  # occ: 1
-    POLICY_IMPLICATIONS  # occ: 1
-PERSONALLY_IDENTIFIABLE_INFORMATION  # occ: 1
-    Personally identifiable information  # occ: 1
-Password  # occ: 1
-    PASSWORD  # occ: 1
-Monetization  # occ: 1
-    MONETIZATION  # occ: 1
-Japan  # occ: 1
-    JAPAN  # occ: 1
-Investments  # occ: 1
+    RISK  # occ: 2
+RELATIONSHIP  # occ: 4
+    RELATIONSHIPS  # occ: 3
+PRODUCTS  # occ: 4
+    PRODUCT  # occ: 2
+PROCESS  # occ: 4
+    PROCESSES  # occ: 1
+OFFER  # occ: 4
+    OFFERS  # occ: 3
+INVESTMENT  # occ: 4
     INVESTMENTS  # occ: 1
-Interoperability  # occ: 1
-    INTEROPERABILITY  # occ: 1
-Insurance  # occ: 1
-    INSURANCE  # occ: 1
-INFORMATION_AND_COMMUNICATIONS_TECHNOLOGY  # occ: 1
-    Information and communications technology  # occ: 1
-GLOBAL_FINANCIAL_CRISIS  # occ: 1
-    Global financial crisis  # occ: 1
-Financial system  # occ: 1
-    FINANCIAL_SYSTEM  # occ: 1
-financial services  # occ: 1
+IMPACT  # occ: 4
+    IMPACTS  # occ: 2
+CUSTOMERS  # occ: 4
+    CUSTOMER  # occ: 2
+CHANGE  # occ: 4
+    CHANGES  # occ: 2
+AREAS  # occ: 4
+    AREA  # occ: 3
+YEARS  # occ: 3
+    YEAR  # occ: 2
+WORK  # occ: 3
+    WORKS  # occ: 1
+WAYS  # occ: 3
+    WAY  # occ: 1
+TRANSACTIONS  # occ: 3
+    TRANSACTION  # occ: 1
+SCIENCE  # occ: 3
+    SCIENCES  # occ: 3
+REPRESENTS  # occ: 3
+    REPRESENT  # occ: 1
+REGULATORS  # occ: 3
+    REGULATOR  # occ: 1
+PROVIDERS  # occ: 3
+    PROVIDER  # occ: 1
+PAYMENT  # occ: 3
+    PAYMENTS  # occ: 2
+PART  # occ: 3
+    PARTS  # occ: 1
+OTHER  # occ: 3
+    OTHERS  # occ: 1
+NETWORK  # occ: 3
+    NETWORKS  # occ: 2
+LOOK  # occ: 3
+    LOOKS  # occ: 1
+INSIGHT  # occ: 3
+    INSIGHTS  # occ: 1
+GO  # occ: 3
+    GOES  # occ: 1
+FORCE  # occ: 3
+    FORCES  # occ: 1
+EXPERTS  # occ: 3
+    EXPERT  # occ: 1
+EFFECTS  # occ: 3
+    EFFECT  # occ: 1
+ECONOMIC  # occ: 3
+    ECONOMICS  # occ: 1
+DECADE  # occ: 3
+    DECADES  # occ: 2
+BRING  # occ: 3
+    BRINGS  # occ: 1
+BENEFIT  # occ: 3
+    BENEFITS  # occ: 2
+AUTHORS  # occ: 3
+    AUTHOR  # occ: 3
+ASSET  # occ: 3
+    ASSETS  # occ: 2
+ARTICLE  # occ: 3
+    ARTICLES  # occ: 2
+APPLICATION  # occ: 3
+    APPLICATIONS  # occ: 2
+WEBSITE  # occ: 2
+    WEBSITES  # occ: 1
+TRENDS  # occ: 2
+    TREND  # occ: 1
+TOOL  # occ: 2
+    TOOLS  # occ: 1
+THREAT  # occ: 2
+    THREATS  # occ: 1
+TAKE  # occ: 2
+    TAKES  # occ: 1
+SUGGEST  # occ: 2
+    SUGGESTS  # occ: 1
+SUBJECT  # occ: 2
+    SUBJECTS  # occ: 1
+STATE  # occ: 2
+    STATES  # occ: 1
+SITES  # occ: 2
+    SITE  # occ: 1
+RISE  # occ: 2
+    RISES  # occ: 1
+REMAIN  # occ: 2
+    REMAINS  # occ: 1
+REGULATION  # occ: 2
+    REGULATIONS  # occ: 2
+PLATFORMS  # occ: 2
+    PLATFORM  # occ: 2
+PERSPECTIVE  # occ: 2
+    PERSPECTIVES  # occ: 1
+LOAN  # occ: 2
+    LOANS  # occ: 1
+LEVELS  # occ: 2
+    LEVEL  # occ: 2
+INTEREST  # occ: 2
+    INTERESTS  # occ: 1
+HELP  # occ: 2
+    HELPS  # occ: 1
+Financial service  # occ: 2
     Financial services  # occ: 1
-Explosive growth  # occ: 1
-    EXPLOSIVE_GROWTH  # occ: 1
-Ethiopia  # occ: 1
-    ETHIOPIA  # occ: 1
-Entry  # occ: 1
-    ENTRY  # occ: 1
-Elaboration likelihood model  # occ: 1
-    ELABORATION_LIKELIHOOD_MODEL  # occ: 1
-Developing countries  # occ: 1
-    DEVELOPING_COUNTRIES  # occ: 1
-customer relationship management  # occ: 1
-    CUSTOMER_RELATIONSHIP_MANAGEMENT  # occ: 1
-Curricula  # occ: 1
-    CURRICULA  # occ: 1
-CRYPTOGRAPHY  # occ: 1
-    Cryptography  # occ: 1
-Crowdfunding  # occ: 1
-    CROWDFUNDING  # occ: 1
-Consumer behavior  # occ: 1
-    CONSUMER_BEHAVIOR  # occ: 1
-Building maintenance  # occ: 1
-    BUILDING_MAINTENANCE  # occ: 1
-Blockchain  # occ: 1
-    BLOCKCHAIN  # occ: 1
-Alipay  # occ: 1
-    ALIPAY  # occ: 1
-ACTOR_NETWORK_THEORY  # occ: 1
-    Actor network theory  # occ: 1
+FIELD  # occ: 2
+    FIELDS  # occ: 1
+FACTORS  # occ: 2
+    FACTOR  # occ: 1
+EXPERIENCE  # occ: 2
+    EXPERIENCES  # occ: 1
+EXAMPLE  # occ: 2
+    EXAMPLES  # occ: 1
+EXAMINE  # occ: 2
+    EXAMINES  # occ: 1
+EFFORT  # occ: 2
+    EFFORTS  # occ: 1
+ECOSYSTEM  # occ: 2
+    ECOSYSTEMS  # occ: 1
+DRAWS  # occ: 2
+    DRAW  # occ: 1
+DEFINITION  # occ: 2
+    DEFINITIONS  # occ: 1
+CONTRIBUTE  # occ: 2
+    CONTRIBUTES  # occ: 1
+CONCEPTS  # occ: 2
+    CONCEPT  # occ: 1
+COMMUNICATION  # occ: 2
+    COMMUNICATIONS  # occ: 1
+CHANNELS  # occ: 2
+    CHANNEL  # occ: 1
+AIMS  # occ: 2
+    AIM  # occ: 1
+ACTIONS  # occ: 2
+    ACTION  # occ: 1
+Sustainable strategies  # occ: 1
+    Sustainable strategy  # occ: 1
+Security control  # occ: 1
+    Security controls  # occ: 1
+STOCKS  # occ: 1
+    STOCK  # occ: 1
+STANDARDS  # occ: 1
+    STANDARD  # occ: 1
+SOURCE  # occ: 1
+    SOURCES  # occ: 1
+SCHOOLS  # occ: 1
+    SCHOOL  # occ: 1
+SAVINGS  # occ: 1
+    SAVING  # occ: 1
+REQUIREMENTS  # occ: 1
+    REQUIREMENT  # occ: 1
+REPORTS  # occ: 1
+    REPORT  # occ: 1
+REFLECTS  # occ: 1
+    REFLECT  # occ: 1
+POOL  # occ: 1
+    POOLS  # occ: 1
+PASSWORDS  # occ: 1
+    PASSWORD  # occ: 1
+OCCUR  # occ: 1
+    OCCURS  # occ: 1
+MOTIVATES  # occ: 1
+    MOTIVATE  # occ: 1
+Internet-based service  # occ: 1
+    Internet-based services  # occ: 1
+INVESTIGATE  # occ: 1
+    INVESTIGATES  # occ: 1
+INTERVIEW  # occ: 1
+    INTERVIEWS  # occ: 1
+INTEGRATE  # occ: 1
+    INTEGRATES  # occ: 1
+Green transport  # occ: 1
+    Green transports  # occ: 1
+FIRM  # occ: 1
+    FIRMS  # occ: 1
+FINANCIAL_SYSTEMS  # occ: 1
+    FINANCIAL_SYSTEM  # occ: 1
+DO  # occ: 1
+    DOES  # occ: 1
+DECISION  # occ: 1
+    DECISIONS  # occ: 1
+CONTRIBUTOR  # occ: 1
+    CONTRIBUTORS  # occ: 1
+CONTEXTS  # occ: 1
+    CONTEXT  # occ: 1
+CONCLUSIONS  # occ: 1
+    CONCLUSION  # occ: 1
+CONCERNS  # occ: 1
+    CONCERN  # occ: 1
+CLIMATE  # occ: 1
+    CLIMATES  # occ: 1
+Biometrics  # occ: 1
+    Biometric  # occ: 1
+BONDS  # occ: 1
+    BOND  # occ: 1
+ANSWER  # occ: 1
+    ANSWERS  # occ: 1
+AGGREGATE  # occ: 1
+    AGGREGATES  # occ: 1
+ACTORS  # occ: 1
+    ACTOR  # occ: 1

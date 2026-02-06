@@ -43,20 +43,20 @@ class ExactMatch(
 
         dataframe = dataframe.copy()
 
-        dataframe[ThesaurusField.PREFERRED_NORM.value] = dataframe[
-            ThesaurusField.PREFERRED_NORM.value
+        dataframe[ThesaurusField.KEY.value] = dataframe[
+            ThesaurusField.KEY.value
         ].str.replace(r"\r\n|\r", "", regex=True)
 
-        dataframe[ThesaurusField.PREFERRED_NORM.value] = dataframe[
-            ThesaurusField.PREFERRED_NORM.value
+        dataframe[ThesaurusField.KEY.value] = dataframe[
+            ThesaurusField.KEY.value
         ].str.strip()
 
-        dataframe[ThesaurusField.PREFERRED_NORM.value] = dataframe[
-            ThesaurusField.PREFERRED_NORM.value
-        ].map(lambda x: " ".join(x.split()), na_action="ignore")
+        dataframe[ThesaurusField.KEY.value] = dataframe[ThesaurusField.KEY.value].map(
+            lambda x: " ".join(x.split()), na_action="ignore"
+        )
 
-        dataframe[ThesaurusField.PREFERRED_NORM.value] = dataframe[
-            ThesaurusField.PREFERRED_NORM.value
+        dataframe[ThesaurusField.KEY.value] = dataframe[
+            ThesaurusField.KEY.value
         ].str.lower()
 
         return dataframe

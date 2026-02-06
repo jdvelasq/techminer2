@@ -1,0 +1,34 @@
+import pandas as pd  # type: ignore
+
+from techminer2 import ThesaurusField
+
+from .apply_matches import apply_matches
+from .find_rule_matches import find_rule_matches
+
+
+def _normalize_key_temp_column(dataframe: pd.DataFrame) -> pd.DataFrame:
+
+    preferred_term = ThesaurusField.PREFERRED_TEMP.value
+    key = ThesaurusField.KEY.value
+
+    dataframe = dataframe.copy()
+
+    dataframe[key] = dataframe[preferred_term]
+    dataframe[key] = dataframe[key].str.replace(r"\r\n|\r", "", regex=True)
+    dataframe[key] = dataframe[key].str.strip()
+    dataframe[key] = dataframe[key].map(
+        lambda x: " ".join(x.split()), na_action="ignore"
+    )
+    dataframe[key] = dataframe[key].str.lower()
+
+    return dataframe
+
+
+def apply_exact_match_rule(dataframe: pd.DataFrame) -> pd.DataFrame:
+
+    dataframe = dataframe.copy()
+    dataframe = _normalize_key_temp_column(dataframe)
+    matches = find_rule_matches(dataframe)
+    dataframe = apply_matches(matches=matches, dataframe=dataframe)
+
+    return dataframe

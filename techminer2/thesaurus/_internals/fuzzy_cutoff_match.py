@@ -28,12 +28,18 @@ Smoke test:
 
 """
 
-from fuzzywuzzy import fuzz  # type: ignore
 from tqdm import tqdm  # type: ignore
 
 from techminer2 import ThesaurusField
 from techminer2._internals import ParamsMixin
 
+from .apply_exact_match_rule import apply_exact_match_rule
+from .apply_hyphenation_rule import apply_hyphenation_rule
+from .apply_numeric_variation_rule import apply_numeric_variation_rule
+from .apply_plural_singular_rule import apply_plural_singular_rule
+from .apply_puntuation_variation_rule import apply_puntuation_variation_rule
+from .apply_word_order_rule import apply_word_order_rule
+from .load_as_dataframe import load_as_dataframe
 from .mixins import MatchMixin
 from .thesaurus_match_result import ThesaurusMatchResult
 
@@ -44,49 +50,23 @@ class FuzzyCutoffMatch(
 ):
     """:meta private:"""
 
-    def compute_fuzzy_match(self, string1, string2):
-
-        string1 = string1.split()
-        string2 = string2.split()
-
-        if len(string1) > len(string2):
-            shorten_string = string2
-            lengthen_string = string1
-        else:
-            shorten_string = string1
-            lengthen_string = string2
-
-        scores_per_word = []
-        for base_word in shorten_string:
-            best_match = 0
-            for candidate_word in lengthen_string:
-                score = fuzz.ratio(base_word, candidate_word)
-                if score > best_match:
-                    best_match = score
-            scores_per_word.append(best_match)
-
-        score = min(scores_per_word)
-        match = all(score >= self.params.fuzzy_threshold for score in scores_per_word)
-
-        return score, match
-
     # -------------------------------------------------------------------------
     def normalize(self, dataframe):
 
-        dataframe[ThesaurusField.PREFERRED_NORM.value] = dataframe[
-            ThesaurusField.PREFERRED_NORM.value
+        dataframe[ThesaurusField.KEY.value] = dataframe[
+            ThesaurusField.KEY.value
         ].str.lower()
 
-        dataframe[ThesaurusField.PREFERRED_NORM.value] = dataframe[
-            ThesaurusField.PREFERRED_NORM.value
+        dataframe[ThesaurusField.KEY.value] = dataframe[
+            ThesaurusField.KEY.value
         ].str.replace("_", " ")
 
         dataframe[ThesaurusField.KEY_LENGTH.value] = dataframe[
-            ThesaurusField.PREFERRED_NORM.value
+            ThesaurusField.KEY.value
         ].str.split()
 
         dataframe[ThesaurusField.KEY_LENGTH.value] = dataframe[
-            ThesaurusField.PREFERRED_NORM.value
+            ThesaurusField.KEY.value
         ].map(len, na_action="ignore")
 
         dataframe = dataframe.sort_values(
@@ -126,7 +106,7 @@ class FuzzyCutoffMatch(
             axis=1,
         )
 
-        keys = dataframe[ThesaurusField.PREFERRED_NORM.value].tolist()
+        keys = dataframe[ThesaurusField.KEY.value].tolist()
 
         for index, key in tqdm(
             enumerate(keys),
@@ -178,16 +158,16 @@ class FuzzyCutoffMatch(
 
             dataframe.loc[index, "selected"] = True
             dataframe.loc[df.index, "selected"] = True
-            dataframe.loc[df.index, ThesaurusField.PREFERRED_NORM.value] = (
-                dataframe.loc[index, ThesaurusField.PREFERRED_NORM.value]
-            )
+            dataframe.loc[df.index, ThesaurusField.KEY.value] = dataframe.loc[
+                index, ThesaurusField.KEY.value
+            ]
 
         dataframe = dataframe[dataframe["selected"]]
 
         return dataframe[
             [
                 ThesaurusField.PREFERRED.value,
-                ThesaurusField.PREFERRED_NORM.value,
+                ThesaurusField.KEY.value,
                 ThesaurusField.OCC.value,
             ]
         ]
@@ -195,9 +175,13 @@ class FuzzyCutoffMatch(
     # -------------------------------------------------------------------------
     def run(self) -> ThesaurusMatchResult:
 
-        dataframe = self.prepare_thesaurus_dataframe(params=self.params)
-        dataframe = self.normalize(dataframe)
-        dataframe = self.find_matches(dataframe)
+        dataframe = load_as_dataframe(params=self.params)
+        # dataframe = apply_exact_match_rule(dataframe)
+        # dataframe = apply_word_order_rule(dataframe)
+        # dataframe = apply_puntuation_variation_rule(dataframe)
+        # dataframe = apply_hyphenation_rule(dataframe)
+        # dataframe = apply_numeric_variation_rule(dataframe)
+        dataframe = apply_plural_singular_rule(dataframe)
 
         return self.report_match_results(
             params=self.params,

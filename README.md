@@ -3,6 +3,12 @@
 A Python Library for Tech-Mining, Bibliometrics and Science Mapping.
 
 
+Stopwords
+------------------------------------------------------------------------------
+
+tm2+ includes a comprehensive stopword list of 497 terms, specifically optimized for technical and scientific text analysis. This curated collection combines stopwords from leading NLP libraries (scikit-learn, NLTK, Gensim, spaCy) with domain-specific terms from bibliometrics packages (bibliometrix, Sarica) and validated against 32,497 Scopus abstracts. All contractions are expanded to full forms for consistency with preprocessed academic text. The list excludes meaningful domain-specific terms (e.g., "system", "method", "analysis") while filtering generic descriptors like "different", "significant", and "current" that add minimal semantic value in topic modeling and text mining workflows.
+
+
 Noun phrases
 ------------------------------------------------------------------------------
 
@@ -36,16 +42,45 @@ Thesaurus
 
 In VantagePoint, thesaurus management is implemented as an interactive, exploratory process in which fuzzy-cutoff algorithms are used to identify candidate key matches and the user manually decides which keys to merge, with no automatic consolidation. In tm2+, the same conceptual approach is preserved but implemented in a console-based, scriptable workflow: matchers generate explicit candidate pairs, merge decisions are applied explicitly and logged, and recomputation is triggered deliberately rather than implicitly. Unlike VantagePoint, tm2+ exposes the matching and merging steps as repeatable operations that can be integrated into analytical pipelines, while still respecting the core VantagePoint principle that similarity detection suggests merges but never performs them automatically. The main matchers implemented in tm2+ are:
 
-- ExactMatch (words-based):     
-    Detects exact string equality (after minimal normalization such as trimming).
-    Used as a baseline and for sanity checks.
-    Case-senstive or insensitive based on configuration.
-
 - FuzzyCutofffMatch (words-based): 
     Detects near-duplicate strings using surface-form fuzzy similarity with a cutoff threshold.
     Produces candidate pairs only, never merges.
     Scope: Keywords, noun phrases, organizations, sources (very conservative), authors (high cutoff).
     Case-insensitive.
+
+    This matcher includes the followint preprocessors:
+
+    * ExactMatch (words-based):     
+        Detects exact string equality (after minimal normalization such as trimming).
+        Used as a baseline and for sanity checks.
+        Case-senstive or insensitive based on configuration.
+
+    * WordOrderMatch (words-based): 
+        Detects strings composed of the same tokens in different orders.
+        Case-insensitive.
+
+    * PluralSingularMatch (words-based):
+        Present strings that differ only by pluralization.
+        Case-insensitive.
+
+
+
+
+- HyphenationMatch (words-based): 
+    Detects variants caused by hyphenation and spacing differences.
+    Reduces fuzzy noise and catches high-confidence variants early.
+    Case-insensitive.
+
+- PunctuationVariationMatch (words-based): 
+    Present strings that differ only in punctuation.
+    Case-insensitive.
+
+- NumericVariationMatch (string-based): 
+    Present strings with numeric variations (e.g., "test1" vs "test2")
+
+
+
+
 
 - StemMatch (words-based):
     Finds words sharing the same root (Singular/Plural identification). It uses NLP lemmatization / stemming.
@@ -62,34 +97,13 @@ In VantagePoint, thesaurus management is implemented as an interactive, explorat
         sort tokens
     Case-insensitive.
 
-- HyphenationMatch (words-based): 
-    Detects variants caused by hyphenation and spacing differences.
-    Reduces fuzzy noise and catches high-confidence variants early.
-    Case-insensitive.
-
-- CaseVariationMatch (words-based): 
-    Present strings that differ only in capitalization
-    Case-sensitive.
-
-- PunctuationVariationMatch (words-based): 
-    Present strings that differ only in punctuation.
-    Case-insensitive.
-
 - AbbreviationMatch (words-based): 
     Detects acronym ↔ long-form relationships using first-letter logic and token alignment.
     Explicitly used by ClusterSuite (Acronym Identifier) and essential for keyword cleanup.
     Case-senstive or insensitive based on configuration.
 
-- WordOrderMatch (words-based): 
-    Detects strings composed of the same tokens in different orders.
-    Case-insensitive.
 
-- PluralSingularMatch (words-based):
-    Present strings that differ only by pluralization.
-    Case-insensitive.
 
-- NumericVariationMatch (string-based): 
-    Present strings with numeric variations (e.g., "test1" vs "test2")
 
 
 
