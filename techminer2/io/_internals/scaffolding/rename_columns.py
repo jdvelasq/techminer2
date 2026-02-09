@@ -8,7 +8,7 @@ SCOPUS_TO_TM2 = {
     #
     # A
     #
-    "Abbreviated Source Title": CorpusField.SRC_TITLE_ABBR_RAW.value,
+    "Abbreviated Source Title": CorpusField.SRCTITLE_ABBR_RAW.value,
     "Abstract": CorpusField.ABS_RAW.value,
     "Affiliations": CorpusField.AFFIL_RAW.value,
     "Art. No.": CorpusField.ART_NO.value,
@@ -31,7 +31,7 @@ SCOPUS_TO_TM2 = {
     #
     # D
     #
-    "Document Type": CorpusField.DOC_TYPE_RAW.value,
+    "Document Type": CorpusField.DOCTYPE_RAW.value,
     "DOI": CorpusField.DOI.value,
     #
     # E
@@ -59,7 +59,7 @@ SCOPUS_TO_TM2 = {
     # M
     #
     "Manufacturers": CorpusField.MANUFACTURER.value,
-    "Molecular Sequence Numbers": CorpusField.SEQ_NUM.value,
+    "Molecular Sequence Numbers": CorpusField.SEQNUMUMBER.value,
     #
     # O
     #
@@ -70,7 +70,7 @@ SCOPUS_TO_TM2 = {
     "Page count": CorpusField.PAGE_COUNT.value,
     "Page end": CorpusField.PAGE_LAST.value,
     "Page start": CorpusField.PAGE_FIRST.value,
-    "Publication Stage": CorpusField.PUB_STAGE.value,
+    "Publication Stage": CorpusField.PUBSTAGE.value,
     "Publisher": CorpusField.PUBLISHER.value,
     "PubMed ID": CorpusField.PUBMED.value,
     #
@@ -80,13 +80,13 @@ SCOPUS_TO_TM2 = {
     #
     # S
     #
-    "Source title": CorpusField.SRC_TITLE_RAW.value,
+    "Source title": CorpusField.SRCTITLE_RAW.value,
     "Source": CorpusField.SOURCE.value,
     "Sponsors": CorpusField.FUND_SPONSORS.value,
     #
     # T
     #
-    "Title": CorpusField.TITLE_RAW.value,
+    "Title": CorpusField.DOCTITLE_RAW.value,
     "Tradenames": CorpusField.TRADENAME.value,
     #
     # V

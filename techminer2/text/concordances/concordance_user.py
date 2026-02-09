@@ -3,12 +3,12 @@ Concordance User
 =========================================================================================
 
 Smoke test:
-    >>> from techminer2 import Field, RecordsOrderBy
+    >>> from techminer2 import CorpusField, RecordsOrderBy
     >>> from techminer2.text.concordances import ConcordanceUser
     >>> contexts = (
     ...     ConcordanceUser()
     ...     #
-    ...     .with_field(Field.ABS_RAW)
+    ...     .with_field(CorpusField.ABS_RAW)
     ...     .having_text_matching("FINTECH")
     ...     #
     ...     .where_root_directory("examples/small/")
@@ -16,14 +16,14 @@ Smoke test:
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     .where_records_match(None)
-    ...     .where_records_ordered_by(RecordsOrderBy.DATE_NEWEST)
+    ...     .where_records_ordered_by(RecordsOrderBy.PUBYEAR_NEWEST)
     ...     #
     ...     .run()
     ... )
     >>> assert isinstance(contexts, list)
     >>> assert len(contexts) > 0
     >>> assert all(isinstance(c, str) for c in contexts)
-    >>> for t in contexts[:10]: print(t)  # doctest: +SKIP
+    >>> for t in contexts[:10]: print(t)
              There is currently no consensus about what the term FINTECH means
       …ing more than 200 scholarly articles referencing the term FINTECH and covering a period of more than 40 years
       …nition concentrates on extracting out the quintessence of FINTECH using both spheres
@@ -62,7 +62,7 @@ class ConcordanceUser(
             pd.Index(
                 dataframe[CorpusField.REC_ID.value]
                 + " / "
-                + dataframe[CorpusField.TITLE_RAW.value]
+                + dataframe[CorpusField.DOCTITLE_RAW.value]
             )
         )
 

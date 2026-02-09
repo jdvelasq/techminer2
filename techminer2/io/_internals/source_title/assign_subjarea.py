@@ -40,29 +40,29 @@ def assign_subjarea(root_directory: str) -> int:
     issn_mapping = dict(
         zip(
             subject_areas_df[CorpusField.ISSN.value].dropna(),
-            subject_areas_df[CorpusField.SUBJ_AREA.value].dropna(),
+            subject_areas_df[CorpusField.SUBJAREA.value].dropna(),
         )
     )
     eissn_mapping = dict(
         zip(
             subject_areas_df[CorpusField.EISSN.value].dropna(),
-            subject_areas_df[CorpusField.SUBJ_AREA.value].dropna(),
+            subject_areas_df[CorpusField.SUBJAREA.value].dropna(),
         )
     )
 
-    dataframe[CorpusField.SUBJ_AREA.value] = None
+    dataframe[CorpusField.SUBJAREA.value] = None
 
     if CorpusField.ISSN.value in dataframe.columns:
-        dataframe[CorpusField.SUBJ_AREA.value] = dataframe[CorpusField.ISSN.value].map(
+        dataframe[CorpusField.SUBJAREA.value] = dataframe[CorpusField.ISSN.value].map(
             issn_mapping
         )
 
     if CorpusField.EISSN.value in dataframe.columns:
-        dataframe[CorpusField.SUBJ_AREA.value] = dataframe[
-            CorpusField.SUBJ_AREA.value
+        dataframe[CorpusField.SUBJAREA.value] = dataframe[
+            CorpusField.SUBJAREA.value
         ].fillna(dataframe[CorpusField.EISSN.value].map(eissn_mapping))
 
-    non_null_count = int(dataframe[CorpusField.SUBJ_AREA.value].notna().sum())
+    non_null_count = int(dataframe[CorpusField.SUBJAREA.value].notna().sum())
 
     temp_file = database_file.with_suffix(".tmp")
     dataframe.to_csv(

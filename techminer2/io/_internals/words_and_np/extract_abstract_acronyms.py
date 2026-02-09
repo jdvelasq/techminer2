@@ -1,4 +1,5 @@
 import re
+import sys
 from pathlib import Path
 
 import pandas as pd  # type: ignore
@@ -37,6 +38,7 @@ def extract_abstract_acronyms(root_directory: str) -> int:
         progress_bar = True
         pandarallel.initialize(progress_bar=progress_bar, verbose=0)
         dataframe["abstract_acronyms"] = dataframe["abstract_tokenized"].parallel_apply(_extract_acronyms_from_text)  # type: ignore[call-arg]
+        sys.stderr.write("\n")
 
     dataframe.to_csv(
         database_file,

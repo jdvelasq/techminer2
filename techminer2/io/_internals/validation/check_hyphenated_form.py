@@ -19,42 +19,6 @@ from techminer2._internals.package_data.text_processing import (
     load_text_processing_terms,
 )
 
-SYSTEM_PROMPT = """
-INSTRUCTION:
-You will be provided with two variations of the same word: one in hyphenated form and the other in non-hyphenated form.
-
-
-TASK:
-1. Analyze the two forms and determine which is correct in scientific or technical English usage.
-2. Respond with "yes" if:
-    - The hyphenated form is the only form correct.
-    - The word is not standard English.
-    - Both forms (hyphenated and non-hyphenated) are correct.
-    - Neither form is correct.
-3. Respond "no" if:
-    - The non-hyphenated form is the only form correct.
-    - The correct form is different from both provided forms.
-
-    
-OUTPUT FORMAT (STRICT — JSON ONLY):
-The output MUST be a JSON object with the following structure:
-
-{{
-    "answer": "yes" or "no",
-}}
-
-Any output different of this must be considered invalid.
-
-"""
-
-USER_PROMPT = """
-    
-WORDS:
-- Hyphenated: "{}"
-- Non-hyphenated: "{}"
-
-"""
-
 
 def collect_project_hyphenated_words(root_dir):
 

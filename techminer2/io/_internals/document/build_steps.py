@@ -22,7 +22,7 @@ def build_document_steps(params: Params) -> list[Step]:
             count_message="{count} records repaired",
         ),
         Step(
-            name=f"Normalizing '{CorpusField.DOC_TYPE_RAW.value}'",
+            name=f"Normalizing '{CorpusField.DOCTYPE_RAW.value}'",
             function=normalize_doctype_raw,
             kwargs=common_kwargs,
             count_message="{count} records normalized",

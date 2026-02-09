@@ -11,15 +11,15 @@ MAIN_COLUMNS = frozenset(
         CorpusField.AUTH_RAW.value,
         CorpusField.AUTH_KEY_RAW.value,
         CorpusField.CIT_COUNT_GLOBAL.value,
-        CorpusField.DOC_TYPE_RAW.value,
+        CorpusField.DOCTYPE_RAW.value,
         CorpusField.DOI.value,
         CorpusField.IDX_KEY_RAW.value,
         CorpusField.PAGE_FIRST.value,
         CorpusField.PUBYEAR.value,
         CorpusField.REF_RAW.value,
-        CorpusField.SRC_TITLE_ABBR_RAW.value,
-        CorpusField.SRC_TITLE_RAW.value,
-        CorpusField.TITLE_RAW.value,
+        CorpusField.SRCTITLE_ABBR_RAW.value,
+        CorpusField.SRCTITLE_RAW.value,
+        CorpusField.DOCTITLE_RAW.value,
         CorpusField.VOL.value,
     ]
 )
@@ -30,9 +30,9 @@ REF_COLUMNS = frozenset(
         CorpusField.AUTH_RAW.value,
         CorpusField.PAGE_FIRST.value,
         CorpusField.PUBYEAR.value,
-        CorpusField.SRC_TITLE_ABBR_RAW.value,
-        CorpusField.SRC_TITLE_RAW.value,
-        CorpusField.TITLE_RAW.value,
+        CorpusField.SRCTITLE_ABBR_RAW.value,
+        CorpusField.SRCTITLE_RAW.value,
+        CorpusField.DOCTITLE_RAW.value,
         CorpusField.VOL.value,
     ]
 )

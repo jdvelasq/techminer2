@@ -210,7 +210,7 @@ class DataFrame(
 
         # ---------------------------------------------------------------------
         def average_documents_per_source():
-            sources = dataframe[CorpusField.SRC_TITLE_RAW.value].copy()
+            sources = dataframe[CorpusField.SRCTITLE_RAW.value].copy()
             sources = sources.dropna()
             n_records = len(sources)
             sources = sources.drop_duplicates()
@@ -264,7 +264,7 @@ class DataFrame(
 
         # ---------------------------------------------------------------------
         def number_of_sources():
-            records = dataframe[CorpusField.SRC_TITLE_RAW.value].copy()
+            records = dataframe[CorpusField.SRCTITLE_RAW.value].copy()
             records = records.dropna()
             records = records.drop_duplicates()
             return len(records)
@@ -313,10 +313,10 @@ class DataFrame(
         #
         # =====================================================================
         def compute_document_type_stats(stats):
-            records = dataframe[[CorpusField.DOC_TYPE_NORM.value]].dropna()
+            records = dataframe[[CorpusField.DOCTYPE_NORM.value]].dropna()
             document_types_count = (
-                records[[CorpusField.DOC_TYPE_NORM.value]]
-                .groupby(CorpusField.DOC_TYPE_NORM.value)
+                records[[CorpusField.DOCTYPE_NORM.value]]
+                .groupby(CorpusField.DOCTYPE_NORM.value)
                 .size()
             )
             for document_type, count in zip(
@@ -603,7 +603,7 @@ class DataFrame(
             item="Number of keywords (norm)",
             value=self.count_unique_items(
                 dataframe,
-                CorpusField.ALL_KEY_NORM,
+                CorpusField.KEY_NORM,
             ),
         )
 
@@ -629,7 +629,7 @@ class DataFrame(
             item="Number of abstract words (raw)",
             value=self.count_unique_items(
                 dataframe,
-                CorpusField.WORD_ABS_RAW,
+                CorpusField.ABS_WORD_TOK,
             ),
         )
 
@@ -639,7 +639,7 @@ class DataFrame(
             item="Number of abstract NP phrases (norm)",
             value=self.count_unique_items(
                 dataframe,
-                CorpusField.NP_ABS_NORM,
+                CorpusField.ABS_NP_NORM,
             ),
         )
 
@@ -649,7 +649,7 @@ class DataFrame(
             item="Number of abstract NP phrases (raw)",
             value=self.count_unique_items(
                 dataframe,
-                CorpusField.NP_ABS_RAW,
+                CorpusField.ABS_NP_TOK,
             ),
         )
 
@@ -659,7 +659,7 @@ class DataFrame(
             item="Number of NP phrases (norm)",
             value=self.count_unique_items(
                 dataframe,
-                CorpusField.ALL_NP_NORM,
+                CorpusField.NP_NORM,
             ),
         )
 
@@ -699,7 +699,7 @@ class DataFrame(
             item="Number of title NP phrases (norm)",
             value=self.count_unique_items(
                 dataframe,
-                CorpusField.NP_TITLE_NORM,
+                CorpusField.DOCTITLE_NP_NORM,
             ),
         )
 
@@ -709,7 +709,7 @@ class DataFrame(
             item="Number of title NP phrases (raw)",
             value=self.count_unique_items(
                 dataframe,
-                CorpusField.NP_TITLE_RAW,
+                CorpusField.DOCTITLE_NP_TOK,
             ),
         )
 
@@ -719,7 +719,7 @@ class DataFrame(
             item="Number of title words (raw)",
             value=self.count_unique_items(
                 dataframe,
-                CorpusField.WORD_TITLE_RAW,
+                CorpusField.DOCTITLE_WORD_TOK,
             ),
         )
 
@@ -739,7 +739,7 @@ class DataFrame(
             item="Number of words (norm)",
             value=self.count_unique_items(
                 dataframe,
-                CorpusField.ALL_WORD_NORM,
+                CorpusField.WORD_NORM,
             ),
         )
 
@@ -755,7 +755,7 @@ class DataFrame(
             item="Number of keywords + NP phrases (norm)",
             value=self.count_unique_items(
                 dataframe,
-                CorpusField.ALL_KEY_NP_NORM,
+                CorpusField.KEY_AND_NP_NORM,
             ),
         )
 
@@ -765,7 +765,7 @@ class DataFrame(
             item="Number of keywords + NP phrases (raw)",
             value=self.count_unique_items(
                 dataframe,
-                CorpusField.ALL_KEY_NP_RAW,
+                CorpusField.KEY_AND_NP_TOK,
             ),
         )
 
@@ -775,7 +775,7 @@ class DataFrame(
             item="Number of keywords + words (norm)",
             value=self.count_unique_items(
                 dataframe,
-                CorpusField.ALL_KEY_WORD_NORM,
+                CorpusField.KEY_AND_WORD_NORM,
             ),
         )
 

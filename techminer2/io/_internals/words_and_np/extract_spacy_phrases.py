@@ -1,13 +1,16 @@
 import string
+import sys
 from pathlib import Path
 from typing import Optional
 
 import pandas as pd  # type: ignore
+import spacy
 from pandarallel import pandarallel  # type: ignore
-from textblob import TextBlob  # type: ignore
 
 from techminer2 import CorpusField
 from techminer2._internals import stdout_to_stderr
+
+spacy_nlp = spacy.load("en_core_web_lg")
 
 
 def _process_row(row: pd.Series) -> Optional[str]:
@@ -15,10 +18,17 @@ def _process_row(row: pd.Series) -> Optional[str]:
     phrases: list[str] = []
 
     if not pd.isna(row[CorpusField.ABS_TOK.value]):
-        phrases.extend(TextBlob(row[CorpusField.ABS_TOK.value]).noun_phrases)
+        phrases.extend(
+            chunk.text
+            for chunk in spacy_nlp(row[CorpusField.ABS_TOK.value]).noun_chunks
+        )
 
-    if not pd.isna(row[CorpusField.TITLE_TOK.value]):
-        phrases.extend(TextBlob(row[CorpusField.TITLE_TOK.value]).noun_phrases)
+    if not pd.isna(row[CorpusField.DOCTITLE_TOK.value]):
+        phrases.extend(
+            chunk.text
+            for chunk in spacy_nlp(row[CorpusField.DOCTITLE_TOK.value]).noun_chunks
+        )
+
     if not phrases:
         return None
 
@@ -27,13 +37,16 @@ def _process_row(row: pd.Series) -> Optional[str]:
         term for term in phrases if not any(char in term for char in punctuation)
     ]
 
+    vowels = set("aeiou")
+    phrases = [term for term in phrases if any(char in vowels for char in term)]
+
     phrases = list(dict.fromkeys(phrases))
-    result = "; ".join(phrases)
+    phrases_str = "; ".join(phrases)
 
-    return result
+    return phrases_str
 
 
-def extract_text_phrases_textblob(root_directory: str) -> int:
+def extract_spacy_phrases(root_directory: str) -> int:
 
     database_file = Path(root_directory) / "data" / "processed" / "main.csv.zip"
 
@@ -50,10 +63,11 @@ def extract_text_phrases_textblob(root_directory: str) -> int:
     with stdout_to_stderr():
         progress_bar = True
         pandarallel.initialize(progress_bar=progress_bar, verbose=0)
-        dataframe[CorpusField.NP_TEXTBLOB.value] = dataframe.parallel_apply(  # type: ignore
+        dataframe[CorpusField.NP_SPACY.value] = dataframe.parallel_apply(  # type: ignore
             _process_row,
             axis=1,
         )
+        sys.stderr.write("\n")
 
     dataframe.to_csv(
         database_file,
@@ -63,7 +77,7 @@ def extract_text_phrases_textblob(root_directory: str) -> int:
         compression="zip",
     )
 
-    phrases = dataframe[CorpusField.NP_TEXTBLOB.value].dropna()
+    phrases = dataframe[CorpusField.NP_SPACY.value].dropna()
     phrases = phrases.str.split("; ").explode()
     phrases = phrases.drop_duplicates()
     n_phrases = len(phrases)

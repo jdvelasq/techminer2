@@ -1,3812 +1,3306 @@
-A
-    A
-ALSO
-    ALSO
-AND
-    AND
-AT
-    AT
-ATTENTION
-    ATTENTION
-ATTRACTS
-    ATTRACTS
-BE
-    BE
-CONCEPTUAL
-    CONCEPTUAL
-CONCEPTUAL_FRAMEWORK
-    CONCEPTUAL_FRAMEWORK
-CURRENTLY
-    CURRENTLY
-Conceptual frameworks
-    Conceptual frameworks
-Content analysis
-    Content analysis
-DEFINITION
-    DEFINITION
-DELIVER
-    DELIVER
-DESIGNATES
-    DESIGNATES
-DIGITAL
-    DIGITAL
-DOING
-    DOING
-DRIVERS
-    DRIVERS
-Digital innovations
-    Digital innovations
-Digitalization
-    Digitalization
-EMERGING
-    EMERGING
-FIELD
-    FIELD
-FINANCE
-    FINANCE
-FINANCIAL
-    FINANCIAL
-FINTECH
-    FINTECH
-FRAME
-    FRAME
-FRAMEWORK
-    FRAMEWORK
-FROM
-    FROM
-FinTech
-    FinTech
-HOW
-    HOW
-HOWEVER
-    HOWEVER
-IDENTIFY
-    IDENTIFY
-IN
-    IN
-INNOVATION
-    INNOVATION
-INNOVATIVE
-    INNOVATIVE
-IS
-    IS
-IT
-    IT
-Information systems
-    Information systems
-Innovation
-    Innovation
-LITERATURE
-    LITERATURE
-MARRIAGE
-    MARRIAGE
-MEDIA
-    MEDIA
-MOMENT
-    MOMENT
-NAME
-    NAME
-NO
-    NO
-NOVEL
-    NOVEL
-OBJECTIVE
-    OBJECTIVE
-OF
-    OF
-ORIGINATES
-    ORIGINATES
-OTHER
-    OTHER
-POPULAR
-    POPULAR
-PROVIDE
-    PROVIDE
-PUBLICITY
-    PUBLICITY
-PUT
-    PUT
-Popular press
-    Popular press
-Presses (machine tools)
-    Presses (machine tools)
-REFLECTED
-    REFLECTED
-RESEARCH
-    RESEARCH
-SCIENTIFIC
-    SCIENTIFIC
-SO
-    SO
-Scientific literature
-    Scientific literature
-TECHNOLOGY
-    TECHNOLOGY
-THE
-    THE
-THEM
-    THEM
-THERE
-    THERE
-THEREBY
-    THEREBY
-TO
-    TO
-UNDERSTAND
-    UNDERSTAND
-UNDERSTANDING
-    UNDERSTANDING
-UNIVERSAL
-    UNIVERSAL
-USED
-    USED
-WE
-    WE
-WHAT
-    WHAT
-WHICH
-    WHICH
-WORD
-    WORD
-ACTIVITIES
-    ACTIVITIES
-ADOPTION
-    ADOPTION
-ADVANCE
-    ADVANCE
-AN
-    AN
-ANALYSES
-    ANALYSES
-ANALYSIS
-    ANALYSIS
-ANALYZE
-    ANALYZE
-ARE
-    ARE
-BAYESIAN
-    BAYESIAN
-BY
-    BY
-Bayesian Estimation
-    Bayesian Estimation
-Bayesian estimations
-    Bayesian estimations
-Bayesian networks
-    Bayesian networks
-CELEBRITY
-    CELEBRITY
-CHINA
-    CHINA
-COMPARISON
-    COMPARISON
-COMPENSATED
-    COMPENSATED
-CONDUCT
-    CONDUCT
-CONTENT
-    CONTENT
-CONTRIBUTOR
-    CONTRIBUTOR
-CONTRIBUTORS
-    CONTRIBUTORS
-CREATIVE
-    CREATIVE
-DATASET
-    DATASET
-DECISION
-    DECISION
-DESPITE
-    DESPITE
-DIFFERENT
-    DIFFERENT
-DOMINATING
-    DOMINATING
-E
-    E
-EFFORT
-    EFFORT
-EFFORTS
-    EFFORTS
-EMPIRICAL
-    EMPIRICAL
-EMPIRICAL_STUDY
-    EMPIRICAL_STUDY
-ENABLED
-    ENABLED
-EXAMINE
-    EXAMINE
-FACILITATE
-    FACILITATE
-FINANCIAL_INFORMATION
-    FINANCIAL_INFORMATION
-FIRST
-    FIRST
-FOR
-    FOR
-Financial information
-    Financial information
-Financial information market
-    Financial information market
-GENERATED
-    GENERATED
-HORIZONTAL
-    HORIZONTAL
-I
-    I
-IMPACT
-    IMPACT
-INFLUENCE
-    INFLUENCE
-INFORM
-    INFORM
-INFORMATION
-    INFORMATION
-INTERNET
-    INTERNET
-INVESTING
-    INVESTING
-ITS
-    ITS
-LARGE
-    LARGE
-LOGIT
-    LOGIT
-MAKE
-    MAKE
-METHODS
-    METHODS
-MICRO
-    MICRO
-MODELING
-    MODELING
-MONETIZATION
-    MONETIZATION
-MONETIZING
-    MONETIZING
-MULTIPLE
-    MULTIPLE
-Micro celebrity
-    Micro celebrity
-Monetization
-    Monetization
-ON
-    ON
-ONLINE
-    ONLINE
-OUR
-    OUR
-PIONEERING
-    PIONEERING
-PLATFORM
-    PLATFORM
-PRACTITIONERS
-    PRACTITIONERS
-RARELY
-    RARELY
-READERS
-    READERS
-REPORTS
-    REPORTS
-RESULTS
-    RESULTS
-S
-    S
-SEEK
-    SEEK
-SERIES
-    SERIES
-SHOWING
-    SHOWING
-SITE
-    SITE
-SOCIAL
-    SOCIAL
-STATISTICAL
-    STATISTICAL
-STATISTICAL_ANALYSIS
-    STATISTICAL_ANALYSIS
-STUDY
-    STUDY
-Social investing site
-    Social investing site
-Social networking (online)
-    Social networking (online)
-TACTICS
-    TACTICS
-THAT
-    THAT
-THEIR
-    THEIR
-TIME
-    TIME
-TIME_SERIES_MODELING
-    TIME_SERIES_MODELING
-TIMING
-    TIMING
-Time series analysis
-    Time series analysis
-UGC
-    UGC
-UNIQUE
-    UNIQUE
-UNVEIL
-    UNVEIL
-USER
-    USER
-USER_GENERATED_CONTENT
-    USER_GENERATED_CONTENT
-UTILIZE
-    UTILIZE
-User-Generated content
-    User-Generated content
-User-generated content
-    User-generated content
-WITH
-    WITH
-WORKS
-    WORKS
-ADOPT
-    ADOPT
-ADOPTING
-    ADOPTING
-ADOPTION_OF_FINTECH
-    ADOPTION_OF_FINTECH
-AIMS
-    AIMS
-ALIPAY
-    ALIPAY
-Alipay
-    Alipay
-BEHAVIOR
-    BEHAVIOR
-CHINESE
-    CHINESE
-COLLECT
-    COLLECT
-COMBINES
-    COMBINES
-COMPANIES
-    COMPANIES
-CONSUMER
-    CONSUMER
-CONSUMERS
-    CONSUMERS
-CONSUMER_BEHAVIOR
-    CONSUMER_BEHAVIOR
-Commerce
-    Commerce
-Consumer behavior
-    Consumer behavior
-DATA
-    DATA
-EMERGED
-    EMERGED
-Electronic commerce
-    Electronic commerce
-FACTORS
-    FACTORS
-FINDINGS
-    FINDINGS
-FOCUS
-    FOCUS
-FOUNDED
-    FOUNDED
-Fintech
-    Fintech
-INVESTIGATES
-    INVESTIGATES
-LACK
-    LACK
-LATEST
-    LATEST
-LEADING
-    LEADING
-MOBILE
-    MOBILE
-MOTIVATE
-    MOTIVATE
-MOTIVATES
-    MOTIVATES
-NEW
-    NEW
-NEWLY
-    NEWLY
-PLAN
-    PLAN
-PROMOTING
-    PROMOTING
-REGULATORY
-    REGULATORY
-Regulation focus theory
-    Regulation focus theory
-SERVICE
-    SERVICE
-SERVICES
-    SERVICES
-SINCE
-    SINCE
-STRATEGIZING
-    STRATEGIZING
-STUDENTS
-    STUDENTS
-Security control
-    Security control
-Security controls
-    Security controls
-TENPAY
-    TENPAY
-THEORY
-    THEORY
-THIS
-    THIS
-TWO
-    TWO
-Tenpay
-    Tenpay
-UNIVERSITY
-    UNIVERSITY
-USAGE
-    USAGE
-Use and gratification
-    Use and gratification
-VALUABLE
-    VALUABLE
-WHO
-    WHO
-WILL
-    WILL
-ALL
-    ALL
-ALLOWED
-    ALLOWED
-BACK
-    BACK
-BASED
-    BASED
-CERTAIN
-    CERTAIN
-COMPETITION
-    COMPETITION
-CONDITIONS
-    CONDITIONS
-COULD
-    COULD
-DERIVE
-    DERIVE
-DESIRABLE
-    DESIRABLE
-DOES
-    DOES
-DOWNSTREAM
-    DOWNSTREAM
-EFFECTS
-    EFFECTS
-EITHER
-    EITHER
-EMERGE
-    EMERGE
-END
-    END
-END_TO_END
-    END_TO_END
-END_TO_END_SERVICE_PROVIDER
-    END_TO_END_SERVICE_PROVIDER
-ENTRANT
-    ENTRANT
-ENTRY
-    ENTRY
-EQUILIBRIUM
-    EQUILIBRIUM
-End-to-end
-    End-to-end
-Entry
-    Entry
-FINANCIAL_TECHNOLOGY
-    FINANCIAL_TECHNOLOGY
-FIRMS
-    FIRMS
-FOLLOWING
-    FOLLOWING
-FRONT
-    FRONT
-Front-end
-    Front-end
-HOMING
-    HOMING
-IF
-    IF
-INCUMBENT
-    INCUMBENT
-INTEGRATED
-    INTEGRATED
-INVESTIGATE
-    INVESTIGATE
-MARKET
-    MARKET
-MEASURES
-    MEASURES
-MERCHANTS
-    MERCHANTS
-MODEL
-    MODEL
-MULTI
-    MULTI
-NEED
-    NEED
-NOT
-    NOT
-OCCUR
-    OCCUR
-OCCURS
-    OCCURS
-ONLY
-    ONLY
-OPT
-    OPT
-OR
-    OR
-OUTCOME
-    OUTCOME
-PARTIAL
-    PARTIAL
-PAYMENTS
-    PAYMENTS
-PROPER
-    PROPER
-PROVIDER
-    PROVIDER
-REACH
-    REACH
-REGULATION
-    REGULATION
-REQUIREMENT
-    REQUIREMENT
-RESTRAINTS
-    RESTRAINTS
-RETAIL
-    RETAIL
-Retail payment
-    Retail payment
-SIDED
-    SIDED
-SOCIALLY
-    SOCIALLY
-SUGGESTS
-    SUGGESTS
-TWO_SIDED_MARKET
-    TWO_SIDED_MARKET
-UNDER
-    UNDER
-VERTICAL
-    VERTICAL
-VERTICALLY
-    VERTICALLY
-VOLUNTARILY
-    VOLUNTARILY
-WHEN
-    WHEN
-WITHOUT
-    WITHOUT
-ACROSS
-    ACROSS
-ADOPTERS
-    ADOPTERS
-ADVICE
-    ADVICE
-ALIKE
-    ALIKE
-AMIDST
-    AMIDST
-AMOUNTS
-    AMOUNTS
-APPROACH
-    APPROACH
-ARGUMENTS
-    ARGUMENTS
-AROUND
-    AROUND
-AS
-    AS
-ASSET
-    ASSET
-AUTHOR
-    AUTHOR
-BACKED
-    BACKED
-BANKING
-    BANKING
-BANKRUPTION
-    BANKRUPTION
-BANKS
-    BANKS
-BEEN
-    BEEN
-BIG
-    BIG
-BIGGER
-    BIGGER
-BOOK
-    BOOK
-BRING
-    BRING
-BUT
-    BUT
-CAN
-    CAN
-CHALLENGES
-    CHALLENGES
-CHANGE
-    CHANGE
-CHIEF
-    CHIEF
-CLEAR
-    CLEAR
-COMMON
-    COMMON
-COMMUNITY
-    COMMUNITY
-COMPANION
-    COMPANION
-COMPETE
-    COMPETE
-COMPETING
-    COMPETING
-CREATING
-    CREATING
-CREDIT
-    CREDIT
-DECADE
-    DECADE
-DECADES
-    DECADES
-DECLINE
-    DECLINE
-DEVELOPMENT
-    DEVELOPMENT
-DIRECT
-    DIRECT
-DISCUSSION
-    DISCUSSION
-DISPELS
-    DISPELS
-DISPROVE
-    DISPROVE
-DRAW
-    DRAW
-DRAWS
-    DRAWS
-EARLY
-    EARLY
-ELEGANT
-    ELEGANT
-EVEN
-    EVEN
-EXECUTIVES
-    EXECUTIVES
-EXPERTS
-    EXPERTS
-EXPLOITING
-    EXPLOITING
-FACE
-    FACE
-FACING
-    FACING
-FITS
-    FITS
-FLOURISH
-    FLOURISH
-FOLLOWS
-    FOLLOWS
-FORWARD
-    FORWARD
-FRESH
-    FRESH
-FUTURE
-    FUTURE
-FUTURIST
-    FUTURIST
-GLOBAL
-    GLOBAL
-GLOBE
-    GLOBE
-GO
-    GO
-GOT
-    GOT
-GUIDE
-    GUIDE
-HAS
-    HAS
-HE
-    HE
-HEARTS
-    HEARTS
-HELP
-    HELP
-HELPS
-    HELPS
-HUNDREDS
-    HUNDREDS
-IMMENSE
-    IMMENSE
-IMPLEMENTATION
-    IMPLEMENTATION
-IMPROVE
-    IMPROVE
-INDUSTRY
-    INDUSTRY
-INEFFICIENCIES
-    INEFFICIENCIES
-INSIGHT
-    INSIGHT
-INSTITUTIONS
-    INSTITUTIONS
-INTERESTING
-    INTERESTING
-INTO
-    INTO
-JOHN
-    JOHN
-JUST
-    JUST
-KASASA
-    KASASA
-KICKSTART
-    KICKSTART
-LEARN
-    LEARN
-LEFT
-    LEFT
-LIGHT
-    LIGHT
-LOCAL
-    LOCAL
-LOOKING
-    LOOKING
-LOSS
-    LOSS
-MANY
-    MANY
-MASSIVE
-    MASSIVE
-MEGABANKS
-    MEGABANKS
-MINDS
-    MINDS
-MORE
-    MORE
-MUST
-    MUST
-MYTHS
-    MYTHS
-NON
-    NON
-NOW
-    NOW
-OFFER
-    OFFER
-OFFERS
-    OFFERS
-OFFICER
-    OFFICER
-ONCE
-    ONCE
-ONE
-    ONE
-ORGANIZATION
-    ORGANIZATION
-PATH
-    PATH
-PRACTICAL
-    PRACTICAL
-PRESENTATION
-    PRESENTATION
-PRODUCT
-    PRODUCT
-PROVEN
-    PROVEN
-PROVIDES
-    PROVIDES
-READY
-    READY
-REAL
-    REAL
-REALITIES
-    REALITIES
-REFRESHING
-    REFRESHING
-RELATIONSHIP
-    RELATIONSHIP
-RELEVANCE
-    RELEVANCE
-SAVED
-    SAVED
-SEARCHING
-    SEARCHING
-SEPARATES
-    SEPARATES
-SHARE
-    SHARE
-SHE
-    SHE
-SHOWS
-    SHOWS
-SIZE
-    SIZE
-SOLUTIONS
-    SOLUTIONS
-SPEARHEAD
-    SPEARHEAD
-STARTUPS
-    STARTUPS
-STRATEGIES
-    STRATEGIES
-STRATEGY
-    STRATEGY
-STREAMLINE
-    STREAMLINE
-STREAMS
-    STREAMS
-SUCCESS
-    SUCCESS
-SURROUNDING
-    SURROUNDING
-SURVIVAL
-    SURVIVAL
-SURVIVE
-    SURVIVE
-TEAM
-    TEAM
-TECHNOLOGY_COMPANIES
-    TECHNOLOGY_COMPANIES
-THAN
-    THAN
-THEY
-    THEY
-THINKING
-    THINKING
-THREAT
-    THREAT
-THREE
-    THREE
-TODAY
-    TODAY
-TRADITIONAL
-    TRADITIONAL
-UNCOVER
-    UNCOVER
-UNIONS
-    UNIONS
-VISUALIZATIONS
-    VISUALIZATIONS
-WAUPSH
-    WAUPSH
-WEBSITE
-    WEBSITE
-WERE
-    WERE
-WHERE
-    WHERE
-WINNING
-    WINNING
-WITHIN
-    WITHIN
-WORLD
-    WORLD
-WOULD
-    WOULD
-YOU
-    YOU
-YOUR
-    YOUR
-ADVANTAGE
-    ADVANTAGE
-BETTER
-    BETTER
-BETWEEN
-    BETWEEN
-CASE
-    CASE
-COME
-    COME
-EXPERIENCE
-    EXPERIENCE
-FASTER
-    FASTER
-FINLIFE
-    FINLIFE
-GROWN
-    GROWN
-IMPLICATIONS
-    IMPLICATIONS
-IMPORTANT
-    IMPORTANT
-INCLUSIVE
-    INCLUSIVE
-INITIAL
-    INITIAL
-INNOVATIONS
-    INNOVATIONS
-INTEGRATION
-    INTEGRATION
-LIFE
-    LIFE
-MUCH
-    MUCH
-NEEDS
-    NEEDS
-PURPOSE
-    PURPOSE
-SERVE
-    SERVE
-STATES
-    STATES
-UNITED
-    UNITED
-UNITED_STATES
-    UNITED_STATES
-financial inclusion
-    financial inclusion
-financial scenarization
-    financial scenarization
-AGGREGATION
-    AGGREGATION
-AIM
-    AIM
-ALLOWS
-    ALLOWS
-AMONG
-    AMONG
-APPLIED
-    APPLIED
-AREAS
-    AREAS
-ASKING
-    ASKING
-ASSESSED
-    ASSESSED
-ASSOCIATED
-    ASSOCIATED
-AUTHORS
-    AUTHORS
-BACKOFFICE
-    BACKOFFICE
-BECOME
-    BECOME
-BELIEVE
-    BELIEVE
-BEYOND
-    BEYOND
-BOOM
-    BOOM
-BUSINESS
-    BUSINESS
-BUSINESS_TO_CONSUMERS_MODELS
-    BUSINESS_TO_CONSUMERS_MODELS
-Banking innovations
-    Banking innovations
-CHALLENGE
-    CHALLENGE
-CHANGED
-    CHANGED
-CHANNELS
-    CHANNELS
-COMMERCIAL
-    COMMERCIAL
-CONDUCTED
-    CONDUCTED
-CONTROLLING
-    CONTROLLING
-COUNTRIES
-    COUNTRIES
-COVERED
-    COVERED
-DISTRIBUTION
-    DISTRIBUTION
-ECONOMY
-    ECONOMY
-ENGINES
-    ENGINES
-ENSURE
-    ENSURE
-ESPECIALLY
-    ESPECIALLY
-ETC
-    ETC
-EUROPEAN
-    EUROPEAN
-EXAMINING
-    EXAMINING
-EXISTING
-    EXISTING
-EXPANDED
-    EXPANDED
-EXPOSED
-    EXPOSED
-EXTENSIVE
-    EXTENSIVE
-FIELDS
-    FIELDS
-FINANCIAL_TECHNOLOGIES
-    FINANCIAL_TECHNOLOGIES
-FLEXIBILITY
-    FLEXIBILITY
-FUNCTIONALITY
-    FUNCTIONALITY
-FUNCTIONS
-    FUNCTIONS
-FURTHER
-    FURTHER
-GET
-    GET
-GROWING
-    GROWING
-HAVE
-    HAVE
-IDENTIFIED
-    IDENTIFIED
-IDENTIFYING
-    IDENTIFYING
-IMPORTANCE
-    IMPORTANCE
-INCLUDING
-    INCLUDING
-INCREASE
-    INCREASE
-INCREASING
-    INCREASING
-INNOVATION_AND_TECHNOLOGY
-    INNOVATION_AND_TECHNOLOGY
-INTEGRAL
-    INTEGRAL
-INTERFERING
-    INTERFERING
-INTRODUCTION
-    INTRODUCTION
-INVESTMENT
-    INVESTMENT
-LANDSCAPE
-    LANDSCAPE
-LIMITED
-    LIMITED
-MACROLEVEL
-    MACROLEVEL
-MAIN
-    MAIN
-MEMBERS
-    MEMBERS
-MODELS
-    MODELS
-NETWORKS
-    NETWORKS
-NONFINANCIAL
-    NONFINANCIAL
-NOWADAYS
-    NOWADAYS
-OPPORTUNITIES
-    OPPORTUNITIES
-OPPORTUNITY
-    OPPORTUNITY
-OTHERS
-    OTHERS
-PART
-    PART
-PAYMENT
-    PAYMENT
-POSITION
-    POSITION
-PRACTICES
-    PRACTICES
-PROVIDERS
-    PROVIDERS
-PROVIDING
-    PROVIDING
-RAPID
-    RAPID
-RECENT
-    RECENT
-RECOMMENDATIONS
-    RECOMMENDATIONS
-REDUCTION
-    REDUCTION
-REGULATORS
-    REGULATORS
-RELATED
-    RELATED
-REQUIRE
-    REQUIRE
-RETHINK
-    RETHINK
-RISE
-    RISE
-RISKS
-    RISKS
-Risks
-    Risks
-SEARCH
-    SEARCH
-SEARCH_ENGINES
-    SEARCH_ENGINES
-SEE
-    SEE
-SHOWN
-    SHOWN
-SOME
-    SOME
-STANDARDIZATION
-    STANDARDIZATION
-START
-    START
-STARTED
-    STARTED
-START_UP_SERVICE_PROVIDERS
-    START_UP_SERVICE_PROVIDERS
-STRENGTHENING
-    STRENGTHENING
-STUDIED
-    STUDIED
-SURVEYS
-    SURVEYS
-TECHNOLOGIES
-    TECHNOLOGIES
-TENDENCIES
-    TENDENCIES
-THESE
-    THESE
-TIMELY
-    TIMELY
-TRADITIONALLY
-    TRADITIONALLY
-TRENDS
-    TRENDS
-TURNED
-    TURNED
-UP
-    UP
-US
-    US
-USE
-    USE
-USE_OF_TECHNOLOGIES
-    USE_OF_TECHNOLOGIES
-WIDE
-    WIDE
-WORLDWIDE
-    WORLDWIDE
-CONCLUSIONS
-    CONCLUSIONS
-ECONOMIES
-    ECONOMIES
-FRANCHISE
-    FRANCHISE
-INCLUDED
-    INCLUDED
-INFORMATION_TECHNOLOGY
-    INFORMATION_TECHNOLOGY
-INSTITUTIONAL
-    INSTITUTIONAL
-ORIENTATION
-    ORIENTATION
-OWNERSHIP
-    OWNERSHIP
-PARTNERSHIPS
-    PARTNERSHIPS
-REFERENCES
-    REFERENCES
-SCALE
-    SCALE
-SCOPE
-    SCOPE
-SECTIONS
-    SECTIONS
-STABILITY
-    STABILITY
-STRUCTURE
-    STRUCTURE
-TRANSACTION
-    TRANSACTION
-VALUE
-    VALUE
-ADDED
-    ADDED
-ADMINISTRATORS
-    ADMINISTRATORS
-ADOPTED
-    ADOPTED
-AREA
-    AREA
-BANK
-    BANK
-BARRIERS
-    BARRIERS
-BENEFIT
-    BENEFIT
-BOTTOM
-    BOTTOM
-BOTTOM_UP
-    BOTTOM_UP
-Bank 3.0
-    Bank 3.0
-CANDIDATES
-    CANDIDATES
-CASE_STUDY
-    CASE_STUDY
-CHOOSING
-    CHOOSING
-CO
-    CO
-COLLABORATE
-    COLLABORATE
-COLLABORATION
-    COLLABORATION
-COMPANY
-    COMPANY
-COMPARE
-    COMPARE
-COMPETITOR
-    COMPETITOR
-COMPLEX
-    COMPLEX
-CONSIDERATIONS
-    CONSIDERATIONS
-COOPERATOR
-    COOPERATOR
-CRITERIA
-    CRITERIA
-CUSTOMERS
-    CUSTOMERS
-Co-opetition Theory
-    Co-opetition Theory
-DERIVED
-    DERIVED
-DESIRED
-    DESIRED
-DISRUPTORS
-    DISRUPTORS
-DOWN
-    DOWN
-ENCOURAGED
-    ENCOURAGED
-FORCE
-    FORCE
-GOALS
-    GOALS
-INCLUDE
-    INCLUDE
-INDUSTRIES
-    INDUSTRIES
-INTERVIEW
-    INTERVIEW
-INTERVIEWS
-    INTERVIEWS
-INVEST
-    INVEST
-INVESTIGATING
-    INVESTIGATING
-INVESTIGATION
-    INVESTIGATION
-Investment in FinTech
-    Investment in FinTech
-LONG
-    LONG
-LONG_TERM_DEVELOPMENT
-    LONG_TERM_DEVELOPMENT
-MAJOR
-    MAJOR
-MEETING
-    MEETING
-NEAR
-    NEAR
-NOTES
-    NOTES
-OBSERVE
-    OBSERVE
-OPETITION
-    OPETITION
-PARTS
-    PARTS
-PETITION
-    PETITION
-PLANNING
-    PLANNING
-POLICIES
-    POLICIES
-PRODUCE
-    PRODUCE
-QUESTIONS
-    QUESTIONS
-REGULATIONS
-    REGULATIONS
-REGULATIONS_AND_POLICIES
-    REGULATIONS_AND_POLICIES
-RELATE
-    RELATE
-RELATIONSHIPS
-    RELATIONSHIPS
-RESEARCHERS
-    RESEARCHERS
-SAME
-    SAME
-SELECTING
-    SELECTING
-SEVERAL
-    SEVERAL
-SHAPE
-    SHAPE
-SOURCES
-    SOURCES
-SPECIFIC
-    SPECIFIC
-STRATEGIC
-    STRATEGIC
-STRATEGIC_PLANNING
-    STRATEGIC_PLANNING
-STUDIES
-    STUDIES
-TAIWAN
-    TAIWAN
-TARGETS
-    TARGETS
-TASK
-    TASK
-TERM
-    TERM
-THEORETICAL
-    THEORETICAL
-TOP
-    TOP
-Taiwan FinTech Industry
-    Taiwan FinTech Industry
-Taiwan bank industry
-    Taiwan bank industry
-UNLIKELY
-    UNLIKELY
-WAS
-    WAS
-WORK
-    WORK
-WORTH
-    WORTH
-YEAR
-    YEAR
-BRINGS
-    BRINGS
-BUSINESS_MODELS
-    BUSINESS_MODELS
-CONTRIBUTE
-    CONTRIBUTE
-CONTRIBUTES
-    CONTRIBUTES
-CREATION
-    CREATION
-DEBATE
-    DEBATE
-DIGITALIZATION
-    DIGITALIZATION
-DISCUSSED
-    DISCUSSED
-EMERGENCE
-    EMERGENCE
-ENTREPRENEURS
-    ENTREPRENEURS
-EXPLORE
-    EXPLORE
-EXTEND
-    EXTEND
-FEW
-    FEW
-FINANCIAL_SERVICE_PROVIDERS
-    FINANCIAL_SERVICE_PROVIDERS
-HIGHLY
-    HIGHLY
-INFLUENCED
-    INFLUENCED
-INFORMATION_SYSTEMS
-    INFORMATION_SYSTEMS
-INTERDISCIPLINARY
-    INTERDISCIPLINARY
-INVESTORS
-    INVESTORS
-KNOWLEDGE
-    KNOWLEDGE
-MOREOVER
-    MOREOVER
-PAST
-    PAST
-PERSPECTIVE
-    PERSPECTIVE
-PHENOMENON
-    PHENOMENON
-POSES
-    POSES
-REFLECT
-    REFLECT
-REPRESENTS
-    REPRESENTS
-SCIENCES
-    SCIENCES
-STRONGLY
-    STRONGLY
-SUBJECT
-    SUBJECT
-SUBJECTS
-    SUBJECTS
-SYSTEMS
-    SYSTEMS
-THEREFORE
-    THEREFORE
-VISIBLE
-    VISIBLE
-YEARS
-    YEARS
-ACCELERATED
-    ACCELERATED
-ACTIONS
-    ACTIONS
-ADDITIONALLY
-    ADDITIONALLY
-ADEQUACY
-    ADEQUACY
-CAPABILITIES
-    CAPABILITIES
-CAPITAL
-    CAPITAL
-CHANGES
-    CHANGES
-CONCLUSION
-    CONCLUSION
-CONTAINS
-    CONTAINS
-CRM
-    CRM
-CUSTOMER
-    CUSTOMER
-CUSTOMER_RELATIONSHIP_MANAGEMENT
-    CUSTOMER_RELATIONSHIP_MANAGEMENT
-ENVIRONMENT
-    ENVIRONMENT
-EXAMPLE
-    EXAMPLE
-EXCEPTIONAL
-    EXCEPTIONAL
-EXPLAINED
-    EXPLAINED
-EXPLORATION
-    EXPLORATION
-FINANCIAL_INSTITUTIONS
-    FINANCIAL_INSTITUTIONS
-HIGHER
-    HIGHER
-HIGHLIGHTING
-    HIGHLIGHTING
-IMPACTS
-    IMPACTS
-INCREASINGLY
-    INCREASINGLY
-INDUCE
-    INDUCE
-INDUCING
-    INDUCING
-LEVELS
-    LEVELS
-LOSING
-    LOSING
-LOWER
-    LOWER
-MANAGEMENT
-    MANAGEMENT
-MANAGING
-    MANAGING
-ORIENTED
-    ORIENTED
-PARALLEL
-    PARALLEL
-POOLS
-    POOLS
-PREPARE
-    PREPARE
-PRESENTED
-    PRESENTED
-PROPOSED
-    PROPOSED
-QUALITY
-    QUALITY
-REVENUE
-    REVENUE
-RISK
-    RISK
-SAVVY
-    SAVVY
-STABLE
-    STABLE
-TAKING
-    TAKING
-TECHNOLOGY_DEVELOPMENT
-    TECHNOLOGY_DEVELOPMENT
-TECHNOSOCIAL
-    TECHNOSOCIAL
-TOWARD
-    TOWARD
-UNDERTAKEN
-    UNDERTAKEN
-VENTURES
-    VENTURES
-VIEW
-    VIEW
+ability
+    ability
+academia
+    academia
+accelerated
+    accelerated
+acceptance
+    acceptance
+access
+    access
+accredited
+    accredited
+achieved
+    achieved
+acquired
+    acquired
+acting
+    acting
+action
+    action
+actions
+    actions
+activities
+    activities
+activity
+    activity
+actor
+    actor
+actor network theory
+    actor network theory
+actors
+    actors
+adapted
+    adapted
+adapting
+    adapting
+added
+    added
+additional
+    additional
+additionally
+    additionally
+addresses
+    addresses
+addressing
+    addressing
+adequacy
+    adequacy
+administrators
+    administrators
+adopt
+    adopt
+adopted
+    adopted
+adopters
+    adopters
+adopting
+    adopting
+adoption
+    adoption
+adoption of fintech
+    adoption of fintech
+advance
+    advance
+advanced
+    advanced
+advantage
+    advantage
+advent
+    advent
+advice
+    advice
+affected
+    affected
+agency
+    agency
+aggregate
+    aggregate
+aggregates
+    aggregates
+aggregation
+    aggregation
+ai
+    ai
+aim
+    aim
+aims
+    aims
+aitp
+    aitp
+algorithms
+    algorithms
+alibaba
+    alibaba
+alike
+    alike
+alipay
+    alipay
+allocation
+    allocation
+allowed
+    allowed
+allowing
+    allowing
+allows
+    allows
+alternative
+    alternative
+alternative finance
+    alternative finance
+alternative lending
+    alternative lending
+amidst
+    amidst
+amounts
+    amounts
+analysis
+    analysis
+analyst
+    analyst
+analytics
+    analytics
+analyze
+    analyze
+analyzed
+    analyzed
+analyzes
+    analyzes
+analyzing
+    analyzing
+answer
+    answer
+answers
+    answers
+ant
+    ant
+anybody
+    anybody
+appeal
+    appeal
+appear
+    appear
+appearing
+    appearing
+application
+    application
+applications
+    applications
+applied
+    applied
+applies
+    applies
+applying
+    applying
+approach
+    approach
+appropriate
+    appropriate
+architecture
+    architecture
+area
+    area
+areas
+    areas
+argued
+    argued
+arguments
+    arguments
+arising
+    arising
+article
+    article
+articles
+    articles
+ascribe
+    ascribe
+asking
+    asking
+aspect
+    aspect
+assessed
+    assessed
+asset
+    asset
+asset managers
+    asset managers
+assets
+    assets
+assigning
+    assigning
+associated
+    associated
+associations
+    associations
+assume
+    assume
+atm
+    atm
+attacks
+    attacks
+attempts
+    attempts
+attention
+    attention
+attracts
+    attracts
+authentication
+    authentication
+author
+    author
+authoritative
+    authoritative
+authorities
+    authorities
+authors
+    authors
+available
+    available
+avoidance
+    avoidance
+avoided
+    avoided
+away
+    away
+backed
+    backed
+backoffice
+    backoffice
+balancing
+    balancing
+bank
+    bank
+bank 30
+    bank 30
+bankenmarkt
+    bankenmarkt
+bankers
+    bankers
+banking
+    banking
+banking innovations
+    banking innovations
 banking regulation
     banking regulation
+banking system
+    banking system
+bankruption
+    bankruption
+banks
+    banks
+barberis
+    barberis
+barriers
+    barriers
+base
+    base
+based
+    based
+basis
+    basis
+bayesian
+    bayesian
+bayesian estimation
+    bayesian estimation
+bayesian estimations
+    bayesian estimations
+bayesian networks
+    bayesian networks
+beast
+    beast
+began
+    began
+begin
+    begin
+beginning
+    beginning
+behave
+    behave
+behavior
+    behavior
+beijing
+    beijing
+believe
+    believe
+benefi
+    benefi
+benefit
+    benefit
+benefits
+    benefits
+best
+    best
+bewegung
+    bewegung
+big
+    big
+big data analyzes
+    big data analyzes
+bigger
+    bigger
+billion
+    billion
+bio
+    bio
+bioinformation
+    bioinformation
+biometric
+    biometric
+biometric authentication
+    biometric authentication
+biometric informations
+    biometric informations
+biometrics
+    biometrics
+blockchain
+    blockchain
+bond
+    bond
+bonds
+    bonds
+book
+    book
+boom
+    boom
+booming
+    booming
+borders
+    borders
+borrowers
+    borrowers
+borrowing
+    borrowing
+bottom up
+    bottom up
+bring
+    bring
+brings
+    brings
+broad
+    broad
+broader
+    broader
+brokerage
+    brokerage
+brought
+    brought
+brute
+    brute
+build
+    build
+building
+    building
+building maintenance
+    building maintenance
+business
+    business
+business entrepreneurs
+    business entrepreneurs
+business models
+    business models
+business to consumers models
+    business to consumers models
+cacioppo
+    cacioppo
+called
+    called
+candidates
+    candidates
+capabilities
+    capabilities
+capital
+    capital
+capitalize
+    capitalize
+captured
+    captured
+carbon
+    carbon
+cards
+    cards
+case studies
+    case studies
+case study
+    case study
+cases
+    cases
+cash
+    cash
+cashless
+    cashless
+catastrophic
+    catastrophic
+caught
+    caught
+causal
+    causal
+caused
+    caused
+cbos
+    cbos
+celebrity
+    celebrity
+centralized
+    centralized
+ceo
+    ceo
+certain
+    certain
+certification
+    certification
+certification systems
+    certification systems
+chain
+    chain
+challenge
+    challenge
+challenges
+    challenges
+challenging
+    challenging
+change
+    change
+changed
+    changed
+changes
+    changes
+changing
+    changing
+channel
+    channel
+channels
+    channels
+chapters
+    chapters
+characteristic
+    characteristic
+characters
+    characters
+chief
+    chief
+china
+    china
+chinese
+    chinese
+chinese telecom
+    chinese telecom
+chishti
+    chishti
+choosing
+    choosing
+circle
+    circle
+class
+    class
+clear
+    clear
 client behavior
     client behavior
+climate
+    climate
+climates
+    climates
+clos
+    clos
+close
+    close
+co-opetition theory
+    co-opetition theory
+coeckelbergh
+    coeckelbergh
+collaborate
+    collaborate
+collaborated
+    collaborated
+collaboration
+    collaboration
+collapse
+    collapse
+collateralized
+    collateralized
+collates
+    collates
+collect
+    collect
+collected
+    collected
+combination
+    combination
+combines
+    combines
+combining
+    combining
+come
+    come
+commerce
+    commerce
+commercial
+    commercial
+common
+    common
+commonalities
+    commonalities
+communication
+    communication
+communications
+    communications
+communities
+    communities
+community
+    community
+companies
+    companies
+companion
+    companion
+company
+    company
+compare
+    compare
+comparison
+    comparison
+compensated
+    compensated
+compete
+    compete
+competing
+    competing
+competition
+    competition
+competitive
+    competitive
+competitor
+    competitor
+complex
+    complex
+complexity
+    complexity
+composed
+    composed
+composition
+    composition
+comprehensible
+    comprehensible
+comprehensive
+    comprehensive
+comprising
+    comprising
+computer
+    computer
+computer crime
+    computer crime
+computer science
+    computer science
+computer science students
+    computer science students
+computing
+    computing
+computing curricula
+    computing curricula
+concentrates
+    concentrates
+concentration
+    concentration
+concept
+    concept
+concepts
+    concepts
+conceptual
+    conceptual
+conceptual framework
+    conceptual framework
+conceptual frameworks
+    conceptual frameworks
+concern
+    concern
+concerned
+    concerned
+concerns
+    concerns
+concluded
+    concluded
+concludes
+    concludes
+conclusion
+    conclusion
+conclusions
+    conclusions
+conditions
+    conditions
+conduct
+    conduct
+conducted
+    conducted
+confirmed
+    confirmed
+confirms
+    confirms
+congestion
+    congestion
+consensus
+    consensus
+consequences
+    consequences
+considerations
+    considerations
+considered
+    considered
+considering
+    considering
+consistently
+    consistently
+consultants
+    consultants
+consumer
+    consumer
+consumer behavior
+    consumer behavior
+consumers
+    consumers
+consumption
+    consumption
+contains
+    contains
+contemporary
+    contemporary
+content
+    content
+content analysis
+    content analysis
+context
+    context
+contexts
+    contexts
+continue
+    continue
+contribute
+    contribute
+contributes
+    contributes
+contributing
+    contributing
+contributor
+    contributor
+contributors
+    contributors
+control
+    control
+controlling
+    controlling
+controversial
+    controversial
+convenience
+    convenience
+convenient
+    convenient
+conventional
+    conventional
+convergence
+    convergence
+convergence services
+    convergence services
+cooperator
+    cooperator
+coordinated
+    coordinated
+costs
+    costs
+council
+    council
+counter
+    counter
+countries
+    countries
+country
+    country
+covered
+    covered
+covering
+    covering
+cracked
+    cracked
+create
+    create
+creating
+    creating
+creation
+    creation
+creative
+    creative
+credibility
+    credibility
+credit
+    credit
+credit provision
+    credit provision
+creditworthiness
+    creditworthiness
+crime
+    crime
+crises
+    crises
+crisis
+    crisis
+criteria
+    criteria
+critical
+    critical
+critical area
+    critical area
+crm
+    crm
+crowd
+    crowd
+crowdfunding
+    crowdfunding
+crowdlending
+    crowdlending
+cryptocurrency
+    cryptocurrency
+cryptography
+    cryptography
+currencies
+    currencies
+current models
+    current models
+currently
+    currently
+currents
+    currents
+curricula
+    curricula
+customer
+    customer
 customer journey
     customer journey
 customer relationship management
     customer relationship management
+customers
+    customers
+cutting
+    cutting
+cutting edges
+    cutting edges
+cyber
+    cyber
+cyberattack
+    cyberattack
+cyberattacks
+    cyberattacks
+damage
+    damage
+data
+    data
+data handling
+    data handling
+data security
+    data security
+dataset
+    dataset
+date
+    date
+days
+    days
+death
+    death
+debate
+    debate
+debit
+    debit
+debit cards
+    debit cards
+decade
+    decade
+decades
+    decades
+decision
+    decision
+decisions
+    decisions
+decline
+    decline
+decoding
+    decoding
+deep
+    deep
+definition
+    definition
+definitions
+    definitions
+defy
+    defy
+degree
+    degree
+deliver
+    deliver
+demands
+    demands
+demonstrable
+    demonstrable
+dents
+    dents
+departure
+    departure
+dependent
+    dependent
+depending
+    depending
+deployment
+    deployment
+deposit
+    deposit
+deregulation
+    deregulation
+derive
+    derive
+derived
+    derived
+describes
+    describes
+design
+    design
+designates
+    designates
+designed
+    designed
+desirable
+    desirable
+despite
+    despite
+destruction
+    destruction
+detect
+    detect
+detected
+    detected
+detection
+    detection
+determine
+    determine
+determinism
+    determinism
+develop
+    develop
+developing
+    developing
+developing countries
+    developing countries
+development
+    development
+developments
+    developments
+dictating
+    dictating
+difference
+    difference
+difficult
+    difficult
+digital
+    digital
+digital innovations
+    digital innovations
+digitalisation
+    digitalisation
+digitalization
+    digitalization
+digitization
+    digitization
+digitized
+    digitized
+direct
+    direct
+direction
+    direction
+directly
+    directly
+disengaged
+    disengaged
+diskiplinary
+    diskiplinary
+diskiplines
+    diskiplines
+disklosed
+    disklosed
+diskover
+    diskover
+diskretion
+    diskretion
+diskussed
+    diskussed
+diskusses
+    diskusses
+diskussing
+    diskussing
+diskussion
+    diskussion
+dispels
+    dispels
+disprove
+    disprove
+disrupting
+    disrupting
+disruption
+    disruption
+disruptors
+    disruptors
+distance
+    distance
+distancing
+    distancing
+distinct
+    distinct
+distribution
+    distribution
+dive
+    dive
+diverse
+    diverse
+diversification
+    diversification
+domain
+    domain
+dominating
+    dominating
+donations
+    donations
+downstream
+    downstream
+draw
+    draw
+drawn
+    drawn
+draws
+    draws
+drive
+    drive
+driven
+    driven
+drivers
+    drivers
+drives
+    drives
+driving
+    driving
+dynamics
+    dynamics
+dynamism
+    dynamism
+e
+    e
+early
+    early
+ease
+    ease
+ease of use
+    ease of use
+east
+    east
+ebb
+    ebb
+economic
+    economic
+economic growth
+    economic growth
+economic policy
+    economic policy
+economics
+    economics
+economies
+    economies
+economy
+    economy
+ecozystem
+    ecozystem
+ecozystems
+    ecozystems
+edge
+    edge
+edsig
+    edsig
+education
+    education
+education computing
+    education computing
+educators
+    educators
+effect
+    effect
+effectiveness
+    effectiveness
+effects
+    effects
+efficacy
+    efficacy
+effort
+    effort
+efforts
+    efforts
+elaboration
+    elaboration
+elaboration likelihood model
+    elaboration likelihood model
+eld
+    eld
+electronic
+    electronic
+electronic commerce
+    electronic commerce
+electronic commerce research and applications
+    electronic commerce research and applications
+electronic money
+    electronic money
+electronically
+    electronically
+elegant
+    elegant
+elucidate
+    elucidate
+embedded
+    embedded
+embody
+    embody
+emerge
+    emerge
+emerged
+    emerged
+emergence
+    emergence
+emerging
+    emerging
+emerging markets
+    emerging markets
+empires
+    empires
+empirical
+    empirical
+empirical study
+    empirical study
+empowering
+    empowering
+enabled
+    enabled
+enabler
+    enabler
+encouraged
+    encouraged
+end
+    end
+end to end
+    end to end
+end to end service provider
+    end to end service provider
+end-to-end
+    end-to-end
+energy
+    energy
+energy consumption
+    energy consumption
+energy utilization
+    energy utilization
+engineering
+    engineering
+engineering education
+    engineering education
+engines
+    engines
+enhancement
+    enhancement
+enhancing
+    enhancing
+enrollled
+    enrollled
+ensure
+    ensure
+ensured
+    ensured
+enterprises
+    enterprises
+entire
+    entire
+entrant
+    entrant
+entrenchment
+    entrenchment
+entrepreneurial
+    entrepreneurial
+entrepreneurs
+    entrepreneurs
+entrepreneurship
+    entrepreneurship
+entry
+    entry
+environment
+    environment
+environmental protection
+    environmental protection
+environmental technology
+    environmental technology
+environments
+    environments
+epistemic
+    epistemic
+equilibrium
+    equilibrium
+era
+    era
+essence
+    essence
+established
+    established
+estate
+    estate
+esthetics
+    esthetics
+estimation
+    estimation
+ethical
+    ethical
+ethics
+    ethics
+ethiopia
+    ethiopia
+ethiopian
+    ethiopian
+european
+    european
+evaluating
+    evaluating
+evaluation
+    evaluation
+everyday
+    everyday
+evolution
+    evolution
+examine
+    examine
+examines
+    examines
+examining
+    examining
+example
+    example
+examples
+    examples
+exceptional
+    exceptional
+excesses
+    excesses
+exchange
+    exchange
+executives
+    executives
+exercise
+    exercise
+existence
+    existence
+expand
+    expand
+expanded
+    expanded
+expected
+    expected
+experience
+    experience
+experiences
+    experiences
+experiencing
+    experiencing
+expert
+    expert
+expertise
+    expertise
+experts
+    experts
+explained
+    explained
+exploiting
+    exploiting
+exploration
+    exploration
+explore
+    explore
+exploring
+    exploring
+explosion
+    explosion
+explosive
+    explosive
+explosive growth
+    explosive growth
+exposed
+    exposed
+extend
+    extend
+extension
+    extension
+extensive
+    extensive
+extent
+    extent
+extracting
+    extracting
+eyeing
+    eyeing
+face
+    face
+faced
+    faced
+facilitate
+    facilitate
+facing
+    facing
+fact
+    fact
+factor
+    factor
+factors
+    factors
+far
+    far
+fast
+    fast
+fast identity online
+    fast identity online
+fast identity online ( fido )
+    fast identity online ( fido )
+faster
+    faster
+favor
+    favor
+favorably
+    favorably
+features
+    features
+fi
+    fi
+fido
+    fido
+field
+    field
+fields
+    fields
+finance
+    finance
+financial
+    financial
+financial activity
+    financial activity
+financial globalization
+    financial globalization
+financial inclusion
+    financial inclusion
+financial industry
+    financial industry
+financial information
+    financial information
+financial information market
+    financial information market
+financial innovation
+    financial innovation
+financial institution
+    financial institution
 financial institution strategy
     financial institution strategy
-omni-channel
-    omni-channel
-process management
-    process management
-retail banking
-    retail banking
-social empowerment
-    social empowerment
-technological progress
-    technological progress
-ABILITY
-    ABILITY
-ACQUIRED
-    ACQUIRED
-ACTING
-    ACTING
-ACTION
-    ACTION
-ACTIVITY
-    ACTIVITY
-AI
-    AI
-APPEARING
-    APPEARING
-APPLICATIONS
-    APPLICATIONS
-ARTICLE
-    ARTICLE
-BEING
-    BEING
-CLOSE
-    CLOSE
-COMBINING
-    COMBINING
-COMPETITIVE
-    COMPETITIVE
-CONCEPTS
-    CONCEPTS
-CONVENTIONAL
-    CONVENTIONAL
-CREATE
-    CREATE
-DESCRIBES
-    DESCRIBES
-DESIGNED
-    DESIGNED
-DISCUSSES
-    DISCUSSES
-EMBEDDED
-    EMBEDDED
-ENABLER
-    ENABLER
-ERA
-    ERA
-EVALUATING
-    EVALUATING
-HITACHI
-    HITACHI
-IOT
-    IOT
-KNOWN
-    KNOWN
-KPIS
-    KPIS
-LOOK
-    LOOK
-LOOKS
-    LOOKS
-ORGANIZATIONAL
-    ORGANIZATIONAL
-OUTLOOK
-    OUTLOOK
-PHENOMENA
-    PHENOMENA
-PRECURSORS
-    PRECURSORS
-QUANTITATIVELY
-    QUANTITATIVELY
-RAISE
-    RAISE
-RECENTLY
-    RECENTLY
-SECTOR
-    SECTOR
-SUCCESSION
-    SUCCESSION
-TERMINALS
-    TERMINALS
-THROUGH
-    THROUGH
-UTILIZATION
-    UTILIZATION
-WEARABLE
-    WEARABLE
-WORKING
-    WORKING
-ACCEPTANCE
-    ACCEPTANCE
-ADDRESSING
-    ADDRESSING
-AESTHETICS
-    AESTHETICS
-AFFECTED
-    AFFECTED
-AGGREGATE
-    AGGREGATE
-APPLICATION
-    APPLICATION
-ASSIGNING
-    ASSIGNING
-CASH
-    CASH
-CASHLESS
-    CASHLESS
-CHARACTERISTIC
-    CHARACTERISTIC
-COLLECTED
-    COLLECTED
-COMMUNITIES
-    COMMUNITIES
-CONCLUDES
-    CONCLUDES
-CONTEXTS
-    CONTEXTS
-CONTRIBUTING
-    CONTRIBUTING
-CONTROL
-    CONTROL
-DEATH
-    DEATH
-DESIGN
-    DESIGN
-DIGITIZATION
-    DIGITIZATION
-DISCLOSED
-    DISCLOSED
-DISCUSSING
-    DISCUSSING
-DONATIONS
-    DONATIONS
-EMBODY
-    EMBODY
-ETHIOPIA
-    ETHIOPIA
-ETHIOPIAN
-    ETHIOPIAN
-EVERYDAY
-    EVERYDAY
-EXPERIENCES
-    EXPERIENCES
-EXTENSION
-    EXTENSION
-Ethiopia
-    Ethiopia
-FEATURES
-    FEATURES
-FINANCIAL_SYSTEM
-    FINANCIAL_SYSTEM
-FINANCIAL_SYSTEMS
-    FINANCIAL_SYSTEMS
-Finance
-    Finance
-Financial system
-    Financial system
-HIDING
-    HIDING
-Human computer interaction
-    Human computer interaction
-IDENTITY
-    IDENTITY
-INDIVIDUALS
-    INDIVIDUALS
-LIVED
-    LIVED
-MAPPING
-    MAPPING
-MEANING
-    MEANING
-MONETARY
-    MONETARY
-MONEY
-    MONEY
-NEEDED
-    NEEDED
-PARTICULARLY
-    PARTICULARLY
-POSSIBLE
-    POSSIBLE
-PRIMARY
-    PRIMARY
-PRIVATE
-    PRIVATE
-Primary data
-    Primary data
-QUESTION
-    QUESTION
-REFUSAL
-    REFUSAL
-RELIGIOUS
-    RELIGIOUS
-REPORT
-    REPORT
-RESTRICTED
-    RESTRICTED
-REVEALS
-    REVEALS
-RURAL
-    RURAL
-Rural community
-    Rural community
-SECRET
-    SECRET
-SEGREGATED
-    SEGREGATED
-SHOULD
-    SHOULD
-SOCIETY
-    SOCIETY
-SUPPORT
-    SUPPORT
-SYSTEM
-    SYSTEM
-TECHNOLOGICAL
-    TECHNOLOGICAL
-THUS
-    THUS
-TRANSACTIONS
-    TRANSACTIONS
-Technology designs
-    Technology designs
-UBIQUITOUS
-    UBIQUITOUS
-Ubiquitous technology
-    Ubiquitous technology
-User interfaces
-    User interfaces
-WAYS
-    WAYS
-ANALYZED
-    ANALYZED
-APPLYING
-    APPLYING
-ASPECT
-    ASPECT
-CACIOPPO
-    CACIOPPO
-CALLED
-    CALLED
-CAUSAL
-    CAUSAL
-CONCERN
-    CONCERN
-CONVENIENCE
-    CONVENIENCE
-CREDIBILITY
-    CREDIBILITY
-CRITICAL
-    CRITICAL
-DEPENDENT
-    DEPENDENT
-DEREGULATION
-    DEREGULATION
-EASE
-    EASE
-EASE_OF_USE
-    EASE_OF_USE
-EFFECT
-    EFFECT
-EFFICACY
-    EFFICACY
-ELABORATION
-    ELABORATION
-ELABORATION_LIKELIHOOD_MODEL
-    ELABORATION_LIKELIHOOD_MODEL
-Elaboration likelihood model
-    Elaboration likelihood model
-FACTOR
-    FACTOR
-FOUND
-    FOUND
-GOVERNMENT
-    GOVERNMENT
-HAD
-    HAD
-INDEPENDENT
-    INDEPENDENT
-INFLUENTIAL
-    INFLUENTIAL
-INTENTION
-    INTENTION
-INTENTION_TO_USE
-    INTENTION_TO_USE
-K pay
-    K pay
-LIKELIHOOD
-    LIKELIHOOD
-MODERATING
-    MODERATING
-MODERATING_EFFECT
-    MODERATING_EFFECT
-MOST
-    MOST
-Mobile payment service
-    Mobile payment service
-OBSTRUCTING
-    OBSTRUCTING
-PETTY
-    PETTY
-PRIVACY
-    PRIVACY
-PROMOTION
-    PROMOTION
-SECURITY
-    SECURITY
-SELF
-    SELF
-STRONGER
-    STRONGER
-SUGGESTED
-    SUGGESTED
-TECHNOLOGY_ACCEPTANCE_MODEL
-    TECHNOLOGY_ACCEPTANCE_MODEL
-TYPE
-    TYPE
-USEFULNESS
-    USEFULNESS
-USERS
-    USERS
-UTILIZING
-    UTILIZING
-VARIABLES
-    VARIABLES
-WHILE
-    WHILE
-ABLE
-    ABLE
-ACCREDITED
-    ACCREDITED
-ADAPTED
-    ADAPTED
-ADAPTING
-    ADAPTING
-ATM
-    ATM
-AUTHENTICATION
-    AUTHENTICATION
-Authentication
-    Authentication
-BECAUSE
-    BECAUSE
-BECOMING
-    BECOMING
-BIO
-    BIO
-BIOMETRIC
-    BIOMETRIC
-Bioinformation
-    Bioinformation
-Biometric authentication
-    Biometric authentication
-Biometric informations
-    Biometric informations
-Biometrics
-    Biometrics
-CENTRALIZED
-    CENTRALIZED
-CERTIFICATION
-    CERTIFICATION
-CONFIRMS
-    CONFIRMS
-CRYPTOGRAPHY
-    CRYPTOGRAPHY
-CURRENT
-    CURRENT
-Certification systems
-    Certification systems
-Cryptography
-    Cryptography
-DAYS
-    DAYS
-EACH
-    EACH
-EASY
-    EASY
-ENROLLED
-    ENROLLED
-ENVIRONMENTS
-    ENVIRONMENTS
-FIDO
-    FIDO
-FIDO(Fast Identity Online)
-    FIDO(Fast Identity Online)
-FINGERPRINTS
-    FINGERPRINTS
-GOES
-    GOES
-HER
-    HER
-HIS
-    HIS
-IMPLEMENTING
-    IMPLEMENTING
-INTEROPERABILITY
-    INTEROPERABILITY
-Interoperability
-    Interoperability
-KEY
-    KEY
-MATCH
-    MATCH
-Money transfers
-    Money transfers
-PERSON
-    PERSON
-PKI
-    PKI
-PKI(Public Key Infrastructure)
-    PKI(Public Key Infrastructure)
-PRE
-    PRE
-PROBLEMS
-    PROBLEMS
-PROCESS
-    PROCESS
-PROTECT
-    PROTECT
-PUBLIC
-    PUBLIC
-PUBLIC_KEY_CRYPTOGRAPHY
-    PUBLIC_KEY_CRYPTOGRAPHY
-Public key cryptography
-    Public key cryptography
-Public key infrastructure
-    Public key infrastructure
-REGISTER
-    REGISTER
-REGISTERED
-    REGISTERED
-REGISTRATION
-    REGISTRATION
-Registration process
-    Registration process
-SAVES
-    SAVES
-SAVINGS
-    SAVINGS
-SAYING
-    SAYING
-SECURE
-    SECURE
-SECURELY
-    SECURELY
-SIGN
-    SIGN
-SINGLE
-    SINGLE
-SINGLE_SIGN_ON
-    SINGLE_SIGN_ON
-SITES
-    SITES
-SMARTPHONE
-    SMARTPHONE
-SOLVE
-    SOLVE
-STANDARD
-    STANDARD
-TECHNIQUES
-    TECHNIQUES
-TRANSFER
-    TRANSFER
-USES
-    USES
-USING
-    USING
-VARIETY
-    VARIETY
-VERIFY
-    VERIFY
-WIDESPREAD
-    WIDESPREAD
-WITHDRAWAL
-    WITHDRAWAL
-ABOUT
-    ABOUT
-ADVANCED
-    ADVANCED
-BALANCING
-    BALANCING
-BENEFITS
-    BENEFITS
-DAMAGE
-    DAMAGE
-DETECT
-    DETECT
-DIFFICULT
-    DIFFICULT
-DRIVEN
-    DRIVEN
-Data handling
-    Data handling
-EXTENT
-    EXTENT
-FORESEEN
-    FORESEEN
-Financial sectors
-    Financial sectors
-Financial service
-    Financial service
-Financial technology
-    Financial technology
-IDENTIFIABLE
-    IDENTIFIABLE
-PARADIGM
-    PARADIGM
-PERSONAL
-    PERSONAL
-PERSONALLY
-    PERSONALLY
-PERSONALLY_IDENTIFIABLE_INFORMATION
-    PERSONALLY_IDENTIFIABLE_INFORMATION
-POTENTIAL
-    POTENTIAL
-PRESERVING
-    PRESERVING
-PROCESSING
-    PROCESSING
-PROTECTING
-    PROTECTING
-Paradigm shifts
-    Paradigm shifts
-Personal information
-    Personal information
-Personally identifiable information
-    Personally identifiable information
-Potential benefits
-    Potential benefits
-Preserving personal information
-    Preserving personal information
-Processing approach
-    Processing approach
-SHIFT
-    SHIFT
-SUGGEST
-    SUGGEST
-THREATS
-    THREATS
-TRUST
-    TRUST
-ACADEMIA
-    ACADEMIA
-APPLIES
-    APPLIES
-ARTICLES
-    ARTICLES
-ATTEMPTS
-    ATTEMPTS
-BEAST
-    BEAST
-BOTH
-    BOTH
-BROAD
-    BROAD
-BUILDING
-    BUILDING
-Banking
-    Banking
-COMMONALITIES
-    COMMONALITIES
-COMMUNICATION
-    COMMUNICATION
-COMPLEXITY
-    COMPLEXITY
-CONCENTRATES
-    CONCENTRATES
-CONCLUDED
-    CONCLUDED
-CONSENSUS
-    CONSENSUS
-COVERING
-    COVERING
-DEFINITIONS
-    DEFINITIONS
-DISTINCT
-    DISTINCT
-DRAWN
-    DRAWN
-EXTRACTING
-    EXTRACTING
-Financial institution
-    Financial institution
-Financial services
-    Financial services
-MEANS
-    MEANS
-NEITHER
-    NEITHER
-NOR
-    NOR
-ORIGINS
-    ORIGINS
-OUT
-    OUT
-PEERREVIEWED
-    PEERREVIEWED
-PERIOD
-    PERIOD
-PLACED
-    PLACED
-PRACTICE
-    PRACTICE
-QUINTESSENCE
-    QUINTESSENCE
-RANGE
-    RANGE
-REFERENCING
-    REFERENCING
-REVIEWING
-    REVIEWING
-Research
-    Research
-SCHOLARLY
-    SCHOLARLY
-SEMANTIC
-    SEMANTIC
-SHORTCOMINGS
-    SHORTCOMINGS
-SPHERES
-    SPHERES
-SUCCINCT
-    SUCCINCT
-SUFFICIENTLY
-    SUFFICIENTLY
-TAMING
-    TAMING
-Technology
-    Technology
-Terminology
-    Terminology
-UNEQUIVOCALLY
-    UNEQUIVOCALLY
-YET
-    YET
-ALLOCATION
-    ALLOCATION
-BEGAN
-    BEGAN
-BORROWERS
-    BORROWERS
-BROUGHT
-    BROUGHT
-CAUSED
-    CAUSED
-CHANNEL
-    CHANNEL
-COMBINATION
-    COMBINATION
-COMPOSED
-    COMPOSED
-COUNTRY
-    COUNTRY
-China
-    China
-DIGITIZED
-    DIGITIZED
-DIVERSIFICATION
-    DIVERSIFICATION
-ECONOMIC
-    ECONOMIC
-FORM
-    FORM
-Financial globalization
-    Financial globalization
-Financial innovation
-    Financial innovation
-Financial regulation
-    Financial regulation
-GAP
-    GAP
-GRADUAL
-    GRADUAL
-INDEED
-    INDEED
-INEFFICIENCY
-    INEFFICIENCY
-INFORMAL
-    INFORMAL
-ITSELF
-    ITSELF
-JOINT
-    JOINT
-LEAD
-    LEAD
-LENDERS
-    LENDERS
-LENDING
-    LENDING
-MONO
-    MONO
-NETWORK
-    NETWORK
-ORIGINATED
-    ORIGINATED
-OUTPUT
-    OUTPUT
-OVER
-    OVER
-OWNED
-    OWNED
-P2P
-    P2P
-PEER
-    PEER
-PEER_TO_PEER_LENDING
-    PEER_TO_PEER_LENDING
-RECEIVING
-    RECEIVING
-REFORM
-    REFORM
-REPRESENT
-    REPRESENT
-RESOLVES
-    RESOLVES
-RegTech
-    RegTech
-Regulatory technology
-    Regulatory technology
-SHADOW
-    SHADOW
-SME
-    SME
-SPURRED
-    SPURRED
-STATE
-    STATE
-STOCK
-    STOCK
-SUBMIT
-    SUBMIT
-SYSTEMIC
-    SYSTEMIC
-ULTIMATELY
-    ULTIMATELY
-UNEXPECTED
-    UNEXPECTED
-UNREGULATED
-    UNREGULATED
-WENT
-    WENT
-WHILST
-    WHILST
-WHOLLY
-    WHOLLY
-ALTERNATIVE
-    ALTERNATIVE
-Alternative finance
-    Alternative finance
-Alternative lending
-    Alternative lending
-BEHIND
-    BEHIND
-BILLION
-    BILLION
-BOOMING
-    BOOMING
-CEO
-    CEO
-CHISHTI
-    CHISHTI
-CIRCLE
-    CIRCLE
-CROWDFUNDING
-    CROWDFUNDING
-Crowdfunding
-    Crowdfunding
-DRIVE
-    DRIVE
-HIGHLIGHTS
-    HIGHLIGHTS
-INVESTMENTS
-    INVESTMENTS
-LOANS
-    LOANS
-OVERVIEW
-    OVERVIEW
-PLATFORMS
-    PLATFORMS
-Peer to Peer - P2P
-    Peer to Peer - P2P
-REVOLUTION
-    REVOLUTION
-SUSANNE
-    SUSANNE
-UK
-    UK
-UK P2P Platforms
-    UK P2P Platforms
-AFTER
-    AFTER
-AVAILABLE
-    AVAILABLE
-BANKING_SYSTEM
-    BANKING_SYSTEM
-BLOCKCHAIN
-    BLOCKCHAIN
-Bank
-    Bank
-Block-chain
-    Block-chain
-Blockchain
-    Blockchain
-CONTROVERSIAL
-    CONTROVERSIAL
-CRISIS
-    CRISIS
-Cryptocurrency
-    Cryptocurrency
-DIRECTLY
-    DIRECTLY
-EFFECTIVENESS
-    EFFECTIVENESS
-EMPOWERING
-    EMPOWERING
-EXPECTED
-    EXPECTED
-Electronic money
-    Electronic money
-Environmental protection
-    Environmental protection
-Environmental technology
-    Environmental technology
-FREEDOM
-    FREEDOM
-Financial activity
-    Financial activity
-Financial tools
-    Financial tools
-GLOBAL_FINANCIAL_CRISIS
-    GLOBAL_FINANCIAL_CRISIS
-Global economies
-    Global economies
-Global financial crisis
-    Global financial crisis
-INTEREST
-    INTEREST
-INTERFERE
-    INTERFERE
-MAKERS
-    MAKERS
-PEOPLE
-    PEOPLE
-PLAY
-    PLAY
-POLICY
-    POLICY
-POLICY_MAKERS
-    POLICY_MAKERS
-POTENTIALLY
-    POTENTIALLY
-PROMOTE
-    PROMOTE
-PUTTING
-    PUTTING
-Payment
-    Payment
-Planning
-    Planning
-REMAINED
-    REMAINED
-ROLE
-    ROLE
-STRICTER
-    STRICTER
-SUSTAINABLE
-    SUSTAINABLE
-SUSTAINABLE_DEVELOPMENT
-    SUSTAINABLE_DEVELOPMENT
-SYNTHESIZE
-    SYNTHESIZE
-Sustainable development
-    Sustainable development
-TIGHTENING
-    TIGHTENING
-TOOL
-    TOOL
-TRANSPARENCY
-    TRANSPARENCY
-Transfer
-    Transfer
-WHOLE
-    WHOLE
-ACCESS
-    ACCESS
-ATTACKS
-    ATTACKS
-BEFORE
-    BEFORE
-BORDERS
-    BORDERS
-COMPUTER
-    COMPUTER
-COUNTER
-    COUNTER
-CYBER
-    CYBER
-Computer crime
-    Computer crime
-Crime
-    Crime
-Cyber-attacks
-    Cyber-attacks
-Cyberattack
-    Cyberattack
-DATE
-    DATE
-FACED
-    FACED
-FRAUD
-    FRAUD
-HACKERS
-    HACKERS
-Hacker
-    Hacker
-ILLEGALLY
-    ILLEGALLY
-INTELLIGENT
-    INTELLIGENT
-Information Security System
-    Information Security System
-LOCATIONS
-    LOCATIONS
-NEVER
-    NEVER
-Network security
-    Network security
-Personal computing
-    Personal computing
-REMOTE
-    REMOTE
-Remote location
-    Remote location
-SEEN
-    SEEN
-SET
-    SET
-SOPHISTICATED
-    SOPHISTICATED
-STANDARDS
-    STANDARDS
-Security of data
-    Security of data
-TELECOMMUNICATIONS
-    TELECOMMUNICATIONS
-TELEPHONE
-    TELEPHONE
-THEFT
-    THEFT
-WAY
-    WAY
-ASSUME
-    ASSUME
-CASES
-    CASES
-CASE_STUDIES
-    CASE_STUDIES
-CHAIN
-    CHAIN
-DEFY
-    DEFY
-DEMONSTRABLE
-    DEMONSTRABLE
-DEPARTURE
-    DEPARTURE
-DYNAMISM
-    DYNAMISM
-ECOSYSTEM
-    ECOSYSTEM
-ECOSYSTEMS
-    ECOSYSTEMS
-EMERGING_MARKETS
-    EMERGING_MARKETS
-FOCUSING
-    FOCUSING
-FOUR
-    FOUR
-FRUITFUL
-    FRUITFUL
-GENERAL
-    GENERAL
-GROUNDED
-    GROUNDED
-IDEA
-    IDEA
-INCLUSION
-    INCLUSION
-INCLUSIVITY
-    INCLUSIVITY
-ISSUES
-    ISSUES
-MARKETS
-    MARKETS
-MARKET_DEVELOPMENT
-    MARKET_DEVELOPMENT
-METHODOLOGICAL
-    METHODOLOGICAL
-METHODOLOGICAL_APPROACH
-    METHODOLOGICAL_APPROACH
-MIDDLE
-    MIDDLE
-NOTIONS
-    NOTIONS
-OPERATE
-    OPERATE
-PARTICIPANTS
-    PARTICIPANTS
-PLATFORMECOSYSTEM
-    PLATFORMECOSYSTEM
-PRAGMATISM
-    PRAGMATISM
-PREDICTING
-    PREDICTING
-PREDICTIONS
-    PREDICTIONS
-RADICAL
-    RADICAL
-RELIANCE
-    RELIANCE
-RUSSIA
-    RUSSIA
-RUSSIAN
-    RUSSIAN
-SAMPLE
-    SAMPLE
-SIGNIFICANTLY
-    SIGNIFICANTLY
-SOCIOECONOMIC
-    SOCIOECONOMIC
-SOLVING
-    SOLVING
-SPAN
-    SPAN
-SUCH
-    SUCH
-THOUGH
-    THOUGH
-ACTOR
-    ACTOR
-ACTORS
-    ACTORS
-ACTOR_NETWORK_THEORY
-    ACTOR_NETWORK_THEORY
-ANALYZING
-    ANALYZING
-ANT
-    ANT
-Actor network theory
-    Actor network theory
-CHANGING
-    CHANGING
-COMMUNICATIONS
-    COMMUNICATIONS
-COMPRISING
-    COMPRISING
-CONTEXT
-    CONTEXT
-CONVERGENCE
-    CONVERGENCE
-Chinese telecom
-    Chinese telecom
-Convergence services
-    Convergence services
-DEVELOPING
-    DEVELOPING
-DEVELOPING_COUNTRIES
-    DEVELOPING_COUNTRIES
-DISRUPTING
-    DISRUPTING
-Developing countries
-    Developing countries
-ELUCIDATE
-    ELUCIDATE
-ENTIRE
-    ENTIRE
-EXPERIENCING
-    EXPERIENCING
-EXPLORING
-    EXPLORING
-FOSTERING
-    FOSTERING
-Fintech industry
-    Fintech industry
-GROWTH
-    GROWTH
-HERALDING
-    HERALDING
-HETEROGENEOUS
-    HETEROGENEOUS
-HISTORICAL
-    HISTORICAL
-Historical development
-    Historical development
-INFORMATION_AND_COMMUNICATIONS_TECHNOLOGY
-    INFORMATION_AND_COMMUNICATIONS_TECHNOLOGY
-INTERACTION
-    INTERACTION
-INVOLVED
-    INVOLVED
-Information and communications technology
-    Information and communications technology
-Internet
-    Internet
-Internet-based service
-    Internet-based service
-Internet-based services
-    Internet-based services
-LENS
-    LENS
-LEVEL
-    LEVEL
-MULTI_LEVEL_ANALYSIS
-    MULTI_LEVEL_ANALYSIS
-Multi-level analysis
-    Multi-level analysis
-NATIONAL
-    NATIONAL
-POLICY_IMPLICATIONS
-    POLICY_IMPLICATIONS
-POLITICAL
-    POLITICAL
-Policy implications
-    Policy implications
-Public policy
-    Public policy
-STEPPING
-    STEPPING
-STONE
-    STONE
-Social sciences computing
-    Social sciences computing
-TRANSFORMING
-    TRANSFORMING
-Telecom
-    Telecom
-UNFOLDING
-    UNFOLDING
-UNPRECEDENTED
-    UNPRECEDENTED
-AGGREGATES
-    AGGREGATES
-ANSWERS
-    ANSWERS
-ANYBODY
-    ANYBODY
-Asset managers
-    Asset managers
-BANKERS
-    BANKERS
-BARBERIS
-    BARBERIS
-CAPITALIZE
-    CAPITALIZE
-CAPTURED
-    CAPTURED
-COLLATES
-    COLLATES
-CONSULTANTS
-    CONSULTANTS
-CROWD
-    CROWD
-CUTTING
-    CUTTING
-Cutting edges
-    Cutting edges
-DEVELOPMENTS
-    DEVELOPMENTS
-DISRUPTION
-    DISRUPTION
-DIVERSE
-    DIVERSE
-DRIVING
-    DRIVING
-DYNAMICS
-    DYNAMICS
-EDGE
-    EDGE
-ENTREPRENEURIAL
-    ENTREPRENEURIAL
-EXPERT
-    EXPERT
-EXPERTISE
-    EXPERTISE
-EXPLOSION
-    EXPLOSION
-EXPLOSIVE
-    EXPLOSIVE
-EXPLOSIVE_GROWTH
-    EXPLOSIVE_GROWTH
-Explosive growth
-    Explosive growth
-FOLD
-    FOLD
-GAIN
-    GAIN
-GLOBALLY
-    GLOBALLY
-GRASP
-    GRASP
-GUIDANCE
-    GUIDANCE
-HAND
-    HAND
-HANDBOOK
-    HANDBOOK
-INFORMATIVE
-    INFORMATIVE
-INSIDER
-    INSIDER
-INSIGHTS
-    INSIGHTS
-INSURANCE
-    INSURANCE
-INTERESTED
-    INTERESTED
-INVALUABLE
-    INVALUABLE
-Industry development
-    Industry development
-Industry experts
-    Industry experts
-Insurance
-    Insurance
-Investments
-    Investments
-Investor managers
-    Investor managers
-JANOS
-    JANOS
-LEADERS
-    LEADERS
-LEARNED
-    LEARNED
-LESSONS
-    LESSONS
-LINE
-    LINE
-LUCRATIVE
-    LUCRATIVE
-MAKING
-    MAKING
-MANAGERS
-    MANAGERS
-Market dynamics
-    Market dynamics
-OPERATIONS
-    OPERATIONS
-PACE
-    PACE
-PLAYERS
-    PLAYERS
-POPPING
-    POPPING
-PREVIOUS
-    PREVIOUS
-PROMINENT
-    PROMINENT
-PUSHED
-    PUSHED
-REALIZE
-    REALIZE
-SCRAMBLING
-    SCRAMBLING
-SOURCE
-    SOURCE
-SOURCED
-    SOURCED
-SOURCE_OF_INFORMATION
-    SOURCE_OF_INFORMATION
-SPACE
-    SPACE
-SPEED
-    SPEED
-THEREIN
-    THEREIN
-THOUGHT
-    THOUGHT
-Technology revolution
-    Technology revolution
-Technology sectors
-    Technology sectors
-Thought leaders
-    Thought leaders
-VISIONARIES
-    VISIONARIES
-VOLUME
-    VOLUME
-WRITTEN
-    WRITTEN
-ADDITIONAL
-    ADDITIONAL
-APPROPRIATE
-    APPROPRIATE
-ASSETS
-    ASSETS
-AUTHORITIES
-    AUTHORITIES
-BANKENMARKT
-    BANKENMARKT
-BENEFI
-    BENEFI
-BEWEGUNG
-    BEWEGUNG
-BIG_DATA_ANALYSES
-    BIG_DATA_ANALYSES
-COMPREHENSIBLE
-    COMPREHENSIBLE
-CONCERNS
-    CONCERNS
-CONSIDERED
-    CONSIDERED
-CREDITWORTHINESS
-    CREDITWORTHINESS
-CROWDLENDING
-    CROWDLENDING
-DATA_SECURITY
-    DATA_SECURITY
-DECISIONS
-    DECISIONS
-DEGREE
-    DEGREE
-DESCRIBED
-    DESCRIBED
-DESTRUCTION
-    DESTRUCTION
-DEVELOP
-    DEVELOP
-DIGITALISATION
-    DIGITALISATION
-ELD
-    ELD
-ENSURED
-    ENSURED
-ESTABLISHED
-    ESTABLISHED
-ESTIMATION
-    ESTIMATION
-EXISTENCE
-    EXISTENCE
-FI
-    FI
-FINANZTECHNOLOGIEN
-    FINANZTECHNOLOGIEN
-FINTECHS
-    FINTECHS
-GIVES
-    GIVES
-GROUND
-    GROUND
-LABORATORY
-    LABORATORY
-MANAGE
-    MANAGE
-MARKETING
-    MARKETING
-MAY
-    MAY
-MODERN
-    MODERN
-MOTION
-    MOTION
-NANCIAL
-    NANCIAL
-NEUE
-    NEUE
-NOTABLE
-    NOTABLE
-OPENS
-    OPENS
-PAY
-    PAY
-PLAYING
-    PLAYING
-POLICYMAKERS
-    POLICYMAKERS
-POSSIBILITY
-    POSSIBILITY
-PRECISE
-    PRECISE
-PROCESSES
-    PROCESSES
-PRODUCTS
-    PRODUCTS
-PROPENSITY
-    PROPENSITY
-RELEVANT
-    RELEVANT
-RESPONSIVENESS
-    RESPONSIVENESS
-SCHUMPETER
-    SCHUMPETER
-SERVICE_PROVIDERS
-    SERVICE_PROVIDERS
-STALLED
-    STALLED
-SUPPLY
-    SUPPLY
-SWITCH
-    SWITCH
-T
-    T
-TESTING
-    TESTING
-THREATEN
-    THREATEN
-WILLINGNESS
-    WILLINGNESS
-WILLINGNESS_TO_PAY
-    WILLINGNESS_TO_PAY
-ADDRESSES
-    ADDRESSES
-APPEAR
-    APPEAR
-CARDS
-    CARDS
-COMMERCE
-    COMMERCE
-CONTEMPORARY
-    CONTEMPORARY
-DEBIT
-    DEBIT
-Debit cards
-    Debit cards
-ELECTRONIC
-    ELECTRONIC
-ELECTRONIC_COMMERCE_RESEARCH_AND_APPLICATIONS
-    ELECTRONIC_COMMERCE_RESEARCH_AND_APPLICATIONS
-Internet banking
-    Internet banking
-PATTERNS
-    PATTERNS
-PERSPECTIVES
-    PERSPECTIVES
-PREVAILING
-    PREVAILING
-REGIONS
-    REGIONS
-Research and application
-    Research and application
-TOUCH
-    TOUCH
-UPON
-    UPON
-VSI
-    VSI
-Virtual addresses
-    Virtual addresses
-ALLOWING
-    ALLOWING
-Biometric
-    Biometric
-CHARACTERS
-    CHARACTERS
-COMPOSITION
-    COMPOSITION
-CONVENIENT
-    CONVENIENT
-CRACKED
-    CRACKED
-DICTATING
-    DICTATING
-ENHANCING
-    ENHANCING
-EVERYONE
-    EVERYONE
-FAST
-    FAST
-Fast Identity Online
-    Fast Identity Online
-GETTING
-    GETTING
-HACKED
-    HACKED
-ID
-    ID
-INSECURE
-    INSECURE
-LENGTH
-    LENGTH
-MINIMUM
-    MINIMUM
-NUMBERS
-    NUMBERS
-PASSWORD
-    PASSWORD
-PASSWORDS
-    PASSWORDS
-Password
-    Password
-REMEMBER
-    REMEMBER
-REQUIRED
-    REQUIRED
-REQUIREMENTS
-    REQUIREMENTS
-SAFE
-    SAFE
-SPECIAL
-    SPECIAL
-SPILL
-    SPILL
-SSO
-    SSO
-SUITABLE
-    SUITABLE
-Single sign-on
-    Single sign-on
-TYPICALLY
-    TYPICALLY
-USUALLY
-    USUALLY
-WANTS
-    WANTS
-WEBSITES
-    WEBSITES
-WELL
-    WELL
-INNOVATORS
-    INNOVATORS
-TAKE
-    TAKE
-BROADER
-    BROADER
-DECODING
-    DECODING
-EYEING
-    EYEING
-MCKINSEY
-    MCKINSEY
-POOL
-    POOL
-PRODUCTS_AND_SERVICES
-    PRODUCTS_AND_SERVICES
-START_UPS
-    START_UPS
-UPS
-    UPS
-WIDER
-    WIDER
-ALGORITHMS
-    ALGORITHMS
-APPEAL
-    APPEAL
-ASCRIBE
-    ASCRIBE
-CAUGHT
-    CAUGHT
-COECKELBERGH
-    COECKELBERGH
-CURRENCIES
-    CURRENCIES
-CURRENTS
-    CURRENTS
-DETERMINISM
-    DETERMINISM
-DIRECTION
-    DIRECTION
-DISENGAGED
-    DISENGAGED
-DISTANCE
-    DISTANCE
-DISTANCING
-    DISTANCING
-DO
-    DO
-EBB
-    EBB
-ELECTRONICALLY
-    ELECTRONICALLY
-EPISTEMIC
-    EPISTEMIC
-ETHICAL
-    ETHICAL
-ETHICS
-    ETHICS
-EXAMINES
-    EXAMINES
-EXERCISE
-    EXERCISE
-FLOW
-    FLOW
-FOCUSES
-    FOCUSES
-GEOGRAPHY
-    GEOGRAPHY
-GLOBALIZATION
-    GLOBALIZATION
-HISTORY
-    HISTORY
-HUMAN
-    HUMAN
-HUMANITIES
-    HUMANITIES
-ICTS
-    ICTS
-IMPERSONAL
-    IMPERSONAL
-INFORMATION_AND_COMMUNICATION_TECHNOLOGIES
-    INFORMATION_AND_COMMUNICATION_TECHNOLOGIES
-INTERESTS
-    INTERESTS
-KNOW
-    KNOW
-LAY
-    LAY
-LESS
-    LESS
-LITTLE
-    LITTLE
-LOST
-    LOST
-MACHINES
-    MACHINES
-MARK
-    MARK
-MATERIAL
-    MATERIAL
-MEDIATED
-    MEDIATED
-MERELY
-    MERELY
-METAPHYSICS
-    METAPHYSICS
-MORAL
-    MORAL
-MORALLY
-    MORALLY
-OBJECTIFYING
-    OBJECTIFYING
-PHILOSOPHERS
-    PHILOSOPHERS
-PLACEBOUND
-    PLACEBOUND
-PLACELESS
-    PLACELESS
-REFLECTS
-    REFLECTS
-RELATIONS
-    RELATIONS
-REMAIN
-    REMAIN
-REMAINS
-    REMAINS
-RENDER
-    RENDER
-REORIENTED
-    REORIENTED
-RESISTED
-    RESISTED
-RESPONSIBILITY
-    RESPONSIBILITY
-RESPONSIBLE
-    RESPONSIBLE
-ROLE_OF_TECHNOLOGY
-    ROLE_OF_TECHNOLOGY
-SCHOLARS
-    SCHOLARS
-SCIENCE
-    SCIENCE
-SCIENCE_AND_TECHNOLOGY
-    SCIENCE_AND_TECHNOLOGY
-SEEMS
-    SEEMS
-SOCIETAL
-    SOCIETAL
-SUFFICIENT
-    SUFFICIENT
-TECHNO
-    TECHNO
-TOO
-    TOO
-UNDERSTOOD
-    UNDERSTOOD
-VERY
-    VERY
-VIRTUAL
-    VIRTUAL
-VULNERABILITIES
-    VULNERABILITIES
-VULNERABLE
-    VULNERABLE
-ADVENT
-    ADVENT
-ALIBABA
-    ALIBABA
-ANALYST
-    ANALYST
-AUTHORITATIVE
-    AUTHORITATIVE
-AVOIDANCE
-    AVOIDANCE
-AVOIDED
-    AVOIDED
-AWAY
-    AWAY
-BASE
-    BASE
-BASIS
-    BASIS
-BEGIN
-    BEGIN
-BEHAVE
-    BEHAVE
-BEST
-    BEST
-BONDS
-    BONDS
-BORROWING
-    BORROWING
-BRUTE
-    BRUTE
-BUILD
-    BUILD
-CATASTROPHIC
-    CATASTROPHIC
-CHALLENGING
-    CHALLENGING
-CLASS
-    CLASS
-CLIMATE
-    CLIMATE
-CLIMATES
-    CLIMATES
-COLLAPSE
-    COLLAPSE
-CONSEQUENCES
-    CONSEQUENCES
-CONSISTENTLY
-    CONSISTENTLY
-COUNCIL
-    COUNCIL
-CRISES
-    CRISES
-DEEP
-    DEEP
-DEPOSIT
-    DEPOSIT
-DETAIL
-    DETAIL
-DETECTED
-    DETECTED
-DETECTION
-    DETECTION
-DETERMINE
-    DETERMINE
-DISCOVER
-    DISCOVER
-DIVE
-    DIVE
-DRIVES
-    DRIVES
-EAST
-    EAST
-ECONOMICS
-    ECONOMICS
-ECONOMIC_GROWTH
-    ECONOMIC_GROWTH
-ECONOMIC_POLICY
-    ECONOMIC_POLICY
-EMPIRES
-    EMPIRES
-ESTATE
-    ESTATE
-EXAMPLES
-    EXAMPLES
-EXCESSES
-    EXCESSES
-EXCHANGE
-    EXCHANGE
-FAR
-    FAR
-FLAT
-    FLAT
-FOOTED
-    FOOTED
-FORCES
-    FORCES
-FOREIGN
-    FOREIGN
-FORMER
-    FORMER
-GIANTS
-    GIANTS
-GIVING
-    GIVING
-GROUNDWORK
-    GROUNDWORK
-HALF
-    HALF
-HICCUP
-    HICCUP
-IDEAL
-    IDEAL
-IMPETUS
-    IMPETUS
-INFORMED
-    INFORMED
-INSIDE
-    INSIDE
-INTEGRATES
-    INTEGRATES
-LASTING
-    LASTING
-LASTLY
-    LASTLY
-LEND
-    LEND
-LIKE
-    LIKE
-LOAN
-    LOAN
-LTD
-    LTD
-MECHANISMS
-    MECHANISMS
-MOVING
-    MOVING
-NEXT
-    NEXT
-OLD
-    OLD
-OPTIONS
-    OPTIONS
-OWN
-    OWN
-PAUL
-    PAUL
-PLACE
-    PLACE
-POLITICIANS
-    POLITICIANS
-POWERFUL
-    POWERFUL
-PRICE
-    PRICE
-PROFOUND
-    PROFOUND
-RATIOS
-    RATIOS
-REAL_ESTATE
-    REAL_ESTATE
-REAL_WORLD
-    REAL_WORLD
-REASONS
-    REASONS
-RICH
-    RICH
-RISES
-    RISES
-SAVE
-    SAVE
-SCENES
-    SCENES
-SCHULTE
-    SCHULTE
-SCRUTINY
-    SCRUTINY
-SECOND
-    SECOND
-SECURITIES
-    SECURITIES
-SILICON
-    SILICON
-SMALLEST
-    SMALLEST
-SOFTWARE
-    SOFTWARE
-SOUND
-    SOUND
-SPANNING
-    SPANNING
-STOCKS
-    STOCKS
-SUCCESSFUL
-    SUCCESSFUL
-TAKES
-    TAKES
-THEORY_AND_PRACTICE
-    THEORY_AND_PRACTICE
-TROUBLE
-    TROUBLE
-UNBUNDLING
-    UNBUNDLING
-UNDERLYING
-    UNDERLYING
-UNETHICAL
-    UNETHICAL
-VALLEY
-    VALLEY
-WHY
-    WHY
-BEIJING
-    BEIJING
-BUILDING_MAINTENANCE
-    BUILDING_MAINTENANCE
-Building maintenance
-    Building maintenance
-COMPREHENSIVE
-    COMPREHENSIVE
-CONCEPT
-    CONCEPT
-CONGESTION
-    CONGESTION
-CONSUMPTION
-    CONSUMPTION
-COSTS
-    COSTS
-ENERGY
-    ENERGY
-ENERGY_CONSUMPTION
-    ENERGY_CONSUMPTION
-Energy utilization
-    Energy utilization
-FRIENDLY
-    FRIENDLY
-GREEN
-    GREEN
-Green transport
-    Green transport
-Green transports
-    Green transports
-INTEGRATE
-    INTEGRATE
-ISLAND
-    ISLAND
-Implementation strategies
-    Implementation strategies
-MAINTENANCE
-    MAINTENANCE
-REDUCE
-    REDUCE
-SAVING
-    SAVING
-STREETS
-    STREETS
-SUPPORTED
-    SUPPORTED
-SWITZERLAND
-    SWITZERLAND
-Sustainable strategies
-    Sustainable strategies
-Sustainable strategy
-    Sustainable strategy
-TBD
-    TBD
-TRAFFIC
-    TRAFFIC
-TRANSPORT
-    TRANSPORT
-Traffic congestion
-    Traffic congestion
-Transportation
-    Transportation
-URBAN
-    URBAN
-URBAN_DESIGN
-    URBAN_DESIGN
-URBAN_TRANSPORT_SYSTEM
-    URBAN_TRANSPORT_SYSTEM
-Urban design
-    Urban design
-Urban planning
-    Urban planning
-Urban transport systems
-    Urban transport systems
-ARISING
-    ARISING
-ESSENCE
-    ESSENCE
-Financial instruments
-    Financial instruments
-GENERALIZED
-    GENERALIZED
-Innovative banking
-    Innovative banking
-Innovative financial technologies
-    Innovative financial technologies
-New financial products
-    New financial products
-New financial transactions
-    New financial transactions
-SIGNIFICANCE
-    SIGNIFICANCE
-ANALYTICS
-    ANALYTICS
-ANSWER
-    ANSWER
-CARBON
-    CARBON
-CHAPTERS
-    CHAPTERS
-CONCERNED
-    CONCERNED
-CONTINUE
-    CONTINUE
-DISCIPLINES
-    DISCIPLINES
-ENGINEERING
-    ENGINEERING
-LEGAL
-    LEGAL
-LOW
-    LOW
-LOW_CARBON
-    LOW_CARBON
-PROFESSIONALS
-    PROFESSIONALS
-RESOURCE
-    RESOURCE
-SCIENCE_AND_ENGINEERING
-    SCIENCE_AND_ENGINEERING
-SUPPLY_CHAIN
-    SUPPLY_CHAIN
-SUSTAINABILITY
-    SUSTAINABILITY
-SUSTAINABLE_ECONOMIC_DEVELOPMENT
-    SUSTAINABLE_ECONOMIC_DEVELOPMENT
-TECHNIQUES_AND_TOOLS
-    TECHNIQUES_AND_TOOLS
-TOOLS
-    TOOLS
-TREND
-    TREND
-URGENT
-    URGENT
-USEFUL
-    USEFUL
-VARIOUS
-    VARIOUS
-WARRANTS
-    WARRANTS
-AGENCY
-    AGENCY
-ANALYSED
-    ANALYSED
-ASSOCIATIONS
-    ASSOCIATIONS
-BOND
-    BOND
-CBOS
-    CBOS
-CLOS
-    CLOS
-COLLATERALIZED
-    COLLATERALIZED
-CONFIRMED
-    CONFIRMED
-CONSIDERING
-    CONSIDERING
-DEPENDING
-    DEPENDING
-DIFFERENCE
-    DIFFERENCE
-DISCRETION
-    DISCRETION
-ENHANCEMENT
-    ENHANCEMENT
-ENTERPRISES
-    ENTERPRISES
-FACT
-    FACT
-FAVOUR
-    FAVOUR
-FAVOURABLY
-    FAVOURABLY
-FIXED
-    FIXED
-FSA
-    FSA
-INCREASED
-    INCREASED
-INSTITUTION
-    INSTITUTION
-INTRODUCE
-    INTRODUCE
-INTRODUCING
-    INTRODUCING
-JAPAN
-    JAPAN
-Japan
-    Japan
-KINDS
-    KINDS
-LARGER
-    LARGER
-MANDATORY
-    MANDATORY
-MEDIUM
-    MEDIUM
-OBLIGATIONS
-    OBLIGATIONS
-POSITIVELY
-    POSITIVELY
-PROGRAM
-    PROGRAM
-RECOMMENDED
-    RECOMMENDED
-REGIONAL
-    REGIONAL
-RESTRICTIONS
-    RESTRICTIONS
-RESULTED
-    RESULTED
-SHARES
-    SHARES
-SITUATION
-    SITUATION
-SMALL
-    SMALL
-TEND
-    TEND
-credit provision
-    credit provision
+financial institutions
+    financial institutions
+financial instruments
+    financial instruments
+financial regulation
+    financial regulation
+financial scenarization
+    financial scenarization
+financial sectors
+    financial sectors
+financial service
+    financial service
+financial service providers
+    financial service providers
 financial services
     financial services
+financial system
+    financial system
+financial systems
+    financial systems
+financial technologies
+    financial technologies
+financial technology
+    financial technology
+financial tools
+    financial tools
+finanztechnologien
+    finanztechnologien
+findings
+    findings
+fingerprints
+    fingerprints
+finlife
+    finlife
+fintech
+    fintech
+fintech industry
+    fintech industry
+fintechs
+    fintechs
+firm
+    firm
+firms
+    firms
+fits
+    fits
+fixed
+    fixed
+flat
+    flat
+flexibility
+    flexibility
+flourish
+    flourish
+flow
+    flow
+focus
+    focus
+focuses
+    focuses
+focusing
+    focusing
+fold
+    fold
+follows
+    follows
+footed
+    footed
+force
+    force
+forces
+    forces
+foreign
+    foreign
+foreseen
+    foreseen
+form
+    form
+fostering
+    fostering
+founded
+    founded
+frame
+    frame
+framework
+    framework
+franchise
+    franchise
+fraud
+    fraud
+freedom
+    freedom
+fresh
+    fresh
+friendly
+    friendly
+front-end
+    front-end
+fruitful
+    fruitful
+fsa
+    fsa
+ft
+    ft
+functionality
+    functionality
+functions
+    functions
+future
+    future
+futurist
+    futurist
+gain
+    gain
+gap
+    gap
+general
+    general
+generalized
+    generalized
+generated
+    generated
+geography
+    geography
+getting
+    getting
+giants
+    giants
+gives
+    gives
+giving
+    giving
+global
+    global
+global economies
+    global economies
+global financial crisis
+    global financial crisis
+globalization
+    globalization
+globally
+    globally
+globe
+    globe
+goals
+    goals
+goes
+    goes
+got
+    got
+governing
+    governing
+government
+    government
+gradual
+    gradual
+grasp
+    grasp
+green
+    green
+green transport
+    green transport
+green transports
+    green transports
+ground
+    ground
+grounded
+    grounded
+groundwork
+    groundwork
+group
+    group
+growing
+    growing
+grown
+    grown
+growth
+    growth
+guidance
+    guidance
+guide
+    guide
+hacked
+    hacked
+hacker
+    hacker
+hackers
+    hackers
+hand
+    hand
+handbook
+    handbook
+hastened
+    hastened
+hearts
+    hearts
+help
+    help
+helps
+    helps
+heralding
+    heralding
+heterogeneous
+    heterogeneous
+hiccup
+    hiccup
+hiding
+    hiding
+higher
+    higher
+highlighting
+    highlighting
+highlights
+    highlights
+highly
+    highly
+historical
+    historical
+historical development
+    historical development
+history
+    history
+hitachi
+    hitachi
+homing
+    homing
+horizontal
+    horizontal
+houses
+    houses
+human
+    human
+human computer interaction
+    human computer interaction
+humanities
+    humanities
+hundreds
+    hundreds
+icts
+    icts
+id
+    id
+idea
+    idea
+ideal
+    ideal
+identifiable
+    identifiable
+identified
+    identified
+identify
+    identify
+identifying
+    identifying
+identity
+    identity
+illegally
+    illegally
+immense
+    immense
+impact
+    impact
+impacts
+    impacts
+impersonal
+    impersonal
+impetus
+    impetus
+implementation
+    implementation
+implementation strategies
+    implementation strategies
+implementing
+    implementing
+implications
+    implications
+implicitly
+    implicitly
+importance
+    importance
+improve
+    improve
+include
+    include
+included
+    included
+inclusion
+    inclusion
+inclusive
+    inclusive
+inclusivity
+    inclusivity
+increase
+    increase
+increased
+    increased
+increasing
+    increasing
+increasingly
+    increasingly
+incubating
+    incubating
+incumbent
+    incumbent
+independent
+    independent
+india
+    india
+individuals
+    individuals
+induce
+    induce
+inducing
+    inducing
+industries
+    industries
+industry
+    industry
+industry development
+    industry development
+industry experts
+    industry experts
+inefficiencies
+    inefficiencies
+inefficiency
+    inefficiency
+influence
+    influence
+influenced
+    influenced
+influential
+    influential
+inform
+    inform
+informal
+    informal
+information
+    information
+information and communication technologies
+    information and communication technologies
+information and communications technology
+    information and communications technology
+information security system
+    information security system
+information systems
+    information systems
+information technology
+    information technology
+informative
+    informative
+informed
+    informed
+initial
+    initial
+innovated
+    innovated
+innovation
+    innovation
+innovation and technology
+    innovation and technology
+innovations
+    innovations
+innovative
+    innovative
+innovative banking
+    innovative banking
+innovative financial technologies
+    innovative financial technologies
+innovators
+    innovators
+insecure
+    insecure
+inside
+    inside
+insider
+    insider
+insight
+    insight
+insights
+    insights
+institution
+    institution
+institutional
+    institutional
 institutional framework
     institutional framework
+institutionalization
+    institutionalization
+institutions
+    institutions
+insurance
+    insurance
+integral
+    integral
+integrate
+    integrate
+integrated
+    integrated
+integrates
+    integrates
+integration
+    integration
+intelligent
+    intelligent
+intention
+    intention
+intention to use
+    intention to use
+interaction
+    interaction
+interdisciplinarity
+    interdisciplinarity
+interdiskiplinary
+    interdiskiplinary
+interested
+    interested
+interesting
+    interesting
+interests
+    interests
+interfere
+    interfere
+interfering
+    interfering
+internet
+    internet
+internet banking
+    internet banking
+internet-based service
+    internet-based service
+internet-based services
+    internet-based services
+interoperability
+    interoperability
+interview
+    interview
+interviews
+    interviews
+introduce
+    introduce
+introducing
+    introducing
+introduction
+    introduction
+invaluable
+    invaluable
+invest
+    invest
+investigate
+    investigate
+investigates
+    investigates
+investigating
+    investigating
+investigation
+    investigation
+investing
+    investing
+investment
+    investment
+investment in fintech
+    investment in fintech
+investments
+    investments
+investor managers
+    investor managers
+investors
+    investors
+involved
+    involved
+iot
+    iot
+island
+    island
+issues
+    issues
+janos
+    janos
+japan
+    japan
+john
+    john
+joint
+    joint
+k pay
+    k pay
+kasasa
+    kasasa
+key
+    key
+kickstart
+    kickstart
+kinds
+    kinds
+know
+    know
+knowledge
+    knowledge
+known
+    known
+kpis
+    kpis
+laboratory
+    laboratory
+lack
+    lack
+landscape
+    landscape
+larger
+    larger
+lasting
+    lasting
+lastly
+    lastly
+latest
+    latest
+lay
+    lay
+lead
+    lead
+leaders
+    leaders
+leading
+    leading
+learn
+    learn
+learned
+    learned
+led
+    led
+left
+    left
+legal
+    legal
+lend
+    lend
+lenders
+    lenders
+lending
+    lending
 lending behavior
     lending behavior
+length
+    length
+lens
+    lens
+lessons
+    lessons
+levels
+    levels
+lies
+    lies
+life
+    life
+light
+    light
+likelihood
+    likelihood
+limited
+    limited
+line
+    line
+linked
+    linked
+literature
+    literature
+lived
+    lived
+loan
+    loan
+loans
+    loans
+local
+    local
+locations
+    locations
+logit
+    logit
+long
+    long
+long term development
+    long term development
+look
+    look
+looking
+    looking
+looks
+    looks
+losing
+    losing
+loss
+    loss
+lost
+    lost
+low
+    low
+low carbon
+    low carbon
+lower
+    lower
+lucrative
+    lucrative
+machine tools ( presses )
+    machine tools ( presses )
+machines
+    machines
+macrolevel
+    macrolevel
+main
+    main
+maintenance
+    maintenance
+major
+    major
+makers
+    makers
+making
+    making
+manage
+    manage
+management
+    management
+managers
+    managers
+managing
+    managing
+mandatory
+    mandatory
+mapping
+    mapping
+mark
+    mark
+market
+    market
+market development
+    market development
+market dynamics
+    market dynamics
+marketing
+    marketing
+markets
+    markets
+marriage
+    marriage
+massive
+    massive
+match
+    match
+material
+    material
+mckinsey
+    mckinsey
+meaning
+    meaning
+measures
+    measures
+mechanisms
+    mechanisms
+media
+    media
+mediated
+    mediated
+medium
+    medium
+meeting
+    meeting
+megabanks
+    megabanks
+members
+    members
+merchants
+    merchants
+mere
+    mere
+merely
+    merely
+metaphysics
+    metaphysics
+methodological
+    methodological
+methodological approach
+    methodological approach
+methods
+    methods
+micro
+    micro
+micro celebrity
+    micro celebrity
+middle
+    middle
+minds
+    minds
+minimum
+    minimum
+mobile
+    mobile
+mobile payment service
+    mobile payment service
+model
+    model
+modeling
+    modeling
+models
+    models
+moderating
+    moderating
+moderating effect
+    moderating effect
+modern
+    modern
+moment
+    moment
+monetary
+    monetary
+monetization
+    monetization
+monetizing
+    monetizing
+money
+    money
+money transfers
+    money transfers
+mono
+    mono
+moral
+    moral
+morally
+    morally
+motion
+    motion
+motivate
+    motivate
+motivates
+    motivates
+moving
+    moving
+multi
+    multi
+multi level analysis
+    multi level analysis
+multilevel analysis
+    multilevel analysis
+multiple
+    multiple
+myths
+    myths
+nancial
+    nancial
+national
+    national
+near
+    near
+needed
+    needed
+needs
+    needs
+network
+    network
+network security
+    network security
+networks
+    networks
+neue
+    neue
+new financial products
+    new financial products
+new financial transactions
+    new financial transactions
+newly
+    newly
+non
+    non
+nonfinancial
+    nonfinancial
+notable
+    notable
+notes
+    notes
+notions
+    notions
+novel
+    novel
+nowadays
+    nowadays
+numbers
+    numbers
+objectifying
+    objectifying
+objective
+    objective
+obligations
+    obligations
+observe
+    observe
+obstructing
+    obstructing
+occur
+    occur
+occurs
+    occurs
+offer
+    offer
+offers
+    offers
+officer
+    officer
+old
+    old
+omnichannel
+    omnichannel
+online
+    online
+opens
+    opens
+operate
+    operate
+operations
+    operations
+opetition
+    opetition
+opportunists
+    opportunists
+opportunities
+    opportunities
+opportunity
+    opportunity
+opt
+    opt
+options
+    options
+organization
+    organization
+organizational
+    organizational
+orientation
+    orientation
+oriented
+    oriented
+originated
+    originated
+originates
+    originates
+origins
+    origins
+outcome
+    outcome
+outlook
+    outlook
+output
+    output
+overview
+    overview
+owned
+    owned
+ownership
+    ownership
+p2p
+    p2p
+pace
+    pace
+paradigm
+    paradigm
+paradigm shifts
+    paradigm shifts
+parallel
+    parallel
+partial
+    partial
+participants
+    participants
+partnerships
+    partnerships
+parts
+    parts
+password
+    password
+passwords
+    passwords
+past
+    past
+path
+    path
+patterns
+    patterns
+paul
+    paul
+pay
+    pay
+payment
+    payment
+payments
+    payments
+peer
+    peer
+peer to peer lending
+    peer to peer lending
+peer to peerp2p
+    peer to peerp2p
+peerreviewed
+    peerreviewed
+people
+    people
+period
+    period
+person
+    person
+personal
+    personal
+personal computing
+    personal computing
+personal information
+    personal information
+personally
+    personally
+personally identifiable information
+    personally identifiable information
+perspective
+    perspective
+perspectives
+    perspectives
+petition
+    petition
+petty
+    petty
+phenomena
+    phenomena
+phenomenon
+    phenomenon
+philosophers
+    philosophers
+pioneering
+    pioneering
+pki
+    pki
+place
+    place
+placebound
+    placebound
+placed
+    placed
+placeless
+    placeless
+plan
+    plan
+planning
+    planning
+platform
+    platform
+platformecozystem
+    platformecozystem
+platforms
+    platforms
+play
+    play
+players
+    players
+playing
+    playing
+policies
+    policies
+policy
+    policy
+policy implications
+    policy implications
+policy makers
+    policy makers
+policymakers
+    policymakers
+political
+    political
+politicians
+    politicians
+pool
+    pool
+pools
+    pools
+popping
+    popping
+popular
+    popular
+popular press
+    popular press
+poses
+    poses
+position
+    position
+positively
+    positively
+possibility
+    possibility
+possible
+    possible
+potential
+    potential
+potential benefits
+    potential benefits
+potentially
+    potentially
+powerful
+    powerful
+practical
+    practical
+practice
+    practice
+practices
+    practices
+practitioners
+    practitioners
+pragmatism
+    pragmatism
+pre
+    pre
+precise
+    precise
+precursors
+    precursors
+predicting
+    predicting
+predictions
+    predictions
+prepare
+    prepare
+presentation
+    presentation
+presented
+    presented
+preserving
+    preserving
+preserving personal information
+    preserving personal information
+prevailing
+    prevailing
+previous
+    previous
+price
+    price
+primary
+    primary
+primary data
+    primary data
+privacy
+    privacy
+private
+    private
+problems
+    problems
+process
+    process
+process management
+    process management
+processes
+    processes
+processing
+    processing
+processing approach
+    processing approach
+produce
+    produce
+product
+    product
+products
+    products
+products and services
+    products and services
+professionals
+    professionals
+profound
+    profound
+program
+    program
+prominent
+    prominent
+promote
+    promote
+promoting
+    promoting
+promotion
+    promotion
+propensity
+    propensity
+proper
+    proper
+proposed
+    proposed
+protect
+    protect
+protecting
+    protecting
+proven
+    proven
+provider
+    provider
+providers
+    providers
+providing
+    providing
+public
+    public
+public key cryptography
+    public key cryptography
+public key infrastructure
+    public key infrastructure
+public key infrastructure ( pki )
+    public key infrastructure ( pki )
+public policy
+    public policy
+publicity
+    publicity
+purpose
+    purpose
+pushed
+    pushed
+putting
+    putting
+quality
+    quality
+quantitatively
+    quantitatively
+question
+    question
+questions
+    questions
+quintessence
+    quintessence
+radical
+    radical
+raise
+    raise
+range
+    range
+rapid
+    rapid
+rarely
+    rarely
+ratios
+    ratios
+reach
+    reach
+readers
+    readers
+ready
+    ready
+real
+    real
+real estate
+    real estate
+real world
+    real world
+realities
+    realities
+realize
+    realize
+reasons
+    reasons
+receiving
+    receiving
+recent
+    recent
+recently
+    recently
+recommendations
+    recommendations
+recommended
+    recommended
+reduce
+    reduce
+reduction
+    reduction
+references
+    references
+referencing
+    referencing
+reflect
+    reflect
+reflected
+    reflected
+reflects
+    reflects
+reform
+    reform
+refreshing
+    refreshing
+refusal
+    refusal
+regional
+    regional
+regions
+    regions
+register
+    register
+registered
+    registered
+registration
+    registration
+registration process
+    registration process
+regtech
+    regtech
+regulation
+    regulation
+regulation focus theory
+    regulation focus theory
+regulations
+    regulations
+regulations and policies
+    regulations and policies
+regulator
+    regulator
+regulators
+    regulators
+regulatory
+    regulatory
+regulatory technology
+    regulatory technology
+relate
+    relate
+related
+    related
+relations
+    relations
+relationship
+    relationship
+relationships
+    relationships
+relevance
+    relevance
+relevant
+    relevant
+reliance
+    reliance
+religious
+    religious
+remain
+    remain
+remained
+    remained
+remains
+    remains
+remember
+    remember
+remote
+    remote
+remote location
+    remote location
+render
+    render
+reoriented
+    reoriented
+report
+    report
+reports
+    reports
+represent
+    represent
+represents
+    represents
+require
+    require
+required
+    required
+requirement
+    requirement
+requirements
+    requirements
+research
+    research
+research and application
+    research and application
+researchers
+    researchers
+resisted
+    resisted
+resolves
+    resolves
+resource
+    resource
+responsibility
+    responsibility
+responsible
+    responsible
+responsiveness
+    responsiveness
+restraints
+    restraints
+restricted
+    restricted
+restrictions
+    restrictions
+resulted
+    resulted
+results
+    results
+retail
+    retail
+retail banking
+    retail banking
+retail payment
+    retail payment
+rethink
+    rethink
+reveals
+    reveals
+revenue
+    revenue
+reviewing
+    reviewing
+revolution
+    revolution
+rich
+    rich
+rise
+    rise
+rises
+    rises
+risk
+    risk
+risks
+    risks
+role
+    role
+role of technology
+    role of technology
+rules
+    rules
+rural
+    rural
+rural community
+    rural community
+russia
+    russia
+russian
+    russian
+safe
+    safe
+sample
+    sample
+save
+    save
+saved
+    saved
+saves
+    saves
+saving
+    saving
+savings
+    savings
+savvy
+    savvy
+saying
+    saying
+scale
+    scale
+scenes
+    scenes
+scholarly
+    scholarly
+scholars
+    scholars
+school
+    school
+schools
+    schools
+schulte
+    schulte
+schumpeter
+    schumpeter
+science
+    science
+science and engineering
+    science and engineering
+science and technology
+    science and technology
+sciences
+    sciences
+scientific
+    scientific
+scientific literature
+    scientific literature
+scientists
+    scientists
+scope
+    scope
+scrambling
+    scrambling
+scrutiny
+    scrutiny
+search
+    search
+search engines
+    search engines
+searching
+    searching
+second
+    second
+secret
+    secret
+sections
+    sections
+sector
+    sector
+secure
+    secure
+securely
+    securely
+securities
+    securities
+security
+    security
+security control
+    security control
+security controls
+    security controls
+security of data
+    security of data
+seek
+    seek
+seen
+    seen
+segregated
+    segregated
+selecting
+    selecting
+self
+    self
+semantic
+    semantic
+separates
+    separates
+series
+    series
+serve
+    serve
+service
+    service
+service providers
+    service providers
+services
+    services
+set
+    set
+shadow
+    shadow
+shape
+    shape
+share
+    share
+shares
+    shares
+shift
+    shift
+shortcomings
+    shortcomings
+showing
+    showing
+shown
+    shown
+shows
+    shows
+sided
+    sided
+sign
+    sign
+significance
+    significance
+silicon
+    silicon
+single
+    single
+single sign on
+    single sign on
+single sign-on
+    single sign-on
+site
+    site
+sites
+    sites
+situation
+    situation
+size
+    size
+skills
+    skills
+small
+    small
 small and medium-sized enterprise
     small and medium-sized enterprise
-ACHIEVED
-    ACHIEVED
-ARCHITECTURE
-    ARCHITECTURE
-ARGUED
-    ARGUED
-BROKERAGE
-    BROKERAGE
-COLLABORATED
-    COLLABORATED
-COORDINATED
-    COORDINATED
-DEPLOYMENT
-    DEPLOYMENT
-ENTRENCHMENT
-    ENTRENCHMENT
-ENTREPRENEURSHIP
-    ENTREPRENEURSHIP
-EVOLUTION
-    EVOLUTION
-EXPAND
-    EXPAND
-FIRM
-    FIRM
-FT
-    FT
-GOVERNING
-    GOVERNING
-GROUP
-    GROUP
-HASTENED
-    HASTENED
-HOUSES
-    HOUSES
-IMPLICITLY
-    IMPLICITLY
-INCUBATING
-    INCUBATING
-INDIA
-    INDIA
-INNOVATED
-    INNOVATED
-INSTITUTIONALIZATION
-    INSTITUTIONALIZATION
-LED
-    LED
-LIES
-    LIES
-LINKED
-    LINKED
-REGULATOR
-    REGULATOR
-RULES
-    RULES
-SPAWNING
-    SPAWNING
-SUBSIDIARIES
-    SUBSIDIARIES
-TEMPORAL
-    TEMPORAL
-TRADING
-    TRADING
-TRANSACTIONAL
-    TRANSACTIONAL
-AITP
-    AITP
-BEGINNING
-    BEGINNING
-Business entrepreneurs
-    Business entrepreneurs
-COMPUTING
-    COMPUTING
-CONCENTRATION
-    CONCENTRATION
-CURRICULA
-    CURRICULA
-Computer science
-    Computer science
-Computer science students
-    Computer science students
-Computing curricula
-    Computing curricula
-Critical area
-    Critical area
-Current models
-    Current models
-Curricula
-    Curricula
-DEMANDS
-    DEMANDS
-DENTS
-    DENTS
-DISCIPLINARY
-    DISCIPLINARY
-DOMAIN
-    DOMAIN
-EDSIG
-    EDSIG
-EDUCATION
-    EDUCATION
-EDUCATORS
-    EDUCATORS
-Education computing
-    Education computing
-Engineering education
-    Engineering education
-Entrepreneurship
-    Entrepreneurship
-Financial industry
-    Financial industry
-Interdisciplinarity
-    Interdisciplinarity
-MERE
-    MERE
-OPPORTUNISTS
-    OPPORTUNISTS
-SCHOOL
-    SCHOOL
-SCHOOLS
-    SCHOOLS
-SCIENTISTS
-    SCIENTISTS
-SKILLS
-    SKILLS
-SPECIAL_INTEREST_GROUP
-    SPECIAL_INTEREST_GROUP
-STU
-    STU
-Societies and institutions
-    Societies and institutions
-Students
-    Students
-Technolo-gy
-    Technolo-gy
-Technology entrepreneurship
-    Technology entrepreneurship
-Theory and practice
-    Theory and practice
+smallest
+    smallest
+smartphone
+    smartphone
+sme
+    sme
+social
+    social
+social empowerment
+    social empowerment
+social investing site
+    social investing site
+social networking ( online )
+    social networking ( online )
+social sciences computing
+    social sciences computing
+socially
+    socially
+societal
+    societal
+societies and institutions
+    societies and institutions
+society
+    society
+socioeconomic
+    socioeconomic
+software
+    software
+solutions
+    solutions
+solve
+    solve
+solving
+    solving
+sophisticated
+    sophisticated
+sound
+    sound
+source
+    source
+source of information
+    source of information
+sourced
+    sourced
+sources
+    sources
+space
+    space
+span
+    span
+spanning
+    spanning
+spawning
+    spawning
+spearhead
+    spearhead
+special
+    special
+special interest group
+    special interest group
+specific
+    specific
+speed
+    speed
+spheres
+    spheres
+spill
+    spill
+spurred
+    spurred
+sso
+    sso
+stability
+    stability
+stable
+    stable
+stalled
+    stalled
+standard
+    standard
+standardization
+    standardization
+standards
+    standards
+start
+    start
+start up service providers
+    start up service providers
+start ups
+    start ups
+started
+    started
+startups
+    startups
+state
+    state
+states
+    states
+statistical
+    statistical
+statistical analysis
+    statistical analysis
+stepping
+    stepping
+stock
+    stock
+stocks
+    stocks
+stone
+    stone
+strategic
+    strategic
+strategic planning
+    strategic planning
+strategies
+    strategies
+strategizing
+    strategizing
+strategy
+    strategy
+streamline
+    streamline
+streams
+    streams
+streets
+    streets
+strengthening
+    strengthening
+stricter
+    stricter
+stronger
+    stronger
+strongly
+    strongly
+structure
+    structure
+stu
+    stu
+students
+    students
+studied
+    studied
+studies
+    studies
+study
+    study
+subject
+    subject
+subjects
+    subjects
+submit
+    submit
+subsidiaries
+    subsidiaries
+success
+    success
+successful
+    successful
+succession
+    succession
+succinct
+    succinct
+sufficiently
+    sufficiently
+suggest
+    suggest
+suggested
+    suggested
+suggests
+    suggests
+supply
+    supply
+supply chain
+    supply chain
+support
+    support
+supported
+    supported
+surrounding
+    surrounding
+surveys
+    surveys
+survival
+    survival
+survive
+    survive
+susanne
+    susanne
+sustainability
+    sustainability
+sustainable
+    sustainable
+sustainable development
+    sustainable development
+sustainable economic development
+    sustainable economic development
+sustainable strategies
+    sustainable strategies
+sustainable strategy
+    sustainable strategy
+switch
+    switch
+switzerland
+    switzerland
+synthesize
+    synthesize
+systemic
+    systemic
+systems
+    systems
+tactics
+    tactics
+taiwan
+    taiwan
+taiwan bank industry
+    taiwan bank industry
+taiwan fintech industry
+    taiwan fintech industry
+takes
+    takes
+taking
+    taking
+taming
+    taming
+targets
+    targets
+task
+    task
+tbd
+    tbd
+team
+    team
+techniques
+    techniques
+techniques and tools
+    techniques and tools
+techno
+    techno
+technolo-gy
+    technolo-gy
+technological
+    technological
+technological progress
+    technological progress
+technologies
+    technologies
+technology
+    technology
+technology acceptance model
+    technology acceptance model
+technology companies
+    technology companies
+technology designs
+    technology designs
+technology development
+    technology development
+technology entrepreneurship
+    technology entrepreneurship
+technology revolution
+    technology revolution
+technology sectors
+    technology sectors
+technosocial
+    technosocial
+telecom
+    telecom
+telecommunications
+    telecommunications
+telephone
+    telephone
+temporal
+    temporal
+tend
+    tend
+tendencies
+    tendencies
+tenpay
+    tenpay
+term
+    term
+terminals
+    terminals
+terminology
+    terminology
+testing
+    testing
+theft
+    theft
+theoretical
+    theoretical
+theory
+    theory
+theory and practice
+    theory and practice
+thinking
+    thinking
+thought
+    thought
+thought leaders
+    thought leaders
+threat
+    threat
+threaten
+    threaten
+threats
+    threats
+tightening
+    tightening
+time
+    time
+time series analysis
+    time series analysis
+time series modeling
+    time series modeling
+timely
+    timely
+timing
+    timing
+today
+    today
+tool
+    tool
+tools
+    tools
+touch
+    touch
+trading
+    trading
+traditional
+    traditional
+traditionally
+    traditionally
+traffic
+    traffic
+traffic congestion
+    traffic congestion
+transaction
+    transaction
+transactional
+    transactional
+transactions
+    transactions
+transfer
+    transfer
+transforming
+    transforming
+transparency
+    transparency
+transport
+    transport
+transportation
+    transportation
+trend
+    trend
+trends
+    trends
+trouble
+    trouble
+trust
+    trust
+turned
+    turned
+two sided market
+    two sided market
+type
+    type
+typically
+    typically
+ubiquitous
+    ubiquitous
+ubiquitous technology
+    ubiquitous technology
+ugc
+    ugc
+uk
+    uk
+uk p2p platforms
+    uk p2p platforms
+ultimately
+    ultimately
+unbundling
+    unbundling
+uncover
+    uncover
+underlying
+    underlying
+understand
+    understand
+understanding
+    understanding
+understood
+    understood
+undertaken
+    undertaken
+unequivocally
+    unequivocally
+unethical
+    unethical
+unexpected
+    unexpected
+unfolding
+    unfolding
+unions
+    unions
+unique
+    unique
+united
+    united
+united states
+    united states
+universal
+    universal
+university
+    university
+unlikely
+    unlikely
+unprecedented
+    unprecedented
+unregulated
+    unregulated
+unveil
+    unveil
+ups
+    ups
+urban
+    urban
+urban design
+    urban design
+urban planning
+    urban planning
+urban transport system
+    urban transport system
+urban transport systems
+    urban transport systems
+urgent
+    urgent
+usage
+    usage
+use and gratification
+    use and gratification
+use of technologies
+    use of technologies
+useful
+    useful
+usefulness
+    usefulness
+user
+    user
+user generated content
+    user generated content
+user interfaces
+    user interfaces
+user-generated content
+    user-generated content
+users
+    users
+uses
+    uses
+utilization
+    utilization
+utilize
+    utilize
+utilizing
+    utilizing
+valley
+    valley
+valuable
+    valuable
+value
+    value
+variables
+    variables
+variety
+    variety
+ventures
+    ventures
+verify
+    verify
+vertical
+    vertical
+vertically
+    vertically
+view
+    view
+virtual
+    virtual
+virtual addresses
+    virtual addresses
+visible
+    visible
+visionaries
+    visionaries
+visualizations
+    visualizations
+volume
+    volume
+voluntarily
+    voluntarily
+vsi
+    vsi
+vulnerabilities
+    vulnerabilities
+vulnerable
+    vulnerable
+wants
+    wants
+warrants
+    warrants
+waupsh
+    waupsh
+way
+    way
+ways
+    ways
+wearable
+    wearable
+website
+    website
+websites
+    websites
+went
+    went
+wholly
+    wholly
+wide
+    wide
+wider
+    wider
+widespread
+    widespread
+willingness
+    willingness
+willingness to pay
+    willingness to pay
+winning
+    winning
+withdrawal
+    withdrawal
+word
+    word
+work
+    work
+working
+    working
+works
+    works
+world
+    world
+worldwide
+    worldwide
+worth
+    worth
+written
+    written
+year
+    year
+years
+    years

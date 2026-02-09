@@ -8,15 +8,16 @@ from techminer2.io._internals.operations import copy_column, merge_columns
 def _create_thesaurus(root_directory: str) -> None:
 
     dataframe = load_main_data(
-        root_directory=root_directory, usecols=[CorpusField.ALL_KEY_NP_WORD_NORM.value]
+        root_directory=root_directory, usecols=[CorpusField.KEY_NP_AND_WORD_NORM.value]
     )
     dataframe = dataframe.dropna()
-    series = dataframe[CorpusField.ALL_KEY_NP_WORD_NORM.value]
+    series = dataframe[CorpusField.KEY_NP_AND_WORD_NORM.value]
     series = series.str.split("; ")
     series = series.explode()
     series = series.str.strip()
     series = series.drop_duplicates()
     terms = series.to_list()
+    terms = sorted(terms)
 
     filepath = Path(root_directory) / "data" / "thesaurus" / "terms.the.txt"
 
@@ -30,17 +31,17 @@ def merge_keywords_phrases_words(root_directory: str) -> int:
 
     result = merge_columns(
         sources=[
-            CorpusField.ALL_KEY_RAW,
-            CorpusField.ALL_NP_RAW,
-            CorpusField.ALL_WORD_RAW,
+            CorpusField.KEY_TOK,
+            CorpusField.NP_TOK,
+            CorpusField.WORD_TOK,
         ],
-        target=CorpusField.ALL_KEY_NP_WORD_RAW,
+        target=CorpusField.KEY_NP_AND_WORD_TOK,
         root_directory=root_directory,
     )
 
     copy_column(
-        source=CorpusField.ALL_KEY_NP_WORD_RAW,
-        target=CorpusField.ALL_KEY_NP_WORD_NORM,
+        source=CorpusField.KEY_NP_AND_WORD_TOK,
+        target=CorpusField.KEY_NP_AND_WORD_NORM,
         root_directory=root_directory,
     )
 

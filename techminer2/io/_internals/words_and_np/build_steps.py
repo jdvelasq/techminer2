@@ -10,8 +10,8 @@ def build_words_and_np_steps(params: Params) -> list[Step]:
     from .extract_abstract_acronyms import extract_abstract_acronyms
     from .extract_abstract_phrases import extract_abstract_phrases
     from .extract_abstract_words import extract_abstract_words
-    from .extract_text_phrases_spacy import extract_text_phrases_spacy
-    from .extract_text_phrases_textblob import extract_text_phrases_textblob
+    from .extract_spacy_phrases import extract_spacy_phrases
+    from .extract_textblob_phrases import extract_textblob_phrases
     from .extract_title_phrases import extract_title_phrases
     from .extract_title_words import extract_title_words
     from .merge_keywords_phrases import merge_keywords_phrases
@@ -31,7 +31,7 @@ def build_words_and_np_steps(params: Params) -> list[Step]:
 
     return [
         Step(
-            name="Tokenizing abstracts",
+            name="Tokenizing raw abstracts",
             function=tokenize_raw_abstract,
             kwargs=common_kwargs,
             count_message="{count} records processed",
@@ -44,13 +44,13 @@ def build_words_and_np_steps(params: Params) -> list[Step]:
         ),
         Step(
             name="Extracting TextBlob NP",
-            function=extract_text_phrases_textblob,
+            function=extract_textblob_phrases,
             kwargs=common_kwargs,
             count_message="{count} records processed",
         ),
         Step(
             name="Extracting spaCy NP",
-            function=extract_text_phrases_spacy,
+            function=extract_spacy_phrases,
             kwargs=common_kwargs,
             count_message="{count} records processed",
         ),

@@ -14,38 +14,38 @@ Smoke test:
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     .where_records_match(None)
-    ...     .where_records_ordered_by(RecordsOrderBy.DATE_NEWEST)
+    ...     .where_records_ordered_by(RecordsOrderBy.PUBYEAR_NEWEST)
     ...     .run()
     ... )
     >>> assert isinstance(docs, list)
     >>> assert len(docs) > 0
     >>> assert all(isinstance(d, str) for d in docs)
-    >>> print(docs[0])  # doctest: +SKIP
-    UT 13
+    >>> print(docs[0])
+    UT 17
     AR Schueffel, 2016, J INNOV MANAG, V4, P32
     TI Taming the beast: A scientific definition of fintech
     AU Schueffel P.
-    TC 389
+    TC 394
     SO J. Innov.  Manag.
     PY 2016
-    AB there is currently NO_CONSENSUS about what THE_TERM_FINTECH means . this
-       paper explores THE_COMPLEXITY of FINTECH , and attempts A_DEFINITION , drawn
-       from A_PROCESS of reviewing more than 200 scholarly articles referencing
-       THE_TERM_FINTECH and covering A_PERIOD of more than 40 years .
-       the_objective_of_this study is to offer A_DEFINITION which is distinct
-       as_well_as succinct in ITS_COMMUNICATION , yet sufficiently broad in
-       ITS_RANGE of APPLICATION . as THE_ORIGINS of THE_TERM can neither be
-       unequivocally placed in ACADEMIA nor in PRACTICE , THE_DEFINITION
-       concentrates on extracting out THE_QUINTESSENCE of FINTECH using
-       BOTH_SPHERES . applying SEMANTIC_ANALYSIS and BUILDING on THE_COMMONALITIES
-       of 13 peerreviewed DEFINITIONS of THE_TERM , it is concluded that FINTECH is
-       A_NEW_FINANCIAL_INDUSTRY that APPLIES_TECHNOLOGY to improve
-       FINANCIAL_ACTIVITIES . THE_IMPLICATIONS as_well_as THE_SHORTCOMINGS of
-       THIS_DEFINITION are discussed . 2021 journal of innovation management . all
-       rights reserved .
+    AB there is currently no consensus about what the term fintech means . this
+       paper explores the complexity of fintech , and attempts a definition , drawn
+       from a process of reviewing more than 200 scholarly articles referencing the
+       term fintech and covering a period of more than 40 years .
+       the_objective_of_this study is to offer a definition which is distinct
+       as_well_as succinct in its communication , yet sufficiently broad in its
+       range of application . as the origins of the term can neither be
+       unequivocally placed in academia nor in practice , the definition
+       concentrates on extracting out the quintessence of fintech using both
+       spheres . applying semantic analysis and building on the commonalities of 13
+       peerreviewed definitions of the term , it is concluded that fintech is a new
+       financial industry that applies technology to improve financial activities .
+       the implications as_well_as the shortcomings of this definition are
+       diskussed . 2021 journal of innovation management . all rights reserved .
     DE Banking; Financial institution; Financial services; Innovation; Research;
        Technology; Terminology
     <BLANKLINE>
+
 
 
 """

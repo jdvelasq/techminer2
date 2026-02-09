@@ -14,7 +14,7 @@ from techminer2._internals.data_access import (
 
 _SELECTED_FIELDS = [
     CorpusField.REC_ID.value,
-    CorpusField.TITLE_RAW.value,
+    CorpusField.DOCTITLE_RAW.value,
     CorpusField.AUTH_RAW.value,
     CorpusField.PUBYEAR.value,
 ]
@@ -73,11 +73,11 @@ def _prepare_main_documents(root_directory: str) -> pd.DataFrame:
         .str.split(" ")
         .map(lambda x: x[0].lower().replace(",", ""))
     )
-    dataframe[CorpusField.TITLE_RAW.value] = dataframe[
-        CorpusField.TITLE_RAW.value
+    dataframe[CorpusField.DOCTITLE_RAW.value] = dataframe[
+        CorpusField.DOCTITLE_RAW.value
     ].str.lower()
-    dataframe[CorpusField.TITLE_RAW.value] = _clean_text(
-        dataframe[CorpusField.TITLE_RAW.value]
+    dataframe[CorpusField.DOCTITLE_RAW.value] = _clean_text(
+        dataframe[CorpusField.DOCTITLE_RAW.value]
     )
     dataframe[CorpusField.AUTH_RAW.value] = _clean_text(
         dataframe[CorpusField.AUTH_RAW.value]
@@ -114,7 +114,7 @@ def _create_mapping(
         range(main_documents.shape[0]),
         total=main_documents.shape[0],
         bar_format="  {percentage:3.2f}% {bar} | {n_fmt}/{total_fmt} [{rate_fmt}] |",
-        ascii=True,
+        ascii=" :",
         ncols=73,
     ):
         row = main_documents.iloc[i]
@@ -132,7 +132,7 @@ def _create_mapping(
 
         refs = refs.loc[
             refs.key.str.lower().str.contains(
-                re.escape(row[CorpusField.TITLE_RAW.value][:50].lower())
+                re.escape(row[CorpusField.DOCTITLE_RAW.value][:50].lower())
             ),
             :,
         ]

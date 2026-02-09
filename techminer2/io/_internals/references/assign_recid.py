@@ -16,12 +16,12 @@ def _get_author(dataframe):
 
 def _get_source_title(dataframe):
 
-    source_title = dataframe[CorpusField.SRC_TITLE_ABBR_NORM.value].copy()
+    source_title = dataframe[CorpusField.SRCTITLE_ABBR_NORM.value].copy()
     source_title_isna = source_title.map(pd.isna)
     source_title = pd.Series(
         np.where(
             source_title_isna,
-            dataframe[CorpusField.SRC_TITLE_NORM.value].str[:29],
+            dataframe[CorpusField.SRCTITLE_NORM.value].str[:29],
             source_title,
         )
     )
@@ -92,7 +92,7 @@ def assign_recid(root_directory: str) -> int:
 
         index = wos_ref[wos_ref.duplicated()].index
         if len(index) > 0:
-            wos_ref.loc[index] += ", " + dataframe[CorpusField.TITLE_RAW.value].loc[
+            wos_ref.loc[index] += ", " + dataframe[CorpusField.DOCTITLE_RAW.value].loc[
                 index
             ].str[:29].str.upper().str.replace(".", "").str.replace(
                 " - ", " "

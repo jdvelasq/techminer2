@@ -1,6 +1,7 @@
 import pandas as pd  # type: ignore
 
 from techminer2 import CorpusField
+from techminer2._constants import STOPWORDS
 
 from ._file_dispatch import get_file_operations
 from .data_file import DataFile
@@ -9,7 +10,11 @@ from .data_file import DataFile
 def _extract_uppercase_words_and_np(text):
     if pd.isna(text):
         return pd.NA
-    words = [word for word in str(text).split() if word.isupper()]
+    words = [
+        word.lower().replace("_", " ")
+        for word in str(text).split()
+        if word.isupper() and word.lower() not in STOPWORDS
+    ]
     return "; ".join(words) if words else pd.NA
 
 

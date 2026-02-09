@@ -14,14 +14,14 @@ Smoke test:
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     .where_records_match(None)
-    ...     .where_records_ordered_by(RecordsOrderBy.DATE_NEWEST)
+    ...     .where_records_ordered_by(RecordsOrderBy.PUBYEAR_NEWEST)
     ...     #
     ...     .run()
     ... )
     >>> assert isinstance(sentences, list)
     >>> assert len(sentences) > 0
     >>> assert all(isinstance(s, str) for s in sentences)
-    >>> for t in sentences[:10]: print(t)  # doctest: +SKIP
+    >>> for t in sentences[:10]: print(t)
     this paper explores THE_COMPLEXITY of FINTECH , and attempts A_DEFINITION , drawn from A_PROCESS of reviewing more than 200 scholarly articles referencing THE_TERM_FINTECH and covering A_PERIOD of more than 40 years .
     as THE_ORIGINS of THE_TERM can neither be unequivocally placed in ACADEMIA nor in PRACTICE , THE_DEFINITION concentrates on extracting out THE_QUINTESSENCE of FINTECH using BOTH_SPHERES .
     applying SEMANTIC_ANALYSIS and BUILDING on THE_COMMONALITIES of 13 peerreviewed DEFINITIONS of THE_TERM , it is concluded that FINTECH is A_NEW_FINANCIAL_INDUSTRY that APPLIES_TECHNOLOGY to improve FINANCIAL_ACTIVITIES .
@@ -61,7 +61,7 @@ class ConcordanceSentences(
             pd.Index(
                 dataframe[CorpusField.REC_ID.value]
                 + " / "
-                + dataframe[CorpusField.TITLE_RAW.value]
+                + dataframe[CorpusField.DOCTITLE_RAW.value]
             )
         )
 
@@ -70,12 +70,12 @@ class ConcordanceSentences(
     ) -> pd.Series:
 
         found = (
-            dataframe[CorpusField.ABS_UPPER_NP.value]
+            dataframe[CorpusField.ABS_TOK_WITH_UPPER_NP.value]
             .astype(str)
             .str.contains(search_for, regex=True, flags=re.IGNORECASE)
         )
         dataframe = dataframe[found]
-        abstracts = dataframe[CorpusField.ABS_UPPER_NP.value]
+        abstracts = dataframe[CorpusField.ABS_TOK_WITH_UPPER_NP.value]
         return abstracts
 
     def _transform_abstracts_to_sentences(

@@ -1,12 +1,12 @@
 from techminer2 import CorpusField
 
-from .helpers import normalize_keywords_helper
+from ..operations import copy_column
 
 
 def normalize_auth_key_raw(root_directory: str) -> int:
 
-    return normalize_keywords_helper(
-        source=CorpusField.AUTH_KEY_RAW,
+    return copy_column(
+        source=CorpusField.AUTH_KEY_TOK,
         target=CorpusField.AUTH_KEY_NORM,
         root_directory=root_directory,
     )

@@ -53,10 +53,11 @@
     "**/*.html": true,
     "docs//**": true
   },
-
   "todo-tree.ripgrep.ripgrepArgs": [
     "--glob=!**/*.html",
     "--glob=!**/docs/_generated/**"
 ],
-"python.languageServer": "None",
+"python.languageServer": "Pylance",
+"python.analysis.typeCheckingMode": "basic",
+"python.analysis.diagnosticMode": "workspace"
 }

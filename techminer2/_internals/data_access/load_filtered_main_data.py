@@ -237,7 +237,7 @@ def _sort_dataframe_by(params: Params, dataframe: pd.DataFrame) -> pd.DataFrame:
     elif sort_by == RecordsOrderBy.SRC_TITLE_A_TO_Z:
         dataframe = dataframe.sort_values(
             [
-                CorpusField.SRC_TITLE_NORM.value,
+                CorpusField.SRCTITLE_NORM.value,
                 CorpusField.CIT_COUNT_GLOBAL.value,
                 CorpusField.CIT_COUNT_LOCAL.value,
             ],
@@ -247,7 +247,7 @@ def _sort_dataframe_by(params: Params, dataframe: pd.DataFrame) -> pd.DataFrame:
     elif sort_by == RecordsOrderBy.SRE_TITLE_Z_TO_A:
         dataframe = dataframe.sort_values(
             [
-                CorpusField.SRC_TITLE_NORM.value,
+                CorpusField.SRCTITLE_NORM.value,
                 CorpusField.CIT_COUNT_GLOBAL.value,
                 CorpusField.CIT_COUNT_LOCAL.value,
             ],

@@ -27,8 +27,8 @@ def merge_columns(
         all_items = items if all_items is None else all_items + items
 
     assert all_items is not None
-    all_items = all_items.map(lambda x: [item for item in x if item and item != "nan"])
-    all_items = all_items.map(lambda x: sorted(set(x)) if x else [])
+    all_items = all_items.apply(lambda x: [item for item in x if item and item != "nan"] if isinstance(x, list) else [])
+    all_items = all_items.apply(lambda x: sorted(set(x)) if x else [])
 
     dataframe[target.value] = all_items.map(lambda x: "; ".join(x) if x else pd.NA)
 

@@ -75,7 +75,7 @@ def _get_compiled_patterns() -> list[tuple[str, re.Pattern]]:
 
 def repair_abstract_headings(text: str) -> str:
     if pd.isna(text):
-        return text
+        return ""
     text = str(text)
     for term in (
         COMPOUND_STRUCTURED_ABSTRACT_HEADINGS + SINGLE_STRUCTURED_ABSTRACT_HEADINGS

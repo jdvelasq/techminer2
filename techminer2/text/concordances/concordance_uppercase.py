@@ -16,24 +16,24 @@ Smoke test:
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     .where_records_match(None)
-    ...     .where_records_ordered_by(RecordsOrderBy.DATE_NEWEST)
+    ...     .where_records_ordered_by(RecordsOrderBy.PUBYEAR_NEWEST)
     ...     #
     ...     .run()
     ... )
     >>> assert isinstance(contexts, list)
     >>> assert len(contexts) > 0
     >>> assert all(isinstance(c, str) for c in contexts)
-    >>> for t in contexts[:10]: print(t)  # doctest: +SKIP
-                           this paper explores THE_COMPLEXITY of FINTECH , and attempts A_DEFINITION , drawn from A_PROCESS of rev…
-      …NITION concentrates on extracting out THE_QUINTESSENCE of FINTECH using BOTH_SPHERES
-      …erreviewed DEFINITIONS of THE_TERM , it is concluded that FINTECH is A_NEW_FINANCIAL_INDUSTRY that APPLIES_TECHNOLOGY to im…
-      …nts A_STEPPING_STONE in exploring THE_INTERACTION between FINTECH and its yet unfolding SOCIAL_AND_POLITICAL_CONTEXT
-      …N in THE_PAST_FEW_YEARS reflected by THE_EMERGENCE of ' ' FINTECH , ' ' which represents THE_MARRIAGE of ' ' FINANCE ' ' an…
-                                                             ' ' FINTECH provides OPPORTUNITIES for THE_CREATION of NEW_SERVICES a…
-                                                     therefore , FINTECH has become A_SUBJECT of DEBATE among PRACTITIONERS , INVE…
-       …press including THE_SUBJECTS discussed in the context of FINTECH
-                in doing so , we extend THE_GROWING_KNOWLEDGE on FINTECH and contribute to A_COMMON_UNDERSTANDING in THE_FINANCIAL…
-                                    ) , who explore THE_FIELD of FINTECH
+    >>> for t in contexts[:10]: print(t)
+             there is currently no consensus about what the term FINTECH means
+      …ing more than 200 scholarly articles referencing the term FINTECH and covering a period of more than 40 years
+      …nition concentrates on extracting out the quintessence of FINTECH using both spheres
+      …erreviewed definitions of the term , it is concluded that FINTECH is a new financial industry that applies technology to im…
+      …istorical development of china ' s FINANCIAL_TECHNOLOGY ( FINTECH ) industry
+      …nts a stepping stone in exploring the interaction between FINTECH and its yet unfolding social and political context
+             it also diskusses POLICY_IMPLICATIONS for china ' s FINTECH industry , focusing_on the changing role of the state in…
+      …n in the past few years reflected by the emergence of ' ' FINTECH , ' ' which represents the marriage of ' ' finance ' ' an…
+                                                             ' ' FINTECH provides opportunities for the creation of new services a…
+                                                     therefore , FINTECH has become a subject of debate among practitioners , inve…
 
 
 """
@@ -56,6 +56,6 @@ class ConcordanceUppercase(
         return (
             ConcordanceUser()
             .update(**self.params.__dict__)
-            .with_field(CorpusField.ABS_UPPER_NP)
+            .with_field(CorpusField.ABS_TOK_WITH_UPPER_NP)
             .run()
         )

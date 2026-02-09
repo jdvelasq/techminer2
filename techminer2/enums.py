@@ -22,22 +22,13 @@ class CorpusField(Enum):
     #
     ABS_RAW = "abs_raw"
     ABS_TOK = "abs_tok"
-    ABS_UPPER_NP = "abs_upper_np"
-    ABS_UPPER_WORD = "abs_upper_word"
+    ABS_TOK_WITH_UPPER_NP = "abs_tok_with_upper_np"
+    ABS_TOK_WITH_UPPER_WORD = "abs_upper_word"
+    ABS_NP_NORM = "np_abs_norm"
+    ABS_NP_TOK = "np_abs_raw"
+    ABS_WORD_TOK = "word_abs_raw"
     ACRONYM = "acronym"
     AFFIL_RAW = "affil_raw"
-    ALL_KEY_NORM = "all_key_norm"
-    ALL_KEY_NP_NORM = "all_key_np_norm"
-    ALL_KEY_NP_RAW = "all_key_np_raw"
-    ALL_KEY_NP_WORD_RAW = "all_key_np_word_raw"
-    ALL_KEY_NP_WORD_NORM = "all_key_np_word_norm"
-    ALL_KEY_RAW = "all_key_raw"
-    ALL_KEY_WORD_NORM = "all_key_word_norm"
-    ALL_KEY_WORD_RAW = "all_key_word_raw"
-    ALL_NP_NORM = "all_np_norm"
-    ALL_NP_RAW = "all_np_raw"
-    ALL_WORD_NORM = "all_word_norm"
-    ALL_WORD_RAW = "all_word_raw"
     ART_NO = "art_no"
     AUTH_AFFIL = "auth_affil"
     AUTH_DISAMB = "auth_disamb"
@@ -46,6 +37,7 @@ class CorpusField(Enum):
     AUTH_ID_RAW = "auth_id_raw"
     AUTH_KEY_NORM = "auth_key_norm"
     AUTH_KEY_RAW = "auth_key_raw"
+    AUTH_KEY_TOK = "auth_key_tok"
     AUTH_NORM = "auth_norm"
     AUTH_RAW = "auth_raw"
 
@@ -58,7 +50,7 @@ class CorpusField(Enum):
     CODEN = "coden"
     CONF_CODE = "conf_code"
     CONF_DATE = "conf_date"
-    CONF_LOC = "conf_location"
+    CONF_LOC = "conf_loc"
     CONF_NAME = "conf_name"
     CORRESP = "corresp"
     COUNTRY = "country"
@@ -66,8 +58,13 @@ class CorpusField(Enum):
     #
     # D
     #
-    DOC_TYPE_NORM = "doc_type_norm"
-    DOC_TYPE_RAW = "doc_type_raw"
+    DOCTYPE_NORM = "doctype_norm"
+    DOCTYPE_RAW = "doc_type_raw"
+    DOCTITLE_RAW = "doctitle_raw"
+    DOCTITLE_TOK = "doctitle_tok"
+    DOCTITLE_TOK_WITH_UPPER_NP = "doctitle_tok_with_upper_np"
+    DOCTITLE_TOK_WITH_UPPER_WORD = "doctitle_tok_with_upper_word"
+
     DOI = "doi"
 
     #
@@ -92,6 +89,7 @@ class CorpusField(Enum):
     #
     IDX_KEY_NORM = "idx_key_norm"
     IDX_KEY_RAW = "idx_key_raw"
+    IDX_KEY_TOK = "idx_key_tok"
     ISBN = "isbn"
     ISSN = "issn"
     ISSNP = "issnp"
@@ -100,6 +98,14 @@ class CorpusField(Enum):
     #
     # K
     #
+    KEY_NORM = "all_key_norm"
+    KEY_AND_NP_NORM = "all_key_np_norm"
+    KEY_AND_NP_TOK = "all_key_np_tok"
+    KEY_NP_AND_WORD_TOK = "all_key_np_word_tok"
+    KEY_NP_AND_WORD_NORM = "all_key_np_word_norm"
+    KEY_TOK = "all_key_tok"
+    KEY_AND_WORD_NORM = "all_key_word_norm"
+    KEY_AND_WORD_TOK = "all_key_word_tok"
 
     #
     # L
@@ -115,12 +121,10 @@ class CorpusField(Enum):
     #
     # N
     #
-    NP_ABS_NORM = "np_abs_norm"
-    NP_ABS_RAW = "np_abs_raw"
+    NP_NORM = "all_np_norm"
     NP_SPACY = "np_spacy"
     NP_TEXTBLOB = "np_textblob"
-    NP_TITLE_NORM = "np_title_norm"
-    NP_TITLE_RAW = "np_title_raw"
+    NP_TOK = "all_np_tok"
     NUM_AUTH = "num_auths"
     NUM_REF_GLOBAL = "num_ref_global"
     NUM_REF_LOCAL = "num_ref_local"
@@ -139,7 +143,7 @@ class CorpusField(Enum):
     PAGE_COUNT = "page_count"
     PUBLISHER = "publisher"
     PUBMED = "pubmed"
-    PUB_STAGE = "pub_stage"
+    PUBSTAGE = "pub_stage"
     PUBYEAR = "pubyear"
 
     #
@@ -149,29 +153,27 @@ class CorpusField(Enum):
     REC_NO = "rec_no"
     REF_NORM = "ref_norm"
     REF_RAW = "ref_raw"
-    REGION = "region"
+    REGION = "REGION"
 
     #
     # S
     #
-    SEQ_NUM = "sequence_nums"
+    SEQNUMUMBER = "sequence_nums"
     SOURCE = "source"
-    SRC_TITLE_ABBR_NORM = "src_title_abbr_norm"
-    SRC_TITLE_ABBR_RAW = "src_title_abbr_raw"
-    SRC_TITLE_NORM = "src_title_norm"
-    SRC_TITLE_RAW = "src_title_raw"
-    SUBJ_AREA = "subj_areas"
+    SRCTITLE_ABBR_NORM = "src_title_abbr_norm"
+    SRCTITLE_ABBR_RAW = "src_title_abbr_raw"
+    SRCTITLE_NORM = "src_title_norm"
+    SRCTITLE_RAW = "src_title_raw"
+    SUBJAREA = "subj_areas"
     SUBREGION = "subregion"
 
     #
     # T
     #
-    TITLE_RAW = "title_raw"
-    TITLE_TOK = "title_tok"
-    TITLE_UPPER_NP = "title_upper_np"
-    TITLE_UPPER_WORD = "title_upper_word"
-    TRADENAME = "tradename"
-
+    TRADENAME = "TRADENAME"
+    DOCTITLE_NP_NORM = "DOCTITLE_NP_NORM"
+    DOCTITLE_NP_TOK = "DOCTITLE_NP_TOK"
+    DOCTITLE_WORD_TOK = "DOCTITLE_WORD_TOK"
     #
     # V
     #
@@ -180,8 +182,8 @@ class CorpusField(Enum):
     #
     # W
     #
-    WORD_ABS_RAW = "word_abs_raw"
-    WORD_TITLE_RAW = "word_title_raw"
+    WORD_NORM = "WORD_NORM"
+    WORD_TOK = "WORD_TOK"
 
 
 class ThesaurusField(Enum):

@@ -7,6 +7,7 @@ import pandas as pd  # type: ignore
 from nltk.tokenize import word_tokenize  # type: ignore
 
 from techminer2 import CorpusField
+from techminer2._constants import BRITISH_TO_AMERICAN
 
 from ._file_dispatch import get_file_operations
 from .data_file import DataFile
@@ -138,7 +139,7 @@ def _tokenize(text: pd.Series) -> pd.Series:
     text = text.str.replace(r"e-mail", r"email", regex=False)
 
     # Expand contractions (e.g., "don't" -> "do not")
-    text = text.map(contractions.fix, na_action="ignore")
+    text = text.apply(lambda x: contractions.fix(x) if isinstance(x, str) else x)
 
     # Standardize punctuation:
     # Replace curly apostrophes (’) and backticks (`) with straight apostrophes (') for consistency.
@@ -351,5 +352,8 @@ def _tokenize(text: pd.Series) -> pd.Series:
 
     for old, new in _NOUN_PHRASE_CORRECTIONS:
         text = text.str.replace(old, new, regex=False)
+
+    for british, american in BRITISH_TO_AMERICAN.items():
+        text = text.str.replace(british, american, regex=False)
 
     return text

@@ -6,16 +6,16 @@ def merge_keywords_words(root_directory: str) -> int:
 
     result = merge_columns(
         sources=[
-            CorpusField.ALL_KEY_RAW,
-            CorpusField.ALL_WORD_RAW,
+            CorpusField.KEY_TOK,
+            CorpusField.WORD_TOK,
         ],
-        target=CorpusField.ALL_KEY_WORD_RAW,
+        target=CorpusField.KEY_AND_WORD_TOK,
         root_directory=root_directory,
     )
 
     copy_column(
-        source=CorpusField.ALL_KEY_WORD_RAW,
-        target=CorpusField.ALL_KEY_WORD_NORM,
+        source=CorpusField.KEY_AND_WORD_TOK,
+        target=CorpusField.KEY_AND_WORD_NORM,
         root_directory=root_directory,
     )
 

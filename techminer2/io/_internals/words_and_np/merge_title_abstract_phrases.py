@@ -6,16 +6,16 @@ def merge_title_abstract_phrases(root_directory: str) -> int:
 
     result = merge_columns(
         sources=[
-            CorpusField.NP_ABS_RAW,
-            CorpusField.NP_TITLE_RAW,
+            CorpusField.ABS_NP_TOK,
+            CorpusField.DOCTITLE_NP_TOK,
         ],
-        target=CorpusField.ALL_NP_RAW,
+        target=CorpusField.NP_TOK,
         root_directory=root_directory,
     )
 
     copy_column(
-        source=CorpusField.ALL_NP_RAW,
-        target=CorpusField.ALL_NP_NORM,
+        source=CorpusField.NP_TOK,
+        target=CorpusField.NP_NORM,
         root_directory=root_directory,
     )
 

@@ -1,4 +1,5 @@
 import re
+import sys
 from functools import lru_cache
 
 import pandas as pd  # type: ignore
@@ -109,6 +110,7 @@ def uppercase_words(
         progress_bar = True
         pandarallel.initialize(progress_bar=progress_bar, verbose=0)
         dataframe[target.value] = dataframe[source.value].parallel_apply(_normalize)
+        sys.stderr.write("\n")
 
     save_data(df=dataframe, root_directory=root_directory)
 
