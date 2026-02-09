@@ -5,7 +5,7 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-Cluster to Terms Mapping
+Terms by Cluster Frame
 ===============================================================================
 
 Example:
@@ -22,9 +22,9 @@ Example:
     ...     max_doc_update_iter=100,
     ...     random_state=0,
     ... )
-    >>> from techminer2.packages.topic_modeling.user import ClusterToTermsMapping
-    >>> mapping = (
-    ...     ClusterToTermsMapping()
+    >>> from techminer2.packages.topic_modeling.user import TermsByClusterDataFrame
+    >>> df = (
+    ...     TermsByClusterDataFrame()
     ...     #
     ...     # FIELD:
     ...     .with_field("raw_descriptors")
@@ -54,32 +54,28 @@ Example:
     ...     #
     ...     .run()
     ... )
-    >>> import pprint
-    >>> pprint.pprint(mapping) # doctest: +SKIP
-    {0: ['FINTECH 38:6131',
-         'FINANCIAL_TECHNOLOGY 11:1519',
-         'TECHNOLOGY 10:1220',
-         'BANKS 08:1049',
-         'REGULATORS 08:0974',
-         'CONSUMERS 07:0925',
-         'FINANCIAL_INSTITUTIONS 03:0464',
-         'THE_DEVELOPMENT 08:1193',
-         'BANKING 04:0481',
-         'CUSTOMERS 04:0599',
-         'FINANCIAL_REGULATION 03:0461',
-         'REGULATION 03:0461',
-    ...
-
+    >>> df.head() # doctest: +SKIP
+    cluster                             0  ...                               9
+    term                                   ...
+    0                     FINTECH 38:6131  ...                 FINTECH 38:6131
+    1        FINANCIAL_TECHNOLOGY 11:1519  ...  THE_FINANCIAL_INDUSTRY 09:2006
+    2                  TECHNOLOGY 10:1220  ...                A_SURVEY 03:0484
+    3                       BANKS 08:1049  ...           PRACTITIONERS 05:0992
+    4                  REGULATORS 08:0974  ...               THE_FIELD 05:0834
+    <BLANKLINE>
+    [5 rows x 10 columns]
 
 
 """
+import pandas as pd  # type: ignore
+
 from techminer2._internals import ParamsMixin
-from techminer2.topics.topic_modeling.user.components_by_term_data_frame import (
-    ComponentsByTermDataFrame,
+from techminer2.analyze.topic_modeling.user.cluster_to_terms_mapping import (
+    ClusterToTermsMapping,
 )
 
 
-class ClusterToTermsMapping(
+class TermsByClusterDataFrame(
     ParamsMixin,
 ):
     """:meta private:"""
@@ -87,19 +83,11 @@ class ClusterToTermsMapping(
     def run(self):
         """:meta private:"""
 
-        theme_term_matrix = (
-            ComponentsByTermDataFrame().update(**self.params.__dict__).run()
-        )
+        mapping = ClusterToTermsMapping().update(**self.params.__dict__).run()
 
-        mapping = {}
-        for i_row in range(theme_term_matrix.shape[0]):
-            sorting_indices = theme_term_matrix.iloc[i_row, :].sort_values(
-                ascending=False
-            )
-            theme_term_matrix = theme_term_matrix[sorting_indices.index]
-            if self.params.top_n is not None:
-                mapping[i_row] = list(theme_term_matrix.columns[: self.params.top_n])
-            else:
-                mapping[i_row] = list(theme_term_matrix.columns)
-
-        return mapping
+        frame = pd.DataFrame.from_dict(mapping, orient="index").T
+        frame = frame.fillna("")
+        frame = frame.sort_index(axis=1)
+        frame.columns.name = "cluster"
+        frame.index.name = "term"
+        return frame

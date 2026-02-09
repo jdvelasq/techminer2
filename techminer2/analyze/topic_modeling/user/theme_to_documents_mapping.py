@@ -73,7 +73,7 @@ Example:
 
 """
 from techminer2._internals import ParamsMixin
-from techminer2.topics.topic_modeling.user.documents_by_theme_data_frame import (
+from techminer2.analyze.topic_modeling.user.documents_by_theme_data_frame import (
     DocumentsByThemeDataFrame,
 )
 
