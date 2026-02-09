@@ -1,0 +1,56 @@
+(
+    TITLE{The adoption of mobile payment services for “fintech”}
+    OR TITLE{Analyzing China's Fintech Industry from the Perspective of Actor-Network Theory}
+    OR TITLE{From Fintech to Finlife: the case of Fintech Development in China}
+    OR TITLE{Banking and fintech: A challenge or opportunity?}
+    OR TITLE{The digital revolution in financial inclusion: international development in the fintech era}
+    OR TITLE{Security and privacy issues: A survey on fintech}
+    OR TITLE{FinTech - What's in a name?}
+    OR TITLE{Nurturing a FinTech ecosystem: The case of a youth microloan startup in China}
+    OR TITLE{Fintech}
+    OR TITLE{Digital Finance and FinTech: current research and future research directions}
+) OR (
+    TITLE{FinTech, regTech, and the reconceptualization of financial regulation}
+    OR TITLE{Fintech: Ecosystem, business models, investment decisions, and challenges}
+    OR TITLE{Fintech as financial innovation - The possibilities and problems of implementation}
+    OR TITLE{A survey on FinTech}
+    OR TITLE{Understanding FinTech start-ups – a taxonomy of consumer-oriented service offerings}
+    OR TITLE{FinTech banking industry: a systemic approach}
+    OR TITLE{THE FINTECH REVOLUTION}
+    OR TITLE{FinTech in Germany}
+    OR TITLE{Data security and consumer trust in FinTech innovation in Germany}
+    OR TITLE{The emergence of the global fintech market: economic and technological determinants}
+) OR (
+    TITLE{Regulating fintech}
+    OR TITLE{What makes users willing or hesitant to use Fintech?: the moderating effect of user type}
+    OR TITLE{On the Fintech Revolution: Interpreting the Forces of Innovation, Disruption, and Transformation in Financial Services}
+    OR TITLE{The Innovation Mechanisms of Fintech Start-Ups: Insights from SWIFT’s Innotribe Competition}
+    OR TITLE{Relationship banking and information technology: the role of artificial intelligence and FinTech}
+    OR TITLE{Do fintech lenders penetrate areas that are underserved by traditional banks?}
+    OR TITLE{Is mobile payment still relevant in the fintech era?}
+    OR TITLE{Fintech and regtech: Impact on regulators and banks}
+    OR TITLE{An Empirical Study of the Impacts of Perceived Security and Knowledge on Continuous Intention to Use Mobile Fintech Payment Services}
+    OR TITLE{FinTech and the transformation of the financial industry}
+) OR (
+    TITLE{Fintech, regulatory arbitrage, and the rise of shadow banks}
+    OR TITLE{Disruption of financial intermediation by FinTech: a review on crowdfunding and blockchain}
+    OR TITLE{The FinTech phenomenon: antecedents of financial innovation perceived by the popular press}
+    OR TITLE{Affordances, experimentation and actualization of FinTech: A blockchain implementation study}
+    OR TITLE{Mobile payment in Fintech environment: trends, security challenges, and services}
+    OR TITLE{The impact of FinTech start-ups on incumbent retail banks’ share prices}
+    OR TITLE{Fintech: The Impact on Consumers and Regulatory Responses}
+    OR TITLE{Digital marketplace and FinTech to support agriculture sustainability}
+    OR TITLE{Capital markets union and the Fintech opportunity}
+    OR TITLE{Improving financial service innovation strategies for enhancing China's banking industry competitive advantage during the fintech revolution: A hybrid MCDM model}
+) OR (
+    TITLE{Fintech and the innovation trilemma}
+    OR TITLE{To FinTech and beyond}
+    OR TITLE{How Valuable Is FinTech Innovation?}
+    OR TITLE{Artificial Intelligence in FinTech: understanding robo-advisors adoption among customers}
+    OR TITLE{Adoption intention of fintech services for bank users: An empirical examination with an extended technology acceptance model}
+    OR TITLE{Transforming agribusiness in developing countries: SDGs and the role of FinTech}
+    OR TITLE{The roles of alternative data and machine learning in fintech lending: Evidence from the LendingClub consumer platform}
+    OR TITLE{The future of fintech}
+    OR TITLE{FinTech and sustainable development: Evidence from China based on P2P data}
+    OR TITLE{Taming the beast: A scientific definition of fintech}
+)
