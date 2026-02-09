@@ -1,70 +1,50 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-# pylint: disable=too-many-statements
 """
 Merge Columns
 ===============================================================================
 
-
-Example:
-    >>> import shutil
-    >>> shutil.copy("examples/fintech/database.csv.zip", "examples/fintech/data/processed/database.csv.zip")
-    'examples/fintech/data/processed/database.csv.zip'
-
-    >>> # Creates, configure, and run the merger
-    >>> from techminer2.database.operators import MergeOperator
-    >>> merger = (
-    ...     MergeOperator()
-    ...     #
-    ...     # FIELDS:
-    ...     .with_field(["author_keywords", "index_keywords"])
-    ...     .with_other_field("merged_keywords")
-    ...     #
-    ...     # DATABASE:
+Smoke test:
+    >>> from techminer2 import CorpusField
+    >>> from techminer2.ingest.operations import MergeColumns
+    >>> (
+    ...     MergeColumns()
+    ...     .with_source_fields(
+    ...         (
+    ...             CorpusField.AUTH_KEY_RAW,
+    ...             CorpusField.IDX_KEY_RAW,
+    ...         )
+    ...     )
+    ...     .with_target_field(CorpusField.USER_0)
     ...     .where_root_directory("examples/small/")
+    ...     .run()
     ... )
-    >>> merger.run()
+    26
 
-    >>> # Query the database to test the merger
-    >>> from techminer2.io import Query
-    >>> query = (
+    >>> from techminer2.ingest.operations import Query
+    >>> (
     ...     Query()
-    ...     .with_query_expression("SELECT merged_keywords FROM database LIMIT 10;")
+    ...     .with_query_expression("SELECT USER_0 FROM database LIMIT 10;")
     ...     .where_root_directory("examples/small/")
-    ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
+    ...     .run()
     ... )
-    >>> df = query.run()
-    >>> df
-                                         merged_keywords
-    0  ELABORATION_LIKELIHOOD_MODEL; FINTECH; K_PAY; ...
-    1  ACTOR_NETWORK_THEORY; CHINESE_TELECOM; CONVERG...
-    2  FINANCIAL_INCLUSION; FINANCIAL_SCENARIZATION; ...
-    3                 BANKING_INNOVATIONS; FINTECH; RISK
-    4  BEHAVIOURAL_ECONOMICS; DIGITAL_TECHNOLOGIES; E...
-    5  DATA_MINING; DATA_PRIVACY; FINANCE; FINANCIAL_...
-    6  CONCEPTUAL_FRAMEWORKS; CONTENT_ANALYSIS; DIGIT...
-    7  CASE_STUDIES; COMMERCE; DIGITAL_TECHNOLOGIES; ...
-    8  DIGITIZATION; FINANCIAL_SERVICES_INDUSTRIES; F...
-    9  DIGITAL_FINANCE; E_FINANCE; FINTECH; FUTURE_RE...
+                                                  USER_0
+    0  Banking; Financial institution; Financial serv...
+    1  Bank; Block-chain; Blockchain; Cryptocurrency;...
+    2  Actor network theory; Chinese telecom; Converg...
+    3  Content analysis; Digitalization; FinTech; Inn...
+    4  Elaboration likelihood model; Fintech; K pay; ...
+    5                Banking innovations; FinTech; Risks
+    6  Fintech; financial inclusion; financial scenar...
+    7  Conceptual frameworks; Content analysis; Digit...
+    8  Bank 3.0; Co-opetition Theory; FinTech; Invest...
+    9  Asset managers; Commerce; Cutting edges; Explo...
 
 
-    >>> # Deletes the fields
-    >>> from techminer2.database.operators import DeleteOperator
-    >>> field_deleter = (
-    ...     DeleteOperator()
-    ...     .with_field("merged_keywords")
-    ...     .where_root_directory("examples/small/")
-    ... )
-    >>> field_deleter.run()
 
 
 """
+
 from techminer2._internals import ParamsMixin
 from techminer2.ingest.sources._internals.operations.merge_columns import merge_columns
 from techminer2.text.extract._helpers.protected_fields import PROTECTED_FIELDS

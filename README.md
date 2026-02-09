@@ -37,6 +37,12 @@ Review of recgonized noun phrases
 tm2+ allows the user to inspect and validate noun phrase extraction directly on the original abstracts**, highlighting extracted noun phrases in uppercase to distinguish them from surrounding text. It also supports focused review of abstract suffixes, where copyright and publisher boilerplate are often appended and mistakenly identified as noun phrases. In addition, tm2+ exposes colon-delimited headings in structured abstracts, which can otherwise be confused with meaningful concepts. By making these artifacts explicit, tm2+ enables manual correction and re-execution of noun phrase extraction, turning NLP preprocessing into an iterative, transparent, and quality-controlled process.
 
 
+Database Operations
+------------------------------------------------------------------------------
+
+tm2+ provides essential data transformation and manipulation functions for corpus processing. Key functionalities include copying columns between fields, merging multiple columns, transforming data with custom functions, tokenizing text, extracting uppercase terms (nouns and phrases), coalescing null values with fallback sources, and counting items within columns. tm2+ also supports querying the database and highlighting text patterns, enabling comprehensive data preparation and cleaning workflows for bibliometric analysis.
+
+
 Thesaurus
 ------------------------------------------------------------------------------
 

@@ -17,9 +17,9 @@ Example:
 
     >>> import textwrap
     >>> import pandas as pd
-    >>> from techminer2.database.operators import TokenizeOperator
-    >>> from techminer2.database.operators import DeleteOperator
-    >>> from techminer2.database.operators import HighlightOperator
+    >>> from techminer2.ingest.operationsimport TokenizeOperator
+    >>> from techminer2.ingest.operationsimport DeleteOperator
+    >>> from techminer2.ingest.operationsimport HighlightOperator
     >>> from techminer2.io import Query
 
     >>> (

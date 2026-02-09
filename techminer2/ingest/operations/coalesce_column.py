@@ -1,85 +1,58 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-# pylint: disable=too-many-statements
-# pylint: disable=too-few-public-methods
 """
-Fill NA
+Coalesce Column
 ===============================================================================
 
-
-Example:
-    >>> import shutil
-    >>> shutil.copy("examples/fintech/database.csv.zip", "examples/fintech/data/processed/database.csv.zip")
-    'examples/fintech/data/processed/database.csv.zip'
-
-    >>> import shutil
-    >>> shutil.copy("examples/fintech/database.csv.zip", "examples/fintech/data/processed/database.csv.zip")
-    'examples/fintech/data/processed/database.csv.zip'
-
-    >>> import pandas as pd
-    >>> from techminer2.database.operators import TransformOperator
-    >>> TransformOperator(
-    ...     field="index_keywords_raw",
-    ...     other_field="na_field",
-    ...     root_directory="examples/fintech/",
-    ...     transformation_function=lambda x: pd.NA,
-    ... ).run()
-
-    >>> # Query the database to obtain the number of NA values
-    >>> from techminer2.io import Query
-    >>> query = (
-    ...     Query()
-    ...     .with_query_expression("SELECT na_field FROM database;")
+Smoke test:
+    >>> from techminer2 import CorpusField
+    >>> from techminer2.ingest.operations import CopyColumn
+    >>> (
+    ...     CopyColumn()
+    ...     .with_source_field(CorpusField.SRC_TITLE_ABBR_RAW)
+    ...     .with_target_field(CorpusField.USER_0)
     ...     .where_root_directory("examples/small/")
-    ...     .where_database("main")
+    ...     .run()
+    ... )
+    37
+
+    >>> from techminer2.ingest.operations import TransformColumn
+    >>> (
+    ...     TransformColumn()
+    ...     .with_source_field(CorpusField.USER_0)
+    ...     .with_target_field(CorpusField.USER_1)
+    ...     .with_transformation_function(lambda x: None)
+    ...     .where_root_directory("examples/small/")
+    ...     .run()
+    ... )
+
+    >>> from techminer2.ingest.operations import CoalesceColumn
+    >>> (
+    ...     CoalesceColumn()
+    ...     .with_source_field(CorpusField.SRC_TITLE_ABBR_RAW)
+    ...     .with_target_field(CorpusField.USER_1)
+    ...     .where_root_directory("examples/small/")
+    ...     .with_transformation_function(lambda x: pd.NA)
+    ...     .run()
+    ... )
+
+    >>> from techminer2.ingest.operations import Query
+    >>> (
+    ...     Query()
+    ...     .with_query_expression("SELECT USER_1 FROM database LIMIT 5;")
+    ...     .where_root_directory("examples/small/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
+    ...    .run()
     ... )
-    >>> df = query.run()
-    >>> int(df.na_field.isna().sum())
-    50
-
-    >>> # Creates, configures, and runs the operator
-    >>> from techminer2.database.operators import FillNAOperator
-    >>> fillna_operator = (
-    ...     FillNAOperator()
-    ...     #
-    ...     # FIELDS:
-    ...     .with_field("na_field")
-    ...     .with_other_field("index_keywords_raw")
-    ...     #
-    ...     # DATABASE:
-    ...     .where_root_directory("examples/small/")
-    ... )
-    >>> fillna_operator.run()
-
-    >>> # Query the database to test the operator
-    >>> from techminer2.io import Query
-    >>> query = (
-    ...     Query()
-    ...     .with_query_expression("SELECT na_field FROM database;")
-    ...     .where_root_directory("examples/small/")
-    ...     .where_database("main")
-    ...     .where_record_years_range(None, None)
-    ...     .where_record_citations_range(None, None)
-    ... )
-    >>> df = query.run()
-    >>> int(df.na_field.isna().sum())
-    31
-
-    >>> # Deletes the field
-    >>> from techminer2.database.operators import DeleteOperator
-    >>> DeleteOperator(
-    ...     field="na_field",
-    ...     root_directory="examples/fintech/",
-    ... ).run()
+                                                  USER_1
+    0                                   J. Innov. Manag.
+    1  Proc. - Int. Conf. Green Technol. Sustain. Dev...
+    2                                  Telecommun Policy
+    3                                   Financial Innov.
+    4                            Int. J. Appl. Eng. Res.
 
 
 """
+
 from techminer2._internals import ParamsMixin
 from techminer2.ingest.sources._internals.operations.coalesce_column import (
     coalesce_column,
@@ -108,6 +81,3 @@ class CoalesceColumn(
             target=self.params.target_field,
             root_directory=self.params.root_directory,
         )
-
-
-#

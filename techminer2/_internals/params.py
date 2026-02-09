@@ -1,9 +1,12 @@
+from __future__ import annotations
+
 from dataclasses import dataclass
 from typing import Any, Callable, Dict, List, Optional, Sequence, Tuple, Union
 
+import pandas as pd
 from sklearn.base import BaseEstimator  # type: ignore
 
-from techminer2 import RecordsOrderBy
+from techminer2.enums import CorpusField, RecordsOrderBy
 
 
 @dataclass
@@ -59,9 +62,7 @@ class Params:
     #
     # F
     #
-    field: Optional[str] = None
-    fig_width: float = 400
-    fig_height: float = 400
+    field: CorpusField = CorpusField.UNSPECIFIED
 
     #
     # I
@@ -110,7 +111,7 @@ class Params:
     # O
     #
     occurrence_threshold: int = 2
-    other_field: Optional[str] = None
+    other_field: CorpusField = CorpusField.UNSPECIFIED
     other_item_citations_range: Tuple[Optional[int], Optional[int]] = (None, None)
     other_item_occurrences_range: Tuple[Optional[int], Optional[int]] = (None, None)
     other_items_in: Optional[list[str]] = None
@@ -124,6 +125,8 @@ class Params:
     periods_with_at_least_one_record: int = 3
     pie_hole: float = 0.4
     plot_dimensions: Tuple[int, int] = (0, 1)
+    plot_width: float = 400
+    plot_height: float = 400
 
     #
     # Q
@@ -148,8 +151,8 @@ class Params:
     #
     # S
     #
-    source_field: Optional[str] = None
-    source_fields: Optional[list[str]] = None
+    source_field: CorpusField = CorpusField.UNSPECIFIED
+    source_fields: tuple[CorpusField, ...] = (CorpusField.UNSPECIFIED,)
     spring_layout_iterations: int = 50
     spring_layout_k: Optional[float] = 0.1
     spring_layout_seed: int = 42
@@ -158,11 +161,11 @@ class Params:
     #
     # T
     #
-    target_field: Optional[str] = None
+    target_field: CorpusField = CorpusField.UNSPECIFIED
     textfont_color: Union[str, float, Sequence[float]] = "#465c6b"
     textfont_opacity_range: Tuple[float, float] = (0.5, 1)
     textfont_opacity: float = 1.0
-    textfont_size_range: Tuple[int, int] = (8, 16)
+    textfont_size_range: Tuple[float, float] = (8.0, 16.0)
     textfont_size: float = 10
     tfidf_norm: Optional[str] = None
     tfidf_smooth_idf: bool = False
@@ -175,7 +178,7 @@ class Params:
     top_n: Optional[int] = None
     total_records_threshold: int = 7
     tqdm_disable: bool = False
-    transformation_function: Optional[Callable[[Any], Any]] = None
+    transformation_function: Optional[Callable[[pd.Series], pd.Series]] = None
 
     #
     # U

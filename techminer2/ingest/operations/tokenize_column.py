@@ -1,22 +1,10 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-# pylint: disable=too-many-statements
 """
 Tokenize Column
 ===============================================================================
 
-
-
-Example:
-    >>> import shutil
-    >>> shutil.copy("examples/fintech/database.csv.zip", "examples/fintech/data/processed/database.csv.zip")
-    'examples/fintech/data/processed/database.csv.zip'
-
-    >>> from techminer2.database.operators import TokenizeOperator
+Smoke test:
+    >>> from techminer2 import CorpusField
+    >>> from techminer2.ingest.operationsimport TokenizeOperator
     >>> # Creates, configure, and run the tokenize_
     >>> (
     ...     TokenizeOperator()
@@ -60,7 +48,7 @@ Example:
 
 
     >>> # Deletes the field
-    >>> from techminer2.database.operators import DeleteOperator
+    >>> from techminer2.ingest.operationsimport DeleteOperator
     >>> field_deleter = (
     ...     DeleteOperator()
     ...     .with_field("tokenized_raw_abstract")
@@ -70,6 +58,7 @@ Example:
 
 
 """
+
 from techminer2._internals import ParamsMixin
 from techminer2.ingest.sources._internals.operations.tokenize_column import (
     tokenize_column,

@@ -1,72 +1,45 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-# pylint: disable=too-many-statements
-# pylint: disable=too-few-public-methods
 """
 Transform Column
 ===============================================================================
 
-
-Example:
-    >>> import shutil
-    >>> shutil.copy("examples/fintech/database.csv.zip", "examples/fintech/data/processed/database.csv.zip")
-    'examples/fintech/data/processed/database.csv.zip'
-
-    >>> # Creates, configures, and runs the operator
-    >>> from techminer2.database.operators import TransformOperator
+Smoke test:
+    >>> from techminer2 import CorpusField
+    >>> from techminer2.ingest.operations import TransformColumn
     >>> (
-    ...     TransformOperator()
-    ...     #
-    ...     # FIELDS:
-    ...     .with_field("author_keywords")
-    ...     .with_other_field("author_keywords_copy")
-    ...     #
-    ...     # TRANSFORMATION:
+    ...     TransformColumn()
+    ...     .with_source_field(CorpusField.AUTH_KEY_RAW)
+    ...     .with_target_field(CorpusField.USER_0)
     ...     .with_transformation_function(lambda x: x.str.lower())
-    ...     #
-    ...     # DATABASE:
     ...     .where_root_directory("examples/small/")
-    ...     #
     ...     .run()
     ... )
+    22
 
-    >>> # Query the database to test the operation
-    >>> from techminer2.io import Query
+    >>> from techminer2.ingest.operations import Query
     >>> (
     ...     Query()
-    ...     .with_query_expression("SELECT author_keywords_copy FROM database LIMIT 10;")
+    ...     .with_query_expression("SELECT USER_0 FROM database LIMIT 10;")
     ...     .where_root_directory("examples/small/")
-    ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     .run()
     ... )
-                                    author_keywords_copy
-    0  elaboration_likelihood_model; fintech; k_pay; ...
-    1  actor_network_theory; chinese_telecom; fintech...
-    2  financial_inclusion; financial_scenarization; ...
-    3                 banking_innovations; fintech; risk
-    4  behavioural_economics; digital_technologies; f...
-    5            data_mining; fintech; privacy; security
-    6  content_analysis; digitalization; fintech; inn...
-    7  case_studies; ecosystem_development; financial...
-    8  digitization; financial_services_industries; f...
-    9  digital_finance; e_finance; fintech; future_re...
+                                                  USER_0
+    0  banking; financial institution; financial serv...
+    1  bank; blockchain; cryptocurrency; payment; tec...
+    2  actor network theory; chinese telecom; fintech...
+    3  content analysis; digitalization; fintech; inn...
+    4  elaboration likelihood model; fintech; k pay; ...
+    5                banking innovations; fintech; risks
+    6  financial inclusion; financial scenarization; ...
+    7  content analysis; digitalization; fintech; inn...
+    8  bank 3.0; co-opetition theory; fintech; invest...
+    9                                               None
 
-
-    >>> # Deletes the field
-    >>> from techminer2.database.operators import DeleteOperator
-    >>> DeleteOperator(
-    ...     field="author_keywords_copy",
-    ...     root_directory="examples/fintech/",
-    ... ).run()
 
 
 """
+
 from techminer2._internals import ParamsMixin
 from techminer2.ingest.sources._internals.operations.transform_column import (
     transform_column,
@@ -89,7 +62,10 @@ class TransformColumn(
         if self.params.other_field in PROTECTED_FIELDS:
             raise ValueError(f"Field `{self.params.other_field}` is protected")
 
-        transform_column(
+        if self.params.transformation_function is None:
+            raise ValueError("Transformation function must be provided")
+
+        return transform_column(
             #
             # FIELD:
             source=self.params.source_field,

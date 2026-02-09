@@ -1,4 +1,5 @@
 import re
+from typing import Optional
 
 import pandas as pd  # type: ignore
 
@@ -12,9 +13,9 @@ def _get_compiled_patterns() -> list[re.Pattern]:
     return _COMPILED_PATTERNS
 
 
-def repair_lowercase_text(text: str) -> str:
+def repair_lowercase_text(text: Optional[str]) -> Optional[str]:
     if pd.isna(text):
-        return text
+        return None
     text = str(text)
     for pattern in _get_compiled_patterns():
         text = pattern.sub(lambda m: m.group().replace("_", " "), text)

@@ -1,4 +1,5 @@
 import re
+from typing import Optional
 
 import pandas as pd  # type: ignore
 
@@ -73,9 +74,9 @@ def _get_compiled_patterns() -> list[tuple[str, re.Pattern]]:
     return _COMPILED_PATTERNS
 
 
-def repair_abstract_headings(text: str) -> str:
+def repair_abstract_headings(text: Optional[str]) -> Optional[str]:
     if pd.isna(text):
-        return ""
+        return None
     text = str(text)
     for term in (
         COMPOUND_STRUCTURED_ABSTRACT_HEADINGS + SINGLE_STRUCTURED_ABSTRACT_HEADINGS
@@ -86,29 +87,29 @@ def repair_abstract_headings(text: str) -> str:
         text = re.sub(regex, term.lower() + " :", text)
 
         # Corrects structured abstract markers inside the paragraph:
-        regex = re.compile("\. " + term.replace(" ", "_") + " :", re.IGNORECASE)
+        regex = re.compile(r". " + term.replace(" ", "_") + " :", re.IGNORECASE)
         text = re.sub(regex, ". " + term.lower() + " :", text)
 
-        regex = re.compile("\) " + term.replace(" ", "_") + " :", re.IGNORECASE)
+        regex = re.compile(r") " + term.replace(" ", "_") + " :", re.IGNORECASE)
         text = re.sub(regex, ") " + term.lower() + " :", text)
 
-        regex = re.compile("\? " + term.replace(" ", "_") + " :", re.IGNORECASE)
+        regex = re.compile(r"? " + term.replace(" ", "_") + " :", re.IGNORECASE)
         text = re.sub(regex, "? " + term.lower() + " :", text)
 
-        regex = re.compile("' " + term.replace(" ", "_") + " :", re.IGNORECASE)
+        regex = re.compile(r"' " + term.replace(" ", "_") + " :", re.IGNORECASE)
         text = re.sub(regex, "' " + term.lower() + " :", text)
 
         ## ending with [
-        regex = re.compile("\. " + term.replace(" ", "_") + " \[", re.IGNORECASE)
+        regex = re.compile(r". " + term.replace(" ", "_") + r" [", re.IGNORECASE)
         text = re.sub(regex, ". " + term.lower() + " [", text)
 
-        regex = re.compile("\) " + term.replace(" ", "_") + " \[", re.IGNORECASE)
+        regex = re.compile(r") " + term.replace(" ", "_") + r" [", re.IGNORECASE)
         text = re.sub(regex, ") " + term.lower() + " [", text)
 
-        regex = re.compile("\? " + term.replace(" ", "_") + " \[", re.IGNORECASE)
+        regex = re.compile(r"? " + term.replace(" ", "_") + r" [", re.IGNORECASE)
         text = re.sub(regex, "? " + term.lower() + " [", text)
 
-        regex = re.compile("' " + term.replace(" ", "_") + " \[", re.IGNORECASE)
+        regex = re.compile(r"' " + term.replace(" ", "_") + r" [", re.IGNORECASE)
         text = re.sub(regex, "' " + term.lower() + " [", text)
 
     return text

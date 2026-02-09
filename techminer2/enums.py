@@ -17,6 +17,8 @@ class RecordsOrderBy(Enum):
 
 class CorpusField(Enum):
 
+    UNSPECIFIED = "_UNSPECIFIED_"
+
     #
     # A
     #
@@ -188,6 +190,20 @@ class CorpusField(Enum):
     #
     WORD_NORM = "WORD_NORM"
     WORD_TOK = "WORD_TOK"
+
+    #
+    # User fields
+    #
+    USER_0 = "USER_0"
+    USER_1 = "USER_1"
+    USER_2 = "USER_2"
+    USER_3 = "USER_3"
+    USER_4 = "USER_4"
+    USER_5 = "USER_5"
+    USER_6 = "USER_6"
+    USER_7 = "USER_7"
+    USER_8 = "USER_8"
+    USER_9 = "USER_9"
 
 
 class ThesaurusField(Enum):

@@ -4,10 +4,9 @@ import pandas as pd  # type: ignore
 from sklearn.base import BaseEstimator  # type: ignore
 from typing_extensions import Self
 
-from techminer2 import CorpusField, RecordsOrderBy
 from techminer2._internals.validation import (
-    internal__check_optional_base_estimator,
-    internal__check_optional_color_list,
+    check_optional_base_estimator,
+    check_optional_color_list,
     internal__check_optional_positive_float,
     internal__check_optional_positive_int,
     internal__check_optional_str,
@@ -15,7 +14,7 @@ from techminer2._internals.validation import (
     internal__check_optional_str_or_dict,
     internal__check_plotly_color,
     internal__check_required_bool,
-    internal__check_required_field,
+    internal__check_required_corpus_field,
     internal__check_required_float,
     internal__check_required_float_0_1,
     internal__check_required_float_0_1_range,
@@ -31,6 +30,7 @@ from techminer2._internals.validation import (
     internal__check_required_str_list,
     internal__check_tuple_of_ordered_four_floats,
 )
+from techminer2.enums import CorpusField, RecordsOrderBy
 
 from .params import Params
 
@@ -376,7 +376,7 @@ class ParamsMixin:
     def using_decomposition_algorithm(
         self, decomposition_algorithm: Optional[BaseEstimator]
     ) -> Self:
-        decomposition_algorithm = internal__check_optional_base_estimator(
+        decomposition_algorithm = check_optional_base_estimator(
             value=decomposition_algorithm,
             param_name="decomposition_algorithm",
         )
@@ -464,7 +464,7 @@ class ParamsMixin:
         return self
 
     def using_edge_colors(self, edge_colors: Optional[list[Any]]) -> Self:
-        edge_colors = internal__check_optional_color_list(
+        edge_colors = check_optional_color_list(
             value=edge_colors,
             param_name="edge_colors",
         )
@@ -548,7 +548,7 @@ class ParamsMixin:
     def using_manifold_algorithm(
         self, manifold_algorithm: Optional[BaseEstimator]
     ) -> Self:
-        manifold_algorithm = internal__check_optional_base_estimator(
+        manifold_algorithm = check_optional_base_estimator(
             value=manifold_algorithm,
             param_name="manifold_algorithm",
         )
@@ -590,7 +590,7 @@ class ParamsMixin:
     def using_node_colors(
         self, node_colors: Optional[List[Union[str, float, Sequence[float]]]]
     ) -> Self:
-        node_colors = internal__check_optional_color_list(
+        node_colors = check_optional_color_list(
             value=node_colors,
             param_name="node_colors",
         )
@@ -642,11 +642,11 @@ class ParamsMixin:
         return self
 
     def using_plot_height(self, height) -> Self:
-        self.params.height = height
+        self.params.plot_height = height
         return self
 
     def using_plot_width(self, width) -> Self:
-        self.params.width = width
+        self.params.plot_width = width
         return self
 
     def using_ratio_threshold(self, threshold: float) -> Self:
@@ -912,15 +912,15 @@ class ParamsMixin:
         return self
 
     def with_field(self, field: CorpusField) -> Self:
-        field = internal__check_required_field(
+        field = internal__check_required_corpus_field(
             value=field,
             param_name="field",
         )
         self.params.field = field
         return self
 
-    def with_other_field(self, other_field: Optional[str]) -> Self:
-        other_field = internal__check_optional_str(
+    def with_other_field(self, other_field: CorpusField) -> Self:
+        other_field = internal__check_required_corpus_field(
             value=other_field,
             param_name="other_field",
         )
@@ -939,24 +939,25 @@ class ParamsMixin:
         self.params.query_expression = query_expression
         return self
 
-    def with_source_field(self, field: str) -> Self:
-        field = internal__check_required_str(
+    def with_source_field(self, field: CorpusField) -> Self:
+        field = internal__check_required_corpus_field(
             value=field,
             param_name="source_field",
         )
         self.params.source_field = field
         return self
 
-    def with_source_fields(self, fields: list[str]) -> Self:
-        fields = internal__check_required_str_list(
-            value=fields,
-            param_name="source_fields",
-        )
+    def with_source_fields(self, fields: tuple[CorpusField, ...]) -> Self:
+        for field in fields:
+            internal__check_required_corpus_field(
+                value=field,
+                param_name="source_fields",
+            )
         self.params.source_fields = fields
         return self
 
-    def with_target_field(self, field: str) -> Self:
-        field = internal__check_required_str(
+    def with_target_field(self, field: CorpusField) -> Self:
+        field = internal__check_required_corpus_field(
             value=field,
             param_name="target_field",
         )
@@ -989,13 +990,13 @@ class ParamsMixin:
     # WHERE_* → Data filtering (WHICH records?)
     # ==========================================================================
 
-    def where_database(self, database: str) -> Self:
-        database = internal__check_required_str(
-            value=database,
-            param_name="database",
-        )
-        self.params.database = database
-        return self
+    # def where_database(self, database: str) -> Self:
+    #     database = internal__check_required_str(
+    #         value=database,
+    #         param_name="database",
+    #     )
+    #     self.params.database = database
+    #     return self
 
     def where_record_citations_range(
         self, start: Optional[int], end: Optional[int]

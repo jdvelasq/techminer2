@@ -1,22 +1,10 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-# pylint: disable=too-many-statements
 """
 Highlight Nouns and Noun Phrases
 ===============================================================================
 
-
-Example:
-    >>> import shutil
-    >>> shutil.copy("examples/fintech/database.csv.zip", "examples/fintech/data/processed/database.csv.zip")
-    'examples/fintech/data/processed/database.csv.zip'
-
-    >>> # Creates, configure, and run the cleaner to prepare the field
-    >>> from techminer2.database.operators import TokenizeOperator
+Smoke test:
+    >>> from techminer2 import CorpusField
+    >>> from techminer2.ingest.operationsimport TokenizeOperator
     >>> (
     ...     TokenizeOperator()
     ...     #
@@ -31,7 +19,7 @@ Example:
 
 
     >>> # Creates, configure, and run the highlighter
-    >>> from techminer2.database.operators import HighlightOperator
+    >>> from techminer2.ingest.operationsimport HighlightOperator
     >>> highlighter = (
     ...     HighlightOperator()
     ...     #
@@ -74,7 +62,7 @@ Example:
     elsevier ltd .
 
     >>> # Deletes the fields
-    >>> from techminer2.database.operators import DeleteOperator
+    >>> from techminer2.ingest.operationsimport DeleteOperator
     >>> field_deleter = (
     ...     DeleteOperator()
     ...     .where_root_directory("examples/small/")
@@ -85,6 +73,7 @@ Example:
 
 
 """
+
 from techminer2._internals import ParamsMixin
 from techminer2.ingest.sources._internals.operations.uppercase_keyterms import (
     uppercase_keyterms,

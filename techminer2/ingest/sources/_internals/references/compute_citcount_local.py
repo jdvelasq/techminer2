@@ -17,25 +17,19 @@ def compute_citcount_local(root_directory: str) -> int:
     ].str.split("; ")
     dataframe[CorpusField.CIT_COUNT_LOCAL.value] = dataframe[
         CorpusField.CIT_COUNT_LOCAL.value
-    ].map(
+    ].apply(
         lambda refs: [ref.strip() for ref in refs],
     )
     dataframe[CorpusField.CIT_COUNT_LOCAL.value] = dataframe[
         CorpusField.CIT_COUNT_LOCAL.value
-    ].map(
+    ].apply(
         lambda refs: [ref for ref in refs if ref in rec_id],
     )
     dataframe[CorpusField.CIT_COUNT_LOCAL.value] = dataframe[
         CorpusField.CIT_COUNT_LOCAL.value
-    ].map(
+    ].apply(
         len,
     )
     save_main_data(df=dataframe, root_directory=root_directory)
-
-    # import sys
-
-    # for d in dataframe[Field.CITCOUNT_LOCAL.value].value_counts().to_dict().items():
-    #     sys.stderr.write(f"{d}\n")
-    # sys.stderr.flush()
 
     return len(dataframe)

@@ -71,7 +71,7 @@ Smoke tests:
 
 
 
-    >>> from techminer2.database.operators import DeleteOperator
+    >>> from techminer2.ingest.operationsimport DeleteOperator
     >>> (
     ...     DeleteOperator()
     ...     .with_field("descriptors_cleaned")

@@ -1,8 +1,8 @@
 # flake8: noqa
 """Validation internal functions."""
 
-from .check_optional_base_estimator import internal__check_optional_base_estimator
-from .check_optional_color_list import internal__check_optional_color_list
+from .check_optional_base_estimator import check_optional_base_estimator
+from .check_optional_color_list import check_optional_color_list
 from .check_optional_positive_float import internal__check_optional_positive_float
 from .check_optional_positive_int import internal__check_optional_positive_int
 from .check_optional_str import internal__check_optional_str
@@ -10,7 +10,7 @@ from .check_optional_str_list import internal__check_optional_str_list
 from .check_optional_str_or_dict import internal__check_optional_str_or_dict
 from .check_plotly_color import internal__check_plotly_color
 from .check_required_bool import internal__check_required_bool
-from .check_required_field import internal__check_required_field
+from .check_required_corpus_field import internal__check_required_corpus_field
 from .check_required_float import internal__check_required_float
 from .check_required_float_0_1 import internal__check_required_float_0_1
 from .check_required_float_0_1_range import internal__check_required_float_0_1_range
@@ -33,8 +33,8 @@ from .check_tuple_of_ordered_four_floats import (
 )
 
 __all__ = [
-    "internal__check_optional_base_estimator",
-    "internal__check_optional_color_list",
+    "check_optional_base_estimator",
+    "check_optional_color_list",
     "internal__check_optional_positive_float",
     "internal__check_optional_positive_int",
     "internal__check_optional_str_list",
@@ -42,7 +42,7 @@ __all__ = [
     "internal__check_optional_str",
     "internal__check_plotly_color",
     "internal__check_required_bool",
-    "internal__check_required_field",
+    "internal__check_required_corpus_field",
     "internal__check_required_float_0_1_range",
     "internal__check_required_float_0_1",
     "internal__check_required_float_range",

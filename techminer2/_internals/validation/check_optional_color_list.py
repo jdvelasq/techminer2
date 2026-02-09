@@ -1,15 +1,7 @@
-# flake8: noqa
-# pylint: disable=missing-class-docstring
-# pylint: disable=missing-function-docstring
-# pylint: disable=missing-module-docstring
-# pylint: disable=too-many-instance-attributes
-# pylint: disable=too-many-public-methods
-
-
 from typing import Any, Optional
 
 
-def internal__check_optional_color_list(
+def check_optional_color_list(
     value: Optional[list[Any]], param_name: str
 ) -> Optional[list[Any]]:
     if value is None:

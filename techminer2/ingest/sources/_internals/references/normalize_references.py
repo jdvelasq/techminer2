@@ -163,11 +163,18 @@ def _process_references(
         CorpusField.REF_NORM.value
     ].str.split(";")
     dataframe[CorpusField.REF_NORM.value] = dataframe[CorpusField.REF_NORM.value].apply(
-        lambda refs: [y.strip() for y in refs] if isinstance(refs, list) else refs
+        lambda refs: (
+            [y.strip() for y in refs]
+            if isinstance(refs, list)
+            else refs if isinstance(refs, list) else refs
+        ),
     )
-    dataframe[CorpusField.REF_NORM.value] = dataframe[CorpusField.REF_NORM.value].map(
-        lambda refs: [mapping[ref] for ref in refs if ref in mapping],
-        na_action="ignore",
+    dataframe[CorpusField.REF_NORM.value] = dataframe[CorpusField.REF_NORM.value].apply(
+        lambda refs: (
+            [mapping[ref] for ref in refs if ref in mapping]
+            if isinstance(refs, list)
+            else refs
+        ),
     )
     dataframe[CorpusField.REF_NORM.value] = dataframe[
         CorpusField.REF_NORM.value
