@@ -30,7 +30,7 @@ Factor Map
 ## ...     algorithm="elkan",
 ## ...     random_state=0,
 ## ... )
-## >>> from techminer2.packages.factor_analysis.tfidf import factor_map
+## >>> from techminer2.packages.factor_analysis.co_occurrence import factor_map
 ## >>> plot = (
 ## ...     FactorMap()
 ## ...     #
@@ -48,14 +48,14 @@ Factor Map
 ## ...     # CLUSTERING:
 ## ...     .using_clustering_estimator_or_dict(kmeans)
 ## ...     #
-## ...     # TFIDF:
-## ...     .using_binary_term_frequencies(False)
-## ...     .using_row_normalization(None)
-## ...     .using_idf_reweighting(False)
-## ...     .using_idf_weights_smoothing(False)
-## ...     .using_sublinear_tf_scaling(False)
+## ...     # ASSOCIATION INDEX:
+## ...     .using_association_index(None)
 ## ...     #
 ## ...     # NETWORK:
+## ...     .using_spring_layout_k(None)
+## ...     .using_spring_layout_iterations(30)
+## ...     .using_spring_layout_seed(0)
+## ...     #
 ## ...     .using_node_colors(["#7793a5"])
 ## ...     .using_node_size_range(30, 70)
 ## ...     .using_textfont_size_range(10, 20)
@@ -79,22 +79,23 @@ Factor Map
 ## ...     #
 ## ...     .run()
 ## ... )
-## >>> plot.write_html("docs_source/_generated/px.packages.factor_analysis/tfidf/factor_map_plot.html")
+## >>> plot.write_html("docs_source/_generated/px.packages.factor_analysis/co_occurrence/factor_map_plot.html")
 
 .. raw:: html
 
-    <iframe src="../_generated/px.packages.factor_analysis/tfidf/factor_map_plot.html"
+    <iframe src="../_generated/px.packages.factor_analysis/co_occurrence/factor_map_plot.html"
     height="800px" width="100%" frameBorder="0"></iframe>
+
 
 
 """
 import pandas as pd  # type: ignore
 from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
 
-from techminer2.decomposition.factor_analysis.tfidf.cluster_centers_dataframe import (
+from techminer2.analyze.factor_analysis.co_occurrence.cluster_centers_data_frame import (
     cluster_centers_frame,
 )
-from techminer2.decomposition.factor_analysis.tfidf.cluster_to_terms_mapping import (
+from techminer2.analyze.factor_analysis.co_occurrence.cluster_to_terms_mapping import (
     cluster_to_terms_mapping,
 )
 from techminer2.metrics.correlation._internals.internal__correlation_map import (
@@ -106,22 +107,13 @@ def factor_map(
     #
     # PARAMS:
     field,
-    #
-    # TF PARAMS:
-    is_binary: bool = True,
-    cooc_within: int = 1,
+    association_index=None,
     #
     # TERM PARAMS:
     top_n=None,
     occ_range=(None, None),
     gc_range=(None, None),
     custom_terms=None,
-    #
-    # TF-IDF parameters:
-    norm=None,
-    use_idf=False,
-    smooth_idf=False,
-    sublinear_tf=False,
     #
     # DECOMPOSITION:
     decomposition_estimator=None,
@@ -164,22 +156,13 @@ def factor_map(
         #
         # PARAMS:
         field=field,
-        #
-        # TF PARAMS:
-        is_binary=is_binary,
-        cooc_within=cooc_within,
+        association_index=association_index,
         #
         # TERM PARAMS:
         top_n=top_n,
         occ_range=occ_range,
         gc_range=gc_range,
         custom_terms=custom_terms,
-        #
-        # TF-IDF parameters:
-        norm=norm,
-        use_idf=use_idf,
-        smooth_idf=smooth_idf,
-        sublinear_tf=sublinear_tf,
         #
         # DECOMPOSITION:
         decomposition_estimator=decomposition_estimator,
@@ -199,22 +182,13 @@ def factor_map(
         #
         # PARAMS:
         field=field,
-        #
-        # TF PARAMS:
-        is_binary=is_binary,
-        cooc_within=cooc_within,
+        association_index=association_index,
         #
         # TERM PARAMS:
         top_n=top_n,
         occ_range=occ_range,
         gc_range=gc_range,
         custom_terms=custom_terms,
-        #
-        # TF-IDF parameters:
-        norm=norm,
-        use_idf=use_idf,
-        smooth_idf=smooth_idf,
-        sublinear_tf=sublinear_tf,
         #
         # DECOMPOSITION:
         decomposition_estimator=decomposition_estimator,
@@ -264,3 +238,6 @@ def factor_map(
         yaxes_range=yaxes_range,
         show_axes=show_axes,
     )
+
+
+#

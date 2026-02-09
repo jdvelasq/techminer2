@@ -6,7 +6,7 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Treemap
+Terms by Cluster Frame
 ===============================================================================
 
 ## >>> from sklearn.decomposition import PCA
@@ -30,9 +30,9 @@ Treemap
 ## ...     algorithm="elkan",
 ## ...     random_state=0,
 ## ... )
-## >>> from techminer2.packages.factor_analysis.co_occurrence import treemap
-## >>> plot = (
-## ...     Treemap()
+## >>> from techminer2.packages.factor_analysis.co_occurrence import terms_by_cluster_frame
+## >>> (
+## ...     TermsByClusterDataFrame()
 ## ...     #
 ## ...     # FIELD:
 ## ...     .with_field("descriptors")
@@ -59,35 +59,19 @@ Treemap
 ## ...     .where_records_match(None)
 ## ...     #
 ## ...     .run()
-## ... )
-## >>> plot.write_html("docs_source/_generated/px.packages.factor_analysis/co_occurrence/treemap.html")
+## ... ).head()
 
-.. raw:: html
-
-    <iframe src="../_generated/px.packages.factor_analysis/co_occurrence/treemap.html"
-    height="800px" width="100%" frameBorder="0"></iframe>
 
 
 """
-import plotly.express as px  # type: ignore
-import plotly.graph_objs as go  # type: ignore
+import pandas as pd  # type: ignore
 
-from techminer2.decomposition.factor_analysis.co_occurrence.terms_to_cluster_mapping import (
-    terms_to_cluster_mapping,
-)
-
-CLUSTER_COLORS = (
-    px.colors.qualitative.Dark24
-    + px.colors.qualitative.Light24
-    + px.colors.qualitative.Pastel1
-    + px.colors.qualitative.Pastel2
-    + px.colors.qualitative.Set1
-    + px.colors.qualitative.Set2
-    + px.colors.qualitative.Set3
+from techminer2.analyze.factor_analysis.co_occurrence.cluster_to_terms_mapping import (
+    cluster_to_terms_mapping,
 )
 
 
-def treemap(
+def terms_by_cluster_frame(
     #
     # PARAMS:
     field,
@@ -114,7 +98,7 @@ def treemap(
 ):
     """:meta private:"""
 
-    c2t_mapping = terms_to_cluster_mapping(
+    c2t_mapping = cluster_to_terms_mapping(
         #
         # FUNCTION PARAMS:
         field=field,
@@ -140,72 +124,10 @@ def treemap(
         **filters,
     )
 
-    node_occ = []
-    node_color = []
-    node_text = []
-    parents = []
+    frame = pd.DataFrame.from_dict(c2t_mapping, orient="index").T
+    frame = frame.fillna("")
+    frame = frame.sort_index(axis=1)
 
-    name2color = {
-        term: CLUSTER_COLORS[cluster] for term, cluster in c2t_mapping.items()
-    }
+    return frame
 
-    clusters = list(set(c2t_mapping.values()))
-    cluster_occ = {key: 0 for key in clusters}
-
-    for term, cluster in c2t_mapping.items():
-        #
-        # Extracs occurrences from node names. Example: 'regtech 10:100' -> 10
-        occ = term.split(" ")[-1]
-        occ = occ.split(":")[0]
-        occ = float(occ)
-        node_occ.append(occ)
-        cluster_occ[cluster] += occ
-
-        #
-        # Uses the same color of clusters
-        node_color.append(name2color[term])
-
-        #
-        # Sets text to node names without metrics
-        node_name = term
-        node_name = node_name.split(" ")[:-1]
-        node_name = " ".join(node_name)
-
-        node_text.append(node_name)
-        parents.append(cluster)
-
-    node_occ = [cluster_occ[key] * 0 for key in clusters] + node_occ
-    node_color = ["lightgrey"] * len(clusters) + node_color
-    node_text = clusters + node_text
-    parents = [""] * len(clusters) + parents
-
-    fig = go.Figure()
-    fig.add_trace(
-        go.Treemap(
-            labels=node_text,
-            parents=parents,
-            values=node_occ,
-            textinfo="label+value+percent entry",
-            opacity=0.9,
-        )
-    )
-    fig.update_traces(marker={"cornerradius": 5})
-    fig.update_layout(
-        showlegend=False,
-        margin={"t": 30, "l": 0, "r": 0, "b": 0},
-    )
-
-    #
-    # Change the colors of the treemap white
-    fig.update_traces(
-        #    marker={"line": {"color": "darkslategray", "width": 1}},
-        marker_colors=node_color,
-    )
-
-    #
-    # Change the font size of the labels
-    fig.update_traces(textfont_size=12)
-
-    return fig
-
-    return fig
+    return frame

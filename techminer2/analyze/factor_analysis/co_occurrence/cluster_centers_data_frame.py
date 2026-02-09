@@ -6,7 +6,7 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Cluster to Terms Mapping
+Cluster Centers Frame
 ===============================================================================
 
 ## >>> from sklearn.decomposition import PCA
@@ -30,9 +30,9 @@ Cluster to Terms Mapping
 ## ...     algorithm="elkan",
 ## ...     random_state=0,
 ## ... )
-## >>> from techminer2.packages.factor_analysis.co_occurrence import cluster_to_terms_mapping
-## >>> mapping = (
-## ...     ClusterToTermsMapping()
+## >>> from techminer2.packages.factor_analysis.co_occurrence import cluster_centers_frame
+## >>> (
+## ...     ClusterCentersDataFrame()
 ## ...     #
 ## ...     # FIELD:
 ## ...     .with_field("descriptors")
@@ -60,18 +60,20 @@ Cluster to Terms Mapping
 ## ...     #
 ## ...     .run()
 ## ... )
-## >>> from pprint import pprint
-## >>> pprint(mapping)
+
 
 
 
 """
-from techminer2.decomposition.factor_analysis.co_occurrence.terms_to_cluster_mapping import (
+from techminer2.analyze.factor_analysis.co_occurrence.terms_by_dimension_data_frame import (
+    terms_by_dimension_frame,
+)
+from techminer2.analyze.factor_analysis.co_occurrence.terms_to_cluster_mapping import (
     terms_to_cluster_mapping,
 )
 
 
-def cluster_to_terms_mapping(
+def cluster_centers_frame(
     #
     # PARAMS:
     field,
@@ -124,12 +126,36 @@ def cluster_to_terms_mapping(
         **filters,
     )
 
-    mapping = {}
-    for term, cluster in t2c_mapping.items():
-        if cluster not in mapping:
-            mapping[cluster] = []
-        mapping[cluster].append(term)
+    embedding = terms_by_dimension_frame(
+        #
+        # FUNCTION PARAMS:
+        field=field,
+        association_index=association_index,
+        #
+        # TERM PARAMS:
+        top_n=top_n,
+        occ_range=occ_range,
+        gc_range=gc_range,
+        custom_terms=custom_terms,
+        #
+        # DECOMPOSITION:
+        decomposition_estimator=decomposition_estimator,
+        #
+        # DATABASE PARAMS:
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
+    )
 
-    return mapping
+    n_clusters = len(set(t2c_mapping.values()))
+    embedding = embedding.iloc[:, :n_clusters]
+    embedding["cluster"] = embedding.index.map(t2c_mapping)
+    embedding = embedding.groupby("cluster").mean()
 
-    return mapping
+    return embedding
+    embedding["cluster"] = embedding.index.map(t2c_mapping)
+    embedding = embedding.groupby("cluster").mean()
+
+    return embedding

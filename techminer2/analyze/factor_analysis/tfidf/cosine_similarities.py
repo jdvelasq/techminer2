@@ -20,7 +20,7 @@ Cosine Similarities
 ## ...     power_iteration_normalizer="auto",
 ## ...     random_state=0,
 ## ... )
-## >>> from techminer2.packages.factor_analysis.co_occurrence import cosine_similarities
+## >>> from techminer2.packages.factor_analysis.tfidf import cosine_similarities
 ## >>> (
 ## ...     CosineSimilarities()
 ## ...     #
@@ -35,8 +35,12 @@ Cosine Similarities
 ## ...     # DECOMPOSITION:
 ## ...     .using_decomposition_estimator(pca)
 ## ...     #
-## ...     # ASSOCIATION INDEX:
-## ...     .using_association_index(None)
+## ...     # TFIDF:
+## ...     .using_binary_term_frequencies(False)
+## ...     .using_row_normalization(None)
+## ...     .using_idf_reweighting(False)
+## ...     .using_idf_weights_smoothing(False)
+## ...     .using_sublinear_tf_scaling(False)
 ## ...     #
 ## ...     # DATABASE:
 ## ...     .where_root_directory("examples/small/")
@@ -49,15 +53,13 @@ Cosine Similarities
 ## ... ).head()
 
 
-
-
 """
 import pandas as pd  # type: ignore
 from sklearn.metrics.pairwise import (
     cosine_similarity as sklearn_cosine_similarity,  # type: ignore
 )
 
-from techminer2.decomposition.factor_analysis.co_occurrence.terms_by_dimension_data_frame import (
+from techminer2.analyze.factor_analysis.tfidf.terms_by_dimension_dataframe import (
     terms_by_dimension_frame,
 )
 
@@ -66,13 +68,22 @@ def cosine_similarities(
     #
     # PARAMS:
     field,
-    association_index=None,
+    #
+    # TF PARAMS:
+    is_binary: bool = True,
+    cooc_within: int = 1,
     #
     # TERM PARAMS:
     top_n=None,
     occ_range=(None, None),
     gc_range=(None, None),
     custom_terms=None,
+    #
+    # TF-IDF parameters:
+    norm=None,
+    use_idf=False,
+    smooth_idf=False,
+    sublinear_tf=False,
     #
     # DECOMPOSITION:
     decomposition_estimator=None,
@@ -90,13 +101,22 @@ def cosine_similarities(
         #
         # FUNCTION PARAMS:
         field=field,
-        association_index=association_index,
+        #
+        # TF PARAMS:
+        is_binary=is_binary,
+        cooc_within=cooc_within,
         #
         # TERM PARAMS:
         top_n=top_n,
         occ_range=occ_range,
         gc_range=gc_range,
         custom_terms=custom_terms,
+        #
+        # TF-IDF parameters:
+        norm=norm,
+        use_idf=use_idf,
+        smooth_idf=smooth_idf,
+        sublinear_tf=sublinear_tf,
         #
         # DECOMPOSITION:
         decomposition_estimator=decomposition_estimator,

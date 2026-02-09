@@ -6,7 +6,7 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Manifold Terms by Dimensions Map
+Terms by Dimensions Map
 ===============================================================================
 
 ## >>> from sklearn.decomposition import PCA
@@ -20,28 +20,9 @@ Manifold Terms by Dimensions Map
 ## ...     power_iteration_normalizer="auto",
 ## ...     random_state=0,
 ## ... )
-## >>> from sklearn.manifold import TSNE
-## >>> tsne = TSNE(
-## ...     perplexity=10.0,
-## ...     early_exaggeration=12.0,
-## ...     learning_rate="auto",
-## ...     max_iter=1000,
-## ...     n_iter_without_progress=300,
-## ...     min_grad_norm=1e-07,
-## ...     metric="euclidean",
-## ...     metric_params=None,
-## ...     init="pca",
-## ...     verbose=0,
-## ...     random_state=0,
-## ...     method="barnes_hut",
-## ...     angle=0.5,
-## ...     n_jobs=None,
-## ... )
-
-
-## >>> from techminer2.packages.factor_analysis.tfidf import manifold_terms_by_dimension_map
+## >>> from techminer2.packages.factor_analysis.tfidf import terms_by_dimension_map
 ## >>> plot = (
-## ...     ManifoldTermsByDimensionMap()
+## ...     TermsByDimensionMap()
 ## ...     #
 ## ...     # FIELD:
 ## ...     .with_field("descriptors")
@@ -51,8 +32,8 @@ Manifold Terms by Dimensions Map
 ## ...     .having_term_citations_between(None, None)
 ## ...     .having_terms_in(None)
 ## ...     #
-## ...     # MANIFOLD:
-## ...     .using_manifold_estimator(tsne)
+## ...     # DECOMPOSITION:
+## ...     .using_decomposition_estimator(pca)
 ## ...     #
 ## ...     # TFIDF:
 ## ...     .using_binary_term_frequencies(False)
@@ -62,7 +43,8 @@ Manifold Terms by Dimensions Map
 ## ...     .using_sublinear_tf_scaling(False)
 ## ...     #
 ## ...     # MAP:
-## ...     .using_node_colors(["#7793a5"])
+## ...     .using_plot_dimensions(0, 1)
+## ...     .using_node_colors(["#465c6b"])
 ## ...     .using_node_size(10)
 ## ...     .using_textfont_size(8)
 ## ...     .using_textfont_color("#465c6b")
@@ -80,24 +62,23 @@ Manifold Terms by Dimensions Map
 ## ...     #
 ## ...     .run()
 ## ... )
-## >>> plot.write_html("docs_source/_generated/px.packages.factor_analysis/tfidf/manifold_terms_by_dimension_map.html")
+## >>> plot.write_html("docs_source/__static/factor_analysis/tfidf/terms_by_dimension_map.html")
 
 .. raw:: html
 
-    <iframe src="../_generated/px.packages.factor_analysis/tfidf/manifold_terms_by_dimension_map.html"
-    height="800px" width="100%" frameBorder="0"></iframe>
-
+    <iframe src="../../_static/factor_analysis/tfidf/terms_by_dimension_map.html"
+    height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from techminer2.decomposition.factor_analysis._internals.manifold_2d_map import (
+from techminer2.analyze.factor_analysis._internals.manifold_2d_map import (
     manifold_2d_map,
 )
-from techminer2.decomposition.factor_analysis.tfidf.terms_by_dimension_dataframe import (
+from techminer2.analyze.factor_analysis.tfidf.terms_by_dimension_dataframe import (
     terms_by_dimension_frame,
 )
 
 
-def manifold_terms_by_dimension_map(
+def terms_by_dimension_map(
     #
     # PARAMS:
     field,
@@ -121,10 +102,9 @@ def manifold_terms_by_dimension_map(
     # DECOMPOSITION:
     decomposition_estimator=None,
     #
-    # MANIFOLD PARAMS:
-    manifold_estimator=None,
-    #
     # MAP PARAMS:
+    dim_x=0,
+    dim_y=1,
     node_color="#465c6b",
     node_size=10,
     textfont_size=8,
@@ -173,16 +153,14 @@ def manifold_terms_by_dimension_map(
         **filters,
     )
 
-    manifold = manifold_estimator.fit_transform(embedding)
-
     return manifold_2d_map(
-        node_x=manifold[:, 0],
-        node_y=manifold[:, 1],
+        node_x=embedding[dim_x],
+        node_y=embedding[dim_y],
         node_text=embedding.index.to_list(),
         node_color=node_color,
         node_size=node_size,
-        title_x="Dim 0",
-        title_y="Dim 1",
+        title_x=dim_x,
+        title_y=dim_y,
         textfont_size=textfont_size,
         textfont_color=textfont_color,
         xaxes_range=xaxes_range,

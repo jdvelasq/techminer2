@@ -6,7 +6,7 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Terms to Cluster Mapping
+Cosine Similarities
 ===============================================================================
 
 ## >>> from sklearn.decomposition import PCA
@@ -20,19 +20,9 @@ Terms to Cluster Mapping
 ## ...     power_iteration_normalizer="auto",
 ## ...     random_state=0,
 ## ... )
-## >>> from sklearn.cluster import KMeans
-## >>> kmeans = KMeans(
-## ...     n_clusters=6,
-## ...     init="k-means++",
-## ...     n_init=10,
-## ...     max_iter=300,
-## ...     tol=0.0001,
-## ...     algorithm="elkan",
-## ...     random_state=0,
-## ... )
-## >>> from techminer2.packages.factor_analysis.tfidf import terms_to_cluster_mapping
-## >>> mapping = (
-## ...     TermsToClusterMapping()
+## >>> from techminer2.packages.factor_analysis.co_occurrence import cosine_similarities
+## >>> (
+## ...     CosineSimilarities()
 ## ...     #
 ## ...     # FIELD:
 ## ...     .with_field("descriptors")
@@ -45,15 +35,8 @@ Terms to Cluster Mapping
 ## ...     # DECOMPOSITION:
 ## ...     .using_decomposition_estimator(pca)
 ## ...     #
-## ...     # CLUSTERING:
-## ...     .using_clustering_estimator_or_dict(kmeans)
-## ...     #
-## ...     # TFIDF:
-## ...     .using_binary_term_frequencies(False)
-## ...     .using_row_normalization(None)
-## ...     .using_idf_reweighting(False)
-## ...     .using_idf_weights_smoothing(False)
-## ...     .using_sublinear_tf_scaling(False)
+## ...     # ASSOCIATION INDEX:
+## ...     .using_association_index(None)
 ## ...     #
 ## ...     # DATABASE:
 ## ...     .where_root_directory("examples/small/")
@@ -63,28 +46,27 @@ Terms to Cluster Mapping
 ## ...     .where_records_match(None)
 ## ...     #
 ## ...     .run()
-## ... )
-## >>> from pprint import pprint
-## >>> pprint(mapping)
+## ... ).head()
+
+
 
 
 """
-from techminer2.decomposition.factor_analysis._internals.terms_to_cluster_mapping import (
-    _terms_to_cluster_mapping,
+import pandas as pd  # type: ignore
+from sklearn.metrics.pairwise import (
+    cosine_similarity as sklearn_cosine_similarity,  # type: ignore
 )
-from techminer2.decomposition.factor_analysis.tfidf.terms_by_dimension_dataframe import (
+
+from techminer2.analyze.factor_analysis.co_occurrence.terms_by_dimension_data_frame import (
     terms_by_dimension_frame,
 )
 
 
-def terms_to_cluster_mapping(
+def cosine_similarities(
     #
     # PARAMS:
     field,
-    #
-    # TF PARAMS:
-    is_binary: bool = True,
-    cooc_within: int = 1,
+    association_index=None,
     #
     # TERM PARAMS:
     top_n=None,
@@ -92,17 +74,8 @@ def terms_to_cluster_mapping(
     gc_range=(None, None),
     custom_terms=None,
     #
-    # TF-IDF parameters:
-    norm=None,
-    use_idf=False,
-    smooth_idf=False,
-    sublinear_tf=False,
-    #
     # DECOMPOSITION:
     decomposition_estimator=None,
-    #
-    # CLUSTERING:
-    clustering_estimator_or_dict=None,
     #
     # DATABASE PARAMS:
     root_dir="./",
@@ -117,22 +90,13 @@ def terms_to_cluster_mapping(
         #
         # FUNCTION PARAMS:
         field=field,
-        #
-        # TF PARAMS:
-        is_binary=is_binary,
-        cooc_within=cooc_within,
+        association_index=association_index,
         #
         # TERM PARAMS:
         top_n=top_n,
         occ_range=occ_range,
         gc_range=gc_range,
         custom_terms=custom_terms,
-        #
-        # TF-IDF parameters:
-        norm=norm,
-        use_idf=use_idf,
-        smooth_idf=smooth_idf,
-        sublinear_tf=sublinear_tf,
         #
         # DECOMPOSITION:
         decomposition_estimator=decomposition_estimator,
@@ -145,9 +109,29 @@ def terms_to_cluster_mapping(
         **filters,
     )
 
-    mapping = _terms_to_cluster_mapping(
-        terms_by_dimmension=embedding,
-        clustering_estimator_or_dict=clustering_estimator_or_dict,
+    similarity = sklearn_cosine_similarity(embedding)
+
+    term_similarities = []
+    for i in range(similarity.shape[0]):
+        values_to_sort = []
+        for j in range(similarity.shape[1]):
+            if i != j and similarity[i, j] > 0:
+                values_to_sort.append(
+                    (
+                        embedding.index[j],
+                        similarity[i, j],
+                    )
+                )
+        sorted_values = sorted(values_to_sort, key=lambda x: x[1], reverse=True)
+        sorted_values = [f"{x[0]} ({x[1]:>0.3f})" for x in sorted_values]
+        sorted_values = "; ".join(sorted_values)
+        term_similarities.append(sorted_values)
+
+    term_similarities = pd.DataFrame(
+        {"cosine_similariries": term_similarities},
+        index=embedding.index,
     )
 
-    return mapping
+    return term_similarities
+
+    return term_similarities

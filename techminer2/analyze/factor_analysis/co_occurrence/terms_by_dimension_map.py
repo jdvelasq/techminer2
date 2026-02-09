@@ -6,7 +6,7 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Cluster to Terms Mapping
+Terms by Dimensions Map
 ===============================================================================
 
 ## >>> from sklearn.decomposition import PCA
@@ -20,19 +20,9 @@ Cluster to Terms Mapping
 ## ...     power_iteration_normalizer="auto",
 ## ...     random_state=0,
 ## ... )
-## >>> from sklearn.cluster import KMeans
-## >>> kmeans = KMeans(
-## ...     n_clusters=6,
-## ...     init="k-means++",
-## ...     n_init=10,
-## ...     max_iter=300,
-## ...     tol=0.0001,
-## ...     algorithm="elkan",
-## ...     random_state=0,
-## ... )
-## >>> from techminer2.packages.factor_analysis.tfidf import cluster_to_terms_mapping
-## >>> mapping = (
-## ...     ClusterToTermsMapping()
+## >>> from techminer2.packages.factor_analysis.co_occurrence import terms_by_dimension_map
+## >>> plot = (
+## ...     TermsByDimensionMap()
 ## ...     #
 ## ...     # FIELD:
 ## ...     .with_field("descriptors")
@@ -45,15 +35,19 @@ Cluster to Terms Mapping
 ## ...     # DECOMPOSITION:
 ## ...     .using_decomposition_estimator(pca)
 ## ...     #
-## ...     # CLUSTERING:
-## ...     .using_clustering_estimator_or_dict(kmeans)
+## ...     # ASSOCIATION INDEX:
+## ...     .using_association_index(None)
 ## ...     #
-## ...     # TFIDF:
-## ...     .using_binary_term_frequencies(False)
-## ...     .using_row_normalization(None)
-## ...     .using_idf_reweighting(False)
-## ...     .using_idf_weights_smoothing(False)
-## ...     .using_sublinear_tf_scaling(False)
+## ...     # MAP:
+## ...     .using_plot_dimensions(0, 1)
+## ...     .using_node_colors(["#465c6b"])
+## ...     .using_node_size(10)
+## ...     .using_textfont_size(8)
+## ...     .using_textfont_color("#465c6b")
+## ...     #
+## ...     .using_xaxes_range(None, None)
+## ...     .using_yaxes_range(None, None)
+## ...     .using_axes_visible(False)
 ## ...     #
 ## ...     # DATABASE:
 ## ...     .where_root_directory("examples/small/")
@@ -64,25 +58,27 @@ Cluster to Terms Mapping
 ## ...     #
 ## ...     .run()
 ## ... )
-## >>> from pprint import pprint
-## >>> pprint(mapping)
+## >>> plot.write_html("docs_source/__static/factor_analysis/co_occurrence/terms_by_dimension_map.html")
 
+.. raw:: html
 
+    <iframe src="../../_static/factor_analysis/co_occurrence/terms_by_dimension_map.html"
+    height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from techminer2.decomposition.factor_analysis.tfidf.terms_to_cluster_mapping import (
-    terms_to_cluster_mapping,
+from techminer2.analyze.factor_analysis._internals.manifold_2d_map import (
+    manifold_2d_map,
+)
+from techminer2.analyze.factor_analysis.co_occurrence.terms_by_dimension_data_frame import (
+    terms_by_dimension_frame,
 )
 
 
-def cluster_to_terms_mapping(
+def terms_by_dimension_map(
     #
     # PARAMS:
     field,
-    #
-    # TF PARAMS:
-    is_binary: bool = True,
-    cooc_within: int = 1,
+    association_index=None,
     #
     # TERM PARAMS:
     top_n=None,
@@ -90,17 +86,18 @@ def cluster_to_terms_mapping(
     gc_range=(None, None),
     custom_terms=None,
     #
-    # TF-IDF parameters:
-    norm=None,
-    use_idf=False,
-    smooth_idf=False,
-    sublinear_tf=False,
-    #
     # DECOMPOSITION:
     decomposition_estimator=None,
     #
-    # CLUSTERING:
-    clustering_estimator_or_dict=None,
+    # MAP PARAMS:
+    dim_x=0,
+    dim_y=1,
+    node_color="#465c6b",
+    node_size=10,
+    textfont_size=8,
+    textfont_color="#465c6b",
+    xaxes_range=None,
+    yaxes_range=None,
     #
     # DATABASE PARAMS:
     root_dir="./",
@@ -111,14 +108,11 @@ def cluster_to_terms_mapping(
 ):
     """:meta private:"""
 
-    t2c_mapping = terms_to_cluster_mapping(
+    embedding = terms_by_dimension_frame(
         #
         # FUNCTION PARAMS:
         field=field,
-        #
-        # TF PARAMS:
-        is_binary=is_binary,
-        cooc_within=cooc_within,
+        association_index=association_index,
         #
         # TERM PARAMS:
         top_n=top_n,
@@ -126,17 +120,8 @@ def cluster_to_terms_mapping(
         gc_range=gc_range,
         custom_terms=custom_terms,
         #
-        # TF-IDF parameters:
-        norm=norm,
-        use_idf=use_idf,
-        smooth_idf=smooth_idf,
-        sublinear_tf=sublinear_tf,
-        #
         # DECOMPOSITION:
         decomposition_estimator=decomposition_estimator,
-        #
-        # CLUSTERING:
-        clustering_estimator_or_dict=clustering_estimator_or_dict,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,
@@ -146,13 +131,16 @@ def cluster_to_terms_mapping(
         **filters,
     )
 
-    mapping = {}
-    for term, cluster in t2c_mapping.items():
-        if cluster not in mapping:
-            mapping[cluster] = []
-        mapping[cluster].append(term)
-
-    return mapping
-
-
-#
+    return manifold_2d_map(
+        node_x=embedding[dim_x],
+        node_y=embedding[dim_y],
+        node_text=embedding.index.to_list(),
+        node_color=node_color,
+        node_size=node_size,
+        title_x=dim_x,
+        title_y=dim_y,
+        textfont_size=textfont_size,
+        textfont_color=textfont_color,
+        xaxes_range=xaxes_range,
+        yaxes_range=yaxes_range,
+    )

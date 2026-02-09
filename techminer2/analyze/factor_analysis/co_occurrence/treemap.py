@@ -30,7 +30,7 @@ Treemap
 ## ...     algorithm="elkan",
 ## ...     random_state=0,
 ## ... )
-## >>> from techminer2.packages.factor_analysis.tfidf import treemap
+## >>> from techminer2.packages.factor_analysis.co_occurrence import treemap
 ## >>> plot = (
 ## ...     Treemap()
 ## ...     #
@@ -48,12 +48,8 @@ Treemap
 ## ...     # CLUSTERING:
 ## ...     .using_clustering_estimator_or_dict(kmeans)
 ## ...     #
-## ...     # TFIDF:
-## ...     .using_binary_term_frequencies(False)
-## ...     .using_row_normalization(None)
-## ...     .using_idf_reweighting(False)
-## ...     .using_idf_weights_smoothing(False)
-## ...     .using_sublinear_tf_scaling(False)
+## ...     # ASSOCIATION INDEX:
+## ...     .using_association_index(None)
 ## ...     #
 ## ...     # DATABASE:
 ## ...     .where_root_directory("examples/small/")
@@ -64,20 +60,19 @@ Treemap
 ## ...     #
 ## ...     .run()
 ## ... )
-## >>> plot.write_html("docs_source/_generated/px.packages.factor_analysis/tfidf/treemap.html")
+## >>> plot.write_html("docs_source/_generated/px.packages.factor_analysis/co_occurrence/treemap.html")
 
 .. raw:: html
 
-    <iframe src="../_generated/px.packages.factor_analysis/tfidf/treemap.html"
+    <iframe src="../_generated/px.packages.factor_analysis/co_occurrence/treemap.html"
     height="800px" width="100%" frameBorder="0"></iframe>
-
 
 
 """
 import plotly.express as px  # type: ignore
 import plotly.graph_objs as go  # type: ignore
 
-from techminer2.decomposition.factor_analysis.tfidf.terms_to_cluster_mapping import (
+from techminer2.analyze.factor_analysis.co_occurrence.terms_to_cluster_mapping import (
     terms_to_cluster_mapping,
 )
 
@@ -96,22 +91,13 @@ def treemap(
     #
     # PARAMS:
     field,
-    #
-    # TF PARAMS:
-    is_binary: bool = True,
-    cooc_within: int = 1,
+    association_index=None,
     #
     # TERM PARAMS:
     top_n=None,
     occ_range=(None, None),
     gc_range=(None, None),
     custom_terms=None,
-    #
-    # TF-IDF parameters:
-    norm=None,
-    use_idf=False,
-    smooth_idf=False,
-    sublinear_tf=False,
     #
     # DECOMPOSITION:
     decomposition_estimator=None,
@@ -132,22 +118,13 @@ def treemap(
         #
         # FUNCTION PARAMS:
         field=field,
-        #
-        # TF PARAMS:
-        is_binary=is_binary,
-        cooc_within=cooc_within,
+        association_index=association_index,
         #
         # TERM PARAMS:
         top_n=top_n,
         occ_range=occ_range,
         gc_range=gc_range,
         custom_terms=custom_terms,
-        #
-        # TF-IDF parameters:
-        norm=norm,
-        use_idf=use_idf,
-        smooth_idf=smooth_idf,
-        sublinear_tf=sublinear_tf,
         #
         # DECOMPOSITION:
         decomposition_estimator=decomposition_estimator,

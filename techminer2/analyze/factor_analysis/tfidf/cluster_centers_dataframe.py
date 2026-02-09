@@ -6,7 +6,7 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Terms by Dimensions Map
+Cluster Centers Frame
 ===============================================================================
 
 ## >>> from sklearn.decomposition import PCA
@@ -20,9 +20,19 @@ Terms by Dimensions Map
 ## ...     power_iteration_normalizer="auto",
 ## ...     random_state=0,
 ## ... )
-## >>> from techminer2.packages.factor_analysis.tfidf import terms_by_dimension_map
-## >>> plot = (
-## ...     TermsByDimensionMap()
+## >>> from sklearn.cluster import KMeans
+## >>> kmeans = KMeans(
+## ...     n_clusters=6,
+## ...     init="k-means++",
+## ...     n_init=10,
+## ...     max_iter=300,
+## ...     tol=0.0001,
+## ...     algorithm="elkan",
+## ...     random_state=0,
+## ... )
+## >>> from techminer2.packages.factor_analysis.tfidf import cluster_centers_frame
+## >>> (
+## ...     ClusterCentersDataFrame()
 ## ...     #
 ## ...     # FIELD:
 ## ...     .with_field("descriptors")
@@ -35,23 +45,15 @@ Terms by Dimensions Map
 ## ...     # DECOMPOSITION:
 ## ...     .using_decomposition_estimator(pca)
 ## ...     #
+## ...     # CLUSTERING:
+## ...     .using_clustering_estimator_or_dict(kmeans)
+## ...     #
 ## ...     # TFIDF:
 ## ...     .using_binary_term_frequencies(False)
 ## ...     .using_row_normalization(None)
 ## ...     .using_idf_reweighting(False)
 ## ...     .using_idf_weights_smoothing(False)
 ## ...     .using_sublinear_tf_scaling(False)
-## ...     #
-## ...     # MAP:
-## ...     .using_plot_dimensions(0, 1)
-## ...     .using_node_colors(["#465c6b"])
-## ...     .using_node_size(10)
-## ...     .using_textfont_size(8)
-## ...     .using_textfont_color("#465c6b")
-## ...     #
-## ...     .using_xaxes_range(None, None)
-## ...     .using_yaxes_range(None, None)
-## ...     .using_axes_visible(False)
 ## ...     #
 ## ...     # DATABASE:
 ## ...     .where_root_directory("examples/small/")
@@ -62,23 +64,19 @@ Terms by Dimensions Map
 ## ...     #
 ## ...     .run()
 ## ... )
-## >>> plot.write_html("docs_source/__static/factor_analysis/tfidf/terms_by_dimension_map.html")
 
-.. raw:: html
 
-    <iframe src="../../_static/factor_analysis/tfidf/terms_by_dimension_map.html"
-    height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from techminer2.decomposition.factor_analysis._internals.manifold_2d_map import (
-    manifold_2d_map,
-)
-from techminer2.decomposition.factor_analysis.tfidf.terms_by_dimension_dataframe import (
+from techminer2.analyze.factor_analysis.tfidf.terms_by_dimension_dataframe import (
     terms_by_dimension_frame,
 )
+from techminer2.analyze.factor_analysis.tfidf.terms_to_cluster_mapping import (
+    terms_to_cluster_mapping,
+)
 
 
-def terms_by_dimension_map(
+def cluster_centers_frame(
     #
     # PARAMS:
     field,
@@ -102,15 +100,8 @@ def terms_by_dimension_map(
     # DECOMPOSITION:
     decomposition_estimator=None,
     #
-    # MAP PARAMS:
-    dim_x=0,
-    dim_y=1,
-    node_color="#465c6b",
-    node_size=10,
-    textfont_size=8,
-    textfont_color="#465c6b",
-    xaxes_range=None,
-    yaxes_range=None,
+    # CLUSTERING:
+    clustering_estimator_or_dict=None,
     #
     # DATABASE PARAMS:
     root_dir="./",
@@ -120,6 +111,41 @@ def terms_by_dimension_map(
     **filters,
 ):
     """:meta private:"""
+
+    t2c_mapping = terms_to_cluster_mapping(
+        #
+        # FUNCTION PARAMS:
+        field=field,
+        #
+        # TF PARAMS:
+        is_binary=is_binary,
+        cooc_within=cooc_within,
+        #
+        # TERM PARAMS:
+        top_n=top_n,
+        occ_range=occ_range,
+        gc_range=gc_range,
+        custom_terms=custom_terms,
+        #
+        # TF-IDF parameters:
+        norm=norm,
+        use_idf=use_idf,
+        smooth_idf=smooth_idf,
+        sublinear_tf=sublinear_tf,
+        #
+        # DECOMPOSITION:
+        decomposition_estimator=decomposition_estimator,
+        #
+        # CLUSTERING:
+        clustering_estimator_or_dict=clustering_estimator_or_dict,
+        #
+        # DATABASE PARAMS:
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
+    )
 
     embedding = terms_by_dimension_frame(
         #
@@ -153,16 +179,12 @@ def terms_by_dimension_map(
         **filters,
     )
 
-    return manifold_2d_map(
-        node_x=embedding[dim_x],
-        node_y=embedding[dim_y],
-        node_text=embedding.index.to_list(),
-        node_color=node_color,
-        node_size=node_size,
-        title_x=dim_x,
-        title_y=dim_y,
-        textfont_size=textfont_size,
-        textfont_color=textfont_color,
-        xaxes_range=xaxes_range,
-        yaxes_range=yaxes_range,
-    )
+    n_clusters = len(set(t2c_mapping.values()))
+    embedding = embedding.iloc[:, :n_clusters]
+    embedding["cluster"] = embedding.index.map(t2c_mapping)
+    embedding = embedding.groupby("cluster").mean()
+
+    return embedding
+
+
+#

@@ -6,7 +6,7 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Terms by Dimensions Map
+Terms by Cluster Frame
 ===============================================================================
 
 ## >>> from sklearn.decomposition import PCA
@@ -20,9 +20,19 @@ Terms by Dimensions Map
 ## ...     power_iteration_normalizer="auto",
 ## ...     random_state=0,
 ## ... )
-## >>> from techminer2.packages.factor_analysis.co_occurrence import terms_by_dimension_map
-## >>> plot = (
-## ...     TermsByDimensionMap()
+## >>> from sklearn.cluster import KMeans
+## >>> kmeans = KMeans(
+## ...     n_clusters=6,
+## ...     init="k-means++",
+## ...     n_init=10,
+## ...     max_iter=300,
+## ...     tol=0.0001,
+## ...     algorithm="elkan",
+## ...     random_state=0,
+## ... )
+## >>> from techminer2.packages.factor_analysis.tfidf import terms_by_cluster_frame
+## >>> (
+## ...     TermsByClusterDataFrame()
 ## ...     #
 ## ...     # FIELD:
 ## ...     .with_field("descriptors")
@@ -35,19 +45,15 @@ Terms by Dimensions Map
 ## ...     # DECOMPOSITION:
 ## ...     .using_decomposition_estimator(pca)
 ## ...     #
-## ...     # ASSOCIATION INDEX:
-## ...     .using_association_index(None)
+## ...     # CLUSTERING:
+## ...     .using_clustering_estimator_or_dict(kmeans)
 ## ...     #
-## ...     # MAP:
-## ...     .using_plot_dimensions(0, 1)
-## ...     .using_node_colors(["#465c6b"])
-## ...     .using_node_size(10)
-## ...     .using_textfont_size(8)
-## ...     .using_textfont_color("#465c6b")
-## ...     #
-## ...     .using_xaxes_range(None, None)
-## ...     .using_yaxes_range(None, None)
-## ...     .using_axes_visible(False)
+## ...     # TFIDF:
+## ...     .using_binary_term_frequencies(False)
+## ...     .using_row_normalization(None)
+## ...     .using_idf_reweighting(False)
+## ...     .using_idf_weights_smoothing(False)
+## ...     .using_sublinear_tf_scaling(False)
 ## ...     #
 ## ...     # DATABASE:
 ## ...     .where_root_directory("examples/small/")
@@ -57,28 +63,25 @@ Terms by Dimensions Map
 ## ...     .where_records_match(None)
 ## ...     #
 ## ...     .run()
-## ... )
-## >>> plot.write_html("docs_source/__static/factor_analysis/co_occurrence/terms_by_dimension_map.html")
+## ... ).head()
 
-.. raw:: html
-
-    <iframe src="../../_static/factor_analysis/co_occurrence/terms_by_dimension_map.html"
-    height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from techminer2.decomposition.factor_analysis._internals.manifold_2d_map import (
-    manifold_2d_map,
-)
-from techminer2.decomposition.factor_analysis.co_occurrence.terms_by_dimension_data_frame import (
-    terms_by_dimension_frame,
+import pandas as pd  # type: ignore
+
+from techminer2.analyze.factor_analysis.tfidf.cluster_to_terms_mapping import (
+    cluster_to_terms_mapping,
 )
 
 
-def terms_by_dimension_map(
+def terms_by_cluster_frame(
     #
     # PARAMS:
     field,
-    association_index=None,
+    #
+    # TF PARAMS:
+    is_binary: bool = True,
+    cooc_within: int = 1,
     #
     # TERM PARAMS:
     top_n=None,
@@ -86,18 +89,17 @@ def terms_by_dimension_map(
     gc_range=(None, None),
     custom_terms=None,
     #
+    # TF-IDF parameters:
+    norm=None,
+    use_idf=False,
+    smooth_idf=False,
+    sublinear_tf=False,
+    #
     # DECOMPOSITION:
     decomposition_estimator=None,
     #
-    # MAP PARAMS:
-    dim_x=0,
-    dim_y=1,
-    node_color="#465c6b",
-    node_size=10,
-    textfont_size=8,
-    textfont_color="#465c6b",
-    xaxes_range=None,
-    yaxes_range=None,
+    # CLUSTERING:
+    clustering_estimator_or_dict=None,
     #
     # DATABASE PARAMS:
     root_dir="./",
@@ -108,11 +110,14 @@ def terms_by_dimension_map(
 ):
     """:meta private:"""
 
-    embedding = terms_by_dimension_frame(
+    c2t_mapping = cluster_to_terms_mapping(
         #
         # FUNCTION PARAMS:
         field=field,
-        association_index=association_index,
+        #
+        # TF PARAMS:
+        is_binary=is_binary,
+        cooc_within=cooc_within,
         #
         # TERM PARAMS:
         top_n=top_n,
@@ -120,8 +125,17 @@ def terms_by_dimension_map(
         gc_range=gc_range,
         custom_terms=custom_terms,
         #
+        # TF-IDF parameters:
+        norm=norm,
+        use_idf=use_idf,
+        smooth_idf=smooth_idf,
+        sublinear_tf=sublinear_tf,
+        #
         # DECOMPOSITION:
         decomposition_estimator=decomposition_estimator,
+        #
+        # CLUSTERING:
+        clustering_estimator_or_dict=clustering_estimator_or_dict,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,
@@ -131,16 +145,10 @@ def terms_by_dimension_map(
         **filters,
     )
 
-    return manifold_2d_map(
-        node_x=embedding[dim_x],
-        node_y=embedding[dim_y],
-        node_text=embedding.index.to_list(),
-        node_color=node_color,
-        node_size=node_size,
-        title_x=dim_x,
-        title_y=dim_y,
-        textfont_size=textfont_size,
-        textfont_color=textfont_color,
-        xaxes_range=xaxes_range,
-        yaxes_range=yaxes_range,
-    )
+    frame = pd.DataFrame.from_dict(c2t_mapping, orient="index").T
+    frame = frame.fillna("")
+    frame = frame.sort_index(axis=1)
+
+    return frame
+
+    return frame

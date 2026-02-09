@@ -6,7 +6,7 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Cluster Centers Frame
+Terms to Cluster Mapping
 ===============================================================================
 
 ## >>> from sklearn.decomposition import PCA
@@ -30,9 +30,9 @@ Cluster Centers Frame
 ## ...     algorithm="elkan",
 ## ...     random_state=0,
 ## ... )
-## >>> from techminer2.packages.factor_analysis.tfidf import cluster_centers_frame
-## >>> (
-## ...     ClusterCentersDataFrame()
+## >>> from techminer2.packages.factor_analysis.tfidf import terms_to_cluster_mapping
+## >>> mapping = (
+## ...     TermsToClusterMapping()
 ## ...     #
 ## ...     # FIELD:
 ## ...     .with_field("descriptors")
@@ -64,19 +64,20 @@ Cluster Centers Frame
 ## ...     #
 ## ...     .run()
 ## ... )
-
+## >>> from pprint import pprint
+## >>> pprint(mapping)
 
 
 """
-from techminer2.decomposition.factor_analysis.tfidf.terms_by_dimension_dataframe import (
+from techminer2.analyze.factor_analysis._internals.terms_to_cluster_mapping import (
+    _terms_to_cluster_mapping,
+)
+from techminer2.analyze.factor_analysis.tfidf.terms_by_dimension_dataframe import (
     terms_by_dimension_frame,
 )
-from techminer2.decomposition.factor_analysis.tfidf.terms_to_cluster_mapping import (
-    terms_to_cluster_mapping,
-)
 
 
-def cluster_centers_frame(
+def terms_to_cluster_mapping(
     #
     # PARAMS:
     field,
@@ -112,41 +113,6 @@ def cluster_centers_frame(
 ):
     """:meta private:"""
 
-    t2c_mapping = terms_to_cluster_mapping(
-        #
-        # FUNCTION PARAMS:
-        field=field,
-        #
-        # TF PARAMS:
-        is_binary=is_binary,
-        cooc_within=cooc_within,
-        #
-        # TERM PARAMS:
-        top_n=top_n,
-        occ_range=occ_range,
-        gc_range=gc_range,
-        custom_terms=custom_terms,
-        #
-        # TF-IDF parameters:
-        norm=norm,
-        use_idf=use_idf,
-        smooth_idf=smooth_idf,
-        sublinear_tf=sublinear_tf,
-        #
-        # DECOMPOSITION:
-        decomposition_estimator=decomposition_estimator,
-        #
-        # CLUSTERING:
-        clustering_estimator_or_dict=clustering_estimator_or_dict,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    )
-
     embedding = terms_by_dimension_frame(
         #
         # FUNCTION PARAMS:
@@ -179,12 +145,9 @@ def cluster_centers_frame(
         **filters,
     )
 
-    n_clusters = len(set(t2c_mapping.values()))
-    embedding = embedding.iloc[:, :n_clusters]
-    embedding["cluster"] = embedding.index.map(t2c_mapping)
-    embedding = embedding.groupby("cluster").mean()
+    mapping = _terms_to_cluster_mapping(
+        terms_by_dimmension=embedding,
+        clustering_estimator_or_dict=clustering_estimator_or_dict,
+    )
 
-    return embedding
-
-
-#
+    return mapping

@@ -6,7 +6,7 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Terms by Cluster Frame
+Terms to Cluster Mapping
 ===============================================================================
 
 ## >>> from sklearn.decomposition import PCA
@@ -30,9 +30,9 @@ Terms by Cluster Frame
 ## ...     algorithm="elkan",
 ## ...     random_state=0,
 ## ... )
-## >>> from techminer2.packages.factor_analysis.co_occurrence import terms_by_cluster_frame
-## >>> (
-## ...     TermsByClusterDataFrame()
+## >>> from techminer2.packages.factor_analysis.co_occurrence import terms_to_cluster_mapping
+## >>> mapping = (
+## ...     TermsToClusterMapping()
 ## ...     #
 ## ...     # FIELD:
 ## ...     .with_field("descriptors")
@@ -59,19 +59,22 @@ Terms by Cluster Frame
 ## ...     .where_records_match(None)
 ## ...     #
 ## ...     .run()
-## ... ).head()
+## ... )
+## >>> from pprint import pprint
+## >>> pprint(mapping)
 
 
 
 """
-import pandas as pd  # type: ignore
-
-from techminer2.decomposition.factor_analysis.co_occurrence.cluster_to_terms_mapping import (
-    cluster_to_terms_mapping,
+from techminer2.analyze.factor_analysis._internals.terms_to_cluster_mapping import (
+    _terms_to_cluster_mapping,
+)
+from techminer2.analyze.factor_analysis.co_occurrence.terms_by_dimension_data_frame import (
+    terms_by_dimension_frame,
 )
 
 
-def terms_by_cluster_frame(
+def terms_to_cluster_mapping(
     #
     # PARAMS:
     field,
@@ -98,7 +101,7 @@ def terms_by_cluster_frame(
 ):
     """:meta private:"""
 
-    c2t_mapping = cluster_to_terms_mapping(
+    embedding = terms_by_dimension_frame(
         #
         # FUNCTION PARAMS:
         field=field,
@@ -113,9 +116,6 @@ def terms_by_cluster_frame(
         # DECOMPOSITION:
         decomposition_estimator=decomposition_estimator,
         #
-        # CLUSTERING:
-        clustering_estimator_or_dict=clustering_estimator_or_dict,
-        #
         # DATABASE PARAMS:
         root_dir=root_dir,
         database=database,
@@ -124,10 +124,9 @@ def terms_by_cluster_frame(
         **filters,
     )
 
-    frame = pd.DataFrame.from_dict(c2t_mapping, orient="index").T
-    frame = frame.fillna("")
-    frame = frame.sort_index(axis=1)
+    mapping = _terms_to_cluster_mapping(
+        terms_by_dimmension=embedding,
+        clustering_estimator_or_dict=clustering_estimator_or_dict,
+    )
 
-    return frame
-
-    return frame
+    return mapping

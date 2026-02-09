@@ -6,7 +6,7 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Manifold Terms by Dimensions Map
+Cluster to Terms Mapping
 ===============================================================================
 
 ## >>> from sklearn.decomposition import PCA
@@ -20,26 +20,19 @@ Manifold Terms by Dimensions Map
 ## ...     power_iteration_normalizer="auto",
 ## ...     random_state=0,
 ## ... )
-## >>> from sklearn.manifold import TSNE
-## >>> tsne = TSNE(
-## ...     perplexity=10.0,
-## ...     early_exaggeration=12.0,
-## ...     learning_rate="auto",
-## ...     max_iter=1000,
-## ...     n_iter_without_progress=300,
-## ...     min_grad_norm=1e-07,
-## ...     metric="euclidean",
-## ...     metric_params=None,
-## ...     init="pca",
-## ...     verbose=0,
+## >>> from sklearn.cluster import KMeans
+## >>> kmeans = KMeans(
+## ...     n_clusters=6,
+## ...     init="k-means++",
+## ...     n_init=10,
+## ...     max_iter=300,
+## ...     tol=0.0001,
+## ...     algorithm="elkan",
 ## ...     random_state=0,
-## ...     method="barnes_hut",
-## ...     angle=0.5,
-## ...     n_jobs=None,
 ## ... )
-## >>> from techminer2.packages.factor_analysis.co_occurrence import manifold_terms_by_dimension_map
-## >>> plot = (
-## ...     ManifoldTermsByDimensionMap()
+## >>> from techminer2.packages.factor_analysis.co_occurrence import cluster_to_terms_mapping
+## >>> mapping = (
+## ...     ClusterToTermsMapping()
 ## ...     #
 ## ...     # FIELD:
 ## ...     .with_field("descriptors")
@@ -52,21 +45,11 @@ Manifold Terms by Dimensions Map
 ## ...     # DECOMPOSITION:
 ## ...     .using_decomposition_estimator(pca)
 ## ...     #
-## ...     # MANIFOLD:
-## ...     .using_manifold_estimator(tsne)
+## ...     # CLUSTERING:
+## ...     .using_clustering_estimator_or_dict(kmeans)
 ## ...     #
 ## ...     # ASSOCIATION INDEX:
 ## ...     .using_association_index(None)
-## ...     #
-## ...     # MAP:
-## ...     .using_node_colors(["#465c6b"])
-## ...     .using_node_size(10)
-## ...     .using_textfont_size(8)
-## ...     .using_textfont_color("#465c6b")
-## ...     #
-## ...     .using_xaxes_range(None, None)
-## ...     .using_yaxes_range(None, None)
-## ...     .using_axes_visible(False)
 ## ...     #
 ## ...     # DATABASE:
 ## ...     .where_root_directory("examples/small/")
@@ -77,24 +60,18 @@ Manifold Terms by Dimensions Map
 ## ...     #
 ## ...     .run()
 ## ... )
-## >>> plot.write_html("docs_source/_generated/px.packages.factor_analysis/co_occurrence/manifold_terms_by_dimension_map.html")
+## >>> from pprint import pprint
+## >>> pprint(mapping)
 
-.. raw:: html
-
-    <iframe src="../_generated/px.packages.factor_analysis/co_occurrence/manifold_terms_by_dimension_map.html"
-    height="800px" width="100%" frameBorder="0"></iframe>
 
 
 """
-from techminer2.decomposition.factor_analysis._internals.manifold_2d_map import (
-    manifold_2d_map,
-)
-from techminer2.decomposition.factor_analysis.co_occurrence.terms_by_dimension_data_frame import (
-    terms_by_dimension_frame,
+from techminer2.analyze.factor_analysis.co_occurrence.terms_to_cluster_mapping import (
+    terms_to_cluster_mapping,
 )
 
 
-def manifold_terms_by_dimension_map(
+def cluster_to_terms_mapping(
     #
     # PARAMS:
     field,
@@ -109,16 +86,8 @@ def manifold_terms_by_dimension_map(
     # DECOMPOSITION:
     decomposition_estimator=None,
     #
-    # MANIFOLD PARAMS:
-    manifold_estimator=None,
-    #
-    # MAP PARAMS:
-    node_color="#465c6b",
-    node_size=10,
-    textfont_size=8,
-    textfont_color="#465c6b",
-    xaxes_range=None,
-    yaxes_range=None,
+    # CLUSTERING:
+    clustering_estimator_or_dict=None,
     #
     # DATABASE PARAMS:
     root_dir="./",
@@ -129,7 +98,7 @@ def manifold_terms_by_dimension_map(
 ):
     """:meta private:"""
 
-    embedding = terms_by_dimension_frame(
+    t2c_mapping = terms_to_cluster_mapping(
         #
         # FUNCTION PARAMS:
         field=field,
@@ -144,6 +113,9 @@ def manifold_terms_by_dimension_map(
         # DECOMPOSITION:
         decomposition_estimator=decomposition_estimator,
         #
+        # CLUSTERING:
+        clustering_estimator_or_dict=clustering_estimator_or_dict,
+        #
         # DATABASE PARAMS:
         root_dir=root_dir,
         database=database,
@@ -152,21 +124,12 @@ def manifold_terms_by_dimension_map(
         **filters,
     )
 
-    manifold = manifold_estimator.fit_transform(embedding)
+    mapping = {}
+    for term, cluster in t2c_mapping.items():
+        if cluster not in mapping:
+            mapping[cluster] = []
+        mapping[cluster].append(term)
 
-    return manifold_2d_map(
-        node_x=manifold[:, 0],
-        node_y=manifold[:, 1],
-        node_text=embedding.index.to_list(),
-        node_color=node_color,
-        node_size=node_size,
-        title_x="Dim 0",
-        title_y="Dim 1",
-        textfont_size=textfont_size,
-        textfont_color=textfont_color,
-        xaxes_range=xaxes_range,
-        yaxes_range=yaxes_range,
-    )
+    return mapping
 
-
-#
+    return mapping
