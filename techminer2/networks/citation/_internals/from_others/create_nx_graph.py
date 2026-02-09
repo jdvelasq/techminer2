@@ -9,7 +9,9 @@ import networkx as nx  # type: ignore
 import numpy as np
 
 from techminer2._internals.data_access import load_filtered_main_data
-from techminer2.visualization.data_frame import DataFrame as TermsByYearMetricsDataFrame
+from techminer2.report.visualization.data_frame import (
+    DataFrame as TermsByYearMetricsDataFrame,
+)
 
 
 def internal__create_nx_graph(params):

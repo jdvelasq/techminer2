@@ -28,10 +28,10 @@ def records_to_dicts(dataframe):
     names_mapping = {
         CorpusField.REC_NO.value: "UT",
         CorpusField.REC_ID.value: "AR",
-        CorpusField.DOCTITLE_RAW.value: "TI",
+        CorpusField.DOC_TITLE_RAW.value: "TI",
         CorpusField.AUTH_NORM.value: "AU",
         CorpusField.CIT_COUNT_GLOBAL.value: "TC",
-        CorpusField.SRCTITLE_ABBR_NORM.value: "SO",
+        CorpusField.SRC_TITLE_ABBR_NORM.value: "SO",
         CorpusField.PUBYEAR.value: "PY",
         CorpusField.ABS_TOK_WITH_UPPER_NP.value: "AB",
         CorpusField.AUTH_KEY_RAW.value: "DE",

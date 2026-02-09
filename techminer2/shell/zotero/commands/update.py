@@ -1,5 +1,5 @@
+from techminer2.report.zotero.export_record_no_to_zotero import ExportRecordNoToZotero
 from techminer2.shell.colorized_input import colorized_input
-from techminer2.zotero.export_record_no_to_zotero import ExportRecordNoToZotero
 
 
 def execute_update_command():

@@ -15,4 +15,4 @@ from pathlib import Path
 
 def get_thesaurus_path(root_directory: str, file: str) -> Path:
 
-    return Path(root_directory) / "data" / "thesaurus" / file
+    return Path(root_directory) / "refine" / "thesaurus" / file

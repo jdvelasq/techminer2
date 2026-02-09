@@ -90,8 +90,8 @@ from techminer2._internals import ParamsMixin
 from techminer2._internals.package_data.text_processing import (
     load_text_processing_terms,
 )
+from techminer2.report.visualization import DataFrame
 from techminer2.thesaurus_old._internals import ThesaurusMixin, ThesaurusResult
-from techminer2.visualization import DataFrame
 
 
 class ClumpKeys(

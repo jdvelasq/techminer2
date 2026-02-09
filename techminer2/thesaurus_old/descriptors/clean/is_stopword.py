@@ -92,7 +92,7 @@ from techminer2._internals import ParamsMixin, internal__load_template, stdout_t
 from techminer2._internals.package_data.text_processing import (
     load_text_processing_terms,
 )
-from techminer2.visualization import DataFrame as DominantDataFrame
+from techminer2.report.visualization import DataFrame as DominantDataFrame
 
 with stdout_to_stderr():
     pandarallel.initialize(progress_bar=True)

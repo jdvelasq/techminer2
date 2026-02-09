@@ -132,8 +132,8 @@ from techminer2._internals.data_access import load_filtered_main_data
 from techminer2._internals.package_data.text_processing import (
     load_text_processing_terms,
 )
+from techminer2.report.visualization import DataFrame
 from techminer2.thesaurus_old._internals import ThesaurusMixin
-from techminer2.visualization import DataFrame
 
 tqdm.pandas()
 

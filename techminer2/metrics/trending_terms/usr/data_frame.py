@@ -88,7 +88,7 @@ Example:
 #
 from techminer2._internals import ParamsMixin
 from techminer2.metrics.terms_by_year import DataFrame as TermsByYearDataFrame
-from techminer2.visualization import DataFrame as PerformanceMetricsDataFrame
+from techminer2.report.visualization import DataFrame as PerformanceMetricsDataFrame
 
 
 class DataFrame(

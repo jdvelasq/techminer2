@@ -2,6 +2,7 @@ Review and grade the code’s adherence to professional Python coding style.
 
 Perform the evaluation under the following non-negotiable constraints:
 - The package is strictly for private, personal use (no public API, no onboarding concerns).
+- All internal structure of the package is final-user process-oriented. It is not technical.
 - The package represents a competitive productivity advantage, so clarity, consistency, and efficiency are critical.
 - The code relies on self-documenting structure (clear naming, logical decomposition); comments and docstrings are intentionally avoided, except for module-level docstrings, doctests that are used as smoke tests, and section commentaries.
 - Module doctests are the primary technique of smoke testing

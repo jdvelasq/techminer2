@@ -61,7 +61,9 @@ from sklearn.feature_extraction.text import TfidfTransformer  # type: ignore
 
 from techminer2._internals import ParamsMixin, SortAxesMixin
 from techminer2._internals.data_access import load_filtered_main_data
-from techminer2.visualization.data_frame import DataFrame as TermsByYearMetricsDataFrame
+from techminer2.report.visualization.data_frame import (
+    DataFrame as TermsByYearMetricsDataFrame,
+)
 
 
 class DataFrame(

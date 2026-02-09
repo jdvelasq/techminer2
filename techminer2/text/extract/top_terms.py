@@ -59,7 +59,7 @@ database based on the specified parameters. The output includes the first 10 ext
 
 """
 from techminer2._internals import ParamsMixin
-from techminer2.visualization import DataFrame
+from techminer2.report.visualization import DataFrame
 
 
 class TopTermsExtractor(

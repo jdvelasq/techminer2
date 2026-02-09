@@ -8,7 +8,7 @@
 import sys
 
 from techminer2.networks.co_occurrence.descriptors import ClustersToTermsMapping
-from techminer2.visualization import DataFrame  # type: ignore
+from techminer2.report.visualization import DataFrame  # type: ignore
 
 
 class RecursiveClusteringMixin:

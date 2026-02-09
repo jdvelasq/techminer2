@@ -61,7 +61,7 @@ class ConcordanceSentences(
             pd.Index(
                 dataframe[CorpusField.REC_ID.value]
                 + " / "
-                + dataframe[CorpusField.DOCTITLE_RAW.value]
+                + dataframe[CorpusField.DOC_TITLE_RAW.value]
             )
         )
 

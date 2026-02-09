@@ -20,164 +20,168 @@ class CorpusField(Enum):
     #
     # A
     #
-    ABS_RAW = "abs_raw"
-    ABS_TOK = "abs_tok"
-    ABS_TOK_WITH_UPPER_NP = "abs_tok_with_upper_np"
-    ABS_TOK_WITH_UPPER_WORD = "abs_upper_word"
-    ABS_NP_NORM = "np_abs_norm"
-    ABS_NP_TOK = "np_abs_raw"
-    ABS_WORD_TOK = "word_abs_raw"
-    ACRONYM = "acronym"
-    AFFIL_RAW = "affil_raw"
-    ART_NO = "art_no"
-    AUTH_AFFIL = "auth_affil"
-    AUTH_DISAMB = "auth_disamb"
-    AUTH_FULL = "auth_full"
-    AUTH_ID_NORM = "auth_id_norm"
-    AUTH_ID_RAW = "auth_id_raw"
-    AUTH_KEY_NORM = "auth_key_norm"
-    AUTH_KEY_RAW = "auth_key_raw"
-    AUTH_KEY_TOK = "auth_key_tok"
-    AUTH_NORM = "auth_norm"
-    AUTH_RAW = "auth_raw"
+    ABS_RAW = "ABS_RAW"
+    ABS_TOK = "ABS_TOK"
+    ABS_TOK_WITH_UPPER_NP = "ABS_TOK_WITH_UPPER_NP"
+    ABS_TOK_WITH_UPPER_WORD = "ABS_TOK_WITH_UPPER_WORD"
+    ABS_NP_TOK = "ABS_NP_TOK"
+    ABS_WORD_TOK = "ABS_WORD_TOK"
+    ACRONYM = "ACRONYM"
+    AFFIL_RAW = "AFFIL_RAW"
+    ART_NO = "ART_NO"
+    AUTH_AFFIL = "AUTH_AFFIL"
+    AUTH_DISAMB = "AUTH_DISAMB"
+    AUTH_FULL = "AUTH_FULL"
+    AUTH_ID_NORM = "AUTH_ID_NORM"
+    AUTH_ID_RAW = "AUTH_ID_RAW"
+    AUTH_KEY_NORM = "AUTH_KEY_NORM"
+    AUTH_KEY_RAW = "AUTH_KEY_RAW"
+    AUTH_KEY_TOK = "AUTH_KEY_TOK"
+    AUTH_NORM = "AUTH_NORM"
+    AUTH_RAW = "AUTH_RAW"
 
     #
     # C
     #
-    CAS_REG_NUMBER = "cas_reg_num"
-    CIT_COUNT_GLOBAL = "cit_count_global"
-    CIT_COUNT_LOCAL = "cit_count_local"
-    CODEN = "coden"
-    CONF_CODE = "conf_code"
-    CONF_DATE = "conf_date"
-    CONF_LOC = "conf_loc"
-    CONF_NAME = "conf_name"
-    CORRESP = "corresp"
-    COUNTRY = "country"
+    CAS_REG_NUMBER = "CAS_REG_NUMBER"
+    CIT_COUNT_GLOBAL = "CIT_COUNT_GLOBAL"
+    CIT_COUNT_LOCAL = "CIT_COUNT_LOCAL"
+    CODEN = "CODEN"
+    CONF_CODE = "CONF_CODE"
+    CONF_DATE = "CONF_DATE"
+    CONF_LOC = "CONF_LOC"
+    CONF_NAME = "CONF_NAME"
+    CORRESP = "CORRESP"
+    COUNTRY = "COUNTRY"
+    COUNTRY_FIRST_AUTH = "COUNTRY_FIRST_AUTH"
 
     #
     # D
     #
-    DOCTYPE_NORM = "doctype_norm"
-    DOCTYPE_RAW = "doc_type_raw"
-    DOCTITLE_RAW = "doctitle_raw"
-    DOCTITLE_TOK = "doctitle_tok"
-    DOCTITLE_TOK_WITH_UPPER_NP = "doctitle_tok_with_upper_np"
-    DOCTITLE_TOK_WITH_UPPER_WORD = "doctitle_tok_with_upper_word"
-
-    DOI = "doi"
+    DOC_TITLE_NP_NORM = "DOCTITLE_NP_NORM"
+    DOC_TITLE_NP_TOK = "DOCTITLE_NP_TOK"
+    DOC_TITLE_RAW = "DOC_TITLE_RAW"
+    DOC_TITLE_TOK = "DOC_TITLE_TOK"
+    DOC_TITLE_TOK_WITH_UPPER_NP = "DOC_TITLE_TOK_WITH_UPPER_NP"
+    DOC_TITLE_TOK_WITH_UPPER_WORD = "DOC_TITLE_TOK_WITH_UPPER_WORD"
+    DOC_TITLE_WORD_TOK = "DOCTITLE_WORD_TOK"
+    DOC_TYPE_NORM = "DOC_TYPE_NORM"
+    DOC_TYPE_RAW = "DOC_TYPE_RAW"
+    DOI = "DOI"
 
     #
     # E
     #
-    EDITOR = "editor"
-    EID = "document_identifier"
-    EISSN = "eissn"
+    EDITOR = "EDITOR"
+    EID = "DOC_IDENTIFIER"
+    EISSN = "EISSN"
 
     #
     # F
     #
-    FIRST_AUTH = "first_auth"
-    FIRST_AUTH_COUNTRY = "first_auth_country"
-    FIRST_AUTH_ORGANIZATION = "first_auth_organization"
-    FUND_DETAILS = "fund_details"
-    FUND_SPONSORS = "fund_sponsors"
-    FUND_TEXTS = "fund_texts"
+    FIRST_AUTH = "FIRST_AUTH"
+    FULL_KEY_TOK = "FULL_KEY_TOK"
+    FULL_KEY_NORM = "FULL_KEY_NORM"
+    FUND_DETAILS = "FUND_DETAILS"
+    FUND_SPONSORS = "FUND_SPONSORS"
+    FUND_TEXTS = "FUND_TEXTS"
+
+    #
+    # H
+    #
+    HYB_KEY_NORM = "HYB_KEY_NORM"
+    HYB_KEY_TOK = "HYB_KEY_TOK"
 
     #
     # I
     #
-    IDX_KEY_NORM = "idx_key_norm"
-    IDX_KEY_RAW = "idx_key_raw"
-    IDX_KEY_TOK = "idx_key_tok"
-    ISBN = "isbn"
-    ISSN = "issn"
-    ISSNP = "issnp"
-    ISSUE = "issue"
+    IDX_KEY_NORM = "IDX_KEY_NORM"
+    IDX_KEY_RAW = "IDX_KEY_RAW"
+    IDX_KEY_TOK = "IDX_KEY_TOK"
+    ISBN = "ISBN"
+    ISSN = "ISSN"
+    ISSNP = "ISSNP"
+    ISSUE = "ISSUE"
 
     #
     # K
     #
-    KEY_NORM = "all_key_norm"
-    KEY_AND_NP_NORM = "all_key_np_norm"
-    KEY_AND_NP_TOK = "all_key_np_tok"
-    KEY_NP_AND_WORD_TOK = "all_key_np_word_tok"
-    KEY_NP_AND_WORD_NORM = "all_key_np_word_norm"
-    KEY_TOK = "all_key_tok"
-    KEY_AND_WORD_NORM = "all_key_word_norm"
-    KEY_AND_WORD_TOK = "all_key_word_tok"
+    KEY_NORM = "KEY_NORM"
+
+    KEY_TOK = "KEY_TOK"
+    KEY_AND_WORD_NORM = "KEY_AND_WORD_NORM"
+    KEY_AND_WORD_TOK = "KEY_AND_WORD_TOK"
 
     #
     # L
     #
-    LANGUAGE = "language"
-    LINK = "link"
+    LANGUAGE = "LANGUAGE"
+    LINK = "LINK"
 
     #
     # M
     #
-    MANUFACTURER = "manufacturer"
+    MANUFACTURER = "MANUFACTURER"
 
     #
     # N
     #
-    NP_NORM = "all_np_norm"
-    NP_SPACY = "np_spacy"
-    NP_TEXTBLOB = "np_textblob"
-    NP_TOK = "all_np_tok"
-    NUM_AUTH = "num_auths"
-    NUM_REF_GLOBAL = "num_ref_global"
-    NUM_REF_LOCAL = "num_ref_local"
+    NP_NORM = "NP_NORM"
+    NP_TOK = "NP_TOK"
+    NUM_AUTH = "NUM_AUTH"
+    NUM_REF_GLOBAL = "NUM_REF_GLOBAL"
+    NUM_REF_LOCAL = "NUM_REF_LOCAL"
 
     #
     # O
     #
-    OA = "open_access"
-    ORGANIZATION = "organization"
+    OA = "OPEN_ACCESS"
+    ORGANIZATION = "ORGANIZATION"
+    ORGANIZATION_FIRST_AUTH = "ORGANIZATION_FIRST_AUTH"
 
     #
     # P
     #
-    PAGE_FIRST = "page_first"
-    PAGE_LAST = "page_last"
-    PAGE_COUNT = "page_count"
-    PUBLISHER = "publisher"
-    PUBMED = "pubmed"
-    PUBSTAGE = "pub_stage"
-    PUBYEAR = "pubyear"
+    PAGE_FIRST = "PAGE_FIRST"
+    PAGE_LAST = "PAGE_LAST"
+    PAGE_COUNT = "PAGE_COUNT"
+    PUBLISHER = "PUBLISHER"
+    PUBMED = "PUBMED"
+    PUBSTAGE = "PUBSTAGE"
+    PUBYEAR = "PUBYEAR"
 
     #
     # R
     #
-    REC_ID = "rec_id"
-    REC_NO = "rec_no"
-    REF_NORM = "ref_norm"
-    REF_RAW = "ref_raw"
+    REC_ID = "REC_ID"
+    REC_NO = "REC_NO"
+    REF_NORM = "REF_NORM"
+    REF_RAW = "REF_RAW"
     REGION = "REGION"
 
     #
     # S
     #
-    SEQNUMUMBER = "sequence_nums"
-    SOURCE = "source"
-    SRCTITLE_ABBR_NORM = "src_title_abbr_norm"
-    SRCTITLE_ABBR_RAW = "src_title_abbr_raw"
-    SRCTITLE_NORM = "src_title_norm"
-    SRCTITLE_RAW = "src_title_raw"
-    SUBJAREA = "subj_areas"
-    SUBREGION = "subregion"
+    SPACY = "SPACY"
+    SEQ_NUMBER = "SEQ_NUMBER"
+    SOURCE = "SOURCE"
+    SRC_TITLE_ABBR_NORM = "SRC_TITLE_ABBR_NORM"
+    SRC_TITLE_ABBR_RAW = "SRC_TITLE_ABBR_RAW"
+    SRC_TITLE_NORM = "SRC_TITLE_NORM"
+    SRC_TITLE_RAW = "SRC_TITLE_RAW"
+    SUBJ_AREA = "SUBJ_AREA"
+    SUBREGION = "SUBREGION"
 
     #
     # T
     #
     TRADENAME = "TRADENAME"
-    DOCTITLE_NP_NORM = "DOCTITLE_NP_NORM"
-    DOCTITLE_NP_TOK = "DOCTITLE_NP_TOK"
-    DOCTITLE_WORD_TOK = "DOCTITLE_WORD_TOK"
+    TEXTBLOB = "TEXTBLOB"
+
     #
     # V
     #
-    VOL = "volume"
+    VOL = "VOL"
 
     #
     # W
@@ -188,9 +192,9 @@ class CorpusField(Enum):
 
 class ThesaurusField(Enum):
 
-    KEY = "key_temp"
-    KEY_LENGTH = "key_length"
-    OCC = "occ"
-    PREFERRED = "preferred_term"
-    PREFERRED_TEMP = "preferred_temp"
-    VARIANT = "variant"
+    KEY = "KEY"
+    KEY_LENGTH = "KEY_LENGTH"
+    OCC = "OCC"
+    PREFERRED = "PREFERRED_TERM"
+    PREFERRED_TEMP = "PREFERRED_TEMP"
+    VARIANT = "VARIANT"

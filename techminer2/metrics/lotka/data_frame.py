@@ -33,7 +33,7 @@ Example:
 
 """
 from techminer2._internals import ParamsMixin
-from techminer2.visualization.data_frame import DataFrame as PerformanceDataFrame
+from techminer2.report.visualization.data_frame import DataFrame as PerformanceDataFrame
 
 
 class DataFrame(

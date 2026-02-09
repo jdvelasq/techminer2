@@ -210,7 +210,7 @@ class DataFrame(
 
         # ---------------------------------------------------------------------
         def average_documents_per_source():
-            sources = dataframe[CorpusField.SRCTITLE_RAW.value].copy()
+            sources = dataframe[CorpusField.SRC_TITLE_RAW.value].copy()
             sources = sources.dropna()
             n_records = len(sources)
             sources = sources.drop_duplicates()
@@ -264,7 +264,7 @@ class DataFrame(
 
         # ---------------------------------------------------------------------
         def number_of_sources():
-            records = dataframe[CorpusField.SRCTITLE_RAW.value].copy()
+            records = dataframe[CorpusField.SRC_TITLE_RAW.value].copy()
             records = records.dropna()
             records = records.drop_duplicates()
             return len(records)
@@ -313,10 +313,10 @@ class DataFrame(
         #
         # =====================================================================
         def compute_document_type_stats(stats):
-            records = dataframe[[CorpusField.DOCTYPE_NORM.value]].dropna()
+            records = dataframe[[CorpusField.DOC_TYPE_NORM.value]].dropna()
             document_types_count = (
-                records[[CorpusField.DOCTYPE_NORM.value]]
-                .groupby(CorpusField.DOCTYPE_NORM.value)
+                records[[CorpusField.DOC_TYPE_NORM.value]]
+                .groupby(CorpusField.DOC_TYPE_NORM.value)
                 .size()
             )
             for document_type, count in zip(
@@ -502,7 +502,7 @@ class DataFrame(
             item="Number of countries (1st author)",
             value=self.count_unique_items(
                 dataframe,
-                CorpusField.FIRST_AUTH_COUNTRY,
+                CorpusField.COUNTRY_FIRST_AUTH,
             ),
         )
 
@@ -524,7 +524,7 @@ class DataFrame(
             item="Number of organizations (1st author)",
             value=self.count_unique_items(
                 dataframe,
-                CorpusField.FIRST_AUTH_ORGANIZATION,
+                CorpusField.ORGANIZATION_FIRST_AUTH,
             ),
         )
 
@@ -679,7 +679,7 @@ class DataFrame(
             item="Number of SpaCy NP phrases",
             value=self.count_unique_items(
                 dataframe,
-                CorpusField.NP_SPACY,
+                CorpusField.SPACY,
             ),
         )
 
@@ -689,7 +689,7 @@ class DataFrame(
             item="Number of TextBlob NP phrases",
             value=self.count_unique_items(
                 dataframe,
-                CorpusField.NP_TEXTBLOB,
+                CorpusField.TEXTBLOB,
             ),
         )
 
@@ -699,7 +699,7 @@ class DataFrame(
             item="Number of title NP phrases (norm)",
             value=self.count_unique_items(
                 dataframe,
-                CorpusField.DOCTITLE_NP_NORM,
+                CorpusField.DOC_TITLE_NP_NORM,
             ),
         )
 
@@ -709,7 +709,7 @@ class DataFrame(
             item="Number of title NP phrases (raw)",
             value=self.count_unique_items(
                 dataframe,
-                CorpusField.DOCTITLE_NP_TOK,
+                CorpusField.DOC_TITLE_NP_TOK,
             ),
         )
 
@@ -719,7 +719,7 @@ class DataFrame(
             item="Number of title words (raw)",
             value=self.count_unique_items(
                 dataframe,
-                CorpusField.DOCTITLE_WORD_TOK,
+                CorpusField.DOC_TITLE_WORD_TOK,
             ),
         )
 
@@ -755,7 +755,7 @@ class DataFrame(
             item="Number of keywords + NP phrases (norm)",
             value=self.count_unique_items(
                 dataframe,
-                CorpusField.KEY_AND_NP_NORM,
+                CorpusField.HYB_KEY_NORM,
             ),
         )
 
@@ -765,7 +765,7 @@ class DataFrame(
             item="Number of keywords + NP phrases (raw)",
             value=self.count_unique_items(
                 dataframe,
-                CorpusField.KEY_AND_NP_TOK,
+                CorpusField.HYB_KEY_TOK,
             ),
         )
 
