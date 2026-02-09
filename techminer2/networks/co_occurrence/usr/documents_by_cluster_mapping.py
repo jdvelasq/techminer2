@@ -72,7 +72,7 @@ Example:
 
 """
 from techminer2._internals import ParamsMixin
-from techminer2.explore import RecordViewer
+from techminer2.ingest.records import RecordViewer
 from techminer2.networks.co_occurrence.usr.clusters_to_terms_mapping import (
     ClustersToTermsMapping,
 )

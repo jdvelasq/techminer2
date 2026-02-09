@@ -39,7 +39,7 @@ from techminer2._internals import ParamsMixin
 from techminer2._internals.package_data.templates.load_template import (
     internal__load_template,
 )
-from techminer2.explore import RecordMapping
+from techminer2.ingest.records import RecordMapping
 
 
 class Abstract(

@@ -30,11 +30,11 @@ def _create_thesaurus(root_directory: str) -> None:
 def merge_keywords_phrases_words(root_directory: str) -> int:
 
     result = merge_columns(
-        sources=[
+        sources=(
             CorpusField.KEY_TOK,
             CorpusField.NP_TOK,
             CorpusField.WORD_TOK,
-        ],
+        ),
         target=CorpusField.FULL_KEY_TOK,
         root_directory=root_directory,
     )

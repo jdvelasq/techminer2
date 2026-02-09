@@ -5,10 +5,10 @@ from techminer2.ingest.sources._internals.operations import copy_column, merge_c
 def merge_keywords_words(root_directory: str) -> int:
 
     result = merge_columns(
-        sources=[
+        sources=(
             CorpusField.KEY_TOK,
             CorpusField.WORD_TOK,
-        ],
+        ),
         target=CorpusField.KEY_AND_WORD_TOK,
         root_directory=root_directory,
     )

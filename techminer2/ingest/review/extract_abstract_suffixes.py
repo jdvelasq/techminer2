@@ -32,7 +32,7 @@ Smoke test:
 """
 
 from techminer2._internals import ParamsMixin
-from techminer2.explore.record_mapping import RecordMapping  # type: ignore
+from techminer2.ingest.records.record_mapping import RecordMapping  # type: ignore
 
 __reviewed__ = "2026-01-28"
 

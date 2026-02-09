@@ -43,48 +43,48 @@ diverse sectors, ultimately aiming to improve compliance, efficiency, and
 ethical practices in the FINANCIAL_INDUSTRY.
 
 """
-import os.path
-import re
-import textwrap
+# import os.path
+# import re
+# import textwrap
 
-from techminer2.thesaurus_old._internals.load_reversed_thesaurus_as_mapping import (
-    internal__load_reversed_thesaurus_as_mapping,
-)
+# from techminer2.thesaurus_old._internals.load_reversed_thesaurus_as_mapping import (
+#     internal__load_reversed_thesaurus_as_mapping,
+# )
 
-TEXTWRAP_WIDTH = 73
-THESAURUS_FILE = "data/thesaurus/descriptors.the.txt"
-
-
-def highlight_phrase(
-    text,
-    #
-    # DATABASE PARAMS:
-    root_dir="./",
-):
-    """:meta private:"""
-
-    #
-    # Obtains a regex for descriptors
-    thesaurus = _load_thesaurus(root_dir)
-    descriptors = list(thesaurus.values())
-    descriptors = [d.translate(str.maketrans("_", " ")) for d in descriptors]
-    descriptors = [d.lower().strip() for d in descriptors]
-    descriptors = sorted(descriptors, key=lambda x: len(x.split(" ")), reverse=True)
-    descriptors = [re.escape(d) for d in descriptors]
-    descriptors = "|".join(descriptors)
-    regex = re.compile(r"\b(" + descriptors + r")\b")
-
-    #
-    # Highlight the text with the descriptors
-    text = text.lower().replace("_", " ")
-    text = re.sub(regex, lambda z: z.group().upper().replace(" ", "_"), text)
-
-    print(textwrap.fill(str(text), width=TEXTWRAP_WIDTH))
+# TEXTWRAP_WIDTH = 73
+# THESAURUS_FILE = "data/thesaurus/descriptors.the.txt"
 
 
-def _load_thesaurus(root_dir):
-    th_file = os.path.join(root_dir, THESAURUS_FILE)
-    if not os.path.isfile(th_file):
-        raise FileNotFoundError(f"The file {th_file} does not exist.")
-    thesaurus = internal__load_reversed_thesaurus_as_mapping(th_file)
-    return thesaurus
+# def highlight_phrase(
+#     text,
+#     #
+#     # DATABASE PARAMS:
+#     root_dir="./",
+# ):
+#     """:meta private:"""
+
+#     #
+#     # Obtains a regex for descriptors
+#     thesaurus = _load_thesaurus(root_dir)
+#     descriptors = list(thesaurus.values())
+#     descriptors = [d.translate(str.maketrans("_", " ")) for d in descriptors]
+#     descriptors = [d.lower().strip() for d in descriptors]
+#     descriptors = sorted(descriptors, key=lambda x: len(x.split(" ")), reverse=True)
+#     descriptors = [re.escape(d) for d in descriptors]
+#     descriptors = "|".join(descriptors)
+#     regex = re.compile(r"\b(" + descriptors + r")\b")
+
+#     #
+#     # Highlight the text with the descriptors
+#     text = text.lower().replace("_", " ")
+#     text = re.sub(regex, lambda z: z.group().upper().replace(" ", "_"), text)
+
+#     print(textwrap.fill(str(text), width=TEXTWRAP_WIDTH))
+
+
+# def _load_thesaurus(root_dir):
+#     th_file = os.path.join(root_dir, THESAURUS_FILE)
+#     if not os.path.isfile(th_file):
+#         raise FileNotFoundError(f"The file {th_file} does not exist.")
+#     thesaurus = internal__load_reversed_thesaurus_as_mapping(th_file)
+#     return thesaurus

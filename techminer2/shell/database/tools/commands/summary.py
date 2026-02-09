@@ -1,4 +1,4 @@
-from techminer2.explore import SummarySheet
+from techminer2.ingest.records import SummarySheet
 from techminer2.shell.colorized_input import colorized_input
 
 

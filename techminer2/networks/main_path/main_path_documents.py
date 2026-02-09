@@ -81,7 +81,7 @@ Example:
 
 """
 from techminer2._internals import ParamsMixin
-from techminer2.explore import RecordViewer
+from techminer2.ingest.records import RecordViewer
 from techminer2.networks.main_path._internals.compute_main_path import (
     internal__compute_main_path,
 )

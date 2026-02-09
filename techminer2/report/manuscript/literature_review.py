@@ -47,7 +47,7 @@ from techminer2._internals import ParamsMixin
 from techminer2._internals.package_data.templates.load_template import (
     internal__load_template,
 )
-from techminer2.explore import RecordViewer  # type: ignore
+from techminer2.ingest.records import RecordViewer  # type: ignore
 from techminer2.metrics.records import DataFrame  # type: ignore
 
 
