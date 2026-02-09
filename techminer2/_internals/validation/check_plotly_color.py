@@ -1,15 +1,8 @@
-# flake8: noqa
-# pylint: disable=missing-class-docstring
-# pylint: disable=missing-function-docstring
-# pylint: disable=missing-module-docstring
-# pylint: disable=too-many-instance-attributes
-# pylint: disable=too-many-public-methods
-
 import numbers
 from typing import Any, Sequence, Union
 
 
-def internal__check_plotly_color(
+def check_plotly_color(
     value: Any,
     param_name: str,
 ) -> Union[str, float, Sequence[float]]:

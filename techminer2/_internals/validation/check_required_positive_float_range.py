@@ -1,14 +1,7 @@
-# flake8: noqa
-# pylint: disable=missing-class-docstring
-# pylint: disable=missing-function-docstring
-# pylint: disable=missing-module-docstring
-# pylint: disable=too-many-instance-attributes
-# pylint: disable=too-many-public-methods
-
 from typing import Tuple
 
 
-def internal__check_required_positive_float_range(
+def check_required_positive_float_range(
     range_tuple: Tuple[float, float],
     param_name: str,
 ) -> Tuple[float, float]:

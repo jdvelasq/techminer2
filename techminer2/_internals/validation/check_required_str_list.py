@@ -1,7 +1,7 @@
 from typing import List
 
 
-def internal__check_required_str_list(value: List[str], param_name: str) -> List[str]:
+def check_required_str_list(value: List[str], param_name: str) -> List[str]:
 
     if not isinstance(value, list):
         raise TypeError(f"{param_name} must be a list, got {type(value).__name__}")

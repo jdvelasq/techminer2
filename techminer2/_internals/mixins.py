@@ -7,28 +7,28 @@ from typing_extensions import Self
 from techminer2._internals.validation import (
     check_optional_base_estimator,
     check_optional_color_list,
+    check_optional_positive_int,
+    check_optional_str,
+    check_optional_str_list,
+    check_optional_str_or_dict,
+    check_plotly_color,
+    check_required_bool,
+    check_required_corpus_field,
+    check_required_float,
+    check_required_float_0_1,
+    check_required_float_0_1_range,
+    check_required_float_range,
+    check_required_int,
+    check_required_int_range,
+    check_required_non_negative_int,
+    check_required_open_ended_int_range,
+    check_required_positive_float,
+    check_required_positive_float_range,
+    check_required_positive_int,
+    check_required_str,
+    check_required_str_list,
+    check_tuple_of_ordered_four_floats,
     internal__check_optional_positive_float,
-    internal__check_optional_positive_int,
-    internal__check_optional_str,
-    internal__check_optional_str_list,
-    internal__check_optional_str_or_dict,
-    internal__check_plotly_color,
-    internal__check_required_bool,
-    internal__check_required_corpus_field,
-    internal__check_required_float,
-    internal__check_required_float_0_1,
-    internal__check_required_float_0_1_range,
-    internal__check_required_float_range,
-    internal__check_required_int,
-    internal__check_required_int_range,
-    internal__check_required_non_negative_int,
-    internal__check_required_open_ended_int_range,
-    internal__check_required_positive_float,
-    internal__check_required_positive_float_range,
-    internal__check_required_positive_int,
-    internal__check_required_str,
-    internal__check_required_str_list,
-    internal__check_tuple_of_ordered_four_floats,
 )
 from techminer2.enums import CorpusField, RecordsOrderBy
 
@@ -91,7 +91,7 @@ class ParamsMixin:
     # ==========================================================================
 
     def having_case_sensitive(self, case_sensitive: bool) -> Self:
-        case_sensitive = internal__check_required_bool(
+        case_sensitive = check_required_bool(
             value=case_sensitive,
             param_name="case_sensitive",
         )
@@ -99,7 +99,7 @@ class ParamsMixin:
         return self
 
     def having_field_matching(self, pattern: str) -> Self:
-        pattern = internal__check_required_str(
+        pattern = check_required_str(
             value=pattern,
             param_name="pattern",
         )
@@ -111,7 +111,7 @@ class ParamsMixin:
         return self
 
     def having_text_matching(self, pattern: Optional[str]) -> Self:
-        pattern = internal__check_optional_str(
+        pattern = check_optional_str(
             value=pattern,
             param_name="pattern",
         )
@@ -119,7 +119,7 @@ class ParamsMixin:
         return self
 
     def having_keys_ordered_by(self, keys_order_by: str) -> Self:
-        keys_order_by = internal__check_required_str(
+        keys_order_by = check_required_str(
             value=keys_order_by,
             param_name="keys_order_by",
         )
@@ -127,7 +127,7 @@ class ParamsMixin:
         return self
 
     def having_maximum_occurrence(self, maximum_occurrence: int) -> Self:
-        maximum_occurrence = internal__check_required_positive_int(
+        maximum_occurrence = check_required_positive_int(
             value=maximum_occurrence,
             param_name="maximum_occurrence",
         )
@@ -135,7 +135,7 @@ class ParamsMixin:
         return self
 
     def having_n_chars(self, n_chars: int) -> Self:
-        n_chars = internal__check_required_positive_int(
+        n_chars = check_required_positive_int(
             value=n_chars,
             param_name="n_chars",
         )
@@ -143,7 +143,7 @@ class ParamsMixin:
         return self
 
     def having_n_contexts(self, n_contexts: int) -> Self:
-        n_contexts = internal__check_required_positive_int(
+        n_contexts = check_required_positive_int(
             value=n_contexts,
             param_name="n_contexts",
         )
@@ -153,7 +153,7 @@ class ParamsMixin:
     def having_other_item_citations_between(
         self, start: Optional[int], end: Optional[int]
     ) -> Self:
-        start, end = internal__check_required_open_ended_int_range(
+        start, end = check_required_open_ended_int_range(
             (start, end), "other_item_citations_range"
         )
         self.params.other_item_citations_range = (start, end)
@@ -162,14 +162,14 @@ class ParamsMixin:
     def having_other_item_occurrences_between(
         self, start: Optional[int], end: Optional[int]
     ) -> Self:
-        start, end = internal__check_required_open_ended_int_range(
+        start, end = check_required_open_ended_int_range(
             (start, end), "other_item_occurrences_range"
         )
         self.params.other_item_occurrences_range = (start, end)
         return self
 
     def having_other_items_in(self, other_items_in: Optional[list[str]]) -> Self:
-        other_items_in = internal__check_optional_str_list(
+        other_items_in = check_optional_str_list(
             value=other_items_in,
             param_name="other_items_in",
         )
@@ -177,7 +177,7 @@ class ParamsMixin:
         return self
 
     def having_other_items_in_top(self, other_top_n: Optional[int]) -> Self:
-        other_top_n = internal__check_optional_positive_int(
+        other_top_n = check_optional_positive_int(
             value=other_top_n,
             param_name="other_top_n",
         )
@@ -187,7 +187,7 @@ class ParamsMixin:
     def having_other_items_ordered_by(
         self, other_items_order_by: Optional[str]
     ) -> Self:
-        other_items_order_by = internal__check_optional_str(
+        other_items_order_by = check_optional_str(
             value=other_items_order_by,
             param_name="other_items_order_by",
         )
@@ -195,7 +195,7 @@ class ParamsMixin:
         return self
 
     def having_pattern(self, pattern: str) -> Self:
-        pattern = internal__check_required_str(
+        pattern = check_required_str(
             value=pattern,
             param_name="pattern",
         )
@@ -203,7 +203,7 @@ class ParamsMixin:
         return self
 
     def having_regex_flags(self, regex_flags: int) -> Self:
-        regex_flags = internal__check_required_non_negative_int(
+        regex_flags = check_required_non_negative_int(
             value=regex_flags,
             param_name="regex_flags",
         )
@@ -211,7 +211,7 @@ class ParamsMixin:
         return self
 
     def having_regex_search(self, regex_search: bool) -> Self:
-        regex_search = internal__check_required_bool(
+        regex_search = check_required_bool(
             value=regex_search,
             param_name="regex_search",
         )
@@ -219,7 +219,7 @@ class ParamsMixin:
         return self
 
     def having_replacement(self, replacement: Optional[str]) -> Self:
-        replacement = internal__check_optional_str(
+        replacement = check_optional_str(
             value=replacement,
             param_name="replacement",
         )
@@ -229,7 +229,7 @@ class ParamsMixin:
     def having_item_citations_between(
         self, start: Optional[int], end: Optional[int]
     ) -> Self:
-        start, end = internal__check_required_open_ended_int_range(
+        start, end = check_required_open_ended_int_range(
             (start, end), "item_citations_range"
         )
         self.params.item_citations_range = (start, end)
@@ -238,14 +238,14 @@ class ParamsMixin:
     def having_item_occurrences_between(
         self, start: Optional[int], end: Optional[int]
     ) -> Self:
-        start, end = internal__check_required_open_ended_int_range(
+        start, end = check_required_open_ended_int_range(
             (start, end), "item_occurrences_range"
         )
         self.params.item_occurrences_range = (start, end)
         return self
 
     def having_items_in(self, item_list: Optional[list[str]]) -> Self:
-        item_list = internal__check_optional_str_list(
+        item_list = check_optional_str_list(
             value=item_list,
             param_name="items_in",
         )
@@ -253,7 +253,7 @@ class ParamsMixin:
         return self
 
     def having_items_in_top(self, top_n: Optional[int]) -> Self:
-        top_n = internal__check_optional_positive_int(
+        top_n = check_optional_positive_int(
             value=top_n,
             param_name="top_n",
         )
@@ -261,7 +261,7 @@ class ParamsMixin:
         return self
 
     def having_items_like(self, pattern: str) -> Self:
-        pattern = internal__check_required_str(
+        pattern = check_required_str(
             value=pattern,
             param_name="pattern",
         )
@@ -269,7 +269,7 @@ class ParamsMixin:
         return self
 
     def having_items_ordered_by(self, items_order_by: str) -> Self:
-        items_order_by = internal__check_required_str(
+        items_order_by = check_required_str(
             value=items_order_by,
             param_name="items_order_by",
         )
@@ -277,7 +277,7 @@ class ParamsMixin:
         return self
 
     def having_items_per_year(self, items_per_year: int) -> Self:
-        items_per_year = internal__check_required_positive_int(
+        items_per_year = check_required_positive_int(
             value=items_per_year,
             param_name="items_per_year",
         )
@@ -290,7 +290,7 @@ class ParamsMixin:
         return self
 
     def having_word(self, word: str) -> Self:
-        word = internal__check_required_str(
+        word = check_required_str(
             value=word,
             param_name="word",
         )
@@ -316,7 +316,7 @@ class ParamsMixin:
     # ==========================================================================
 
     def using_association_index(self, association_index: Optional[str]) -> Self:
-        association_index = internal__check_optional_str(
+        association_index = check_optional_str(
             value=association_index,
             param_name="association_index",
         )
@@ -326,7 +326,7 @@ class ParamsMixin:
     def using_clustering_algorithm_or_dict(
         self, clustering_algorithm_or_dict: Optional[Union[str, dict]]
     ) -> Self:
-        clustering_algorithm_or_dict = internal__check_optional_str_or_dict(
+        clustering_algorithm_or_dict = check_optional_str_or_dict(
             value=clustering_algorithm_or_dict,
             param_name="clustering_algorithm_or_dict",
         )
@@ -334,7 +334,7 @@ class ParamsMixin:
         return self
 
     def using_citation_threshold(self, citation_threshold: int) -> Self:
-        citation_threshold = internal__check_required_positive_int(
+        citation_threshold = check_required_positive_int(
             value=citation_threshold,
             param_name="citation_threshold",
         )
@@ -342,7 +342,7 @@ class ParamsMixin:
         return self
 
     def using_colored_output(self, colored_output: bool) -> Self:
-        colored_output = internal__check_required_bool(
+        colored_output = check_required_bool(
             value=colored_output,
             param_name="colored_output",
         )
@@ -350,7 +350,7 @@ class ParamsMixin:
         return self
 
     def using_colored_stderr(self, colored_stderr: bool) -> Self:
-        colored_stderr = internal__check_required_bool(
+        colored_stderr = check_required_bool(
             value=colored_stderr,
             param_name="colored_stderr",
         )
@@ -358,7 +358,7 @@ class ParamsMixin:
         return self
 
     def using_similarity_cutoff(self, similarity_cutoff: float) -> Self:
-        similarity_cutoff = internal__check_required_positive_float(
+        similarity_cutoff = check_required_positive_float(
             value=similarity_cutoff,
             param_name="similarity_cutoff",
         )
@@ -366,7 +366,7 @@ class ParamsMixin:
         return self
 
     def using_occurrence_threshold(self, occurrence_threshold: int) -> Self:
-        occurrence_threshold = internal__check_required_positive_int(
+        occurrence_threshold = check_required_positive_int(
             value=occurrence_threshold,
             param_name="occurrence_threshold",
         )
@@ -384,7 +384,7 @@ class ParamsMixin:
         return self
 
     def using_draw_arrows(self, draw_arrows: bool) -> Self:
-        draw_arrows = internal__check_required_bool(
+        draw_arrows = check_required_bool(
             value=draw_arrows,
             param_name="draw",
         )
@@ -392,7 +392,7 @@ class ParamsMixin:
         return self
 
     def using_axes_visible(self, axes_visible: bool) -> Self:
-        axes_visible = internal__check_required_bool(
+        axes_visible = check_required_bool(
             value=axes_visible,
             param_name="axes_visible",
         )
@@ -400,7 +400,7 @@ class ParamsMixin:
         return self
 
     def using_baseline_periods(self, baseline_periods: int) -> Self:
-        baseline_periods = internal__check_required_positive_int(
+        baseline_periods = check_required_positive_int(
             value=baseline_periods,
             param_name="baseline_periods",
         )
@@ -408,7 +408,7 @@ class ParamsMixin:
         return self
 
     def using_binary_item_frequencies(self, frequencies: bool) -> Self:
-        frequencies = internal__check_required_bool(
+        frequencies = check_required_bool(
             value=frequencies,
             param_name="binary_item_frequencies",
         )
@@ -416,7 +416,7 @@ class ParamsMixin:
         return self
 
     def using_cluster_coverages(self, cluster_coverages: Optional[list[str]]) -> Self:
-        cluster_coverages = internal__check_optional_str_list(
+        cluster_coverages = check_optional_str_list(
             value=cluster_coverages,
             param_name="cluster_coverages",
         )
@@ -424,7 +424,7 @@ class ParamsMixin:
         return self
 
     def using_cluster_names(self, cluster_names: Optional[list[str]]) -> Self:
-        cluster_names = internal__check_optional_str_list(
+        cluster_names = check_optional_str_list(
             value=cluster_names,
             param_name="cluster_names",
         )
@@ -432,7 +432,7 @@ class ParamsMixin:
         return self
 
     def using_color(self, color: str) -> Self:
-        color = internal__check_required_str(
+        color = check_required_str(
             value=color,
             param_name="color",
         )
@@ -440,7 +440,7 @@ class ParamsMixin:
         return self
 
     def using_colormap(self, colormap: str) -> Self:
-        colormap = internal__check_required_str(
+        colormap = check_required_str(
             value=colormap,
             param_name="colormap",
         )
@@ -448,7 +448,7 @@ class ParamsMixin:
         return self
 
     def using_contour_opacity(self, contour_opacity: float) -> Self:
-        contour_opacity = internal__check_required_float_0_1(
+        contour_opacity = check_required_float_0_1(
             value=contour_opacity,
             param_name="contour_opacity",
         )
@@ -456,7 +456,7 @@ class ParamsMixin:
         return self
 
     def using_cumulative_sum(self, cumulative_sum: bool) -> Self:
-        cumulative_sum = internal__check_required_bool(
+        cumulative_sum = check_required_bool(
             value=cumulative_sum,
             param_name="cumulative_sum",
         )
@@ -472,7 +472,7 @@ class ParamsMixin:
         return self
 
     def using_edge_similarity_threshold(self, edge_similarity_threshold: float) -> Self:
-        edge_similarity_threshold = internal__check_required_positive_float(
+        edge_similarity_threshold = check_required_positive_float(
             value=edge_similarity_threshold,
             param_name="edge_similarity_threshold",
         )
@@ -480,7 +480,7 @@ class ParamsMixin:
         return self
 
     def using_edge_top_n(self, edge_top_n: Optional[int]) -> Self:
-        edge_top_n = internal__check_optional_positive_int(
+        edge_top_n = check_optional_positive_int(
             value=edge_top_n,
             param_name="edge_top_n",
         )
@@ -488,7 +488,7 @@ class ParamsMixin:
         return self
 
     def using_edge_opacity_range(self, min_opacity: float, max_opacity: float) -> Self:
-        min_opacity, max_opacity = internal__check_required_float_0_1_range(
+        min_opacity, max_opacity = check_required_float_0_1_range(
             min_value=min_opacity,
             max_value=max_opacity,
             min_param_name="min_opacity",
@@ -498,7 +498,7 @@ class ParamsMixin:
         return self
 
     def using_edge_width_range(self, min_width: float, max_width: float) -> Self:
-        min_width, max_width = internal__check_required_positive_float_range(
+        min_width, max_width = check_required_positive_float_range(
             range_tuple=(min_width, max_width),
             param_name="edge_width_range",
         )
@@ -506,7 +506,7 @@ class ParamsMixin:
         return self
 
     def using_edge_widths(self, edge_widths: Tuple[float, float, float, float]) -> Self:
-        edge_widths = internal__check_tuple_of_ordered_four_floats(
+        edge_widths = check_tuple_of_ordered_four_floats(
             value=edge_widths,
             param_name="edge_widths",
         )
@@ -514,7 +514,7 @@ class ParamsMixin:
         return self
 
     def using_initial_newline(self, initial_newline) -> Self:
-        initial_newline = internal__check_required_bool(
+        initial_newline = check_required_bool(
             value=initial_newline,
             param_name="initial_newline",
         )
@@ -522,7 +522,7 @@ class ParamsMixin:
         return self
 
     def using_kernel_bandwidth(self, kernel_bandwidth: float) -> Self:
-        kernel_bandwidth = internal__check_required_positive_float(
+        kernel_bandwidth = check_required_positive_float(
             value=kernel_bandwidth,
             param_name="kernel_bandwidth",
         )
@@ -530,7 +530,7 @@ class ParamsMixin:
         return self
 
     def using_line_color(self, line_color: Union[str, float, Sequence[float]]) -> Self:
-        line_color = internal__check_plotly_color(
+        line_color = check_plotly_color(
             value=line_color,
             param_name="line_color",
         )
@@ -538,7 +538,7 @@ class ParamsMixin:
         return self
 
     def using_line_width(self, line_width) -> Self:
-        line_width = internal__check_required_positive_float(
+        line_width = check_required_positive_float(
             value=line_width,
             param_name="line_width",
         )
@@ -556,7 +556,7 @@ class ParamsMixin:
         return self
 
     def using_marker_size(self, marker_size: float) -> Self:
-        marker_size = internal__check_required_positive_float(
+        marker_size = check_required_positive_float(
             value=marker_size,
             param_name="marker_size",
         )
@@ -564,7 +564,7 @@ class ParamsMixin:
         return self
 
     def using_fuzzy_threshold(self, fuzzy_threshold: float) -> Self:
-        fuzzy_threshold = internal__check_required_positive_float(
+        fuzzy_threshold = check_required_positive_float(
             value=fuzzy_threshold,
             param_name="fuzzy_threshold",
         )
@@ -572,7 +572,7 @@ class ParamsMixin:
         return self
 
     def using_minimum_number_of_clusters(self, minimum_number_of_clusters: int) -> Self:
-        minimum_number_of_clusters = internal__check_required_positive_int(
+        minimum_number_of_clusters = check_required_positive_int(
             value=minimum_number_of_clusters,
             param_name="minimum_number_of_clusters",
         )
@@ -580,7 +580,7 @@ class ParamsMixin:
         return self
 
     def using_minimum_items_in_cluster(self, minimum_items_in_cluster: int) -> Self:
-        minimum_items_in_cluster = internal__check_required_positive_int(
+        minimum_items_in_cluster = check_required_positive_int(
             value=minimum_items_in_cluster,
             param_name="minimum_items_in_cluster",
         )
@@ -598,7 +598,7 @@ class ParamsMixin:
         return self
 
     def using_node_size(self, node_size: int) -> Self:
-        node_size = internal__check_required_positive_int(
+        node_size = check_required_positive_int(
             value=node_size,
             param_name="node_size",
         )
@@ -606,7 +606,7 @@ class ParamsMixin:
         return self
 
     def using_node_size_range(self, min_size: int, max_size: int) -> Self:
-        min_size, max_size = internal__check_required_int_range(
+        min_size, max_size = check_required_int_range(
             range_tuple=(min_size, max_size),
             param_name="node_size_range",
         )
@@ -614,7 +614,7 @@ class ParamsMixin:
         return self
 
     def using_novelty_threshold(self, novelty_threshold: float) -> Self:
-        novelty_threshold = internal__check_required_float_0_1(
+        novelty_threshold = check_required_float_0_1(
             value=novelty_threshold,
             param_name="novelty_threshold",
         )
@@ -622,7 +622,7 @@ class ParamsMixin:
         return self
 
     def using_periods_with_at_least_one_record(self, periods: int) -> Self:
-        periods = internal__check_required_positive_int(
+        periods = check_required_positive_int(
             value=periods,
             param_name="periods_with_at_least_one_record",
         )
@@ -630,7 +630,7 @@ class ParamsMixin:
         return self
 
     def using_pie_hole(self, pie_hole: float) -> Self:
-        pie_hole = internal__check_required_float_0_1(
+        pie_hole = check_required_float_0_1(
             value=pie_hole,
             param_name="pie_hole",
         )
@@ -650,7 +650,7 @@ class ParamsMixin:
         return self
 
     def using_ratio_threshold(self, threshold: float) -> Self:
-        threshold = internal__check_required_positive_float(
+        threshold = check_required_positive_float(
             value=threshold,
             param_name="ratio_threshold",
         )
@@ -658,7 +658,7 @@ class ParamsMixin:
         return self
 
     def using_recent_periods(self, recent_periods: int) -> Self:
-        recent_periods = internal__check_required_positive_int(
+        recent_periods = check_required_positive_int(
             value=recent_periods,
             param_name="recent_periods",
         )
@@ -666,7 +666,7 @@ class ParamsMixin:
         return self
 
     def using_spring_layout_iterations(self, spring_layout_iterations: int) -> Self:
-        spring_layout_iterations = internal__check_required_positive_int(
+        spring_layout_iterations = check_required_positive_int(
             value=spring_layout_iterations,
             param_name="spring_layout_iterations",
         )
@@ -682,7 +682,7 @@ class ParamsMixin:
         return self
 
     def using_spring_layout_seed(self, spring_layout_seed: int) -> Self:
-        spring_layout_seed = internal__check_required_int(
+        spring_layout_seed = check_required_int(
             value=spring_layout_seed,
             param_name="spring_layout_seed",
         )
@@ -690,7 +690,7 @@ class ParamsMixin:
         return self
 
     def using_item_counters(self, item_counters: bool) -> Self:
-        item_counters = internal__check_required_bool(
+        item_counters = check_required_bool(
             value=item_counters,
             param_name="item_counters",
         )
@@ -700,7 +700,7 @@ class ParamsMixin:
     def using_textfont_color(
         self, textfont_color: Union[str, float, Sequence[float]]
     ) -> Self:
-        textfont_color = internal__check_plotly_color(
+        textfont_color = check_plotly_color(
             value=textfont_color,
             param_name="textfont_color",
         )
@@ -708,7 +708,7 @@ class ParamsMixin:
         return self
 
     def using_textfont_opacity(self, textfont_opacity: float) -> Self:
-        textfont_opacity = internal__check_required_float_0_1(
+        textfont_opacity = check_required_float_0_1(
             value=textfont_opacity,
             param_name="textfont_opacity",
         )
@@ -718,7 +718,7 @@ class ParamsMixin:
     def using_textfont_opacity_range(
         self, min_opacity: float, max_opacity: float
     ) -> Self:
-        min_opacity, max_opacity = internal__check_required_float_0_1_range(
+        min_opacity, max_opacity = check_required_float_0_1_range(
             min_value=min_opacity,
             max_value=max_opacity,
             min_param_name="min_opacity",
@@ -728,7 +728,7 @@ class ParamsMixin:
         return self
 
     def using_textfont_size(self, textfont_size: float) -> Self:
-        textfont_size = internal__check_required_positive_float(
+        textfont_size = check_required_positive_float(
             value=textfont_size,
             param_name="textfont_size",
         )
@@ -736,7 +736,7 @@ class ParamsMixin:
         return self
 
     def using_textfont_size_range(self, min_size: float, max_size: float) -> Self:
-        min_size, max_size = internal__check_required_positive_float_range(
+        min_size, max_size = check_required_positive_float_range(
             range_tuple=(min_size, max_size),
             param_name="textfont_size_range",
         )
@@ -744,7 +744,7 @@ class ParamsMixin:
         return self
 
     def using_tfidf_norm(self, tfidf_norm: Optional[str]) -> Self:
-        tfidf_norm = internal__check_optional_str(
+        tfidf_norm = check_optional_str(
             value=tfidf_norm,
             param_name="tfidf_norm",
         )
@@ -752,7 +752,7 @@ class ParamsMixin:
         return self
 
     def using_tfidf_smooth_idf(self, tfidf_smooth_idf: bool) -> Self:
-        tfidf_smooth_idf = internal__check_required_bool(
+        tfidf_smooth_idf = check_required_bool(
             value=tfidf_smooth_idf,
             param_name="tfidf_smooth_idf",
         )
@@ -760,7 +760,7 @@ class ParamsMixin:
         return self
 
     def using_tfidf_sublinear_tf(self, tfidf_sublinear_tf: bool) -> Self:
-        tfidf_sublinear_tf = internal__check_required_bool(
+        tfidf_sublinear_tf = check_required_bool(
             value=tfidf_sublinear_tf,
             param_name="tfidf_sublinear_tf",
         )
@@ -768,7 +768,7 @@ class ParamsMixin:
         return self
 
     def using_tfidf_use_idf(self, tfidf_use_idf: bool) -> Self:
-        tfidf_use_idf = internal__check_required_bool(
+        tfidf_use_idf = check_required_bool(
             value=tfidf_use_idf,
             param_name="tfidf_use_idf",
         )
@@ -776,7 +776,7 @@ class ParamsMixin:
         return self
 
     def using_title_text(self, title_text: Optional[str]) -> Self:
-        title_text = internal__check_optional_str(
+        title_text = check_optional_str(
             value=title_text,
             param_name="title_text",
         )
@@ -784,7 +784,7 @@ class ParamsMixin:
         return self
 
     def using_top_items_by_theme(self, top_items_by_theme: int) -> Self:
-        top_items_by_theme = internal__check_required_positive_int(
+        top_items_by_theme = check_required_positive_int(
             value=top_items_by_theme,
             param_name="top_items_by_theme",
         )
@@ -792,7 +792,7 @@ class ParamsMixin:
         return self
 
     def using_total_records_threshold(self, total_records_threshold: int) -> Self:
-        total_records_threshold = internal__check_required_positive_int(
+        total_records_threshold = check_required_positive_int(
             value=total_records_threshold,
             param_name="total_records_threshold",
         )
@@ -804,7 +804,7 @@ class ParamsMixin:
         if x_min is None and x_max is None:
             self.params.xaxes_range = None
             return self
-        x_min, x_max = internal__check_required_float_range(
+        x_min, x_max = check_required_float_range(
             min_value=cast(float, x_min),
             max_value=cast(float, x_max),
             min_param_name="x_min",
@@ -814,7 +814,7 @@ class ParamsMixin:
         return self
 
     def using_xaxes_title_text(self, xaxes_title_text: Optional[str]) -> Self:
-        xaxes_title_text = internal__check_optional_str(
+        xaxes_title_text = check_optional_str(
             value=xaxes_title_text,
             param_name="xaxes_title_text",
         )
@@ -826,7 +826,7 @@ class ParamsMixin:
         if y_min is None and y_max is None:
             self.params.yaxes_range = None
             return self
-        y_min, y_max = internal__check_required_float_range(
+        y_min, y_max = check_required_float_range(
             min_value=cast(float, y_min),
             max_value=cast(float, y_max),
             min_param_name="y_min",
@@ -836,7 +836,7 @@ class ParamsMixin:
         return self
 
     def using_yaxes_title_text(self, yaxes_title_text: Optional[str]) -> Self:
-        yaxes_title_text = internal__check_optional_str(
+        yaxes_title_text = check_optional_str(
             value=yaxes_title_text,
             param_name="yaxes_title_text",
         )
@@ -844,7 +844,7 @@ class ParamsMixin:
         return self
 
     def using_yshift(self, yshift: float) -> Self:
-        yshift = internal__check_required_float(
+        yshift = check_required_float(
             value=yshift,
             param_name="yshift",
         )
@@ -852,7 +852,7 @@ class ParamsMixin:
         return self
 
     def using_word_length(self, word_length: int) -> Self:
-        word_length = internal__check_required_positive_int(
+        word_length = check_required_positive_int(
             value=word_length,
             param_name="word_length",
         )
@@ -860,7 +860,7 @@ class ParamsMixin:
         return self
 
     def using_zotero_api_key(self, zotero_api_key: str) -> Self:
-        zotero_api_key = internal__check_required_str(
+        zotero_api_key = check_required_str(
             value=zotero_api_key,
             param_name="api_key",
         )
@@ -868,7 +868,7 @@ class ParamsMixin:
         return self
 
     def using_zotero_library_id(self, zotero_library_id: str) -> Self:
-        zotero_library_id = internal__check_required_str(
+        zotero_library_id = check_required_str(
             value=zotero_library_id,
             param_name="library_id",
         )
@@ -876,7 +876,7 @@ class ParamsMixin:
         return self
 
     def using_zotero_library_type(self, zotero_library_type: str) -> Self:
-        zotero_library_type = internal__check_required_str(
+        zotero_library_type = check_required_str(
             value=zotero_library_type,
             param_name="library_type",
         )
@@ -888,7 +888,7 @@ class ParamsMixin:
     # ==========================================================================
 
     def with_column(self, column: str) -> Self:
-        column = internal__check_required_str(
+        column = check_required_str(
             value=column,
             param_name="column",
         )
@@ -896,7 +896,7 @@ class ParamsMixin:
         return self
 
     def with_core_area(self, core_area: Optional[str]) -> Self:
-        core_area = internal__check_optional_str(
+        core_area = check_optional_str(
             value=core_area,
             param_name="core_area",
         )
@@ -904,7 +904,7 @@ class ParamsMixin:
         return self
 
     def with_correlation_method(self, correlation_method: str) -> Self:
-        correlation_method = internal__check_required_str(
+        correlation_method = check_required_str(
             value=correlation_method,
             param_name="correlation_method",
         )
@@ -912,7 +912,7 @@ class ParamsMixin:
         return self
 
     def with_field(self, field: CorpusField) -> Self:
-        field = internal__check_required_corpus_field(
+        field = check_required_corpus_field(
             value=field,
             param_name="field",
         )
@@ -920,7 +920,7 @@ class ParamsMixin:
         return self
 
     def with_other_field(self, other_field: CorpusField) -> Self:
-        other_field = internal__check_required_corpus_field(
+        other_field = check_required_corpus_field(
             value=other_field,
             param_name="other_field",
         )
@@ -932,7 +932,7 @@ class ParamsMixin:
         return self
 
     def with_query_expression(self, query_expression: str) -> Self:
-        query_expression = internal__check_required_str(
+        query_expression = check_required_str(
             value=query_expression,
             param_name="query_expression",
         )
@@ -940,7 +940,7 @@ class ParamsMixin:
         return self
 
     def with_source_field(self, field: CorpusField) -> Self:
-        field = internal__check_required_corpus_field(
+        field = check_required_corpus_field(
             value=field,
             param_name="source_field",
         )
@@ -949,7 +949,7 @@ class ParamsMixin:
 
     def with_source_fields(self, fields: tuple[CorpusField, ...]) -> Self:
         for field in fields:
-            internal__check_required_corpus_field(
+            check_required_corpus_field(
                 value=field,
                 param_name="source_fields",
             )
@@ -957,7 +957,7 @@ class ParamsMixin:
         return self
 
     def with_target_field(self, field: CorpusField) -> Self:
-        field = internal__check_required_corpus_field(
+        field = check_required_corpus_field(
             value=field,
             param_name="target_field",
         )
@@ -965,7 +965,7 @@ class ParamsMixin:
         return self
 
     def with_thesaurus_file(self, thesaurus_file: str) -> Self:
-        thesaurus_file = internal__check_required_str(
+        thesaurus_file = check_required_str(
             value=thesaurus_file,
             param_name="thesaurus_file",
         )
@@ -973,7 +973,7 @@ class ParamsMixin:
         return self
 
     def with_time_window(self, time_window: int) -> Self:
-        time_window = internal__check_required_positive_int(
+        time_window = check_required_positive_int(
             value=time_window,
             param_name="time_window",
         )
@@ -1001,17 +1001,15 @@ class ParamsMixin:
     def where_record_citations_range(
         self, start: Optional[int], end: Optional[int]
     ) -> Self:
-        self.params.record_citations_range = (
-            internal__check_required_open_ended_int_range(
-                (start, end), "record_citations_range"
-            )
+        self.params.record_citations_range = check_required_open_ended_int_range(
+            (start, end), "record_citations_range"
         )
         return self
 
     def where_record_years_range(
         self, start: Optional[int], end: Optional[int]
     ) -> Self:
-        (start, end) = internal__check_required_open_ended_int_range(
+        (start, end) = check_required_open_ended_int_range(
             (start, end), "record_years_range"
         )
         self.params.record_years_range = (start, end)
@@ -1032,7 +1030,7 @@ class ParamsMixin:
         return self
 
     def where_root_directory(self, root_directory: str) -> Self:
-        root_directory = internal__check_required_str(
+        root_directory = check_required_str(
             value=root_directory,
             param_name="root_directory",
         )

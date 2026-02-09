@@ -1,15 +1,7 @@
-# flake8: noqa
-# pylint: disable=missing-class-docstring
-# pylint: disable=missing-function-docstring
-# pylint: disable=missing-module-docstring
-# pylint: disable=too-many-instance-attributes
-# pylint: disable=too-many-public-methods
-# pylint: disable=line-too-long
-
 from typing import Tuple
 
 
-def internal__check_tuple_of_ordered_four_floats(
+def check_tuple_of_ordered_four_floats(
     value: Tuple[float, float, float, float], param_name: str
 ) -> Tuple[float, float, float, float]:
     if not isinstance(value, tuple) or len(value) != 4:
