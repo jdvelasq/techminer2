@@ -65,10 +65,10 @@ Example:
 
 """
 from techminer2._internals import ParamsMixin
-from techminer2.experimental.co_occurrence.mixins import RecursiveClusteringMixin
-from techminer2.networks.co_occurrence.descriptors import (
+from techminer2.analyze.networks.co_occurrence.descriptors import (
     NetworkPlot as ClassicalNetworkPlot,
 )
+from techminer2.experimental.co_occurrence.mixins import RecursiveClusteringMixin
 
 
 class NetworkPlot(

@@ -7,7 +7,7 @@
 # pylint: disable=too-many-statements
 import sys
 
-from techminer2.networks.co_occurrence.descriptors import ClustersToTermsMapping
+from techminer2.analyze.networks.co_occurrence.descriptors import ClustersToTermsMapping
 from techminer2.report.visualization import DataFrame  # type: ignore
 
 
