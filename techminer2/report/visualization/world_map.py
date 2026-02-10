@@ -11,7 +11,7 @@ World Map
 
 
 Example:
-    >>> from techminer2.metrics.performance import WorldMap
+    >>> from techminer2.analyze.metrics.performance import WorldMap
     >>> plot = (
     ...     WorldMap()
     ...     #

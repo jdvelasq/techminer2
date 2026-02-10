@@ -1,8 +1,8 @@
+from techminer2.refine.thesaurus_old.descriptors import RegisterInitialWord
 from techminer2.shell.colorized_input import colorized_input
 from techminer2.shell.thesaurus.descriptors.remove.commands.initial import (
     execute_initial_command as execute_removeinitial_command,
 )
-from techminer2.thesaurus_old.descriptors import RegisterInitialWord
 
 
 def execute_initial_command():

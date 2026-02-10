@@ -11,7 +11,7 @@ Word Cloud
 
 
 Example:
-    >>> from techminer2.metrics.performance import WordCloud
+    >>> from techminer2.analyze.metrics.performance import WordCloud
     >>> plot = (
     ...     WordCloud()
     ...     #

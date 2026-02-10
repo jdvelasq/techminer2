@@ -1,4 +1,4 @@
-from techminer2.thesaurus_old.descriptors import SortByOccurrences
+from techminer2.refine.thesaurus_old.descriptors import SortByOccurrences
 
 
 def execute_occurrences_command():

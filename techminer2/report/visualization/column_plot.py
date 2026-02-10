@@ -11,7 +11,7 @@ Column Plot
 
 
 Example:
-    >>> from techminer2.metrics.performance import ColumnPlot
+    >>> from techminer2.analyze.metrics.performance import ColumnPlot
     >>> plot = (
     ...     ColumnPlot()
     ...     #

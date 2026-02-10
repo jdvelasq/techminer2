@@ -1,4 +1,4 @@
-from techminer2.thesaurus_old._internals.create_fingerprint import (
+from techminer2.refine.thesaurus_old._internals.create_fingerprint import (
     _convert_to_lowercase,
     _convert_words_to_singular,
     _remove_accents_from_text,

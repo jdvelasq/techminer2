@@ -11,7 +11,7 @@ Pie Plot
 
 
 Example:
-    >>> from techminer2.metrics.performance import PiePlot
+    >>> from techminer2.analyze.metrics.performance import PiePlot
     >>> plot = (
     ...     PiePlot()
     ...     #

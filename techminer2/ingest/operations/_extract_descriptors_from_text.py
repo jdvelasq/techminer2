@@ -36,7 +36,7 @@ Extract Descriptors from Text
 
 # from textblob import TextBlob  # type: ignore
 
-# from techminer2.thesaurus_old._internals.load_reversed_thesaurus_as_mapping import (
+# from techminer2.refine.thesaurus_old._internals.load_reversed_thesaurus_as_mapping import (
 #     internal__load_reversed_thesaurus_as_mapping,
 # )
 

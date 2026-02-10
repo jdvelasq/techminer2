@@ -1,4 +1,4 @@
-from techminer2.thesaurus_old.organizations import ReduceKeys
+from techminer2.refine.thesaurus_old.organizations import ReduceKeys
 
 
 def execute_reduce_command():

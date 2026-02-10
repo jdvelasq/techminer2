@@ -1,4 +1,4 @@
-from techminer2.thesaurus_old.descriptors import SortByLastWords
+from techminer2.refine.thesaurus_old.descriptors import SortByLastWords
 
 
 def execute_last_command():

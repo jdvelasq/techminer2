@@ -1,4 +1,4 @@
-from techminer2.thesaurus_old.descriptors import NormalizeKeys
+from techminer2.refine.thesaurus_old.descriptors import NormalizeKeys
 
 
 def execute_cleanup_command():

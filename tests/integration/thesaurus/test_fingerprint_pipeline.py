@@ -1,4 +1,4 @@
-from techminer2.thesaurus_old._internals.create_fingerprint import (
+from techminer2.refine.thesaurus_old._internals.create_fingerprint import (
     internal__create_fingerprint,
 )
 

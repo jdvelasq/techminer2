@@ -1,4 +1,4 @@
-from techminer2.thesaurus_old.descriptors import RemoveParentheses
+from techminer2.refine.thesaurus_old.descriptors import RemoveParentheses
 
 
 def execute_parentheses_command():

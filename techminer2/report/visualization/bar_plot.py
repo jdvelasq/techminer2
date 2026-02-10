@@ -4,7 +4,7 @@ Bar Plot
 
 
 Example:
-    >>> from techminer2.metrics.performance import BarPlot
+    >>> from techminer2.analyze.metrics.performance import BarPlot
     >>> plot = (
     ...     BarPlot()
     ...     #

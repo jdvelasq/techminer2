@@ -11,7 +11,7 @@ Cleveland Dot Plot
 
 
 Example:
-    >>> from techminer2.metrics.performance import ClevelandDotPlot
+    >>> from techminer2.analyze.metrics.performance import ClevelandDotPlot
     >>> plot = (
     ...     ClevelandDotPlot()
     ...     #

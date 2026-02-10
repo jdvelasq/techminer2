@@ -75,7 +75,7 @@ Example:
 import pandas as pd  # type: ignore
 
 from techminer2._internals import ParamsMixin
-from techminer2.text.tfidf import DataFrame as TfIdfDataFrame
+from techminer2.analyze.tfidf import DataFrame as TfIdfDataFrame
 
 
 class ComponentsByTermDataFrame(

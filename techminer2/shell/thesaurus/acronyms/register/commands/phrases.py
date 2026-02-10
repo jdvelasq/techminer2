@@ -1,4 +1,4 @@
-from techminer2.thesaurus_old.acronyms import RegisterPhrases
+from techminer2.refine.thesaurus_old.acronyms import RegisterPhrases
 
 
 def execute_phrases_command():

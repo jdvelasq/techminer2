@@ -1,5 +1,5 @@
+from techminer2.refine.thesaurus_old.descriptors import SortByExactMatch
 from techminer2.shell.colorized_input import colorized_input
-from techminer2.thesaurus_old.descriptors import SortByExactMatch
 
 
 def execute_exact_command():

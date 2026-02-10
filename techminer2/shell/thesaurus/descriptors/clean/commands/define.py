@@ -10,8 +10,8 @@
 
 import textwrap
 
+from techminer2.refine.thesaurus_old.descriptors import DefineTerm
 from techminer2.shell.colorized_input import colorized_input
-from techminer2.thesaurus_old.descriptors import DefineTerm
 
 
 # -----------------------------------------------------------------------------

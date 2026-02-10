@@ -98,7 +98,7 @@ from techminer2.analyze.factor_analysis.co_occurrence.cluster_centers_data_frame
 from techminer2.analyze.factor_analysis.co_occurrence.cluster_to_terms_mapping import (
     cluster_to_terms_mapping,
 )
-from techminer2.metrics.correlation._internals.internal__correlation_map import (
+from techminer2.analyze.metrics.correlation._internals.internal__correlation_map import (
     internal__correlation_map,
 )
 

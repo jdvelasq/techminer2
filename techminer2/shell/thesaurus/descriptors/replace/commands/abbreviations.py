@@ -1,4 +1,4 @@
-from techminer2.thesaurus_old.descriptors import ReplaceAcronyms
+from techminer2.refine.thesaurus_old.descriptors import ReplaceAcronyms
 
 
 def execute_acronyms_command():

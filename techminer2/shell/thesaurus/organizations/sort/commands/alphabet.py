@@ -1,4 +1,4 @@
-from techminer2.thesaurus_old.organizations import SortByAlphabet
+from techminer2.refine.thesaurus_old.organizations import SortByAlphabet
 
 
 def execute_alphabet_command():

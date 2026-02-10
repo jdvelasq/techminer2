@@ -1,4 +1,4 @@
-from techminer2.thesaurus_old.descriptors import SortByStopwords
+from techminer2.refine.thesaurus_old.descriptors import SortByStopwords
 
 
 def execute_stopwords_command():

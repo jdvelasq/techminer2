@@ -97,7 +97,7 @@ from techminer2.analyze.factor_analysis.tfidf.cluster_centers_dataframe import (
 from techminer2.analyze.factor_analysis.tfidf.cluster_to_terms_mapping import (
     cluster_to_terms_mapping,
 )
-from techminer2.metrics.correlation._internals.internal__correlation_map import (
+from techminer2.analyze.metrics.correlation._internals.internal__correlation_map import (
     internal__correlation_map,
 )
 

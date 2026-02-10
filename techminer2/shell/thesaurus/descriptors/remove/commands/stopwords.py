@@ -1,4 +1,4 @@
-from techminer2.thesaurus_old.descriptors import RemoveStopwords
+from techminer2.refine.thesaurus_old.descriptors import RemoveStopwords
 
 
 def execute_stopwords_command():

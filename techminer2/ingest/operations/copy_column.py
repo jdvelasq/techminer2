@@ -35,8 +35,8 @@ Smoke Test:
 """
 
 from techminer2._internals import ParamsMixin
+from techminer2.ingest.extract._helpers.protected_fields import PROTECTED_FIELDS
 from techminer2.ingest.sources._internals.operations.copy_column import copy_column
-from techminer2.text.extract._helpers.protected_fields import PROTECTED_FIELDS
 
 
 class CopyColumn(

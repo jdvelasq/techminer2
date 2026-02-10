@@ -12,7 +12,7 @@ Ranking Plot
 
 
 Example:
-    >>> from techminer2.metrics.performance import RankingPlot
+    >>> from techminer2.analyze.metrics.performance import RankingPlot
     >>> plot = (
     ...     RankingPlot()
     ...     #

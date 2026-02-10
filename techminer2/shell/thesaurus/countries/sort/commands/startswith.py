@@ -1,5 +1,5 @@
+from techminer2.refine.thesaurus_old.countries import SortByStartsWithMatch
 from techminer2.shell.colorized_input import colorized_input
-from techminer2.thesaurus_old.countries import SortByStartsWithMatch
 
 
 def execute_startswith_command():

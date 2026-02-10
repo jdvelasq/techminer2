@@ -1,4 +1,4 @@
-from techminer2.thesaurus_old.descriptors import ClumpKeys
+from techminer2.refine.thesaurus_old.descriptors import ClumpKeys
 
 
 def execute_clump_command():

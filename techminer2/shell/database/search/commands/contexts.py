@@ -1,5 +1,5 @@
+from techminer2.analyze.concordances import ConcordanceRaw
 from techminer2.shell.colorized_input import colorized_input
-from techminer2.text.concordances import ConcordanceRaw
 
 
 def execute_contexts_command():

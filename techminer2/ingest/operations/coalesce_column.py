@@ -54,10 +54,10 @@ Smoke test:
 """
 
 from techminer2._internals import ParamsMixin
+from techminer2.ingest.extract._helpers.protected_fields import PROTECTED_FIELDS
 from techminer2.ingest.sources._internals.operations.coalesce_column import (
     coalesce_column,
 )
-from techminer2.text.extract._helpers.protected_fields import PROTECTED_FIELDS
 
 
 class CoalesceColumn(

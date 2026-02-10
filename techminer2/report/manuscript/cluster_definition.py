@@ -12,7 +12,7 @@ Terms by Cluster Frame
 
 Example:
 
-    >>> from techminer2.thesaurus_old.descriptors import ApplyThesaurus, InitializeThesaurus
+    >>> from techminer2.refine.thesaurus_old.descriptors import ApplyThesaurus, InitializeThesaurus
 
     >>> # Restore the column values to initial values
     >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()

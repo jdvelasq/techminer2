@@ -10,16 +10,16 @@ General Metrics Text
 ===============================================================================
 
 Example:
-    >>> from techminer2.thesaurus_old.countries import (
+    >>> from techminer2.refine.thesaurus_old.countries import (
     ...     InitializeThesaurus as CreateCountryThesaurus,
     ...     ApplyThesaurus as ApplyCountryThesaurus,
     ... )  # doctest: +ELLIPSIS
     Note...
-    >>> from techminer2.thesaurus_old.organizations import (
+    >>> from techminer2.refine.thesaurus_old.organizations import (
     ...     InitializeThesaurus as CreateOrganizationsThesaurus,
     ...     ApplyThesaurus as ApplyOrganizationsThesaurus,
     ... )
-    >>> from techminer2.thesaurus_old.descriptors import (
+    >>> from techminer2.refine.thesaurus_old.descriptors import (
     ...     InitializeThesaurus as CreateDescriptorsThesaurus,
     ...     ApplyThesaurus as ApplyDescriptorsThesaurus,
     ... )
@@ -63,7 +63,7 @@ from techminer2._internals import ParamsMixin
 from techminer2._internals.package_data.templates.load_template import (
     internal__load_template,
 )
-from techminer2.metrics.general import DataFrame
+from techminer2.analyze.metrics.general import DataFrame
 
 
 class GeneralMetrics(

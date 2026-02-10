@@ -1,4 +1,4 @@
-from techminer2.thesaurus_old.descriptors import RemoveDeterminers
+from techminer2.refine.thesaurus_old.descriptors import RemoveDeterminers
 
 
 def execute_determiners_command():

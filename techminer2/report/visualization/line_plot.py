@@ -11,7 +11,7 @@ Line Plot
 
 
 Example:
-    >>> from techminer2.metrics.performance import LinePlot
+    >>> from techminer2.analyze.metrics.performance import LinePlot
     >>> plot = (
     ...     LinePlot()
     ...     #

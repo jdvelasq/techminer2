@@ -1,4 +1,4 @@
-from techminer2.thesaurus_old.organizations import InitializeThesaurus
+from techminer2.refine.thesaurus_old.organizations import InitializeThesaurus
 
 
 def execute_initialize_command():

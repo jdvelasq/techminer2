@@ -4,7 +4,7 @@ Data Frame
 
 
 Example:
-    >>> from techminer2.metrics.performance import DataFrame
+    >>> from techminer2.analyze.metrics.performance import DataFrame
     >>> (
     ...     DataFrame()
     ...     #
