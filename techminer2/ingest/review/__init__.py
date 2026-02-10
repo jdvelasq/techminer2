@@ -1,9 +1,9 @@
 from .extract_abstract_suffixes import ExtractAbstractSuffixes
-from .extract_colon_phrases import ExtractColonPhrases
-from .extract_noun_phrases import ExtractNounPhrases
+from .extract_section_headers import ExtractSectionHeaders
+from .reprocess_noun_phrases import ReprocessNounPhrases
 
 __all__ = [
-    "ExtractColonPhrases",
+    "ExtractSectionHeaders",
     "ExtractAbstractSuffixes",
-    "ExtractNounPhrases",
+    "ReprocessNounPhrases",
 ]

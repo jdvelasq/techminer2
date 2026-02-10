@@ -19,7 +19,7 @@ def _process_file(csv_file: Path) -> int:
 
     df = pd.read_csv(csv_file, encoding="utf-8", low_memory=False)
     n_before = len(df)
-    df["abs_lang"] = df["Abstract"].apply(_detect_language, na_action="ignore")
+    df["abs_lang"] = df["Abstract"].apply(_detect_language)
     df = df[df["abs_lang"] == "en"]
     df = df.drop(columns=["abs_lang"])
     n_after = len(df)

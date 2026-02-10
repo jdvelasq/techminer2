@@ -38,7 +38,10 @@ def _get_project_noun_phrases(dataframe: pd.DataFrame) -> set[str]:
 
     noun_phrases = set()
 
-    for column in ["noun_phrases_textblob", "noun_phrases_spacy"]:
+    for column in [
+        CorpusField.SPACY.value,
+        CorpusField.TEXTBLOB.value,
+    ]:
         if column in dataframe.columns:
             for entry in dataframe[column].dropna():
                 phrases = [phrase.strip() for phrase in entry.split(";")]
@@ -48,7 +51,7 @@ def _get_project_noun_phrases(dataframe: pd.DataFrame) -> set[str]:
 
 
 # ----------------------------------------------------------------------------
-def _get_system_noun_phrases() -> set[str]:
+def _get_builtin_noun_phrases() -> set[str]:
     noun_phrases = load_text_processing_terms("noun_phrases.txt")
     noun_phrases = [
         phrase.strip().lower().replace("_", " ")
@@ -63,8 +66,8 @@ def _get_acronyms(dataframe: pd.DataFrame) -> set[str]:
 
     acronyms = set()
 
-    if "acronyms" in dataframe.columns:
-        for entry in dataframe["acronyms"].dropna():
+    if CorpusField.ACRONYM.value in dataframe.columns:
+        for entry in dataframe[CorpusField.ACRONYM.value].dropna():
             phrases = [phrase.strip() for phrase in entry.split(";")]
             acronyms.update(phrases)
 
@@ -92,28 +95,24 @@ def _clean_terms(terms: set[str]) -> set[str]:
 # ----------------------------------------------------------------------------
 def _get_project_keywords(dataframe: pd.DataFrame) -> set[str]:
 
-    keywords = set()
+    keywords: set[str] = set()
 
     for column in [
-        "author_keywords_raw",
-        "index_keywords_raw",
+        CorpusField.AUTH_KEY_TOK.value,
+        CorpusField.IDX_KEY_TOK.value,
     ]:
         if column in dataframe.columns:
-            for entry in dataframe[column].dropna():
-                phrases = [phrase.strip() for phrase in entry.split(";")]
-                keywords.update(phrases)
-
-    #     terms = terms.str.translate(str.maketrans("", "", "\"'#!"))
-    #     terms = terms.str.replace(re.compile(r"\(.*\)"), "", regex=True)
-    #     terms = terms.str.replace(re.compile(r"\[.*\]"), "", regex=True)
-    #     terms = terms.str.translate(str.maketrans("-", " "))  # added
-    #     terms = terms.str.translate(str.maketrans("_", " "))
-    #     terms = terms.str.lower()
-    #     terms = terms.str.split("; ")
-    #     terms = terms.explode()
-    #     terms = terms.str.strip()
-    #     terms = terms[terms.str.len() > 2]
-    #     terms = terms[~terms.str.contains(r"\d", regex=True)]
+            series = dataframe[column].dropna()
+            series = series.str.replace(r"[\"'#!]", "", regex=True)
+            series = series.str.replace(r"\(.*\)", "", regex=True)
+            series = series.str.replace(r"\[.*\]", "", regex=True)
+            series = series.str.lower()
+            series = series.str.split("; ")
+            series = series.explode()
+            series = series.str.strip()
+            series = series[series.str.len() > 2]
+            series = series[~series.str.contains(r"\d", regex=True)]
+            keywords.update(series)
 
     return keywords
 
@@ -124,7 +123,7 @@ def _get_compiled_patterns(dataframe: pd.DataFrame) -> list[tuple[str, re.Patter
     if not _COMPILED_PATTERNS:
 
         patterns = _get_project_noun_phrases(dataframe)
-        patterns.update(_get_system_noun_phrases())
+        patterns.update(_get_builtin_noun_phrases())
         patterns.update(_get_acronyms(dataframe))
         patterns = _clean_terms(patterns)
         patterns.update(_get_project_keywords(dataframe))
@@ -167,25 +166,30 @@ def _normalize(text):
     if pd.isna(text):
         return None
 
-    url_matches = extract_urls(text)
-    text = mark_copyright(text)
-    text = mark_abstract_headings(text)
-    text = mark_discursive_patterns(text)
-    text = mark_connectors(text)
-    #
-    text = _highlight_patterns(text)
-    #
-    text = repair_apostrophes(text)
-    text = join_consecutive_descriptors(text)
-    text = repair_measurement_units(text)
-    text = repair_urls(text, url_matches)
-    text = repair_lowercase_text(text)
-    text = repair_abstract_headings(text)
-    text = repair_et_al(text)
-    text = mark_connectors(text)
-    text = repair_roman_numbers(text)
-    text = repair_emails(text)
-    text = repair_strange_cases(text)
+    try:
+        url_matches = extract_urls(text)
+        text = mark_copyright(text)
+        text = mark_abstract_headings(text)
+        text = mark_discursive_patterns(text)
+        text = mark_connectors(text)
+        #
+        text = _highlight_patterns(text)
+        #
+        text = repair_apostrophes(text)
+        text = join_consecutive_descriptors(text)
+        text = repair_measurement_units(text)
+        text = repair_urls(text, url_matches)
+        text = repair_lowercase_text(text)
+        text = repair_abstract_headings(text)
+        text = repair_et_al(text)
+        text = mark_connectors(text)
+        text = repair_roman_numbers(text)
+        text = repair_emails(text)
+        text = repair_strange_cases(text)
+    except Exception as e:
+        sys.stderr.write(f"Error processing text: {e}\n")
+        sys.stderr.flush()
+        raise e
 
     return text
 

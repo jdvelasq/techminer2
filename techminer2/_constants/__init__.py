@@ -1,4 +1,5 @@
 from .british_to_american import BRITISH_TO_AMERICAN
+from .copyright import COPYRIGHT
 from .country_names import COUNTRY_NAMES
 from .country_to_alpha3 import COUNTRY_TO_ALPHA3
 from .country_to_region import COUNTRY_TO_REGION
@@ -10,6 +11,7 @@ from .valid_hyphenated_words import VALID_HYPHENATED_WORDS
 
 __all__ = [
     "BRITISH_TO_AMERICAN",
+    "COPYRIGHT",
     "COUNTRY_NAMES",
     "COUNTRY_TO_ALPHA3",
     "COUNTRY_TO_REGION",

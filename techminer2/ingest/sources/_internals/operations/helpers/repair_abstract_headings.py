@@ -87,29 +87,33 @@ def repair_abstract_headings(text: Optional[str]) -> Optional[str]:
         text = re.sub(regex, term.lower() + " :", text)
 
         # Corrects structured abstract markers inside the paragraph:
-        regex = re.compile(r". " + term.replace(" ", "_") + " :", re.IGNORECASE)
+        regex = re.compile(r"\. " + term.replace(" ", "_") + " :", re.IGNORECASE)
         text = re.sub(regex, ". " + term.lower() + " :", text)
 
-        regex = re.compile(r") " + term.replace(" ", "_") + " :", re.IGNORECASE)
+        regex = re.compile(r"\) " + term.replace(" ", "_") + " :", re.IGNORECASE)
         text = re.sub(regex, ") " + term.lower() + " :", text)
 
-        regex = re.compile(r"? " + term.replace(" ", "_") + " :", re.IGNORECASE)
+        regex = re.compile(r"\? " + term.replace(" ", "_") + " :", re.IGNORECASE)
         text = re.sub(regex, "? " + term.lower() + " :", text)
 
         regex = re.compile(r"' " + term.replace(" ", "_") + " :", re.IGNORECASE)
         text = re.sub(regex, "' " + term.lower() + " :", text)
 
         ## ending with [
-        regex = re.compile(r". " + term.replace(" ", "_") + r" [", re.IGNORECASE)
+
+        regex = re.compile(r"^" + term.replace(" ", "_") + r" \[", re.IGNORECASE)
+        text = re.sub(regex, term.lower() + " :", text)
+
+        regex = re.compile(r"\. " + term.replace(" ", "_") + r" \[", re.IGNORECASE)
         text = re.sub(regex, ". " + term.lower() + " [", text)
 
-        regex = re.compile(r") " + term.replace(" ", "_") + r" [", re.IGNORECASE)
+        regex = re.compile(r"\) " + term.replace(" ", "_") + r" \[", re.IGNORECASE)
         text = re.sub(regex, ") " + term.lower() + " [", text)
 
-        regex = re.compile(r"? " + term.replace(" ", "_") + r" [", re.IGNORECASE)
+        regex = re.compile(r"\? " + term.replace(" ", "_") + r" \[", re.IGNORECASE)
         text = re.sub(regex, "? " + term.lower() + " [", text)
 
-        regex = re.compile(r"' " + term.replace(" ", "_") + r" [", re.IGNORECASE)
+        regex = re.compile(r"' " + term.replace(" ", "_") + r" \[", re.IGNORECASE)
         text = re.sub(regex, "' " + term.lower() + " [", text)
 
     return text

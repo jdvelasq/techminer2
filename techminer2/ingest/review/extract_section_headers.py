@@ -3,9 +3,9 @@ Extract Colon Phrases
 ===============================================================================
 
 Smoke test:
-    >>> from techminer2.ingest.review import ExtractColonPhrases
+    >>> from techminer2.ingest.review import ExtractSectionHeaders
     >>> text = (
-    ...     ExtractColonPhrases()
+    ...     ExtractSectionHeaders()
     ...     .having_text_matching(None)
     ...     .where_root_directory("examples/small/")
     ... ).run()
@@ -32,7 +32,7 @@ from techminer2.analyze.concordances import ConcordanceUppercase
 __reviewed__ = "2026-01-28"
 
 
-class ExtractColonPhrases(
+class ExtractSectionHeaders(
     ParamsMixin,
 ):
     """:meta private:"""

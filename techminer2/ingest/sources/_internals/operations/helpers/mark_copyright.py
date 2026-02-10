@@ -2,6 +2,7 @@ import re
 
 import pandas as pd  # type: ignore
 
+from techminer2._constants import COPYRIGHT
 from techminer2._internals.package_data.text_processing import (
     load_text_processing_terms,
 )
@@ -11,7 +12,8 @@ _COMPILED_PATTERNS: list[re.Pattern] = []
 
 def _get_compiled_patterns() -> list[re.Pattern]:
     if not _COMPILED_PATTERNS:
-        copyright_regex = load_text_processing_terms("copyright_regex.txt")
+        # copyright_regex = load_text_processing_terms("copyright_regex.txt")
+        copyright_regex = COPYRIGHT
         _COMPILED_PATTERNS.extend(
             re.compile(r"(" + regex + r")") for regex in copyright_regex
         )

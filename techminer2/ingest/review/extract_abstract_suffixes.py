@@ -16,7 +16,7 @@ Smoke test:
     >>> assert all(len(t) <= 90 for t in text)
     >>> assert len(text) > 0
     >>> for t in text[:10]: print(t)
-    th THE_DEMANDS of INDUSTRY . 2010 edsig ( EDUCATION_SPECIAL_INTEREST_GROUP of THE_AITP ) .
+    th THE_DEMANDS of INDUSTRY . 2010 edsig ( education special interest group of the aitp ) .
     TORS , REGULATORS , etc . ) , who explore THE_FIELD of FINTECH . 2016 , the author ( s ) .
     how COMPANIES_COLLABORATE or compete in SPECIFIC_FINTECH_AREAS . 2016 , the author ( s ) .
     HADOW has been brought to THE_LIGHT . springer international publishing switzerland 2016 .
