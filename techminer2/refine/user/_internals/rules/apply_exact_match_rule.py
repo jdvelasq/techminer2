@@ -2,8 +2,8 @@ import pandas as pd  # type: ignore
 
 from techminer2 import ThesaurusField
 
-from .apply_matches import apply_matches
-from .find_rule_matches import find_rule_matches
+from ..match.apply_matches import apply_matches
+from ..match.find_rule_matches import find_rule_matches
 
 
 def _normalize_key_temp_column(dataframe: pd.DataFrame) -> pd.DataFrame:

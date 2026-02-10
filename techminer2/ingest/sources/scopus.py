@@ -40,6 +40,7 @@ from ._internals.authors.build_steps import build_author_steps
 from ._internals.document.build_steps import build_document_steps
 from ._internals.keywords.build_steps import build_keyword_steps
 from ._internals.references.build_steps import build_reference_steps
+from ._internals.review.build_steps import build_review_steps
 from ._internals.scaffolding.build_steps import build_scaffolding_steps
 from ._internals.scopus_result import ScopusResult
 from ._internals.source_title.build_steps import build_source_title_steps
@@ -63,7 +64,7 @@ class Scopus(ParamsMixin):
     _SCAFFOLDING = "Building project scaffold"
     _SOURCE_TITLE = "Processing source titles"
     _WORDS_AND_NP = "Processing words and noun phrases"
-
+    _REVIEW = "Extracting data for review"
     # -------------------------------------------------------------------------
     # I/O
     # -------------------------------------------------------------------------
@@ -117,6 +118,7 @@ class Scopus(ParamsMixin):
             (self._SOURCE_TITLE, build_source_title_steps(self.params)),
             (self._REFERENCES, build_reference_steps(self.params)),
             (self._WORDS_AND_NP, build_words_and_np_steps(self.params)),
+            (self._REVIEW, build_review_steps(self.params)),
         )
 
     def _execute_step(self, step: Step) -> None:

@@ -25,6 +25,25 @@ References
 Web of Science (WoS) provides cited references in a standardized, preprocessed format that can be directly used for citation-based analyses, whereas Scopus delivers references as unstructured text strings. To address this limitation, TechMiner2+ scans and parses Scopus document references to generate a normalized Rec-ID field that mirrors the structure of WoS reference identifiers. This Rec-ID is then used to reformat Scopus references, effectively emulating WoS-style downloaded data and enabling consistent citation, co-citation, and coupling analyses across data sources. This field is used to compute local citation counts and build citation networks from Scopus data.
 
 
+Fields for analysis
+------------------------------------------------------------------------------
+
+The following fields are available for analysis in tm2+:
+- Authors
+- Organizations
+- Countries
+- Sources
+- References
+- Country of first author
+- Organization of first author
+- Author Keywords
+- Index Keywords
+- Keywords
+- Keywords + noun phrases
+- Keywords + words
+ 
+
+
 General metrics and indicators
 ------------------------------------------------------------------------------
 
@@ -46,7 +65,11 @@ tm2+ provides essential data transformation and manipulation functions for corpu
 Thesaurus
 ------------------------------------------------------------------------------
 
-In VantagePoint, thesaurus management is implemented as an interactive, exploratory process in which fuzzy-cutoff algorithms are used to identify candidate key matches and the user manually decides which keys to merge, with no automatic consolidation. In tm2+, the same conceptual approach is preserved but implemented in a console-based, scriptable workflow: matchers generate explicit candidate pairs, merge decisions are applied explicitly and logged, and recomputation is triggered deliberately rather than implicitly. Unlike VantagePoint, tm2+ exposes the matching and merging steps as repeatable operations that can be integrated into analytical pipelines, while still respecting the core VantagePoint principle that similarity detection suggests merges but never performs them automatically. The main matchers implemented in tm2+ are:
+The thesaurus implementation in TM2+ is built on an explicit and comprehensive normalization model in which all unique entries of a field are first instantiated in an initial identity-based thesaurus, ensuring full coverage and auditability from the outset. Normalization begins with the systematic removal of determiners, stopwords, and other common initial words that are typically introduced as noise during noun-phrase extraction from text fields. Variant discovery is then performed through a FuzzyCutoffMatch stage combined with an ordered set of deterministic matchers—ExactMatch, WordOrderMatch, and PluralSingularMatch—allowing high-recall identification of related forms followed by high-precision consolidation. In addition, GenAI-assisted correction is selectively applied to resolve severely malformed or incorrectly hyphenated words that cannot be reliably addressed by rule-based methods alone, while preserving deterministic behavior in the final application phase. Finally, acronym identification and expansion, derived from systematic analysis of abstracts and structured fields, ensures consistent alignment between abbreviated and full forms. Together, these features provide a transparent, reproducible, and extensible thesaurus workflow tailored to advanced tech-mining and bibliometric analyses.
+
+
+
+
 
 - FuzzyCutofffMatch (words-based): 
     Detects near-duplicate strings using surface-form fuzzy similarity with a cutoff threshold.

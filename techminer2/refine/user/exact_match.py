@@ -29,8 +29,8 @@ Smoke test:
 from techminer2 import ThesaurusField
 from techminer2._internals import ParamsMixin
 
-from .mixins import MatchMixin
-from .thesaurus_match_result import ThesaurusMatchResult
+from ._internals.mixins import MatchMixin
+from ._internals.thesaurus_match_result import ThesaurusMatchResult
 
 
 class ExactMatch(

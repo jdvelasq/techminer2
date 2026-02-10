@@ -33,15 +33,17 @@ from tqdm import tqdm  # type: ignore
 from techminer2 import ThesaurusField
 from techminer2._internals import ParamsMixin
 
-from .apply_exact_match_rule import apply_exact_match_rule
-from .apply_hyphenation_rule import apply_hyphenation_rule
-from .apply_numeric_variation_rule import apply_numeric_variation_rule
-from .apply_plural_singular_rule import apply_plural_singular_rule
-from .apply_puntuation_variation_rule import apply_puntuation_variation_rule
-from .apply_word_order_rule import apply_word_order_rule
-from .load_as_dataframe import load_as_dataframe
-from .mixins import MatchMixin
-from .thesaurus_match_result import ThesaurusMatchResult
+from ._internals.io.load_as_dataframe import load_as_dataframe
+from ._internals.mixins import MatchMixin
+from ._internals.rules.apply_exact_match_rule import apply_exact_match_rule
+from ._internals.rules.apply_hyphenation_rule import apply_hyphenation_rule
+from ._internals.rules.apply_numeric_variation_rule import apply_numeric_variation_rule
+from ._internals.rules.apply_plural_singular_rule import apply_plural_singular_rule
+from ._internals.rules.apply_puntuation_variation_rule import (
+    apply_puntuation_variation_rule,
+)
+from ._internals.rules.apply_word_order_rule import apply_word_order_rule
+from ._internals.thesaurus_match_result import ThesaurusMatchResult
 
 
 class FuzzyCutoffMatch(
