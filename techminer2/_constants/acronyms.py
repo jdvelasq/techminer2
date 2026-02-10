@@ -1,0 +1,538 @@
+from types import MappingProxyType
+
+ACRONYMS = MappingProxyType(
+    {
+        "adtech": [
+            "advertising technology",
+            "advertising technologies",
+        ],
+        "agritech": [
+            "agricultural technology",
+            "agricultural technologies",
+        ],
+        "agtech": [
+            "agricultural technology",
+            "agricultural technologies",
+        ],
+        "auc-roc": [
+            "area under the curve receiver operating characteristic",
+        ],
+        "auc": [
+            "area under the curve",
+        ],
+        "aucroc": [
+            "area under the curve receiver operating characteristic",
+        ],
+        "b2b": [
+            "business-to-business",
+        ],
+        "b2c": [
+            "business-to-consumer",
+        ],
+        "bigru": [
+            "bidirectional-gated recurrent unit",
+        ],
+        "bilstm": [
+            "bidirectional-long-short-term memory",
+        ],
+        "biotech": [
+            "bio-technology",
+        ],
+        "c2b": [
+            "consumer-to-business",
+        ],
+        "c2c": [
+            "consumer-to-consumer",
+        ],
+        "crisp-dm": [
+            "cross-industry standard process for data mining",
+        ],
+        "crispdm": [
+            "cross-industry standard process for data mining",
+        ],
+        "devops": [
+            "development and operations",
+        ],
+        "e-activism": [
+            "electronic activism",
+        ],
+        "e-administration": [
+            "electronic administration",
+        ],
+        "e-advertising": [
+            "electronic advertising",
+        ],
+        "e-auction": [
+            "electronic auction",
+        ],
+        "e-auctions": [
+            "electronic auctions",
+        ],
+        "e-authentication": [
+            "electronic authentication",
+        ],
+        "e-bank": [
+            "electronic bank",
+        ],
+        "e-banking": [
+            "electronic banking",
+        ],
+        "e-book": [
+            "electronic book",
+        ],
+        "e-books": [
+            "electronic books",
+        ],
+        "e-bookstore": [
+            "electronic bookstore",
+        ],
+        "e-business": [
+            "electronic business",
+        ],
+        "e-cigarette": [
+            "electronic cigarette",
+        ],
+        "e-cigarettes": [
+            "electronic cigarettes",
+        ],
+        "e-cistomer": [
+            "electronic cistomer",
+        ],
+        "e-citizenship": [
+            "electronic citizenship",
+        ],
+        "e-class": [
+            "electronic class",
+        ],
+        "e-classroom": [
+            "electronic classroom",
+        ],
+        "e-collaboration": [
+            "electronic collaboration",
+        ],
+        "e-commerce": [
+            "electronic commerce",
+        ],
+        "e-commerces": [
+            "electronic commerces",
+        ],
+        "e-communication": [
+            "electronic communication",
+        ],
+        "e-communications": [
+            "electronic communications",
+        ],
+        "e-course": [
+            "electronic course",
+        ],
+        "e-crm": [
+            "electronic customer relationship management",
+        ],
+        "e-customer": [
+            "electronic customer",
+        ],
+        "e-democracy": [
+            "electronic democracy",
+        ],
+        "e-document": [
+            "electronic document",
+        ],
+        "e-exam": [
+            "e exams",
+        ],
+        "e-examinations": [
+            "electronic examinations",
+        ],
+        "e-exams": [
+            "electronic exams",
+        ],
+        "e-finance": [
+            "electronic finance",
+        ],
+        "e-goverment": [
+            "electronic goverment",
+        ],
+        "e-goverments": [
+            "electronic goverments",
+        ],
+        "e-governance": [
+            "electronic governance",
+        ],
+        "e-government": [
+            "electronic goverment",
+        ],
+        "e-governments": [
+            "electronic goverments",
+        ],
+        "e-groceries": [
+            "electronic groceries",
+        ],
+        "e-grocery": [
+            "electronic grocery",
+        ],
+        "e-guidance": [
+            "electronic guidance",
+        ],
+        "e-hail": [
+            "electronic hail",
+        ],
+        "e-hailing": [
+            "electronic hailing",
+        ],
+        "e-hailings": [
+            "electronic hailings",
+        ],
+        "e-health": [
+            "electronic health",
+        ],
+        "e-healthcare": [
+            "electronic healthcare",
+        ],
+        "e-hrm": [
+            "electronic human resource management",
+        ],
+        "e-identification": [
+            "electronic identification",
+        ],
+        "e-infrastructure": [
+            "electronic infrastructure",
+        ],
+        "e-infrastructures": [
+            "electronic infrastructures",
+        ],
+        "e-innovation": [
+            "electronic innovation",
+        ],
+        "e-interaction": [
+            "electronic interaction",
+        ],
+        "e-intervention": [
+            "electronic intervention",
+        ],
+        "e-invoice": [
+            "electronic invoice",
+        ],
+        "e-justice": [
+            "electronic justice",
+        ],
+        "e-kyc": [
+            "electronic know your customer",
+        ],
+        "e-leaning": [
+            "electronic leaning",
+        ],
+        "e-learner": [
+            "electronic learner",
+        ],
+        "e-learners": [
+            "electronic learners",
+        ],
+        "e-learning": [
+            "electronic learning",
+        ],
+        "e-lectures": [
+            "electronic lectures",
+        ],
+        "e-mail": [
+            "electronic mail",
+        ],
+        "e-mails": [
+            "electronic mails",
+        ],
+        "e-management": [
+            "electronic management",
+        ],
+        "e-manufacturing": [
+            "electronic manufacturing",
+        ],
+        "e-market": [
+            "electronic market",
+        ],
+        "e-marketing": [
+            "electronic marketing",
+        ],
+        "e-marketplace": [
+            "electronic marketplace",
+        ],
+        "e-marketplaces": [
+            "electronic marketplaces",
+        ],
+        "e-mentoring": [
+            "electronic mentoring",
+        ],
+        "e-money": [
+            "electronic money",
+        ],
+        "e-municipalities": [
+            "electronic municipalities",
+        ],
+        "e-navigation": [
+            "electronic navigation",
+        ],
+        "e-negotiation": [
+            "electronic negotiation",
+        ],
+        "e-negotiations": [
+            "electronic negotiations",
+        ],
+        "e-newsletter": [
+            "electronic newsletter",
+        ],
+        "e-newsletters": [
+            "electronic newsletters",
+        ],
+        "e-participation": [
+            "electronic participation",
+        ],
+        "e-passport": [
+            "electronic passport",
+        ],
+        "e-passports": [
+            "electronic passports",
+        ],
+        "e-patient": [
+            "electronic patient",
+        ],
+        "e-payment": [
+            "electronic payment",
+        ],
+        "e-payments": [
+            "electronic payments",
+        ],
+        "e-reader": [
+            "electronic reader",
+        ],
+        "e-readers": [
+            "electronic readers",
+        ],
+        "e-reading": [
+            "electronic reading",
+        ],
+        "e-recruiting": [
+            "electronic recruiting",
+        ],
+        "e-recruitment": [
+            "electronic recruitment",
+        ],
+        "e-recuitment": [
+            "electronic recuitment",
+        ],
+        "e-reputation": [
+            "electronic reputation",
+        ],
+        "e-retail": [
+            "electronic retail",
+        ],
+        "e-retailer": [
+            "electronic retailer",
+        ],
+        "e-retailers": [
+            "electronic retailers",
+        ],
+        "e-retailing": [
+            "electronic retailing",
+        ],
+        "e-service": [
+            "electronic service",
+        ],
+        "e-services": [
+            "electronic services",
+        ],
+        "e-shopping": [
+            "electronic shopping",
+        ],
+        "e-skills": [
+            "electronic skills",
+        ],
+        "e-sports": [
+            "electronic sports",
+        ],
+        "e-state": [
+            "electronic state",
+        ],
+        "e-stratbev": [
+            "electronic stratbev",
+        ],
+        "e-strategic": [
+            "electronic strategic",
+        ],
+        "e-strategy": [
+            "electronic strategy",
+        ],
+        "e-support": [
+            "electronic support",
+        ],
+        "e-surveillance": [
+            "electronic surveillance",
+        ],
+        "e-textbook": [
+            "electronic textbook",
+        ],
+        "e-textbooks": [
+            "electronic textbooks",
+        ],
+        "e-trading": [
+            "electronic trading",
+        ],
+        "e-training": [
+            "electronic training",
+        ],
+        "e-transaction": [
+            "electronic transaction",
+        ],
+        "e-transactions": [
+            "electronic transactions",
+        ],
+        "e-tutorial": [
+            "electronic tutorial",
+        ],
+        "e-tutorials": [
+            "electronic tutorials",
+        ],
+        "e-wallet": [
+            "electronic wallet",
+        ],
+        "e-wallets": [
+            "electronic wallets",
+        ],
+        "e-waste": [
+            "electronic waste",
+        ],
+        "e-wastes": [
+            "electronic wastes",
+        ],
+        "e-wealth": [
+            "electronic wealth",
+        ],
+        "e-word of mouth": [
+            "electronic word of mouth",
+        ],
+        "e-workplace": [
+            "electronic workplace",
+        ],
+        "edtech": [
+            "educational technology",
+        ],
+        "fintech": [
+            "financial technology",
+            "financial technologies",
+        ],
+        "govtech": [
+            "government technology",
+            "government technologies",
+        ],
+        "gpt": [
+            "generative pre-trained transformer",
+        ],
+        "gpts": [
+            "generative pre-trained transformers",
+        ],
+        "healthtech": [
+            "health technology",
+        ],
+        "hrtech": [
+            "human resources technology",
+        ],
+        "ict": [
+            "information and communication technology",
+        ],
+        "insurtech": [
+            "insurance technology",
+        ],
+        "k-nn": [
+            "k-nearest neighbors",
+        ],
+        "kdd": [
+            "knowledge discovery in databases",
+        ],
+        "lawtech": [
+            "law technology",
+        ],
+        "legaltech": [
+            "legal technology",
+        ],
+        "m-banking": [
+            "mobile banking",
+        ],
+        "m-goverment": [
+            "mobile government",
+        ],
+        "m-government": [
+            "mobile government",
+        ],
+        "m-health": [
+            "mobile health",
+        ],
+        "m-healthcare": [
+            "mobile healthcare",
+        ],
+        "m-learning": [
+            "mobile learning",
+        ],
+        "martech": [
+            "marketing technology",
+        ],
+        "medtech": [
+            "medical technology",
+        ],
+        "msme": [
+            "micro small and medium enterprises",
+            "micro small and medium-sized enterprises",
+        ],
+        "msmes": [
+            "micro small and medium enterprises",
+            "micro small and medium-sized enterprises",
+        ],
+        "p2p": [
+            "peer-to-peer",
+            "peer to peer",
+        ],
+        "proptech": [
+            "property technology",
+        ],
+        "psd-2": [
+            "payment services directive 2",
+        ],
+        "regtech": [
+            "regulatory technology",
+        ],
+        "retailtech": [
+            "retail technology",
+        ],
+        "rfid": [
+            "radio frequency identification",
+        ],
+        "sgd": [
+            "sustainable development goals",
+        ],
+        "sgds": [
+            "sustainable development goals",
+        ],
+        "sme": [
+            "small and medium enterprises",
+            "small and medium-sized enterprises",
+        ],
+        "smes": [
+            "small and medium enterprises",
+            "small and medium-sized enterprises",
+        ],
+        "smote": [
+            "synthetic minority oversampling technique",
+        ],
+        "wealthtech": [
+            "wealth technology",
+        ],
+        "xai": [
+            "explainable artificial intelligence",
+        ],
+        "e-security": [
+            "electronic security",
+        ],
+        "e-securities": [
+            "electronic securities",
+        ],
+        "utaut": [
+            "unified theory of acceptance and use of technology",
+        ],
+    }
+)

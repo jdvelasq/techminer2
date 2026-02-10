@@ -1,3 +1,4 @@
+from .acronyms import ACRONYMS
 from .british_to_american import BRITISH_TO_AMERICAN
 from .copyright import COPYRIGHT
 from .country_names import COUNTRY_NAMES
@@ -10,6 +11,7 @@ from .stopwords import STOPWORDS
 from .valid_hyphenated_words import VALID_HYPHENATED_WORDS
 
 __all__ = [
+    "ACRONYMS",
     "BRITISH_TO_AMERICAN",
     "COPYRIGHT",
     "COUNTRY_NAMES",
