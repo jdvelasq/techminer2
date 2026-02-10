@@ -17,7 +17,6 @@ Example:
     ...     .with_field("author_keywords_raw")
     ...     #
     ...     .where_root_directory("examples/small/")
-    ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     #
