@@ -401,7 +401,7 @@ def _create_thesaurus(
         for _, row in groupby_df.iterrows():
             key = row["key"]
             file.write(f"{key}\n")
-            for value in row["label"]:
+            for value in sorted(row["label"]):
                 file.write(f"    {value}\n")
 
 
@@ -412,6 +412,41 @@ def _assign_country_code(df: pd.DataFrame) -> pd.Series:
         lambda country: " [" + COUNTRY_TO_ALPHA3.get(country, "N/A") + "]"
     )
     return df[CorpusField.ORGANIZATION.value]
+
+
+def _create_thesaurus_columns(
+    df: pd.DataFrame,
+    country_mapping: dict[str, str],
+    organization_mapping: dict[str, str],
+) -> pd.DataFrame:
+
+    df = df.copy()
+
+    df[CorpusField.COUNTRY_AND_AFFIL.value] = df.apply(
+        lambda row: (
+            "; ".join(
+                f"{country_mapping.get(affil, '[N/A]')} @ {affil}"
+                for affil in row[CorpusField.AFFIL_RAW.value].split("; ")
+            )
+            if pd.notna(row[CorpusField.AFFIL_RAW.value])
+            else "[N/A]"
+        ),
+        axis=1,
+    )
+
+    df[CorpusField.ORGANIZATION_AND_AFFIL.value] = df.apply(
+        lambda row: (
+            "; ".join(
+                f"{organization_mapping.get(affil, '[N/A]')} @ {affil}"
+                for affil in row[CorpusField.AFFIL_RAW.value].split("; ")
+            )
+            if pd.notna(row[CorpusField.AFFIL_RAW.value])
+            else "[N/A]"
+        ),
+        axis=1,
+    )
+
+    return df
 
 
 def extract_organizations_and_countries(root_directory: str) -> int:
@@ -433,6 +468,9 @@ def extract_organizations_and_countries(root_directory: str) -> int:
 
     dataframe = _create_country_column(dataframe, country_mapping)
     dataframe = _create_organization_column(dataframe, organization_mapping)
+    dataframe = _create_thesaurus_columns(
+        dataframe, country_mapping, organization_mapping
+    )
 
     save_main_data(df=dataframe, root_directory=root_directory)
 

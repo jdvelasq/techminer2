@@ -29,8 +29,8 @@ German Institute for Economic Research [DEU]
 HCMC University of Technical Education [VNM]
     Faculty of Economics, HCMC University of Technical Education, Ho Chi Minh City, Viet Nam
 Hitachi, Ltd. [JPN]
-    Global Center for Social Innovation - Tokyo, Hitachi, Ltd., Tokyo, Japan
     Financial Information Systems Division, Hitachi, Ltd., Tokyo, Japan
+    Global Center for Social Innovation - Tokyo, Hitachi, Ltd., Tokyo, Japan
 Hochschule für Wirtschaft Fribourg [CHE]
     Hochschule für Wirtschaft Fribourg, Fribourg, Switzerland
 Indian Institute of Management [IND]
@@ -67,16 +67,16 @@ Sapporo Gakuin University [JPN]
 Singapore Management University [SGP]
     School of Information Systems, Singapore Management University, Singapore City, Singapore
 Soongsil University [KOR]
-    Graduate School of Business, Soongsil University, Seoul, South Korea
     College of Business Administration, Soongsil University, Seoul, South Korea
+    Graduate School of Business, Soongsil University, Seoul, South Korea
 Sungkyunkwan University [KOR]
     Sungkyunkwan University, Seoul, South Korea
 Sungshin Women's University [KOR]
     Department of Computer Science, Sungshin Women's University, Seoul, South Korea
     School of Information Technology, Sungshin Women's University, Seoul, South Korea
 The University of Hong Kong [HKG]
-    Faculty of Law, The University of Hong Kong, Hong Kong, Hong Kong
     E-Business Technology Institute, The University of Hong Kong, Hong Kong, Hong Kong
+    Faculty of Law, The University of Hong Kong, Hong Kong, Hong Kong
 Tianjin University [CHN]
     Tianjin University, Tianjin, China
 United States [USA]
@@ -86,8 +86,8 @@ Universiteit van Amsterdam [NLD]
 Universität Bamberg [DEU]
     Universität Bamberg, Bamberg, Bayern, Germany
 Universität Zürich [CHE]
-    Universität Zürich, Zurich, ZH, Switzerland
     Department of Informatics, Universität Zürich, Zurich, ZH, Switzerland
+    Universität Zürich, Zurich, ZH, Switzerland
 Walton Design and Consulting Engineering Co [CHN]
     Walton Design and Consulting Engineering Co,LTD, China
 Westerdals Oslo ACT [NOR]

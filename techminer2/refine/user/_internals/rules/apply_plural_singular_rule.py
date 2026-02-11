@@ -16,9 +16,12 @@ def _normalize_key_temp_column(dataframe: pd.DataFrame) -> pd.DataFrame:
 
     dataframe[key] = dataframe[preferred_term]
     dataframe[key] = dataframe[key].str.split()
-    dataframe[key] = dataframe[key].map(
-        lambda x: [Word(y).singularize().singularize().singularize() for y in x],
-        na_action="ignore",
+    dataframe[key] = dataframe[key].apply(
+        lambda x: (
+            [Word(y).singularize().singularize().singularize() for y in x]
+            if isinstance(x, list)
+            else x
+        ),
     )
     dataframe[key] = dataframe[key].str.join(" ")
 
