@@ -160,6 +160,7 @@ class CorpusField(Enum):
     REC_ID = "REC_ID"
     REC_NO = "REC_NO"
     REF_NORM = "REF_NORM"
+    REF_AND_REC_ID = "REF_AND_REC_ID"
     REF_RAW = "REF_RAW"
     REGION = "REGION"
 

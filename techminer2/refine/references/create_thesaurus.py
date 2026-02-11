@@ -4,19 +4,18 @@ CreateThesaurus
 
 Smoke tests:
     >>> from techminer2 import CorpusField
-    >>> from techminer2.refine.countries import CreateThesaurus
+    >>> from techminer2.refine.references import CreateThesaurus
     >>> (
     ...     CreateThesaurus()
     ...     .using_colored_output(False)
-    ...     .with_thesaurus_file("demo.the.txt")
     ...     .where_root_directory("examples/small/")
     ...     .run()
     ... )
     INFO: Thesaurus initialized successfully.
       Success      : True
-      File         : examples/small/refine/thesaurus/countries.the.txt
-      Source field : COUNTRY_AND_AFFIL
-      Status       : 21 countries added to the thesaurus.
+      File         : examples/small/refine/thesaurus/references.the.txt
+      Source field : REF_AND_REC_ID
+      Status       : 57 references added to the thesaurus.
     <BLANKLINE>
 
 
@@ -48,10 +47,10 @@ class CreateThesaurus(
 
         dataframe = load_main_data(
             root_directory=self.params.root_directory,
-            usecols=[CorpusField.COUNTRY_AND_AFFIL.value],
+            usecols=[CorpusField.REF_AND_REC_ID.value],
         )
         dataframe = dataframe.dropna()
-        series = dataframe[CorpusField.COUNTRY_AND_AFFIL.value]
+        series = dataframe[CorpusField.REF_AND_REC_ID.value]
         series = series.str.split("; ")
         series = series.explode()
         series = series.str.strip()
@@ -64,29 +63,31 @@ class CreateThesaurus(
         for term in terms:
             if term == ["[N/A]"]:
                 continue
-            country, affil = term
-            if country not in mapping:
-                mapping[country] = []
-            mapping[country].append(affil)
+            rec_id, ref = term
+            if rec_id == "[N/A]":
+                continue
+            if rec_id not in mapping:
+                mapping[rec_id] = []
+            mapping[rec_id].append(ref)
 
         filepath = (
             Path(self.params.root_directory)
             / "refine"
             / "thesaurus"
-            / "countries.the.txt"
+            / "references.the.txt"
         )
 
         with open(filepath, "w", encoding="utf-8") as file:
-            for country in sorted(mapping.keys()):
-                file.write(f"{country}\n")
-                for affil in sorted(mapping[country]):
-                    file.write(f"    {affil}\n")
+            for rec_id in sorted(mapping.keys()):
+                file.write(f"{rec_id}\n")
+                for ref in sorted(mapping[rec_id]):
+                    file.write(f"    {ref}\n")
 
         return ThesaurusCreationResult(
             colored_output=self.params.colored_output,
             file_path=str(filepath),
-            source_field=CorpusField.COUNTRY_AND_AFFIL.value,
+            source_field=CorpusField.REF_AND_REC_ID.value,
             msg="Thesaurus initialized successfully.",
             success=True,
-            status=f"{len(mapping.keys())} countries added to the thesaurus.",
+            status=f"{len(mapping.keys())} references added to the thesaurus.",
         )

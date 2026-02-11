@@ -169,6 +169,21 @@ def _process_references(
             else refs if isinstance(refs, list) else refs
         ),
     )
+
+    #
+    dataframe[CorpusField.REF_AND_REC_ID.value] = dataframe.apply(
+        lambda row: (
+            "; ".join(
+                f"{mapping.get(ref, '[N/A]')} @ {ref}"
+                for ref in row[CorpusField.REF_NORM.value]
+            )
+            if isinstance(row[CorpusField.REF_NORM.value], list)
+            else pd.NA
+        ),
+        axis=1,
+    )
+    #
+
     dataframe[CorpusField.REF_NORM.value] = dataframe[CorpusField.REF_NORM.value].apply(
         lambda refs: (
             [mapping[ref] for ref in refs if ref in mapping]
