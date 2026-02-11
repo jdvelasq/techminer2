@@ -11,7 +11,7 @@ Initialiize Thesaurus
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> import sys
     >>> from io import StringIO
     >>> # Redirect stderr to capture output

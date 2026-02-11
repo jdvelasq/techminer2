@@ -11,7 +11,7 @@ Sort by Key Length
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> from techminer2.refine.thesaurus_old.countries import InitializeThesaurus
     >>> (
     ...     InitializeThesaurus()

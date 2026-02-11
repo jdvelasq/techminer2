@@ -11,7 +11,7 @@ Merge Keys
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> import sys
     >>> from io import StringIO
     >>> original_stderr = sys.stderr

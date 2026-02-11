@@ -10,7 +10,7 @@ Terms by Cluster Frame
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> from techminer2.co_occurrence_network.descriptors import TermsByClusterDataFrame
     >>> from techminer2.refine.thesaurus_old.descriptors import ApplyThesaurus, InitializeThesaurus
 

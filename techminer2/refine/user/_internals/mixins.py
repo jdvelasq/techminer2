@@ -1,5 +1,4 @@
 from pathlib import Path
-from typing import Dict
 
 import pandas as pd
 
@@ -98,7 +97,7 @@ class MatchMixin:
             thesaurus_file=params.thesaurus_file,
             msg=f"Found {num_candidates} match candidates for merging.",
             success=True,
-            field=params.field,
+            field=params.field.value,
             num_candidates=num_candidates,
             num_groups=num_groups,
         )

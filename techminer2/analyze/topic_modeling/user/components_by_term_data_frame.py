@@ -8,7 +8,7 @@
 Components by Term Frame
 ===============================================================================
 
-Example:
+Smoke tests:
     >>> from sklearn.decomposition import LatentDirichletAllocation
     >>> lda = LatentDirichletAllocation(
     ...     n_components=10,

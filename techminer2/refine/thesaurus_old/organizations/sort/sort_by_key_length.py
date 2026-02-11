@@ -11,7 +11,7 @@ Sort by Key Length
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> # TEST PREPARATION
     >>> import sys
     >>> from io import StringIO

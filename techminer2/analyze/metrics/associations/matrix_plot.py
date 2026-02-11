@@ -9,7 +9,7 @@
 Matrix Plot
 ===============================================================================
 
-Example:
+Smoke tests:
     >>> from techminer2.packages.associations import MatrixPlot
     >>> plot = (
     ...     MatrixPlot()

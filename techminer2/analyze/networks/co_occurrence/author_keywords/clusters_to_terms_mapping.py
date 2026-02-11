@@ -10,7 +10,7 @@ Clusters to Terms Mapping
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> #
     >>> # TEST PREPARATION
     >>> #

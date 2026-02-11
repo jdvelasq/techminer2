@@ -13,7 +13,7 @@ Cross-correlation Map
 Creates an Cross-correlation Map.
 
 
-Example:
+Smoke tests:
     >>> # grey colors: https://www.w3schools.com/colors/colors_shades.asp
     >>> from techminer2.packages.correlation.cross import NetworkMapPlot
     >>> plot = (

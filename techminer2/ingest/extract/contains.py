@@ -7,7 +7,7 @@ that contain a given pattern using the ContainsExtractor class. The process invo
 configuring the field, search pattern, and database parameters.
 
 
-Example:
+Smoke tests:
     >>> # Creates, configures, and runs the extractor
     >>> from techminer2.database.extractors import ContainsExtractor
     >>> terms = (

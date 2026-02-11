@@ -10,7 +10,7 @@ World Map
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> from techminer2.analyze.metrics.collaboration import WorldMap
 
     >>> # Creates, configure, and plots a world map.

@@ -11,7 +11,7 @@ Ranking Plot
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> from techminer2.analyze.metrics.performance import RankingPlot
     >>> plot = (
     ...     RankingPlot()

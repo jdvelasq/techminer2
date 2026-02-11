@@ -10,7 +10,7 @@ Terms by Cluster Summary
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> from techminer2.packages.networks.co_authorship.countries import TermsByClusterSummary
     >>> (
     ...     TermsByClusterSummary()

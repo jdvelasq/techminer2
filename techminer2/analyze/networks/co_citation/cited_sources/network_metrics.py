@@ -10,7 +10,7 @@ Network Metrics
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> from techminer2.packages.networks.co_citation.cited_sources import NetworkMetrics
     >>> (
     ...     NetworkMetrics()

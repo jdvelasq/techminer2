@@ -11,7 +11,7 @@ Treemap
 
 
 
-Example:
+Smoke tests:
     >>> #
     >>> # TEST PREPARATION
     >>> #

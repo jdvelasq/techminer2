@@ -10,7 +10,7 @@ Terms by Cluster Frame
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> #
     >>> # TEST PREPARATION
     >>> #

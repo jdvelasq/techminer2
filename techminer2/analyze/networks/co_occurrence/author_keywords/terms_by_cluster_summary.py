@@ -10,7 +10,7 @@ Terms by Cluster Summary
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> #
     >>> # TEST PREPARATION
     >>> #

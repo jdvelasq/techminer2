@@ -11,7 +11,7 @@ Are Synonymous?
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> # TEST PREPARATION
     >>> import sys
     >>> from io import StringIO

@@ -9,7 +9,7 @@
 Dataframe
 ===============================================================================
 
-Example:
+Smoke tests:
     >>> from techminer2.analyze.metrics.lotka_law import DataFrame
 
     >>> generator = (

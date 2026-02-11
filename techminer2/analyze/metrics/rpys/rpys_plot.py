@@ -10,7 +10,7 @@ RPYS (Reference Publication Year Spectroscopy) Plot
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> from techminer2.packages.rpys import RPYSPlot
     >>> plot = (
     ...     RPYSPlot()

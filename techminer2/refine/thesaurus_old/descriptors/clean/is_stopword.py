@@ -11,7 +11,7 @@ Is Stopword?
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> # TEST PREPARATION
     >>> from techminer2.refine.thesaurus_old.descriptors import InitializeThesaurus, IsStopword
 

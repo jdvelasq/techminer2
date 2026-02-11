@@ -9,7 +9,7 @@
 Terms by Cluster Frame
 ===============================================================================
 
-Example:
+Smoke tests:
     >>> from techminer2.packages.networks.citation.sources import TermsByClusterDataFrame
     >>> (
     ...     TermsByClusterDataFrame()

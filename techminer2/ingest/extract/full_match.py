@@ -10,7 +10,7 @@ Full Match
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> # Creates, configures, and runs the extractor
     >>> from techminer2.database.extractors import FullMatchExtractor
     >>> terms = (

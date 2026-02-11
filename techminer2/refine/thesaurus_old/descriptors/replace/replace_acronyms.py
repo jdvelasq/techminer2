@@ -10,7 +10,7 @@
 Replace Abbreviations
 ===============================================================================
 
-Example:
+Smoke tests:
     >>> # Copy the acronyms file
     >>> import shutil
     >>> shutil.copy("examples/fintech/acronyms.the.txt", "examples/fintech/data/thesaurus/acronyms.the.txt")

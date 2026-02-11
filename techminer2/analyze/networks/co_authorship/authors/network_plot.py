@@ -10,7 +10,7 @@ Network Plot
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> from techminer2.packages.networks.co_authorship.authors import NetworkPlot
     >>> plot = (
     ...     NetworkPlot()

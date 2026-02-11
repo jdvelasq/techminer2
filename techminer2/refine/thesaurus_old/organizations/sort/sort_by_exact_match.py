@@ -11,7 +11,7 @@ Sort By Exact Match
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> # TEST PREPARATION
     >>> import sys
     >>> from io import StringIO

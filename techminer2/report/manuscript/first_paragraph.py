@@ -9,7 +9,7 @@
 First Paragraph
 ===============================================================================
 
-Example:
+Smoke tests:
 
     >>> # Create, configure, and run the Text generator
     >>> from techminer2.report.manuscript.introduction.first_paragraph import FirstParagraph

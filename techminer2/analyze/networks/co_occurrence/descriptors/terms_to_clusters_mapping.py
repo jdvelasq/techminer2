@@ -10,7 +10,7 @@ Terms to Cluster Mapping
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> from techminer2.co_occurrence_network.descriptors import TermsToClustersMapping
     >>> mapping = (
     ...     TermsToClustersMapping()
@@ -61,7 +61,7 @@ Example:
      'THE_FINANCIAL_SERVICES_INDUSTRY 06:1237': 1,
      'THE_IMPACT 06:0908': 0}
 
-Example:
+Smoke tests:
     >>> mapping = (
     ...     TermsToClustersMapping()
     ...     #

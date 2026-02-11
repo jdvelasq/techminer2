@@ -14,7 +14,7 @@ This module demonstrates how to extract the top terms from a specified field in 
 using the TopTermsExtractor class. The process involves configuring the field, search
 parameters, and database parameters.
 
-Example:
+Smoke tests:
     >>> # Creates, configures, and runs the extractor
     >>> from techminer2.database.extractors import TopTermsExtractor
     >>> terms = (

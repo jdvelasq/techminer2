@@ -8,7 +8,7 @@
 Cluster to Terms Mapping
 ===============================================================================
 
-Example:
+Smoke tests:
     >>> from sklearn.decomposition import LatentDirichletAllocation
     >>> lda = LatentDirichletAllocation(
     ...     n_components=10,

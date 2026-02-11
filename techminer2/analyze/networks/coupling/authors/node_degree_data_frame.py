@@ -10,7 +10,7 @@ Network Degree Frame
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> from techminer2.packages.networks.coupling.authors  import NodeDegreeDataFrame
     >>> (
     ...     NodeDegreeDataFrame()

@@ -9,7 +9,7 @@ Line Plot
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> from techminer2.analyze.metrics.bradford_law import LinePlot
     >>> (
     ...     LinePlot()

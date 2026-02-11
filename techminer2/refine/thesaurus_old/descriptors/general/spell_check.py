@@ -11,7 +11,7 @@ Spell Check
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> # Redirecting stderr to avoid messages
     >>> import sys
     >>> from io import StringIO

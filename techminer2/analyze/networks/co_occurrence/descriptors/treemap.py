@@ -10,7 +10,7 @@ Treemap
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> from techminer2.co_occurrence_network.descriptors import Treemap
     >>> plot = (
     ...     Treemap()

@@ -10,7 +10,7 @@ Terms to Cluster Mapping
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> # where_records_ordered_by: date_newest, date_oldest, global_cited_by_highest,
     >>> #                           global_cited_by_lowest, local_cited_by_highest,
     >>> #                           local_cited_by_lowest, first_author_a_to_z,

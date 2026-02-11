@@ -9,7 +9,7 @@
 #
 """
 
-Example:
+Smoke tests:
     >>> from techminer2.database.ingest import IngestScopus
     >>> IngestScopus(root_directory="examples/punctuation/", ).run() # doctest: +ELLIPSIS
     N...

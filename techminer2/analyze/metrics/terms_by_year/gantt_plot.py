@@ -9,7 +9,7 @@ Gantt Plot
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> from techminer2.analyze.metrics.terms_by_year import GanttPlot
     >>> plotter = (
     ...     GanttPlot()

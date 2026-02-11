@@ -10,7 +10,7 @@ Collect Descriptors
 ===============================================================================
 # >>> CollectDescriptors(root_directory="examples/fintech/").run()
 
-Example:
+Smoke tests:
     >>> from techminer2.database.tools import CollectDescriptors
     >>> CollectDescriptors(root_directory="../tm2_economics_of_wind_energy/").run()
 

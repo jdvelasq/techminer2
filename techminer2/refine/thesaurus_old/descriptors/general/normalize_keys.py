@@ -11,7 +11,7 @@ Normalize Keys
 ===============================================================================
 
 
-Example:
+Smoke tests:
 
     >>> # Redirecting stderr to avoid messages
     >>> import sys

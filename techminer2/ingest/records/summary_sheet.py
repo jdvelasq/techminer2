@@ -8,7 +8,7 @@
 Summary Sheet
 ===============================================================================
 
-Example:
+Smoke tests:
     >>> from techminer2.explore import SummarySheet
     >>> df = (
     ...     SummarySheet()

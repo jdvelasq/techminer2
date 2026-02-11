@@ -10,7 +10,7 @@ World Map
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> from techminer2.analyze.metrics.performance import WorldMap
     >>> plot = (
     ...     WorldMap()

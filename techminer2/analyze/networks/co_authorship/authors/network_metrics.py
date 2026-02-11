@@ -10,7 +10,7 @@ Metrics
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> from techminer2.packages.networks.co_authorship.authors import NetworkMetrics
     >>> (
     ...     NetworkMetrics()

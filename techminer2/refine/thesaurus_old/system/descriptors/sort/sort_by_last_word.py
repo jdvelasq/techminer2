@@ -11,7 +11,7 @@ Sort by Last Words
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> import sys
     >>> from io import StringIO
     >>> from techminer2.refine.thesaurus_old.system.descriptors import SortByLastWords

@@ -10,7 +10,7 @@ Record Viewer
 =======================================================================================
 
 
-Example:
+Smoke tests:
     >>> # Countries:
     >>> from techminer2.refine.thesaurus_old.countries import (
     ...     InitializeThesaurus as CreateCountryThesaurus,

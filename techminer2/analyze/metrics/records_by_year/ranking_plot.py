@@ -9,7 +9,7 @@ Ranking Plot
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> from techminer2.analyze.metrics.records_by_year import RankingPlot
     >>> plotter = (
     ...     RankingPlot()

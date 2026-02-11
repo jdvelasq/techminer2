@@ -10,7 +10,7 @@ Network Density Plot
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> from techminer2.packages.networks.coupling.countries import NodeDensityPlot
     >>> plot = (
     ...     NodeDensityPlot()

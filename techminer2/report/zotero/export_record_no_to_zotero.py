@@ -9,7 +9,7 @@
 Export Record No to Zotero
 =======================================================================================
 
-Example:
+Smoke tests:
     >>> from techminer2.zotero import ExportRecordNoToZotero
     >>> zot = (
     ...     ExportRecordNoToZotero()

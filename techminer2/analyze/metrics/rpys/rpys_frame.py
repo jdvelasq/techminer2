@@ -9,7 +9,7 @@
 RPYS (Reference Publication Year Spectroscopy) Frame
 ===============================================================================
 
-Example:
+Smoke tests:
     >>> from techminer2.packages.rpys import RPYSDataFrame
     >>> (
     ...     RPYSDataFrame()

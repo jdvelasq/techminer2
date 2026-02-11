@@ -11,7 +11,7 @@ Translate American to British Spelling
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> # Redirecting stderr to avoid messages during doctests
     >>> import sys
     >>> from io import StringIO

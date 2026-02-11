@@ -10,7 +10,7 @@ Metrics
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> from techminer2.co_occurrence_network.descriptors import NetworkMetrics
     >>> df = (
     ...     NetworkMetrics()
@@ -59,7 +59,7 @@ Example:
 
 
 
-Example:
+Smoke tests:
     >>> from techminer2.co_occurrence_network.descriptors import NetworkMetrics
     >>> df = (
     ...     NetworkMetrics()

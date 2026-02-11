@@ -10,7 +10,7 @@
 Register Phrases
 ===============================================================================
 
-Example:
+Smoke tests:
     >>> import shutil
     >>> import sys
     >>> from io import StringIO

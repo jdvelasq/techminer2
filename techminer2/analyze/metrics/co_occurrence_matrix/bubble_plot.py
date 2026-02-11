@@ -10,7 +10,7 @@ Bubble Plot
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> from techminer2.packages.co_occurrence_matrix import BubblePlot
     >>> plot = (
     ...     BubblePlot()

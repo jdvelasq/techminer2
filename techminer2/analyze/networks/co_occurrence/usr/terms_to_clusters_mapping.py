@@ -10,7 +10,7 @@ Terms to Cluster Mapping
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> from techminer2.co_occurrence_network.user import TermsToClustersMapping
     >>> mapping = (
     ...     TermsToClustersMapping()

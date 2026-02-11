@@ -10,7 +10,7 @@
 Titles
 ===============================================================================
 
-Example:
+Smoke tests:
 
     >>> from techminer2.manuscript import Titles
     >>> (

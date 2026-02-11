@@ -10,7 +10,7 @@ Matrix Plot
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> from techminer2.packages.co_occurrence_matrix import MatrixPlot
     >>> plot = (
     ...     MatrixPlot()
@@ -68,7 +68,7 @@ Example:
     height="600px" width="100%" frameBorder="0"></iframe>
 
 
-Example:
+Smoke tests:
     >>> from techminer2.packages.co_occurrence_matrix import MatrixPlot
     >>> plot = (
     ...     MatrixPlot()

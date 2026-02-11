@@ -10,7 +10,7 @@ Line Plot
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> from techminer2.analyze.metrics.performance import LinePlot
     >>> plot = (
     ...     LinePlot()

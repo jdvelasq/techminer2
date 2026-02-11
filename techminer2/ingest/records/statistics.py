@@ -9,7 +9,7 @@ Statistics
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> from techminer2.database.tools import Statistics
     >>> df = (
     ...     Statistics()

@@ -8,7 +8,7 @@
 # pylint: disable=too-many-statements
 """
 
-Example:
+Smoke tests:
     >>> # Redirect stderr to capture output
     >>> import sys
     >>> from io import StringIO

@@ -9,7 +9,7 @@ Cross-correlation Matrix
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> from techminer2.packages.correlation.cross import MatrixDataFrame
     >>> (
     ...     MatrixDataFrame()

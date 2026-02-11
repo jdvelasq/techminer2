@@ -10,7 +10,7 @@
 #
 # Check abstrats highlight
 """
-Example:
+Smoke tests:
     >>> import shutil
     >>> shutil.copy("examples/fintech/database.csv.zip", "examples/fintech/data/processed/database.csv.zip")
     'examples/fintech/data/processed/database.csv.zip'

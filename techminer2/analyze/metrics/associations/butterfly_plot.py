@@ -9,7 +9,7 @@
 Butterfly Plot
 ===============================================================================
 
-Example:
+Smoke tests:
     >>> from techminer2.packages.associations import ButterflyPlot
     >>> plot = (
     ...     ButterflyPlot()

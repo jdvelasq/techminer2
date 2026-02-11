@@ -13,7 +13,7 @@ Network Map Plot
 Creates an Auto-correlation Map.
 
 
-Example:
+Smoke tests:
     >>> # grey colors: https://www.w3schools.com/colors/colors_shades.asp
     >>> from techminer2.packages.correlation.auto import NetworkMapPlot
     >>> plot = (

@@ -12,7 +12,7 @@ Sort by Key Match
 
 Finds a string in the terms of a thesaurus.
 
-Example:
+Smoke tests:
     >>> import sys
     >>> from io import StringIO
     >>> from techminer2.refine.thesaurus_old.references import InitializeThesaurus, SortByMatch

@@ -10,7 +10,7 @@
 Sort by Fuzzy Match
 ===============================================================================
 
-Example:
+Smoke tests:
     >>> import sys
     >>> from io import StringIO
     >>> from techminer2.refine.thesaurus_old.references import InitializeThesaurus, SortByFuzzyMatch

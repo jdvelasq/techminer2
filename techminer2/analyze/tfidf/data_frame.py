@@ -9,7 +9,7 @@ Data Frame
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> from techminer2.analyze.metrics.tfidf import DataFrame
 
     >>> # Create, configure, and run the data frame generator:

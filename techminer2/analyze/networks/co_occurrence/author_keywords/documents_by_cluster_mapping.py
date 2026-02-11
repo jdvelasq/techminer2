@@ -10,7 +10,7 @@ Terms to Cluster Mapping
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> #
     >>> # TEST PREPARATION
     >>> #

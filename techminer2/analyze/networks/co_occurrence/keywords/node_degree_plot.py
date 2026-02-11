@@ -10,7 +10,7 @@ Node Degree Plot
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> from techminer2.co_occurrence_network.keywords import NodeDegreePlot
     >>> plot = (
     ...     NodeDegreePlot()

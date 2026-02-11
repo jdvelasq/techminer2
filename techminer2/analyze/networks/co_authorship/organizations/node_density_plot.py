@@ -10,7 +10,7 @@ Node Density Plot
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> from techminer2.packages.networks.co_authorship.organizations import NodeDensityPlot
     >>> plot = (
     ...     NodeDensityPlot()

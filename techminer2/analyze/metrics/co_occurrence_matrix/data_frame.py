@@ -9,7 +9,7 @@ Co-occurrence DataFrame
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> from techminer2.packages.co_occurrence_matrix import DataFrame
     >>> df = (
     ...     DataFrame()

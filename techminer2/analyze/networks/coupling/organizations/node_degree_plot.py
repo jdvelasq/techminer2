@@ -10,7 +10,7 @@ Network Degree Plot
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> from techminer2.packages.networks.coupling.organizations import NodeDegreePlot
     >>> plot = (
     ...     NodeDegreePlot()

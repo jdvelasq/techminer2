@@ -10,7 +10,7 @@ Stemming Field with AND
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> # Creates, configures, and runs the extractor
     >>> from techminer2.database.extractors import StemmingAndExtractor
     >>> terms = (

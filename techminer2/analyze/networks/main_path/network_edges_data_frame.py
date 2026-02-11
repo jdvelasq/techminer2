@@ -10,7 +10,7 @@ Network Edges Frame
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> from techminer2.packages.networks.main_path import NetworkEdgesDataFrame
     >>> (
     ...     NetworkEdgesDataFrame()

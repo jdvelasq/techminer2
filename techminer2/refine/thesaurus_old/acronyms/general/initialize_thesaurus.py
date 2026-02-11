@@ -3,7 +3,7 @@ Initialize Thesaurus
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> # Create thesaurus
     >>> from techminer2.refine.thesaurus_old.acronyms import InitializeThesaurus
     >>> (

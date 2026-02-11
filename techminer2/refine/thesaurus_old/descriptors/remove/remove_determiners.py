@@ -11,7 +11,7 @@ Determiners
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> import sys
     >>> from io import StringIO
 

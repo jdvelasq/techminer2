@@ -11,7 +11,7 @@ Cutoff Fuzzy Merging
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> # Reset the thesaurus to initial state
     >>> from techminer2.refine.thesaurus_old.descriptors import InitializeThesaurus
     >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()

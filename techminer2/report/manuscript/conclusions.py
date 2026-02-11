@@ -10,7 +10,7 @@
 Conclusions
 ===============================================================================
 
-Example:
+Smoke tests:
 
     >>> from techminer2.manuscript import Conclusions
     >>> (

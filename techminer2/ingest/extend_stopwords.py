@@ -12,7 +12,7 @@ Extend Stopwords
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> from techminer2.io import ExtendStopwords
     >>> (
     ...     ExtendStopwords()

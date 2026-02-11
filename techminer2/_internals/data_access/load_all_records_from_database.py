@@ -9,7 +9,7 @@
 # pylint: disable=too-many-statements
 """
 
-Example:
+Smoke tests:
     >>> from techminer2._internals import Params
     >>> from techminer2.database._internals.io import internal__load_all_records_from_database
     >>> df = internal__load_all_records_from_database(

@@ -11,7 +11,7 @@ Bar Chart
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> from techminer2.analyze.metrics.trending_terms.user import BarChart
 
     >>> # Create, configure, and run the plotter

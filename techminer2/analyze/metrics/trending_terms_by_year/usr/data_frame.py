@@ -9,7 +9,7 @@ Dataframe
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> from techminer2.analyze.metrics.trending_terms_by_year.user import DataFrame
 
     >>> # Create, configure, and run the generator

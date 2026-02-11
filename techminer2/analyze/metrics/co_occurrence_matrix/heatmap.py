@@ -10,7 +10,7 @@ Heatmap
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> from techminer2.packages.co_occurrence_matrix import Heatmap
     >>> plot = (
     ...     Heatmap()

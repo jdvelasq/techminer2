@@ -9,7 +9,7 @@
 Apply Thesaurus
 ===============================================================================
 
-Example:
+Smoke tests:
     >>> import sys
     >>> from io import StringIO
     >>> from techminer2.refine.thesaurus_old.organizations import ApplyThesaurus, InitializeThesaurus

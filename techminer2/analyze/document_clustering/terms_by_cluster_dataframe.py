@@ -3,7 +3,7 @@ Terms by Cluster Dataframe
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> from sklearn.cluster import KMeans
     >>> kmeans = KMeans(
     ...     n_clusters=4,

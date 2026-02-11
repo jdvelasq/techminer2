@@ -10,7 +10,7 @@ Network Metrics
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> from techminer2.packages.networks.coupling.sources import NetworkMetrics
     >>> (
     ...     NetworkMetrics()
@@ -44,7 +44,7 @@ Example:
     Financ. Manage. 2:161           1     0.000000   0.437500  0.048882
 
 
-Example:
+Smoke tests:
     >>> (
     ...     NetworkMetrics()
     ...     #

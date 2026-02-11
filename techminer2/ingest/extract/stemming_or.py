@@ -10,7 +10,7 @@ Stemming Field with OR
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> # Creates, configures, and runs the extractor
     >>> from techminer2.database.extractors import StemmingOrExtractor
     >>> terms = (

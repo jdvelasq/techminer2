@@ -13,7 +13,7 @@ This module demonstrates how to create a collaboration metrics data frame using 
 DataFrame class. The process involves configuring the field, database parameters,
 and filtering terms.
 
-Example:
+Smoke tests:
     >>> from techminer2.analyze.metrics.collaboration import DataFrame
 
     >>> # Create a collaboration metrics data frame

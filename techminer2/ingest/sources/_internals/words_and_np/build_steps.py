@@ -8,6 +8,7 @@ from ..step import Step
 
 def build_words_and_np_steps(params: Params) -> list[Step]:
 
+    from .create_descriptor_thesaurus import create_descriptor_thesaurus
     from .extract_abstract_acronyms import extract_abstract_acronyms
     from .extract_abstract_phrases import extract_abstract_phrases
     from .extract_abstract_words import extract_abstract_words
@@ -138,6 +139,12 @@ def build_words_and_np_steps(params: Params) -> list[Step]:
             function=merge_keywords_phrases_words,
             kwargs=common_kwargs,
             count_message="{count} records processed",
+        ),
+        Step(
+            name="Creating descriptor thesaurus",
+            function=create_descriptor_thesaurus,
+            kwargs=common_kwargs,
+            count_message="{count} descriptors added to thesaurus",
         ),
         Step(
             name="Updating builtin noun phrases",

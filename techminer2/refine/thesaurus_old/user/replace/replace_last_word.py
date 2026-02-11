@@ -3,7 +3,7 @@ Replace Last Word
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> from techminer2.refine.thesaurus_old.user import InitializeThesaurus
     >>> (
     ...     InitializeThesaurus()

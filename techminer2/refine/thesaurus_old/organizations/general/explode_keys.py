@@ -10,7 +10,7 @@
 Explode Keys
 ===============================================================================
 
-Example:
+Smoke tests:
     >>> import sys
     >>> from io import StringIO
     >>> from techminer2.refine.thesaurus_old.organizations import InitializeThesaurus, ExplodeKeys

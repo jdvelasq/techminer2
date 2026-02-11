@@ -10,7 +10,7 @@ Node Degree Frame
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> from techminer2.packages.networks.citation.authors  import NodeDegreeDataFrame
     >>> (
     ...     NodeDegreeDataFrame()

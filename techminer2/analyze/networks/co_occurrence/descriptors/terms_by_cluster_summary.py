@@ -10,7 +10,7 @@ Terms by Cluster Summary
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> from techminer2.co_occurrence_network.descriptors import TermsByClusterSummary
     >>> df = (
     ...     TermsByClusterSummary()

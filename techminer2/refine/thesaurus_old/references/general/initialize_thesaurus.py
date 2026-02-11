@@ -10,7 +10,7 @@
 Initialize thesaurus
 ===============================================================================
 
-Example:
+Smoke tests:
     >>> import sys
     >>> from io import StringIO
     >>> # Redirecting stderr to avoid messages

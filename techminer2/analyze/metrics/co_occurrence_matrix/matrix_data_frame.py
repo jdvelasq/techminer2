@@ -8,7 +8,7 @@
 Co-occurrence Matrix
 ===============================================================================
 
-Example:
+Smoke tests:
     >>> from techminer2.packages.co_occurrence_matrix import MatrixDataFrame
     >>> (
     ...     MatrixDataFrame()

@@ -3,7 +3,7 @@ Print Header
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> # Reset the thesaurus to initial state
     >>> from techminer2.refine.thesaurus_old.acronyms.general import InitializeThesaurus
     >>> (

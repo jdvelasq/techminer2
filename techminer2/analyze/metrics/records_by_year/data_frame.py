@@ -10,7 +10,7 @@ Data Frame
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> from techminer2.analyze.metrics.records_by_year import DataFrame
 
     >>> # Create, configure, and run the generator:

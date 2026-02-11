@@ -2,7 +2,7 @@
 Term Occurrence by Cluster
 ===============================================================================
 
-Example:
+Smoke tests:
     >>> from sklearn.cluster import KMeans
     >>> from techminer2.packages.document_clustering import TermOccurrenceByCluster
 

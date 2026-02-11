@@ -10,7 +10,7 @@ Coverage
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> from techminer2.database.tools import Coverage
     >>> (
     ...     Coverage()

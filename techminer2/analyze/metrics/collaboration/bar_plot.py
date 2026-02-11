@@ -15,7 +15,7 @@ This module demonstrates how to create a collaboration bar plot using the BarPlo
 The process involves configuring the field, plot settings, and database parameters.
 
 
-Example:
+Smoke tests:
     >>> from techminer2.analyze.metrics.collaboration import BarPlot
 
     >>> # Creates, runs, and saves the plot to disk

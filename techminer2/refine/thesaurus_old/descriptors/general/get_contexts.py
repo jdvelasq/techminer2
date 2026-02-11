@@ -11,7 +11,7 @@ Get Contexts
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> # Redirecting stderr to avoid messages during doctests
     >>> import sys
     >>> from io import StringIO

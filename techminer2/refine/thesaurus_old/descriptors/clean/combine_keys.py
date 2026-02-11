@@ -10,7 +10,7 @@
 Combine Keys
 ===============================================================================
 
-Example:
+Smoke tests:
     >>> # Preparation
     >>> from techminer2.refine.thesaurus_old.descriptors import InitializeThesaurus
     >>> from techminer2.refine.thesaurus_old.descriptors import ApplyThesaurus

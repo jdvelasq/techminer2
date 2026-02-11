@@ -9,7 +9,7 @@
 Second Paragraph
 ===============================================================================
 
-Example:
+Smoke tests:
 
     >>> # Create, configure, and run the Text generator
     >>> from techminer2.report.manuscript.introduction.second_paragraph import SecondParagraph

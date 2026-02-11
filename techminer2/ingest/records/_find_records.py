@@ -11,7 +11,7 @@ Find records
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> from techminer2.database.search import FindRecords
 
     >>> # Create, configure, and run the finder

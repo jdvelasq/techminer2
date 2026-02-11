@@ -10,7 +10,7 @@
 Literature Review
 ===============================================================================
 
-Example:
+Smoke tests:
 
     >>> # Create, configure, and run the Text generator
     >>> from techminer2.report.manuscript.literature_review import LiteratureReview

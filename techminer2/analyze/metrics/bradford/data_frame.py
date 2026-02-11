@@ -12,7 +12,7 @@ This module demonstrates how to create a DataFrame using the Bradford's Law metr
 with the DataFrame class. The process involves configuring the database parameters.
 
 
-Example:
+Smoke tests:
     >>> from techminer2.analyze.metrics.bradford_law import DataFrame
     >>> (
     ...     DataFrame()

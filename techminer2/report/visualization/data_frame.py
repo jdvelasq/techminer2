@@ -3,7 +3,7 @@ Data Frame
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> from techminer2.analyze.metrics.performance import DataFrame
     >>> (
     ...     DataFrame()

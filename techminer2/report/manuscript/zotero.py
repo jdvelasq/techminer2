@@ -10,7 +10,7 @@
 Zotero
 ===============================================================================
 
-Example:
+Smoke tests:
 
     >>> from techminer2.manuscript import Zotero
     >>> (
