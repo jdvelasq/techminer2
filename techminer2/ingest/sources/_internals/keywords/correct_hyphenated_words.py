@@ -60,7 +60,13 @@ def correct_hyphenated_words(root_directory: str) -> int:
         root_directory=root_directory,
     )
 
-    dataframe = _replace(dataframe, new_valid_words, new_invalid_words)
+    known_valid_words = _get_valid_words(root_directory)
+    known_invalid_words = _get_invalid_words(root_directory)
+    dataframe = _replace(
+        dataframe,
+        new_valid_words | known_valid_words,
+        new_invalid_words | known_invalid_words,
+    )
 
     save_main_data(dataframe, root_directory)
 
@@ -68,6 +74,36 @@ def correct_hyphenated_words(root_directory: str) -> int:
         int(dataframe[CorpusField.AUTH_KEY_TOK.value].notna().sum()),
         int(dataframe[CorpusField.IDX_KEY_TOK.value].notna().sum()),
     )
+
+
+def _get_valid_words(root_directory: str) -> set:
+
+    words: set[str] = set()
+
+    my_keywords_path = Path(root_directory) / "refine" / "word_lists"
+
+    report_file = my_keywords_path / "valid_hyphenated_words.txt"
+    if report_file.exists():
+        with open(report_file, "r", encoding="utf-8") as f:
+            for line in f:
+                words.add(line.strip())
+
+    return words
+
+
+def _get_invalid_words(root_directory: str) -> set:
+
+    words: set[str] = set()
+
+    my_keywords_path = Path(root_directory) / "refine" / "word_lists"
+
+    report_file = my_keywords_path / "invalid_hyphenated_words.txt"
+    if report_file.exists():
+        with open(report_file, "r", encoding="utf-8") as f:
+            for line in f:
+                words.add(line.strip())
+
+    return words
 
 
 def _extract_hyphenated_words(dataframe: pd.DataFrame) -> set:
@@ -98,19 +134,10 @@ def _extract_unknown_words(words: set, root_directory: str) -> set:
 
     known_words = set(VALID_HYPHENATED_WORDS) | set(INVALID_HYPHENATED_WORDS)
 
-    my_keywords_path = Path(root_directory) / "refine" / "word_lists"
-
-    report_file = my_keywords_path / "valid_hyphenated_words.txt"
-    if report_file.exists():
-        with open(report_file, "r", encoding="utf-8") as f:
-            for line in f:
-                known_words.add(line.strip())
-
-    report_file = my_keywords_path / "invalid_hyphenated_words.txt"
-    if report_file.exists():
-        with open(report_file, "r", encoding="utf-8") as f:
-            for line in f:
-                known_words.add(line.strip())
+    known_valid_words = _get_valid_words(root_directory)
+    known_invalid_words = _get_invalid_words(root_directory)
+    known_words.update(known_valid_words)
+    known_words.update(known_invalid_words)
 
     words = set(words)
     unknown_words = words - known_words

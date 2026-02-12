@@ -2003,7 +2003,7 @@ grounded theory
 groundwork
     groundwork # occ: 1
 group
-    group # occ: 1
+    group # occ: 2
 growing
     growing # occ: 4
 growing competition
@@ -2492,6 +2492,8 @@ lived
     lived # occ: 1
 lived experiences
     lived experiences # occ: 1
+llc
+    llc # occ: 1
 loan
     loan # occ: 2
 loans
@@ -3206,6 +3208,8 @@ providers
     providers # occ: 3
 providing
     providing # occ: 1
+pte
+    pte # occ: 1
 public
     public # occ: 2
 public interest
@@ -3936,8 +3940,6 @@ techniques and tools
     techniques and tools # occ: 1
 techno
     techno # occ: 1
-technolo-gy
-    technolo-gy # occ: 1
 technological
     technological # occ: 2
 technological practices
