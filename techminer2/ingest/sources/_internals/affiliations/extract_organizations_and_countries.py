@@ -385,7 +385,10 @@ def _create_organization_column(
 
 
 def _create_thesaurus(
-    root_directory: str, mapping: dict[str, str], filename: str
+    root_directory: str,
+    dataframe: pd.DataFrame,
+    mapping: dict[str, str],
+    filename: str,
 ) -> None:
 
     dataframe = pd.DataFrame(
@@ -449,6 +452,88 @@ def _create_thesaurus_columns(
     return df
 
 
+def _create_country_thesaurus_file(
+    root_directory: str, dataframe: pd.DataFrame
+) -> None:
+
+    dataframe = dataframe[[CorpusField.COUNTRY_AND_AFFIL.value]].copy().dropna()
+    dataframe[CorpusField.COUNTRY_AND_AFFIL.value] = dataframe[
+        CorpusField.COUNTRY_AND_AFFIL.value
+    ].str.split("; ")
+    dataframe = dataframe.explode(CorpusField.COUNTRY_AND_AFFIL.value)
+    dataframe[CorpusField.COUNTRY_AND_AFFIL.value] = dataframe[
+        CorpusField.COUNTRY_AND_AFFIL.value
+    ].str.strip()
+    dataframe["country"] = dataframe[CorpusField.COUNTRY_AND_AFFIL.value].apply(
+        lambda x: x.split(" @ ")[0].strip() if " @ " in x else "[N/A]"
+    )
+    dataframe["affil"] = dataframe[CorpusField.COUNTRY_AND_AFFIL.value].apply(
+        lambda x: x.split(" @ ")[1].strip() if " @ " in x else "[N/A]"
+    )
+    counting = dataframe["affil"].value_counts()
+
+    dataframe["affil"] = dataframe["affil"].apply(
+        lambda x: f"{x} # occ: {counting.get(x, 0)}"
+    )
+
+    dataframe = dataframe[["country", "affil"]]
+    groupby_df = dataframe.groupby("country", as_index=False).agg({"affil": list})
+    groupby_df["affil"] = groupby_df["affil"].apply(sorted)
+    groupby_df = groupby_df.sort_values(by=["country"], ascending=True)
+
+    filepath = Path(root_directory) / "refine" / "thesaurus" / "countries.the.txt"
+
+    with open(filepath, "w", encoding="utf-8") as file:
+        for _, row in groupby_df.iterrows():
+            country = row["country"]
+            if country == "[N/A]":
+                continue
+            file.write(f"{country}\n")
+            for affil in row["affil"]:
+                file.write(f"    {affil}\n")
+
+
+def _create_organizations_thesaurus_file(
+    root_directory: str, dataframe: pd.DataFrame
+) -> None:
+
+    dataframe = dataframe[[CorpusField.ORGANIZATION_AND_AFFIL.value]].copy().dropna()
+    dataframe[CorpusField.ORGANIZATION_AND_AFFIL.value] = dataframe[
+        CorpusField.ORGANIZATION_AND_AFFIL.value
+    ].str.split("; ")
+    dataframe = dataframe.explode(CorpusField.ORGANIZATION_AND_AFFIL.value)
+    dataframe[CorpusField.ORGANIZATION_AND_AFFIL.value] = dataframe[
+        CorpusField.ORGANIZATION_AND_AFFIL.value
+    ].str.strip()
+    dataframe["organization"] = dataframe[
+        CorpusField.ORGANIZATION_AND_AFFIL.value
+    ].apply(lambda x: x.split(" @ ")[0].strip() if " @ " in x else "[N/A]")
+    dataframe["affil"] = dataframe[CorpusField.ORGANIZATION_AND_AFFIL.value].apply(
+        lambda x: x.split(" @ ")[1].strip() if " @ " in x else "[N/A]"
+    )
+    counting = dataframe["affil"].value_counts()
+
+    dataframe["affil"] = dataframe["affil"].apply(
+        lambda x: f"{x} # occ: {counting.get(x, 0)}"
+    )
+
+    dataframe = dataframe[["organization", "affil"]]
+    groupby_df = dataframe.groupby("organization", as_index=False).agg({"affil": list})
+    groupby_df["affil"] = groupby_df["affil"].apply(sorted)
+    groupby_df = groupby_df.sort_values(by=["organization"], ascending=True)
+
+    filepath = Path(root_directory) / "refine" / "thesaurus" / "organizations.the.txt"
+
+    with open(filepath, "w", encoding="utf-8") as file:
+        for _, row in groupby_df.iterrows():
+            organization = row["organization"]
+            if organization == "[N/A]":
+                continue
+            file.write(f"{organization}\n")
+            for affil in row["affil"]:
+                file.write(f"    {affil}\n")
+
+
 def extract_organizations_and_countries(root_directory: str) -> int:
 
     dataframe = load_main_data(root_directory=root_directory)
@@ -472,18 +557,9 @@ def extract_organizations_and_countries(root_directory: str) -> int:
         dataframe, country_mapping, organization_mapping
     )
 
+    _create_country_thesaurus_file(root_directory, dataframe)
+    _create_organizations_thesaurus_file(root_directory, dataframe)
+
     save_main_data(df=dataframe, root_directory=root_directory)
-
-    _create_thesaurus(
-        root_directory=root_directory,
-        mapping=country_mapping,
-        filename="countries.the.txt",
-    )
-
-    _create_thesaurus(
-        root_directory=root_directory,
-        mapping=organization_mapping,
-        filename="organizations.the.txt",
-    )
 
     return int(dataframe[CorpusField.AFFIL_RAW.value].notna().sum())

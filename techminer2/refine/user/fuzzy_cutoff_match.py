@@ -33,7 +33,7 @@ from tqdm import tqdm  # type: ignore
 from techminer2 import ThesaurusField
 from techminer2._internals import ParamsMixin
 
-from ._internals.data_access.load_thesaurus_as_dataframe import (
+from .._internals.data_access.load_thesaurus_as_dataframe import (
     load_thesaurus_as_dataframe,
 )
 from ._internals.mixins import MatchMixin

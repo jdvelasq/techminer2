@@ -1,3 +1,23 @@
+"""
+Smoke test:
+    >>> from techminer2.refine._internals.data_access import load_thesaurus_as_dataframe
+    >>> load_thesaurus_as_dataframe(params=Params(
+    ...         root_directory="examples/small/",
+    ...         thesaurus_file="descriptors.the.txt",
+    ...     )
+    ... ).head()
+      PREFERRED_TERM                VARIANT  OCC
+    0      financial    financial # occ: 31   31
+    1     technology   technology # occ: 25   25
+    2        fintech      fintech # occ: 24   24
+    3    development  development # occ: 14   14
+    4        banking      banking # occ: 13   13
+
+
+
+
+"""
+
 import pandas as pd
 
 from techminer2 import ThesaurusField
@@ -30,10 +50,9 @@ def load_thesaurus_as_dataframe(
             if not line.startswith(" "):
                 preferred = line.strip()
             else:
-                variant, occ = line.split("# occ:")
-                variant = variant.strip()
+                occ = line.split("# occ:")[1]
                 occ = occ.strip()
-                variants.append(variant)
+                variants.append(line.strip())
                 occ_variants.append(int(occ))
                 preferred_terms.append(preferred)
 

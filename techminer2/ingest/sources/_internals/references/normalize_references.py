@@ -90,16 +90,44 @@ def _prepare_main_documents(root_directory: str) -> pd.DataFrame:
     return dataframe
 
 
-def _save_thesaurus(mapping: dict[str, list[str]], root_directory: str) -> None:
+def _create_references_thesaurus_file(root_directory: str) -> None:
 
-    path = Path(root_directory) / "refine" / "thesaurus" / "references.the.txt"
-    sorted_keys = sorted(mapping.keys())
+    dataframe = load_main_data(root_directory=root_directory)
+    dataframe = dataframe[[CorpusField.REF_AND_REC_ID.value]].copy().dropna()
+    dataframe[CorpusField.REF_AND_REC_ID.value] = dataframe[
+        CorpusField.REF_AND_REC_ID.value
+    ].str.split("; ")
+    dataframe = dataframe.explode(CorpusField.REF_AND_REC_ID.value)
+    dataframe[CorpusField.REF_AND_REC_ID.value] = dataframe[
+        CorpusField.REF_AND_REC_ID.value
+    ].str.strip()
+    dataframe["rec_id"] = dataframe[CorpusField.REF_AND_REC_ID.value].apply(
+        lambda x: x.split(" @ ")[0].strip() if " @ " in x else "[N/A]"
+    )
+    dataframe["ref"] = dataframe[CorpusField.REF_AND_REC_ID.value].apply(
+        lambda x: x.split(" @ ")[1].strip() if " @ " in x else "[N/A]"
+    )
+    counting = dataframe["ref"].value_counts()
 
-    with open(path, "w", encoding="utf-8") as file:
-        for key in sorted_keys:
-            file.write(f"{key}\n")
-            for value in mapping[key]:
-                file.write(f"    {value}\n")
+    dataframe["ref"] = dataframe["ref"].apply(
+        lambda x: f"{x} # occ: {counting.get(x, 0)}"
+    )
+
+    dataframe = dataframe[["rec_id", "ref"]]
+    groupby_df = dataframe.groupby("rec_id", as_index=False).agg({"ref": list})
+    groupby_df["ref"] = groupby_df["ref"].apply(sorted)
+    groupby_df = groupby_df.sort_values(by=["rec_id"], ascending=True)
+
+    filepath = Path(root_directory) / "refine" / "thesaurus" / "references.the.txt"
+
+    with open(filepath, "w", encoding="utf-8") as file:
+        for _, row in groupby_df.iterrows():
+            rec_id = row["rec_id"]
+            if rec_id == "[N/A]":
+                continue
+            file.write(f"{rec_id}\n")
+            for ref in row["ref"]:
+                file.write(f"    {ref}\n")
 
 
 def _create_mapping(
@@ -209,7 +237,10 @@ def normalize_references(root_directory: str) -> int:
     mapping = _create_mapping(
         main_documents=main_documents, cited_references=cited_references
     )
-    _save_thesaurus(mapping=mapping, root_directory=root_directory)
+
     reverse_mapping = _get_reverse_mapping(mapping)
 
-    return _process_references(mapping=reverse_mapping, root_directory=root_directory)
+    result = _process_references(mapping=reverse_mapping, root_directory=root_directory)
+    _create_references_thesaurus_file(root_directory=root_directory)
+
+    return result

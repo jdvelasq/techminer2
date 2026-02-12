@@ -1,96 +1,98 @@
 5 Jalan Universiti [MYS]
-    5 Jalan Universiti, Sunway University, Sunway City, Selangor, Malaysia
+    5 Jalan Universiti, Sunway University, Sunway City, Selangor, Malaysia # occ: 1
 Addis Ababa University [ETH]
-    Addis Ababa University, Addis Ababa, Ethiopia
+    Addis Ababa University, Addis Ababa, Ethiopia # occ: 1
 Agricultural Bank of China [CHN]
-    Agricultural Bank of China, Beijing, China
+    Agricultural Bank of China, Beijing, China # occ: 1
 Baekseok University [KOR]
-    Division of Tourism, Baekseok University, Cheonan, Chungcheongnam-do, South Korea
+    Division of Tourism, Baekseok University, Cheonan, Chungcheongnam-do, South Korea # occ: 1
 Beijing Normal-Hong Kong Baptist University [CHN]
-    Beijing Normal-Hong Kong Baptist University, Zhuhai, Guangdong, China
+    Beijing Normal-Hong Kong Baptist University, Zhuhai, Guangdong, China # occ: 1
 Beijing University of Technology [CHN]
-    Beijing University of Technology, Beijing, China
+    Beijing University of Technology, Beijing, China # occ: 1
 Boise State University [USA]
-    Boise State University, Boise, ID, United States
+    Boise State University, Boise, ID, United States # occ: 1
 Brunel University London [GBR]
-    Brunel University London, Uxbridge, Middlesex, United Kingdom
+    Brunel University London, Uxbridge, Middlesex, United Kingdom # occ: 1
 Chung-Ang University Business School [KOR]
-    Chung-Ang University Business School, Seoul, South Korea
+    Chung-Ang University Business School, Seoul, South Korea # occ: 1
 Dankook University [KOR]
-    Dankook University, Seoul, Seoul, South Korea
+    Dankook University, Seoul, Seoul, South Korea # occ: 1
 De Montfort University [GBR]
-    De Montfort University, Leicester, Leicestershire, United Kingdom
+    De Montfort University, Leicester, Leicestershire, United Kingdom # occ: 1
 Economic Research Institute [KOR]
-    Economic Research Institute, Bank of Korea, Seoul, South Korea
+    Economic Research Institute, Bank of Korea, Seoul, South Korea # occ: 1
 GSK Stockmann and Kollegen [DEU]
-    GSK Stockmann and Kollegen, Munich, Germany
+    GSK Stockmann and Kollegen, Munich, Germany # occ: 1
 German Institute for Economic Research [DEU]
-    German Institute for Economic Research, Berlin, Germany
+    German Institute for Economic Research, Berlin, Germany # occ: 1
 HCMC University of Technical Education [VNM]
-    Faculty of Economics, HCMC University of Technical Education, Ho Chi Minh City, Viet Nam
+    Faculty of Economics, HCMC University of Technical Education, Ho Chi Minh City, Viet Nam # occ: 1
 Hitachi, Ltd. [JPN]
-    Financial Information Systems Division, Hitachi, Ltd., Tokyo, Japan
-    Global Center for Social Innovation - Tokyo, Hitachi, Ltd., Tokyo, Japan
+    Financial Information Systems Division, Hitachi, Ltd., Tokyo, Japan # occ: 1
+    Global Center for Social Innovation - Tokyo, Hitachi, Ltd., Tokyo, Japan # occ: 1
 Hochschule für Wirtschaft Fribourg [CHE]
-    Hochschule für Wirtschaft Fribourg, Fribourg, Switzerland
+    Hochschule für Wirtschaft Fribourg, Fribourg, Switzerland # occ: 1
 Indian Institute of Management [IND]
-    Strategic Management group, Indian Institute of Management, India
+    Strategic Management group, Indian Institute of Management, India # occ: 1
 Latvijas Universitāte [LVA]
-    Faculty of Economics and Management, Latvijas Universitāte, Riga, Latvia
-    Finance Department, Latvijas Universitāte, Riga, Latvia
+    Faculty of Economics and Management, Latvijas Universitāte, Riga, Latvia # occ: 1
+    Finance Department, Latvijas Universitāte, Riga, Latvia # occ: 1
 London Office [GBR]
-    London Office, London, England, United Kingdom
+    London Office, London, England, United Kingdom # occ: 1
 McKinsey & Company [HUN]
-    McKinsey & Company, Hungary, Budapest, Hungary
+    McKinsey & Company, Hungary, Budapest, Hungary # occ: 1
 Moscow School of Management SKOLKOVO [RUS]
-    Moscow School of Management SKOLKOVO, Moscow, Moscow Region, Russian Federation
+    Moscow School of Management SKOLKOVO, Moscow, Moscow Region, Russian Federation # occ: 1
 Nagoya University [JPN]
-    Graduate School of Economics, Nagoya University, Nagoya, Aichi, Japan
+    Graduate School of Economics, Nagoya University, Nagoya, Aichi, Japan # occ: 1
 National Chengchi University [TWN]
-    National Chengchi University, Taipei, Taiwan
+    National Chengchi University, Taipei, Taiwan # occ: 1
 National University of Singapore [SGP]
-    Department of Information Systems, National University of Singapore, Singapore City, Singapore
+    Department of Information Systems, National University of Singapore, Singapore City, Singapore # occ: 1
 Pace University [USA]
-    Pace University, New York, NY, United States
+    Pace University, New York, NY, United States # occ: 1
 Peking University [CHN]
-    Institute of Internet Finance, Peking University, Beijing, China
+    Institute of Internet Finance, Peking University, Beijing, China # occ: 1
 Politechnika Warszawska [POL]
-    Faculty of Management, Politechnika Warszawska, Warsaw, MA, Poland
+    Faculty of Management, Politechnika Warszawska, Warsaw, MA, Poland # occ: 1
 Reykjavík University [ISL]
-    School of Business, Reykjavík University, Reykjavik, Iceland
+    School of Business, Reykjavík University, Reykjavik, Iceland # occ: 1
 Ruhr-Universitat Bochum [DEU]
-    Lehrstuhl für Finanzierung und Kreditwirtschaft, Ruhr-Universitat Bochum, Bochum, Nordrhein-Westfalen, Germany
+    Lehrstuhl für Finanzierung und Kreditwirtschaft, Ruhr-Universitat Bochum, Bochum, Nordrhein-Westfalen, Germany # occ: 1
 SK Telecom Co. [KOR]
-    SK Telecom Co., Ltd., Seoul, South Korea
+    SK Telecom Co., Ltd., Seoul, South Korea # occ: 1
 Sapporo Gakuin University [JPN]
-    Department of Economics, Sapporo Gakuin University, Ebetsu, Hokkaido, Japan
+    Department of Economics, Sapporo Gakuin University, Ebetsu, Hokkaido, Japan # occ: 1
 Singapore Management University [SGP]
-    School of Information Systems, Singapore Management University, Singapore City, Singapore
+    School of Information Systems, Singapore Management University, Singapore City, Singapore # occ: 1
 Soongsil University [KOR]
-    College of Business Administration, Soongsil University, Seoul, South Korea
-    Graduate School of Business, Soongsil University, Seoul, South Korea
+    College of Business Administration, Soongsil University, Seoul, South Korea # occ: 1
+    Graduate School of Business, Soongsil University, Seoul, South Korea # occ: 1
 Sungkyunkwan University [KOR]
-    Sungkyunkwan University, Seoul, South Korea
+    Sungkyunkwan University, Seoul, South Korea # occ: 1
 Sungshin Women's University [KOR]
-    Department of Computer Science, Sungshin Women's University, Seoul, South Korea
-    School of Information Technology, Sungshin Women's University, Seoul, South Korea
+    Department of Computer Science, Sungshin Women's University, Seoul, South Korea # occ: 2
+    Department of Computer Science, Sungshin Women's University, Seoul, South Korea # occ: 2
+    School of Information Technology, Sungshin Women's University, Seoul, South Korea # occ: 1
 The University of Hong Kong [HKG]
-    E-Business Technology Institute, The University of Hong Kong, Hong Kong, Hong Kong
-    Faculty of Law, The University of Hong Kong, Hong Kong, Hong Kong
+    E-Business Technology Institute, The University of Hong Kong, Hong Kong, Hong Kong # occ: 1
+    Faculty of Law, The University of Hong Kong, Hong Kong, Hong Kong # occ: 2
+    Faculty of Law, The University of Hong Kong, Hong Kong, Hong Kong # occ: 2
 Tianjin University [CHN]
-    Tianjin University, Tianjin, China
+    Tianjin University, Tianjin, China # occ: 1
 United States [USA]
-    Kasasa®, United States
+    Kasasa®, United States # occ: 1
 Universiteit van Amsterdam [NLD]
-    Universiteit van Amsterdam, Amsterdam, Noord-Holland, Netherlands
+    Universiteit van Amsterdam, Amsterdam, Noord-Holland, Netherlands # occ: 1
 Universität Bamberg [DEU]
-    Universität Bamberg, Bamberg, Bayern, Germany
+    Universität Bamberg, Bamberg, Bayern, Germany # occ: 1
 Universität Zürich [CHE]
-    Department of Informatics, Universität Zürich, Zurich, ZH, Switzerland
-    Universität Zürich, Zurich, ZH, Switzerland
+    Department of Informatics, Universität Zürich, Zurich, ZH, Switzerland # occ: 1
+    Universität Zürich, Zurich, ZH, Switzerland # occ: 1
 Walton Design and Consulting Engineering Co [CHN]
-    Walton Design and Consulting Engineering Co,LTD, China
+    Walton Design and Consulting Engineering Co,LTD, China # occ: 1
 Westerdals Oslo ACT [NOR]
-    Westerdals Oslo ACT, Oslo, Oslo, Norway
+    Westerdals Oslo ACT, Oslo, Oslo, Norway # occ: 1
 c/o SBS Treuhand GmbH [DEU]
-    c/o SBS Treuhand GmbH, Ludwig-Maximilians-Universität München, Munich, Bayern, Germany
+    c/o SBS Treuhand GmbH, Ludwig-Maximilians-Universität München, Munich, Bayern, Germany # occ: 1
