@@ -109,6 +109,8 @@ The thesaurus implementation in TM2+ is built on an explicit and comprehensive n
 
 
 
+FindAndReplace:  User interface for applying find/replace thesauri (partial term replacement)
+
 
 
 - StemMatch (words-based):
@@ -133,9 +135,18 @@ The thesaurus implementation in TM2+ is built on an explicit and comprehensive n
 
 
 
-
-
-
-
-
+FuzzyCutoffMatch: Present strings that match within a specified fuzzy cutoff percentage 
+FindCloseMatches: Present strings similar to a user-selected string within cutoff threshold
+ExactMatchFinder: Present strings that match exactly (case-sensitive or insensitive)
+ContainsPatternMatch: Present strings that contain a specific pattern or substring
+BeginsWithMatch: Present strings that begin with a specific pattern
+EndsWithMatch: Present strings that end with a specific pattern
+RegexPatternMatch: Present strings matching a regular expression pattern
+StemmedMatch: Present strings that share the same word stems
+WordOrderMatch: Present strings with same words in different order
+AbbreviationMatch: Present strings that appear to be abbreviations of each other
+PluralSingularMatch: Present strings that differ only by pluralization
+CaseVariationMatch: Present strings that differ only in letter casing
+PunctuationVariationMatch: Present strings that differ only in punctuation
+NumericVariationMatch: Present strings that differ only in numeric characters
 

@@ -33,7 +33,9 @@ from tqdm import tqdm  # type: ignore
 from techminer2 import ThesaurusField
 from techminer2._internals import ParamsMixin
 
-from ._internals.io.load_as_dataframe import load_as_dataframe
+from ._internals.data_access.load_thesaurus_as_dataframe import (
+    load_thesaurus_as_dataframe,
+)
 from ._internals.mixins import MatchMixin
 from ._internals.rules.apply_exact_match_rule import apply_exact_match_rule
 from ._internals.rules.apply_hyphenation_rule import apply_hyphenation_rule
@@ -44,6 +46,29 @@ from ._internals.rules.apply_puntuation_variation_rule import (
 )
 from ._internals.rules.apply_word_order_rule import apply_word_order_rule
 from ._internals.thesaurus_match_result import ThesaurusMatchResult
+
+# Automatic merging
+# 1. NumPunctToSpace ← MUST be first (removes noise)
+# 2. XMLEncoding
+# 3. WhitespaceNormalization
+# 4. PunctuationVariationMatch
+# 5. HyphenationMatch ← MUST be before domain thesauri
+# 6. ChemicalCompounds
+# 7. CommonAndBasic
+# 8. ScientificAndAcademic
+# 15. PluralSingularMatch ← MUST be before stemming
+# 16. StemmedMatch
+# 17. WordOrderMatch
+# 20. FuzzyCutoffMatch ← MUST be last
+
+# On-demand meriging
+# No dependencies - can run in any order, any time:
+#
+# 9. ContainsPatternMatch ← Find "network" anywhere
+# 10. BeginsWithMatch ← Find terms starting with "machine"
+# 11. EndsWithMatch ← Find terms ending with "learning"
+# 12. RegexPatternMatch ← Find complex patterns
+# 18. FindCloseMatches ← Check variants of specific term
 
 
 class FuzzyCutoffMatch(
@@ -177,7 +202,7 @@ class FuzzyCutoffMatch(
     # -------------------------------------------------------------------------
     def run(self) -> ThesaurusMatchResult:
 
-        dataframe = load_as_dataframe(params=self.params)
+        dataframe = load_thesaurus_as_dataframe(params=self.params)
         # dataframe = apply_exact_match_rule(dataframe)
         # dataframe = apply_word_order_rule(dataframe)
         # dataframe = apply_puntuation_variation_rule(dataframe)

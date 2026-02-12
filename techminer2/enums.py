@@ -212,8 +212,6 @@ class CorpusField(Enum):
 class ThesaurusField(Enum):
 
     KEY = "KEY"
-    KEY_LENGTH = "KEY_LENGTH"
     OCC = "OCC"
     PREFERRED = "PREFERRED_TERM"
-    PREFERRED_TEMP = "PREFERRED_TEMP"
     VARIANT = "VARIANT"
