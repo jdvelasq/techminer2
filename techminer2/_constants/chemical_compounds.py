@@ -1,6 +1,6 @@
 from types import MappingProxyType
 
-CHEMICAL_COMPOUDS = MappingProxyType(
+CHEMICAL_COMPOUNDS = MappingProxyType(
     {
         "ag": "silver",
         "ag/agcl": "silver silver chloride composite",

@@ -1,5 +1,6 @@
 from .acronyms import ACRONYMS
 from .british_to_american import BRITISH_TO_AMERICAN
+from .chemical_compounds import CHEMICAL_COMPOUNDS
 from .copyright import COPYRIGHT
 from .country_names import COUNTRY_NAMES
 from .country_to_alpha3 import COUNTRY_TO_ALPHA3
@@ -15,6 +16,7 @@ from .valid_hyphenated_words import VALID_HYPHENATED_WORDS
 __all__ = [
     "ACRONYMS",
     "BRITISH_TO_AMERICAN",
+    "CHEMICAL_COMPOUNDS",
     "COPYRIGHT",
     "COUNTRY_NAMES",
     "COUNTRY_TO_ALPHA3",
