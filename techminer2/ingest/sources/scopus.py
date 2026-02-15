@@ -25,6 +25,27 @@ Smoke test - fluent interface:
     >>> scopus_configured is scopus
     True
 
+
+    >>> from techminer2.ingest.sources.scopus import Scopus
+    >>> result = (
+    ...     Scopus()
+    ...     .where_root_directory("examples/medium/")
+    ...     .run()
+    ... )
+    >>> result.success
+    True
+
+
+    >>> from techminer2.ingest.sources.scopus import Scopus
+    >>> result = (
+    ...     Scopus()
+    ...     .where_root_directory("examples/large/")
+    ...     .run()
+    ... )
+    >>> result.success
+    True
+
+
 """
 
 import sys

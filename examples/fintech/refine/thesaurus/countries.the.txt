@@ -1,0 +1,74 @@
+China
+    Agricultural Bank of China, Beijing, China # occ: 1
+    Beijing Normal-Hong Kong Baptist University, Zhuhai, Guangdong, China # occ: 1
+    Beijing University of Technology, Beijing, China # occ: 1
+    Institute of Internet Finance, Peking University, Beijing, China # occ: 1
+    Tianjin University, Tianjin, China # occ: 1
+    Walton Design and Consulting Engineering Co,LTD, China # occ: 1
+Ethiopia
+    Addis Ababa University, Addis Ababa, Ethiopia # occ: 1
+Germany
+    GSK Stockmann and Kollegen, Munich, Germany # occ: 1
+    German Institute for Economic Research, Berlin, Germany # occ: 1
+    Lehrstuhl für Finanzierung und Kreditwirtschaft, Ruhr-Universitat Bochum, Bochum, Nordrhein-Westfalen, Germany # occ: 1
+    Universität Bamberg, Bamberg, Bayern, Germany # occ: 1
+    c/o SBS Treuhand GmbH, Ludwig-Maximilians-Universität München, Munich, Bayern, Germany # occ: 1
+Hong Kong
+    E-Business Technology Institute, The University of Hong Kong, Hong Kong, Hong Kong # occ: 1
+    Faculty of Law, The University of Hong Kong, Hong Kong, Hong Kong # occ: 2
+    Faculty of Law, The University of Hong Kong, Hong Kong, Hong Kong # occ: 2
+Hungary
+    McKinsey & Company, Hungary, Budapest, Hungary # occ: 1
+Iceland
+    School of Business, Reykjavík University, Reykjavik, Iceland # occ: 1
+India
+    Strategic Management group, Indian Institute of Management, India # occ: 1
+Japan
+    Department of Economics, Sapporo Gakuin University, Ebetsu, Hokkaido, Japan # occ: 1
+    Financial Information Systems Division, Hitachi, Ltd., Tokyo, Japan # occ: 1
+    Global Center for Social Innovation - Tokyo, Hitachi, Ltd., Tokyo, Japan # occ: 1
+    Graduate School of Economics, Nagoya University, Nagoya, Aichi, Japan # occ: 1
+Latvia
+    Faculty of Economics and Management, Latvijas Universitāte, Riga, Latvia # occ: 1
+    Finance Department, Latvijas Universitāte, Riga, Latvia # occ: 1
+Malaysia
+    5 Jalan Universiti, Sunway University, Sunway City, Selangor, Malaysia # occ: 1
+Netherlands
+    Universiteit van Amsterdam, Amsterdam, Noord-Holland, Netherlands # occ: 1
+Norway
+    Westerdals Oslo ACT, Oslo, Oslo, Norway # occ: 1
+Poland
+    Faculty of Management, Politechnika Warszawska, Warsaw, MA, Poland # occ: 1
+Russia
+    Moscow School of Management SKOLKOVO, Moscow, Moscow Region, Russian Federation # occ: 1
+Singapore
+    Department of Information Systems, National University of Singapore, Singapore City, Singapore # occ: 1
+    School of Information Systems, Singapore Management University, Singapore City, Singapore # occ: 1
+South Korea
+    Chung-Ang University Business School, Seoul, South Korea # occ: 1
+    College of Business Administration, Soongsil University, Seoul, South Korea # occ: 1
+    Dankook University, Seoul, Seoul, South Korea # occ: 1
+    Department of Computer Science, Sungshin Women's University, Seoul, South Korea # occ: 2
+    Department of Computer Science, Sungshin Women's University, Seoul, South Korea # occ: 2
+    Division of Tourism, Baekseok University, Cheonan, Chungcheongnam-do, South Korea # occ: 1
+    Economic Research Institute, Bank of Korea, Seoul, South Korea # occ: 1
+    Graduate School of Business, Soongsil University, Seoul, South Korea # occ: 1
+    SK Telecom Co., Ltd., Seoul, South Korea # occ: 1
+    School of Information Technology, Sungshin Women's University, Seoul, South Korea # occ: 1
+    Sungkyunkwan University, Seoul, South Korea # occ: 1
+Switzerland
+    Department of Informatics, Universität Zürich, Zurich, ZH, Switzerland # occ: 1
+    Hochschule für Wirtschaft Fribourg, Fribourg, Switzerland # occ: 1
+    Universität Zürich, Zurich, ZH, Switzerland # occ: 1
+Taiwan
+    National Chengchi University, Taipei, Taiwan # occ: 1
+United Kingdom
+    Brunel University London, Uxbridge, Middlesex, United Kingdom # occ: 1
+    De Montfort University, Leicester, Leicestershire, United Kingdom # occ: 1
+    London Office, London, England, United Kingdom # occ: 1
+United States
+    Boise State University, Boise, ID, United States # occ: 1
+    Kasasa®, United States # occ: 1
+    Pace University, New York, NY, United States # occ: 1
+Vietnam
+    Faculty of Economics, HCMC University of Technical Education, Ho Chi Minh City, Viet Nam # occ: 1
