@@ -73,7 +73,9 @@ import openai
 from openai import OpenAI
 
 from techminer2._internals import ParamsMixin
-from techminer2._internals.package_data.templates.load_template import load_template
+from techminer2._internals.package_data.templates.load_builtin_template import (
+    load_builtin_template,
+)
 
 
 class DefineTerm(
@@ -91,11 +93,11 @@ class DefineTerm(
 
         terms = self.params.pattern
 
-        system_prompt = load_template(
+        system_prompt = load_builtin_template(
             "shell.thesaurus.descriptors.clean.define.system.txt"
         )
 
-        user_template = load_template(
+        user_template = load_builtin_template(
             "shell.thesaurus.descriptors.clean.define.user.txt"
         )
 

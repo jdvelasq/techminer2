@@ -60,7 +60,9 @@ from textblob import Word
 from tqdm import tqdm  # type: ignore
 
 from techminer2._internals import ParamsMixin
-from techminer2._internals.package_data.templates.load_template import load_template
+from techminer2._internals.package_data.templates.load_builtin_template import (
+    load_builtin_template,
+)
 from techminer2.report.visualization import DataFrame as DominantDataFrame
 
 # -----------------------------------------------------------------------------
@@ -196,10 +198,10 @@ class AreSynonymous(
 
         self.client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-        self.system_prompt = load_template(
+        self.system_prompt = load_builtin_template(
             "shell.thesaurus.descriptors.clean.synonyms.system.txt"
         )
-        self.user_template = load_template(
+        self.user_template = load_builtin_template(
             "shell.thesaurus.descriptors.clean.synonyms.user.txt"
         )
 

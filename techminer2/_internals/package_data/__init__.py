@@ -1,11 +1,11 @@
-from .csv.load_csv import load_csv
-from .mappings.load_mapping import load_mapping
-from .templates.load_template import load_template
-from .word_lists.load_word_list import load_word_list
+from .csv.load_builtin_csv import load_builtin_csv
+from .mappings.load_builtin_mapping import load_builtin_mapping
+from .templates.load_builtin_template import load_builtin_template
+from .word_lists.load_builtin_word_list import load_builtin_word_list
 
 __all__ = [
-    "load_csv",
-    "load_mapping",
-    "load_template",
-    "load_word_list",
+    "load_builtin_csv",
+    "load_builtin_mapping",
+    "load_builtin_template",
+    "load_builtin_word_list",
 ]

@@ -1,8 +1,8 @@
 import pandas as pd  # type: ignore
 
 from techminer2 import ThesaurusField
-from techminer2._constants import STOPWORDS
 from techminer2._internals import Params
+from techminer2._internals.package_data import load_builtin_word_list
 
 from ._post_process import _post_process
 from ._pre_process import _pre_process
@@ -26,7 +26,8 @@ def apply_stopwords_removal_match_rule(
     thesaurus_df[SIGNATURE] = thesaurus_df[PREFERRED]
     thesaurus_df[SIGNATURE] = thesaurus_df[SIGNATURE].str.strip()
     thesaurus_df[SIGNATURE] = thesaurus_df[SIGNATURE].apply(lambda x: f" {x} ")
-    for stopword in STOPWORDS:
+    stopwords = set(load_builtin_word_list("stopwords.txt"))
+    for stopword in stopwords:
         thesaurus_df[SIGNATURE] = thesaurus_df[SIGNATURE].str.replace(
             f" {stopword} ", " "
         )

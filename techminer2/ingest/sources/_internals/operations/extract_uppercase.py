@@ -1,10 +1,12 @@
 import pandas as pd  # type: ignore
 
 from techminer2 import CorpusField
-from techminer2._constants import STOPWORDS
+from techminer2._internals.package_data import load_builtin_word_list
 
 from ._file_dispatch import get_file_operations
 from .data_file import DataFile
+
+STOPWORDS = load_builtin_word_list("stopwords.txt")
 
 
 def _extract_uppercase_words_and_np(text):

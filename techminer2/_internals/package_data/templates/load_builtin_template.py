@@ -1,7 +1,7 @@
 from importlib.resources import files
 
 
-def load_template(filename: str) -> str:
+def load_builtin_template(filename: str) -> str:
 
     data_path = files("techminer2.package_data.templates").joinpath(filename)
     data_path = str(data_path)

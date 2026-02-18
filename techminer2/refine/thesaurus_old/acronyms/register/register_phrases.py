@@ -41,9 +41,10 @@ import sys
 from importlib.resources import files
 
 from techminer2._internals import Params, ParamsMixin
-from techminer2._internals.package_data.word_lists import (
-    internal__sort_text_processing_terms,
-)
+
+# from techminer2._internals.package_data.word_lists import (
+#     internal__sort_text_processing_terms,
+# )
 from techminer2.refine.thesaurus_old._internals import (
     internal__get_user_thesaurus_file_path,
     internal__load_thesaurus_as_mapping,

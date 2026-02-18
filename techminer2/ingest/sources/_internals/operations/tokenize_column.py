@@ -7,7 +7,7 @@ import pandas as pd  # type: ignore
 from nltk.tokenize import word_tokenize  # type: ignore
 
 from techminer2 import CorpusField
-from techminer2._constants import BRITISH_TO_AMERICAN
+from techminer2._internals.package_data import load_builtin_mapping
 
 from ._file_dispatch import get_file_operations
 from .data_file import DataFile
@@ -353,7 +353,9 @@ def _tokenize(text: pd.Series) -> pd.Series:
     for old, new in _NOUN_PHRASE_CORRECTIONS:
         text = text.str.replace(old, new, regex=False)
 
-    for british, american in BRITISH_TO_AMERICAN.items():
-        text = text.str.replace(british, american, regex=False)
+    british_to_american = load_builtin_mapping("british_to_american.json")
+    for british, american in british_to_american.items():
+        if isinstance(american, str):
+            text = text.str.replace(british, american, regex=False)
 
     return text

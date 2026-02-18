@@ -6,7 +6,7 @@ from pandarallel import pandarallel  # type: ignore
 
 from techminer2 import CorpusField
 from techminer2._internals import stdout_to_stderr
-from techminer2._internals.package_data.word_lists import load_word_list
+from techminer2._internals.package_data.word_lists import load_builtin_word_list
 
 from ._file_dispatch import get_file_operations
 from .data_file import DataFile
@@ -50,7 +50,7 @@ def _get_project_noun_phrases(dataframe: pd.DataFrame) -> set[str]:
 
 # ----------------------------------------------------------------------------
 def _get_builtin_noun_phrases() -> set[str]:
-    noun_phrases = load_word_list("noun_phrases.txt")
+    noun_phrases = load_builtin_word_list("noun_phrases.txt")
     noun_phrases = [
         phrase.strip().lower().replace("_", " ")
         for phrase in noun_phrases
@@ -75,7 +75,7 @@ def _get_acronyms(dataframe: pd.DataFrame) -> set[str]:
 # ----------------------------------------------------------------------------
 def _clean_terms(terms: set[str]) -> set[str]:
 
-    stopwords = load_word_list("technical_stopwords.txt")
+    stopwords = load_builtin_word_list("stopwords.txt")
     cleaned_terms = set()
     for term in terms:
         term_lower = term.lower()

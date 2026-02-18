@@ -66,7 +66,7 @@ from textblob import Word  # type: ignore
 from tqdm import tqdm  # type: ignore
 
 from techminer2._internals import ParamsMixin
-from techminer2._internals.package_data.word_lists import load_word_list
+from techminer2._internals.package_data.word_lists import load_builtin_word_list
 from techminer2.refine.thesaurus_old._internals import ThesaurusMixin
 
 tqdm.pandas()
@@ -108,7 +108,7 @@ class RemoveStopwords(
         self.data_frame["__row_selected__"] = False
         self.data_frame["org_key"] = self.data_frame["key"].copy()
 
-        words = load_word_list("technical_stopwords.txt")
+        words = load_builtin_word_list("stopwords.txt")
 
         words = [w for w in words if len(w) > 1]
         words = [w for w in words if "'" not in w]

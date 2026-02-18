@@ -3,7 +3,7 @@ from importlib.resources import files
 from typing import Union
 
 
-def load_mapping(filename: str) -> dict[str, Union[str, list[str]]]:
+def load_builtin_mapping(filename: str) -> dict[str, Union[str, list[str]]]:
 
     datapath = files("techminer2._internals.package_data.mappings.data").joinpath(
         filename

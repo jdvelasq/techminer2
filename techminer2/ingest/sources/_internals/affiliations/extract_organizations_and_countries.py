@@ -5,8 +5,11 @@ from typing import List
 import pandas as pd  # type: ignore
 
 from techminer2 import CorpusField
-from techminer2._constants import COUNTRY_NAMES, COUNTRY_TO_ALPHA3, ORGANIZATIONS
 from techminer2._internals.data_access import load_main_data, save_main_data
+from techminer2._internals.package_data import (
+    load_builtin_mapping,
+    load_builtin_word_list,
+)
 
 _AMBIGUOUS_INDICATOR = [
     "institute of",
@@ -189,7 +192,8 @@ def _extract_country_from_string(affiliation: str) -> str:
     for pat, repl in _COUNTRY_REPLACEMENTS:
         country = country.replace(pat, repl)
 
-    if country not in COUNTRY_NAMES:
+    country_names = load_builtin_word_list("country_names.txt")
+    if country not in country_names:
         country = "[N/A]"
 
     return country
@@ -276,7 +280,8 @@ def _starts_with_department(text: str) -> bool:
 
 def _extract_organization_from_string(affiliation: str) -> str:
 
-    for org in ORGANIZATIONS:
+    organizations = load_builtin_word_list("organizations.txt")
+    for org in organizations:
         if org.lower() in affiliation.lower():
             return org
 
@@ -415,8 +420,9 @@ def _assign_country_code(df: pd.DataFrame) -> pd.Series:
 
     df = df.copy()
 
+    country_to_alpha3 = load_builtin_mapping("country_to_alpha3.json")
     df[ORGANIZATION] += df[COUNTRY].map(
-        lambda country: " [" + COUNTRY_TO_ALPHA3.get(country, "N/A") + "]"
+        lambda country: f" [{country_to_alpha3.get(country, 'N/A')}]"
     )
     return df[ORGANIZATION]
 

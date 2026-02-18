@@ -14,7 +14,9 @@ import openai
 from colorama import Fore
 from openai import OpenAI
 
-from techminer2._internals.package_data.templates.load_template import load_template
+from techminer2._internals.package_data.templates.load_builtin_template import (
+    load_builtin_template,
+)
 from techminer2.analyze.concordances import ConcordanceSentences
 from techminer2.refine.thesaurus_old.descriptors import GetValues, MergeKeys
 from techminer2.shell.colorized_input import colorized_input
@@ -127,7 +129,7 @@ def internal__execute_query_with_contexts(
         contexts_candidate = "\n".join(contexts_candidate)
 
     template = "shell.thesaurus.descriptors.clean.synonyms.with_contexts.txt"
-    prompt = load_template(template)
+    prompt = load_builtin_template(template)
     query = prompt.format(
         lead_term=lead_term,
         candidate_term=candidate_term,
@@ -174,7 +176,7 @@ def internal__execute_query_without_contexts(
     client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
     template = "shell.thesaurus.descriptors.clean.synonyms.without_contexts.txt"
-    prompt = load_template(template)
+    prompt = load_builtin_template(template)
     query = prompt.format(
         lead_term=lead_term,
         candidate_term=candidate_term,
@@ -276,7 +278,7 @@ def internal__explain(
         contexts_candidate = "N/A"
 
     template = "shell.thesaurus.descriptors.clean.synonyms.explain.txt"
-    prompt = load_template(template)
+    prompt = load_builtin_template(template)
     query = prompt.format(
         lead_term=lead_term,
         candidate_term=candidate_term,

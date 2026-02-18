@@ -47,7 +47,9 @@ from tqdm import tqdm  # type: ignore
 
 from techminer2._internals import ParamsMixin
 from techminer2._internals.data_access import load_filtered_main_data
-from techminer2._internals.package_data.templates.load_template import load_template
+from techminer2._internals.package_data.templates.load_builtin_template import (
+    load_builtin_template,
+)
 
 
 class FirstParagraph(
@@ -134,7 +136,7 @@ class FirstParagraph(
     # -------------------------------------------------------------------------
     def internal__load_definition_template(self):
 
-        self.definition_template = load_template(
+        self.definition_template = load_builtin_template(
             "internals.genai.first_paragraph_define.txt"
         )
 
@@ -180,7 +182,7 @@ class FirstParagraph(
     # -------------------------------------------------------------------------
     def internal__load_summarization_template(self):
 
-        self.summarization_template = load_template(
+        self.summarization_template = load_builtin_template(
             "internals.genai.first_paragraph_summarize.txt"
         )
 

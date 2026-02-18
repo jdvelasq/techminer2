@@ -7,7 +7,7 @@ from pandarallel import pandarallel  # type: ignore
 
 from techminer2 import CorpusField
 from techminer2._internals import stdout_to_stderr
-from techminer2._internals.package_data.word_lists import load_word_list
+from techminer2._internals.package_data.word_lists import load_builtin_word_list
 
 from ._file_dispatch import get_file_operations
 from .data_file import DataFile
@@ -30,7 +30,7 @@ from .helpers import (
 
 STOPWORDS: set[str] = set(
     phrase.strip().lower()
-    for phrase in load_word_list("technical_stopwords.txt")
+    for phrase in load_builtin_word_list("stopwords.txt")
     if phrase.strip()
 )
 

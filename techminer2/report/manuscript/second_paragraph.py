@@ -43,7 +43,9 @@ import sys
 from openai import OpenAI
 
 from techminer2._internals import ParamsMixin
-from techminer2._internals.package_data.templates.load_template import load_template
+from techminer2._internals.package_data.templates.load_builtin_template import (
+    load_builtin_template,
+)
 from techminer2.ingest.records import RecordViewer  # type: ignore
 
 
@@ -68,7 +70,7 @@ class SecondParagraph(
     # -------------------------------------------------------------------------
     def internal__load_template(self):
 
-        self.template = load_template("internals.genai.second_paragraph.txt")
+        self.template = load_builtin_template("internals.genai.second_paragraph.txt")
 
     # -------------------------------------------------------------------------
     def internal__generate_prompt(self):

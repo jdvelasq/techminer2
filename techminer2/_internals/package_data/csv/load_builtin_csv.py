@@ -3,7 +3,7 @@ from importlib.resources import files
 import pandas as pd  # type: ignore
 
 
-def load_csv(filename: str) -> pd.DataFrame:
+def load_builtin_csv(filename: str) -> pd.DataFrame:
 
     datapath = files("techminer2._internals.package_data.csv.data").joinpath(filename)
 

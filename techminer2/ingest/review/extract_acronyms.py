@@ -28,7 +28,7 @@ from textblob import TextBlob  # type: ignore
 from techminer2 import CorpusField
 from techminer2._internals import ParamsMixin
 from techminer2._internals.data_access import load_main_data
-from techminer2._internals.package_data.mappings.acronyms.acronyms import ACRONYMS
+from techminer2._internals.package_data import load_builtin_mapping
 
 _EXCLUDED_COMMON_WORDS = [
     "classification",
@@ -167,6 +167,8 @@ class ExtractAcronyms(
 
         acronyms = sentences.str.extract(r"\(([^)]+)\)")[0]
 
+        builtin_acronyms = load_builtin_mapping("acronyms.json")
+
         for definition, acronym in zip(sentences.values, acronyms.values):
 
             if pd.isna(acronym):
@@ -215,8 +217,8 @@ class ExtractAcronyms(
                 else:
                     definition = full_words[-(len(acronym) - 1) :]
                 definition = " ".join(definition)
-            elif acronym in ACRONYMS:
-                for acronym_definition in ACRONYMS[acronym]:
+            elif acronym in builtin_acronyms:
+                for acronym_definition in builtin_acronyms[acronym]:
                     if acronym_definition in definition:
                         definition = acronym_definition
             else:

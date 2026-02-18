@@ -88,8 +88,8 @@ from colorama import Fore, init
 from openai import OpenAI
 from pandarallel import pandarallel
 
-from techminer2._internals import ParamsMixin, load_template, stdout_to_stderr
-from techminer2._internals.package_data.word_lists import load_word_list
+from techminer2._internals import ParamsMixin, load_builtin_template, stdout_to_stderr
+from techminer2._internals.package_data.word_lists import load_builtin_word_list
 from techminer2.report.visualization import DataFrame as DominantDataFrame
 
 with stdout_to_stderr():
@@ -328,7 +328,7 @@ class IsStopword(
 
         client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
         core_area = self.params.core_area
-        geographic_names = load_word_list("geography.txt")
+        geographic_names = load_builtin_word_list("geography.txt")
 
     # -------------------------------------------------------------------------
     def internal__get_descriptors(self):
@@ -374,17 +374,17 @@ class IsStopword(
         global system_prompt_with_contexts
         global user_template_with_contexts
 
-        system_prompt_without_contexts = load_template(
+        system_prompt_without_contexts = load_builtin_template(
             "shell.thesaurus.descriptors.clean.stopwords.phase_1_without_context_phrases.system.txt"
         )
-        user_template_without_contexts = load_template(
+        user_template_without_contexts = load_builtin_template(
             "shell.thesaurus.descriptors.clean.stopwords.phase_1_without_context_phrases.user.txt"
         )
 
-        system_prompt_with_contexts = load_template(
+        system_prompt_with_contexts = load_builtin_template(
             "shell.thesaurus.descriptors.clean.stopwords.phase_1_with_context_phrases.system.txt"
         )
-        user_template_with_contexts = load_template(
+        user_template_with_contexts = load_builtin_template(
             "shell.thesaurus.descriptors.clean.stopwords.phase_1_with_context_phrases.user.txt"
         )
 
@@ -406,17 +406,17 @@ class IsStopword(
         global system_prompt_with_contexts
         global user_template_with_contexts
 
-        system_prompt_without_contexts = load_template(
+        system_prompt_without_contexts = load_builtin_template(
             "shell.thesaurus.descriptors.clean.stopwords.phase_2_without_context_phrases.system.txt"
         )
-        user_template_without_contexts = load_template(
+        user_template_without_contexts = load_builtin_template(
             "shell.thesaurus.descriptors.clean.stopwords.phase_2_without_context_phrases.user.txt"
         )
 
-        system_prompt_with_contexts = load_template(
+        system_prompt_with_contexts = load_builtin_template(
             "shell.thesaurus.descriptors.clean.stopwords.phase_2_with_context_phrases.system.txt"
         )
-        user_template_with_contexts = load_template(
+        user_template_with_contexts = load_builtin_template(
             "shell.thesaurus.descriptors.clean.stopwords.phase_2_with_context_phrases.user.txt"
         )
 
@@ -439,17 +439,17 @@ class IsStopword(
         global system_prompt_with_contexts
         global user_template_with_contexts
 
-        system_prompt_without_contexts = load_template(
+        system_prompt_without_contexts = load_builtin_template(
             "shell.thesaurus.descriptors.clean.stopwords.phase_3_without_context_phrases.system.txt"
         )
-        user_template_without_contexts = load_template(
+        user_template_without_contexts = load_builtin_template(
             "shell.thesaurus.descriptors.clean.stopwords.phase_3_without_context_phrases.user.txt"
         )
 
-        system_prompt_with_contexts = load_template(
+        system_prompt_with_contexts = load_builtin_template(
             "shell.thesaurus.descriptors.clean.stopwords.phase_3_with_context_phrases.system.txt"
         )
-        user_template_with_contexts = load_template(
+        user_template_with_contexts = load_builtin_template(
             "shell.thesaurus.descriptors.clean.stopwords.phase_3_with_context_phrases.user.txt"
         )
 

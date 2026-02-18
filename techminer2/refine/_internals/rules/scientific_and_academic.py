@@ -1,8 +1,8 @@
 import pandas as pd  # type: ignore
 
 from techminer2 import ThesaurusField
-from techminer2._constants import SCIENTIFIC_AND_ACADEMIC
 from techminer2._internals import Params
+from techminer2._internals.package_data import load_builtin_word_list
 
 from ._post_process import _post_process
 from ._pre_process import _pre_process
@@ -24,8 +24,9 @@ def apply_scientific_and_academic_rule(
     thesaurus_df = _pre_process(params=params, thesaurus_df=thesaurus_df)
     #
     #
+    scientific_and_academic = load_builtin_word_list("scientific_and_academic.txt")
     thesaurus_df[PREFERRED] = thesaurus_df[PREFERRED].apply(
-        lambda x: x if x not in SCIENTIFIC_AND_ACADEMIC else "#scientific_and_academic"
+        lambda x: x if x not in scientific_and_academic else "#scientific_and_academic"
     )
     #
     #

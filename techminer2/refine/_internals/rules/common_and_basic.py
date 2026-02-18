@@ -1,8 +1,8 @@
 import pandas as pd  # type: ignore
 
 from techminer2 import ThesaurusField
-from techminer2._constants import STOPWORDS
 from techminer2._internals import Params
+from techminer2._internals.package_data import load_builtin_word_list
 
 from ._post_process import _post_process
 from ._pre_process import _pre_process
@@ -23,8 +23,9 @@ def apply_common_and_basic_rule(
 
     thesaurus_df = _pre_process(params=params, thesaurus_df=thesaurus_df)
     #
+    stopwords = set(load_builtin_word_list("stopwords.txt"))
     thesaurus_df[PREFERRED] = thesaurus_df[PREFERRED].apply(
-        lambda x: x if x not in STOPWORDS else "#common_and_basic"
+        lambda x: x if x not in stopwords else "#common_and_basic"
     )
     #
     thesaurus_df = _post_process(thesaurus_df=thesaurus_df)

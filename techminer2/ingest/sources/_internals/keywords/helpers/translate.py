@@ -1,12 +1,14 @@
 import pandas as pd  # type: ignore
 
 from techminer2 import CorpusField
-from techminer2._constants import BRITISH_TO_AMERICAN
+from techminer2._internals.package_data import load_builtin_mapping
 
 
 def translate(dataframe: pd.DataFrame) -> pd.DataFrame:
 
     dataframe = dataframe.copy()
+
+    british_to_american = load_builtin_mapping("british_to_american.json")
 
     for col in [
         CorpusField.AUTH_KEY_TOK.value,
@@ -14,10 +16,11 @@ def translate(dataframe: pd.DataFrame) -> pd.DataFrame:
     ]:
         dataframe[col] = dataframe[col].str.replace("; ", " ; ", regex=False)
 
-        for british, american in BRITISH_TO_AMERICAN.items():
+        for british, american in british_to_american.items():
+            american_value = american[0] if isinstance(american, list) else american
             dataframe[col] = dataframe[col].str.replace(
                 f" {british} ",
-                f" {american} ",
+                f" {american_value} ",
                 regex=False,
             )
 

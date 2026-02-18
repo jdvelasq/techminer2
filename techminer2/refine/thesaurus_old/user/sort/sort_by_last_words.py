@@ -74,7 +74,7 @@ Smoke tests:
 """
 
 from techminer2._internals import ParamsMixin
-from techminer2._internals.package_data.word_lists import load_word_list
+from techminer2._internals.package_data.word_lists import load_builtin_word_list
 from techminer2.refine.thesaurus_old._internals import ThesaurusMixin, ThesaurusResult
 
 
@@ -105,7 +105,7 @@ class SortByLastWords(
 
         self.data_frame["__row_selected__"] = False
 
-        patterns = load_word_list("common_last_words.txt")
+        patterns = load_builtin_word_list("common_last_words.txt")
         patterns = [pattern.strip().upper() for pattern in patterns]
 
         for pattern in patterns:

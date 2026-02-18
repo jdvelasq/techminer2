@@ -72,7 +72,7 @@ Smoke tests:
 """
 
 from techminer2._internals import ParamsMixin
-from techminer2._internals.package_data.word_lists import load_word_list
+from techminer2._internals.package_data.word_lists import load_builtin_word_list
 from techminer2.refine.thesaurus_old._internals import ThesaurusMixin, ThesaurusResult
 
 
@@ -103,7 +103,7 @@ class SortByStopwords(
 
         self.data_frame["__row_selected__"] = False
 
-        patterns = load_word_list("technical_stopwords.txt")
+        patterns = load_builtin_word_list("stopwords.txt")
         patterns = [pattern.strip().upper() for pattern in patterns]
 
         for pattern in patterns:
