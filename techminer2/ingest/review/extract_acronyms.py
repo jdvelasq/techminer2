@@ -7,7 +7,7 @@ Smoke test:
     >>> from techminer2.ingest.review import ExtractAcronyms
     >>> acronyms = (
     ...     ExtractAcronyms()
-    ...     .where_root_directory("examples/small/")
+    ...     .where_root_directory("examples/fintech-with-references/")
     ...     .run()
     ... )
     >>> len(acronyms)
@@ -26,9 +26,9 @@ import pandas as pd  # type: ignore
 from textblob import TextBlob  # type: ignore
 
 from techminer2 import CorpusField
-from techminer2._constants.acronyms import ACRONYMS
 from techminer2._internals import ParamsMixin
 from techminer2._internals.data_access import load_main_data
+from techminer2._internals.package_data.mappings.acronyms.acronyms import ACRONYMS
 
 _EXCLUDED_COMMON_WORDS = [
     "classification",

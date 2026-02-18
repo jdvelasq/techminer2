@@ -9,7 +9,7 @@ Smoke test:
     ...     CopyColumn()
     ...     .with_source_field(CorpusField.SRC_TITLE_ABBR_RAW)
     ...     .with_target_field(CorpusField.USER_0)
-    ...     .where_root_directory("examples/small/")
+    ...     .where_root_directory("examples/fintech-with-references/")
     ...     .run()
     ... )
     37
@@ -20,7 +20,7 @@ Smoke test:
     ...     .with_source_field(CorpusField.USER_0)
     ...     .with_target_field(CorpusField.USER_1)
     ...     .with_transformation_function(lambda x: None)
-    ...     .where_root_directory("examples/small/")
+    ...     .where_root_directory("examples/fintech-with-references/")
     ...     .run()
     ... )
 
@@ -29,7 +29,7 @@ Smoke test:
     ...     CoalesceColumn()
     ...     .with_source_field(CorpusField.SRC_TITLE_ABBR_RAW)
     ...     .with_target_field(CorpusField.USER_1)
-    ...     .where_root_directory("examples/small/")
+    ...     .where_root_directory("examples/fintech-with-references/")
     ...     .with_transformation_function(lambda x: pd.NA)
     ...     .run()
     ... )
@@ -38,7 +38,7 @@ Smoke test:
     >>> (
     ...     Query()
     ...     .with_query_expression("SELECT USER_1 FROM database LIMIT 5;")
-    ...     .where_root_directory("examples/small/")
+    ...     .where_root_directory("examples/fintech-with-references/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...    .run()

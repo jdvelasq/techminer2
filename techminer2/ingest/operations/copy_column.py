@@ -9,7 +9,7 @@ Smoke Test:
     ...     CopyColumn()
     ...     .with_source_field(CorpusField.AUTH_KEY_RAW)
     ...     .with_target_field(CorpusField.USER_0)
-    ...     .where_root_directory("examples/small/")
+    ...     .where_root_directory("examples/fintech-with-references/")
     ...     .run()
     ... )
     22
@@ -18,7 +18,7 @@ Smoke Test:
     >>> (
     ...     Query()
     ...     .with_query_expression("SELECT USER_0 FROM database LIMIT 5;")
-    ...     .where_root_directory("examples/small/")
+    ...     .where_root_directory("examples/fintech-with-references/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     #

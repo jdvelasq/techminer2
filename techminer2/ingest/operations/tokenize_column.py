@@ -14,7 +14,7 @@ Smoke test:
     ...     .with_other_field("tokenized_raw_abstract")
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/small/")
+    ...     .where_root_directory("examples/fintech-with-references/")
     ...     #
     ...     .run()
     ... )
@@ -24,7 +24,7 @@ Smoke test:
     >>> df = (
     ...     Query()
     ...     .with_query_expression("SELECT tokenized_raw_abstract FROM database LIMIT 10;")
-    ...     .where_root_directory("examples/small/")
+    ...     .where_root_directory("examples/fintech-with-references/")
     ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
@@ -52,7 +52,7 @@ Smoke test:
     >>> field_deleter = (
     ...     DeleteOperator()
     ...     .with_field("tokenized_raw_abstract")
-    ...     .where_root_directory("examples/small/")
+    ...     .where_root_directory("examples/fintech-with-references/")
     ... )
     >>> field_deleter.run()
 

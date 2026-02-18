@@ -14,7 +14,7 @@ Smoke test:
     ...         )
     ...     )
     ...     .with_target_field(CorpusField.USER_0)
-    ...     .where_root_directory("examples/small/")
+    ...     .where_root_directory("examples/fintech-with-references/")
     ...     .run()
     ... )
     26
@@ -23,7 +23,7 @@ Smoke test:
     >>> (
     ...     Query()
     ...     .with_query_expression("SELECT USER_0 FROM database LIMIT 10;")
-    ...     .where_root_directory("examples/small/")
+    ...     .where_root_directory("examples/fintech-with-references/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     .run()
