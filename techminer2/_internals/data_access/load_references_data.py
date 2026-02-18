@@ -2,10 +2,10 @@
 Smoke test:
 
     >>> from techminer2._internals.data_access import load_references_data
-    >>> df = load_references_data(root_directory="examples/small/")
+    >>> df = load_references_data(root_directory="examples/fintech-with-references/")
 
     >>> df = load_references_data(
-    ...     root_directory="examples/small/",
+    ...     root_directory="examples/fintech-with-references/",
     ...     usecols=["record_id", "raw_document_title"],
     ... )
 
