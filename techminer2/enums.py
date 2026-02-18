@@ -211,7 +211,10 @@ class CorpusField(Enum):
 
 class ThesaurusField(Enum):
 
-    KEY = "KEY"
+    CHANGED = "CHANGED"
+    IS_KEYWORD = "IS_KEYWORD"
     OCC = "OCC"
+    OLD = "OLD"
     PREFERRED = "PREFERRED_TERM"
+    SIGNATURE = "SIGNATURE"
     VARIANT = "VARIANT"
