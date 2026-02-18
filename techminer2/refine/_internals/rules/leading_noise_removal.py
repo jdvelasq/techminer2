@@ -1,5 +1,31 @@
 import pandas as pd
 
+from techminer2._internals import Params
+from techminer2.enums import ThesaurusField
 
-def leading_noise_removal(dataframe: pd.DataFrame) -> pd.DataFrame:
-    return dataframe
+from ._post_process import _post_process
+from ._pre_process import _pre_process
+
+CHANGED = ThesaurusField.CHANGED.value
+IS_KEYWORD = ThesaurusField.IS_KEYWORD.value
+OCC = ThesaurusField.OCC.value
+OLD = ThesaurusField.OLD.value
+PREFERRED = ThesaurusField.PREFERRED.value
+SIGNATURE = ThesaurusField.SIGNATURE.value
+VARIANT = ThesaurusField.VARIANT.value
+
+
+def apply_leading_noise_removal_rule(
+    thesaurus_df: pd.DataFrame,
+    params: Params,
+) -> pd.DataFrame:
+
+    thesaurus_df = _pre_process(params=params, thesaurus_df=thesaurus_df)
+    #
+    #
+
+    #
+    #
+    thesaurus_df = _post_process(thesaurus_df=thesaurus_df)
+
+    return thesaurus_df

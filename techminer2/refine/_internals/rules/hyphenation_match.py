@@ -1,45 +1,35 @@
 import pandas as pd
 
-# For each key in thesaurus:
-#
-#   If key contains hyphen:
-#     Create space version: "machine-learning" → "machine learning"
-#     Search for space version in thesaurus
-#     If exists: merge hyphenated under space version
-#     If not: keep hyphenated
-#
-#   If key contains spaces (no hyphen):
-#     Create hyphen version: "machine learning" → "machine-learning"
-#     Search for hyphen version in thesaurus
-#     If exists: merge hyphenated under space version
-#     If not: keep space version
-#
-# Preferred form: SPACE-SEPARATED
-#
-# Before:
-#
-# machine-learning
-#     machine-learning
-# machine learning
-#     machine learning
-# state-of-the-art
-#     state-of-the-art
-# co-author
-#     co-author
-#
-# After:
-#
-# machine learning
-#     machine learning
-#     machine-learning
-# state of the art
-#     state of the art
-#     state-of-the-art
-# co author
-#     co author
-#     co-author
-#
+from techminer2._internals import Params
+from techminer2.enums import ThesaurusField
+
+from ..operations import sort_thesaurus_by_occ
+from ._post_process import _post_process
+from ._pre_process import _pre_process
+
+CHANGED = ThesaurusField.CHANGED.value
+IS_KEYWORD = ThesaurusField.IS_KEYWORD.value
+OCC = ThesaurusField.OCC.value
+OLD = ThesaurusField.OLD.value
+PREFERRED = ThesaurusField.PREFERRED.value
+SIGNATURE = ThesaurusField.SIGNATURE.value
+VARIANT = ThesaurusField.VARIANT.value
 
 
-def hyphenation_match(dataframe: pd.DataFrame) -> pd.DataFrame:
-    return dataframe
+def apply_hyphenation_match_rule(
+    thesaurus_df: pd.DataFrame,
+    params: Params,
+) -> pd.DataFrame:
+
+    thesaurus_df = _pre_process(params=params, thesaurus_df=thesaurus_df)
+    #
+    thesaurus_df[PREFERRED] = thesaurus_df[PREFERRED].str.replace(
+        r"-", " ", regex=False
+    )
+    thesaurus_df[PREFERRED] = thesaurus_df[PREFERRED].str.replace(
+        r"\s+", " ", regex=True
+    )
+    #
+    thesaurus_df = _post_process(thesaurus_df=thesaurus_df)
+
+    return thesaurus_df

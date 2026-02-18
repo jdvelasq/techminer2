@@ -7,7 +7,7 @@ Smoke test - successful import:
     >>> from techminer2.ingest.sources.scopus import Scopus
     >>> result = (
     ...     Scopus()
-    ...     .where_root_directory("examples/small/")
+    ...     .where_root_directory("examples/fintech-with-references/")
     ...     .run()
     ... )
     >>> result.success
@@ -15,13 +15,13 @@ Smoke test - successful import:
 
 Smoke test - result attributes:
     >>> result.file_path
-    'examples/small/'
+    'examples/fintech-with-references/'
     >>> result.status.startswith('Execution time :')
     True
 
 Smoke test - fluent interface:
     >>> scopus = Scopus()
-    >>> scopus_configured = scopus.where_root_directory("examples/small/")
+    >>> scopus_configured = scopus.where_root_directory("examples/fintech-with-references/")
     >>> scopus_configured is scopus
     True
 
@@ -29,17 +29,7 @@ Smoke test - fluent interface:
     >>> from techminer2.ingest.sources.scopus import Scopus
     >>> result = (
     ...     Scopus()
-    ...     .where_root_directory("examples/medium/")
-    ...     .run()
-    ... )
-    >>> result.success
-    True
-
-
-    >>> from techminer2.ingest.sources.scopus import Scopus
-    >>> result = (
-    ...     Scopus()
-    ...     .where_root_directory("examples/large/")
+    ...     .where_root_directory("examples/fintech-wout-references/")
     ...     .run()
     ... )
     >>> result.success

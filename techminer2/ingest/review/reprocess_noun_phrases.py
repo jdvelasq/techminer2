@@ -6,7 +6,7 @@ Smoke test:
     >>> from techminer2.ingest.review import ReprocessNounPhrases
     >>> (
     ...     ReprocessNounPhrases()
-    ...     .where_root_directory("examples/small/")
+    ...     .where_root_directory("examples/fintech-with-references/")
     ... ).run()
 
 

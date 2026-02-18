@@ -26,6 +26,7 @@ def create_descriptor_thesaurus(root_directory: str) -> int:
         for _, row in counting_df.iterrows():
             term = row["item"]
             file.write(f"{term}\n")
-            file.write(f"    {term} # occ: {row['count']}\n")
+            file.write(f"    {term}\n")
+            # file.write(f"    {term} # occ: {row['count']}\n")
 
     return len(counting_df)

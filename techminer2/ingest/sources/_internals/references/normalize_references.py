@@ -107,11 +107,11 @@ def _create_references_thesaurus_file(root_directory: str) -> None:
     dataframe["ref"] = dataframe[CorpusField.REF_AND_REC_ID.value].apply(
         lambda x: x.split(" @ ")[1].strip() if " @ " in x else "[N/A]"
     )
-    counting = dataframe["ref"].value_counts()
 
-    dataframe["ref"] = dataframe["ref"].apply(
-        lambda x: f"{x} # occ: {counting.get(x, 0)}"
-    )
+    # counting = dataframe["ref"].value_counts()
+    # dataframe["ref"] = dataframe["ref"].apply(
+    #     lambda x: f"{x} # occ: {counting.get(x, 0)}"
+    # )
 
     dataframe = dataframe[["rec_id", "ref"]]
     groupby_df = dataframe.groupby("rec_id", as_index=False).agg({"ref": list})

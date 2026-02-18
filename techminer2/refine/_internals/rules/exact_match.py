@@ -15,16 +15,17 @@ SIGNATURE = ThesaurusField.SIGNATURE.value
 VARIANT = ThesaurusField.VARIANT.value
 
 
-def apply_isolated_word_lemmatization_rule(
+def apply_exact_match_rule(
     thesaurus_df: pd.DataFrame,
     params: Params,
 ) -> pd.DataFrame:
 
     thesaurus_df = _pre_process(params=params, thesaurus_df=thesaurus_df)
     #
-    #
-
-    #
+    thesaurus_df[PREFERRED] = thesaurus_df[PREFERRED].str.replace(
+        r"\r\n|\r", "", regex=True
+    )
+    thesaurus_df[PREFERRED] = thesaurus_df[PREFERRED].str.strip()
     #
     thesaurus_df = _post_process(thesaurus_df=thesaurus_df)
 

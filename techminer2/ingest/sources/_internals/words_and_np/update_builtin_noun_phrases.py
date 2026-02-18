@@ -2,8 +2,8 @@ from pathlib import Path
 
 import pandas as pd
 
-from techminer2._internals.package_data.text_processing import (
-    load_text_processing_terms,
+from techminer2._internals.package_data.word_lists import (
+    load_word_list,
     save_text_processing_terms,
 )
 
@@ -60,7 +60,7 @@ def _extract_frequent_raw_keywords(dataframe: pd.DataFrame) -> set:
 
 
 def _load_builtin_noun_phrases() -> set:
-    buildin_noun_phrases = load_text_processing_terms("noun_phrases.txt")
+    buildin_noun_phrases = load_word_list("noun_phrases.txt")
     return set(buildin_noun_phrases)
 
 

@@ -1,8 +1,6 @@
 import re
 
-from techminer2._internals.package_data.text_processing.load_text_processing_terms import (
-    load_text_processing_terms,
-)
+from techminer2._internals.package_data.word_lists.load_word_list import load_word_list
 
 PATTERN_1 = re.compile(r"[A-Z][A-Z_]+ [A-Z][A-Z_]+")
 PATTERN_2 = re.compile(r"' ([A-Z][A-Z_]+) ' ([A-Z][A-Z_]+)\b")
@@ -10,7 +8,7 @@ PATTERN_3 = re.compile(r"\b([A-Z][A-Z_]+) \( ([A-Z][A-Z_]+) \) ([A-Z][A-Z_]+)\b"
 
 STOPWORDS: set[str] = set(
     phrase.strip().lower()
-    for phrase in load_text_processing_terms("technical_stopwords.txt")
+    for phrase in load_word_list("technical_stopwords.txt")
     if phrase.strip()
 )
 

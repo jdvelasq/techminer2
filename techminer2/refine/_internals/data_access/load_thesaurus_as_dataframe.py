@@ -2,17 +2,16 @@
 Smoke test:
     >>> from techminer2.refine._internals.data_access import load_thesaurus_as_dataframe
     >>> load_thesaurus_as_dataframe(params=Params(
-    ...         root_directory="examples/small/",
+    ...         root_directory="examples/fintech-with-references/",
     ...         thesaurus_file="descriptors.the.txt",
     ...     )
     ... ).head()
-      PREFERRED_TERM                VARIANT  OCC
-    0      financial    financial # occ: 31   31
-    1     technology   technology # occ: 25   25
-    2        fintech      fintech # occ: 24   24
-    3    development  development # occ: 14   14
-    4        banking      banking # occ: 13   13
-
+                   PREFERRED_TERM                     VARIANT
+    0        a business ecozystem        a business ecozystem
+    1                a case study                a case study
+    2  a case study investigation  a case study investigation
+    3          a cashless society          a cashless society
+    4                 a challenge                 a challenge
 
 
 
@@ -37,10 +36,8 @@ def load_thesaurus_as_dataframe(
         file=params.thesaurus_file,
     )
 
-    variants: list[str] = []
-    preferred_terms: list[str] = []
-    occ_variants: list[int] = []
-    preferred: str = ""
+    mapping: dict[str, list[str]] = {}
+    preferred = None
 
     with open(filepath, "r", encoding="utf-8") as file:
         for line in file:
@@ -49,28 +46,23 @@ def load_thesaurus_as_dataframe(
 
             if not line.startswith(" "):
                 preferred = line.strip()
+                mapping[preferred] = []
             else:
-                occ = line.split("# occ:")[1]
-                occ = occ.strip()
-                variants.append(line.strip())
-                occ_variants.append(int(occ))
-                preferred_terms.append(preferred)
+                if preferred is None:
+                    raise ValueError(
+                        "The thesaurus file is not well formatted. The first line must be a preferred term."
+                    )
+                mapping[preferred].append(line.strip())
+
+    keys = sorted(mapping.keys())
 
     dataframe = pd.DataFrame(
         {
-            ThesaurusField.PREFERRED.value: preferred_terms,
-            ThesaurusField.VARIANT.value: variants,
-            ThesaurusField.OCC.value: occ_variants,
+            ThesaurusField.PREFERRED.value: keys,
+            ThesaurusField.VARIANT.value: [
+                "; ".join(sorted(mapping[key])) for key in keys
+            ],
         }
     )
-
-    dataframe = dataframe.sort_values(
-        [
-            ThesaurusField.OCC.value,
-            ThesaurusField.PREFERRED.value,
-            ThesaurusField.VARIANT.value,
-        ],
-        ascending=[False, True, True],
-    ).reset_index(drop=True)
 
     return dataframe

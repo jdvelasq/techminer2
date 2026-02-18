@@ -1,9 +1,9 @@
 from .extract_urls import extract_urls
 from .join_consecutive_descriptors import join_consecutive_descriptors
 from .mark_abstract_headings import mark_abstract_headings
-from .mark_connectors import mark_connectors
 from .mark_copyright import mark_copyright
 from .mark_discursive_patterns import mark_discursive_patterns
+from .mark_scaffolding import mark_scaffolding
 from .repair_abstract_headings import repair_abstract_headings
 from .repair_apostrophes import repair_apostrophes
 from .repair_emails import repair_emails
@@ -19,7 +19,7 @@ __all__ = [
     "extract_urls",
     "join_consecutive_descriptors",
     "mark_abstract_headings",
-    "mark_connectors",
+    "mark_scaffolding",
     "mark_copyright",
     "mark_discursive_patterns",
     "repair_abstract_headings",

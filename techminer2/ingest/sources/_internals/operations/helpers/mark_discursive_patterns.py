@@ -2,16 +2,14 @@ import re
 
 import pandas as pd  # type: ignore
 
-from techminer2._internals.package_data.text_processing import (
-    load_text_processing_terms,
-)
+from techminer2._internals.package_data.word_lists import load_word_list
 
 _COMPILED_PATTERNS: list[tuple[str, re.Pattern]] = []
 
 
 def _get_compiled_patterns() -> list[tuple[str, re.Pattern]]:
     if not _COMPILED_PATTERNS:
-        patterns = load_text_processing_terms("discursive_patterns.txt")
+        patterns = load_word_list("discursive_patterns.txt")
         _COMPILED_PATTERNS.extend(
             (phrase, re.compile(r"\b(" + re.escape(phrase) + r")\b"))
             for phrase in patterns

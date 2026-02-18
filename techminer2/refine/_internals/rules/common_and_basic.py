@@ -1,65 +1,32 @@
-import pandas as pd
+import pandas as pd  # type: ignore
 
-# Consolidate stopwords and common terms under single header
-#
-# Load COMMON_AND_BASIC_THESAURUS:
-#   Structure:
-#     #COMMON_AND_BASIC
-#         the
-#         a
-#         an
-#         of
-#         in
-#         on
-#         at
-#         to
-#         for
-#         with
-#         by
-#         ... (hundreds of entries)
-#
-# For each key in descriptor thesaurus:
-#   1. Search in common/basic thesaurus
-#
-#   2. If key is listed as variant under #COMMON_AND_BASIC:
-#      a. Remove key from descriptor thesaurus
-#      b. Add to variants under "#COMMON_AND_BASIC" consolidated header
-#
-#   3. If not found:
-#      - Keep key as-is
-#
-#
-# Before:
-#
-# the
-#     the
-# machine learning
-#     machine learning
-# of
-#     of
-# neural networks
-#     neural networks
-# a
-#     a
-# in
-#     in
-# deep learning
-#     deep learning
-#
-# After:
-#
-# #COMMON_AND_BASIC
-#     the
-#     of
-#     a
-#     in
-# machine learning
-#     machine learning
-# neural networks
-#     neural networks
-# deep learning
-#     deep learning
+from techminer2 import ThesaurusField
+from techminer2._constants import STOPWORDS
+from techminer2._internals import Params
+
+from ._post_process import _post_process
+from ._pre_process import _pre_process
+
+CHANGED = ThesaurusField.CHANGED.value
+IS_KEYWORD = ThesaurusField.IS_KEYWORD.value
+OCC = ThesaurusField.OCC.value
+OLD = ThesaurusField.OLD.value
+PREFERRED = ThesaurusField.PREFERRED.value
+SIGNATURE = ThesaurusField.SIGNATURE.value
+VARIANT = ThesaurusField.VARIANT.value
 
 
-def common_and_basic(dataframe: pd.DataFrame) -> pd.DataFrame:
-    return dataframe
+def apply_common_and_basic_rule(
+    thesaurus_df: pd.DataFrame,
+    params: Params,
+) -> pd.DataFrame:
+
+    thesaurus_df = _pre_process(params=params, thesaurus_df=thesaurus_df)
+    #
+    thesaurus_df[PREFERRED] = thesaurus_df[PREFERRED].apply(
+        lambda x: x if x not in STOPWORDS else "#common_and_basic"
+    )
+    #
+    thesaurus_df = _post_process(thesaurus_df=thesaurus_df)
+
+    return thesaurus_df

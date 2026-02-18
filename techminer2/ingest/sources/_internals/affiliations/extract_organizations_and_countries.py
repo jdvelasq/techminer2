@@ -167,6 +167,17 @@ _ORGANIZATION_KEYWORD = [
 
 
 # ----------------------------------------------------------------------------
+
+
+AFFILIATION = CorpusField.AFFIL_RAW.value
+COUNTRY_AND_AFFILIATION = CorpusField.COUNTRY_AND_AFFIL.value
+COUNTRY = CorpusField.COUNTRY.value
+ORGANIZATION_1ST_AUTHOR = CorpusField.ORGANIZATION_FIRST_AUTH.value
+ORGANIZATION_AND_AFFILIATION = CorpusField.ORGANIZATION_AND_AFFIL.value
+ORGANIZATION = CorpusField.ORGANIZATION.value
+
+
+# ----------------------------------------------------------------------------
 # Country extraction
 # ----------------------------------------------------------------------------
 
@@ -306,34 +317,32 @@ def _extract_organization_from_string(affiliation: str) -> str:
 
 def _get_affiliations_df(dataframe: pd.DataFrame) -> pd.DataFrame:
 
-    affil_df = dataframe[[CorpusField.AFFIL_RAW.value]].copy()
+    affil_df = dataframe[[AFFILIATION]].copy()
     affil_df = affil_df.dropna()
-    affil_df[CorpusField.AFFIL_RAW.value] = affil_df[
-        CorpusField.AFFIL_RAW.value
-    ].str.split("; ")
-    affil_df = affil_df.explode(CorpusField.AFFIL_RAW.value)
-    affil_df[CorpusField.AFFIL_RAW.value] = affil_df[
-        CorpusField.AFFIL_RAW.value
-    ].str.strip()
+    affil_df[AFFILIATION] = affil_df[AFFILIATION].str.split("; ")
+    affil_df = affil_df.explode(AFFILIATION)
+    affil_df[AFFILIATION] = affil_df[AFFILIATION].str.strip()
     affil_df = affil_df.drop_duplicates()
 
     return affil_df
 
 
 def _get_country_mapping(df: pd.DataFrame) -> dict[str, str]:
-    df = df[[CorpusField.AFFIL_RAW.value, CorpusField.COUNTRY.value]].dropna()
+
+    df = df[[AFFILIATION, COUNTRY]].dropna()
     df = df.drop_duplicates()
     mapping: dict[str, str] = pd.Series(
-        df[CorpusField.COUNTRY.value].values, index=df[CorpusField.AFFIL_RAW.value]
+        df[COUNTRY].values, index=df[AFFILIATION]
     ).to_dict()
     return mapping
 
 
 def _get_organization_mapping(df: pd.DataFrame) -> dict[str, str]:
-    df = df[[CorpusField.AFFIL_RAW.value, CorpusField.ORGANIZATION.value]].dropna()
+
+    df = df[[AFFILIATION, ORGANIZATION]].dropna()
     df = df.drop_duplicates()
     mapping: dict[str, str] = pd.Series(
-        df[CorpusField.ORGANIZATION.value].values, index=df[CorpusField.AFFIL_RAW.value]
+        df[ORGANIZATION].values, index=df[AFFILIATION]
     ).to_dict()
     return mapping
 
@@ -344,17 +353,17 @@ def _create_country_column(
 
     df = df.copy()
 
-    df[CorpusField.COUNTRY.value] = df[CorpusField.AFFIL_RAW.value].copy()
-    df[CorpusField.COUNTRY.value] = df[CorpusField.COUNTRY.value].fillna("[N/A]")
-    df[CorpusField.COUNTRY.value] = df[CorpusField.COUNTRY.value].str.split("; ")
-    df[CorpusField.COUNTRY.value] = df[CorpusField.COUNTRY.value].apply(
+    df[COUNTRY] = df[AFFILIATION].copy()
+    df[COUNTRY] = df[COUNTRY].fillna("[N/A]")
+    df[COUNTRY] = df[COUNTRY].str.split("; ")
+    df[COUNTRY] = df[COUNTRY].apply(
         lambda affils: [country_mapping.get(affil, "[N/A]") for affil in affils],
     )
-    df[CorpusField.COUNTRY_FIRST_AUTH.value] = df[CorpusField.COUNTRY.value].map(
+    df[CorpusField.COUNTRY_FIRST_AUTH.value] = df[COUNTRY].map(
         lambda countries: countries[0] if countries else "[N/A]",
     )
-    df[CorpusField.COUNTRY.value] = df[CorpusField.COUNTRY.value].apply(set)
-    df[CorpusField.COUNTRY.value] = df[CorpusField.COUNTRY.value].str.join("; ")
+    df[COUNTRY] = df[COUNTRY].apply(set)
+    df[COUNTRY] = df[COUNTRY].str.join("; ")
 
     return df
 
@@ -364,22 +373,16 @@ def _create_organization_column(
 ) -> pd.DataFrame:
     df = df.copy()
 
-    df[CorpusField.ORGANIZATION.value] = df[CorpusField.AFFIL_RAW.value].copy()
-    df[CorpusField.ORGANIZATION.value] = df[CorpusField.ORGANIZATION.value].fillna(
-        "[N/A]"
-    )
-    df[CorpusField.ORGANIZATION.value] = df[CorpusField.ORGANIZATION.value].str.split(
-        "; "
-    )
-    df[CorpusField.ORGANIZATION.value] = df[CorpusField.ORGANIZATION.value].apply(
+    df[ORGANIZATION] = df[AFFILIATION].copy()
+    df[ORGANIZATION] = df[ORGANIZATION].fillna("[N/A]")
+    df[ORGANIZATION] = df[ORGANIZATION].str.split("; ")
+    df[ORGANIZATION] = df[ORGANIZATION].apply(
         lambda affils: [organization_mapping.get(affil, "[N/A]") for affil in affils]
     )
-    df[CorpusField.ORGANIZATION_FIRST_AUTH.value] = df[
-        CorpusField.ORGANIZATION.value
-    ].map(lambda orgs: orgs[0] if orgs else "[N/A]")
-    df[CorpusField.ORGANIZATION.value] = df[CorpusField.ORGANIZATION.value].str.join(
-        "; "
+    df[ORGANIZATION_1ST_AUTHOR] = df[ORGANIZATION].map(
+        lambda orgs: orgs[0] if orgs else "[N/A]"
     )
+    df[ORGANIZATION] = df[ORGANIZATION].str.join("; ")
 
     return df
 
@@ -411,10 +414,11 @@ def _create_thesaurus(
 def _assign_country_code(df: pd.DataFrame) -> pd.Series:
 
     df = df.copy()
-    df[CorpusField.ORGANIZATION.value] += df[CorpusField.COUNTRY.value].map(
+
+    df[ORGANIZATION] += df[COUNTRY].map(
         lambda country: " [" + COUNTRY_TO_ALPHA3.get(country, "N/A") + "]"
     )
-    return df[CorpusField.ORGANIZATION.value]
+    return df[ORGANIZATION]
 
 
 def _create_thesaurus_columns(
@@ -425,25 +429,25 @@ def _create_thesaurus_columns(
 
     df = df.copy()
 
-    df[CorpusField.COUNTRY_AND_AFFIL.value] = df.apply(
+    df[COUNTRY_AND_AFFILIATION] = df.apply(
         lambda row: (
             "; ".join(
                 f"{country_mapping.get(affil, '[N/A]')} @ {affil}"
-                for affil in row[CorpusField.AFFIL_RAW.value].split("; ")
+                for affil in row[AFFILIATION].split("; ")
             )
-            if pd.notna(row[CorpusField.AFFIL_RAW.value])
+            if pd.notna(row[AFFILIATION])
             else "[N/A]"
         ),
         axis=1,
     )
 
-    df[CorpusField.ORGANIZATION_AND_AFFIL.value] = df.apply(
+    df[ORGANIZATION_AND_AFFILIATION] = df.apply(
         lambda row: (
             "; ".join(
                 f"{organization_mapping.get(affil, '[N/A]')} @ {affil}"
-                for affil in row[CorpusField.AFFIL_RAW.value].split("; ")
+                for affil in row[AFFILIATION].split("; ")
             )
-            if pd.notna(row[CorpusField.AFFIL_RAW.value])
+            if pd.notna(row[AFFILIATION])
             else "[N/A]"
         ),
         axis=1,
@@ -456,25 +460,23 @@ def _create_country_thesaurus_file(
     root_directory: str, dataframe: pd.DataFrame
 ) -> None:
 
-    dataframe = dataframe[[CorpusField.COUNTRY_AND_AFFIL.value]].copy().dropna()
-    dataframe[CorpusField.COUNTRY_AND_AFFIL.value] = dataframe[
-        CorpusField.COUNTRY_AND_AFFIL.value
-    ].str.split("; ")
-    dataframe = dataframe.explode(CorpusField.COUNTRY_AND_AFFIL.value)
-    dataframe[CorpusField.COUNTRY_AND_AFFIL.value] = dataframe[
-        CorpusField.COUNTRY_AND_AFFIL.value
-    ].str.strip()
-    dataframe["country"] = dataframe[CorpusField.COUNTRY_AND_AFFIL.value].apply(
+    dataframe = dataframe[[COUNTRY_AND_AFFILIATION]].copy().dropna()
+    dataframe[COUNTRY_AND_AFFILIATION] = dataframe[COUNTRY_AND_AFFILIATION].str.split(
+        "; "
+    )
+    dataframe = dataframe.explode(COUNTRY_AND_AFFILIATION)
+    dataframe[COUNTRY_AND_AFFILIATION] = dataframe[COUNTRY_AND_AFFILIATION].str.strip()
+    dataframe["country"] = dataframe[COUNTRY_AND_AFFILIATION].apply(
         lambda x: x.split(" @ ")[0].strip() if " @ " in x else "[N/A]"
     )
-    dataframe["affil"] = dataframe[CorpusField.COUNTRY_AND_AFFIL.value].apply(
+    dataframe["affil"] = dataframe[COUNTRY_AND_AFFILIATION].apply(
         lambda x: x.split(" @ ")[1].strip() if " @ " in x else "[N/A]"
     )
-    counting = dataframe["affil"].value_counts()
+    # counting = dataframe["affil"].value_counts()
 
-    dataframe["affil"] = dataframe["affil"].apply(
-        lambda x: f"{x} # occ: {counting.get(x, 0)}"
-    )
+    # dataframe["affil"] = dataframe["affil"].apply(
+    #     lambda x: f"{x} # occ: {counting.get(x, 0)}"
+    # )
 
     dataframe = dataframe[["country", "affil"]]
     groupby_df = dataframe.groupby("country", as_index=False).agg({"affil": list})
@@ -497,25 +499,25 @@ def _create_organizations_thesaurus_file(
     root_directory: str, dataframe: pd.DataFrame
 ) -> None:
 
-    dataframe = dataframe[[CorpusField.ORGANIZATION_AND_AFFIL.value]].copy().dropna()
-    dataframe[CorpusField.ORGANIZATION_AND_AFFIL.value] = dataframe[
-        CorpusField.ORGANIZATION_AND_AFFIL.value
+    dataframe = dataframe[[ORGANIZATION_AND_AFFILIATION]].copy().dropna()
+    dataframe[ORGANIZATION_AND_AFFILIATION] = dataframe[
+        ORGANIZATION_AND_AFFILIATION
     ].str.split("; ")
-    dataframe = dataframe.explode(CorpusField.ORGANIZATION_AND_AFFIL.value)
-    dataframe[CorpusField.ORGANIZATION_AND_AFFIL.value] = dataframe[
-        CorpusField.ORGANIZATION_AND_AFFIL.value
+    dataframe = dataframe.explode(ORGANIZATION_AND_AFFILIATION)
+    dataframe[ORGANIZATION_AND_AFFILIATION] = dataframe[
+        ORGANIZATION_AND_AFFILIATION
     ].str.strip()
-    dataframe["organization"] = dataframe[
-        CorpusField.ORGANIZATION_AND_AFFIL.value
-    ].apply(lambda x: x.split(" @ ")[0].strip() if " @ " in x else "[N/A]")
-    dataframe["affil"] = dataframe[CorpusField.ORGANIZATION_AND_AFFIL.value].apply(
+    dataframe["organization"] = dataframe[ORGANIZATION_AND_AFFILIATION].apply(
+        lambda x: x.split(" @ ")[0].strip() if " @ " in x else "[N/A]"
+    )
+    dataframe["affil"] = dataframe[ORGANIZATION_AND_AFFILIATION].apply(
         lambda x: x.split(" @ ")[1].strip() if " @ " in x else "[N/A]"
     )
-    counting = dataframe["affil"].value_counts()
+    # counting = dataframe["affil"].value_counts()
 
-    dataframe["affil"] = dataframe["affil"].apply(
-        lambda x: f"{x} # occ: {counting.get(x, 0)}"
-    )
+    # dataframe["affil"] = dataframe["affil"].apply(
+    #     lambda x: f"{x} # occ: {counting.get(x, 0)}"
+    # )
 
     dataframe = dataframe[["organization", "affil"]]
     groupby_df = dataframe.groupby("organization", as_index=False).agg({"affil": list})
@@ -539,14 +541,12 @@ def extract_organizations_and_countries(root_directory: str) -> int:
     dataframe = load_main_data(root_directory=root_directory)
 
     affil_df = _get_affiliations_df(dataframe)
-    affil_df[CorpusField.COUNTRY.value] = affil_df[CorpusField.AFFIL_RAW.value].apply(
-        _extract_country_from_string
+    affil_df[COUNTRY] = affil_df[AFFILIATION].apply(_extract_country_from_string)
+    affil_df[ORGANIZATION] = affil_df[AFFILIATION].apply(
+        _extract_organization_from_string
     )
-    affil_df[CorpusField.ORGANIZATION.value] = affil_df[
-        CorpusField.AFFIL_RAW.value
-    ].apply(_extract_organization_from_string)
 
-    affil_df[CorpusField.ORGANIZATION.value] = _assign_country_code(affil_df)
+    affil_df[ORGANIZATION] = _assign_country_code(affil_df)
 
     country_mapping = _get_country_mapping(affil_df)
     organization_mapping = _get_organization_mapping(affil_df)

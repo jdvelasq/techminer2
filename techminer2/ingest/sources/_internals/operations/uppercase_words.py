@@ -7,18 +7,16 @@ from pandarallel import pandarallel  # type: ignore
 
 from techminer2 import CorpusField
 from techminer2._internals import stdout_to_stderr
-from techminer2._internals.package_data.text_processing import (
-    load_text_processing_terms,
-)
+from techminer2._internals.package_data.word_lists import load_word_list
 
 from ._file_dispatch import get_file_operations
 from .data_file import DataFile
 from .helpers import (
     extract_urls,
     mark_abstract_headings,
-    mark_connectors,
     mark_copyright,
     mark_discursive_patterns,
+    mark_scaffolding,
     repair_abstract_headings,
     repair_apostrophes,
     repair_emails,
@@ -32,7 +30,7 @@ from .helpers import (
 
 STOPWORDS: set[str] = set(
     phrase.strip().lower()
-    for phrase in load_text_processing_terms("technical_stopwords.txt")
+    for phrase in load_word_list("technical_stopwords.txt")
     if phrase.strip()
 )
 
@@ -69,7 +67,7 @@ def _normalize(text):
     text = mark_copyright(text)
     text = mark_abstract_headings(text)
     text = mark_discursive_patterns(text)
-    text = mark_connectors(text)
+    text = mark_scaffolding(text)
     #
     text = _highlight_words(text)
     #
@@ -79,7 +77,7 @@ def _normalize(text):
     text = repair_lowercase_text(text)
     text = repair_abstract_headings(text)
     text = repair_et_al(text)
-    text = mark_connectors(text)
+    text = mark_scaffolding(text)
     text = repair_roman_numbers(text)
     text = repair_emails(text)
     text = repair_strange_cases(text)
