@@ -8,14 +8,14 @@ Smoke tests:
     >>> (
     ...     CreateThesaurus()
     ...     .using_colored_output(False)
-    ...     .where_root_directory("examples/small/")
+    ...     .where_root_directory("examples/fintech-with-references/")
     ...     .run()
     ... )
     INFO: Thesaurus initialized successfully.
       Success      : True
-      File         : examples/small/refine/thesaurus/descriptors.the.txt
+      File         : ...fintech-with-references/refine/thesaurus/descriptors.the.txt
       Source field : DESCRIPTOR_TOK
-      Status       : 2493 items added to the thesaurus.
+      Status       : 2467 items added to the thesaurus.
     <BLANKLINE>
 
 
@@ -23,7 +23,7 @@ Smoke tests:
 
 from techminer2 import CorpusField
 from techminer2._internals import ParamsMixin
-from techminer2.refine.user._internals import ThesaurusCreationResult
+from techminer2.refine._internals.objs import ThesaurusCreationResult
 
 from ..user.create_thesaurus import CreateThesaurus as UserCreateThesaurus
 

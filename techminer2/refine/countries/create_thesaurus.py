@@ -9,7 +9,7 @@ Smoke tests:
     ...     CreateThesaurus()
     ...     .using_colored_output(False)
     ...     .with_thesaurus_file("demo.the.txt")
-    ...     .where_root_directory("examples/small/")
+    ...     .where_root_directory("examples/fintech-with-references/")
     ...     .run()
     ... )
     INFO: Thesaurus initialized successfully.
@@ -30,7 +30,7 @@ from tqdm import tqdm  # type: ignore
 from techminer2 import CorpusField
 from techminer2._internals import ParamsMixin
 from techminer2._internals.data_access import load_main_data
-from techminer2.refine.user._internals import ThesaurusCreationResult
+from techminer2.refine._internals.objs import ThesaurusCreationResult
 
 tqdm.pandas()
 

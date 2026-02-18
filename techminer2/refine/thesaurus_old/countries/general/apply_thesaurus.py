@@ -13,7 +13,7 @@ Smoke tests:
     >>> from techminer2.refine.thesaurus_old.countries import InitializeThesaurus
     >>> (
     ...     InitializeThesaurus()
-    ...     .where_root_directory("examples/small/")
+    ...     .where_root_directory("examples/fintech-with-references/")
     ... ).run()
 
     >>> from techminer2.refine.thesaurus_old.countries import ApplyThesaurus
