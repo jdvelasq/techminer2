@@ -61,9 +61,7 @@ from openai import OpenAI  # type: ignore
 from tqdm import tqdm  # type: ignore
 
 from techminer2._internals import ParamsMixin
-from techminer2._internals.package_data.templates.load_template import (
-    internal__load_template,
-)
+from techminer2._internals.package_data.templates.load_template import load_template
 from techminer2.analyze.networks.co_occurrence.usr import (
     DocumentsByClusterMapping,
     TermsByClusterSummary,
@@ -77,7 +75,7 @@ class ClusterDefinition(
 
     # -------------------------------------------------------------------------
     def internal__load_cluster_definition_template(self):
-        self.definition_template = internal__load_template(
+        self.definition_template = load_template(
             "internals.genai.cluster_definition.txt"
         )
 
@@ -218,7 +216,7 @@ class ClusterDefinition(
                     if section in definition
                 ]
                 text = "\n\n--\n\n".join(text)
-                template = internal__load_template(
+                template = load_template(
                     f"internals.genai.cluster_{section}_summary.txt"
                 )
                 prompt = template.format(
@@ -260,7 +258,7 @@ class ClusterDefinition(
     # -------------------------------------------------------------------------
     def internal__generate_short_summaries_by_cluster(self):
 
-        template = internal__load_template("internals.genai.cluster_short_summary.txt")
+        template = load_template("internals.genai.cluster_short_summary.txt")
 
         client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 

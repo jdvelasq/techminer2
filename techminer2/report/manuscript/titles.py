@@ -35,9 +35,7 @@ import os
 from openai import OpenAI
 
 from techminer2._internals import ParamsMixin
-from techminer2._internals.package_data.templates.load_template import (
-    internal__load_template,
-)
+from techminer2._internals.package_data.templates.load_template import load_template
 from techminer2.ingest.records import RecordMapping
 
 
@@ -80,7 +78,7 @@ class Titles(
 
     # -------------------------------------------------------------------------
     def internal__load_template(self):
-        self.template = internal__load_template("internals.genai.titles.txt")
+        self.template = load_template("internals.genai.titles.txt")
 
     # -------------------------------------------------------------------------
     def internal__generate_titles(self):

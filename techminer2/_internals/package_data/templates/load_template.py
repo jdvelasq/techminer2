@@ -1,17 +1,9 @@
-# flake8: noqa
-# pylint: disable=missing-class-docstring
-# pylint: disable=missing-function-docstring
-# pylint: disable=too-many-public-methods
-# pylint: disable=too-many-instance-attributes
-
-
 from importlib.resources import files
 
 
-def internal__load_template(template_name):
-    """:meta private:"""
+def load_template(filename: str) -> str:
 
-    data_path = files("techminer2.package_data.templates").joinpath(template_name)
+    data_path = files("techminer2.package_data.templates").joinpath(filename)
     data_path = str(data_path)
 
     with open(data_path, "r", encoding="utf-8") as file:

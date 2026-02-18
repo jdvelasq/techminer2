@@ -36,9 +36,7 @@ import os
 from openai import OpenAI
 
 from techminer2._internals import ParamsMixin
-from techminer2._internals.package_data.templates.load_template import (
-    internal__load_template,
-)
+from techminer2._internals.package_data.templates.load_template import load_template
 
 
 class Conclusions(
@@ -109,7 +107,7 @@ class Conclusions(
 
     # -------------------------------------------------------------------------
     def internal__load_template(self):
-        self.template = internal__load_template("internals.genai.conclusions.txt")
+        self.template = load_template("internals.genai.conclusions.txt")
 
     # -------------------------------------------------------------------------
     def internal__generate_conclusions(self):

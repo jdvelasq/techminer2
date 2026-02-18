@@ -16,9 +16,7 @@ from colorama import Fore
 from openai import OpenAI
 from tqdm import tqdm  # type: ignore
 
-from techminer2._internals.package_data.templates.load_template import (
-    internal__load_template,
-)
+from techminer2._internals.package_data.templates.load_template import load_template
 from techminer2.analyze.concordances import ConcordanceSentences
 from techminer2.refine.thesaurus_old.descriptors import GetValues
 

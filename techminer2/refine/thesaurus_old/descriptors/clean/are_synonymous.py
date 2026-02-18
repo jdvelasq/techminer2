@@ -64,9 +64,7 @@ from openai import OpenAI
 from tqdm import tqdm  # type: ignore
 
 from techminer2._internals import ParamsMixin
-from techminer2._internals.package_data.templates.load_template import (
-    internal__load_template,
-)
+from techminer2._internals.package_data.templates.load_template import load_template
 from techminer2.analyze.metrics.emergence import DataFrame as EmergentDataFrame
 from techminer2.report.visualization import DataFrame as DominantDataFrame
 
