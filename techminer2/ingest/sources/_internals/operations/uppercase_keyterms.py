@@ -6,9 +6,7 @@ from pandarallel import pandarallel  # type: ignore
 
 from techminer2 import CorpusField
 from techminer2._internals import stdout_to_stderr
-from techminer2._internals.package_data.text_processing import (
-    load_text_processing_terms,
-)
+from techminer2._internals.package_data.word_lists import load_word_list
 
 from ._file_dispatch import get_file_operations
 from .data_file import DataFile
@@ -16,9 +14,9 @@ from .helpers import (
     extract_urls,
     join_consecutive_descriptors,
     mark_abstract_headings,
-    mark_connectors,
     mark_copyright,
     mark_discursive_patterns,
+    mark_scaffolding,
     repair_abstract_headings,
     repair_apostrophes,
     repair_emails,
@@ -52,7 +50,7 @@ def _get_project_noun_phrases(dataframe: pd.DataFrame) -> set[str]:
 
 # ----------------------------------------------------------------------------
 def _get_builtin_noun_phrases() -> set[str]:
-    noun_phrases = load_text_processing_terms("noun_phrases.txt")
+    noun_phrases = load_word_list("noun_phrases.txt")
     noun_phrases = [
         phrase.strip().lower().replace("_", " ")
         for phrase in noun_phrases
@@ -77,7 +75,7 @@ def _get_acronyms(dataframe: pd.DataFrame) -> set[str]:
 # ----------------------------------------------------------------------------
 def _clean_terms(terms: set[str]) -> set[str]:
 
-    stopwords = load_text_processing_terms("technical_stopwords.txt")
+    stopwords = load_word_list("technical_stopwords.txt")
     cleaned_terms = set()
     for term in terms:
         term_lower = term.lower()
@@ -171,7 +169,7 @@ def _normalize(text):
         text = mark_copyright(text)
         text = mark_abstract_headings(text)
         text = mark_discursive_patterns(text)
-        text = mark_connectors(text)
+        text = mark_scaffolding(text)
         #
         text = _highlight_patterns(text)
         #
@@ -182,7 +180,7 @@ def _normalize(text):
         text = repair_lowercase_text(text)
         text = repair_abstract_headings(text)
         text = repair_et_al(text)
-        text = mark_connectors(text)
+        text = mark_scaffolding(text)
         text = repair_roman_numbers(text)
         text = repair_emails(text)
         text = repair_strange_cases(text)

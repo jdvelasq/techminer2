@@ -1,14 +1,33 @@
-import pandas as pd
+import pandas as pd  # type: ignore
 
-# For each key in thesaurus:
-#   Trim leading/trailing whitespace
-#   Replace multiple consecutive whitespace with single space
-#
-#   If key changed:
-#     Search for normalized version
-#     If exists: merge
-#     If not: update key
+from techminer2 import ThesaurusField
+from techminer2._internals import Params
+
+from ._post_process import _post_process
+from ._pre_process import _pre_process
+
+CHANGED = ThesaurusField.CHANGED.value
+IS_KEYWORD = ThesaurusField.IS_KEYWORD.value
+OCC = ThesaurusField.OCC.value
+OLD = ThesaurusField.OLD.value
+PREFERRED = ThesaurusField.PREFERRED.value
+SIGNATURE = ThesaurusField.SIGNATURE.value
+VARIANT = ThesaurusField.VARIANT.value
 
 
-def white_space_normalization(dataframe: pd.DataFrame) -> pd.DataFrame:
-    return dataframe
+def apply_white_space_normalization_rule(
+    thesaurus_df: pd.DataFrame,
+    params: Params,
+) -> pd.DataFrame:
+
+    thesaurus_df = _pre_process(params=params, thesaurus_df=thesaurus_df)
+    #
+    thesaurus_df[PREFERRED] = thesaurus_df[PREFERRED].str.lower()
+    thesaurus_df[PREFERRED] = thesaurus_df[PREFERRED].str.strip()
+    thesaurus_df[PREFERRED] = thesaurus_df[PREFERRED].str.replace(
+        r"\s+", " ", regex=True
+    )
+    #
+    thesaurus_df = _post_process(thesaurus_df=thesaurus_df)
+
+    return thesaurus_df

@@ -1,33 +1,32 @@
-import pandas as pd
+import pandas as pd  # type: ignore
 
-# For each key in thesaurus:
-#   1. Get first character of key
-#   2. If first character is:
-#      - Number (0-9) → Mark for removal
-#      - Punctuation (.,;:!?-) → Mark for removal
-#      - Alphabetic (a-z, A-Z) → Keep
-#   3. Remove marked keys from thesauruss
-#
-# Before:
-#
-# 3d printing
-#     3d printing
-# machine learning
-#     machine learning
-# -based methods
-#     -based methods
-# neural networks
-#     neural networks
-# (artificial intelligence)
-#     (artificial intelligence)
-#
-# After:
-#
-# machine learning
-#     machine learning
-# neural networks
-#     neural networks
+from techminer2 import ThesaurusField
+from techminer2._internals import Params
+
+from ._post_process import _post_process
+from ._pre_process import _pre_process
+
+CHANGED = ThesaurusField.CHANGED.value
+IS_KEYWORD = ThesaurusField.IS_KEYWORD.value
+OCC = ThesaurusField.OCC.value
+OLD = ThesaurusField.OLD.value
+PREFERRED = ThesaurusField.PREFERRED.value
+SIGNATURE = ThesaurusField.SIGNATURE.value
+VARIANT = ThesaurusField.VARIANT.value
 
 
-def num_punct_to_space(dataframe: pd.DataFrame) -> pd.DataFrame:
-    return dataframe
+def apply_num_punct_to_space_rule(
+    thesaurus_df: pd.DataFrame,
+    params: Params,
+) -> pd.DataFrame:
+
+    thesaurus_df = _pre_process(params=params, thesaurus_df=thesaurus_df)
+    #
+    thesaurus_df[PREFERRED] = thesaurus_df[PREFERRED].str.lower()
+    thesaurus_df[PREFERRED] = thesaurus_df[PREFERRED].apply(
+        lambda x: "#removed" if x and x[0].isdigit() or x[0] in ".,;:!?-" else x
+    )
+    #
+    thesaurus_df = _post_process(thesaurus_df=thesaurus_df)
+
+    return thesaurus_df

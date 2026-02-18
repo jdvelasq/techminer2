@@ -1,41 +1,34 @@
-import pandas as pd
+import pandas as pd  # type: ignore
 
-# For each key in thesaurus:
-#   Replace XML entities with characters:
-#     &amp; → &
-#     &lt; →
-#     &gt; → >
-#     &quot; → "
-#     &apos; → '
-#     &#39; → '
-#     &#[number]; → unicode character
-#
-#   If key changed:
-#     Search for decoded version in thesaurus
-#     If exists: merge under decoded version
-#     If not: update key to decoded version
-#
-#
-# Before:
-# r&amp;d
-#     r&amp;d
-#
-# r&d
-#     r&d
-#
-# machine &amp; learning
-#     machine &amp; learning
-#
-# After:
-# r&d
-#     r&d
-#     r&amp;d
-#
-# machine & learning
-#     machine & learning
-#     machine &amp; learning
-#
+from techminer2 import ThesaurusField
+from techminer2._constants import XML_ENCODING
+from techminer2._internals import Params
+
+from ._post_process import _post_process
+from ._pre_process import _pre_process
+
+CHANGED = ThesaurusField.CHANGED.value
+IS_KEYWORD = ThesaurusField.IS_KEYWORD.value
+OCC = ThesaurusField.OCC.value
+OLD = ThesaurusField.OLD.value
+PREFERRED = ThesaurusField.PREFERRED.value
+SIGNATURE = ThesaurusField.SIGNATURE.value
+VARIANT = ThesaurusField.VARIANT.value
 
 
-def xml_encoding(dataframe: pd.DataFrame) -> pd.DataFrame:
-    return dataframe
+def apply_xml_encoding_rule(
+    thesaurus_df: pd.DataFrame,
+    params: Params,
+) -> pd.DataFrame:
+
+    thesaurus_df = _pre_process(params=params, thesaurus_df=thesaurus_df)
+    #
+    thesaurus_df[PREFERRED] = thesaurus_df[PREFERRED].str.lower()
+    for xml, char in XML_ENCODING.items():
+        thesaurus_df[PREFERRED] = thesaurus_df[PREFERRED].str.replace(
+            rf" {xml} ", f" {char} ", regex=True
+        )
+    #
+    thesaurus_df = _post_process(thesaurus_df=thesaurus_df)
+
+    return thesaurus_df
