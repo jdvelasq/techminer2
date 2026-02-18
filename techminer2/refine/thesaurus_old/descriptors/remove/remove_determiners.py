@@ -66,9 +66,7 @@ from colorama import Fore, init
 from tqdm import tqdm  # type: ignore
 
 from techminer2._internals import ParamsMixin
-from techminer2._internals.package_data.text_processing import (
-    load_text_processing_terms,
-)
+from techminer2._internals.package_data.word_lists import load_word_list
 from techminer2.refine.thesaurus_old._internals import ThesaurusMixin
 
 tqdm.pandas()
@@ -110,8 +108,8 @@ class RemoveDeterminers(
         self.data_frame["__row_selected__"] = False
         self.data_frame["org_key"] = self.data_frame["key"].copy()
 
-        words = load_text_processing_terms("determiners.txt")
-        known_phrases = load_text_processing_terms("noun_phrases.txt")
+        words = load_word_list("determiners.txt")
+        known_phrases = load_word_list("noun_phrases.txt")
 
         # create regular expressions
         patterns = []

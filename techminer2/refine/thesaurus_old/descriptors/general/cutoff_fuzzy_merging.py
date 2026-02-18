@@ -19,7 +19,7 @@ Smoke tests:
     >>> from techminer2.refine.thesaurus_old.descriptors import ReduceKeys
     >>> (
     ...     ReduceKeys()
-    ...     .where_root_directory("examples/small/")
+    ...     .where_root_directory("examples/fintech-with-references/")
     ...     .run()
     ... )
 

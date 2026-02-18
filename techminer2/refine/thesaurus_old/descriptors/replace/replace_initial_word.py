@@ -27,7 +27,7 @@ Smoke tests:
     ...     ReplaceInitialWord()
     ...     .having_word("FINTECH")
     ...     .having_replacement("fintech")
-    ...     .where_root_directory("examples/small/")
+    ...     .where_root_directory("examples/fintech-with-references/")
     ... )
     >>> replacer.run()
 

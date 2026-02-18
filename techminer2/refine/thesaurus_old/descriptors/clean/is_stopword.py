@@ -29,7 +29,7 @@ Smoke tests:
     ...     .having_term_occurrences_between(None, None)
     ...     .having_term_citations_between(None, None)
     ...     .having_terms_in(None)
-    ...     .where_root_directory("examples/small/")
+    ...     .where_root_directory("examples/fintech-with-references/")
     ... ).run()  # doctest: +SKIP
     >>> df # doctest: +SKIP
                            descriptor  is_domain_specific?  is_stopword?
@@ -89,9 +89,7 @@ from openai import OpenAI
 from pandarallel import pandarallel
 
 from techminer2._internals import ParamsMixin, internal__load_template, stdout_to_stderr
-from techminer2._internals.package_data.text_processing import (
-    load_text_processing_terms,
-)
+from techminer2._internals.package_data.word_lists import load_word_list
 from techminer2.report.visualization import DataFrame as DominantDataFrame
 
 with stdout_to_stderr():
@@ -330,7 +328,7 @@ class IsStopword(
 
         client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
         core_area = self.params.core_area
-        geographic_names = load_text_processing_terms("geography.txt")
+        geographic_names = load_word_list("geography.txt")
 
     # -------------------------------------------------------------------------
     def internal__get_descriptors(self):

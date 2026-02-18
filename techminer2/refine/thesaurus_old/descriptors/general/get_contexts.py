@@ -31,7 +31,7 @@ Smoke tests:
     ...     GetContexts()
     ...     .with_patterns(["FINTECH"])
     ...     .having_n_contexts(10)
-    ...     .where_root_directory("examples/small/")
+    ...     .where_root_directory("examples/fintech-with-references/")
     ...     .run()
     ... )
     >>> from pprint import pprint
