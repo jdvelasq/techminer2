@@ -23,7 +23,7 @@ Smoke tests:
     >>> # Create and run the thesaurus initializator
     >>> initializator = (
     ...     InitializeThesaurus()
-    ...     .where_root_directory("examples/small/")
+    ...     .where_root_directory("examples/fintech-with-references/")
     ... )
     >>> initializator.run()
 
@@ -31,7 +31,7 @@ Smoke tests:
     >>> (
     ...     PrintHeader()
     ...     .using_colored_output(False)
-    ...     .where_root_directory("examples/small/")
+    ...     .where_root_directory("examples/fintech-with-references/")
     ... ).run()
 
 """
@@ -41,9 +41,7 @@ import sys
 import pandas as pd  # type: ignore
 
 from techminer2._internals import Params, ParamsMixin
-from techminer2._internals.package_data.text_processing import (
-    load_text_processing_terms,
-)
+from techminer2._internals.package_data.word_lists import load_word_list
 from techminer2.refine.thesaurus_old._internals import (
     ThesaurusMixin,
     internal__get_system_thesaurus_file_path,
@@ -185,7 +183,7 @@ class InitializeThesaurus(
     # -------------------------------------------------------------------------
     def internal__assign_names_for_known_organizations(self):
 
-        known_names = load_text_processing_terms("known_organizations.txt")
+        known_names = load_word_list("known_organizations.txt")
         for name in known_names:
             # escaped_name = re.escape(name)
             escaped_name = name

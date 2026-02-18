@@ -3,7 +3,7 @@ import pandas as pd  # type: ignore
 from techminer2.enums import ThesaurusField
 
 
-def apply_matches(
+def xxx_apply_matches(
     matches: dict[str, list[str]],
     dataframe: pd.DataFrame,
 ) -> pd.DataFrame:

@@ -32,7 +32,7 @@ Smoke tests:
     ...     .using_match_threshold(70)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/small/")
+    ...     .where_root_directory("examples/fintech-with-references/")
     ... )
     >>> sorter.run()
 

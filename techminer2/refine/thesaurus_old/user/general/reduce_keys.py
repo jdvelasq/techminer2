@@ -17,7 +17,7 @@ Smoke tests:
     ...     InitializeThesaurus()
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .with_field("raw_descriptors")
-    ...     .where_root_directory("examples/small/")
+    ...     .where_root_directory("examples/fintech-with-references/")
     ...     .using_colored_output(False)
     ...     .run()
     ... )
@@ -49,7 +49,7 @@ Smoke tests:
     ...     ReduceKeys()
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .using_colored_output(False)
-    ...     .where_root_directory("examples/small/")
+    ...     .where_root_directory("examples/fintech-with-references/")
     ...     .run()
     ... )
     INFO: Thesaurus keys reduced successfully.

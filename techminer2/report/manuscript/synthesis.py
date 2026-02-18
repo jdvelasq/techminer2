@@ -21,7 +21,7 @@ Smoke tests:
     ...     .with_word_length(200)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/small/")
+    ...     .where_root_directory("examples/fintech-with-references/")
     ...     #
     ...     .run()
     ... )

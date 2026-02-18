@@ -10,14 +10,14 @@ Smoke tests:
     ...     .using_colored_output(False)
     ...     .with_source_field(CorpusField.DESCRIPTOR_TOK)
     ...     .with_thesaurus_file("demo.the.txt")
-    ...     .where_root_directory("examples/small/")
+    ...     .where_root_directory("examples/fintech-with-references/")
     ...     .run()
     ... )
     INFO: Thesaurus initialized successfully.
       Success      : True
-      File         : examples/small/refine/thesaurus/demo.the.txt
+      File         : examples/fintech-with-references/refine/thesaurus/demo.the.txt
       Source field : DESCRIPTOR_TOK
-      Status       : 2493 items added to the thesaurus.
+      Status       : 2467 items added to the thesaurus.
     <BLANKLINE>
 
 
@@ -30,7 +30,7 @@ from tqdm import tqdm  # type: ignore
 
 from techminer2._internals import ParamsMixin
 from techminer2._internals.data_access import load_main_data
-from techminer2.refine.user._internals import ThesaurusCreationResult
+from techminer2.refine._internals.objs import ThesaurusCreationResult
 
 tqdm.pandas()
 

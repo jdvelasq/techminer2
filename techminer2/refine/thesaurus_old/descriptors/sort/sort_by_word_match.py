@@ -27,7 +27,7 @@ Smoke tests:
     >>> sorter = (
     ...     SortByWordMatch()
     ...     .having_pattern("CREDIT")
-    ...     .where_root_directory("examples/small/")
+    ...     .where_root_directory("examples/fintech-with-references/")
     ... )
     >>> sorter.run()
 

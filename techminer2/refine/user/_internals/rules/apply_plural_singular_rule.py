@@ -1,16 +1,15 @@
 import pandas as pd  # type: ignore
-from textblob import Word  # type: ignore
 
 from techminer2 import ThesaurusField
 
-from ..match.apply_matches import apply_matches
-from ..match.find_rule_matches import find_rule_matches
+# from ..match.find_rule_matches import xxx_find_rule_matches
+from ..match.xxx_apply_matches import xxx_apply_matches
 
 
 def _normalize_key_temp_column(dataframe: pd.DataFrame) -> pd.DataFrame:
 
     preferred_term = ThesaurusField.PREFERRED_TEMP.value
-    key = ThesaurusField.KEY.value
+    key = ThesaurusField.OLD.value
 
     dataframe = dataframe.copy()
 
@@ -32,7 +31,7 @@ def apply_plural_singular_rule(dataframe: pd.DataFrame) -> pd.DataFrame:
 
     dataframe = dataframe.copy()
     dataframe = _normalize_key_temp_column(dataframe)
-    matches = find_rule_matches(dataframe)
-    dataframe = apply_matches(matches=matches, dataframe=dataframe)
+    matches = xxx_find_rule_matches(dataframe)
+    dataframe = xxx_apply_matches(matches=matches, dataframe=dataframe)
 
     return dataframe

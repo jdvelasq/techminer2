@@ -28,7 +28,7 @@ Smoke tests:
     ...     SortByFuzzyMatch()
     ...     .having_pattern("INFORM")
     ...     .using_match_threshold(50)
-    ...     .where_root_directory("examples/small/")
+    ...     .where_root_directory("examples/fintech-with-references/")
     ... )
     >>> sorter.run()
 

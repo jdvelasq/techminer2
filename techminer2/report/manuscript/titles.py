@@ -20,7 +20,7 @@ Smoke tests:
     ...     .with_core_area("fintech")
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/small/")
+    ...     .where_root_directory("examples/fintech-with-references/")
     ...     #
     ...     .run()
     ... )

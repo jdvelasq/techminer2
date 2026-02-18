@@ -27,7 +27,7 @@ Smoke tests:
     >>> sorter = (
     ...     SortByExactMatch()
     ...     .having_pattern("BLOCKCHAIN")
-    ...     .where_root_directory("examples/small/")
+    ...     .where_root_directory("examples/fintech-with-references/")
     ... )
     >>> sorter.run()
 

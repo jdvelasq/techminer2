@@ -28,7 +28,7 @@ Smoke tests:
     >>> sorter = (
     ...     SortByEndsWithMatch()
     ...     .having_pattern("(AUS)")
-    ...     .where_root_directory("examples/small/")
+    ...     .where_root_directory("examples/fintech-with-references/")
     ... )
     >>> sorter.run()
 
@@ -36,7 +36,7 @@ Smoke tests:
     >>> (
     ...     PrintHeader()
     ...     .using_colored_output(False)
-    ...     .where_root_directory("examples/small/")
+    ...     .where_root_directory("examples/fintech-with-references/")
     ... ).run()
 
 

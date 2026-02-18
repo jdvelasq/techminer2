@@ -26,7 +26,7 @@ Smoke tests:
     ...     TokenizeOperator()
     ...     .with_field("raw_abstract")
     ...     .with_other_field("raw_abstract_copy")
-    ...     .where_root_directory("examples/small/")
+    ...     .where_root_directory("examples/fintech-with-references/")
     ...     .run()
     ... )
 
@@ -34,7 +34,7 @@ Smoke tests:
     ...     HighlightOperator()
     ...     .with_field("raw_abstract_copy")
     ...     .with_other_field("raw_abstract_copy")
-    ...     .where_root_directory("examples/small/")
+    ...     .where_root_directory("examples/fintech-with-references/")
     ...     .run()
     ... )
 
@@ -42,7 +42,7 @@ Smoke tests:
     >>> df = (
     ...     Query()
     ...     .with_query_expression("SELECT raw_abstract_copy FROM database LIMIT 50;")
-    ...     .where_root_directory("examples/small/")
+    ...     .where_root_directory("examples/fintech-with-references/")
     ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
@@ -70,7 +70,7 @@ Smoke tests:
     >>> (
     ...     DeleteOperator()
     ...     .with_field("raw_abstract_copy")
-    ...     .where_root_directory("examples/small/")
+    ...     .where_root_directory("examples/fintech-with-references/")
     ...     .run()
     ... )
 

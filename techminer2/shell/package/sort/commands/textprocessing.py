@@ -1,4 +1,4 @@
-from techminer2._internals.package_data.text_processing import (
+from techminer2._internals.package_data.word_lists import (
     internal__sort_text_processing_terms,
 )
 

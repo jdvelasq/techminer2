@@ -3,23 +3,23 @@ import pandas as pd
 from techminer2 import ThesaurusField
 
 
-def find_rule_matches(dataframe: pd.DataFrame) -> dict[str, list[str]]:
+def xxx_find_rule_matches(dataframe: pd.DataFrame) -> dict[str, list[str]]:
 
     dataframe = dataframe.copy()
 
-    counting = dataframe[ThesaurusField.KEY.value].value_counts()
+    counting = dataframe[ThesaurusField.OLD.value].value_counts()
     counting = counting[counting > 1]
     duplicated_items = counting.index.to_list()
-    dataframe = dataframe[dataframe[ThesaurusField.KEY.value].isin(duplicated_items)]
+    dataframe = dataframe[dataframe[ThesaurusField.OLD.value].isin(duplicated_items)]
 
     dataframe = dataframe[
         [
             ThesaurusField.PREFERRED_TEMP.value,
-            ThesaurusField.KEY.value,
+            ThesaurusField.OLD.value,
         ]
     ]
 
-    matches_df = dataframe.groupby(ThesaurusField.KEY.value, as_index=False).agg(list)
+    matches_df = dataframe.groupby(ThesaurusField.OLD.value, as_index=False).agg(list)
 
     matches = {}
     for _, row in matches_df.iterrows():

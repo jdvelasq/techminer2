@@ -9,7 +9,7 @@ Smoke tests:
     ...     InitializeThesaurus()
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .with_field("raw_descriptors")
-    ...     .where_root_directory("examples/small/")
+    ...     .where_root_directory("examples/fintech-with-references/")
     ...     .using_colored_output(False)
     ...     .run()
     ... )
@@ -41,7 +41,7 @@ Smoke tests:
     >>> (
     ...     SortByStopwords()
     ...     .with_thesaurus_file("demo.the.txt")
-    ...     .where_root_directory("examples/small/")
+    ...     .where_root_directory("examples/fintech-with-references/")
     ...     .using_colored_output(False)
     ...     .run()
     ... )
@@ -72,9 +72,7 @@ Smoke tests:
 """
 
 from techminer2._internals import ParamsMixin
-from techminer2._internals.package_data.text_processing import (
-    load_text_processing_terms,
-)
+from techminer2._internals.package_data.word_lists import load_word_list
 from techminer2.refine.thesaurus_old._internals import ThesaurusMixin, ThesaurusResult
 
 
@@ -105,7 +103,7 @@ class SortByStopwords(
 
         self.data_frame["__row_selected__"] = False
 
-        patterns = load_text_processing_terms("technical_stopwords.txt")
+        patterns = load_word_list("technical_stopwords.txt")
         patterns = [pattern.strip().upper() for pattern in patterns]
 
         for pattern in patterns:

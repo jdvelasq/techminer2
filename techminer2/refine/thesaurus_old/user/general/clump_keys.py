@@ -18,7 +18,7 @@ Smoke tests:
     ...     InitializeThesaurus()
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .with_field("raw_descriptors")
-    ...     .where_root_directory("examples/small/")
+    ...     .where_root_directory("examples/fintech-with-references/")
     ...     .using_colored_output(False)
     ...     .run()
     ... )
@@ -51,7 +51,7 @@ Smoke tests:
     ...     ClumpKeys(tqdm_disable=True, )
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .using_colored_output(False)
-    ...     .where_root_directory("examples/small/")
+    ...     .where_root_directory("examples/fintech-with-references/")
     ...     .run()
     ... )
     INFO: Thesaurus clumped successfully.
@@ -87,9 +87,7 @@ import re
 from tqdm import tqdm  # type: ignore
 
 from techminer2._internals import ParamsMixin
-from techminer2._internals.package_data.text_processing import (
-    load_text_processing_terms,
-)
+from techminer2._internals.package_data.word_lists import load_word_list
 from techminer2.refine.thesaurus_old._internals import ThesaurusMixin, ThesaurusResult
 from techminer2.report.visualization import DataFrame
 
@@ -113,7 +111,7 @@ class ClumpKeys(
             .where_database("main")
         ).run()
 
-        known_keywords = load_text_processing_terms("noun_phrases.txt")
+        known_keywords = load_word_list("noun_phrases.txt")
 
         self.keywords = self.keywords[self.keywords.index.isin(known_keywords)]
 

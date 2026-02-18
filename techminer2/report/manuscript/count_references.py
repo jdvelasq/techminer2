@@ -15,7 +15,7 @@ Smoke tests:
     >>> from techminer2.manuscript import CountReferences
     >>> (
     ...     CountReferences()
-    ...     .where_root_directory("examples/small/")
+    ...     .where_root_directory("examples/fintech-with-references/")
     ...     .run()
     ... )
 
