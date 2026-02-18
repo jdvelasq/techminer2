@@ -15,7 +15,7 @@ Smoke tests:
     ...     RPYSDataFrame()
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/small/")
+    ...     .where_root_directory("examples/fintech-with-references/")
     ...     .run()
     ... ).head()
           Num References  Median

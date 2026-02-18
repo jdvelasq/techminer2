@@ -16,7 +16,7 @@ Smoke tests:
     ...     RPYSPlot()
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/small/")
+    ...     .where_root_directory("examples/fintech-with-references/")
     ...     .run()
     ... )
     >>> plot.write_html("docs_source/_generated/px.packages.rpys.rpys_plot.html")
