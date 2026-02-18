@@ -32,7 +32,7 @@ Smoke tests:
     ...     .using_minimum_number_of_clusters(10)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/small/")
+    ...     .where_root_directory("examples/fintech-with-references/")
     ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
