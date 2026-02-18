@@ -11,7 +11,7 @@ Smoke test:
     ...     #
     ...     .having_text_matching("FINTECH")
     ...     #
-    ...     .where_root_directory("examples/small/")
+    ...     .where_root_directory("examples/fintech-with-references/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     .where_records_match(None)
