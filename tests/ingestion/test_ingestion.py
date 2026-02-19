@@ -46,6 +46,11 @@ def test_ingestion_hrtech():
     assert result.success
 
 
+def test_ingestion_learning_analytics():
+    result = Scopus().where_root_directory("examples/learning-analytics/").run()
+    assert result.success
+
+
 def test_ingestion_legaltech():
     result = Scopus().where_root_directory("examples/legaltech/").run()
     assert result.success
