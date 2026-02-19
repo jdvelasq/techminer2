@@ -16,29 +16,63 @@ SIGNATURE = ThesaurusField.SIGNATURE.value
 VARIANT = ThesaurusField.VARIANT.value
 
 
+def _add_padding(series):
+    return series.str.replace(r"\s+", " ", regex=True).apply(lambda x: f" {x} ")
+
+
+def _remove_padding(series):
+    return series.str.replace(r"\s+", " ", regex=True).str.strip()
+
+
+def _replace_space_separated_words_with_hyphen(series):
+    valid_hyphenated_words = load_builtin_word_list("valid_hyphenated_words.txt")
+    for valid_word in valid_hyphenated_words:
+        pattern = f" {valid_word.replace('-', ' ')} "
+        series = series.str.replace(pattern, f" {valid_word} ", regex=False)
+    return series
+
+
+def _replace_concatenated_words_with_hyphen(series):
+    valid_hyphenated_words = load_builtin_word_list("valid_hyphenated_words.txt")
+    for valid_word in valid_hyphenated_words:
+        pattern = f" {valid_word.replace('-', '')} "
+        series = series.str.replace(pattern, f" {valid_word} ", regex=False)
+    return series
+
+
+def _replace_space_separated_invalid_hyphenated_words(series):
+    invalid_hyphenated_words = load_builtin_word_list("invalid_hyphenated_words.txt")
+    for word in invalid_hyphenated_words:
+        valid_word = word.replace("-", "")
+        pattern = f" {word.replace('-', ' ')} "
+        series = series.str.replace(pattern, f" {valid_word} ", regex=False)
+    return series
+
+
 def apply_hyphenation_match_rule(
     thesaurus_df: pd.DataFrame,
     params: Params,
 ) -> pd.DataFrame:
 
-    valid_hyphenated_words = load_builtin_word_list("valid_hyphenated_words.txt")
-
     thesaurus_df = _pre_process(params=params, thesaurus_df=thesaurus_df)
     #
-    thesaurus_df[PREFERRED] = thesaurus_df[PREFERRED].str.replace(
-        r"\s+", " ", regex=True
+    thesaurus_df[PREFERRED] = _add_padding(thesaurus_df[PREFERRED])
+    #
+    thesaurus_df[PREFERRED] = _replace_space_separated_words_with_hyphen(
+        thesaurus_df[PREFERRED]
     )
-    thesaurus_df[PREFERRED] = thesaurus_df[PREFERRED].apply(lambda x: f" {x} ")
-    for valid_word in valid_hyphenated_words:
-        pattern = f" {valid_word.replace('-', ' ')} "
-        thesaurus_df[PREFERRED] = thesaurus_df[PREFERRED].str.replace(
-            pattern, f" {valid_word} ", regex=True
-        )
-        pattern = f" {valid_word.replace('-', '')} "
-        thesaurus_df[PREFERRED] = thesaurus_df[PREFERRED].str.replace(
-            pattern, f" {valid_word} ", regex=True
-        )
-    thesaurus_df[PREFERRED] = thesaurus_df[PREFERRED].str.strip()
+    thesaurus_df[PREFERRED] = _replace_concatenated_words_with_hyphen(
+        thesaurus_df[PREFERRED]
+    )
+
+    thesaurus_df[PREFERRED] = _replace_concatenated_words_with_hyphen(
+        thesaurus_df[PREFERRED]
+    )
+    thesaurus_df[PREFERRED] = _replace_space_separated_invalid_hyphenated_words(
+        thesaurus_df[PREFERRED]
+    )
+    #
+    thesaurus_df[PREFERRED] = _remove_padding(thesaurus_df[PREFERRED])
     #
     thesaurus_df = _post_process(thesaurus_df=thesaurus_df)
 
