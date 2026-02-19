@@ -87,7 +87,10 @@ class ExtractAcronyms(
                 for _, text in keywords.items():
 
                     text = text[:-1]
-                    def_text, acr_text = text.split(" ( ")
+                    splited_text = text.split(" ( ")
+                    if len(splited_text) != 2:
+                        continue
+                    def_text, acr_text = splited_text
                     if len(acr_text.split()) > 1:
                         continue
                     if len(def_text.split()) == 1:
