@@ -16,7 +16,7 @@ Smoke tests:
     ...     InitializeThesaurus()
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .with_field("raw_descriptors")
-    ...     .where_root_directory("examples/fintech-with-references/")
+    ...     .where_root_directory("examples/tests/")
     ...     .using_colored_output(False)
     ...     .run()
     ... )
@@ -49,7 +49,7 @@ Smoke tests:
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .with_field("raw_descriptors")
     ...     .with_other_field("descriptors_cleaned")
-    ...     .where_root_directory("examples/fintech-with-references/")
+    ...     .where_root_directory("examples/tests/")
     ...     .using_colored_output(False)
     ...     .run()
     ... )
@@ -73,7 +73,7 @@ Smoke tests:
     ...     .having_terms_in(None)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/fintech-with-references/")
+    ...     .where_root_directory("examples/tests/")
     ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)

@@ -14,14 +14,14 @@ Smoke tests:
     >>> from techminer2.refine.thesaurus_old.countries import InitializeThesaurus
     >>> (
     ...     InitializeThesaurus()
-    ...     .where_root_directory("examples/fintech-with-references/")
+    ...     .where_root_directory("examples/tests/")
     ... ).run()
 
     >>> from techminer2.refine.thesaurus_old.countries import SortByEndsWithMatch
     >>> (
     ...     SortByEndsWithMatch()
     ...     .having_pattern("Darussalam")
-    ...     .where_root_directory("examples/fintech-with-references/")
+    ...     .where_root_directory("examples/tests/")
     ...     .run()
     ... )
 
@@ -29,7 +29,7 @@ Smoke tests:
     >>> (
     ...     PrintHeader()
     ...     .using_colored_output(False)
-    ...     .where_root_directory("examples/fintech-with-references/")
+    ...     .where_root_directory("examples/tests/")
     ... ).run()
     Brunei Darussalam
       Universiti Brunei Darussalam, School of Business and Economics, Jln Tungk...

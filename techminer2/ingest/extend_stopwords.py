@@ -17,7 +17,7 @@ Smoke tests:
     >>> (
     ...     ExtendStopwords()
     ...     .with_patterns(["finance", "investment"])
-    ...     .where_root_directory("examples/fintech-with-references/")
+    ...     .where_root_directory("examples/tests/")
     ...     .run()
     ... )
 

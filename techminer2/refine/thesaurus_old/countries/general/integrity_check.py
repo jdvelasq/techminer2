@@ -13,14 +13,14 @@ Smoke tests:
     >>> from techminer2.refine.thesaurus_old.countries import InitializeThesaurus
     >>> (
     ...     InitializeThesaurus()
-    ...     .where_root_directory("examples/fintech-with-references/")
+    ...     .where_root_directory("examples/tests/")
     ... ).run()
 
 
     >>> from techminer2.refine.thesaurus_old.countries import IntegrityCheck
     >>> (
     ...     IntegrityCheck()
-    ...     .where_root_directory("examples/fintech-with-references/")
+    ...     .where_root_directory("examples/tests/")
     ... ).run()
 
 

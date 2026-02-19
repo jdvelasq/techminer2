@@ -7,7 +7,7 @@ Smoke test:
     >>> text = (
     ...     ExtractSectionHeaders()
     ...     .having_text_matching(None)
-    ...     .where_root_directory("examples/fintech-with-references/")
+    ...     .where_root_directory("examples/tests/")
     ... ).run()
     >>> assert isinstance(text, list)
     >>> assert all(isinstance(t, str) for t in text)

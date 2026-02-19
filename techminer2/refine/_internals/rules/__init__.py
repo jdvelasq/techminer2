@@ -10,6 +10,7 @@ from .fuzzy_cutoff_1_word_match import apply_fuzzy_cutoff_1_word_match_rule
 from .fuzzy_cutoff_match import apply_fuzzy_cutoff_match_rule
 from .geographic_names import apply_geographic_names_rule
 from .hyphenation_match import apply_hyphenation_match_rule
+from .inflected_verb_forms import apply_inflected_verb_forms_rule
 from .isolated_word_lemmatization import apply_isolated_word_lemmatization_rule
 from .leading_noise_removal import apply_leading_noise_removal_rule
 from .num_punct_to_space import apply_num_punct_to_space_rule
@@ -39,6 +40,7 @@ __all__ = [
     "apply_fuzzy_cutoff_match_rule",
     "apply_geographic_names_rule",
     "apply_hyphenation_match_rule",
+    "apply_inflected_verb_forms_rule",
     "apply_isolated_word_lemmatization_rule",
     "apply_leading_noise_removal_rule",
     "apply_num_punct_to_space_rule",

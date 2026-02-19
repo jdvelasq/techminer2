@@ -27,7 +27,7 @@ Smoke tests:
     >>> sorter = (
     ...     SortByEndsWithMatch()
     ...     .having_pattern("BANKS")
-    ...     .where_root_directory("examples/fintech-with-references/")
+    ...     .where_root_directory("examples/tests/")
     ... )
     >>> sorter.run()
 

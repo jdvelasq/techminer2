@@ -26,7 +26,7 @@ Smoke tests:
     >>> # Creates, configures, an run the translator
     >>> translator = (
     ...     BritishToAmericanSpelling(tqdm_disable=True, )
-    ...     .where_root_directory("examples/fintech-with-references/")
+    ...     .where_root_directory("examples/tests/")
     ... )
     >>> translator.run()
 

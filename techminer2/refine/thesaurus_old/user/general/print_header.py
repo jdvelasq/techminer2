@@ -19,7 +19,7 @@ Smoke tests:
     ...     InitializeThesaurus(quit=True)
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .with_field("raw_descriptors")
-    ...     .where_root_directory("examples/fintech-with-references/")
+    ...     .where_root_directory("examples/tests/")
     ... ).run()
 
     >>> from techminer2.refine.thesaurus_old.user import PrintHeader
@@ -27,7 +27,7 @@ Smoke tests:
     ...     PrintHeader()
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .using_colored_output(False)
-    ...     .where_root_directory("examples/fintech-with-references/")
+    ...     .where_root_directory("examples/tests/")
     ... ).run()
 
 

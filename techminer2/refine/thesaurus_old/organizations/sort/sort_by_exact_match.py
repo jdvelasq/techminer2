@@ -32,7 +32,7 @@ Smoke tests:
     ...     .having_pattern("Sch")
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/fintech-with-references/")
+    ...     .where_root_directory("examples/tests/")
     ... )
     >>> sorter.run()
 
@@ -40,7 +40,7 @@ Smoke tests:
     >>> (
     ...     PrintHeader()
     ...     .using_colored_output(False)
-    ...     .where_root_directory("examples/fintech-with-references/")
+    ...     .where_root_directory("examples/tests/")
     ... ).run()
 
 

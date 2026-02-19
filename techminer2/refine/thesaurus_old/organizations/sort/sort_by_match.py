@@ -35,7 +35,7 @@ Smoke tests:
     ...     .having_regex_search(False)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/fintech-with-references/")
+    ...     .where_root_directory("examples/tests/")
     ... )
     >>> sorter.run()
 

@@ -30,7 +30,7 @@ Smoke tests:
     ...     .having_case_sensitive(False)
     ...     .having_regex_flags(0)
     ...     .having_regex_search(False)
-    ...     .where_root_directory("examples/fintech-with-references/")
+    ...     .where_root_directory("examples/tests/")
     ... )
     >>> sorter.run()
 

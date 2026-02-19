@@ -27,7 +27,7 @@ Smoke tests:
     >>> # Reduce thesaurus keys
     >>> reducer = (
     ...     ReduceKeys()
-    ...     .where_root_directory("examples/fintech-with-references/")
+    ...     .where_root_directory("examples/tests/")
     ... )
     >>> reducer.run()
 

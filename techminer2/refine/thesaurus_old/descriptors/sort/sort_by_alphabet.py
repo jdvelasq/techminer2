@@ -26,7 +26,7 @@ Smoke tests:
     >>> # Configure and run the sorter
     >>> sorter = (
     ...     SortByAlphabet()
-    ...     .where_root_directory("examples/fintech-with-references/")
+    ...     .where_root_directory("examples/tests/")
     ... )
     >>> sorter.run()
 

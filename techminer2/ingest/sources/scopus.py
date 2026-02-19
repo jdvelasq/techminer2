@@ -7,7 +7,7 @@ Smoke test - successful import:
     >>> from techminer2.ingest.sources.scopus import Scopus
     >>> result = (
     ...     Scopus()
-    ...     .where_root_directory("examples/fintech-with-references/")
+    ...     .where_root_directory("examples/tests/")
     ...     .run()
     ... )
     >>> result.success
@@ -21,7 +21,7 @@ Smoke test - result attributes:
 
 Smoke test - fluent interface:
     >>> scopus = Scopus()
-    >>> scopus_configured = scopus.where_root_directory("examples/fintech-with-references/")
+    >>> scopus_configured = scopus.where_root_directory("examples/tests/")
     >>> scopus_configured is scopus
     True
 

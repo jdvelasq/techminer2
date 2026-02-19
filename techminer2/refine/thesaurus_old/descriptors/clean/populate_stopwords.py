@@ -34,7 +34,7 @@ Smoke tests:
     ...     .having_term_occurrences_between(None, None)
     ...     .having_term_citations_between(None, None)
     ...     .having_terms_in(None)
-    ...     .where_root_directory("examples/fintech-with-references/")
+    ...     .where_root_directory("examples/tests/")
     ... ).run()
 
     >>> # Capture and print stderr output

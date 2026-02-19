@@ -11,7 +11,7 @@ Smoke test:
     >>> (
     ...     CreateThesaurus()
     ...     .using_colored_output(False)
-    ...     .where_root_directory("examples/fintech-with-references/")
+    ...     .where_root_directory("examples/tests/")
     ...     .run()
     ... )
     INFO: Thesaurus initialized successfully.
@@ -28,7 +28,7 @@ Smoke test:
     ...     .using_similarity_cutoff(85)
     ...     .using_fuzzy_threshold(95)
     ...     .with_thesaurus_file("descriptors.the.txt")
-    ...     .where_root_directory("examples/fintech-with-references/")
+    ...     .where_root_directory("examples/tests/")
     ...     .run()
     ... )
     INFO: Fuzzy cutoff matching completed.

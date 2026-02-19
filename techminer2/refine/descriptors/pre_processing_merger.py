@@ -11,7 +11,7 @@ Smoke test:
     >>> (
     ...     CreateThesaurus()
     ...     .using_colored_output(False)
-    ...     .where_root_directory("examples/fintech-with-references/")
+    ...     .where_root_directory("examples/tests/")
     ...     .run()
     ... )
     INFO: Thesaurus initialized successfully.
@@ -25,7 +25,7 @@ Smoke test:
     >>> (
     ...     PreProcessingMerger()
     ...     .using_colored_output(False)
-    ...     .where_root_directory("examples/fintech-with-references/")
+    ...     .where_root_directory("examples/tests/")
     ...     .run()
     ... )
     INFO: Fuzzy cutoff matching completed.
@@ -49,6 +49,7 @@ from techminer2.refine._internals.rules import (
     apply_exact_match_rule,
     apply_geographic_names_rule,
     apply_hyphenation_match_rule,
+    apply_inflected_verb_forms_rule,
     apply_leading_noise_removal_rule,
     apply_num_punct_to_space_rule,
     apply_number_to_letter_rule,
@@ -95,6 +96,7 @@ class PreProcessingMerger(
             apply_prefer_singular_over_plural_rule,
             apply_common_and_basic_rule,
             apply_scientific_and_academic_rule,
+            apply_inflected_verb_forms_rule,
         ]:
             thesaurus_df = rule(thesaurus_df, self.params)
 

@@ -16,7 +16,7 @@ Smoke tests:
     ...     #
     ...     .with_field("author_keywords_raw")
     ...     #
-    ...     .where_root_directory("examples/fintech-with-references/")
+    ...     .where_root_directory("examples/tests/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     #

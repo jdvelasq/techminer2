@@ -26,7 +26,7 @@ Smoke tests:
     >>> from techminer2.refine.thesaurus_old.descriptors import SpellCheck
     >>> (
     ...     SpellCheck()
-    ...     .where_root_directory("examples/fintech-with-references/")
+    ...     .where_root_directory("examples/tests/")
     ...     .run()
     ... )
 

@@ -29,7 +29,7 @@ Smoke tests:
     ...     SortByKeyLength()
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/fintech-with-references/")
+    ...     .where_root_directory("examples/tests/")
     ... )
     >>> sorter.run()
 
