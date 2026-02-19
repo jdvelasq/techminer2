@@ -8,13 +8,14 @@ from .exact_match import apply_exact_match_rule
 from .find_close_match import apply_find_close_match_rule
 from .fuzzy_cutoff_1_word_match import apply_fuzzy_cutoff_1_word_match_rule
 from .fuzzy_cutoff_match import apply_fuzzy_cutoff_match_rule
+from .geographic_names import apply_geographic_names_rule
 from .hyphenation_match import apply_hyphenation_match_rule
 from .isolated_word_lemmatization import apply_isolated_word_lemmatization_rule
 from .leading_noise_removal import apply_leading_noise_removal_rule
 from .num_punct_to_space import apply_num_punct_to_space_rule
 from .number_to_letter import apply_number_to_letter_rule
 from .plural_singular_match import apply_plural_singular_match_rule
-from .plural_to_singular import apply_plural_to_singular_rule
+from .prefer_singular_over_plural import apply_prefer_singular_over_plural_rule
 from .punctuation_variation_match import apply_punctuation_variation_match_rule
 from .regex_pattern_match import apply_regex_pattern_match_rule
 from .scientific_and_academic import apply_scientific_and_academic_rule
@@ -36,13 +37,14 @@ __all__ = [
     "apply_find_close_match_rule",
     "apply_fuzzy_cutoff_1_word_match_rule",
     "apply_fuzzy_cutoff_match_rule",
+    "apply_geographic_names_rule",
     "apply_hyphenation_match_rule",
     "apply_isolated_word_lemmatization_rule",
     "apply_leading_noise_removal_rule",
     "apply_num_punct_to_space_rule",
     "apply_number_to_letter_rule",
     "apply_plural_singular_match_rule",
-    "apply_plural_to_singular_rule",
+    "apply_prefer_singular_over_plural_rule",
     "apply_punctuation_variation_match_rule",
     "apply_regex_pattern_match_rule",
     "apply_scientific_and_academic_rule",

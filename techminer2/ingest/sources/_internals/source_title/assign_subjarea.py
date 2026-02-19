@@ -1,18 +1,15 @@
 from functools import lru_cache
-from importlib.resources import files
 from pathlib import Path
 
 import pandas as pd  # type: ignore
 
 from techminer2 import CorpusField
+from techminer2._internals.package_data import load_builtin_csv
 
 
 @lru_cache(maxsize=1)
 def _load_subject_areas() -> pd.DataFrame:
-    data_path = files("techminer2._internals.package_data.database.data").joinpath(
-        "subject_areas.csv"
-    )
-    return pd.read_csv(str(data_path), encoding="utf-8")
+    return load_builtin_csv(filename="subject_areas.csv")
 
 
 def assign_subjarea(root_directory: str) -> int:

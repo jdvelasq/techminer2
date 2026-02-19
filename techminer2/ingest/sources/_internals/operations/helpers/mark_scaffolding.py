@@ -7,7 +7,7 @@ from techminer2._internals.package_data.word_lists import load_builtin_word_list
 
 
 def _initialize_scaffolding_automaton():
-    automaton = ahocorasick.Automaton()  #  type: ignore
+    automaton = ahocorasick.Automaton()
     for phrase in load_builtin_word_list("rhetorical_scaffolding.txt"):
         automaton.add_word(phrase.lower(), phrase)
     automaton.make_automaton()

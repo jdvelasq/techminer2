@@ -356,6 +356,6 @@ def _tokenize(text: pd.Series) -> pd.Series:
     british_to_american = load_builtin_mapping("british_to_american.json")
     for british, american in british_to_american.items():
         if isinstance(american, str):
-            text = text.str.replace(british, american, regex=False)
+            text = text.str.replace(f" {british} ", f" {american} ", regex=False)
 
     return text

@@ -9,7 +9,7 @@ _COMPILED_PATTERNS: list[tuple[str, re.Pattern]] = []
 
 def _get_compiled_patterns() -> list[tuple[str, re.Pattern]]:
     if not _COMPILED_PATTERNS:
-        patterns = load_builtin_word_list("discursive_patterns.txt")
+        patterns = load_builtin_word_list("discourse_connectors.txt")
         _COMPILED_PATTERNS.extend(
             (phrase, re.compile(r"\b(" + re.escape(phrase) + r")\b"))
             for phrase in patterns

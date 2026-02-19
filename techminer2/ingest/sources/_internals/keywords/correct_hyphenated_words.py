@@ -8,6 +8,10 @@ from tqdm import tqdm  # type: ignore
 
 from techminer2 import CorpusField
 from techminer2._internals.data_access import load_main_data, save_main_data
+from techminer2._internals.package_data import (
+    add_new_words_to_builtin_word_list,
+    load_builtin_word_list,
+)
 
 SYSTEM_PROMPT = """
 INSTRUCTION:
@@ -130,9 +134,10 @@ def _extract_hyphenated_words(dataframe: pd.DataFrame) -> set:
 
 def _extract_unknown_words(words: set, root_directory: str) -> set:
 
-    from techminer2._constants import INVALID_HYPHENATED_WORDS, VALID_HYPHENATED_WORDS
+    invalid_hyphenated_words = load_builtin_word_list("invalid_hyphenated_words.txt")
+    valid_hyphenated_words = load_builtin_word_list("valid_hyphenated_words.txt")
 
-    known_words = set(VALID_HYPHENATED_WORDS) | set(INVALID_HYPHENATED_WORDS)
+    known_words = set(valid_hyphenated_words) | set(invalid_hyphenated_words)
 
     known_valid_words = _get_valid_words(root_directory)
     known_invalid_words = _get_invalid_words(root_directory)
@@ -232,6 +237,10 @@ def _report_new_words(
             for word in sorted(new_valid_words):
                 f.write(f"{word}\n")
 
+        add_new_words_to_builtin_word_list(
+            "valid_hyphenated_words.txt", list(new_valid_words)
+        )
+
     if new_invalid_words:
 
         report_file = my_keywords_path / "invalid_hyphenated_words.txt"
@@ -240,6 +249,10 @@ def _report_new_words(
             for word in sorted(new_invalid_words):
                 f.write(f"{word}\n")
 
+        add_new_words_to_builtin_word_list(
+            "invalid_hyphenated_words.txt", list(new_invalid_words)
+        )
+
 
 def _replace(
     dataframe: pd.DataFrame,
@@ -247,7 +260,8 @@ def _replace(
     new_invalid_words: set,
 ) -> pd.DataFrame:
 
-    from techminer2._constants import INVALID_HYPHENATED_WORDS, VALID_HYPHENATED_WORDS
+    invalid_hyphenated_words = load_builtin_word_list("invalid_hyphenated_words.txt")
+    valid_hyphenated_words = load_builtin_word_list("valid_hyphenated_words.txt")
 
     for col in [
         CorpusField.AUTH_KEY_TOK.value,
@@ -255,12 +269,12 @@ def _replace(
     ]:
         dataframe[col] = dataframe[col].str.lower()
 
-        for word in INVALID_HYPHENATED_WORDS | new_invalid_words:
+        for word in invalid_hyphenated_words | new_invalid_words:
             dataframe[col] = dataframe[col].str.replace(
                 word, word.replace("-", ""), regex=False
             )
 
-        for word in VALID_HYPHENATED_WORDS | new_valid_words:
+        for word in valid_hyphenated_words | new_valid_words:
             dataframe[col] = dataframe[col].str.replace(
                 word.replace("-", ""), word, regex=False
             )

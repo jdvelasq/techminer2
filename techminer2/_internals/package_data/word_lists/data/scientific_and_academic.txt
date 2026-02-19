@@ -1,22 +1,30 @@
-abstract
-abstracts
+acceptance
 accuracy
+adoption
+aggregate
+aggregation
 algorithmic
+algorithms
 analyses
 analysis
+analyst
+analytics
 annotation
 annotations
 appendices
 appendix
+application
+applied
 approach
 approaches
-article
-articles
+architecture
 assessment
 assessments
-author
-authors
+authentication
+avoidance
 baseline
+bayesian
+behavior
 benchmark
 benchmarks
 bias
@@ -26,36 +34,41 @@ bibliographies
 bibliography
 bibliometric
 bibliometrics
+biometric
 book
 books
+capabilities
 case report
 case reports
 case series
 case studies
 case study
-chapter
-chapters
+causal
+certification
+channel
 checklist
 checklists
 citation
 citations
 classification
 classifications
-clinical study
 clinical studies
+clinical study
 clinical trial
 clinical trials
 cluster analysis
 clustering
 coding
 cohort
-cohorts
-cohort study
 cohort studies
+cohort study
+cohorts
+collaboration
 collection
 collections
-commentary
 commentaries
+commentary
+communication
 comparative
 comparative studies
 comparative study
@@ -63,18 +76,21 @@ computer simulation
 computer simulations
 concept
 concepts
-conclusion
-conclusions
+conceptual
 conference
 conferences
 confusion matrix
+consensus
 content analysis
+content-analysis
+context
 contribution
 contributions
 control
-controls
 controlled studies
 controlled study
+controls
+convergence
 correlation
 correlations
 covariate
@@ -82,10 +98,9 @@ covariates
 criteria
 criterion
 cross-sectional
-cross-sectional study
 cross-sectional studies
+cross-sectional study
 cross-validation
-data
 database
 databases
 dataset
@@ -96,12 +111,8 @@ descriptive
 descriptive statistics
 design
 designs
-discussion
-discussions
 distribution
 distributions
-document
-documents
 editorial
 editorials
 effect size
@@ -121,11 +132,11 @@ examination
 examinations
 exclusion criteria
 experiment
-experiments
 experimental
 experimental data
 experimental studies
 experimental study
+experiments
 exploration
 explorations
 f1 score
@@ -133,12 +144,10 @@ factor
 factors
 feature extraction
 feature selection
-field study
 field studies
-figure
-figures
-finding
-findings
+field study
+fig
+figs
 focus group
 focus groups
 follow-up
@@ -160,9 +169,9 @@ independent variable
 independent variables
 index
 indexes
-indices
 indicator
 indicators
+indices
 informant
 informants
 instrumentation
@@ -171,33 +180,23 @@ intervention
 interventions
 interview
 interviews
-introduction
-introductions
-investigation
-investigations
-journal
-journals
+likelihood
 limitation
 limitations
 linear regression
-literature
 literature review
 literature reviews
 logistic regression
+logit
 longitudinal studies
 longitudinal study
-manuscript
-manuscripts
 measure
 measurement
 measurements
 measures
-meta-analysis
 meta-analyses
-method
-methodologies
-methodology
-methods
+meta-analysis
+methodological
 metric
 metrics
 mixed methods
@@ -211,27 +210,25 @@ null hypothesis
 objective
 objectives
 observation
-observations
 observational
 observational data
 observational studies
 observational study
+observations
 optimization
 outcome
 outcomes
 outlier
 outliers
-overview
-overviews
 p-value
-panel study
 panel studies
-paper
-papers
+panel study
 participant
 participants
+phenomena
 phenomenological
 phenomenology
+phenomenon
 pilot
 pilot studies
 pilot study
@@ -250,8 +247,6 @@ proceedings
 prospective
 protocol
 protocols
-publication
-publications
 qualitative
 qualitative data
 qualitative research
@@ -268,25 +263,18 @@ randomized controlled trials
 rct
 recall
 receiver operating characteristic
-reference
-references
 regression
 regression analysis
 regression model
 reliability
 replication
-report
-reports
-research
 research question
 research questions
+researchers
 respondent
 respondents
 result
-results
 retrospective
-review
-reviews
 risk assessment
 roc
 roc curve
@@ -306,6 +294,7 @@ sensitivity
 sensitivity analysis
 significance
 significant
+significantly
 simulation
 simulations
 specificity
@@ -314,23 +303,15 @@ stata
 statistical
 statistical analysis
 statistical model
-statistics
 statistical test
-strategies
-strategy
+statistics
 structured
-studies
-study
-subject
-subjects
 supplementary
 survey
 surveys
 systematic review
 systematic reviews
 t-test
-table
-tables
 technique
 techniques
 test
@@ -341,10 +322,8 @@ textbook
 textbooks
 thematic analysis
 theoretical
-theories
-theory
-thesis
 theses
+thesis
 training data
 training set
 transcript

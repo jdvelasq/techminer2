@@ -1,187 +1,260 @@
-a business ecozystem
-    a business ecozystem
-a case study
-    a case study
-a case study investigation
-    a case study investigation
-a cashless society
-    a cashless society
-a challenge
-    a challenge
-a close look
-    a close look
-a close scrutiny
-    a close scrutiny
-a common understanding
-    a common understanding
-a competitor
-    a competitor
-a comprehensive urban transport system
-    a comprehensive urban transport system
-a concentration
-    a concentration
-a concept
+#scientific_and_academic
     a concept
-a critical area
-    a critical area
-a decade
-    a decade
-a definition
-    a definition
-a factor
     a factor
-a financial technology
-    a financial technology
-a financial technology entrepreneurship program
-    a financial technology entrepreneurship program
-a financial tool
-    a financial tool
-a fintech company
-    a fintech company
-a focus
-    a focus
-a fresh approach
-    a fresh approach
-a gradual reform process
-    a gradual reform process
-a growing and broader range
-    a growing and broader range
-a horizontal comparison
-    a horizontal comparison
-a lack
-    a lack
-a large difference
-    a large difference
-a large social investing site
-    a large social investing site
-a leading school
-    a leading school
-a level playing fi eld
-    a level playing fi eld
-a look
-    a look
-a loss
-    a loss
-a model
     a model
-a mono bank model
-    a mono bank model
-a morally and socially responsible direction
-    a morally and socially responsible direction
-a more friendly environment
-    a more friendly environment
-a more informed look
-    a more informed look
-a more modern marketing policy
-    a more modern marketing policy
-a more precise estimation
-    a more precise estimation
-a multi level analysis
-    a multi level analysis
-a name
-    a name
-a new class
-    a new class
-a new era
-    a new era
-a new financial industry
-    a new financial industry
-a new perspective
-    a new perspective
-a newly emerged service
-    a newly emerged service
-a novel
-    a novel
-a partial multi homing equilibrium
-    a partial multi homing equilibrium
-a period
-    a period
-a pioneering effort
-    a pioneering effort
-a potential advantage
-    a potential advantage
-a powerful base
-    a powerful base
-a process
-    a process
-a product
-    a product
-a proven path
-    a proven path
-a radical departure
-    a radical departure
-a regulatory and market reform opportunity
-    a regulatory and market reform opportunity
-a safe and convenient smartphone authentication environment
-    a safe and convenient smartphone authentication environment
-a scientific definition
-    a scientific definition
-a sector
-    a sector
-a secure biometric authentication framework
-    a secure biometric authentication framework
-a single informative volume
-    a single informative volume
-a social investing site
-    a social investing site
-a socially desirable outcome
-    a socially desirable outcome
-a software product
-    a software product
-a sound basis
-    a sound basis
-a stepping stone
-    a stepping stone
-a strategy
-    a strategy
-a stronger understanding
-    a stronger understanding
-a study
-    a study
-a subject
-    a subject
-a succession
-    a succession
-a supply
-    a supply
-a survival guide
-    a survival guide
-a sustainable economic environment
-    a sustainable economic environment
-a temporal evolution
-    a temporal evolution
-a testing laboratory
-    a testing laboratory
-a threat
-    a threat
-a timely integration
-    a timely integration
-a tool
-    a tool
-a unique dataset
     a unique dataset
-a valuable resource
-    a valuable resource
-a variety
-    a variety
-a view
-    a view
-a whole new set
-    a whole new set
-a wider revenue pool
-    a wider revenue pool
-ability
+    acceptance
+    adoption
+    advanced analytics
+    aggregate
+    aggregates
+    aggregation
+    algorithms
+    all approach
+    an approach
+    an extensive analysis
+    analysis
+    analyst
+    analytics
+    application
+    applications
+    applied
+    approach
+    architecture
+    authentication
+    avoidance
+    bayesian
+    behavior
+    biometric
+    biometrics
+    book
+    capabilities
+    causal
+    certification
+    channel
+    channels
+    collaboration
+    communication
+    communications
+    concept
+    concepts
+    conceptual
+    consensus
+    content analysis
+    context
+    contexts
+    control
+    convergence
+    criteria
+    current models
+    dataset
+    design
+    distribution
+    empirical
+    exploration
+    factor
+    factors
+    framework
+    further standardization
+    implications
+    important implications
+    interview
+    interviews
+    its communication
+    likelihood
+    logit
+    measures
+    methodological
+    model
+    modeling
+    models
+    new channels
+    new factors
+    no consensus
+    objective
+    outcome
+    participants
+    phenomena
+    phenomenon
+    predictions
+    primary data
+    profound implications
+    researchers
+    sample
+    scholarly
+    significance
+    standardization
+    statistical
+    such an approach
+    such predictions
+    surveys
+    techniques
+    testing
+    the acceptance
+    the adoption
+    the approach
+    the architecture
+    the behavior
+    the book
+    the design
+    the factors
+    the framework
+    the implications
+    the sample
+    their design
+    their exploration
+    their implications
+    theoretical
+    these concepts
+    these two factors
+    this book
+    two different factors
+    variables
+#common_and_basic
+    a case study
+    a critical area
+    a name
+    a study
+    a subject
     ability
+    access
+    activities
+    activity
+    additional
+    addressing
+    aims
+    all arguments
+    amounts
+    an empirical study
+    an overview
+    an unprecedented level
+    answer
+    answers
+    appropriate
+    area
+    areas
+    arguments
+    articles
+    asking
+    aspect
+    author
+    based
+    case study
+    cases
+    chapters
+    clear
+    co petition theory
+    combination
+    comparison
+    complex
+    composed
+    conclusion
+    conclusions
+    contemporary research
+    critical area
+    data
+    directly
+    discussion
+    ensure
+    ensured
+    entire
+    established
+    example
+    examples
+    fact
+    findings
+    four cases
+    future
+    general
+    global case studies
+    introduction
+    investigation
+    left
+    length
+    levels
+    light
+    line
+    literature
+    lost
+    many people
+    massive amounts
+    merely
+    methods
+    minimum
+    more studies
+    multiple methods
+    needed
+    needs
+    our data
+    overview
+    people
+    person
+    policies
+    policy
+    possible
+    previous
+    recent
+    recently
+    references
+    relevant
+    remain
+    remained
+    remains
+    reports
+    research
+    results
+    seen
+    several findings
+    some areas
+    studies
+    study
+    subject
+    subjects
+    systems
+    the ability
+    the answers
+    the articles
+    the author
+    the combination
+    the conclusion
+    the example
+    the fact
+    the following results
+    the future
+    the introduction
+    the latest research
+    the light
+    the most notable example
+    the need
+    the one
+    the second half
+    the subject
+    the subjects
+    the system
+    the use
+    the you
+    their ability
+    theory
+    these study
+    this activity
+    this policy
+    this system
+    typically
+    uses
+#geographic_names
+    china
+    ethiopia
+    india
+    japan
+    russia
+    switzerland
+    taiwan
 academia
     academia
 accelerated
     accelerated
 accelerated technology development
     accelerated technology development
-acceptance
-    acceptance
-access
-    access
 accredited
     accredited
 accredited certification system
@@ -194,34 +267,23 @@ acting
     acting
 action
     action
+    actions
 action data
     action data
-actions
-    actions
-activities
-    activities
-activity
-    activity
 actor
     actor
-actor network theory
-    actor network theory
-actors
     actors
+    heterogeneous actors
+actor-network theory
+    actor network theory
 adapted
     adapted
 adapting
     adapting
 added
     added
-additional
-    additional
-additional opportunities
-    additional opportunities
 addresses
     addresses
-addressing
-    addressing
 adequacy
     adequacy
 administrators
@@ -232,184 +294,78 @@ adopted
     adopted
 adopters
     adopters
+    early adopters
 adopting
     adopting
-adoption
-    adoption
 adoption of fintech
     adoption of fintech
 advance
     advance
 advanced
     advanced
-advanced analytics
-    advanced analytics
-advanced threats
-    advanced threats
 advantage
+    a potential advantage
     advantage
+    an advantage
+    this advantage
 advent
     advent
+    the advent
 advice
     advice
+    practical advice
 affected
     affected
 agency
     agency
-aggregate
-    aggregate
-aggregates
-    aggregates
-aggregation
-    aggregation
 ai
     ai
 ai use
     ai use
-aims
-    aims
-algorithms
-    algorithms
 alibaba
     alibaba
 alike
     alike
 alipay
     alipay
-all approach
-    all approach
-all arguments
-    all arguments
-all major economies
-    all major economies
 allocation
     allocation
 alternative
     alternative
-alternative finance
-    alternative finance
-alternative lending
-    alternative lending
 amidst
     amidst
-amounts
-    amounts
-an advantage
-    an advantage
-an approach
-    an approach
-an appropriate degree
-    an appropriate degree
-an economic climate
-    an economic climate
-an effect
-    an effect
-an empirical study
-    an empirical study
-an enabler
-    an enabler
-an extensive analysis
-    an extensive analysis
-an important role
-    an important role
-an important strategic task
-    an important strategic task
-an increase
-    an increase
-an increasing pace
-    an increasing pace
-an informal and unregulated network
-    an informal and unregulated network
-an initial technology advantage
-    an initial technology advantage
-an institutional aspect
-    an institutional aspect
-an integral part
-    an integral part
-an investment
-    an investment
-an moderating effect
-    an moderating effect
-an opportunity
-    an opportunity
-an overview
-    an overview
-an unprecedented level
-    an unprecedented level
-an unregulated area
-    an unregulated area
-analysis
-    analysis
-analyst
-    analyst
-analytics
-    analytics
 analyze
     analyze
-analyze fintech threat
-    analyze fintech threat
+    analyzes
 analyzed
     analyzed
-analyzes
-    analyzes
-analyzes utilize multiple methods
-    analyzes utilize multiple methods
 analyzing
     analyzing
-answer
-    answer
-answers
-    answers
 ant
     ant
 appeal
     appeal
-application
-    application
-applications
-    applications
-applied
-    applied
 applies
     applies
-applies technology
-    applies technology
 applying
     applying
-approach
-    approach
-appropriate
-    appropriate
-architecture
-    architecture
-area
-    area
-areas
-    areas
-argued
-    argued
-arguments
-    arguments
 arising
     arising
-articles
-    articles
 ascribe
     ascribe
-ascribe responsibility
-    ascribe responsibility
-asking
-    asking
-aspect
-    aspect
 assessed
     assessed
 asset
     asset
+    assets
+    other assets
+    related assets
+    the asset
+    their assets
 asset managers
     asset managers
-assets
-    assets
+asset share
+    their asset share
 assigning
     assigning
 associated
@@ -426,44 +382,43 @@ attempts
     attempts
 attention
     attention
+    attracts attention
 attracts
     attracts
-attracts attention
-    attracts attention
-authentication
-    authentication
-author
-    author
 author john waupsh
     author john waupsh
 author paul schulte
     author paul schulte
 authoritative
     authoritative
+authoritative guide
+    this authoritative guide
 authorities
     authorities
 available
     available
-available information
-    available information
-avoidance
-    avoidance
 avoided
     avoided
 away
     away
-back end
-    back end
+back-office
+    backoffice
+back-office functions
+    backoffice functions
 backed
     backed
-backoffice
-    backoffice
-backoffice functions
-    backoffice functions
 balancing
     balancing
 bank
     bank
+    banks
+    direct banks
+    established banks
+    large banks
+    many global banks
+    nowadays banks
+    the banks
+    their main banks
 bank 30
     bank 30
 bankenmarkt
@@ -472,40 +427,51 @@ bankers
     bankers
 banking
     banking
+    innovative banking
 banking and financial activities
     banking and financial activities
+banking business
+    the banking business
+banking industry
+    the banking industry
+    traditional banking industry
 banking innovations
     banking innovations
+banking landscape
+    the banking landscape
+banking market
+    the banking market
+banking model
+    the traditional banking model
+banking practices
+    global banking practices
 banking regulation
     banking regulation
 banking scale and scope economies
     banking scale and scope economies
 banking services
     banking services
+banking system
+    current banking system
 bankruption
     bankruption
-banks
-    banks
 barberis
     barberis
 barriers
     barriers
 base
+    a powerful base
     base
-based
-    based
 basis
     basis
-bayesian
-    bayesian
 bayesian estimation
     bayesian estimation
-bayesian estimations
     bayesian estimations
 bayesian networks
     bayesian networks
 beast
     beast
+    the beast
 began
     began
 begin
@@ -514,8 +480,6 @@ beginning
     beginning
 behave
     behave
-behavior
-    behavior
 beijing
     beijing
 believe
@@ -526,17 +490,19 @@ benefi t
     benefi t
 benefit
     benefit
-benefits
     benefits
+    massive benefits
+    potential benefits
+    the potential benefits
 best
     best
-better functionality
-    better functionality
 bewegung
     bewegung
 big
     big
-big data analyzes
+big banks
+    the big banks
+big-data analyzes
     big data analyzes
 bigger
     bigger
@@ -546,51 +512,40 @@ bio information
     bio information
 bioinformation
     bioinformation
-biometric
-    biometric
 biometric authentication
     biometric authentication
 biometric based single sign
     biometric based single sign
+    the biometric based single sign
+biometric based sso system
+    the proposed biometric based sso system
 biometric information
     biometric information
-biometric informations
     biometric informations
-biometrics
-    biometrics
 blockchain
     blockchain
 bond
     bond
-bonds
     bonds
-book
-    book
 book aggregates diverse industry expertise
     book aggregates diverse industry expertise
 book collates insights
     book collates insights
 boom
     boom
+    the boom
 booming
     booming
+booming alternative finance sector
+    the booming alternative finance sector
 borders
     borders
 borrowers
     borrowers
 borrowing
     borrowing
-both a growth
-    both a growth
-both experts
-    both experts
-both spheres
-    both spheres
-bottom up strategies
-    bottom up strategies
 bring
     bring
-brings
     brings
 broad
     broad
@@ -604,6 +559,8 @@ brought
     brought
 brute
     brute
+brute-force
+    the brute force
 build
     build
 building
@@ -614,16 +571,29 @@ building maintenance costs
     building maintenance costs
 business
     business
+    the traditional business
 business applications
     business applications
+business conditions
+    their business conditions
+business ecosystem
+    a business ecosystem
 business entrepreneurs
     business entrepreneurs
+business landscape
+    the business landscape
 business managers
     business managers
 business models
     business models
+    the business models
+    their business models
 business strategy
     business strategy
+    the business strategy
+    the traditional business strategy
+business success
+    demonstrable business success
 business to consumers models
     business to consumers models
 cacioppo
@@ -632,8 +602,6 @@ called
     called
 candidates
     candidates
-capabilities
-    capabilities
 capital
     capital
 capitalize
@@ -642,28 +610,29 @@ captured
     captured
 carbon
     carbon
+carbon practices
+    low carbon practices
 cards
     cards
-case study
-    case study
-cases
-    cases
+    debit cards
 cash
     cash
+cash based monetary practices
+    the cash based monetary practices
 cash based practices
     cash based practices
 cashless
     cashless
+cashless society
+    a cashless society
 cashless transactions
     cashless transactions
 catastrophic
     catastrophic
-catastrophic consequences
-    catastrophic consequences
 caught
     caught
-causal
-    causal
+causal relationship
+    the causal relationship
 caused
     caused
 cbos
@@ -672,52 +641,45 @@ celebrity
     celebrity
 centralized
     centralized
+centralized biometric authentication framework
+    the centralized biometric authentication framework
 ceo
     ceo
-certain conditions
-    certain conditions
-certification
-    certification
 certification systems
     certification systems
 chain
     chain
 challenge
+    a challenge
     challenge
-challenges
     challenges
+    major challenges
+    the challenges
 challenging
     challenging
 change
     change
+    changes
 changed
     changed
-changes
-    changes
 changing
     changing
-channel
-    channel
-channels
-    channels
-chapters
-    chapters
 characteristic
     characteristic
+characteristic features
+    what characteristic features
 characters
     characters
 chief
     chief
-china
-    china
+chief innovation officer
+    the chief innovation officer
 china financial sector
     china financial sector
 china fintech industry
     china fintech industry
 chinese
     chinese
-chinese telecom
-    chinese telecom
 chishti
     chishti
 choosing
@@ -725,27 +687,21 @@ choosing
 circle
     circle
 class
+    a new class
     class
-clear
-    clear
-clear and comprehensible information
-    clear and comprehensible information
-clear solutions
-    clear solutions
 client behavior
     client behavior
 climate
     climate
-climates
     climates
 clos
     clos
 close
     close
-co opetition theory
-    co opetition theory
-co petition theory
-    co petition theory
+close look
+    a close look
+close scrutiny
+    a close scrutiny
 co-opetition theory
     co-opetition theory
 coeckelbergh
@@ -754,8 +710,6 @@ collaborate
     collaborate
 collaborated
     collaborated
-collaboration
-    collaboration
 collapse
     collapse
 collateralized
@@ -770,8 +724,6 @@ collect
     collect
 collected
     collected
-combination
-    combination
 combines
     combines
 combining
@@ -784,18 +736,13 @@ commercial
     commercial
 commercial banks
     commercial banks
-common myths
-    common myths
 commonalities
     commonalities
-communication
-    communication
-communications
-    communications
-communities
-    communities
+    the commonalities
 community
+    communities
     community
+    the community
 community banking
     community banking
 community banking executives
@@ -804,22 +751,27 @@ community banking institutions
     community banking institutions
 community banking model
     community banking model
+    the community banking model
 community banks
     community banks
-companies
-    companies
+    the future community banks
 companies collaborate
     companies collaborate
 companion
     companion
+companion website
+    the companion website
 company
+    companies
     company
+    many companies
+    the companies
+    the new companies
+    these companies
 company actions
     company actions
 compare
     compare
-comparison
-    comparison
 compensated
     compensated
 compete
@@ -828,22 +780,21 @@ competing
     competing
 competition
     competition
+    global competition
+    increasing competition
 competitive
     competitive
 competitive advantage
     competitive advantage
 competitor
+    a competitor
     competitor
-complex
-    complex
-complex relationships
-    complex relationships
 complexity
     complexity
-composed
-    composed
+    the complexity
 composition
     composition
+    the composition
 comprehensible
     comprehensible
 comprehensive
@@ -866,48 +817,39 @@ computing
     computing
 computing curricula
     computing curricula
+    the computing curricula
 concentrates
     concentrates
 concentration
+    a concentration
     concentration
-concept
-    concept
-concepts
-    concepts
-conceptual
-    conceptual
+    the concentration
 conceptual frameworks
     conceptual frameworks
+    the conceptual framework
 concern
     concern
+    concerns
 concerned
     concerned
-concerns
-    concerns
-concluded
-    concluded
 concludes
     concludes
-conclusion
-    conclusion
-conclusions
-    conclusions
 conditions
+    certain conditions
     conditions
 conduct
     conduct
 conducted
     conducted
-confirmed
-    confirmed
 confirms
     confirms
 congestion
     congestion
-consensus
-    consensus
 consequences
+    catastrophic consequences
     consequences
+    potential consequences
+    the global consequences
 considerations
     considerations
 considered
@@ -920,58 +862,42 @@ consultants
     consultants
 consumer
     consumer
+    consumers
 consumer behavior
     consumer behavior
-consumers
-    consumers
 consumption
     consumption
 contemporary
     contemporary
-contemporary research
-    contemporary research
-contemporary techno financial developments
-    contemporary techno financial developments
 content
     content
-content analysis
-    content analysis
-context
-    context
-contexts
-    contexts
 continue
     continue
 contribute
     contribute
-contributes
     contributes
 contributing
     contributing
 contributor
     contributor
-contributors
     contributors
-control
-    control
+    the contributors
 controlling
     controlling
 controversial
     controversial
 convenience
     convenience
+    increase convenience
 convenient
     convenient
 conventional
     conventional
-conventional financial services
-    conventional financial services
-convergence
-    convergence
 convergence services
     convergence services
 cooperator
     cooperator
+    either a cooperator
 coordinated
     coordinated
 costs
@@ -980,10 +906,11 @@ council
     council
 counter
     counter
-countries
-    countries
 country
+    countries
     country
+    different countries
+    the country
 covered
     covered
 covering
@@ -994,20 +921,30 @@ creating
     creating
 creation
     creation
+    the creation
 creative
     creative
 creative destruction
     creative destruction
+creative works
+    their creative works
 credibility
     credibility
 credit
     credit
+    the credit
 credit allocation inefficiency
     credit allocation inefficiency
 credit associations
     credit associations
+credit driven economy
+    our credit driven economy
 credit excesses
     credit excesses
+credit gap
+    large credit gap
+credit markets
+    the credit markets
 credit markets work
     credit markets work
 credit provision
@@ -1022,24 +959,21 @@ creditworthiness risk
     creditworthiness risk
 crime
     crime
-crises
-    crises
 crisis
+    crises
     crisis
 crisis avoidance
     crisis avoidance
-criteria
-    criteria
 critical
     critical
-critical area
-    critical area
-critical insights
-    critical insights
 crm
     crm
+crm capabilities
+    exceptional crm capabilities
 crowd
     crowd
+crowd sourced book
+    the first crowd sourced book
 crowdfunding
     crowdfunding
 crowdlending
@@ -1050,54 +984,50 @@ cryptography
     cryptography
 currencies
     currencies
-current banking system
-    current banking system
-current fido service
-    current fido service
-current models
-    current models
-current password based sso system
-    current password based sso system
-current perspectives
-    current perspectives
 currently
     currently
 currents
     currents
+    the currents
 curricula
     curricula
+    the curricula
 customer
     customer
+    customers
 customer behavior
     customer behavior
 customer journey
     customer journey
 customer relationship management
     customer relationship management
+    the customer relationship management
 customer relationships
     customer relationships
-customers
-    customers
 cutting
     cutting
 cutting edges
     cutting edges
 cyber
     cyber
+cyber attacks
+    the recent cyber attacks
 cyberattack
     cyberattack
-cyberattacks
     cyberattacks
 damage
     damage
-data
-    data
+    the damage
 data handling
     data handling
+data processing approach
+    the data processing approach
 data security
     data security
-dataset
-    dataset
+data sources
+    the major data sources
+data spill
+    massive data spill
 days
     days
 death
@@ -1106,20 +1036,22 @@ debate
     debate
 debit
     debit
-debit cards
-    debit cards
 decade
+    a decade
     decade
-decades
     decades
+    his own decade
+    more than a decade
+    three decades
 decades old financial empires
     decades old financial empires
 decision
     decision
-decisions
     decisions
+    the decision
 decline
     decline
+    the decline
 decoding
     decoding
 deep
@@ -1127,24 +1059,27 @@ deep
 deep insight
     deep insight
 definition
+    a definition
     definition
-definitions
     definitions
+    the definition
+    this definition
 defy
     defy
 degree
+    an appropriate degree
     degree
 deliver
     deliver
 demands
     demands
+    the demands
 demonstrable
     demonstrable
-demonstrable business success
-    demonstrable business success
 dents
     dents
 departure
+    a radical departure
     departure
 dependent
     dependent
@@ -1162,8 +1097,6 @@ derived
     derived
 describes
     describes
-design
-    design
 designates
     designates
 designed
@@ -1190,18 +1123,19 @@ developing
     developing
 developing countries
     developing countries
+    the developing countries
 development
     development
-developments
     developments
+    historical development
+    the development
+    the historical development
+    the rapid development
 dictating
     dictating
 difference
+    a large difference
     difference
-different countries
-    different countries
-different monetization methods
-    different monetization methods
 difficult
     difficult
 digital
@@ -1214,48 +1148,44 @@ digital innovations
     digital innovations
 digital operations
     digital operations
+digital platforms
+    the digital platforms
 digitalisation
     digitalisation
 digitalization
     digitalization
 digitization
     digitization
+    the digitization
 digitized
     digitized
 direct
     direct
-direct banks
-    direct banks
 direction
     direction
-directly
-    directly
+disciplinary
+    disciplinary
+disciplinary domain
+    the disciplinary domain
+disciplines
+    disciplines
+    various disciplines
+disclosed
+    disclosed
+discover
+    discover
+discretion
+    discretion
+discussed
+    discussed
+discusses
+    discusses
+discussing
+    discussing
+discussion separates futurist
+    discussion separates futurist
 disengaged
     disengaged
-diskiplinary
-    diskiplinary
-diskiplines
-    diskiplines
-disklosed
-    disklosed
-disklosed and secret money practices
-    disklosed and secret money practices
-diskover
-    diskover
-diskretion
-    diskretion
-diskussed
-    diskussed
-diskusses
-    diskusses
-diskusses policy implications
-    diskusses policy implications
-diskussing
-    diskussing
-diskussion
-    diskussion
-diskussion separates futurist
-    diskussion separates futurist
 dispels
     dispels
 disprove
@@ -1264,6 +1194,7 @@ disrupting
     disrupting
 disruption
     disruption
+    the disruption
 disruptors
     disruptors
 distance
@@ -1272,14 +1203,13 @@ distancing
     distancing
 distinct
     distinct
-distribution
-    distribution
 dive
     dive
 diverse
     diverse
 diversification
     diversification
+    this diversification
 domain
     domain
 dominating
@@ -1290,16 +1220,16 @@ downstream
     downstream
 draw
     draw
+    draws
 drawn
     drawn
-draws
-    draws
 drive
     drive
 driven
     driven
 drivers
     drivers
+    identify drivers
 drives
     drives
 driving
@@ -1310,44 +1240,48 @@ dynamism
     dynamism
 e
     e
-each sites
-    each sites
 early
     early
-early adopters
-    early adopters
 ease
     ease
 ease of use
     ease of use
 east
     east
-easy payment
-    easy payment
 ebb
     ebb
+    the ebb
 economic
     economic
+    economics
+    global economics
+economic analyst
+    former economic analyst
+economic climate
+    an economic climate
 economic growth
     economic growth
+economic output
+    the economic output
 economic policy
     economic policy
 economic stability
     economic stability
-economics
-    economics
-economies
-    economies
 economy
+    all major economies
+    economies
     economy
-ecozystem
-    ecozystem
-ecozystems
-    ecozystems
+    global economies
+    global economy
+    the global economy
+ecosystem
+    ecosystem
+    ecosystems
+    the ecosystem
+ecosystem participants
+    other ecosystem participants
 edge
     edge
-edge practitioners
-    edge practitioners
 education
     education
 education computing
@@ -1355,23 +1289,25 @@ education computing
 educators
     educators
 effect
+    an effect
     effect
+    effects
+    its effects
+    the effects
 effectiveness
     effectiveness
-effects
-    effects
+    the effectiveness
 efficacy
     efficacy
 effort
     effort
-efforts
     efforts
-either a cooperator
-    either a cooperator
+    more effort
 elaboration
     elaboration
 elaboration likelihood model
     elaboration likelihood model
+    the elaboration likelihood model
 eld
     eld
 electronic
@@ -1388,6 +1324,8 @@ electronic money
     electronic money
 electronically
     electronically
+electronically mediated developments
+    these electronically mediated developments
 elegant
     elegant
 elucidate
@@ -1402,34 +1340,47 @@ emerge
     emerge
 emerged
     emerged
+emerged service
+    a newly emerged service
 emergence
     emergence
+    the emergence
 emerging
     emerging
+emerging convergence industry
+    the newly emerging convergence industry
+emerging markets
+    the emerging markets
+emerging securities trading ecosystem
+    the emerging securities trading ecosystem
 empires
     empires
-empirical
-    empirical
 empowering
     empowering
 enabler
+    an enabler
     enabler
 encouraged
     encouraged
 end
+    back end
     end
-end to end service
-    end to end service
-end to end service provider
-    end to end service provider
+    the front end
+end service
+    front end service
+    the back end service
 end-to-end
     end-to-end
+end-to-end service
+    end to end service
+end-to-end service provider
+    end to end service provider
 energy
     energy
-energy consumption
-    energy consumption
 energy utilization
     energy utilization
+energy-consumption
+    energy consumption
 engineering
     engineering
 engineering education
@@ -1438,24 +1389,20 @@ engines
     engines
 enhancement
     enhancement
+enhancement program
+    this enhancement program
 enhancing
     enhancing
-enrollled
-    enrollled
-ensure
-    ensure
-ensure reduction
-    ensure reduction
-ensured
-    ensured
+enrolled
+    enrolled
 enterprises
     enterprises
-entire
-    entire
 entrant
     entrant
+    the entrant
 entrenchment
     entrenchment
+    further entrenchment
 entrepreneurial
     entrepreneurial
 entrepreneurial deployment
@@ -1468,28 +1415,31 @@ entrepreneurship
     entrepreneurship
 entry
     entry
+    no entry
+    only the entry
+    the entry
+    the new entry
 environment
+    a more friendly environment
     environment
+    environments
+    the environment
+    this environment
 environmental protection
     environmental protection
 environmental technology
     environmental technology
-environments
-    environments
 epistemic
     epistemic
 equilibrium
     equilibrium
 era
+    a new era
     era
-especially financial areas
-    especially financial areas
+    the new era
 essence
     essence
-established
-    established
-established banks
-    established banks
+    the essence
 estate
     estate
 esthetics
@@ -1498,42 +1448,31 @@ estimation
     estimation
 ethical
     ethical
+ethical and social vulnerabilities
+    the ethical and social vulnerabilities
+ethical and societal meaning
+    the ethical and societal meaning
 ethics
     ethics
-ethiopia
-    ethiopia
 ethiopian
     ethiopian
+ethiopian rural community
+    one ethiopian rural community
 european
     european
 evaluating
     evaluating
-evaluation
-    evaluation
-even more market share
-    even more market share
-even the smallest hiccup
-    even the smallest hiccup
 everyday
     everyday
-everyday practices
-    everyday practices
 evolution
     evolution
 examine
     examine
-examines
     examines
 examining
     examining
-example
-    example
-examples
-    examples
 exceptional
     exceptional
-exceptional crm capabilities
-    exceptional crm capabilities
 excesses
     excesses
 exchange
@@ -1542,10 +1481,12 @@ exchange ventures
     exchange ventures
 executives
     executives
+    the top executives
 exercise
     exercise
 existence
     existence
+    the existence
 expand
     expand
 expanded
@@ -1554,22 +1495,20 @@ expected
     expected
 experience
     experience
-experiences
     experiences
+    this experience
 experiencing
     experiencing
 expert
+    both experts
     expert
+    experts
 expertise
     expertise
-experts
-    experts
 explained
     explained
 exploiting
     exploiting
-exploration
-    exploration
 explore
     explore
 exploring
@@ -1580,6 +1519,7 @@ explosive
     explosive
 explosive growth
     explosive growth
+    the explosive growth
 exposed
     exposed
 extend
@@ -1590,34 +1530,26 @@ extensive
     extensive
 extent
     extent
+    the extent
 extracting
     extracting
 eyeing
     eyeing
 face
     face
+    the face
 faced
     faced
 facilitate
     facilitate
-facilitate monetization
-    facilitate monetization
 facing
     facing
-fact
-    fact
-factor
-    factor
-factors
-    factors
 far
     far
+far east
+    the far east
 fast
     fast
-fast identity online
-    fast identity online
-fast identity online ( fido )
-    fast identity online ( fido )
 faster
     faster
 favor
@@ -1626,10 +1558,10 @@ favorably
     favorably
 features
     features
-few schools
-    few schools
 fi
     fi
+fi nancial decisions
+    their fi nancial decisions
 fi nancial products
     fi nancial products
 fi nancial service providers
@@ -1647,23 +1579,34 @@ fido biometric authentication
 fido service uses standard public key cryptography techniques
     fido service uses standard public key cryptography techniques
 fido services
+    current fido service
     fido services
 field
     field
-fields
     fields
+    the field
+    the fields
 finance
+    alternative finance
     finance
+    global finance
+    inclusive finance
 finance related industries
     finance related industries
 financial
     financial
-financial activities
-    financial activities
 financial activity
+    financial activities
     financial activity
+financial and digital innovation literature
+    the financial and digital innovation literature
 financial and digital innovation research
     financial and digital innovation research
+financial areas
+    especially financial areas
+financial crisis
+    global financial crisis
+    the global financial crisis
 financial globalization
     financial globalization
 financial icts contribute
@@ -1671,55 +1614,82 @@ financial icts contribute
 financial inclusion
     financial inclusion
 financial industry
+    a new financial industry
     financial industry
+    the financial industry
 financial information
     financial information
+financial information literature
+    the financial information literature
 financial information market
     financial information market
 financial information theft
     financial information theft
 financial innovation
     financial innovation
-financial innovations
     financial innovations
+financial innovation and technology market
+    the financial innovation and technology market
 financial institution
     financial institution
+    financial institutions
+    traditional financial institutions
 financial institution strategy
     financial institution strategy
-financial institutions
-    financial institutions
 financial instruments
     financial instruments
 financial product development
     financial product development
+financial products
+    new financial products
+    the financial products
 financial regulation
     financial regulation
 financial scenarization
     financial scenarization
 financial sector
     financial sector
-financial sectors
     financial sectors
+    the financial sector
 financial service
+    conventional financial services
     financial service
+    financial services
+    innovative financial services
 financial service poses challenges
     financial service poses challenges
-financial services
-    financial services
+financial service providers
+    traditional financial service providers
+financial services agency
+    the financial services agency
+financial services industry
+    the financial services industry
 financial system
     financial system
 financial system design
     financial system design
-financial technologies
-    financial technologies
+financial technologies banking market
+    new financial technologies banking market
 financial technologies focuses
     financial technologies focuses
 financial technologies group
     financial technologies group
 financial technology
+    a financial technology
+    financial technologies
     financial technology
+    innovative financial technologies
+    new financial technology
 financial technology companies
     financial technology companies
+financial technology design
+    new financial technology design
+financial technology entrepreneurship program
+    a financial technology entrepreneurship program
+financial technology explosion
+    the financial technology explosion
+financial technology handbook
+    the financial technology handbook
 financial technology industry
     financial technology industry
 financial technology innovation
@@ -1730,25 +1700,38 @@ financial technology island
     financial technology island
 financial technology platforms
     financial technology platforms
+financial technology revolution
+    the financial technology revolution
+financial technology sector
+    the financial technology sector
 financial tools
+    a financial tool
     financial tools
 financial trading software
     financial trading software
+financial transactions
+    new financial transactions
 finanztechnologien
     finanztechnologien
-findings
-    findings
 fingerprints
     fingerprints
 finlife
     finlife
 fintech
     fintech
+    fintechs
+    the fintechs
 fintech and financial innovations
     fintech and financial innovations
+fintech areas
+    specific fintech areas
+    the same fintech area
+fintech book
+    the fintech book
 fintech circle
     fintech circle
-fintech companies
+fintech company
+    a fintech company
     fintech companies
 fintech development
     fintech development
@@ -1760,7 +1743,6 @@ fintech driven paradigm shift
     fintech driven paradigm shift
 fintech environment
     fintech environment
-fintech environments
     fintech environments
 fintech era
     fintech era
@@ -1768,26 +1750,33 @@ fintech firms
     fintech firms
 fintech industry
     fintech industry
+    the fintech industry
 fintech investment
     fintech investment
+fintech investment space
+    the global fintech investment space
 fintech investment targets
     fintech investment targets
+fintech investment task force
+    the fintech investment task force
 fintech market
     fintech market
+    the fintech market
+fintech phenomenon
+    the fintech phenomenon
 fintech revolution
     fintech revolution
+    the fintech revolution
+    the global fintech revolution
 fintech services
     fintech services
 fintech startups
     fintech startups
-fintechs
-    fintechs
+fintech threat
+    analyze fintech threat
 firm
     firm
-firms
     firms
-first hand information
-    first hand information
 fits
     fits
 fixed
@@ -1796,11 +1785,13 @@ flat
     flat
 flexibility
     flexibility
+    more flexibility
 flourish
     flourish
 flow
     flow
 focus
+    a focus
     focus
 focuses
     focuses
@@ -1816,7 +1807,6 @@ footed
     footed
 force
     force
-forces
     forces
 foreign
     foreign
@@ -1826,24 +1816,17 @@ foreseen
     foreseen
 form
     form
-former economic analyst
-    former economic analyst
-forward looking strategy
-    forward looking strategy
+    the form
 fostering
     fostering
 founded
     founded
-four cases
-    four cases
-four russian case studies
-    four russian case studies
 frame
     frame
 frame fintech
     frame fintech
-framework
-    framework
+framework and interview questions
+    the theoretical framework and interview questions
 franchise
     franchise
 fraud
@@ -1852,42 +1835,33 @@ freedom
     freedom
 fresh
     fresh
+fresh approach
+    a fresh approach
 fresh tactics
     fresh tactics
 friendly
     friendly
-front end service
-    front end service
-front line industry insider
-    front line industry insider
-front-end
-    front-end
+frontend
+    frontend
 fruitful
     fruitful
 fsa
     fsa
+    the fsa
 ft
     ft
 functionality
+    better functionality
     functionality
 functions
     functions
-further entrenchment
-    further entrenchment
-further standardization
-    further standardization
-future
-    future
-future sustainable development
-    future sustainable development
+    the functions
 futurist
     futurist
 gain
     gain
 gap
     gap
-general
-    general
 generalized
     generalized
 generated
@@ -1904,32 +1878,18 @@ giving
     giving
 global
     global
-global banking practices
-    global banking practices
-global case studies diskover
-    global case studies diskover
-global competition
-    global competition
-global economics
-    global economics
-global economies
-    global economies
-global economy
-    global economy
-global finance
-    global finance
-global financial crisis
-    global financial crisis
 globalization
     globalization
 globally
     globally
 globe
     globe
+    the globe
 goals
     goals
 goes
     goes
+    the go
 got
     got
 governing
@@ -1942,8 +1902,12 @@ government policy
     government policy
 gradual
     gradual
+gradual reform process
+    a gradual reform process
 grasp
     grasp
+gratification
+    use and gratification
 green
     green
 green analysis
@@ -1956,56 +1920,62 @@ green business
     green business
 green transport
     green transport
-green transports
     green transports
 ground
     ground
 grounded
     grounded
-grounded theory
+grounded-theory
     grounded theory
 groundwork
     groundwork
+    the groundwork
 group
     group
 growing
     growing
+growing and broader range
+    a growing and broader range
 growing competition
     growing competition
+growing knowledge
+    the growing knowledge
 growing levels
     growing levels
 grown
     grown
 growth
+    both a growth
     growth
+    the growth
 guidance
     guidance
 guide
     guide
+    this guide
 hacked
     hacked
 hacker
     hacker
-hackers
     hackers
 hand
     hand
+hand information
+    first hand information
 handbook
     handbook
 hastened
     hastened
 hearts
     hearts
+    the hearts
 help
     help
-helps
     helps
 heralding
     heralding
 heterogeneous
     heterogeneous
-heterogeneous actors
-    heterogeneous actors
 hiccup
     hiccup
 hiding
@@ -2022,32 +1992,28 @@ highlights uk
     highlights uk
 highly
     highly
-highly sophisticated and intelligent hackers
-    highly sophisticated and intelligent hackers
-his own decade
-    his own decade
 historical
     historical
-historical development
-    historical development
 history
     history
+    the history
 hitachi
     hitachi
 homing
     homing
 horizontal
     horizontal
+horizontal comparison
+    a horizontal comparison
 houses
     houses
-how unethical banking practices
-    how unethical banking practices
 human
     human
-human computer interaction
+human-computer interaction
     human computer interaction
 humanities
     humanities
+    the humanities
 hundreds
     hundreds
 icts
@@ -2056,6 +2022,7 @@ id
     id
 idea
     idea
+    the idea
 ideal
     ideal
 identifiable
@@ -2064,8 +2031,6 @@ identified
     identified
 identify
     identify
-identify drivers
-    identify drivers
 identifying
     identifying
 identity
@@ -2074,34 +2039,36 @@ identity extension
     identity extension
 identity fraud
     identity fraud
+identity online
+    fast identity online
+identity online fido
+    fast identity online ( fido )
 illegally
     illegally
 immense
     immense
 impact
     impact
-impacts
     impacts
+    the impact
+    their impacts
 impersonal
     impersonal
 impetus
     impetus
+    the ideal impetus
 implementation
     implementation
-implementation strategies
+    their implementation
+implementation strategy
     implementation strategies
+    the implementation strategy
 implementing
     implementing
-implications
-    implications
 implicitly
     implicitly
 importance
     importance
-important implications
-    important implications
-important socioeconomic issues
-    important socioeconomic issues
 improve
     improve
 include
@@ -2112,20 +2079,15 @@ inclusion
     inclusion
 inclusive
     inclusive
-inclusive finance
-    inclusive finance
 inclusivity
     inclusivity
 increase
+    an increase
     increase
-increase convenience
-    increase convenience
 increased
     increased
 increasing
     increasing
-increasing competition
-    increasing competition
 increasingly
     increasingly
 incubating
@@ -2138,48 +2100,61 @@ independent and dependent variables
     independent and dependent variables
 independent participants
     independent participants
-india
-    india
 individuals
     individuals
 induce
     induce
 inducing
     inducing
-industries
-    industries
 industries gain expert insight
     industries gain expert insight
 industry
+    industries
     industry
+    the industry
 industry development
     industry development
+    key industry developments
+    the latest industry developments
 industry experts
     industry experts
-inefficiencies
-    inefficiencies
+industry landscape
+    the entire industry landscape
+industry success
+    the industry success
 inefficiency
+    inefficiencies
     inefficiency
 influence
     influence
+    its influence
 influenced
     influenced
 influential
     influential
+influential variables
+    the most critical and influential variables
 inform
     inform
 informal
     informal
+informal and unregulated network
+    an informal and unregulated network
 information
+    available information
+    clear and comprehensible information
     information
-information and communication technologies
-    information and communication technologies
+    more information
+    the relevant information
 information and communications technology
+    information and communication technologies
     information and communications technology
 information privacy
     information privacy
 information security challenges
     information security challenges
+information security framework
+    the information security framework
 information security system
     information security system
 information systems
@@ -2194,34 +2169,33 @@ initial
     initial
 innovated
     innovated
+innovated ecosystem
+    the innovated ecosystem
 innovation
     innovation
-innovations
     innovations
+    the innovation
 innovative
     innovative
-innovative banking
-    innovative banking
-innovative financial services
-    innovative financial services
-innovative financial technologies
-    innovative financial technologies
-innovative processes
-    innovative processes
 innovators
     innovators
 insecure
     insecure
+insecure website
+    one insecure website
 insider
     insider
 insight
+    critical insights
     insight
-insights
     insights
 institution
     institution
+    institutions
 institutional
     institutional
+institutional aspect
+    an institutional aspect
 institutional framework
     institutional framework
 institutional franchise value
@@ -2230,34 +2204,39 @@ institutional innovation
     institutional innovation
 institutionalization
     institutionalization
-institutions
-    institutions
 insurance
     insurance
 insurance companies
     insurance companies
 integral
     integral
+integral part
+    an integral part
 integrate
     integrate
+    integrates
 integrated
     integrated
-integrates
-    integrates
 integration
+    a timely integration
     integration
 intelligent
     intelligent
+intelligent hackers
+    highly sophisticated and intelligent hackers
 intention
     intention
 intention to use
     intention to use
 interaction
     interaction
+    the interaction
 interdisciplinarity
     interdisciplinarity
-interdiskiplinary
-    interdiskiplinary
+interdisciplinary
+    interdisciplinary
+interdisciplinary social sciences
+    interdisciplinary social sciences
 interested
     interested
 interesting
@@ -2270,24 +2249,19 @@ interfering
     interfering
 internet
     internet
+    the internet
 internet banking
     internet banking
 internet-based service
     internet-based service
-internet-based services
     internet-based services
 interoperability
     interoperability
-interview
-    interview
-interviews
-    interviews
+    the interoperability
 introduce
     introduce
 introducing
     introducing
-introduction
-    introduction
 invaluable
     invaluable
 invest
@@ -2298,16 +2272,16 @@ investigates consumer behavior
     investigates consumer behavior
 investigating
     investigating
-investigation
-    investigation
 investing
     investing
 investment
+    an investment
     investment
+    investments
+investment climates
+    successful investment climates
 investment in fintech
     investment in fintech
-investments
-    investments
 investor managers
     investor managers
 investors
@@ -2318,32 +2292,15 @@ involved
     involved
 iot
     iot
+    the iot
 island
     island
 issues
     issues
-its communication
-    its communication
-its effects
-    its effects
-its influence
-    its influence
-its own products
-    its own products
-its range
-    its range
-its technological practices
-    its technological practices
-its transactional relations
-    its transactional relations
-its utilization
-    its utilization
 janos
     janos
 janos barberis
     janos barberis
-japan
-    japan
 john
     john
 joint
@@ -2356,16 +2313,16 @@ kasasa
     kasasa
 key
     key
-key industry developments
-    key industry developments
 kickstart
     kickstart
 kinds
     kinds
+    what kinds
 know
     know
 knowledge
     knowledge
+    sufficient knowledge
 known
     known
 kpis
@@ -2373,23 +2330,21 @@ kpis
 laboratory
     laboratory
 lack
+    a lack
     lack
 landscape
     landscape
-large banks
-    large banks
-large credit gap
-    large credit gap
+    the landscape
 larger
     larger
 lasting
     lasting
+lasting consequences
+    long lasting consequences
 lastly
     lastly
 latest
     latest
-latest mobile technology
-    latest mobile technology
 lay
     lay
 lay people
@@ -2400,14 +2355,16 @@ leading
     leading
 leading european and us banks
     leading european and us banks
+leading fintech companies
+    the leading fintech companies
+leading school
+    a leading school
 learn
     learn
 learned
     learned
 led
     led
-left
-    left
 legal
     legal
 legal studies
@@ -2417,44 +2374,35 @@ lend
 lenders
     lenders
 lending
+    alternative lending
     lending
 lending behavior
     lending behavior
-length
-    length
+lending shares
+    the larger their lending shares
 lens
     lens
+    the lens
 lessons
     lessons
-levels
-    levels
 lies
     lies
 life
     life
-light
-    light
-likelihood
-    likelihood
 limited
     limited
-line
-    line
+line industry insider
+    front line industry insider
 linked
     linked
 linked subsidiaries
     linked subsidiaries
-literature
-    literature
 lived
     lived
 lived experiences
     lived experiences
-llc
-    llc
 loan
     loan
-loans
     loans
 local
     local
@@ -2462,42 +2410,34 @@ local relationship banking
     local relationship banking
 locations
     locations
-logit
-    logit
-long lasting consequences
-    long lasting consequences
-long term development
+long-term development
     long term development
 look
+    a look
+    a more informed look
     look
+    looks
 looking
     looking
-looks
-    looks
 losing
     losing
 loss
+    a loss
     loss
-lost
-    lost
-low carbon practices
-    low carbon practices
 lower
     lower
 lower risk levels
     lower risk levels
 lucrative
     lucrative
-machine tools ( presses )
+machine tools presses
     machine tools ( presses )
 machines
     machines
-macrolevel
+macro-level
     macrolevel
 maintenance
     maintenance
-major challenges
-    major challenges
 makers
     makers
 making
@@ -2516,14 +2456,6 @@ managing
     managing
 mandatory
     mandatory
-many companies
-    many companies
-many different tactics
-    many different tactics
-many global banks
-    many global banks
-many people
-    many people
 mapping
     mapping
 mark
@@ -2532,76 +2464,84 @@ mark coeckelbergh
     mark coeckelbergh
 market
     market
+    markets
+    the market
+    this lucrative market
+market development
+    the market development
 market dynamics
     market dynamics
+    the market dynamics
 market share
+    even more market share
     market share
 marketing
     marketing
 marketing offers
     marketing offers
-markets
-    markets
+marketing policy
+    a more modern marketing policy
 marriage
     marriage
+    the marriage
 massive
     massive
-massive amounts
-    massive amounts
-massive benefits
-    massive benefits
-massive data spill
-    massive data spill
 match
     match
+    the match
 material
     material
 mckinsey
     mckinsey
 meaning
     meaning
-measures
-    measures
 mechanisms
     mechanisms
-media
-    media
+    the mechanisms
+media perspective
+    the media perspective
 mediated
     mediated
 medium
+    media
     medium
+    other popular media
+    the popular media
 medium and small enterprises
     medium and small enterprises
 meeting
     meeting
+meeting notes
+    the meeting notes
 megabanks
     megabanks
+    the megabanks
 members
     members
+    some members
 merchants
     merchants
 merchants opt
     merchants opt
 mere
     mere
-merely
-    merely
 metaphysics
     metaphysics
-methodological
-    methodological
-methods
-    methods
+methodological approach
+    the general methodological approach
 micro
     micro
+    the micro
 micro celebrity
     micro celebrity
+micro celebrity tactics
+    the micro celebrity tactics
 middle
     middle
+middle-class
+    the rich and middle class
 minds
     minds
-minimum
-    minimum
 minimum length
     minimum length
 mobile
@@ -2610,30 +2550,33 @@ mobile money application
     mobile money application
 mobile payment service
     mobile payment service
-mobile payment services
     mobile payment services
-model
-    model
-modeling
-    modeling
+mobile technology
+    latest mobile technology
+model program
+    the current model program
 modeling and bayesian statistical analysis
     modeling and bayesian statistical analysis
-models
-    models
 moderating
     moderating
+moderating effect
+    an moderating effect
 moderating variables
     moderating variables
 modern
     modern
 moment
     moment
+    the moment
 monetary
     monetary
 monetary practices
     monetary practices
 monetization
+    facilitate monetization
     monetization
+monetization methods
+    different monetization methods
 monetizing
     monetizing
 money
@@ -2642,37 +2585,25 @@ money machines
     money machines
 money transfer
     money transfer
-money transfers
     money transfers
 money use
     money use
 mono
     mono
+mono bank model
+    a mono bank model
 moral
     moral
 moral distance
     moral distance
 morally
     morally
-more effort
-    more effort
-more flexibility
-    more flexibility
-more information
-    more information
-more innovative solutions
-    more innovative solutions
-more stable revenue pools
-    more stable revenue pools
-more studies
-    more studies
-more than a decade
-    more than a decade
+morally and socially responsible direction
+    a morally and socially responsible direction
 motion
     motion
 motivate
     motivate
-motivates
     motivates
 motivates chinese consumers
     motivates chinese consumers
@@ -2682,98 +2613,62 @@ multi
     multi
 multi homing
     multi homing
+multi level analysis
+    a multi level analysis
 multilevel analysis
     multilevel analysis
 myths
+    common myths
     myths
+    the myths
 nancial
     nancial
 national
     national
 national industry
     national industry
+national security council
+    the national security council
 near
     near
-needed
-    needed
-needs
-    needs
+near-future
+    the near future
 network
     network
+    networks
+    the network
 network security
     network security
-networks
-    networks
 neue
     neue
 neue finanztechnologien bankenmarkt
     neue finanztechnologien bankenmarkt
-new channels
-    new channels
-new factors
-    new factors
-new financial products
-    new financial products
-new financial technologies banking market
-    new financial technologies banking market
-new financial technology
-    new financial technology
-new financial technology design
-    new financial technology design
-new financial transactions
-    new financial transactions
-new products
-    new products
-new rules
-    new rules
-new services
-    new services
-new startups
-    new startups
-new technological financial systems
-    new technological financial systems
-new user oriented services
-    new user oriented services
 newly
     newly
-no consensus
-    no consensus
-no entry
-    no entry
-no technological determinism
-    no technological determinism
-no universal understanding
-    no universal understanding
 non
     non
 non banks
     non banks
-nonfinancial
+non-financial
     nonfinancial
-nonfinancial institutions
+non-financial institutions
     nonfinancial institutions
-not a one size
-    not a one size
-not mere scientists
-    not mere scientists
 notable
     notable
 notes
     notes
 notions
     notions
+    the notions
 novel
+    a novel
     novel
 nowadays
     nowadays
-nowadays banks
-    nowadays banks
 numbers
     numbers
 objectifying
     objectifying
-objective
-    objective
 objective understanding
     objective understanding
 obligations
@@ -2784,28 +2679,18 @@ obstructing
     obstructing
 occur
     occur
-occurs
     occurs
 offer
     offer
-offers
     offers
 officer
     officer
 omnichannel
     omnichannel
-one ethiopian rural community
-    one ethiopian rural community
-one insecure website
-    one insecure website
 online
     online
 online social activities
     online social activities
-only one platform
-    only one platform
-only the entry
-    only the entry
 opens
     opens
 operate
@@ -2814,11 +2699,14 @@ operations
     operations
 opetition
     opetition
+opetition theory
+    co opetition theory
 opportunists
     opportunists
-opportunities
-    opportunities
 opportunity
+    additional opportunities
+    an opportunity
+    opportunities
     opportunity
 opportunity therein
     opportunity therein
@@ -2828,6 +2716,7 @@ options
     options
 organization
     organization
+    your organization
 organizational
     organizational
 organizational activity levels
@@ -2842,30 +2731,12 @@ originates
     originates
 origins
     origins
-other assets
-    other assets
-other ecozystem participants
-    other ecozystem participants
-other popular media
-    other popular media
-other sites
-    other sites
-our credit driven economy
-    our credit driven economy
-our data
-    our data
-our purpose
-    our purpose
-our results
-    our results
-outcome
-    outcome
+    the origins
 outlook
     outlook
+    the future outlook
 output
     output
-overview
-    overview
 owned
     owned
 ownership
@@ -2875,6 +2746,7 @@ ownership structure
 p2p
     p2p
 pace
+    an increasing pace
     pace
 paradigm
     paradigm
@@ -2884,18 +2756,23 @@ parallel
     parallel
 partial
     partial
-participants
-    participants
+partial multi homing equilibrium
+    a partial multi homing equilibrium
 partnerships
     partnerships
 parts
     parts
+parts strategies
+    the parts strategies
 password
     password
-passwords
     passwords
+    the same passwords
+password based sso system
+    current password based sso system
 path
     path
+    the path
 patterns
     patterns
 paul
@@ -2903,27 +2780,24 @@ paul
 pay
     pay
 payment
+    easy payment
     payment
+    payments
 payment services
     payment services
 payment type fintech services
     payment type fintech services
-payments
-    payments
 peer
     peer
-peer to peer lending
-    peer to peer lending
 peer to peerp2p
     peer to peerp2p
+peer-to-peer lending
+    peer to peer lending
 peerreviewed
     peerreviewed
-people
-    people
 period
+    a period
     period
-person
-    person
 person identity
     person identity
 personal
@@ -2939,21 +2813,20 @@ personally
 personally identifiable information
     personally identifiable information
 perspective
+    a new perspective
+    current perspectives
     perspective
-perspectives
     perspectives
 petition
     petition
 petty
     petty
-phenomena
-    phenomena
-phenomenon
-    phenomenon
 philosophers
     philosophers
 pioneering
     pioneering
+pioneering effort
+    a pioneering effort
 pki
     pki
 place
@@ -2969,22 +2842,23 @@ plan
 planning
     planning
 platform
+    only one platform
     platform
-platformecozystem
-    platformecozystem
-platforms
     platforms
+    the platform
+platformecosystem
+    platformecosystem
 play
     play
 players
     players
+    the key players
 playing
     playing
-policies
-    policies
-policy
-    policy
+playing fi eld
+    a level playing fi eld
 policy implications
+    discusses policy implications
     policy implications
 policy makers
     policy makers
@@ -2996,64 +2870,56 @@ political and economic crises
     political and economic crises
 politicians
     politicians
+    the politicians
 pool
     pool
-pools
     pools
 popping
     popping
 popular
     popular
-popular press
-    popular press
 poses
     poses
 position
     position
+    the position
 positively
     positively
 possibility
     possibility
-possible
-    possible
-possible ways
-    possible ways
+    the possibility
 potential
     potential
-potential benefits
-    potential benefits
-potential consequences
-    potential consequences
 potentially
     potentially
 powerful
     powerful
 practical
     practical
-practical advice
-    practical advice
-practical recommendations
-    practical recommendations
 practice
+    everyday practices
     practice
-practices
     practices
+    the existing practices
 practitioners
+    edge practitioners
     practitioners
 pragmatism
     pragmatism
+    the pragmatism
 pre
+    popular press
     pre
-pre enrollled fingerprints
-    pre enrollled fingerprints
+pre enrolled fingerprints
+    pre enrolled fingerprints
 precise
     precise
+precise estimation
+    a more precise estimation
 precursors
     precursors
 predicting
     predicting
-predictions
-    predictions
 prepare
     prepare
 presentation
@@ -3070,16 +2936,14 @@ prevailing
     prevailing
 prevailing financial services operations
     prevailing financial services operations
-previous
-    previous
 price
     price
 price collapse
     price collapse
 primary
     primary
-primary data
-    primary data
+primary guide
+    your primary guide
 privacy
     privacy
 private
@@ -3088,12 +2952,16 @@ private life practices
     private life practices
 problems
     problems
+    the problems
+    these problems
 process
+    a process
+    innovative processes
     process
+    processes
+    the process
 process management
     process management
-processes
-    processes
 processing
     processing
 processing approach
@@ -3101,8 +2969,10 @@ processing approach
 processing data
     processing data
 product
+    a product
+    its own products
+    new products
     product
-products
     products
 products and services
     products and services
@@ -3110,62 +2980,58 @@ professionals
     professionals
 profound
     profound
-profound implications
-    profound implications
 program
     program
 prominent
     prominent
-prominent thought leaders
-    prominent thought leaders
 promote
     promote
 promoting
     promoting
 promotion
     promotion
+    the promotion
 propensity
     propensity
 proper
     proper
-proper regulatory measures
-    proper regulatory measures
 proposed
     proposed
-proposed strategic actions
-    proposed strategic actions
 protect
     protect
 protecting
     protecting
 proven
     proven
+proven path
+    a proven path
 proven strategies
     proven strategies
 provider
     provider
-providers
     providers
 providing
     providing
-pte
-    pte
 public
     public
+    the public
 public interest
     public interest
 public key cryptography
     public key cryptography
 public key infrastructure
     public key infrastructure
-public key infrastructure ( pki )
+public key infrastructure pki
     public key infrastructure ( pki )
 public policy
     public policy
 publicity
     publicity
+    the publicity
 purpose
+    our purpose
     purpose
+    the purpose
 pushed
     pushed
 putting
@@ -3176,15 +3042,19 @@ quantitatively
     quantitatively
 question
     question
-questions
     questions
+    the question
+    these questions
+    urgent questions
 quintessence
     quintessence
+    the quintessence
 radical
     radical
 raise
     raise
 range
+    its range
     range
 rapid
     rapid
@@ -3200,13 +3070,17 @@ ready
     ready
 real
     real
-real estate
+real challenges
+    the real challenges
+real challenges banks
+    the real challenges banks
+real-estate
     real estate
-real life
+real-life
     real life
-real life needs
+real-life needs
     real life needs
-real world policy options
+real-world policy options
     real world policy options
 realities
     realities
@@ -3214,32 +3088,26 @@ realize
     realize
 reasons
     reasons
+    the reasons
 receiving
     receiving
-recent
-    recent
-recent trends
-    recent trends
-recently
-    recently
 recommendations
+    practical recommendations
     recommendations
 recommended
     recommended
 reduce
     reduce
 reduction
+    ensure reduction
     reduction
-references
-    references
 referencing
     referencing
 reflect
     reflect
+    reflects
 reflected
     reflected
-reflects
-    reflects
 reform
     reform
 refreshing
@@ -3250,8 +3118,8 @@ regional
     regional
 regional financial institutions
     regional financial institutions
-regional financial institutions introduce new financial products
-    regional financial institutions introduce new financial products
+regional financial institutions introduce
+    regional financial institutions introduce
 regions
     regions
 register
@@ -3262,97 +3130,88 @@ registration
     registration
 registration process
     registration process
+    the registration process
 regtech
     regtech
 regulation
     regulation
+    regulations
 regulation focus theory
     regulation focus theory
 regulation force financial institutions
     regulation force financial institutions
-regulations
-    regulations
 regulations and policies
     regulations and policies
 regulator
     regulator
-regulators
     regulators
+    the regulator
 regulatory
     regulatory
+regulatory and market reform opportunity
+    a regulatory and market reform opportunity
+regulatory changes
+    the regulatory changes
 regulatory focus theory
     regulatory focus theory
+regulatory measures
+    proper regulatory measures
+regulatory requirement
+    the regulatory requirement
 regulatory technology
     regulatory technology
 relate
     relate
 related
     related
-related assets
-    related assets
 relations
     relations
 relationship
+    complex relationships
     relationship
+    relationships
 relationship banking enhancement program
     relationship banking enhancement program
-relationships
-    relationships
 relevance
     relevance
 relevance amidst immense global competition
     relevance amidst immense global competition
-relevant
-    relevant
 reliance
     reliance
 religious
     religious
 religious contexts
     religious contexts
-remain
-    remain
-remained
-    remained
-remains
-    remains
 remember
     remember
 remote
     remote
 remote location
     remote location
-remote locations
     remote locations
 render
     render
 reoriented
     reoriented
-reports
-    reports
 represent
     represent
-represents
     represents
 requirement
     requirement
-requirements
     requirements
-research
-    research
 research and application
     research and application
 research and scientific literature
     research and scientific literature
-researchers
-    researchers
 resisted
     resisted
 resolves
     resolves
 resource
+    a valuable resource
     resource
 responsibility
+    ascribe responsibility
     responsibility
 responsible
     responsible
@@ -3366,67 +3225,77 @@ restrictions
     restrictions
 resulted
     resulted
-results
-    results
 retail
     retail
 retail banking
     retail banking
+retail banking customer relationship management
+    the retail banking customer relationship management
 retail lending
     retail lending
 retail payment
     retail payment
+retail payments market
+    the retail payments market
 rethink
     rethink
-rethink service distribution channels
-    rethink service distribution channels
 reveals
     reveals
 revenue
     revenue
+revenue pools
+    more stable revenue pools
 reviewing
     reviewing
 revolution
     revolution
+    the next revolution
+    the revolution
 rich
     rich
 rise
     rise
-rises
     rises
+    the rapid rise
+    the rise
 risk
     risk
-risks
     risks
+    the main risks
+    the potential risks
+    the risks
 role
+    an important role
     role
+    the changing role
+    the role
 role of technology
     role of technology
 rules
+    new rules
     rules
 rural
     rural
 rural community
     rural community
+    traditional rural communities
 rural ethiopian community money practices
     rural ethiopian community money practices
-russia
-    russia
 russian
     russian
+russian case-studies
+    four russian case studies
 safe
     safe
-sample
-    sample
+safe and convenient smartphone authentication environment
+    a safe and convenient smartphone authentication environment
 save
     save
+    saves
 saved
     saved
-saves
-    saves
 saving
     saving
-savings
     savings
 savvy
     savvy
@@ -3438,13 +3307,12 @@ scale and scope economies
     scale and scope economies
 scenes
     scenes
-scholarly
-    scholarly
+    the scenes
 scholars
     scholars
 school
+    few schools
     school
-schools
     schools
 schulte
     schulte
@@ -3452,17 +3320,19 @@ schumpeter
     schumpeter
 science
     science
+    sciences
 science and engineering
     science and engineering
 science and technology
     science and technology
-sciences
-    sciences
 scientific
     scientific
+scientific definition
+    a scientific definition
 scientific literature
     scientific literature
 scientists
+    not mere scientists
     scientists
 scope
     scope
@@ -3478,28 +3348,32 @@ searching
     searching
 secret
     secret
+secret money practices
+    secret money practices
 sections
     sections
+    the following sections
 sector
+    a sector
     sector
 secure
     secure
+secure biometric authentication framework
+    a secure biometric authentication framework
+    the proposed secure biometric authentication framework
 securely
     securely
-securities
-    securities
 security
+    securities
     security
+    the security
 security control
     security control
-security controls
     security controls
 security of data
     security of data
 seek
     seek
-seen
-    seen
 segregated
     segregated
 segregated and aggregate money control
@@ -3508,7 +3382,7 @@ selecting
     selecting
 self
     self
-self efficacy
+self-efficacy
     self efficacy
 semantic
     semantic
@@ -3521,21 +3395,27 @@ series
 serve
     serve
 service
+    new services
     service
+    services
+    the service
+    their services
+    these services
+    this service
 service areas
     service areas
+service distribution channels
+    rethink service distribution channels
 service quality
     service quality
-services
-    services
 services need
     services need
 set
+    a whole new set
     set
-several findings
-    several findings
 shadow
     shadow
+    the shadow
 shadow banking
     shadow banking
 shadow banks
@@ -3544,12 +3424,12 @@ shape
     shape
 share
     share
-shares
     shares
 shift
     shift
 shortcomings
     shortcomings
+    the shortcomings
 showing
     showing
 shown
@@ -3558,27 +3438,31 @@ shows
     shows
 sided
     sided
+sided market
+    two sided market
 sign
     sign
-significance
-    significance
 silicon
     silicon
 silicon valley
     silicon valley
 single
     single
-single sign on
-    single sign on
+single informative volume
+    a single informative volume
 single sign-on
+    single sign on
     single sign-on
 site
+    each sites
+    other sites
     site
-sites
     sites
 situation
     situation
+    the situation
 size
+    not a one size
     size
 skills
     skills
@@ -3586,8 +3470,11 @@ small and medium-sized enterprise
     small and medium-sized enterprise
 smallest
     smallest
+smallest hiccup
+    even the smallest hiccup
 smartphone
     smartphone
+    the smartphone
 sme
     sme
 sme lending
@@ -3603,53 +3490,67 @@ social efforts
 social empowerment
     social empowerment
 social investing site
+    a large social investing site
+    a social investing site
     social investing site
-social networking ( online )
+social networking online
     social networking ( online )
 social networks
     social networks
 social sciences
     social sciences
+    the social sciences
 social sciences computing
     social sciences computing
 socially
     socially
+socially desirable outcome
+    a socially desirable outcome
 societal
     societal
 societies and institutions
     societies and institutions
 society
     society
-socioeconomic
+    the whole society
+socio-economic
     socioeconomic
-socioeconomic crises
+socio-economic crises
     socioeconomic crises
+socio-economic issues
+    important socioeconomic issues
 software
     software
+software design
+    the software design
+software firm
+    the software firm
+software product
+    a software product
 solutions
+    clear solutions
+    more innovative solutions
     solutions
 solve
     solve
 solving
     solving
-some areas
-    some areas
-some members
-    some members
 sophisticated
     sophisticated
 sound
     sound
+sound basis
+    a sound basis
 source
     source
+    sources
 source of information
     source of information
 sourced
     sourced
-sources
-    sources
 space
     space
+    this space
 span
     span
 spanning
@@ -3664,11 +3565,10 @@ special characters
     special characters
 specific
     specific
-specific fintech areas
-    specific fintech areas
 speed
     speed
 spheres
+    both spheres
     spheres
 spill
     spill
@@ -3684,9 +3584,6 @@ stalled
     stalled
 standard
     standard
-standardization
-    standardization
-standards
     standards
 start
     start
@@ -3697,35 +3594,44 @@ start ups
 started
     started
 startups
+    new startups
     startups
 state
     state
-states
     states
-statistical
-    statistical
+    the state
 stepping
     stepping
+stepping-stone
+    a stepping stone
 stock
     stock
-stocks
     stocks
 stone
     stone
 strategic
     strategic
+strategic actions
+    proposed strategic actions
+strategic considerations
+    strategic considerations
 strategic goals
     strategic goals
 strategic paradigm
     strategic paradigm
 strategic planning
     strategic planning
-strategies
-    strategies
+strategic task
+    an important strategic task
 strategizing
     strategizing
 strategy
+    a strategy
+    bottom up strategies
+    forward looking strategy
+    strategies
     strategy
+    the strategy
 strategy bankruption
     strategy bankruption
 streamline
@@ -3748,6 +3654,8 @@ stronger authentication
     stronger authentication
 stronger security
     stronger security
+stronger understanding
+    a stronger understanding
 strongly
     strongly
 structure
@@ -3758,47 +3666,35 @@ students
     students
 studied
     studied
-studies
-    studies
-study
-    study
-subject
-    subject
-subjects
-    subjects
+study investigation
+    a case study investigation
 submit
     submit
 subsidiaries
     subsidiaries
 success
     success
+    this success
 successful
     successful
-successful investment climates
-    successful investment climates
 succession
+    a succession
     succession
 succinct
     succinct
-succinct case studies
+succinct case-studies
     succinct case studies
-such an approach
-    such an approach
-such predictions
-    such predictions
-sufficient knowledge
-    sufficient knowledge
 sufficiently
     sufficiently
 suggest
     suggest
+    suggests
 suggested
     suggested
-suggests
-    suggests
 supply
+    a supply
     supply
-supply chain models
+supply-chain models
     supply chain models
 support
     support
@@ -3806,10 +3702,10 @@ supported
     supported
 surrounding
     surrounding
-surveys
-    surveys
 survival
     survival
+survival guide
+    a survival guide
 survive
     survive
 susanne
@@ -3823,27 +3719,27 @@ sustainability warrants
 sustainable
     sustainable
 sustainable development
+    future sustainable development
     sustainable development
+    the sustainable development
 sustainable economic development
     sustainable economic development
-sustainable strategies
-    sustainable strategies
+sustainable economic environment
+    a sustainable economic environment
 sustainable strategy
+    sustainable strategies
     sustainable strategy
 switch
     switch
-switzerland
-    switzerland
 synthesize
     synthesize
 systemic
     systemic
-systems
-    systems
+systemic shift
+    this systemic shift
 tactics
+    many different tactics
     tactics
-taiwan
-    taiwan
 taiwan bank industry
     taiwan bank industry
 taiwan fintech industry
@@ -3862,22 +3758,40 @@ tbd
     tbd
 team
     team
-techniques
-    techniques
+    your team
+team members
+    the team members
 techniques and tools
     techniques and tools
 techno
     techno
+techno-financial developments
+    contemporary techno financial developments
+techno-social
+    technosocial
+techno-social environment
+    the increasingly technosocial environment
 technological
     technological
+technological determinism
+    no technological determinism
+technological financial systems
+    new technological financial systems
 technological practices
+    its technological practices
     technological practices
 technological progress
     technological progress
-technologies
-    technologies
 technology
+    applies technology
+    technologies
     technology
+    the new technology
+    use of technologies
+technology acceptance model
+    the technology acceptance model
+technology advantage
+    an initial technology advantage
 technology companies
     technology companies
 technology designs
@@ -3890,740 +3804,87 @@ technology savvy and socially oriented new ventures
     technology savvy and socially oriented new ventures
 technology sectors
     technology sectors
-technosocial
-    technosocial
 telecom
+    chinese telecom
     telecom
 telecommunications
     telecommunications
+    traditional telecommunications
 telephone
     telephone
 temporal
     temporal
+temporal evolution
+    a temporal evolution
 tend
     tend
 tendencies
     tendencies
+    these recent tendencies
 tenpay
     tenpay
 term
     term
+    the term
+term fintech
+    the term fintech
 terminals
     terminals
 terminology
     terminology
-testing
-    testing
 testing ground
     testing ground
-the ability
-    the ability
-the acceptance
-    the acceptance
-the adoption
-    the adoption
-the advent
-    the advent
-the answers
-    the answers
-the approach
-    the approach
-the architecture
-    the architecture
-the articles
-    the articles
-the asset
-    the asset
-the author
-    the author
-the back end service
-    the back end service
-the banking business
-    the banking business
-the banking industry
-    the banking industry
-the banking landscape
-    the banking landscape
-the banking market
-    the banking market
-the banks
-    the banks
-the beast
-    the beast
-the behavior
-    the behavior
-the big banks
-    the big banks
-the biometric based single sign
-    the biometric based single sign
-the book
-    the book
-the boom
-    the boom
-the booming alternative finance sector
-    the booming alternative finance sector
-the brute force
-    the brute force
-the business landscape
-    the business landscape
-the business models
-    the business models
-the business strategy
-    the business strategy
-the cash based monetary practices
-    the cash based monetary practices
-the causal relationship
-    the causal relationship
-the centralized biometric authentication framework
-    the centralized biometric authentication framework
-the challenges
-    the challenges
-the changing role
-    the changing role
-the chief innovation officer
-    the chief innovation officer
-the combination
-    the combination
-the commonalities
-    the commonalities
-the community
-    the community
-the community banking model
-    the community banking model
-the companies
-    the companies
-the companion website
-    the companion website
-the complexity
-    the complexity
-the composition
-    the composition
-the computing curricula
-    the computing curricula
-the concentration
-    the concentration
-the conceptual framework
-    the conceptual framework
-the conclusion
-    the conclusion
-the contributors
-    the contributors
-the country
-    the country
-the creation
-    the creation
-the credit
-    the credit
-the credit markets
-    the credit markets
-the current model program
-    the current model program
-the currents
-    the currents
-the curricula
-    the curricula
-the customer relationship management
-    the customer relationship management
-the damage
-    the damage
-the data processing approach
-    the data processing approach
-the decision
-    the decision
-the decline
-    the decline
-the definition
-    the definition
-the demands
-    the demands
-the deployment
-    the deployment
-the design
-    the design
-the developing countries
-    the developing countries
-the development
-    the development
-the digital platforms
-    the digital platforms
-the digitization
-    the digitization
-the diskiplinary domain
-    the diskiplinary domain
-the disruption
-    the disruption
-the ebb
-    the ebb
-the economic output
-    the economic output
-the ecozystem
-    the ecozystem
-the effectiveness
-    the effectiveness
-the effects
-    the effects
-the elaboration likelihood model
-    the elaboration likelihood model
-the emergence
-    the emergence
-the emerging markets
-    the emerging markets
-the emerging securities trading ecozystem
-    the emerging securities trading ecozystem
-the entire industry landscape
-    the entire industry landscape
-the entrant
-    the entrant
-the entry
-    the entry
-the environment
-    the environment
-the essence
-    the essence
-the ethical and social vulnerabilities
-    the ethical and social vulnerabilities
-the ethical and societal meaning
-    the ethical and societal meaning
-the example
-    the example
-the existence
-    the existence
-the existing practices
-    the existing practices
-the explosive growth
-    the explosive growth
-the extent
-    the extent
-the face
-    the face
-the fact
-    the fact
-the factors
-    the factors
-the far east
-    the far east
-the field
-    the field
-the fields
-    the fields
-the financial and digital innovation literature
-    the financial and digital innovation literature
-the financial industry
-    the financial industry
-the financial information literature
-    the financial information literature
-the financial innovation and technology market
-    the financial innovation and technology market
-the financial products
-    the financial products
-the financial sector
-    the financial sector
-the financial services agency
-    the financial services agency
-the financial services industry
-    the financial services industry
-the financial technology explosion
-    the financial technology explosion
-the financial technology handbook
-    the financial technology handbook
-the financial technology revolution
-    the financial technology revolution
-the financial technology sector
-    the financial technology sector
-the fintech book
-    the fintech book
-the fintech industry
-    the fintech industry
-the fintech investment task force
-    the fintech investment task force
-the fintech market
-    the fintech market
-the fintech phenomenon
-    the fintech phenomenon
-the fintech revolution
-    the fintech revolution
-the fintechs
-    the fintechs
-the first crowd sourced book
-    the first crowd sourced book
-the following results
-    the following results
-the following sections
-    the following sections
-the form
-    the form
-the framework
-    the framework
-the front end
-    the front end
-the fsa
-    the fsa
-the functions
-    the functions
-the future
-    the future
-the future community banks
-    the future community banks
-the future outlook
-    the future outlook
-the general methodological approach
-    the general methodological approach
-the global consequences
-    the global consequences
-the global economy
-    the global economy
-the global financial crisis
-    the global financial crisis
-the global fintech investment space
-    the global fintech investment space
-the global fintech revolution
-    the global fintech revolution
-the global trend
-    the global trend
-the globe
-    the globe
-the go
-    the go
-the groundwork
-    the groundwork
-the growing knowledge
-    the growing knowledge
-the growth
-    the growth
-the hearts
-    the hearts
-the historical development
-    the historical development
-the history
-    the history
-the humanities
-    the humanities
-the idea
-    the idea
-the ideal impetus
-    the ideal impetus
-the impact
-    the impact
-the implementation strategy
-    the implementation strategy
-the implications
-    the implications
-the increasingly technosocial environment
-    the increasingly technosocial environment
-the industry
-    the industry
-the industry success
-    the industry success
-the information security framework
-    the information security framework
-the innovated ecozystem
-    the innovated ecozystem
-the innovation
-    the innovation
-the interaction
-    the interaction
-the internet
-    the internet
-the interoperability
-    the interoperability
-the introduction
-    the introduction
-the iot
-    the iot
-the key players
-    the key players
-the landscape
-    the landscape
-the larger their lending shares
-    the larger their lending shares
-the latest industry developments
-    the latest industry developments
-the latest research
-    the latest research
-the leading fintech companies
-    the leading fintech companies
-the lens
-    the lens
-the light
-    the light
-the main risks
-    the main risks
-the major data sources
-    the major data sources
-the market
-    the market
-the market development
-    the market development
-the market dynamics
-    the market dynamics
-the marriage
-    the marriage
-the match
-    the match
-the mechanisms
-    the mechanisms
-the media perspective
-    the media perspective
-the meeting notes
-    the meeting notes
-the megabanks
-    the megabanks
-the micro
-    the micro
-the micro celebrity tactics
-    the micro celebrity tactics
-the moment
-    the moment
-the most critical and influential variables
-    the most critical and influential variables
-the most notable example
-    the most notable example
-the myths
-    the myths
-the national security council
-    the national security council
-the near future
-    the near future
-the need
-    the need
-the network
-    the network
-the new companies
-    the new companies
-the new entry
-    the new entry
-the new era
-    the new era
-the new technology
-    the new technology
-the new world
-    the new world
-the newly emerging convergence industry
-    the newly emerging convergence industry
-the next revolution
-    the next revolution
-the notions
-    the notions
-the one
-    the one
-the origins
-    the origins
-the parts strategies
-    the parts strategies
-the path
-    the path
-the platform
-    the platform
-the popular media
-    the popular media
-the position
-    the position
-the possibility
-    the possibility
-the potential benefits
-    the potential benefits
-the potential risks
-    the potential risks
-the pragmatism
-    the pragmatism
-the previous year
-    the previous year
-the problems
-    the problems
-the process
-    the process
-the promotion
-    the promotion
-the proposed biometric based sso system
-    the proposed biometric based sso system
-the proposed secure biometric authentication framework
-    the proposed secure biometric authentication framework
-the public
-    the public
-the publicity
-    the publicity
-the purpose
-    the purpose
-the question
-    the question
-the quintessence
-    the quintessence
-the rapid development
-    the rapid development
-the rapid rise
-    the rapid rise
-the real challenges
-    the real challenges
-the real challenges banks
-    the real challenges banks
-the reasons
-    the reasons
-the recent cyber attacks
-    the recent cyber attacks
-the recent trends
-    the recent trends
-the registration process
-    the registration process
-the regulator
-    the regulator
-the regulatory changes
-    the regulatory changes
-the regulatory requirement
-    the regulatory requirement
-the relevant information
-    the relevant information
-the retail banking customer relationship management
-    the retail banking customer relationship management
-the retail payments market
-    the retail payments market
-the revolution
-    the revolution
-the rich and middle class
-    the rich and middle class
-the rise
-    the rise
-the risks
-    the risks
-the role
-    the role
-the same fintech area
-    the same fintech area
-the same passwords
-    the same passwords
-the sample
-    the sample
-the scenes
-    the scenes
-the second half
-    the second half
-the security
-    the security
-the service
-    the service
-the shadow
-    the shadow
-the shortcomings
-    the shortcomings
-the situation
-    the situation
-the smartphone
-    the smartphone
-the social sciences
-    the social sciences
-the software design
-    the software design
-the software firm
-    the software firm
-the state
-    the state
-the strategic considerations
-    the strategic considerations
-the strategy
-    the strategy
-the subject
-    the subject
-the subjects
-    the subjects
-the sustainable development
-    the sustainable development
-the system
-    the system
-the team members
-    the team members
-the technology acceptance model
-    the technology acceptance model
-the term
-    the term
-the term fintech
-    the term fintech
-the theoretical framework and interview questions
-    the theoretical framework and interview questions
-the time span
-    the time span
-the timing
-    the timing
-the top executives
-    the top executives
-the trading ecozystem
-    the trading ecozystem
-the traditional banking model
-    the traditional banking model
-the traditional business
-    the traditional business
-the traditional business strategy
-    the traditional business strategy
-the ugc monetization
-    the ugc monetization
-the uk
-    the uk
-the united states
-    the united states
-the use
-    the use
-the user
-    the user
-the value
-    the value
-the value chain
-    the value chain
-the vertically integrated incumbent
-    the vertically integrated incumbent
-the way
-    the way
-the ways
-    the ways
-the whole society
-    the whole society
-the word
-    the word
-the world
-    the world
-the year
-    the year
-the you
-    the you
+testing laboratory
+    a testing laboratory
 theft
     theft
-their ability
-    their ability
-their asset share
-    their asset share
-their assets
-    their assets
-their business conditions
-    their business conditions
-their business models
-    their business models
-their creative works
-    their creative works
-their design
-    their design
-their exploration
-    their exploration
-their fi nancial decisions
-    their fi nancial decisions
-their impacts
-    their impacts
-their implementation
-    their implementation
-their implications
-    their implications
-their main banks
-    their main banks
-their services
-    their services
-theoretical
-    theoretical
-theory
-    theory
 theory and practice
     theory and practice
-these companies
-    these companies
-these concepts
-    these concepts
-these electronically mediated developments
-    these electronically mediated developments
-these problems
-    these problems
-these questions
-    these questions
-these recent tendencies
-    these recent tendencies
-these services
-    these services
-these study
-    these study
-these two factors
-    these two factors
 thinking
     thinking
-this activity
-    this activity
-this advantage
-    this advantage
-this authoritative guide
-    this authoritative guide
-this book
-    this book
-this definition
-    this definition
-this diversification
-    this diversification
-this enhancement program
-    this enhancement program
-this environment
-    this environment
-this experience
-    this experience
-this guide
-    this guide
-this lucrative market
-    this lucrative market
-this policy
-    this policy
-this service
-    this service
-this space
-    this space
-this success
-    this success
-this system
-    this system
-this systemic shift
-    this systemic shift
-this vsi touch
-    this vsi touch
 thought
     thought
 thought leaders
+    prominent thought leaders
     thought leaders
 threat
+    a threat
+    advanced threats
     threat
+    threats
 threaten
     threaten
-threats
-    threats
-three decades
-    three decades
 tightening
     tightening
 time
     time
-time series analysis
+time-series analysis
     time series analysis
-time series modeling
+time-series modeling
     time series modeling
+time-span
+    the time span
 timely
     timely
 timing
+    the timing
     timing
 today
     today
-today realities
-    today realities
 tool
+    a tool
     tool
-tools
     tools
 touch
     touch
 trading
     trading
+trading ecosystem
+    the trading ecosystem
 trading software
     trading software
 traditional
     traditional
-traditional banking industry
-    traditional banking industry
-traditional financial institutions
-    traditional financial institutions
-traditional financial service providers
-    traditional financial service providers
-traditional rural communities
-    traditional rural communities
-traditional telecommunications
-    traditional telecommunications
 traditionally
     traditionally
 traffic
@@ -4632,12 +3893,13 @@ traffic congestion
     traffic congestion
 transaction
     transaction
+    transactions
 transaction orientation
     transaction orientation
 transactional
     transactional
-transactions
-    transactions
+transactional relations
+    its transactional relations
 transfer
     transfer
 transforming
@@ -4649,8 +3911,10 @@ transport
 transportation
     transportation
 trend
+    recent trends
+    the global trend
+    the recent trends
     trend
-trends
     trends
 trouble
     trouble
@@ -4658,29 +3922,24 @@ trust
     trust
 turned
     turned
-two different factors
-    two different factors
-two sided market
-    two sided market
 type
     type
 type id
     type id
-typically
-    typically
 ubiquitous
     ubiquitous
-ubiquitous technologies
-    ubiquitous technologies
 ubiquitous technology
+    ubiquitous technologies
     ubiquitous technology
 ugc
     ugc
 ugc monetization
+    the ugc monetization
     ugc monetization
 ugc readers
     ugc readers
 uk
+    the uk
     uk
 uk p2p platforms
     uk p2p platforms
@@ -4695,6 +3954,7 @@ underlying
 understand
     understand
 understanding
+    a common understanding
     understanding
 understood
     understood
@@ -4706,6 +3966,8 @@ unethical
     unethical
 unethical banking
     unethical banking
+unethical banking practices
+    how unethical banking practices
 unexpected
     unexpected
 unfolding
@@ -4716,8 +3978,12 @@ unique
     unique
 united
     united
+united states
+    the united states
 universal
     universal
+universal understanding
+    no universal understanding
 university
     university
 university students
@@ -4728,6 +3994,8 @@ unprecedented
     unprecedented
 unregulated
     unregulated
+unregulated area
+    an unregulated area
 unregulated borrowing
     unregulated borrowing
 unregulated market
@@ -4743,36 +4011,32 @@ urban design
 urban planning
     urban planning
 urban transport systems
+    a comprehensive urban transport system
     urban transport systems
 urgent
     urgent
-urgent questions
-    urgent questions
 usage
     usage
-use and gratification
-    use and gratification
-use of technologies
-    use of technologies
 useful
     useful
 usefulness
     usefulness
 user
+    the user
     user
-user generated content
-    user generated content
+    users
 user interfaces
     user interfaces
+user oriented services
+    new user oriented services
 user-generated content
+    user generated content
     user-generated content
-users
-    users
-uses
-    uses
 utilization
+    its utilization
     utilization
 utilize
+    analyzes utilize
     utilize
 utilizing
     utilizing
@@ -4781,13 +4045,13 @@ valley
 valuable
     valuable
 value
+    the value
     value
-variables
-    variables
+value chain
+    the value chain
 variety
+    a variety
     variety
-various diskiplines
-    various diskiplines
 ventures
     ventures
 verify
@@ -4798,7 +4062,10 @@ vertical restraints
     vertical restraints
 vertically
     vertically
+vertically integrated incumbent
+    the vertically integrated incumbent
 view
+    a view
     view
 virtual
     virtual
@@ -4816,6 +4083,8 @@ voluntarily
     voluntarily
 vsi
     vsi
+vsi touch
+    this vsi touch
 vulnerabilities
     vulnerabilities
 vulnerable
@@ -4827,8 +4096,10 @@ warrants
 waupsh
     waupsh
 way
+    possible ways
+    the way
+    the ways
     way
-ways
     ways
 wearable
     wearable
@@ -4836,14 +4107,9 @@ wearable terminals
     wearable terminals
 website
     website
-websites
     websites
 went
     went
-what characteristic features
-    what characteristic features
-what kinds
-    what kinds
 wholly
     wholly
 wholly owned state banks
@@ -4852,25 +4118,29 @@ wide
     wide
 wider
     wider
+wider revenue pool
+    a wider revenue pool
 widespread
     widespread
 willingness
     willingness
-willingness to pay
+willingness-to-pay
     willingness to pay
 winning
     winning
 withdrawal
     withdrawal
 word
+    the word
     word
 work
     work
+    works
 working
     working
-works
-    works
 world
+    the new world
+    the world
     world
 world needs
     world needs
@@ -4881,12 +4151,7 @@ worth
 written
     written
 year
+    the previous year
+    the year
     year
-years
     years
-your organization
-    your organization
-your primary guide
-    your primary guide
-your team
-    your team

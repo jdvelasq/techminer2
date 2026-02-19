@@ -1,5 +1,5 @@
-a business ecozystem
-    a business ecozystem
+a business ecosystem
+    a business ecosystem
 a case study
     a case study
 a case study investigation
@@ -352,8 +352,8 @@ analyzed
     analyzed
 analyzes
     analyzes
-analyzes utilize multiple methods
-    analyzes utilize multiple methods
+analyzes utilize
+    analyzes utilize
 analyzing
     analyzing
 answer
@@ -386,8 +386,6 @@ area
     area
 areas
     areas
-argued
-    argued
 arguments
     arguments
 arising
@@ -884,8 +882,6 @@ concerned
     concerned
 concerns
     concerns
-concluded
-    concluded
 concludes
     concludes
 conclusion
@@ -898,8 +894,6 @@ conduct
     conduct
 conducted
     conducted
-confirmed
-    confirmed
 confirms
     confirms
 congestion
@@ -1230,32 +1224,30 @@ direction
     direction
 directly
     directly
+disciplinary
+    disciplinary
+disciplines
+    disciplines
+disclosed
+    disclosed
+discover
+    discover
+discretion
+    discretion
+discussed
+    discussed
+discusses
+    discusses
+discusses policy implications
+    discusses policy implications
+discussing
+    discussing
+discussion
+    discussion
+discussion separates futurist
+    discussion separates futurist
 disengaged
     disengaged
-diskiplinary
-    diskiplinary
-diskiplines
-    diskiplines
-disklosed
-    disklosed
-disklosed and secret money practices
-    disklosed and secret money practices
-diskover
-    diskover
-diskretion
-    diskretion
-diskussed
-    diskussed
-diskusses
-    diskusses
-diskusses policy implications
-    diskusses policy implications
-diskussing
-    diskussing
-diskussion
-    diskussion
-diskussion separates futurist
-    diskussion separates futurist
 dispels
     dispels
 disprove
@@ -1340,10 +1332,10 @@ economies
     economies
 economy
     economy
-ecozystem
-    ecozystem
-ecozystems
-    ecozystems
+ecosystem
+    ecosystem
+ecosystems
+    ecosystems
 edge
     edge
 edge practitioners
@@ -1440,8 +1432,8 @@ enhancement
     enhancement
 enhancing
     enhancing
-enrollled
-    enrollled
+enrolled
+    enrolled
 ensure
     ensure
 ensure reduction
@@ -1508,8 +1500,6 @@ european
     european
 evaluating
     evaluating
-evaluation
-    evaluation
 even more market share
     even more market share
 even the smallest hiccup
@@ -1860,8 +1850,8 @@ front end service
     front end service
 front line industry insider
     front line industry insider
-front-end
-    front-end
+frontend
+    frontend
 fruitful
     fruitful
 fsa
@@ -1906,8 +1896,8 @@ global
     global
 global banking practices
     global banking practices
-global case studies diskover
-    global case studies diskover
+global case studies
+    global case studies
 global competition
     global competition
 global economics
@@ -2256,8 +2246,10 @@ interaction
     interaction
 interdisciplinarity
     interdisciplinarity
-interdiskiplinary
-    interdiskiplinary
+interdisciplinary
+    interdisciplinary
+interdisciplinary social sciences
+    interdisciplinary social sciences
 interested
     interested
 interesting
@@ -2450,8 +2442,6 @@ lived
     lived
 lived experiences
     lived experiences
-llc
-    llc
 loan
     loan
 loans
@@ -2684,6 +2674,8 @@ multi homing
     multi homing
 multilevel analysis
     multilevel analysis
+multiple methods
+    multiple methods
 myths
     myths
 nancial
@@ -2844,8 +2836,8 @@ origins
     origins
 other assets
     other assets
-other ecozystem participants
-    other ecozystem participants
+other ecosystem participants
+    other ecosystem participants
 other popular media
     other popular media
 other sites
@@ -2856,8 +2848,6 @@ our data
     our data
 our purpose
     our purpose
-our results
-    our results
 outcome
     outcome
 outlook
@@ -2970,8 +2960,8 @@ planning
     planning
 platform
     platform
-platformecozystem
-    platformecozystem
+platformecosystem
+    platformecosystem
 platforms
     platforms
 play
@@ -3044,8 +3034,8 @@ pragmatism
     pragmatism
 pre
     pre
-pre enrollled fingerprints
-    pre enrollled fingerprints
+pre enrolled fingerprints
+    pre enrolled fingerprints
 precise
     precise
 precursors
@@ -3148,8 +3138,6 @@ providers
     providers
 providing
     providing
-pte
-    pte
 public
     public
 public interest
@@ -3250,8 +3238,8 @@ regional
     regional
 regional financial institutions
     regional financial institutions
-regional financial institutions introduce new financial products
-    regional financial institutions introduce new financial products
+regional financial institutions introduce
+    regional financial institutions introduce
 regions
     regions
 register
@@ -3478,6 +3466,8 @@ searching
     searching
 secret
     secret
+secret money practices
+    secret money practices
 sections
     sections
 sector
@@ -3714,6 +3704,8 @@ stone
     stone
 strategic
     strategic
+strategic considerations
+    strategic considerations
 strategic goals
     strategic goals
 strategic paradigm
@@ -4036,8 +4028,6 @@ the definition
     the definition
 the demands
     the demands
-the deployment
-    the deployment
 the design
     the design
 the developing countries
@@ -4048,16 +4038,16 @@ the digital platforms
     the digital platforms
 the digitization
     the digitization
-the diskiplinary domain
-    the diskiplinary domain
+the disciplinary domain
+    the disciplinary domain
 the disruption
     the disruption
 the ebb
     the ebb
 the economic output
     the economic output
-the ecozystem
-    the ecozystem
+the ecosystem
+    the ecosystem
 the effectiveness
     the effectiveness
 the effects
@@ -4068,8 +4058,8 @@ the emergence
     the emergence
 the emerging markets
     the emerging markets
-the emerging securities trading ecozystem
-    the emerging securities trading ecozystem
+the emerging securities trading ecosystem
+    the emerging securities trading ecosystem
 the entire industry landscape
     the entire industry landscape
 the entrant
@@ -4216,8 +4206,8 @@ the industry success
     the industry success
 the information security framework
     the information security framework
-the innovated ecozystem
-    the innovated ecozystem
+the innovated ecosystem
+    the innovated ecosystem
 the innovation
     the innovation
 the interaction
@@ -4314,6 +4304,8 @@ the path
     the path
 the platform
     the platform
+the politicians
+    the politicians
 the popular media
     the popular media
 the position
@@ -4416,8 +4408,6 @@ the software firm
     the software firm
 the state
     the state
-the strategic considerations
-    the strategic considerations
 the strategy
     the strategy
 the subject
@@ -4444,8 +4434,8 @@ the timing
     the timing
 the top executives
     the top executives
-the trading ecozystem
-    the trading ecozystem
+the trading ecosystem
+    the trading ecosystem
 the traditional banking model
     the traditional banking model
 the traditional business
@@ -4600,8 +4590,6 @@ timing
     timing
 today
     today
-today realities
-    today realities
 tool
     tool
 tools
@@ -4786,8 +4774,8 @@ variables
     variables
 variety
     variety
-various diskiplines
-    various diskiplines
+various disciplines
+    various disciplines
 ventures
     ventures
 verify

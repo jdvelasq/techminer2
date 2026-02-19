@@ -6,6 +6,7 @@ ignore=CVS,.git,__pycache__,build,dist,.venv,venv
 [MESSAGES CONTROL]
 # Disable docstring requirements for internal code 
 disable=
+    c-extension-no-member,
     import-outside-toplevel,
     line-too-long,
     missing-class-docstring,

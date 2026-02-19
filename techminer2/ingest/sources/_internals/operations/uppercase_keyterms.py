@@ -51,12 +51,12 @@ def _get_project_noun_phrases(dataframe: pd.DataFrame) -> set[str]:
 # ----------------------------------------------------------------------------
 def _get_builtin_noun_phrases() -> set[str]:
     noun_phrases = load_builtin_word_list("noun_phrases.txt")
-    noun_phrases = [
+    processed_noun_phrases = {
         phrase.strip().lower().replace("_", " ")
         for phrase in noun_phrases
         if phrase.strip()
-    ]
-    return set(noun_phrases)
+    }
+    return processed_noun_phrases
 
 
 # ----------------------------------------------------------------------------

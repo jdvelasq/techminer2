@@ -18,7 +18,7 @@ Smoke test:
       Success      : True
       File         : ...fintech-with-references/refine/thesaurus/descriptors.the.txt
       Source field : DESCRIPTOR_TOK
-      Status       : 2467 items added to the thesaurus.
+      Status       : 2440 items added to the thesaurus.
     <BLANKLINE>
 
     >>> from techminer2.refine.descriptors.pre_processing_merger import PreProcessingMerger
@@ -32,7 +32,6 @@ Smoke test:
       Success        : True
       Field          : _UNSPECIFIED_
       Thesaurus      : descriptors.the.txt
-      Output File    :
     <BLANKLINE>
 
 
@@ -48,13 +47,16 @@ from techminer2.refine._internals.rules import (
     apply_chemical_compounds_match_rule,
     apply_common_and_basic_rule,
     apply_exact_match_rule,
+    apply_geographic_names_rule,
     apply_hyphenation_match_rule,
+    apply_leading_noise_removal_rule,
     apply_num_punct_to_space_rule,
     apply_number_to_letter_rule,
     apply_plural_singular_match_rule,
-    apply_plural_to_singular_rule,
+    apply_prefer_singular_over_plural_rule,
     apply_punctuation_variation_match_rule,
     apply_scientific_and_academic_rule,
+    apply_trailing_noise_removal_rule,
     apply_white_space_normalization_rule,
     apply_xml_encoding_rule,
 )
@@ -79,6 +81,9 @@ class PreProcessingMerger(
 
         for rule in [
             apply_exact_match_rule,
+            apply_geographic_names_rule,
+            apply_leading_noise_removal_rule,
+            # apply_trailing_noise_removal_rule,
             apply_number_to_letter_rule,
             apply_num_punct_to_space_rule,
             apply_xml_encoding_rule,
@@ -87,7 +92,7 @@ class PreProcessingMerger(
             apply_punctuation_variation_match_rule,
             apply_hyphenation_match_rule,
             apply_plural_singular_match_rule,
-            apply_plural_to_singular_rule,
+            apply_prefer_singular_over_plural_rule,
             apply_common_and_basic_rule,
             apply_scientific_and_academic_rule,
         ]:

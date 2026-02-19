@@ -57,18 +57,20 @@ def _colorize_number(num: int, colored_output: bool) -> str:
     return str(num)
 
 
-def _truncate_file_path(file_path: str) -> str:
+def _truncate_file_path(file_path: Optional[str]) -> Optional[str]:
+    if file_path is None:
+        return None
     if len(file_path) > TRUNCATE_FILEPATH_THRESHOLD:
         file_path = "..." + file_path[-TRUNCATE_FILEPATH_TAIL:]
     return file_path
 
 
 def _build_output_string(
-    output_file: str,
-    thesaurus_file: str,
-    msg: str,
+    output_file: Optional[str],
+    thesaurus_file: Optional[str],
+    msg: Optional[str],
     success: bool,
-    field: str,
+    field: Optional[str],
     colored_output: bool,
 ) -> str:
 
@@ -80,7 +82,7 @@ def _build_output_string(
     text += f"  Success        : {success}\n"
     text += f"  Field          : {field}\n"
     text += f"  Thesaurus      : {thesaurus_file}\n"
-    if colored_output_file or colored_output_file == "":
+    if colored_output_file is not None:
         text += f"  Output File    : {colored_output_file}\n"
 
     return text
@@ -99,11 +101,11 @@ class ThesaurusMatchResult:
 
     def __str__(self) -> str:
         return _build_output_string(
-            output_file=self.output_file or "",
-            thesaurus_file=self.thesaurus_file or "",
-            msg=self.msg or "",
+            output_file=self.output_file,
+            thesaurus_file=self.thesaurus_file,
+            msg=self.msg,
             success=self.success,
-            field=self.field or "",
+            field=self.field,
             colored_output=self.colored_output,
         )
 
