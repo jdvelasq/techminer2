@@ -1,37 +1,57 @@
 afghanistan
+africa
 aland islands
 albania
+aleutian islands
 algeria
 american samoa
+americas
+andes
+andes mountains
 andorra
 angola
 anguilla
 antarctica
 antigua and barbuda
+arabian peninsula
+aral sea
+arctic
+arctic ocean
+arctic region
 argentina
 armenia
 aruba
+asia
+atlantic ocean
 australia
+australia and new zealand
 austria
 azerbaijan
+azores
 bahamas
 bahrain
+balkan peninsula
 bangladesh
 barbados
+bay of bengal
+beijing
 belarus
 belgium
 belize
 benin
 bermuda
 bhutan
+black sea
 bolivia
 bonaire
+borneo
 bosnia and herzegovina
 botswana
 bouvet island
 brasil
 brazil
 british indian ocean territory
+british isles
 brunei darussalam
 bulgaria
 burkina faso
@@ -40,9 +60,17 @@ cabo verde
 cambodia
 cameroon
 canada
+canary islands
+cape of good hope
 cape verde
+caribbean
+caribbean sea
+caspian sea
+caucasus
 cayman islands
 central african republic
+central america
+central asia
 chad
 chile
 china
@@ -51,7 +79,10 @@ cocos islands
 colombia
 comoros
 congo
+congo basin
+congo river
 cook islands
+coral sea
 costa rica
 cote divoire
 croatia
@@ -60,35 +91,53 @@ curacao
 cyprus
 czech republic
 czechia
+danube
+dead sea
 democratic republic of the congo
 denmark
 djibouti
 dominica
 dominican republic
+east china sea
+eastern africa
+eastern asia
+eastern europe
 ecuador
 egypt
 el salvador
+equatorial africa
 equatorial guinea
 eritrea
 espana
 estonia
 eswatini
 ethiopia
+euphrates
+europe
 falkland islands
+faroe islands
 faroe islands
 fiji
 finland
+florida peninsula
 france
 french guiana
 french polynesia
 french southern territories
 gabon
+galapagos islands
 gambia
+ganges
+ganges delta
+ganges river
 georgia
 germany
 ghana
 gibraltar
+great barrier reef
+great lakes
 greece
+greenland
 greenland
 grenada
 guadeloupe
@@ -97,15 +146,24 @@ guatemala
 guernsey
 guinea
 guinea-bissau
+gulf of mexico
+gulf stream
 guyana
 haiti
 heard island and mcdonald islands
+himalaya
+himalayas
+hindu kush
+hispaniola
 holy see
 honduras
 hong kong
+horn of africa
 hungary
+iberian peninsula
 iceland
 india
+indian ocean
 indonesia
 iran
 iraq
@@ -120,9 +178,15 @@ jordan
 kazakhstan
 kenya
 kiribati
+korean peninsula
 kosovo
 kuwait
 kyrgyzstan
+la plata
+lake baikal
+lake tanganyika
+lake titicaca
+lake victoria
 lao people democratic republic
 latvia
 lebanon
@@ -141,13 +205,23 @@ malaysia
 maldives
 mali
 malta
+mariana trench
 marshall islands
 martinique
 mauritania
 mauritius
 mayotte
+mediterranean
+mediterranean sea
+mekong delta
+mekong river
+melanesia
 mexico
 micronesia
+micronesia
+middle africa
+middle east
+mississippi river
 moldova
 monaco
 mongolia
@@ -162,36 +236,60 @@ nepal
 netherlands
 netherlands antilles
 new caledonia
+new guinea
 new zealand
 nicaragua
 niger
+niger river
 nigeria
+nile
+nile delta
+nile river
 niue
 norfolk island
+north america
+north atlantic
 north korea
 north macedonia
+north pacific
+north pole
+north sea
+northern africa
+northern europe
 northern mariana islands
 norway
+oceania
 oman
+orinoco
+pacific ocean
 pakistan
 palau
 palestine
 panama
+panama canal
 papua new guinea
 paraguay
+parana river
+patagonia
+persian gulf
 peru
 philippines
 pitcairn
 poland
+polynesia
 portugal
 puerto rico
 qatar
+red sea
 réunion
+rhine
 romania
 rusia
 russia
 russian federation
 rwanda
+sahara
+sahara desert
 saint barthélemy
 saint helena
 saint kitts and nevis
@@ -203,9 +301,11 @@ samoa
 san marino
 sao tome and principe
 saudi arabia
+scandinavian peninsula
 senegal
 serbia
 seychelles
+siberia
 sierra leone
 singapore
 sint maarten
@@ -214,12 +314,27 @@ slovenia
 solomon islands
 somalia
 south africa
+south america
+south atlantic
+south china sea
 south georgia and the south sandwich islands
 south korea
+south pacific
+south pole
 south sudan
+south-eastern asia
+southern africa
+southern asia
+southern europe
+southern ocean
 spain
 sri lanka
+strait of gibraltar
+strait of malacca
+sub-saharan africa
 sudan
+suez canal
+sumatra
 suriname
 svalbard and jan mayen
 swaziland
@@ -230,11 +345,14 @@ taiwan
 tajikistan
 tanzania
 thailand
+tibetan plateau
+tigris
 timor-leste
 togo
 tokelau
 tonga
 trinidad and tobago
+tropical andes
 tunisia
 turkey
 turkiye
@@ -255,8 +373,15 @@ venezuela
 vietnam
 virgin islands
 virgin islands
+volga
 wallis and futuna
+western africa
+western asia
+western europe
 western sahara
+yangtze river
+yellow river
 yemen
+yucatan peninsula
 zambia
 zimbabwe
