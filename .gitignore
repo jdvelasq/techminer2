@@ -60,6 +60,11 @@ examples/hrtech/ingest/processed/
 examples/hrtech/refine/
 examples/hrtech/report/
 
+examples/learning-analytics/analyze/
+examples/learning-analytics/ingest/processed/
+examples/learning-analytics/refine/
+examples/learning-analytics/report/
+
 examples/legaltech/analyze/
 examples/legaltech/ingest/processed/
 examples/legaltech/refine/
@@ -89,6 +94,11 @@ examples/retail-analytics/analyze/
 examples/retail-analytics/ingest/processed/
 examples/retail-analytics/refine/
 examples/retail-analytics/report/
+
+examples/teaching-analytics/analyze/
+examples/teaching-analytics/ingest/processed/
+examples/teaching-analytics/refine/
+examples/teaching-analytics/report/
 
 examples/tinyml/analyze/
 examples/tinyml/ingest/processed/
