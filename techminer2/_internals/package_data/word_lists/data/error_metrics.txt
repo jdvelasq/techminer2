@@ -1,0 +1,196 @@
+absolute average deviation
+absolute average deviations
+absolute error
+absolute percentage error
+absolute percentage errors
+absolute relative error
+absolute relative errors
+accuracy score
+adjusted r squared
+adjusted r squared error
+adjusted r squared errors
+adversarial loss
+adversarial losses
+arcface loss
+arcface losses
+average absolute percentage error
+average absolute percentage errors
+average maximum relative error
+average maximum relative errors
+average percent error
+average percent errors
+average quadratic error
+average quadratic errors
+average relative error
+average relative errors
+binary cross entropies
+binary cross entropy
+categorical cross entropies
+categorical cross entropy
+center loss
+center losses
+connectionist temporal classification loss
+connectionist temporal classification losses
+contrastive loss
+contrastive losses
+cosine embedding loss
+cosine embedding losses
+cosine similarity loss
+cosine similarity losses
+cross entropy loss
+cross entropy losses
+ctc loss
+ctc losses
+dice loss
+dice losses
+discriminator loss
+discriminator losses
+earth mover distance
+earth mover distances
+elbo loss
+elbo losses
+evidence lower bound loss
+expectation loss
+expectation losses
+explained variance score
+explained variance scores
+focal loss
+focal losses
+focal tversky loss
+focal tversky losses
+generator loss
+generator losses
+hinge loss
+hinge losses
+huber loss
+huber losses
+iou loss
+iou losses
+jaccard loss
+jaccard losses
+kl divergence
+kl divergences
+kullback leibler divergence
+kullback leibler divergences
+l1 loss
+l1 losses
+l2 loss
+l2 losses
+log cosh loss
+log cosh losses
+log loss
+log losses
+lovasz loss
+lovasz losses
+margin loss
+margin losses
+max error
+max errors
+maximum absolute error
+maximum absolute errors
+maximum absolute percentage error
+maximum absolute percentage errors
+maximum error percentage
+maximum error percentages
+maximum likelihood loss
+maximum likelihood losses
+maximum percentage error
+maximum percentage errors
+mean absolute deviation
+mean absolute deviations
+mean absolute error
+mean absolute errors
+mean absolute percentage error
+mean absolute scaled error
+mean absolute scaled errors
+mean bias deviation
+mean bias deviations
+mean bias error
+mean bias errors
+mean relative error
+mean relative errors
+mean square error
+mean square errors
+mean squared error
+mean squared errors
+mean squared log error
+mean squared log errors
+mean squared percentage error
+mean squared percentage errors
+median absolute deviation
+median absolute deviations
+median absolute error
+median absolute errors
+median absolute percentage error
+median absolute percentage errors
+negative log likelihood
+negative log likelihood loss
+negative log likelihood losses
+negative log likelihoods
+normalized mean squared error
+normalized mean squared errors
+normalized root mean squared error
+normalized root mean squared errors
+perceptual loss
+perceptual losses
+pinball loss
+pinball losses
+poisson loss
+poisson losses
+quantile loss
+quantile losses
+r squared error
+r squared errors
+reconstruction loss
+reconstruction losses
+relative absolute error
+relative absolute errors
+relative percentage error
+relative percentage errors
+residual sum of squares
+rmse error
+rmse error value
+rmse error values
+rmse errors
+root mean square error
+root mean square errors
+root mean squared error
+root mean squared errors
+root mean squared log error
+root mean squared log errors
+root mean squared percentage error
+root mean squared percentage errors
+smooth l1 loss
+smooth l1 losses
+softmax loss
+softmax losses
+sparse categorical cross entropies
+sparse categorical cross entropy
+squared hinge loss
+squared hinge losses
+standard deviation error
+standard deviation errors
+sum of square error
+sum of square errors
+sum of squared error
+sum of squared errors
+sum square error
+sum square errors
+symmetric mean absolute percentage error
+symmetric mean absolute percentage errors
+total squared error
+total squared errors
+triplet loss
+triplet losses
+tversky loss
+tversky losses
+tweedie loss
+tweedie losses
+variational loss
+variational losses
+wasserstein loss
+wasserstein losses
+weighted absolute percentage error
+weighted absolute percentage errors
+weighted mean absolute percentage error
+weighted mean absolute percentage errors
