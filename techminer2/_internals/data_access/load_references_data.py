@@ -28,7 +28,8 @@ def load_references_data(
     path = get_references_data_path(root_directory)
 
     if not path.exists():
-        raise AssertionError(f"{path.name} not found")
+        # raise AssertionError(f"{path.name} not found")
+        return pd.DataFrame()
 
     try:
         return pd.read_csv(
