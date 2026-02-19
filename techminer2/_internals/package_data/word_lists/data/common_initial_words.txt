@@ -54,6 +54,7 @@ acanthus
 acariform
 accelerate
 accelerative
+accelerated
 accent
 accentuate
 acceptable
