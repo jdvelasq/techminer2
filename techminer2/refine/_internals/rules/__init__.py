@@ -4,6 +4,7 @@ from .chemical_compounds_match import apply_chemical_compounds_match_rule
 from .common_and_basic import apply_common_and_basic_rule
 from .contains_pattern_match import apply_contains_pattern_match_rule
 from .ends_with_match import apply_ends_with_match_rule
+from .error_metrics import apply_error_metrics_rule
 from .exact_match import apply_exact_match_rule
 from .find_close_match import apply_find_close_match_rule
 from .fuzzy_cutoff_1_word_match import apply_fuzzy_cutoff_1_word_match_rule
@@ -34,6 +35,7 @@ __all__ = [
     "apply_common_and_basic_rule",
     "apply_contains_pattern_match_rule",
     "apply_ends_with_match_rule",
+    "apply_error_metrics_rule",
     "apply_exact_match_rule",
     "apply_find_close_match_rule",
     "apply_fuzzy_cutoff_1_word_match_rule",
