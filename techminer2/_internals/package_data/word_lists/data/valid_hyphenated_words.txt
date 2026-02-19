@@ -7,8 +7,10 @@
 2-d
 2-group
 2-tuple
+21st-century
 23-nycrr-500
 3-d
+360-degree
 3d-modeling
 3d-printing
 4-level
@@ -57,12 +59,14 @@ acoustic-emissions
 acousto-optic
 action-object
 action-reaction
+action-taking
 action-value
 active-inactive
 active-learning
 active-passive
 active-reactive
 activity-based
+activity-centred
 activity-dependent
 activity-stability
 activity-travel
@@ -133,6 +137,7 @@ ai-enhanced
 ai-generated
 ai-human
 ai-integrated
+ai-mediated
 ai-of-thing
 ai-powered
 ai-supported
@@ -235,6 +240,7 @@ ampere-hour
 amplify-and-forward
 amplitude-frequency
 amplitude-phase
+an-analytic
 anaerobic-aerobic
 analog-digital
 analog-to-digital
@@ -243,14 +249,17 @@ analysis-mass
 analysis-synthesis
 analytic-as-a-service
 analytic-based
+analytic-driven
 analytic-enabled
 analytical-numerical
 analytics-as-a-service
+analytics-based
 analytics-centric
 analytics-consistency
 analytics-driven
 analytics-enabled
 analytics-ops
+analytics-supported
 anatase-rutile
 anchor-free
 angle-based
@@ -355,6 +364,7 @@ arellano-bond
 arousal-valence
 array-antenna
 arrival-departure
+art-focused
 artery-vein
 artifact-actor
 artificial-intelligence
@@ -368,11 +378,13 @@ aspect-opinion
 aspect-sentiment
 aspect-term
 asphalt-aggregate
+asset-based
 asset-intensive
 asset-liability
 asset-management
 association-2045-b
 at-risk
+at-risk-students
 atmosphere-ocean
 attack-defense
 attack-resilient
@@ -417,6 +429,7 @@ auto-tune
 auto-tuning
 auto-weighted
 autoencoder-like
+automated-testing
 average-case
 average-reward
 average-value
@@ -425,6 +438,7 @@ aws-iot
 axial-symmetric
 axis-angle
 azide-alkyne
+b-esem
 b-learning
 b-mooc
 back-action
@@ -517,8 +531,11 @@ best-bad
 best-effort
 best-fit
 best-known
+best-of-breed
 best-practice
+best-subset
 best-worst
+beta-amyloid
 beta-glucosidase
 between-firm
 between-group
@@ -605,6 +622,7 @@ blade-element
 blast-furnace
 blended-learning
 blind-spot
+block-based
 block-diagonal
 block-length
 block-level
@@ -661,6 +679,7 @@ brand-image
 brand-new
 brand-reseller
 brand-self
+breadth-first
 break-even
 brick-and-mortar
 brick-and-mortar-stores
@@ -681,6 +700,7 @@ building-energy
 building-integrated
 building-scale
 building-vehicle
+built-in
 built-up
 bundle-like
 burrows-wheeler
@@ -719,6 +739,7 @@ calcium-looping
 calcium-silicate-hydrate
 call-center
 camera-based
+camera-monitored
 cameron-martin
 campus-scale
 canopy-k-means
@@ -759,6 +780,7 @@ carbon-sulphur
 carbon-thermal
 carbon-water
 carbonation-calcination
+card-sorting
 cardioverter-defibrillator
 cardioverter-defibrillators
 cardioverters-defibrillators
@@ -816,6 +838,7 @@ cellulose-lignin
 centec-tlp
 center-based
 center-surround
+central-entity
 central-local
 central-west
 central-western
@@ -824,6 +847,7 @@ ceo-board
 ceo-chair
 ceramic-polymer
 ceria-carbonate
+cet-4
 cfd-gis
 cfd-ml
 cfd-model
@@ -845,6 +869,7 @@ channel-dependent
 channel-spatial
 channel-state
 channel-wise
+chaotic-lstm
 char-steam
 character-level
 charge-carrier
@@ -880,6 +905,7 @@ chill-down
 china-pakistan
 china-russia
 chinese-english
+chinese-foreign
 chinese-style
 chip-scale
 chit-chat
@@ -906,6 +932,7 @@ civic-mindedness
 class-agnostic
 class-attribute
 class-aware
+class-based
 class-conditional
 class-specific
 class-wise
@@ -1051,6 +1078,7 @@ co-opt
 co-optimizations
 co-ordinated
 co-ownership
+co-participation
 co-pilot
 co-pollutant
 co-precipitation
@@ -1080,6 +1108,7 @@ co-storage
 co-subscription
 co-substitution
 co-substrate
+co-teaching
 co-tier
 co-training
 co-treatment
@@ -1116,12 +1145,14 @@ cobit-2019
 coca-cola
 codas-ivif
 code-generation
+code-writing
 cognitive-affective
 cognitive-affective-conative
 cognitive-behavioral
 cognitive-emotional
 cognitive-experiential
 cognitive-visual
+cohort-based
 cold-chain
 cold-hot
 cold-plate
@@ -1156,10 +1187,12 @@ community-level
 company-community
 company-consumer
 company-wide
+competence-based
 competency-based
 competition-based
 component-based
 component-wise
+composite-based
 compound-protein
 compressed-air
 compression-absorption
@@ -1195,6 +1228,8 @@ condition-monitoring
 conduction-convection
 cone-beam
 confidence-aware
+confidence-based
+conflict-affected
 conflict-resolution
 congestion-based
 connection-costs
@@ -1228,6 +1263,7 @@ content-aware
 content-based
 content-dependent
 content-driven
+content-specific
 content-style
 context-aware
 context-awareness
@@ -1344,6 +1380,7 @@ country-year
 county-level
 cournot-nash
 course-based
+course-completion
 course-related
 course-specific
 covalent-organic
@@ -1357,11 +1394,13 @@ cpi-curve
 cpu-gpu
 crack-free
 cramer-wold
+credential-based
 credit-card
 credit-risk
 crisis-driven
 crisp-dm
 criss-cross
+criterion-referenced
 critic-actor
 crop-livestock
 crop-soil
@@ -1510,6 +1549,7 @@ data-acquisition
 data-analytics
 data-augmentation
 data-based
+data-bodies
 data-center
 data-communication
 data-cube
@@ -1546,6 +1586,7 @@ data-sources
 data-stream
 data-structure
 data-to-text
+data-tracking
 data-transmission
 data-visualization
 data-warehouse
@@ -1559,6 +1600,7 @@ day-night
 day-of-the-week
 day-to-day
 dc-link
+de-biasing
 de-central
 de-icing
 de-identification
@@ -1596,6 +1638,7 @@ deep-space
 defect-free
 defender-attacker
 defender-attacker-defender
+degree-awarding
 degree-day
 degree-days
 degree-of-freedom
@@ -1637,6 +1680,7 @@ der-cam
 derivative-free
 desert-oasis
 design-based
+design-in-use
 design-oriented
 design-response
 design-science
@@ -1776,6 +1820,7 @@ drop-cast
 drop-down
 drop-off
 drop-size
+dropping-out
 drought-resistance
 drove-extended
 dru-mmc
@@ -1789,6 +1834,8 @@ drug-response
 drug-side
 drug-target
 drum-buffer-rope
+dsm-5
+dsm-iv
 dt-smg
 dti-2
 dual-acceptor
@@ -1809,6 +1856,7 @@ dual-loop
 dual-motor
 dual-output
 dual-path
+dual-platform
 dual-polarization
 dual-pressure
 dual-process
@@ -1819,6 +1867,7 @@ dual-side
 dual-stream
 dual-system
 dual-task
+dual-teacher
 dual-tone
 dual-tree
 dual-type
@@ -1858,6 +1907,7 @@ e-commence
 e-commerce
 e-communication
 e-communications
+e-competence
 e-course
 e-courseware
 e-court
@@ -1927,6 +1977,7 @@ e-patient
 e-payment
 e-payments
 e-pharmacy
+e-portfolio
 e-portfolios
 e-privacy
 e-procurement
@@ -2036,6 +2087,7 @@ edit-distance
 editorial-special
 edu-tech
 education-as-a-service
+eeg-based
 eeio-v
 efficiency-as-a-service
 efficiency-equity
@@ -2123,6 +2175,7 @@ emotion-cause
 emotion-cognition-activity
 emotional-evaluative
 empirical-mode
+empirics-first
 employee-customer
 employee-employer
 employee-generated
@@ -2249,6 +2302,8 @@ error-free
 error-in-variables
 error-prone
 error-rate
+error-state
+escape-room
 esg-based
 esg-oriented
 esp32-cam
@@ -2278,10 +2333,12 @@ event-related
 event-triggered
 ever-more
 evidence-based
+evidence-centered
 ewt-sas
 ex-ante
 ex-post
 exact-match
+exam-taking
 example-based
 exchange-correlation
 excitation-emission
@@ -2317,6 +2374,7 @@ extract-transform-load
 extreme-scale
 extreme-value
 eye-care
+eye-gaze
 eye-gazing
 eye-movement
 eye-tracker
@@ -2384,6 +2442,7 @@ feed-in-tariff
 feed-in-tariffs
 feedback-loop
 feedforward-feedback
+felder-silverman
 fellows-in-training
 fence-free
 fermat-weber
@@ -2410,9 +2469,12 @@ field-walking
 field-wide
 fifteen-year
 fifth-generation
+fifth-grade
 fifty-nine
 figure-ground
 file-based
+fill-in
+fill-in-the-blank
 fill-rate
 film-like
 film-thickness
@@ -2513,6 +2575,7 @@ flat-top
 fleet-wide
 flip-flop
 flipped-classroom
+flipped-classrooms
 floating-point
 floor-plan
 flow-based
@@ -2668,6 +2731,7 @@ function-behavior-structure
 functional-structural
 fund-specific
 furnace-basic
+future-oriented
 future-proof
 fuzzy-analytic
 fuzzy-comprehensive
@@ -2727,6 +2791,7 @@ gate-source
 gauss-newton
 gauss-seidel
 gaussian-like
+gaze-tracking
 gel-polymer
 gel-sol
 gel-water
@@ -2734,6 +2799,7 @@ gen-z
 gender-based
 gender-differences
 gender-fair
+gender-related
 gender-specific
 gene-disease
 gene-drug
@@ -2798,6 +2864,7 @@ government-citizen
 government-dependent
 government-nonprofit
 government-tenanted
+gpt-4
 graboost-aagt
 grad-cam
 gradient-based
@@ -2807,6 +2874,7 @@ gradient-free
 graduate-level
 grain-size
 gram-charlier
+gram-staining
 gramm-leach-bliley
 grammar-translation
 grant-based
@@ -2885,6 +2953,7 @@ hadoop-mapreduce
 hair-like
 half-bridge
 half-cell
+half-day
 half-duplex
 half-line
 half-normal
@@ -2978,7 +3047,9 @@ high-energy
 high-energy-density
 high-fidelity
 high-field
+high-flow
 high-frequency
+high-functioning
 high-gain
 high-grade
 high-growth
@@ -3024,6 +3095,7 @@ high-sensitive
 high-skill
 high-sodium
 high-speed
+high-stakes
 high-status
 high-strength
 high-tech
@@ -3074,6 +3146,7 @@ horizontal-axis
 horizontal-vertical
 hospital-based
 hospital-wide
+host-based
 host-guest
 host-microbe
 host-pathogen
@@ -3202,6 +3275,7 @@ hyper-redundant
 hyper-segmentation
 hyper-spheres
 hyper-tunning
+hyper-video
 hysteresis-less
 hysteresis-loop
 i-star
@@ -3214,6 +3288,8 @@ ice-water
 icp-oes
 ict-based
 ict-driven
+ict-tools
+idb-brs
 identifier-critic
 identity-aware
 identity-based
@@ -3264,6 +3340,7 @@ in-ear
 in-field
 in-flight
 in-focus
+in-game
 in-gap
 in-ground
 in-group
@@ -3326,6 +3403,7 @@ inductor-capacitor-inductor
 industrial-grade
 industrial-scale
 industrial-technology
+industry-academia
 industry-academic
 industry-education
 industry-level
@@ -3359,6 +3437,7 @@ inner-class
 inner-layer
 inner-outer
 inner-sphere
+innovation-based
 innovation-decision
 inorganic-organic
 inorganic-polymer
@@ -3373,12 +3452,14 @@ input-target
 input-to-state
 input-voltage
 inquiry-based
+inquiry-driven
 insect-based
 insertion-extraction
 inside-outside
 insider-outsider
 instance-wise
 institution-based
+institution-specific
 instruction-set
 instructor-learner
 instrument-tissue
@@ -3481,6 +3562,7 @@ interaction-aware
 intercalation-conversion
 interference-cancellation
 interior-point
+intermediate-level
 internal-external
 internationalization-performance
 internet-based
@@ -3607,12 +3689,14 @@ jurassic-cretaceous
 just-in-time
 just-in-time-teaching
 k-12
+k-anonymity
 k-anonymization
 k-means
 k-means++
 k-medoids
 k-nearest
 k-nn
+k-prototype
 k-representation
 k-representations
 k-truss
@@ -3643,6 +3727,8 @@ knowledge-based
 knowledge-building
 knowledge-discovery
 knowledge-driven
+knowledge-flow
+knowledge-in-action
 knowledge-intensive
 knowledge-led
 knowledge-management
@@ -3658,6 +3744,7 @@ kruger-dunning
 kuhn-tucker
 kullback-leibler
 l-shaped
+lab-based
 lab-scale
 label-wise
 labor-income
@@ -3668,6 +3755,7 @@ laboratory-scale
 labour-intensive
 labour-market
 ladder-like
+lag-sequential
 lag-time
 lake-water
 laminar-turbulent
@@ -3743,14 +3831,17 @@ lean-electrolyte
 lean-green
 learner-centered
 learner-centred
+learner-centric
 learner-learner
 learning-based
 learning-by-doing
 learning-by-making
 learning-by-researching
 learning-by-searching
+learning-centered
 learning-driven
 learning-enabled
+learning-performance
 learning-powered
 least-cost
 least-square
@@ -3780,11 +3871,13 @@ li-organic
 li-oxygen
 li-rich
 li-span
+library-specific
 lidar-based
 lidar-camera
 lidar-imu
 life-course
 life-cycle-cost
+life-events
 life-form
 life-forms
 life-science
@@ -3824,6 +3917,7 @@ linear-quadratic
 linear-time
 lingo-cellulosic
 link-adaptation
+link-based
 liquid-air
 liquid-crystal
 liquid-gas
@@ -3911,6 +4005,7 @@ long-haul
 long-horizon
 long-lead
 long-life
+long-memory
 long-period
 long-range
 long-run
@@ -3934,6 +4029,7 @@ loss-minimization
 lot-size
 lot-sizing
 lotka-volterra
+low-achieving
 low-altitude
 low-band
 low-bias
@@ -4084,6 +4180,7 @@ many-objective
 many-to-many
 marine-continental
 mark-recapture
+marker-based
 market-based
 market-clearing
 market-competitive
@@ -4098,6 +4195,7 @@ marketing-finance
 marketing-technology
 marketing/e-marketing
 mars-van
+mash-up
 mask-rcnn
 mass-balance
 mass-cost-model
@@ -4107,6 +4205,7 @@ mass-retrofits
 mass-spring-damper
 mass-transfer
 master-slave
+mastery-based
 match-specific
 matching-difference
 material-discursive
@@ -4157,6 +4256,7 @@ meaning-making
 means-end
 measure-correlate-predict
 measure-data
+measurement-based
 mechanical-biological
 mechanical-chemical
 mechanical-electrical
@@ -4282,14 +4382,17 @@ method-the
 methodology-central
 methyl-coenzyme
 methyl-ester
+metric-driven
 metric-semantic
 metrics-driven
 metropolis-hastings
 micro-aerial
 micro-air
+micro-blogging
 micro-cap
 micro-computed
 micro-controllers
+micro-credential
 micro-credentials
 micro-differential
 micro-droplet
@@ -4298,6 +4401,7 @@ micro-electro-mechanical-system
 micro-enterprise
 micro-enterprises
 micro-entities
+micro-ethics
 micro-evidence
 micro-foundational
 micro-gas
@@ -4372,6 +4476,7 @@ middle-range
 middle-sized
 middle-upper
 milk-run
+milki-psy
 millimeter-wave
 millimetre-wave
 min-cost
@@ -4412,6 +4517,7 @@ mises-fisher
 miss-detection
 mission-critical
 mission-driven
+mixed-ability
 mixed-autonomy
 mixed-criticality
 mixed-culture
@@ -4455,6 +4561,7 @@ model-selection
 model-the
 model-view-controller
 modeling-artificial
+modeling-based
 modelling-artificial
 moderate-resolution
 moderate-to-high
@@ -4490,6 +4597,7 @@ moss-like
 moth-flame
 mother-child
 mother-daughter
+motion-based
 motivation-opportunity-ability
 motor-generator
 mound-shoal
@@ -4569,6 +4677,7 @@ multi-contact
 multi-contingency
 multi-controller
 multi-country
+multi-course
 multi-crane
 multi-criteria-assessment
 multi-criterion
@@ -4889,6 +4998,7 @@ multiple-benefits
 multiple-benefits-approach
 multiple-choice
 multiple-criteria
+multiple-group
 multiple-helix
 multiple-input
 multiple-instance
@@ -4901,22 +5011,28 @@ multiply-accumulation
 multiply-and-accumulate
 multiply-and-accumulation
 mumford-shah
+museum-based
 mutation-selection
 muti-index
 mutual-inductance
 mutual-information
 myo-inositol
+n-back
+n-gram
+n-grams
 n-zebms
 na-air
 na-ion
 na-metal
 na-storage
 naive-bayes
+nano-bio-robotics
 nano-drone
 nano-drones
 nano-enhanced
 nano-micro
 nano-oxide
+nano-robotics
 nano-sensor
 nano-sensors
 nano-sized
@@ -4952,8 +5068,10 @@ near-surface
 near-term
 near-zero
 nearest-neighbor
+nearest-neighbors
 nearest-neighbour
 nearly-zero
+need-based
 need-solution
 needle-leaf
 needle-like
@@ -4967,6 +5085,7 @@ neo-institutional
 neo-liberalism
 neo-normative
 neonatal-perinatal
+nep-2020
 net-load
 net-positive
 net-present
@@ -5405,6 +5524,7 @@ non-viral
 non-volatile
 non-wood
 nonstrict-feedback
+norm-referenced
 normal-gamma
 north-central
 north-north
@@ -5501,6 +5621,7 @@ on-state
 on-stream
 on-street
 on-the-edge
+on-the-fly
 on-time
 once-through
 one-arm
@@ -5562,6 +5683,7 @@ operations-marketing
 operator-distribution
 opioid-related
 opportunity-motivation-ability
+opt-in
 optical-electrical
 optical-thermal
 optical-thermal-electrical
@@ -5674,6 +5796,7 @@ paradist-hmm
 parallel-connected
 parallel-serial
 parallelogram-shaped
+parameter-based
 parameter-dependent
 parameter-efficient
 parameter-tuning
@@ -5698,9 +5821,12 @@ particle-wall
 pascal-context
 pass-fail
 passivity-based
+password-based
 patch-based
+path-based
 path-dependent
 path-following
+path-generation
 path-goal
 path-independent
 path-length
@@ -5738,12 +5864,15 @@ peer-assessment
 peer-assisted
 peer-evaluation
 peer-firm
+peer-group
 peer-interaction
 peer-learning
 peer-led
+peer-mentoring
 peer-review
 peer-to-peer
 pem-fuel
+pen-based
 penalty-reward
 penman-monteith
 pennsylvania-new
@@ -5789,10 +5918,13 @@ perovskite-perovskite
 perovskite-polymer
 perovskite-silicon
 peroxide-acetic
+person-based
+person-centered
 person-environment
 person-group
 person-job
 person-organization
+person-oriented
 person-situation
 person-specific
 personalization-privacy
@@ -5877,10 +6009,12 @@ ping-pong
 pipeline-parallel
 piston-cylinder
 pitman-yor
+pivot-tables
 pixel-accurate
 pixel-domain
 pixel-level
 pixel-wise
+pk-12
 place-based
 plackett-luce
 plan-do-check-act
@@ -5964,6 +6098,7 @@ polymer-polymer
 polymer-solvent
 polynomial-based
 polynomial-time
+pool-based
 pop-ups
 population-based
 pore-filling
@@ -6201,6 +6336,7 @@ power-transportation
 power-voltage
 power-water
 power-wind
+pqm-metric
 practice-based
 practice-intensive
 practice-theoretical
@@ -6276,6 +6412,7 @@ pre-processing
 pre-production
 pre-project
 pre-pyrolysis
+pre-reading
 pre-recession
 pre-reform
 pre-retirement
@@ -6290,6 +6427,7 @@ pre-succession
 pre-swirl
 pre-task
 pre-tax
+pre-tertiary
 pre-test-post-test
 pre-transition
 pre-trial
@@ -6310,6 +6448,7 @@ predictor-based
 predictor-corrector
 prefectural-level
 pregel-like
+prek-12
 premixed-flame
 prescribed-time
 prescriptive-based
@@ -6351,6 +6490,8 @@ principles-based
 printed-circuit
 prior-knowledge
 privacy-aware
+privacy-by-design
+privacy-enhanced
 privacy-enhancing
 privacy-preservation
 privacy-preserving
@@ -6429,6 +6570,7 @@ protein-tyrosine
 proton-electron
 proton-exchange
 proton-exchange-membrane
+prototype-based
 prototype-level
 provider-customer
 proximal-point
@@ -6500,6 +6642,7 @@ pyrolysis-gasification
 pys-park
 q-cnn
 q-learning
+q-matrices
 q-network
 q-rung
 q-sort
@@ -6510,6 +6653,8 @@ quad-core
 quad-stable
 quadrant-chart
 quadruple-junction
+qualification-based
+qualifications-based
 qualitative-quantitative
 quality-by-design
 quality-management
@@ -6583,6 +6728,7 @@ query-aware
 query-document
 question-answer
 queue-length
+quiz-taking
 r-cnn
 r-peak
 r-tool
@@ -6660,10 +6806,13 @@ real-system
 real-time
 real-virtual
 real-world
+reality-based
 reality-enhanced
 rear-view
 rebound-effect
+receding-horizon
 receiver-reactor
+recency-frequency-monetary
 receptor-positive
 record-high
 record-keeping
@@ -6875,6 +7024,7 @@ sandwich-like
 sars-cov-2
 satellite-terrestrial
 satisfaction-loyalty
+savitzky-golay
 saw-tooth
 sbm-dea
 scada-as-a-service
@@ -6903,6 +7053,7 @@ science-industry
 science-policy
 science-practice
 science-technology
+science-technology-society
 scikit-learn
 scm-tbfo
 score-based
@@ -6969,6 +7120,7 @@ self-consistent
 self-consumption
 self-control
 self-correction
+self-critique
 self-declaration
 self-determination
 self-developed
@@ -6978,17 +7130,20 @@ self-diffusion
 self-directed
 self-direction
 self-discharge
+self-disclosure
 self-discrepancy
 self-distillation
 self-driving
 self-efficacy
 self-energy
 self-esteem
+self-evaluated
 self-evaluation
 self-examination
 self-excitation
 self-exciting
 self-execution
+self-explanation
 self-expression
 self-feedback
 self-flipped
@@ -7003,15 +7158,19 @@ self-identity
 self-ignition
 self-inductance
 self-indulgent
+self-instruction
 self-interest
 self-interference
 self-knowledge
+self-labeled
 self-leadership
 self-learning
 self-maintenance
 self-management
 self-monitoring
 self-optimization
+self-optimizing
+self-organised
 self-organising
 self-organization
 self-organized
@@ -7034,6 +7193,7 @@ self-regulation
 self-regulatory
 self-renewal
 self-renovation
+self-report
 self-reported
 self-reports
 self-representation
@@ -7050,6 +7210,7 @@ self-supervision
 self-testing
 self-tracking
 self-transcendent
+self-transition
 self-triggered
 self-tuning
 self-view
@@ -7134,6 +7295,7 @@ sentence-bert
 sentence-level
 sentence-transformer
 sentiment-analysis
+sentiment-based
 sentinel-1
 sequence-dependent
 sequence-function
@@ -7222,6 +7384,7 @@ silver-water
 sim-based
 similarity-attraction
 similarity-aware
+similarity-based
 similarity-driven
 simulation-based
 simulation-driven
@@ -7330,6 +7493,7 @@ small-cell
 small-data
 small-depth
 small-gain
+small-grain
 small-group
 small-medium
 small-molecule
@@ -7364,10 +7528,12 @@ social-political
 social-psychological
 social-relational
 social-technical
+socially-shared
 socio-affective
 socio-cognitive
 socio-constructivism
 socio-constructivist
+socio-critical
 socio-ecological
 socio-economic
 socio-economical
@@ -7466,6 +7632,7 @@ solvent-solute
 solvent-water
 sorption-desorption
 source-channel
+source-coding
 source-destination
 source-domain
 source-load
@@ -7577,6 +7744,7 @@ state-of-charge
 state-of-health
 state-of-the
 state-of-the-art
+state-or-trait
 state-owned
 state-society
 state-space
@@ -7648,6 +7816,7 @@ structural-functional
 structural-health-monitoring
 structure-activity
 structure-adaptive
+structure-aware
 structure-conduct-performance
 structure-function
 structure-performance
@@ -7660,20 +7829,25 @@ structure-sensitive
 structure-specific
 structure-stability
 structure-texture
+student-at-risk
 student-based
 student-centered
 student-centeredness
 student-centred
 student-centric
+student-facing
 student-generated
 student-instructor
 student-instructors
 student-led
+student-related
 student-response
+student-staff
 student-student
 student-t
 student-teacher
 student-to-student
+students-at-risk
 study-specific
 style-consistent
 styrene-butadiene
@@ -7690,6 +7864,7 @@ sub-cells
 sub-disciplines
 sub-domains
 sub-event
+sub-layers
 sub-markets
 sub-policy
 sub-saharan
@@ -7707,6 +7882,7 @@ submarine-cables
 submicron-scale
 subset-sum
 subsidiary-headquarters
+success-enablers
 sulfur-carbon
 sulfur-iodine
 sulfur-tolerant
@@ -7786,6 +7962,7 @@ systems-part
 t-sne
 t-test
 t-tests
+t2-test
 table-tennis
 tack-weld
 tail-gas
@@ -7802,6 +7979,7 @@ target-driven
 task-based
 task-driven
 task-oriented
+task-related
 task-resource
 task-specific
 task-technology
@@ -7810,12 +7988,17 @@ tax-benefit
 tax-transfer
 taxon-specific
 taylor-sequence
+teach-r
+teacher-centered
+teacher-facing
 teacher-learner
+teacher-led
 teacher-producers
 teacher-student
 teacher-tutor
 teaching-learning
 teaching-learning-research
+teaching-research
 teager-kaiser
 team-based
 team-level
@@ -7824,6 +8007,7 @@ technical-economic
 technical-economical
 technical-social
 technical-vocational
+techno-driven
 techno-ecological
 techno-economic
 techno-economic-environmental
@@ -7833,6 +8017,7 @@ techno-economics
 techno-economy
 techno-financial
 techno-functional
+techno-pedagogy
 techno-regulation
 techno-social
 technological-organizational-environmental
@@ -7849,6 +8034,7 @@ technology-organisation-environment
 technology-organization-environment
 technology-organizational-environmental
 technology-push
+technology-supported
 techo-economic
 techo-economics
 tecno-economic
@@ -7887,14 +8073,19 @@ ternary-blend
 terrestrial-satellite
 tert-butanol
 tert-butyl
+test-based
 test-case
 test-dev
 test-driven
 test-retest
 test-rig
 test-set
+test-tak
+test-takers
+test-taking
 text-analysis
 text-based
+text-chat
 text-driven
 text-image
 text-line
@@ -7912,7 +8103,9 @@ tf-idf
 the-art
 theil-sen
 theoretical-experimental
+theory-aligned
 theory-driven
+theory-informed
 theory-practice
 therm-mechanical
 thermal-assisted
@@ -7967,6 +8160,7 @@ three-electrode
 three-electron
 three-in-one
 three-layer
+three-layered
 three-level
 three-module
 three-month
@@ -8002,6 +8196,7 @@ time-domain
 time-driven
 time-dynamic
 time-efficient
+time-embedded
 time-frequency
 time-history
 time-inconsistent
@@ -8010,12 +8205,15 @@ time-inhomogeneous
 time-invariant
 time-lapse
 time-linkage
+time-management
 time-of-flight
 time-of-use
 time-on-market
+time-on-task
 time-optimal
 time-periods
 time-point
+time-related
 time-resolved
 time-scale
 time-sensitive
@@ -8030,6 +8228,7 @@ time-span
 time-spent
 time-temperature
 time-time
+time-to-degree
 time-to-failure
 time-to-go
 time-variant
@@ -8049,6 +8248,7 @@ tofel-grehl
 token-based
 token-wise
 tongue-gesture
+tool-related
 tool-tissue
 tool-workpiece
 top-bottom
@@ -8070,7 +8270,10 @@ total-variation
 touch-points
 tourist-host
 tpc-h
+trace-data
 trace-driven
+trace-self-regulated
+trace-srl
 track-and-trace
 trade-based
 trade-environment
@@ -8085,6 +8288,7 @@ train-track
 training-free
 trait-environment
 trait-like
+trajectory-tracking
 trans-log
 transaction-cost
 transaction-level
@@ -8152,11 +8356,13 @@ turbulence-flame
 turbulence-radiation
 turn-by-turn
 turn-off
+turn-taking
 turning-points
 turnover-performance
 turpan-hami
 tutor-student
 tweet-based
+twenty-first-century
 twenty-five
 twenty-one
 twenty-seven
@@ -8246,6 +8452,7 @@ ultra-wide
 ultra-wide-band
 ultrahigh-rate
 ultralong-life
+ultralow-altitude
 ultraviolet-visible
 uncertainty-aware
 under-approximation
@@ -8301,6 +8508,7 @@ user-investor
 user-item
 user-level
 user-location
+user-oriented
 user-product
 user-service
 user-specific
@@ -8335,6 +8543,7 @@ value-creation
 value-focused
 value-function
 value-iteration
+value-sensitive
 value-the
 value-this
 vapor-liquid
@@ -8389,9 +8598,11 @@ vice-virtue
 vickrey-clarke-grove
 vickrey-clarke-groves
 video-analytic
+video-analytics
 video-assisted
 video-audio
 video-based
+video-clickstream
 video-clips
 video-conferencing
 video-driven
@@ -8401,6 +8612,8 @@ video-on-demand
 video-platforms
 video-streaming
 video-surveillance
+video-viewing
+video-watching
 view-factor
 view-invariant
 view-wise
@@ -8454,6 +8667,7 @@ voltage-power
 voltage-source
 voltage-time
 voxel-wise
+vr/ar-assisted
 vsc-hvdc
 vsm-94
 wait-free
@@ -8530,6 +8744,7 @@ weather-related
 web-application
 web-apps
 web-based
+web-based-learning
 web-like
 web-portal
 web-scale
@@ -8562,6 +8777,7 @@ whole-cell
 whole-genome
 whole-life
 whole-life-cycle
+whole-school
 why-question
 wi-fi
 wide-angle
@@ -8647,6 +8863,7 @@ work-family
 work-function
 work-home
 work-hour
+work-integrated
 work-life
 work-related
 work-time
@@ -8655,6 +8872,7 @@ worker-firm
 workflow-supported
 working-age
 workload-adaptive
+workplace-based
 wormhole-like
 worst-case
 wound-rotor
@@ -8673,12 +8891,15 @@ yin-yang
 yin-yang-pair
 ying-yang
 yolk-shell
+yolo-based
 yolov4-tiny
 yoon-nelson
 youtube-vis
 yule-walker
 yunnan-guizhou
+z-number
 z-number-based
+z-numbers
 z-numbers-based
 z-score
 z-valued
@@ -8691,6 +8912,7 @@ zero-defect
 zero-dimensional
 zero-emission
 zero-energy
+zero-fail
 zero-forcing
 zero-inflated
 zero-inflation
