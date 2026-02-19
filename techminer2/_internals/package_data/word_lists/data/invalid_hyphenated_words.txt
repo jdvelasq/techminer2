@@ -1,4 +1,3 @@
-1-d
 3-dimension
 3-dimensional
 30-company
@@ -12,11 +11,16 @@ a-particles
 a-rings
 a-shares
 a-stable
+academic-performance
+academic-risk
 accommoda-tion
 accuracy-interpretability
 acousto-electric
+act-r
+active-and-cooperative
 ad-block
 ad-tech
+adaptive-personalized
 aero-acoustics
 aero-dynamic
 aero-dynamics
@@ -64,6 +68,8 @@ alumino-silicate
 analyse-natural
 analysis-methods
 analysis-nlp
+analyt-ic
+analyt-ics
 analytic-artificial
 analytics-artificial
 analytics-predictive
@@ -118,9 +124,11 @@ ap-plication
 ap-plications
 apenninic-maghrebides
 applications-space
+aptitude-by-treatment
 ar-duino
 art-of-living
 assisting-system
+attempt-pattern
 au-tonomous
 audio-visual
 augmentative-and-alternative
@@ -464,6 +472,7 @@ cloud-computing
 cloud-management
 cluster-like
 cnn-convolutional
+co-)
 co-2
 co-activation
 co-active
@@ -485,6 +494,7 @@ co-crystal
 co-current
 co-dependence
 co-dependent
+co-designing
 co-determination
 co-efficient
 co-efficients
@@ -516,6 +526,7 @@ co-operating
 co-operation
 co-operative
 co-optimization
+co-orchestration
 co-ordinate
 co-oxidation
 co-phase
@@ -550,6 +561,7 @@ coke-making
 com-
 comb-like
 commercial-size
+computer-supportive
 con-strained
 con-tinuum
 configura-tion
@@ -582,6 +594,7 @@ counter-terror
 country-wide
 county-wide
 covid-9
+creative-learning
 credit-worthiness
 cross-culture
 cross-cut
@@ -602,6 +615,7 @@ cryo-preservation
 crypto-currencies
 crypto-currency
 cube-like
+curric-ula
 customer-algorithm
 customer-central
 customer-modeling
@@ -624,11 +638,14 @@ cyber-secure
 cyber-security
 cyber-victimization
 cycle-gan
+d-learning
 d-pv
 dama-dmbok
 dama-dmbokv2
+dash-board
 data-base
 data-centric
+data-cycle
 data-drivensupplychain
 data-flow
 data-granularity
@@ -691,8 +708,10 @@ di-oxide
 di-selenide
 di-sodium
 die-back
+digital-labs
 digital-learning
 digitali-zation
+directive-dialogic
 dis-performance
 disease-19
 distance-hybrid
@@ -724,6 +743,7 @@ e-book
 e-crm
 e-diagnose
 e-environment
+e-feed4mi
 e-human
 e-iearning
 e-iot
@@ -734,6 +754,7 @@ e-multidisciplinary
 e-personality
 e-platforms
 e-real
+e-school
 e-society
 e-sports
 e-tail
@@ -759,11 +780,13 @@ eco-toxicological
 eco-toxicology
 eco-village
 ed-tech
+ed-ucational
 edge-ai
 edge-artificial
 edge-device
 edge-wise
 education-social
+educationaldata-sources
 effect-size
 effi-ciency
 egg-shell
@@ -836,6 +859,8 @@ equi-vocal
 erythemato-squamous
 esp-32
 esvm-elm
+ethic-in-action
+ethics-in-action
 ethno-cultural
 ethno-linguistic
 ethno-racial
@@ -846,6 +871,7 @@ exergo-economic
 exergo-economics
 exergo-environmental
 exhaled-breath
+expectancy-value-cost
 extra-cellular
 extra-curricular
 extra-curriculum
@@ -861,6 +887,7 @@ f-topsis
 face-face
 face-recognition
 fail-over
+fair-capacitated
 fall-back
 fall-off
 family-wise
@@ -871,6 +898,7 @@ feed-rate
 feed-stock
 feed-stocks
 feed-water
+feld-silverman
 file-system
 films-thickness
 filter-bank
@@ -884,6 +912,7 @@ first-born
 first-year
 fish-eye
 fish-like
+five-factor
 five-fold
 flame-holder
 flap-wise
@@ -918,6 +947,7 @@ fund-raising
 fuzzy-ahp
 fuzzy-c
 fuzzy-kano
+game-learning
 game-play
 gas-dynamic
 gas-sensors
@@ -926,6 +956,7 @@ gear-box
 gear-shift
 gen-eration
 gen-set
+genai-dl
 gene-cure
 geo-accumulation
 geo-business
@@ -1022,8 +1053,10 @@ hidden-markov
 hier-archical
 hif-particle
 high-altitude
+high-content
 high-light
 high-precise
+highly-correlated
 ho-momorphic
 hold-out
 holt-winter
@@ -1052,6 +1085,7 @@ hr-technology
 hrm-as-practice
 hrm-finance
 human-ai
+human-center
 human-resources
 humans-robot
 hyb-blended
@@ -1119,6 +1153,8 @@ i-year
 ice-phobic
 ict-information
 ida-ice
+ill-defined
+image-generative
 imss-
 in-buildings
 in-built
@@ -1169,6 +1205,7 @@ integra-tion
 integrated-solutions
 integrity-tech
 intelli-gence
+intelligence-dl
 intelligence-state
 intelligence-support
 intelligent-buildings
@@ -1330,6 +1367,7 @@ inter-well
 inter-word
 inter-zonal
 interac-tive
+interactive-constructive-active-passive
 internet-of-thing
 internet-of-thingintegration
 internet-of-thingsintegration
@@ -1400,6 +1438,7 @@ intra-zonal
 inventory-control
 invest-tech
 iot-devices
+iot-health
 iot-internet
 iot-manet
 iron-making
@@ -1426,18 +1465,22 @@ its-intelligent
 jack-knife
 k-fix
 k-mean
+k-mooc
 k-near
 keto-hydroperoxide
 key-frame
 key-phrase
 keywords-generative
 kick-back
+knn-k-near
+knn-k-nearest
 knock-out
 know-that
 know-your-data
 know-your-markets
 know-your-technology
 kwazulu-natal
+la-reflect
 lab-view
 language-audio
 large-computing
@@ -1445,7 +1488,11 @@ lavenberg-marquardt
 law-reasonable
 lay-out
 lead-less
+learning-analytic
+learning-analytics
+learning-data
 learning-employment
+learning-learning
 learning-through-play
 learning/self-instruction
 left-over
@@ -1481,12 +1528,15 @@ load-ability
 lock-down
 lock-out
 log-file
+long-short-term-memory
 long-time
 loop-back
+low-performance
 low-powered
 low-precision
 lstm-long-short
 m-healthcare
+m-orchestrate
 m-planning
 ma-nagement
 machinable-consumable
@@ -1538,6 +1588,8 @@ mar-tech
 marker-less
 market-factors
 me-xico
+mechanic-game
+mechanics-game
 mechano-acoustic
 mechano-chemical
 mechano-chemistry
@@ -1575,6 +1627,7 @@ meta-material
 meta-model
 meta-modeling
 meta-perception
+meta-review
 meta-stable
 meta-surface
 meta-synthesis-interpretive
@@ -1647,6 +1700,7 @@ micro-engine
 micro-entrepreneurship
 micro-environment
 micro-environmental
+micro-ethic
 micro-explosion
 micro-explosive
 micro-expression
@@ -1764,6 +1818,7 @@ mid-summer
 mid-term
 mid-west
 mid-western
+midi-am
 min-hash
 min-wise
 mind-set
@@ -1778,10 +1833,13 @@ mis-match
 mis-registration
 mis-specification
 mixed-meta
+mixed-reality
 mixed-type
+ml-knn
 ml-machine
 mlp-ann
 mo-tor
+mobile-application
 mobile-computing
 mobile-net
 mod-eling
@@ -2285,6 +2343,7 @@ ni-fi
 night-light
 night-time
 nitro-aromatic
+no-sql
 node-wise
 noise-like
 non-academic
@@ -2780,6 +2839,7 @@ nosql-olap
 notice-employment
 now-casting
 o-ran
+objected-oriented
 off-line
 off-load
 off-loading
@@ -2796,6 +2856,7 @@ omni-channel
 omni-directional
 omni-retailing
 on-board
+on-currents
 on-going
 on-line
 on-load
@@ -2808,11 +2869,17 @@ on-tiny-device
 once-for-all
 online-based
 online-clustering
+online-discussion
 online-education
 online-learning
+online-merge-offline
+online-time
 ontology-database
 open-architectures
 open-drive
+open-flow
+open-response
+open-up
 opera-milp
 optimi-zation
 optimiza-tion
@@ -2885,6 +2952,7 @@ oxy-apatite
 oxy-hydrogen
 p2p-ets
 paddle-wheel
+pair-programming
 pair-wise
 paleo-climate
 paleo-depositional
@@ -2904,17 +2972,21 @@ pass-band
 pass-through
 patch-wise
 path-finding
+path-ways
 path-wise
 pay-back
 pay-off
 pdm-to-pcm
 pedo-climatic
+peer-reviews
 penta-acetic
 people-bi
 per-day
+per-formance
 per-use
 perfluoro-sulfonic
 peri-operative
+perma-model
 person-centred
 person-tool
 personalisation-privacy
@@ -3023,6 +3095,7 @@ poly-oxymethylene
 poly-phase
 poly-silicon
 poly-thiophene
+position-orientation
 post-activation
 post-adopt
 post-approval
@@ -3066,6 +3139,7 @@ postcovid-19
 power-electronics
 power-train
 ppdm-privacy
+pqm-metrics
 pre-aggregation
 pre-allocation
 pre-analysis
@@ -3192,6 +3266,7 @@ pre-treatment
 pre-warning
 precision-scalable
 predictive-maintenance
+presentation-assimilation-discussion
 pressure-less
 primary-care
 prime-time
@@ -3202,9 +3277,11 @@ pro-cyclical
 pro-inflammatory
 pro-oxidant
 pro-social
+process-mining
 process-models
 product-unit
 production-machines
+program-ming
 promotion-robust
 prop-tech
 property-liability
@@ -3377,6 +3454,7 @@ re-wetting
 read-out
 real-
 real-time-spatio-temporal
+recogni-tion
 recurrent-and-parallel
 red-shift
 reg-tech
@@ -3385,6 +3463,7 @@ regio-selective
 region-wise
 regional-connected
 reinforcement-learning
+remote-labs
 repeat-customer
 res-idential
 res-irf
@@ -3433,8 +3512,10 @@ second-language
 segment-wise
 self-adaptation
 self-adapting
+self-assessmenta
 self-blend
 self-checkout
+self-group
 self-guided
 self-motivated
 self-motivation
@@ -3529,9 +3610,11 @@ side-slip
 side-stream
 side-wall
 single-board
+single-case
 single-modal
 six-fold
 sk-languages
+skill-will
 slo-icatboost
 slow-down
 small-
@@ -3543,6 +3626,7 @@ small-satellite
 smart-agriculture
 smart-building
 smart-card
+smart-learning
 smart-phone
 smart-pls
 smart-textiles
@@ -3585,6 +3669,7 @@ spike-like
 spill-over
 spring-back
 square-sem
+srl-s
 ssnip-test
 st-microelectronic-32
 stage-up
@@ -3788,6 +3873,7 @@ sub-word
 sub-zero
 subject-subject
 subjectiva-tion
+success-enabler
 sugar-cane
 super-adiabatic
 super-adsorbent
@@ -3824,6 +3910,7 @@ super-tinyml
 supra-competitive
 supra-molecular
 supra-national
+svm-support
 swash-plate
 sweep-out
 switch-over
@@ -3831,6 +3918,8 @@ swot-ahp
 swot-go
 symbol-wise
 symptomatic-test
+syntactic-semantic
+sys-tematic
 t-spherical
 table-top
 tail-pipe
@@ -3839,6 +3928,9 @@ take-off
 take-over
 task-ambiance
 task-ambience
+teacher-ai
+teacher-artificial
+teacher-lead
 teams-based
 tech-business
 tech-nology
@@ -3923,6 +4015,7 @@ thin-films
 thing-device
 thousand-fold
 three-fold
+three-step
 through-flow
 through-out
 through-put
@@ -3935,6 +4028,7 @@ time-scales
 time-stamp
 time-stamping
 time-step
+time-sync
 time-zone
 tiny-ai
 tiny-machine-learning
@@ -3967,6 +4061,7 @@ trans-regional
 transfor-mations
 transform-spectrum
 transformer-less
+transformer-net
 transformer-xl
 transport-environment
 transportation-logistics
@@ -4052,6 +4147,7 @@ ultra-violet
 ultra-weak
 ultra-wideband
 un-burnt
+un-plugged
 un-used
 uncertainty-fear
 under-actuation
@@ -4075,6 +4171,7 @@ under-representation
 under-sampled
 under-sampling
 under-segmentation
+under-served
 under-study
 under-utilization
 under-voltage
@@ -4121,6 +4218,7 @@ vinyl-benzyl
 visco-elastic
 visco-elasticity
 visco-plastic
+visual-based
 visuo-motor
 visuo-spatial
 vitoria-minas
@@ -4130,6 +4228,7 @@ wait-list
 wake-up
 wal-mart
 walk-upapartment
+ware-house
 wash-out
 waste-water
 water-borne
@@ -4177,6 +4276,7 @@ work-load
 world-wide
 worm-like
 wrap-around
+xai-ed
 xg-boost
 xml-schema
 z-information
