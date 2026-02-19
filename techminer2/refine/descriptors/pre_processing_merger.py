@@ -16,7 +16,7 @@ Smoke test:
     ... )
     INFO: Thesaurus initialized successfully.
       Success      : True
-      File         : ...fintech-with-references/refine/thesaurus/descriptors.the.txt
+      File         : examples/tests/refine/thesaurus/descriptors.the.txt
       Source field : DESCRIPTOR_TOK
       Status       : 2440 items added to the thesaurus.
     <BLANKLINE>
