@@ -21,9 +21,12 @@ def transform_column(
     dataframe = load_data(root_directory=root_directory, usecols=None)
 
     if source.value not in dataframe.columns:
-        raise KeyError(
-            f"Source column '{source.value}' not found in {get_path(root_directory).name}"
-        )
+        if file == DataFile.MAIN:
+            raise KeyError(
+                f"Source column '{source.value}' not found in {get_path(root_directory).name}"
+            )
+
+        return 0
 
     dataframe[target.value] = function(dataframe[source.value])
 
