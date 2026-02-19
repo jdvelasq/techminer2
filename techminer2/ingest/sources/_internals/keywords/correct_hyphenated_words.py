@@ -124,7 +124,10 @@ def _extract_hyphenated_words(dataframe: pd.DataFrame) -> set:
         keywords = keywords.str.strip()
         words = keywords.str.split(" ").explode()
         words = words.str.strip()
+        words = words[~words.str.startswith("-")]
+        words = words[~words.str.endswith("-")]
         words = words[words.str.contains("-")]
+        words = words[~words.str.contains("--")]
         words = words[words.map(lambda x: x != "-")]
         words_set = set(words.tolist())
         hypenated_words.update(words_set)
