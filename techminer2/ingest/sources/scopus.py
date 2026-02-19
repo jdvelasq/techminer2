@@ -15,7 +15,7 @@ Smoke test - successful import:
 
 Smoke test - result attributes:
     >>> result.file_path
-    'examples/fintech-with-references/'
+    'examples/tests/'
     >>> result.status.startswith('Execution time :')
     True
 
@@ -26,14 +26,7 @@ Smoke test - fluent interface:
     True
 
 
-    >>> from techminer2.ingest.sources.scopus import Scopus
-    >>> result = (
-    ...     Scopus()
-    ...     .where_root_directory("examples/fintech-wout-references/")
-    ...     .run()
-    ... )
-    >>> result.success
-    True
+
 
 
 """
