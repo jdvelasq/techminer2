@@ -76,8 +76,10 @@ class ExtractAcronyms(
         ]:
             keywords = dataframe[col].dropna().str.split("; ")
             keywords = keywords.explode().str.strip()
-            keywords = keywords[keywords.str.contains("(", regex=False)]
-            keywords = keywords[keywords.str.endswith(")")]
+            keywords = keywords[
+                keywords.str.contains("(", regex=False)
+                & keywords.str.contains(")", regex=False)
+            ]
             keywords = keywords[~keywords.str.startswith("(")]
 
             if not keywords.empty:
@@ -85,28 +87,28 @@ class ExtractAcronyms(
                 for _, text in keywords.items():
 
                     text = text[:-1]
-                    definition, acronym = text.split(" ( ")
-                    if len(acronym.split()) > 1:
+                    def_text, acr_text = text.split(" ( ")
+                    if len(acr_text.split()) > 1:
                         continue
-                    if len(definition.split()) == 1:
+                    if len(def_text.split()) == 1:
                         continue
-                    if acronym.isdigit():
+                    if acr_text.isdigit():
                         continue
-                    if len(acronym) < MIN_ACRONYM_LENGTH:
+                    if len(acr_text) < MIN_ACRONYM_LENGTH:
                         continue
-                    if acronym in _EXCLUDED_ENUMERATIONS:
+                    if acr_text in _EXCLUDED_ENUMERATIONS:
                         continue
-                    if acronym in _EXCLUDED_COMMON_WORDS:
+                    if acr_text in _EXCLUDED_COMMON_WORDS:
                         continue
-                    if acronym[0] != definition[0]:
+                    if acr_text[0] != def_text[0]:
                         continue
 
-                    acronym = acronym.lower().strip()
-                    definition = definition.lower().strip()
-                    if acronym in self.acronyms:
-                        self.acronyms[acronym].add(definition)
+                    acr_text = acr_text.lower().strip()
+                    def_text = def_text.lower().strip()
+                    if acr_text in self.acronyms:
+                        self.acronyms[acr_text].add(def_text)
                     else:
-                        self.acronyms[acronym] = {definition}
+                        self.acronyms[acr_text] = {def_text}
 
     # -------------------------------------------------------------------------
     def extract_acronyms_in_keywords(self):
@@ -129,19 +131,19 @@ class ExtractAcronyms(
 
             if not multi_words.empty and not single_words.empty:
 
-                for _, definition in multi_words.items():
+                for _, def_text in multi_words.items():
 
-                    acronym = "".join([word[0] for word in definition.split()])
-                    if len(acronym) < MIN_ACRONYM_LENGTH:
+                    acr_text = "".join([word[0] for word in def_text.split()])
+                    if len(acr_text) < MIN_ACRONYM_LENGTH:
                         continue
 
-                    if acronym in single_words.values:
-                        acronym = acronym.strip()
-                        definition = definition.strip()
-                        if acronym in self.acronyms:
-                            self.acronyms[acronym].add(definition)
+                    if acr_text in single_words.values:
+                        acr_text = acr_text.strip()
+                        def_text = def_text.strip()
+                        if acr_text in self.acronyms:
+                            self.acronyms[acr_text].add(def_text)
                         else:
-                            self.acronyms[acronym] = {definition}
+                            self.acronyms[acr_text] = {def_text}
 
     # -------------------------------------------------------------------------
     def extract_acronyms_from_abstracts(self):
@@ -165,69 +167,69 @@ class ExtractAcronyms(
         sentences = sentences[sentences.str.contains(")", regex=False)]
         sentences = sentences.str.replace(r"\)[^)]*$", ")", regex=True)
 
-        acronyms = sentences.str.extract(r"\(([^)]+)\)")[0]
+        extracted_acronyms = sentences.str.extract(r"\(([^)]+)\)")[0]
 
         builtin_acronyms = load_builtin_mapping("acronyms.json")
 
-        for definition, acronym in zip(sentences.values, acronyms.values):
+        for def_text, acr_text in zip(sentences.values, extracted_acronyms.values):
 
-            if pd.isna(acronym):
-                continue
-
-            if pd.isna(definition):
+            if pd.isna(acr_text):
                 continue
 
-            acronym = acronym.lower().strip()
-            definition = definition.lower().strip()
-            definition = definition[-90:]
-
-            if definition == "":
+            if pd.isna(def_text):
                 continue
 
-            if acronym in _EXCLUDED_ENUMERATIONS:
-                continue
-            if acronym in _EXCLUDED_COMMON_WORDS:
-                continue
-            if acronym.isdigit():
-                continue
-            if len(acronym.split()) > 1:
-                continue
-            if len(acronym) < MIN_ACRONYM_LENGTH:
-                continue
-            if acronym.isdigit():
+            acr_text = acr_text.lower().strip()
+            def_text = def_text.lower().strip()
+            def_text = def_text[-90:]
+
+            if def_text == "":
                 continue
 
-            text = definition.split("(")[0].strip()
+            if acr_text in _EXCLUDED_ENUMERATIONS:
+                continue
+            if acr_text in _EXCLUDED_COMMON_WORDS:
+                continue
+            if acr_text.isdigit():
+                continue
+            if len(acr_text.split()) > 1:
+                continue
+            if len(acr_text) < MIN_ACRONYM_LENGTH:
+                continue
+            if acr_text.isdigit():
+                continue
+
+            text = def_text.split("(")[0].strip()
             full_words = text.split()
             words = [w for w in full_words if w != "and"]
             first_letters = "".join(word[0] for word in words)
 
-            if first_letters.endswith(acronym):
+            if first_letters.endswith(acr_text):
 
-                if "and" in words[-len(acronym) :]:
-                    definition = full_words[-len(acronym) + 1 :]
+                if "and" in words[-len(acr_text) :]:
+                    def_text = full_words[-len(acr_text) + 1 :]
                 else:
-                    definition = full_words[-len(acronym) :]
-                definition = " ".join(definition)
+                    def_text = full_words[-len(acr_text) :]
+                def_text = " ".join(def_text)
 
-            elif acronym[-1] == "s" and first_letters.endswith(acronym[:-1]):
+            elif acr_text[-1] == "s" and first_letters.endswith(acr_text[:-1]):
 
-                if "and" in full_words[-(len(acronym) - 1) :]:
-                    definition = full_words[-len(acronym) :]
+                if "and" in full_words[-(len(acr_text) - 1) :]:
+                    def_text = full_words[-len(acr_text) :]
                 else:
-                    definition = full_words[-(len(acronym) - 1) :]
-                definition = " ".join(definition)
-            elif acronym in builtin_acronyms:
-                for acronym_definition in builtin_acronyms[acronym]:
-                    if acronym_definition in definition:
-                        definition = acronym_definition
+                    def_text = full_words[-(len(acr_text) - 1) :]
+                def_text = " ".join(def_text)
+            elif acr_text in builtin_acronyms:
+                for acronym_definition in builtin_acronyms[acr_text]:
+                    if acronym_definition in def_text:
+                        def_text = acronym_definition
             else:
                 pass
 
-            if acronym in self.acronyms:
-                self.acronyms[acronym].add(definition)
+            if acr_text in self.acronyms:
+                self.acronyms[acr_text].add(def_text)
             else:
-                self.acronyms[acronym] = {definition}
+                self.acronyms[acr_text] = {def_text}
 
     # -------------------------------------------------------------------------
     def run(self):
