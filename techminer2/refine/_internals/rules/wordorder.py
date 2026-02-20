@@ -4,8 +4,8 @@ from techminer2 import ThesaurusField
 from techminer2._internals import Params
 from techminer2._internals.package_data import load_builtin_word_list
 
-from ._post_process import _post_process
 from ._pre_process import _pre_process
+from .fuzzy_cutoff_0_word import _report_mergings
 
 CHANGED = ThesaurusField.CHANGED.value
 IS_KEYWORD = ThesaurusField.IS_KEYWORD.value
@@ -16,7 +16,7 @@ SIGNATURE = ThesaurusField.SIGNATURE.value
 VARIANT = ThesaurusField.VARIANT.value
 
 
-def apply_stopwords_removal_rule(
+def apply_wordorder_rule(
     thesaurus_df: pd.DataFrame,
     params: Params,
 ) -> pd.DataFrame:
@@ -32,6 +32,7 @@ def apply_stopwords_removal_rule(
             f" {stopword} ", " "
         )
     thesaurus_df[SIGNATURE] = thesaurus_df[SIGNATURE].str.split(" ")
+    thesaurus_df[SIGNATURE] = thesaurus_df[SIGNATURE].apply(set)
     thesaurus_df[SIGNATURE] = thesaurus_df[SIGNATURE].apply(sorted)
     thesaurus_df[SIGNATURE] = thesaurus_df[SIGNATURE].str.join(" ")
     #
@@ -44,7 +45,24 @@ def apply_stopwords_removal_rule(
         )
     }
     thesaurus_df[PREFERRED] = thesaurus_df[SIGNATURE].apply(lambda x: mapping.get(x, x))
-    #
-    thesaurus_df = _post_process(thesaurus_df=thesaurus_df)
+    thesaurus_df[CHANGED] = thesaurus_df[PREFERRED] != thesaurus_df[OLD]
+
+    thesaurus_df = thesaurus_df[thesaurus_df[CHANGED]].copy()
+
+    mergings: dict[str, list[str]] = {}
+    for _, row in thesaurus_df.iterrows():
+        old = row[OLD]
+        new = row[PREFERRED]
+
+        if new not in mergings:
+            mergings[new] = []
+        if new != old:
+            mergings[new].append(old)
+
+    _report_mergings(
+        params=params,
+        mapping=mergings,
+        filename="candidate_mergings.txt",
+    )
 
     return thesaurus_df

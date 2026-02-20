@@ -19,10 +19,9 @@ from .regex_pattern import apply_regex_pattern_rule
 from .scientific_and_academic import apply_scientific_and_academic_rule
 from .startswith import apply_startswith_rule
 from .stemming import apply_stemming_rule
-from .stopwords_removal import apply_stopwords_removal_rule
 from .trailing_noise_removal import apply_trailing_noise_removal_rule
 from .white_space_normalization import apply_white_space_normalization_rule
-from .word_order import apply_word_order_rule
+from .wordorder import apply_wordorder_rule
 from .xml_encoding import apply_xml_encoding_rule
 
 __all__ = [
@@ -47,9 +46,8 @@ __all__ = [
     "apply_regex_pattern_rule",
     "apply_scientific_and_academic_rule",
     "apply_stemming_rule",
-    "apply_stopwords_removal_rule",
     "apply_trailing_noise_removal_rule",
     "apply_white_space_normalization_rule",
-    "apply_word_order_rule",
+    "apply_wordorder_rule",
     "apply_xml_encoding_rule",
 ]

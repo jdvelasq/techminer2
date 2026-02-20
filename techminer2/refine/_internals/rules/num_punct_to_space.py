@@ -24,7 +24,7 @@ def apply_num_punct_to_space_rule(
     #
     thesaurus_df[PREFERRED] = thesaurus_df[PREFERRED].str.lower()
     thesaurus_df[PREFERRED] = thesaurus_df[PREFERRED].apply(
-        lambda x: "#removed" if x and x[0].isdigit() or x[0] in ".,;:!?-" else x
+        lambda x: "#removed" if x and x[0].isdigit() or x[0] in "+/'.,;:!?-" else x
     )
     #
     thesaurus_df = _post_process(thesaurus_df=thesaurus_df)
