@@ -359,7 +359,7 @@ class IsStopword(
                 "descriptor"
             ].parallel_apply(
                 lambda x: "\n".join(
-                    get_contexts.having_patterns_matching([re.escape(x)]).run()
+                    get_contexts.having_text_matchings_matching([re.escape(x)]).run()
                 )
             )
 

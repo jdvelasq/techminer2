@@ -27,7 +27,7 @@ Smoke tests:
     >>> # Create and run the sorter
     >>> sorter = (
     ...     SortByEndsWithMatch()
-    ...     .having_pattern("(AUS)")
+    ...     .having_text_matching("(AUS)")
     ...     .where_root_directory("examples/tests/")
     ... )
     >>> sorter.run()

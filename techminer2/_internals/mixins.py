@@ -98,24 +98,54 @@ class ParamsMixin:
         self.params.case_sensitive = case_sensitive
         return self
 
-    def having_field_matching(self, pattern: str) -> Self:
-        pattern = check_required_str(
-            value=pattern,
-            param_name="pattern",
+    def having_item_citations_between(
+        self, start: Optional[int], end: Optional[int]
+    ) -> Self:
+        start, end = check_required_open_ended_int_range(
+            (start, end), "item_citations_range"
         )
-        self.params.pattern = pattern
+        self.params.item_citations_range = (start, end)
         return self
 
-    def having_patterns_matching(self, patterns) -> Self:
-        self.params.pattern = patterns
+    def having_item_occurrences_between(
+        self, start: Optional[int], end: Optional[int]
+    ) -> Self:
+        start, end = check_required_open_ended_int_range(
+            (start, end), "item_occurrences_range"
+        )
+        self.params.item_occurrences_range = (start, end)
         return self
 
-    def having_text_matching(self, pattern: Optional[str]) -> Self:
-        pattern = check_optional_str(
-            value=pattern,
-            param_name="pattern",
+    def having_items_in(self, item_list: Optional[list[str]]) -> Self:
+        item_list = check_optional_str_list(
+            value=item_list,
+            param_name="items_in",
         )
-        self.params.pattern = pattern
+        self.params.items_in = item_list
+        return self
+
+    def having_items_in_top(self, top_n: Optional[int]) -> Self:
+        top_n = check_optional_positive_int(
+            value=top_n,
+            param_name="top_n",
+        )
+        self.params.top_n = top_n
+        return self
+
+    def having_items_ordered_by(self, items_order_by: str) -> Self:
+        items_order_by = check_required_str(
+            value=items_order_by,
+            param_name="items_order_by",
+        )
+        self.params.items_order_by = items_order_by
+        return self
+
+    def having_items_per_year(self, items_per_year: int) -> Self:
+        items_per_year = check_required_positive_int(
+            value=items_per_year,
+            param_name="items_per_year",
+        )
+        self.params.items_per_year = items_per_year
         return self
 
     def having_keys_ordered_by(self, keys_order_by: str) -> Self:
@@ -194,14 +224,6 @@ class ParamsMixin:
         self.params.other_items_order_by = other_items_order_by
         return self
 
-    def having_pattern(self, pattern: str) -> Self:
-        pattern = check_required_str(
-            value=pattern,
-            param_name="pattern",
-        )
-        self.params.pattern = pattern
-        return self
-
     def having_regex_flags(self, regex_flags: int) -> Self:
         regex_flags = check_required_non_negative_int(
             value=regex_flags,
@@ -226,67 +248,12 @@ class ParamsMixin:
         self.params.replacement = replacement
         return self
 
-    def having_item_citations_between(
-        self, start: Optional[int], end: Optional[int]
-    ) -> Self:
-        start, end = check_required_open_ended_int_range(
-            (start, end), "item_citations_range"
-        )
-        self.params.item_citations_range = (start, end)
-        return self
-
-    def having_item_occurrences_between(
-        self, start: Optional[int], end: Optional[int]
-    ) -> Self:
-        start, end = check_required_open_ended_int_range(
-            (start, end), "item_occurrences_range"
-        )
-        self.params.item_occurrences_range = (start, end)
-        return self
-
-    def having_items_in(self, item_list: Optional[list[str]]) -> Self:
-        item_list = check_optional_str_list(
-            value=item_list,
-            param_name="items_in",
-        )
-        self.params.items_in = item_list
-        return self
-
-    def having_items_in_top(self, top_n: Optional[int]) -> Self:
-        top_n = check_optional_positive_int(
-            value=top_n,
-            param_name="top_n",
-        )
-        self.params.top_n = top_n
-        return self
-
-    def having_items_like(self, pattern: str) -> Self:
+    def having_text_matching(self, pattern: str) -> Self:
         pattern = check_required_str(
             value=pattern,
             param_name="pattern",
         )
         self.params.pattern = pattern
-        return self
-
-    def having_items_ordered_by(self, items_order_by: str) -> Self:
-        items_order_by = check_required_str(
-            value=items_order_by,
-            param_name="items_order_by",
-        )
-        self.params.items_order_by = items_order_by
-        return self
-
-    def having_items_per_year(self, items_per_year: int) -> Self:
-        items_per_year = check_required_positive_int(
-            value=items_per_year,
-            param_name="items_per_year",
-        )
-        self.params.items_per_year = items_per_year
-        return self
-
-    def having_items_with_stem(self, stem: str) -> Self:
-
-        self.params.pattern = stem
         return self
 
     def having_word(self, word: str) -> Self:

@@ -41,7 +41,7 @@ def execute_match_command():
     print()
     (
         SortByMatch()
-        .having_pattern(pattern)
+        .having_text_matching(pattern)
         .having_case_sensitive(case_sensitive)
         .having_regex_flags(regex_flags)
         .having_regex_search(regex_search)

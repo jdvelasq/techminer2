@@ -43,5 +43,7 @@ def execute_merge_command():
             print()
             return
 
-        MergeKeys().having_patterns_matching(patterns).where_root_directory("./").run()
+        MergeKeys().having_text_matchings_matching(patterns).where_root_directory(
+            "./"
+        ).run()
         print()

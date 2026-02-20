@@ -21,7 +21,7 @@ Smoke tests:
     >>> from techminer2.refine.thesaurus_old.countries import SortByStartsWithMatch
     >>> (
     ...     SortByStartsWithMatch()
-    ...     .having_pattern("Germ")
+    ...     .having_text_matching("Germ")
     ...     .where_root_directory("examples/tests/")
     ...     .run()
     ... )

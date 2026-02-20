@@ -18,4 +18,4 @@ def execute_exact_command():
         return
 
     print()
-    SortByExactMatch().where_root_directory("./").having_pattern(patterns).run()
+    SortByExactMatch().where_root_directory("./").having_text_matching(patterns).run()

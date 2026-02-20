@@ -18,7 +18,7 @@ def execute_exact_command():
         return
 
     print()
-    SortByExactMatch().having_pattern(patterns).run()
+    SortByExactMatch().having_text_matching(patterns).run()
 
 
 #

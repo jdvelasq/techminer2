@@ -29,7 +29,7 @@ Smoke tests:
     ...     SortByStartsWithMatch()
     ...     #
     ...     # THESAURUS:
-    ...     .having_pattern("Univ")
+    ...     .having_text_matching("Univ")
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("examples/tests/")

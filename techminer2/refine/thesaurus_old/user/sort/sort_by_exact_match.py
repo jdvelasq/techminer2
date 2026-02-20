@@ -41,7 +41,7 @@ Smoke tests:
     >>> (
     ...     SortByExactMatch()
     ...     .with_thesaurus_file("demo.the.txt")
-    ...     .having_pattern(
+    ...     .having_text_matching(
     ...         [
     ...             "BUSINESS_INFRASTRUCTURE",
     ...             "BUSINESS_OPPORTUNITIES",

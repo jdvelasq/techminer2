@@ -23,7 +23,7 @@ Smoke tests:
     >>> # Configure and run the sorter
     >>> (
     ...     SortByEndsWithMatch()
-    ...     .having_pattern("BANKS")
+    ...     .having_text_matching("BANKS")
     ...     .run()
     ... )
 

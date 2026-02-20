@@ -28,7 +28,7 @@ Smoke tests:
     ...     SortByFuzzyMatch()
     ...     #
     ...     # THESAURUS:
-    ...     .having_pattern("Texas")
+    ...     .having_text_matching("Texas")
     ...     .using_match_threshold(70)
     ...     #
     ...     # DATABASE:

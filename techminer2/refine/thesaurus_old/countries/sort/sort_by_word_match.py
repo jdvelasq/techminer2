@@ -22,7 +22,7 @@ Smoke tests:
     >>> from techminer2.refine.thesaurus_old.countries import SortByWordMatch
     >>> sorter = (
     ...     SortByWordMatch()
-    ...     .having_pattern("Germany")
+    ...     .having_text_matching("Germany")
     ...     .where_root_directory("examples/tests/")
     ...     .run()
     ... )

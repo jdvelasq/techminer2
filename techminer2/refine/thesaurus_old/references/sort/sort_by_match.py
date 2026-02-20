@@ -24,7 +24,7 @@ Smoke tests:
     >>> # Create, configure, and run the sorter
     >>> sorter = (
     ...     SortByMatch()
-    ...     .having_pattern("ECON")
+    ...     .having_text_matching("ECON")
     ...     .where_root_directory("examples/tests/")
     ... )
     >>> sorter.run()

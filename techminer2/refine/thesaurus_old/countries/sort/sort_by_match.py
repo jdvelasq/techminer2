@@ -23,7 +23,7 @@ Smoke tests:
     ...     SortByMatch()
     ...     #
     ...     # THESAURUS:
-    ...     .having_pattern("china")
+    ...     .having_text_matching("china")
     ...     .having_case_sensitive(False)
     ...     .having_regex_flags(0)
     ...     .having_regex_search(False)

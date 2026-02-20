@@ -23,7 +23,7 @@ Smoke tests:
     >>> # Configure and run the sorter
     >>> (
     ...     SortByExactMatch()
-    ...     .having_pattern("BLOCKCHAIN")
+    ...     .having_text_matching("BLOCKCHAIN")
     ...     .run()
     ... )
 

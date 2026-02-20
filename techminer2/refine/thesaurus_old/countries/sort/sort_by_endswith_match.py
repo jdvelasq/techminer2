@@ -20,7 +20,7 @@ Smoke tests:
     >>> from techminer2.refine.thesaurus_old.countries import SortByEndsWithMatch
     >>> (
     ...     SortByEndsWithMatch()
-    ...     .having_pattern("Darussalam")
+    ...     .having_text_matching("Darussalam")
     ...     .where_root_directory("examples/tests/")
     ...     .run()
     ... )

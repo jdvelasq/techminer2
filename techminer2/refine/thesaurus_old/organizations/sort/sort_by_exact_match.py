@@ -29,7 +29,7 @@ Smoke tests:
     ...     SortByExactMatch()
     ...     #
     ...     # THESAURUS:
-    ...     .having_pattern("Sch")
+    ...     .having_text_matching("Sch")
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("examples/tests/")

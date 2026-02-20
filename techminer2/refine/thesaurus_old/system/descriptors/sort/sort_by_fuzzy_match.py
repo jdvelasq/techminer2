@@ -23,7 +23,7 @@ Smoke tests:
     >>> # Configure and run the sorter
     >>> (
     ...     SortByFuzzyMatch()
-    ...     .having_pattern("INFORM")
+    ...     .having_text_matching("INFORM")
     ...     .using_match_threshold(50)
     ...     .run()
     ... )

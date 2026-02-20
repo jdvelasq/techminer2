@@ -24,7 +24,7 @@ Smoke tests:
     ...     SortByExactMatch()
     ...     #
     ...     # THESAURUS:
-    ...     .having_pattern("China")
+    ...     .having_text_matching("China")
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("examples/tests/")

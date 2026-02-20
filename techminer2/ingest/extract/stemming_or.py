@@ -20,7 +20,7 @@ Smoke tests:
     ...     .with_field("author_keywords")
     ...     #
     ...     # SEARCH:
-    ...     .having_pattern(
+    ...     .having_text_matching(
     ...         [
     ...             "financial technology",
     ...             "artificial intelligence",

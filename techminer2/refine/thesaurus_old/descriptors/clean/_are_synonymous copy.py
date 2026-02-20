@@ -207,7 +207,7 @@ class AreSynonymous(
 
         def internal__get_row_contexts(pattern):
 
-            contexts = self.get_contexts.having_patterns_matching([pattern]).run()
+            contexts = self.get_contexts.having_text_matchings_matching([pattern]).run()
             contexts = [c for c in contexts if len(c) > 80]
             contexts = [c.lower().replace("_", " ") for c in contexts]
             contexts = [c for c in contexts if pattern.lower().replace("_", " ") in c]

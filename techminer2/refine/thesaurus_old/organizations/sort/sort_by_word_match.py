@@ -30,7 +30,7 @@ Smoke tests:
     ...     SortByWordMatch()
     ...     #
     ...     # THESAURUS:
-    ...     .having_pattern("Bank")
+    ...     .having_text_matching("Bank")
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("examples/tests/")

@@ -26,7 +26,7 @@ Smoke tests:
     >>> # Configure and run the sorter
     >>> sorter = (
     ...     SortByExactMatch()
-    ...     .having_pattern("BLOCKCHAIN")
+    ...     .having_text_matching("BLOCKCHAIN")
     ...     .where_root_directory("examples/tests/")
     ... )
     >>> sorter.run()

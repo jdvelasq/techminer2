@@ -17,7 +17,7 @@ Smoke tests:
     ...     .with_field("author_keywords")
     ...     #
     ...     # SEARCH:
-    ...     .having_pattern("FINTECH")
+    ...     .having_text_matching("FINTECH")
     ...     .having_case_sensitive(False)
     ...     .having_regex_flags(0)
     ...     .having_regex_search(False)

@@ -18,7 +18,7 @@ def execute_startswith_command():
         return
 
     print()
-    SortByStartsWithMatch().having_pattern(patterns).run()
+    SortByStartsWithMatch().having_text_matching(patterns).run()
 
 
 ##

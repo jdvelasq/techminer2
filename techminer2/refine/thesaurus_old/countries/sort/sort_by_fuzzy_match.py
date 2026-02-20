@@ -21,7 +21,7 @@ Smoke tests:
     >>> from techminer2.refine.thesaurus_old.countries import SortByFuzzyMatch
     >>> (
     ...     SortByFuzzyMatch()
-    ...     .having_pattern("china")
+    ...     .having_text_matching("china")
     ...     .using_match_threshold(90)
     ...     .where_root_directory("examples/tests/")
     ...     .run()

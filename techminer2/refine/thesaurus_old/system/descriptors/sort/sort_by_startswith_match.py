@@ -23,7 +23,7 @@ Smoke tests:
     >>> # Configure and run the sorter
     >>> (
     ...     SortByStartsWithMatch()
-    ...     .having_pattern("COMM")
+    ...     .having_text_matching("COMM")
     ...     .run()
     ... )
 

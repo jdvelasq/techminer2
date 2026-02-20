@@ -41,7 +41,7 @@ Smoke tests:
     >>> (
     ...     SortByEndsWithMatch()
     ...     .with_thesaurus_file("demo.the.txt")
-    ...     .having_pattern("BUSINESS")
+    ...     .having_text_matching("BUSINESS")
     ...     .where_root_directory("examples/tests/")
     ...     .using_colored_output(False)
     ...     .run()

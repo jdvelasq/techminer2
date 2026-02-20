@@ -51,7 +51,7 @@ def internal__generate_definition(core_area, term, n_contexts):
         #
         # FIELD:
         .with_core_area(core_area)
-        .having_patterns_matching([term])
+        .having_text_matchings_matching([term])
         .having_n_contexts(n_contexts)
         #
         # DATABASE:

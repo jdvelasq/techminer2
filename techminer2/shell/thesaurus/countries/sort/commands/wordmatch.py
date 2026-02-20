@@ -18,4 +18,4 @@ def execute_wordmatch_command():
         return
 
     print()
-    SortByWordMatch().where_root_directory("./").having_pattern(patterns).run()
+    SortByWordMatch().where_root_directory("./").having_text_matching(patterns).run()

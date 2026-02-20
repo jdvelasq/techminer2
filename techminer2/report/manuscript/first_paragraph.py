@@ -17,7 +17,7 @@ Smoke tests:
     ...     FirstParagraph()
     ...     #
     ...     # TEXT:
-    ...     .with_abstract_having_pattern(['FINTECH', 'FINANCIAL_TECHNOLOGIES'])
+    ...     .with_abstract_.having_text_matching(['FINTECH', 'FINANCIAL_TECHNOLOGIES'])
     ...     .with_word_length((200, 400))
     ...     #
     ...     # DATABASE:

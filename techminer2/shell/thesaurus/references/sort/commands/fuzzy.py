@@ -21,7 +21,7 @@ def execute_fuzzy_command():
     (
         SortByFuzzyMatch()
         .where_root_directory("./")
-        .having_pattern(pattern)
+        .having_text_matching(pattern)
         .using_fuzzy_threshold(threshold)
         .run()
     )

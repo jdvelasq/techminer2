@@ -20,7 +20,7 @@ Smoke tests:
     ...     .with_field("author_keywords")
     ...     #
     ...     # SEARCH:
-    ...     .having_pattern("L.+")
+    ...     .having_text_matching("L.+")
     ...     .having_case_sensitive(False)
     ...     .having_regex_flags(0)
     ...     #

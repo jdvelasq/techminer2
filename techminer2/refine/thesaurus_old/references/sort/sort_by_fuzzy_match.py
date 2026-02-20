@@ -25,7 +25,7 @@ Smoke tests:
     >>> # Create, configure, and run the sorter
     >>> sorter = (
     ...     SortByFuzzyMatch()
-    ...     .having_pattern("ACCOU")
+    ...     .having_text_matching("ACCOU")
     ...     .using_match_threshold(50)
     ...     .where_root_directory("examples/tests/")
     ... )

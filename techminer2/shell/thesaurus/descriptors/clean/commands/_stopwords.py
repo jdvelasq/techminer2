@@ -59,7 +59,10 @@ def internal__user_input(core_area, n_contexts):
 def internal__get_contexts(pattern, n_contexts):
 
     terms = (
-        GetValues().having_patterns_matching([pattern]).where_root_directory("./").run()
+        GetValues()
+        .having_text_matchings_matching([pattern])
+        .where_root_directory("./")
+        .run()
     )
     terms = [term for term in terms if pattern in term]
 
@@ -234,7 +237,7 @@ def internal__extend_stopwords(pattern):
         return
 
     pattern = pattern.upper().replace(" ", "_")
-    ExtendStopwords().having_patterns_matching([pattern]).where_root_directory(
+    ExtendStopwords().having_text_matchings_matching([pattern]).where_root_directory(
         "./"
     ).run()
     print()

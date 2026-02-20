@@ -18,7 +18,7 @@ def execute_wordmatch_command():
         return
 
     print()
-    SortByWordMatch().having_pattern(patterns).run()
+    SortByWordMatch().having_text_matching(patterns).run()
 
 
 #

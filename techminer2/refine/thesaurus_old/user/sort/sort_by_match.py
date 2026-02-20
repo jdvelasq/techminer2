@@ -41,7 +41,7 @@ Smoke tests:
     >>> (
     ...     SortByMatch()
     ...     .with_thesaurus_file("demo.the.txt")
-    ...     .having_pattern("BUSINESS")
+    ...     .having_text_matching("BUSINESS")
     ...     .having_case_sensitive(False)
     ...     .having_regex_flags(0)
     ...     .having_regex_search(False)

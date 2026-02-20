@@ -20,7 +20,7 @@ Smoke tests:
     ...     .with_field("author_keywords_raw")
     ...     #
     ...     # SEARCH:
-    ...     .having_pattern("FINAN")
+    ...     .having_text_matching("FINAN")
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("examples/tests/")

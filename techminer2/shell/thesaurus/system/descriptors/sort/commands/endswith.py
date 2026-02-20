@@ -18,7 +18,7 @@ def execute_endswith_command():
         return
 
     print()
-    SortByEndsWithMatch().having_pattern(patterns).run()
+    SortByEndsWithMatch().having_text_matching(patterns).run()
 
 
 ##

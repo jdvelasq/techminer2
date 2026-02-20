@@ -23,7 +23,7 @@ Smoke tests:
     >>> # Configure and run the sorter
     >>> (
     ...     SortByWordMatch()
-    ...     .having_pattern("CREDIT")
+    ...     .having_text_matching("CREDIT")
     ...     .run()
     ... )
 

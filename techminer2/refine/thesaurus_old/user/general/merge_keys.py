@@ -48,7 +48,7 @@ Smoke tests:
     >>> (
     ...     MergeKeys()
     ...     .with_thesaurus_file("demo.the.txt")
-    ...     .having_patterns_matching(["FINTECH", "FINANCIAL_TECHNOLOGIES"])
+    ...     .having_text_matchings_matching(["FINTECH", "FINANCIAL_TECHNOLOGIES"])
     ...     .where_root_directory("examples/tests/")
     ...     .using_colored_output(False)
     ...     .run()

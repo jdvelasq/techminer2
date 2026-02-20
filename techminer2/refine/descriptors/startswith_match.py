@@ -1,0 +1,107 @@
+"""
+StartsWith Match
+===============================================================================
+
+Smoke test:
+    >>> from techminer2 import CorpusField
+
+    >>> from techminer2.refine.descriptors import CreateThesaurus
+
+    >>> (
+    ...     CreateThesaurus()
+    ...     .using_colored_output(False)
+    ...     .where_root_directory("examples/tests/")
+    ...     .run()
+    ... )
+    INFO: Thesaurus initialized successfully.
+      Success      : True
+      File         : examples/tests/refine/thesaurus/descriptors.the.txt
+      Source field : DESCRIPTOR_TOK
+      Status       : 2441 items added to the thesaurus.
+    <BLANKLINE>
+
+
+    >>> from techminer2.refine.descriptors import PreProcessThesaurus
+    >>> (
+    ...     PreProcessThesaurus()
+    ...     .using_colored_output(False)
+    ...     .where_root_directory("examples/tests/")
+    ...     .run()
+    ... )
+    INFO: Fuzzy cutoff matching completed.
+      Success        : True
+      Field          : _UNSPECIFIED_
+      Thesaurus      : descriptors.the.txt
+    <BLANKLINE>
+
+
+    >>> from techminer2.refine.descriptors import StartsWithMatch
+    >>> (
+    ...     StartsWithMatch()
+    ...     .having_text_matching("econ")
+    ...     .using_colored_output(False)
+    ...     .using_similarity_cutoff(90)
+    ...     .using_fuzzy_threshold(0)
+    ...     .where_root_directory("examples/tests/")
+    ...     .run()
+    ... )
+    INFO: StartsWith matching completed.
+      Success        : True
+      Field          : _UNSPECIFIED_
+      Thesaurus      : descriptors.the.txt
+    <BLANKLINE>
+
+
+"""
+
+import sys
+
+from techminer2 import CorpusField
+from techminer2._internals import ParamsMixin
+from techminer2.refine._internals.objs.thesaurus_match_result import (
+    ThesaurusMatchResult,
+)
+from techminer2.refine._internals.rules import apply_startswith_rule
+
+from .._internals.data_access import load_thesaurus_as_dataframe
+
+
+class StartsWithMatch(
+    ParamsMixin,
+):
+    """:meta private:"""
+
+    _HEADER_WIDTH = 70
+    _STEP_PREFIX = "  → "
+
+    def _write(self, text: str) -> None:
+        sys.stderr.write(text)
+        sys.stderr.flush()
+
+    def _print_header(self) -> None:
+        separator = "=" * self._HEADER_WIDTH
+        self._write(f"\n{separator}\nStartsWith Matching\n{separator}\n\n")
+
+    def run(self) -> ThesaurusMatchResult:
+
+        self.with_thesaurus_file("descriptors.the.txt")
+        self.with_source_field(CorpusField.DESCRIPTOR_TOK)
+
+        thesaurus_df = load_thesaurus_as_dataframe(params=self.params)
+
+        self._print_header()
+        self._write(f"{self._STEP_PREFIX}Applying StartsWith rule\n")
+
+        apply_startswith_rule(
+            thesaurus_df=thesaurus_df,
+            params=self.params,
+        )
+
+        return ThesaurusMatchResult(
+            colored_output=self.params.colored_output,
+            output_file=None,
+            thesaurus_file=self.params.thesaurus_file,
+            msg="StartsWith matching completed.",
+            success=True,
+            field=self.params.field.value,
+        )

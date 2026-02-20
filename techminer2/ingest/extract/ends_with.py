@@ -21,7 +21,7 @@ Smoke tests:
     ...     .with_field("author_keywords")
     ...     #
     ...     # SEARCH:
-    ...     .having_pattern("ING")
+    ...     .having_text_matching("ING")
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("examples/tests/")
