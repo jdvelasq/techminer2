@@ -7,8 +7,8 @@ from .ends_with import apply_ends_with_rule
 from .error_metrics import apply_error_metrics_rule
 from .exact_match import apply_exact_match_rule
 from .find_close_match import apply_find_close_match_rule
-from .fuzzy_cutoff_0_word import apply_fuzzy_cutoff_match_rule
-from .fuzzy_cutoff_1_word import apply_fuzzy_cutoff_1_word_match_rule
+from .fuzzy_cutoff_0_word import apply_fuzzy_cutoff_0_word_rule
+from .fuzzy_cutoff_1_word import apply_fuzzy_cutoff_1_word_rule
 from .geographic_names import apply_geographic_names_rule
 from .hyphenation import apply_hyphenation_rule
 from .inflected_verb_forms import apply_inflected_verb_forms_rule
@@ -38,8 +38,8 @@ __all__ = [
     "apply_error_metrics_rule",
     "apply_exact_match_rule",
     "apply_find_close_match_rule",
-    "apply_fuzzy_cutoff_1_word_match_rule",
-    "apply_fuzzy_cutoff_match_rule",
+    "apply_fuzzy_cutoff_0_word_rule",
+    "apply_fuzzy_cutoff_1_word_rule",
     "apply_geographic_names_rule",
     "apply_hyphenation_rule",
     "apply_inflected_verb_forms_rule",

@@ -1,5 +1,5 @@
 """
-FuzzyCutoffMatch
+FuzzyCutoffZeroWordMatch
 ===============================================================================
 
 Smoke test:
@@ -21,9 +21,9 @@ Smoke test:
     <BLANKLINE>
 
 
-    >>> from techminer2.refine.descriptors.pre_processing_merger import PreProcessingMerger
+    >>> from techminer2.refine.descriptors import PreProcessThesaurus
     >>> (
-    ...     PreProcessingMerger()
+    ...     PreProcessThesaurus()
     ...     .using_colored_output(False)
     ...     .where_root_directory("examples/tests/")
     ...     .run()
@@ -35,16 +35,16 @@ Smoke test:
     <BLANKLINE>
 
 
-    >>> from techminer2.refine.descriptors.fuzzy_cutoff_match import FuzzyCutoffMatch
+    >>> from techminer2.refine.descriptors import FuzzyCutoffZeroWordMatch
     >>> (
-    ...     FuzzyCutoffMatch()
+    ...     FuzzyCutoffZeroWordMatch()
     ...     .using_colored_output(False)
-    ...     .using_similarity_cutoff(85)
-    ...     .using_fuzzy_threshold(95)
+    ...     .using_similarity_cutoff(90)
+    ...     .using_fuzzy_threshold(0)
     ...     .where_root_directory("examples/tests/")
     ...     .run()
     ... )
-    INFO: Fuzzy cutoff matching completed.
+    INFO: Fuzzy cutoff 0-word matching completed.
       Success        : True
       Field          : _UNSPECIFIED_
       Thesaurus      : descriptors.the.txt
@@ -53,20 +53,33 @@ Smoke test:
 
 """
 
+import sys
+
 from techminer2 import CorpusField
 from techminer2._internals import ParamsMixin
 from techminer2.refine._internals.objs.thesaurus_match_result import (
     ThesaurusMatchResult,
 )
-from techminer2.refine._internals.rules import apply_fuzzy_cutoff_match_rule
+from techminer2.refine._internals.rules import apply_fuzzy_cutoff_0_word_rule
 
 from .._internals.data_access import load_thesaurus_as_dataframe
 
 
-class FuzzyCutoffMatch(
+class FuzzyCutoffZeroWordMatch(
     ParamsMixin,
 ):
     """:meta private:"""
+
+    _HEADER_WIDTH = 70
+    _STEP_PREFIX = "  → "
+
+    def _write(self, text: str) -> None:
+        sys.stderr.write(text)
+        sys.stderr.flush()
+
+    def _print_header(self) -> None:
+        separator = "=" * self._HEADER_WIDTH
+        self._write(f"\n{separator}\nFuzzy Cutoff 0-word Matching\n{separator}\n\n")
 
     def run(self) -> ThesaurusMatchResult:
 
@@ -75,7 +88,10 @@ class FuzzyCutoffMatch(
 
         thesaurus_df = load_thesaurus_as_dataframe(params=self.params)
 
-        apply_fuzzy_cutoff_match_rule(
+        self._print_header()
+        self._write(f"{self._STEP_PREFIX}Applying fuzzy cutoff 0-word rule\n")
+
+        apply_fuzzy_cutoff_0_word_rule(
             thesaurus_df=thesaurus_df,
             params=self.params,
         )
@@ -84,7 +100,7 @@ class FuzzyCutoffMatch(
             colored_output=self.params.colored_output,
             output_file=None,
             thesaurus_file=self.params.thesaurus_file,
-            msg="Fuzzy cutoff matching completed.",
+            msg="Fuzzy cutoff 0-word matching completed.",
             success=True,
             field=self.params.field.value,
         )

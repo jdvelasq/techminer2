@@ -1,7 +1,7 @@
 from typing import Optional
 
 
-def internal__check_optional_positive_float(
+def check_optional_positive_float(
     value: Optional[float], param_name: str
 ) -> Optional[float]:
     if value is None:

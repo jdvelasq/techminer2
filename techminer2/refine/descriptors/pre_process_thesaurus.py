@@ -1,6 +1,6 @@
 """
 
-Pre-Processing Merger
+Pre-Process Thesaurus
 ===============================================================================
 
 Smoke test:
@@ -21,9 +21,9 @@ Smoke test:
       Status       : 2441 items added to the thesaurus.
     <BLANKLINE>
 
-    >>> from techminer2.refine.descriptors.pre_processing_merger import PreProcessingMerger
+    >>> from techminer2.refine.descriptors.pre_process_thesaurus import PreProcessThesaurus
     >>> (
-    ...     PreProcessingMerger()
+    ...     PreProcessThesaurus()
     ...     .using_colored_output(False)
     ...     .where_root_directory("examples/tests/")
     ...     .run()
@@ -72,7 +72,7 @@ from .._internals.data_access import (
 PREFERRED = ThesaurusField.PREFERRED.value
 
 
-class PreProcessingMerger(
+class PreProcessThesaurus(
     ParamsMixin,
 ):
     """:meta private:"""
@@ -87,7 +87,7 @@ class PreProcessingMerger(
 
     def _print_header(self) -> None:
         separator = "=" * self._HEADER_WIDTH
-        self._write(f"\n{separator}\nPre-processing Merger\n{separator}\n")
+        self._write(f"\n{separator}\nPre-processing Thesaurus\n{separator}\n")
 
     def run(self) -> ThesaurusMatchResult:
 
@@ -103,17 +103,17 @@ class PreProcessingMerger(
             self._write(f"\n[{phase+1}] {self._ORDINAL[phase]} Pass\n")
 
             for msg, rule in [
-                ("Exact match", apply_exact_match_rule),
-                ("Geographic names", apply_geographic_names_rule),
-                ("Error metrics", apply_error_metrics_rule),
-                ("Number to letter", apply_number_to_letter_rule),
-                ("Num punct to space", apply_num_punct_to_space_rule),
-                ("XML encoding", apply_xml_encoding_rule),
-                ("White space normalization", apply_white_space_normalization_rule),
-                ("Chemical compounds", apply_chemical_compounds_rule),
+                ("exact match", apply_exact_match_rule),
+                ("geographic names", apply_geographic_names_rule),
+                ("error metrics", apply_error_metrics_rule),
+                ("number to letter", apply_number_to_letter_rule),
+                ("num punct to space", apply_num_punct_to_space_rule),
+                ("xml encoding", apply_xml_encoding_rule),
+                ("white space normalization", apply_white_space_normalization_rule),
+                ("chemical compounds", apply_chemical_compounds_rule),
                 ("punctuation variation", apply_punctuation_variation_rule),
-                ("Hyphenation", apply_hyphenation_rule),
-                ("Plural singular", apply_plural_singular_rule),
+                ("hyphenation", apply_hyphenation_rule),
+                ("plural singular", apply_plural_singular_rule),
                 ("prefer singular over plural", apply_prefer_singular_over_plural_rule),
                 ("common and basic", apply_common_and_basic_rule),
                 ("scientific and academic", apply_scientific_and_academic_rule),

@@ -7,6 +7,7 @@ from typing_extensions import Self
 from techminer2._internals.validation import (
     check_optional_base_estimator,
     check_optional_color_list,
+    check_optional_positive_float,
     check_optional_positive_int,
     check_optional_str,
     check_optional_str_list,
@@ -20,15 +21,14 @@ from techminer2._internals.validation import (
     check_required_float_range,
     check_required_int,
     check_required_int_range,
+    check_required_non_negative_float,
     check_required_non_negative_int,
     check_required_open_ended_int_range,
     check_required_positive_float,
     check_required_positive_float_range,
     check_required_positive_int,
     check_required_str,
-    check_required_str_list,
     check_tuple_of_ordered_four_floats,
-    internal__check_optional_positive_float,
 )
 from techminer2.enums import CorpusField, RecordsOrderBy
 
@@ -564,7 +564,7 @@ class ParamsMixin:
         return self
 
     def using_fuzzy_threshold(self, fuzzy_threshold: float) -> Self:
-        fuzzy_threshold = check_required_positive_float(
+        fuzzy_threshold = check_required_non_negative_float(
             value=fuzzy_threshold,
             param_name="fuzzy_threshold",
         )
@@ -674,7 +674,7 @@ class ParamsMixin:
         return self
 
     def using_spring_layout_k(self, spring_layout_k: Optional[float]) -> Self:
-        spring_layout_k = internal__check_optional_positive_float(
+        spring_layout_k = check_optional_positive_float(
             value=spring_layout_k,
             param_name="spring_layout_k",
         )

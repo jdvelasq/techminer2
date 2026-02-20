@@ -18,135 +18,183 @@ SIGNATURE = ThesaurusField.SIGNATURE.value
 VARIANT = ThesaurusField.VARIANT.value
 
 
-def _compute_key_length(thesaurus_df: pd.DataFrame) -> pd.DataFrame:
+def apply_fuzzy_cutoff_0_word_rule(
+    thesaurus_df: pd.DataFrame,
+    params: Params,
+) -> int:
+
+    thesaurus_df = _pre_process(params=params, thesaurus_df=thesaurus_df)
+    thesaurus_df = _prepare_thesaurus(thesaurus_df=thesaurus_df)
+
+    candidates_df = thesaurus_df[thesaurus_df["word_count"] == 1].copy()
+    candidates_df = candidates_df.reset_index(drop=True)
+
+    mapping = _compute_matches(
+        thesaurus_df=candidates_df,
+        similarity_cutoff=params.similarity_cutoff,
+        fuzzy_threshold=0.0,
+        use_word_level=False,
+        word_count_tolerance=0,
+    )
+
+    _report_mergings(
+        params=params,
+        mapping=mapping,
+        filename="candidate_mergings.txt",
+    )
+
+    return len(mapping)
+
+
+def _prepare_thesaurus(thesaurus_df: pd.DataFrame) -> pd.DataFrame:
 
     thesaurus_df = thesaurus_df.copy()
-    thesaurus_df["keylength"] = thesaurus_df[PREFERRED].str.len()
+
+    thesaurus_df = thesaurus_df[~thesaurus_df[PREFERRED].str.startswith("#")]
+
+    thesaurus_df["char_length"] = thesaurus_df[PREFERRED].str.len()
+    thesaurus_df["word_count"] = thesaurus_df[PREFERRED].str.split().str.len()
     thesaurus_df = thesaurus_df.sort_values(
-        by=["keylength", OCC, PREFERRED],
-        ascending=[True, False, True],
+        by=["word_count", "char_length", OCC, PREFERRED],
+        ascending=[True, True, False, True],
     )
+    thesaurus_df = thesaurus_df.reset_index(drop=True)
+
     return thesaurus_df
-
-
-def _compute_fuzzy_match(string1, string2, fuzzy_threshold):
-
-    string1 = string1.split(" ")
-    string2 = string2.split(" ")
-
-    if len(string1) > len(string2):
-        shorten_string = string2
-        lengthen_string = string1
-    else:
-        shorten_string = string1
-        lengthen_string = string2
-
-    scores_per_word = []
-    for base_word in shorten_string:
-        best_match = 0
-        for candidate_word in lengthen_string:
-            score = fuzz.ratio(base_word, candidate_word)
-            if score > best_match:
-                best_match = score
-        scores_per_word.append(best_match)
-
-    score = min(scores_per_word)
-    match = all(score >= fuzzy_threshold for score in scores_per_word)
-
-    return score, match
 
 
 def _compute_matches(
     thesaurus_df: pd.DataFrame,
-    params: Params,
+    similarity_cutoff: float,
+    fuzzy_threshold: float,
+    use_word_level: bool,
+    word_count_tolerance: int,
 ) -> dict[str, list[str]]:
 
-    similarity_cutoff = params.similarity_cutoff
-    fuzzy_threshold = params.fuzzy_threshold
-
-    thesaurus_df = thesaurus_df.copy().reset_index(drop=True)
-
-    mergings: dict[str, list[str]] = {}
-
-    thesaurus_df["selected"] = False
-    thesaurus_df["cutoff"] = 0.0
-    thesaurus_df["fuzzy"] = 0.0
+    thesaurus_df = thesaurus_df.copy()
+    thesaurus_df["matched"] = False
 
     keys = thesaurus_df[PREFERRED].tolist()
+    mergings: dict[str, list[str]] = {}
 
     for index, key in tqdm(
         enumerate(keys),
         total=len(keys),
         desc="  Progress",
         ncols=80,
-        # disable=self.params.tqdm_disable,
     ):
-
-        if thesaurus_df.loc[index, "selected"] is True:
+        if thesaurus_df.loc[index, "matched"]:
             continue
 
-        df = thesaurus_df[thesaurus_df.index > index]
+        candidates = thesaurus_df[
+            (thesaurus_df.index > index) & (~thesaurus_df["matched"])
+        ].copy()
 
-        key_length = len(key.split(" "))
-        df = df[df.keylength == key_length]
-
-        if df.empty:
+        if candidates.empty:
             continue
 
-        # Preselect
-        diff_in_length = int((1 - similarity_cutoff / 100.0) * len(key)) + 1
-        min_key_length = max(len(key) - diff_in_length, 1)
-        max_key_length = len(key) + diff_in_length
-        df = df[df.keylength <= max_key_length]
-        df = df[df.keylength >= min_key_length]
+        key_word_count = len(key.split())
+        candidates = candidates[
+            candidates["word_count"].between(
+                key_word_count - word_count_tolerance,
+                key_word_count + word_count_tolerance,
+            )
+        ]
 
-        df["cutoff"] = df[PREFERRED].apply(lambda x: fuzz.ratio(key, x))
-        df = df[df["cutoff"] >= similarity_cutoff]
-
-        if df.empty:
+        if candidates.empty:
             continue
 
-        results = df[PREFERRED].apply(
-            lambda x: _compute_fuzzy_match(key, x, fuzzy_threshold)
-        )
+        candidates = _char_length_preselect(key, candidates, similarity_cutoff)
 
-        df["fuzzy"] = results.map(lambda x: x[0])
-        df["fuzzy_match"] = results.map(lambda x: x[1])
-
-        df = df[df["fuzzy_match"].apply(lambda x: x is True)]
-
-        if df.empty:
+        if candidates.empty:
             continue
 
-        thesaurus_df.loc[df.index, "fuzzy"] = df.fuzzy
-        thesaurus_df.loc[df.index, "cutoff"] = df.cutoff
-        thesaurus_df.loc[df.index, "selected"] = True
+        candidates = _apply_cutoff(key, candidates, similarity_cutoff)
 
-        mergings[key] = df[PREFERRED].tolist()
+        if candidates.empty:
+            continue
+
+        if use_word_level:
+            candidates = _apply_word_level_match(key, candidates, fuzzy_threshold)
+
+        if candidates.empty:
+            continue
+
+        thesaurus_df.loc[candidates.index, "matched"] = True
+        mergings[key] = candidates[PREFERRED].tolist()
 
     return mergings
 
 
-def _report_mergings(params: Params, mapping: dict[str, list[str]]) -> None:
+def _char_length_preselect(
+    key: str,
+    candidates: pd.DataFrame,
+    similarity_cutoff: float,
+) -> pd.DataFrame:
 
-    filepath = Path(params.root_directory) / "refine" / "thesaurus" / "mergings.txt"
+    key_len = len(key)
+    diff = int((1 - similarity_cutoff / 100.0) * key_len) + 1
+    min_len = max(key_len - diff, 1)
+    max_len = key_len + diff
+    return candidates[
+        (candidates["char_length"] >= min_len) & (candidates["char_length"] <= max_len)
+    ]
+
+
+def _apply_cutoff(
+    key: str,
+    candidates: pd.DataFrame,
+    similarity_cutoff: float,
+) -> pd.DataFrame:
+
+    candidates = candidates.copy()
+    candidates["cutoff_score"] = candidates[PREFERRED].apply(
+        lambda x: fuzz.ratio(key, x)
+    )
+    return candidates[candidates["cutoff_score"] >= similarity_cutoff]
+
+
+def _apply_word_level_match(
+    key: str,
+    candidates: pd.DataFrame,
+    fuzzy_threshold: float,
+) -> pd.DataFrame:
+
+    def _score(string1: str, string2: str) -> float:
+        words1 = string1.split()
+        words2 = string2.split()
+        shorter, longer = (
+            (words1, words2) if len(words1) <= len(words2) else (words2, words1)
+        )
+        remaining = list(longer)
+        scores = []
+        for base_word in shorter:
+            best_score, best_idx = 0, -1
+            for i, candidate_word in enumerate(remaining):
+                s = fuzz.ratio(base_word, candidate_word)
+                if s > best_score:
+                    best_score, best_idx = s, i
+            scores.append(best_score)
+            if best_idx >= 0:
+                remaining.pop(best_idx)
+        return sum(scores) / len(scores) if scores else 0.0
+
+    candidates = candidates.copy()
+    candidates["word_score"] = candidates[PREFERRED].apply(lambda x: _score(key, x))
+    return candidates[candidates["word_score"] >= fuzzy_threshold]
+
+
+def _report_mergings(
+    params: Params,
+    mapping: dict[str, list[str]],
+    filename: str,
+) -> None:
+
+    filepath = Path(params.root_directory) / "refine" / "thesaurus" / filename
+    filepath.parent.mkdir(parents=True, exist_ok=True)
 
     with open(filepath, "w", encoding="utf-8") as f:
         for preferred, variants in mapping.items():
             f.write(f"{preferred}\n")
             for variant in variants:
                 f.write(f"    {variant}\n")
-
-
-def apply_fuzzy_cutoff_match_rule(
-    thesaurus_df: pd.DataFrame,
-    params: Params,
-) -> pd.DataFrame:
-
-    thesaurus_df = _pre_process(params=params, thesaurus_df=thesaurus_df)
-
-    thesaurus_df = _compute_key_length(thesaurus_df=thesaurus_df)
-    mapping = _compute_matches(thesaurus_df=thesaurus_df, params=params)
-    _report_mergings(params=params, mapping=mapping)
-
-    return thesaurus_df
