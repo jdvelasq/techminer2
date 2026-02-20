@@ -26,7 +26,7 @@ Smoke tests:
     ...     MergeKeys()
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .having_preferred_key("fintech")
-    ...     .having_variant_keys(["financial technology", "financial technologies"])
+    ...     .having_variant_keys(("financial technology", "financial technologies"))
     ...     .where_root_directory("examples/tests/")
     ...     .using_colored_output(False)
     ...     .run()

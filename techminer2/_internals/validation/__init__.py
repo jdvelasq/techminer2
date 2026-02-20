@@ -25,6 +25,7 @@ from .check_required_positive_float_range import check_required_positive_float_r
 from .check_required_positive_int import check_required_positive_int
 from .check_required_str import check_required_str
 from .check_required_str_list import check_required_str_list
+from .check_required_str_tuple import check_required_str_tuple
 from .check_tuple_of_ordered_four_floats import check_tuple_of_ordered_four_floats
 
 __all__ = [
@@ -52,6 +53,7 @@ __all__ = [
     "check_required_positive_float",
     "check_required_positive_int",
     "check_required_str_list",
+    "check_required_str_tuple",
     "check_required_str",
     "check_tuple_of_ordered_four_floats",
 ]
