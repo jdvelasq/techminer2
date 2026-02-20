@@ -15,31 +15,16 @@ SIGNATURE = ThesaurusField.SIGNATURE.value
 VARIANT = ThesaurusField.VARIANT.value
 
 
-#
-# User provides regex pattern
+# User provides suffix pattern (similar to begins with)
 #
 # For each key in thesaurus:
-#   If key matches regex:
+#   If key ends with pattern:
 #     Add to candidate list
 #
 # Present candidates to user
-#
-# Candidates:
-#
-# test 1
-#     test 1
-# test 2
-#     test 2
-# test 10
-#     test 10
-# benchmark test 1
-#     benchmark test 1
-#
-# User regex: \btest \d+\b (find "test" followed by number)
-#
 
 
-def apply_regex_pattern_match_rule(
+def apply_ends_with_rule(
     thesaurus_df: pd.DataFrame,
     params: Params,
 ) -> pd.DataFrame:

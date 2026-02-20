@@ -74,7 +74,7 @@ VARIANT = ThesaurusField.VARIANT.value
 #     learner
 
 
-def apply_stemming_match_rule(
+def apply_stemming_rule(
     thesaurus_df: pd.DataFrame,
     params: Params,
 ) -> pd.DataFrame:

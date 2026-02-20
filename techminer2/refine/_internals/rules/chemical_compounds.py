@@ -81,7 +81,7 @@ VARIANT = ThesaurusField.VARIANT.value
 #
 
 
-def apply_chemical_compounds_match_rule(
+def apply_chemical_compounds_rule(
     thesaurus_df: pd.DataFrame,
     params: Params,
 ) -> pd.DataFrame:

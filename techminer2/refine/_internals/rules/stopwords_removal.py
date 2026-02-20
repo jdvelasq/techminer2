@@ -2,6 +2,7 @@ import pandas as pd  # type: ignore
 
 from techminer2 import ThesaurusField
 from techminer2._internals import Params
+from techminer2._internals.package_data import load_builtin_word_list
 
 from ._post_process import _post_process
 from ._pre_process import _pre_process
@@ -15,67 +16,21 @@ SIGNATURE = ThesaurusField.SIGNATURE.value
 VARIANT = ThesaurusField.VARIANT.value
 
 
-# For each key in thesaurus:
-#
-#   1. Tokenize key into words
-#
-#   2. Sort words alphabetically:
-#      - "deep neural networks" → ["deep", "neural", "networks"]
-#      - Sorted: ["deep", "neural", "networks"]
-#      - Signature: "deep neural networks"
-#
-#   3. Create word signature (sorted word list)
-#
-#   4. Search thesaurus for other keys with same signature
-#
-#   5. If multiple keys share signature:
-#      a. Select preferred form:
-#         - Most frequent word order in corpus
-#         - Or alphabetical order
-#         - Or user-specified preference
-#
-#      b. Present to user for review (HIGH RISK)
-#
-#      c. If confirmed: merge under preferred form
-#
-# Before:
-#
-# deep neural networks
-#     deep neural networks
-# neural networks deep
-#     neural networks deep
-# networks neural deep
-#     networks neural deep
-# machine learning
-#     machine learning
-#
-# After:
-#
-# deep neural networks
-#     deep neural networks
-#     neural networks deep
-#     networks neural deep
-#
-# machine learning
-#     machine learning
-#
-# WHY HIGH RISK:
-#
-# "machine learning" ≠ "learning machine" (different concepts)
-# "vector support machine" ≠ "support vector machine" (one is incorrect)
-# Requires user domain knowledge to confirm
-
-
-def apply_word_order_match_rule(
+def apply_stopwords_removal_rule(
     thesaurus_df: pd.DataFrame,
     params: Params,
 ) -> pd.DataFrame:
 
     thesaurus_df = _pre_process(params=params, thesaurus_df=thesaurus_df)
     #
-    #
     thesaurus_df[SIGNATURE] = thesaurus_df[PREFERRED]
     thesaurus_df[SIGNATURE] = thesaurus_df[SIGNATURE].str.strip()
+    thesaurus_df[SIGNATURE] = thesaurus_df[SIGNATURE].apply(lambda x: f" {x} ")
+    stopwords = set(load_builtin_word_list("stopwords.txt"))
+    for stopword in stopwords:
+        thesaurus_df[SIGNATURE] = thesaurus_df[SIGNATURE].str.replace(
+            f" {stopword} ", " "
+        )
     thesaurus_df[SIGNATURE] = thesaurus_df[SIGNATURE].str.split(" ")
     thesaurus_df[SIGNATURE] = thesaurus_df[SIGNATURE].apply(sorted)
     thesaurus_df[SIGNATURE] = thesaurus_df[SIGNATURE].str.join(" ")
@@ -89,7 +44,6 @@ def apply_word_order_match_rule(
         )
     }
     thesaurus_df[PREFERRED] = thesaurus_df[SIGNATURE].apply(lambda x: mapping.get(x, x))
-    #
     #
     thesaurus_df = _post_process(thesaurus_df=thesaurus_df)
 

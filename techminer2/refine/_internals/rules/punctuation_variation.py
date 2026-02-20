@@ -18,7 +18,7 @@ VARIANT = ThesaurusField.VARIANT.value
 STANDARD_PUNCTUATION = ".,;:!?\"'()"
 
 
-def apply_punctuation_variation_match_rule(
+def apply_punctuation_variation_rule(
     thesaurus_df: pd.DataFrame,
     params: Params,
 ) -> pd.DataFrame:

@@ -78,7 +78,7 @@ VARIANT = ThesaurusField.VARIANT.value
 #   [No similar variants found]
 
 
-def apply_begins_with_match_rule(
+def apply_begins_with_rule(
     thesaurus_df: pd.DataFrame,
     params: Params,
 ) -> pd.DataFrame:

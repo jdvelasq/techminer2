@@ -34,12 +34,12 @@ def sort_thesaurus_by_occ(
     return thesaurus_df
 
 
-def _build_raw_series(params, data_df):
-    raw_series = data_df[params.source_field.value].copy()
-    raw_series = raw_series.dropna()
-    raw_series = raw_series.str.split("; ").explode()
-    raw_series = raw_series.str.strip()
-    return raw_series
+# def _build_raw_series(params, data_df):
+#     raw_series = data_df[params.source_field.value].copy()
+#     raw_series = raw_series.dropna()
+#     raw_series = raw_series.str.split("; ").explode()
+#     raw_series = raw_series.str.strip()
+#     return raw_series
 
 
 def _build_variant_to_preferred_mapping(dataframe):
@@ -84,6 +84,6 @@ def _sort_by_occ(dataframe, occ_mapping):
     dataframe = dataframe.copy()
     dataframe[OCC] = dataframe[PREFERRED].apply(lambda x: occ_mapping.get(x, 0))
     dataframe = dataframe.sort_values([OCC, PREFERRED], ascending=[False, True])
-    dataframe = dataframe.drop(columns=[OCC])
+    # dataframe = dataframe.drop(columns=[OCC])
 
     return dataframe

@@ -49,7 +49,7 @@ def _replace_space_separated_invalid_hyphenated_words(series):
     return series
 
 
-def apply_hyphenation_match_rule(
+def apply_hyphenation_rule(
     thesaurus_df: pd.DataFrame,
     params: Params,
 ) -> pd.DataFrame:
