@@ -22,20 +22,57 @@ def apply_wordorder_rule(
 ) -> pd.DataFrame:
 
     thesaurus_df = _pre_process(params=params, thesaurus_df=thesaurus_df)
-    #
+
     thesaurus_df[SIGNATURE] = thesaurus_df[PREFERRED]
-    thesaurus_df[SIGNATURE] = thesaurus_df[SIGNATURE].str.strip()
-    thesaurus_df[SIGNATURE] = thesaurus_df[SIGNATURE].apply(lambda x: f" {x} ")
+
+    thesaurus_df = _remove_stopwords(thesaurus_df=thesaurus_df)
+    thesaurus_df = _string_to_words(thesaurus_df=thesaurus_df)
+    thesaurus_df = _words_to_string(thesaurus_df=thesaurus_df)
+
+    matches = _compute_matches(thesaurus_df=thesaurus_df)
+
+    _report_mergings(
+        params=params,
+        mapping=matches,
+        filename="candidate_mergings.txt",
+    )
+
+    return thesaurus_df
+
+
+def _remove_stopwords(thesaurus_df: pd.DataFrame) -> pd.DataFrame:
+
+    thesaurus_df = thesaurus_df.copy()
+
     stopwords = set(load_builtin_word_list("stopwords.txt"))
     for stopword in stopwords:
         thesaurus_df[SIGNATURE] = thesaurus_df[SIGNATURE].str.replace(
             f" {stopword} ", " "
         )
+    thesaurus_df[SIGNATURE] = thesaurus_df[SIGNATURE].str.replace(
+        r"\s+", " ", regex=True
+    )
+
+    return thesaurus_df
+
+
+def _string_to_words(thesaurus_df: pd.DataFrame) -> pd.DataFrame:
+
+    thesaurus_df[SIGNATURE] = thesaurus_df[SIGNATURE].str.strip()
     thesaurus_df[SIGNATURE] = thesaurus_df[SIGNATURE].str.split(" ")
+
+    return thesaurus_df
+
+
+def _words_to_string(thesaurus_df: pd.DataFrame) -> pd.DataFrame:
     thesaurus_df[SIGNATURE] = thesaurus_df[SIGNATURE].apply(set)
     thesaurus_df[SIGNATURE] = thesaurus_df[SIGNATURE].apply(sorted)
     thesaurus_df[SIGNATURE] = thesaurus_df[SIGNATURE].str.join(" ")
-    #
+    return thesaurus_df
+
+
+def _compute_matches(thesaurus_df: pd.DataFrame) -> dict[str, list[str]]:
+
     mapping_df = thesaurus_df[[SIGNATURE, PREFERRED]].copy()
     mapping_df = mapping_df.drop_duplicates()
     mapping = {
@@ -49,20 +86,14 @@ def apply_wordorder_rule(
 
     thesaurus_df = thesaurus_df[thesaurus_df[CHANGED]].copy()
 
-    mergings: dict[str, list[str]] = {}
+    matches: dict[str, list[str]] = {}
     for _, row in thesaurus_df.iterrows():
         old = row[OLD]
         new = row[PREFERRED]
 
-        if new not in mergings:
-            mergings[new] = []
+        if new not in matches:
+            matches[new] = []
         if new != old:
-            mergings[new].append(old)
+            matches[new].append(old)
 
-    _report_mergings(
-        params=params,
-        mapping=mergings,
-        filename="candidate_mergings.txt",
-    )
-
-    return thesaurus_df
+    return matches

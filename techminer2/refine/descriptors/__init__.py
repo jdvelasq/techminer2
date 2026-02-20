@@ -6,6 +6,7 @@ from .fuzzy_cutoff_1_word_match import FuzzyCutoffOneWordMatch
 from .merge_keys import MergeKeys
 from .preprocess_thesaurus import PreProcessThesaurus
 from .startswith_match import StartsWithMatch
+from .stem_match import StemMatch
 from .wordorder_match import WordOrderMatch
 
 __all__ = [
@@ -17,5 +18,6 @@ __all__ = [
     "MergeKeys",
     "PreProcessThesaurus",
     "StartsWithMatch",
+    "StemMatch",
     "WordOrderMatch",
 ]
