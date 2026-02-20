@@ -79,7 +79,7 @@ class Params:
     # K
     #
     kernel_bandwidth: float = 0.1
-    keys: set[str] = set()
+    # keys: set[str] = set()
     keys_order_by: str = "alphabetical"
 
     #
@@ -126,8 +126,9 @@ class Params:
     periods_with_at_least_one_record: int = 3
     pie_hole: float = 0.4
     plot_dimensions: Tuple[int, int] = (0, 1)
-    plot_width: float = 400
     plot_height: float = 400
+    plot_width: float = 400
+    preferred_key: str = ""
 
     #
     # Q
@@ -189,6 +190,7 @@ class Params:
     #
     # V
     #
+    variant_keys: tuple[str, ...] = ()
 
     #
     # X

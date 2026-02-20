@@ -28,6 +28,7 @@ from techminer2._internals.validation import (
     check_required_positive_float_range,
     check_required_positive_int,
     check_required_str,
+    check_required_str_list,
     check_tuple_of_ordered_four_floats,
 )
 from techminer2.enums import CorpusField, RecordsOrderBy
@@ -224,6 +225,14 @@ class ParamsMixin:
         self.params.other_items_order_by = other_items_order_by
         return self
 
+    def having_preferred_key(self, preferred_key: str) -> Self:
+        preferred_key = check_required_str(
+            value=preferred_key,
+            param_name="preferred_key",
+        )
+        self.params.preferred_key = preferred_key
+        return self
+
     def having_regex_flags(self, regex_flags: int) -> Self:
         regex_flags = check_required_non_negative_int(
             value=regex_flags,
@@ -254,6 +263,14 @@ class ParamsMixin:
             param_name="pattern",
         )
         self.params.pattern = pattern
+        return self
+
+    def having_variant_keys(self, variant_keys: list[str]) -> Self:
+        variant_keys = check_required_str_list(
+            value=variant_keys,
+            param_name="variant_keys",
+        )
+        self.params.variant_keys = variant_keys
         return self
 
     def having_word(self, word: str) -> Self:
