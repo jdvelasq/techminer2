@@ -1,20 +1,21 @@
 """
-Full Match
+Country
 ===============================================================================
 
 Smoke tests:
     >>> from techminer2 import CorpusField
-    >>> from techminer2.ingest.extract import FullMatchExtractor
+    >>> from techminer2.ingest.extract import CountryExtractor
     >>> terms = (
-    ...     FullMatchExtractor()
+    ...     CountryExtractor()
     ...     #
     ...     # FIELD:
     ...     .with_source_field(CorpusField.AUTH_KEY_NORM)
     ...     #
     ...     # SEARCH:
-    ...     .having_text_matching("b.+")
+    ...     .having_text_matching("FINTECH")
     ...     .having_case_sensitive(False)
     ...     .having_regex_flags(0)
+    ...     .having_regex_search(False)
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("examples/tests/")
@@ -25,27 +26,20 @@ Smoke tests:
     ... )
     >>> from pprint import pprint
     >>> pprint(terms[:10])
-    ['bank',
-     'bank 30',
-     'banking',
-     'banking innovations',
-     'banking regulation',
-     'bayesian estimation',
-     'biometric',
-     'biometric authentication',
-     'blockchain']
+    ['China', 'Taiwan']
+
 
 """
 
 from techminer2._internals import ParamsMixin
-from techminer2.ingest.extract._helpers.fullmatch import extract_fullmatch
+from techminer2.ingest.extract._helpers.country import extract_country
 
 
-class FullMatchExtractor(
+class CountryExtractor(
     ParamsMixin,
 ):
     """:meta private:"""
 
     def run(self):
 
-        return extract_fullmatch(self.params)
+        return extract_country(self.params)

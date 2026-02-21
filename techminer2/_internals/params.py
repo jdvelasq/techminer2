@@ -12,6 +12,8 @@ from techminer2.enums import CorpusField, RecordsOrderBy
 @dataclass
 class Params:
 
+    stemming_fn: Callable
+
     #
     # A
     #
@@ -158,7 +160,6 @@ class Params:
     spring_layout_iterations: int = 50
     spring_layout_k: Optional[float] = 0.1
     spring_layout_seed: int = 42
-    stemming_fn: Optional[Callable] = None
 
     #
     # T

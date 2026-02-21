@@ -1,48 +1,18 @@
-import glob
-import os
-from typing import Dict, List, Optional, Tuple
-
-import numpy as np
-import pandas as pd  # type: ignore
-
-from techminer2.refine.thesaurus_old._internals.load_thesaurus_as_mapping import (
-    internal__load_thesaurus_as_mapping,
-)
+from techminer2._internals.package_data.word_lists import load_builtin_word_list
+from techminer2.ingest.extract._helpers.values import extract_values
 
 
 def extract_country(params):
-    #
-    # Loads the thesaurus
-    thesaurus_path = os.path.join(root_dir, "data/thesaurus/countries.the.txt")
-    thesaurus = internal__load_thesaurus_as_mapping(thesaurus_path)
-    names = list(thesaurus.keys())
 
-    files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
-    for file in files:
-        data = pd.read_csv(file, encoding="utf-8", compression="zip")
-        if source_field in data.columns:
-            data[dest_field] = data[source_field].copy()
-            data[dest_field] = data[dest_field].replace(np.nan, pd.NA)
-            data[dest_field] = data[dest_field].str.split("; ")
-            data[dest_field] = data[dest_field].map(
-                lambda x: [
-                    thesaurus[name][0] if name in y.lower() else pd.NA
-                    for y in x
-                    for name in names
-                ],
-                na_action="ignore",
-            )
-            data[dest_field] = data[dest_field].map(
-                lambda x: [y for y in x if y is not pd.NA], na_action="ignore"
-            )
-            data[dest_field] = data[dest_field].map(
-                lambda x: pd.NA if x == [] else x, na_action="ignore"
-            )
-            data[dest_field] = data[dest_field].map(
-                lambda x: pd.NA if x is pd.NA else list(set(x)), na_action="ignore"
-            )
-            data[dest_field] = data[dest_field].str.join("; ")
-            data[dest_field] = data[dest_field].map(
-                lambda x: pd.NA if x == "" else x, na_action="ignore"
-            )
-        data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
+    df = extract_values(params)
+    country_names = load_builtin_word_list("country_names.txt")
+
+    def _extract(text):
+        for country in country_names:
+            if country.lower() in text.lower():
+                return country
+        return None
+
+    series = df.term.apply(_extract)
+    series = series.dropna().sort_values(ascending=True).drop_duplicates()
+    return series.tolist()

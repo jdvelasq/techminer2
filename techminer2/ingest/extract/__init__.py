@@ -1,6 +1,7 @@
 """Private API."""
 
 from techminer2.ingest.extract.contains import ContainsExtractor
+from techminer2.ingest.extract.country import CountryExtractor
 from techminer2.ingest.extract.difference import DifferenceExtractor
 from techminer2.ingest.extract.endswith import EndsWithExtractor
 from techminer2.ingest.extract.fullmatch import FullMatchExtractor
@@ -13,6 +14,7 @@ from techminer2.ingest.extract.topterms import TopTermsExtractor
 
 __all__ = [
     "ContainsExtractor",
+    "CountryExtractor",
     "EndsWithExtractor",
     "DifferenceExtractor",
     "IntersectionExtractor",
