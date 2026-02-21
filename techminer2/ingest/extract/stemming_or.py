@@ -1,23 +1,15 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-# pylint: disable=too-many-statements
 """
 Stemming Field with OR
 ===============================================================================
 
-
 Smoke tests:
-    >>> # Creates, configures, and runs the extractor
-    >>> from techminer2.database.extractors import StemmingOrExtractor
+    >>> from techminer2 import CorpusField
+    >>> from techminer2.ingest.extract import StemmingOrExtractor
     >>> terms = (
     ...     StemmingOrExtractor()
     ...     #
     ...     # FIELD:
-    ...     .with_field("author_keywords")
+    ...     .with_source_field(CorpusField.AUTH_KEY_NORM)
     ...     #
     ...     # SEARCH:
     ...     .having_text_matching(
@@ -29,7 +21,6 @@ Smoke tests:
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("examples/tests/")
-    ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     #
@@ -37,26 +28,16 @@ Smoke tests:
     ... )
 
 
-    >>> # Print the first 10 extracted terms
     >>> from pprint import pprint
     >>> pprint(terms[:10]) # doctest: +SKIP
-    ['ARTIFICIAL_INTELLIGENCE',
-     'DIGITAL_TECHNOLOGIES',
-     'FINANCE_TECHNOLOGY',
-     'FINANCIAL_COMPUTING',
-     'FINANCIAL_INCLUSION',
-     'FINANCIAL_INSTITUTION',
-     'FINANCIAL_INSTITUTIONS',
-     'FINANCIAL_INTERMEDIATION',
-     'FINANCIAL_MANAGEMENT',
-     'FINANCIAL_SCENARIZATION']
 
 
 
 
 """
+
 from techminer2._internals import ParamsMixin
-from techminer2.ingest.extract._helpers.stemming import internal__stemming_or
+from techminer2.ingest.extract._helpers.stemming import extract_stemming_or
 
 
 class StemmingOrExtractor(
@@ -66,7 +47,7 @@ class StemmingOrExtractor(
 
     def run(self):
 
-        return internal__stemming_or(self.params)
+        return extract_stemming_or(self.params)
 
 
 #

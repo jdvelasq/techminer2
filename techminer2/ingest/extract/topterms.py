@@ -1,23 +1,22 @@
 """
-Stemming Field with AND
+Top Terms Extractor
 ===============================================================================
 
 Smoke tests:
     >>> from techminer2 import CorpusField
-    >>> from techminer2.ingest.extract import StemmingAndExtractor
+    >>> from techminer2.ingest.extract import TopTermsExtractor
     >>> terms = (
-    ...     StemmingAndExtractor()
+    ...     TopTermsExtractor()
     ...     #
     ...     # FIELD:
     ...     .with_source_field(CorpusField.AUTH_KEY_NORM)
     ...     #
     ...     # SEARCH:
-    ...     .having_text_matching(
-    ...         (
-    ...             "financial technology",
-    ...             "artificial intelligence",
-    ...         ),
-    ...     )
+    ...     .having_items_in_top(10)
+    ...     .having_items_ordered_by("OCC")
+    ...     .having_item_occurrences_between(None, None)
+    ...     .having_item_citations_between(None, None)
+    ...     .having_items_in(None)
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("examples/tests/")
@@ -27,8 +26,6 @@ Smoke tests:
     ...     .run()
     ... )
 
-
-    >>> # Print the first 10 extracted terms
     >>> from pprint import pprint
     >>> pprint(terms[:10])
 
@@ -36,17 +33,18 @@ Smoke tests:
 """
 
 from techminer2._internals import ParamsMixin
-from techminer2.ingest.extract._helpers.stemming import extract_stemming_and
+from techminer2.report.visualization import DataFrame
 
 
-class StemmingAndExtractor(
+class TopTermsExtractor(
     ParamsMixin,
 ):
     """:meta private:"""
 
     def run(self):
 
-        return extract_stemming_and(self.params)
+        data_frame = DataFrame().update(**self.params.__dict__).run()
+        terms = data_frame.index.tolist()
+        terms = sorted(terms)
 
-
-#
+        return terms

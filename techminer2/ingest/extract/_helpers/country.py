@@ -1,10 +1,3 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-# pylint: disable=too-many-statements
 import glob
 import os
 from typing import Dict, List, Optional, Tuple
@@ -17,7 +10,7 @@ from techminer2.refine.thesaurus_old._internals.load_thesaurus_as_mapping import
 )
 
 
-def internal__extract_country(params):
+def extract_country(params):
     #
     # Loads the thesaurus
     thesaurus_path = os.path.join(root_dir, "data/thesaurus/countries.the.txt")

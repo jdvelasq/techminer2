@@ -1,36 +1,28 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-# pylint: disable=too-many-statements
 from typing import Dict, List, Optional, Tuple
 
 from textblob import TextBlob  # type: ignore
 
-from techminer2.ingest.extract._helpers.get_values_from_field import (
-    internal__get_values_from_field,
-)
+from techminer2._internals import Params
+from techminer2.ingest.extract._helpers.values import extract_values
 
 
-def internal__stemming_and(params):
+def extract_stemming_and(params: Params) -> list[str]:
     """:meta private:"""
 
-    return stemming(params.update(stemming_fn=apply_stemming_and_operator))
+    return _stemming(params.update(stemming_fn=apply_stemming_and_operator))
 
 
-def internal__stemming_or(params):
+def extract_stemming_or(params: Params) -> list[str]:
     """:meta private:"""
 
-    return stemming(params.update(stemming_fn=apply_stemming_or_operator))
+    return _stemming(params.update(stemming_fn=apply_stemming_or_operator))
 
 
-def stemming(params):
+def _stemming(params: Params) -> list[str]:
     """:meta private:"""
 
     stemmed_terms = get_stemmed_items(params.pattern)
-    data_frame = internal__get_values_from_field(params)
+    data_frame = extract_values(params)
     data_frame = create_keys_column(data_frame)
 
     #

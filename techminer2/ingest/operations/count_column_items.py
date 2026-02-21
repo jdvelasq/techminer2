@@ -36,7 +36,7 @@ Smoke test:
 """
 
 from techminer2._internals import ParamsMixin
-from techminer2.ingest.extract._helpers.protected_fields import PROTECTED_FIELDS
+from techminer2.ingest.extract._helpers._protected_fields import PROTECTED_FIELDS
 from techminer2.ingest.sources._internals.operations.count_column_items import (
     count_column_items,
 )

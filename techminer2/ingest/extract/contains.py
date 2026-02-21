@@ -2,19 +2,14 @@
 Contains
 ===============================================================================
 
-This module demonstrates how to extract terms from a specified field in a database
-that contain a given pattern using the ContainsExtractor class. The process involves
-configuring the field, search pattern, and database parameters.
-
-
 Smoke tests:
-    >>> # Creates, configures, and runs the extractor
-    >>> from techminer2.database.extractors import ContainsExtractor
+    >>> from techminer2 import CorpusField
+    >>> from techminer2.ingest.extract import ContainsExtractor
     >>> terms = (
     ...     ContainsExtractor()
     ...     #
     ...     # FIELD:
-    ...     .with_field("author_keywords")
+    ...     .with_source_field(CorpusField.AUTH_KEY_NORM)
     ...     #
     ...     # SEARCH:
     ...     .having_text_matching("FINTECH")
@@ -24,29 +19,25 @@ Smoke tests:
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("examples/tests/")
-    ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     #
     ...     .run()
     ... )
 
-    >>> # Print the first 10 extracted terms
+
     >>> from pprint import pprint
     >>> pprint(terms[:10])
-    ['BANK_FINTECH_PARTNERSHIP',
-     'FINANCIAL_TECHNOLOGY (FINTECH)',
-     'FINTECH',
-     'FINTECH_DISRUPTION',
-     'FINTECH_INDUSTRY',
-     'FINTECH_SERVICES']
+    ['fintech',
+     'fintech industry',
+     'investment in fintech',
+     'taiwan fintech industry']
 
-This example shows how to extract terms from the "author_keywords" field in the database
-that contain the pattern "FINTECH". The output includes the first 10 extracted terms.
+
 """
 
 from techminer2._internals import ParamsMixin
-from techminer2.ingest.extract._helpers.contains import internal__contains
+from techminer2.ingest.extract._helpers.contains import extract_contains
 
 
 class ContainsExtractor(
@@ -56,7 +47,4 @@ class ContainsExtractor(
 
     def run(self):
 
-        return internal__contains(self.params)
-
-
-#
+        return extract_contains(self.params)

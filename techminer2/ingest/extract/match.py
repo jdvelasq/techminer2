@@ -1,47 +1,44 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-# pylint: disable=too-many-statements
 """
 Match
 ===============================================================================
 
-
 Smoke tests:
-    >>> # Creates, configures, and runs the extractor
-    >>> from techminer2.database.extractors import MatchExtractor
+    >>> from techminer2 import CorpusField
+    >>> from techminer2.ingest.extract import MatchExtractor
     >>> terms = (
     ...     MatchExtractor()
     ...     #
     ...     # FIELD:
-    ...     .with_field("author_keywords")
+    ...     .with_source_field(CorpusField.AUTH_KEY_NORM)
     ...     #
     ...     # SEARCH:
-    ...     .having_text_matching("L.+")
+    ...     .having_text_matching("b.+")
     ...     .having_case_sensitive(False)
     ...     .having_regex_flags(0)
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("examples/tests/")
-    ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     #
     ...     .run()
     ... )
-
-
-    >>> # Print the first 10 extracted terms
     >>> from pprint import pprint
     >>> pprint(terms[:10])
-    ['LENDING', 'LENDINGCLUB', 'LITERATURE_REVIEW']
+    ['bank',
+     'bank 30',
+     'banking',
+     'banking innovations',
+     'banking regulation',
+     'bayesian estimation',
+     'biometric',
+     'biometric authentication',
+     'blockchain']
 
 """
+
 from techminer2._internals import ParamsMixin
-from techminer2.ingest.extract._helpers.match import internal__match
+from techminer2.ingest.extract._helpers.match import extract_match
 
 
 class MatchExtractor(
@@ -51,7 +48,7 @@ class MatchExtractor(
 
     def run(self):
 
-        return internal__match(self.params)
+        return extract_match(self.params)
 
 
 #

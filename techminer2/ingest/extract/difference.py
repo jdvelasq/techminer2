@@ -1,53 +1,42 @@
-# flake8: noqa
-# pylint: disable=import-outside-toplevel
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-few-public-methods
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-# pylint: disable=too-many-statements
 """
 Fields difference
 ===============================================================================
 
 Smoke tests:
-    >>> # Creates, configures, and runs the extractor
-    >>> from techminer2.database.extractors import DifferenceExtractor
+    >>> from techminer2 import CorpusField
+    >>> from techminer2.ingest.extract import DifferenceExtractor
     >>> terms = (
     ...     DifferenceExtractor()
     ...     #
     ...     # FIELDS:
-    ...     .with_field("author_keywords_raw")
-    ...     .with_other_field("index_keywords_raw")
+    ...     .with_source_fields(
+    ...         (CorpusField.AUTH_KEY_NORM, CorpusField.IDX_KEY_NORM)
+    ...     )
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("examples/tests/")
-    ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     #
     ...     .run()
     ... )
-
-    >>> # Print the first 10 extracted terms
     >>> from pprint import pprint
     >>> pprint(terms[:10])
-    ['ADOPTION',
-     'AI',
-     'ALTERNATIVE_DATA',
-     'BANKING_COMPETITION',
-     'BANKING_INNOVATIONS',
-     'BANKS',
-     'BANK_FINTECH_PARTNERSHIP',
-     'BEHAVIOURAL_ECONOMICS',
-     'BLOCKCHAINS',
-     'BUSINESS_MODEL']
-
+    ['alternative finance',
+     'alternative lending',
+     'bank 30',
+     'banking',
+     'banking innovations',
+     'banking regulation',
+     'bayesian estimation',
+     'biometric',
+     'china',
+     'chinese telecom']
 
 """
+
 from techminer2._internals import ParamsMixin
-from techminer2.ingest.extract._helpers.difference import internal__difference
+from techminer2.ingest.extract._helpers.difference import extract_difference
 
 
 class DifferenceExtractor(
@@ -57,7 +46,7 @@ class DifferenceExtractor(
 
     def run(self):
 
-        return internal__difference(self.params)
+        return extract_difference(self.params)
 
 
 #

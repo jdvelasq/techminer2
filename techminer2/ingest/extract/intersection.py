@@ -1,51 +1,43 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-# pylint: disable=too-many-statements
 """
 Fields Intersection
 ===============================================================================
 
 Smoke tests:
-    >>> # Creates, configures, and runs the extractor
-    >>> from techminer2.database.extractors import IntersectionExtractor
+    >>> from techminer2 import CorpusField
+    >>> from techminer2.ingest.extract import IntersectionExtractor
     >>> terms = (
     ...     IntersectionExtractor()
     ...     #
     ...     # FIELDS:
-    ...     .with_field("author_keywords_raw")
-    ...     .with_other_field("index_keywords_raw")
+    ...     .with_source_fields(
+    ...         (CorpusField.AUTH_KEY_NORM, CorpusField.IDX_KEY_NORM)
+    ...     )
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("examples/tests/")
-    ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     #
     ...     .run()
     ... )
-
     >>> # Print the first 10 extracted terms
     >>> from pprint import pprint
     >>> pprint(terms[:10])
-    ['ACTOR_NETWORK_THEORY',
-     'ACTUALIZATION',
-     'AGRICULTURE',
-     'AGROPAY',
-     'ARTIFICIAL_INTELLIGENCE',
-     'BANKING',
-     'BIG_DATA',
-     'BLOCKCHAIN',
-     'BUSINESS_MODELS',
-     'CASE_STUDY_METHODS']
-
+    ['actor network theory',
+     'alipay',
+     'bank',
+     'biometric authentication',
+     'blockchain',
+     'computer science',
+     'computing curricula',
+     'content analysis',
+     'digitalization',
+     'entrepreneurship']
 
 """
+
 from techminer2._internals import ParamsMixin
-from techminer2.ingest.extract._helpers.intersection import internal__intersection
+from techminer2.ingest.extract._helpers.intersection import extract_intersection
 
 
 class IntersectionExtractor(
@@ -55,7 +47,7 @@ class IntersectionExtractor(
 
     def run(self):
 
-        return internal__intersection(self.params)
+        return extract_intersection(self.params)
 
 
 #
