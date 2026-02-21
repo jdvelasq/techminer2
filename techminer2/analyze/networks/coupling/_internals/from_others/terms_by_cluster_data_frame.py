@@ -1,10 +1,3 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-# pylint: disable=too-many-statements
 """
 
 ## >>> from techminer2.coupling_network._core.others.terms_by_cluster_frame import _terms_by_cluster_frame
@@ -35,6 +28,7 @@
 
 
 """
+
 from techminer2._internals import ParamsMixin
 from techminer2._internals.nx import (
     internal__cluster_nx_graph,

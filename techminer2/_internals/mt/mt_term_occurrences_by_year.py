@@ -1,10 +1,3 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-# pylint: disable=too-many-statements
 """
 Term Occurrences by Year
 ===============================================================================
@@ -37,13 +30,13 @@ Buchak G.              0     0     0     1     0
 
 
 """
+
 from techminer2._internals.mt.mt_global_metrics_by_field_per_year import (
     _mt_global_metrics_by_field_per_year,
 )
 from techminer2._internals.stopwords import load_user_stopwords
 
 
-# pylint: disable=too-many-arguments
 def _mt_term_occurrences_by_year(
     field,
     cumulative,

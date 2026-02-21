@@ -1,4 +1,5 @@
 """Countries Citation Network Analysis."""
+
 from .network_plot import NetworkPlot
 from .node_degree_data_frame import NodeDegreeDataFrame
 from .node_degree_plot import NodeDegreePlot

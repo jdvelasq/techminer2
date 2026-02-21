@@ -1,4 +1,5 @@
 """Commands"""
+
 from .alphabet import execute_alphabet_command
 from .endswith import execute_endswith_command
 from .exact import execute_exact_command

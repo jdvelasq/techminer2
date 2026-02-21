@@ -1,12 +1,3 @@
-# flake8: noqa
-# pylint: disable=import-outside-toplevel
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-few-public-methods
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-# pylint: disable=too-many-statements
 """
 
 Smoke tests:
@@ -28,6 +19,7 @@ Smoke tests:
 
 
 """
+
 import pandas as pd  # type: ignore
 
 from techminer2._internals.data_access.get_main_data_path import get_main_data_path

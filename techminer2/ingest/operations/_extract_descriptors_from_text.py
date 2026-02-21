@@ -1,9 +1,3 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
 """
 Extract Descriptors from Text
 ===============================================================================
@@ -31,6 +25,7 @@ Extract Descriptors from Text
 ['ADOPTION', 'ARTIFICIAL_INTELLIGENCE', 'FINANCE', ...
 
 """
+
 # import os.path
 # import re
 

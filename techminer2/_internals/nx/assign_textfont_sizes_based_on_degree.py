@@ -1,10 +1,3 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-# pylint: disable=too-many-statements
 #
 # In networkx, the size of the node is specified by the 'node_size' parameter.
 # Example: nx.draw_networkx_nodes(G, pos, node_size=node_sizes)

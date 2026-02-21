@@ -1,4 +1,5 @@
 """Commands."""
+
 from .phrases import execute_phrases_command
 
 __all__ = [

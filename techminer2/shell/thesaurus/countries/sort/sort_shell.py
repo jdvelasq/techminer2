@@ -1,22 +1,16 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-# pylint: disable=too-many-statements
-# pylint: disable=too-many-branches
 from techminer2.shell.base_shell import BaseShell
 from techminer2.shell.colorized_prompt import make_colorized_prompt
-from techminer2.shell.thesaurus.countries.sort.commands import execute_alphabet_command
-from techminer2.shell.thesaurus.countries.sort.commands import execute_endswith_command
-from techminer2.shell.thesaurus.countries.sort.commands import execute_exact_command
-from techminer2.shell.thesaurus.countries.sort.commands import execute_fuzzy_command
-from techminer2.shell.thesaurus.countries.sort.commands import execute_keylength_command
-from techminer2.shell.thesaurus.countries.sort.commands import execute_match_command
-from techminer2.shell.thesaurus.countries.sort.commands import execute_startswith_command
-from techminer2.shell.thesaurus.countries.sort.commands import execute_wordlength_command
-from techminer2.shell.thesaurus.countries.sort.commands import execute_wordmatch_command
+from techminer2.shell.thesaurus.countries.sort.commands import (
+    execute_alphabet_command,
+    execute_endswith_command,
+    execute_exact_command,
+    execute_fuzzy_command,
+    execute_keylength_command,
+    execute_match_command,
+    execute_startswith_command,
+    execute_wordlength_command,
+    execute_wordmatch_command,
+)
 
 
 class SortShell(BaseShell):

@@ -1,5 +1,3 @@
-# flake8: noqa
-# pylint: disable=line-too-long
 """
 Replace text in column
 ===============================================================================
@@ -8,17 +6,18 @@ Replace text in column
 
 # >>> from techminer2 import techminer
 # >>> techminer.tools.replace(
-# ...     criterion="abstract", 
+# ...     criterion="abstract",
 # ...     to_replace=[
-# ...         "2015, the author(s).", 
+# ...         "2015, the author(s).",
 # ...         "copyright  2014 by asme.",
-# ...     ], 
-# ...     value="", 
+# ...     ],
+# ...     value="",
 # ...     directory=directory,
 # ... )
 
 
 """
+
 import os.path
 
 import pandas as pd  # type: ignore

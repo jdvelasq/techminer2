@@ -1,6 +1,4 @@
 #!/usr/bin/env python
-# pylint: disable=invalid-name
-# pylint: disable=redefined-builtin
 # -*- coding: utf-8 -*-
 #
 """Sphinx config file"""

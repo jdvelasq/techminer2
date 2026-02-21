@@ -1,4 +1,5 @@
 """Co-occurrence network analysis."""
+
 from .clusters_to_terms_mapping import ClustersToTermsMapping
 from .concept_grid_plot import ConceptGridPlot
 from .documents_by_cluster_mapping import DocumentsByClusterMapping

@@ -1,10 +1,3 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-# pylint: disable=too-many-statements
 """
 Network Density Plot
 ===============================================================================
@@ -53,6 +46,7 @@ Smoke tests:
 
 
 """
+
 from techminer2._internals import ParamsMixin
 from techminer2.analyze.networks.coupling._internals.from_others.node_density_plot import (
     InternalNodeDensityPlot,

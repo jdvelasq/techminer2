@@ -1,9 +1,3 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
 """
 Find Similar Records
 ===============================================================================
@@ -52,6 +46,7 @@ AB regulatory change and technological developments following the 2008
 <BLANKLINE>
 
 """
+
 # import os.path
 # import re
 # import textwrap

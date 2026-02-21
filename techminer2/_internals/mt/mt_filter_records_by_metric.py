@@ -1,9 +1,8 @@
-# flake8: noqa
-# pylint: disable=too-many-arguments
 """
 This function filters a dataframe of performance metrics by an specific metric.
 
 """
+
 from techminer2._internals.mt.mt_extract_top_n_terms_by_metric import (
     _mt_extract_top_n_terms_by_metric,
 )

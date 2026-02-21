@@ -1,4 +1,5 @@
 """Commands."""
+
 from .search import execute_search_command
 from .update import execute_update_command
 

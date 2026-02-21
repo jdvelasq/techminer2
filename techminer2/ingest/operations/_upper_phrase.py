@@ -1,9 +1,3 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
 """
 Highlight phrase
 ===============================================================================
@@ -43,6 +37,7 @@ diverse sectors, ultimately aiming to improve compliance, efficiency, and
 ethical practices in the FINANCIAL_INDUSTRY.
 
 """
+
 # import os.path
 # import re
 # import textwrap

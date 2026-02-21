@@ -1,4 +1,5 @@
 """Commands."""
+
 from .determiners import execute_determiners_command
 from .initial import execute_initial_command
 from .last import execute_last_command

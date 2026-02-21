@@ -1,10 +1,3 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-# pylint: disable=too-many-statements
 """
 Treemap
 ===============================================================================
@@ -46,6 +39,7 @@ Smoke tests:
     height="800px" width="100%" frameBorder="0"></iframe>
 
 """
+
 from techminer2._internals import ParamsMixin
 from techminer2.analyze.networks.co_occurrence.usr.treemap import Treemap as UserTreemap
 

@@ -1,9 +1,3 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
 """
 Find Similar Records
 ===============================================================================
@@ -81,6 +75,7 @@ ID INFORMATION_SYSTEMS; INNOVATION; CONCEPTUAL_FRAMEWORKS; CONTENT_ANALYSIS;
 
 
 """
+
 # from nltk.stem import WordNetLemmatizer  # type: ignore
 # from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
 # from textblob import TextBlob  # type: ignore

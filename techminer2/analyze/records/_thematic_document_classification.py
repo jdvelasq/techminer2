@@ -1,5 +1,3 @@
-# flake8: noqa
-# pylint: disable=line-too-long
 """
 TODO: Thematic Document Classification
 ===============================================================================
@@ -15,6 +13,7 @@ TODO: Thematic Document Classification
 
 
 """
+
 # import pandas as pd  # type: ignore
 # from ... import vantagepoint
 # from ...make_report_dir import make_report_dir

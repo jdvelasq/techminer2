@@ -1,9 +1,3 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
 """
 Global Indicators by Field per Year
 ===============================================================================
@@ -48,6 +42,7 @@ Demertzis M.       2018    1  ...                     0.000
 
 
 """
+
 import pandas as pd  # type: ignore
 
 

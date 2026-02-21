@@ -14,10 +14,16 @@ def list_example_directories(examples_dir: str | Path = "examples") -> list[str]
     )
 
 
-def process_file(directory_name: str, examples_dir: str | Path = "examples") -> dict[str, list[str]]:
+def process_file(
+    directory_name: str, examples_dir: str | Path = "examples"
+) -> dict[str, list[str]]:
     """Group values by the comma-separated item that contains 'Univer'."""
     file_path = (
-        Path(examples_dir) / directory_name / "refine" / "thesaurus" / "organizations.the.txt"
+        Path(examples_dir)
+        / directory_name
+        / "refine"
+        / "thesaurus"
+        / "organizations.the.txt"
     )
     if not file_path.exists():
         return {}
@@ -52,7 +58,9 @@ def process_all_example_directories(
     report_lines = sorted({key.strip() for key in grouped_values if key.strip()})
 
     report_path = Path(report_file)
-    report_path.write_text("\n".join(report_lines) + ("\n" if report_lines else ""), encoding="utf-8")
+    report_path.write_text(
+        "\n".join(report_lines) + ("\n" if report_lines else ""), encoding="utf-8"
+    )
 
 
 if __name__ == "__main__":

@@ -1,10 +1,3 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-# pylint: disable=too-many-statements
 """
 Network Edges Frame
 ===============================================================================
@@ -40,6 +33,7 @@ Smoke tests:
 
 
 """
+
 from techminer2._internals import ParamsMixin
 from techminer2.analyze.networks.main_path._internals.compute_main_path import (
     internal__compute_main_path,

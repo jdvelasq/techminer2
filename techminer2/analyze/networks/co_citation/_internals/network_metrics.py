@@ -1,10 +1,3 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-# pylint: disable=too-many-statements
 """
 Network Metrics
 ===============================================================================
@@ -39,6 +32,7 @@ COMMUN ACM 1:12                     25     0.070961   0.878788  0.044207
 MANAGE SCI 1:30                     25     0.016051   0.878788  0.041488
 
 """
+
 from techminer2._internals import ParamsMixin
 from techminer2._internals.nx.compute_network_metrics import (
     internal__compute_network_metrics,

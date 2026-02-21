@@ -1,9 +1,3 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
 """
 Cluster to Terms Mapping
 ===============================================================================
@@ -73,6 +67,7 @@ Smoke tests:
 
 
 """
+
 from techminer2._internals import ParamsMixin
 from techminer2.analyze.topic_modeling.user.components_by_term_data_frame import (
     ComponentsByTermDataFrame,

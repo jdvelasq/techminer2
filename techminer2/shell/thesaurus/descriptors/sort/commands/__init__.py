@@ -14,7 +14,6 @@ from .stopwords import execute_stopwords_command
 from .wordlength import execute_wordlength_command
 from .wordmatch import execute_wordmatch_command
 
-
 __all__ = [
     "execute_alphabet_command",
     "execute_endswith_command",

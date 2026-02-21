@@ -1,10 +1,3 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-# pylint: disable=too-many-statements
 """
 Apply Thesaurus
 ===============================================================================
@@ -82,6 +75,7 @@ Smoke tests:
 
 
 """
+
 from techminer2._internals import ParamsMixin
 from techminer2.refine.thesaurus_old._internals import internal__transform
 from techminer2.refine.thesaurus_old.system import (

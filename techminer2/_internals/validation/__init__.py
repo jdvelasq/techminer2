@@ -1,4 +1,3 @@
-# flake8: noqa
 """Validation internal functions."""
 
 from .check_optional_base_estimator import check_optional_base_estimator

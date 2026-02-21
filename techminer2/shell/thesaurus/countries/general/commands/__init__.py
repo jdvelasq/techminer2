@@ -1,4 +1,5 @@
 """Commands"""
+
 from .apply import execute_apply_command
 from .explode import execute_explode_command
 from .initialize import execute_initialize_command

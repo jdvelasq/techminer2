@@ -1,6 +1,3 @@
-# pylint: disable=unused-argument
-
-
 def repair_doi(root_directory: str) -> int:
 
     #

@@ -1,5 +1,4 @@
-from colorama import Fore
-from colorama import init
+from colorama import Fore, init
 
 init(autoreset=True)
 

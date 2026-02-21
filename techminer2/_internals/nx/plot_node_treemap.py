@@ -1,11 +1,3 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-# pylint: disable=too-many-statements
-# pylint: disable=import-outside-toplevel
 """
 Treemap
 ===============================================================================
@@ -25,7 +17,9 @@ Treemap
 #     <iframe src="../_static/treemap.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
+
 import plotly.graph_objs as go  # type: ignore
+
 from techminer2._internals.nx.create_clusters_to_terms_mapping import (
     internal__create_clusters_to_terms_mapping,
 )

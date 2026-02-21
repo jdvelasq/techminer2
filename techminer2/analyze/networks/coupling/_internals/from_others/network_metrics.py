@@ -1,10 +1,3 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-# pylint: disable=too-many-statements
 """
 
 ## >>> from techminer2.coupling_network._core.others.network_metrics import _network_metrics
@@ -35,6 +28,7 @@ Dolata M. 2:0181         2          0.0   0.222222  0.100000
 
 
 """
+
 from techminer2._internals import ParamsMixin
 from techminer2._internals.nx import internal__compute_network_metrics
 from techminer2.analyze.networks.coupling._internals.from_others.create_nx_graph import (

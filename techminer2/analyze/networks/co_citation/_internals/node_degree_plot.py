@@ -1,10 +1,3 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-# pylint: disable=too-many-statements
 """
 Node Degree Plot
 ===============================================================================
@@ -44,6 +37,7 @@ Node Degree Plot
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
+
 from techminer2._internals import ParamsMixin
 from techminer2._internals.nx import (
     internal__assign_degree_to_nodes,
