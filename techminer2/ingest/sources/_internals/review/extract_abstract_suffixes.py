@@ -7,7 +7,6 @@ def extract_abstract_suffixes(root_directory: str) -> int:
 
     text = (
         ExtractAbstractSuffixes()
-        .having_text_matching(None)
         .having_n_chars(90)
         .where_root_directory(root_directory=root_directory)
         .run()

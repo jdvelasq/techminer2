@@ -41,7 +41,7 @@ Smoke tests:
 
 from techminer2._internals import ParamsMixin
 from techminer2._internals.plots.world_map import world_map
-from techminer2.report.visualization.data_frame import DataFrame
+from techminer2.report.visualization.dataframe import DataFrame
 
 
 class WorldMap(

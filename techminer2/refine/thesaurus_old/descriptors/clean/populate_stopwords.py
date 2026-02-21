@@ -39,7 +39,8 @@ Smoke tests:
 """
 
 from techminer2._internals import ParamsMixin
-from techminer2._internals.stopwords import load_user_stopwords, save_user_stopwords
+
+# from techminer2._internals.stopwords import load_user_stopwords, save_user_stopwords
 from techminer2.refine.thesaurus_old.descriptors import IsStopword
 
 # -----------------------------------------------------------------------------

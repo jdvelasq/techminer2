@@ -132,7 +132,7 @@ Smoke tests:
 
 from techminer2._internals import ParamsMixin, SortAxesMixin
 from techminer2._internals.data_access import load_filtered_main_data
-from techminer2.report.visualization.data_frame import DataFrame as PerformanceDataFrame
+from techminer2.report.visualization.dataframe import DataFrame as PerformanceDataFrame
 
 
 class DataFrame(

@@ -41,7 +41,7 @@ Smoke tests:
 
 from techminer2._internals import ParamsMixin
 from techminer2._internals.plots.word_cloud import word_cloud
-from techminer2.report.visualization.data_frame import DataFrame
+from techminer2.report.visualization.dataframe import DataFrame
 
 
 class WordCloud(

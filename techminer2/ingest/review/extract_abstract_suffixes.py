@@ -6,7 +6,6 @@ Smoke test:
     >>> from techminer2.ingest.review import ExtractAbstractSuffixes
     >>> text = (
     ...     ExtractAbstractSuffixes()
-    ...     .having_text_matching(None)
     ...     .having_n_chars(90)
     ...     .where_root_directory("examples/tests/")
     ...     .run()
@@ -22,10 +21,10 @@ Smoke test:
     HADOW has been brought to THE_LIGHT . springer international publishing switzerland 2016 .
     _LENDING and CROWDFUNDING platforms . springer international publishing switzerland 2016 .
     SOCIAL_ENVIRONMENT . 2016 . faculty of management , warsaw university of technology 2016 .
-    we provide OBJECTIVE_UNDERSTANDING of FINTECH , how it is reflected in THE_POPULAR_MEDIA .
+    we_provide OBJECTIVE_UNDERSTANDING of FINTECH , how it is reflected in THE_POPULAR_MEDIA .
     ANKING , CASH , CREDIT , and DEBIT_CARDS in DIFFERENT_COUNTRIES and REGIONS of THE_WORLD .
-    examining CONCEPTS such_as THE_DEVELOPMENT of BUSINESS_APPLICATIONS that use embedded AI .
-    ORMATION . 4 ) OUR_RESULTS inform PRACTITIONERS how to time THE_DECISION of MONETIZATION .
+    examining CONCEPTS such as THE_DEVELOPMENT of BUSINESS_APPLICATIONS that use embedded AI .
+    ORMATION . 4 ) our_results inform PRACTITIONERS how to time THE_DECISION of MONETIZATION .
 
 
 

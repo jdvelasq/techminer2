@@ -40,7 +40,7 @@ Smoke tests:
 
 from techminer2._internals import ParamsMixin
 from techminer2._internals.plots.bar_plot import bar_plot
-from techminer2.report.visualization.data_frame import DataFrame
+from techminer2.report.visualization.dataframe import DataFrame
 
 
 class BarPlot(
