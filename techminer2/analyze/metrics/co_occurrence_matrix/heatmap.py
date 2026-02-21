@@ -1,10 +1,3 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-# pylint: disable=import-outside-toplevel
 """
 Heatmap
 ===============================================================================
@@ -57,8 +50,9 @@ Smoke tests:
 
 
 """
+
 from techminer2._internals import ParamsMixin
-from techminer2._internals.plots.internal__heatmap import internal__heatmap
+from techminer2._internals.plots.heatmap import heatmap
 from techminer2.analyze.metrics.co_occurrence_matrix.matrix_data_frame import (
     MatrixDataFrame,
 )
@@ -71,5 +65,5 @@ class Heatmap(
 
     def run(self):
         data_frame = MatrixDataFrame().update(**self.params.__dict__).run()
-        fig = internal__heatmap(self.params, data_frame)
+        fig = heatmap(self.params, data_frame)
         return fig

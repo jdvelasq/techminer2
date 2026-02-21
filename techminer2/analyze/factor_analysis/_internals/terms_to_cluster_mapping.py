@@ -1,6 +1,3 @@
-#
-
-
 def _terms_to_cluster_mapping(
     terms_by_dimmension,
     clustering_estimator_or_dict,

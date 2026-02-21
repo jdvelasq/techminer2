@@ -1,32 +1,28 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-# pylint: disable=too-few-public-methods
-"""Bar Plot Mixin."""
+import pandas as pd  # type: ignore
 import plotly.express as px  # type: ignore
+import plotly.graph_objects as go  # type: ignore
+
+from techminer2._internals import Params
 
 MARKER_COLOR = "#7793a5"
 MARKER_LINE_COLOR = "#465c6b"
 
 
-def internal__bar_plot(params, data_frame):
+def line_plot(params: Params, dataframe: pd.DataFrame) -> go.Figure:
 
-    x_col = params.terms_order_by
+    y_col = params.items_order_by
 
-    hover_data = data_frame.columns.to_list()
+    hover_data = dataframe.columns.to_list()
     title_text = params.title_text
     xaxes_title_text = params.xaxes_title_text
     yaxes_title_text = params.yaxes_title_text
 
-    fig = px.bar(
-        data_frame,
-        x=x_col,
-        y=None,
+    fig = px.line(
+        dataframe,
+        x=None,
+        y=y_col,
         hover_data=hover_data,
-        orientation="h",
+        markers=True,
     )
 
     fig.update_layout(
@@ -35,20 +31,29 @@ def internal__bar_plot(params, data_frame):
         title_text=title_text,
     )
     fig.update_traces(
+        marker={
+            "size": 9,
+            "line": {
+                "color": "#465c6b",
+                "width": 2,
+            },
+        },
         marker_color=MARKER_COLOR,
-        marker_line={"color": MARKER_LINE_COLOR},
+        line={
+            "color": MARKER_LINE_COLOR,
+        },
     )
     fig.update_xaxes(
         linecolor="gray",
         linewidth=2,
         gridcolor="lightgray",
         griddash="dot",
+        tickangle=270,
         title_text=xaxes_title_text,
     )
     fig.update_yaxes(
         linecolor="gray",
         linewidth=2,
-        autorange="reversed",
         gridcolor="lightgray",
         griddash="dot",
         title_text=yaxes_title_text,

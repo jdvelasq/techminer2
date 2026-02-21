@@ -1,10 +1,3 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-# pylint: disable=too-many-statements
 """
 Cluster to Terms Mapping
 ===============================================================================
@@ -66,6 +59,7 @@ Cluster to Terms Mapping
 
 
 """
+
 from techminer2.analyze.factor_analysis.co_occurrence.terms_to_cluster_mapping import (
     terms_to_cluster_mapping,
 )

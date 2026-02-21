@@ -1,10 +1,3 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-# pylint: disable=too-many-statements
 """
 Matrix Plot
 ===============================================================================
@@ -67,6 +60,7 @@ Smoke tests:
 
 
 """
+
 import networkx as nx  # type: ignore
 
 from techminer2._internals import ParamsMixin
@@ -80,7 +74,7 @@ from techminer2._internals.nx import (
     internal__compute_spring_layout_positions,
     internal__plot_nx_graph,
 )
-from techminer2.analyze.metrics.associations.data_frame import DataFrame
+from techminer2.analyze.metrics.associations.dataframe import DataFrame
 
 
 class MatrixPlot(

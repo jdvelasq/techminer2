@@ -1,21 +1,23 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-"""Bubble plot."""
+import pandas as pd
 import plotly.express as px  # type: ignore
 
+from techminer2._internals import Params
 
-def internal__bubble_plot(params, x_name, y_name, size_col, data_frame):
+
+def bubble_plot(
+    params: Params,
+    x_name: str,
+    y_name: str,
+    size_col: str,
+    dataframe: pd.DataFrame,
+):
 
     fig = px.scatter(
-        data_frame,
+        dataframe,
         x=x_name,
         y=y_name,
         size=size_col,
-        hover_data=data_frame.columns.to_list(),
+        hover_data=dataframe.columns.to_list(),
         title=params.title_text,
     )
     fig.update_layout(

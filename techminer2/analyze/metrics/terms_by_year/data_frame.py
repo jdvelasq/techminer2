@@ -1,9 +1,3 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
 """
 Data Frame
 ===============================================================================
@@ -135,6 +129,7 @@ Smoke tests:
 
 
 """
+
 from techminer2._internals import ParamsMixin, SortAxesMixin
 from techminer2._internals.data_access import load_filtered_main_data
 from techminer2.report.visualization.data_frame import DataFrame as PerformanceDataFrame

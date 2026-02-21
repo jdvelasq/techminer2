@@ -1,7 +1,7 @@
 """Associations."""
 
 from .butterfly_plot import ButterflyPlot
-from .data_frame import DataFrame
+from .dataframe import DataFrame
 from .matrix_plot import MatrixPlot
 
 __all__ = [

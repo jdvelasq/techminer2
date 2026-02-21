@@ -1,10 +1,3 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-# pylint: disable=import-outside-toplevel
 """
 Butterfly Plot
 ===============================================================================
@@ -53,10 +46,11 @@ Smoke tests:
 
 
 """
+
 import plotly.graph_objects as go  # type: ignore
 
 from techminer2._internals import ParamsMixin
-from techminer2.analyze.metrics.associations.data_frame import DataFrame
+from techminer2.analyze.metrics.associations.dataframe import DataFrame
 
 
 class ButterflyPlot(

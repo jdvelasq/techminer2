@@ -1,23 +1,15 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-# pylint: disable=too-few-public-methods
-"""Word Cloud Mixin."""
 import numpy as np
 from wordcloud import WordCloud as WordCloudExternal  # type: ignore
 
 
-def internal__word_cloud(params, data_frame):
+def word_cloud(params, dataframe):
 
     width = params.width
     height = params.height
 
     x_mask, y_mask = np.ogrid[:300, :300]
     mask = (x_mask - 150) ** 2 + (y_mask - 150) ** 2 > 130**2  #  type: ignore
-    mask = 255 * mask.astype(int)  #  type: ignore
+    mask = 255 * mask.astype(int)
 
     wordcloud = WordCloudExternal(
         background_color="white",
@@ -29,8 +21,8 @@ def internal__word_cloud(params, data_frame):
 
     text = dict(
         zip(
-            data_frame.index,
-            data_frame[params.terms_order_by],
+            dataframe.index,
+            dataframe[params.items_order_by],
         )
     )
     wordcloud.generate_from_frequencies(text)

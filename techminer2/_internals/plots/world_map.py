@@ -1,24 +1,16 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-# pylint: disable=too-few-public-methods
-"World Map Plot Mixin."
 import pandas as pd  # type: ignore
 import plotly.express as px  # type: ignore
 
 
-def internal__world_map(params, data_frame):
+def world_map(params, dataframe):
 
     #
     # Variables
     colormap = params.colormap
     hover_data = [
-        col for col in data_frame.columns if col not in ["country", "iso_alpha"]
+        col for col in dataframe.columns if col not in ["country", "iso_alpha"]
     ]
-    metric = params.terms_order_by
+    metric = params.items_order_by
     title_text = params.title_text
 
     #
@@ -48,10 +40,10 @@ def internal__world_map(params, data_frame):
     #
     # Plots the world map
 
-    data_frame.index = data_frame.index.rename("country")
-    data_frame = data_frame.sort_index()
+    dataframe.index = dataframe.index.rename("country")
+    dataframe = dataframe.sort_index()
 
-    world_map_data = world_map_data.join(data_frame, how="left")
+    world_map_data = world_map_data.join(dataframe, how="left")
     world_map_data = world_map_data.fillna(0)
 
     fig = px.choropleth(
@@ -60,7 +52,7 @@ def internal__world_map(params, data_frame):
         color=metric,
         hover_name="country",
         hover_data=hover_data,
-        range_color=(1, data_frame[metric].max()),
+        range_color=(1, dataframe[metric].max()),
         color_continuous_scale=colormap,
         color_discrete_map={0: "gray"},
         scope="world",

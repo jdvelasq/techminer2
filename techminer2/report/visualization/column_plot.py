@@ -1,10 +1,3 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-# pylint: disable=import-outside-toplevel
 """
 Column Plot
 ===============================================================================
@@ -48,8 +41,9 @@ Smoke tests:
 
 
 """
+
 from techminer2._internals import ParamsMixin
-from techminer2._internals.plots.internal__column_plot import internal__column_plot
+from techminer2._internals.plots.column_plot import column_plot
 from techminer2.report.visualization.data_frame import DataFrame
 
 
@@ -75,7 +69,7 @@ class ColumnPlot(
                 self.params.items_order_by.replace("_", " ").upper()
             )
 
-        fig = internal__column_plot(params=self.params, data_frame=data_frame)
+        fig = column_plot(params=self.params, dataframe=data_frame)
 
         return fig
 

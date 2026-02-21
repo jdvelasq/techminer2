@@ -1,10 +1,3 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-# pylint: disable=import-outside-toplevel
 """
 World Map
 ===============================================================================
@@ -45,8 +38,9 @@ Smoke tests:
 
 
 """
+
 from techminer2._internals import ParamsMixin
-from techminer2._internals.plots.internal__world_map import internal__world_map
+from techminer2._internals.plots.world_map import world_map
 from techminer2.report.visualization.data_frame import DataFrame
 
 
@@ -62,7 +56,7 @@ class WorldMap(
         if self.params.title_text is None:
             self.using_title_text("World Map")
 
-        fig = internal__world_map(params=self.params, data_frame=data_frame)
+        fig = world_map(params=self.params, dataframe=data_frame)
 
         return fig
 

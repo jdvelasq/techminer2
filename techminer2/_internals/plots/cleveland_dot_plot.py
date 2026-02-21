@@ -1,37 +1,29 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-# pylint: disable=too-few-public-methods
-"""Cleveland Dot Plot Mixin."""
+import pandas as pd  # type: ignore
 import plotly.express as px  # type: ignore
+import plotly.graph_objects as go  # type: ignore
+
+from techminer2._internals import Params
 
 MARKER_COLOR = "#7793a5"
 MARKER_LINE_COLOR = "#465c6b"
 
 
-def internal__cleveland_dot_plot(params, data_frame):
-
-    x_col = params.terms_order_by
-
-    hover_data = data_frame.columns.to_list()
-    title_text = params.title_text
-    xaxes_title_text = params.xaxes_title_text
-    yaxes_title_text = params.yaxes_title_text
+def cleveland_dot_plot(
+    params: Params,
+    dataframe: pd.DataFrame,
+) -> go.Figure:
 
     fig = px.scatter(
-        data_frame,
-        x=x_col,
+        dataframe,
+        x=params.items_order_by,
         y=None,
-        hover_data=hover_data,
-        size=x_col,
+        hover_data=dataframe.columns.to_list(),
+        size=params.items_order_by,
     )
     fig.update_layout(
         paper_bgcolor="white",
         plot_bgcolor="white",
-        title_text=title_text,
+        title_text=params.title_text,
     )
     fig.update_traces(
         marker={
@@ -48,7 +40,7 @@ def internal__cleveland_dot_plot(params, data_frame):
         linewidth=2,
         gridcolor="lightgray",
         griddash="dot",
-        title_text=xaxes_title_text,
+        title_text=params.xaxes_title_text,
     )
     fig.update_yaxes(
         linecolor="gray",
@@ -56,7 +48,7 @@ def internal__cleveland_dot_plot(params, data_frame):
         autorange="reversed",
         gridcolor="gray",
         griddash="solid",
-        title_text=yaxes_title_text,
+        title_text=params.yaxes_title_text,
     )
 
     return fig

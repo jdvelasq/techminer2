@@ -131,5 +131,3 @@ class ClustersToTermsMapping(
             mapping[theme].append(word)
 
         return mapping
-
-        return mapping

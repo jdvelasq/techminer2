@@ -1,10 +1,3 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-# pylint: disable=too-few-public-methods
 """
 Bubble Plot
 ===============================================================================
@@ -55,8 +48,9 @@ Smoke tests:
     height="800px" width="100%" frameBorder="0"></iframe>
 
 """
+
 from techminer2._internals import ParamsMixin
-from techminer2._internals.plots.internal__bubble_plot import internal__bubble_plot
+from techminer2._internals.plots.bubble_plot import bubble_plot
 from techminer2.analyze.metrics.co_occurrence_matrix.data_frame import DataFrame
 
 
@@ -69,12 +63,12 @@ class BubblePlot(
 
         data_frame = DataFrame().update(**self.params.__dict__).run()
 
-        fig = internal__bubble_plot(
+        fig = bubble_plot(
             self.params,
             x_name="rows",
             y_name="columns",
             size_col="OCC",
-            data_frame=data_frame,
+            dataframe=data_frame,
         )
 
         return fig

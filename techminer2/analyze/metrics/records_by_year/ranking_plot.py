@@ -1,13 +1,6 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
 """
 Ranking Plot
 ===============================================================================
-
 
 Smoke tests:
     >>> from techminer2.analyze.metrics.records_by_year import RankingPlot
@@ -39,8 +32,9 @@ Smoke tests:
 
 
 """
+
 from techminer2._internals import ParamsMixin
-from techminer2._internals.plots.internal__ranking_plot import internal__ranking_plot
+from techminer2._internals.plots.ranking_plot import ranking_plot
 from techminer2.analyze.metrics.records_by_year.data_frame import DataFrame
 
 
@@ -68,7 +62,7 @@ class RankingPlot(
                 self.params.items_order_by.replace("_", " ").upper()
             )
 
-        fig = internal__ranking_plot(params=self.params, data_frame=data_frame)
+        fig = ranking_plot(params=self.params, dataframe=data_frame)
 
         return fig
 

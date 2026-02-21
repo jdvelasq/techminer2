@@ -1,9 +1,3 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
 """
 Data Frame
 ===============================================================================
@@ -48,6 +42,7 @@ Smoke tests:
 
 
 """
+
 #
 # TechMiner2+ computes three growth indicators for each item in a field (usually
 # keywords or noun phrases):

@@ -1,10 +1,3 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-# pylint: disable=too-many-statements
 """
 Terms by Dimension Frame
 ===============================================================================
@@ -51,6 +44,7 @@ Terms by Dimension Frame
 
 
 """
+
 import pandas as pd  # type: ignore
 
 from techminer2.analyze.metrics.co_occurrence_matrix._internals.normalize_matrix import (

@@ -1,10 +1,3 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-# pylint: disable=too-many-statements
 """
 Record Mapping
 ===============================================================================
@@ -63,6 +56,7 @@ Smoke Test:
 
 
 """
+
 from techminer2._internals import ParamsMixin
 from techminer2._internals.data_access.load_filtered_main_data import (
     load_filtered_main_data,

@@ -1,10 +1,3 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-# pylint: disable=import-outside-toplevel
 """
 Word Cloud
 ===============================================================================
@@ -45,8 +38,9 @@ Smoke tests:
     :align: center
 
 """
+
 from techminer2._internals import ParamsMixin
-from techminer2._internals.plots.internal__word_cloud import internal__word_cloud
+from techminer2._internals.plots.word_cloud import word_cloud
 from techminer2.report.visualization.data_frame import DataFrame
 
 
@@ -58,7 +52,7 @@ class WordCloud(
     def run(self):
 
         data_frame = DataFrame().update(**self.params.__dict__).run()
-        fig = internal__word_cloud(params=self.params, data_frame=data_frame)
+        fig = word_cloud(params=self.params, dataframe=data_frame)
 
         return fig
 

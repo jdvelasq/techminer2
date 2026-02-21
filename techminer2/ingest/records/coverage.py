@@ -1,10 +1,3 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-# pylint: disable=too-many-statements
 """
 Coverage
 ===============================================================================
@@ -18,7 +11,6 @@ Smoke tests:
     ...     .with_field("author_keywords_raw")
     ...     #
     ...     .where_root_directory("examples/tests/")
-    ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     #
@@ -38,6 +30,7 @@ Smoke tests:
 
 
 """
+
 from techminer2._internals import ParamsMixin
 from techminer2._internals.data_access.load_filtered_main_data import (
     load_filtered_main_data,

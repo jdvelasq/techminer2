@@ -1,14 +1,6 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-# pylint: disable=import-outside-toplevel
 """
 Cleveland Dot Plot
 ===============================================================================
-
 
 Smoke tests:
     >>> from techminer2.analyze.metrics.performance import ClevelandDotPlot
@@ -47,10 +39,9 @@ Smoke tests:
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
+
 from techminer2._internals import ParamsMixin
-from techminer2._internals.plots.internal__cleveland_dot_plot import (
-    internal__cleveland_dot_plot,
-)
+from techminer2._internals.plots.cleveland_dot_plot import cleveland_dot_plot
 from techminer2.report.visualization.data_frame import DataFrame
 
 
@@ -74,7 +65,7 @@ class ClevelandDotPlot(
         if self.params.yaxes_title_text is None:
             self.using_yaxes_title_text(self.params.field.replace("_", " ").upper())
 
-        fig = internal__cleveland_dot_plot(params=self.params, data_frame=data_frame)
+        fig = cleveland_dot_plot(params=self.params, dataframe=data_frame)
 
         return fig
 
