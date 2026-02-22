@@ -44,7 +44,7 @@ class ExportRecordNoToZotero(ParamsMixin):
 
         if not self.params.quiet:
 
-            sys.stderr.write(f"  Updating process completed successfully\n\n")
+            sys.stderr.write("  Updating process completed successfully\n\n")
             sys.stderr.flush()
 
     #

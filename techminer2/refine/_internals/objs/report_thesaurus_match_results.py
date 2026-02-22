@@ -13,22 +13,20 @@ VARIANT = ThesaurusField.VARIANT.value
 
 def report_thesaurus_match_results(
     params: Params,
-    dataframe: pd.DataFrame,
+    df: pd.DataFrame,
 ) -> ThesaurusMatchResult:
 
-    dataframe = dataframe.copy()
+    df = df.copy()
 
-    counting = dataframe[ThesaurusField.PREFERRED_TEMP.value].value_counts()
+    counting = df[ThesaurusField.PREFERRED_TEMP.value].value_counts()
     counting = counting[counting > 1]
     duplicated_items = counting.index.to_list()
-    dataframe = dataframe[
-        dataframe[ThesaurusField.PREFERRED_TEMP.value].isin(duplicated_items)
-    ]
+    df = df[df[ThesaurusField.PREFERRED_TEMP.value].isin(duplicated_items)]
 
-    num_candidates = self.compute_num_candidates(dataframe)
-    num_groups = self.compute_num_groups(dataframe)
-    dataframe = self.add_occ_info(dataframe)
-    reporting_df = self.generate_reporting_dataframe(dataframe)
+    num_candidates = self.compute_num_candidates(df)
+    num_groups = self.compute_num_groups(df)
+    df = self.add_occ_info(df)
+    reporting_df = self.generate_reporting_dataframe(df)
     candidates_filepath = self.get_candidates_filepath()
     self.generate_candidates_txt_file(
         filepath=candidates_filepath, dataframe=reporting_df

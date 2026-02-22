@@ -27,7 +27,7 @@ Smoke tests:
     ...     .having_items_in(None)
     ...     #
     ...     # COUNTERS:
-    ...     .using_term_counters(True)
+    ...     .using_item_counters(True)
     ...     #
     ...     # TFIDF:
     ...     .using_binary_term_frequencies(False)

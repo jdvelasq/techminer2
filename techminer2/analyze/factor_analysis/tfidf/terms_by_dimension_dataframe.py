@@ -52,7 +52,7 @@ Terms by Dimension Frane
 
 import pandas as pd  # type: ignore
 
-from techminer2.analyze.tfidf.data_frame import DataFrame as TfIdfDataFrame
+from techminer2.analyze.tfidf.dataframe import DataFrame as TfIdfDataFrame
 
 
 def terms_by_dimension_frame(

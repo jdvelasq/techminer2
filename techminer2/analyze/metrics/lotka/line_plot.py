@@ -29,7 +29,7 @@ Smoke tests:
 import plotly.graph_objects as go  # type: ignore
 
 from techminer2._internals import ParamsMixin
-from techminer2.analyze.metrics.lotka.data_frame import DataFrame
+from techminer2.analyze.metrics.lotka.dataframe import DataFrame
 
 
 class LinePlot(

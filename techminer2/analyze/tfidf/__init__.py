@@ -1,6 +1,6 @@
 """Public API."""
 
-from techminer2.analyze.tfidf.data_frame import DataFrame
+from techminer2.analyze.tfidf.dataframe import DataFrame
 
 __all__ = [
     "DataFrame",
