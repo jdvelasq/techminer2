@@ -19,11 +19,11 @@ Cosine Similarities
 ## ...     #
 ## ...     # FIELD:
 ## ...     .with_field("descriptors")
-## ...     .having_terms_in_top(50)
-## ...     .having_terms_ordered_by("OCC")
-## ...     .having_term_occurrences_between(None, None)
-## ...     .having_term_citations_between(None, None)
-## ...     .having_terms_in(None)
+## ...     .having_items_in_top(50)
+## ...     .having_items_ordered_by("OCC")
+## ...     .having_item_occurrences_between(None, None)
+## ...     .having_item_citations_between(None, None)
+## ...     .having_items_in(None)
 ## ...     #
 ## ...     # DECOMPOSITION:
 ## ...     .using_decomposition_estimator(pca)
@@ -48,8 +48,8 @@ Cosine Similarities
 
 import pandas as pd  # type: ignore
 from sklearn.metrics.pairwise import (
-    cosine_similarity as sklearn_cosine_similarity,
-)  # type: ignore
+    cosine_similarity as sklearn_cosine_similarity,  # type: ignore
+)
 
 from techminer2.analyze.factor_analysis.co_occurrence.terms_by_dimension_data_frame import (
     terms_by_dimension_frame,

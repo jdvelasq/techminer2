@@ -8,11 +8,11 @@ Concept Grid Plot
 ## ...     ConceptGridPlot()
 ## ...     #
 ## ...     # FIELD:
-## ...     .having_terms_in_top(30)
-## ...     .having_terms_ordered_by("OCC")
-## ...     .having_term_occurrences_between(None, None)
-## ...     .having_term_citations_between(None, None)
-## ...     .having_terms_in(None)
+## ...     .having_items_in_top(30)
+## ...     .having_items_ordered_by("OCC")
+## ...     .having_item_occurrences_between(None, None)
+## ...     .having_item_citations_between(None, None)
+## ...     .having_items_in(None)
 ## ...     #
 ## ...     # COUNTERS:
 ## ...     .using_term_counters(True)

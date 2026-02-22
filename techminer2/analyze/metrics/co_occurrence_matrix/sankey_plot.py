@@ -10,10 +10,10 @@ Smoke tests:
     ...     #
     ...     # FIELDS:
     ...     .with_field("authors")
-    ...     .having_terms_in_top(10)
-    ...     .having_term_occurrences_between(None, None)
-    ...     .having_term_citations_between(None, None)
-    ...     .having_terms_in(None)
+    ...     .having_items_in_top(10)
+    ...     .having_item_occurrences_between(None, None)
+    ...     .having_item_citations_between(None, None)
+    ...     .having_items_in(None)
     ...     #
     ...     .with_other_field(["countries", "author_keywords"])
     ...     #

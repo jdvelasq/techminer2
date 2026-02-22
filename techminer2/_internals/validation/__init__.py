@@ -9,13 +9,14 @@ from .check_optional_str_list import check_optional_str_list
 from .check_optional_str_or_dict import check_optional_str_or_dict
 from .check_plotly_color import check_plotly_color
 from .check_required_bool import check_required_bool
-from .check_required_corpus_field import check_required_corpus_field
+from .check_required_corpus_field_enum import check_required_corpus_field_enum
 from .check_required_float import check_required_float
 from .check_required_float_0_1 import check_required_float_0_1
 from .check_required_float_0_1_range import check_required_float_0_1_range
 from .check_required_float_range import check_required_float_range
 from .check_required_int import check_required_int
 from .check_required_int_range import check_required_int_range
+from .check_required_items_order_by_enum import check_required_items_order_by_enum
 from .check_required_non_negative_float import check_required_non_negative_float
 from .check_required_non_negative_int import check_required_non_negative_int
 from .check_required_open_ended_int_range import check_required_open_ended_int_range
@@ -37,7 +38,7 @@ __all__ = [
     "check_optional_str",
     "check_plotly_color",
     "check_required_bool",
-    "check_required_corpus_field",
+    "check_required_corpus_field_enum",
     "check_required_float_0_1_range",
     "check_required_float_0_1",
     "check_required_float_range",
@@ -47,7 +48,7 @@ __all__ = [
     "check_required_non_negative_float",
     "check_required_non_negative_int",
     "check_required_open_ended_int_range",
-    "check_required_open_ended_int_range",
+    "check_required_items_order_by_enum",
     "check_required_positive_float_range",
     "check_required_positive_float",
     "check_required_positive_int",

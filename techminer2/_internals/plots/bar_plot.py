@@ -10,14 +10,14 @@ MARKER_LINE_COLOR = "#465c6b"
 
 def bar_plot(
     params: Params,
-    dataframe: pd.DataFrame,
+    df: pd.DataFrame,
 ) -> go.Figure:
 
     fig = px.bar(
-        dataframe,
-        x=params.items_order_by,
+        df,
+        x=params.items_order_by.value,
         y=None,
-        hover_data=dataframe.columns.to_list(),
+        hover_data=df.columns.to_list(),
         orientation="h",
     )
 

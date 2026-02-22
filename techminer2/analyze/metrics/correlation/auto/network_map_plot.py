@@ -14,11 +14,11 @@ Smoke tests:
     ...     #
     ...     # FIELD:
     ...     .with_field("authors")
-    ...     .having_terms_in_top(None)
-    ...     .having_terms_ordered_by("OCC")
-    ...     .having_term_occurrences_between(2, None)
-    ...     .having_term_citations_between(None, None)
-    ...     .having_terms_in(None)
+    ...     .having_items_in_top(None)
+    ...     .having_items_ordered_by("OCC")
+    ...     .having_item_occurrences_between(2, None)
+    ...     .having_item_citations_between(None, None)
+    ...     .having_items_in(None)
     ...     #
     ...     # CORRELATION:
     ...     .with_correlation_method("pearson")

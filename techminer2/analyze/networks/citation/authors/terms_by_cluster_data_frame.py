@@ -10,10 +10,10 @@ Smoke tests:
     ...     TermsByClusterDataFrame()
     ...     #
     ...     # UNIT OF ANALYSIS:
-    ...     .having_terms_in_top(30)
+    ...     .having_items_in_top(30)
     ...     .using_citation_threshold(0)
     ...     .having_occurrence_threshold(2)
-    ...     .having_terms_in(None)
+    ...     .having_items_in(None)
     ...     #
     ...     # COUNTERS:
     ...     .using_term_counters(True)
@@ -44,10 +44,10 @@ Smoke tests:
     ...     TermsByClusterDataFrame()
     ...     #
     ...     # UNIT OF ANALYSIS:
-    ...     .having_terms_in_top(30)
+    ...     .having_items_in_top(30)
     ...     .using_citation_threshold(0)
     ...     .having_occurrence_threshold(2)
-    ...     .having_terms_in(None)
+    ...     .having_items_in(None)
     ...     #
     ...     # COUNTERS:
     ...     .using_term_counters(False)

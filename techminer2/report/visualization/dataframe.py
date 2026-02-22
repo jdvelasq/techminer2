@@ -2,69 +2,74 @@
 Data Frame
 ===============================================================================
 
-
 Smoke tests:
-    >>> from techminer2.analyze.metrics.performance import DataFrame
-    >>> (
+    >>> from techminer2 import CorpusField, ItemsOrderBy
+    >>> from techminer2 import CorpusField
+    >>> from techminer2.report.visualization import DataFrame
+    >>> df = (
     ...     DataFrame()
     ...     #
     ...     # FIELD:
-    ...     .with_field("author_keywords_raw")
-    ...     .having_terms_in_top(10)
-    ...     .having_terms_ordered_by("OCC")
-    ...     .having_term_occurrences_between(None, None)
-    ...     .having_term_citations_between(None, None)
-    ...     .having_terms_in(None)
+    ...     .with_source_field(CorpusField.AUTH_KEY_NORM)
+    ...     .having_items_in_top(10)
+    ...     .having_items_ordered_by(ItemsOrderBy.OCC)
+    ...     .having_item_occurrences_between(None, None)
+    ...     .having_item_citations_between(None, None)
+    ...     .having_items_in(None)
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("examples/tests/")
-    ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     #
     ...     .run()
     ... )
-                          rank_occ  rank_gcs  ...  m_index                      counters
-    author_keywords_raw                       ...
-    FINTECH                      1         1  ...     7.75               FINTECH 31:5168
-    INNOVATION                   2         2  ...     1.75            INNOVATION 07:0911
-    FINANCIAL_SERVICES           3         4  ...     1.00    FINANCIAL_SERVICES 04:0667
-    FINANCIAL_INCLUSION          4         5  ...     0.75   FINANCIAL_INCLUSION 03:0590
-    FINANCIAL_TECHNOLOGY         5        15  ...     1.00  FINANCIAL_TECHNOLOGY 03:0461
-    CROWDFUNDING                 6        23  ...     1.00          CROWDFUNDING 03:0335
-    MARKETPLACE_LENDING          7        25  ...     1.50   MARKETPLACE_LENDING 03:0317
-    BUSINESS_MODELS              8         3  ...     1.00       BUSINESS_MODELS 02:0759
-    CYBER_SECURITY               9        21  ...     1.00        CYBER_SECURITY 02:0342
-    CASE_STUDY                  10        22  ...     0.67            CASE_STUDY 02:0340
+    >>> type(df).__name__
+    'DataFrame'
+    >>> df  # doctest: +SKIP
+                           rank_occ  ...                       counters
+    AUTH_KEY_NORM                    ...
+    fintech                       1  ...                fintech 14:1031
+    innovation                    2  ...             innovation 03:0673
+    technology                    3  ...             technology 03:0643
+    content analysis              4  ...       content analysis 02:0279
+    digitalization                5  ...         digitalization 02:0279
+    popular press                 6  ...          popular press 02:0279
+    financial technology          7  ...   financial technology 02:0019
+    banking                       8  ...                banking 01:0394
+    financial institution         9  ...  financial institution 01:0394
+    financial services           10  ...     financial services 01:0394
     <BLANKLINE>
     [10 rows x 17 columns]
 
 
-
 """
 
+import pandas as pd  # type: ignore
+
+from techminer2 import CorpusField, ItemsOrderBy
 from techminer2._internals import ParamsMixin
 from techminer2._internals.data_access import load_filtered_main_data
 
 SELECTED_COLUMNS = {
-    "OCC": [
-        "OCC",
-        "global_citations",
-        "local_citations",
+    ItemsOrderBy.OCC.value: [
+        ItemsOrderBy.OCC.value,
+        CorpusField.CIT_COUNT_GLOBAL.value,
+        CorpusField.CIT_COUNT_LOCAL.value,
         "_name_",
     ],
     #
-    "global_citations": [
-        "global_citations",
-        "local_citations",
-        "OCC",
+    CorpusField.CIT_COUNT_GLOBAL.value: [
+        CorpusField.CIT_COUNT_GLOBAL.value,
+        CorpusField.CIT_COUNT_LOCAL.value,
+        ItemsOrderBy.OCC.value,
         "_name_",
     ],
     # -------------------------------------------
-    "local_citations": [
-        "local_citations",
-        "global_citations",
-        "OCC",
+    CorpusField.CIT_COUNT_LOCAL.value: [
+        CorpusField.CIT_COUNT_LOCAL.value,
+        CorpusField.CIT_COUNT_GLOBAL.value,
+        ItemsOrderBy.OCC.value,
         "_name_",
     ],
 }
@@ -76,278 +81,300 @@ class DataFrame(
     """:meta private:"""
 
     # -------------------------------------------------------------------------
-    def step_01_load_the_database(self):
-        self.data_frame = load_filtered_main_data(params=self.params)
+    def step_01_load_filtered_main_data(self) -> pd.DataFrame:
 
-    # -------------------------------------------------------------------------
-    def step_02_select_metric_fields(self):
-        self.data_frame = (
-            self.data_frame[
+        df = load_filtered_main_data(params=self.params)
+        df = (
+            df[
                 [
-                    self.params.field,
-                    "global_citations",
-                    "local_citations",
-                    "year",
+                    self.params.source_field.value,
+                    CorpusField.CIT_COUNT_GLOBAL.value,
+                    CorpusField.CIT_COUNT_LOCAL.value,
+                    CorpusField.PUBYEAR.value,
                 ]
             ]
             .dropna()
             .copy()
         )
 
-    # -------------------------------------------------------------------------
-    def step_03_explode_data_frame(self):
-
-        # Explode terms in field
-        data_frame = self.data_frame.copy()
-        data_frame[self.params.field] = data_frame[self.params.field].str.split("; ")
-        data_frame = data_frame.explode(self.params.field)
-
-        # Add calculated columns to compute impact metrics
-        # Sorts the data frame
-        data_frame = data_frame.sort_values(
-            [self.params.field, "global_citations", "local_citations"],
-            ascending=[True, False, False],
-        )
-
-        data_frame = data_frame.assign(
-            position=data_frame.groupby(self.params.field).cumcount() + 1
-        )
-
-        data_frame = data_frame.assign(
-            position2=data_frame.position.map(lambda w: w * w)
-        )
-
-        data_frame = data_frame.reset_index(drop=True)
-
-        self.data_frame = data_frame
+        return df
 
     # -------------------------------------------------------------------------
-    def step_04_compute_initial_performance_metrics(self):
-        self.data_frame["OCC"] = 1
-        grouped = self.data_frame.groupby(self.params.field).agg(
+    def step_02_explode_source_field(self, df: pd.DataFrame) -> pd.DataFrame:
+
+        df = df.copy()
+        source_field = self.params.source_field.value
+        df[source_field] = df[source_field].str.split("; ")
+        df = df.explode(source_field)
+
+        return df
+
+    # -------------------------------------------------------------------------
+    def step_03_compute_primary_performance_metrics(self, df):
+
+        source_field = self.params.source_field.value
+        cit_count_global = CorpusField.CIT_COUNT_GLOBAL.value
+        cit_count_local = CorpusField.CIT_COUNT_LOCAL.value
+        pubyear = CorpusField.PUBYEAR.value
+
+        df = df.sort_values(
+            [
+                source_field,
+                cit_count_global,
+                cit_count_local,
+            ],
+            ascending=[
+                True,
+                False,
+                False,
+            ],
+        )
+
+        df = df.assign(position=df.groupby(source_field).cumcount() + 1)
+        df = df.assign(position2=df.position.map(lambda w: w * w))
+        df = df.reset_index(drop=True)
+
+        df["OCC"] = 1
+        grouped_df = df.groupby(source_field).agg(
             {
                 "OCC": "sum",
-                "global_citations": "sum",
-                "local_citations": "sum",
-                "year": "min",
+                cit_count_global: "sum",
+                cit_count_local: "sum",
+                pubyear: "min",
             }
         )
-        grouped = grouped.rename(columns={"year": "first_publication_year"})
-        grouped["last_year"] = self.data_frame.year.max()
-        self.grouped = grouped
+        grouped_df = grouped_df.rename(columns={pubyear: "first_publication_year"})
+        grouped_df["last_year"] = df[pubyear].max()
+
+        return df, grouped_df
 
     # -------------------------------------------------------------------------
-    def step_05_compute_derived_performance_metrics(self):
+    def step_04_compute_derived_performance_metrics(self, grouped_df):
 
-        grouped = self.grouped.copy()
-        grouped["age"] = grouped["last_year"] - grouped["first_publication_year"] + 1
-        grouped["global_citations_per_year"] = (
-            grouped["global_citations"] / grouped["age"]
+        cit_count_global = CorpusField.CIT_COUNT_GLOBAL.value
+        cit_count_local = CorpusField.CIT_COUNT_LOCAL.value
+        occ = ItemsOrderBy.OCC.value
+
+        grouped_df = grouped_df.copy()
+        grouped_df["age"] = (
+            grouped_df["last_year"] - grouped_df["first_publication_year"] + 1
         )
-        grouped["local_citations_per_year"] = (
-            grouped["local_citations"] / grouped["age"]
+        grouped_df["global_citations_per_year"] = (
+            grouped_df[cit_count_global] / grouped_df["age"]
+        )
+        grouped_df["local_citations_per_year"] = (
+            grouped_df[cit_count_local] / grouped_df["age"]
         )
 
-        grouped["global_citations_per_document"] = (
-            grouped["global_citations"] / grouped["OCC"]
+        grouped_df["global_citations_per_document"] = (
+            grouped_df[cit_count_global] / grouped_df[occ]
         )
-        grouped["local_citations_per_document"] = (
-            grouped["local_citations"] / grouped["OCC"]
+        grouped_df["local_citations_per_document"] = (
+            grouped_df[cit_count_local] / grouped_df[occ]
         )
-        self.grouped = grouped
+        return grouped_df
 
     # -------------------------------------------------------------------------
-    def step_06_compute_impact_metrics(self):
+    def step_05_compute_impact_metrics(self, df, grouped_df):
 
-        data_frame = self.data_frame.copy()
-        grouped = self.grouped.copy()
+        source_field = self.params.source_field.value
+        cit_count_global = CorpusField.CIT_COUNT_GLOBAL.value
+        # cit_count_local = CorpusField.CIT_COUNT_LOCAL.value
+
+        df = df.copy()
+        grouped_df = grouped_df.copy()
 
         # H-index
-        h_indexes = data_frame.query("global_citations >= position")
-        h_indexes = h_indexes.groupby(self.params.field, as_index=True).agg(
+        h_indexes = df.query(f"{cit_count_global} >= position")
+        h_indexes = h_indexes.groupby(source_field, as_index=True).agg(
             {"position": "max"}
         )
         h_indexes = h_indexes.rename(columns={"position": "h_index"})
-        grouped.loc[h_indexes.index, "h_index"] = h_indexes.astype(int)
-        grouped["h_index"] = grouped["h_index"].fillna(0)
+        grouped_df.loc[h_indexes.index, "h_index"] = h_indexes.astype(int)
+        grouped_df["h_index"] = grouped_df["h_index"].fillna(0)
 
         # G-index
-        g_indexes = data_frame.query("global_citations >= position2")
-        g_indexes = g_indexes.groupby(self.params.field, as_index=True).agg(
+        g_indexes = df.query(f"{cit_count_global} >= position2")
+        g_indexes = g_indexes.groupby(source_field, as_index=True).agg(
             {"position": "max"}
         )
         g_indexes = g_indexes.rename(columns={"position": "g_index"})
-        grouped.loc[g_indexes.index, "g_index"] = g_indexes.astype(int)
-        grouped["g_index"] = grouped["g_index"].fillna(0)
+        grouped_df.loc[g_indexes.index, "g_index"] = g_indexes.astype(int)
+        grouped_df["g_index"] = grouped_df["g_index"].fillna(0)
 
         # M-index
-        grouped = grouped.assign(m_index=grouped.h_index / grouped.age)
-        grouped["m_index"] = grouped.m_index.round(decimals=2)
+        grouped_df = grouped_df.assign(m_index=grouped_df.h_index / grouped_df.age)
+        grouped_df["m_index"] = grouped_df.m_index.round(decimals=2)
 
-        self.grouped = grouped
+        return grouped_df
 
     # -------------------------------------------------------------------------
-    def sort_data_frame_by_metric(self, data_frame, metric):
+    def sort_data_frame_by_metric(self, df, metric):
 
-        data_frame = data_frame.copy()
-        data_frame["_name_"] = data_frame.index.tolist()
+        df = df.copy()
+        df["_name_"] = df.index.tolist()
 
         columns = SELECTED_COLUMNS[metric]
         ascending = [False] * (len(columns) - 1) + [True]
 
-        data_frame = data_frame.sort_values(columns, ascending=ascending)
-        data_frame = data_frame.drop(columns=["_name_"])
+        df = df.sort_values(columns, ascending=ascending)
+        df = df.drop(columns=["_name_"])
 
-        return data_frame
-
-    # -------------------------------------------------------------------------
-    def step_07_remove_stopwords(self):
-
-        grouped = self.grouped.copy()
-        stopwords = load_user_stopwords(params=self.params)
-        grouped = grouped.drop(stopwords, axis=0, errors="ignore")
-        self.grouped = grouped
+        return df
 
     # -------------------------------------------------------------------------
-    def step_08_add_rank_columns(self):
+    def step_06_add_rank_columns(self, grouped_df):
 
-        grouped = self.grouped.copy()
+        cit_count_global = CorpusField.CIT_COUNT_GLOBAL.value
+        cit_count_local = CorpusField.CIT_COUNT_LOCAL.value
+        occ = ItemsOrderBy.OCC.value
 
-        grouped = self.sort_data_frame_by_metric(grouped, "local_citations")
-        grouped.insert(0, "rank_lcs", range(1, len(grouped) + 1))
+        grouped_df = grouped_df.copy()
 
-        grouped = self.sort_data_frame_by_metric(grouped, "global_citations")
-        grouped.insert(0, "rank_gcs", range(1, len(grouped) + 1))
+        grouped_df = self.sort_data_frame_by_metric(grouped_df, cit_count_local)
+        grouped_df.insert(0, "rank_lcs", range(1, len(grouped_df) + 1))
 
-        grouped = self.sort_data_frame_by_metric(grouped, "OCC")
-        grouped.insert(0, "rank_occ", range(1, len(grouped) + 1))
+        grouped_df = self.sort_data_frame_by_metric(grouped_df, cit_count_global)
+        grouped_df.insert(0, "rank_gcs", range(1, len(grouped_df) + 1))
 
-        self.grouped = grouped
+        grouped_df = self.sort_data_frame_by_metric(grouped_df, occ)
+        grouped_df.insert(0, "rank_occ", range(1, len(grouped_df) + 1))
+
+        return grouped_df
 
     # -------------------------------------------------------------------------
-    def step_09_filter_by_term_occurrences_range(self):
+    def step_07_filter_by_term_occurrences_range(self, grouped_df):
 
-        grouped = self.grouped.copy()
+        occ = ItemsOrderBy.OCC.value
+
+        grouped_df = grouped_df.copy()
 
         if self.params.item_occurrences_range is None:
-            return grouped
+            return grouped_df
 
         min_value, max_value = self.params.item_occurrences_range
 
         if min_value is not None:
-            grouped = grouped[grouped["OCC"] >= min_value]
+            grouped_df = grouped_df[grouped_df[occ] >= min_value]
         if max_value is not None:
-            grouped = grouped[grouped["OCC"] <= max_value]
+            grouped_df = grouped_df[grouped_df[occ] <= max_value]
 
-        self.grouped = grouped
+        return grouped_df
 
     # -------------------------------------------------------------------------
-    def step_10_filter_by_term_citations_range(self):
+    def step_08_filter_by_term_citations_range(self, grouped_df):
 
-        grouped = self.grouped.copy()
+        cit_count_global = CorpusField.CIT_COUNT_GLOBAL.value
+        # cit_count_local = CorpusField.CIT_COUNT_LOCAL.value
+
+        grouped_df = grouped_df.copy()
 
         if self.params.item_citations_range is None:
-            return grouped
+            return grouped_df
 
         min_value, max_value = self.params.item_citations_range
 
         if min_value is not None:
-            grouped = grouped[grouped["global_citations"] >= min_value]
+            grouped_df = grouped_df[grouped_df[cit_count_global] >= min_value]
         if max_value is not None:
-            grouped = grouped[grouped["global_citations"] <= max_value]
+            grouped_df = grouped_df[grouped_df[cit_count_global] <= max_value]
 
-        self.grouped = grouped
+        return grouped_df
 
     # -------------------------------------------------------------------------
-    def step_11_filter_by_terms_in(self):
+    def step_09_filter_by_terms_in(self, grouped_df):
 
-        grouped = self.grouped.copy()
+        grouped_df = grouped_df.copy()
 
         if self.params.items_in is None:
-            return grouped
+            return grouped_df
 
         if self.params.items_in is not None:
-            # TODO
-            terms_in = [t for t in self.params.items_in if t in grouped.index]
             #
-            grouped = grouped.loc[terms_in, :]
+            terms_in = [t for t in self.params.items_in if t in grouped_df.index]
+            #
+            grouped_df = grouped_df.loc[terms_in, :]
 
-        self.grouped = grouped
+        return grouped_df
 
     # -------------------------------------------------------------------------
-    def step_12_filter_by_top_n_terms(self):
+    def step_10_filter_by_top_n_terms(self, grouped_df):
 
-        grouped = self.sort_data_frame_by_metric(
-            data_frame=self.grouped.copy(),
-            metric=self.params.items_order_by,
+        grouped_df = self.sort_data_frame_by_metric(
+            df=grouped_df.copy(),
+            metric=self.params.items_order_by.value,
         )
 
         if self.params.top_n is not None:
-            grouped = grouped.head(self.params.top_n)
+            grouped_df = grouped_df.head(self.params.top_n)
 
-        self.grouped = grouped
-
-    # -------------------------------------------------------------------------
-    def step_13_check_field_types(self):
-
-        grouped = self.grouped.copy()
-
-        if "OCC" in grouped.columns:
-            grouped["OCC"] = grouped["OCC"].astype(int)
-
-        if "global_citations" in grouped.columns:
-            grouped["global_citations"] = grouped["global_citations"].astype(int)
-
-        if "local_citations" in grouped.columns:
-            grouped["local_citations"] = grouped["local_citations"].astype(int)
-
-        if "h_index" in grouped.columns:
-            grouped["h_index"] = grouped["h_index"].astype(int)
-
-        if "g_index" in grouped.columns:
-            grouped["g_index"] = grouped["g_index"].astype(int)
-
-        self.grouped = grouped
+        return grouped_df
 
     # -------------------------------------------------------------------------
-    def step_14_add_term_with_counters_column(self):
+    def step_11_check_field_types(self, grouped_df):
 
-        grouped = self.grouped.copy()
-        grouped["counters"] = grouped.index.astype(str)
+        grouped_df = grouped_df.copy()
 
-        n_zeros_occ = len(str(grouped["OCC"].max()))
-        grouped["counters"] += " " + grouped["OCC"].map(
+        if "OCC" in grouped_df.columns:
+            grouped_df["OCC"] = grouped_df["OCC"].astype(int)
+
+        if CorpusField.CIT_COUNT_GLOBAL.value in grouped_df.columns:
+            grouped_df[CorpusField.CIT_COUNT_GLOBAL.value] = grouped_df[
+                CorpusField.CIT_COUNT_GLOBAL.value
+            ].astype(int)
+
+        if CorpusField.CIT_COUNT_LOCAL.value in grouped_df.columns:
+            grouped_df[CorpusField.CIT_COUNT_LOCAL.value] = grouped_df[
+                CorpusField.CIT_COUNT_LOCAL.value
+            ].astype(int)
+
+        if "h_index" in grouped_df.columns:
+            grouped_df["h_index"] = grouped_df["h_index"].astype(int)
+
+        if "g_index" in grouped_df.columns:
+            grouped_df["g_index"] = grouped_df["g_index"].astype(int)
+
+        return grouped_df
+
+    # -------------------------------------------------------------------------
+    def step_12_add_term_with_counters_column(self, grouped_df):
+
+        cit_count_global = CorpusField.CIT_COUNT_GLOBAL.value
+        # cit_count_local = CorpusField.CIT_COUNT_LOCAL.value
+        occ = ItemsOrderBy.OCC.value
+
+        grouped_df = grouped_df.copy()
+        grouped_df["counters"] = grouped_df.index.astype(str)
+
+        n_zeros_occ = len(str(grouped_df[occ].max()))
+        grouped_df["counters"] += " " + grouped_df[occ].map(
             lambda x: f"{x:0{n_zeros_occ}d}"
         )
-        # grouped["counters"] += " " + grouped["OCC"].map(lambda x: f"{x:d}")
 
-        n_zeros_citations = len(str(grouped["global_citations"].max()))
-        grouped["counters"] += ":" + grouped["global_citations"].map(
+        n_zeros_citations = len(str(grouped_df[cit_count_global].max()))
+        grouped_df["counters"] += ":" + grouped_df[cit_count_global].map(
             lambda x: f"{x:0{n_zeros_citations}d}"
         )
-        # grouped["counters"] += ":" + grouped["global_citations"].map(lambda x: f"{x:d}")
 
-        self.grouped = grouped
+        return grouped_df
 
     # -------------------------------------------------------------------------
     def run(self):
 
-        self.step_01_load_the_database()
-        self.step_02_select_metric_fields()
-        self.step_03_explode_data_frame()
-        self.step_04_compute_initial_performance_metrics()
-        self.step_05_compute_derived_performance_metrics()
-        self.step_06_compute_impact_metrics()
-        self.step_07_remove_stopwords()
-        self.step_08_add_rank_columns()
-        self.step_09_filter_by_term_occurrences_range()
-        self.step_10_filter_by_term_citations_range()
-        self.step_11_filter_by_terms_in()
-        self.step_12_filter_by_top_n_terms()
-        self.step_13_check_field_types()
-        self.step_14_add_term_with_counters_column()
+        df = self.step_01_load_filtered_main_data()
+        df = self.step_02_explode_source_field(df)
+        df, grouped_df = self.step_03_compute_primary_performance_metrics(df)
+        grouped_df = self.step_04_compute_derived_performance_metrics(grouped_df)
+        grouped_df = self.step_05_compute_impact_metrics(df, grouped_df)
+        grouped_df = self.step_06_add_rank_columns(grouped_df)
+        grouped_df = self.step_07_filter_by_term_occurrences_range(grouped_df)
+        grouped_df = self.step_08_filter_by_term_citations_range(grouped_df)
+        grouped_df = self.step_09_filter_by_terms_in(grouped_df)
+        grouped_df = self.step_10_filter_by_top_n_terms(grouped_df)
+        grouped_df = self.step_11_check_field_types(grouped_df)
+        grouped_df = self.step_12_add_term_with_counters_column(grouped_df)
 
-        return self.grouped
+        return grouped_df
 
 
 #

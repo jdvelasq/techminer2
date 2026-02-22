@@ -15,11 +15,11 @@ Smoke tests:
     ...     #
     ...     # FIELD:
     ...     .with_field("countries")
-    ...     .having_terms_in_top(20)
-    ...     .having_term_occurrences_between(None, None)
-    ...     .having_term_citations_between(None, None)
-    ...     .having_terms_ordered_by("OCC")
-    ...     .having_terms_in(None)
+    ...     .having_items_in_top(20)
+    ...     .having_item_occurrences_between(None, None)
+    ...     .having_item_citations_between(None, None)
+    ...     .having_items_ordered_by("OCC")
+    ...     .having_items_in(None)
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("examples/tests/")

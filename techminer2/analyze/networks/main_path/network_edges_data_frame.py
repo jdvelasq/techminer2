@@ -9,7 +9,7 @@ Smoke tests:
     ...     NetworkEdgesDataFrame()
     ...     #
     ...     # UNIT OF ANALYSIS:
-    ...     .having_terms_in_top(None)
+    ...     .having_items_in_top(None)
     ...     .using_citation_threshold(0)
     ...     #
     ...     # DATABASE:

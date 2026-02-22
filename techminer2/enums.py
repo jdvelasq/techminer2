@@ -1,20 +1,6 @@
 from enum import Enum
 
 
-class RecordsOrderBy(Enum):
-
-    CIT_COUNT_GLOBAL_BY_HIGHEST = "cit_count_global_by_highest"
-    CIT_COUNT_GLOBAL_BY_LOWEST = "cit_count_global_by_lowest"
-    CIT_COUNT_LOCAL_BY_HIGHEST = "cit_count_local_by_highest"
-    CIT_COUNT_LOCAL_BY_LOWEST = "cit_count_local_by_lowest"
-    FIRST_AUTH_A_TO_Z = "first_auth_a_to_z"
-    FIRST_AUTH_Z_TO_A = "first_auth_z_to_a"
-    PUBYEAR_NEWEST = "pubyear_newest"
-    PUBYEAR_OLDEST = "pubyear_oldest"
-    SRC_TITLE_A_TO_Z = "src_title_a_to_z"
-    SRE_TITLE_Z_TO_A = "src_title_z_to_a"
-
-
 class CorpusField(Enum):
 
     UNSPECIFIED = "_UNSPECIFIED_"
@@ -207,6 +193,27 @@ class CorpusField(Enum):
     USER_7 = "USER_7"
     USER_8 = "USER_8"
     USER_9 = "USER_9"
+
+
+class ItemsOrderBy(Enum):
+
+    OCC = "OCC"
+    CIT_COUNT_GLOBAL = "CIT_COUNT_GLOBAL"
+    CIT_COUNT_LOCAL = "CIT_COUNT_LOCAL"
+
+
+class RecordsOrderBy(Enum):
+
+    CIT_COUNT_GLOBAL_BY_HIGHEST = "cit_count_global_by_highest"
+    CIT_COUNT_GLOBAL_BY_LOWEST = "cit_count_global_by_lowest"
+    CIT_COUNT_LOCAL_BY_HIGHEST = "cit_count_local_by_highest"
+    CIT_COUNT_LOCAL_BY_LOWEST = "cit_count_local_by_lowest"
+    FIRST_AUTH_A_TO_Z = "first_auth_a_to_z"
+    FIRST_AUTH_Z_TO_A = "first_auth_z_to_a"
+    PUBYEAR_NEWEST = "pubyear_newest"
+    PUBYEAR_OLDEST = "pubyear_oldest"
+    SRC_TITLE_A_TO_Z = "src_title_a_to_z"
+    SRE_TITLE_Z_TO_A = "src_title_z_to_a"
 
 
 class ThesaurusField(Enum):

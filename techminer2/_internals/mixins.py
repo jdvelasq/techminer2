@@ -14,13 +14,14 @@ from techminer2._internals.validation import (
     check_optional_str_or_dict,
     check_plotly_color,
     check_required_bool,
-    check_required_corpus_field,
+    check_required_corpus_field_enum,
     check_required_float,
     check_required_float_0_1,
     check_required_float_0_1_range,
     check_required_float_range,
     check_required_int,
     check_required_int_range,
+    check_required_items_order_by_enum,
     check_required_non_negative_float,
     check_required_non_negative_int,
     check_required_open_ended_int_range,
@@ -31,7 +32,7 @@ from techminer2._internals.validation import (
     check_required_str_tuple,
     check_tuple_of_ordered_four_floats,
 )
-from techminer2.enums import CorpusField, RecordsOrderBy
+from techminer2.enums import CorpusField, ItemsOrderBy, RecordsOrderBy
 
 from .params import Params
 
@@ -133,8 +134,8 @@ class ParamsMixin:
         self.params.top_n = top_n
         return self
 
-    def having_items_ordered_by(self, items_order_by: str) -> Self:
-        items_order_by = check_required_str(
+    def having_items_ordered_by(self, items_order_by: ItemsOrderBy) -> Self:
+        items_order_by = check_required_items_order_by_enum(
             value=items_order_by,
             param_name="items_order_by",
         )
@@ -215,10 +216,8 @@ class ParamsMixin:
         self.params.other_top_n = other_top_n
         return self
 
-    def having_other_items_ordered_by(
-        self, other_items_order_by: Optional[str]
-    ) -> Self:
-        other_items_order_by = check_optional_str(
+    def having_other_items_ordered_by(self, other_items_order_by: ItemsOrderBy) -> Self:
+        other_items_order_by = check_required_items_order_by_enum(
             value=other_items_order_by,
             param_name="other_items_order_by",
         )
@@ -896,7 +895,7 @@ class ParamsMixin:
         return self
 
     def with_field(self, field: CorpusField) -> Self:
-        field = check_required_corpus_field(
+        field = check_required_corpus_field_enum(
             value=field,
             param_name="field",
         )
@@ -904,7 +903,7 @@ class ParamsMixin:
         return self
 
     def with_other_field(self, other_field: CorpusField) -> Self:
-        other_field = check_required_corpus_field(
+        other_field = check_required_corpus_field_enum(
             value=other_field,
             param_name="other_field",
         )
@@ -924,7 +923,7 @@ class ParamsMixin:
         return self
 
     def with_source_field(self, field: CorpusField) -> Self:
-        field = check_required_corpus_field(
+        field = check_required_corpus_field_enum(
             value=field,
             param_name="source_field",
         )
@@ -933,7 +932,7 @@ class ParamsMixin:
 
     def with_source_fields(self, fields: tuple[CorpusField, ...]) -> Self:
         for field in fields:
-            check_required_corpus_field(
+            check_required_corpus_field_enum(
                 value=field,
                 param_name="source_fields",
             )
@@ -941,7 +940,7 @@ class ParamsMixin:
         return self
 
     def with_target_field(self, field: CorpusField) -> Self:
-        field = check_required_corpus_field(
+        field = check_required_corpus_field_enum(
             value=field,
             param_name="target_field",
         )

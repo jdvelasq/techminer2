@@ -6,7 +6,7 @@ from typing import Any, Callable, Dict, List, Optional, Sequence, Tuple, Union
 import pandas as pd
 from sklearn.base import BaseEstimator  # type: ignore
 
-from techminer2.enums import CorpusField, RecordsOrderBy
+from techminer2.enums import CorpusField, ItemsOrderBy, RecordsOrderBy
 
 
 @dataclass
@@ -74,7 +74,7 @@ class Params:
     item_counters: bool = True
     item_occurrences_range: Tuple[Optional[int], Optional[int]] = (None, None)
     items_in: Optional[list[str]] = None
-    items_order_by: Optional[str] = None
+    items_order_by: ItemsOrderBy = ItemsOrderBy.OCC
     items_per_year: int = 5
 
     #
@@ -118,7 +118,7 @@ class Params:
     other_item_citations_range: Tuple[Optional[int], Optional[int]] = (None, None)
     other_item_occurrences_range: Tuple[Optional[int], Optional[int]] = (None, None)
     other_items_in: Optional[list[str]] = None
-    other_items_order_by: Optional[str] = None
+    other_items_order_by: Optional[ItemsOrderBy] = None
     other_top_n: Optional[int] = None
 
     #

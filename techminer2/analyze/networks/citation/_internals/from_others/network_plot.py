@@ -13,10 +13,10 @@ Network Plot
 ## ...     #
 ## ...     # UNIT OF ANALYSIS:
 ## ...     .unit_of_analysis('source_title')
-## ...     .having_terms_in_top(30)
+## ...     .having_items_in_top(30)
 ## ...     .using_citation_threshold(0)
 ## ...     .having_occurrence_threshold(2)
-## ...     .having_terms_in(None)
+## ...     .having_items_in(None)
 ## ...     #
 ## ...     # NETWORK CLUSTERING:
 ## ...     .using_clustering_algorithm_or_dict("louvain")

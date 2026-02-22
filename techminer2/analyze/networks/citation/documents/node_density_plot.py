@@ -9,7 +9,7 @@ Smoke tests:
     ...     NodeDensityPlot()
     ...     #
     ...     # UNIT OF ANALYSIS:
-    ...     .having_terms_in_top(30)
+    ...     .having_items_in_top(30)
     ...     .using_citation_threshold(0)
     ...     #
     ...     # NETWORK:

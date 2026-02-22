@@ -58,11 +58,11 @@ Smoke tests:
     ...     #
     ...     # FIELD:
     ...     .with_field("descriptors_cleaned")
-    ...     .having_terms_in_top(100)
-    ...     .having_terms_ordered_by("OCC")
-    ...     .having_term_occurrences_between(5, None)
-    ...     .having_term_citations_between(None, None)
-    ...     .having_terms_in(None)
+    ...     .having_items_in_top(100)
+    ...     .having_items_ordered_by("OCC")
+    ...     .having_item_occurrences_between(5, None)
+    ...     .having_item_citations_between(None, None)
+    ...     .having_items_in(None)
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("examples/tests/")

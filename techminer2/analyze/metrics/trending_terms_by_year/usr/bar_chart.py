@@ -12,7 +12,7 @@ Smoke tests:
     ...     # FIELD:
     ...     .with_field("author_keywords_raw")
     ...     .having_terms_per_year(5)
-    ...     .having_terms_in(None)
+    ...     .having_items_in(None)
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("examples/tests/")
