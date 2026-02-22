@@ -96,7 +96,6 @@ class CorpusField(Enum):
     # K
     #
     KEY_NORM = "KEY_NORM"
-
     KEY_TOK = "KEY_TOK"
     KEY_AND_WORD_NORM = "KEY_AND_WORD_NORM"
     KEY_AND_WORD_TOK = "KEY_AND_WORD_TOK"
