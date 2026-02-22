@@ -4,15 +4,16 @@ World Map
 
 
 Smoke tests:
-    >>> from techminer2.analyze.metrics.performance import WorldMap
+    >>> from techminer2 import CorpusField, ItemsOrderBy
+    >>> from techminer2.report.visualization import WorldMap
     >>> plot = (
     ...     WorldMap()
     ...     #
     ...     # FIELD:
-    ...     .with_field("countries")
+    ...     .with_source_field(CorpusField.COUNTRY)
     ...     #
     ...     # TERMS:
-    ...     .having_items_ordered_by("OCC")
+    ...     .having_items_ordered_by(ItemsOrderBy.OCC)
     ...     .having_item_occurrences_between(None, None)
     ...     .having_item_citations_between(None, None)
     ...     .having_items_in(None)
@@ -23,18 +24,15 @@ Smoke tests:
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("examples/tests/")
-    ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     #
     ...     .run()
     ... )
-    >>> plot.write_html("docs_source/_generated/px.database.metrics.performance.world_map.html")
+    >>> type(plot).__name__
+    'Figure'
+    >>> plot.write_html("tmp/px.database.metrics.performance.world_map.html")
 
-.. raw:: html
-
-    <iframe src="../_generated/px.database.metrics.performance.world_map.html"
-    height="400px" width="100%" frameBorder="0"></iframe>
 
 
 """
@@ -51,12 +49,8 @@ class WorldMap(
 
     def run(self):
 
-        data_frame = DataFrame().update(**self.params.__dict__).run()
-
-        if self.params.title_text is None:
-            self.using_title_text("World Map")
-
-        fig = world_map(params=self.params, dataframe=data_frame)
+        df = DataFrame().update(**self.params.__dict__).run()
+        fig = world_map(params=self.params, dataframe=df)
 
         return fig
 

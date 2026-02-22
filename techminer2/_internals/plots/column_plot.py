@@ -16,7 +16,7 @@ def column_plot(
     fig = px.bar(
         dataframe,
         x=None,
-        y=params.items_order_by,
+        y=params.items_order_by.value,
         hover_data=dataframe.columns.to_list(),
         orientation="v",
     )

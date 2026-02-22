@@ -4,16 +4,17 @@ Pie Plot
 
 
 Smoke tests:
-    >>> from techminer2.analyze.metrics.performance import PiePlot
+    >>> from techminer2 import CorpusField, ItemsOrderBy
+    >>> from techminer2.report.visualization import PiePlot
     >>> plot = (
     ...     PiePlot()
     ...     #
     ...     # FIELD:
-    ...     .with_field("author_keywords")
+    ...     .with_source_field(CorpusField.AUTH_KEY_NORM)
     ...     #
     ...     # TERMS:
     ...     .having_items_in_top(15)
-    ...     .having_items_ordered_by("OCC")
+    ...     .having_items_ordered_by(ItemsOrderBy.OCC)
     ...     .having_item_occurrences_between(None, None)
     ...     .having_item_citations_between(None, None)
     ...     .having_items_in(None)
@@ -24,18 +25,15 @@ Smoke tests:
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("examples/tests/")
-    ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     #
     ...     .run()
     ... )
-    >>> plot.write_html("docs_source/_generated/px.database.metrics.performance.pie_plot.html")
+    >>> type(plot).__name__
+    'Figure'
+    >>> plot.write_html("tmp/px.database.metrics.performance.pie_plot.html")
 
-.. raw:: html
-
-    <iframe src="../_generated/px.database.metrics.performance.pie_plot.html"
-    height="600px" width="100%" frameBorder="0"></iframe>
 
 
 """
@@ -52,12 +50,8 @@ class PiePlot(
 
     def run(self):
 
-        data_frame = DataFrame().update(**self.params.__dict__).run()
-
-        if self.params.title_text is None:
-            self.using_title_text("Pie Plot")
-
-        fig = pie_plot(params=self.params, dataframe=data_frame)
+        df = DataFrame().update(**self.params.__dict__).run()
+        fig = pie_plot(params=self.params, dataframe=df)
 
         return fig
 

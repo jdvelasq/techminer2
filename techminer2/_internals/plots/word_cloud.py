@@ -4,11 +4,11 @@ from wordcloud import WordCloud as WordCloudExternal  # type: ignore
 
 def word_cloud(params, dataframe):
 
-    width = params.width
-    height = params.height
+    width = params.plot_width
+    height = params.plot_height
 
     x_mask, y_mask = np.ogrid[:300, :300]
-    mask = (x_mask - 150) ** 2 + (y_mask - 150) ** 2 > 130**2  #  type: ignore
+    mask = (x_mask - 150) ** 2 + (y_mask - 150) ** 2 > 130**2
     mask = 255 * mask.astype(int)
 
     wordcloud = WordCloudExternal(
@@ -22,7 +22,7 @@ def word_cloud(params, dataframe):
     text = dict(
         zip(
             dataframe.index,
-            dataframe[params.items_order_by],
+            dataframe[params.items_order_by.value],
         )
     )
     wordcloud.generate_from_frequencies(text)

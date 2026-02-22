@@ -15,10 +15,10 @@ def cleveland_dot_plot(
 
     fig = px.scatter(
         dataframe,
-        x=params.items_order_by,
+        x=params.items_order_by.value,
         y=None,
         hover_data=dataframe.columns.to_list(),
-        size=params.items_order_by,
+        size=params.items_order_by.value,
     )
     fig.update_layout(
         paper_bgcolor="white",

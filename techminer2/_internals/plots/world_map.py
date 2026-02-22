@@ -10,7 +10,7 @@ def world_map(params, dataframe):
     hover_data = [
         col for col in dataframe.columns if col not in ["country", "iso_alpha"]
     ]
-    metric = params.items_order_by
+    metric = params.items_order_by.value
     title_text = params.title_text
 
     #

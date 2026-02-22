@@ -12,7 +12,7 @@ def pie_plot(
 
     fig = px.pie(
         dataframe,
-        values=params.items_order_by,
+        values=params.items_order_by.value,
         names=dataframe.index.to_list(),
         hole=params.pie_hole,
         hover_data=dataframe.columns.to_list(),

@@ -16,7 +16,7 @@ def ranking_plot(
     fig = px.line(
         dataframe,
         x="Rank",
-        y=params.items_order_by,
+        y=params.items_order_by.value,
         hover_data=dataframe.columns.to_list(),
         markers=True,
     )

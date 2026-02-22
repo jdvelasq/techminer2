@@ -4,16 +4,17 @@ Word Cloud
 
 
 Smoke tests:
-    >>> from techminer2.analyze.metrics.performance import WordCloud
+    >>> from techminer2 import CorpusField, ItemsOrderBy
+    >>> from techminer2.report.visualization import WordCloud
     >>> plot = (
     ...     WordCloud()
     ...     #
     ...     # FIELD:
-    ...     .with_field("raw_document_title_nouns_and_phrases")
+    ...     .with_source_field(CorpusField.AUTH_KEY_NORM)
     ...     #
     ...     # TERMS:
     ...     .having_items_in_top(80)
-    ...     .having_items_ordered_by("OCC")
+    ...     .having_items_ordered_by(ItemsOrderBy.OCC)
     ...     #
     ...     .having_item_occurrences_between(None, None)
     ...     .having_item_citations_between(None, None)
@@ -25,17 +26,15 @@ Smoke tests:
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("examples/tests/")
-    ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     #
     ...     .run()
     ... )
-    >>> plot.save("docs_source/_generated/database.metrics.performance.word_cloud.png")
+    >>> type(plot).__name__
+    'Image'
+    >>> plot.save("tmp/database.metrics.performance.word_cloud.png")
 
-.. image:: /_generarted/database.metrics.performance.word_cloud.png
-    :width: 900px
-    :align: center
 
 """
 
@@ -51,8 +50,8 @@ class WordCloud(
 
     def run(self):
 
-        data_frame = DataFrame().update(**self.params.__dict__).run()
-        fig = word_cloud(params=self.params, dataframe=data_frame)
+        df = DataFrame().update(**self.params.__dict__).run()
+        fig = word_cloud(params=self.params, dataframe=df)
 
         return fig
 

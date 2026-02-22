@@ -8,17 +8,17 @@ MARKER_COLOR = "#7793a5"
 MARKER_LINE_COLOR = "#465c6b"
 
 
-def line_plot(params: Params, dataframe: pd.DataFrame) -> go.Figure:
+def line_plot(params: Params, df: pd.DataFrame) -> go.Figure:
 
-    y_col = params.items_order_by
+    y_col = params.items_order_by.value
 
-    hover_data = dataframe.columns.to_list()
+    hover_data = df.columns.to_list()
     title_text = params.title_text
     xaxes_title_text = params.xaxes_title_text
     yaxes_title_text = params.yaxes_title_text
 
     fig = px.line(
-        dataframe,
+        df,
         x=None,
         y=y_col,
         hover_data=hover_data,
