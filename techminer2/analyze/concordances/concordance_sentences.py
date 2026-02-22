@@ -10,7 +10,6 @@ Smoke test:
     ...     .having_text_matching("FINTECH")
     ...     #
     ...     .where_root_directory("examples/tests/")
-    ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     .where_records_match(None)
@@ -22,11 +21,11 @@ Smoke test:
     >>> assert len(sentences) > 0
     >>> assert all(isinstance(s, str) for s in sentences)
     >>> for t in sentences[:10]: print(t)
-    this paper explores THE_COMPLEXITY of FINTECH , and attempts A_DEFINITION , drawn from A_PROCESS of reviewing more than 200 scholarly articles referencing THE_TERM_FINTECH and covering A_PERIOD of more than 40 years .
+    this_paper_explores THE_COMPLEXITY of FINTECH , and attempts A_DEFINITION , drawn from A_PROCESS of reviewing more than 200 scholarly articles referencing THE_TERM_FINTECH and covering A_PERIOD of more than 40 years .
     as THE_ORIGINS of THE_TERM can neither be unequivocally placed in ACADEMIA nor in PRACTICE , THE_DEFINITION concentrates on extracting out THE_QUINTESSENCE of FINTECH using BOTH_SPHERES .
-    applying SEMANTIC_ANALYSIS and BUILDING on THE_COMMONALITIES of 13 peerreviewed DEFINITIONS of THE_TERM , it is concluded that FINTECH is A_NEW_FINANCIAL_INDUSTRY that APPLIES_TECHNOLOGY to improve FINANCIAL_ACTIVITIES .
-    this research represents A_STEPPING_STONE in exploring THE_INTERACTION between FINTECH and its yet unfolding SOCIAL_AND_POLITICAL_CONTEXT .
-    THE_FINANCIAL_INDUSTRY has been strongly influenced by DIGITALIZATION in THE_PAST_FEW_YEARS reflected by THE_EMERGENCE of ' ' FINTECH , ' ' which represents THE_MARRIAGE of ' ' FINANCE ' ' and ' ' INFORMATION_TECHNOLOGY . '
+    applying SEMANTIC_ANALYSIS and BUILDING on THE_COMMONALITIES of 13 peerreviewed DEFINITIONS of THE_TERM , it_is_concluded_that FINTECH is A_NEW_FINANCIAL_INDUSTRY that APPLIES_TECHNOLOGY to improve FINANCIAL_ACTIVITIES .
+    this_research_represents A_STEPPING_STONE in exploring THE_INTERACTION between FINTECH and its yet unfolding SOCIAL_AND_POLITICAL_CONTEXT .
+    THE_FINANCIAL_INDUSTRY has been strongly influenced by DIGITALIZATION in_the_past_few_years reflected by THE_EMERGENCE of ' ' FINTECH , ' ' which represents THE_MARRIAGE of ' ' FINANCE ' ' and ' ' INFORMATION_TECHNOLOGY . '
     ' FINTECH provides OPPORTUNITIES for THE_CREATION of NEW_SERVICES and BUSINESS_MODELS and poses CHALLENGES to TRADITIONAL_FINANCIAL_SERVICE_PROVIDERS .
     therefore , FINTECH has become A_SUBJECT of DEBATE among PRACTITIONERS , INVESTORS , and RESEARCHERS and is highly visible in THE_POPULAR_MEDIA .
     in_this_study , we unveil the drivers motivating the fintech phenomenon perceived by the english and german popular press including THE_SUBJECTS discussed in the context of FINTECH .
@@ -84,8 +83,7 @@ class ConcordanceSentences(
     ) -> pd.Series:
 
         abstracts = abstracts.str.replace(" ; ", " . ")
-        abstracts = abstracts.map(lambda x: TextBlob(x).sentences)
-        abstracts = abstracts.map(lambda x: [str(y) for y in x])
+        abstracts = abstracts.apply(lambda x: [str(y) for y in TextBlob(x).sentences])  # type: ignore
         sentences = abstracts.explode()
         sentences = sentences.str.strip()
 

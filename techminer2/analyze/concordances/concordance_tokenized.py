@@ -12,7 +12,6 @@ Smoke test:
     ...     .having_text_matching("FINTECH")
     ...     #
     ...     .where_root_directory("examples/tests/")
-    ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     .where_records_match(None)
@@ -30,11 +29,10 @@ Smoke test:
       …erreviewed definitions of the term , it is concluded that FINTECH is a new financial industry that applies technology to im…
       …istorical development of china ' s financial technology ( FINTECH ) industry
       …nts a stepping stone in exploring the interaction between FINTECH and its yet unfolding social and political context
-             it also diskusses policy implications for china ' s FINTECH industry , focusing on the changing role of the state in…
+             it also discusses policy implications for china ' s FINTECH industry , focusing on the changing role of the state in…
       …n in the past few years reflected by the emergence of ' ' FINTECH , ' ' which represents the marriage of ' ' finance ' ' an…
                                                              ' ' FINTECH provides opportunities for the creation of new services a…
                                                      therefore , FINTECH has become a subject of debate among practitioners , inve…
-
 
 
 """

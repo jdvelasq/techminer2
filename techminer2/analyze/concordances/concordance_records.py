@@ -24,6 +24,32 @@ Smoke test:
     >>> assert 'AR' in mapping[0]
     >>> assert 'AU' in mapping[0]
     >>> pprint(mapping[0])
+    {'AB': 'there is currently NO_CONSENSUS about what THE_TERM_FINTECH means . '
+           'this_paper_explores THE_COMPLEXITY of FINTECH , and attempts '
+           'A_DEFINITION , drawn from A_PROCESS of reviewing more than 200 '
+           'scholarly articles referencing THE_TERM_FINTECH and covering A_PERIOD '
+           'of more than 40 years . the_objective_of_this_study_is_to offer '
+           'A_DEFINITION which is distinct as well as succinct in '
+           'ITS_COMMUNICATION , yet sufficiently broad in ITS_RANGE of APPLICATION '
+           '. as THE_ORIGINS of THE_TERM can neither be unequivocally placed in '
+           'ACADEMIA nor in PRACTICE , THE_DEFINITION concentrates on extracting '
+           'out THE_QUINTESSENCE of FINTECH using BOTH_SPHERES . applying '
+           'SEMANTIC_ANALYSIS and BUILDING on THE_COMMONALITIES of 13 peerreviewed '
+           'DEFINITIONS of THE_TERM , it_is_concluded_that FINTECH is '
+           'A_NEW_FINANCIAL_INDUSTRY that APPLIES_TECHNOLOGY to improve '
+           'FINANCIAL_ACTIVITIES . THE_IMPLICATIONS as well as THE_SHORTCOMINGS of '
+           'THIS_DEFINITION are discussed . 2021 journal of innovation management '
+           '. all rights reserved .',
+     'AR': 'Schueffel, 2016, J INNOV MANAG, V4, P32',
+     'AU': 'Schueffel P.',
+     'DE': 'Banking; Financial institution; Financial services; Innovation; '
+           'Research; Technology; Terminology',
+     'ID': nan,
+     'PY': 2016,
+     'SO': 'J. Innov. Manag.',
+     'TC': 394,
+     'TI': 'Taming the beast: A scientific definition of fintech',
+     'UT': 17}
 
 
 """
@@ -64,18 +90,20 @@ class ConcordanceRecords(ParamsMixin):
 
         dataframe = dataframe.copy()
 
-        dataframe[CorpusField.ABS_TOK.value] = dataframe[CorpusField.ABS_TOK.value].map(
-            lambda x: list(TextBlob(x).sentences)
+        dataframe[CorpusField.ABS_TOK.value] = dataframe[
+            CorpusField.ABS_TOK.value
+        ].apply(
+            lambda x: list(TextBlob(x).sentences)  # type: ignore
         )
-        dataframe[CorpusField.ABS_TOK.value] = dataframe[CorpusField.ABS_TOK.value].map(
-            lambda x: [str(y) for y in x]
-        )
-        dataframe[CorpusField.ABS_TOK.value] = dataframe[CorpusField.ABS_TOK.value].map(
-            lambda x: [y[:-2] if y[-2:] == " ." else y for y in x]
-        )
-        dataframe[CorpusField.ABS_TOK.value] = dataframe[CorpusField.ABS_TOK.value].map(
-            lambda x: [y for y in x if re.search(search_for, y)]
-        )
+        dataframe[CorpusField.ABS_TOK.value] = dataframe[
+            CorpusField.ABS_TOK.value
+        ].apply(lambda x: [str(y) for y in x])
+        dataframe[CorpusField.ABS_TOK.value] = dataframe[
+            CorpusField.ABS_TOK.value
+        ].apply(lambda x: [y[:-2] if y[-2:] == " ." else y for y in x])
+        dataframe[CorpusField.ABS_TOK.value] = dataframe[
+            CorpusField.ABS_TOK.value
+        ].apply(lambda x: [y for y in x if re.search(search_for, y)])
         dataframe[CorpusField.ABS_TOK.value] = dataframe[CorpusField.ABS_TOK.value].map(
             " . ".join
         )
