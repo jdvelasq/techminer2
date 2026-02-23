@@ -1,0 +1,9 @@
+Emergence
+################################################################################
+
+.. toctree::
+    :maxdepth: 1
+    :hidden:
+
+    analyze._metrics.emergence.data_frame
+    analyze._metrics.emergence.plot_emergence

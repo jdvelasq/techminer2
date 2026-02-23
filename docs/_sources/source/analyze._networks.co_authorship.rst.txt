@@ -1,0 +1,10 @@
+Co authorship
+################################################################################
+
+.. toctree::
+    :maxdepth: 1
+    :hidden:
+
+    analyze._networks.co_authorship.authors
+    analyze._networks.co_authorship.countries
+    analyze._networks.co_authorship.organizations

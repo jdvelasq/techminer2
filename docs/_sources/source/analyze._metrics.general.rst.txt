@@ -1,0 +1,8 @@
+General
+################################################################################
+
+.. toctree::
+    :maxdepth: 1
+    :hidden:
+
+    analyze._metrics.general.dataframe

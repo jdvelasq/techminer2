@@ -1,0 +1,16 @@
+Analyze
+################################################################################
+
+.. toctree::
+    :maxdepth: 1
+    :hidden:
+
+    analyze._concordances
+    analyze._document_clustering
+    analyze._experimental
+    analyze._factor_analysis
+    analyze._metrics
+    analyze._networks
+    analyze._records
+    analyze._tfidf
+    analyze._topic_modeling
