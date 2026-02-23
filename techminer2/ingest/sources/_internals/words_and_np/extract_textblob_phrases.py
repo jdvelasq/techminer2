@@ -25,12 +25,12 @@ def _process_row(row: pd.Series) -> Optional[str]:
             ]
         )
 
-    if not pd.isna(row[CorpusField.DOC_TITLE_TOK.value]):
+    if not pd.isna(row[CorpusField.TITLE_TOK.value]):
         phrases.extend(
             [
                 str(phrase)
                 for phrase in list(
-                    TextBlob(row[CorpusField.DOC_TITLE_TOK.value]).noun_phrases  # type: ignore
+                    TextBlob(row[CorpusField.TITLE_TOK.value]).noun_phrases  # type: ignore
                 )
             ]
         )
@@ -65,7 +65,7 @@ def extract_textblob_phrases(root_directory: str) -> int:
     with stdout_to_stderr():
         progress_bar = True
         pandarallel.initialize(progress_bar=progress_bar, verbose=0)
-        dataframe[CorpusField.TEXTBLOB.value] = dataframe.parallel_apply(  # type: ignore
+        dataframe[CorpusField.NP_TEXTBLOB.value] = dataframe.parallel_apply(  # type: ignore
             _process_row,
             axis=1,
         )
@@ -79,7 +79,7 @@ def extract_textblob_phrases(root_directory: str) -> int:
         compression="zip",
     )
 
-    phrases = dataframe[CorpusField.TEXTBLOB.value].dropna()
+    phrases = dataframe[CorpusField.NP_TEXTBLOB.value].dropna()
     phrases = phrases.str.split("; ").explode()
     phrases = phrases.drop_duplicates()
     n_phrases = len(phrases)

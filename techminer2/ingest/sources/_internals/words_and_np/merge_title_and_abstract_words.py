@@ -2,13 +2,13 @@ from techminer2 import CorpusField
 from techminer2.ingest.sources._internals.operations import merge_columns
 
 
-def compose_key_norm(root_directory: str) -> int:
+def merge_title_and_abstract_words(root_directory: str) -> int:
 
     return merge_columns(
         sources=(
-            CorpusField.AUTH_KEY_NORM,
-            CorpusField.IDX_KEY_NORM,
+            CorpusField.ABS_WORD_TOK,
+            CorpusField.TITLE_WORD_TOK,
         ),
-        target=CorpusField.HYB_KEY_NORM,
+        target=CorpusField.WORD_TOK,
         root_directory=root_directory,
     )

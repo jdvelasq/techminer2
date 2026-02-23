@@ -6,6 +6,6 @@ def uppercase_abstract_words(root_directory: str) -> int:
 
     return uppercase_words(
         source=CorpusField.ABS_TOK,
-        target=CorpusField.ABS_TOK_WITH_UPPER_WORD,
+        target=CorpusField.ABS_TOK_WORD_UPPER,
         root_directory=root_directory,
     )

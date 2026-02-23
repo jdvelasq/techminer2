@@ -44,13 +44,13 @@ def build_keyword_steps(params: Params) -> list[Step]:
             count_message="{count} records normalized",
         ),
         Step(
-            name=f"Composing {CorpusField.KEY_TOK.value}",
+            name=f"Composing {CorpusField.HYB_KEY_TOK.value}",
             function=compose_key_tok,
             kwargs=common_kwargs,
             count_message="{count} records composed",
         ),
         Step(
-            name=f"Composing {CorpusField.KEY_NORM.value}",
+            name=f"Composing {CorpusField.HYB_KEY_NORM.value}",
             function=compose_key_norm,
             kwargs=common_kwargs,
             count_message="{count} records composed",

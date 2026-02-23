@@ -502,7 +502,7 @@ class DataFrame(
             item="Number of countries (1st author)",
             value=self.count_unique_items(
                 dataframe,
-                CorpusField.COUNTRY_FIRST_AUTH,
+                CorpusField.COUNTRY_AUTH_FIRST,
             ),
         )
 
@@ -513,7 +513,7 @@ class DataFrame(
             item="Number of organizations",
             value=self.count_unique_items(
                 dataframe,
-                CorpusField.ORGANIZATION,
+                CorpusField.ORG,
             ),
         )
 
@@ -524,7 +524,7 @@ class DataFrame(
             item="Number of organizations (1st author)",
             value=self.count_unique_items(
                 dataframe,
-                CorpusField.ORGANIZATION_FIRST_AUTH,
+                CorpusField.ORG_AUTH_FIRST,
             ),
         )
 
@@ -629,7 +629,7 @@ class DataFrame(
             item="Number of SpaCy NP phrases",
             value=self.count_unique_items(
                 dataframe,
-                CorpusField.SPACY,
+                CorpusField.NP_SPACY,
             ),
         )
 
@@ -639,7 +639,7 @@ class DataFrame(
             item="Number of TextBlob NP phrases",
             value=self.count_unique_items(
                 dataframe,
-                CorpusField.TEXTBLOB,
+                CorpusField.NP_TEXTBLOB,
             ),
         )
 
@@ -659,7 +659,7 @@ class DataFrame(
             item="Number of title words (tok)",
             value=self.count_unique_items(
                 dataframe,
-                CorpusField.DOC_TITLE_WORD_TOK,
+                CorpusField.TITLE_WORD_TOK,
             ),
         )
 
@@ -689,7 +689,7 @@ class DataFrame(
             item="Number of title NP phrases (tok)",
             value=self.count_unique_items(
                 dataframe,
-                CorpusField.DOC_TITLE_NP_TOK,
+                CorpusField.TITLE_NP_TOK,
             ),
         )
 

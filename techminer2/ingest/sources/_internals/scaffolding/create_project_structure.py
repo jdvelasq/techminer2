@@ -22,9 +22,6 @@ _DIRECTORIES = [
 
 _FILES = [
     "ingest/processed/_do_not_touch_.txt",
-    "refine/word_lists/countries.ignore.txt",
-    "refine/word_lists/organizations.ignore.txt",
-    "refine/word_lists/full_keywords.ignore.txt",
 ]
 
 

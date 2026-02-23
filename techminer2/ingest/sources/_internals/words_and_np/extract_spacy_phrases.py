@@ -23,10 +23,10 @@ def _process_row(row: pd.Series) -> Optional[str]:
             for chunk in spacy_nlp(row[CorpusField.ABS_TOK.value]).noun_chunks
         )
 
-    if not pd.isna(row[CorpusField.DOC_TITLE_TOK.value]):
+    if not pd.isna(row[CorpusField.TITLE_TOK.value]):
         phrases.extend(
             chunk.text
-            for chunk in spacy_nlp(row[CorpusField.DOC_TITLE_TOK.value]).noun_chunks
+            for chunk in spacy_nlp(row[CorpusField.TITLE_TOK.value]).noun_chunks
         )
 
     if not phrases:
@@ -63,7 +63,7 @@ def extract_spacy_phrases(root_directory: str) -> int:
     with stdout_to_stderr():
         progress_bar = True
         pandarallel.initialize(progress_bar=progress_bar, verbose=0)
-        dataframe[CorpusField.SPACY.value] = dataframe.parallel_apply(  # type: ignore
+        dataframe[CorpusField.NP_SPACY.value] = dataframe.parallel_apply(  # type: ignore
             _process_row,
             axis=1,
         )
@@ -77,7 +77,7 @@ def extract_spacy_phrases(root_directory: str) -> int:
         compression="zip",
     )
 
-    phrases = dataframe[CorpusField.SPACY.value].dropna()
+    phrases = dataframe[CorpusField.NP_SPACY.value].dropna()
     phrases = phrases.str.split("; ").explode()
     phrases = phrases.drop_duplicates()
     n_phrases = len(phrases)

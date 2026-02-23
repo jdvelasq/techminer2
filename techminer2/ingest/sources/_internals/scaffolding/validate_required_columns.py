@@ -19,7 +19,7 @@ MAIN_COLUMNS = frozenset(
         CorpusField.REF_RAW.value,
         CorpusField.SRC_TITLE_ABBR_RAW.value,
         CorpusField.SRC_TITLE_RAW.value,
-        CorpusField.DOC_TITLE_RAW.value,
+        CorpusField.TITLE_RAW.value,
         CorpusField.VOL.value,
     ]
 )
@@ -32,7 +32,7 @@ REF_COLUMNS = frozenset(
         CorpusField.PUBYEAR.value,
         CorpusField.SRC_TITLE_ABBR_RAW.value,
         CorpusField.SRC_TITLE_RAW.value,
-        CorpusField.DOC_TITLE_RAW.value,
+        CorpusField.TITLE_RAW.value,
         CorpusField.VOL.value,
     ]
 )

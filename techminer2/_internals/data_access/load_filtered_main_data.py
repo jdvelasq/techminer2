@@ -244,7 +244,7 @@ def _sort_dataframe_by(params: Params, dataframe: pd.DataFrame) -> pd.DataFrame:
             ascending=[True, False, False],
         )
 
-    elif sort_by == RecordsOrderBy.SRE_TITLE_Z_TO_A:
+    elif sort_by == RecordsOrderBy.SRC_TITLE_Z_TO_A:
         dataframe = dataframe.sort_values(
             [
                 CorpusField.SRC_TITLE_NORM.value,

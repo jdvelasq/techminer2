@@ -8,7 +8,7 @@ from ..step import Step
 
 def build_words_and_np_steps(params: Params) -> list[Step]:
 
-    from .create_descriptor_thesaurus import create_descriptor_thesaurus
+    from .create_term_thesaurus import create_term_thesaurus
     from .extract_abstract_acronyms import extract_abstract_acronyms
     from .extract_abstract_phrases import extract_abstract_phrases
     from .extract_abstract_words import extract_abstract_words
@@ -16,11 +16,13 @@ def build_words_and_np_steps(params: Params) -> list[Step]:
     from .extract_textblob_phrases import extract_textblob_phrases
     from .extract_title_phrases import extract_title_phrases
     from .extract_title_words import extract_title_words
-    from .merge_keywords_phrases import merge_keywords_phrases
-    from .merge_keywords_phrases_words import merge_keywords_phrases_words
-    from .merge_keywords_words import merge_keywords_words
-    from .merge_title_abstract_phrases import merge_title_abstract_phrases
-    from .merge_title_abstract_words import merge_title_abstract_words
+    from .merge_keywords_and_phrases import merge_keywords_and_phrases
+    from .merge_keywords_and_phrases_and_words import (
+        merge_keywords_and_phrases_and_words,
+    )
+    from .merge_keywords_and_words import merge_keywords_and_words
+    from .merge_title_and_abstract_phrases import merge_title_and_abstract_phrases
+    from .merge_title_and_abstract_words import merge_title_and_abstract_words
     from .tokenize_raw_abstract import tokenize_raw_abstract
     from .tokenize_raw_title import tokenize_raw_title
     from .update_builtin_noun_phrases import update_builtin_noun_phrases
@@ -100,7 +102,7 @@ def build_words_and_np_steps(params: Params) -> list[Step]:
         ),
         Step(
             name="Merging title and abstract words",
-            function=merge_title_abstract_words,
+            function=merge_title_and_abstract_words,
             kwargs=common_kwargs,
             count_message="{count} title and abstract words merged",
         ),
@@ -118,31 +120,31 @@ def build_words_and_np_steps(params: Params) -> list[Step]:
         ),
         Step(
             name="Merging title and abstract phrases",
-            function=merge_title_abstract_phrases,
+            function=merge_title_and_abstract_phrases,
             kwargs=common_kwargs,
             count_message="{count}  records processed",
         ),
         Step(
             name="Merging keywords and NP",
-            function=merge_keywords_phrases,
+            function=merge_keywords_and_phrases,
             kwargs=common_kwargs,
             count_message="{count} keywords and NP merged",
         ),
         Step(
             name="Merging keywords and words",
-            function=merge_keywords_words,
+            function=merge_keywords_and_words,
             kwargs=common_kwargs,
             count_message="{count} keywords and words merged",
         ),
         Step(
             name="Merging keywords, NP, and words",
-            function=merge_keywords_phrases_words,
+            function=merge_keywords_and_phrases_and_words,
             kwargs=common_kwargs,
             count_message="{count} records processed",
         ),
         Step(
             name="Creating descriptor thesaurus",
-            function=create_descriptor_thesaurus,
+            function=create_term_thesaurus,
             kwargs=common_kwargs,
             count_message="{count} descriptors added to thesaurus",
         ),

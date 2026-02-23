@@ -37,8 +37,8 @@ def _get_project_noun_phrases(dataframe: pd.DataFrame) -> set[str]:
     noun_phrases = set()
 
     for column in [
-        CorpusField.SPACY.value,
-        CorpusField.TEXTBLOB.value,
+        CorpusField.NP_SPACY.value,
+        CorpusField.NP_TEXTBLOB.value,
     ]:
         if column in dataframe.columns:
             for entry in dataframe[column].dropna():

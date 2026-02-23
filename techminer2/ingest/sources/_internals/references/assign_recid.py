@@ -92,7 +92,7 @@ def assign_recid(root_directory: str) -> int:
 
         index = wos_ref[wos_ref.duplicated()].index
         if len(index) > 0:
-            wos_ref.loc[index] += ", " + dataframe[CorpusField.DOC_TITLE_RAW.value].loc[
+            wos_ref.loc[index] += ", " + dataframe[CorpusField.TITLE_RAW.value].loc[
                 index
             ].str[:29].str.upper().str.replace(".", "").str.replace(
                 " - ", " "

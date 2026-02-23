@@ -16,7 +16,7 @@ def build_affiliation_steps(params: Params) -> list[Step]:
 
     return [
         Step(
-            name=f"Extracting '{CorpusField.COUNTRY.value}' and '{CorpusField.ORGANIZATION.value}'",
+            name=f"Extracting '{CorpusField.COUNTRY.value}' and '{CorpusField.ORG.value}'",
             function=extract_organizations_and_countries,
             kwargs=common_kwargs,
             count_message="{count} records processed",

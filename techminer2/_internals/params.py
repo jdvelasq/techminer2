@@ -13,6 +13,11 @@ from techminer2.enums import CorpusField, ItemsOrderBy, RecordsOrderBy
 class Params:
 
     stemming_fn: Callable
+    field: CorpusField
+    other_field: CorpusField
+    source_field: CorpusField
+    source_fields: tuple[CorpusField, ...]
+    target_field: CorpusField
 
     #
     # A
@@ -62,11 +67,6 @@ class Params:
     edge_widths: Tuple[float, float, float, float] = (0.5, 0.8, 1.0, 1.2)
 
     #
-    # F
-    #
-    field: CorpusField = CorpusField.UNSPECIFIED
-
-    #
     # I
     #
     initial_newline: bool = False
@@ -114,7 +114,7 @@ class Params:
     # O
     #
     occurrence_threshold: int = 2
-    other_field: CorpusField = CorpusField.UNSPECIFIED
+
     other_item_citations_range: Tuple[Optional[int], Optional[int]] = (None, None)
     other_item_occurrences_range: Tuple[Optional[int], Optional[int]] = (None, None)
     other_items_in: Optional[list[str]] = None
@@ -155,8 +155,6 @@ class Params:
     #
     # S
     #
-    source_field: CorpusField = CorpusField.UNSPECIFIED
-    source_fields: tuple[CorpusField, ...] = (CorpusField.UNSPECIFIED,)
     spring_layout_iterations: int = 50
     spring_layout_k: Optional[float] = 0.1
     spring_layout_seed: int = 42
@@ -164,7 +162,6 @@ class Params:
     #
     # T
     #
-    target_field: CorpusField = CorpusField.UNSPECIFIED
     textfont_color: Union[str, float, Sequence[float]] = "#465c6b"
     textfont_opacity_range: Tuple[float, float] = (0.5, 1)
     textfont_opacity: float = 1.0

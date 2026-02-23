@@ -14,7 +14,7 @@ from techminer2._internals.data_access import (
 
 _SELECTED_FIELDS = [
     CorpusField.REC_ID.value,
-    CorpusField.DOC_TITLE_RAW.value,
+    CorpusField.TITLE_RAW.value,
     CorpusField.AUTH_RAW.value,
     CorpusField.PUBYEAR.value,
 ]
@@ -68,16 +68,16 @@ def _prepare_main_documents(root_directory: str) -> pd.DataFrame:
     else:
         dataframe = main_df
 
-    dataframe[CorpusField.FIRST_AUTH.value] = (
+    dataframe[CorpusField.AUTH_FIRST.value] = (
         dataframe[CorpusField.AUTH_RAW.value]
         .str.split(" ")
         .map(lambda x: x[0].lower().replace(",", ""))
     )
-    dataframe[CorpusField.DOC_TITLE_RAW.value] = dataframe[
-        CorpusField.DOC_TITLE_RAW.value
+    dataframe[CorpusField.TITLE_RAW.value] = dataframe[
+        CorpusField.TITLE_RAW.value
     ].str.lower()
-    dataframe[CorpusField.DOC_TITLE_RAW.value] = _clean_text(
-        dataframe[CorpusField.DOC_TITLE_RAW.value]
+    dataframe[CorpusField.TITLE_RAW.value] = _clean_text(
+        dataframe[CorpusField.TITLE_RAW.value]
     )
     dataframe[CorpusField.AUTH_RAW.value] = _clean_text(
         dataframe[CorpusField.AUTH_RAW.value]
@@ -150,7 +150,7 @@ def _create_mapping(
 
         refs = refs.loc[
             refs.key.str.lower().str.contains(
-                row[CorpusField.FIRST_AUTH.value].lower()
+                row[CorpusField.AUTH_FIRST.value].lower()
             ),
             :,
         ]
@@ -160,7 +160,7 @@ def _create_mapping(
 
         refs = refs.loc[
             refs.key.str.lower().str.contains(
-                re.escape(row[CorpusField.DOC_TITLE_RAW.value][:50].lower())
+                re.escape(row[CorpusField.TITLE_RAW.value][:50].lower())
             ),
             :,
         ]

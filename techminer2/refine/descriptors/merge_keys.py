@@ -60,6 +60,6 @@ class MergeKeys(
             UserMergeKeys()
             .update(**self.params.__dict__)
             .with_thesaurus_file("descriptors.the.txt")
-            .with_source_field(CorpusField.DESCRIPTOR_TOK)
+            .with_source_field(CorpusField.KEY_AND_NP_AND_WORDS)
             .run()
         )

@@ -86,7 +86,7 @@ SCOPUS_TO_TM2 = {
     #
     # T
     #
-    "Title": CorpusField.DOC_TITLE_RAW.value,
+    "Title": CorpusField.TITLE_RAW.value,
     "Tradenames": CorpusField.TRADENAME.value,
     #
     # V

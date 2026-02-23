@@ -92,7 +92,7 @@ def normalize_auth_raw(root_directory, file: DataFile) -> int:
 
     return transform_column(
         source=CorpusField.AUTH_NORM,
-        target=CorpusField.FIRST_AUTH,
+        target=CorpusField.AUTH_FIRST,
         function=_extract_first_author,
         root_directory=root_directory,
         file=file,
