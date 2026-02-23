@@ -2502,6 +2502,7 @@ finite-sample
 finite-state
 finite-time
 finite-volume
+fintech-enabled
 fire-sale
 firm-bank
 firm-consumer
@@ -4404,6 +4405,7 @@ micro-entities
 micro-ethics
 micro-evidence
 micro-foundational
+micro-foundations
 micro-gas
 micro-grain
 micro-heat
@@ -7928,6 +7930,7 @@ surface-interface
 surface-mount
 surface-mounted
 survey-based
+survival-of-the-fittest
 susceptible-infected-susceptible
 sustainability-linked
 sustainability-oriented
