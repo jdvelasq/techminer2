@@ -20,7 +20,7 @@ Smoke tests:
     >>> translator = (
     ...     BritishToAmericanSpelling(tqdm_disable=True, )
     ...     .with_thesaurus_file("demo.the.txt")
-    ...     .where_root_directory("examples/tests/")
+    ...     .where_root_directory("tests/data/")
     ... )
     >>> translator.run()
 

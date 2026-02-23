@@ -18,7 +18,7 @@ Smoke tests:
     >>> from techminer2.refine.thesaurus_old.descriptors import SpellCheck
     >>> (
     ...     SpellCheck()
-    ...     .where_root_directory("examples/tests/")
+    ...     .where_root_directory("tests/data/")
     ...     .run()
     ... )
 

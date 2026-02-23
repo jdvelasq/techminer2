@@ -22,7 +22,7 @@ Smoke tests:
     ...     .having_case_sensitive(False)
     ...     .having_regex_flags(0)
     ...     .having_regex_search(False)
-    ...     .where_root_directory("examples/tests/")
+    ...     .where_root_directory("tests/data/")
     ... )
     >>> sorter.run()
 

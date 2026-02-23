@@ -18,7 +18,7 @@ Smoke tests:
     >>> (
     ...     MergeKeys()
     ...     .with_patterns(["FINTECH", "FINANCIAL_TECHNOLOGIES"])
-    ...     .where_root_directory("examples/tests/")
+    ...     .where_root_directory("tests/data/")
     ...     .run()
     ... )
 

@@ -8,7 +8,7 @@ Smoke tests:
     >>> (
     ...     CreateThesaurus()
     ...     .using_colored_output(False)
-    ...     .where_root_directory("examples/tests/")
+    ...     .where_root_directory("tests/data/")
     ...     .run()
     ... )
     INFO: Thesaurus initialized successfully.

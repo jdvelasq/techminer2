@@ -19,7 +19,7 @@ Smoke tests:
     ...     ApplyThesaurus()
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/tests/")
+    ...     .where_root_directory("tests/data/")
     ...     #
     ...     .run()
     ... )

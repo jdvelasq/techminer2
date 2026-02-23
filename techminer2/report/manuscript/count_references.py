@@ -7,7 +7,7 @@ Smoke tests:
     >>> from techminer2.manuscript import CountReferences
     >>> (
     ...     CountReferences()
-    ...     .where_root_directory("examples/tests/")
+    ...     .where_root_directory("tests/data/")
     ...     .run()
     ... )
 

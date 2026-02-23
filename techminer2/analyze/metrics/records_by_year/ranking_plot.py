@@ -16,7 +16,7 @@ Smoke tests:
     ...     .using_textfont_size(10)
     ...     .using_yshift(4)
     ...     #
-    ...     .where_root_directory("examples/tests/")
+    ...     .where_root_directory("tests/data/")
     ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)

@@ -7,7 +7,7 @@ Smoke tests:
     >>> from techminer2.refine.thesaurus_old.countries import InitializeThesaurus
     >>> (
     ...     InitializeThesaurus()
-    ...     .where_root_directory("examples/tests/")
+    ...     .where_root_directory("tests/data/")
     ... ).run()
 
 
@@ -19,7 +19,7 @@ Smoke tests:
     ...     .having_text_matching("China")
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/tests/")
+    ...     .where_root_directory("tests/data/")
     ...     #
     ...     .run()
     ... )
@@ -28,7 +28,7 @@ Smoke tests:
     >>> (
     ...     PrintHeader()
     ...     .using_colored_output(False)
-    ...     .where_root_directory("examples/tests/")
+    ...     .where_root_directory("tests/data/")
     ... ).run()
     China
       Cheung Kong Graduate School of Business, and Institute of Internet Financ...

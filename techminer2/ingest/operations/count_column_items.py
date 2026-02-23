@@ -9,7 +9,7 @@ Smoke test:
     ...     CountColumnItems()
     ...     .with_source_field(CorpusField.AUTH_KEY_RAW)
     ...     .with_target_field(CorpusField.USER_0)
-    ...     .where_root_directory("examples/tests/")
+    ...     .where_root_directory("tests/data/")
     ...     .run()
     ... )
     37
@@ -18,7 +18,7 @@ Smoke test:
     >>> (
     ...     Query()
     ...     .with_query_expression("SELECT AUTH_KEY_RAW, USER_0 FROM database LIMIT 5;")
-    ...     .where_root_directory("examples/tests/")
+    ...     .where_root_directory("tests/data/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     .run()

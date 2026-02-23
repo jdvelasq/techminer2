@@ -24,7 +24,7 @@ Smoke tests:
     ...     .using_yaxes_title_text("OCC")
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/tests/")
+    ...     .where_root_directory("tests/data/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     #

@@ -6,7 +6,7 @@ Smoke test:
     >>> from techminer2.ingest.review import ExtractSectionHeaders
     >>> text = (
     ...     ExtractSectionHeaders()
-    ...     .where_root_directory("examples/tests/")
+    ...     .where_root_directory("tests/data/")
     ...     .run()
     ... )
     >>> assert isinstance(text, list)

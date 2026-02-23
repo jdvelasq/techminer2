@@ -17,7 +17,7 @@ Smoke tests:
 
     >>> checker = (
     ...     IntegrityCheck()
-    ...     .where_root_directory("examples/tests/")
+    ...     .where_root_directory("tests/data/")
     ... )
     >>> checker.run()
 

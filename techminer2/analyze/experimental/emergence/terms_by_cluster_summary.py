@@ -22,7 +22,7 @@ Smoke tests:
     ...     .using_minimum_terms_in_cluster(5)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/tests/")
+    ...     .where_root_directory("tests/data/")
     ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)

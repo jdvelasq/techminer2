@@ -17,7 +17,7 @@ Smoke tests:
     >>> # Configure and run the replacer
     >>> replacer = (
     ...     ReplaceHyphenatedWords(tqdm_disable=True, )
-    ...     .where_root_directory("examples/tests/")
+    ...     .where_root_directory("tests/data/")
     ... )
     >>> replacer.run()
 

@@ -15,7 +15,7 @@ Smoke tests:
     >>> # Create and run the thesaurus initializator
     >>> initializator = (
     ...     InitializeThesaurus()
-    ...     .where_root_directory("examples/tests/")
+    ...     .where_root_directory("tests/data/")
     ... )
     >>> initializator.run()
 
@@ -23,7 +23,7 @@ Smoke tests:
     >>> (
     ...     PrintHeader()
     ...     .using_colored_output(False)
-    ...     .where_root_directory("examples/tests/")
+    ...     .where_root_directory("tests/data/")
     ... ).run()
 
 """

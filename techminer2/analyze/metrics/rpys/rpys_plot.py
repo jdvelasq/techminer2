@@ -9,7 +9,7 @@ Smoke tests:
     ...     RPYSPlot()
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/tests/")
+    ...     .where_root_directory("tests/data/")
     ...     .run()
     ... )
     >>> plot.write_html("docs_source/_generated/px.packages.rpys.rpys_plot.html")

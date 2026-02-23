@@ -7,13 +7,13 @@ Smoke tests:
     >>> from techminer2.refine.thesaurus_old.countries import InitializeThesaurus
     >>> (
     ...     InitializeThesaurus()
-    ...     .where_root_directory("examples/tests/")
+    ...     .where_root_directory("tests/data/")
     ... ).run()
 
     >>> from techminer2.refine.thesaurus_old.countries import SortByWordLength
     >>> (
     ...     SortByWordLength()
-    ...     .where_root_directory("examples/tests/")
+    ...     .where_root_directory("tests/data/")
     ...     .run()
     ... )
 
@@ -21,7 +21,7 @@ Smoke tests:
     >>> (
     ...     PrintHeader()
     ...     .using_colored_output(False)
-    ...     .where_root_directory("examples/tests/")
+    ...     .where_root_directory("tests/data/")
     ... ).run()
     Netherlands
       Erasmus University Rotterdam, Burgemeester Oudlaan, Rotterdam, 50, Nether...

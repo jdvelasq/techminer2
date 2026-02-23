@@ -9,7 +9,7 @@ Smoke tests:
     ...     .using_zotero_api_key("MifzqqRsPK5OHvmNoW4Y9Zre")  # https://www.zotero.org/settings/keys/new
     ...     .using_zotero_library_id(5242364)   # https://www.zotero.org/groups/5242364/fintech-scopus
     ...     .using_zotero_library_type("group")  # "user" or "group"
-    ...     .where_root_directory("examples/tests/")
+    ...     .where_root_directory("tests/data/")
     ... ).run() # doctest: +ELLIPSIS +SKIP
 
 """

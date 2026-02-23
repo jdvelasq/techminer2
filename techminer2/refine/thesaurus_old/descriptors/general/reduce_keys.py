@@ -19,7 +19,7 @@ Smoke tests:
     >>> # Reduce thesaurus keys
     >>> reducer = (
     ...     ReduceKeys()
-    ...     .where_root_directory("examples/tests/")
+    ...     .where_root_directory("tests/data/")
     ... )
     >>> reducer.run()
 

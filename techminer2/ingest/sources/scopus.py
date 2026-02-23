@@ -7,7 +7,7 @@ Smoke test - successful import:
     >>> from techminer2.ingest.sources.scopus import Scopus
     >>> result = (
     ...     Scopus()
-    ...     .where_root_directory("examples/tests/")
+    ...     .where_root_directory("tests/data/")
     ...     .run()
     ... )
     >>> result.success

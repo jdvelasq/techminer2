@@ -17,7 +17,7 @@ Smoke tests:
     >>> sorter = (
     ...     SortByMatch()
     ...     .having_text_matching("ECON")
-    ...     .where_root_directory("examples/tests/")
+    ...     .where_root_directory("tests/data/")
     ... )
     >>> sorter.run()
 

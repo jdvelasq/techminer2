@@ -17,7 +17,7 @@ Smoke tests:
     >>> from techminer2.refine.thesaurus_old.references import SortByAlphabet
     >>> (
     ...     SortByAlphabet()
-    ...     .where_root_directory("examples/tests/")
+    ...     .where_root_directory("tests/data/")
     ...     .run()
     ... )
 

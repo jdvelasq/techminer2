@@ -8,7 +8,7 @@ Smoke test:
     >>> (
     ...     CreateThesaurus()
     ...     .using_colored_output(False)
-    ...     .where_root_directory("examples/tests/")
+    ...     .where_root_directory("tests/data/")
     ...     .run()
     ... )
     INFO: Thesaurus initialized successfully.
@@ -23,7 +23,7 @@ Smoke test:
     >>> (
     ...     PreProcessThesaurus()
     ...     .using_colored_output(False)
-    ...     .where_root_directory("examples/tests/")
+    ...     .where_root_directory("tests/data/")
     ...     .run()
     ... )
     INFO: Fuzzy cutoff matching completed.
@@ -37,7 +37,7 @@ Smoke test:
     >>> (
     ...     StemMatch()
     ...     .using_colored_output(False)
-    ...     .where_root_directory("examples/tests/")
+    ...     .where_root_directory("tests/data/")
     ...     .run()
     ... )
     INFO: Stem matching completed.
