@@ -18,7 +18,7 @@ Smoke tests:
     >>> # Creates, configures, an run the translator
     >>> translator = (
     ...     BritishToAmericanSpelling(tqdm_disable=True, )
-    ...     .where_root_directory("tests/data/")
+    ...     .where_root_directory("tests/fintech/")
     ... )
     >>> translator.run()
 

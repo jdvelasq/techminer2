@@ -8,7 +8,7 @@ Smoke tests:
     >>> from techminer2.refine.thesaurus_old.acronyms.general import InitializeThesaurus
     >>> (
     ...     InitializeThesaurus(quit=True)
-    ...     .where_root_directory("tests/data/")
+    ...     .where_root_directory("tests/fintech/")
     ... ).run()
 
     >>> from techminer2.refine.thesaurus_old.acronyms.general import PrintHeader
@@ -16,7 +16,7 @@ Smoke tests:
     ...     PrintHeader()
 
     ...     .using_colored_output(False)
-    ...     .where_root_directory("tests/data/")
+    ...     .where_root_directory("tests/fintech/")
     ... ).run()
 
 

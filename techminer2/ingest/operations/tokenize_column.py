@@ -14,7 +14,7 @@ Smoke test:
     ...     .with_other_field("tokenized_raw_abstract")
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("tests/data/")
+    ...     .where_root_directory("tests/fintech/")
     ...     #
     ...     .run()
     ... )
@@ -24,7 +24,7 @@ Smoke test:
     >>> df = (
     ...     Query()
     ...     .with_query_expression("SELECT tokenized_raw_abstract FROM database LIMIT 10;")
-    ...     .where_root_directory("tests/data/")
+    ...     .where_root_directory("tests/fintech/")
     ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
@@ -52,7 +52,7 @@ Smoke test:
     >>> field_deleter = (
     ...     DeleteOperator()
     ...     .with_field("tokenized_raw_abstract")
-    ...     .where_root_directory("tests/data/")
+    ...     .where_root_directory("tests/fintech/")
     ... )
     >>> field_deleter.run()
 
@@ -60,10 +60,10 @@ Smoke test:
 """
 
 from techminer2._internals import ParamsMixin
-from techminer2.ingest.extract._helpers._protected_fields import PROTECTED_FIELDS
-from techminer2.ingest.sources._internals.operations.tokenize_column import (
+from techminer2.ingest.data_sources._internals.operations.tokenize_column import (
     tokenize_column,
 )
+from techminer2.ingest.extract._helpers._protected_fields import PROTECTED_FIELDS
 
 
 class TokenizeColumn(

@@ -6,7 +6,7 @@ Smoke test:
     >>> from techminer2.ingest.review import ReprocessNounPhrases
     >>> (
     ...     ReprocessNounPhrases()
-    ...     .where_root_directory("tests/data/")
+    ...     .where_root_directory("tests/fintech/")
     ... ).run()
 
 
@@ -16,9 +16,9 @@ import sys
 from typing import Any
 
 from techminer2._internals import ParamsMixin
-from techminer2.ingest.sources._internals.step import Step
+from techminer2.ingest.data_sources._internals.step import Step
 
-from ..sources._internals.words_and_np.build_steps import build_words_and_np_steps
+from ..data_sources._internals.words_and_np.build_steps import build_words_and_np_steps
 
 __reviewed__ = "2026-01-28"
 

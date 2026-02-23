@@ -7,14 +7,14 @@ Smoke tests:
     >>> from techminer2.refine.thesaurus_old.countries import InitializeThesaurus
     >>> (
     ...     InitializeThesaurus()
-    ...     .where_root_directory("tests/data/")
+    ...     .where_root_directory("tests/fintech/")
     ... ).run()
 
 
     >>> from techminer2.refine.thesaurus_old.countries import SortByAlphabet
     >>> (
     ...     SortByAlphabet()
-    ...     .where_root_directory("tests/data/")
+    ...     .where_root_directory("tests/fintech/")
     ...     .run()
     ... )
 
@@ -22,7 +22,7 @@ Smoke tests:
     >>> (
     ...     PrintHeader()
     ...     .using_colored_output(False)
-    ...     .where_root_directory("tests/data/")
+    ...     .where_root_directory("tests/fintech/")
     ... ).run()
     Australia
       Centre for Law, Markets & Regulation, UNSW Australia, Australia; Charles ...

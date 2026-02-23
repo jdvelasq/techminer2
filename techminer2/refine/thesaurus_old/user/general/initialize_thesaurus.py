@@ -9,7 +9,7 @@ Smoke tests:
     ...     InitializeThesaurus()
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .with_field("raw_descriptors")
-    ...     .where_root_directory("tests/data/")
+    ...     .where_root_directory("tests/fintech/")
     ...     .using_colored_output(False)
     ...     .run()
     ... )

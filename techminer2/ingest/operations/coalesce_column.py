@@ -9,7 +9,7 @@ Smoke test:
     ...     CopyColumn()
     ...     .with_source_field(CorpusField.SRC_TITLE_ABBR_RAW)
     ...     .with_target_field(CorpusField.USER_0)
-    ...     .where_root_directory("tests/data/")
+    ...     .where_root_directory("tests/fintech/")
     ...     .run()
     ... )
     37
@@ -20,7 +20,7 @@ Smoke test:
     ...     .with_source_field(CorpusField.USER_0)
     ...     .with_target_field(CorpusField.USER_1)
     ...     .with_transformation_function(lambda x: None)
-    ...     .where_root_directory("tests/data/")
+    ...     .where_root_directory("tests/fintech/")
     ...     .run()
     ... )
 
@@ -29,7 +29,7 @@ Smoke test:
     ...     CoalesceColumn()
     ...     .with_source_field(CorpusField.SRC_TITLE_ABBR_RAW)
     ...     .with_target_field(CorpusField.USER_1)
-    ...     .where_root_directory("tests/data/")
+    ...     .where_root_directory("tests/fintech/")
     ...     .with_transformation_function(lambda x: pd.NA)
     ...     .run()
     ... )
@@ -38,7 +38,7 @@ Smoke test:
     >>> (
     ...     Query()
     ...     .with_query_expression("SELECT USER_1 FROM database LIMIT 5;")
-    ...     .where_root_directory("tests/data/")
+    ...     .where_root_directory("tests/fintech/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...    .run()
@@ -54,10 +54,10 @@ Smoke test:
 """
 
 from techminer2._internals import ParamsMixin
-from techminer2.ingest.extract._helpers._protected_fields import PROTECTED_FIELDS
-from techminer2.ingest.sources._internals.operations.coalesce_column import (
+from techminer2.ingest.data_sources._internals.operations.coalesce_column import (
     coalesce_column,
 )
+from techminer2.ingest.extract._helpers._protected_fields import PROTECTED_FIELDS
 
 
 class CoalesceColumn(

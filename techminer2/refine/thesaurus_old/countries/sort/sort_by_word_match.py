@@ -7,7 +7,7 @@ Smoke tests:
     >>> from techminer2.refine.thesaurus_old.countries import InitializeThesaurus
     >>> (
     ...     InitializeThesaurus()
-    ...     .where_root_directory("tests/data/")
+    ...     .where_root_directory("tests/fintech/")
     ... ).run()
 
 
@@ -15,7 +15,7 @@ Smoke tests:
     >>> sorter = (
     ...     SortByWordMatch()
     ...     .having_text_matching("Germany")
-    ...     .where_root_directory("tests/data/")
+    ...     .where_root_directory("tests/fintech/")
     ...     .run()
     ... )
 
@@ -23,7 +23,7 @@ Smoke tests:
     >>> (
     ...     PrintHeader()
     ...     .using_colored_output(False)
-    ...     .where_root_directory("tests/data/")
+    ...     .where_root_directory("tests/fintech/")
     ... ).run()
     Germany
       CESifo, Poschingerstr. 5, Munich, 81679, Germany; Chair of e-Finance, Goe...

@@ -9,7 +9,7 @@ Smoke test:
     ...     #
     ...     .with_query_expression("SELECT SRC_TITLE_NORM FROM database LIMIT 5;")
     ...     #
-    ...     .where_root_directory("tests/data/")
+    ...     .where_root_directory("tests/fintech/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     #

@@ -14,7 +14,7 @@ Smoke tests:
     >>> from techminer2.refine.thesaurus_old.descriptors import InitializeThesaurus
     >>> (
     ...     InitializeThesaurus()
-    ...     .where_root_directory("tests/data/")
+    ...     .where_root_directory("tests/fintech/")
     ...     .run()
     ... )
 

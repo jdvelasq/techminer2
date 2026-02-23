@@ -14,7 +14,7 @@ Smoke test:
     ...         )
     ...     )
     ...     .with_target_field(CorpusField.USER_0)
-    ...     .where_root_directory("tests/data/")
+    ...     .where_root_directory("tests/fintech/")
     ...     .run()
     ... )
     26
@@ -23,7 +23,7 @@ Smoke test:
     >>> (
     ...     Query()
     ...     .with_query_expression("SELECT USER_0 FROM database LIMIT 10;")
-    ...     .where_root_directory("tests/data/")
+    ...     .where_root_directory("tests/fintech/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     .run()
@@ -46,8 +46,10 @@ Smoke test:
 """
 
 from techminer2._internals import ParamsMixin
+from techminer2.ingest.data_sources._internals.operations.merge_columns import (
+    merge_columns,
+)
 from techminer2.ingest.extract._helpers._protected_fields import PROTECTED_FIELDS
-from techminer2.ingest.sources._internals.operations.merge_columns import merge_columns
 
 
 class MergeColumns(

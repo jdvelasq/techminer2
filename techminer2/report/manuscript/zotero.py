@@ -7,7 +7,7 @@ Smoke tests:
     >>> from techminer2.manuscript import Zotero
     >>> (
     ...     Zotero()
-    ...     .where_root_directory("tests/data/")
+    ...     .where_root_directory("tests/fintech/")
     ...     .where_root_directory("../tm2_economics_of_wind_energy/")
     ...     .run()
     ... )

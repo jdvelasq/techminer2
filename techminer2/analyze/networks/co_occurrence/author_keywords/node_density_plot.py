@@ -40,7 +40,7 @@ Smoke tests:
     ...     .using_contour_opacity(0.6)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("tests/data/")
+    ...     .where_root_directory("tests/fintech/")
     ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)

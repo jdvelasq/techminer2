@@ -17,7 +17,7 @@ Smoke tests:
     ...     .with_thesaurus_file("geography/country_to_region.the.txt")
     ...     .with_field("countries")
     ...     .with_other_field("regions")
-    ...     .where_root_directory("tests/data/")
+    ...     .where_root_directory("tests/fintech/")
     ... )
     >>> applier.run()
 

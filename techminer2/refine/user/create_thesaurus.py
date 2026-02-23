@@ -10,7 +10,7 @@ Smoke tests:
     ...     .using_colored_output(False)
     ...     .with_source_field(CorpusField.DESCRIPTOR_TOK)
     ...     .with_thesaurus_file("demo.the.txt")
-    ...     .where_root_directory("tests/data/")
+    ...     .where_root_directory("tests/fintech/")
     ...     .run()
     ... )
     INFO: Thesaurus initialized successfully.

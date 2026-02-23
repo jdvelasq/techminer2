@@ -6,7 +6,7 @@ Smoke tests:
     >>> from techminer2.refine.thesaurus_old.countries import InitializeThesaurus
     >>> (
     ...     InitializeThesaurus()
-    ...     .where_root_directory("tests/data/")
+    ...     .where_root_directory("tests/fintech/")
     ... ).run()
 
     >>> from techminer2.refine.thesaurus_old.countries import ApplyThesaurus

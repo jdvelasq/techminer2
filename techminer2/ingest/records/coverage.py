@@ -8,7 +8,7 @@ Smoke tests:
     >>> (
     ...     Coverage()
     ...     .with_source_field(CorpusField.AUTH_KEY_RAW)
-    ...     .where_root_directory("tests/data/")
+    ...     .where_root_directory("tests/fintech/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     .run()

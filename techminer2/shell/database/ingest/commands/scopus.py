@@ -1,4 +1,4 @@
-from techminer2.ingest.sources import Scopus
+from techminer2.ingest.data_sources import Scopus
 
 
 def execute_scopus_command():

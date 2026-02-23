@@ -9,7 +9,7 @@ Smoke tests:
     ...     InitializeThesaurus()
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .with_field("raw_descriptors")
-    ...     .where_root_directory("tests/data/")
+    ...     .where_root_directory("tests/fintech/")
     ...     .using_colored_output(False)
     ...     .run()
     ... )
@@ -42,7 +42,7 @@ Smoke tests:
     ...     ClumpKeys(tqdm_disable=True, )
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .using_colored_output(False)
-    ...     .where_root_directory("tests/data/")
+    ...     .where_root_directory("tests/fintech/")
     ...     .run()
     ... )
     INFO: Thesaurus clumped successfully.

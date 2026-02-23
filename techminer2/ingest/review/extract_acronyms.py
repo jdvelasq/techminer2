@@ -7,7 +7,7 @@ Smoke test:
     >>> from techminer2.ingest.review import ExtractAcronyms
     >>> acronyms = (
     ...     ExtractAcronyms()
-    ...     .where_root_directory("tests/data/")
+    ...     .where_root_directory("tests/fintech/")
     ...     .run()
     ... )
     >>> len(acronyms)

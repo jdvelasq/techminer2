@@ -20,7 +20,7 @@ Smoke tests:
     >>> (
     ...     AmericanToBritishSpelling(tqdm_disable=True, )
     ...     .with_thesaurus_file("demo.the.txt")
-    ...     .where_root_directory("tests/data/")
+    ...     .where_root_directory("tests/fintech/")
     ...     .run()
     ... )
 

@@ -18,7 +18,7 @@ Smoke tests:
 
     >>> applier = (
     ...     ApplyThesaurus()
-    ...     .where_root_directory("tests/data/")
+    ...     .where_root_directory("tests/fintech/")
     ... )
     >>> applier.run()
 

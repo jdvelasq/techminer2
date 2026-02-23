@@ -123,6 +123,7 @@ any-time
 ap-plication
 ap-plications
 apenninic-maghrebides
+apic-ist
 applications-space
 aptitude-by-treatment
 ar-duino
@@ -558,7 +559,6 @@ co-volatility
 co-working
 coal-bed
 coke-making
-com-
 comb-like
 commercial-size
 computer-supportive
@@ -737,9 +737,9 @@ drop-out
 drop-shipping
 dual-source
 dynamic-machine
-e-
 e-blended
 e-book
+e-cny
 e-crm
 e-diagnose
 e-environment
@@ -905,6 +905,7 @@ filter-bank
 filter-less
 fin-tech
 financial-digital
+financial-technology
 finger-like
 fire-fighting
 firm-wide
@@ -939,7 +940,6 @@ free-ride
 free-standing
 free-stream
 free-to-fee
-frequency-
 fresh-water
 front-end
 front-haul
@@ -1155,7 +1155,6 @@ ict-information
 ida-ice
 ill-defined
 image-generative
-imss-
 in-buildings
 in-built
 in-cabin
@@ -1515,6 +1514,7 @@ life-styles
 life-time
 life-times
 lift-off
+light-touch/humble
 light-weight
 ligno-cellulosic
 line-pack
@@ -3335,7 +3335,6 @@ push-down
 pyro-catalytic
 pyro-electric
 pyro-metallurgical
-q-
 q-cnns
 quad-rotor
 quad-tree
@@ -3452,7 +3451,6 @@ re-weighted
 re-weighting
 re-wetting
 read-out
-real-
 real-time-spatio-temporal
 recogni-tion
 recurrent-and-parallel
@@ -3617,7 +3615,6 @@ sk-languages
 skill-will
 slo-icatboost
 slow-down
-small-
 small-and
 small-and-medium
 small-footprint
@@ -3644,7 +3641,6 @@ socio-physical
 socio-pragmatic
 soft-margin
 soft-ware
-software-as-a-
 software-component
 software-development
 software-in-loop
@@ -3701,7 +3697,6 @@ stream-wise
 street-network
 student-active
 student-centredness
-students-
 study-the
 sub-action
 sub-acute

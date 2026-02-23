@@ -24,7 +24,7 @@ Smoke tests:
     ...     .using_match_threshold(70)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("tests/data/")
+    ...     .where_root_directory("tests/fintech/")
     ... )
     >>> sorter.run()
 

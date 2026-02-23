@@ -19,7 +19,7 @@ Smoke tests:
     >>> sorter = (
     ...     SortByExactMatch()
     ...     .having_text_matching("BLOCKCHAIN")
-    ...     .where_root_directory("tests/data/")
+    ...     .where_root_directory("tests/fintech/")
     ... )
     >>> sorter.run()
 

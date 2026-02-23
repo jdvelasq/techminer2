@@ -19,7 +19,7 @@ Smoke tests:
     >>> sorter = (
     ...     SortByWordMatch()
     ...     .having_text_matching("CREDIT")
-    ...     .where_root_directory("tests/data/")
+    ...     .where_root_directory("tests/fintech/")
     ... )
     >>> sorter.run()
 

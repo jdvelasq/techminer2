@@ -8,14 +8,14 @@ Smoke tests:
     >>> from techminer2.refine.thesaurus_old.acronyms import InitializeThesaurus
     >>> (
     ...     InitializeThesaurus()
-    ...     .where_root_directory("tests/data/")
+    ...     .where_root_directory("tests/fintech/")
     ...     .run()
     ... )
 
     >>> from techminer2.refine.thesaurus_old.acronyms import PrintHeader
     >>> (
     ...     PrintHeader()
-    ...     .where_root_directory("tests/data/")
+    ...     .where_root_directory("tests/fintech/")
     ...     .using_colored_output(False)
     ...     .run()
     ... )
