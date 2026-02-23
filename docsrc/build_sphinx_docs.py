@@ -19,20 +19,10 @@ def read_directory_tree(path):
 
 def read_package_directories():
     directories = [
-        f"{PACKAGE_ROOT}/clustering",
-        f"{PACKAGE_ROOT}/decomposition",
-        f"{PACKAGE_ROOT}/experimental",
-        f"{PACKAGE_ROOT}/explore",
-        f"{PACKAGE_ROOT}/io",
-        f"{PACKAGE_ROOT}/manuscript",
-        f"{PACKAGE_ROOT}/metrics",
-        f"{PACKAGE_ROOT}/networks",
-        f"{PACKAGE_ROOT}/operations",
-        f"{PACKAGE_ROOT}/text",
-        f"{PACKAGE_ROOT}/thesaurus",
-        f"{PACKAGE_ROOT}/topics",
-        f"{PACKAGE_ROOT}/visualization",
-        f"{PACKAGE_ROOT}/zotero",
+        f"{PACKAGE_ROOT}/ingest",
+        f"{PACKAGE_ROOT}/refine",
+        f"{PACKAGE_ROOT}/analyze",
+        f"{PACKAGE_ROOT}/report",
     ]
     files = []
     for directory in directories:
@@ -44,7 +34,9 @@ def read_package_directories():
 def clean_file_names(files):
     files = [str(Path(f).relative_to(PACKAGE_ROOT)) for f in files]
     files = [f for f in files if "_internals" not in f]
+    files = [f for f in files if "_helpers" not in f]
     files = [f for f in files if ".DS_Store" not in f]
+    files = [f for f in files if "/_" not in f]
     return files
 
 

@@ -28,7 +28,7 @@ tests/regtech//zotero.log
 # ============================================================================
 docsrc/source/         # Auto-generated .rst files
 docsrc/_build/         # Sphinx build artifacts
-docsrc/_generated/     # Auto-generated content
+# docsrc/_generated/     # Auto-generated content
 
 # ============================================================================
 # Project-Specific: Development
