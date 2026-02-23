@@ -8,108 +8,41 @@ Thumbs.db
 *~
 
 # ============================================================================
-# Examples
+# data for tests
 # ============================================================================
-examples/tests/analyze/
-examples/tests/ingest/processed/
-examples/tests/refine/
-examples/tests/report/
+tests/data/analyze/
+tests/data/ingest/processed/
+tests/data/refine/
+tests/data/report/
+tests/data//zotero.log
 
-examples/adtech/analyze/
-examples/adtech/ingest/processed/
-examples/adtech/refine/
-examples/adtech/report/
+# ============================================================================
+# Project-Specific: Documentation
+# ============================================================================
+docsrc/source/         # Auto-generated .rst files
+docsrc/_build/         # Sphinx build artifacts
+docsrc/_generated/     # Auto-generated content
 
-examples/big-data-analytics/analyze/
-examples/big-data-analytics/ingest/processed/
-examples/big-data-analytics/refine/
-examples/big-data-analytics/report/
+# ============================================================================
+# Project-Specific: Development
+# ============================================================================
+debug.ipynb
+debug/
+trash/
+tmp/
+first_level.txt
+hyphenated_*.txt
 
-examples/blended-learning/analyze/
-examples/blended-learning/ingest/processed/
-examples/blended-learning/refine/
-examples/blended-learning/report/
-
-examples/business-analytics/analyze/
-examples/business-analytics/ingest/processed/
-examples/business-analytics/refine/
-examples/business-analytics/report/
-
-examples/business-intelligence/analyze/
-examples/business-intelligence/ingest/processed/
-examples/business-intelligence/refine/
-examples/business-intelligence/report/
-
-examples/chain-analytics/analyze/
-examples/chain-analytics/ingest/processed/
-examples/chain-analytics/refine/
-examples/chain-analytics/report/
-
-examples/digital-twins/analyze/
-examples/digital-twins/ingest/processed/
-examples/digital-twins/refine/
-examples/digital-twins/report/
-
-examples/govtech/analyze/
-examples/govtech/ingest/processed/
-examples/govtech/refine/
-examples/govtech/report/
-
-examples/hrtech/analyze/
-examples/hrtech/ingest/processed/
-examples/hrtech/refine/
-examples/hrtech/report/
-
-examples/learning-analytics/analyze/
-examples/learning-analytics/ingest/processed/
-examples/learning-analytics/refine/
-examples/learning-analytics/report/
-
-examples/legaltech/analyze/
-examples/legaltech/ingest/processed/
-examples/legaltech/refine/
-examples/legaltech/report/
-
-examples/martech/analyze/
-examples/martech/ingest/processed/
-examples/martech/refine/
-examples/martech/report/
-
-examples/people-analytics/analyze/
-examples/people-analytics/ingest/processed/
-examples/people-analytics/refine/
-examples/people-analytics/report/
-
-examples/proptech/analyze/
-examples/proptech/ingest/processed/
-examples/proptech/refine/
-examples/proptech/report/
-
-examples/regtech/analyze/
-examples/regtech/ingest/processed/
-examples/regtech/refine/
-examples/regtech/report/
-
-examples/retail-analytics/analyze/
-examples/retail-analytics/ingest/processed/
-examples/retail-analytics/refine/
-examples/retail-analytics/report/
-
-examples/teaching-analytics/analyze/
-examples/teaching-analytics/ingest/processed/
-examples/teaching-analytics/refine/
-examples/teaching-analytics/report/
-
-examples/tinyml/analyze/
-examples/tinyml/ingest/processed/
-examples/tinyml/refine/
-examples/tinyml/report/
-
-examples/wealthtech/analyze/
-examples/wealthtech/ingest/processed/
-examples/wealthtech/refine/
-examples/wealthtech/report/
-
+# ============================================================================
+# Project-Specific: VSCode Extension (if applicable)
+# ============================================================================
+vscode-extension/node_modules/
+vscode-extension/dist/
+vscode-extension/*.tsbuildinfo
+vscode-extension/*.log
+vscode-extension/*.tmp
+vscode-extension/*.temp
+*.vsix
 
 # ============================================================================
 # IDEs and Editors
@@ -243,51 +176,3 @@ celerybeat.pid
 # mkdocs
 /site
 
-# ============================================================================
-# Project-Specific: Documentation
-# ============================================================================
-docsrc/source/         # Auto-generated .rst files
-docsrc/_build/         # Sphinx build artifacts
-docsrc/_generated/     # Auto-generated content
-
-# ============================================================================
-# Project-Specific: Examples
-# ============================================================================
-examples/fintech/data/
-examples/fintech/outputs/
-examples/fintech/src/
-
-examples/structured/data/
-examples/structured/outputs/
-examples/structured/src/
-
-examples/url/data/
-examples/url/outputs/
-examples/url/src/
-
-examples/punctuation/data/
-examples/punctuation/outputs/
-examples/punctuation/src/
-
-example/zotero.log
-
-# ============================================================================
-# Project-Specific: Development
-# ============================================================================
-debug.ipynb
-debug/
-trash/
-tmp/
-first_level.txt
-hyphenated_*.txt
-
-# ============================================================================
-# Project-Specific: VSCode Extension (if applicable)
-# ============================================================================
-vscode-extension/node_modules/
-vscode-extension/dist/
-vscode-extension/*.tsbuildinfo
-vscode-extension/*.log
-vscode-extension/*.tmp
-vscode-extension/*.temp
-*.vsix
