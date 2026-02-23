@@ -1,4 +1,4 @@
-from techminer2.analyze.metrics.general import DataFrame
+from techminer2.analyze._metrics.general import DataFrame
 
 
 def execute_dataframe_command():

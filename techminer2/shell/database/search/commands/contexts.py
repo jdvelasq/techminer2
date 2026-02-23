@@ -1,4 +1,4 @@
-from techminer2.analyze.concordances import ConcordanceRaw
+from techminer2.analyze._concordances import ConcordanceRaw
 from techminer2.shell.colorized_input import colorized_input
 
 

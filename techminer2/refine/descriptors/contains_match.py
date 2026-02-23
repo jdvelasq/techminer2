@@ -84,8 +84,8 @@ class ContainsMatch(
 
     def run(self) -> ThesaurusMatchResult:
 
-        self.with_thesaurus_file("descriptors.the.txt")
-        self.with_source_field(CorpusField.KEY_AND_NP_AND_WORDS)
+        self.with_thesaurus_file("terms.the.txt")
+        self.with_source_field(CorpusField.TERM_TOK)
 
         thesaurus_df = load_thesaurus_as_dataframe(params=self.params)
 

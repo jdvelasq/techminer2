@@ -56,7 +56,7 @@ from techminer2._internals import ParamsMixin
 from techminer2._internals.package_data.templates.load_builtin_template import (
     load_builtin_template,
 )
-from techminer2.analyze.metrics.general import DataFrame
+from techminer2.analyze._metrics.general import DataFrame
 
 
 class GeneralMetrics(
