@@ -3,7 +3,7 @@
 Scopus
 ===============================================================================
 
-Smoke test - successful import:
+Smoke test - fintech - successful import:
     >>> from techminer2.ingest.data_sources.scopus import Scopus
     >>> result = (
     ...     Scopus()
@@ -13,18 +13,27 @@ Smoke test - successful import:
     >>> result.success
     True
 
-Smoke test - result attributes:
+Smoke test - fintech - result attributes:
     >>> result.file_path
     'tests/fintech/'
     >>> result.status.startswith('Execution time :')
     True
 
-Smoke test - fluent interface:
+Smoke test - fintech - fluent interface:
     >>> scopus = Scopus()
     >>> scopus_configured = scopus.where_root_directory("tests/fintech/")
     >>> scopus_configured is scopus
     True
 
+Smoke test - regtech - successful import:
+    >>> from techminer2.ingest.data_sources.scopus import Scopus
+    >>> result = (
+    ...     Scopus()
+    ...     .where_root_directory("tests/regtech/")
+    ...     .run()
+    ... )
+    >>> result.success
+    True
 
 
 
