@@ -15,13 +15,13 @@ Smoke test - successful import:
 
 Smoke test - result attributes:
     >>> result.file_path
-    'examples/tests/'
+    'tests/data/'
     >>> result.status.startswith('Execution time :')
     True
 
 Smoke test - fluent interface:
     >>> scopus = Scopus()
-    >>> scopus_configured = scopus.where_root_directory("examples/tests/")
+    >>> scopus_configured = scopus.where_root_directory("tests/data/")
     >>> scopus_configured is scopus
     True
 
