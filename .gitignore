@@ -10,11 +10,11 @@ Thumbs.db
 # ============================================================================
 # data for tests
 # ============================================================================
-tests/data/analyze/
-tests/data/ingest/processed/
-tests/data/refine/
-tests/data/report/
-tests/data//zotero.log
+tests/fintech/analyze/
+tests/fintech/ingest/processed/
+tests/fintech/refine/
+tests/fintech/report/
+tests/fintech//zotero.log
 
 # ============================================================================
 # Project-Specific: Documentation
