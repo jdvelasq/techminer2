@@ -10,5 +10,7 @@ Techminer 2+
     source/refine
     source/discover
     source/analyze
+    source/experimental
+    source/synthesize
     source/report
 

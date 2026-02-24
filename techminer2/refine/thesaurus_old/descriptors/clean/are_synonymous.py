@@ -59,8 +59,8 @@ from techminer2._internals import ParamsMixin
 from techminer2._internals.package_data.templates.load_builtin_template import (
     load_builtin_template,
 )
-from techminer2.analyze._metrics.emergence import DataFrame as EmergentDataFrame
 from techminer2.report.visualization import DataFrame as DominantDataFrame
+from techminer2.synthesize.emergence import DataFrame as EmergentDataFrame
 
 # -----------------------------------------------------------------------------
 PROMPT = """

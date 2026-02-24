@@ -23,6 +23,8 @@ def read_package_directories():
         f"{PACKAGE_ROOT}/refine",
         f"{PACKAGE_ROOT}/discover",
         f"{PACKAGE_ROOT}/analyze",
+        f"{PACKAGE_ROOT}/experimental",
+        f"{PACKAGE_ROOT}/synthesize",
         f"{PACKAGE_ROOT}/report",
     ]
     files = []
