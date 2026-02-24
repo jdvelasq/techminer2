@@ -18,7 +18,7 @@ from typing import Any
 from techminer2._internals import ParamsMixin
 from techminer2.ingest.data_sources._internals.step import Step
 
-from ..data_sources._internals.words_and_np.build_steps import build_words_and_np_steps
+from ..data_sources._internals.concepts.build_steps import build_concept_steps
 
 __reviewed__ = "2026-01-28"
 
@@ -76,5 +76,5 @@ class ReprocessNounPhrases(
     def run(self) -> None:
 
         self._print_header()
-        for step in build_words_and_np_steps(params=self.params):
+        for step in build_concept_steps(params=self.params):
             self._execute_step(step)
