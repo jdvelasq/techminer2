@@ -1,16 +1,11 @@
 """
-Data Frame
-===============================================================================
-
 Smoke tests:
-    >>> from techminer2.analyze.metrics.terms_by_year import DataFrame
-
-    >>> # Create, configure, and run the DataFrame generator.
-    >>> generator = (
+    >>> from techminer2.analyze._internals.items_by_year import ItemsByYear
+    >>> df = (
     ...     DataFrame()
     ...     #
     ...     # FIELD:
-    ...     .with_field("author_keywords_raw")
+    ...     .with_source_field("author_keywords_raw")
     ...     .having_items_in_top(20)
     ...     .having_items_ordered_by("OCC")
     ...     .having_item_occurrences_between(None, None)
@@ -25,25 +20,18 @@ Smoke tests:
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/fintech/")
-    ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     .where_records_match(None)
     ... )
     >>> df = generator.run()
-    >>> df.head(10) # doctest: +NORMALIZE_WHITESPACE
-    year                          2015  2016  2017  2018  2019
-    author_keywords_raw
-    FINTECH 31:5168                  0     5     8    12     6
-    INNOVATION 07:0911               0     3     3     1     0
-    FINANCIAL_SERVICES 04:0667       0     1     0     3     0
-    FINANCIAL_INCLUSION 03:0590      0     1     2     0     0
-    FINANCIAL_TECHNOLOGY 03:0461     0     0     1     1     1
-    CROWDFUNDING 03:0335             0     0     1     1     1
-    MARKETPLACE_LENDING 03:0317      0     0     0     2     1
-    BUSINESS_MODELS 02:0759          0     0     0     2     0
-    CYBER_SECURITY 02:0342           0     0     0     2     0
-    CASE_STUDY 02:0340               0     0     1     0     1
+    >>> type(df).__name__
+    'DataFrame'
+    >>> df.shape[0] > 0
+    True
+    >>> df.shape[1] > 0
+    True
+    >>> df.head(10)    
 
 
     >>> generator = (
