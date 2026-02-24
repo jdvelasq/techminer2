@@ -55,14 +55,18 @@ def _extract_frequent_raw_keywords(dataframe: pd.DataFrame) -> set:
 
             df = dataframe[[col]].copy()
             df = df.dropna()
-            df[col] = df[col].str.split("; ")
+            df[col] = df[col].str.lower().str.split("; ")
             df = df.explode(col)
             df[col] = df[col].str.strip()
             df = df.groupby(col).size().reset_index().rename(columns={0: "count"})
             df = df[df["count"] >= 2]
             series = df[col]
-            series = series[series.str.match(r"^[/a-zA-Z\- ]+$")]
+            series = series[series.str.match(r"^[a-zA-Z\- ]+$")]
             series = series.str.strip()
+            series = series[series.str[0] != "-"]
+            series = series[series.str[-1] != "-"]
+            series = series[series.apply(lambda x: "- " not in x)]
+            series = series[series.str.len() > 4]
 
             keywords.update(series.to_list())
 

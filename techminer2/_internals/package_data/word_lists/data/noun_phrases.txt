@@ -183,6 +183,7 @@ accident tolerant fuel
 accident tolerant fuels
 account receivable financing
 account receivable financings
+accountability
 accountable care organization
 accountable care organizations
 accounting data qualities
@@ -532,6 +533,7 @@ adaptive predictive control
 adaptive predictive controls
 adaptive protection scheme
 adaptive protection schemes
+adaptive regulation
 adaptive resonance theories
 adaptive resonance theory
 adaptive resource allocation
@@ -1293,6 +1295,8 @@ algorithm machine learning architecture
 algorithm machine learning architectures
 algorithmic decision making
 algorithmic decision makings
+algorithmic governance
+algorithmic trading
 algorithms and complexities
 algorithms and complexity
 algorithms and data structure
@@ -1813,6 +1817,7 @@ anti retroviral agent
 anti retroviral agents
 anti vaccination movement
 anti vaccination movements
+anti-money laundering
 antibiotic resistance genes
 antibodies monoclonal humanized
 antibody blood level
@@ -1820,6 +1825,7 @@ antibody blood levels
 antibody dependent cellular cytotoxicity
 antibody dependent enhancement
 antibody dependent enhancements
+anticipatory regulation
 antigen antibody complex
 antigen antibody complexes
 antigen antibody reaction
@@ -2059,6 +2065,7 @@ arterial pulse wave
 arterial pulse waves
 arthroplasty replacement hip
 arthroplasty replacement knee
+article
 artifact or system
 artifact or systems
 artifical neural network
@@ -2492,6 +2499,7 @@ audio visual databases
 audiometry pure tone
 audiometry simulator for speech language pathology student
 audiometry simulator for speech language pathology students
+audit
 audit and feedback
 audit and feedbacks
 audit data analytics
@@ -2990,6 +2998,7 @@ banking stability indices
 banking system
 banking systems
 banks risk taking
+banktech
 bar code scanning
 barbituric acid derivative
 barbituric acid derivatives
@@ -3856,6 +3865,7 @@ block island wind farm
 block island wind farms
 block level sampling
 block level samplings
+block-chain
 blockchain as a service
 blockchain as a services
 blockchain based crowdfunding
@@ -4821,6 +4831,7 @@ carbide cutting tools
 carbidopa plus levodopa
 carbohydrate binding module
 carbohydrate binding modules
+carbon
 carbon and nitrogen
 carbon and nitrogens
 carbon based adsorbents
@@ -5231,6 +5242,7 @@ central venous catheterization
 central venous catheters
 central venous pressure
 central venous pressures
+centralised
 centralized control system
 centralized control systems
 centralized data base
@@ -5368,6 +5380,7 @@ charging station recommendation
 charging station recommendations
 charging stations
 charging voltage segment
+charitytech
 charles sturt universities
 charlson comorbidity index
 charlson comorbidity indexes
@@ -6432,6 +6445,7 @@ command and control system
 command and control systems
 command and controls
 command line history
+commerce
 commercial activated carbons
 commercial bleached hemp
 commercial building
@@ -7843,6 +7857,7 @@ corporate financial performances
 corporate social responsibilities
 corporate social responsibility
 corporate social sustainability
+corporates
 correction of hearing impairment
 correction of hearing impairments
 corrective maintenance
@@ -8146,6 +8161,7 @@ credit scoring models
 crested porcupine optimizer
 crested porcupine optimizers
 crew transfer vessels
+crime
 crisp dm
 crisp dm methodologies
 crisp dm methodology
@@ -8337,6 +8353,7 @@ crowd sourced learning
 crowd sourced learnings
 crowding out effect
 crowding out effects
+crowdsourcing
 crowdsourcing in education
 crowdsourcing in educations
 crude distillation unit
@@ -8470,6 +8487,7 @@ customer fintech adoption
 customer fintech adoptions
 customer interruption cost
 customer interruption costs
+customer journey
 customer journey mapping
 customer journey mappings
 customer life time value
@@ -8588,6 +8606,7 @@ cyber value at risk
 cyber value at risks
 cyberchondria severity scale
 cyberchondria severity scales
+cybercrime
 cybersecurity in healthcare
 cybersecurity in healthcares
 cybersecurity knowledge graph
@@ -9051,6 +9070,7 @@ data protection directive
 data protection directives
 data protection impact assessment
 data protection impact assessments
+data protection officer
 data protection regulation
 data protection regulations
 data quality assessment
@@ -9260,6 +9280,7 @@ decanoic acid derivative
 decanoic acid derivatives
 decarbonized power system
 decarbonized power systems
+decentralised
 decentralised supply chain
 decentralised supply chains
 decentralized autonomous organization
@@ -9889,6 +9910,7 @@ design support tools
 design theory and methodologies
 design theory and methodology
 design trade offs
+design/methodology/approach
 designated national authorities
 designated national authority
 destination management organization
@@ -9941,6 +9963,7 @@ development of science and technologies
 development of science and technology
 development project
 development projects
+development strategy
 development studies environment social work urban studies
 development study environment social work urban study
 developmental language disorder
@@ -10215,6 +10238,7 @@ digital design optimizations
 digital determinants of health
 digital determinants of healths
 digital differential analyzers
+digital economy
 digital economy development
 digital economy developments
 digital education governance
@@ -10291,6 +10315,7 @@ digital information technologies
 digital information technology
 digital infrastructure capabilities
 digital infrastructure capability
+digital innovation
 digital innovation hub
 digital innovation hubs
 digital integrated circuits
@@ -10346,6 +10371,7 @@ digital proximity tracing
 digital proximity tracings
 digital real time
 digital real times
+digital regulatory reporting
 digital representation of measurement data
 digital retail service
 digital retail services
@@ -10448,6 +10474,7 @@ digitalization of healthcares
 digitalization of judiciary
 digitalization of supply chain
 digitalization of supply chains
+digitalization strategy
 dilated causal convolution
 dilated convolutional neural network
 dilated convolutional neural networks
@@ -11915,6 +11942,7 @@ ecosystem service value
 ecosystem service values
 ecosystem services
 eddy current testing
+edgar
 edge artificial intelligence
 edge artificial intelligences
 edge cloud collaboration
@@ -12745,6 +12773,7 @@ embedded computer system
 embedded computer systems
 embedded electronic system
 embedded electronic systems
+embedded finance
 embedded machine learning
 embedded machine learnings
 embedded nonvolatile memories
@@ -13605,6 +13634,7 @@ english for specific purpose
 english for specific purposes
 english language teacher
 english language teachers
+english law
 english online learning
 english online learnings
 english pronunciation teaching
@@ -13875,6 +13905,7 @@ epidemic prevention and control
 epidemic prevention and controls
 epidemiologic research design
 epidemiologic research designs
+epidemiology
 epidermal growth factor
 epidermal growth factor receptor
 epidermal growth factor receptor kinase inhibitor
@@ -14400,6 +14431,7 @@ expert control systems
 expert recommendations for implementing change
 expert recommendations for implementing changes
 explain in plain english
+explainability
 explainable ai
 explainable ai in education
 explainable ai in educations
@@ -15254,6 +15286,8 @@ financial assessment
 financial assessments
 financial benefits
 financial big data
+financial companies
+financial crime
 financial crime detection
 financial crime detections
 financial crime prevention
@@ -15319,6 +15353,7 @@ financial provision
 financial provisions
 financial ranking criteria
 financial regulation and supervision
+financial regulations
 financial reporting qualities
 financial reporting quality
 financial resource curse
@@ -15338,6 +15373,7 @@ financial security
 financial self efficacy
 financial sentiment analyze
 financial sentiment analyzes
+financial service
 financial service authorities
 financial service provider
 financial service providers
@@ -15346,6 +15382,8 @@ financial services providers
 financial services sector
 financial services sectors
 financial statement frauds
+financial supervision
+financial supervisory
 financial supply chain
 financial supply chains
 financial support
@@ -15869,6 +15907,7 @@ food safety regulations
 food safety testing
 food science and technologies
 food science and technology
+food supply
 food supply chain
 food supply chains
 food value chain
@@ -15939,6 +15978,7 @@ formal concepts analyses
 formal concepts analysis
 formal learning environment
 formal learning environments
+formal representations
 formal security analyses
 formal security analysis
 formal verification of service based system
@@ -16216,6 +16256,7 @@ front face fluorescence
 front face synchronous fluorescence spectroscopies
 front face synchronous fluorescence spectroscopy
 frontline service employees
+fruit
 fruit and vegetable juice
 fruit and vegetable juices
 fruit and vegetables
@@ -16942,6 +16983,7 @@ generative adversarial neural network
 generative adversarial neural networks
 generative adversarial strategies
 generative adversarial strategy
+generative ai
 generative ai agent
 generative ai agents
 generative ai chatbot
@@ -17213,6 +17255,7 @@ global optimal solutions
 global optimization algorithm
 global optimization algorithms
 global optimum solutions
+global perspective
 global policy uncertainties
 global policy uncertainty
 global position system
@@ -17344,6 +17387,7 @@ google trends
 google workspace for education
 google workspace for educations
 gossypium hirsutum l
+governance
 governance approach
 governance approaches
 governance of projects
@@ -17689,6 +17733,7 @@ green fluorescent proteins
 green growth index
 green growth indexes
 green growth indices
+green growths
 green housings
 green industrial policies
 green industrial policy
@@ -19710,6 +19755,7 @@ hub height
 hub location problem
 hub location problems
 human action recognition
+human activities
 human activity analyses
 human activity analysis
 human activity recognition
@@ -22035,6 +22081,7 @@ internal combustion engine vehicles
 internal combustion engines
 internal control qualities
 internal control quality
+internal controls
 internal electric field
 internal electric fields
 internal external control
@@ -22224,6 +22271,7 @@ internet web based learnings
 internet web technologies
 internet web technology
 internship and residency
+interoperability
 interorganizational business process
 interorganizational business processes
 interpersonal and communication skills
@@ -23204,6 +23252,7 @@ language feature extraction and adaptation for review
 language feature extraction and adaptation for reviews
 language learning beyond the classroom
 language learning beyond the classrooms
+language model
 language model adaptation
 language model components
 language model weight
@@ -23214,6 +23263,7 @@ language of instruction
 language of instructions
 language of science and classroom
 language of science and classrooms
+language processing
 language processing system
 language processing systems
 language processing technique
@@ -23527,6 +23577,7 @@ lattice oxygen mechanism
 lattice oxygen mechanisms
 lattice strain engineering
 lattice strain engineerings
+laundering
 law and finance
 law and finances
 law and language
@@ -23550,6 +23601,7 @@ law simulation study
 laws and legislation
 laws and regulations
 laws of physics
+lawtech
 layer by layer
 layer by layer deposition
 layer by layers
@@ -23857,6 +23909,7 @@ left ventricular end systolic diameter
 left ventricular systolic dysfunction
 legal big data
 legal case based reasoning
+legal compliance
 legal data analytics
 legal data mining
 legal data minings
@@ -23865,6 +23918,7 @@ legal decision support systems
 legal document analyse
 legal document analyses
 legal document summarization
+legal informatics
 legal information retrieval
 legal information retrievals
 legal information system
@@ -24229,6 +24283,7 @@ linguistic legal linked open data
 linkage to care
 linkage to cares
 linked building data
+linked data
 linked open data
 linked open datum
 lipid blood level
@@ -25278,6 +25333,7 @@ machine vision inspection
 machine vision inspections
 machine vision system
 machine vision systems
+machine-learning
 machining parameter optimization
 machining parameter optimizations
 macroeconomic scenario
@@ -25601,6 +25657,7 @@ marketing of health service
 marketing of health services
 marketing operations interface
 marketing operations interfaces
+marketplace lending
 markov chain model
 markov chain models
 markov chain monte carlo
@@ -26288,6 +26345,7 @@ metabolic flux analysis
 metabolic networks and pathway
 metabolic networks and pathways
 metabolic syndrome x
+metabolism
 metacarpal bone fracture
 metacarpal bone fractures
 metadata management system
@@ -27280,6 +27338,7 @@ momentum gradient descent
 momentum gradient descents
 monetary value
 monetary values
+money laundering
 money laundering detection
 money laundering detections
 monitor and control
@@ -29785,6 +29844,7 @@ nucleic acid testing
 nucleic acid vaccine
 nucleic acids amplification
 nucleic acids amplifications
+nudging
 number of clusters
 number of components
 number of cycle
@@ -30596,6 +30656,7 @@ onshore wind power plants
 onshore wind turbine
 onshore wind turbines
 onshore winds
+ontology
 ontology based modeling
 ontology based system
 ontology based systems
@@ -30789,6 +30850,7 @@ operational land imager
 operational modal analyses
 operational modal analysis
 operational programmes
+operational risk
 operational risk managements
 operational taxonomic unit
 operational taxonomic units
@@ -31251,6 +31313,7 @@ output power densities
 output power density
 outside in marketing
 outside in marketings
+outsourcing
 ovary follicle development
 ovary follicle developments
 ovary polycystic disease
@@ -31905,6 +31968,7 @@ peer to peer payments
 peer to peer support
 peer to peer supports
 peer to peer trading
+peer-to-peer lending
 pelvic floor disorder
 pelvic floor disorders
 pelvic organ prolapse quantification
@@ -32624,6 +32688,7 @@ planar inverted f antenna
 planar inverted f antennas
 planned behavior theories
 planned behavior theory
+planning
 planning and analyse
 planning and analyses
 planning and analysis
@@ -32939,6 +33004,7 @@ pooled annuity funds
 pooled mean group
 pooled mean groups
 poor households
+popular press
 population and population related phenomena
 population based algorithm
 population based algorithms
@@ -33566,6 +33632,7 @@ prediction of student success
 prediction of student successes
 prediction of wind power
 prediction of wind powers
+predictive analytics
 predictive control algorithm
 predictive control algorithms
 predictive control model
@@ -34028,6 +34095,7 @@ product carbon footprints
 product data management
 product data managements
 product demand forecasting
+product design
 product design and development
 product design and developments
 product design framework
@@ -36007,6 +36075,7 @@ regional steel price indexes
 regional steel price indices
 regions of interest
 regions of interests
+register of processing activities
 register transfer level
 register transfer level codes
 register transfer levels
@@ -36040,6 +36109,7 @@ regulation of learning
 regulation of learnings
 regulations and policies
 regulations and policy
+regulatory agencies
 regulatory approach
 regulatory approaches
 regulatory b lymphocyte
@@ -36052,6 +36122,9 @@ regulatory frameworks
 regulatory policies
 regulatory policy
 regulatory real options
+regulatory regime
+regulatory requirements
+regulatory standards
 regulatory systems
 regulatory t lymphocyte
 regulatory technologies
@@ -36966,6 +37039,8 @@ road traffic systems
 roads and streets
 robo advisory service
 robo advisory services
+robo-advisors
+robo-advisory
 robot assisted language learning
 robot assisted language learnings
 robot assisted minimally invasive surgeries
@@ -36998,6 +37073,7 @@ robotic total station
 robotic total stations
 robotic work cell
 robotic work cells
+robotics
 robotics + driving
 robotics + drivings
 robotics and flexible tooling
@@ -37290,6 +37366,7 @@ sahih al bukhari
 salaries and fringe benefits
 salary and fringe benefit
 salary and fringe benefits
+sales
 sales and operations planning
 sales force automation
 sales force automations
@@ -37372,6 +37449,7 @@ savonius wind turbines
 sc risk mitigation
 scaffolds for tissue engineering
 scaffolds for tissue engineerings
+scalability
 scalability and performance
 scalability and performances
 scalable data analyses
@@ -37885,6 +37963,7 @@ semantic search engines
 semantic similarity measures
 semantic table interpretation
 semantic text minings
+semantic web
 semantic web rule language
 semantic web rule languages
 semantic web technologies
@@ -38860,6 +38939,7 @@ small and medium sized enterprises
 small and medium sized firms
 small and medium sized manufacturing enterprise
 small and medium sized manufacturing enterprises
+small and medium-sized enterprise
 small angle x ray scattering
 small angle x ray scatterings
 small batch production
@@ -39232,6 +39312,7 @@ social learning spaces
 social learning theories
 social learning theory
 social login and authentication
+social media
 social media advertising
 social media advertisings
 social media analyses
@@ -39563,6 +39644,7 @@ software requirement classification
 software requirement classifications
 software size estimation
 software size estimations
+software solution
 software supply chain
 software supply chains
 software testing
@@ -41145,6 +41227,7 @@ supervised machine learning algorithm
 supervised machine learning algorithms
 supervised machine learnings
 supervised pattern recognition
+supervisory authority
 supervisory control and data acquisition
 supervisory control and data acquisition data
 supervisory control and data acquisition dataset
@@ -41152,6 +41235,8 @@ supervisory control and data acquisition datasets
 supervisory control and data acquisitions
 supervisory control and dataacquisition system
 supervisory control and dataacquisition systems
+supervisory personnel
+supervisory technology
 supplementary cementing material
 supplementary cementing materials
 supplementary cementitious material
@@ -41402,6 +41487,7 @@ supportive care needs
 supranuclear palsy progressive
 supraventricular premature beat
 supreme audit institutions
+suptech
 surface acoustic wave
 surface acoustic wave sensors
 surface acoustic waves
@@ -41947,6 +42033,7 @@ task based learning
 task based learnings
 task completion time
 task completion times
+task force
 task oriented dialog system
 task oriented dialog systems
 task performance and analyses
@@ -41966,6 +42053,7 @@ task technology fit theory
 task unrelated thought
 task unrelated thoughts
 tax breaks
+tax compliance
 tax credits
 tax deduction
 tax incentive
@@ -42197,6 +42285,7 @@ technology and learning
 technology and learnings
 technology and service
 technology and services
+technology application
 technology assessment biomedical
 technology assessment framework
 technology assessment frameworks
@@ -42300,6 +42389,7 @@ technology satisfaction model
 technology satisfaction models
 technology social factor
 technology social factors
+technology solutions
 technology start up
 technology start ups
 technology supply chain
@@ -42329,7 +42419,10 @@ tele presence system
 tele presence systems
 telecommunication in healthcare
 telecommunication in healthcares
+telecommunication industry
+telecommunications
 telecommunications service providers
+telemedicine
 telemedicine and telehealth
 temperature and humidities
 temperature and humidity sensor
@@ -42487,6 +42580,7 @@ text data minings
 text document clustering
 text feature extraction
 text feature extractions
+text mining
 text mining analyses
 text mining analysis
 text mining technique
@@ -42585,6 +42679,7 @@ thematic content analysis
 theobroma cacao l
 theoretical computer science
 theoretical computer sciences
+theoretical framework
 theoretical studies
 theoretical study
 theories of learning
@@ -44687,6 +44782,7 @@ user interface human factor
 user interface human factors
 user interface management system
 user interface management systems
+user interfaces
 user specified constraints
 users experiences
 users hype cycle
@@ -45769,6 +45865,7 @@ wealth of information
 wealth of informations
 wealth protection
 wealth protections
+wealthtech
 wear and tear
 wear condition warning
 wear condition warnings

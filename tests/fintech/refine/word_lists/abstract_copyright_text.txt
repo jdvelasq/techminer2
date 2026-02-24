@@ -89,7 +89,7 @@ ostering THE_GROWTH of NATIONAL_INDUSTRY within_and_outside_of CHINA . 2015 else
 SS , and PUBLIC_ENGAGEMENT in AGRICULTURE . 2019 the_authors . published by elsevier ltd .
 OF_LABOR between AI and HUMANS for THE_FORESEEABLE_FUTURE . 2021 john wiley and sons ltd .
 CS , REGULATION_TECHNOLOGY and THE_SMART_DATA_UTILIZATION . 2022 john wiley and sons ltd .
-ss strategy and the environment published by erp environment and john wiley and sons ltd .
+SS_STRATEGY and THE_ENVIRONMENT published by erp environment and john wiley and sons ltd .
 TY . 2021 the_authors . information systems journal published by john wiley and sons ltd .
 to CONSUMERS , to CURRENT_BANKING_SYSTEM and to THE_WHOLE_SOCIETY in general . 2016 ieee .
 EALITY in_order_to survive . 2018 , macmillan publishers ltd . , part of springer nature .
@@ -150,8 +150,9 @@ HE_EXTANT_LITERATURE and TEN_BROADER_AREAS on which FUTURE_RESEARCHERS should fo
 N_ENHANCED_UNDERSTANDING of THE_FACTORS driving THE_UTILIZATION of FINTECH_SERVICES . 2024
 BILITY while at the same time to create AN_ENVIRONMENT for SAFE_FINTECH_INNOVATIONS . 2018
 stralia , ltd on BEHALF of ACCOUNTING_AND_FINANCE_ASSOCIATION of AUSTRALIA_AND_NEW_ZEALAND
-FINANCE and SUSTAINABILITY_RELATED_GOALS . 2023 economic society of australia , QUEENSLAND
 hy of INVESTIGATION for RESEARCHERS and POLICY_MAKERS . 2020 KOREAN_SECURITIES_ASSOCIATION
+FINANCIAL_INSTITUTIONS are discussed . 2017 kelley school of BUSINESS , INDIANA_UNIVERSITY
+FINANCE and SUSTAINABILITY_RELATED_GOALS . 2023 economic society of australia , queensland
 en presented with RELEVANT_IMPLICATIONS for BOTH_RESEARCH and PRACTICE . 2020 elsevier ltd
 AINABLE_ENERGY_SECTORS by fostering and encouraging THE_USE of FINTECH . 2021 elsevier ltd
 AL_INTERVENTION_MEASURE to promote GREEN_FINANCE in THE_PRIVATE_SECTOR . 2021 elsevier ltd
@@ -177,4 +178,3 @@ effectively use GREEN_FINANCE_SOLUTIONS while managing ASSOCIATED_RISKS . 2023 t
 so SUPPORT_BANKS in THE_DESIGN of TAILOR made DIGITALIZATION_STRATEGIES . 2024 the_authors
 N regarding FUTURE_RESEARCH_CHALLENGES , OPPORTUNITIES , and DIRECTIONS . 2024 the_authors
 improves THE_FINANCIAL_INCLUSION of PREVIOUSLY_EXCLUDED_MARKET_SEGMENTS . 2016 the_authors
-FINANCIAL_INSTITUTIONS are discussed . 2017 kelley school of business , indiana university
