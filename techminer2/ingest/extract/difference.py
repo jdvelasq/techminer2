@@ -1,5 +1,5 @@
 """
-Fields difference
+DifferenceExtractor
 ===============================================================================
 
 Smoke tests:

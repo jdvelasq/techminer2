@@ -14,7 +14,7 @@ _DIRECTORIES = [
     "report/manuscript/section_6_synthesis",
     "report/manuscript/section_7_conclusions",
     "report/manuscript/section_8_references",
-    "report/manusctipt",
+    "report/manuscript",
     "report/visualize",
     "src",
 ]

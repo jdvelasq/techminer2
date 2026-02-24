@@ -5,8 +5,8 @@ Refine
     :maxdepth: 1
     :hidden:
 
+    refine.concepts
     refine.countries
-    refine.descriptors
     refine.organizations
     refine.references
     refine.thesaurus_old

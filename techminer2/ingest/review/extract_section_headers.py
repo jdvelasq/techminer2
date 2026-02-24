@@ -1,5 +1,5 @@
 """
-Extract Colon Phrases
+ExtractSectionHeaders
 ===============================================================================
 
 Smoke test:

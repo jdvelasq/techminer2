@@ -6,4 +6,5 @@ Discover
     :hidden:
 
     discover.associations
+    discover.correlation
     discover.overview

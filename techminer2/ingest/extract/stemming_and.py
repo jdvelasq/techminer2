@@ -1,5 +1,5 @@
 """
-Stemming Field with AND
+StemmingAndExtractor
 ===============================================================================
 
 Smoke tests:

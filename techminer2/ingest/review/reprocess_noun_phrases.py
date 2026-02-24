@@ -1,5 +1,5 @@
 """
-Reprocess Noun Phrases
+ReprocessNounPhrases
 ===============================================================================
 
 Smoke test:

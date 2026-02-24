@@ -1,5 +1,5 @@
 """
-Top Terms Extractor
+TopTermsExtractor
 ===============================================================================
 
 Smoke tests:

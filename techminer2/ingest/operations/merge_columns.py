@@ -1,5 +1,5 @@
 """
-Merge Columns
+MergeColumns
 ===============================================================================
 
 Smoke test:
@@ -55,6 +55,7 @@ from techminer2.ingest.extract._helpers._protected_fields import PROTECTED_FIELD
 class MergeColumns(
     ParamsMixin,
 ):
+    """:meta private:"""
 
     def run(self) -> int:
 

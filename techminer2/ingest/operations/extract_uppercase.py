@@ -1,5 +1,5 @@
 """
-Collect Nouns and Phrases
+ExtractUppercase
 ===============================================================================
 
 Smoke test:

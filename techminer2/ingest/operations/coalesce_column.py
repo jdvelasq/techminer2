@@ -1,5 +1,5 @@
 """
-Coalesce Column
+CoalesceColumn
 ===============================================================================
 
 Smoke test:
@@ -63,6 +63,7 @@ from techminer2.ingest.extract._helpers._protected_fields import PROTECTED_FIELD
 class CoalesceColumn(
     ParamsMixin,
 ):
+    """:meta private:"""
 
     def run(self):
 

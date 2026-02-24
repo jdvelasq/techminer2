@@ -1,5 +1,5 @@
 """
-Highlight Nouns and Noun Phrases
+HighlightOperator
 ===============================================================================
 
 Smoke test:

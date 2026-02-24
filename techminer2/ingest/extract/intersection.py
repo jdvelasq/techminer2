@@ -1,5 +1,5 @@
 """
-Fields Intersection
+IntersectionExtractor
 ===============================================================================
 
 Smoke tests:

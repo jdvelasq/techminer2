@@ -1,5 +1,5 @@
 """
-Extract Abstract Suffixes
+ExtractAbstractSuffixes
 ===============================================================================
 
 Smoke test:

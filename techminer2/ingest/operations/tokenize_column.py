@@ -1,5 +1,5 @@
 """
-Tokenize Column
+TokenizeColumn
 ===============================================================================
 
 Smoke test:
@@ -69,6 +69,7 @@ from techminer2.ingest.extract._helpers._protected_fields import PROTECTED_FIELD
 class TokenizeColumn(
     ParamsMixin,
 ):
+    """:meta private:"""
 
     def run(self) -> int:
 

@@ -6,3 +6,4 @@ Documents
     :hidden:
 
     analyze.documents.cited_references
+    analyze.documents.words

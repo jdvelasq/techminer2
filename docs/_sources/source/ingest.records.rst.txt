@@ -6,6 +6,7 @@ Records
     :hidden:
 
     ingest.records.coverage
+    ingest.records.record_data_frame
     ingest.records.record_mapping
     ingest.records.record_viewer
     ingest.records.statistics

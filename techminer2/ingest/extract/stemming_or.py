@@ -1,5 +1,5 @@
 """
-Stemming Field with OR
+StemmingOrExtractor
 ===============================================================================
 
 Smoke tests:

@@ -1,5 +1,5 @@
 """
-Copy Column
+CopyColumn
 ===============================================================================
 
 Smoke Test:
@@ -42,6 +42,7 @@ from techminer2.ingest.extract._helpers._protected_fields import PROTECTED_FIELD
 class CopyColumn(
     ParamsMixin,
 ):
+    """:meta private:"""
 
     def run(self) -> int:
 
