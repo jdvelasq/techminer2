@@ -38,15 +38,15 @@ Smoke tests:
 import plotly.express as px  # type: ignore
 
 from techminer2._internals import ParamsMixin
-from techminer2.analyze._metrics.terms_by_year.data_frame import (
-    DataFrame as TermsByYearMetricsDataFrame,
+from techminer2.analyze._internals.items_by_year import (
+    ItemsByYear as TermsByYearMetricsDataFrame,
 )
 
 COLOR = "#465c6b"
 TEXTLEN = 40
 
 
-class GanttPlot(
+class GanttChart(
     ParamsMixin,
 ):
     """:meta private:"""

@@ -72,7 +72,7 @@ Smoke tests:
 import numpy as np
 
 from techminer2._internals import ParamsMixin
-from techminer2.analyze._metrics.terms_by_year import DataFrame as TermsByYearDataFrame
+from techminer2.analyze._internals import ItemsByYear as TermsByYearDataFrame
 
 
 class DataFrame(
