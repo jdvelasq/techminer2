@@ -315,6 +315,7 @@ class ItemsOrderBy(Enum):
     OCC = "OCC"
     CIT_COUNT_GLOBAL = "CIT_COUNT_GLOBAL"
     CIT_COUNT_LOCAL = "CIT_COUNT_LOCAL"
+    CIT_COUNT_GLOBAL_PER_YEAR_AVG = "CIT_COUNT_GLOBAL_PER_YEAR_AVG"
 
 
 class RecordsOrderBy(Enum):

@@ -47,7 +47,7 @@ from techminer2.analyze._metrics.terms_by_year.data_frame import (
     DataFrame as TermsByYearDataFrame,
 )
 from techminer2.discover.overview import MainInformation as GeneralMetricsDataFrame
-from techminer2.discover.overview.annual_scientific_production.dataframe import (
+from techminer2.discover.overview.average_citations_per_year.dataframe import (
     DataFrame as TrendMetricsDataFrame,
 )
 

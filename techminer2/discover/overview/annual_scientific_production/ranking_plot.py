@@ -25,11 +25,12 @@ Smoke tests:
     ...     .where_root_directory("tests/regtech/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
+    ...     #
+    ...     .run()
     ... )
-    >>> fig = fig.run()
-    >>> fig.write_html("docsrc/_generated/px.discover.overview.annual_scientific_production.ranking_chart.html")
-
-
+    >>> type(fig).__name__
+    'Figure'
+    >>> fig.write_html("docsrc/_generated/px.discover.overview.annual_scientific_production.ranking_chart.html") # doctest: +SKIP
 
 
 """
@@ -37,9 +38,7 @@ Smoke tests:
 from techminer2 import ItemsOrderBy
 from techminer2._internals import ParamsMixin
 from techminer2._internals.plots.ranking_chart import ranking_chart
-from techminer2.discover.overview.annual_scientific_production.dataframe import (
-    DataFrame,
-)
+from techminer2.discover.overview.average_citations_per_year.dataframe import DataFrame
 
 
 class RankingChart(
