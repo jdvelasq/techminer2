@@ -1,6 +1,0 @@
-from techminer2.refine.thesaurus_old.acronyms import RegisterPhrases
-
-
-def execute_phrases_command():
-    print()
-    RegisterPhrases().where_root_directory("./").run()

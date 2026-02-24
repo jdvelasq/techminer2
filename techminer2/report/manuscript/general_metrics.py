@@ -56,7 +56,7 @@ from techminer2._internals import ParamsMixin
 from techminer2._internals.package_data.templates.load_builtin_template import (
     load_builtin_template,
 )
-from techminer2.analyze._metrics.general import DataFrame
+from techminer2.discover.overview import MainInformation
 
 
 class GeneralMetrics(
@@ -65,7 +65,7 @@ class GeneralMetrics(
     """:meta private:"""
 
     def compute_metrics(self):
-        self.df = DataFrame().update(**self.params.__dict__).run()
+        self.df = MainInformation().update(**self.params.__dict__).run()
 
     def timespan(self):
         return self.df.loc[

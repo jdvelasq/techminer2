@@ -8,6 +8,7 @@ ignore=CVS,.git,__pycache__,build,dist,.venv,venv
 disable=
     c-extension-no-member,
     import-outside-toplevel,
+    invalid-name,
     line-too-long,
     missing-class-docstring,
     missing-function-docstring,

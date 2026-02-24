@@ -34,7 +34,6 @@ Smoke test:
 
 from techminer2._internals import ParamsMixin
 from techminer2.enums import CorpusField
-from techminer2.ingest.operations.query import Query  # type: ignore
 
 __reviewed__ = "2026-01-29"
 
@@ -45,6 +44,8 @@ class DocumentTypes(
     """:meta private:"""
 
     def run(self):
+
+        from techminer2.ingest.operations.query import Query  # type: ignore
 
         return (
             (
@@ -60,3 +61,20 @@ class DocumentTypes(
             .sort_index()
             .sort_values(ascending=False)
         )
+
+
+if __name__ == "__main__":
+
+    import argparse
+    from pprint import pprint
+
+    parser = argparse.ArgumentParser(description="Document Types Analysis")
+    parser.add_argument(
+        "--root-directory",
+        type=str,
+        default="tests/fintech/",
+        help="Root directory path for the corpus",
+    )
+    args = parser.parse_args()
+
+    pprint(DocumentTypes().where_root_directory(args.root_directory).run())

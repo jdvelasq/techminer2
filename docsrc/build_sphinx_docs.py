@@ -21,6 +21,7 @@ def read_package_directories():
     directories = [
         f"{PACKAGE_ROOT}/ingest",
         f"{PACKAGE_ROOT}/refine",
+        f"{PACKAGE_ROOT}/discover",
         f"{PACKAGE_ROOT}/analyze",
         f"{PACKAGE_ROOT}/report",
     ]

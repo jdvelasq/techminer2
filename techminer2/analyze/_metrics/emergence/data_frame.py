@@ -43,13 +43,13 @@ from techminer2._internals import ParamsMixin
 from techminer2._internals.mt.mt_term_occurrences_by_year import (
     _mt_term_occurrences_by_year,
 )
-from techminer2.analyze._metrics.general import DataFrame as GeneralMetricsDataFrame
 from techminer2.analyze._metrics.records_by_year.data_frame import (
     DataFrame as TrendMetricsDataFrame,
 )
 from techminer2.analyze._metrics.terms_by_year.data_frame import (
     DataFrame as TermsByYearDataFrame,
 )
+from techminer2.discover.overview import MainInformation as GeneralMetricsDataFrame
 
 
 class DataFrame(

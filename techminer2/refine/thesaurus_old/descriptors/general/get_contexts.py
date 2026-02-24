@@ -54,7 +54,7 @@ Smoke tests:
 import sys
 
 from techminer2._internals import ParamsMixin
-from techminer2.analyze._concordances import ConcordanceSentences
+from techminer2.discover._concordances import ConcordanceSentences
 
 
 class GetContexts(

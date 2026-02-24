@@ -8,6 +8,7 @@ Techminer 2+
 
     source/ingest
     source/refine
+    source/discover
     source/analyze
     source/report
 
