@@ -168,8 +168,8 @@ class CorpusField(Enum):
     #
     # Hybrid keywords (author + index)
     #
-    HYB_KEY_TOK = "HYB_KEY_TOK"
-    HYB_KEY_NORM = "HYB_KEY_NORM"
+    KEY_TOK = "KEY_TOK"
+    KEY_NORM = "KEY_NORM"
 
     # ==========================================================================
     # Noun phrases & words
@@ -182,52 +182,32 @@ class CorpusField(Enum):
     NP_SPACY = "NP_SPACY"
 
     #
-    # Abstract and title text with NP in uppercase
+    # Abstract acronyms
     #
-    ABS_TOK_NP_UPPER = "ABS_TOK_NP_UPPER"
-    TITLE_TOK_NP_UPPER = "TITLE_TOK_NP_UPPER"
+    ABS_ACRONYMS = "ABS_ACRONYMS"
 
     #
-    # Abstract and title text with WORDS in uppercase
+    # Abstract and title text with NP in uppercase
     #
-    ABS_TOK_WORD_UPPER = "ABS_TOK_WORD_UPPER"
-    TITLE_TOK_WORD_UPPER = "TITLE_TOK_WORD_UPPER"
+    ABS_UPPER = "ABS_UPPER"
+    TITLE_UPPER = "TITLE_UPPER"
 
     #
     # Noun phrases extracted from abstract and title (upper case in text)
     #
-    ABS_NP_TOK = "ABS_NP_TOK"
-    TITLE_NP_TOK = "TITLE_NP_TOK"
+    NP_ABS_RAW = "NP_ABS_RAW"
+    NP_TITLE_RAW = "NP_TITLE_RAW"
 
     #
-    # Words extracted from abstract and title (upper case in text)
+    # Noun phrases from abstract and title
     #
-    ABS_WORD_TOK = "ABS_WORD_TOK"
-    TITLE_WORD_TOK = "TITLE_WORD_TOK"
+    NP_RAW = "NP_TOK"
 
     #
-    # Noun phrases and words from abstract and title
+    # Concepts = keywords + NP
     #
-    NP_TOK = "NP_TOK"
-    WORD_TOK = "WORD_TOK"
-
-    #
-    # Hybrid keywords + NP
-    #
-    KEY_AND_NP_TOK = "KEY_AND_NP_TOK"
-    KEY_AND_NP_NORM = "KEY_AND_NP_NORM"
-
-    #
-    # Hybrid keywords + WORDs
-    #
-    KEY_AND_WORD_TOK = "KEY_AND_WORD_TOK"
-    KEY_AND_WORD_NORM = "KEY_AND_WORD_NORM"
-
-    #
-    # Term = Hybrid keyword + NP + WORD
-    #
-    TERM_TOK = "TERM_TOK"
-    TERM_NORM = "TERM_NORM"
+    CONCEPT_RAW = "CONCEPT_RAW"
+    CONCEPT_NORM = "CONCEPT_NORM"
 
     # ==========================================================================
     # Funding details
