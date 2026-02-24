@@ -102,10 +102,10 @@ def _create_references_thesaurus_file(root_directory: str) -> None:
         CorpusField.REF_AND_REC_ID.value
     ].str.strip()
     dataframe["rec_id"] = dataframe[CorpusField.REF_AND_REC_ID.value].apply(
-        lambda x: x.split(" @ ")[0].strip() if " @ " in x else "[N/A]"
+        lambda x: x.split(" @ ")[0].strip() if " @ " in x else "[n/a]"
     )
     dataframe["ref"] = dataframe[CorpusField.REF_AND_REC_ID.value].apply(
-        lambda x: x.split(" @ ")[1].strip() if " @ " in x else "[N/A]"
+        lambda x: x.split(" @ ")[1].strip() if " @ " in x else "[n/a]"
     )
 
     # counting = dataframe["ref"].value_counts()
@@ -123,7 +123,7 @@ def _create_references_thesaurus_file(root_directory: str) -> None:
     with open(filepath, "w", encoding="utf-8") as file:
         for _, row in groupby_df.iterrows():
             rec_id = row["rec_id"]
-            if rec_id == "[N/A]":
+            if rec_id == "[n/a]":
                 continue
             file.write(f"{rec_id}\n")
             for ref in row["ref"]:

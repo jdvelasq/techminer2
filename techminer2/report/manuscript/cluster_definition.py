@@ -58,7 +58,7 @@ from techminer2._internals import ParamsMixin
 from techminer2._internals.package_data.templates.load_builtin_template import (
     load_builtin_template,
 )
-from techminer2.analyze._networks.co_occurrence.usr import (
+from techminer2.synthesize.conceptual_structure.co_occurrence.usr import (
     DocumentsByClusterMapping,
     TermsByClusterSummary,
 )

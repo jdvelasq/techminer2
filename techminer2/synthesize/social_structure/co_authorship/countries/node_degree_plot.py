@@ -47,7 +47,7 @@ Smoke tests:
 
 """Node Degree Plot"""
 from techminer2._internals import ParamsMixin
-from techminer2.analyze._networks.co_occurrence.usr.node_degree_plot import (
+from techminer2.synthesize.conceptual_structure.co_occurrence.usr.node_degree_plot import (
     NodeDegreePlot as UserNodeDegreePlot,
 )
 

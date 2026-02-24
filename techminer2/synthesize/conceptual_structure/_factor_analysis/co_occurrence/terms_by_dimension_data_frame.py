@@ -47,7 +47,7 @@ Terms by Dimension Frame
 
 import pandas as pd  # type: ignore
 
-from techminer2.analyze._metrics.co_occurrence_matrix._internals.normalize_matrix import (
+from techminer2.analyze._internals.co_occurrence_matrix._internals.normalize_matrix import (
     internal__normalize_matrix,
 )
 

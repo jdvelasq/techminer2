@@ -106,7 +106,7 @@ Smoke tests:
 """
 
 from techminer2._internals import ParamsMixin
-from techminer2.analyze._networks.co_occurrence.usr.terms_to_clusters_mapping import (
+from techminer2.synthesize.conceptual_structure.co_occurrence.usr.terms_to_clusters_mapping import (
     TermsToClustersMapping as UserTermsToClusterMapping,
 )
 

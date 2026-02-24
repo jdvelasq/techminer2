@@ -16,9 +16,9 @@ def _process(series):
                     item
                     for country in countries
                     for item in (
-                        country_to_region.get(country, "[N/A]")
-                        if isinstance(country_to_region.get(country, "[N/A]"), str)
-                        else country_to_region.get(country, "[N/A]")
+                        country_to_region.get(country, "[n/a]")
+                        if isinstance(country_to_region.get(country, "[n/a]"), str)
+                        else country_to_region.get(country, "[n/a]")
                     )
                     if isinstance(item, str)
                     for item in ([item] if isinstance(item, str) else item)

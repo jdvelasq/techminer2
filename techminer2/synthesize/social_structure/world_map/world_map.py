@@ -32,7 +32,7 @@ Smoke tests:
 import plotly.express as px  # type: ignore
 
 from techminer2._internals import ParamsMixin
-from techminer2.analyze._metrics.co_occurrence_matrix import (
+from techminer2.analyze._internals.co_occurrence_matrix import (
     DataFrame as CoOccurrenceDataFrame,
 )
 

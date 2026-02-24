@@ -42,7 +42,7 @@ Smoke tests:
 """
 
 from techminer2._internals import ParamsMixin
-from techminer2.analyze._networks.co_occurrence.usr.node_degree_data_frame import (
+from techminer2.synthesize.conceptual_structure.co_occurrence.usr.node_degree_data_frame import (
     NodeDegreeDataFrame as UserNodeDegreeDataFrame,
 )
 

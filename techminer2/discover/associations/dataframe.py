@@ -49,7 +49,7 @@ Smoke tests:
 """
 
 from techminer2._internals import ParamsMixin
-from techminer2.analyze._metrics.co_occurrence_matrix import MatrixDataFrame
+from techminer2.analyze._internals.co_occurrence_matrix import MatrixDataFrame
 
 
 class DataFrame(

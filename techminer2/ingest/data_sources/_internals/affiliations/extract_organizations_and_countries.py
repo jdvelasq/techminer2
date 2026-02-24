@@ -194,7 +194,7 @@ def _extract_country_from_string(affiliation: str) -> str:
 
     country_names = load_builtin_word_list("country_names.txt")
     if country not in country_names:
-        country = "[N/A]"
+        country = "[n/a]"
 
     return country
 
@@ -289,7 +289,7 @@ def _extract_organization_from_string(affiliation: str) -> str:
     parts = [p for p in parts if p]
 
     if not parts:
-        return "[N/A]"
+        return "[n/a]"
 
     parts = _remove_duplicate_segments(parts)
 
@@ -314,7 +314,7 @@ def _extract_organization_from_string(affiliation: str) -> str:
     if len(parts) >= 1 and _is_organization(parts[0]):
         return parts[0]
 
-    return "[N/A]"
+    return "[n/a]"
 
 
 # ----------------------------------------------------------------------------
@@ -357,13 +357,13 @@ def _create_country_column(
     df = df.copy()
 
     df[COUNTRY] = df[AFFIL_RAW].copy()
-    df[COUNTRY] = df[COUNTRY].fillna("[N/A]")
+    df[COUNTRY] = df[COUNTRY].fillna("[n/a]")
     df[COUNTRY] = df[COUNTRY].str.split("; ")
     df[COUNTRY] = df[COUNTRY].apply(
-        lambda affils: [country_mapping.get(affil, "[N/A]") for affil in affils],
+        lambda affils: [country_mapping.get(affil, "[n/a]") for affil in affils],
     )
     df[CorpusField.COUNTRY_AUTH_FIRST.value] = df[COUNTRY].map(
-        lambda countries: countries[0] if countries else "[N/A]",
+        lambda countries: countries[0] if countries else "[n/a]",
     )
     df[COUNTRY] = df[COUNTRY].apply(set)
     df[COUNTRY] = df[COUNTRY].str.join("; ")
@@ -377,12 +377,12 @@ def _create_organization_column(
     df = df.copy()
 
     df[ORG] = df[AFFIL_RAW].copy()
-    df[ORG] = df[ORG].fillna("[N/A]")
+    df[ORG] = df[ORG].fillna("[n/a]")
     df[ORG] = df[ORG].str.split("; ")
     df[ORG] = df[ORG].apply(
-        lambda affils: [organization_mapping.get(affil, "[N/A]") for affil in affils]
+        lambda affils: [organization_mapping.get(affil, "[n/a]") for affil in affils]
     )
-    df[ORG_AUTH_FIRST] = df[ORG].map(lambda orgs: orgs[0] if orgs else "[N/A]")
+    df[ORG_AUTH_FIRST] = df[ORG].map(lambda orgs: orgs[0] if orgs else "[n/a]")
     df[ORG] = df[ORG].str.join("; ")
 
     return df
@@ -438,7 +438,7 @@ def _create_thesaurus_columns(
                 for affil in row[AFFIL_RAW].split("; ")
             )
             if pd.notna(row[AFFIL_RAW])
-            else "[N/A]"
+            else "[n/a]"
         ),
         axis=1,
     )
@@ -450,7 +450,7 @@ def _create_thesaurus_columns(
                 for affil in row[AFFIL_RAW].split("; ")
             )
             if pd.notna(row[AFFIL_RAW])
-            else "[N/A]"
+            else "[n/a]"
         ),
         axis=1,
     )
@@ -467,10 +467,10 @@ def _create_country_thesaurus_file(
     dataframe = dataframe.explode(COUNTRY_AND_AFFIL)
     dataframe[COUNTRY_AND_AFFIL] = dataframe[COUNTRY_AND_AFFIL].str.strip()
     dataframe["country"] = dataframe[COUNTRY_AND_AFFIL].apply(
-        lambda x: x.split(" @ ")[0].strip() if " @ " in x else "[N/A]"
+        lambda x: x.split(" @ ")[0].strip() if " @ " in x else "[n/a]"
     )
     dataframe["affil"] = dataframe[COUNTRY_AND_AFFIL].apply(
-        lambda x: x.split(" @ ")[1].strip() if " @ " in x else "[N/A]"
+        lambda x: x.split(" @ ")[1].strip() if " @ " in x else "[n/a]"
     )
     # counting = dataframe["affil"].value_counts()
 
@@ -488,7 +488,7 @@ def _create_country_thesaurus_file(
     with open(filepath, "w", encoding="utf-8") as file:
         for _, row in groupby_df.iterrows():
             country = row["country"]
-            if country == "[N/A]":
+            if country == "[n/a]":
                 continue
             file.write(f"{country}\n")
             for affil in row["affil"]:
@@ -504,10 +504,10 @@ def _create_organizations_thesaurus_file(
     dataframe = dataframe.explode(ORG_AND_AFFIL)
     dataframe[ORG_AND_AFFIL] = dataframe[ORG_AND_AFFIL].str.strip()
     dataframe["organization"] = dataframe[ORG_AND_AFFIL].apply(
-        lambda x: x.split(" @ ")[0].strip() if " @ " in x else "[N/A]"
+        lambda x: x.split(" @ ")[0].strip() if " @ " in x else "[n/a]"
     )
     dataframe["affil"] = dataframe[ORG_AND_AFFIL].apply(
-        lambda x: x.split(" @ ")[1].strip() if " @ " in x else "[N/A]"
+        lambda x: x.split(" @ ")[1].strip() if " @ " in x else "[n/a]"
     )
     # counting = dataframe["affil"].value_counts()
 
@@ -525,7 +525,7 @@ def _create_organizations_thesaurus_file(
     with open(filepath, "w", encoding="utf-8") as file:
         for _, row in groupby_df.iterrows():
             organization = row["organization"]
-            if organization == "[N/A]":
+            if organization == "[n/a]":
                 continue
             file.write(f"{organization}\n")
             for affil in row["affil"]:
