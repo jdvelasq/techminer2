@@ -10,6 +10,6 @@ def compose_key_tok(root_directory: str) -> int:
             CorpusField.AUTH_KEY_TOK,
             CorpusField.IDX_KEY_TOK,
         ),
-        target=CorpusField.HYB_KEY_TOK,
+        target=CorpusField.KEY_TOK,
         root_directory=root_directory,
     )

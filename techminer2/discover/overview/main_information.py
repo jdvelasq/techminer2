@@ -603,7 +603,7 @@ class MainInformation(
             item="Number of keywords (norm)",
             value=self.count_unique_items(
                 dataframe,
-                CorpusField.HYB_KEY_NORM,
+                CorpusField.KEY_NORM,
             ),
         )
 
@@ -613,7 +613,7 @@ class MainInformation(
             item="Number of keywords (raw)",
             value=self.count_unique_items(
                 dataframe,
-                CorpusField.HYB_KEY_TOK,
+                CorpusField.KEY_TOK,
             ),
         )
 
@@ -679,7 +679,7 @@ class MainInformation(
             item="Number of abstract NP phrases (tok)",
             value=self.count_unique_items(
                 dataframe,
-                CorpusField.ABS_NP_TOK,
+                CorpusField.NP_ABS_RAW,
             ),
         )
 
@@ -689,7 +689,7 @@ class MainInformation(
             item="Number of title NP phrases (tok)",
             value=self.count_unique_items(
                 dataframe,
-                CorpusField.TITLE_NP_TOK,
+                CorpusField.NP_TITLE_RAW,
             ),
         )
 
@@ -699,7 +699,7 @@ class MainInformation(
             item="Number of NP phrases (tok)",
             value=self.count_unique_items(
                 dataframe,
-                CorpusField.NP_TOK,
+                CorpusField.NP_RAW,
             ),
         )
 
@@ -729,7 +729,7 @@ class MainInformation(
             item="Number of keywords + NP phrases (tok)",
             value=self.count_unique_items(
                 dataframe,
-                CorpusField.HYB_KEY_TOK,
+                CorpusField.KEY_TOK,
             ),
         )
 
@@ -739,7 +739,7 @@ class MainInformation(
             item="Number of keywords + NP phrases (norm)",
             value=self.count_unique_items(
                 dataframe,
-                CorpusField.HYB_KEY_NORM,
+                CorpusField.KEY_NORM,
             ),
         )
 

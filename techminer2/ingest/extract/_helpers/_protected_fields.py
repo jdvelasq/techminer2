@@ -1,7 +1,7 @@
 from techminer2 import CorpusField
 
 PROTECTED_FIELDS = [
-    CorpusField.ABS_NP_TOK.value,
+    CorpusField.NP_ABS_RAW.value,
     CorpusField.ABS_RAW.value,
     CorpusField.AFFIL_RAW.value,
     CorpusField.ART_NO.value,
@@ -24,7 +24,7 @@ PROTECTED_FIELDS = [
     CorpusField.ISBN.value,
     CorpusField.ISSN.value,
     CorpusField.ISSUE.value,
-    CorpusField.HYB_KEY_TOK.value,
+    CorpusField.KEY_TOK.value,
     CorpusField.LINK.value,
     CorpusField.NUM_AUTH.value,
     CorpusField.OA.value,

@@ -2,6 +2,7 @@ from pathlib import Path
 
 import pandas as pd
 
+from techminer2 import CorpusField
 from techminer2._internals.package_data.word_lists import (
     load_builtin_word_list,
     save_text_processing_terms,
@@ -27,9 +28,9 @@ def _extract_raw_noun_phrases(dataframe: pd.DataFrame) -> set:
 
     noun_phrases = set()
 
-    if "raw_noun_phrases" in dataframe.columns:
+    if CorpusField.NP_RAW.value in dataframe.columns:
         series = (
-            dataframe["raw_noun_phrases"]
+            dataframe[CorpusField.NP_RAW.value]
             .dropna()
             .str.split("; ")
             .explode()
@@ -45,15 +46,24 @@ def _extract_frequent_raw_keywords(dataframe: pd.DataFrame) -> set:
 
     keywords = set()
 
-    for col in ["author_keywords_raw", "index_keywords_raw"]:
+    for col in [
+        CorpusField.AUTH_KEY_RAW.value,
+        CorpusField.IDX_KEY_RAW.value,
+    ]:
 
         if col in dataframe.columns:
 
             df = dataframe[[col]].copy()
             df = df.dropna()
+            df[col] = df[col].str.split("; ")
+            df = df.explode(col)
+            df[col] = df[col].str.strip()
             df = df.groupby(col).size().reset_index().rename(columns={0: "count"})
             df = df[df["count"] >= 2]
             series = df[col]
+            series = series[series.str.match(r"^[/a-zA-Z\- ]+$")]
+            series = series.str.strip()
+
             keywords.update(series.to_list())
 
     return keywords

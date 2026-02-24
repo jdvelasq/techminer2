@@ -6,6 +6,6 @@ def uppercase_title_phrases(root_directory: str) -> int:
 
     return uppercase_keyterms(
         source=CorpusField.TITLE_TOK,
-        target=CorpusField.TITLE_TOK_NP_UPPER,
+        target=CorpusField.TITLE_UPPER,
         root_directory=root_directory,
     )

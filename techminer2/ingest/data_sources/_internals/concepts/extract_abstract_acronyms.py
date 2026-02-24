@@ -6,6 +6,7 @@ import pandas as pd  # type: ignore
 from pandarallel import pandarallel  # type: ignore
 
 from techminer2._internals import stdout_to_stderr
+from techminer2.enums import CorpusField
 
 ACRONYMS_PATTERN = re.compile(r"\((.*?)\)")
 
@@ -37,7 +38,7 @@ def extract_abstract_acronyms(root_directory: str) -> int:
     with stdout_to_stderr():
         progress_bar = True
         pandarallel.initialize(progress_bar=progress_bar, verbose=0)
-        dataframe["abstract_acronyms"] = dataframe["abstract_tokenized"].parallel_apply(_extract_acronyms_from_text)  # type: ignore[call-arg]
+        dataframe[CorpusField.ABS_ACRONYMS.value] = dataframe[CorpusField.ABS_TOK.value].parallel_apply(_extract_acronyms_from_text)  # type: ignore[call-arg]
         sys.stderr.write("\n")
 
     dataframe.to_csv(
@@ -48,4 +49,4 @@ def extract_abstract_acronyms(root_directory: str) -> int:
         compression="zip",
     )
 
-    return len(dataframe["abstract_acronyms"].dropna())
+    return len(dataframe[CorpusField.ABS_ACRONYMS.value].dropna())

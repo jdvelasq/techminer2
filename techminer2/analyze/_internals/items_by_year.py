@@ -1,13 +1,14 @@
 """
 Smoke tests:
+    >>> from techminer2 import CorpusField, ItemsOrderBy
     >>> from techminer2.analyze._internals.items_by_year import ItemsByYear
     >>> df = (
-    ...     DataFrame()
+    ...     ItemsByYear()
     ...     #
     ...     # FIELD:
-    ...     .with_source_field("author_keywords_raw")
+    ...     .with_source_field(CorpusField.AUTH_KEY_RAW)
     ...     .having_items_in_top(20)
-    ...     .having_items_ordered_by("OCC")
+    ...     .having_items_ordered_by(ItemsOrderBy.OCC)
     ...     .having_item_occurrences_between(None, None)
     ...     .having_item_citations_between(None, None)
     ...     .having_items_in(None)
@@ -16,31 +17,32 @@ Smoke tests:
     ...     .using_cumulative_sum(False)
     ...     #
     ...     # COUNTERS:
-    ...     .using_term_counters(True)
+    ...     .using_item_counters(True)
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/fintech/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     .where_records_match(None)
+    ...     #
+    ...     .run()
     ... )
-    >>> df = generator.run()
     >>> type(df).__name__
     'DataFrame'
     >>> df.shape[0] > 0
     True
     >>> df.shape[1] > 0
     True
-    >>> df.head(10)    
+    >>> df.head(10)
 
 
-    >>> generator = (
-    ...     DataFrame()
+    >>> df = (
+    ...     ItemsByYear()
     ...     #
     ...     # FIELD:
-    ...     .with_field("author_keywords_raw")
+    ...     .with_field(CorpusField.AUTH_KEY_RAW)
     ...     .having_items_in_top(20)
-    ...     .having_items_ordered_by("OCC")
+    ...     .having_items_ordered_by(ItemsOrderBy.OCC)
     ...     .having_item_occurrences_between(None, None)
     ...     .having_item_citations_between(None, None)
     ...     .having_items_in(None)
@@ -49,17 +51,23 @@ Smoke tests:
     ...     .using_cumulative_sum(False)
     ...     #
     ...     # COUNTERS:
-    ...     .using_term_counters(False)
+    ...     .using_item_counters(False)
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/fintech/")
-    ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     .where_records_match(None)
+    ...     #
+    ...     .run()
     ... )
-    >>> df = generator.run()
-    >>> df.head(10) # doctest: +NORMALIZE_WHITESPACE
+    >>> type(df).__name__
+    'DataFrame'
+    >>> df.shape[0] > 0
+    True
+    >>> df.shape[1] > 0
+    True
+    >>> df.head(10)
     year                  2015  2016  2017  2018  2019
     author_keywords_raw
     FINTECH                  0     5     8    12     6
@@ -75,12 +83,12 @@ Smoke tests:
 
 
     >>> generator = (
-    ...     DataFrame()
+    ...     ItemsByYear()
     ...     #
     ...     # FIELD:
-    ...     .with_field("author_keywords_raw")
+    ...     .with_field(CorpusField.AUTH_KEY_RAW)
     ...     .having_items_in_top(20)
-    ...     .having_items_ordered_by("OCC")
+    ...     .having_items_ordered_by(ItemsOrderBy.OCC)
     ...     .having_item_occurrences_between(None, None)
     ...     .having_item_citations_between(None, None)
     ...     .having_items_in(None)
@@ -89,16 +97,22 @@ Smoke tests:
     ...     .using_cumulative_sum(True)
     ...     #
     ...     # COUNTERS:
-    ...     .using_term_counters(True)
+    ...     .using_item_counters(True)
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/fintech/")
-    ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     .where_records_match(None)
+    ...     #
+    ...     .run()
     ... )
-    >>> df = generator.run()
+    >>> type(df).__name__
+    'DataFrame'
+    >>> df.shape[0] > 0
+    True
+    >>> df.shape[1] > 0
+    True
     >>> df.head(10) # doctest: +NORMALIZE_WHITESPACE
     year                          2015  2016  2017  2018  2019
     author_keywords_raw

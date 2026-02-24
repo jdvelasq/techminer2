@@ -6,30 +6,21 @@ from techminer2._internals import Params
 from ..step import Step
 
 
-def build_words_and_np_steps(params: Params) -> list[Step]:
+def build_concept_steps(params: Params) -> list[Step]:
 
-    from .create_term_thesaurus import create_term_thesaurus
+    from .create_concept_thesaurus import create_concept_thesaurus
     from .extract_abstract_acronyms import extract_abstract_acronyms
     from .extract_abstract_phrases import extract_abstract_phrases
-    from .extract_abstract_words import extract_abstract_words
     from .extract_spacy_phrases import extract_spacy_phrases
     from .extract_textblob_phrases import extract_textblob_phrases
     from .extract_title_phrases import extract_title_phrases
-    from .extract_title_words import extract_title_words
     from .merge_keywords_and_phrases import merge_keywords_and_phrases
-    from .merge_keywords_and_phrases_and_words import (
-        merge_keywords_and_phrases_and_words,
-    )
-    from .merge_keywords_and_words import merge_keywords_and_words
     from .merge_title_and_abstract_phrases import merge_title_and_abstract_phrases
-    from .merge_title_and_abstract_words import merge_title_and_abstract_words
     from .tokenize_raw_abstract import tokenize_raw_abstract
     from .tokenize_raw_title import tokenize_raw_title
     from .update_builtin_noun_phrases import update_builtin_noun_phrases
     from .uppercase_abstract_phrases import uppercase_abstract_phrases
-    from .uppercase_abstract_words import uppercase_abstract_words
     from .uppercase_title_phrases import uppercase_title_phrases
-    from .uppercase_title_words import uppercase_title_words
 
     common_kwargs = {"root_directory": params.root_directory}
 
@@ -77,43 +68,13 @@ def build_words_and_np_steps(params: Params) -> list[Step]:
             count_message="{count} records processed",
         ),
         Step(
-            name="Uppercasing abstract words",
-            function=uppercase_abstract_words,
-            kwargs=common_kwargs,
-            count_message="{count} records processed",
-        ),
-        Step(
-            name="Uppercasing title words",
-            function=uppercase_title_words,
-            kwargs=common_kwargs,
-            count_message="{count} records processed",
-        ),
-        Step(
-            name="Extracting abstract words",
-            function=extract_abstract_words,
-            kwargs=common_kwargs,
-            count_message="{count} abstract words created",
-        ),
-        Step(
-            name="Extracting title words",
-            function=extract_title_words,
-            kwargs=common_kwargs,
-            count_message="{count} title words created",
-        ),
-        Step(
-            name="Merging title and abstract words",
-            function=merge_title_and_abstract_words,
-            kwargs=common_kwargs,
-            count_message="{count} title and abstract words merged",
-        ),
-        Step(
-            name="Extracting abstract phrases",
+            name="Extracting abstract NP",
             function=extract_abstract_phrases,
             kwargs=common_kwargs,
             count_message="{count} records processed",
         ),
         Step(
-            name="Extracting title phrases",
+            name="Extracting title NP",
             function=extract_title_phrases,
             kwargs=common_kwargs,
             count_message="{count}  records processed",
@@ -131,22 +92,10 @@ def build_words_and_np_steps(params: Params) -> list[Step]:
             count_message="{count} keywords and NP merged",
         ),
         Step(
-            name="Merging keywords and words",
-            function=merge_keywords_and_words,
+            name="Creating concept thesaurus",
+            function=create_concept_thesaurus,
             kwargs=common_kwargs,
-            count_message="{count} keywords and words merged",
-        ),
-        Step(
-            name="Merging keywords, NP, and words",
-            function=merge_keywords_and_phrases_and_words,
-            kwargs=common_kwargs,
-            count_message="{count} records processed",
-        ),
-        Step(
-            name="Creating descriptor thesaurus",
-            function=create_term_thesaurus,
-            kwargs=common_kwargs,
-            count_message="{count} descriptors added to thesaurus",
+            count_message="{count} concepts added to thesaurus",
         ),
         Step(
             name="Updating builtin noun phrases",

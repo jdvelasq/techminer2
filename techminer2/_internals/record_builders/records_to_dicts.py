@@ -33,7 +33,7 @@ def records_to_dicts(dataframe):
         CorpusField.CIT_COUNT_GLOBAL.value: "TC",
         CorpusField.SRC_TITLE_ABBR_NORM.value: "SO",
         CorpusField.PUBYEAR.value: "PY",
-        CorpusField.ABS_TOK_NP_UPPER.value: "AB",
+        CorpusField.ABS_UPPER.value: "AB",
         CorpusField.AUTH_KEY_RAW.value: "DE",
         CorpusField.IDX_KEY_RAW.value: "ID",
     }

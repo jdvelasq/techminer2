@@ -5,7 +5,7 @@ from techminer2.ingest.data_sources._internals.operations import extract_upperca
 def extract_title_phrases(root_directory: str) -> int:
 
     return extract_uppercase(
-        source=CorpusField.TITLE_TOK_NP_UPPER,
-        target=CorpusField.TITLE_NP_TOK,
+        source=CorpusField.TITLE_UPPER,
+        target=CorpusField.NP_TITLE_RAW,
         root_directory=root_directory,
     )

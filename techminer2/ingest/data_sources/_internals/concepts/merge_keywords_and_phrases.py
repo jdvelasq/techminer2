@@ -9,16 +9,16 @@ def merge_keywords_and_phrases(root_directory: str) -> int:
 
     result = merge_columns(
         sources=(
-            CorpusField.HYB_KEY_TOK,
-            CorpusField.NP_TOK,
+            CorpusField.KEY_TOK,
+            CorpusField.NP_RAW,
         ),
-        target=CorpusField.HYB_KEY_TOK,
+        target=CorpusField.CONCEPT_RAW,
         root_directory=root_directory,
     )
 
     copy_column(
-        source=CorpusField.HYB_KEY_TOK,
-        target=CorpusField.HYB_KEY_NORM,
+        source=CorpusField.CONCEPT_RAW,
+        target=CorpusField.CONCEPT_NORM,
         root_directory=root_directory,
     )
 
