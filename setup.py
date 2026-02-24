@@ -45,7 +45,7 @@ setup(
         "textblob",
         "textdistance",
         "typing_extensions",
-        "urllib3<2.0",
+        "urllib3",
         "wordcloud",
     ],
     packages=find_packages(),
