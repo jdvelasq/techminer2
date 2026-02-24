@@ -18,7 +18,7 @@ Cluster Records
 # ...     year_filter=(None, None),
 # ...     cited_by_filter=(None, None),
 # ... )
-# >>> plot.write_html("docs_source/_generated/px.visualize/specialized_charts/cluster_records.html")
+# >>> plot.write_html("docsrc/_generated/px.visualize/specialized_charts/cluster_records.html")
 
 # .. raw:: html
 

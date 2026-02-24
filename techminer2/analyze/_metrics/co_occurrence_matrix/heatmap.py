@@ -40,7 +40,7 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> plot.write_html("docs_source/_generated/px.packages.co_occurrence_matrix.heatmap.html")
+    >>> plot.write_html("docsrc/_generated/px.packages.co_occurrence_matrix.heatmap.html")
 
 .. raw:: html
 

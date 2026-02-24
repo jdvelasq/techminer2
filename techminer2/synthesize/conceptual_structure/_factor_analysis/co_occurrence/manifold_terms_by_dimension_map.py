@@ -70,7 +70,7 @@ Manifold Terms by Dimensions Map
 ## ...     #
 ## ...     .run()
 ## ... )
-## >>> plot.write_html("docs_source/_generated/px.packages.factor_analysis/co_occurrence/manifold_terms_by_dimension_map.html")
+## >>> plot.write_html("docsrc/_generated/px.packages.factor_analysis/co_occurrence/manifold_terms_by_dimension_map.html")
 
 .. raw:: html
 

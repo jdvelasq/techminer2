@@ -6,7 +6,7 @@ from techminer2.report.visualization.column_plot import ColumnPlot
 from techminer2.report.visualization.dataframe import DataFrame
 from techminer2.report.visualization.line_plot import LinePlot
 from techminer2.report.visualization.pie_plot import PiePlot
-from techminer2.report.visualization.ranking_plot import RankingPlot
+from techminer2.report.visualization.ranking_chart import RankingChart
 from techminer2.report.visualization.word_cloud import WordCloud
 from techminer2.report.visualization.world_map import WorldMap
 
@@ -17,7 +17,7 @@ __all__ = [
     "DataFrame",
     "LinePlot",
     "PiePlot",
-    "RankingPlot",
+    "RankingChart",
     "WordCloud",
     "WorldMap",
 ]

@@ -41,7 +41,7 @@ Network Plot
 ## ...     #
 ## ...     .run()
 ## ... )
-## >>> plot.write_html("docs_source/__static/co_citation_network.network_plot.html")
+## >>> plot.write_html("docsrc/__static/co_citation_network.network_plot.html")
 
 .. raw:: html
 

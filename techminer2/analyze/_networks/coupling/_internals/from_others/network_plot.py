@@ -39,7 +39,7 @@
 ## ...     #
 ## ...     .run()
 ## ... )
-## >>> plot.write_html("docs_source/__static/coupling_network/_core/others.network_plot.html")
+## >>> plot.write_html("docsrc/__static/coupling_network/_core/others.network_plot.html")
 
 .. raw:: html
 

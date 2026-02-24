@@ -64,6 +64,10 @@ class GeneralMetrics(
 ):
     """:meta private:"""
 
+    def __init__(self):
+        super().__init__()
+        self.df = None
+
     def compute_metrics(self):
         self.df = MainInformation().update(**self.params.__dict__).run()
 

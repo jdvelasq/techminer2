@@ -14,7 +14,7 @@ Smoke tests:
     ...     .where_record_citations_range(None, None)
     ...     #
     ...     .run()
-    ... ).write_html("docs_source/_generated/px.database.metrics.bradford_law.line_plot.html")
+    ... ).write_html("docsrc/_generated/px.database.metrics.bradford_law.line_plot.html")
 
 .. raw:: html
 

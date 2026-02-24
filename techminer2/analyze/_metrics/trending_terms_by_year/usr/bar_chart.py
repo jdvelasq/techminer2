@@ -22,7 +22,7 @@ Smoke tests:
     ...     .where_records_match(None)
     ...     #
     ...     .run()
-    ... ).write_html("docs_source/_generated/px.database.metrics.ternding_terms_by_year.user.bar_chart.html")
+    ... ).write_html("docsrc/_generated/px.database.metrics.ternding_terms_by_year.user.bar_chart.html")
 
 .. raw:: html
 

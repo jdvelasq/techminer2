@@ -1,6 +1,6 @@
 """Emergence analysis."""
 
-from .data_frame import DataFrame
+from .dataframe import DataFrame
 
 __all__ = [
     "DataFrame",

@@ -43,7 +43,7 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> plot.write_html("docs_source/_generated/px.packages.networks.coupling.organizations.network_plot.html")
+    >>> plot.write_html("docsrc/_generated/px.packages.networks.coupling.organizations.network_plot.html")
 
 .. raw:: html
 

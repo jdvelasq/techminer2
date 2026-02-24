@@ -11,6 +11,6 @@ Visualization
     report.visualization.dataframe
     report.visualization.line_plot
     report.visualization.pie_plot
-    report.visualization.ranking_plot
+    report.visualization.ranking_chart
     report.visualization.word_cloud
     report.visualization.world_map

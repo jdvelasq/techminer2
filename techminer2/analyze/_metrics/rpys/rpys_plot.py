@@ -12,7 +12,7 @@ Smoke tests:
     ...     .where_root_directory("tests/fintech/")
     ...     .run()
     ... )
-    >>> plot.write_html("docs_source/_generated/px.packages.rpys.rpys_plot.html")
+    >>> plot.write_html("docsrc/_generated/px.packages.rpys.rpys_plot.html")
 
 .. raw:: html
 

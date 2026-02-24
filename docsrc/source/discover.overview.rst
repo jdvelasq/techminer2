@@ -8,3 +8,4 @@ Overview
     discover.overview.document_types
     discover.overview.main_information
     discover.overview.open_access
+    discover.overview.annual_scientific_production

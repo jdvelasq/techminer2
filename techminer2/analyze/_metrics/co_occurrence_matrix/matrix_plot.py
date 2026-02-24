@@ -53,7 +53,7 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> plot.write_html("docs_source/_generated/px.packages.co_occurrence_matrix.matrix_plot_0.html")
+    >>> plot.write_html("docsrc/_generated/px.packages.co_occurrence_matrix.matrix_plot_0.html")
 
 .. raw:: html
 
@@ -111,7 +111,7 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> plot.write_html("docs_source/_generated/px.packages.co_occurrence_matrix.matrix_plot_1.html")
+    >>> plot.write_html("docsrc/_generated/px.packages.co_occurrence_matrix.matrix_plot_1.html")
 
 .. raw:: html
 

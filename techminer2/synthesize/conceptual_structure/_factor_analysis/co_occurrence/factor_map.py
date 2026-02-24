@@ -72,7 +72,7 @@ Factor Map
 ## ...     #
 ## ...     .run()
 ## ... )
-## >>> plot.write_html("docs_source/_generated/px.packages.factor_analysis/co_occurrence/factor_map_plot.html")
+## >>> plot.write_html("docsrc/_generated/px.packages.factor_analysis/co_occurrence/factor_map_plot.html")
 
 .. raw:: html
 
@@ -86,14 +86,14 @@ Factor Map
 import pandas as pd  # type: ignore
 from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
 
+from techminer2.analyze._metrics.correlation._internals.internal__correlation_map import (
+    internal__correlation_map,
+)
 from techminer2.synthesize.conceptual_structure._factor_analysis.co_occurrence.cluster_centers_data_frame import (
     cluster_centers_frame,
 )
 from techminer2.synthesize.conceptual_structure._factor_analysis.co_occurrence.cluster_to_terms_mapping import (
     cluster_to_terms_mapping,
-)
-from techminer2.analyze._metrics.correlation._internals.internal__correlation_map import (
-    internal__correlation_map,
 )
 
 

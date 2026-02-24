@@ -24,7 +24,7 @@ Smoke tests:
     ...     .where_records_match(None)
     ... )
     >>> plot = plotter.run()
-    >>> plot.write_html("docs_source/_generated/px.database.metrics.terms_by_year.gantt_plot.html")
+    >>> plot.write_html("docsrc/_generated/px.database.metrics.terms_by_year.gantt_plot.html")
 
 .. raw:: html
 

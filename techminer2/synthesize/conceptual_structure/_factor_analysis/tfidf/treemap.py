@@ -57,7 +57,7 @@ Treemap
 ## ...     #
 ## ...     .run()
 ## ... )
-## >>> plot.write_html("docs_source/_generated/px.packages.factor_analysis/tfidf/treemap.html")
+## >>> plot.write_html("docsrc/_generated/px.packages.factor_analysis/tfidf/treemap.html")
 
 .. raw:: html
 

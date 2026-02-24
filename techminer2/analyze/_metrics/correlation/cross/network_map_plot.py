@@ -53,7 +53,7 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> plot.write_html("docs_source/_generated/px.packages.correlation.cross.network_map_plot.html")
+    >>> plot.write_html("docsrc/_generated/px.packages.correlation.cross.network_map_plot.html")
 
 .. raw:: html
 
