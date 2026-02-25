@@ -6,10 +6,10 @@ Creates a co-occurrence networkx graph from a co-occurrence matrix.
 
 import networkx as nx  # type: ignore
 
-from techminer2.analyze._internals.co_occurrence_matrix import (
+from techminer2.discover.co_occurrence_matrix._internals import (
     MatrixDataFrame as CoOccurrenceMatrix,
 )
-from techminer2.analyze._internals.co_occurrence_matrix._internals.normalize_matrix import (
+from techminer2.discover.occurrence_matrix._internals.normalize_matrix import (
     internal__normalize_matrix,
 )
 

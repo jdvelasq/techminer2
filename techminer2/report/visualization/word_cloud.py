@@ -40,7 +40,9 @@ Smoke tests:
 
 from techminer2._internals import ParamsMixin
 from techminer2._internals.plots.word_cloud import word_cloud
-from techminer2.report.visualization.dataframe import DataFrame
+from techminer2.analyze._internals.performance.performance_metrics import (
+    PerformanceMetrics,
+)
 
 
 class WordCloud(
@@ -50,7 +52,7 @@ class WordCloud(
 
     def run(self):
 
-        df = DataFrame().update(**self.params.__dict__).run()
+        df = PerformanceMetrics().update(**self.params.__dict__).run()
         fig = word_cloud(params=self.params, dataframe=df)
 
         return fig

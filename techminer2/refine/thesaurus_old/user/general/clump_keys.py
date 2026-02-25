@@ -80,8 +80,8 @@ from tqdm import tqdm  # type: ignore
 
 from techminer2._internals import ParamsMixin
 from techminer2._internals.package_data.word_lists import load_builtin_word_list
+from techminer2.analyze._internals.performance import PerformanceMetrics
 from techminer2.refine.thesaurus_old._internals import ThesaurusMixin, ThesaurusResult
-from techminer2.report.visualization import DataFrame
 
 
 class ClumpKeys(
@@ -96,8 +96,8 @@ class ClumpKeys(
     def internal__get_keywords(self):
 
         self.keywords = (
-            DataFrame()
-            .with_field("raw_keywords")
+            PerformanceMetrics()
+            .with_source_field("raw_keywords")
             .having_items_ordered_by("OCC")
             .where_root_directory(self.params.root_directory)
             .where_database("main")

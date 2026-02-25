@@ -27,7 +27,9 @@ Smoke tests:
 """
 
 from techminer2._internals import ParamsMixin
-from techminer2.report.visualization.dataframe import DataFrame as PerformanceDataFrame
+from techminer2.analyze._internals.performance.performance_metrics import (
+    PerformanceMetrics as PerformanceDataFrame,
+)
 
 
 class DataFrame(

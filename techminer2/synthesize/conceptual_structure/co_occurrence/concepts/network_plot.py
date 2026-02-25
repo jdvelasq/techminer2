@@ -74,6 +74,6 @@ class NetworkPlot(
         return (
             UserNetworkPlot()
             .update(**self.params.__dict__)
-            .with_field("descriptors")
+            .with_source_field("descriptors")
             .run()
         )

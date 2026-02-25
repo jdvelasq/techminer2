@@ -10,7 +10,7 @@ MAIN_COLUMNS = frozenset(
         CorpusField.AUTH_ID_RAW.value,
         CorpusField.AUTH_RAW.value,
         CorpusField.AUTH_KEY_RAW.value,
-        CorpusField.CIT_COUNT_GLOBAL.value,
+        CorpusField.GCS.value,
         CorpusField.DOC_TYPE_RAW.value,
         CorpusField.DOI.value,
         CorpusField.IDX_KEY_RAW.value,

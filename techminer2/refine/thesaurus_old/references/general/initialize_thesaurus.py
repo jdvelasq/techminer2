@@ -59,10 +59,10 @@ import pandas as pd  # type: ignore
 from tqdm import tqdm
 
 from techminer2._internals import ParamsMixin
-from techminer2._internals.data_access import (
+from techminer2._internals.data_access import (  # type: ignore
     load_all_records_from_database,
-)  # type: ignore
-from techminer2._internals.data_access import load_filtered_main_data
+    load_filtered_main_data,
+)
 from techminer2.refine.thesaurus_old._internals import ThesaurusMixin
 
 tqdm.pandas()
@@ -98,7 +98,7 @@ class InitializeThesaurus(
 
         if not self.params.quiet:
 
-            field = self.params.field
+            field = self.params.source_field
             truncated_path = str(self.thesaurus_path)
             if len(truncated_path) > 72:
                 truncated_path = "..." + truncated_path[-68:]

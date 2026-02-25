@@ -12,7 +12,7 @@ PROTECTED_FIELDS = [
     CorpusField.AUTH_KEY_TOK.value,
     CorpusField.AUTH_RAW.value,
     CorpusField.AUTH_RAW.value,
-    CorpusField.CIT_COUNT_GLOBAL.value,
+    CorpusField.GCS.value,
     CorpusField.CODEN.value,
     CorpusField.CORRESP.value,
     CorpusField.TITLE_RAW.value,

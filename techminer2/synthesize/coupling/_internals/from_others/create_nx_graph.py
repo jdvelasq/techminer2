@@ -2,8 +2,8 @@ import networkx as nx  # type: ignore
 import numpy as np
 
 from techminer2._internals.data_access import load_filtered_main_data
-from techminer2.report.visualization.dataframe import (
-    DataFrame as TermsByYearMetricsDataFrame,
+from techminer2.analyze._internals.performance.performance_metrics import (
+    PerformanceMetrics as TermsByYearMetricsDataFrame,
 )
 
 
@@ -55,7 +55,7 @@ def step_03_filter_the_data_frame(params, data_frame):
     metrics = (
         TermsByYearMetricsDataFrame()
         .update(**params.__dict__)
-        .with_field(params.unit_of_analysis)
+        .with_source_field(params.unit_of_analysis)
         .run()
     )
 

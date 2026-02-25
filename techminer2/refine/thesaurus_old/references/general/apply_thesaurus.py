@@ -63,8 +63,8 @@ class ApplyThesaurus(
         if not self.params.quiet:
 
             file_path = str(self.thesaurus_path)
-            field = self.params.field
-            other_field = self.params.other_field
+            field = self.params.source_field
+            other_field = self.params.index_field
 
             if len(file_path) > 64:
                 file_path = "..." + file_path[-60:]
@@ -92,8 +92,8 @@ class ApplyThesaurus(
     # -------------------------------------------------------------------------
     def internal__apply_thesaurus(self):
 
-        field = self.params.field
-        other_field = self.params.other_field
+        field = self.params.source_field
+        other_field = self.params.index_field
 
         # creates a list of references
         self.records[other_field] = self.records[field].str.split("; ")
@@ -118,8 +118,8 @@ class ApplyThesaurus(
     def run(self):
 
         self.params.thesaurus_file = "references.the.txt"
-        self.params.field = "raw_global_references"
-        self.params.other_field = "global_references"
+        self.params.source_field = "raw_global_references"
+        self.params.index_field = "global_references"
 
         self._build_user_thesaurus_path()
         self.internal__notify_process_start()

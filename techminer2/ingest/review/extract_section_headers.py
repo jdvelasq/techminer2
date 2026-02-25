@@ -26,7 +26,7 @@ Smoke test:
 """
 
 from techminer2._internals import ParamsMixin
-from techminer2.discover._concordances import ConcordanceUppercase
+from techminer2.discover.concordances import ConcordanceUppercase
 
 __reviewed__ = "2026-01-28"
 

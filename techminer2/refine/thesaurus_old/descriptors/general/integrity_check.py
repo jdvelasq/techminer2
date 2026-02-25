@@ -52,8 +52,8 @@ class IntegrityCheck(
         (
             UserIntegrityCheck()
             .update(**self.params.__dict__)
-            .with_thesaurus_file("descriptors.the.txt")
-            .with_field("raw_descriptors")
+            .with_thesaurus_file("concepts.the.txt")
+            .with_source_field("raw_descriptors")
             .where_root_directory(self.params.root_directory)
             .run()
         )

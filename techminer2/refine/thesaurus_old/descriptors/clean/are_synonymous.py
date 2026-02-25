@@ -59,7 +59,9 @@ from techminer2._internals import ParamsMixin
 from techminer2._internals.package_data.templates.load_builtin_template import (
     load_builtin_template,
 )
-from techminer2.report.visualization import DataFrame as DominantDataFrame
+from techminer2.analyze._internals.performance import (
+    PerformanceMetrics as DominantDataFrame,
+)
 from techminer2.synthesize.emergence import DataFrame as EmergentDataFrame
 
 # -----------------------------------------------------------------------------
@@ -99,7 +101,7 @@ class AreSynonymous(
             DominantDataFrame()
             .update(**self.params.__dict__)
             .update(quiet=True)
-            .with_field("descriptors")
+            .with_source_field("descriptors")
             .run()
         )
 
@@ -107,7 +109,7 @@ class AreSynonymous(
             EmergentDataFrame()
             .update(**self.params.__dict__)
             .update(quiet=True)
-            .with_field("descriptors")
+            .with_source_field("descriptors")
             .run()
         )
         emergent_descriptors = emergent_descriptors.index.to_list()

@@ -128,7 +128,7 @@ class ReplaceAcronyms(
         params = (
             Params()
             .update(**self.params.__dict__)
-            .update(thesaurus_file="descriptors.the.txt")
+            .update(thesaurus_file="concepts.the.txt")
         )
 
         self.thesaurus_path = internal__get_user_thesaurus_file_path(params=params)

@@ -74,6 +74,6 @@ class NetworkPlot(
         return (
             UserNetworkPlot()
             .update(**self.params.__dict__)
-            .with_field("index_keywords")
+            .with_source_field("index_keywords")
             .run()
         )

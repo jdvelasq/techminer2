@@ -1,5 +1,5 @@
 """
-Contains Match
+ContainsMatch
 ===============================================================================
 
 Smoke test:
@@ -103,5 +103,5 @@ class ContainsMatch(
             thesaurus_file=self.params.thesaurus_file,
             msg="Contains matching completed.",
             success=True,
-            field=self.params.field.value,
+            field=self.params.source_field.value,
         )

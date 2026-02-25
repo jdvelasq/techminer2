@@ -55,9 +55,11 @@ class CorpusField(Enum):
 
     #
     # Citation count
+    # GCS: Global citation score (total number of citations received by a document)
+    # LCS: Local citation score (number of citations received by a document from documents in the same corpus)
     #
-    CIT_COUNT_GLOBAL = "CIT_COUNT_GLOBAL"
-    CIT_COUNT_LOCAL = "CIT_COUNT_LOCAL"
+    GCS = "GCS"
+    LCS = "LCS"
 
     #
     # Source & document type

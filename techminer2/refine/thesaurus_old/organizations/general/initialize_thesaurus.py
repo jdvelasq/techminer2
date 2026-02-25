@@ -139,7 +139,7 @@ class InitializeThesaurus(
 
         if not self.params.quiet:
 
-            field = self.params.field
+            field = self.params.source_field
             truncated_path = str(self.thesaurus_path)
             if len(truncated_path) > 72:
                 truncated_path = "..." + truncated_path[-68:]
@@ -296,7 +296,7 @@ class InitializeThesaurus(
         """:meta private:"""
 
         self.with_thesaurus_file("organizations.the.txt")
-        self.with_field("affiliations")
+        self.with_source_field("affiliations")
 
         self._build_user_thesaurus_path()
         self.internal__notify_process_start()

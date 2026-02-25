@@ -43,7 +43,7 @@ class IntegrityCheck(
             UserIntegrityCheck()
             .update(**self.params.__dict__)
             .with_thesaurus_file("organizations.the.txt")
-            .with_field("affiliations")
+            .with_source_field("affiliations")
             .where_root_directory(self.params.root_directory)
             .run()
         )

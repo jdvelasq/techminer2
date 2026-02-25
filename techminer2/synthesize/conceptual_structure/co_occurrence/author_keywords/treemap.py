@@ -70,6 +70,6 @@ class Treemap(
         return (
             UserTreemap()
             .update(**self.params.__dict__)
-            .with_field("author_keywords")
+            .with_source_field("author_keywords")
             .run()
         )

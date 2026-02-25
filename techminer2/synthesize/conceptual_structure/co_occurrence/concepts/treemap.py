@@ -55,5 +55,8 @@ class Treemap(
         """:meta private:"""
 
         return (
-            UserTreemap().update(**self.params.__dict__).with_field("descriptors").run()
+            UserTreemap()
+            .update(**self.params.__dict__)
+            .with_source_field("descriptors")
+            .run()
         )

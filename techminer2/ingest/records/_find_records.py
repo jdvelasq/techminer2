@@ -73,9 +73,9 @@ class FindRecords(ParamsMixin):
     def _step_02_filter_the_records(self, records):
 
         records = records.copy()
-        records = records.dropna(subset=[self.params.field])
+        records = records.dropna(subset=[self.params.source_field])
 
-        contains = records[self.params.field].str.contains(
+        contains = records[self.params.source_field].str.contains(
             pat=self.params.pattern,
             case=self.params.case_sensitive,
             flags=self.params.regex_flags,

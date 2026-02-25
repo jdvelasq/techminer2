@@ -2,12 +2,6 @@
 Bar Plot
 ===============================================================================
 
-
-
-This module demonstrates how to create a collaboration bar plot using the BarPlot class.
-The process involves configuring the field, plot settings, and database parameters.
-
-
 Smoke tests:
     >>> from techminer2.analyze.metrics.collaboration import BarPlot
 
@@ -64,7 +58,7 @@ class BarPlot(
 
     def build_collaboration_bar_plot(self, metrics):
 
-        field = self.params.field
+        field = self.params.source_field
         title_text = self.params.title_text
         xaxes_title_text = self.params.xaxes_title_text
         yaxes_title_text = self.params.yaxes_title_text

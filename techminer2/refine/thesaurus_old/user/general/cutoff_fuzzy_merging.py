@@ -120,8 +120,8 @@ from tqdm import tqdm  # type: ignore
 from techminer2._internals import ParamsMixin
 from techminer2._internals.data_access import load_filtered_main_data
 from techminer2._internals.package_data.word_lists import load_builtin_word_list
+from techminer2.analyze._internals.performance import PerformanceMetrics
 from techminer2.refine.thesaurus_old._internals import ThesaurusMixin
-from techminer2.report.visualization import DataFrame
 
 tqdm.pandas()
 
@@ -138,8 +138,8 @@ class CutoffFuzzyMerging(
     def internal__get_keywords(self):
 
         self.keywords = (
-            DataFrame()
-            .with_field("raw_keywords")
+            PerformanceMetrics()
+            .with_source_field("raw_keywords")
             .having_items_ordered_by("OCC")
             .where_root_directory(self.params.root_directory)
             .where_database("main")
@@ -165,13 +165,19 @@ class CutoffFuzzyMerging(
     def internal__get_raw_occurrences(self):
 
         records = load_filtered_main_data(params=self.params)
-        records = records[[self.params.field]]
+        records = records[[self.params.source_field]]
         records = records.dropna()
-        records[self.params.field] = records[self.params.field].str.split("; ")
-        records = records.explode(self.params.field)
-        records[self.params.field] = records[self.params.field].str.strip()
+        records[self.params.source_field] = records[self.params.source_field].str.split(
+            "; "
+        )
+        records = records.explode(self.params.source_field)
+        records[self.params.source_field] = records[
+            self.params.source_field
+        ].str.strip()
         records["OCC"] = 1
-        counts = records.groupby(self.params.field, as_index=True).agg({"OCC": "sum"})
+        counts = records.groupby(self.params.source_field, as_index=True).agg(
+            {"OCC": "sum"}
+        )
 
         self.raw_key2occ = dict(zip(counts.index, counts.OCC))
 

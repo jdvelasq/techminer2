@@ -21,7 +21,7 @@ SCOPUS_TO_TM2 = {
     # C
     #
     "Chemicals/CAS": CorpusField.CAS_REG_NUMBER.value,
-    "Cited by": CorpusField.CIT_COUNT_GLOBAL.value,
+    "Cited by": CorpusField.GCS.value,
     "CODEN": CorpusField.CODEN.value,
     "Conference code": CorpusField.CONF_CODE.value,
     "Conference date": CorpusField.CONF_DATE.value,

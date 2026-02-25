@@ -59,8 +59,8 @@ class TransformColumn(
                 f"Source and target fields must differ (got `{self.params.source_field}`)"
             )
 
-        if self.params.other_field in PROTECTED_FIELDS:
-            raise ValueError(f"Field `{self.params.other_field}` is protected")
+        if self.params.index_field in PROTECTED_FIELDS:
+            raise ValueError(f"Field `{self.params.index_field}` is protected")
 
         if self.params.transformation_function is None:
             raise ValueError("Transformation function must be provided")

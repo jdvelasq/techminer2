@@ -39,7 +39,9 @@ Smoke tests:
 
 from techminer2._internals import ParamsMixin
 from techminer2._internals.plots.world_map import world_map
-from techminer2.report.visualization.dataframe import DataFrame
+from techminer2.analyze._internals.performance.performance_metrics import (
+    PerformanceMetrics,
+)
 
 
 class WorldMap(
@@ -49,7 +51,7 @@ class WorldMap(
 
     def run(self):
 
-        df = DataFrame().update(**self.params.__dict__).run()
+        df = PerformanceMetrics().update(**self.params.__dict__).run()
         fig = world_map(params=self.params, dataframe=df)
 
         return fig

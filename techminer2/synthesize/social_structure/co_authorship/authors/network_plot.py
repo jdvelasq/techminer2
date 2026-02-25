@@ -72,5 +72,8 @@ class NetworkPlot(
         """:meta private:"""
 
         return (
-            UserNetworkPlot().update(**self.params.__dict__).with_field("authors").run()
+            UserNetworkPlot()
+            .update(**self.params.__dict__)
+            .with_source_field("authors")
+            .run()
         )

@@ -1,5 +1,5 @@
 """
-EndsWith Match
+EndsWithMatch
 ===============================================================================
 
 Smoke test:
@@ -84,7 +84,7 @@ class EndsWithMatch(
 
     def run(self) -> ThesaurusMatchResult:
 
-        self.with_thesaurus_file("descriptors.the.txt")
+        self.with_thesaurus_file("concepts.the.txt")
         self.with_source_field(CorpusField.KEY_AND_NP_AND_WORDS)
 
         thesaurus_df = load_thesaurus_as_dataframe(params=self.params)
@@ -103,5 +103,5 @@ class EndsWithMatch(
             thesaurus_file=self.params.thesaurus_file,
             msg="EndsWith matching completed.",
             success=True,
-            field=self.params.field.value,
+            field=self.params.source_field.value,
         )

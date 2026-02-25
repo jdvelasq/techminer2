@@ -32,8 +32,8 @@ Smoke tests:
 import plotly.express as px  # type: ignore
 
 from techminer2._internals import ParamsMixin
-from techminer2.analyze._internals.co_occurrence_matrix import (
-    DataFrame as CoOccurrenceDataFrame,
+from techminer2.discover.co_occurrence_matrix._internals.matrix_dataframe import (
+    MatrixDataFrame as CoOccurrenceDataFrame,
 )
 
 
@@ -49,7 +49,7 @@ class WorldMap(
         collaboration = (
             CoOccurrenceDataFrame()
             .update(**self.params.__dict__)
-            .with_field("countries")
+            .with_source_field("countries")
             .update(terms_order_by="OCC")
             .run()
         )

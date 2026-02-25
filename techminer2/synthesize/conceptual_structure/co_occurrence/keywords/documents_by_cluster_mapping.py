@@ -82,6 +82,6 @@ class DocumentsByClusterMapping(
         return (
             UserDocumentsByClusterMapping()
             .update(**self.params.__dict__)
-            .with_field("keywords")
+            .with_source_field("keywords")
             .run()
         )

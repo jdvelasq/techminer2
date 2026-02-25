@@ -49,7 +49,7 @@ def build_reference_steps(params: Params) -> list[Step]:
             count_message="{count} references normalized",
         ),
         Step(
-            name=f"Compute '{CorpusField.CIT_COUNT_LOCAL.value}'",
+            name=f"Compute '{CorpusField.LCS.value}'",
             function=compute_citcount_local,
             kwargs=common_kwargs,
             count_message="{count} records processed",

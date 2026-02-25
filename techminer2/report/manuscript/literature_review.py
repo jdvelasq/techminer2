@@ -40,7 +40,7 @@ from techminer2._internals import ParamsMixin
 from techminer2._internals.package_data.templates.load_builtin_template import (
     load_builtin_template,
 )
-from techminer2.analyze._metrics.records import DataFrame  # type: ignore
+from techminer2.ingest.records import RecordDataFrame  # type: ignore
 from techminer2.ingest.records import RecordViewer  # type: ignore
 
 
@@ -52,7 +52,7 @@ class LiteratureReview(
     # -------------------------------------------------------------------------
     def internal_load_records(self):
 
-        frame = (DataFrame().update(**self.params.__dict__)).run()
+        frame = (RecordDataFrame().update(**self.params.__dict__)).run()
 
         frame = frame[
             (frame.document_type == "Review")

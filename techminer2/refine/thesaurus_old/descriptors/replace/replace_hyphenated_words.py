@@ -306,7 +306,7 @@ class ReplaceHyphenatedWords(
     def run(self):
         """:meta private:"""
 
-        self.with_thesaurus_file("descriptors.the.txt")
+        self.with_thesaurus_file("concepts.the.txt")
 
         self._build_user_thesaurus_path()
         self.internal__notify_process_start()

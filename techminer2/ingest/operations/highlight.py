@@ -88,12 +88,12 @@ class HighlightOperator(
 
     def run(self):
 
-        if self.params.other_field in PROTECTED_FIELDS:
-            raise ValueError(f"Field `{self.params.other_field}` is protected")
+        if self.params.index_field in PROTECTED_FIELDS:
+            raise ValueError(f"Field `{self.params.index_field}` is protected")
 
         uppercase_keyterms(
-            source=self.params.field,
-            target=self.params.other_field,
+            source=self.params.source_field,
+            target=self.params.index_field,
             #
             # DATABASE PARAMS:
             root_directory=self.params.root_directory,

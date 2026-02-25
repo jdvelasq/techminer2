@@ -143,6 +143,6 @@ class TermsToClustersMapping(
         return (
             UserTermsToClusterMapping()
             .update(**self.params.__dict__)
-            .with_field("author_keywords")
+            .with_source_field("author_keywords")
             .run()
         )

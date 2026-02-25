@@ -45,7 +45,9 @@ Smoke tests:
 
 from techminer2._internals import ParamsMixin, SortAxesMixin
 from techminer2._internals.data_access import load_filtered_main_data
-from techminer2.report.visualization.dataframe import DataFrame as PerformanceDataFrame
+from techminer2.analyze._internals.performance.performance_metrics import (
+    PerformanceMetrics as PerformanceDataFrame,
+)
 
 
 class ItemsByYear(
@@ -64,7 +66,7 @@ class ItemsByYear(
     # ----------------------------------------------------------------------------------------------------
     def _step_3_compute_term_occurrences_by_year(self, data_frame):
 
-        field = self.params.field
+        field = self.params.source_field
 
         # select the columns field and year
         data_frame = data_frame.reset_index()
@@ -105,7 +107,7 @@ class ItemsByYear(
     # ----------------------------------------------------------------------------------------------------
     def _step_5_get_terms_mapping(self, data_frame):
 
-        field = self.params.field
+        field = self.params.source_field
 
         data_frame = data_frame[[field, "global_citations"]].copy()
         data_frame = data_frame.dropna()

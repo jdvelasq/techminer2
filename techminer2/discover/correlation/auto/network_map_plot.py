@@ -1,5 +1,5 @@
 """
-Network Map Plot
+NetworkMapPlot
 ===============================================================================
 
 Creates an Auto-correlation Map.

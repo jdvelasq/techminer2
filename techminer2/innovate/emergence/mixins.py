@@ -11,7 +11,10 @@ class RecursiveClusteringMixin:
     def internal__computer_recursive_clusters(self):
 
         metrics = (
-            DataFrame().update(**self.params.__dict__).with_field("descriptors").run()
+            DataFrame()
+            .update(**self.params.__dict__)
+            .with_source_field("descriptors")
+            .run()
         )
 
         self.terms_with_metrics = metrics.index.tolist()

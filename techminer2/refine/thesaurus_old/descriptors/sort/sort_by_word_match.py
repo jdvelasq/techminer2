@@ -72,7 +72,7 @@ class SortByWordMatch(
         return (
             UserSortByWordMatch()
             .update(**self.params.__dict__)
-            .with_thesaurus_file("descriptors.the.txt")
+            .with_thesaurus_file("concepts.the.txt")
             .run()
         )
 

@@ -88,7 +88,7 @@ class DocumentsByClusterMapping(
         )
 
         mapping = {}
-        field = self.params.field
+        field = self.params.source_field
 
         for key, values in c2t_mapping.items():
 

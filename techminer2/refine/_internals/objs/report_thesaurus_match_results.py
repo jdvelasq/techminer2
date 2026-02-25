@@ -38,7 +38,7 @@ def report_thesaurus_match_results(
         thesaurus_file=params.thesaurus_file,
         msg=f"Found {num_candidates} match candidates for merging.",
         success=True,
-        field=params.field.value,
+        field=params.source_field.value,
         num_candidates=num_candidates,
         num_groups=num_groups,
     )

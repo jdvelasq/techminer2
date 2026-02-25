@@ -115,6 +115,6 @@ class NetworkMetrics(
         return (
             UserNetworkMetrics()
             .update(**self.params.__dict__)
-            .with_field("organizations")
+            .with_source_field("organizations")
             .run()
         )

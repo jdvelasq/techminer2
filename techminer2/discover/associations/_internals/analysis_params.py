@@ -1,5 +1,3 @@
-"""Analysis Params for Basic Plots."""
-
 from dataclasses import dataclass
 from typing import Optional
 

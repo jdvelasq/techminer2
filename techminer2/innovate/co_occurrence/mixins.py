@@ -1,6 +1,6 @@
 import sys
 
-from techminer2.report.visualization import DataFrame  # type: ignore
+from techminer2.analyze._internals.performance import PerformanceMetrics  # type: ignore
 from techminer2.synthesize.conceptual_structure.co_occurrence.concepts import (
     ClustersToTermsMapping,
 )
@@ -11,7 +11,10 @@ class RecursiveClusteringMixin:
     def internal__computer_recursive_clusters(self):
 
         metrics = (
-            DataFrame().update(**self.params.__dict__).with_field("descriptors").run()
+            PerformanceMetrics()
+            .update(**self.params.__dict__)
+            .with_source_field("descriptors")
+            .run()
         )
 
         self.terms_with_metrics = metrics.counters.tolist()

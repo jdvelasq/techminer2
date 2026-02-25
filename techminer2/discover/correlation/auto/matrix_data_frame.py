@@ -1,5 +1,5 @@
 """
-Data Frame
+MatrixDataFrame
 ===============================================================================
 
 
@@ -51,7 +51,7 @@ from techminer2._internals import ParamsMixin
 from techminer2.discover.correlation._internals.internal__compute_corr_matrix import (
     internal__compute_corr_matrix,
 )
-from techminer2.discover.matrix._tfidf import DataFrame as TfIdfDataFrame
+from techminer2.discover.tfidf import DataFrame as TfIdfDataFrame
 
 
 class MatrixDataFrame(

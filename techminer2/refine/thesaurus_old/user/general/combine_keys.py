@@ -84,9 +84,10 @@ Smoke tests:
 """
 
 from techminer2._internals import ParamsMixin
-from techminer2.analyze._internals.co_occurrence_matrix import (
-    DataFrame as CoocDataFrame,
-)
+
+# from techminer2.discover.co_occurrence_matrix._internals import (
+#     DataFrame as CoocDataFrame,
+# )
 
 
 class CombineKeys(

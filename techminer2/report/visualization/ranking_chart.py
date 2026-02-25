@@ -46,7 +46,9 @@ Smoke tests:
 
 from techminer2._internals import ParamsMixin
 from techminer2._internals.plots.ranking_chart import ranking_chart
-from techminer2.report.visualization.dataframe import DataFrame
+from techminer2.analyze._internals.performance.performance_metrics import (
+    PerformanceMetrics,
+)
 
 
 class RankingChart(
@@ -56,7 +58,7 @@ class RankingChart(
 
     def run(self):
 
-        df = DataFrame().update(**self.params.__dict__).run()
+        df = PerformanceMetrics().update(**self.params.__dict__).run()
         df["Rank"] = range(1, len(df) + 1)
         fig = ranking_chart(params=self.params, dataframe=df)
 

@@ -66,6 +66,6 @@ class TermsByClusterSummary(
         return (
             UserTermsByClusterSummary()
             .update(**self.params.__dict__)
-            .with_field("countries")
+            .with_source_field("countries")
             .run()
         )

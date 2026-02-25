@@ -40,7 +40,9 @@ Smoke tests:
 
 from techminer2._internals import ParamsMixin
 from techminer2._internals.plots.line_plot import line_plot
-from techminer2.report.visualization.dataframe import DataFrame
+from techminer2.analyze._internals.performance.performance_metrics import (
+    PerformanceMetrics,
+)
 
 
 class LinePlot(
@@ -50,7 +52,7 @@ class LinePlot(
 
     def run(self):
 
-        df = DataFrame().update(**self.params.__dict__).run()
+        df = PerformanceMetrics().update(**self.params.__dict__).run()
         fig = line_plot(params=self.params, df=df)
 
         return fig

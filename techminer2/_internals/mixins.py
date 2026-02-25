@@ -100,6 +100,92 @@ class ParamsMixin:
         self.params.case_sensitive = case_sensitive
         return self
 
+    def having_column_item_citations_between(
+        self, start: Optional[int], end: Optional[int]
+    ) -> Self:
+        start, end = check_required_open_ended_int_range(
+            (start, end), "column_item_citations_range"
+        )
+        self.params.column_item_citations_range = (start, end)
+        return self
+
+    def having_column_item_occurrences_between(
+        self, start: Optional[int], end: Optional[int]
+    ) -> Self:
+        start, end = check_required_open_ended_int_range(
+            (start, end), "column_item_occurrences_range"
+        )
+        self.params.column_item_occurrences_range = (start, end)
+        return self
+
+    def having_column_items_in(self, column_items_in: Optional[list[str]]) -> Self:
+        column_items_in = check_optional_str_list(
+            value=column_items_in,
+            param_name="column_items_in",
+        )
+        self.params.column_items_in = column_items_in
+        return self
+
+    def having_column_items_in_top(self, column_top_n: Optional[int]) -> Self:
+        column_top_n = check_optional_positive_int(
+            value=column_top_n,
+            param_name="column_top_n",
+        )
+        self.params.column_top_n = column_top_n
+        return self
+
+    def having_column_items_ordered_by(
+        self, column_items_order_by: ItemsOrderBy
+    ) -> Self:
+        column_items_order_by = check_required_items_order_by_enum(
+            value=column_items_order_by,
+            param_name="column_items_order_by",
+        )
+        self.params.column_items_order_by = column_items_order_by
+        return self
+
+    def having_index_item_citations_between(
+        self, start: Optional[int], end: Optional[int]
+    ) -> Self:
+        start, end = check_required_open_ended_int_range(
+            (start, end), "index_item_citations_range"
+        )
+        self.params.index_item_citations_range = (start, end)
+        return self
+
+    def having_index_item_occurrences_between(
+        self, start: Optional[int], end: Optional[int]
+    ) -> Self:
+        start, end = check_required_open_ended_int_range(
+            (start, end), "index_item_occurrences_range"
+        )
+        self.params.index_item_occurrences_range = (start, end)
+        return self
+
+    def having_index_items_in(self, index_items_in: Optional[list[str]]) -> Self:
+        index_items_in = check_optional_str_list(
+            value=index_items_in,
+            param_name="index_items_in",
+        )
+        self.params.index_items_in = index_items_in
+        return self
+
+    def having_index_items_in_top(self, index_top_n: Optional[int]) -> Self:
+        index_top_n = check_optional_positive_int(
+            value=index_top_n,
+            param_name="index_top_n",
+        )
+        self.params.index_top_n = index_top_n
+        return self
+
+    def having_index_items_ordered_by(self, index_items_order_by: ItemsOrderBy) -> Self:
+        index_items_order_by = check_required_items_order_by_enum(
+            value=index_items_order_by,
+            param_name="index_items_order_by",
+        )
+        self.params.index_items_order_by = index_items_order_by
+        return self
+
     def having_item_citations_between(
         self, start: Optional[int], end: Optional[int]
     ) -> Self:
@@ -180,48 +266,6 @@ class ParamsMixin:
             param_name="n_contexts",
         )
         self.params.n_contexts = n_contexts
-        return self
-
-    def having_other_item_citations_between(
-        self, start: Optional[int], end: Optional[int]
-    ) -> Self:
-        start, end = check_required_open_ended_int_range(
-            (start, end), "other_item_citations_range"
-        )
-        self.params.other_item_citations_range = (start, end)
-        return self
-
-    def having_other_item_occurrences_between(
-        self, start: Optional[int], end: Optional[int]
-    ) -> Self:
-        start, end = check_required_open_ended_int_range(
-            (start, end), "other_item_occurrences_range"
-        )
-        self.params.other_item_occurrences_range = (start, end)
-        return self
-
-    def having_other_items_in(self, other_items_in: Optional[list[str]]) -> Self:
-        other_items_in = check_optional_str_list(
-            value=other_items_in,
-            param_name="other_items_in",
-        )
-        self.params.other_items_in = other_items_in
-        return self
-
-    def having_other_items_in_top(self, other_top_n: Optional[int]) -> Self:
-        other_top_n = check_optional_positive_int(
-            value=other_top_n,
-            param_name="other_top_n",
-        )
-        self.params.other_top_n = other_top_n
-        return self
-
-    def having_other_items_ordered_by(self, other_items_order_by: ItemsOrderBy) -> Self:
-        other_items_order_by = check_required_items_order_by_enum(
-            value=other_items_order_by,
-            param_name="other_items_order_by",
-        )
-        self.params.other_items_order_by = other_items_order_by
         return self
 
     def having_preferred_key(self, preferred_key: str) -> Self:
@@ -878,6 +922,14 @@ class ParamsMixin:
         self.params.column = column
         return self
 
+    def with_column_field(self, column_field: CorpusField) -> Self:
+        column_field = check_required_corpus_field_enum(
+            value=column_field,
+            param_name="column_field",
+        )
+        self.params.column_field = column_field
+        return self
+
     def with_core_area(self, core_area: Optional[str]) -> Self:
         core_area = check_optional_str(
             value=core_area,
@@ -894,20 +946,36 @@ class ParamsMixin:
         self.params.correlation_method = correlation_method
         return self
 
-    def with_field(self, field: CorpusField) -> Self:
-        field = check_required_corpus_field_enum(
-            value=field,
-            param_name="field",
+    def with_index_and_column_field(self, index_and_column_field: CorpusField) -> Self:
+        index_and_column_field = check_required_corpus_field_enum(
+            value=index_and_column_field,
+            param_name="index_and_column_field",
         )
-        self.params.field = field
+        self.params.index_and_column_field = index_and_column_field
         return self
 
-    def with_other_field(self, other_field: CorpusField) -> Self:
-        other_field = check_required_corpus_field_enum(
-            value=other_field,
-            param_name="other_field",
+    def with_index_field(self, index_field: CorpusField) -> Self:
+        index_field = check_required_corpus_field_enum(
+            value=index_field,
+            param_name="index_field",
         )
-        self.params.other_field = other_field
+        self.params.index_field = index_field
+        return self
+
+    # def with_field(self, field: CorpusField) -> Self:
+    #     field = check_required_corpus_field_enum(
+    #         value=field,
+    #         param_name="field",
+    #     )
+    #     self.params.field = field
+    #     return self
+
+    def with_cross_field(self, field: CorpusField) -> Self:
+        field = check_required_corpus_field_enum(
+            value=field,
+            param_name="cross_field",
+        )
+        self.params.cross_field = field
         return self
 
     def with_params(self, params) -> Self:

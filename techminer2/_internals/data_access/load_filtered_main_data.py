@@ -125,16 +125,20 @@ def _filter_dataframe_by_match(params: Params, dataframe: pd.DataFrame) -> pd.Da
     if filters is None:
         return dataframe
 
+    filters = {k.value: v for k, v in filters.items()}
+
     for filter_name, filter_value in filters.items():
 
         if filter_name == CorpusField.REC_ID.value:
 
-            dataframe = dataframe[dataframe["record_id"].isin(filter_value)]
+            dataframe = dataframe[
+                dataframe[CorpusField.REC_ID.value].isin(filter_value)
+            ]
 
         else:
 
             # Split the filter value into a list of strings
-            database = dataframe[["record_id", filter_name]].copy()
+            database = dataframe[[CorpusField.REC_ID.value, filter_name]].copy()
             database.loc[:, filter_name] = database[filter_name].str.split(";")
 
             # Explode the list of strings into multiple rows
@@ -146,7 +150,11 @@ def _filter_dataframe_by_match(params: Params, dataframe: pd.DataFrame) -> pd.Da
             # Keep only records that match the filter value
             database = database[database[filter_name].isin(filter_value)]
 
-            dataframe = dataframe[dataframe["record_id"].isin(database["record_id"])]
+            dataframe = dataframe[
+                dataframe[CorpusField.REC_ID.value].isin(
+                    database[CorpusField.REC_ID.value]
+                )
+            ]
 
     return dataframe
 
@@ -162,8 +170,8 @@ def _sort_dataframe_by(params: Params, dataframe: pd.DataFrame) -> pd.DataFrame:
         dataframe = dataframe.sort_values(
             [
                 CorpusField.PUBYEAR.value,
-                CorpusField.CIT_COUNT_GLOBAL.value,
-                CorpusField.CIT_COUNT_LOCAL.value,
+                CorpusField.GCS.value,
+                CorpusField.LCS.value,
             ],
             ascending=[False, False, False],
         )
@@ -171,26 +179,26 @@ def _sort_dataframe_by(params: Params, dataframe: pd.DataFrame) -> pd.DataFrame:
         dataframe = dataframe.sort_values(
             [
                 CorpusField.PUBYEAR.value,
-                CorpusField.CIT_COUNT_GLOBAL.value,
-                CorpusField.CIT_COUNT_LOCAL.value,
+                CorpusField.GCS.value,
+                CorpusField.LCS.value,
             ],
             ascending=[True, False, False],
         )
     elif sort_by == RecordsOrderBy.CIT_COUNT_GLOBAL_BY_HIGHEST:
         dataframe = dataframe.sort_values(
             [
-                CorpusField.CIT_COUNT_GLOBAL.value,
+                CorpusField.GCS.value,
                 CorpusField.PUBYEAR.value,
-                CorpusField.CIT_COUNT_LOCAL.value,
+                CorpusField.LCS.value,
             ],
             ascending=[False, False, False],
         )
     elif sort_by == RecordsOrderBy.CIT_COUNT_GLOBAL_BY_LOWEST:
         dataframe = dataframe.sort_values(
             [
-                CorpusField.CIT_COUNT_GLOBAL.value,
+                CorpusField.GCS.value,
                 CorpusField.PUBYEAR.value,
-                CorpusField.CIT_COUNT_LOCAL.value,
+                CorpusField.LCS.value,
             ],
             ascending=[True, False, False],
         )
@@ -198,9 +206,9 @@ def _sort_dataframe_by(params: Params, dataframe: pd.DataFrame) -> pd.DataFrame:
     elif sort_by == RecordsOrderBy.CIT_COUNT_LOCAL_BY_HIGHEST:
         dataframe = dataframe.sort_values(
             [
-                CorpusField.CIT_COUNT_LOCAL.value,
+                CorpusField.LCS.value,
                 CorpusField.PUBYEAR.value,
-                CorpusField.CIT_COUNT_GLOBAL.value,
+                CorpusField.GCS.value,
             ],
             ascending=[False, False, False],
         )
@@ -208,9 +216,9 @@ def _sort_dataframe_by(params: Params, dataframe: pd.DataFrame) -> pd.DataFrame:
     elif sort_by == RecordsOrderBy.CIT_COUNT_LOCAL_BY_LOWEST:
         dataframe = dataframe.sort_values(
             [
-                CorpusField.CIT_COUNT_LOCAL.value,
+                CorpusField.LCS.value,
                 CorpusField.PUBYEAR.value,
-                CorpusField.CIT_COUNT_GLOBAL.value,
+                CorpusField.GCS.value,
             ],
             ascending=[True, False, False],
         )
@@ -219,8 +227,8 @@ def _sort_dataframe_by(params: Params, dataframe: pd.DataFrame) -> pd.DataFrame:
         dataframe = dataframe.sort_values(
             [
                 CorpusField.AUTH_NORM.value,
-                CorpusField.CIT_COUNT_GLOBAL.value,
-                CorpusField.CIT_COUNT_LOCAL.value,
+                CorpusField.GCS.value,
+                CorpusField.LCS.value,
             ],
             ascending=[True, False, False],
         )
@@ -229,8 +237,8 @@ def _sort_dataframe_by(params: Params, dataframe: pd.DataFrame) -> pd.DataFrame:
         dataframe = dataframe.sort_values(
             [
                 CorpusField.AUTH_NORM.value,
-                CorpusField.CIT_COUNT_GLOBAL.value,
-                CorpusField.CIT_COUNT_LOCAL.value,
+                CorpusField.GCS.value,
+                CorpusField.LCS.value,
             ],
             ascending=[False, False, False],
         )
@@ -238,8 +246,8 @@ def _sort_dataframe_by(params: Params, dataframe: pd.DataFrame) -> pd.DataFrame:
         dataframe = dataframe.sort_values(
             [
                 CorpusField.SRC_TITLE_NORM.value,
-                CorpusField.CIT_COUNT_GLOBAL.value,
-                CorpusField.CIT_COUNT_LOCAL.value,
+                CorpusField.GCS.value,
+                CorpusField.LCS.value,
             ],
             ascending=[True, False, False],
         )
@@ -248,8 +256,8 @@ def _sort_dataframe_by(params: Params, dataframe: pd.DataFrame) -> pd.DataFrame:
         dataframe = dataframe.sort_values(
             [
                 CorpusField.SRC_TITLE_NORM.value,
-                CorpusField.CIT_COUNT_GLOBAL.value,
-                CorpusField.CIT_COUNT_LOCAL.value,
+                CorpusField.GCS.value,
+                CorpusField.LCS.value,
             ],
             ascending=[False, False, False],
         )

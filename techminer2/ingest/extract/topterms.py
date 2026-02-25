@@ -33,7 +33,7 @@ Smoke tests:
 """
 
 from techminer2._internals import ParamsMixin
-from techminer2.report.visualization import DataFrame
+from techminer2.analyze._internals.performance import PerformanceMetrics
 
 
 class TopTermsExtractor(
@@ -43,7 +43,7 @@ class TopTermsExtractor(
 
     def run(self):
 
-        data_frame = DataFrame().update(**self.params.__dict__).run()
+        data_frame = PerformanceMetrics().update(**self.params.__dict__).run()
         terms = data_frame.index.tolist()
         terms = sorted(terms)
 

@@ -63,6 +63,6 @@ class NodeDegreePlot(
         return (
             UserNodeDegreePlot()
             .update(**self.params.__dict__)
-            .with_field("keywords")
+            .with_source_field("keywords")
             .run()
         )

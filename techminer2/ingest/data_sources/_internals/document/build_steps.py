@@ -16,7 +16,7 @@ def build_document_steps(params: Params) -> list[Step]:
 
     return [
         Step(
-            name=f"Repairing '{CorpusField.CIT_COUNT_GLOBAL.value}'",
+            name=f"Repairing '{CorpusField.GCS.value}'",
             function=repair_citcount_global,
             kwargs=common_kwargs,
             count_message="{count} records repaired",

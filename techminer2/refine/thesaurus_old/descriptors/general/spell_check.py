@@ -45,7 +45,7 @@ class SpellCheck(
         (
             UserSpellCheck()
             .update(**self.params.__dict__)
-            .update(thesaurus_file="descriptors.the.txt")
+            .update(thesaurus_file="concepts.the.txt")
             .run()
         )
 

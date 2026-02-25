@@ -38,9 +38,6 @@ Smoke tests:
 import plotly.express as px  # type: ignore
 
 from techminer2._internals import ParamsMixin
-from techminer2.analyze._internals.items_by_year import (
-    ItemsByYear as TermsByYearMetricsDataFrame,
-)
 
 COLOR = "#465c6b"
 TEXTLEN = 40
@@ -53,7 +50,10 @@ class GanttChart(
 
     # -------------------------------------------------------------------------
     def internal__compute_data_frame(self):
-        data_frame = TermsByYearMetricsDataFrame().update(**self.params.__dict__).run()
+
+        from .items_by_year import ItemsByYear as ItemsByYearDataFrame
+
+        data_frame = ItemsByYearDataFrame().update(**self.params.__dict__).run()
 
         data_frame["RANKING"] = range(1, len(data_frame) + 1)
         data_frame = data_frame.melt(
@@ -80,17 +80,17 @@ class GanttChart(
         fig = px.scatter(
             data_frame,
             x="Year",
-            y=self.params.field,
+            y=self.params.source_field,
             size="OCC",
             hover_data=data_frame.columns.to_list(),
-            color=self.params.field,
+            color=self.params.source_field,
         )
         fig.update_layout(
             paper_bgcolor="white",
             plot_bgcolor="white",
             showlegend=False,
             xaxis_title=None,
-            yaxis_title=self.params.field.replace("_", " ").upper(),
+            yaxis_title=self.params.source_field.replace("_", " ").upper(),
         )
         fig.update_traces(
             marker={

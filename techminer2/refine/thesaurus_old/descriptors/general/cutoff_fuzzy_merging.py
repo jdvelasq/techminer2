@@ -70,7 +70,7 @@ class CutoffFuzzyMerging(
             .update(**self.params.__dict__)
             .update(
                 field="raw_descriptors",
-                thesaurus_file="descriptors.the.txt",
+                thesaurus_file="concepts.the.txt",
                 root_directory=self.params.root_directory,
                 tqdm_disable=self.params.tqdm_disable,
                 cutoff_threshold=self.params.similarity_cutoff,

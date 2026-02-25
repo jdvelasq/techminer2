@@ -82,8 +82,11 @@ Smoke tests:
 # If ``Y_end = 2018`` and ``time_window = 2``, then ``Y_start = 2017``.
 #
 from techminer2._internals import ParamsMixin
-from techminer2.analyze._internals import ItemsByYear as TermsByYearDataFrame
-from techminer2.report.visualization import DataFrame as PerformanceMetricsDataFrame
+from techminer2.analyze._internals.performance import (
+    PerformanceMetrics as PerformanceMetricsDataFrame,
+)
+
+from ..items_by_year import ItemsByYear as TermsByYearDataFrame
 
 
 class DataFrame(

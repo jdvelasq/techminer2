@@ -64,17 +64,19 @@ class BarChart(
         before = [_ for _ in data_frame.columns if _.startswith("before")][0]
 
         fig_data = data_frame[["OCC", before, between]].copy()
-        fig_data[self.params.field] = fig_data.index
+        fig_data[self.params.source_field] = fig_data.index
         fig_data = fig_data.reset_index(drop=True)
 
         fig_data = fig_data.melt(
-            id_vars=self.params.field,
+            id_vars=self.params.source_field,
             value_vars=[before, between],
         )
 
         fig_data = fig_data.rename(
             columns={
-                self.params.field: self.params.field.replace("_", " ").title(),
+                self.params.source_field: self.params.source_field.replace(
+                    "_", " "
+                ).title(),
                 "variable": "Period",
                 "value": "Num Documents",
             }
@@ -92,7 +94,7 @@ class BarChart(
         fig = px.bar(
             self.data_frame,
             x="Num Documents",
-            y=self.params.field.replace("_", " ").title(),
+            y=self.params.source_field.replace("_", " ").title(),
             color="Period",
             orientation="h",
             color_discrete_map={

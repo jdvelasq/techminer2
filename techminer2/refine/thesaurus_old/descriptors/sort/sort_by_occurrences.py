@@ -71,8 +71,8 @@ class SortByOccurrences(
         return (
             UserSortByOccurrences()
             .update(**self.params.__dict__)
-            .with_thesaurus_file("descriptors.the.txt")
-            .with_field("raw_descriptors")
+            .with_thesaurus_file("concepts.the.txt")
+            .with_source_field("raw_descriptors")
             .run()
         )
 

@@ -1,5 +1,5 @@
 """
-Merge Keys
+MergeKeys
 ===============================================================================
 
 Smoke tests:
@@ -59,7 +59,7 @@ class MergeKeys(
         return (
             UserMergeKeys()
             .update(**self.params.__dict__)
-            .with_thesaurus_file("descriptors.the.txt")
+            .with_thesaurus_file("concepts.the.txt")
             .with_source_field(CorpusField.KEY_AND_NP_AND_WORDS)
             .run()
         )

@@ -53,4 +53,9 @@ class Treemap(
     def run(self):
         """:meta private:"""
 
-        return UserTreemap().update(**self.params.__dict__).with_field("authors").run()
+        return (
+            UserTreemap()
+            .update(**self.params.__dict__)
+            .with_source_field("authors")
+            .run()
+        )

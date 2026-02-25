@@ -58,7 +58,7 @@ class IntegrityCheck(
     # -------------------------------------------------------------------------
     def internal__load_terms_in_database(self):
         records = load_filtered_main_data(params=self.params)
-        field = self.params.field
+        field = self.params.source_field
         terms = records[field].dropna()
         terms = terms.str.split("; ").explode().str.strip().drop_duplicates().tolist()
         self.terms_in_database = terms

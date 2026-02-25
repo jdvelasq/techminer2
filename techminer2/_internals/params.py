@@ -12,12 +12,51 @@ from techminer2.enums import CorpusField, ItemsOrderBy, RecordsOrderBy
 @dataclass
 class Params:
 
-    stemming_fn: Callable
-    field: CorpusField
-    other_field: CorpusField
+    #
+    # Ingestion and basic operations:
+    #
     source_field: CorpusField
     source_fields: tuple[CorpusField, ...]
     target_field: CorpusField
+    stemming_fn: Callable
+
+    #
+    # Occurrence matrix:
+    #
+    column_field: CorpusField
+    index_field: CorpusField
+
+    #
+    # Cross-correlation operations:
+    #
+    index_and_column_field: CorpusField
+    cross_field: CorpusField
+
+    #
+    # Ingestion and basic operations:
+    #
+    item_citations_range: Tuple[Optional[int], Optional[int]] = (None, None)
+    item_occurrences_range: Tuple[Optional[int], Optional[int]] = (None, None)
+    items_in: Optional[list[str]] = None
+    items_order_by: ItemsOrderBy = ItemsOrderBy.OCC
+    top_n: Optional[int] = None
+
+    #
+    # Occurrence matrix:
+    #
+    column_item_citations_range: Tuple[Optional[int], Optional[int]] = (None, None)
+    column_item_occurrences_range: Tuple[Optional[int], Optional[int]] = (None, None)
+    column_items_in: Optional[list[str]] = None
+    column_items_order_by: ItemsOrderBy = ItemsOrderBy.OCC
+    column_top_n: Optional[int] = None
+
+    index_item_citations_range: Tuple[Optional[int], Optional[int]] = (None, None)
+    index_item_occurrences_range: Tuple[Optional[int], Optional[int]] = (None, None)
+    index_items_in: Optional[list[str]] = None
+    index_items_order_by: ItemsOrderBy = ItemsOrderBy.OCC
+    index_top_n: Optional[int] = None
+
+    #
 
     #
     # A
@@ -70,11 +109,7 @@ class Params:
     # I
     #
     initial_newline: bool = False
-    item_citations_range: Tuple[Optional[int], Optional[int]] = (None, None)
     item_counters: bool = True
-    item_occurrences_range: Tuple[Optional[int], Optional[int]] = (None, None)
-    items_in: Optional[list[str]] = None
-    items_order_by: ItemsOrderBy = ItemsOrderBy.OCC
     items_per_year: int = 5
 
     #
@@ -114,12 +149,6 @@ class Params:
     # O
     #
     occurrence_threshold: int = 2
-
-    other_item_citations_range: Tuple[Optional[int], Optional[int]] = (None, None)
-    other_item_occurrences_range: Tuple[Optional[int], Optional[int]] = (None, None)
-    other_items_in: Optional[list[str]] = None
-    other_items_order_by: Optional[ItemsOrderBy] = None
-    other_top_n: Optional[int] = None
 
     #
     # P
@@ -175,7 +204,6 @@ class Params:
     time_window: int = 2
     title_text: Optional[str] = None
     top_items_by_theme: int = 5
-    top_n: Optional[int] = None
     total_records_threshold: int = 7
     tqdm_disable: bool = False
     transformation_function: Optional[Callable[[pd.Series], pd.Series]] = None

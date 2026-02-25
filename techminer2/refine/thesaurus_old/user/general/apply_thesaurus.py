@@ -104,22 +104,22 @@ class ApplyThesaurus(
 
     # -------------------------------------------------------------------------
     def internal__copy_field(self) -> None:
-        if self.params.field != self.params.other_field:
-            self.records[self.params.other_field] = self.records[
-                self.params.field
+        if self.params.source_field != self.params.index_field:
+            self.records[self.params.index_field] = self.records[
+                self.params.source_field
             ].copy()
 
     # -------------------------------------------------------------------------
     def internal__split_other_field(self) -> None:
-        self.records[self.params.other_field] = self.records[
-            self.params.other_field
+        self.records[self.params.index_field] = self.records[
+            self.params.index_field
         ].str.split("; ")
 
     # -------------------------------------------------------------------------
     def internal__apply_thesaurus_to_other_field(self) -> None:
 
-        self.records[self.params.other_field] = self.records[
-            self.params.other_field
+        self.records[self.params.index_field] = self.records[
+            self.params.index_field
         ].map(
             lambda x: [self.mapping.get(item, item) for item in x],
             na_action="ignore",
@@ -136,14 +136,14 @@ class ApplyThesaurus(
                     terms.append(term)
             return terms
 
-        self.records[self.params.other_field] = self.records[
-            self.params.other_field
+        self.records[self.params.index_field] = self.records[
+            self.params.index_field
         ].map(f, na_action="ignore")
 
     # -------------------------------------------------------------------------
     def internal__join_record_values(self) -> None:
-        self.records[self.params.other_field] = self.records[
-            self.params.other_field
+        self.records[self.params.index_field] = self.records[
+            self.params.index_field
         ].str.join("; ")
 
     # -------------------------------------------------------------------------

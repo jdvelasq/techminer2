@@ -71,7 +71,7 @@ class ThesaurusMixin:
     # -------------------------------------------------------------------------
     def internal__create_thesaurus_data_frame_from_field(self) -> None:
 
-        keys = self.filtered_records[self.params.field].dropna()
+        keys = self.filtered_records[self.params.source_field].dropna()
         keys = keys.str.split("; ")
         keys = keys.explode()
         keys = keys.str.strip()

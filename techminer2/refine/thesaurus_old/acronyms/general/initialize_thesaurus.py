@@ -240,7 +240,7 @@ class InitializeThesaurus(
         common_abbrvs = internal__load_thesaurus_as_mapping(file_path)
 
         # Load raw descriptors from records
-        raw_descriptors = self.filtered_records[self.params.field].dropna()
+        raw_descriptors = self.filtered_records[self.params.source_field].dropna()
         raw_descriptors = raw_descriptors.str.split("; ")
         raw_descriptors = raw_descriptors.explode()
         raw_descriptors = raw_descriptors.str.strip()
@@ -298,7 +298,7 @@ class InitializeThesaurus(
     # -------------------------------------------------------------------------
     def run(self):
 
-        self.params.field = "raw_descriptors"
+        self.params.source_field = "raw_descriptors"
         self.params.thesaurus_file = "acronyms.the.txt"
 
         self._build_user_thesaurus_path()

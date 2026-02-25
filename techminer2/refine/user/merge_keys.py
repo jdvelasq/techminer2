@@ -61,7 +61,7 @@ class MergeKeys(
     def run(self):
         """:meta private:"""
 
-        # self.with_thesaurus_file("descriptors.the.txt")
+        # self.with_thesaurus_file("concepts.the.txt")
         # self.with_source_field(CorpusField.DESCRIPTOR_TOK)
 
         preferred = self.params.preferred_key

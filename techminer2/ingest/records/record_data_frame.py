@@ -38,7 +38,7 @@ from techminer2._internals import ParamsMixin
 from techminer2._internals.data_access import load_filtered_main_data
 
 
-class DataFrame(
+class RecordDataFrame(
     ParamsMixin,
 ):
     """:meta private:"""

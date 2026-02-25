@@ -43,9 +43,6 @@ from techminer2._internals import ParamsMixin
 from techminer2._internals.mt.mt_term_occurrences_by_year import (
     _mt_term_occurrences_by_year,
 )
-from techminer2.analyze._internals.items_by_year import (
-    ItemsByYear as TermsByYearDataFrame,
-)
 from techminer2.discover.overview import MainInformation as GeneralMetricsDataFrame
 from techminer2.discover.overview.average_citations_per_year.dataframe import (
     DataFrame as TrendMetricsDataFrame,
@@ -59,6 +56,11 @@ class DataFrame(
 
     # ----------------------------------------------------------------------------------------------------
     def _step_1_compute_term_occurrences_by_year(self):
+
+        from techminer2.analyze._internals.items_by_year import (
+            ItemsByYear as TermsByYearDataFrame,
+        )
+
         return (
             TermsByYearDataFrame()
             .update(**self.params.__dict__)

@@ -1,7 +1,6 @@
 """
-Cross-correlation Matrix
+MatrixDataFrame
 ===============================================================================
-
 
 Smoke tests:
     >>> from techminer2.packages.correlation.cross import MatrixDataFrame
@@ -50,7 +49,7 @@ Smoke tests:
 """
 
 from techminer2._internals import ParamsMixin
-from techminer2.analyze._internals.co_occurrence_matrix import (
+from techminer2.discover.co_occurrence_matrix._internals import (
     MatrixDataFrame as CoOccurrenceMatrixDataFrame,
 )
 from techminer2.discover.correlation._internals.internal__compute_corr_matrix import (
@@ -68,7 +67,7 @@ class MatrixDataFrame(
         data_matrix = (
             CoOccurrenceMatrixDataFrame()
             .update(**self.params.__dict__)
-            .having_other_items_ordered_by("OCC")
+            .having_index_items_ordered_by("OCC")
             .run()
         )
 

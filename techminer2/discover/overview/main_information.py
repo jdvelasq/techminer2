@@ -181,7 +181,7 @@ class MainInformation(
         # ---------------------------------------------------------------------
         def average_annual_citations_per_document():
             return round(
-                dataframe[CorpusField.CIT_COUNT_GLOBAL.value].mean()
+                dataframe[CorpusField.GCS.value].mean()
                 / (
                     dataframe[CorpusField.PUBYEAR.value].max()
                     - dataframe[CorpusField.PUBYEAR.value].min()
@@ -199,7 +199,7 @@ class MainInformation(
 
         # ---------------------------------------------------------------------
         def average_citations_per_document():
-            return round(dataframe[CorpusField.CIT_COUNT_GLOBAL.value].mean(), 2)
+            return round(dataframe[CorpusField.GCS.value].mean(), 2)
 
         stats = self.insert_stats(
             stats,

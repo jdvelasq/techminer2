@@ -112,7 +112,7 @@ class NormalizeKeys(
         self.data_frame["org_key"] = self.data_frame["key"].copy()
 
         file_path = files("techminer2.package_data.thesaurus.system").joinpath(
-            "descriptors.the.txt"
+            "concepts.the.txt"
         )
         file_path = str(file_path)
 
@@ -133,7 +133,7 @@ class NormalizeKeys(
     def run(self):
         """:meta private:"""
 
-        self.with_thesaurus_file("descriptors.the.txt")
+        self.with_thesaurus_file("concepts.the.txt")
         self._build_user_thesaurus_path()
         self.internal__notify_process_start()
         self._load_thesaurus_as_mapping()

@@ -52,7 +52,7 @@ class ReduceKeys(
             UserReduceKeys()
             .update(**self.params.__dict__)
             .update(
-                thesaurus_file="descriptors.the.txt",
+                thesaurus_file="concepts.the.txt",
                 root_directory=self.params.root_directory,
             )
             .run()

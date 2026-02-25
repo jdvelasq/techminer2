@@ -70,7 +70,7 @@ class InitializeThesaurus(
         (
             UserInitializeThesaurus(
                 field="raw_descriptors",
-                thesaurus_file="descriptors.the.txt",
+                thesaurus_file="concepts.the.txt",
                 root_directory=self.params.root_directory,
                 quiet=self.params.quiet,
                 use_colorama=getattr(self.params, "use_colorama", False),

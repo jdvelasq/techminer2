@@ -83,7 +83,9 @@ from pandarallel import pandarallel
 
 from techminer2._internals import ParamsMixin, load_builtin_template, stdout_to_stderr
 from techminer2._internals.package_data.word_lists import load_builtin_word_list
-from techminer2.report.visualization import DataFrame as DominantDataFrame
+from techminer2.analyze._internals.performance import (
+    PerformanceMetrics as DominantDataFrame,
+)
 
 with stdout_to_stderr():
     pandarallel.initialize(progress_bar=True)
@@ -329,7 +331,7 @@ class IsStopword(
         descriptors = (
             DominantDataFrame()
             .update(**self.params.__dict__)
-            .with_field("descriptors")
+            .with_source_field("descriptors")
             .run()
         )
 

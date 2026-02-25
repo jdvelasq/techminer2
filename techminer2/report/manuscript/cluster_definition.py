@@ -80,7 +80,7 @@ class ClusterDefinition(
         data_frame = (
             TermsByClusterSummary()
             .update(**self.params.__dict__)
-            .with_field("descriptors")
+            .with_source_field("descriptors")
             .run()
         )
 
@@ -101,7 +101,7 @@ class ClusterDefinition(
         self.documents_by_cluster_mapping = (
             DocumentsByClusterMapping()
             .update(**self.params.__dict__)
-            .with_field("descriptors")
+            .with_source_field("descriptors")
             .run()
         )
 

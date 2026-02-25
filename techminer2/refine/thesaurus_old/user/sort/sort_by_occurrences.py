@@ -103,13 +103,19 @@ class SortByOccurrences(
     def _get_raw_occurrences(self):
 
         records = load_filtered_main_data(params=self.params)
-        records = records[[self.params.field]]
+        records = records[[self.params.source_field]]
         records = records.dropna()
-        records[self.params.field] = records[self.params.field].str.split("; ")
-        records = records.explode(self.params.field)
-        records[self.params.field] = records[self.params.field].str.strip()
+        records[self.params.source_field] = records[self.params.source_field].str.split(
+            "; "
+        )
+        records = records.explode(self.params.source_field)
+        records[self.params.source_field] = records[
+            self.params.source_field
+        ].str.strip()
         records["OCC"] = 1
-        counts = records.groupby(self.params.field, as_index=True).agg({"OCC": "sum"})
+        counts = records.groupby(self.params.source_field, as_index=True).agg(
+            {"OCC": "sum"}
+        )
 
         self.raw_key2occ = dict(zip(counts.index, counts.OCC))
 

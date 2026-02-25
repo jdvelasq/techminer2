@@ -44,8 +44,8 @@ Smoke tests:
 
 from techminer2._internals import ParamsMixin
 from techminer2._internals.data_access import load_filtered_main_data
-from techminer2.report.visualization.dataframe import (
-    DataFrame as TermsByYearMetricsDataFrame,
+from techminer2.analyze._internals.performance.performance_metrics import (
+    PerformanceMetrics as TermsByYearMetricsDataFrame,
 )
 
 
@@ -61,7 +61,7 @@ class DataFrame(
     # -------------------------------------------------------------------------
     def _step_2_compute_collaboration_metrics(self, data_frame):
 
-        field = self.params.field
+        field = self.params.source_field
 
         #
         # Add a column to represent the number of occurrences of a document

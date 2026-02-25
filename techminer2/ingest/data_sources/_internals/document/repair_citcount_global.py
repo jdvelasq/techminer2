@@ -5,8 +5,8 @@ from techminer2.ingest.data_sources._internals.operations import transform_colum
 def repair_citcount_global(root_directory: str) -> int:
 
     return transform_column(
-        source=CorpusField.CIT_COUNT_GLOBAL,
-        target=CorpusField.CIT_COUNT_GLOBAL,
+        source=CorpusField.GCS,
+        target=CorpusField.GCS,
         function=lambda w: w.fillna(0).astype(int),
         root_directory=root_directory,
     )

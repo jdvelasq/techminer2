@@ -99,8 +99,8 @@ class ApplyThesaurus(
             (
                 ApplyUserThesaurus(quiet=self.params.quiet)
                 .update(**self.params.__dict__)
-                .with_thesaurus_file("descriptors.the.txt")
-                .with_field(raw_column)
+                .with_thesaurus_file("concepts.the.txt")
+                .with_source_field(raw_column)
                 .with_other_field(column)
                 .where_root_directory(self.params.root_directory)
                 .run()
