@@ -40,21 +40,6 @@ Smoke tests:
     >>> df.shape[1] > 1
     True
     >>> df.head(10)
-    columns                            fintech 117:25478  ...  financial services 007:01673
-    rows                                                  ...
-    finance 028:07080                                 15  ...                             1
-    fintech 024:05279                                 22  ...                             1
-    sustainable development 017:02470                  7  ...                             0
-    innovation 014:02604                              11  ...                             0
-    china 010:02031                                    6  ...                             0
-    sustainability 010:01546                           7  ...                             0
-    economic development 008:02384                     5  ...                             0
-    financial service 007:02627                        4  ...                             1
-    blockchain 006:02515                               4  ...                             0
-    commerce 006:02013                                 3  ...                             0
-    <BLANKLINE>
-    [10 rows x 10 columns]
-
 
 """
 

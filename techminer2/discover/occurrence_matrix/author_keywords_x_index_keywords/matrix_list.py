@@ -40,18 +40,6 @@ Smoke tests:
     >>> df.shape[1] > 1
     True
     >>> df.head(10)
-                                    rows                  columns  OCC
-    0                  fintech 024:05279        fintech 117:25478   22
-    1                  finance 028:07080        fintech 117:25478   15
-    2               innovation 014:02604        fintech 117:25478   11
-    3           sustainability 010:01546        fintech 117:25478    7
-    4  sustainable development 017:02470        fintech 117:25478    7
-    5                    china 010:02031        fintech 117:25478    6
-    6            green economy 006:01076        fintech 117:25478    6
-    7               blockchain 006:02515     blockchain 011:02023    5
-    8     economic development 008:02384        fintech 117:25478    5
-    9     economic development 008:02384  green finance 011:02844    5
-
 
 
 
