@@ -1,4 +1,4 @@
-from .assign_constant_to_edge_colors import internal__assign_constant_to_edge_colors
+from .assign_constant_to_edge_colors import assign_constant_to_edge_colors
 from .assign_constant_to_node_colors import internal__assign_constant_to_node_colors
 from .assign_constant_to_node_sizes import internal__assign_constant_to_node_sizes
 from .assign_constant_to_textfont_opacity import (
@@ -68,7 +68,7 @@ from .summarize_communities import internal__summarize_communities
 
 __all__ = [
     "internal__assign_constant_textfont_size_to_nodes",
-    "internal__assign_constant_to_edge_colors",
+    "assign_constant_to_edge_colors",
     "internal__assign_constant_to_node_colors",
     "internal__assign_constant_to_node_sizes",
     "internal__assign_constant_to_textfont_opacity",

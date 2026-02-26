@@ -18,7 +18,7 @@ Smoke tests:
     ...     #
     ...     .using_edge_colors(["#7793a5"])
     ...     .using_edge_width_range(0.8, 3.0)
-    ...     .using_node_colors(["#7793a5"])
+    ...     .using_node_colors(("#7793a5",))
     ...     .using_node_size_range(30, 70)
     ...     .using_textfont_opacity_range(0.35, 1.00)
     ...     .using_textfont_size_range(10, 20)
@@ -51,7 +51,7 @@ import networkx as nx  # type: ignore
 
 from techminer2._internals import ParamsMixin
 from techminer2._internals.nx import (
-    internal__assign_constant_to_edge_colors,
+    assign_constant_to_edge_colors,
     internal__assign_constant_to_node_colors,
     internal__assign_edge_widths_based_on_weight,
     internal__assign_node_sizes_based_on_citations,
@@ -114,9 +114,7 @@ class NetworkPlot(
             params=self.params, nx_graph=nx_graph
         )
         nx_graph = internal__assign_text_positions_based_on_quadrants(nx_graph=nx_graph)
-        nx_graph = internal__assign_constant_to_edge_colors(
-            params=self.params, nx_graph=nx_graph
-        )
+        nx_graph = assign_constant_to_edge_colors(params=self.params, nx_graph=nx_graph)
 
         for node in nx_graph.nodes():
             nx_graph.nodes[node]["text"] = node

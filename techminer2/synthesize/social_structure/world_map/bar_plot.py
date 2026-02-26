@@ -3,18 +3,17 @@ Bar Plot
 ===============================================================================
 
 Smoke tests:
+    >>> from techminer2 import CorpusField, ItemsOrderBy
     >>> from techminer2.analyze.metrics.collaboration import BarPlot
-
-    >>> # Creates, runs, and saves the plot to disk
-    >>> plotter = (
+    >>> fig = (
     ...     BarPlot()
     ...     #
     ...     # FIELD:
-    ...     .with_field("countries")
+    ...     .with_source_field(CorpusField.COUNTRY)
     ...     .having_items_in_top(10)
     ...     .having_item_occurrences_between(None, None)
     ...     .having_item_citations_between(None, None)
-    ...     .having_items_ordered_by("OCC")
+    ...     .having_items_ordered_by(ItemsOrderBy.OCC)
     ...     .having_items_in(None)
     ...     #
     ...     # PLOT:
@@ -24,13 +23,14 @@ Smoke tests:
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/fintech/")
-    ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     .where_records_match(None)
-    ... )
-    >>> plot = plotter.run()
-    >>> plot.write_html("docsrc/_generated/px.database.metrics.collaboration.bar_plot.html")
+    ...     #
+    ...     .run()
+    >>> type(fig).__name__
+    'Figure'
+    >>> fig.write_html("docsrc/_generated/px.database.metrics.collaboration.bar_plot.html")
 
 .. raw:: html
 
@@ -62,15 +62,6 @@ class BarPlot(
         title_text = self.params.title_text
         xaxes_title_text = self.params.xaxes_title_text
         yaxes_title_text = self.params.yaxes_title_text
-
-        if title_text is None:
-            title_text = "Corresponding Author's " + field.title()
-
-        if xaxes_title_text is None:
-            xaxes_title_text = "Num Documents"
-
-        if yaxes_title_text is None:
-            yaxes_title_text = field.title()
 
         metrics = metrics.copy()
         metrics = metrics.reset_index()

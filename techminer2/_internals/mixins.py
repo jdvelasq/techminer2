@@ -6,7 +6,6 @@ from typing_extensions import Self
 
 from techminer2._internals.validation import (
     check_optional_base_estimator,
-    check_optional_color_list,
     check_optional_positive_float,
     check_optional_positive_int,
     check_optional_str,
@@ -14,6 +13,7 @@ from techminer2._internals.validation import (
     check_optional_str_or_dict,
     check_plotly_color,
     check_required_bool,
+    check_required_color_list,
     check_required_corpus_field_enum,
     check_required_float,
     check_required_float_0_1,
@@ -28,6 +28,7 @@ from techminer2._internals.validation import (
     check_required_positive_float,
     check_required_positive_float_range,
     check_required_positive_int,
+    check_required_positive_number_range,
     check_required_str,
     check_required_str_tuple,
     check_tuple_of_ordered_four_floats,
@@ -491,7 +492,7 @@ class ParamsMixin:
         return self
 
     def using_edge_colors(self, edge_colors: Optional[list[Any]]) -> Self:
-        edge_colors = check_optional_color_list(
+        edge_colors = check_required_color_list(
             value=edge_colors,
             param_name="edge_colors",
         )
@@ -615,13 +616,21 @@ class ParamsMixin:
         return self
 
     def using_node_colors(
-        self, node_colors: Optional[List[Union[str, float, Sequence[float]]]]
+        self, node_colors: List[Union[str, float, Sequence[float]]]
     ) -> Self:
-        node_colors = check_optional_color_list(
+        node_colors = check_required_color_list(
             value=node_colors,
             param_name="node_colors",
         )
         self.params.node_colors = node_colors
+        return self
+
+    def using_node_n_labels(self, node_n_labels: int) -> Self:
+        node_n_labels = check_required_positive_int(
+            value=node_n_labels,
+            param_name="node_n_labels",
+        )
+        self.params.node_n_labels = node_n_labels
         return self
 
     def using_node_size(self, node_size: int) -> Self:
@@ -762,8 +771,10 @@ class ParamsMixin:
         self.params.textfont_size = textfont_size
         return self
 
-    def using_textfont_size_range(self, min_size: float, max_size: float) -> Self:
-        min_size, max_size = check_required_positive_float_range(
+    def using_textfont_size_range(
+        self, min_size: Union[float, int], max_size: Union[float, int]
+    ) -> Self:
+        min_size, max_size = check_required_positive_number_range(
             range_tuple=(min_size, max_size),
             param_name="textfont_size_range",
         )

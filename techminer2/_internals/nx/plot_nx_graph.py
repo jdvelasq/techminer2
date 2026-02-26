@@ -1,4 +1,4 @@
-import plotly.graph_objects as go
+import plotly.graph_objects as go  # type: ignore
 
 
 def internal__plot_nx_graph(
@@ -200,12 +200,11 @@ def __create_network_fig(
 
 
 def __add_node_labels_to_fig(fig, nx_graph):
-    """Adds node names to a network figure."""
 
-    note_top_n = [data["top_n"] for _, data in nx_graph.nodes(data=True)]
     node_x = [data["x"] for _, data in nx_graph.nodes(data=True)]
     node_y = [data["y"] for _, data in nx_graph.nodes(data=True)]
     node_labels = [data["text"] for _, data in nx_graph.nodes(data=True)]
+    node_labeled = [data["labeled"] for _, data in nx_graph.nodes(data=True)]
 
     textfont_sizes = [data["textfont_size"] for _, data in nx_graph.nodes(data=True)]
     textfont_opacities = [
@@ -224,14 +223,14 @@ def __add_node_labels_to_fig(fig, nx_graph):
 
     #
 
-    for pos_x, pos_y, name, textfont_size, textpos, textcolor, top_n in zip(
+    for pos_x, pos_y, name, textfont_size, textpos, textcolor, labeled in zip(
         node_x,
         node_y,
         node_labels,
         textfont_sizes,
         textpositions,
         textfont_opacities,
-        note_top_n,
+        node_labeled,
     ):
         if textpos == "top right":
             xanchor = "left"
@@ -256,8 +255,10 @@ def __add_node_labels_to_fig(fig, nx_graph):
         else:
             xanchor = "center"
             yanchor = "center"
+            xshift = 0
+            yshift = 0
 
-        if top_n is True:
+        if labeled is True:
             fig.add_annotation(
                 x=pos_x,
                 y=pos_y,

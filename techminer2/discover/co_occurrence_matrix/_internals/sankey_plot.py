@@ -46,9 +46,7 @@ Smoke tests:
 import plotly.graph_objects as go  # type: ignore
 
 from techminer2._internals import ParamsMixin
-from techminer2.discover.occurrence_matrix._internals.matrix_dataframe import (
-    MatrixDataFrame,
-)
+from techminer2.discover.occurrence_matrix._internals.matrix import Matrix
 
 
 class SankeyPlot(
@@ -65,7 +63,7 @@ class SankeyPlot(
         for row_field, col_field in zip(fields[:-1], fields[1:]):
 
             matrix = (
-                MatrixDataFrame()
+                Matrix()
                 .update(**self.params.__dict__)
                 #
                 # COLUMNS:

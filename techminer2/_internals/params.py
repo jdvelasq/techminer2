@@ -77,7 +77,7 @@ class Params:
     citation_threshold: int = 0
     cluster_coverages: Optional[list[str]] = None
     cluster_names: Optional[list[str]] = None
-    clustering_algorithm_or_dict: Optional[Union[str, dict]] = None
+    clustering_algorithm_or_dict: [Union[str, dict]] = None
     color: Optional[str] = None
     colored_output: bool = True
     colored_stderr: bool = True
@@ -98,7 +98,7 @@ class Params:
     #
     # E
     #
-    edge_colors: Optional[list[Any]] = None
+    edge_colors: Tuple[Any, ...] = ("#b8c6d0",)
     edge_opacity_range: Tuple[float, float] = (0.1, 0.9)
     edge_similarity_threshold: float = 0.0
     edge_top_n: Optional[int] = None
@@ -140,9 +140,10 @@ class Params:
     #
     n_chars: int = 100
     n_contexts: int = 10
-    node_colors: Optional[List[Union[str, float, Sequence[float]]]] = None
+    node_colors: tuple[Union[str, float, Sequence[float]], ...] = ("#7793a5", "#465c6b")
     node_size_range: Tuple[int, int] = (5, 20)
     node_size: int = 10
+    node_n_labels: int = 8
     novelty_threshold: float = 0.15
 
     #

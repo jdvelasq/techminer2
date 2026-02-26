@@ -26,12 +26,12 @@ Smoke tests:
     ...     .using_spring_layout_iterations(30)
     ...     .using_spring_layout_seed(0)
     ...     #
-    ...     .using_edge_colors(["#7793a5", "#7793a5", "#7793a5", "#7793a5"])
+    ...     .using_edge_colors(("#7793a5", "#7793a5", "#7793a5", "#7793a5"))
     ...     .using_edge_similarity_threshold(0)
     ...     .using_edge_top_n(None)
     ...     .using_edge_widths([2, 2, 4, 6])
     ...     #
-    ...     .using_node_colors(["#7793a5"])
+    ...     .using_node_colors(("#7793a5",))
     ...     .using_node_size_range(30, 70)
     ...     #
     ...     .using_textfont_opacity_range(0.35, 1.00)

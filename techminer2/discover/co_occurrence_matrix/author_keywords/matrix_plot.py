@@ -33,11 +33,11 @@ Smoke tests:
     ...     .using_spring_layout_seed(0)
     ...     #
     ...     .using_node_size_range(30, 70)
-    ...     .using_node_colors(["#7793a5", "#465c6b"])
+    ...     .using_node_colors(("#7793a5", "#465c6b"))
     ...     .using_textfont_size_range(10, 20)
     ...     .using_textfont_opacity_range(0.35, 1.00)
     ...     #
-    ...     .using_edge_colors(["#b8c6d0"])
+    ...     .using_edge_colors(("#b8c6d0",))
     ...     .using_edge_width_range(0.8, 4.0)
     ...     #
     ...     .using_xaxes_range(None, None)
@@ -126,7 +126,7 @@ import networkx as nx  # type: ignore
 
 from techminer2._internals import ParamsMixin
 from techminer2._internals.nx import (
-    internal__assign_constant_to_edge_colors,
+    assign_constant_to_edge_colors,
     internal__assign_edge_widths_based_on_weight,
     internal__assign_node_sizes_based_on_occurrences,
     internal__assign_text_positions_based_on_quadrants,
@@ -135,9 +135,7 @@ from techminer2._internals.nx import (
     internal__compute_spring_layout_positions,
     internal__plot_nx_graph,
 )
-from techminer2.discover.occurrence_matrix._internals.matrix_dataframe import (
-    MatrixDataFrame,
-)
+from techminer2.discover.occurrence_matrix._internals.matrix import Matrix
 
 
 class MatrixPlot(
@@ -147,7 +145,7 @@ class MatrixPlot(
 
     # -------------------------------------------------------------------------
     def _step_01_create_co_occurrence_matrix(self):
-        return MatrixDataFrame().update(**self.params.__dict__).run()
+        return Matrix().update(**self.params.__dict__).run()
 
     # -------------------------------------------------------------------------
     def _step_02_create_a_empty_networkx_graph(self):
@@ -249,7 +247,7 @@ class MatrixPlot(
 
     # -------------------------------------------------------------------------
     def _step_09_assign_edge_colors_based_on_weight(self, nx_graph):
-        return internal__assign_constant_to_edge_colors(
+        return assign_constant_to_edge_colors(
             self.params,
             nx_graph,
         )

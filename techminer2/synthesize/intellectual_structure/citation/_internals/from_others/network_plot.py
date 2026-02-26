@@ -58,7 +58,7 @@ Network Plot
 
 from techminer2._internals import ParamsMixin
 from techminer2._internals.nx import (
-    internal__assign_constant_to_edge_colors,
+    assign_constant_to_edge_colors,
     internal__assign_edge_widths_based_on_weight,
     internal__assign_node_colors_based_on_group_attribute,
     internal__assign_node_sizes_based_on_occurrences,
@@ -100,10 +100,10 @@ class NetworkPlot(
         # Sets the edge attributes
         nx_graph = internal__assign_edge_widths_based_on_weight(self.params, nx_graph)
         nx_graph = internal__assign_text_positions_based_on_quadrants(nx_graph)
-        nx_graph = internal__assign_constant_to_edge_colors(self.params, nx_graph)
+        nx_graph = assign_constant_to_edge_colors(self.params, nx_graph)
 
         return internal__plot_nx_graph(self.params, nx_graph)
         nx_graph = internal__assign_text_positions_based_on_quadrants(nx_graph)
-        nx_graph = internal__assign_constant_to_edge_colors(self.params, nx_graph)
+        nx_graph = assign_constant_to_edge_colors(self.params, nx_graph)
 
         return internal__plot_nx_graph(self.params, nx_graph)

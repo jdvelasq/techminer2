@@ -99,9 +99,7 @@ Smoke tests:
 """
 
 from techminer2._internals import ParamsMixin
-from techminer2.discover.occurrence_matrix._internals.matrix_dataframe import (
-    MatrixDataFrame,
-)
+from techminer2.discover.occurrence_matrix._internals.matrix import Matrix
 
 
 class DataFrame(
@@ -112,7 +110,7 @@ class DataFrame(
     # -------------------------------------------------------------------------
     def _step_01_compute_co_occurence_matrix(self):
         return (
-            MatrixDataFrame()
+            Matrix()
             .update(**self.params.__dict__)
             .update(terms_order_by="OCC")
             .using_item_counters(True)

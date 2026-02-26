@@ -4,19 +4,20 @@ Network Plot
 
 
 Smoke tests:
+    >>> from techminer2 import CorpusField, ItemsOrderBy
     >>> from techminer2.co_occurrence_network.keywords import NetworkPlot
     >>> plot = (
     ...     NetworkPlot()
     ...     #
     ...     # FIELD:
     ...     .having_items_in_top(20)
-    ...     .having_items_ordered_by("OCC")
+    ...     .having_items_ordered_by(ItemsOrderBy.OCC)
     ...     .having_item_occurrences_between(None, None)
     ...     .having_item_citations_between(None, None)
     ...     .having_items_in(None)
     ...     #
     ...     # COUNTERS:
-    ...     .using_term_counters(True)
+    ...     .using_item_counters(True)
     ...     #
     ...     # NETWORK:
     ...     .using_clustering_algorithm_or_dict("louvain")
@@ -57,6 +58,7 @@ Smoke tests:
 
 """
 
+from techminer2 import CorpusField
 from techminer2._internals import ParamsMixin
 from techminer2.synthesize.conceptual_structure.co_occurrence.usr.network_plot import (
     NetworkPlot as UserNetworkPlot,
@@ -74,6 +76,6 @@ class NetworkPlot(
         return (
             UserNetworkPlot()
             .update(**self.params.__dict__)
-            .with_source_field("keywords")
+            .with_source_field(CorpusField.KEY_NORM)
             .run()
         )

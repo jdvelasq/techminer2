@@ -53,9 +53,7 @@ Smoke tests:
 
 from techminer2._internals import ParamsMixin
 from techminer2._internals.plots.heatmap import heatmap
-from techminer2.discover.occurrence_matrix._internals.matrix_dataframe import (
-    MatrixDataFrame,
-)
+from techminer2.discover.occurrence_matrix._internals.matrix import Matrix
 
 
 class Heatmap(
@@ -64,6 +62,6 @@ class Heatmap(
     """:meta private:"""
 
     def run(self):
-        data_frame = MatrixDataFrame().update(**self.params.__dict__).run()
+        data_frame = Matrix().update(**self.params.__dict__).run()
         fig = heatmap(self.params, data_frame)
         return fig

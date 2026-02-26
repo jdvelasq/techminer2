@@ -12,7 +12,6 @@ Smoke tests:
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/fintech/")
-    ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     .where_records_match(None)
@@ -31,6 +30,7 @@ Smoke tests:
 
 import plotly.express as px  # type: ignore
 
+from techminer2 import CorpusField, ItemsOrderBy
 from techminer2._internals import ParamsMixin
 from techminer2.discover.co_occurrence_matrix._internals.matrix_dataframe import (
     MatrixDataFrame as CoOccurrenceDataFrame,
@@ -49,8 +49,8 @@ class WorldMap(
         collaboration = (
             CoOccurrenceDataFrame()
             .update(**self.params.__dict__)
-            .with_source_field("countries")
-            .update(terms_order_by="OCC")
+            .with_source_field(CorpusField.COUNTRY)
+            .update(terms_order_by=ItemsOrderBy.OCC)
             .run()
         )
 

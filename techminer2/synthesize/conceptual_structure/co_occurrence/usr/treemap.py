@@ -64,7 +64,3 @@ class Treemap(
         nx_graph = internal__cluster_nx_graph(self.params, nx_graph)
         nx_graph = internal__assign_node_colors_based_on_group_attribute(nx_graph)
         return internal__plot_node_treemap(self.params, nx_graph)
-        nx_graph = internal__create_nx_graph(self.params)
-        nx_graph = internal__cluster_nx_graph(self.params, nx_graph)
-        nx_graph = internal__assign_node_colors_based_on_group_attribute(nx_graph)
-        return internal__plot_node_treemap(self.params, nx_graph)

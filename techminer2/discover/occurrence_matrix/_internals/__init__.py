@@ -1,13 +1,13 @@
-from .bubble_plot import BubblePlot
-from .dataframe import DataFrame
+from .bubble_chart import BubbleChart
 from .heatmap import Heatmap
-from .matrix_dataframe import MatrixDataFrame
+from .matrix import Matrix
+from .matrix_list import MatrixList
 from .matrix_plot import MatrixPlot
 
 __all__ = [
-    "BubblePlot",
-    "DataFrame",
+    "BubbleChart",
+    "MatrixList",
     "Heatmap",
-    "MatrixDataFrame",
+    "Matrix",
     "MatrixPlot",
 ]

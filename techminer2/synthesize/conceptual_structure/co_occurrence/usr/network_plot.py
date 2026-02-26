@@ -61,7 +61,7 @@ Smoke tests:
 
 from techminer2._internals import ParamsMixin
 from techminer2._internals.nx import (
-    internal__assign_constant_to_edge_colors,
+    assign_constant_to_edge_colors,
     internal__assign_edge_color_opacity,
     internal__assign_edge_colors_based_on_weight,
     internal__assign_edge_widths_based_on_weight,

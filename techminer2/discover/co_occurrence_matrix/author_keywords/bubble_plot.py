@@ -4,28 +4,21 @@ Bubble Plot
 
 
 Smoke tests:
+    >>> from techminer2 import CorpusField, ItemsOrderBy
     >>> from techminer2.packages.co_occurrence_matrix import BubblePlot
     >>> plot = (
     ...     BubblePlot()
     ...     #
     ...     # COLUMNS:
-    ...     .with_field("author_keywords")
+    ...     .with_field(CorpusField.AUTH_KEY_TOK)
     ...     .having_items_in_top(10)
     ...     .having_items_ordered_by("OCC")
     ...     .having_item_occurrences_between(2, None)
     ...     .having_item_citations_between(None, None)
     ...     .having_items_in(None)
     ...     #
-    ...     # ROWS:
-    ...     .with_other_field(None)
-    ...     .having_other_terms_in_top(None)
-    ...     .having_other_terms_ordered_by(None)
-    ...     .having_other_term_occurrences_between(None, None)
-    ...     .having_other_term_citations_between(None, None)
-    ...     .having_other_terms_in(None)
-    ...     #
     ...     # COUNTERS:
-    ...     .using_term_counters(True)
+    ...     .using_item_counters(True)
     ...     #
     ...     # PLOT:
     ...     .using_title_text(None)
@@ -50,8 +43,8 @@ Smoke tests:
 """
 
 from techminer2._internals import ParamsMixin
-from techminer2._internals.plots.bubble_plot import bubble_plot
-from techminer2.discover.occurrence_matrix._internals.dataframe import DataFrame
+from techminer2._internals.plots.bubble_chart import bubble_chart
+from techminer2.discover.occurrence_matrix._internals.matrix_list import MatrixList
 
 
 class BubblePlot(
@@ -61,9 +54,9 @@ class BubblePlot(
 
     def run(self):
 
-        data_frame = DataFrame().update(**self.params.__dict__).run()
+        data_frame = MatrixList().update(**self.params.__dict__).run()
 
-        fig = bubble_plot(
+        fig = bubble_chart(
             self.params,
             x_name="rows",
             y_name="columns",
