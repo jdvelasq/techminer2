@@ -48,7 +48,7 @@ Terms by Dimension Frame
 import pandas as pd  # type: ignore
 
 from techminer2.discover.occurrence_matrix._internals.normalize_matrix import (
-    internal__normalize_matrix,
+    _normalize_matrix,
 )
 
 
@@ -95,7 +95,7 @@ def terms_by_dimension_frame(
         **filters,
     )
 
-    matrix_values = internal__normalize_matrix(matrix_values, association_index)
+    matrix_values = _normalize_matrix(matrix_values, association_index)
     decomposition_estimator.fit(matrix_values)
     trans_matrix_values = decomposition_estimator.transform(matrix_values)
 

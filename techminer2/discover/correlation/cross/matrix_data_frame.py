@@ -50,7 +50,7 @@ Smoke tests:
 
 from techminer2._internals import ParamsMixin
 from techminer2.discover.co_occurrence_matrix._internals import (
-    MatrixDataFrame as CoOccurrenceMatrixDataFrame,
+    Matrix as CoOccurrenceMatrixDataFrame,
 )
 from techminer2.discover.correlation._internals.internal__compute_corr_matrix import (
     internal__compute_corr_matrix,

@@ -12,7 +12,7 @@ co-occurrence matrix.
 import numpy as np
 
 
-def internal__normalize_matrix(params, cooc_matrix):
+def _normalize_matrix(params, cooc_matrix):
     """
     Calculate the association index for a co-occurrence matrix.
 

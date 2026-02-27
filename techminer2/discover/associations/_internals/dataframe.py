@@ -46,7 +46,7 @@ Smoke tests:
 """
 
 from techminer2._internals import ParamsMixin
-from techminer2.discover.co_occurrence_matrix._internals import MatrixDataFrame
+from techminer2.discover.co_occurrence_matrix._internals import Matrix
 
 
 class DataFrame(
@@ -57,7 +57,7 @@ class DataFrame(
     # -------------------------------------------------------------------------
     def _step_01_compute_co_occurence_matrix(self):
         return (
-            MatrixDataFrame()
+            Matrix()
             .update(**self.params.__dict__)
             .using_item_counters(True)
             .with_other_field(self.params.source_field)

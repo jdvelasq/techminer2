@@ -32,8 +32,8 @@ import plotly.express as px  # type: ignore
 
 from techminer2 import CorpusField, ItemsOrderBy
 from techminer2._internals import ParamsMixin
-from techminer2.discover.co_occurrence_matrix._internals.matrix_dataframe import (
-    MatrixDataFrame as CoOccurrenceDataFrame,
+from techminer2.discover.co_occurrence_matrix._internals.matrix import (
+    Matrix as CoOccurrenceDataFrame,
 )
 
 
