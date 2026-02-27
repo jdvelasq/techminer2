@@ -1,0 +1,70 @@
+"""
+LTWAColumn
+===============================================================================
+
+Smoke test:
+    >>> from techminer2 import CorpusField
+    >>> from techminer2.ingest.operations import LTWAColumn
+    >>> (
+    ...     LTWAColumn()
+    ...     .with_source_field(CorpusField.SRC_RAW)
+    ...     .with_target_field(CorpusField.USR0)
+    ...     .where_root_directory("tests/fintech/")
+    ...     .run()
+    ... )
+    180
+
+    >>> from techminer2.ingest.operations import Query
+    >>> (
+    ...     Query()
+    ...     .with_query_expression("SELECT USR0 FROM database LIMIT 10;")
+    ...     .where_root_directory("tests/fintech/")
+    ...     .where_record_years_range(None, None)
+    ...     .where_record_citations_range(None, None)
+    ...     .run()
+    ... )
+                                                    USR0
+    0                            J FINANC REPORT ACCOUNT
+    1  HARNESSING BLOCKCHAIN-DIGITAL TWIN FUSION SUST...
+    2                            J FINANC REPORT ACCOUNT
+    3                                ELECTRON COMMER RES
+    4                                INT REV ECON FINANC
+    5                                    INT J BANK MARK
+    6                                       RESOUR POLIC
+    7                                    BUS STRATEG ENV
+    8                                ELECTRON COMMER RES
+    9                                       RESOUR POLIC
+
+
+
+
+"""
+
+from techminer2._internals import ParamsMixin
+from techminer2.ingest.data_sources._internals.operations.ltwa_column import ltwa_column
+from techminer2.ingest.extract._helpers._protected_fields import PROTECTED_FIELDS
+
+
+class LTWAColumn(
+    ParamsMixin,
+):
+    """:meta private:"""
+
+    def run(self) -> int:
+
+        if self.params.source_field == self.params.target_field:
+            raise ValueError(
+                f"Source and target fields must differ (got `{self.params.source_field}`)"
+            )
+
+        if self.params.target_field in PROTECTED_FIELDS:
+            raise ValueError(f"Field `{self.params.target_field}` is protected")
+
+        return ltwa_column(
+            source=self.params.source_field,
+            target=self.params.target_field,
+            root_directory=self.params.root_directory,
+        )
+
+
+#

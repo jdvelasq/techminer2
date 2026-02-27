@@ -8,13 +8,13 @@ Bubble Plot
     height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
-    >>> from techminer2.discover.occurrence_matrix._internals
+    >>> from techminer2 import CorpusField, ItemsOrderBy
     >>> from techminer2.discover.occurrence_matrix._internals import BubbleChart
     >>> fig = (
     ...     BubbleChart()
     ...     #
     ...     # COLUMNS:
-    ...     .with_column_field(CorpusField.AUTH_KEY_TOK)
+    ...     .with_column_field(CorpusField.AUTHKW_TOK)
     ...     .having_column_items_in_top(10)
     ...     .having_column_items_ordered_by(ItemsOrderBy.OCC)
     ...     .having_column_item_occurrences_between(None, None)

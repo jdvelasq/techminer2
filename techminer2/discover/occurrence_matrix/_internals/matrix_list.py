@@ -9,7 +9,7 @@ Smoke tests:
     ...     MatrixList()
     ...     #
     ...     # COLUMNS:
-    ...     .with_column_field(CorpusField.AUTH_KEY_TOK)
+    ...     .with_column_field(CorpusField.AUTHKW_TOK)
     ...     .having_column_items_in_top(10)
     ...     .having_column_items_ordered_by(ItemsOrderBy.OCC)
     ...     .having_column_item_occurrences_between(None, None)
@@ -62,7 +62,7 @@ Smoke tests:
     ...     MatrixList()
     ...     #
     ...     # COLUMNS:
-    ...     .with_column_field(CorpusField.AUTH_KEY_TOK)
+    ...     .with_column_field(CorpusField.AUTHKW_TOK)
     ...     .having_column_items_in_top(10)
     ...     .having_column_items_ordered_by(ItemsOrderBy.OCC)
     ...     .having_column_item_occurrences_between(None, None)
