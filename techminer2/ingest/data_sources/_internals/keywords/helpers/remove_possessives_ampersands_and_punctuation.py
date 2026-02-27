@@ -10,8 +10,8 @@ def remove_possessives_ampersands_and_punctuation(
     dataframe = dataframe.copy()
 
     for col in [
-        CorpusField.AUTH_KEY_TOK.value,
-        CorpusField.IDX_KEY_TOK.value,
+        CorpusField.AUTHKW_TOK.value,
+        CorpusField.IDXKW_TOK.value,
     ]:
         dataframe[col] = dataframe[col].str.replace("'s ", " ", regex=False)
         dataframe[col] = dataframe[col].str.replace("'", "", regex=False)

@@ -17,10 +17,10 @@ def _process_row(row: pd.Series) -> Optional[str]:
 
     phrases: list[str] = []
 
-    if not pd.isna(row[CorpusField.ABS_TOK.value]):
+    if not pd.isna(row[CorpusField.ABSTR_TOK.value]):
         phrases.extend(
             chunk.text
-            for chunk in spacy_nlp(row[CorpusField.ABS_TOK.value]).noun_chunks
+            for chunk in spacy_nlp(row[CorpusField.ABSTR_TOK.value]).noun_chunks
         )
 
     if not pd.isna(row[CorpusField.TITLE_TOK.value]):

@@ -16,12 +16,12 @@ def _get_author(dataframe):
 
 def _get_source_title(dataframe):
 
-    source_title = dataframe[CorpusField.SRC_TITLE_ABBR_NORM.value].copy()
+    source_title = dataframe[CorpusField.SRC_ISO4_NORM.value].copy()
     source_title_isna = source_title.map(pd.isna)
     source_title = pd.Series(
         np.where(
             source_title_isna,
-            dataframe[CorpusField.SRC_TITLE_NORM.value].str[:29],
+            dataframe[CorpusField.SRC_NORM.value].str[:29],
             source_title,
         )
     )
@@ -40,7 +40,7 @@ def _get_source_title(dataframe):
 
 
 def _get_year(dataframe):
-    return dataframe[CorpusField.PUBYEAR.value].map(str)
+    return dataframe[CorpusField.YEAR.value].map(str)
 
 
 def _get_volume(dataframe):
@@ -50,7 +50,7 @@ def _get_volume(dataframe):
 
 
 def _get_page_start(dataframe):
-    return dataframe[CorpusField.PAGE_FIRST.value].map(
+    return dataframe[CorpusField.PG_FIRST.value].map(
         lambda x: ", P" + str(x).replace(".0", "") if not pd.isna(x) else ""
     )
 
@@ -106,10 +106,10 @@ def assign_recid(root_directory: str) -> int:
                 "'", ""
             )
 
-        dataframe[CorpusField.REC_ID.value] = wos_ref.copy()
-        dataframe = dataframe.drop_duplicates(subset=[CorpusField.REC_ID.value])
+        dataframe[CorpusField.RID.value] = wos_ref.copy()
+        dataframe = dataframe.drop_duplicates(subset=[CorpusField.RID.value])
 
-        non_null_count = int(dataframe[CorpusField.REC_ID.value].notna().sum())
+        non_null_count = int(dataframe[CorpusField.RID.value].notna().sum())
 
         dataframe.to_csv(
             database_file,

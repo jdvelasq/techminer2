@@ -55,6 +55,6 @@ class ConcordanceTokenized(
         return (
             ConcordanceUser()
             .update(**self.params.__dict__)
-            .with_source_field(CorpusField.ABS_TOK)
+            .with_source_field(CorpusField.ABSTR_TOK)
             .run()
         )

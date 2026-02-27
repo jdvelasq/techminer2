@@ -1,372 +1,137 @@
-import re
 from pathlib import Path
-from typing import List
 
 import pandas as pd  # type: ignore
 
 from techminer2 import CorpusField
 from techminer2._internals.data_access import load_main_data, save_main_data
-from techminer2._internals.package_data import (
-    load_builtin_mapping,
-    load_builtin_word_list,
-)
+from techminer2._internals.package_data import load_builtin_mapping
+from techminer2.ingest.data_sources._internals.operations.ltwa_column import ltwa_column
 
-_AMBIGUOUS_INDICATOR = [
-    "institute of",
-    "institut de",
-    "instituto de",
-    "institutt for",
-    "center for",
-    "centre for",
-    "centro de",
-    "centro para",
-    "laboratory of",
-    "lab of",
-    "laboratoire de",
-    "laboratorio de",
-    "school of",
-    "école de",
-    "escuela de",
-    "escola de",
-    "graduate school",
-    "doctoral school",
-]
-
-_CORPORATE_SUFFIX = [
-    "ltd",
-    "limited",
-    "inc",
-    "incorporated",
-    "corp",
-    "corporation",
-    "gmbh",
-    "s.a.",
-    "s.l.",
-    "srl",
-    "s.r.l.",
-    "spa",
-    "s.p.a.",
-    "bv",
-    "b.v.",
-    "llc",
-    "l.l.c.",
-    "ag",
-    "plc",
-    "co.",
-    "company",
-]
-
-
-_COUNTRY_REPLACEMENTS = [
-    ("Bosnia and Herz.", "Bosnia and Herzegovina"),
-    ("Brasil", "Brazil"),
-    ("Central African Rep.", "Central African Republic"),
-    ("Congo, Democratic Republic of The", "Democratic Republic of The Congo"),
-    ("Côte D'Ivoire", "Cote D'Ivoire"),
-    ("Czech Republic", "Czechia"),
-    ("Dem. Rep. Congo", "Democratic Republic of The Congo"),
-    ("Dominican Rep.", "Dominican Republic"),
-    ("Eq. Guinea", "Equatorial Guinea"),
-    ("Espana", "Spain"),
-    ("Falkland Is.", "Falkland Islands"),
-    ("Macao", "China"),
-    ("Macau", "China"),
-    ("N. Cyprus", "Cyprus"),
-    ("Palestine, State Of", "Palestine"),
-    ("Peoples R China", "China"),
-    ("Perú", "Peru"),
-    ("Rusia", "Russia"),
-    ("Russian Federation", "Russia"),
-    ("Saint Helena, Ascension and Tristan Da Cunha", "Saint Helena"),
-    ("Solomon Is.", "Solomon Islands"),
-    ("St. Kitts and Nevis", "Saint Kitts and Nevis"),
-    ("St. Lucia", "Saint Lucia"),
-    ("St. Vincent and The Grenadines", "Saint Vincent and The Grenadines"),
-    ("Syrian Arab Republic", "Syria"),
-    ("Trinidad & Tobago", "Trinidad and Tobago"),
-    ("Türkiye", "Turkey"),
-    ("United States of America", "United States"),
-    ("USA", "United States"),
-    ("Viet Nam", "Vietnam"),
-    ("Viet-Nam", "Vietnam"),
-    ("W. Sahara", "Western Sahara"),
-]
-
-_DEPARTMENT_INDICATOR = [
-    "department of",
-    "dept of",
-    "dept.",
-    "faculty of",
-    "school of",
-    "college of",
-    "division of",
-    "unit of",
-    "section of",
-    "chair of",
-    "professorship",
-    "lehrstuhl",
-    "departamento de",
-    "département de",
-    "facoltà di",
-    "facultad de",
-    "dipartimento di",
-    "departement",
-    "división de",
-]
-
-_GOVERNMENT_KEYWORD = [
-    "ministry",
-    "government",
-    "agency",
-    "council",
-    "commission",
-    "authority",
-    "department of",
-    "bureau",
-    "office of",
-]
-
-
-_ORGANIZATION_KEYWORD = [
-    "university",
-    "universidad",
-    "université",
-    "universität",
-    "università",
-    "universiteit",
-    "yliopisto",
-    "univerza",
-    "univerzita",
-    "universitas",
-    "universiti",
-    "universitet",
-    "universitāte",
-    "rijksuniversiteit",
-    "polytechnic",
-    "politecnico",
-    "politechnika",
-    "polytechnique",
-    "institute",
-    "instituto",
-    "institut",
-    "institutt",
-    "college",
-    "school",
-    "academy",
-    "academia",
-    "hospital",
-    "clinic",
-    "klinik",
-    "medical center",
-    "medical centre",
-    "research center",
-    "research centre",
-    "national laboratory",
-    "foundation",
-    "fundación",
-    "fondation",
-    "stiftung",
-]
-
-
-# ----------------------------------------------------------------------------
-
+from ._internals import extract_country_name_from_string, extract_org_name_from_string
 
 AFFIL_RAW = CorpusField.AFFIL_RAW.value
-COUNTRY_AND_AFFIL = CorpusField.COUNTRY_AND_AFFIL.value
-COUNTRY = CorpusField.COUNTRY.value
-ORG_AUTH_FIRST = CorpusField.ORG_AUTH_FIRST.value
-ORG_AND_AFFIL = CorpusField.ORG_AND_AFFIL.value
+CTRY_AFFIL = CorpusField.CTRY_AFFIL.value
+CTRY = CorpusField.CTRY.value
+CTRY_FIRST = CorpusField.CTRY_FIRST.value
+CTRY_ISO3 = CorpusField.CTRY_ISO3.value
+CTRY_ISO3_FIRST = CorpusField.CTRY_ISO3_FIRST.value
+ORG_FIRST = CorpusField.ORG_FIRST.value
+ORG_AFFIL = CorpusField.ORG_AFFIL.value
 ORG = CorpusField.ORG.value
 
 
-# ----------------------------------------------------------------------------
-# Country extraction
-# ----------------------------------------------------------------------------
+def extract_organizations_and_countries(root_directory: str) -> int:
 
+    dataframe = load_main_data(root_directory=root_directory)
+    countries, organizations = _build_mappings(dataframe)
+    dataframe = _create_country_columns(dataframe, countries)
+    dataframe = _create_organization_column(dataframe, organizations)
+    save_main_data(df=dataframe, root_directory=root_directory)
 
-def _extract_country_from_string(affiliation: str) -> str:
+    _create_thesaurus_files(root_directory, countries, organizations)
 
-    country = affiliation.split(",")[-1].strip()
-
-    for pat, repl in _COUNTRY_REPLACEMENTS:
-        country = country.replace(pat, repl)
-
-    country_names = load_builtin_word_list("country_names.txt")
-    if country not in country_names:
-        country = "[n/a]"
-
-    return country
-
-
-# ----------------------------------------------------------------------------
-# Organization extraction
-# ----------------------------------------------------------------------------
-
-
-def _clean_part(part: str) -> str:
-    part = part.strip()
-    part = re.sub(r"\s*\([^)]*\)\s*$", "", part)
-    return part.strip()
-
-
-def _contains_corporate_suffix(text: str) -> bool:
-    if not text or not text.strip():
-        return False
-    text_lower = text.lower()
-    return any(
-        re.search(r"\b" + re.escape(suffix) + r"\b", text_lower)
-        for suffix in _CORPORATE_SUFFIX
+    ltwa_column(
+        source=CorpusField.ORG,
+        target=CorpusField.ORG,
+        root_directory=root_directory,
     )
 
-
-def _contains_government_keyword(text: str) -> bool:
-    if not text or not text.strip():
-        return False
-    text_lower = text.lower()
-    return any(keyword in text_lower for keyword in _GOVERNMENT_KEYWORD)
-
-
-def _contains_org_keyword(text: str) -> bool:
-    if not text or not text.strip():
-        return False
-    text_lower = text.lower()
-    return any(keyword in text_lower for keyword in _ORGANIZATION_KEYWORD)
-
-
-def _has_multiple_words(text: str) -> bool:
-    return len(text.split()) >= 2
-
-
-def _is_acronym(text: str) -> bool:
-    return text.isupper() and len(text) >= 2 and text.isalpha()
-
-
-def _is_organization(text: str) -> bool:
-    if not text or not text.strip():
-        return False
-    return (
-        _contains_org_keyword(text)
-        or _contains_corporate_suffix(text)
-        or _contains_government_keyword(text)
-        or _has_multiple_words(text)
-        or _is_acronym(text)
+    ltwa_column(
+        source=CorpusField.ORG_FIRST,
+        target=CorpusField.ORG_FIRST,
+        root_directory=root_directory,
     )
 
-
-def _remove_duplicate_segments(parts: List[str]) -> List[str]:
-    if len(parts) < 2:
-        return parts
-    result = []
-    for i, part in enumerate(parts):
-        if i == 0 or part.lower() != parts[i - 1].lower():
-            result.append(part)
-    return result
+    return int(dataframe[CorpusField.AFFIL_RAW.value].notna().sum())
 
 
-def _starts_with_ambiguous_indicator(text: str) -> bool:
-    if not text or not text.strip():
-        return False
-    text_lower = text.lower().strip()
-    return any(text_lower.startswith(indicator) for indicator in _AMBIGUOUS_INDICATOR)
+def _build_mappings(dataframe: pd.DataFrame) -> tuple[dict[str, str], dict[str, str]]:
+
+    affiliations = _get_raw_affiliations(dataframe)
+    affiliations[CTRY] = affiliations[AFFIL_RAW].apply(extract_country_name_from_string)
+    affiliations[ORG] = affiliations[AFFIL_RAW].apply(extract_org_name_from_string)
+    affiliations[ORG] = _assign_country_code_to_orgs(affiliations)
+
+    countries = _get_country_mapping(affiliations)
+    organizations = _get_organization_mapping(affiliations)
+
+    return countries, organizations
 
 
-def _starts_with_department(text: str) -> bool:
-    if not text or not text.strip():
-        return False
-    text_lower = text.lower().strip()
-    return any(text_lower.startswith(indicator) for indicator in _DEPARTMENT_INDICATOR)
+def _get_raw_affiliations(dataframe: pd.DataFrame) -> pd.DataFrame:
+
+    affiliations = dataframe[[AFFIL_RAW]].copy()
+    affiliations = affiliations.dropna()
+    affiliations[AFFIL_RAW] = affiliations[AFFIL_RAW].str.split("; ")
+    raw_affiliation = affiliations.explode(AFFIL_RAW)
+
+    raw_affiliation[AFFIL_RAW] = raw_affiliation[AFFIL_RAW].str.strip()
+    raw_affiliation = raw_affiliation.drop_duplicates()
+
+    return raw_affiliation
 
 
-def _extract_organization_from_string(affiliation: str) -> str:
+def _get_country_mapping(affiliations: pd.DataFrame) -> dict[str, str]:
 
-    organizations = load_builtin_word_list("organizations.txt")
-    for org in organizations:
-        if org.lower() in affiliation.lower():
-            return org
-
-    parts = [_clean_part(p) for p in affiliation.split(",")]
-    parts = [p for p in parts if p]
-
-    if not parts:
-        return "[n/a]"
-
-    parts = _remove_duplicate_segments(parts)
-
-    if len(parts) >= 2:
-        first = parts[0]
-        second = parts[1]
-
-        if _starts_with_ambiguous_indicator(first) and _is_organization(second):
-            return second
-
-        if _starts_with_department(first) and _is_organization(second):
-            return second
-
-    if len(parts) >= 1:
-        first = parts[0]
-        if not _starts_with_department(first) and _is_organization(first):
-            return first
-
-    if len(parts) >= 2 and _is_organization(parts[1]):
-        return parts[1]
-
-    if len(parts) >= 1 and _is_organization(parts[0]):
-        return parts[0]
-
-    return "[n/a]"
-
-
-# ----------------------------------------------------------------------------
-
-
-def _get_affiliations_df(dataframe: pd.DataFrame) -> pd.DataFrame:
-
-    affil_df = dataframe[[AFFIL_RAW]].copy()
-    affil_df = affil_df.dropna()
-    affil_df[AFFIL_RAW] = affil_df[AFFIL_RAW].str.split("; ")
-    affil_df = affil_df.explode(AFFIL_RAW)
-    affil_df[AFFIL_RAW] = affil_df[AFFIL_RAW].str.strip()
-    affil_df = affil_df.drop_duplicates()
-
-    return affil_df
-
-
-def _get_country_mapping(df: pd.DataFrame) -> dict[str, str]:
-
-    df = df[[AFFIL_RAW, COUNTRY]].dropna()
-    df = df.drop_duplicates()
+    affiliations = affiliations[[AFFIL_RAW, CTRY]].dropna()
+    affiliations = affiliations.drop_duplicates()
     mapping: dict[str, str] = pd.Series(
-        df[COUNTRY].values, index=df[AFFIL_RAW]
+        affiliations[CTRY].values, index=affiliations[AFFIL_RAW]
+    ).to_dict()
+
+    return mapping
+
+
+def _get_organization_mapping(affiliations: pd.DataFrame) -> dict[str, str]:
+
+    affiliations = affiliations[[AFFIL_RAW, ORG]].dropna()
+    affiliations = affiliations.drop_duplicates()
+    mapping: dict[str, str] = pd.Series(
+        affiliations[ORG].values, index=affiliations[AFFIL_RAW]
     ).to_dict()
     return mapping
 
 
-def _get_organization_mapping(df: pd.DataFrame) -> dict[str, str]:
+def _assign_country_code_to_orgs(affiliations: pd.DataFrame) -> pd.Series:
 
-    df = df[[AFFIL_RAW, ORG]].dropna()
-    df = df.drop_duplicates()
-    mapping: dict[str, str] = pd.Series(df[ORG].values, index=df[AFFIL_RAW]).to_dict()
-    return mapping
+    affiliations = affiliations.copy()
+    country_to_alpha3 = load_builtin_mapping("country_to_alpha3.json")
+    affiliations[ORG] += affiliations[CTRY].map(
+        lambda country: f" [{country_to_alpha3.get(country, 'N/A')}]"
+    )
+    return affiliations[ORG]
 
 
-def _create_country_column(
+def _create_country_columns(
     df: pd.DataFrame, country_mapping: dict[str, str]
 ) -> pd.DataFrame:
 
     df = df.copy()
 
-    df[COUNTRY] = df[AFFIL_RAW].copy()
-    df[COUNTRY] = df[COUNTRY].fillna("[n/a]")
-    df[COUNTRY] = df[COUNTRY].str.split("; ")
-    df[COUNTRY] = df[COUNTRY].apply(
+    country_to_iso3 = load_builtin_mapping("country_to_alpha3.json")
+
+    df[CTRY] = df[AFFIL_RAW].copy()
+    df[CTRY] = df[CTRY].fillna("[n/a]")
+    df[CTRY] = df[CTRY].str.split("; ")
+    df[CTRY] = df[CTRY].apply(
         lambda affils: [country_mapping.get(affil, "[n/a]") for affil in affils],
     )
-    df[CorpusField.COUNTRY_AUTH_FIRST.value] = df[COUNTRY].map(
-        lambda countries: countries[0] if countries else "[n/a]",
+    df[CTRY_ISO3] = df[CTRY].apply(
+        lambda countries: [
+            country_to_iso3.get(country, "[n/a]") for country in countries
+        ]
     )
-    df[COUNTRY] = df[COUNTRY].apply(set)
-    df[COUNTRY] = df[COUNTRY].str.join("; ")
+
+    df[CTRY_FIRST] = df[CTRY].str[0]
+    df[CTRY_ISO3_FIRST] = df[CTRY_ISO3].str[0]
+
+    df[CTRY] = df[CTRY].apply(set)
+    df[CTRY] = df[CTRY].apply(sorted)
+    df[CTRY] = df[CTRY].str.join("; ")
+
+    df[CTRY_ISO3] = df[CTRY_ISO3].apply(set)
+    df[CTRY_ISO3] = df[CTRY_ISO3].apply(sorted)
+    df[CTRY_ISO3] = df[CTRY_ISO3].str.join("; ")
 
     return df
 
@@ -382,178 +147,41 @@ def _create_organization_column(
     df[ORG] = df[ORG].apply(
         lambda affils: [organization_mapping.get(affil, "[n/a]") for affil in affils]
     )
-    df[ORG_AUTH_FIRST] = df[ORG].map(lambda orgs: orgs[0] if orgs else "[n/a]")
+    df[ORG_FIRST] = df[ORG].map(lambda orgs: orgs[0] if orgs else "[n/a]")
     df[ORG] = df[ORG].str.join("; ")
 
     return df
 
 
-def _create_thesaurus(
+def _create_thesaurus_files(
     root_directory: str,
-    dataframe: pd.DataFrame,
-    mapping: dict[str, str],
-    filename: str,
+    countries: dict[str, str],
+    organizations: dict[str, str],
 ) -> None:
 
-    dataframe = pd.DataFrame(
-        {
-            "key": list(mapping.values()),
-            "label": list(mapping.keys()),
-        }
-    )
-    groupby_df = dataframe.groupby("key", as_index=False)["label"].apply(list)
+    def _create_file(mapping: dict[str, str], filename: str) -> None:
 
-    filepath = Path(root_directory) / "refine" / "thesaurus" / filename
-    with open(filepath, "w", encoding="utf-8") as file:
-        for _, row in groupby_df.iterrows():
-            key = row["key"]
-            file.write(f"{key}\n")
-            for value in sorted(row["label"]):
-                file.write(f"    {value}\n")
+        df = pd.DataFrame(
+            {
+                "key": list(mapping.values()),
+                "value": list(mapping.keys()),
+            }
+        )
 
+        grouped_df = df.groupby("key", as_index=False)["value"].apply(list)
 
-def _assign_country_code(df: pd.DataFrame) -> pd.Series:
+        for folder in [
+            "ingest/processed/",
+            "refine/thesaurus/",
+        ]:
+            filepath = Path(root_directory) / folder / filename
 
-    df = df.copy()
+            with open(filepath, "w", encoding="utf-8") as file:
+                for _, row in grouped_df.iterrows():
+                    key = row["key"]
+                    file.write(f"{key}\n")
+                    for value in sorted(row["value"]):
+                        file.write(f"    {value}\n")
 
-    country_to_alpha3 = load_builtin_mapping("country_to_alpha3.json")
-    df[ORG] += df[COUNTRY].map(
-        lambda country: f" [{country_to_alpha3.get(country, 'N/A')}]"
-    )
-    return df[ORG]
-
-
-def _create_thesaurus_columns(
-    df: pd.DataFrame,
-    country_mapping: dict[str, str],
-    organization_mapping: dict[str, str],
-) -> pd.DataFrame:
-
-    df = df.copy()
-
-    df[COUNTRY_AND_AFFIL] = df.apply(
-        lambda row: (
-            "; ".join(
-                f"{country_mapping.get(affil, '[N/A]')} @ {affil}"
-                for affil in row[AFFIL_RAW].split("; ")
-            )
-            if pd.notna(row[AFFIL_RAW])
-            else "[n/a]"
-        ),
-        axis=1,
-    )
-
-    df[ORG_AND_AFFIL] = df.apply(
-        lambda row: (
-            "; ".join(
-                f"{organization_mapping.get(affil, '[N/A]')} @ {affil}"
-                for affil in row[AFFIL_RAW].split("; ")
-            )
-            if pd.notna(row[AFFIL_RAW])
-            else "[n/a]"
-        ),
-        axis=1,
-    )
-
-    return df
-
-
-def _create_country_thesaurus_file(
-    root_directory: str, dataframe: pd.DataFrame
-) -> None:
-
-    dataframe = dataframe[[COUNTRY_AND_AFFIL]].copy().dropna()
-    dataframe[COUNTRY_AND_AFFIL] = dataframe[COUNTRY_AND_AFFIL].str.split("; ")
-    dataframe = dataframe.explode(COUNTRY_AND_AFFIL)
-    dataframe[COUNTRY_AND_AFFIL] = dataframe[COUNTRY_AND_AFFIL].str.strip()
-    dataframe["country"] = dataframe[COUNTRY_AND_AFFIL].apply(
-        lambda x: x.split(" @ ")[0].strip() if " @ " in x else "[n/a]"
-    )
-    dataframe["affil"] = dataframe[COUNTRY_AND_AFFIL].apply(
-        lambda x: x.split(" @ ")[1].strip() if " @ " in x else "[n/a]"
-    )
-    # counting = dataframe["affil"].value_counts()
-
-    # dataframe["affil"] = dataframe["affil"].apply(
-    #     lambda x: f"{x} # occ: {counting.get(x, 0)}"
-    # )
-
-    dataframe = dataframe[["country", "affil"]]
-    groupby_df = dataframe.groupby("country", as_index=False).agg({"affil": list})
-    groupby_df["affil"] = groupby_df["affil"].apply(sorted)
-    groupby_df = groupby_df.sort_values(by=["country"], ascending=True)
-
-    filepath = Path(root_directory) / "refine" / "thesaurus" / "countries.the.txt"
-
-    with open(filepath, "w", encoding="utf-8") as file:
-        for _, row in groupby_df.iterrows():
-            country = row["country"]
-            if country == "[n/a]":
-                continue
-            file.write(f"{country}\n")
-            for affil in row["affil"]:
-                file.write(f"    {affil}\n")
-
-
-def _create_organizations_thesaurus_file(
-    root_directory: str, dataframe: pd.DataFrame
-) -> None:
-
-    dataframe = dataframe[[ORG_AND_AFFIL]].copy().dropna()
-    dataframe[ORG_AND_AFFIL] = dataframe[ORG_AND_AFFIL].str.split("; ")
-    dataframe = dataframe.explode(ORG_AND_AFFIL)
-    dataframe[ORG_AND_AFFIL] = dataframe[ORG_AND_AFFIL].str.strip()
-    dataframe["organization"] = dataframe[ORG_AND_AFFIL].apply(
-        lambda x: x.split(" @ ")[0].strip() if " @ " in x else "[n/a]"
-    )
-    dataframe["affil"] = dataframe[ORG_AND_AFFIL].apply(
-        lambda x: x.split(" @ ")[1].strip() if " @ " in x else "[n/a]"
-    )
-    # counting = dataframe["affil"].value_counts()
-
-    # dataframe["affil"] = dataframe["affil"].apply(
-    #     lambda x: f"{x} # occ: {counting.get(x, 0)}"
-    # )
-
-    dataframe = dataframe[["organization", "affil"]]
-    groupby_df = dataframe.groupby("organization", as_index=False).agg({"affil": list})
-    groupby_df["affil"] = groupby_df["affil"].apply(sorted)
-    groupby_df = groupby_df.sort_values(by=["organization"], ascending=True)
-
-    filepath = Path(root_directory) / "refine" / "thesaurus" / "organizations.the.txt"
-
-    with open(filepath, "w", encoding="utf-8") as file:
-        for _, row in groupby_df.iterrows():
-            organization = row["organization"]
-            if organization == "[n/a]":
-                continue
-            file.write(f"{organization}\n")
-            for affil in row["affil"]:
-                file.write(f"    {affil}\n")
-
-
-def extract_organizations_and_countries(root_directory: str) -> int:
-
-    dataframe = load_main_data(root_directory=root_directory)
-
-    affil_df = _get_affiliations_df(dataframe)
-    affil_df[COUNTRY] = affil_df[AFFIL_RAW].apply(_extract_country_from_string)
-    affil_df[ORG] = affil_df[AFFIL_RAW].apply(_extract_organization_from_string)
-
-    affil_df[ORG] = _assign_country_code(affil_df)
-
-    country_mapping = _get_country_mapping(affil_df)
-    organization_mapping = _get_organization_mapping(affil_df)
-
-    dataframe = _create_country_column(dataframe, country_mapping)
-    dataframe = _create_organization_column(dataframe, organization_mapping)
-    dataframe = _create_thesaurus_columns(
-        dataframe, country_mapping, organization_mapping
-    )
-
-    _create_country_thesaurus_file(root_directory, dataframe)
-    _create_organizations_thesaurus_file(root_directory, dataframe)
-
-    save_main_data(df=dataframe, root_directory=root_directory)
-
-    return int(dataframe[CorpusField.AFFIL_RAW.value].notna().sum())
+    _create_file(countries, "ctry.the.txt")
+    _create_file(organizations, "org.the.txt")

@@ -13,10 +13,10 @@ from techminer2._internals.data_access import (
 )
 
 _SELECTED_FIELDS = [
-    CorpusField.REC_ID.value,
+    CorpusField.RID.value,
     CorpusField.TITLE_RAW.value,
     CorpusField.AUTH_RAW.value,
-    CorpusField.PUBYEAR.value,
+    CorpusField.YEAR.value,
 ]
 
 
@@ -82,10 +82,8 @@ def _prepare_main_documents(root_directory: str) -> pd.DataFrame:
     dataframe[CorpusField.AUTH_RAW.value] = _clean_text(
         dataframe[CorpusField.AUTH_RAW.value]
     )
-    dataframe[CorpusField.PUBYEAR.value] = dataframe[CorpusField.PUBYEAR.value].astype(
-        str
-    )
-    dataframe = dataframe.sort_values(by=[CorpusField.REC_ID.value])
+    dataframe[CorpusField.YEAR.value] = dataframe[CorpusField.YEAR.value].astype(str)
+    dataframe = dataframe.sort_values(by=[CorpusField.RID.value])
 
     return dataframe
 
@@ -93,18 +91,18 @@ def _prepare_main_documents(root_directory: str) -> pd.DataFrame:
 def _create_references_thesaurus_file(root_directory: str) -> None:
 
     dataframe = load_main_data(root_directory=root_directory)
-    dataframe = dataframe[[CorpusField.REF_AND_REC_ID.value]].copy().dropna()
-    dataframe[CorpusField.REF_AND_REC_ID.value] = dataframe[
-        CorpusField.REF_AND_REC_ID.value
+    dataframe = dataframe[[CorpusField.REF_RID.value]].copy().dropna()
+    dataframe[CorpusField.REF_RID.value] = dataframe[
+        CorpusField.REF_RID.value
     ].str.split("; ")
-    dataframe = dataframe.explode(CorpusField.REF_AND_REC_ID.value)
-    dataframe[CorpusField.REF_AND_REC_ID.value] = dataframe[
-        CorpusField.REF_AND_REC_ID.value
+    dataframe = dataframe.explode(CorpusField.REF_RID.value)
+    dataframe[CorpusField.REF_RID.value] = dataframe[
+        CorpusField.REF_RID.value
     ].str.strip()
-    dataframe["rec_id"] = dataframe[CorpusField.REF_AND_REC_ID.value].apply(
+    dataframe["rec_id"] = dataframe[CorpusField.REF_RID.value].apply(
         lambda x: x.split(" @ ")[0].strip() if " @ " in x else "[n/a]"
     )
-    dataframe["ref"] = dataframe[CorpusField.REF_AND_REC_ID.value].apply(
+    dataframe["ref"] = dataframe[CorpusField.REF_RID.value].apply(
         lambda x: x.split(" @ ")[1].strip() if " @ " in x else "[n/a]"
     )
 
@@ -155,7 +153,7 @@ def _create_mapping(
             :,
         ]
         refs = refs.loc[
-            refs.key.str.lower().str.contains(row[CorpusField.PUBYEAR.value]), :
+            refs.key.str.lower().str.contains(row[CorpusField.YEAR.value]), :
         ]
 
         refs = refs.loc[
@@ -166,7 +164,7 @@ def _create_mapping(
         ]
 
         if len(refs) > 0:
-            mapping[row[CorpusField.REC_ID.value]] = sorted(refs.text.tolist())
+            mapping[row[CorpusField.RID.value]] = sorted(refs.text.tolist())
             remaining_references = remaining_references.drop(refs.index)
 
     return mapping
@@ -199,7 +197,7 @@ def _process_references(
     )
 
     #
-    dataframe[CorpusField.REF_AND_REC_ID.value] = dataframe.apply(
+    dataframe[CorpusField.REF_RID.value] = dataframe.apply(
         lambda row: (
             "; ".join(
                 f"{mapping.get(ref, '[N/A]')} @ {ref}"

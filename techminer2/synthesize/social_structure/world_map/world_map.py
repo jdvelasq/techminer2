@@ -49,7 +49,7 @@ class WorldMap(
         collaboration = (
             CoOccurrenceDataFrame()
             .update(**self.params.__dict__)
-            .with_source_field(CorpusField.COUNTRY)
+            .with_source_field(CorpusField.CTRY)
             .update(terms_order_by=ItemsOrderBy.OCC)
             .run()
         )

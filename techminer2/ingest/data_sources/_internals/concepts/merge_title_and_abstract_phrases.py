@@ -6,7 +6,7 @@ def merge_title_and_abstract_phrases(root_directory: str) -> int:
 
     return merge_columns(
         sources=(
-            CorpusField.NP_ABS_RAW,
+            CorpusField.NP_ABSTR_RAW,
             CorpusField.NP_TITLE_RAW,
         ),
         target=CorpusField.NP_RAW,

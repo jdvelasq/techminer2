@@ -55,6 +55,6 @@ class ConcordanceUppercase(
         return (
             ConcordanceUser()
             .update(**self.params.__dict__)
-            .with_source_field(CorpusField.ABS_UPPER)
+            .with_source_field(CorpusField.ABSTR_UPPER)
             .run()
         )

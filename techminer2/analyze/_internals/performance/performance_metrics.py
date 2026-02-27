@@ -87,7 +87,7 @@ class PerformanceMetrics(
                     self.params.source_field.value,
                     CorpusField.GCS.value,
                     CorpusField.LCS.value,
-                    CorpusField.PUBYEAR.value,
+                    CorpusField.YEAR.value,
                 ]
             ]
             .dropna()
@@ -112,7 +112,7 @@ class PerformanceMetrics(
         source_field = self.params.source_field.value
         gcs = CorpusField.GCS.value
         lcs = CorpusField.LCS.value
-        pubyear = CorpusField.PUBYEAR.value
+        pubyear = CorpusField.YEAR.value
 
         df = df.sort_values(
             [

@@ -5,8 +5,8 @@ from techminer2.ingest.data_sources._internals.operations import transform_colum
 def normalize_doctype_raw(root_directory: str) -> int:
 
     return transform_column(
-        source=CorpusField.DOC_TYPE_RAW,
-        target=CorpusField.DOC_TYPE_NORM,
+        source=CorpusField.PUBTYPE_RAW,
+        target=CorpusField.PUBTYPE_NORM,
         function=lambda x: x.str.capitalize(),
         root_directory=root_directory,
     )

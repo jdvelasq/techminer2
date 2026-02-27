@@ -11,8 +11,8 @@ def translate(dataframe: pd.DataFrame) -> pd.DataFrame:
     british_to_american = load_builtin_mapping("british_to_american.json")
 
     for col in [
-        CorpusField.AUTH_KEY_TOK.value,
-        CorpusField.IDX_KEY_TOK.value,
+        CorpusField.AUTHKW_TOK.value,
+        CorpusField.IDXKW_TOK.value,
     ]:
         dataframe[col] = dataframe[col].str.replace("; ", " ; ", regex=False)
 

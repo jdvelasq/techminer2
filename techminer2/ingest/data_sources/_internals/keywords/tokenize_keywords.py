@@ -23,14 +23,14 @@ from .helpers import (
 def tokenize_keywords(root_directory: str) -> int:
 
     copy_column(
-        source=CorpusField.IDX_KEY_RAW,
-        target=CorpusField.IDX_KEY_TOK,
+        source=CorpusField.IDXKW_RAW,
+        target=CorpusField.IDXKW_TOK,
         root_directory=root_directory,
     )
 
     copy_column(
-        source=CorpusField.AUTH_KEY_RAW,
-        target=CorpusField.AUTH_KEY_TOK,
+        source=CorpusField.AUTHKW_RAW,
+        target=CorpusField.AUTHKW_TOK,
         root_directory=root_directory,
     )
 
@@ -53,6 +53,6 @@ def tokenize_keywords(root_directory: str) -> int:
     save_main_data(dataframe, root_directory)
 
     return max(
-        int(dataframe[CorpusField.AUTH_KEY_TOK.value].notna().sum()),
-        int(dataframe[CorpusField.IDX_KEY_TOK.value].notna().sum()),
+        int(dataframe[CorpusField.AUTHKW_TOK.value].notna().sum()),
+        int(dataframe[CorpusField.IDXKW_TOK.value].notna().sum()),
     )

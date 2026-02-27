@@ -4,7 +4,7 @@ Matrix
 
 Smoke tests:
     >>> from techminer2 import ItemsOrderBy
-    >>> from techminer2.discover.occurrence_matrix.countries_x_organizations import Matrix
+    >>> from techminer2.discover.occurrence_matrix.auth_x_concept import Matrix
     >>> df = (
     ...     Matrix()
     ...     #
@@ -40,7 +40,20 @@ Smoke tests:
     >>> df.shape[1] > 1
     True
     >>> df.head(10)
-
+    columns                         Jagtiani J. 005:01156  ...  Kauffman R.J. 002:01445
+    rows                                                   ...
+    fintech 155:33245                                   5  ...                        0
+    financial technology 051:09258                      0  ...                        0
+    finance 050:10972                                   1  ...                        1
+    innovation 033:07734                                0  ...                        1
+    china 033:06419                                     1  ...                        0
+    financial services 030:06887                        0  ...                        1
+    banks 029:06252                                     2  ...                        0
+    technology 028:05172                                1  ...                        0
+    the development 026:05689                           0  ...                        0
+    banking 025:04664                                   0  ...                        0
+    <BLANKLINE>
+    [10 rows x 10 columns]
 
 """
 
@@ -60,7 +73,7 @@ class Matrix(
         return (
             BaseMatrix()
             .with_params(self.params)
-            .with_column_field(CorpusField.COUNTRY)
-            .with_index_field(CorpusField.ORG)
+            .with_column_field(CorpusField.AUTH_NORM)
+            .with_index_field(CorpusField.CONCEPT_NORM)
             .run()
         )

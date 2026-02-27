@@ -53,10 +53,10 @@ class DocumentTypes(
                 #
                 .update(**self.params.__dict__)
                 .with_query_expression(
-                    f"SELECT {CorpusField.DOC_TYPE_NORM.value} FROM database;"
+                    f"SELECT {CorpusField.PUBTYPE_NORM.value} FROM database;"
                 )
                 .run()
-            )[CorpusField.DOC_TYPE_NORM.value]
+            )[CorpusField.PUBTYPE_NORM.value]
             .value_counts()
             .sort_index()
             .sort_values(ascending=False)

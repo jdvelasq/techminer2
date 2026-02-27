@@ -33,7 +33,7 @@ class Coverage(
     def run(self):
 
         source_field = self.params.source_field.value
-        record_id = CorpusField.REC_ID.value
+        record_id = CorpusField.RID.value
 
         documents = load_filtered_main_data(params=self.params)
         documents = documents.reset_index()

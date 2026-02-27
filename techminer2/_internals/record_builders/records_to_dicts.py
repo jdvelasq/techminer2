@@ -26,16 +26,16 @@ def _build_dicts(records):
 def records_to_dicts(dataframe):
 
     names_mapping = {
-        CorpusField.REC_NO.value: "UT",
-        CorpusField.REC_ID.value: "AR",
+        CorpusField.RNO.value: "UT",
+        CorpusField.RID.value: "AR",
         CorpusField.TITLE_RAW.value: "TI",
         CorpusField.AUTH_NORM.value: "AU",
         CorpusField.GCS.value: "TC",
-        CorpusField.SRC_TITLE_ABBR_NORM.value: "SO",
-        CorpusField.PUBYEAR.value: "PY",
-        CorpusField.ABS_UPPER.value: "AB",
-        CorpusField.AUTH_KEY_RAW.value: "DE",
-        CorpusField.IDX_KEY_RAW.value: "ID",
+        CorpusField.SRC_ISO4_NORM.value: "SO",
+        CorpusField.YEAR.value: "PY",
+        CorpusField.ABSTR_UPPER.value: "AB",
+        CorpusField.AUTHKW_RAW.value: "DE",
+        CorpusField.IDXKW_RAW.value: "ID",
     }
 
     candiate_columns = names_mapping.keys()

@@ -33,7 +33,7 @@ def _process(series):
 def assign_region(root_directory: str) -> int:
 
     return transform_column(
-        source=CorpusField.COUNTRY,
+        source=CorpusField.CTRY,
         target=CorpusField.REGION,
         function=_process,
         root_directory=root_directory,

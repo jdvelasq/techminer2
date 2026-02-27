@@ -47,8 +47,8 @@ def _extract_frequent_raw_keywords(dataframe: pd.DataFrame) -> set:
     keywords = set()
 
     for col in [
-        CorpusField.AUTH_KEY_RAW.value,
-        CorpusField.IDX_KEY_RAW.value,
+        CorpusField.AUTHKW_RAW.value,
+        CorpusField.IDXKW_RAW.value,
     ]:
 
         if col in dataframe.columns:

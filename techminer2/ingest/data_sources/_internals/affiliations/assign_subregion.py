@@ -32,7 +32,7 @@ def _process(series):
 def assign_subregion(root_directory: str) -> int:
 
     return transform_column(
-        source=CorpusField.COUNTRY,
+        source=CorpusField.CTRY,
         target=CorpusField.SUBREGION,
         function=_process,
         root_directory=root_directory,

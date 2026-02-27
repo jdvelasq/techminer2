@@ -6,7 +6,7 @@ def compute_citcount_local(root_directory: str) -> int:
 
     dataframe = load_main_data(root_directory=root_directory, usecols=None)
 
-    rec_id = dataframe[CorpusField.REC_ID.value].tolist()
+    rec_id = dataframe[CorpusField.RID.value].tolist()
 
     dataframe[CorpusField.LCS.value] = dataframe[CorpusField.REF_NORM.value]
     dataframe[CorpusField.LCS.value] = dataframe[CorpusField.LCS.value].fillna("")

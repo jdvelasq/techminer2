@@ -38,7 +38,7 @@ def extract_abstract_acronyms(root_directory: str) -> int:
     with stdout_to_stderr():
         progress_bar = True
         pandarallel.initialize(progress_bar=progress_bar, verbose=0)
-        dataframe[CorpusField.ABS_ACRONYMS.value] = dataframe[CorpusField.ABS_TOK.value].parallel_apply(_extract_acronyms_from_text)  # type: ignore[call-arg]
+        dataframe[CorpusField.ABSTR_ACRONYM.value] = dataframe[CorpusField.ABSTR_TOK.value].parallel_apply(_extract_acronyms_from_text)  # type: ignore[call-arg]
         sys.stderr.write("\n")
 
     dataframe.to_csv(
@@ -49,4 +49,4 @@ def extract_abstract_acronyms(root_directory: str) -> int:
         compression="zip",
     )
 
-    return len(dataframe[CorpusField.ABS_ACRONYMS.value].dropna())
+    return len(dataframe[CorpusField.ABSTR_ACRONYM.value].dropna())

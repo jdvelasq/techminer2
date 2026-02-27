@@ -62,6 +62,6 @@ class MergeKeys(
             UserMergeKeys()
             .update(**self.params.__dict__)
             .with_thesaurus_file("organizations.the.txt")
-            .with_source_field(CorpusField.ORG_AND_AFFIL)
+            .with_source_field(CorpusField.ORG_AFFIL)
             .run()
         )

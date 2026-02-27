@@ -10,8 +10,8 @@ def fix_keyword_separators(dataframe: pd.DataFrame) -> pd.DataFrame:
     dataframe = dataframe.copy()
 
     for col in [
-        CorpusField.AUTH_KEY_TOK.value,
-        CorpusField.IDX_KEY_TOK.value,
+        CorpusField.AUTHKW_TOK.value,
+        CorpusField.IDXKW_TOK.value,
     ]:
         dataframe[col] = dataframe[col].apply(
             lambda x: (

@@ -9,7 +9,7 @@ def merge_keywords_and_phrases(root_directory: str) -> int:
 
     result = merge_columns(
         sources=(
-            CorpusField.KEY_TOK,
+            CorpusField.KW_TOK,
             CorpusField.NP_RAW,
         ),
         target=CorpusField.CONCEPT_RAW,

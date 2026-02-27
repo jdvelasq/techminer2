@@ -15,12 +15,12 @@ def _process_row(row: pd.Series) -> Optional[str]:
 
     phrases: list[str] = []
 
-    if not pd.isna(row[CorpusField.ABS_TOK.value]):
+    if not pd.isna(row[CorpusField.ABSTR_TOK.value]):
         phrases.extend(
             [
                 str(phrase)
                 for phrase in list(
-                    TextBlob(row[CorpusField.ABS_TOK.value]).noun_phrases  # type: ignore
+                    TextBlob(row[CorpusField.ABSTR_TOK.value]).noun_phrases  # type: ignore
                 )
             ]
         )

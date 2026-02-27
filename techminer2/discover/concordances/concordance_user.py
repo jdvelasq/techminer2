@@ -59,7 +59,7 @@ class ConcordanceUser(
 
         dataframe = dataframe.set_index(
             pd.Index(
-                dataframe[CorpusField.REC_ID.value]
+                dataframe[CorpusField.RID.value]
                 + " / "
                 + dataframe[CorpusField.TITLE_RAW.value]
             )

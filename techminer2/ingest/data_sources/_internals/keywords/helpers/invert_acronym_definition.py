@@ -43,8 +43,8 @@ def invert_acronym_definition(dataframe: pd.DataFrame) -> pd.DataFrame:
     dataframe = dataframe.copy()
 
     for col in [
-        CorpusField.AUTH_KEY_TOK.value,
-        CorpusField.IDX_KEY_TOK.value,
+        CorpusField.AUTHKW_TOK.value,
+        CorpusField.IDXKW_TOK.value,
     ]:
         dataframe[col] = dataframe[col].apply(invert_acronym_definition_in_list)
 

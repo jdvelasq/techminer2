@@ -47,10 +47,10 @@ class CreateThesaurus(
 
         dataframe = load_main_data(
             root_directory=self.params.root_directory,
-            usecols=[CorpusField.REF_AND_REC_ID.value],
+            usecols=[CorpusField.REF_RID.value],
         )
         dataframe = dataframe.dropna()
-        series = dataframe[CorpusField.REF_AND_REC_ID.value]
+        series = dataframe[CorpusField.REF_RID.value]
         series = series.str.split("; ")
         series = series.explode()
         series = series.str.strip()
@@ -86,7 +86,7 @@ class CreateThesaurus(
         return ThesaurusCreationResult(
             colored_output=self.params.colored_output,
             file_path=str(filepath),
-            source_field=CorpusField.REF_AND_REC_ID.value,
+            source_field=CorpusField.REF_RID.value,
             msg="Thesaurus initialized successfully.",
             success=True,
             status=f"{len(mapping.keys())} references added to the thesaurus.",

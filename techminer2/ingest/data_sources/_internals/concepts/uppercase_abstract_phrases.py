@@ -5,7 +5,7 @@ from techminer2.ingest.data_sources._internals.operations import uppercase_keyte
 def uppercase_abstract_phrases(root_directory: str) -> int:
 
     return uppercase_keyterms(
-        source=CorpusField.ABS_TOK,
-        target=CorpusField.ABS_UPPER,
+        source=CorpusField.ABSTR_TOK,
+        target=CorpusField.ABSTR_UPPER,
         root_directory=root_directory,
     )

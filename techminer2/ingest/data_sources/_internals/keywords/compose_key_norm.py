@@ -6,9 +6,9 @@ def compose_key_norm(root_directory: str) -> int:
 
     return merge_columns(
         sources=(
-            CorpusField.AUTH_KEY_NORM,
-            CorpusField.IDX_KEY_NORM,
+            CorpusField.AUTHKW_NORM,
+            CorpusField.IDXKW_NORM,
         ),
-        target=CorpusField.KEY_NORM,
+        target=CorpusField.KW_NORM,
         root_directory=root_directory,
     )

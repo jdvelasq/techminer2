@@ -6,19 +6,19 @@ from techminer2.enums import CorpusField
 
 MAIN_COLUMNS = frozenset(
     [
-        CorpusField.ABS_RAW.value,
-        CorpusField.AUTH_ID_RAW.value,
+        CorpusField.ABSTR_RAW.value,
+        CorpusField.AUTHID_RAW.value,
         CorpusField.AUTH_RAW.value,
-        CorpusField.AUTH_KEY_RAW.value,
+        CorpusField.AUTHKW_RAW.value,
         CorpusField.GCS.value,
-        CorpusField.DOC_TYPE_RAW.value,
+        CorpusField.PUBTYPE_RAW.value,
         CorpusField.DOI.value,
-        CorpusField.IDX_KEY_RAW.value,
-        CorpusField.PAGE_FIRST.value,
-        CorpusField.PUBYEAR.value,
+        CorpusField.IDXKW_RAW.value,
+        CorpusField.PG_FIRST.value,
+        CorpusField.YEAR.value,
         CorpusField.REF_RAW.value,
-        CorpusField.SRC_TITLE_ABBR_RAW.value,
-        CorpusField.SRC_TITLE_RAW.value,
+        CorpusField.SRC_ISO4_RAW.value,
+        CorpusField.SRC_RAW.value,
         CorpusField.TITLE_RAW.value,
         CorpusField.VOL.value,
     ]
@@ -26,12 +26,12 @@ MAIN_COLUMNS = frozenset(
 
 REF_COLUMNS = frozenset(
     [
-        CorpusField.AUTH_ID_RAW.value,
+        CorpusField.AUTHID_RAW.value,
         CorpusField.AUTH_RAW.value,
-        CorpusField.PAGE_FIRST.value,
-        CorpusField.PUBYEAR.value,
-        CorpusField.SRC_TITLE_ABBR_RAW.value,
-        CorpusField.SRC_TITLE_RAW.value,
+        CorpusField.PG_FIRST.value,
+        CorpusField.YEAR.value,
+        CorpusField.SRC_ISO4_RAW.value,
+        CorpusField.SRC_RAW.value,
         CorpusField.TITLE_RAW.value,
         CorpusField.VOL.value,
     ]

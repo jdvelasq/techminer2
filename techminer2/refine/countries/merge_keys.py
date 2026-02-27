@@ -62,6 +62,6 @@ class MergeKeys(
             UserMergeKeys()
             .update(**self.params.__dict__)
             .with_thesaurus_file("countries.the.txt")
-            .with_source_field(CorpusField.COUNTRY_AND_AFFIL)
+            .with_source_field(CorpusField.CTRY_AFFIL)
             .run()
         )

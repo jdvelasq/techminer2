@@ -65,14 +65,14 @@ class ExtractAcronyms(
         dataframe = load_main_data(
             root_directory=self.params.root_directory,
             usecols=[
-                CorpusField.AUTH_KEY_TOK.value,
-                CorpusField.IDX_KEY_TOK.value,
+                CorpusField.AUTHKW_TOK.value,
+                CorpusField.IDXKW_TOK.value,
             ],
         )
 
         for col in [
-            CorpusField.AUTH_KEY_TOK.value,
-            CorpusField.IDX_KEY_TOK.value,
+            CorpusField.AUTHKW_TOK.value,
+            CorpusField.IDXKW_TOK.value,
         ]:
             keywords = dataframe[col].dropna().str.split("; ")
             keywords = keywords.explode().str.strip()
@@ -119,8 +119,8 @@ class ExtractAcronyms(
         dataframe = load_main_data(root_directory=self.params.root_directory)
 
         for col in [
-            CorpusField.AUTH_KEY_TOK.value,
-            CorpusField.IDX_KEY_TOK.value,
+            CorpusField.AUTHKW_TOK.value,
+            CorpusField.IDXKW_TOK.value,
         ]:
             keywords = dataframe[col].dropna().str.split("; ")
             keywords = keywords.explode().str.strip()
@@ -151,7 +151,7 @@ class ExtractAcronyms(
     # -------------------------------------------------------------------------
     def extract_acronyms_from_abstracts(self):
 
-        abs_col = CorpusField.ABS_TOK.value
+        abs_col = CorpusField.ABSTR_TOK.value
 
         dataframe = load_main_data(
             root_directory=self.params.root_directory,

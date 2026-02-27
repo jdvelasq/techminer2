@@ -129,16 +129,14 @@ def _filter_dataframe_by_match(params: Params, dataframe: pd.DataFrame) -> pd.Da
 
     for filter_name, filter_value in filters.items():
 
-        if filter_name == CorpusField.REC_ID.value:
+        if filter_name == CorpusField.RID.value:
 
-            dataframe = dataframe[
-                dataframe[CorpusField.REC_ID.value].isin(filter_value)
-            ]
+            dataframe = dataframe[dataframe[CorpusField.RID.value].isin(filter_value)]
 
         else:
 
             # Split the filter value into a list of strings
-            database = dataframe[[CorpusField.REC_ID.value, filter_name]].copy()
+            database = dataframe[[CorpusField.RID.value, filter_name]].copy()
             database.loc[:, filter_name] = database[filter_name].str.split(";")
 
             # Explode the list of strings into multiple rows
@@ -151,9 +149,7 @@ def _filter_dataframe_by_match(params: Params, dataframe: pd.DataFrame) -> pd.Da
             database = database[database[filter_name].isin(filter_value)]
 
             dataframe = dataframe[
-                dataframe[CorpusField.REC_ID.value].isin(
-                    database[CorpusField.REC_ID.value]
-                )
+                dataframe[CorpusField.RID.value].isin(database[CorpusField.RID.value])
             ]
 
     return dataframe
@@ -169,7 +165,7 @@ def _sort_dataframe_by(params: Params, dataframe: pd.DataFrame) -> pd.DataFrame:
     if sort_by == RecordsOrderBy.PUBYEAR_NEWEST:
         dataframe = dataframe.sort_values(
             [
-                CorpusField.PUBYEAR.value,
+                CorpusField.YEAR.value,
                 CorpusField.GCS.value,
                 CorpusField.LCS.value,
             ],
@@ -178,52 +174,52 @@ def _sort_dataframe_by(params: Params, dataframe: pd.DataFrame) -> pd.DataFrame:
     elif sort_by == RecordsOrderBy.PUBYEAR_OLDEST:
         dataframe = dataframe.sort_values(
             [
-                CorpusField.PUBYEAR.value,
+                CorpusField.YEAR.value,
                 CorpusField.GCS.value,
                 CorpusField.LCS.value,
             ],
             ascending=[True, False, False],
         )
-    elif sort_by == RecordsOrderBy.CIT_COUNT_GLOBAL_BY_HIGHEST:
+    elif sort_by == RecordsOrderBy.GCS_BY_HIGHEST:
         dataframe = dataframe.sort_values(
             [
                 CorpusField.GCS.value,
-                CorpusField.PUBYEAR.value,
+                CorpusField.YEAR.value,
                 CorpusField.LCS.value,
             ],
             ascending=[False, False, False],
         )
-    elif sort_by == RecordsOrderBy.CIT_COUNT_GLOBAL_BY_LOWEST:
+    elif sort_by == RecordsOrderBy.GCS_BY_LOWEST:
         dataframe = dataframe.sort_values(
             [
                 CorpusField.GCS.value,
-                CorpusField.PUBYEAR.value,
+                CorpusField.YEAR.value,
                 CorpusField.LCS.value,
             ],
             ascending=[True, False, False],
         )
 
-    elif sort_by == RecordsOrderBy.CIT_COUNT_LOCAL_BY_HIGHEST:
+    elif sort_by == RecordsOrderBy.LCS_BY_HIGHEST:
         dataframe = dataframe.sort_values(
             [
                 CorpusField.LCS.value,
-                CorpusField.PUBYEAR.value,
+                CorpusField.YEAR.value,
                 CorpusField.GCS.value,
             ],
             ascending=[False, False, False],
         )
 
-    elif sort_by == RecordsOrderBy.CIT_COUNT_LOCAL_BY_LOWEST:
+    elif sort_by == RecordsOrderBy.LCS_BY_LOWEST:
         dataframe = dataframe.sort_values(
             [
                 CorpusField.LCS.value,
-                CorpusField.PUBYEAR.value,
+                CorpusField.YEAR.value,
                 CorpusField.GCS.value,
             ],
             ascending=[True, False, False],
         )
 
-    elif sort_by == RecordsOrderBy.FIRST_AUTH_A_TO_Z:
+    elif sort_by == RecordsOrderBy.AUTH_A_TO_Z:
         dataframe = dataframe.sort_values(
             [
                 CorpusField.AUTH_NORM.value,
@@ -233,7 +229,7 @@ def _sort_dataframe_by(params: Params, dataframe: pd.DataFrame) -> pd.DataFrame:
             ascending=[True, False, False],
         )
 
-    elif sort_by == RecordsOrderBy.FIRST_AUTH_Z_TO_A:
+    elif sort_by == RecordsOrderBy.AUTH_Z_TO_A:
         dataframe = dataframe.sort_values(
             [
                 CorpusField.AUTH_NORM.value,
@@ -242,20 +238,20 @@ def _sort_dataframe_by(params: Params, dataframe: pd.DataFrame) -> pd.DataFrame:
             ],
             ascending=[False, False, False],
         )
-    elif sort_by == RecordsOrderBy.SRC_TITLE_A_TO_Z:
+    elif sort_by == RecordsOrderBy.SOURCE_A_TO_Z:
         dataframe = dataframe.sort_values(
             [
-                CorpusField.SRC_TITLE_NORM.value,
+                CorpusField.SRC_NORM.value,
                 CorpusField.GCS.value,
                 CorpusField.LCS.value,
             ],
             ascending=[True, False, False],
         )
 
-    elif sort_by == RecordsOrderBy.SRC_TITLE_Z_TO_A:
+    elif sort_by == RecordsOrderBy.SOURCE_Z_TO_A:
         dataframe = dataframe.sort_values(
             [
-                CorpusField.SRC_TITLE_NORM.value,
+                CorpusField.SRC_NORM.value,
                 CorpusField.GCS.value,
                 CorpusField.LCS.value,
             ],

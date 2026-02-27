@@ -96,8 +96,8 @@ def _get_project_keywords(dataframe: pd.DataFrame) -> set[str]:
     keywords: set[str] = set()
 
     for column in [
-        CorpusField.AUTH_KEY_TOK.value,
-        CorpusField.IDX_KEY_TOK.value,
+        CorpusField.AUTHKW_TOK.value,
+        CorpusField.IDXKW_TOK.value,
     ]:
         if column in dataframe.columns:
             series = dataframe[column].dropna()

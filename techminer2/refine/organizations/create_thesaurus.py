@@ -48,10 +48,10 @@ class CreateThesaurus(
 
         dataframe = load_main_data(
             root_directory=self.params.root_directory,
-            usecols=[CorpusField.ORG_AND_AFFIL.value],
+            usecols=[CorpusField.ORG_AFFIL.value],
         )
         dataframe = dataframe.dropna()
-        series = dataframe[CorpusField.ORG_AND_AFFIL.value]
+        series = dataframe[CorpusField.ORG_AFFIL.value]
         series = series.str.split("; ")
         series = series.explode()
         series = series.str.strip()
@@ -85,7 +85,7 @@ class CreateThesaurus(
         return ThesaurusCreationResult(
             colored_output=self.params.colored_output,
             file_path=str(filepath),
-            source_field=CorpusField.ORG_AND_AFFIL.value,
+            source_field=CorpusField.ORG_AFFIL.value,
             msg="Thesaurus initialized successfully.",
             success=True,
             status=f"{len(mapping.keys())} organizations added to the thesaurus.",

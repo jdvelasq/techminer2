@@ -1,12 +1,12 @@
 """
-Matrix
+MatrixList
 ===============================================================================
 
 Smoke tests:
-    >>> from techminer2 import ItemsOrderBy
-    >>> from techminer2.discover.occurrence_matrix.author_keywords_x_index_keywords import Matrix
+    >>> from techminer2 import CorpusField, ItemsOrderBy
+    >>> from techminer2.discover.occurrence_matrix.auth_x_concept import MatrixList
     >>> df = (
-    ...     Matrix()
+    ...     MatrixList()
     ...     #
     ...     # COLUMNS:
     ...     .having_column_items_in_top(10)
@@ -40,16 +40,30 @@ Smoke tests:
     >>> df.shape[1] > 1
     True
     >>> df.head(10)
+                                rows                  columns  OCC
+    0              fintech 155:33245    Jagtiani J. 005:01156    5
+    1  marketplace lending 004:00900    Jagtiani J. 005:01156    4
+    2              finance 050:10972      Dolata M. 003:00330    3
+    3              finance 050:10972     Schwabe G. 003:00330    3
+    4              finance 050:10972  Zavolokina L. 003:00330    3
+    5              fintech 155:33245     Arner D.W. 003:00911    3
+    6              fintech 155:33245    Barberis J. 003:00445    3
+    7              fintech 155:33245      Dolata M. 003:00330    3
+    8              fintech 155:33245      Hornuf L. 003:00904    3
+    9              fintech 155:33245          Li X. 003:00894    3
+
+
+
 
 """
 
 from techminer2 import CorpusField
 from techminer2._internals import ParamsMixin
 
-from .._internals import Matrix as BaseMatrix
+from .._internals import MatrixList as BaseMatrixList
 
 
-class Matrix(
+class MatrixList(
     ParamsMixin,
 ):
     """:meta private:"""
@@ -57,9 +71,9 @@ class Matrix(
     def run(self):
 
         return (
-            BaseMatrix()
+            BaseMatrixList()
             .with_params(self.params)
-            .with_column_field(CorpusField.AUTH_KEY_NORM)
-            .with_index_field(CorpusField.IDX_KEY_NORM)
+            .with_column_field(CorpusField.AUTH_NORM)
+            .with_index_field(CorpusField.CONCEPT_NORM)
             .run()
         )

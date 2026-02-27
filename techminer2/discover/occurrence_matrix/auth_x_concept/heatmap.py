@@ -4,12 +4,12 @@ Heatmap
 
 .. raw:: html
 
-    <iframe src="../_generated/px.discover.occurrence_matrix.author_keywords_x_authors.heatmap.html"
+    <iframe src="../_generated/px.discover.occurrence_matrix.auth_x_concept.heatmap.html"
     height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
     >>> from techminer2 import CorpusField, ItemsOrderBy
-    >>> from techminer2.discover.occurrence_matrix.author_keywords_x_authors import Heatmap
+    >>> from techminer2.discover.occurrence_matrix.auth_x_concept import Heatmap
     >>> fig = (
     ...     Heatmap()
     ...     #
@@ -44,7 +44,7 @@ Smoke tests:
     ... )
     >>> type(fig).__name__
     'Figure'
-    >>> fig.write_html("docsrc/_generated/px.discover.occurrence_matrix.author_keywords_x_authors.heatmap.html")
+    >>> fig.write_html("docsrc/_generated/px.discover.occurrence_matrix.auth_x_concept.heatmap.html")
 
 
 """
@@ -65,7 +65,7 @@ class Heatmap(
         return (
             BaseHeatmap()
             .with_params(self.params)
-            .with_column_field(CorpusField.AUTH_KEY_NORM)
-            .with_index_field(CorpusField.AUTH_NORM)
+            .with_column_field(CorpusField.AUTH_NORM)
+            .with_index_field(CorpusField.CONCEPT_NORM)
             .run()
         )

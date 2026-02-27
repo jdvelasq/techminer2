@@ -35,7 +35,7 @@ def _load_authors_data(root_directory: Path) -> pd.DataFrame:
         main_file,
         usecols=[
             CorpusField.AUTH_NORM.value,
-            CorpusField.AUTH_ID_NORM.value,
+            CorpusField.AUTHID_NORM.value,
         ],
         compression="zip",
         encoding="utf-8",
@@ -48,7 +48,7 @@ def _load_authors_data(root_directory: Path) -> pd.DataFrame:
             ref_file,
             usecols=[
                 CorpusField.AUTH_NORM.value,
-                CorpusField.AUTH_ID_NORM.value,
+                CorpusField.AUTHID_NORM.value,
             ],
             compression="zip",
             encoding="utf-8",
@@ -62,21 +62,21 @@ def _load_authors_data(root_directory: Path) -> pd.DataFrame:
 def _build_author_mapping(df: pd.DataFrame) -> dict[str, str]:
 
     df[CorpusField.AUTH_NORM.value] = df[CorpusField.AUTH_NORM.value].str.split("; ")
-    df[CorpusField.AUTH_ID_NORM.value] = df[CorpusField.AUTH_ID_NORM.value].str.split(
+    df[CorpusField.AUTHID_NORM.value] = df[CorpusField.AUTHID_NORM.value].str.split(
         "; "
     )
 
     df = df.explode(
         [
             CorpusField.AUTH_NORM.value,
-            CorpusField.AUTH_ID_NORM.value,
+            CorpusField.AUTHID_NORM.value,
         ]
     )
 
     df[CorpusField.AUTH_NORM.value] = df[CorpusField.AUTH_NORM.value].str.strip()
-    df[CorpusField.AUTH_ID_NORM.value] = df[CorpusField.AUTH_ID_NORM.value].str.strip()
+    df[CorpusField.AUTHID_NORM.value] = df[CorpusField.AUTHID_NORM.value].str.strip()
 
-    df = df.drop_duplicates(subset=[CorpusField.AUTH_ID_NORM.value])
+    df = df.drop_duplicates(subset=[CorpusField.AUTHID_NORM.value])
 
     df = df.sort_values(CorpusField.AUTH_NORM.value)
     df["counter"] = df.groupby(CorpusField.AUTH_NORM.value).cumcount()
@@ -88,7 +88,7 @@ def _build_author_mapping(df: pd.DataFrame) -> dict[str, str]:
 
     return dict(
         zip(
-            df[CorpusField.AUTH_ID_NORM.value],
+            df[CorpusField.AUTHID_NORM.value],
             df[CorpusField.AUTH_NORM.value],
         )
     )
@@ -111,7 +111,7 @@ def disambiguate_auth_norm(root_directory: str) -> int:
         )
 
     count = transform_column(
-        source=CorpusField.AUTH_ID_NORM,
+        source=CorpusField.AUTHID_NORM,
         target=CorpusField.AUTH_DISAMB,
         function=_apply_normalization,
         root_directory=root_directory,
@@ -119,7 +119,7 @@ def disambiguate_auth_norm(root_directory: str) -> int:
     )
 
     count += transform_column(
-        source=CorpusField.AUTH_ID_NORM,
+        source=CorpusField.AUTHID_NORM,
         target=CorpusField.AUTH_DISAMB,
         function=_apply_normalization,
         root_directory=root_directory,

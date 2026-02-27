@@ -19,25 +19,25 @@ def build_reference_steps(params: Params) -> list[Step]:
 
     return [
         Step(
-            name=f"Assigning '{CorpusField.REC_NO.value}'",
+            name=f"Assigning '{CorpusField.RNO.value}'",
             function=assign_recno,
             kwargs=common_kwargs,
             count_message="{count} record numbers assigned",
         ),
         Step(
-            name=f"Assigning '{CorpusField.REC_ID.value}'",
+            name=f"Assigning '{CorpusField.RID.value}'",
             function=assign_recid,
             kwargs=common_kwargs,
             count_message="{count} record IDs assigned",
         ),
         Step(
-            name=f"Calculating '{CorpusField.NUM_AUTH.value}'",
+            name=f"Calculating '{CorpusField.N_AUTH.value}'",
             function=calculate_numauth,
             kwargs=common_kwargs,
             count_message="{count} records calculated",
         ),
         Step(
-            name=f"Calculating '{CorpusField.NUM_REF_GLOBAL.value}'",
+            name=f"Calculating '{CorpusField.N_REF_GBL.value}'",
             function=calculate_numref_global,
             kwargs=common_kwargs,
             count_message="{count} reference counts calculated",

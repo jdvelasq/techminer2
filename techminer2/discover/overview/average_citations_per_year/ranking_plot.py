@@ -52,7 +52,7 @@ class RankingChart(
 
         dataframe = DataFrame().update(**self.params.__dict__).run()
         dataframe["Rank"] = range(1, len(dataframe) + 1)
-        self.having_items_ordered_by(ItemsOrderBy.CIT_COUNT_GLOBAL_PER_YEAR_AVG)
+        self.having_items_ordered_by(ItemsOrderBy.GCS_PER_YEAR_AVG)
         fig = ranking_chart(params=self.params, dataframe=dataframe)
 
         return fig

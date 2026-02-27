@@ -35,8 +35,8 @@ def _extract_keywords_from_data(data_df):
 
     keywords = set()
     for col in [
-        CorpusField.AUTH_KEY_RAW.value,
-        CorpusField.IDX_KEY_RAW.value,
+        CorpusField.AUTHKW_RAW.value,
+        CorpusField.IDXKW_RAW.value,
     ]:
         series = data_df[col].dropna().str.split("; ").explode().str.strip()
         keywords.update(series.drop_duplicates().to_list())

@@ -38,10 +38,10 @@ from techminer2 import CorpusField, ItemsOrderBy
 from techminer2._internals import ParamsMixin
 from techminer2._internals.data_access import load_filtered_main_data
 
-PUBYEAR = CorpusField.PUBYEAR.value
-CIT_COUNT_GLOBAL = ItemsOrderBy.CIT_COUNT_GLOBAL.value
-CIT_COUNT_LOCAL = ItemsOrderBy.CIT_COUNT_LOCAL.value
-CIT_COUNT_GLOBAL_PER_YEAR_AVG = ItemsOrderBy.CIT_COUNT_GLOBAL_PER_YEAR_AVG.value
+PUBYEAR = CorpusField.YEAR.value
+CIT_COUNT_GLOBAL = ItemsOrderBy.GCS.value
+CIT_COUNT_LOCAL = ItemsOrderBy.LCS.value
+CIT_COUNT_GLOBAL_PER_YEAR_AVG = ItemsOrderBy.GCS_PER_YEAR_AVG.value
 
 
 class DataFrame(

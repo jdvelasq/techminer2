@@ -76,6 +76,6 @@ class NetworkPlot(
         return (
             UserNetworkPlot()
             .update(**self.params.__dict__)
-            .with_source_field(CorpusField.KEY_NORM)
+            .with_source_field(CorpusField.KW_NORM)
             .run()
         )

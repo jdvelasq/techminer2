@@ -4,13 +4,13 @@ MatrixPlot
 
 .. raw:: html
 
-    <iframe src="../_generated/px.discover.occurrence_matrix.countries_x_organizations.matrix_plot.html"
+    <iframe src="../_generated/px.discover.occurrence_matrix.auth_x_concept.matrix_plot.html"
     height="600px" width="100%" frameBorder="0"></iframe>
 
 
 Smoke tests:
     >>> from techminer2 import ItemsOrderBy
-    >>> from techminer2.discover.occurrence_matrix.countries_x_organizations import MatrixPlot
+    >>> from techminer2.discover.occurrence_matrix.auth_x_concept import MatrixPlot
     >>> fig = (
     ...     MatrixPlot()
     ...     #
@@ -59,7 +59,7 @@ Smoke tests:
     ... )
     >>> type(fig).__name__
     'Figure'
-    >>> fig.write_html("docsrc/_generated/px.discover.occurrence_matrix.countries_x_organizations.matrix_plot.html")
+    >>> fig.write_html("docsrc/_generated/px.discover.occurrence_matrix.auth_x_concept.matrix_plot.html")
 
 """
 
@@ -79,7 +79,7 @@ class MatrixPlot(
         return (
             BaseMatrixPlot()
             .with_params(self.params)
-            .with_column_field(CorpusField.COUNTRY)
-            .with_index_field(CorpusField.ORG)
+            .with_column_field(CorpusField.AUTH_NORM)
+            .with_index_field(CorpusField.CONCEPT_NORM)
             .run()
         )

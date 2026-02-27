@@ -4,314 +4,246 @@ from enum import Enum
 class CorpusField(Enum):
 
     # ==========================================================================
-    # Citation information
-    # ==========================================================================
-
-    #
     # Authors
-    #
-    AUTH_ID_RAW = "AUTH_ID_RAW"
-    AUTH_ID_NORM = "AUTH_ID_NORM"
-
+    # ==========================================================================
     AUTH_FULL = "AUTH_FULL"
     AUTH_RAW = "AUTH_RAW"
     AUTH_DISAMB = "AUTH_DISAMB"
     AUTH_NORM = "AUTH_NORM"
-    AUTH_FIRST = "AUTH_FIRST"
 
-    #
+    # ==========================================================================
+    # Affiliations & correspondence address
+    # ==========================================================================
+    AFFIL_RAW = "AFFIL_RAW"
+    AUTHAFFIL = "AUTHAFFIL"
+    CORRESP = "CORRESP"
+
+    # ==========================================================================
+    # Organization
+    # ==========================================================================
+    ORG = "ORG"
+    ORG_ABBR = "ORG_ABBR"
+    ORG_AFFIL = "ORG_AFFIL"
+
+    # ==========================================================================
+    # First
+    # ==========================================================================
+    AUTH_FIRST = "AUTH_FIRST"
+    CTRY_FIRST = "CTRY_FIRST"
+    CTRY_ISO3_FIRST = "CTRY_ISO3_FIRST"
+    ORG_FIRST = "ORG_FIRST"
+
+    # ==========================================================================
+    # Counters
+    # ==========================================================================
+    N_AUTH = "N_AUTH"
+    N_REF_GBL = "N_REF_GBL"  # number of global references
+    N_REF_LCL = "N_REF_LCL"  # number of local references
+
+    # ==========================================================================
+    # Authors ID
+    # ==========================================================================
+    AUTHID_RAW = "AUTHID_RAW"
+    AUTHID_NORM = "AUTHID_NORM"
+
+    # ==========================================================================
     # Document title
-    #
+    # ==========================================================================
     TITLE_RAW = "TITLE_RAW"
     TITLE_TOK = "TITLE_TOK"
+    TITLE_UPPER = "TITLE_UPPER"
 
-    #
-    # Year
-    #
-    PUBYEAR = "PUBYEAR"
+    # ==========================================================================
+    # Abstract
+    # ==========================================================================
+    ABSTR_RAW = "ABSTR_RAW"
+    ABSTR_TOK = "ABSTR_TOK"
+    ABSTR_UPPER = "ABSTR_UPPER"
 
-    #
-    # EID
-    #
-    ART_NO = "ART_NO"
+    # ==========================================================================
+    # Other identifiers
+    # ==========================================================================
     EID = "EID"
-    LINK = "LINK"
-
-    #
-    # Source title & subject area
-    #
-    SRC_TITLE_RAW = "SRC_TITLE_RAW"
-    SRC_TITLE_NORM = "SRC_TITLE_NORM"
-    SUBJ_AREA = "SUBJ_AREA"
-
-    #
-    # Volume, issues, pages
-    #
-    VOL = "VOL"
-    ISSUE = "ISSUE"
-    PAGE_FIRST = "PAGE_FIRST"
-    PAGE_LAST = "PAGE_LAST"
-    PAGE_COUNT = "PAGE_COUNT"
-
-    #
-    # Citation count
-    # GCS: Global citation score (total number of citations received by a document)
-    # LCS: Local citation score (number of citations received by a document from documents in the same corpus)
-    #
-    GCS = "GCS"
-    LCS = "LCS"
-
-    #
-    # Source & document type
-    #
-    SOURCE = "SOURCE"
-    DOC_TYPE_RAW = "DOC_TYPE_RAW"
-    DOC_TYPE_NORM = "DOC_TYPE_NORM"
-
-    #
-    # Publication stage
-    #
-    PUBSTAGE = "PUBSTAGE"
-
-    #
-    # DOI
-    #
     DOI = "DOI"
-
-    #
-    # Open access
-    #
-    OA = "OPEN_ACCESS"
+    ISBN = "ISBN"
+    ISSN = "ISSN"
+    ISSNE = "ISSNE"
+    ISSNP = "ISSNP"
+    LINK = "LINK"
+    PUBMED = "PUBMED"  # PM (PubMed ID)
+    YEAR = "YEAR"
 
     # ==========================================================================
-    # Bibliographical information
+    # Records
     # ==========================================================================
+    RNO = "RNO"  # Record number
+    RID = "RID"  # Record ID
+    ARN = "ARN"  # Record number
+    DB_SRC = "DB_SRC"
 
-    #
-    # Affiliations
-    #
-    AUTH_AFFIL = "AUTH_AFFIL"
-    AFFIL_RAW = "AFFIL_RAW"
+    # ==========================================================================
+    # Source & subject area
+    # ==========================================================================
+    SRC_RAW = "SRC_RAW"
+    SRC_NORM = "SRC_NORM"
+    SRC_ISO4_NORM = "SRC_ISO4_NORM"
+    SRC_ISO4_RAW = "SRC_ISO4_RAW"
+    SUBJAREA = "SUBJAREA"
 
-    COUNTRY = "COUNTRY"
-    COUNTRY_AUTH_FIRST = "COUNTRY_AUTH_FIRST"
-    COUNTRY_AND_AFFIL = "COUNTRY_AND_AFFIL"
+    # ==========================================================================
+    # Citation count
+    # ==========================================================================
+    GCS = "GCS"  # Global citation score
+    LCS = "LCS"  # Local citation score
 
-    ORG = "ORG"
-    ORG_AUTH_FIRST = "ORG_AUTH_FIRST"
-    ORG_AND_AFFIL = "ORG_AND_AFFIL"
+    # ==========================================================================
+    # Publication type
+    # ==========================================================================
+    PUBTYPE_RAW = "PUBTYPE_RAW"
+    PUBTYPE_NORM = "PUBTYPE_NORM"
 
+    # ==========================================================================
+    # Country
+    # ==========================================================================
+    CTRY = "CTRY"
+    CTRY_ISO3 = "CTRY_ISO3"
+    CTRY_AFFIL = "CTRY_AFFIL"
     REGION = "REGION"
     SUBREGION = "SUBREGION"
 
-    #
-    # Serial identifiers
-    #
-    EISSN = "EISSN"
-    ISBN = "ISBN"
-    ISSN = "ISSN"
-    ISSNP = "ISSNP"
-
-    #
-    # PubMed ID
-    #
-    PUBMED = "PUBMED"
-
-    #
-    # Publisher
-    #
-    PUBLISHER = "PUBLISHER"
-
-    #
-    # Editor
-    #
-    EDITOR = "EDITOR"
-
-    #
-    # Language
-    #
-    LANGUAGE = "LANGUAGE"
-
-    #
-    # Correspondence address
-    #
-    CORRESP = "CORRESP"
-
-    #
-    # Abbreviated source title
-    #
-    SRC_TITLE_ABBR_NORM = "SRC_TITLE_ABBR_NORM"
-    SRC_TITLE_ABBR_RAW = "SRC_TITLE_ABBR_RAW"
+    # ==========================================================================
+    # Publication information
+    # ==========================================================================
+    PUBSTAGE = "PUBSTAGE"
+    OA = "OA"
+    PUBLISHER = "PUBLISHER"  # PU (publisher)
+    EDITOR = "EDITOR"  # BE (editor)
+    LANG = "LANG"
 
     # ==========================================================================
-    # Abstract & keywords
-    # ==========================================================================
-
-    #
-    # Abstract
-    #
-    ABS_RAW = "ABS_RAW"
-    ABS_TOK = "ABS_TOK"
-
-    #
     # Author keywords
-    #
-    AUTH_KEY_RAW = "AUTH_KEY_RAW"
-    AUTH_KEY_TOK = "AUTH_KEY_TOK"
-    AUTH_KEY_NORM = "AUTH_KEY_NORM"
+    # ==========================================================================
+    AUTHKW_RAW = "AUTHKW_RAW"  # DE (author keywords)
+    AUTHKW_TOK = "AUTHKW_TOK"
+    AUTHKW_NORM = "AUTHKW_NORM"
 
-    #
+    # ==========================================================================
     # Index keywords
-    #
-    IDX_KEY_RAW = "IDX_KEY_RAW"
-    IDX_KEY_TOK = "IDX_KEY_TOK"
-    IDX_KEY_NORM = "IDX_KEY_NORM"
-
-    #
-    # Hybrid keywords (author + index)
-    #
-    KEY_TOK = "KEY_TOK"
-    KEY_NORM = "KEY_NORM"
+    # ==========================================================================
+    IDXKW_RAW = "IDXKW_RAW"
+    IDXKW_TOK = "IDXKW_TOK"
+    IDXKW_NORM = "IDXKW_NORM"
 
     # ==========================================================================
-    # Noun phrases & words
+    # Keywords (author + index)
     # ==========================================================================
+    KW_TOK = "KW_TOK"
+    KW_NORM = "KW_NORM"
 
-    #
-    # Noun phrases extracted from abstract and title
-    #
+    # ==========================================================================
+    # Noun phrases
+    # ==========================================================================
     NP_TEXTBLOB = "NP_TEXTBLOB"
     NP_SPACY = "NP_SPACY"
-
-    #
-    # Abstract acronyms
-    #
-    ABS_ACRONYMS = "ABS_ACRONYMS"
-
-    #
-    # Abstract and title text with NP in uppercase
-    #
-    ABS_UPPER = "ABS_UPPER"
-    TITLE_UPPER = "TITLE_UPPER"
-
-    #
-    # Noun phrases extracted from abstract and title (upper case in text)
-    #
-    NP_ABS_RAW = "NP_ABS_RAW"
+    NP_ABSTR_RAW = "NP_ABSTR_RAW"
     NP_TITLE_RAW = "NP_TITLE_RAW"
+    NP_RAW = "NP_RAW"
 
-    #
-    # Noun phrases from abstract and title
-    #
-    NP_RAW = "NP_TOK"
+    # ==========================================================================
+    # Abstract acronyms
+    # ==========================================================================
+    ABSTR_ACRONYM = "ABSTR_ACRONYM"
 
-    #
+    # ==========================================================================
     # Concepts = keywords + NP
-    #
+    # ==========================================================================
     CONCEPT_RAW = "CONCEPT_RAW"
     CONCEPT_NORM = "CONCEPT_NORM"
 
     # ==========================================================================
-    # Funding details
-    # ==========================================================================
-
-    #
     # Acronym
-    #
+    # ==========================================================================
     ACRONYM = "ACRONYM"
 
-    #
+    # ==========================================================================
     # Funding text
-    #
-    FUND_DETAILS = "FUND_DETAILS"
-    FUND_SPONSORS = "FUND_SPONSORS"
-    FUND_TEXTS = "FUND_TEXTS"
+    # ==========================================================================
+    FUND_DET = "FUND_DET"
+    FUND_SPONS = "FUND_SPONS"
+    FUND_TXT = "FUND_TXT"
 
     # ==========================================================================
-    # Other information
-    # ==========================================================================
-
-    #
     # Tradenames & manufacturers
-    #
+    # ==========================================================================
     TRADENAME = "TRADENAME"
     MANUFACTURER = "MANUFACTURER"
 
-    #
+    # ==========================================================================
     # Accession numbers & chemicals
-    #
-    CAS_REG_NUMBER = "CAS_REG_NUMBER"
-    CODEN = "CODEN"
-    SEQ_NUMBER = "SEQ_NUMBER"
+    # ==========================================================================
+    CAS_REG_NO = "CAS_REG_NO"  # CRN (CAS registry number)
+    CODEN = "CODEN"  # CD (CODEN)
+    SEQ_NO = "SEQ_NO"  # SN (sequence number)
 
-    #
+    # ==========================================================================
     # Conference information
-    #
-    CONF_CODE = "CONF_CODE"
-    CONF_DATE = "CONF_DATE"
-    CONF_LOC = "CONF_LOC"
-    CONF_NAME = "CONF_NAME"
+    # ==========================================================================
+    CONF_CODE = "CONF_CODE"  # CC (conference code)
+    CONF_DATE = "CONF_DATE"  # CY
+    CONF_LOC = "CONF_LOC"  # CL
+    CONF_NAME = "CONF_NAME"  # CN
 
-    #
+    # ==========================================================================
     # References
-    #
+    # ==========================================================================
     REF_RAW = "REF_RAW"
     REF_NORM = "REF_NORM"
-    REF_AND_REC_ID = "REF_AND_REC_ID"
+    REF_RID = "REF_RID"
 
     # ==========================================================================
-    # tm2+ information
+    # Volume, issues, pages
     # ==========================================================================
+    VOL = "VOL"
+    ISSUE = "ISSUE"
+    PG_FIRST = "PG_FIRST"
+    PG_LAST = "PG_LAST"
+    PG_COUNT = "PG_COUNT"
 
-    #
-    # Record identifiers
-    #
-    REC_ID = "REC_ID"
-    REC_NO = "REC_NO"
-
-    #
-    # Item counts
-    #
-    NUM_AUTH = "NUM_AUTH"
-    NUM_REF_GLOBAL = "NUM_REF_GLOBAL"
-    NUM_REF_LOCAL = "NUM_REF_LOCAL"
-
-    #
+    # ==========================================================================
     # User fields
-    #
-
-    USER_0 = "USER_0"
-    USER_1 = "USER_1"
-    USER_2 = "USER_2"
-    USER_3 = "USER_3"
-    USER_4 = "USER_4"
-    USER_5 = "USER_5"
-    USER_6 = "USER_6"
-    USER_7 = "USER_7"
-    USER_8 = "USER_8"
-    USER_9 = "USER_9"
+    # ==========================================================================
+    USR0 = "USR0"
+    USR1 = "USR1"
+    USR2 = "USR2"
+    USR3 = "USR3"
+    USR4 = "USR4"
+    USR5 = "USR5"
+    USR6 = "USR6"
+    USR7 = "USR7"
+    USR8 = "USR8"
+    USR9 = "USR9"
 
 
 class ItemsOrderBy(Enum):
 
     OCC = "OCC"
-    CIT_COUNT_GLOBAL = "CIT_COUNT_GLOBAL"
-    CIT_COUNT_LOCAL = "CIT_COUNT_LOCAL"
-    CIT_COUNT_GLOBAL_PER_YEAR_AVG = "CIT_COUNT_GLOBAL_PER_YEAR_AVG"
+    GCS = "GCS"
+    LCS = "LCS"
+    GCS_PER_YEAR_AVG = "GCS_PER_YEAR_AVG"
 
 
 class RecordsOrderBy(Enum):
 
-    CIT_COUNT_GLOBAL_BY_HIGHEST = "CIT_COUNT_GLOBAL_BY_HIGHEST"
-    CIT_COUNT_GLOBAL_BY_LOWEST = "CIT_COUNT_GLOBAL_BY_LOWEST"
-    CIT_COUNT_LOCAL_BY_HIGHEST = "CIT_COUNT_LOCAL_BY_HIGHEST"
-    CIT_COUNT_LOCAL_BY_LOWEST = "CIT_COUNT_LOCAL_BY_LOWEST"
-    FIRST_AUTH_A_TO_Z = "FIRST_AUTH_A_TO_Z"
-    FIRST_AUTH_Z_TO_A = "FIRST_AUTH_Z_TO_A"
+    GCS_BY_HIGHEST = "GCS_BY_HIGHEST"
+    GCS_BY_LOWEST = "GCS_BY_LOWEST"
+    LCS_BY_HIGHEST = "LCS_BY_HIGHEST"
+    LCS_BY_LOWEST = "LCS_BY_LOWEST"
+    AUTH_A_TO_Z = "AUTH_A_TO_Z"
+    AUTH_Z_TO_A = "AUTH_Z_TO_A"
     PUBYEAR_NEWEST = "PUBYEAR_NEWEST"
     PUBYEAR_OLDEST = "PUBYEAR_OLDEST"
-    SRC_TITLE_A_TO_Z = "SRC_TITLE_A_TO_Z"
-    SRC_TITLE_Z_TO_A = "SRC_TITLE_Z_TO_A"
+    SOURCE_A_TO_Z = "SOURCE_A_TO_Z"
+    SOURCE_Z_TO_A = "SOURCE_Z_TO_A"
 
 
 class ThesaurusField(Enum):

@@ -75,8 +75,8 @@ def correct_hyphenated_words(root_directory: str) -> int:
     save_main_data(dataframe, root_directory)
 
     return max(
-        int(dataframe[CorpusField.AUTH_KEY_TOK.value].notna().sum()),
-        int(dataframe[CorpusField.IDX_KEY_TOK.value].notna().sum()),
+        int(dataframe[CorpusField.AUTHKW_TOK.value].notna().sum()),
+        int(dataframe[CorpusField.IDXKW_TOK.value].notna().sum()),
     )
 
 
@@ -114,8 +114,8 @@ def _extract_hyphenated_words(dataframe: pd.DataFrame) -> set:
 
     hypenated_words: set[str] = set()
     for col in [
-        CorpusField.AUTH_KEY_TOK.value,
-        CorpusField.IDX_KEY_TOK.value,
+        CorpusField.AUTHKW_TOK.value,
+        CorpusField.IDXKW_TOK.value,
     ]:
 
         series = dataframe[col].dropna()
@@ -267,8 +267,8 @@ def _replace(
     valid_hyphenated_words = load_builtin_word_list("valid_hyphenated_words.txt")
 
     for col in [
-        CorpusField.AUTH_KEY_TOK.value,
-        CorpusField.IDX_KEY_TOK.value,
+        CorpusField.AUTHKW_TOK.value,
+        CorpusField.IDXKW_TOK.value,
     ]:
         dataframe[col] = dataframe[col].str.lower()
 

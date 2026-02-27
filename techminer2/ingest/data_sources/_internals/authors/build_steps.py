@@ -18,7 +18,7 @@ def build_author_steps(params: Params) -> list[Step]:
 
     return [
         Step(
-            name=f"Normalizing '{CorpusField.AUTH_ID_RAW.value}' in main.csv.zip",
+            name=f"Normalizing '{CorpusField.AUTHID_RAW.value}' in main.csv.zip",
             function=normalize_auth_id_raw,
             kwargs={
                 "root_directory": params.root_directory,
@@ -27,7 +27,7 @@ def build_author_steps(params: Params) -> list[Step]:
             count_message="{count} records normalized",
         ),
         Step(
-            name=f"Normalizing '{CorpusField.AUTH_ID_RAW.value}' in references.csv.zip",
+            name=f"Normalizing '{CorpusField.AUTHID_RAW.value}' in references.csv.zip",
             function=normalize_auth_id_raw,
             kwargs={
                 "root_directory": params.root_directory,
@@ -60,7 +60,7 @@ def build_author_steps(params: Params) -> list[Step]:
             count_message="{count} records disambiguated",
         ),
         Step(
-            name=f"Calculating '{CorpusField.NUM_AUTH.value}'",
+            name=f"Calculating '{CorpusField.N_AUTH.value}'",
             function=calculate_numauth,
             kwargs=common_kwargs,
             count_message="{count} records calculated",

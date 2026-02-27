@@ -1,12 +1,17 @@
 """
-Matrix
+Bubble Plot
 ===============================================================================
+
+.. raw:: html
+
+    <iframe src="../_generated/px.discover.occurrence_matrix.auth_x_concept.bubble_chart.html"
+    height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
     >>> from techminer2 import ItemsOrderBy
-    >>> from techminer2.discover.occurrence_matrix.authors_x_countries import Matrix
-    >>> df = (
-    ...     Matrix()
+    >>> from techminer2.discover.occurrence_matrix.auth_x_concept import BubbleChart
+    >>> fig = (
+    ...     BubbleChart()
     ...     #
     ...     # COLUMNS:
     ...     .having_column_items_in_top(10)
@@ -16,14 +21,18 @@ Smoke tests:
     ...     .having_column_items_in(None)
     ...     #
     ...     # ROWS:
-    ...     .having_index_items_in_top(None)
+    ...     .having_index_items_in_top(15)
     ...     .having_index_items_ordered_by(ItemsOrderBy.OCC)
-    ...     .having_index_item_occurrences_between(2, None)
+    ...     .having_index_item_occurrences_between(0, None)
     ...     .having_index_item_citations_between(None, None)
     ...     .having_index_items_in(None)
     ...     #
     ...     # COUNTERS:
     ...     .using_item_counters(True)
+    ...     #
+    ...     # PLOT:
+    ...     .using_title_text(None)
+    ...     .using_colormap("Blues")
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/fintech/")
@@ -33,13 +42,9 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> type(df).__name__
-    'DataFrame'
-    >>> df.shape[0] > 1
-    True
-    >>> df.shape[1] > 1
-    True
-    >>> df.head(10)
+    >>> type(fig).__name__
+    'Figure'
+    >>> fig.write_html("docsrc/_generated/px.discover.occurrence_matrix.auth_x_concept.bubble_chart.html")
 
 
 """
@@ -47,10 +52,10 @@ Smoke tests:
 from techminer2 import CorpusField
 from techminer2._internals import ParamsMixin
 
-from .._internals import Matrix as BaseMatrix
+from .._internals import BubbleChart as BaseBubbleChart
 
 
-class Matrix(
+class BubbleChart(
     ParamsMixin,
 ):
     """:meta private:"""
@@ -58,9 +63,9 @@ class Matrix(
     def run(self):
 
         return (
-            BaseMatrix()
+            BaseBubbleChart()
             .with_params(self.params)
             .with_column_field(CorpusField.AUTH_NORM)
-            .with_index_field(CorpusField.COUNTRY)
+            .with_index_field(CorpusField.CONCEPT_NORM)
             .run()
         )

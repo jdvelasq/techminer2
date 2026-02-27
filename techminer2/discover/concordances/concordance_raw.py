@@ -55,6 +55,6 @@ class ConcordanceRaw(
         return (
             ConcordanceUser()
             .update(**self.params.__dict__)
-            .with_source_field(CorpusField.ABS_RAW)
+            .with_source_field(CorpusField.ABSTR_RAW)
             .run()
         )
