@@ -1,0 +1,180 @@
+tm2/
+├── anal/
+│   ├── auth/
+│   │   ├── auth/
+│   │   │   └── lotka/
+│   │   ├── ctry/
+│   │   └── org/
+│   ├── doc/
+│   │   ├── ref/
+│   │   │   └── rpys/
+│   │   ├── doc/
+│   │   └── word/
+│   │       ├── authkw/
+│   │       ├── idxkw/
+│   │       └── kw/
+│   └── src/
+│       └── bradford/
+├── discov/
+│   ├── assoc/
+│   │   ├── authkw/
+│   │   ├── concept/
+│   │   ├── idxkw/
+│   │   └── kw/
+│   ├── co_occur_matrix/
+│   │   ├── auth/
+│   │   ├── authkw/
+│   │   ├── concept/
+│   │   ├── ctry/
+│   │   ├── ctry_first/
+│   │   ├── idxkw/
+│   │   ├── kw/
+│   │   ├── org/
+│   │   └── org_first/
+│   ├── concord/
+│   ├── correl/
+│   │   ├── auto/
+│   │   └── cross/
+│   ├── doc_clust/
+│   ├── occur_matrix/
+│   │   ├── auth/
+│   │   │   ├── auth_first/
+│   │   │   ├── authkw/
+│   │   │   ├── concept/
+│   │   │   ├── ctry/
+│   │   │   ├── ctry_first/
+│   │   │   ├── idxkw/
+│   │   │   ├── kw/
+│   │   │   ├── org/
+│   │   │   ├── org_first/
+│   │   │   ├── pubtype/
+│   │   │   └── src/
+│   │   ├── auth_first/
+│   │   │   ├── authkw/
+│   │   │   ├── concept/
+│   │   │   ├── ctry/
+│   │   │   ├── ctry_first/
+│   │   │   ├── idxkw/
+│   │   │   ├── kw/
+│   │   │   ├── org/
+│   │   │   ├── org_first/
+│   │   │   ├── pubtype/
+│   │   │   └── src/
+│   │   ├── authkw/
+│   │   │   ├── concept/
+│   │   │   ├── ctry/
+│   │   │   ├── ctry_first/
+│   │   │   ├── idxkw/
+│   │   │   ├── kw/
+│   │   │   ├── org/
+│   │   │   ├── org_first/
+│   │   │   ├── pubtype/
+│   │   │   └── src/
+│   │   ├── concept/
+│   │   │   ├── ctry/
+│   │   │   ├── ctry_first/
+│   │   │   ├── idxkw/
+│   │   │   ├── kw/
+│   │   │   ├── org/
+│   │   │   ├── org_first/
+│   │   │   ├── pubtype/
+│   │   │   └── src/
+│   │   ├── ctry/
+│   │   │   ├── ctry_first/
+│   │   │   ├── idxkw/
+│   │   │   ├── kw/
+│   │   │   ├── org/
+│   │   │   ├── org_first/
+│   │   │   ├── pubtype/
+│   │   │   └── src/
+│   │   ├── ctry_first/
+│   │   │   ├── idxkw/
+│   │   │   ├── kw/
+│   │   │   ├── org/
+│   │   │   ├── org_first/
+│   │   │   ├── pubtype/
+│   │   │   └── src/
+│   │   ├── idxkw/
+│   │   │   ├── kw/
+│   │   │   ├── org/
+│   │   │   ├── org_first/
+│   │   │   ├── pubtype/
+│   │   │   └── src/
+│   │   ├── kw/
+│   │   │   ├── org/
+│   │   │   ├── org_first/
+│   │   │   ├── pubtype/
+│   │   │   └── src/
+│   │   ├── org/
+│   │   │   ├── org_first/
+│   │   │   ├── pubtype/
+│   │   │   └── src/
+│   │   ├── org_first/
+│   │   │   ├── pubtype/
+│   │   │   └── src/
+│   │   └── pubtype/
+│   │       └── src/
+│   ├── overview/
+│   │   ├── annu_sci_prod/
+│   │   ├── aver_cit_per_year/
+│   │   └── life_cycl/
+│   ├── records/
+│   └── tfid/
+├── ingest/
+│   ├── data_sourc/
+│   ├── extr/
+│   ├── oper/
+│   ├── rec/
+│   └── rev/
+├── innov/
+│   ├── co_occur/
+│   └── emerg/
+├── refin/
+│   ├── builtin/
+│   ├── concept/
+│   ├── ctry/
+│   ├── org/
+│   ├── ref/
+│   └── user/
+├── rep/
+│   ├── manuscr/
+│   ├── visual/
+│   └── zotero/
+└── synthes/
+    ├── concept_struct/
+    │   ├── co_occur/
+    │   │   ├── authkw/
+    │   │   ├── concept/
+    │   │   ├── idxkw/
+    │   │   ├── kw/
+    │   │   └── usr/
+    │   ├── factor_anal/
+    │   │   ├── co_occur/
+    │   │   └── tfidf/
+    │   └── topic_model/
+    │       └── user/
+    ├── coupl/
+    │   ├── auth/
+    │   ├── ctry/
+    │   ├── doc/
+    │   ├── org/
+    │   └── src/
+    ├── emerg/
+    ├── intellect_struc/
+    │   ├── cit/
+    │   │   ├── auth/
+    │   │   ├── ctry/
+    │   │   ├── doc/
+    │   │   ├── org/
+    │   │   └── src/
+    │   ├── co_cit/
+    │   │   ├── cited_auth/
+    │   │   ├── cited_ref/
+    │   │   └── cited_src/
+    │   └── main_path/
+    └── soc_struct/
+        ├── co_authorsh/
+        │   ├── auth/
+        │   ├── ctry/
+        │   └── org/
+        └── world_map/
