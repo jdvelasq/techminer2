@@ -4,7 +4,7 @@ MatrixList
 
 Smoke tests:
     >>> from tm2p import CorpusField, ItemsOrderBy
-    >>> from tm2p.discov.co_occur_matrix._internals import MatrixList
+    >>> from tm2p.discov.co_occur_matrix.authkw import MatrixList
     >>> df = (
     ...     MatrixList()
     ...     #

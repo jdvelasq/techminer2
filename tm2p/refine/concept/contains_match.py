@@ -59,7 +59,7 @@ import sys
 from tm2p import CorpusField
 from tm2p._intern import ParamsMixin
 from tm2p.refine._intern.objs.thesaurus_match_result import ThesaurusMatchResult
-from tm2p.refine._intern.rules import apply_contains_rule
+from tm2p.refine._intern.rule import apply_contains_rule
 
 from .._intern.data_access import load_thesaurus_as_dataframe
 
@@ -83,7 +83,7 @@ class ContainsMatch(
     def run(self) -> ThesaurusMatchResult:
 
         self.with_thesaurus_file("terms.the.txt")
-        self.with_source_field(CorpusField.TERM_TOK)
+        self.with_source_field(CorpusField.CONCEPT_RAW)
 
         thesaurus_df = load_thesaurus_as_dataframe(params=self.params)
 

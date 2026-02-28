@@ -4,7 +4,7 @@ Matrix
 
 Smoke tests:
     >>> from tm2p import CorpusField, ItemsOrderBy
-    >>> from tm2p.discov.co_occur_matrix._internals import Matrix
+    >>> from tm2p.discov.co_occur_matrix.auth_first import Matrix
     >>> df = (
     ...     Matrix()
     ...     #
@@ -33,18 +33,18 @@ Smoke tests:
     >>> df.shape[1] > 1
     True
     >>> df.head(10)
-    columns                            fintech 117:25478  ...  financial services 007:01673
-    rows                                                  ...
-    fintech 117:25478                                117  ...                             4
-    financial inclusion 017:03823                     14  ...                             1
-    financial technology 014:02508                     7  ...                             1
-    green finance 011:02844                            8  ...                             0
-    blockchain 011:02023                               8  ...                             0
-    banking 010:02599                                  7  ...                             2
-    china 009:01947                                    7  ...                             0
-    innovation 009:01703                               6  ...                             2
-    artificial intelligence 008:01915                  6  ...                             0
-    financial services 007:01673                       4  ...                             7
+    columns                  Jagtiani J. 003:00682  ...  Nenavath S. 002:00256
+    rows                                            ...
+    Jagtiani J. 003:00682                        3  ...                      0
+    Zavolokina L. 003:00330                      0  ...                      0
+    Gomber P. 002:02579                          0  ...                      0
+    Arner D.W. 002:00898                         0  ...                      0
+    Muganyi T. 002:00656                         0  ...                      0
+    Gai K. 002:00511                             0  ...                      0
+    Allen F. 002:00474                           0  ...                      0
+    Ashta A. 002:00372                           0  ...                      0
+    Udeagha M.C. 002:00371                       0  ...                      0
+    Nenavath S. 002:00256                        0  ...                      2
     <BLANKLINE>
     [10 rows x 10 columns]
 

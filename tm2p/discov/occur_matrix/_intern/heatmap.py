@@ -9,7 +9,7 @@ Heatmap
 
 Smoke tests:
     >>> from tm2p import CorpusField, ItemsOrderBy
-    >>> from tm2p.discov.occur_matrix._internals import Heatmap
+    >>> from tm2p.discov.occur_matrix._intern import Heatmap
     >>> fig = (
     ...     Heatmap()
     ...     #

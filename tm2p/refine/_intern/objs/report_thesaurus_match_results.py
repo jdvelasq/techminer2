@@ -18,10 +18,10 @@ def report_thesaurus_match_results(
 
     df = df.copy()
 
-    counting = df[ThesaurusField.PREFERRED_TEMP.value].value_counts()
+    counting = df[ThesaurusField.PREFERRED.value].value_counts()
     counting = counting[counting > 1]
     duplicated_items = counting.index.to_list()
-    df = df[df[ThesaurusField.PREFERRED_TEMP.value].isin(duplicated_items)]
+    df = df[df[ThesaurusField.PREFERRED.value].isin(duplicated_items)]
 
     num_candidates = self.compute_num_candidates(df)
     num_groups = self.compute_num_groups(df)

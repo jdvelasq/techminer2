@@ -4,7 +4,7 @@ Matrix
 
 Smoke tests:
     >>> from tm2p import CorpusField, ItemsOrderBy
-    >>> from tm2p.discov.co_occur_matrix._internals import Matrix
+    >>> from tm2p.discov.co_occur_matrix.org import Matrix
     >>> df = (
     ...     Matrix()
     ...     #
@@ -33,21 +33,20 @@ Smoke tests:
     >>> df.shape[1] > 1
     True
     >>> df.head(10)
-    columns                            fintech 117:25478  ...  financial services 007:01673
-    rows                                                  ...
-    fintech 117:25478                                117  ...                             4
-    financial inclusion 017:03823                     14  ...                             1
-    financial technology 014:02508                     7  ...                             1
-    green finance 011:02844                            8  ...                             0
-    blockchain 011:02023                               8  ...                             0
-    banking 010:02599                                  7  ...                             2
-    china 009:01947                                    7  ...                             0
-    innovation 009:01703                               6  ...                             2
-    artificial intelligence 008:01915                  6  ...                             0
-    financial services 007:01673                       4  ...                             7
+    columns                                       SOUTHWEST UNIV FINANC ECON [CHN] 008:02269  ...  XI'AN JIAOTONG UNIV [CHN] 003:00689
+    rows                                                                                      ...
+    SOUTHWEST UNIV FINANC ECON [CHN] 008:02269                                            16  ...                                    0
+    UNIV ZÜR [CHE] 007:00971                                                               0  ...                                    0
+    FED RESERV BANK PHILA [USA] 005:01156                                                  0  ...                                    0
+    UNIV HONG KONG [HKG] 004:00760                                                         0  ...                                    0
+    PEKING UNIV [CHN] 004:00576                                                            1  ...                                    0
+    LATV UNIV [LVA] 004:00456                                                              0  ...                                    0
+    [N/A] 004:00192                                                                        0  ...                                    0
+    SHANGHAI UNIV [CHN] 003:00911                                                          0  ...                                    0
+    MAX PLANCK INST INNOV COMPET [DEU] 003:00904                                           0  ...                                    0
+    XI'AN JIAOTONG UNIV [CHN] 003:00689                                                    0  ...                                    3
     <BLANKLINE>
     [10 rows x 10 columns]
-
 
 
 

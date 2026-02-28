@@ -4,7 +4,7 @@ Matrix
 
 Smoke tests:
     >>> from tm2p import CorpusField, ItemsOrderBy
-    >>> from tm2p.discov.co_occur_matrix._internals import Matrix
+    >>> from tm2p.discov.co_occur_matrix.kw import Matrix
     >>> df = (
     ...     Matrix()
     ...     #
@@ -33,18 +33,18 @@ Smoke tests:
     >>> df.shape[1] > 1
     True
     >>> df.head(10)
-    columns                            fintech 117:25478  ...  financial services 007:01673
+    columns                            fintech 119:26148  ...  blockchain 012:03450
     rows                                                  ...
-    fintech 117:25478                                117  ...                             4
-    financial inclusion 017:03823                     14  ...                             1
-    financial technology 014:02508                     7  ...                             1
-    green finance 011:02844                            8  ...                             0
-    blockchain 011:02023                               8  ...                             0
-    banking 010:02599                                  7  ...                             2
-    china 009:01947                                    7  ...                             0
-    innovation 009:01703                               6  ...                             2
-    artificial intelligence 008:01915                  6  ...                             0
-    financial services 007:01673                       4  ...                             7
+    fintech 119:26148                                119  ...                     8
+    finance 029:07137                                 17  ...                     4
+    innovation 020:03916                              14  ...                     2
+    china 018:03596                                   12  ...                     0
+    financial inclusion 017:03823                     14  ...                     1
+    financial technology 015:02583                     7  ...                     1
+    sustainable development 015:02158                  7  ...                     1
+    banking 013:03043                                  9  ...                     1
+    sustainability 013:02308                           9  ...                     0
+    blockchain 012:03450                               8  ...                    12
     <BLANKLINE>
     [10 rows x 10 columns]
 

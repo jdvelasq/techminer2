@@ -10,7 +10,7 @@ MatrixPlot
 
 Smoke tests:
     >>> from tm2p import CorpusField, ItemsOrderBy
-    >>> from tm2p.discov.co_occur_matrix._internals import MatrixPlot
+    >>> from tm2p.discov.co_occur_matrix._intern import MatrixPlot
     >>> fig = (
     ...     MatrixPlot()
     ...     #

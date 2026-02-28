@@ -4,7 +4,7 @@ Matrix
 
 Smoke tests:
     >>> from tm2p import CorpusField, ItemsOrderBy
-    >>> from tm2p.discov.co_occur_matrix._internals import Matrix
+    >>> from tm2p.discov.co_occur_matrix.org_first import Matrix
     >>> df = (
     ...     Matrix()
     ...     #
@@ -33,21 +33,20 @@ Smoke tests:
     >>> df.shape[1] > 1
     True
     >>> df.head(10)
-    columns                            fintech 117:25478  ...  financial services 007:01673
-    rows                                                  ...
-    fintech 117:25478                                117  ...                             4
-    financial inclusion 017:03823                     14  ...                             1
-    financial technology 014:02508                     7  ...                             1
-    green finance 011:02844                            8  ...                             0
-    blockchain 011:02023                               8  ...                             0
-    banking 010:02599                                  7  ...                             2
-    china 009:01947                                    7  ...                             0
-    innovation 009:01703                               6  ...                             2
-    artificial intelligence 008:01915                  6  ...                             0
-    financial services 007:01673                       4  ...                             7
+    columns                                     SOUTHWEST UNIV FINANC ECON [CHN] 005:01236  ...  IMP COLL LOND [GBR] 002:00474
+    rows                                                                                    ...
+    SOUTHWEST UNIV FINANC ECON [CHN] 005:01236                                           5  ...                              0
+    UNIV ZÜR [CHE] 005:00659                                                             0  ...                              0
+    [N/A] 004:00192                                                                      0  ...                              0
+    XI'AN JIAOTONG UNIV [CHN] 003:00689                                                  0  ...                              0
+    FED RESERV BANK PHILA [USA] 003:00682                                                0  ...                              0
+    GOETHE-UNIVERSITÄT FRANKF [DEU] 002:02579                                            0  ...                              0
+    SOAS UNIV LOND [GBR] 002:01022                                                       0  ...                              0
+    SHANGHAI UNIV [CHN] 002:00656                                                        0  ...                              0
+    PACE UNIV [USA] 002:00511                                                            0  ...                              0
+    IMP COLL LOND [GBR] 002:00474                                                        0  ...                              2
     <BLANKLINE>
     [10 rows x 10 columns]
-
 
 
 

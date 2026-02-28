@@ -41,7 +41,7 @@ import sys
 from tm2p import CorpusField, ThesaurusField
 from tm2p._intern import ParamsMixin
 from tm2p.refine._intern.objs.thesaurus_match_result import ThesaurusMatchResult
-from tm2p.refine._intern.rules import (
+from tm2p.refine._intern.rule import (
     apply_chemical_compounds_rule,
     apply_common_and_basic_rule,
     apply_error_metrics_rule,
@@ -89,7 +89,7 @@ class PreProcessThesaurus(
     def run(self) -> ThesaurusMatchResult:
 
         self.with_thesaurus_file("concepts.the.txt")
-        self.with_source_field(CorpusField.KEY_AND_NP_AND_WORDS)
+        self.with_source_field(CorpusField.CONCEPT_RAW)
 
         thesaurus_df = load_thesaurus_as_dataframe(params=self.params)
 

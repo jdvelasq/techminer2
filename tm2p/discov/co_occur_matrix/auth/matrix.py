@@ -33,18 +33,18 @@ Smoke tests:
     >>> df.shape[1] > 1
     True
     >>> df.head(10)
-    columns                            fintech 117:25478  ...  financial services 007:01673
-    rows                                                  ...
-    fintech 117:25478                                117  ...                             4
-    financial inclusion 017:03823                     14  ...                             1
-    financial technology 014:02508                     7  ...                             1
-    green finance 011:02844                            8  ...                             0
-    blockchain 011:02023                               8  ...                             0
-    banking 010:02599                                  7  ...                             2
-    china 009:01947                                    7  ...                             0
-    innovation 009:01703                               6  ...                             2
-    artificial intelligence 008:01915                  6  ...                             0
-    financial services 007:01673                       4  ...                             7
+    columns                  Jagtiani J. 005:01156  ...  Kauffman R.J. 002:01445
+    rows                                            ...
+    Jagtiani J. 005:01156                        5  ...                        0
+    Arner D.W. 003:00911                         0  ...                        0
+    Hornuf L. 003:00904                          0  ...                        0
+    Li X. 003:00894                              0  ...                        0
+    Barberis J. 003:00445                        0  ...                        0
+    Dolata M. 003:00330                          0  ...                        0
+    Schwabe G. 003:00330                         0  ...                        0
+    Zavolokina L. 003:00330                      0  ...                        0
+    Gomber P. 002:02579                          0  ...                        1
+    Kauffman R.J. 002:01445                      0  ...                        2
     <BLANKLINE>
     [10 rows x 10 columns]
 

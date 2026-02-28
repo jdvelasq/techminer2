@@ -4,7 +4,7 @@ MatrixList
 
 Smoke tests:
     >>> from tm2p import CorpusField, ItemsOrderBy
-    >>> from tm2p.discov.co_occur_matrix._internals import MatrixList
+    >>> from tm2p.discov.co_occur_matrix.concept import MatrixList
     >>> df = (
     ...     MatrixList()
     ...     #
@@ -34,16 +34,16 @@ Smoke tests:
     True
     >>> df.head(10)
                                  rows                         columns  OCC
-    0               fintech 117:25478               fintech 117:25478  117
-    1   financial inclusion 017:03823   financial inclusion 017:03823   17
-    2   financial inclusion 017:03823               fintech 117:25478   14
-    3  financial technology 014:02508  financial technology 014:02508   14
-    4               fintech 117:25478   financial inclusion 017:03823   14
-    5            blockchain 011:02023            blockchain 011:02023   11
-    6         green finance 011:02844         green finance 011:02844   11
-    7               banking 010:02599               banking 010:02599   10
-    8                 china 009:01947                 china 009:01947    9
-    9            innovation 009:01703            innovation 009:01703    9
+    0               fintech 155:33245               fintech 155:33245  155
+    1  financial technology 051:09258  financial technology 051:09258   51
+    2               finance 050:10972               finance 050:10972   50
+    3  financial technology 051:09258               fintech 155:33245   48
+    4               fintech 155:33245  financial technology 051:09258   48
+    5               finance 050:10972               fintech 155:33245   39
+    6               fintech 155:33245               finance 050:10972   39
+    7                 china 033:06419                 china 033:06419   33
+    8            innovation 033:07734            innovation 033:07734   33
+    9    financial services 030:06887    financial services 030:06887   30
 
 
 

@@ -4,7 +4,7 @@ Matrix
 
 Smoke tests:
     >>> from tm2p import CorpusField, ItemsOrderBy
-    >>> from tm2p.discov.occur_matrix._internals import Matrix
+    >>> from tm2p.discov.occur_matrix._intern import Matrix
     >>> df = (
     ...     Matrix()
     ...     #
@@ -59,7 +59,7 @@ Smoke tests:
 
 
     >>> from tm2p import CorpusField, ItemsOrderBy
-    >>> from tm2p.discov.occur_matrix._internals import Matrix
+    >>> from tm2p.discov.occur_matrix._intern import Matrix
     >>> df = (
     ...     Matrix()
     ...     #

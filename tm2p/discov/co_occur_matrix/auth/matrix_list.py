@@ -33,17 +33,17 @@ Smoke tests:
     >>> df.shape[1] > 1
     True
     >>> df.head(10)
-                                 rows                         columns  OCC
-    0               fintech 117:25478               fintech 117:25478  117
-    1   financial inclusion 017:03823   financial inclusion 017:03823   17
-    2   financial inclusion 017:03823               fintech 117:25478   14
-    3  financial technology 014:02508  financial technology 014:02508   14
-    4               fintech 117:25478   financial inclusion 017:03823   14
-    5            blockchain 011:02023            blockchain 011:02023   11
-    6         green finance 011:02844         green finance 011:02844   11
-    7               banking 010:02599               banking 010:02599   10
-    8                 china 009:01947                 china 009:01947    9
-    9            innovation 009:01703            innovation 009:01703    9
+                        rows                  columns  OCC
+    0  Jagtiani J. 005:01156    Jagtiani J. 005:01156    5
+    1   Arner D.W. 003:00911     Arner D.W. 003:00911    3
+    2  Barberis J. 003:00445    Barberis J. 003:00445    3
+    3    Dolata M. 003:00330      Dolata M. 003:00330    3
+    4    Dolata M. 003:00330     Schwabe G. 003:00330    3
+    5    Dolata M. 003:00330  Zavolokina L. 003:00330    3
+    6    Hornuf L. 003:00904      Hornuf L. 003:00904    3
+    7        Li X. 003:00894          Li X. 003:00894    3
+    8   Schwabe G. 003:00330      Dolata M. 003:00330    3
+    9   Schwabe G. 003:00330     Schwabe G. 003:00330    3
 
 
 

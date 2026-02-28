@@ -4,7 +4,7 @@ Matrix
 
 Smoke tests:
     >>> from tm2p import CorpusField, ItemsOrderBy
-    >>> from tm2p.discov.co_occur_matrix._internals import Matrix
+    >>> from tm2p.discov.co_occur_matrix.idxkw import Matrix
     >>> df = (
     ...     Matrix()
     ...     #
@@ -33,18 +33,18 @@ Smoke tests:
     >>> df.shape[1] > 1
     True
     >>> df.head(10)
-    columns                            fintech 117:25478  ...  financial services 007:01673
+    columns                            finance 028:07080  ...  commerce 006:02013
     rows                                                  ...
-    fintech 117:25478                                117  ...                             4
-    financial inclusion 017:03823                     14  ...                             1
-    financial technology 014:02508                     7  ...                             1
-    green finance 011:02844                            8  ...                             0
-    blockchain 011:02023                               8  ...                             0
-    banking 010:02599                                  7  ...                             2
-    china 009:01947                                    7  ...                             0
-    innovation 009:01703                               6  ...                             2
-    artificial intelligence 008:01915                  6  ...                             0
-    financial services 007:01673                       4  ...                             7
+    finance 028:07080                                 30  ...                   4
+    fintech 024:05279                                  9  ...                   4
+    sustainable development 017:02470                 11  ...                   1
+    innovation 014:02604                               7  ...                   1
+    china 010:02031                                    7  ...                   0
+    sustainability 010:01546                           4  ...                   0
+    economic development 008:02384                     5  ...                   0
+    financial service 007:02627                        4  ...                   1
+    blockchain 006:02515                               3  ...                   2
+    commerce 006:02013                                 4  ...                   6
     <BLANKLINE>
     [10 rows x 10 columns]
 

@@ -2,9 +2,14 @@
 Heatmap
 ===============================================================================
 
+.. raw:: html
+
+    <iframe src="../_generated/px.discov.co_occur_matrix.auth_first.heatmap.html"
+    height="800px" width="100%" frameBorder="0"></iframe>
+
 Smoke tests:
     >>> from tm2p import CorpusField, ItemsOrderBy
-    >>> from tm2p.discov.co_occur_matrix._internals import Heatmap
+    >>> from tm2p.discov.co_occur_matrix.auth_first import Heatmap
     >>> fig = (
     ...     Heatmap()
     ...     #
@@ -33,7 +38,7 @@ Smoke tests:
     ... )
     >>> type(fig).__name__
     'Figure'
-    >>> fig.write_html("docsrc/_generated/px.discov.co_occur_matrix._intern.heatmap.html")
+    >>> fig.write_html("docsrc/_generated/px.discov.co_occur_matrix.auth_first.heatmap.html")
 
 
 

@@ -60,6 +60,6 @@ class MergeKeys(
             UserMergeKeys()
             .update(**self.params.__dict__)
             .with_thesaurus_file("concepts.the.txt")
-            .with_source_field(CorpusField.KEY_AND_NP_AND_WORDS)
+            .with_source_field(CorpusField.CONCEPT_RAW)
             .run()
         )

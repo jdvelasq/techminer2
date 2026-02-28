@@ -39,7 +39,7 @@ class CreateThesaurus(
         return (
             UserCreateThesaurus()
             .using_colored_output(self.params.colored_output)
-            .with_source_field(CorpusField.KEY_AND_NP_AND_WORDS)
+            .with_source_field(CorpusField.CONCEPT_RAW)
             .with_thesaurus_file("concepts.the.txt")
             .where_root_directory(self.params.root_directory)
             .run()

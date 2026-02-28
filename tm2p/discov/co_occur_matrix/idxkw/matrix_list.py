@@ -4,7 +4,7 @@ MatrixList
 
 Smoke tests:
     >>> from tm2p import CorpusField, ItemsOrderBy
-    >>> from tm2p.discov.co_occur_matrix._internals import MatrixList
+    >>> from tm2p.discov.co_occur_matrix.idxkw import MatrixList
     >>> df = (
     ...     MatrixList()
     ...     #
@@ -33,18 +33,17 @@ Smoke tests:
     >>> df.shape[1] > 1
     True
     >>> df.head(10)
-                                 rows                         columns  OCC
-    0               fintech 117:25478               fintech 117:25478  117
-    1   financial inclusion 017:03823   financial inclusion 017:03823   17
-    2   financial inclusion 017:03823               fintech 117:25478   14
-    3  financial technology 014:02508  financial technology 014:02508   14
-    4               fintech 117:25478   financial inclusion 017:03823   14
-    5            blockchain 011:02023            blockchain 011:02023   11
-    6         green finance 011:02844         green finance 011:02844   11
-    7               banking 010:02599               banking 010:02599   10
-    8                 china 009:01947                 china 009:01947    9
-    9            innovation 009:01703            innovation 009:01703    9
-
+                                    rows                            columns  OCC
+    0                  finance 028:07080                  finance 028:07080   30
+    1  sustainable development 017:02470  sustainable development 017:02470   25
+    2                  fintech 024:05279                  fintech 024:05279   24
+    3               innovation 014:02604               innovation 014:02604   16
+    4     economic development 008:02384     economic development 008:02384   14
+    5                  finance 028:07080  sustainable development 017:02470   11
+    6  sustainable development 017:02470                  finance 028:07080   11
+    7                    china 010:02031                    china 010:02031   10
+    8               innovation 014:02604  sustainable development 017:02470   10
+    9           sustainability 010:01546           sustainability 010:01546   10
 
 
 """

@@ -4,7 +4,7 @@ MatrixPlot
 
 .. raw:: html
 
-    <iframe src="../_generated/px.discov.co_occur_matrix._intern.matrix_plot.html"
+    <iframe src="../_generated/px.discov.co_occur_matrix.auth.matrix_plot.html"
     height="600px" width="100%" frameBorder="0"></iframe>
 
 
@@ -53,7 +53,7 @@ Smoke tests:
     ... )
     >>> type(fig).__name__
     'Figure'
-    >>> fig.write_html("docsrc/_generated/px.discov.co_occur_matrix._intern.matrix_plot.html")
+    >>> fig.write_html("docsrc/_generated/px.discov.co_occur_matrix.auth.matrix_plot.html")
 
 """
 

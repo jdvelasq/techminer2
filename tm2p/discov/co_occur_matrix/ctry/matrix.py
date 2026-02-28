@@ -4,7 +4,7 @@ Matrix
 
 Smoke tests:
     >>> from tm2p import CorpusField, ItemsOrderBy
-    >>> from tm2p.discov.co_occur_matrix._internals import Matrix
+    >>> from tm2p.discov.co_occur_matrix.ctry import Matrix
     >>> df = (
     ...     Matrix()
     ...     #
@@ -33,18 +33,18 @@ Smoke tests:
     >>> df.shape[1] > 1
     True
     >>> df.head(10)
-    columns                            fintech 117:25478  ...  financial services 007:01673
-    rows                                                  ...
-    fintech 117:25478                                117  ...                             4
-    financial inclusion 017:03823                     14  ...                             1
-    financial technology 014:02508                     7  ...                             1
-    green finance 011:02844                            8  ...                             0
-    blockchain 011:02023                               8  ...                             0
-    banking 010:02599                                  7  ...                             2
-    china 009:01947                                    7  ...                             0
-    innovation 009:01703                               6  ...                             2
-    artificial intelligence 008:01915                  6  ...                             0
-    financial services 007:01673                       4  ...                             7
+    columns        CHN 045:09715  GBR 033:06802  ...  CHE 008:01458  ITA 008:01041
+    rows                                         ...
+    CHN 045:09715             45              3  ...              0              1
+    GBR 033:06802              3             33  ...              1              2
+    USA 031:09562              6              2  ...              0              1
+    AUS 014:03468              2              3  ...              0              0
+    DEU 013:05295              0              2  ...              0              2
+    IND 012:01818              0              2  ...              0              0
+    FRA 011:02475              2              2  ...              0              0
+    KOR 011:02378              1              0  ...              0              0
+    CHE 008:01458              0              1  ...              8              0
+    ITA 008:01041              1              2  ...              0              8
     <BLANKLINE>
     [10 rows x 10 columns]
 

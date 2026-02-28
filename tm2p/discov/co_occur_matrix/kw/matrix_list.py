@@ -4,7 +4,7 @@ MatrixList
 
 Smoke tests:
     >>> from tm2p import CorpusField, ItemsOrderBy
-    >>> from tm2p.discov.co_occur_matrix._internals import MatrixList
+    >>> from tm2p.discov.co_occur_matrix.kw import MatrixList
     >>> df = (
     ...     MatrixList()
     ...     #
@@ -33,17 +33,17 @@ Smoke tests:
     >>> df.shape[1] > 1
     True
     >>> df.head(10)
-                                 rows                         columns  OCC
-    0               fintech 117:25478               fintech 117:25478  117
-    1   financial inclusion 017:03823   financial inclusion 017:03823   17
-    2   financial inclusion 017:03823               fintech 117:25478   14
-    3  financial technology 014:02508  financial technology 014:02508   14
-    4               fintech 117:25478   financial inclusion 017:03823   14
-    5            blockchain 011:02023            blockchain 011:02023   11
-    6         green finance 011:02844         green finance 011:02844   11
-    7               banking 010:02599               banking 010:02599   10
-    8                 china 009:01947                 china 009:01947    9
-    9            innovation 009:01703            innovation 009:01703    9
+                                    rows                            columns  OCC
+    0                  fintech 119:26148                  fintech 119:26148  119
+    1                  finance 029:07137                  finance 029:07137   29
+    2               innovation 020:03916               innovation 020:03916   20
+    3                    china 018:03596                    china 018:03596   18
+    4                  finance 029:07137                  fintech 119:26148   17
+    5      financial inclusion 017:03823      financial inclusion 017:03823   17
+    6                  fintech 119:26148                  finance 029:07137   17
+    7     financial technology 015:02583     financial technology 015:02583   15
+    8  sustainable development 015:02158  sustainable development 015:02158   15
+    9      financial inclusion 017:03823                  fintech 119:26148   14
 
 
 

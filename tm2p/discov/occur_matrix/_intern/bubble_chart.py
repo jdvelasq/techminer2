@@ -9,7 +9,7 @@ Bubble Plot
 
 Smoke tests:
     >>> from tm2p import CorpusField, ItemsOrderBy
-    >>> from tm2p.discov.occur_matrix._internals import BubbleChart
+    >>> from tm2p.discov.occur_matrix._intern import BubbleChart
     >>> fig = (
     ...     BubbleChart()
     ...     #
