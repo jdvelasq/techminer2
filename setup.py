@@ -4,17 +4,17 @@ from setuptools import find_packages, setup  # type: ignore[import]
 
 setup(
     # cmdclass={"build_py": BuildPyCommand},
-    name="techminer2",
+    name="tm2p",
     version="2024.7.22",
     author="Juan D. Velasquez",
     author_email="jdvelasq@unal.edu.co",
     license="MIT",
-    url="http://github.com/jdvelasq/techminer2",
+    url="http://github.com/jdvelasq/tm2p",
     description="Tech Mining Analysis of Bibliography",
     long_description="Tech Mining Analysis of Bibliography",
     keywords="bibliography",
     platforms="any",
-    provides=["techminer2"],
+    provides=["tm2p"],
     install_requires=[
         "cdlib",
         "colorama",
@@ -49,7 +49,7 @@ setup(
         "wordcloud",
     ],
     packages=find_packages(),
-    package_dir={"techminer2": "techminer2"},
+    package_dir={"tm2p": "tm2p"},
     include_package_data=True,
     classifiers=[
         "Development Status :: 3 - Alpha",
