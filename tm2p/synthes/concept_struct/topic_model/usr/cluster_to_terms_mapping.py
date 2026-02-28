@@ -68,7 +68,7 @@ Smoke tests:
 
 """
 
-from tm2p._internals import ParamsMixin
+from tm2p._intern import ParamsMixin
 from tm2p.synthes.concept_struct.topic_model.usr.components_by_term_data_frame import (
     ComponentsByTermDataFrame,
 )

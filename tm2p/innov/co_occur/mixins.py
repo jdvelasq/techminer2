@@ -1,6 +1,6 @@
 import sys
 
-from tm2p.anal._internals.performance import PerformanceMetrics  # type: ignore
+from tm2p.anal._intern.performance import PerformanceMetrics  # type: ignore
 from tm2p.synthes.concept_struct.co_occur.concept import ClustersToTermsMapping
 
 

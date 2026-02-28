@@ -73,9 +73,9 @@ Smoke tests:
 
 """
 
-from tm2p._internals import ParamsMixin
-from tm2p._internals.package_data.word_lists import load_builtin_word_list
-from tm2p.refine.thesaurus_old._internals import ThesaurusMixin, ThesaurusResult
+from tm2p._intern import ParamsMixin
+from tm2p._intern.packag_data.word_lists import load_builtin_word_list
+from tm2p.refine.thesaurus_old._intern import ThesaurusMixin, ThesaurusResult
 
 
 class SortByLastWords(

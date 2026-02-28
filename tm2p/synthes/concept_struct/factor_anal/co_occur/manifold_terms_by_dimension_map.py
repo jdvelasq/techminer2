@@ -80,7 +80,7 @@ Manifold Terms by Dimensions Map
 
 """
 
-from tm2p.synthes.concept_struct.factor_anal._internals.manifold_2d_map import (
+from tm2p.synthes.concept_struct.factor_anal._intern.manifold_2d_map import (
     manifold_2d_map,
 )
 from tm2p.synthes.concept_struct.factor_anal.co_occur.terms_by_dimension_data_frame import (

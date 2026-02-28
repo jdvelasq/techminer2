@@ -63,7 +63,7 @@ Terms to Cluster Mapping
 
 """
 
-from tm2p.synthes.concept_struct.factor_anal._internals.terms_to_cluster_mapping import (
+from tm2p.synthes.concept_struct.factor_anal._intern.terms_to_cluster_mapping import (
     _terms_to_cluster_mapping,
 )
 from tm2p.synthes.concept_struct.factor_anal.tfidf.terms_by_dimension_dataframe import (

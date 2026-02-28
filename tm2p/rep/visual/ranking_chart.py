@@ -44,9 +44,9 @@ Smoke tests:
 
 """
 
-from tm2p._internals import ParamsMixin
-from tm2p._internals.plots.ranking_chart import ranking_chart
-from tm2p.anal._internals.performance.performance_metrics import PerformanceMetrics
+from tm2p._intern import ParamsMixin
+from tm2p._intern.plot.ranking_chart import ranking_chart
+from tm2p.anal._intern.performance.performance_metrics import PerformanceMetrics
 
 
 class RankingChart(

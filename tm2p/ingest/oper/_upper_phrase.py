@@ -42,7 +42,7 @@ ethical practices in the FINANCIAL_INDUSTRY.
 # import re
 # import textwrap
 
-# from tm2p.refine.thesaurus_old._internals.load_reversed_thesaurus_as_mapping import (
+# from tm2p.refine.thesaurus_old._intern.load_reversed_thesaurus_as_mapping import (
 #     internal__load_reversed_thesaurus_as_mapping,
 # )
 

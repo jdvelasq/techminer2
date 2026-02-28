@@ -40,15 +40,15 @@ Smoke tests:
     >>> df.shape[1] > 1
     True
     >>> df.head(10)
-    columns                                      CHN 045:09715  ...  ITA 008:01041
+    columns                                      CHN 039:08550  ...  HKG 004:01041
     rows                                                        ...
-    RESOUR POLIC 007:01074                                   6  ...              1
+    RESOUR POLIC 007:01074                                   5  ...              0
     TECHNOL FORECAST SOC CHANG 006:01575                     2  ...              0
     INT REV FINANC ANAL 005:00992                            3  ...              0
-    FINANC INNOV 005:00877                                   3  ...              0
+    FINANC INNOV 005:00877                                   2  ...              0
     EUR J FINANC 004:01002                                   2  ...              0
     SUSTAIN (SWITZERLAND) 004:00741                          2  ...              0
-    RES INT BUS FINANC 004:00530                             1  ...              2
+    RES INT BUS FINANC 004:00530                             1  ...              0
     IND MANAG DATA SYST 003:01154                            1  ...              0
     J ECON BUS 003:00886                                     0  ...              0
     J OPEN INNOV TECHNOL MARK COMPLEX 003:00477              0  ...              0
@@ -58,13 +58,11 @@ Smoke tests:
 
 """
 
-from tm2p._internals import ParamsMixin
+from tm2p._intern import ParamsMixin
 
-from ..._internals import Matrix as BaseMatrix
+from ..._intern import Matrix as BaseMatrix
 from .._column import COLUMN_FIELD
 from ._index import INDEX_FIELD
-
-# how to read the name of the folder where is the current file
 
 
 class Matrix(

@@ -2,30 +2,22 @@
 Heatmap
 ===============================================================================
 
-
 Smoke tests:
-    >>> from tm2p.packages.co_occurrence_matrix import Heatmap
-    >>> plot = (
+    >>> from tm2p import CorpusField, ItemsOrderBy
+    >>> from tm2p.discov.co_occur_matrix.auth import Heatmap
+    >>> fig = (
     ...     Heatmap()
     ...     #
-    ...     # COLUMNS:
-    ...     .with_field("author_keywords")
+    ...     # FIELD:
+    ...     .with_source_field(CorpusField.AUTHKW_TOK)
     ...     .having_items_in_top(10)
-    ...     .having_items_ordered_by("OCC")
-    ...     .having_item_occurrences_between(2, None)
+    ...     .having_items_ordered_by(ItemsOrderBy.OCC)
+    ...     .having_item_occurrences_between(None, None)
     ...     .having_item_citations_between(None, None)
     ...     .having_items_in(None)
     ...     #
-    ...     # ROWS:
-    ...     .with_other_field(None)
-    ...     .having_other_terms_in_top(None)
-    ...     .having_other_terms_ordered_by(None)
-    ...     .having_other_term_occurrences_between(None, None)
-    ...     .having_other_term_citations_between(None, None)
-    ...     .having_other_terms_in(None)
-    ...     #
     ...     # COUNTERS:
-    ...     .using_term_counters(True)
+    ...     .using_item_counters(True)
     ...     #
     ...     # PLOT:
     ...     .using_title_text(None)
@@ -33,27 +25,25 @@ Smoke tests:
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/fintech/")
-    ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     .where_records_match(None)
     ...     #
     ...     .run()
     ... )
-    >>> plot.write_html("docsrc/_generated/px.packages.co_occurrence_matrix.heatmap.html")
+    >>> type(fig).__name__
+    'Figure'
+    >>> fig.write_html("docsrc/_generated/px.discov.co_occur_matrix._intern.heatmap.html")
 
-.. raw:: html
-
-    <iframe src="../_generated/px.packages.co_occurrence_matrix.heatmap.html"
-    height="800px" width="100%" frameBorder="0"></iframe>
 
 
 
 """
 
-from tm2p._internals import ParamsMixin
-from tm2p._internals.plots.heatmap import heatmap
-from tm2p.discov.occur_matrix._internals.matrix import Matrix
+from tm2p._intern import ParamsMixin
+from tm2p._intern.plot.heatmap import heatmap
+
+from .matrix import Matrix
 
 
 class Heatmap(

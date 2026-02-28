@@ -39,7 +39,7 @@ Smoke tests:
 
 """
 
-from tm2p._internals import ParamsMixin
+from tm2p._intern import ParamsMixin
 from tm2p.innov.emerg.mixins import RecursiveClusteringMixin
 from tm2p.synthes.concept_struct.co_occur.concept import (
     TermsByClusterSummary as ClassicalTermsByClusterSummary,

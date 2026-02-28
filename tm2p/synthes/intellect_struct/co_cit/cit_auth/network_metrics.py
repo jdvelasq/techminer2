@@ -86,8 +86,8 @@ Smoke tests:
 
 """
 
-from tm2p._internals import ParamsMixin
-from tm2p.synthes.intellect_struct.co_cit._internals.network_metrics import (
+from tm2p._intern import ParamsMixin
+from tm2p.synthes.intellect_struct.co_cit._intern.network_metrics import (
     NetworkMetrics as InternalNetworkMetrics,
 )
 

@@ -39,8 +39,8 @@ Smoke tests:
 
 """
 
-from tm2p._internals import ParamsMixin
-from tm2p.synthes.intellect_struct.co_cit._internals.node_degree_plot import (
+from tm2p._intern import ParamsMixin
+from tm2p.synthes.intellect_struct.co_cit._intern.node_degree_plot import (
     NodeDegreePlot as InternalNodeDegreePlot,
 )
 

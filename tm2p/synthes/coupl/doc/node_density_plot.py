@@ -45,14 +45,14 @@ Smoke tests:
 
 """
 
-from tm2p._internals import ParamsMixin
-from tm2p._internals.nx import (
+from tm2p._intern import ParamsMixin
+from tm2p._intern.nx import (
     internal__assign_textfont_sizes_based_on_citations,
     internal__cluster_nx_graph,
     internal__compute_spring_layout_positions,
     internal__create_network_density_plot,
 )
-from tm2p.synthes.coupl._internals.from_documents.create_nx_graph import (
+from tm2p.synthes.coupl._intern.from_documents.create_nx_graph import (
     internal__create_nx_graph,
 )
 

@@ -59,8 +59,8 @@ Smoke test:
 
 """
 
-from tm2p._internals import ParamsMixin
-from tm2p.ingest.data_sourc._internals.operations.tokenize_column import tokenize_column
+from tm2p._intern import ParamsMixin
+from tm2p.ingest.data_sourc._intern.operations.tokenize_column import tokenize_column
 from tm2p.ingest.extr._helpers._protected_fields import PROTECTED_FIELDS
 
 

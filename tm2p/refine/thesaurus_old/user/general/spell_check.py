@@ -76,8 +76,8 @@ Smoke tests:
 import pandas as pd  # type: ignore
 from spellchecker import SpellChecker as ExternalSpellChecker
 
-from tm2p._internals import ParamsMixin
-from tm2p.refine.thesaurus_old._internals import ThesaurusMixin, ThesaurusResult
+from tm2p._intern import ParamsMixin
+from tm2p.refine.thesaurus_old._intern import ThesaurusMixin, ThesaurusResult
 
 
 class SpellCheck(

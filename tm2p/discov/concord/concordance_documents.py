@@ -50,8 +50,8 @@ Smoke test:
 
 """
 
-from tm2p._internals import ParamsMixin
-from tm2p._internals.record_builders import dicts_to_strings
+from tm2p._intern import ParamsMixin
+from tm2p._intern.rec_build import dicts_to_strings
 from tm2p.discov.concord.concordance_records import ConcordanceRecords
 
 __reviewed__ = "2026-01-29"

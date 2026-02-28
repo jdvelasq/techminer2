@@ -54,9 +54,9 @@ Smoke tests:
 
 """
 
-from tm2p._internals import ParamsMixin
+from tm2p._intern import ParamsMixin
 
-from ..._internals import Matrix as BaseMatrix
+from ..._intern import Matrix as BaseMatrix
 from .._column import COLUMN_FIELD
 from ._index import INDEX_FIELD
 

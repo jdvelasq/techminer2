@@ -74,8 +74,8 @@ Smoke test:
 
 """
 
-from tm2p._internals import ParamsMixin
-from tm2p.ingest.data_sourc._internals.operations.uppercase_keyterms import (
+from tm2p._intern import ParamsMixin
+from tm2p.ingest.data_sourc._intern.operations.uppercase_keyterms import (
     uppercase_keyterms,
 )
 from tm2p.ingest.extr._helpers._protected_fields import PROTECTED_FIELDS

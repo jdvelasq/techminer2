@@ -24,7 +24,7 @@ Smoke tests:
 
 import plotly.graph_objects as go
 
-from tm2p._internals import ParamsMixin
+from tm2p._intern import ParamsMixin
 from tm2p.anal.doc.cit_ref.rpys.rpys_frame import RPYSDataFrame
 
 

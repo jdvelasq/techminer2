@@ -15,10 +15,10 @@ Smoke test:
 import sys
 from typing import Any
 
-from tm2p._internals import ParamsMixin
-from tm2p.ingest.data_sourc._internals.step import Step
+from tm2p._intern import ParamsMixin
+from tm2p.ingest.data_sourc._intern.step import Step
 
-from ..data_sourc._internals.concepts.build_steps import build_concept_steps
+from ..data_sourc._intern.concepts.build_steps import build_concept_steps
 
 __reviewed__ = "2026-01-28"
 

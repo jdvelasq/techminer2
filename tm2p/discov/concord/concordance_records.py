@@ -60,9 +60,9 @@ import pandas as pd  # type: ignore
 from textblob import TextBlob  # type: ignore
 
 from tm2p import CorpusField
-from tm2p._internals import ParamsMixin
-from tm2p._internals.data_access.load_filtered_main_data import load_filtered_main_data
-from tm2p._internals.record_builders import records_to_dicts
+from tm2p._intern import ParamsMixin
+from tm2p._intern.data_access.load_filtered_main_data import load_filtered_main_data
+from tm2p._intern.rec_build import records_to_dicts
 
 __reviewed__ = "2026-01-29"
 

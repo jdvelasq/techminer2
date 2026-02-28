@@ -32,8 +32,8 @@ Smoke tests:
 
 """
 
-from tm2p._internals import ParamsMixin
-from tm2p.anal._internals.performance import PerformanceMetrics
+from tm2p._intern import ParamsMixin
+from tm2p.anal._intern.performance import PerformanceMetrics
 
 
 class TopTermsExtractor(

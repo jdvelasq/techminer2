@@ -22,8 +22,8 @@ Smoke tests:
 """
 
 from tm2p import CorpusField
-from tm2p._internals import ParamsMixin
-from tm2p.refine._internals.objs import ThesaurusCreationResult
+from tm2p._intern import ParamsMixin
+from tm2p.refine._intern.objs import ThesaurusCreationResult
 
 from ..usr.create_thesaurus import CreateThesaurus as UserCreateThesaurus
 

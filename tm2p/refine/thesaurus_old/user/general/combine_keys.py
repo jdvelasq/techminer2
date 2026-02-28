@@ -83,9 +83,9 @@ Smoke tests:
 
 """
 
-from tm2p._internals import ParamsMixin
+from tm2p._intern import ParamsMixin
 
-# from tm2p.discov.co_occurrence_matrix._internals import (
+# from tm2p.discov.co_occur_matrix._internals import (
 #     DataFrame as CoocDataFrame,
 # )
 

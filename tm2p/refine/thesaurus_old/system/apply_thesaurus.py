@@ -38,9 +38,9 @@ import sys
 
 from colorama import Fore
 
-from tm2p._internals import ParamsMixin
-from tm2p._internals.data_access import load_all_records_from_database, save_main_data
-from tm2p.refine.thesaurus_old._internals import (
+from tm2p._intern import ParamsMixin
+from tm2p._intern.data_access import load_all_records_from_database, save_main_data
+from tm2p.refine.thesaurus_old._intern import (
     ThesaurusMixin,
     internal__load_thesaurus_as_mapping,
 )

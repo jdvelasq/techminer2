@@ -38,7 +38,7 @@ Smoke test:
 """
 
 from tm2p import CorpusField
-from tm2p._internals import ParamsMixin
+from tm2p._intern import ParamsMixin
 
 __reviewed__ = "2026-01-29"
 

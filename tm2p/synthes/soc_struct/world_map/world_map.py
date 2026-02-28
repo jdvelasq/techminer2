@@ -31,10 +31,8 @@ Smoke tests:
 import plotly.express as px  # type: ignore
 
 from tm2p import CorpusField, ItemsOrderBy
-from tm2p._internals import ParamsMixin
-from tm2p.discov.co_occur_matrix._internals.matrix import (
-    Matrix as CoOccurrenceDataFrame,
-)
+from tm2p._intern import ParamsMixin
+from tm2p.discov.co_occur_matrix._intern.matrix import Matrix as CoOccurrenceDataFrame
 
 
 class WorldMap(

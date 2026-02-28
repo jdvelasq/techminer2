@@ -40,17 +40,17 @@ Smoke tests:
     >>> df.shape[1] > 1
     True
     >>> df.head(10)
-    columns                            CHN 045:09715  ...  ITA 008:01041
+    columns                            CHN 039:08550  ...  HKG 004:01041
     rows                                              ...
-    fintech 119:26148                             29  ...              4
-    finance 029:07137                             14  ...              0
-    innovation 020:03916                           9  ...              0
-    china 018:03596                               14  ...              1
-    financial inclusion 017:03823                  3  ...              2
-    financial technology 015:02583                 5  ...              1
-    sustainable development 015:02158              9  ...              2
-    banking 013:03043                              2  ...              1
-    sustainability 013:02308                       6  ...              1
+    fintech 119:26148                             24  ...              3
+    finance 029:07137                             10  ...              0
+    innovation 020:03916                           8  ...              0
+    china 018:03596                               13  ...              1
+    financial inclusion 017:03823                  2  ...              1
+    financial technology 015:02583                 4  ...              1
+    sustainable development 015:02158              7  ...              0
+    banking 013:03043                              2  ...              0
+    sustainability 013:02308                       5  ...              1
     blockchain 012:03450                           2  ...              0
     <BLANKLINE>
     [10 rows x 10 columns]
@@ -58,13 +58,11 @@ Smoke tests:
 
 """
 
-from tm2p._internals import ParamsMixin
+from tm2p._intern import ParamsMixin
 
-from ..._internals import Matrix as BaseMatrix
+from ..._intern import Matrix as BaseMatrix
 from .._column import COLUMN_FIELD
 from ._index import INDEX_FIELD
-
-# how to read the name of the folder where is the current file
 
 
 class Matrix(

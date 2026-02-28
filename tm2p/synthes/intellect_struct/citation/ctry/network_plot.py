@@ -51,8 +51,8 @@ Smoke tests:
 
 """
 
-from tm2p._internals import ParamsMixin
-from tm2p.synthes.intellect_struct.citation._internals.from_others.network_plot import (
+from tm2p._intern import ParamsMixin
+from tm2p.synthes.intellect_struct.citation._intern.from_others.network_plot import (
     NetworkPlot as OtherNetworkPlot,
 )
 

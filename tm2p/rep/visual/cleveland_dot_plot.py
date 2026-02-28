@@ -36,9 +36,9 @@ Smoke tests:
 
 """
 
-from tm2p._internals import ParamsMixin
-from tm2p._internals.plots.cleveland_dot_plot import cleveland_dot_plot
-from tm2p.anal._internals.performance.performance_metrics import PerformanceMetrics
+from tm2p._intern import ParamsMixin
+from tm2p._intern.plot.cleveland_dot_plot import cleveland_dot_plot
+from tm2p.anal._intern.performance.performance_metrics import PerformanceMetrics
 
 
 class ClevelandDotPlot(

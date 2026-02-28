@@ -37,7 +37,7 @@ Smoke tests:
 
 """
 
-from tm2p._internals import ParamsMixin
+from tm2p._intern import ParamsMixin
 from tm2p.ingest.extr._helpers.match import extract_match
 
 

@@ -35,7 +35,7 @@ Smoke tests:
 
 """
 
-from tm2p._internals import ParamsMixin
+from tm2p._intern import ParamsMixin
 from tm2p.ingest.extr._helpers.difference import extract_difference
 
 

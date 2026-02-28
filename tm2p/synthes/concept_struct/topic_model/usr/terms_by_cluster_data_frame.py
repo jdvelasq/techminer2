@@ -64,7 +64,7 @@ Smoke tests:
 
 import pandas as pd  # type: ignore
 
-from tm2p._internals import ParamsMixin
+from tm2p._intern import ParamsMixin
 from tm2p.synthes.concept_struct.topic_model.usr.cluster_to_terms_mapping import (
     ClusterToTermsMapping,
 )

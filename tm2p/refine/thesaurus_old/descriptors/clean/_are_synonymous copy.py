@@ -52,11 +52,11 @@ from openai import OpenAI
 from textblob import Word
 from tqdm import tqdm  # type: ignore
 
-from tm2p._internals import ParamsMixin
-from tm2p._internals.package_data.templates.load_builtin_template import (
+from tm2p._intern import ParamsMixin
+from tm2p._intern.packag_data.templates.load_builtin_template import (
     load_builtin_template,
 )
-from tm2p.anal._internals.performance import PerformanceMetrics as DominantDataFrame
+from tm2p.anal._intern.performance import PerformanceMetrics as DominantDataFrame
 
 # -----------------------------------------------------------------------------
 

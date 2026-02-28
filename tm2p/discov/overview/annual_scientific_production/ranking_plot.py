@@ -36,8 +36,8 @@ Smoke tests:
 """
 
 from tm2p import ItemsOrderBy
-from tm2p._internals import ParamsMixin
-from tm2p._internals.plots.ranking_chart import ranking_chart
+from tm2p._intern import ParamsMixin
+from tm2p._intern.plot.ranking_chart import ranking_chart
 from tm2p.discov.overview.average_citations_per_year.dataframe import DataFrame
 
 

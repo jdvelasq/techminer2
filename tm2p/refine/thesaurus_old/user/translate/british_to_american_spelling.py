@@ -67,8 +67,8 @@ from colorama import Fore, init
 from textblob import Word  # type: ignore
 from tqdm import tqdm  # type: ignore
 
-from tm2p._internals import ParamsMixin
-from tm2p.refine.thesaurus_old._internals import (
+from tm2p._intern import ParamsMixin
+from tm2p.refine.thesaurus_old._intern import (
     ThesaurusMixin,
     internal__get_system_thesaurus_file_path,
     internal__load_thesaurus_as_mapping,

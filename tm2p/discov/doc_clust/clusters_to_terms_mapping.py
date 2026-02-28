@@ -105,7 +105,7 @@ Smoke tests:
 
 """
 
-from tm2p._internals import ParamsMixin
+from tm2p._intern import ParamsMixin
 from tm2p.discov.doc_clust.term_occurrence_by_cluster import TermOccurrenceByCluster
 
 

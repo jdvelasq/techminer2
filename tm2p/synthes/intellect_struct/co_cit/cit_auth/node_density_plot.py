@@ -46,8 +46,8 @@ Smoke tests:
 
 """
 
-from tm2p._internals import ParamsMixin
-from tm2p.synthes.intellect_struct.co_cit._internals.node_density_plot import (
+from tm2p._intern import ParamsMixin
+from tm2p.synthes.intellect_struct.co_cit._intern.node_density_plot import (
     NodeDensityPlot as InternalNodeDensityPlot,
 )
 

@@ -53,8 +53,8 @@ PY
 
 from tqdm import tqdm  # type: ignore
 
-from tm2p._internals import ParamsMixin
-from tm2p.refine.thesaurus_old._internals import ThesaurusMixin, ThesaurusResult
+from tm2p._intern import ParamsMixin
+from tm2p.refine.thesaurus_old._intern import ThesaurusMixin, ThesaurusResult
 
 tqdm.pandas()
 

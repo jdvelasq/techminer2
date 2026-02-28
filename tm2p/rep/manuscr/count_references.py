@@ -19,7 +19,7 @@ import glob
 import os
 import re
 
-from tm2p._internals import ParamsMixin
+from tm2p._intern import ParamsMixin
 
 
 class CountReferences(

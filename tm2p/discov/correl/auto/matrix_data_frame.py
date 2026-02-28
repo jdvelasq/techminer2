@@ -47,8 +47,8 @@ Smoke Test:
 
 """
 
-from tm2p._internals import ParamsMixin
-from tm2p.discov.correl._internals.internal__compute_corr_matrix import (
+from tm2p._intern import ParamsMixin
+from tm2p.discov.correl._intern.internal__compute_corr_matrix import (
     internal__compute_corr_matrix,
 )
 from tm2p.discov.tfidf import DataFrame as TfIdfDataFrame

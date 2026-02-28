@@ -57,7 +57,7 @@ Smoke tests:
 
 """
 
-from tm2p._internals import ParamsMixin
+from tm2p._intern import ParamsMixin
 from tm2p.synthes.concept_struct.co_occur.usr.clusters_to_terms_mapping import (
     ClustersToTermsMapping as UserClustersToTermsMapping,
 )

@@ -55,7 +55,7 @@ AB this PAPER_AIMS to evaluate FINTECH_LEVEL of DEVELOPMENT in latvia compared t
 # # from tm2p.database.search.deprecated.extract_descriptors_from_text import (
 # #     extract_descriptors_from_text,
 # # )
-# from tm2p.refine.thesaurus_old._internals.load_reversed_thesaurus_as_mapping import (
+# from tm2p.refine.thesaurus_old._intern.load_reversed_thesaurus_as_mapping import (
 #     internal__load_reversed_thesaurus_as_mapping,
 # )
 

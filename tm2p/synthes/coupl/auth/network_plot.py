@@ -52,8 +52,8 @@ Smoke tests:
 
 """
 
-from tm2p._internals import ParamsMixin
-from tm2p.synthes.coupl._internals.from_others.network_plot import InternalNetworkPlot
+from tm2p._intern import ParamsMixin
+from tm2p.synthes.coupl._intern.from_others.network_plot import InternalNetworkPlot
 
 
 class NetworkPlot(

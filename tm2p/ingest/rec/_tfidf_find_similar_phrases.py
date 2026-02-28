@@ -56,7 +56,7 @@ AB regulatory change and technological developments following the 2008
 # from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
 # from textblob import TextBlob  # type: ignore
 
-# from tm2p.refine.thesaurus_old._internals.load_reversed_thesaurus_as_mapping import (
+# from tm2p.refine.thesaurus_old._intern.load_reversed_thesaurus_as_mapping import (
 #     internal__load_reversed_thesaurus_as_mapping,
 # )
 

@@ -35,7 +35,7 @@ Smoke tests:
 """
 
 from tm2p import CorpusField, ThesaurusField
-from tm2p._internals import ParamsMixin
+from tm2p._intern import ParamsMixin
 
 from ..usr.merge_keys import MergeKeys as UserMergeKeys
 

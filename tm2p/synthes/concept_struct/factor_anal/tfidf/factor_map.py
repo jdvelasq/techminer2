@@ -85,7 +85,7 @@ Factor Map
 import pandas as pd  # type: ignore
 from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
 
-from tm2p.discov.correl._internals.internal__correlation_map import (
+from tm2p.discov.correl._intern.internal__correlation_map import (
     internal__correlation_map,
 )
 from tm2p.synthes.concept_struct.factor_anal.tfidf.cluster_centers_dataframe import (

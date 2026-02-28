@@ -76,8 +76,8 @@ Smoke tests:
 
 """
 
-from tm2p._internals import ParamsMixin
-from tm2p.synthes.coupl._internals.from_others.terms_by_cluster_data_frame import (
+from tm2p._intern import ParamsMixin
+from tm2p.synthes.coupl._intern.from_others.terms_by_cluster_data_frame import (
     InternalTermsByClusterDataFrame,
 )
 

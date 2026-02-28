@@ -65,8 +65,8 @@ Smoke tests:
 import pandas as pd  # type: ignore
 from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
 
-from tm2p._internals import ParamsMixin
-from tm2p.discov.correl._internals.internal__correlation_map import (
+from tm2p._intern import ParamsMixin
+from tm2p.discov.correl._intern.internal__correlation_map import (
     internal__correlation_map,
 )
 from tm2p.discov.correl.auto.matrix_data_frame import MatrixDataFrame

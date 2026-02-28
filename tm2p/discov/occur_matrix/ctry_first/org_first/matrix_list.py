@@ -40,24 +40,24 @@ Smoke tests:
     >>> df.shape[1] > 1
     True
     >>> df.head(10)
-                                             rows        columns  OCC
-    0  SOUTHWEST UNIV FINANC ECON [CHN] 005:01236  CHN 045:09715    5
-    1                    UNIV ZÜR [CHE] 005:00659  CHE 008:01458    5
-    2       FED RESERV BANK PHILA [USA] 003:00682  USA 031:09562    3
-    3         XI'AN JIAOTONG UNIV [CHN] 003:00689  CHN 045:09715    3
-    4           BEIJING NORM UNIV [CHN] 002:00270  CHN 045:09715    2
-    5           CAP UNIV ECON BUS [CHN] 002:00456  CHN 045:09715    2
-    6             CHANDIGARH UNIV [IND] 002:00183  IND 012:01818    2
-    7   GOETHE-UNIVERSITÄT FRANKF [DEU] 002:02579  DEU 013:05295    2
-    8               IMP COLL LOND [GBR] 002:00474  GBR 033:06802    2
-    9               IMP COLL LOND [GBR] 002:00474  USA 031:09562    2
+                                                 rows        columns  OCC
+    0      SOUTHWEST UNIV FINANC ECON [CHN] 005:01236  CHN 039:08550    5
+    1                        UNIV ZÜR [CHE] 005:00659  CHE 008:01458    5
+    2           FED RESERV BANK PHILA [USA] 003:00682  USA 019:05425    3
+    3             XI'AN JIAOTONG UNIV [CHN] 003:00689  CHN 039:08550    3
+    4               BEIJING NORM UNIV [CHN] 002:00270  CHN 039:08550    2
+    5               CAP UNIV ECON BUS [CHN] 002:00456  CHN 039:08550    2
+    6                 CHANDIGARH UNIV [IND] 002:00183  IND 011:01471    2
+    7       GOETHE-UNIVERSITÄT FRANKF [DEU] 002:02579  DEU 008:03835    2
+    8                   IMP COLL LOND [GBR] 002:00474  GBR 017:03919    2
+    9  MAULANA AZAD NATL INST TECHNOL [IND] 002:00256  IND 011:01471    2
 
 
 """
 
-from tm2p._internals import ParamsMixin
+from tm2p._intern import ParamsMixin
 
-from ..._internals import MatrixList as BaseMatrixList
+from ..._intern import MatrixList as BaseMatrixList
 from .._column import COLUMN_FIELD
 from ._index import INDEX_FIELD
 

@@ -44,9 +44,9 @@ import os
 import pandas as pd
 from tqdm import tqdm  # type: ignore
 
-from tm2p._internals import ParamsMixin
+from tm2p._intern import ParamsMixin
 
-# from tm2p._internals.stopwords import load_user_stopwords, save_user_stopwords
+# from tm2p._intern.stopwords import load_user_stopwords, save_user_stopwords
 
 # -----------------------------------------------------------------------------
 

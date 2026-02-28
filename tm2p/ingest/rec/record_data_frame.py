@@ -34,8 +34,8 @@ Smoke tests:
 
 """
 
-from tm2p._internals import ParamsMixin
-from tm2p._internals.data_access import load_filtered_main_data
+from tm2p._intern import ParamsMixin
+from tm2p._intern.data_access import load_filtered_main_data
 
 
 class RecordDataFrame(

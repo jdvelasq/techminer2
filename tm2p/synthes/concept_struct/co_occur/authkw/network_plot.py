@@ -67,7 +67,7 @@ Smoke tests:
 
 """
 
-from tm2p._internals import ParamsMixin
+from tm2p._intern import ParamsMixin
 from tm2p.synthes.concept_struct.co_occur.usr.network_plot import (
     NetworkPlot as UserNetworkPlot,
 )

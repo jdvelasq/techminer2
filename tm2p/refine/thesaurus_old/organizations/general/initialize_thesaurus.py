@@ -33,9 +33,9 @@ import sys
 
 import pandas as pd  # type: ignore
 
-from tm2p._internals import Params, ParamsMixin
-from tm2p._internals.package_data.word_lists import load_builtin_word_list
-from tm2p.refine.thesaurus_old._internals import (
+from tm2p._intern import Params, ParamsMixin
+from tm2p._intern.packag_data.word_lists import load_builtin_word_list
+from tm2p.refine.thesaurus_old._intern import (
     ThesaurusMixin,
     internal__get_system_thesaurus_file_path,
     internal__get_user_thesaurus_file_path,

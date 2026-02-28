@@ -4,7 +4,7 @@ Scopus
 ===============================================================================
 
 Smoke test - fintech - successful import:
-    >>> from tm2p.ingest.data_sources.scopus import Scopus
+    >>> from tm2p.ingest.data_sourc.scopus import Scopus
     >>> result = (
     ...     Scopus()
     ...     .where_root_directory("tests/fintech/")
@@ -26,7 +26,7 @@ Smoke test - fintech - fluent interface:
     True
 
 Smoke test - regtech - successful import:
-    >>> from tm2p.ingest.data_sources.scopus import Scopus
+    >>> from tm2p.ingest.data_sourc.scopus import Scopus
     >>> result = (
     ...     Scopus()
     ...     .where_root_directory("tests/regtech/")
@@ -45,19 +45,19 @@ import time
 from datetime import timedelta
 from typing import Any
 
-from tm2p._internals import ParamsMixin
+from tm2p._intern import ParamsMixin
 
-from ._internals import Step
-from ._internals.affiliations.build_steps import build_affiliation_steps
-from ._internals.authors.build_steps import build_author_steps
-from ._internals.concepts.build_steps import build_concept_steps
-from ._internals.document.build_steps import build_document_steps
-from ._internals.keywords.build_steps import build_keyword_steps
-from ._internals.references.build_steps import build_reference_steps
-from ._internals.review.build_steps import build_review_steps
-from ._internals.scaffolding.build_steps import build_scaffolding_steps
-from ._internals.scopus_result import ScopusResult
-from ._internals.source_title.build_steps import build_source_title_steps
+from ._intern import Step
+from ._intern.affiliations.build_steps import build_affiliation_steps
+from ._intern.authors.build_steps import build_author_steps
+from ._intern.concepts.build_steps import build_concept_steps
+from ._intern.document.build_steps import build_document_steps
+from ._intern.keywords.build_steps import build_keyword_steps
+from ._intern.references.build_steps import build_reference_steps
+from ._intern.review.build_steps import build_review_steps
+from ._intern.scaffolding.build_steps import build_scaffolding_steps
+from ._intern.scopus_result import ScopusResult
+from ._intern.source_title.build_steps import build_source_title_steps
 
 __reviewed__ = "2026-01-28"
 

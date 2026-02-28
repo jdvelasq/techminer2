@@ -34,8 +34,8 @@ Smoke tests:
 
 """
 
-from tm2p._internals import ParamsMixin
-from tm2p.synthes.coupl._internals.from_others.node_degree_data_frame import (
+from tm2p._intern import ParamsMixin
+from tm2p.synthes.coupl._intern.from_others.node_degree_data_frame import (
     InternalNodeDegreeDataFrame,
 )
 

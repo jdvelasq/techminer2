@@ -49,8 +49,8 @@ Smoke tests:
 
 import networkx as nx  # type: ignore
 
-from tm2p._internals import ParamsMixin
-from tm2p._internals.nx import (
+from tm2p._intern import ParamsMixin
+from tm2p._intern.nx import (
     assign_constant_to_edge_colors,
     internal__assign_constant_to_node_colors,
     internal__assign_edge_widths_based_on_weight,

@@ -42,9 +42,9 @@ Smoke tests:
 
 """
 
-from tm2p._internals import ParamsMixin
-from tm2p._internals.data_access import load_filtered_main_data
-from tm2p.anal._internals.performance.performance_metrics import (
+from tm2p._intern import ParamsMixin
+from tm2p._intern.data_access import load_filtered_main_data
+from tm2p.anal._intern.performance.performance_metrics import (
     PerformanceMetrics as TermsByYearMetricsDataFrame,
 )
 

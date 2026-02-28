@@ -58,7 +58,7 @@ Smoke tests:
 
 """
 
-from tm2p._internals import ParamsMixin
+from tm2p._intern import ParamsMixin
 from tm2p.refine.thesaurus_old.user import (
     SortByEndsWithMatch as UserSortByEndsWithMatch,
 )

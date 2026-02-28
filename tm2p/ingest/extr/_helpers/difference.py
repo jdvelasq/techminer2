@@ -1,6 +1,6 @@
 from dataclasses import replace
 
-from tm2p._internals import Params
+from tm2p._intern import Params
 from tm2p.ingest.extr._helpers.values import extract_values
 
 

@@ -1,4 +1,4 @@
-from tm2p._internals.package_data.word_lists import load_builtin_word_list
+from tm2p._intern.packag_data.word_lists import load_builtin_word_list
 from tm2p.ingest.extr._helpers.values import extract_values
 
 

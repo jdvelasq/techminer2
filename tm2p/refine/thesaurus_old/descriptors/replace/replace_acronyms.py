@@ -68,8 +68,8 @@ import sys
 from colorama import Fore, init
 from tqdm import tqdm  # type: ignore
 
-from tm2p._internals import Params, ParamsMixin
-from tm2p.refine.thesaurus_old._internals import (
+from tm2p._intern import Params, ParamsMixin
+from tm2p.refine.thesaurus_old._intern import (
     ThesaurusMixin,
     internal__get_user_thesaurus_file_path,
     internal__load_thesaurus_as_data_frame,

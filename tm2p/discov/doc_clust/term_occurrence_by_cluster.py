@@ -82,7 +82,7 @@ Smoke tests:
 
 """
 
-from tm2p._internals import ParamsMixin
+from tm2p._intern import ParamsMixin
 from tm2p.discov.tfidf import DataFrame as TfIdfDataFrame
 
 

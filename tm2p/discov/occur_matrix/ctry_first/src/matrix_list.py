@@ -41,23 +41,23 @@ Smoke tests:
     True
     >>> df.head(10)
                                 rows        columns  OCC
-    0         RESOUR POLIC 007:01074  CHN 045:09715    6
-    1         FINANC INNOV 005:00877  CHN 045:09715    3
-    2  INT REV FINANC ANAL 005:00992  CHN 045:09715    3
-    3  INT REV FINANC ANAL 005:00992  GBR 033:06802    3
-    4             BUS ECON 002:00748  DEU 013:05295    2
-    5             BUS ECON 002:00748  FRA 011:02475    2
-    6   ENV SCI POLLUT RES 002:00387  CHN 045:09715    2
-    7         EUR J FINANC 004:01002  CHN 045:09715    2
-    8         EUR J FINANC 004:01002  GBR 033:06802    2
-    9         FINANC MANAG 002:00376  USA 031:09562    2
+    0         RESOUR POLIC 007:01074  CHN 039:08550    5
+    1  INT REV FINANC ANAL 005:00992  CHN 039:08550    3
+    2   ENV SCI POLLUT RES 002:00387  CHN 039:08550    2
+    3         EUR J FINANC 004:01002  CHN 039:08550    2
+    4         EUR J FINANC 004:01002  GBR 017:03919    2
+    5         FINANC INNOV 005:00877  CHN 039:08550    2
+    6         FINANC MANAG 002:00376  USA 019:05425    2
+    7   INT J APPL ENG RES 002:00166  KOR 009:01264    2
+    8  INT REV ECON FINANC 002:00500  CHN 039:08550    2
+    9           J ECON BUS 003:00886  USA 019:05425    2
 
 
 """
 
-from tm2p._internals import ParamsMixin
+from tm2p._intern import ParamsMixin
 
-from ..._internals import MatrixList as BaseMatrixList
+from ..._intern import MatrixList as BaseMatrixList
 from .._column import COLUMN_FIELD
 from ._index import INDEX_FIELD
 

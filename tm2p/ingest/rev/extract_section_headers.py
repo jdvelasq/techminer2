@@ -25,7 +25,7 @@ Smoke test:
 
 """
 
-from tm2p._internals import ParamsMixin
+from tm2p._intern import ParamsMixin
 from tm2p.discov.concord import ConcordanceUppercase
 
 __reviewed__ = "2026-01-28"

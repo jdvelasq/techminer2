@@ -39,9 +39,9 @@ Concept Grid Plot
 
 """
 
-from tm2p._internals import ParamsMixin
-from tm2p._internals.nx import internal__cluster_nx_graph, internal__concept_grid_plot
-from tm2p.synthes.concept_struct.co_occur._internals.create_nx_graph import (
+from tm2p._intern import ParamsMixin
+from tm2p._intern.nx import internal__cluster_nx_graph, internal__concept_grid_plot
+from tm2p.synthes.concept_struct.co_occur._intern.create_nx_graph import (
     internal__create_nx_graph,
 )
 

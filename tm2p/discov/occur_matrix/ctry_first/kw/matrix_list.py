@@ -40,24 +40,23 @@ Smoke tests:
     >>> df.shape[1] > 1
     True
     >>> df.head(10)
-                       rows        columns  OCC
-    0     fintech 119:26148  CHN 045:09715   29
-    1     fintech 119:26148  GBR 033:06802   23
-    2     fintech 119:26148  USA 031:09562   20
-    3       china 018:03596  CHN 045:09715   14
-    4     finance 029:07137  CHN 045:09715   14
-    5     fintech 119:26148  IND 012:01818   10
-    6     fintech 119:26148  AUS 014:03468    9
-    7     fintech 119:26148  DEU 013:05295    9
-    8     fintech 119:26148  FRA 011:02475    9
-    9  innovation 020:03916  CHN 045:09715    9
-
+                                    rows        columns  OCC
+    0                  fintech 119:26148  CHN 039:08550   24
+    1                    china 018:03596  CHN 039:08550   13
+    2                  fintech 119:26148  GBR 017:03919   12
+    3                  fintech 119:26148  USA 019:05425   11
+    4                  finance 029:07137  CHN 039:08550   10
+    5                  fintech 119:26148  IND 011:01471    9
+    6               innovation 020:03916  CHN 039:08550    8
+    7                  fintech 119:26148  CHE 008:01458    7
+    8  sustainable development 015:02158  CHN 039:08550    7
+    9      financial inclusion 017:03823  GBR 017:03919    6
 
 """
 
-from tm2p._internals import ParamsMixin
+from tm2p._intern import ParamsMixin
 
-from ..._internals import MatrixList as BaseMatrixList
+from ..._intern import MatrixList as BaseMatrixList
 from .._column import COLUMN_FIELD
 from ._index import INDEX_FIELD
 

@@ -52,11 +52,11 @@ Smoke test:
 import sys
 
 from tm2p import CorpusField
-from tm2p._internals import ParamsMixin
-from tm2p.refine._internals.objs.thesaurus_match_result import ThesaurusMatchResult
-from tm2p.refine._internals.rules import apply_wordorder_rule
+from tm2p._intern import ParamsMixin
+from tm2p.refine._intern.objs.thesaurus_match_result import ThesaurusMatchResult
+from tm2p.refine._intern.rules import apply_wordorder_rule
 
-from .._internals.data_access import load_thesaurus_as_dataframe
+from .._intern.data_access import load_thesaurus_as_dataframe
 
 
 class WordOrderMatch(

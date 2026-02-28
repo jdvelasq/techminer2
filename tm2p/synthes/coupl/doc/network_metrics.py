@@ -34,9 +34,9 @@ Smoke tests:
 
 """
 
-from tm2p._internals import ParamsMixin
-from tm2p._internals.nx import internal__compute_network_metrics
-from tm2p.synthes.coupl._internals.from_documents.create_nx_graph import (
+from tm2p._intern import ParamsMixin
+from tm2p._intern.nx import internal__compute_network_metrics
+from tm2p.synthes.coupl._intern.from_documents.create_nx_graph import (
     internal__create_nx_graph,
 )
 

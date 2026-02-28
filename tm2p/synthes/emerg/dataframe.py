@@ -39,8 +39,8 @@ Smoke tests:
 
 import numpy as np
 
-from tm2p._internals import ParamsMixin
-from tm2p._internals.mt.mt_term_occurrences_by_year import _mt_term_occurrences_by_year
+from tm2p._intern import ParamsMixin
+from tm2p._intern.mt.mt_term_occurrences_by_year import _mt_term_occurrences_by_year
 from tm2p.discov.overview import MainInformation as GeneralMetricsDataFrame
 from tm2p.discov.overview.average_citations_per_year.dataframe import (
     DataFrame as TrendMetricsDataFrame,
@@ -55,9 +55,7 @@ class DataFrame(
     # ----------------------------------------------------------------------------------------------------
     def _step_1_compute_term_occurrences_by_year(self):
 
-        from tm2p.anal._internals.items_by_year import (
-            ItemsByYear as TermsByYearDataFrame,
-        )
+        from tm2p.anal._intern.items_by_year import ItemsByYear as TermsByYearDataFrame
 
         return (
             TermsByYearDataFrame()

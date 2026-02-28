@@ -49,9 +49,9 @@ Smoke tests:
 
 """
 
-from tm2p._internals import ParamsMixin
+from tm2p._intern import ParamsMixin
 
-from ..._internals import BubbleChart as BaseBubbleChart
+from ..._intern import BubbleChart as BaseBubbleChart
 from .._column import COLUMN_FIELD
 from ._index import INDEX_FIELD
 

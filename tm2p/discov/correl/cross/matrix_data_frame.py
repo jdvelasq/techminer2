@@ -48,9 +48,9 @@ Smoke tests:
 
 """
 
-from tm2p._internals import ParamsMixin
-from tm2p.discov.co_occur_matrix._internals import Matrix as CoOccurrenceMatrixDataFrame
-from tm2p.discov.correl._internals.internal__compute_corr_matrix import (
+from tm2p._intern import ParamsMixin
+from tm2p.discov.co_occur_matrix._intern import Matrix as CoOccurrenceMatrixDataFrame
+from tm2p.discov.correl._intern.internal__compute_corr_matrix import (
     internal__compute_corr_matrix,
 )
 

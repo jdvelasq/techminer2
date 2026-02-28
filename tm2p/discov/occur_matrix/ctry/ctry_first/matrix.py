@@ -40,31 +40,28 @@ Smoke tests:
     >>> df.shape[1] > 1
     True
     >>> df.head(10)
-    columns                   CHN 045:09715  ...  ITA 008:01041
-    rows                                     ...
-    China 039:08550                      39  ...              1
-    United States 019:05425               3  ...              1
-    United Kingdom 017:03919              0  ...              0
-    India 011:01471                       0  ...              0
-    Australia 009:01749                   1  ...              0
-    South Korea 009:01264                 0  ...              0
-    Germany 008:03835                     0  ...              1
-    Switzerland 008:01458                 0  ...              0
-    France 007:01871                      1  ...              0
-    Hong Kong 004:01041                   0  ...              0
+    columns        CHN 045:09715  GBR 033:06802  ...  CHE 008:01458  ITA 008:01041
+    rows                                         ...
+    CHN 039:08550             39              3  ...              0              1
+    USA 019:05425              3              0  ...              0              1
+    GBR 017:03919              0             17  ...              0              0
+    IND 011:01471              0              2  ...              0              0
+    AUS 009:01749              1              2  ...              0              0
+    KOR 009:01264              0              0  ...              0              0
+    DEU 008:03835              0              0  ...              0              1
+    CHE 008:01458              0              1  ...              8              0
+    FRA 007:01871              1              2  ...              0              0
+    HKG 004:01041              0              1  ...              0              0
     <BLANKLINE>
     [10 rows x 10 columns]
 
-
 """
 
-from tm2p._internals import ParamsMixin
+from tm2p._intern import ParamsMixin
 
-from ..._internals import Matrix as BaseMatrix
+from ..._intern import Matrix as BaseMatrix
 from .._column import COLUMN_FIELD
 from ._index import INDEX_FIELD
-
-# how to read the name of the folder where is the current file
 
 
 class Matrix(

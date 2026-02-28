@@ -39,9 +39,9 @@ Smoke test:
 import sys
 
 from tm2p import CorpusField, ThesaurusField
-from tm2p._internals import ParamsMixin
-from tm2p.refine._internals.objs.thesaurus_match_result import ThesaurusMatchResult
-from tm2p.refine._internals.rules import (
+from tm2p._intern import ParamsMixin
+from tm2p.refine._intern.objs.thesaurus_match_result import ThesaurusMatchResult
+from tm2p.refine._intern.rules import (
     apply_chemical_compounds_rule,
     apply_common_and_basic_rule,
     apply_error_metrics_rule,
@@ -61,7 +61,7 @@ from tm2p.refine._internals.rules import (
     apply_xml_encoding_rule,
 )
 
-from .._internals.data_access import (
+from .._intern.data_access import (
     load_thesaurus_as_dataframe,
     save_dataframe_as_thesaurus,
 )

@@ -74,9 +74,9 @@ Smoke tests:
 
 """
 
-from tm2p._internals import ParamsMixin
+from tm2p._intern import ParamsMixin
 from tm2p.ingest.rec import RecordViewer
-from tm2p.synthes.intellect_struct.main_path._internals.compute_main_path import (
+from tm2p.synthes.intellect_struct.main_path._intern.compute_main_path import (
     internal__compute_main_path,
 )
 

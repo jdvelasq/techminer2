@@ -33,9 +33,9 @@ Smoke tests:
 import sys
 from importlib.resources import files
 
-from tm2p._internals import ParamsMixin
+from tm2p._intern import ParamsMixin
 
-# from tm2p._internals.package_data.word_lists import (
+# from tm2p._intern.packag_data.word_lists import (
 #     internal__sort_text_processing_terms,
 # )
 

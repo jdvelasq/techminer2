@@ -27,9 +27,9 @@ from pathlib import Path
 from tqdm import tqdm  # type: ignore
 
 from tm2p import CorpusField
-from tm2p._internals import ParamsMixin
-from tm2p._internals.data_access import load_main_data
-from tm2p.refine._internals.objs import ThesaurusCreationResult
+from tm2p._intern import ParamsMixin
+from tm2p._intern.data_access import load_main_data
+from tm2p.refine._intern.objs import ThesaurusCreationResult
 
 tqdm.pandas()
 

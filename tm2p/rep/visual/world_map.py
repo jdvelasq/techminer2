@@ -37,9 +37,9 @@ Smoke tests:
 
 """
 
-from tm2p._internals import ParamsMixin
-from tm2p._internals.plots.world_map import world_map
-from tm2p.anal._internals.performance.performance_metrics import PerformanceMetrics
+from tm2p._intern import ParamsMixin
+from tm2p._intern.plot.world_map import world_map
+from tm2p.anal._intern.performance.performance_metrics import PerformanceMetrics
 
 
 class WorldMap(

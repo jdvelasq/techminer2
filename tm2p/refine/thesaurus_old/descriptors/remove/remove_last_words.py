@@ -62,9 +62,9 @@ from colorama import Fore, init
 from textblob import Word  # type: ignore
 from tqdm import tqdm  # type: ignore
 
-from tm2p._internals import ParamsMixin
-from tm2p._internals.package_data.word_lists import load_builtin_word_list
-from tm2p.refine.thesaurus_old._internals import ThesaurusMixin
+from tm2p._intern import ParamsMixin
+from tm2p._intern.packag_data.word_lists import load_builtin_word_list
+from tm2p.refine.thesaurus_old._intern import ThesaurusMixin
 
 tqdm.pandas()
 

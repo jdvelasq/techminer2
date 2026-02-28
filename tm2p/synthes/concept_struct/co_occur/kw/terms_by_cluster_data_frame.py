@@ -46,7 +46,7 @@ Smoke tests:
 
 """
 
-from tm2p._internals import ParamsMixin
+from tm2p._intern import ParamsMixin
 from tm2p.synthes.concept_struct.co_occur.usr.terms_by_cluster_data_frame import (
     TermsByClusterDataFrame as UserTermsByClusterDataFrame,
 )

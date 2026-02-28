@@ -43,9 +43,9 @@ from importlib.resources import files
 
 from colorama import Fore
 
-from tm2p._internals import ParamsMixin
-from tm2p.refine.thesaurus_old._internals import ThesaurusMixin
-from tm2p.refine.thesaurus_old._internals.load_thesaurus_as_mapping import (
+from tm2p._intern import ParamsMixin
+from tm2p.refine.thesaurus_old._intern import ThesaurusMixin
+from tm2p.refine.thesaurus_old._intern.load_thesaurus_as_mapping import (
     internal__load_thesaurus_as_mapping,
 )
 

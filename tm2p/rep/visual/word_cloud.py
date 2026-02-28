@@ -38,9 +38,9 @@ Smoke tests:
 
 """
 
-from tm2p._internals import ParamsMixin
-from tm2p._internals.plots.word_cloud import word_cloud
-from tm2p.anal._internals.performance.performance_metrics import PerformanceMetrics
+from tm2p._intern import ParamsMixin
+from tm2p._intern.plot.word_cloud import word_cloud
+from tm2p.anal._intern.performance.performance_metrics import PerformanceMetrics
 
 
 class WordCloud(

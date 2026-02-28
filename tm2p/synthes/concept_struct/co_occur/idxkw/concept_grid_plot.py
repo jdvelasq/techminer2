@@ -39,7 +39,7 @@ Concept Grid Plot
 
 """
 
-from tm2p._internals import ParamsMixin
+from tm2p._intern import ParamsMixin
 from tm2p.synthes.concept_struct.co_occur.usr.concept_grid_plot import (
     ConceptGridPlot as UserConceptGridPlot,
 )

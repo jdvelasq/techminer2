@@ -52,8 +52,8 @@ Smoke tests:
 
 """
 
-from tm2p._internals import ParamsMixin
-from tm2p._internals.nx import (
+from tm2p._intern import ParamsMixin
+from tm2p._intern.nx import (
     assign_constant_to_edge_colors,
     internal__assign_edge_widths_based_on_weight,
     internal__assign_node_colors_based_on_group_attribute,
@@ -65,7 +65,7 @@ from tm2p._internals.nx import (
     internal__compute_spring_layout_positions,
     internal__plot_nx_graph,
 )
-from tm2p.synthes.intellect_struct.citation._internals.from_documents.create_nx_graph import (
+from tm2p.synthes.intellect_struct.citation._intern.from_documents.create_nx_graph import (
     internal__create_nx_graph,
 )
 

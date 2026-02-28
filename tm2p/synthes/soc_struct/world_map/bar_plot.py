@@ -44,7 +44,7 @@ Smoke tests:
 
 import plotly.express as px  # type: ignore
 
-from tm2p._internals import ParamsMixin
+from tm2p._intern import ParamsMixin
 from tm2p.synthes.soc_struct.world_map.data_frame import DataFrame
 
 
