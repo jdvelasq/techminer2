@@ -4,7 +4,7 @@ Get Values
 
 
 Smoke tests:
-    >>> from techminer2.refine.thesaurus_old.user import InitializeThesaurus
+    >>> from tm2p.refine.thesaurus_old.user import InitializeThesaurus
     >>> (
     ...     InitializeThesaurus()
     ...     .with_thesaurus_file("demo.the.txt")
@@ -36,7 +36,7 @@ Smoke tests:
           A_CLUSTER_ANALYSIS
     <BLANKLINE>
 
-    >>> from techminer2.refine.thesaurus_old.user import GetValues
+    >>> from tm2p.refine.thesaurus_old.user import GetValues
     >>> terms = (
     ...     GetValues()
     ...     .with_thesaurus_file("demo.the.txt")

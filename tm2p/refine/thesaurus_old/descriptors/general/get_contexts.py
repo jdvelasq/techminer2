@@ -11,14 +11,14 @@ Smoke tests:
     >>> sys.stderr = StringIO()
 
     >>> # Reset the thesaurus to initial state
-    >>> from techminer2.refine.thesaurus_old.descriptors import InitializeThesaurus
+    >>> from tm2p.refine.thesaurus_old.descriptors import InitializeThesaurus
     >>> InitializeThesaurus(
     ...     root_directory="examples/fintech/",
     ...     quiet=True,
     ... ).run()
 
     >>> # Creates, configures, an run the exploder
-    >>> from techminer2.refine.thesaurus_old.descriptors import GetContexts
+    >>> from tm2p.refine.thesaurus_old.descriptors import GetContexts
     >>> contexts = (
     ...     GetContexts()
     ...     .with_patterns(["FINTECH"])
@@ -54,7 +54,7 @@ Smoke tests:
 import sys
 
 from tm2p._internals import ParamsMixin
-from tm2p.discover.concordances import ConcordanceSentences
+from tm2p.discov.concord import ConcordanceSentences
 
 
 class GetContexts(

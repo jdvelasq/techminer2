@@ -1,7 +1,7 @@
 """
 
 Smoke test:
-    >>> from techminer2._internals.data_access import get_references_data_path
+    >>> from tm2p._internals.data_access import get_references_data_path
     >>> get_references_data_path("my_root_directory")
     PosixPath('my_root_directory/data/processed/references.csv.zip')
 

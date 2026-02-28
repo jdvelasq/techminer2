@@ -4,13 +4,13 @@ Combine Keys
 
 Smoke tests:
     >>> # Preparation
-    >>> from techminer2.refine.thesaurus_old.descriptors import InitializeThesaurus
-    >>> from techminer2.refine.thesaurus_old.descriptors import ApplyThesaurus
+    >>> from tm2p.refine.thesaurus_old.descriptors import InitializeThesaurus
+    >>> from tm2p.refine.thesaurus_old.descriptors import ApplyThesaurus
     >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
     >>> ApplyThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Use
-    >>> from techminer2.refine.thesaurus_old.descriptors import CombineKeys
+    >>> from tm2p.refine.thesaurus_old.descriptors import CombineKeys
     >>> df = (
     ...     CombineKeys()
     ...     #

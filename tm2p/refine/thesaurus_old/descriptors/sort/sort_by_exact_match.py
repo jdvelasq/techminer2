@@ -6,7 +6,7 @@ Sort By Exact Match
 Smoke tests:
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.refine.thesaurus_old.descriptors import InitializeThesaurus, SortByExactMatch
+    >>> from tm2p.refine.thesaurus_old.descriptors import InitializeThesaurus, SortByExactMatch
 
     >>> # Redirecting stderr to avoid messages
     >>> original_stderr = sys.stderr

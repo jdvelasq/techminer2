@@ -6,7 +6,7 @@ from tm2p._internals import Params
 from ._post_process import _post_process
 from ._pre_process import _pre_process
 
-# from techminer2._internals.package_data import load_builtin_word_list
+# from tm2p._internals.package_data import load_builtin_word_list
 
 
 CHANGED = ThesaurusField.CHANGED.value

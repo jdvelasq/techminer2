@@ -4,7 +4,7 @@ Apply Thesaurus
 
 
 Smoke tests:
-    >>> from techminer2.refine.thesaurus_old.user import InitializeThesaurus
+    >>> from tm2p.refine.thesaurus_old.user import InitializeThesaurus
     >>> (
     ...     InitializeThesaurus()
     ...     .with_thesaurus_file("demo.the.txt")
@@ -37,7 +37,7 @@ Smoke tests:
     <BLANKLINE>
 
 
-    >>> from techminer2.refine.thesaurus_old.user import ApplyThesaurus
+    >>> from tm2p.refine.thesaurus_old.user import ApplyThesaurus
     >>> (
     ...     ApplyThesaurus()
     ...     .with_thesaurus_file("demo.the.txt")
@@ -54,7 +54,7 @@ Smoke tests:
     <BLANKLINE>
 
 
-    >>> from techminer2.io import Query
+    >>> from tm2p.io import Query
     >>> Query(
     ...     query_expression="SELECT descriptors_cleaned FROM database LIMIT 5;",
     ...     root_directory="examples/fintech/",
@@ -71,7 +71,7 @@ Smoke tests:
 
 
 
-    >>> from techminer2.ingest.operationsimport DeleteOperator
+    >>> from tm2p.ingest.operationsimport DeleteOperator
     >>> (
     ...     DeleteOperator()
     ...     .with_field("descriptors_cleaned")

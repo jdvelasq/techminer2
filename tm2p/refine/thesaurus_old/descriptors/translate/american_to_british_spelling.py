@@ -11,11 +11,11 @@ Smoke tests:
     >>> sys.stderr = StringIO()
 
     >>> # Create the thesaurus
-    >>> from techminer2.refine.thesaurus_old.descriptors import InitializeThesaurus
+    >>> from tm2p.refine.thesaurus_old.descriptors import InitializeThesaurus
     >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Creates, configures, an run the translator
-    >>> from techminer2.refine.thesaurus_old.descriptors import AmericanToBritishSpelling
+    >>> from tm2p.refine.thesaurus_old.descriptors import AmericanToBritishSpelling
     >>> (
     ...     AmericanToBritishSpelling(tqdm_disable=True, )
     ...     .where_root_directory("tests/fintech/")

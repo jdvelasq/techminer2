@@ -1,4 +1,4 @@
-"""Setup module for TechMiner2+"""
+"""Setup module for tm2p+"""
 
 from setuptools import find_packages, setup  # type: ignore[import]
 

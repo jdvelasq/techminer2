@@ -1,6 +1,6 @@
 """
 Smoke tests:
-    >>> from techminer2.refine._internals.objs.thesaurus_match_result import ThesaurusMatchResult
+    >>> from tm2p.refine._internals.objs.thesaurus_match_result import ThesaurusMatchResult
     >>> ThesaurusMatchResult(
     ...     colored_output=False,
     ...     output_file="data/thesaurus/candidates.the.txt",

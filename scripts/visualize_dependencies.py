@@ -37,7 +37,7 @@ def create_dependency_graph(dependencies, subpackages, output_file="dependencies
     """Create Graphviz DOT file for dependency visualization."""
 
     with open(output_file, "w") as f:
-        f.write("digraph techminer2_dependencies {\n")
+        f.write("digraph tm2p_dependencies {\n")
         f.write("    rankdir=LR;\n")
         f.write("    node [shape=box, style=rounded];\n")
         f.write("\n")
@@ -72,7 +72,7 @@ if __name__ == "__main__":
     import sys
 
     if len(sys.argv) < 2:
-        print("Usage: python visualize_dependencies.py /path/to/techminer2/repo")
+        print("Usage: python visualize_dependencies.py /path/to/tm2p/repo")
         sys.exit(1)
 
     root_dir = sys.argv[1]

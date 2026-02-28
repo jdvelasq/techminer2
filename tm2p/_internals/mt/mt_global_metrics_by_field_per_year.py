@@ -3,7 +3,7 @@ Global Indicators by Field per Year
 ===============================================================================
 
 
-## >>> from techminer2._core.metrics.global_metrics_by_field_per_year import global_metrics_by_field_per_year
+## >>> from tm2p._core.metrics.global_metrics_by_field_per_year import global_metrics_by_field_per_year
 ## >>> global_metrics_by_field_per_year(
 ## ...     field='authors',
 ## ...     as_index=True,

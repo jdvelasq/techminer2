@@ -1,6 +1,6 @@
 """
 Smoke test:
-    >>> from techminer2._internals.data_access import load_main_data
+    >>> from tm2p._internals.data_access import load_main_data
     >>> df = load_main_data(root_directory="examples/fintech-with-references/")
 
     >>> df = load_main_data(

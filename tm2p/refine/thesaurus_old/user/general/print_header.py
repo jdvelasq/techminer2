@@ -5,7 +5,7 @@ Print Header
 
 Smoke tests:
     >>> # Reset the thesaurus to initial state
-    >>> from techminer2.refine.thesaurus_old.user import InitializeThesaurus
+    >>> from tm2p.refine.thesaurus_old.user import InitializeThesaurus
     >>> (
     ...     InitializeThesaurus(quit=True)
     ...     .with_thesaurus_file("demo.the.txt")
@@ -13,7 +13,7 @@ Smoke tests:
     ...     .where_root_directory("tests/fintech/")
     ... ).run()
 
-    >>> from techminer2.refine.thesaurus_old.user import PrintHeader
+    >>> from tm2p.refine.thesaurus_old.user import PrintHeader
     >>> (
     ...     PrintHeader()
     ...     .with_thesaurus_file("demo.the.txt")

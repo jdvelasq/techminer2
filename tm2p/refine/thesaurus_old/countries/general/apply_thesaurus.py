@@ -3,16 +3,16 @@ Apply Thesaurus
 ===============================================================================
 
 Smoke tests:
-    >>> from techminer2.refine.thesaurus_old.countries import InitializeThesaurus
+    >>> from tm2p.refine.thesaurus_old.countries import InitializeThesaurus
     >>> (
     ...     InitializeThesaurus()
     ...     .where_root_directory("tests/fintech/")
     ... ).run()
 
-    >>> from techminer2.refine.thesaurus_old.countries import ApplyThesaurus
+    >>> from tm2p.refine.thesaurus_old.countries import ApplyThesaurus
     >>> ApplyThesaurus().where_root_directory("examples/fintech/").run()
 
-    >>> from techminer2.io import Query
+    >>> from tm2p.io import Query
     >>> result = Query(
     ...     query_expression="SELECT countries FROM database LIMIT 10;",
     ...     root_directory="examples/fintech/",

@@ -5,7 +5,7 @@ Register Initial Word
 Smoke tests:
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.refine.thesaurus_old.descriptors import InitializeThesaurus, RegisterInitialWord
+    >>> from tm2p.refine.thesaurus_old.descriptors import InitializeThesaurus, RegisterInitialWord
 
     >>> # Redirecting stderr to avoid messages
     >>> original_stderr = sys.stderr
@@ -34,7 +34,7 @@ from importlib.resources import files
 
 from tm2p._internals import ParamsMixin
 
-# from techminer2._internals.package_data.word_lists import (
+# from tm2p._internals.package_data.word_lists import (
 #     internal__sort_text_processing_terms,
 # )
 
@@ -63,7 +63,7 @@ class RegisterInitialWord(
     # -------------------------------------------------------------------------
     def internal__register_new_word(self):
 
-        data_path = files("techminer2.package_data.text_processing.data").joinpath(
+        data_path = files("tm2p.package_data.text_processing.data").joinpath(
             "common_initial_words.txt"
         )
         data_path = str(data_path)

@@ -5,25 +5,25 @@ Smoke test:
     >>> # TEST PREPARATION
     >>> #
     >>> # Countries:
-    >>> from techminer2.refine.thesaurus_old.countries import InitializeThesaurus, ApplyThesaurus
+    >>> from tm2p.refine.thesaurus_old.countries import InitializeThesaurus, ApplyThesaurus
     >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
     >>> ApplyThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Organizations:
-    >>> from techminer2.refine.thesaurus_old.organizations import InitializeThesaurus, ApplyThesaurus
+    >>> from tm2p.refine.thesaurus_old.organizations import InitializeThesaurus, ApplyThesaurus
     >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
     >>> ApplyThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Descriptors:
-    >>> from techminer2.refine.thesaurus_old.descriptors import InitializeThesaurus, ApplyThesaurus
+    >>> from tm2p.refine.thesaurus_old.descriptors import InitializeThesaurus, ApplyThesaurus
     >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
     >>> ApplyThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
     >>> #
     >>> # CODE TESTED
     >>> #
-    >>> from techminer2._internals import Params
-    >>> from techminer2.database._internals.io import load_filtered_main_data
+    >>> from tm2p._internals import Params
+    >>> from tm2p.database._internals.io import load_filtered_main_data
     >>> df = (
     ...     load_filtered_main_data(
     ...         Params(

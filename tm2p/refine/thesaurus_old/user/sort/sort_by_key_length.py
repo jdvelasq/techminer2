@@ -4,7 +4,7 @@ Sort by Key Length
 
 
 Smoke tests:
-    >>> from techminer2.refine.thesaurus_old.user import InitializeThesaurus
+    >>> from tm2p.refine.thesaurus_old.user import InitializeThesaurus
     >>> (
     ...     InitializeThesaurus()
     ...     .with_thesaurus_file("demo.the.txt")
@@ -36,7 +36,7 @@ Smoke tests:
           A_CLUSTER_ANALYSIS
     <BLANKLINE>
 
-    >>> from techminer2.refine.thesaurus_old.user import SortByKeyLength
+    >>> from tm2p.refine.thesaurus_old.user import SortByKeyLength
     >>> (
     ...     SortByKeyLength()
     ...     .with_thesaurus_file("demo.the.txt")

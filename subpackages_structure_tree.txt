@@ -168,9 +168,9 @@ tm2/
     │   │   ├── org/
     │   │   └── src/
     │   ├── co_cit/
-    │   │   ├── cited_auth/
-    │   │   ├── cited_ref/
-    │   │   └── cited_src/
+    │   │   ├── cit_auth/
+    │   │   ├── cit_ref/
+    │   │   └── cit_src/
     │   └── main_path/
     └── soc_struct/
         ├── co_authorsh/

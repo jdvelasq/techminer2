@@ -4,7 +4,7 @@ Reduce Keys
 
 
 Smoke tests:
-    >>> from techminer2.refine.thesaurus_old.user import InitializeThesaurus
+    >>> from tm2p.refine.thesaurus_old.user import InitializeThesaurus
     >>> (
     ...     InitializeThesaurus()
     ...     .with_thesaurus_file("demo.the.txt")
@@ -36,7 +36,7 @@ Smoke tests:
           A_CLUSTER_ANALYSIS
     <BLANKLINE>
 
-    >>> from techminer2.refine.thesaurus_old.user import ReduceKeys
+    >>> from tm2p.refine.thesaurus_old.user import ReduceKeys
     >>> (
     ...     ReduceKeys()
     ...     .with_thesaurus_file("demo.the.txt")

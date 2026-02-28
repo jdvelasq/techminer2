@@ -10,11 +10,11 @@ Smoke tests:
     >>> sys.stderr = StringIO()
 
 
-    >>> from techminer2.refine.thesaurus_old.descriptors import InitializeThesaurus
+    >>> from tm2p.refine.thesaurus_old.descriptors import InitializeThesaurus
     >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
 
-    >>> from techminer2.refine.thesaurus_old.descriptors import MergeKeys
+    >>> from tm2p.refine.thesaurus_old.descriptors import MergeKeys
     >>> (
     ...     MergeKeys()
     ...     .with_patterns(["FINTECH", "FINANCIAL_TECHNOLOGIES"])

@@ -4,7 +4,7 @@ Replace Starts With Word
 
 
 Smoke tests:
-    >>> from techminer2.refine.thesaurus_old.user import InitializeThesaurus
+    >>> from tm2p.refine.thesaurus_old.user import InitializeThesaurus
     >>> (
     ...     InitializeThesaurus()
     ...     .with_thesaurus_file("demo.the.txt")
@@ -37,7 +37,7 @@ Smoke tests:
     <BLANKLINE>
 
 
-    >>> from techminer2.refine.thesaurus_old.user import ReplaceWord
+    >>> from tm2p.refine.thesaurus_old.user import ReplaceWord
     >>> (
     ...     ReplaceWord()
     ...     .with_thesaurus_file("demo.the.txt")

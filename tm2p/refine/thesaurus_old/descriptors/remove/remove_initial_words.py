@@ -6,7 +6,7 @@ Initial Words
 Smoke tests:
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.refine.thesaurus_old.descriptors import InitializeThesaurus, RemoveInitialWords
+    >>> from tm2p.refine.thesaurus_old.descriptors import InitializeThesaurus, RemoveInitialWords
 
     >>> # Redirecting stderr to avoid messages
     >>> original_stderr = sys.stderr

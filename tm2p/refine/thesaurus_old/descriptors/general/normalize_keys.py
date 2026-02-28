@@ -13,10 +13,10 @@ Smoke tests:
     >>> sys.stderr = StringIO()
 
     >>> # Restore the thesaurus
-    >>> from techminer2.refine.thesaurus_old.descriptors import InitializeThesaurus
+    >>> from tm2p.refine.thesaurus_old.descriptors import InitializeThesaurus
     >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
-    >>> from techminer2.refine.thesaurus_old.descriptors import NormalizeKeys
+    >>> from tm2p.refine.thesaurus_old.descriptors import NormalizeKeys
     >>> (
     ...     NormalizeKeys()
     ...     .where_root_directory("tests/fintech/")
@@ -111,7 +111,7 @@ class NormalizeKeys(
         self.data_frame["__row_selected__"] = False
         self.data_frame["org_key"] = self.data_frame["key"].copy()
 
-        file_path = files("techminer2.package_data.thesaurus.system").joinpath(
+        file_path = files("tm2p.package_data.thesaurus.system").joinpath(
             "concepts.the.txt"
         )
         file_path = str(file_path)

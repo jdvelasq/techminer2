@@ -4,13 +4,13 @@ Sort by Starts With Match
 
 
 Smoke tests:
-    >>> from techminer2.refine.thesaurus_old.countries import InitializeThesaurus
+    >>> from tm2p.refine.thesaurus_old.countries import InitializeThesaurus
     >>> (
     ...     InitializeThesaurus()
     ...     .where_root_directory("tests/fintech/")
     ... ).run()
 
-    >>> from techminer2.refine.thesaurus_old.countries import SortByStartsWithMatch
+    >>> from tm2p.refine.thesaurus_old.countries import SortByStartsWithMatch
     >>> (
     ...     SortByStartsWithMatch()
     ...     .having_text_matching("Germ")
@@ -18,7 +18,7 @@ Smoke tests:
     ...     .run()
     ... )
 
-    >>> from techminer2.refine.thesaurus_old.countries import PrintHeader
+    >>> from tm2p.refine.thesaurus_old.countries import PrintHeader
     >>> (
     ...     PrintHeader()
     ...     .using_colored_output(False)

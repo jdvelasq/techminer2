@@ -5,13 +5,13 @@ Print Header
 
 Smoke tests:
     >>> # Reset the thesaurus to initial state
-    >>> from techminer2.refine.thesaurus_old.acronyms.general import InitializeThesaurus
+    >>> from tm2p.refine.thesaurus_old.acronyms.general import InitializeThesaurus
     >>> (
     ...     InitializeThesaurus(quit=True)
     ...     .where_root_directory("tests/fintech/")
     ... ).run()
 
-    >>> from techminer2.refine.thesaurus_old.acronyms.general import PrintHeader
+    >>> from tm2p.refine.thesaurus_old.acronyms.general import PrintHeader
     >>> (
     ...     PrintHeader()
 

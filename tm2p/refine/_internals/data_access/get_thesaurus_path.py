@@ -1,7 +1,7 @@
 """
 
 Smoke test:
-    >>> from techminer2._internals.data_access import get_thesaurus_path
+    >>> from tm2p._internals.data_access import get_thesaurus_path
     >>> get_thesaurus_path(
     ...     root_directory="my_root_directory", file="file.the.txt"
     ... )

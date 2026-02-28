@@ -11,12 +11,12 @@ Smoke tests:
     >>> sys.stderr = StringIO()
 
     >>> # Reset the thesaurus to initial state
-    >>> from techminer2.refine.thesaurus_old.user import InitializeThesaurus
+    >>> from tm2p.refine.thesaurus_old.user import InitializeThesaurus
     >>> InitializeThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors",
     ...     root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Creates, configures, an run the translator
-    >>> from techminer2.refine.thesaurus_old.user import AmericanToBritishSpelling
+    >>> from tm2p.refine.thesaurus_old.user import AmericanToBritishSpelling
     >>> (
     ...     AmericanToBritishSpelling(tqdm_disable=True, )
     ...     .with_thesaurus_file("demo.the.txt")

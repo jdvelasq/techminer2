@@ -10,11 +10,11 @@ Smoke tests:
     >>> sys.stderr = StringIO()
 
     >>> # Create the thesaurus
-    >>> from techminer2.refine.thesaurus_old.references import InitializeThesaurus
+    >>> from tm2p.refine.thesaurus_old.references import InitializeThesaurus
     >>> InitializeThesaurus(root_directory = "examples/fintech/", quiet=True, tqdm_disable=True).run()
 
     >>> # Create, configure, and run the sorter
-    >>> from techminer2.refine.thesaurus_old.references import SortByAlphabet
+    >>> from tm2p.refine.thesaurus_old.references import SortByAlphabet
     >>> (
     ...     SortByAlphabet()
     ...     .where_root_directory("tests/fintech/")

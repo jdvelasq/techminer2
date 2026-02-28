@@ -12,7 +12,7 @@ Smoke tests:
     ...     }
     ... )
 
-    >>> from techminer2.refine.user._internals import ThesaurusCreationResult
+    >>> from tm2p.refine.user._internals import ThesaurusCreationResult
     >>> ThesaurusCreationResult(
     ...     colored_output=False,
     ...     source_field="AUTH_KEY_NORM",

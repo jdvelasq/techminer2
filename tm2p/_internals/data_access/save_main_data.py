@@ -1,6 +1,6 @@
 """
 Smoke test:
-    >>> from techminer2.database._internals.io import internal__write_records_to_database
+    >>> from tm2p.database._internals.io import internal__write_records_to_database
     >>> internal__write_records_to_database(params, records) # doctest: +SKIP
 
 

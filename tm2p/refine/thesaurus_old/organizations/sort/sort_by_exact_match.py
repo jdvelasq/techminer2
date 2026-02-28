@@ -7,7 +7,7 @@ Smoke tests:
     >>> # TEST PREPARATION
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.refine.thesaurus_old.organizations import InitializeThesaurus, SortByExactMatch
+    >>> from tm2p.refine.thesaurus_old.organizations import InitializeThesaurus, SortByExactMatch
 
     >>> # Redirecting stderr to avoid messages
     >>> original_stderr = sys.stderr
@@ -28,7 +28,7 @@ Smoke tests:
     ... )
     >>> sorter.run()
 
-    >>> from techminer2.refine.thesaurus_old.organizations import PrintHeader
+    >>> from tm2p.refine.thesaurus_old.organizations import PrintHeader
     >>> (
     ...     PrintHeader()
     ...     .using_colored_output(False)

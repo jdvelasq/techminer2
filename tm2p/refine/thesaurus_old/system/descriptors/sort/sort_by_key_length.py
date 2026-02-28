@@ -6,7 +6,7 @@ Sort by Key Length
 Smoke tests:
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.refine.thesaurus_old.system.descriptors import SortByKeyLength
+    >>> from tm2p.refine.thesaurus_old.system.descriptors import SortByKeyLength
 
     >>> # Redirecting stderr to avoid messages
     >>> original_stderr = sys.stderr
@@ -20,11 +20,11 @@ Smoke tests:
     >>> sys.stderr = StringIO()
     >>> print(output)  # doctest: +SKIP
     Sorting thesaurus by key length...
-      File : /Volumes/GitHub/techminer2/techminer2/_internals/package_data/thesaurus/system/descriptors.the.txt
+      File : /Volumes/GitHub/tm2p/tm2p/_internals/package_data/thesaurus/system/descriptors.the.txt
       Sorting process completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : /Volumes/GitHub/techminer2/techminer2/_internals/package_data/thesaurus/system/descriptors.the.txt
+      File : /Volumes/GitHub/tm2p/tm2p/_internals/package_data/thesaurus/system/descriptors.the.txt
     <BLANKLINE>
         ELMAN_RECURRENT_NEURAL_NETWORK
           ELMAN_NEURAL_NETWORK; ELMAN_NEURAL_NETWORKS

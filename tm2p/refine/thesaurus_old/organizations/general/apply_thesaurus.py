@@ -5,7 +5,7 @@ Apply Thesaurus
 Smoke tests:
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.refine.thesaurus_old.organizations import ApplyThesaurus, InitializeThesaurus
+    >>> from tm2p.refine.thesaurus_old.organizations import ApplyThesaurus, InitializeThesaurus
 
     >>> # Redirecting stderr to avoid messages
     >>> original_stderr = sys.stderr

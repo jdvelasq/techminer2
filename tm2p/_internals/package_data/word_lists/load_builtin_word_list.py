@@ -3,9 +3,7 @@ from importlib.resources import files
 
 def load_builtin_word_list(filename: str) -> frozenset[str]:
 
-    data_path = files("techminer2._internals.package_data.word_lists.data").joinpath(
-        filename
-    )
+    data_path = files("tm2p._internals.package_data.word_lists.data").joinpath(filename)
 
     content = data_path.read_text(encoding="utf-8")
     lines = content.splitlines()

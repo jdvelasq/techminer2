@@ -1,7 +1,7 @@
 import os
 from pathlib import Path
 
-PACKAGE_NAME = "techminer2"
+PACKAGE_NAME = "tm2p"
 PACKAGE_ROOT = PACKAGE_NAME
 SOURCE_DIR = "docsrc/source"
 

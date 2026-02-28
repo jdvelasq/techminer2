@@ -6,7 +6,7 @@ British to American Spelling
 Smoke tests:
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.refine.thesaurus_old.descriptors import BritishToAmericanSpelling, InitializeThesaurus
+    >>> from tm2p.refine.thesaurus_old.descriptors import BritishToAmericanSpelling, InitializeThesaurus
 
     >>> # Redirecting stderr to avoid messages during doctests
     >>> original_stderr = sys.stderr

@@ -5,10 +5,10 @@ Cutoff Fuzzy Merging
 
 Smoke tests:
     >>> # Reset the thesaurus to initial state
-    >>> from techminer2.refine.thesaurus_old.descriptors import InitializeThesaurus
+    >>> from tm2p.refine.thesaurus_old.descriptors import InitializeThesaurus
     >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
-    >>> from techminer2.refine.thesaurus_old.descriptors import ReduceKeys
+    >>> from tm2p.refine.thesaurus_old.descriptors import ReduceKeys
     >>> (
     ...     ReduceKeys()
     ...     .where_root_directory("tests/fintech/")
@@ -23,7 +23,7 @@ Smoke tests:
     >>> sys.stderr = StringIO()
 
     >>> # Cutoff Fuzzy Merging
-    >>> from techminer2.refine.thesaurus_old.descriptors import CutoffFuzzyMerging
+    >>> from tm2p.refine.thesaurus_old.descriptors import CutoffFuzzyMerging
     >>> (
     ...     CutoffFuzzyMerging(tqdm_disable=True, )
     ...     # .where_root_directory("examples/fintech/")

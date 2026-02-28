@@ -6,7 +6,7 @@ Sort by Fuzzy Match
 Smoke tests:
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.refine.thesaurus_old.system.descriptors import SortByFuzzyMatch
+    >>> from tm2p.refine.thesaurus_old.system.descriptors import SortByFuzzyMatch
 
     >>> # Redirecting stderr to avoid messages
     >>> original_stderr = sys.stderr
@@ -25,14 +25,14 @@ Smoke tests:
     >>> sys.stderr = original_stderr
     >>> print(output)  # doctest: +SKIP
     Sorting thesaurus by fuzzy match...
-                File : /Volumes/GitHub/techminer2/techminer2/_internals/package_data/thesaurus/system/descriptors.the.txt
+                File : /Volumes/GitHub/tm2p/tm2p/_internals/package_data/thesaurus/system/descriptors.the.txt
            Keys like : INFORM
       Match thresold : 50
       5 matching keys found
       Sorting process completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : /Volumes/GitHub/techminer2/techminer2/_internals/package_data/thesaurus/system/descriptors.the.txt
+      File : /Volumes/GitHub/tm2p/tm2p/_internals/package_data/thesaurus/system/descriptors.the.txt
     <BLANKLINE>
         BI_LSTM_TRANSFORMER
           BILSTM_TRANSFORMER_MODELS; BILSTM_TRANSFORMER_MODEL

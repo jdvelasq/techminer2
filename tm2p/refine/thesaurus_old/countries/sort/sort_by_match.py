@@ -4,13 +4,13 @@ Sort By Match
 
 
 Smoke tests:
-    >>> from techminer2.refine.thesaurus_old.countries import InitializeThesaurus
+    >>> from tm2p.refine.thesaurus_old.countries import InitializeThesaurus
     >>> (
     ...     InitializeThesaurus()
     ...     .where_root_directory("tests/fintech/")
     ... ).run()
 
-    >>> from techminer2.refine.thesaurus_old.countries import SortByMatch
+    >>> from tm2p.refine.thesaurus_old.countries import SortByMatch
     >>> (
     ...     SortByMatch()
     ...     #
@@ -26,7 +26,7 @@ Smoke tests:
     ...     .run()
     ... )
 
-    >>> from techminer2.refine.thesaurus_old.countries import PrintHeader
+    >>> from tm2p.refine.thesaurus_old.countries import PrintHeader
     >>> (
     ...     PrintHeader()
     ...     .using_colored_output(False)

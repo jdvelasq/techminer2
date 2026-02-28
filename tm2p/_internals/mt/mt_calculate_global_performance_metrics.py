@@ -6,7 +6,7 @@ This function computes global performance (bibliometric) metrics for a given fie
 
 from tm2p._internals.mt.mt_sort_records_by_metric import _mt_sort_records_by_metric
 
-# from techminer2._internals.stopwords import load_user_stopwords
+# from tm2p._internals.stopwords import load_user_stopwords
 
 
 def _mt_calculate_global_performance_metrics(

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Create a file with the directory-only structure of a package.
 
-By default it prefers a `techminer` directory, falls back to `techminer2`.
+By default it prefers a `techminer` directory, falls back to `tm2p`.
 It excludes any directory named `_helpers` or `_internals`.
 """
 import argparse
@@ -69,7 +69,7 @@ def main():
     p.add_argument(
         "--root",
         "-r",
-        help="Root package directory (default: detect techminer/ or techminer2/)",
+        help="Root package directory (default: detect techminer/ or tm2p/)",
     )
     p.add_argument(
         "--output", "-o", default="subpackages_structure.txt", help="Output file"
@@ -87,10 +87,10 @@ def main():
     if not root:
         if os.path.isdir("techminer"):
             root = "techminer"
-        elif os.path.isdir("techminer2"):
-            root = "techminer2"
+        elif os.path.isdir("tm2p"):
+            root = "tm2p"
         else:
-            print("No 'techminer' or 'techminer2' directory found. Provide --root.")
+            print("No 'techminer' or 'tm2p' directory found. Provide --root.")
             return 2
 
     if not os.path.isdir(root):

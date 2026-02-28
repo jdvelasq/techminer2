@@ -4,14 +4,14 @@ Initialize Thesaurus
 
 
 Smoke tests:
-    >>> from techminer2.refine.thesaurus_old.countries import InitializeThesaurus
+    >>> from tm2p.refine.thesaurus_old.countries import InitializeThesaurus
     >>> (
     ...     InitializeThesaurus()
     ...     .where_root_directory("tests/fintech/")
     ... ).run()
 
 
-    >>> from techminer2.refine.thesaurus_old.countries import PrintHeader
+    >>> from tm2p.refine.thesaurus_old.countries import PrintHeader
     >>> (
     ...     PrintHeader()
     ...     .using_colored_output(False)
@@ -124,7 +124,7 @@ class InitializeThesaurus(
             )
 
         # loads country valid names
-        file_path = files("techminer2.package_data.thesaurus.geography").joinpath(
+        file_path = files("tm2p.package_data.thesaurus.geography").joinpath(
             "country_to_alpha3.the.txt"
         )
         file_path = str(file_path)

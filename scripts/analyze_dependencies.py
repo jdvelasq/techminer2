@@ -11,9 +11,9 @@ from pathlib import Path
 
 
 def get_subpackages(root_dir):
-    """Get all subpackages in techminer2."""
+    """Get all subpackages in tm2p."""
     subpackages = []
-    root_path = Path(root_dir) / "techminer2"
+    root_path = Path(root_dir) / "tm2p"
 
     for item in root_path.iterdir():
         if item.is_dir() and (item / "__init__.py").exists():
@@ -27,8 +27,8 @@ def analyze_imports_in_file(file_path, root_dir):
     imports = []
 
     # compile line-level patterns (capture top-level subpackage name)
-    pattern_from = re.compile(r"from\s+techminer2\.([A-Za-z0-9_]+)")
-    pattern_import = re.compile(r"import\s+techminer2\.([A-Za-z0-9_]+)")
+    pattern_from = re.compile(r"from\s+tm2p\.([A-Za-z0-9_]+)")
+    pattern_import = re.compile(r"import\s+tm2p\.([A-Za-z0-9_]+)")
 
     try:
         with open(file_path, "r", encoding="utf-8") as f:
@@ -49,7 +49,7 @@ def analyze_imports_in_file(file_path, root_dir):
                 m3 = re.match(r"^\s*import\s+([A-Za-z0-9_]+)", line)
                 if m3:
                     name = m3.group(1)
-                    if name != "techminer2":
+                    if name != "tm2p":
                         imports.append(name)
 
                 # detect relative imports that may reference other top-level subpackages
@@ -70,7 +70,7 @@ def analyze_subpackage_dependencies(root_dir):
     # Map: subpackage -> set of subpackages it imports from
     dependencies = defaultdict(set)
 
-    root_path = Path(root_dir) / "techminer2"
+    root_path = Path(root_dir) / "tm2p"
 
     for subpackage in subpackages:
         subpackage_path = root_path / subpackage
@@ -187,12 +187,12 @@ def build_import_locations(root_dir, subpackages):
 
     Returns a dict: locations[pkg_from][pkg_to] = list of (file_path, lineno, line)
     """
-    root_path = Path(root_dir) / "techminer2"
+    root_path = Path(root_dir) / "tm2p"
     locations = {pkg: defaultdict(list) for pkg in subpackages}
 
     # Patterns to match imports; capture the top-level subpackage name
-    pattern_from = re.compile(r"from\s+techminer2\.([A-Za-z0-9_]+)")
-    pattern_import = re.compile(r"import\s+techminer2\.([A-Za-z0-9_]+)")
+    pattern_from = re.compile(r"from\s+tm2p\.([A-Za-z0-9_]+)")
+    pattern_import = re.compile(r"import\s+tm2p\.([A-Za-z0-9_]+)")
     pattern_rel = re.compile(r"from\s+\.{2,}([A-Za-z0-9_]+)")
     pattern_bare = re.compile(r"^\s*import\s+([A-Za-z0-9_]+)")
 
@@ -267,13 +267,13 @@ def main():
     import sys
 
     if len(sys.argv) < 2:
-        print("Usage: python analyze_dependencies.py /path/to/techminer2/repo")
+        print("Usage: python analyze_dependencies.py /path/to/tm2p/repo")
         sys.exit(1)
 
     root_dir = sys.argv[1]
 
-    if not os.path.exists(os.path.join(root_dir, "techminer2")):
-        print(f"Error: {root_dir} does not contain techminer2 package")
+    if not os.path.exists(os.path.join(root_dir, "tm2p")):
+        print(f"Error: {root_dir} does not contain tm2p package")
         sys.exit(1)
 
     dependencies, subpackages = analyze_subpackage_dependencies(root_dir)

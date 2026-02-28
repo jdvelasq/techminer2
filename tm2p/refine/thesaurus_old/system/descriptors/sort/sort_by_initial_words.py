@@ -6,7 +6,7 @@ Sort by Initial Words
 Smoke tests:
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.refine.thesaurus_old.system.descriptors import SortByInitialWords
+    >>> from tm2p.refine.thesaurus_old.system.descriptors import SortByInitialWords
 
     >>> # Redirecting stderr to avoid messages
     >>> original_stderr = sys.stderr
@@ -20,12 +20,12 @@ Smoke tests:
     >>> sys.stderr = original_stderr
     >>> print(output)  # doctest: +SKIP
     Sorting thesaurus by common initial words...
-      File : ...techminer2/_internals/package_data/thesaurus/system/descriptors.the.txt
+      File : ...tm2p/_internals/package_data/thesaurus/system/descriptors.the.txt
       0 matching keys found
       Sorting process completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : /Volumes/GitHub/techminer2/techminer2/_internals/package_data/thesaurus/system/descriptors.the.txt
+      File : /Volumes/GitHub/tm2p/tm2p/_internals/package_data/thesaurus/system/descriptors.the.txt
     <BLANKLINE>
         ANALYSIS
           ANALYZES

@@ -3,7 +3,7 @@ Combine Keys
 ===============================================================================
 
 Smoke tests:
-    >>> from techminer2.refine.thesaurus_old.user import InitializeThesaurus
+    >>> from tm2p.refine.thesaurus_old.user import InitializeThesaurus
     >>> (
     ...     InitializeThesaurus()
     ...     .with_thesaurus_file("demo.the.txt")
@@ -35,7 +35,7 @@ Smoke tests:
           A_CLUSTER_ANALYSIS
     <BLANKLINE>
 
-    >>> from techminer2.refine.thesaurus_old.user import ApplyThesaurus
+    >>> from tm2p.refine.thesaurus_old.user import ApplyThesaurus
     >>> (
     ...     ApplyThesaurus()
     ...     .with_thesaurus_file("demo.the.txt")
@@ -52,7 +52,7 @@ Smoke tests:
     <BLANKLINE>
 
 
-    >>> from techminer2.refine.thesaurus_old.user import CombineKeys
+    >>> from tm2p.refine.thesaurus_old.user import CombineKeys
     >>> df = (
     ...     CombineKeys()
     ...     #
@@ -85,7 +85,7 @@ Smoke tests:
 
 from tm2p._internals import ParamsMixin
 
-# from techminer2.discover.co_occurrence_matrix._internals import (
+# from tm2p.discov.co_occurrence_matrix._internals import (
 #     DataFrame as CoocDataFrame,
 # )
 

@@ -4,7 +4,7 @@ Initialize Thesaurus
 
 
 Smoke tests:
-    >>> from techminer2.refine.thesaurus_old.user import InitializeThesaurus
+    >>> from tm2p.refine.thesaurus_old.user import InitializeThesaurus
     >>> (
     ...     InitializeThesaurus()
     ...     .with_thesaurus_file("demo.the.txt")
@@ -38,7 +38,7 @@ Smoke tests:
 
 ```
 python3 - <<'PY'
-from techminer2.refine.thesaurus_old.user import InitializeThesaurus
+from tm2p.refine.thesaurus_old.user import InitializeThesaurus
 print(
     InitializeThesaurus()
     .with_thesaurus_file("demo.the.txt")

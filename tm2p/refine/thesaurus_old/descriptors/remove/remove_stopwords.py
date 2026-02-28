@@ -6,7 +6,7 @@ Stopwords
 Smoke tests:
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.refine.thesaurus_old.descriptors import InitializeThesaurus, RemoveStopwords
+    >>> from tm2p.refine.thesaurus_old.descriptors import InitializeThesaurus, RemoveStopwords
 
     >>> # Redirecting stderr to avoid messages
     >>> original_stderr = sys.stderr

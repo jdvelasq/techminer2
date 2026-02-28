@@ -6,7 +6,7 @@ Integrity Check
 Smoke tests:
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.refine.thesaurus_old.descriptors import InitializeThesaurus, IntegrityCheck
+    >>> from tm2p.refine.thesaurus_old.descriptors import InitializeThesaurus, IntegrityCheck
 
     >>> # Redirect stderr to capture output
     >>> original_stderr = sys.stderr

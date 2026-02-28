@@ -4,7 +4,7 @@ Replace Last Word
 
 
 Smoke tests:
-    >>> from techminer2.refine.thesaurus_old.user import InitializeThesaurus
+    >>> from tm2p.refine.thesaurus_old.user import InitializeThesaurus
     >>> (
     ...     InitializeThesaurus()
     ...     .with_thesaurus_file("demo.the.txt")
@@ -38,7 +38,7 @@ Smoke tests:
 
 
 
-    >>> from techminer2.refine.thesaurus_old.user import ReplaceLastWord
+    >>> from tm2p.refine.thesaurus_old.user import ReplaceLastWord
     >>> (
     ...     ReplaceLastWord()
     ...     .with_thesaurus_file("demo.the.txt")

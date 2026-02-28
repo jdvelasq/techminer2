@@ -5,11 +5,7 @@ from pathlib import Path
 def add_new_words_to_builtin_word_list(filename: str, new_words: list[str]) -> None:
 
     data_path = Path(
-        str(
-            files("techminer2._internals.package_data.word_lists.data").joinpath(
-                filename
-            )
-        )
+        str(files("tm2p._internals.package_data.word_lists.data").joinpath(filename))
     )
 
     content = data_path.read_text(encoding="utf-8")

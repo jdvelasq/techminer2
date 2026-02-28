@@ -3,8 +3,8 @@ Treemap
 ===============================================================================
 
 
-# >>> from techminer2.nx_visualize_treemap import nx_visualize_treemap
-# >>> itemslist = techminer2plus.list_items(
+# >>> from tm2p.nx_visualize_treemap import nx_visualize_treemap
+# >>> itemslist = tm2pplus.list_items(
 # ...    field='author_keywords',
 # ...    top_n=20,
 # ...    root_dir=root_dir,

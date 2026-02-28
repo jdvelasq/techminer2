@@ -4,7 +4,7 @@ Sankey Plot
 
 
 Smoke tests:
-    >>> from techminer2.packages.occurrence_matrix import SankeyPlot
+    >>> from tm2p.packages.occurrence_matrix import SankeyPlot
     >>> fig = (
     ...     SankeyPlot()
     ...     #
@@ -43,7 +43,7 @@ Smoke tests:
     ... )
     >>> type(fig).__name__
     'Figure'
-    >>> fig.write_html("docsrc/_generated/px.packages.occurrence_matrix.sankey_plot.html")
+    >>> fig.write_html("docsrc/_generated/px.packages.occur_matrix.sankey_plot.html")
 
 .. raw:: html
 
@@ -55,7 +55,7 @@ Smoke tests:
 import plotly.graph_objects as go  # type: ignore
 
 from tm2p._internals import ParamsMixin
-from tm2p.discover.occurrence_matrix._internals.matrix import Matrix
+from tm2p.discov.occur_matrix._internals.matrix import Matrix
 
 
 class SankeyPlot(

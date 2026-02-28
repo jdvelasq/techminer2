@@ -4,7 +4,7 @@ Clump Keys
 
 
 Smoke tests:
-    >>> from techminer2.refine.thesaurus_old.user import InitializeThesaurus
+    >>> from tm2p.refine.thesaurus_old.user import InitializeThesaurus
     >>> (
     ...     InitializeThesaurus()
     ...     .with_thesaurus_file("demo.the.txt")
@@ -37,7 +37,7 @@ Smoke tests:
     <BLANKLINE>
 
 
-    >>> from techminer2.refine.thesaurus_old.user import ClumpKeys
+    >>> from tm2p.refine.thesaurus_old.user import ClumpKeys
     >>> (
     ...     ClumpKeys(tqdm_disable=True, )
     ...     .with_thesaurus_file("demo.the.txt")
@@ -80,7 +80,7 @@ from tqdm import tqdm  # type: ignore
 
 from tm2p._internals import ParamsMixin
 from tm2p._internals.package_data.word_lists import load_builtin_word_list
-from tm2p.analyze._internals.performance import PerformanceMetrics
+from tm2p.anal._internals.performance import PerformanceMetrics
 from tm2p.refine.thesaurus_old._internals import ThesaurusMixin, ThesaurusResult
 
 

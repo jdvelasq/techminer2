@@ -10,7 +10,7 @@ Smoke tests:
     >>> sys.stderr = StringIO()
 
     >>> # Create the thesaurus
-    >>> from techminer2.refine.thesaurus_old.references import InitializeThesaurus
+    >>> from tm2p.refine.thesaurus_old.references import InitializeThesaurus
     >>> InitializeThesaurus(root_directory = "examples/fintech/", tqdm_disable=True, ).run()
 
     >>> # Capture and print stderr output

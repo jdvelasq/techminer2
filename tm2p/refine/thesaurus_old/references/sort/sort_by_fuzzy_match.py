@@ -5,7 +5,7 @@ Sort by Fuzzy Match
 Smoke tests:
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.refine.thesaurus_old.references import InitializeThesaurus, SortByFuzzyMatch
+    >>> from tm2p.refine.thesaurus_old.references import InitializeThesaurus, SortByFuzzyMatch
 
     >>> # Redirecting stderr to avoid messages
     >>> original_stderr = sys.stderr

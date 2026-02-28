@@ -1,6 +1,6 @@
 """
 Smoke test:
-    >>> from techminer2.refine._internals.data_access import load_thesaurus_as_dataframe
+    >>> from tm2p.refine._internals.data_access import load_thesaurus_as_dataframe
     >>> load_thesaurus_as_dataframe(params=Params(
     ...         root_directory="examples/fintech-with-references/",
     ...         thesaurus_file="concepts.the.txt",

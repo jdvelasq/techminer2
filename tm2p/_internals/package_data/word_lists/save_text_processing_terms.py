@@ -4,7 +4,7 @@ from importlib.resources import files
 def save_text_processing_terms(file_name, terms):
     """:meta private:"""
 
-    data_path = files("techminer2._internals.package_data.word_lists.data").joinpath(
+    data_path = files("tm2p._internals.package_data.word_lists.data").joinpath(
         file_name
     )
     data_path = str(data_path)

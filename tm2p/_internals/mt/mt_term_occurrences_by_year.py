@@ -4,7 +4,7 @@ Term Occurrences by Year
 
 Computes the annual occurrence matrix for the items in a given field.
 
-## >>> from techminer2._core.metrics.term_occurrences_by_year import term_occurrences_by_year
+## >>> from tm2p._core.metrics.term_occurrences_by_year import term_occurrences_by_year
 ## >>> term_occurrences_by_year(
 ## ...     field='authors',
 ## ...     cumulative=False,

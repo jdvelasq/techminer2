@@ -7,7 +7,7 @@ Smoke tests:
     >>> # TEST PREPARATION
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.refine.thesaurus_old.organizations import InitializeThesaurus
+    >>> from tm2p.refine.thesaurus_old.organizations import InitializeThesaurus
 
     >>> # Redirecting stderr to avoid messages
     >>> original_stderr = sys.stderr
@@ -17,7 +17,7 @@ Smoke tests:
     >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Create and run the sorter
-    >>> from techminer2.refine.thesaurus_old.organizations import SortByWordLength
+    >>> from tm2p.refine.thesaurus_old.organizations import SortByWordLength
     >>> sorter = (
     ...     SortByWordLength()
     ...     #
@@ -26,7 +26,7 @@ Smoke tests:
     ... )
     >>> sorter.run()
 
-    >>> from techminer2.refine.thesaurus_old.organizations import PrintHeader
+    >>> from tm2p.refine.thesaurus_old.organizations import PrintHeader
     >>> (
     ...     PrintHeader()
     ...     .using_colored_output(False)

@@ -5,7 +5,7 @@ used together with Colorama on terminals that support truecolor. Example:
 
         from colorama import init, Style
         init()
-        from techminer2._internals import colors
+        from tm2p._internals import colors
 
         print(colors.TABLEAU10_BLUE + "Hello" + colors.RESET)
 

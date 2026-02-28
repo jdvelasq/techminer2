@@ -9,7 +9,7 @@ Smoke tests:
     'examples/fintech/data/thesaurus/acronyms.the.txt'
 
     >>> # Create thesaurus
-    >>> from techminer2.refine.thesaurus_old.descriptors import InitializeThesaurus
+    >>> from tm2p.refine.thesaurus_old.descriptors import InitializeThesaurus
     >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Redirecting stderr to avoid messages
@@ -19,7 +19,7 @@ Smoke tests:
     >>> sys.stderr = StringIO()
 
     >>> # Configure and run the replacer
-    >>> from techminer2.refine.thesaurus_old.descriptors import ReplaceAcronyms
+    >>> from tm2p.refine.thesaurus_old.descriptors import ReplaceAcronyms
     >>> ReplaceAcronyms(
     ...     root_directory="examples/fintech/",
     ...     tqdm_disable=True,

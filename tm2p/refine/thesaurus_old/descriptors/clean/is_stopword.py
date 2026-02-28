@@ -5,13 +5,13 @@ Is Stopword?
 
 Smoke tests:
     >>> # TEST PREPARATION
-    >>> from techminer2.refine.thesaurus_old.descriptors import InitializeThesaurus, IsStopword
+    >>> from tm2p.refine.thesaurus_old.descriptors import InitializeThesaurus, IsStopword
 
     >>> # Create the thesaurus
     >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Is stopword?
-    >>> from techminer2.refine.thesaurus_old.descriptors import IsStopword
+    >>> from tm2p.refine.thesaurus_old.descriptors import IsStopword
     >>> df = (
     ...     IsStopword(quiet=False)
     ...     .with_core_area("FINTECH - FINANCIAL TECHNOLOGIES")
@@ -83,7 +83,7 @@ from pandarallel import pandarallel
 
 from tm2p._internals import ParamsMixin, load_builtin_template, stdout_to_stderr
 from tm2p._internals.package_data.word_lists import load_builtin_word_list
-from tm2p.analyze._internals.performance import PerformanceMetrics as DominantDataFrame
+from tm2p.anal._internals.performance import PerformanceMetrics as DominantDataFrame
 
 with stdout_to_stderr():
     pandarallel.initialize(progress_bar=True)

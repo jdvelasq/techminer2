@@ -5,7 +5,7 @@ Explode Keys
 Smoke tests:
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.refine.thesaurus_old.organizations import InitializeThesaurus, ExplodeKeys
+    >>> from tm2p.refine.thesaurus_old.organizations import InitializeThesaurus, ExplodeKeys
 
     >>> # Redirect stderr to capture output
     >>> original_stderr = sys.stderr
@@ -17,7 +17,7 @@ Smoke tests:
     >>> # Explode thesaurus keys
     >>> ExplodeKeys().where_root_directory("examples/fintech/").run()
 
-    >>> from techminer2.refine.thesaurus_old.organizations import PrintHeader
+    >>> from tm2p.refine.thesaurus_old.organizations import PrintHeader
     >>> (
     ...     PrintHeader()
     ...     .using_colored_output(False)

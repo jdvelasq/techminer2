@@ -6,7 +6,7 @@ Sort By Match
 Smoke tests:
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.refine.thesaurus_old.system.descriptors import SortByMatch
+    >>> from tm2p.refine.thesaurus_old.system.descriptors import SortByMatch
 
     >>> # Redirecting stderr to avoid messages
     >>> original_stderr = sys.stderr
@@ -27,7 +27,7 @@ Smoke tests:
     >>> sys.stderr = original_stderr
     >>> print(output)  # doctest: +SKIP
     Sorting thesaurus by match...
-                File : ...techminer2/_internals/package_data/thesaurus/system/descriptors.the.txt
+                File : ...tm2p/_internals/package_data/thesaurus/system/descriptors.the.txt
              Pattern : BLOCK
       Case sensitive : False
          Regex Flags : 0
@@ -36,7 +36,7 @@ Smoke tests:
       Sorting process completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : /Volumes/GitHub/techminer2/techminer2/_internals/package_data/thesaurus/system/descriptors.the.txt
+      File : /Volumes/GitHub/tm2p/tm2p/_internals/package_data/thesaurus/system/descriptors.the.txt
     <BLANKLINE>
         BLOCK_CHAIN
           BLOCK_CHAINS; BLOCKCHAIN; BLOCKCHAINS

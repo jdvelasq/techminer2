@@ -7,7 +7,7 @@ Smoke tests:
     >>> # TEST PREPARATION
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.refine.thesaurus_old.descriptors import InitializeThesaurus, PopulateStopwords
+    >>> from tm2p.refine.thesaurus_old.descriptors import InitializeThesaurus, PopulateStopwords
 
     >>> # Redirecting stderr to avoid messages
     >>> original_stderr = sys.stderr
@@ -40,7 +40,7 @@ Smoke tests:
 
 from tm2p._internals import ParamsMixin
 
-# from techminer2._internals.stopwords import load_user_stopwords, save_user_stopwords
+# from tm2p._internals.stopwords import load_user_stopwords, save_user_stopwords
 from tm2p.refine.thesaurus_old.descriptors import IsStopword
 
 # -----------------------------------------------------------------------------

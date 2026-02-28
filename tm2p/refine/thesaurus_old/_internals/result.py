@@ -16,7 +16,7 @@ Smoke tests:
     ...     }
     ... )
     >>> # Create thesaurus
-    >>> from techminer2.refine.thesaurus_old._internals import ThesaurusResult
+    >>> from tm2p.refine.thesaurus_old._internals import ThesaurusResult
     >>> ThesaurusResult(
     ...     colored_output=False,
     ...     file_path="examples/fintech/thesauri/organizations.the.txt",
@@ -66,7 +66,7 @@ Smoke tests:
 # python3 - <<'PY'
 # import pandas as pd
 # from colorama import init
-# from techminer2.refine.thesaurus_old._internals.result import ThesaurusResult
+# from tm2p.refine.thesaurus_old._internals.result import ThesaurusResult
 #
 # # enable colorama (autoreset keeps colors from leaking)
 # init(autoreset=True)

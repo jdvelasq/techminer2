@@ -7,7 +7,7 @@ from tm2p.refine.thesaurus_old._internals.load_reversed_thesaurus_as_mapping imp
 
 def internal__load_cleanup_thesaurus_as_mapping() -> dict[str, str]:
     """Load all cleanup thesaurus files and merge into single mapping."""
-    cleanup_dir = files("techminer2.package_data.thesaurus.cleanup")
+    cleanup_dir = files("tm2p.package_data.thesaurus.cleanup")
     txt_files = [str(f) for f in cleanup_dir.iterdir() if f.name.endswith(".txt")]
     mapping: dict[str, str] = {}
     for file_path in txt_files:

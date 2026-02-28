@@ -5,14 +5,14 @@ Initialize Thesaurus
 
 Smoke tests:
     >>> # Create thesaurus
-    >>> from techminer2.refine.thesaurus_old.acronyms import InitializeThesaurus
+    >>> from tm2p.refine.thesaurus_old.acronyms import InitializeThesaurus
     >>> (
     ...     InitializeThesaurus()
     ...     .where_root_directory("tests/fintech/")
     ...     .run()
     ... )
 
-    >>> from techminer2.refine.thesaurus_old.acronyms import PrintHeader
+    >>> from tm2p.refine.thesaurus_old.acronyms import PrintHeader
     >>> (
     ...     PrintHeader()
     ...     .where_root_directory("tests/fintech/")

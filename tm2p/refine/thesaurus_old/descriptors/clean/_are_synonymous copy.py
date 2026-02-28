@@ -7,7 +7,7 @@ Smoke tests:
     >>> # TEST PREPARATION
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.refine.thesaurus_old.descriptors import InitializeThesaurus, AreSynonymous
+    >>> from tm2p.refine.thesaurus_old.descriptors import InitializeThesaurus, AreSynonymous
 
     >>> # Redirecting stderr to avoid messages
     >>> original_stderr = sys.stderr
@@ -56,7 +56,7 @@ from tm2p._internals import ParamsMixin
 from tm2p._internals.package_data.templates.load_builtin_template import (
     load_builtin_template,
 )
-from tm2p.analyze._internals.performance import PerformanceMetrics as DominantDataFrame
+from tm2p.anal._internals.performance import PerformanceMetrics as DominantDataFrame
 
 # -----------------------------------------------------------------------------
 

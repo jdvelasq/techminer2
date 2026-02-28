@@ -6,7 +6,7 @@ Smoke tests:
     >>> import shutil
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.refine.thesaurus_old.acronyms import RegisterPhrases
+    >>> from tm2p.refine.thesaurus_old.acronyms import RegisterPhrases
 
     >>> # Redirecting stderr to avoid messages
     >>> original_stderr = sys.stderr
@@ -35,7 +35,7 @@ from importlib.resources import files
 
 from tm2p._internals import Params, ParamsMixin
 
-# from techminer2._internals.package_data.word_lists import (
+# from tm2p._internals.package_data.word_lists import (
 #     internal__sort_text_processing_terms,
 # )
 from tm2p.refine.thesaurus_old._internals import (
@@ -94,7 +94,7 @@ class RegisterPhrases(
     # -------------------------------------------------------------------------
     def internal__register_new_terms(self):
 
-        data_path = files("techminer2.package_data.text_processing.data").joinpath(
+        data_path = files("tm2p.package_data.text_processing.data").joinpath(
             "noun_phrases.txt"
         )
         data_path = str(data_path)

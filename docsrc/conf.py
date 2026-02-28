@@ -37,7 +37,7 @@ toggleprompt_offset_right = 25
 copybutton_prompt_text = r">>> |\.\.\. "
 copybutton_prompt_is_regexp = True
 
-modindex_common_prefix = ["techminer2."]
+modindex_common_prefix = ["tm2p."]
 
 nbsphinx_allow_errors = True
 nbsphinx_execute = "never"
@@ -259,7 +259,7 @@ latex_elements: Dict[str, str] = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, "biblio.tex", "TechMiner2 Documentation", "Author", "manual"),
+    (master_doc, "biblio.tex", "tm2p Documentation", "Author", "manual"),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -287,7 +287,7 @@ latex_documents = [
 
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
-man_pages = [(master_doc, "TechMiner2+", "TechMiner2+ Documentation", [author], 1)]
+man_pages = [(master_doc, "tm2p+", "tm2p+ Documentation", [author], 1)]
 
 # If true, show URL addresses after external links.
 # man_show_urls = False
@@ -301,10 +301,10 @@ man_pages = [(master_doc, "TechMiner2+", "TechMiner2+ Documentation", [author], 
 texinfo_documents = [
     (
         master_doc,
-        "TechMiner2+",
-        "TechMiner2+ Documentation",
+        "tm2p+",
+        "tm2p+ Documentation",
         author,
-        "TechMiner2+",
+        "tm2p+",
         "A Package for Analysing Bibliographical Information using Python",
         "Miscellaneous",
     ),
