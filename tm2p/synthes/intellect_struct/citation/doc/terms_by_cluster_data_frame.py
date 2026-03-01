@@ -11,7 +11,7 @@ Smoke tests:
     ...     # UNIT OF ANALYSIS:
     ...     .having_items_in_top(30)
     ...     .using_citation_threshold(0)
-    ...     .using_term_counters(True)
+    ...     .using_item_counters(True)
     ...     #
     ...     # CLUSTERING:
     ...     .using_clustering_algorithm_or_dict("louvain")

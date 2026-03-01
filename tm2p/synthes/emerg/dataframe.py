@@ -40,7 +40,6 @@ Smoke tests:
 import numpy as np
 
 from tm2p._intern import ParamsMixin
-from tm2p._intern.mt.mt_term_occurrences_by_year import _mt_term_occurrences_by_year
 from tm2p.discov.overview import MainInformation as GeneralMetricsDataFrame
 from tm2p.discov.overview.average_citations_per_year.dataframe import (
     DataFrame as TrendMetricsDataFrame,

@@ -4,7 +4,7 @@ TopTermsExtractor
 
 Smoke tests:
     >>> from tm2p import CorpusField
-    >>> from tm2p.ingest.extract import TopTermsExtractor
+    >>> from tm2p.ingest.extr import TopTermsExtractor
     >>> terms = (
     ...     TopTermsExtractor()
     ...     #

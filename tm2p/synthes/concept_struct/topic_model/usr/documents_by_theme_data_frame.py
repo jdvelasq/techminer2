@@ -33,7 +33,7 @@ Smoke tests:
     ...     .using_top_terms_by_theme(5)
     ...     #
     ...     # TFIDF:
-    ...     .using_binary_term_frequencies(False)
+    ...     .using_binary_item_frequencies(False)
     ...     .using_row_normalization(None)
     ...     .using_idf_reweighting(False)
     ...     .using_idf_weights_smoothing(False)
@@ -66,7 +66,7 @@ Smoke tests:
 import pandas as pd  # type: ignore
 
 from tm2p._intern import ParamsMixin
-from tm2p.discov.tfidf import DataFrame as TfIdfDataFrame
+from tm2p.discov.tfidf import Matrix as TfIdfDataFrame
 
 
 class DocumentsByThemeDataFrame(

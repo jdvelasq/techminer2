@@ -48,16 +48,16 @@ from typing import Any
 from tm2p._intern import ParamsMixin
 
 from ._intern import Step
-from ._intern.affiliations.build_steps import build_affiliation_steps
-from ._intern.authors.build_steps import build_author_steps
-from ._intern.concepts.build_steps import build_concept_steps
-from ._intern.document.build_steps import build_document_steps
-from ._intern.keywords.build_steps import build_keyword_steps
-from ._intern.references.build_steps import build_reference_steps
+from ._intern.affil.build_steps import build_affiliation_steps
+from ._intern.auth.build_steps import build_author_steps
+from ._intern.concept.build_steps import build_concept_steps
+from ._intern.doc.build_steps import build_document_steps
+from ._intern.kw.build_steps import build_keyword_steps
+from ._intern.ref.build_steps import build_reference_steps
 from ._intern.review.build_steps import build_review_steps
-from ._intern.scaffolding.build_steps import build_scaffolding_steps
+from ._intern.scaffold.build_steps import build_scaffolding_steps
 from ._intern.scopus_result import ScopusResult
-from ._intern.source_title.build_steps import build_source_title_steps
+from ._intern.src.build_steps import build_source_title_steps
 
 __reviewed__ = "2026-01-28"
 

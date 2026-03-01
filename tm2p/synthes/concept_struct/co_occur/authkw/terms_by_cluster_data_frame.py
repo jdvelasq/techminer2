@@ -31,7 +31,7 @@ Smoke tests:
     ...     .using_association_index("association")
     ...     #
     ...     # COUNTERS:
-    ...     .using_term_counters(True)
+    ...     .using_item_counters(True)
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/fintech/")
@@ -76,7 +76,7 @@ Smoke tests:
     ...     .using_association_index("association")
     ...     #
     ...     # COUNTERS:
-    ...     .using_term_counters(False)
+    ...     .using_item_counters(False)
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/fintech/")

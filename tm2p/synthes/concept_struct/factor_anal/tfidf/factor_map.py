@@ -42,7 +42,7 @@ Factor Map
 ## ...     .using_clustering_estimator_or_dict(kmeans)
 ## ...     #
 ## ...     # TFIDF:
-## ...     .using_binary_term_frequencies(False)
+## ...     .using_binary_item_frequencies(False)
 ## ...     .using_row_normalization(None)
 ## ...     .using_idf_reweighting(False)
 ## ...     .using_idf_weights_smoothing(False)
@@ -85,9 +85,7 @@ Factor Map
 import pandas as pd  # type: ignore
 from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
 
-from tm2p.discov.correl._intern.internal__correlation_map import (
-    internal__correlation_map,
-)
+from tm2p.discov.correl._intern.plot_correl_map import plot_correl_map
 from tm2p.synthes.concept_struct.factor_anal.tfidf.cluster_centers_dataframe import (
     cluster_centers_frame,
 )
@@ -233,7 +231,7 @@ def factor_map(
         columns=names,
     )
 
-    return internal__correlation_map(
+    return plot_correl_map(
         data_frame=similarity,
         #
         # LAYOUT:

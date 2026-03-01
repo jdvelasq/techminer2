@@ -23,7 +23,7 @@ Smoke tests:
     ...     .having_other_terms_in(None)
     ...     #
     ...     # COUNTERS:
-    ...     .using_term_counters(True)
+    ...     .using_item_counters(True)
     ...     #
     ...     # NETWORK:
     ...     .using_spring_layout_k(None)

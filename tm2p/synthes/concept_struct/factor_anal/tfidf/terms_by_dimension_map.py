@@ -29,7 +29,7 @@ Terms by Dimensions Map
 ## ...     .using_decomposition_estimator(pca)
 ## ...     #
 ## ...     # TFIDF:
-## ...     .using_binary_term_frequencies(False)
+## ...     .using_binary_item_frequencies(False)
 ## ...     .using_row_normalization(None)
 ## ...     .using_idf_reweighting(False)
 ## ...     .using_idf_weights_smoothing(False)

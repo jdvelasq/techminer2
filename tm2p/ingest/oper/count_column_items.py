@@ -36,9 +36,7 @@ Smoke test:
 """
 
 from tm2p._intern import ParamsMixin
-from tm2p.ingest.data_sourc._intern.operations.count_column_items import (
-    count_column_items,
-)
+from tm2p.ingest.data_sourc._intern.oper.count_column_items import count_column_items
 from tm2p.ingest.extr._helpers._protected_fields import PROTECTED_FIELDS
 
 

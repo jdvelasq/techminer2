@@ -19,7 +19,7 @@ Smoke tests:
     ...     .using_cumulative_sum(False)
     ...     #
     ...     # COUNTERS:
-    ...     .using_term_counters(True)
+    ...     .using_item_counters(True)
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/fintech/")
