@@ -15,6 +15,8 @@ def s04_generate_review_table(root_directory: str) -> None:
             max_size = df[col].str.len().max()
             if Field.REC_ID.value == col:
                 df[col] = df[col].str[:50]
+            elif Field.ORCID.value == col:
+                df[col] = df[col].str[:80]
             elif max_size > SIZE:
                 df[col] = df[col].str[:SIZE]
 

@@ -15,7 +15,7 @@ def build_wos_struct_stand_steps(params: Params) -> list[Step]:
     from .s06_format_src_raw import s06_format_src_raw
     from .s07_format_src_norm import s07_format_src_norm
     from .s08_format_src_iso4 import s08_format_src_iso4
-    from .s09_format_orcid import s09_format_orcid
+    from .s09_format_wos_orcid import s09_format_wos_orcid
     from .s10_format_doi import s10_format_doi
     from .s11_format_doctype_pubtype import s11_format_doctype_pubtype
     from .s12_set_wos_datab import s12_set_wos_datab
@@ -65,7 +65,7 @@ def build_wos_struct_stand_steps(params: Params) -> list[Step]:
         ),
         Step(
             name="Formating ORCID",
-            function=s09_format_orcid,
+            function=s09_format_wos_orcid,
             kwargs=common_kwargs,
         ),
         Step(

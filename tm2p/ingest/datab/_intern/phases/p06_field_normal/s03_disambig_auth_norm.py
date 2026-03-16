@@ -29,7 +29,7 @@ def s03_disambig_auth_norm(root_directory: str) -> int:
     def _disambiguate(series: pd.Series) -> pd.Series:
         return series.str.split(";").apply(
             lambda ids: (
-                "; ".join([id_to_name[x.strip()] for x in ids])
+                "; ".join([id_to_name[x.strip()] for x in ids if x.strip() != ""])
                 if isinstance(ids, list)
                 else None
             )
@@ -84,7 +84,7 @@ def _build_author_mapping(root_directory: str) -> dict[str, str]:
 
     return dict(
         zip(
-            df[Field.AUTHID_RAW.value],
+            df[Field.AUTHID_RAW.value].str.replace(";", "").str.strip(),
             df[Field.AUTH_NORM.value],
         )
     )

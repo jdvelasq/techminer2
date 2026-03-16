@@ -19,14 +19,6 @@ def s02_repair_wos_authid(root_directory: str) -> int:
     df[Field.AUTHID_RAW.value] = df.apply(_repair, axis=1)
     save_main_csv_zip(df, root_directory)
 
-    # for _, row in df.iterrows():
-    #     if len(row[Field.AUTH_NORM.value].split("; ")) != len(
-    #         row[Field.AUTHID_RAW.value].split("; ")
-    #     ):
-    #         raise ValueError(
-    #             f"Mismatch in number of authors and author IDs for row {_}"
-    #         )
-
     return int(df[Field.AUTHID_RAW.value].notna().sum())
 
 
@@ -41,6 +33,7 @@ def _repair(row):
 def _repair_na_row(row):
     auth = row[Field.AUTH_FULL_NAME.value]
     auth = auth.split("; ")
+    auth = [au.split(", ")[1] + " " + au.split(", ")[0] for au in auth]
     authid = [au.strip() + sequ_gener() for au in auth]
     authid = "; ".join(authid)
 
@@ -67,6 +60,13 @@ def _repair_sequ(row):
                 found = True
                 continue
         if found is False:
+            au = au.split(", ")
+            if len(au) == 2:
+                au = au[1].strip() + " " + au[0].strip()
+            elif len(au) == 1:
+                au = au[0].strip()
+            else:
+                raise ValueError(f"Unexpected author name format for row {row.name}")
             result.append(au + sequ_gener())
 
     if len(result) != len(auth):
