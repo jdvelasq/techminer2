@@ -19,6 +19,7 @@ def build_pubmed_struct_stand_steps(params: Params) -> list[Step]:
     from .s10_format_doi import s10_format_doi
     from .s11_format_doctype_pubtype import s11_format_doctype_pubtype
     from .s12_set_pubmed_datab import s12_set_pubmed_datab
+    from .s14_format_pubmed_affil import s14_format_pubmed_affil
 
     common_kwargs = {"root_directory": params.root_directory}
 
@@ -81,6 +82,11 @@ def build_pubmed_struct_stand_steps(params: Params) -> list[Step]:
         Step(
             name="Setting DATABASE value",
             function=s12_set_pubmed_datab,
+            kwargs=common_kwargs,
+        ),
+        Step(
+            name="Formating PubMed affiliations",
+            function=s14_format_pubmed_affil,
             kwargs=common_kwargs,
         ),
     ]

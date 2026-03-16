@@ -1,13 +1,19 @@
 from pathlib import Path
 
 from tm2p._intern.data_access import load_main_csv_zip
+from tm2p.enum import Field
 
-SIZE = 30
+SIZE = 100
 
 
 def main():
 
-    for folder in ["openalex", "pubmed", "scopus", "wos"]:
+    for folder in [
+        # "openalex",
+        # "pubmed",
+        # "scopus",
+        "wos",
+    ]:
 
         print(f"Processing {folder} ...")
 
@@ -22,7 +28,7 @@ def main():
 
         filename = f"_{folder}.txt"
         df = df.head(50)
-        # df = df[[Field.AUTHID_RAW.value, Field.AUTH_RAW.value]]
+        df = df[[Field.AFFIL_RAW.value]]
         with open(filename, "w", encoding="utf-8") as txt_file:
             txt_file.write(df.to_markdown(index=False))
 

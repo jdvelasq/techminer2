@@ -19,6 +19,7 @@ def build_wos_struct_stand_steps(params: Params) -> list[Step]:
     from .s10_format_doi import s10_format_doi
     from .s11_format_doctype_pubtype import s11_format_doctype_pubtype
     from .s12_set_wos_datab import s12_set_wos_datab
+    from .s14_format_wos_affil import s14_format_wos_affil
 
     common_kwargs = {"root_directory": params.root_directory}
 
@@ -81,6 +82,11 @@ def build_wos_struct_stand_steps(params: Params) -> list[Step]:
         Step(
             name="Setting database value",
             function=s12_set_wos_datab,
+            kwargs=common_kwargs,
+        ),
+        Step(
+            name="Formating AFFIL",
+            function=s14_format_wos_affil,
             kwargs=common_kwargs,
         ),
     ]
