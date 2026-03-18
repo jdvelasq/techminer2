@@ -34,7 +34,7 @@ from tm2p._intern import ParamsMixin
 from tm2p._intern.data_access import load_filtered_main_csv_zip
 from tm2p.enum import Field
 
-SRC_ISO4_NORM = Field.SRC_ISO4_NORM.value
+SRC_ISO4 = Field.SRC_ISO4.value
 
 
 class Distribution(
@@ -47,7 +47,7 @@ class Distribution(
 
         df["num_documents"] = 1
 
-        sources = df.groupby(SRC_ISO4_NORM, as_index=True).agg(
+        sources = df.groupby(SRC_ISO4, as_index=True).agg(
             {
                 "num_documents": "sum",
             }

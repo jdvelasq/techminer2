@@ -198,7 +198,7 @@ class Metrics(
 
         # ---------------------------------------------------------------------
         def average_documents_per_source():
-            sources = dataframe[Field.SRC_RAW.value].copy()
+            sources = dataframe[Field.SRC.value].copy()
             sources = sources.dropna()
             n_records = len(sources)
             sources = sources.drop_duplicates()
@@ -252,7 +252,7 @@ class Metrics(
 
         # ---------------------------------------------------------------------
         def number_of_sources():
-            records = dataframe[Field.SRC_RAW.value].copy()
+            records = dataframe[Field.SRC.value].copy()
             records = records.dropna()
             records = records.drop_duplicates()
             return len(records)

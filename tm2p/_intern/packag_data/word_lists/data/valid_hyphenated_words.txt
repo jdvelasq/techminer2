@@ -671,6 +671,7 @@ brain-computer
 brain-inspired
 brain-machine
 brain-robot
+brain-stimulation
 branch-and-cut
 branch-like
 brand-consumer
@@ -1395,6 +1396,7 @@ cpu-gpu
 crack-free
 cramer-wold
 credential-based
+credit-based
 credit-card
 credit-risk
 crisis-driven
@@ -2066,6 +2068,7 @@ ecological-economic
 economic-driven
 economic-environmental
 economic-financial
+economic-policy
 economic-social
 economic-viability
 economy-based
@@ -2174,6 +2177,7 @@ emotion-aware
 emotion-cause
 emotion-cognition-activity
 emotional-evaluative
+empirical-evidence
 empirical-mode
 empirics-first
 employee-customer
@@ -2282,6 +2286,7 @@ environment-aware
 environment-economy
 environmental-economic
 environmental-friendly
+environmental-management
 enzyme-like
 enzyme-substrate
 eo-performance
@@ -2404,6 +2409,7 @@ fan-shaped
 fan-speed
 far-field
 far-reaching
+far-red
 far-side
 farm-gate
 farm-level
@@ -2992,6 +2998,7 @@ headquarter-subsidiary
 headquarters-subsidiary
 health-food
 health-related
+health-services
 health-technology
 heart-rate
 heat-affected
@@ -3421,6 +3428,7 @@ influencer-follower
 information-aware
 information-based
 information-centric
+information-content
 information-energy
 information-gap
 information-intensive
@@ -4186,6 +4194,7 @@ market-based
 market-clearing
 market-competitive
 market-driven
+market-efficiency
 market-level
 market-neutral
 market-oriented
@@ -4417,6 +4426,7 @@ micro-lectures
 micro-level
 micro-machined
 micro-macro
+micro-magnetic
 micro-meso
 micro-meso-macro
 micro-milling
@@ -6852,6 +6862,7 @@ repeat-sales
 report-oriented
 request-response
 requirement-driven
+research-and-development
 research-driven
 research-in-progress
 research-informed
@@ -6933,6 +6944,7 @@ risk-constrained
 risk-factors
 risk-free
 risk-incentive
+risk-informed
 risk-management
 risk-measurement
 risk-neutral
@@ -7048,6 +7060,7 @@ schema-less
 scholar-practitioner
 school-university
 sci-tech
+sciatic-nerve
 science-based
 science-data
 science-driven

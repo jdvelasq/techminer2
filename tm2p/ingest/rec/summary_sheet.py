@@ -87,7 +87,7 @@ Smoke tests:
     69           REGION      180  100.00%
     70              RID      180  100.00%
     71              RNO      180  100.00%
-    72    SRC_ISO4_NORM      180  100.00%
+    72    SRC_ISO4      180  100.00%
     73     SRC_ISO4_RAW      180  100.00%
     74         SRC_NORM      180  100.00%
     75          SRC_RAW      180  100.00%

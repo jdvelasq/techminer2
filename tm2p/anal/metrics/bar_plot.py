@@ -14,7 +14,7 @@ Smoke tests:
     ...     BarPlot()
     ...     #
     ...     # FIELD:
-    ...     .with_source_field(Field.SRC_ISO4_NORM)
+    ...     .with_source_field(Field.SRC_ISO4)
     ...     #
     ...     # TERMS:
     ...     .having_items_in_top(10)

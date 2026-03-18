@@ -28,7 +28,7 @@ Smoke test:
     >>> from tm2p.ingest.oper import CoalesceColumn
     >>> (
     ...     CoalesceColumn()
-    ...     .with_source_field(Field.SRC_ISO4_NORM)
+    ...     .with_source_field(Field.SRC_ISO4)
     ...     .with_target_field(Field.USR1)
     ...     .where_root_directory("tests/scopus/")
     ...     .with_transformation_function(lambda x: pd.NA)

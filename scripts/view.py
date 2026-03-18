@@ -28,7 +28,7 @@ def main():
 
         filename = f"_{folder}.txt"
         df = df.head(50)
-        df = df[[Field.AFFIL_RAW.value]]
+        df = df[[Field.AFFIL.value]]
         with open(filename, "w", encoding="utf-8") as txt_file:
             txt_file.write(df.to_markdown(index=False))
 

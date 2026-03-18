@@ -71,7 +71,7 @@ def _add_weighted_edges_from(
     elif params.citation_unit == CitationUnit.ORG:
         source_field = Field.ORG
     elif params.citation_unit == CitationUnit.SRC:
-        source_field = Field.SRC_ISO4_NORM
+        source_field = Field.SRC_ISO4
     else:
         raise ValueError("Invalid citation unit")
 

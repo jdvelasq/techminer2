@@ -68,6 +68,7 @@ alumino-silicate
 analyse-natural
 analysis-methods
 analysis-nlp
+analyst-system
 analyt-ic
 analyt-ics
 analytic-artificial
@@ -455,6 +456,7 @@ change-over
 chat-bot
 chatbots-empowered
 check-out
+chemical-composition
 chemo-catalytic
 chemo-enzymatic
 chemo-mechanics
@@ -462,6 +464,7 @@ chemo-physical
 chemo-selectivity
 child-care
 chlor-alkali
+citrus-sinensis
 city-wide
 class-s
 clean-tech
@@ -560,7 +563,9 @@ co-working
 coal-bed
 coke-making
 comb-like
+commercial-banks
 commercial-size
+comparative-analysis
 computer-supportive
 con-strained
 con-tinuum
@@ -713,6 +718,7 @@ digital-learning
 digitali-zation
 directive-dialogic
 dis-performance
+discriminant-analysis
 disease-19
 distance-hybrid
 dock-less
@@ -779,6 +785,7 @@ eco-toxicity
 eco-toxicological
 eco-toxicology
 eco-village
+economic-growth
 ed-tech
 ed-ucational
 edge-ai
@@ -1030,6 +1037,7 @@ hd-electromyography
 head-group
 head-pose
 health-care
+health-insurance
 health-tech
 health-wealth
 hearing-aids
@@ -1192,6 +1200,8 @@ infini-band
 info-communication
 inform-your-markets
 information-communication
+information-systems
+information-technology
 infra-marginal
 infra-red
 infra-structure
@@ -1521,6 +1531,7 @@ line-pack
 line-side
 line-width
 list-wise
+litchi-chinensis
 live-stream
 live-streaming
 llama-cpp
@@ -3629,7 +3640,9 @@ smart-pls
 smart-textiles
 smart-tv
 snow-melt
+social-class
 social-related
+social-responsibility
 socio-anthropological
 socio-cultural
 socio-demographic
@@ -3915,6 +3928,7 @@ symbol-wise
 symptomatic-test
 syntactic-semantic
 sys-tematic
+systemic-risk
 t-spherical
 table-top
 tail-pipe

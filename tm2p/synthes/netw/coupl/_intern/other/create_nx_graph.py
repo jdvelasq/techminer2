@@ -59,7 +59,7 @@ def step_03_filter_the_data_frame(params, data_frame):
     elif params.coupling_unit == CouplingUnit.ORG:
         source_field = Field.ORG
     elif params.coupling_unit == CouplingUnit.SRC:
-        source_field = Field.SRC_ISO4_NORM
+        source_field = Field.SRC_ISO4
     else:
         raise ValueError("Invalid coupling unit")
 

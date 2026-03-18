@@ -31,7 +31,7 @@ def records_to_dicts(dataframe):
         Field.TITLE_RAW.value: "TI",
         Field.AUTH_NORM.value: "AU",
         Field.GCS.value: "TC",
-        Field.SRC_ISO4_NORM.value: "SO",
+        Field.SRC_ISO4.value: "SO",
         Field.YEAR.value: "PY",
         Field.ABSTR_UPPER.value: "AB",
         Field.AUTHKW_NORM.value: "DE",

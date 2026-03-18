@@ -2,13 +2,14 @@ import sys
 import time
 from abc import ABC, abstractmethod
 from datetime import timedelta
+from pathlib import Path
 from typing import Any
 
 from tm2p._intern import ParamsMixin
 
 from .._intern import Step
 from .ingest_result import IngestResult
-from .phases.p01_scaffold.create_project_structure import create_project_structure
+from .phases.p01_scaffold.p01_project_structure import p01_project_structure
 
 
 class BaseIngest(
@@ -19,6 +20,26 @@ class BaseIngest(
     _HEADER_WIDTH = 80
     _STEP_PREFIX = "  → "
     _DETAIL_PREFIX = "    "
+
+    # -------------------------------------------------------------------------
+    # Phase descriptions
+    # -------------------------------------------------------------------------
+
+    _02_COMPRESS = "Compressing raw data"
+    _03_PARS = "Parsing data"
+    _04_FILTER = "Filtering data"
+    _05_PREPARE = "Preparing data"
+    _06_AUTH = "Preparing author thesaurus"
+    _07_AFFIL = "Extracting affiliation information"
+    _08_ORG = "Extracting organization information"
+    _09_CTRY = "Extracting country information"
+    _10_SRC = "Preparing source information"
+    _11_KW_PREPAR = "Preparing keywords"
+    _12_NLP_PREPAR = "Preparing NLP"
+    _13_CONCEPT = "Extracting concepts"
+    _14_REC = "Preparing records"
+    _15_CIT_REF = "Preparing cited references"
+    _16_REVIEW = "Reviewing"
 
     # -------------------------------------------------------------------------
     # I/O
@@ -59,6 +80,42 @@ class BaseIngest(
         minutes, seconds = divmod(remainder, 60)
         return f"{hours:02}:{minutes:02}:{seconds:02}"
 
+    def ingestion_pipeline(self) -> tuple[tuple[str, list[Step]], ...]:
+
+        from .phases.p02_compress import p02_compress
+        from .phases.p03_pars import p03_pars
+        from .phases.p04_filter import p04_filter
+        from .phases.p05_prepare import p05_prepare
+        from .phases.p06_auth import p06_auth
+        from .phases.p07_affil import p07_affil
+        from .phases.p08_org import p08_org
+        from .phases.p09_ctry import p09_ctry
+        from .phases.p10_src import p10_src
+        from .phases.p11_kw_prepar import p11_kw_prepar
+        from .phases.p12_nlp_prepar import p12_nlp_prepar
+        from .phases.p13_concept import p13_concept
+        from .phases.p14_rec import p14_rec
+        from .phases.p15_cit_ref import p15_cit_ref
+        from .phases.p16_review import p16_review
+
+        return (
+            (self._02_COMPRESS, p02_compress(self.params)),
+            (self._03_PARS, p03_pars(self.params)),
+            (self._04_FILTER, p04_filter(self.params)),
+            (self._05_PREPARE, p05_prepare(self.params)),
+            (self._06_AUTH, p06_auth(self.params)),
+            (self._07_AFFIL, p07_affil(self.params)),
+            (self._08_ORG, p08_org(self.params)),
+            (self._09_CTRY, p09_ctry(self.params)),
+            (self._10_SRC, p10_src(self.params)),
+            (self._11_KW_PREPAR, p11_kw_prepar(self.params)),
+            (self._12_NLP_PREPAR, p12_nlp_prepar(self.params)),
+            (self._13_CONCEPT, p13_concept(self.params)),
+            (self._14_REC, p14_rec(self.params)),
+            (self._15_CIT_REF, p15_cit_ref(self.params)),
+            (self._16_REVIEW, p16_review(self.params)),
+        )
+
     # ------------------------------------------------------------------------
     # Execution
     # ------------------------------------------------------------------------
@@ -70,12 +127,20 @@ class BaseIngest(
         if step.count_message:
             self._print_step_result(result, step.count_message)
 
+    def _set_marker(self) -> None:
+        marker = self.get_marker()
+        filename = f"_{marker.upper()}"
+        filepath = Path(self.params.root_directory) / "ingest" / "process" / filename
+        filepath.touch()
+
     def run(self) -> IngestResult:
 
         start_time = time.monotonic()
         self._print_header()
 
-        create_project_structure(str(self.params.root_directory))
+        self._set_marker()
+
+        p01_project_structure(str(self.params.root_directory))
 
         for phase_index, (phase_name, steps) in enumerate(
             self.ingestion_pipeline(), start=1
@@ -97,5 +162,5 @@ class BaseIngest(
         )
 
     @abstractmethod
-    def ingestion_pipeline(self) -> tuple[tuple[str, list[Step]], ...]:
+    def get_marker(self) -> str:
         pass

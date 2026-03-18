@@ -16,7 +16,7 @@ Smoke tests:
     ...     .run()
     ... ).head() # doctest: +NORMALIZE_WHITESPACE
                                 NO  OCC  CUM_OCC   GCS  ZONE
-    SRC_ISO4_NORM
+    SRC_ISO4
     RESOUR POLIC                 1    7        7  1074     1
     TECHNOL FORECAST SOC CHANG   2    6       13  1575     1
     INT REV FINANC ANAL          3    5       18   992     1
@@ -30,7 +30,7 @@ from tm2p import Field
 from tm2p._intern import ParamsMixin
 from tm2p._intern.data_access import load_filtered_main_csv_zip
 
-SRC_ISO4_NORM = Field.SRC_ISO4_NORM.value
+SRC_ISO4 = Field.SRC_ISO4.value
 GCS = Field.GCS.value
 OCC = "OCC"
 CUM_OCC = "CUM_OCC"
@@ -49,9 +49,9 @@ class ZoneTable(
     # -------------------------------------------------------------------------
     def internal__compute_citations_and_occurrences_by_source(self):
 
-        indicators = self.records[[SRC_ISO4_NORM, GCS]]
+        indicators = self.records[[SRC_ISO4, GCS]]
         indicators = indicators.assign(OCC=1)
-        indicators = indicators.groupby([SRC_ISO4_NORM], as_index=False).sum()
+        indicators = indicators.groupby([SRC_ISO4], as_index=False).sum()
         indicators = indicators.sort_values(by=[OCC, GCS], ascending=False)
         indicators = indicators.assign(CUM_OCC=indicators[OCC].cumsum())
         indicators = indicators.assign(NO=1)
@@ -72,7 +72,7 @@ class ZoneTable(
         indicators.ZONE = indicators.ZONE.where(
             indicators.CUM_OCC >= int(cum_occ / 3), 1
         )
-        indicators = indicators.set_index(SRC_ISO4_NORM)
+        indicators = indicators.set_index(SRC_ISO4)
         indicators = indicators[["NO", OCC, CUM_OCC, GCS, ZONE]]
 
         self.indicators = indicators

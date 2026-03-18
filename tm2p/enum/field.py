@@ -34,8 +34,7 @@ class Field(Enum):
     #
     # Authors ID
     #
-    AUTHID_RAW = "AUTHID_RAW"
-    AUTHID_NORM = "AUTHID_NORM"
+    AUTHID = "AUTHID"
 
     #
     # Author name
@@ -92,8 +91,7 @@ class Field(Enum):
     # -------------------------------------------------------------------------
     # Source title
     # -------------------------------------------------------------------------
-    SRC_RAW = "SRC_RAW"
-    SRC_NORM = "SRC_NORM"
+    SRC = "SRC"
     SRC_ID = "SRC_ID"
     SRC_TYPE = "SRC_TYPE"
     SRC_CITATION_INFO = "SRC_CITATION_INFO"
@@ -163,7 +161,7 @@ class Field(Enum):
     # -------------------------------------------------------------------------
     # Affiliations & correspondence address
     # -------------------------------------------------------------------------
-    AFFIL_RAW = "AFFIL_RAW"
+    AFFIL = "AFFIL"
     CORRESPOND_ADDR = "CORRESPOND_ADDR"
     IS_CORRESPOND = "IS_CORRESPOND"
     EMAIL = "EMAIL"
@@ -172,11 +170,9 @@ class Field(Enum):
     #
     # Organization
     #
-    ORG_ABBR = "ORG_ABBR"
+    # ORG_ABBR = "ORG_ABBR"
     ORG_ID = "ORG_ID"
-    ORG_NORM = "ORG_NORM"
-    ORG_RAW = "ORG_RAW"
-
+    ORG = "ORG"
     ORG_FIRST = "ORG_FIRST"
 
     # -------------------------------------------------------------------------
@@ -238,8 +234,7 @@ class Field(Enum):
     # -------------------------------------------------------------------------
     # Abbreviated source title
     # -------------------------------------------------------------------------
-    SRC_ISO4_NORM = "SRC_ISO4_NORM"
-    SRC_ISO4_RAW = "SRC_ISO4_RAW"
+    SRC_ISO4 = "SRC_ISO4"
     SRC_J9 = "SRC_J9"  # J9 (abbreviated source title)
 
     # ======================================================================= #
