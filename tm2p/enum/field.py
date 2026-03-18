@@ -352,12 +352,11 @@ class Field(Enum):
     #
     GCR_FREE_TEXT = "GCR_FREE_TEXT"
     GCR_WOS_FORMAT = "GCR_WOS_FORMAT"
-    # GCR_RID = "GCR_RID"
 
     #
     # Local cited references in WOS format (normalized)
     #
-    LCR_NORM = "LCR_WOS_FORMAT"
+    LCR_WOS_FORMAT = "LCR_WOS_FORMAT"
 
     #
     # Number of cited references

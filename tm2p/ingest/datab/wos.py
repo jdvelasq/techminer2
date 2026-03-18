@@ -9,7 +9,8 @@ Smoke test - fintech - successful import:
     ...     WoS()
     ...     .where_root_directory("tests/wos/")
     ...     .run()
-    ... )
+    ... )  # doctest: +ELLIPSIS
+    Note...
     >>> result.success
     True
 

@@ -7,7 +7,7 @@ from tm2p.ingest.datab._intern.oper import transform_column
 
 def s03_disambiguate(root_directory: str) -> int:
 
-    full_name_to_name = _build_author_mapping_wos(root_directory)
+    full_name_to_name = _build_author_mapping(root_directory)
 
     def _disambiguate(series: pd.Series) -> pd.Series:
         return series.str.split(";").apply(
@@ -30,7 +30,7 @@ def s03_disambiguate(root_directory: str) -> int:
     return count
 
 
-def _build_author_mapping_wos(root_directory: str) -> dict[str, str]:
+def _build_author_mapping(root_directory: str) -> dict[str, str]:
 
     df = load_main_csv_zip(
         root_directory,
@@ -42,7 +42,17 @@ def _build_author_mapping_wos(root_directory: str) -> dict[str, str]:
     df[Field.AUTH_RAW.value] = df[Field.AUTH_RAW.value].apply(
         lambda x: [i.strip() for i in x if " " in i]
     )
+
     df[Field.AUTH_FULL_NAME.value] = df[Field.AUTH_FULL_NAME.value].str.split("; ")
+    df[Field.AUTH_FULL_NAME.value] = df[Field.AUTH_FULL_NAME.value].apply(
+        lambda x: [y for y in x if y.strip() != ""]
+    )
+
+    for _, row in df.iterrows():
+        if len(row[Field.AUTH_RAW.value]) != len(row[Field.AUTH_FULL_NAME.value]):
+            raise ValueError(
+                f"Mismatch between AUTH_RAW and AUTH_FULL_NAME for record {row.name}"
+            )
 
     df = df.explode(
         [

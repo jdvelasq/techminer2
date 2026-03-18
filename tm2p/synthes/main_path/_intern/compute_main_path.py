@@ -15,7 +15,7 @@ YEAR = Field.YEAR.value
 GCS = Field.GCS.value
 LCS = Field.LCS.value
 RID = Field.REC_ID.value
-LCR = Field.LCR_NORM.value
+LCR = Field.LCR_WOS_FORMAT.value
 
 
 # ------------------------------------------------------------------------------

@@ -9,7 +9,8 @@ Smoke test - fintech - successful import:
     ...     Scopus()
     ...     .where_root_directory("tests/scopus/")
     ...     .run()
-    ... )
+    ... )  # doctest: +ELLIPSIS
+    Note...
     >>> result.success
     True
 

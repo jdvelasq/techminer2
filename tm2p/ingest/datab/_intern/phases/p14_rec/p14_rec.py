@@ -21,7 +21,7 @@ def p14_rec(params: Params) -> list[Step]:
             count_message="{count} record numbers assigned",
         ),
         Step(
-            name="assigning REC_ID",
+            name="Assigning REC_ID",
             function=s02_rec_id,
             kwargs=common_kwargs,
             count_message="{count} record IDs assigned",

@@ -30,7 +30,8 @@ def _openalex(root_directory: str) -> int:
                 + " "
                 + "".join([x[0] for x in au.split(" ")[:-1]]).upper()
                 for au in auths
-            ]
+            ],
+            na_action="ignore",
         )
         series = series.str.join("; ")
         return series
