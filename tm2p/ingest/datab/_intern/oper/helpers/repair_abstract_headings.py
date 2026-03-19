@@ -60,6 +60,11 @@ SINGLE_STRUCTURED_ABSTRACT_HEADINGS = [
     "summary",
     "uniqueness",
     "value",
+    "importance",
+    "exposure",
+    "animals",
+    "procedure",
+    "exposures",
 ]
 
 _COMPILED_PATTERNS: list[tuple[str, re.Pattern]] = []
