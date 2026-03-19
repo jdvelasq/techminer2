@@ -11,8 +11,8 @@ def s02_rec_id(root_directory: str) -> int:
 
     marker = get_datab_marker(root_directory)
     function = {
-        "OpenAlex": None,
-        "PubMed": None,
+        "OpenAlex": _scopus,
+        "PubMed": _scopus,
         "Scopus": _scopus,
         "WoS": _wos,
     }[marker]
@@ -63,21 +63,31 @@ def _build_rec_id(row):
         return ", " + str(year).replace(".0", "")
 
     def get_source_iso4(row):
+        if Field.SRC_ISO4.value not in row:
+            return ""
+        if pd.isna(row[Field.SRC_ISO4.value]):
+            return ""
         return ", " + row[Field.SRC_ISO4.value]
 
     def get_volume(row):
+        if Field.VOL.value not in row:
+            return ""
         vol = row[Field.VOL.value]
         if pd.isna(vol):
             return ""
         return ", V" + str(vol).replace(".0", "")
 
     def get_page_start(row):
+        if Field.PG_FIRST.value not in row:
+            return ""
         pg_first = row[Field.PG_FIRST.value]
         if pd.isna(pg_first):
             return ""
         return ", P" + str(pg_first).replace(".0", "")
 
     def get_doi(row):
+        if Field.DOI.value not in row:
+            return ""
         doi = row[Field.DOI.value]
         if pd.isna(doi):
             return ""

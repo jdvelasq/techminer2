@@ -16,21 +16,21 @@ def p16_review(params: Params) -> list[Step]:
     common_kwargs = {"root_directory": params.root_directory}
 
     return [
-        # Step(
-        #     name="Extracting abstract suffixes",
-        #     function=s01_extract_abstract_suffixes,
-        #     kwargs=common_kwargs,
-        # ),
-        # Step(
-        #     name="Extracting section headers",
-        #     function=s02_extract_section_headers,
-        #     kwargs=common_kwargs,
-        # ),
-        # Step(
-        #     name="Extracting acronyms",
-        #     function=s03_extract_acronyms,
-        #     kwargs=common_kwargs,
-        # ),
+        Step(
+            name="Extracting abstract suffixes",
+            function=s01_extract_abstract_suffixes,
+            kwargs=common_kwargs,
+        ),
+        Step(
+            name="Extracting section headers",
+            function=s02_extract_section_headers,
+            kwargs=common_kwargs,
+        ),
+        Step(
+            name="Extracting acronyms",
+            function=s03_extract_acronyms,
+            kwargs=common_kwargs,
+        ),
         Step(
             name="Generating review table",
             function=s04_generate_review_table,

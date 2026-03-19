@@ -6,7 +6,7 @@ from ..get_datab_marker import get_datab_marker
 from ._renam_col import renam_col
 
 OPENALEX_TO_TM2 = {
-    "id": Field.REC_ID.value,
+    "id": Field.ART_NO.value,
     "abstract": Field.ABSTR_RAW.value,
     "authorships.author.display_name": Field.AUTH_FULL_NAME.value,
     "authorships.author.id": Field.AUTHID.value,

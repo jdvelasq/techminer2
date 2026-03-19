@@ -22,18 +22,7 @@ Smoke test:
     >>> assert isinstance(contexts, list)
     >>> assert len(contexts) > 0
     >>> assert all(isinstance(c, str) for c in contexts)
-    >>> for t in contexts[:10]: print(t)
-                                          financial technology [ FINTECH ]) and the financial performance, i
-      …of 73 items including was adopted to measure the level of FINTECH usage or diffusion for the banks that are listed on the G…
-      …ts indicate that there is a positive relationship between FINTECH implementation and market performance (TQ) in the GCC banks
-               The results also showed that the highest level of FINTECH implementation was 79
-                                                                 FINTECH applications are examined as catalysts for revolutionizin…
-      …formative potential of integrating financial technology ( FINTECH ) and blockchain in green finance
-      …al sector’s digital transformation and the development of FINTECH due to the rise of financial technology
-                                                                 FINTECH blends innovation and technology to provide financial inc…
-                            Findings: The findings indicate that FINTECH adoption had a substantial impact on the competitiveness…
-                            The research indicates that adequate FINTECH implementation and alignment with technology management d…
-
+    >>> for t in contexts[:20]: print(t)
 
 """
 
@@ -111,6 +100,13 @@ class KWICConcordance(
             contexts["left_context"].map(lambda x: x != "")
             | contexts["right_context"].map(lambda x: x != "")
         ]
+
+        contexts["criteria"] = (
+            contexts["left_context"].str.lower().str.replace("_", " ", regex=False)
+        )
+        contexts["criteria"] = contexts["criteria"].str[::-1]
+        contexts = contexts.sort_values(by="criteria", ascending=True)  # type: ignore[call-arg]
+        contexts.drop(columns=["criteria"], inplace=True)
 
         return contexts.reset_index(drop=True)  # type: ignore[return-value]
 
