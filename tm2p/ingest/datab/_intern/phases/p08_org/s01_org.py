@@ -10,7 +10,7 @@ def s01_org(root_directory: str) -> int:
     marker = get_datab_marker(root_directory)
     function = {
         "OpenAlex": None,
-        "PubMed": None,
+        "PubMed": _scopus,
         "Scopus": _scopus,
         "WoS": _scopus,
     }[marker]

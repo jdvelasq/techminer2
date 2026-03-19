@@ -23,29 +23,14 @@ def s04_generate_review_table(root_directory: str) -> None:
                 Field.AUTH_WITH_AFFIL.value,
                 Field.AUTHID.value,
                 Field.ORG.value,
+                "AD",
             ):
-                df[col] = df[col].str[:50]
+                df[col] = df[col].str[:80]
             elif max_size > SIZE:
                 df[col] = df[col].str[:SIZE]
 
     filename = Path(root_directory) / "refine" / "review_table.txt"
 
-    # cols = []
-    # for col in [
-    #     Field.AUTH_RAW.value,
-    #     Field.AUTH_NORM.value,
-    #     Field.AUTH_FULL_NAME.value,
-    #     Field.AUTH_WITH_AFFIL.value,
-    #     Field.AFFIL.value,
-    #     Field.AUTHID.value,
-    #     Field.ORCID.value,
-    #     Field.ORG.value,
-    # ]:
-    #     if col in df.columns:
-    #         cols.append(col)
-
-    # df = df[cols]
-    # # df = df[df[Field.AFFIL.value].apply(lambda x: pd.isna(x))]
     df = df.head(40)
 
     with open(filename, "w", encoding="utf-8") as txt_file:

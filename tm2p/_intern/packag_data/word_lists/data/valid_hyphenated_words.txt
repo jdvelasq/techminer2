@@ -14,6 +14,9 @@
 3d-modeling
 3d-printing
 4-level
+5-alpha
+5-asa
+5-ht1
 6-dof
 61400-25
 6g-enabled
@@ -83,6 +86,7 @@ added-value
 addition-fragmentation
 additive-subtractive
 adipose-derived
+adp-ribose
 adsorbate-adsorbent
 adsorption-activation
 adsorption-desorption
@@ -212,6 +216,7 @@ all-solid
 all-solid-state
 all-vanadium
 along-track
+alpha-1
 alpha-beta
 alternating-direction
 alumina-water
@@ -236,6 +241,7 @@ ammonia-water
 ammonium-nitrogen
 amorphous-carbon
 amorphous-crystalline
+amp-activated
 ampere-hour
 amplify-and-forward
 amplitude-frequency
@@ -262,6 +268,7 @@ analytics-ops
 analytics-supported
 anatase-rutile
 anchor-free
+anesthesiologist-administered
 angle-based
 angle-delay
 animal-like
@@ -302,6 +309,7 @@ anti-forensic
 anti-forensics
 anti-fraud
 anti-freezing
+anti-hiv
 anti-icing
 anti-immigrant
 anti-infective
@@ -310,6 +318,7 @@ anti-interference
 anti-jamming
 anti-leakage
 anti-lock
+anti-lrp4
 anti-misalignment
 anti-noise
 anti-nuclear
@@ -326,14 +335,18 @@ anti-predator
 anti-racism
 anti-reflection
 anti-reflective
+anti-retroviral
 anti-saturation
+anti-seizure
 anti-slip
+anti-smoking
 anti-stable
 anti-stripping
 anti-structural
 anti-swelling
 anti-tax
 anti-vaccination
+anti-vegf
 anti-vibration
 anti-water
 anti-windup
@@ -438,9 +451,12 @@ aws-iot
 axial-symmetric
 axis-angle
 azide-alkyne
+b-cell
 b-esem
 b-learning
+b-lymphocytes
 b-mooc
+b7-h1
 back-action
 back-calculation
 back-channel
@@ -724,11 +740,13 @@ butanol-gasoline
 buy-sell
 buyer-seller
 buyer-supplier
+by-products
 byte-level
 byzantine-robust
 c-its
 c-mapss
 c-mean
+c-met
 c-v2x
 ca-rich
 cable-driven
@@ -743,6 +761,7 @@ camera-based
 camera-monitored
 cameron-martin
 campus-scale
+cancer-associated
 canopy-k-means
 cap-and-trade
 capabilities-based
@@ -759,6 +778,7 @@ capital-output
 capric-stearic
 capture-recapture
 car-following
+car-t-cell
 carbon-aware
 carbon-based
 carbon-carbon
@@ -782,6 +802,8 @@ carbon-thermal
 carbon-water
 carbonation-calcination
 card-sorting
+cardio-metabolic
+cardio-oncology
 cardioverter-defibrillator
 cardioverter-defibrillators
 cardioverters-defibrillators
@@ -810,6 +832,7 @@ catch-all
 catch-up
 categorization-elaboration
 category-wise
+catheter-related
 cathode-electrolyte
 cathode-solid
 cation-anion
@@ -847,6 +870,7 @@ century-old
 ceo-board
 ceo-chair
 ceramic-polymer
+cerebellar-cortical
 ceria-carbonate
 cet-4
 cfd-gis
@@ -955,9 +979,11 @@ climate-energy
 climate-friendly
 climate-related
 climate-responsive
+climate-sensitive
 climate-smart
 climate-vegetation
 clinician-patient
+clinician-scientist
 close-down
 closed-access
 closed-end
@@ -1112,6 +1138,7 @@ co-substrate
 co-teaching
 co-tier
 co-training
+co-transporter
 co-treatment
 co-use
 co-utilization
@@ -1324,6 +1351,7 @@ core-shell-shell
 core-spun
 corn-stover
 cornish-fisher
+coronavirus/covid-19
 corporate-community
 corporate-sustainability
 correlation-based
@@ -1333,6 +1361,7 @@ corrosion-resistance
 cortex-m
 cortex-m7
 cortico-cortical
+cortico-striatal-thalamo-cortical
 cosmo-sac
 cost-accounting
 cost-allocation
@@ -1347,6 +1376,7 @@ cost-efficient
 cost-free
 cost-function
 cost-of-energy
+cost-of-illness
 cost-of-living
 cost-optimal
 cost-optimality
@@ -1384,11 +1414,30 @@ course-based
 course-completion
 course-related
 course-specific
+cov-2
 covalent-organic
 covariance-based
 covax-19
 covert-channel
 covid-19
+covid-19/complications/epidemiology
+covid-19/diagnosis
+covid-19/diagnosis/epidemiology
+covid-19/diagnosis/epidemiology/prevention
+covid-19/diagnosis/mortality
+covid-19/diagnosis/prevention
+covid-19/diagnostic
+covid-19/epidemiology
+covid-19/epidemiology/complications
+covid-19/epidemiology/diagnosis
+covid-19/epidemiology/diagnostic
+covid-19/epidemiology/therapy
+covid-19/ethnology/epidemiology
+covid-19/mortality/complications/virology
+covid-19/mortality/epidemiology
+covid-19/prevention
+covid-19/psychology
+covid-19/virology/microbiology/metabolism
 cox-ingersoll-ross
 cp-abe
 cpi-curve
@@ -1462,6 +1511,7 @@ cross-national
 cross-organization
 cross-platform
 cross-polarization
+cross-population
 cross-product
 cross-reference
 cross-scale
@@ -1488,7 +1538,9 @@ cryo-electron
 crypto-asset
 crypto-assets
 crystalline-amorphous
+ct-based
 ctdi-cv
+ctla-4
 cu-water
 cufe-oxide
 cultural-cognitive
@@ -1695,6 +1747,7 @@ device-free
 device-to-device
 devsec-ops
 dew-point
+diabetes-related
 diamond-like
 dickey-fuller
 die-attach
@@ -1717,6 +1770,7 @@ differential-algebraic
 differentially-private
 diffusion-absorption
 diffusion-reaction
+diffusion-weighted
 diffusional-thermal
 diffusive-thermal
 digital-content
@@ -1745,6 +1799,7 @@ discrete-event
 discrete-time
 discrete-wavelet-transform
 disease-disease
+disease-free
 disease-gene
 dismc-mppt
 dissolution-deposition
@@ -1772,6 +1827,7 @@ dividend-price
 dj-1
 dme-air
 dmp-ems
+dna-binding
 dna-protein
 dnn-svm
 doctor-patient
@@ -1805,12 +1861,15 @@ double-loop
 double-pass
 double-sided
 double-skin
+double-zero-event
 doubly-dispersive
 doubly-fed
 down-regulation
 down-sampling
+doxy-pep
 doyle-fuller-newman
 dp-dqn
+drain-associated
 drift-diffusion
 drill-down
 drive-response
@@ -1954,6 +2013,7 @@ e-learner
 e-learners
 e-learning
 e-lectures
+e-liquid
 e-mails
 e-management
 e-manufacturing
@@ -2239,6 +2299,7 @@ energy-environment-economic
 energy-food
 energy-food-water
 energy-generating
+energy-integrating
 energy-intensive
 energy-management
 energy-mass
@@ -2301,6 +2362,7 @@ equi-volume
 equilibrium-based
 equity-based
 era5-land
+erb-b2
 error-correction
 error-dependent
 error-free
@@ -2414,6 +2476,7 @@ far-side
 farm-gate
 farm-level
 farming-pastoral
+fast-and-frugal
 fast-charging
 fast-food
 fast-moving
@@ -2443,6 +2506,7 @@ feature-metric
 feature-selection
 feature-specific
 feature-wise
+fee-for-service
 feed-in
 feed-in-tariff
 feed-in-tariffs
@@ -2615,6 +2679,7 @@ fog-cloud
 fog-free
 follow-up
 food-chain
+food-drug
 food-energy
 food-energy-water
 food-processing
@@ -2849,6 +2914,7 @@ glass-glass
 global-local
 global-local-global
 global-scale
+glucagon-like
 glucose-insulin
 gluten-free
 glycerol-water
@@ -2879,6 +2945,7 @@ gradient-descent
 gradient-echo
 gradient-free
 graduate-level
+graft-versus-host
 grain-size
 gram-charlier
 gram-staining
@@ -2946,6 +3013,7 @@ group-level
 growth-fragmentation
 guangdong-hong
 guest-host
+guillain-barre
 gut-brain
 gutta-percha
 gw-shm
@@ -2993,6 +3061,7 @@ hawk-dove
 hax-pes
 hd-emg
 hd-semg
+head-to-head
 head-worn
 headquarter-subsidiary
 headquarters-subsidiary
@@ -3025,6 +3094,10 @@ hele-shaw
 helium-xenon
 help-seeking
 hematoxylin-eosin
+her2-directed
+her2-low
+her2-mutant
+her2-targeted
 heterogeneous-homogeneous
 heuristic-systematic
 hex-dominant
@@ -3100,6 +3173,7 @@ high-school
 high-selective
 high-selectivity
 high-sensitive
+high-sensitivity
 high-skill
 high-sodium
 high-speed
@@ -3132,6 +3206,7 @@ hindmarsh-rose
 hinge-loss
 hiring-discrimination
 hit-rate
+hiv-1
 hoek-brown
 hole-conductor
 hole-electron
@@ -3201,6 +3276,7 @@ human-environment
 human-environmental
 human-human
 human-in-the-loop
+human-induced
 human-interactive
 human-land
 human-level
@@ -3289,6 +3365,7 @@ hysteresis-loop
 i-star
 ia-based
 icama-kas
+icd-10-cm
 icd-9-cm
 ice-making
 ice-storage
@@ -3308,6 +3385,8 @@ if-then
 ifp-egru
 ii-vi
 iii-v
+il-8
+ill-housed
 ill-structured
 illness-death
 image-analysis
@@ -3463,6 +3542,7 @@ input-voltage
 inquiry-based
 inquiry-driven
 insect-based
+insecticide-treated
 insertion-extraction
 inside-outside
 insider-outsider
@@ -3571,6 +3651,9 @@ interaction-aware
 intercalation-conversion
 interference-cancellation
 interior-point
+interleukin-17/antagonists
+interleukin-6
+interleukin-8
 intermediate-level
 internal-external
 internationalization-performance
@@ -3714,6 +3797,7 @@ kalman-filter
 kalman-filtering
 kamlet-taft
 karush-kuhn-tucker
+kelch-like
 kernel-methods
 kerosene-diesel
 keto-enol
@@ -3818,6 +3902,7 @@ layer-by-layer
 layer-free
 layer-wise
 ldl-cholesterol
+ldl-receptor
 lead-acid
 lead-bismuth
 lead-carbon
@@ -4180,6 +4265,7 @@ manganese-cobalt
 manganese-iron
 manganese-nickel
 manganese-rich
+manic-depressive
 mann-whitney
 manufacturer-led
 manufacturer-retailer
@@ -4264,6 +4350,7 @@ mean-variance
 mean-variance-skewness
 meaning-making
 means-end
+measles-mumps-rubella
 measure-correlate-predict
 measure-data
 measurement-based
@@ -4408,6 +4495,7 @@ micro-differential
 micro-droplet
 micro-electrical
 micro-electro-mechanical-system
+micro-elimination
 micro-enterprise
 micro-enterprises
 micro-entities
@@ -4529,6 +4617,7 @@ mises-fisher
 miss-detection
 mission-critical
 mission-driven
+mitogen-activated
 mixed-ability
 mixed-autonomy
 mixed-criticality
@@ -5023,6 +5112,7 @@ multiply-accumulation
 multiply-and-accumulate
 multiply-and-accumulation
 mumford-shah
+muscle-specific
 museum-based
 mutation-selection
 muti-index
@@ -5061,6 +5151,7 @@ nature-inspired
 navi-stoke
 navier-stokes
 nb-iot
+ncov-19
 near-capacity
 near-constant
 near-critical
@@ -5236,6 +5327,7 @@ non-carcinogenic
 non-cash
 non-catalytic
 non-chain
+non-cigarette
 non-circular
 non-clairvoyant
 non-coal
@@ -5488,6 +5580,7 @@ non-shadow
 non-simultaneous
 non-singleton
 non-sinusoidal
+non-small-cell
 non-smart
 non-solution
 non-sparse
@@ -5561,6 +5654,7 @@ nvx-cov2373
 o-pirtatd/s
 oaxaca-blinder
 obd-ii
+obesity-related
 object-object
 object-oriented
 object-part
@@ -5639,6 +5733,7 @@ once-through
 one-arm
 one-class
 one-dimensional
+one-health
 one-hop
 one-hot
 one-level
@@ -5732,11 +5827,13 @@ out-of-class
 out-of-core
 out-of-distribution
 out-of-home
+out-of-hospital
 out-of-order
 out-of-plane
 out-of-sample
 out-of-stock
 outcome-based
+outcome-dependent
 outcome-oriented
 outcome-prediction
 outcomes-based
@@ -5850,6 +5947,7 @@ patient-centeredness
 patient-centric
 patient-clinician
 patient-doctor
+patient-generated
 patient-level
 patient-physician
 patient-provider
@@ -5891,6 +5989,7 @@ pennsylvania-new
 people-centered
 people-centred
 people-centric
+peptide-1
 peptide-protein
 per-agent
 per-core
@@ -5945,6 +6044,7 @@ petri-nets
 phage-host
 phase-amplitude
 phase-change
+phase-contrast
 phase-frequency
 phase-inversion
 phase-locked
@@ -5981,6 +6081,7 @@ photovoltaic-thermochemical
 photovoltaic-thermoelectric
 photovoltaic-wind
 phq-8
+phq-9
 physic-informed
 physical-chemical
 physical-digital
@@ -5998,6 +6099,7 @@ physics-informed
 physikalisch-technische
 physio-chemical
 physio-therapeutic
+phyto-bomat
 pi-shaped
 pi-type
 pick-and-place
@@ -6229,6 +6331,7 @@ post-launch
 post-layout
 post-lecture
 post-liberalization
+post-licensure
 post-lithium
 post-loan
 post-market
@@ -6377,6 +6480,7 @@ pre-crash
 pre-crisis
 pre-deployment
 pre-determining
+pre-diabetic
 pre-digital
 pre-disaster
 pre-discharge
@@ -6460,6 +6564,7 @@ predictor-based
 predictor-corrector
 prefectural-level
 pregel-like
+pregnancy-induced
 prek-12
 premixed-flame
 prescribed-time
@@ -6660,6 +6765,7 @@ q-rung
 q-sort
 qinghai-tibet
 qos-aware
+qrt-pcr
 quad-band
 quad-core
 quad-stable
@@ -6668,6 +6774,7 @@ quadruple-junction
 qualification-based
 qualifications-based
 qualitative-quantitative
+quality-adjusted
 quality-by-design
 quality-management
 quality-of-life
@@ -6739,6 +6846,7 @@ quebec-france
 query-aware
 query-document
 question-answer
+questionnaire-9
 queue-length
 quiz-taking
 r-cnn
@@ -6778,6 +6886,7 @@ rate-splitting
 raw-material
 ray-trace
 ray-tracing
+re-aim
 re-branding
 re-election
 re-emergence
@@ -6826,6 +6935,7 @@ receding-horizon
 receiver-reactor
 recency-frequency-monetary
 receptor-positive
+receptor-related
 record-high
 record-keeping
 red-blue
@@ -6848,6 +6958,7 @@ region-based
 region-of-interest
 region-specific
 region-word
+registry-based
 regression-based
 regression-discontinuity
 relationship-specific
@@ -6907,6 +7018,7 @@ retro-aldol
 retro-commissioning
 return-on-investment
 return-risk
+return-to-play
 return-volatility
 revenue-management
 revenue-recycling
@@ -6954,6 +7066,7 @@ risk-reward
 risk-seeking
 risk-sensitive
 risk-sharing
+risk-stratified
 risk-taking
 river-lake
 rna-protein
@@ -7027,6 +7140,7 @@ salesperson-customer
 saline-alkali
 saline-alkaline
 salt-tolerant
+same-day
 same-size
 sample-average
 sample-wise
@@ -7035,7 +7149,12 @@ sampling-based
 sand-bentonite
 sand-table
 sandwich-like
+sarcoma-associated
 sars-cov-2
+sars-cov-2/genetics
+sars-cov-2/immunology
+sars-cov-2/immunology/genetics
+sars-cov-2/isolation
 satellite-terrestrial
 satisfaction-loyalty
 savitzky-golay
@@ -7125,6 +7244,7 @@ self-calibration
 self-care
 self-categorization
 self-charging
+self-collection
 self-compensation
 self-composition
 self-concept
@@ -7169,6 +7289,7 @@ self-harm
 self-healing
 self-heating
 self-help
+self-identifying
 self-identity
 self-ignition
 self-inductance
@@ -7182,6 +7303,7 @@ self-leadership
 self-learning
 self-maintenance
 self-management
+self-medication
 self-monitoring
 self-optimization
 self-optimizing
@@ -7200,6 +7322,7 @@ self-protection
 self-publishing
 self-querying
 self-rated
+self-rating
 self-reconfigurable
 self-reflection
 self-reflective
@@ -7341,6 +7464,7 @@ seven-year
 seventy-three
 several-fold
 sewage-treatment
+sex-differences
 shallow-depth
 shannon-wiener
 shape-based
@@ -7483,6 +7607,7 @@ sixth-generation
 size-exclusion
 size-productivity
 sk-language
+skeletal-axial
 sketch-photo
 skew-normal
 skew-symmetric
@@ -7522,6 +7647,7 @@ smart-grid
 smart-home
 smart-meter
 smart-ready
+smoke-free
 sms-emoa
 snake-like
 snow-cover
@@ -7572,6 +7698,7 @@ socio-technical
 socio-technological
 soda-lime
 sodium-air
+sodium-glucose
 sodium-ion
 sodium-metal
 sodium-nickel
@@ -7722,6 +7849,7 @@ split-sample
 split-state
 spoc-based
 sponge-like
+sport-related
 spot-market
 spray-flame
 spray-wall
@@ -7731,6 +7859,7 @@ spring-neap
 spring-summer
 square-root
 square-structural
+squared-error
 squares-structural
 srensen-dice
 ssa-bilstm
@@ -7798,6 +7927,7 @@ stiffness-toughness
 stimulus-organism-response
 stimulus-response
 stm-32
+stnf-r1
 stochastic-modeling
 stochastic-robust
 stock-bond
@@ -7897,7 +8027,9 @@ submarine-cables
 submicron-scale
 subset-sum
 subsidiary-headquarters
+substance-related
 success-enablers
+sugar-sweetened
 sulfur-carbon
 sulfur-iodine
 sulfur-tolerant
@@ -7942,6 +8074,8 @@ surface-exchange
 surface-interface
 surface-mount
 surface-mounted
+surgeon-administered
+surgery-associated
 survey-based
 survival-of-the-fittest
 susceptible-infected-susceptible
@@ -7975,6 +8109,7 @@ system-wise
 systems-driven
 systems-on-chip
 systems-part
+t-cell
 t-sne
 t-test
 t-tests
@@ -8247,6 +8382,8 @@ time-time
 time-to-degree
 time-to-failure
 time-to-go
+time-to-recovery
+time-to-treatment
 time-variant
 time-varying
 time-wise
@@ -8452,6 +8589,7 @@ ultra-narrow
 ultra-performance
 ultra-poor
 ultra-precision
+ultra-processed
 ultra-rapid
 ultra-rare
 ultra-reliability
@@ -8686,6 +8824,7 @@ voxel-wise
 vr/ar-assisted
 vsc-hvdc
 vsm-94
+waist-hip
 wait-free
 waiting-time
 walk-through
@@ -8697,6 +8836,7 @@ waste-heat
 waste-management
 waste-to-energy
 waste-to-wealth
+wastewater-based
 water-air
 water-alcohol
 water-alumina

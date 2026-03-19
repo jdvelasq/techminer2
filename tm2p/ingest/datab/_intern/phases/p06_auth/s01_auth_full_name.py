@@ -22,9 +22,17 @@ def s01_auth_full_name_wos(root_directory: str) -> int:
 
 
 def _openalex(row):
+
     auth_full_name = row[Field.AUTH_FULL_NAME.value]
+
     if pd.isna(auth_full_name):
-        return None
+        return auth_full_name
+
+    auth = auth_full_name.split("; ")
+    min_words = min(len(au.split(" ")) for au in auth)
+    if min_words < 2:
+        return pd.NA
+
     auth_full_name = auth_full_name.title()
     return auth_full_name
 

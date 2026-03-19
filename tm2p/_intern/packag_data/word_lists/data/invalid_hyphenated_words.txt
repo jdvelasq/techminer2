@@ -1,6 +1,7 @@
 3-dimension
 3-dimensional
 30-company
+30-day
 3d-finite
 3d-laserscanning
 3d-scanning
@@ -51,9 +52,11 @@ ai-ba
 ai-crma
 ai-hrm
 ai-lean
+ai-models
 ai-regulation
 ai-state
 aid-stick
+aids-related/drug
 aims-bi
 air-borne
 air-craft
@@ -77,6 +80,7 @@ analytics-predictive
 ankle-foot
 ant-lion
 antecedent-decision-outcome
+anti-achr
 anti-bacterial
 anti-bonding
 anti-cancer
@@ -97,6 +101,8 @@ anti-gravity
 anti-knock
 anti-microbial
 anti-money
+anti-musk
+anti-n
 anti-oxidant
 anti-oxidation
 anti-oxidative
@@ -116,6 +122,7 @@ anti-solvent
 anti-symmetric
 anti-synchronization
 anti-trust
+anti-trust/health
 anti-tumor
 anti-viral
 anti-virus
@@ -162,6 +169,10 @@ autoen-coder
 automa-tion
 automatic-learning
 axi-symmetric
+b-cell/genetics
+b-lymphocytes/metabolism
+b-raf/antagonists
+b-raf/genetics
 back-bone
 back-door
 back-end
@@ -204,6 +215,7 @@ below-ground
 bench-mark
 bench-top
 best-view
+beta-antagonists/therapeutic
 bi-allelic
 bi-annual
 bi-axially
@@ -304,6 +316,7 @@ bio-digestion
 bio-ecological
 bio-economic
 bio-economy
+bio-efficacy
 bio-electricity
 bio-electrocatalytic
 bio-electrochemical
@@ -428,6 +441,8 @@ business-it
 buy-back
 c-means
 c-mer
+c-met/metabolism
+c-reactive
 cage-like
 calendar-network
 canopy-k-mean
@@ -566,11 +581,13 @@ comb-like
 commercial-banks
 commercial-size
 comparative-analysis
+computer-assisted/methods
 computer-supportive
 con-strained
 con-tinuum
 configura-tion
 contact-less
+contrast-to-noise
 controller-area
 cook-stove
 coordinate-wise
@@ -579,6 +596,7 @@ core-set
 corn-cob
 corona-virus
 corona-viruses
+coronavirus-19
 cortico-basal
 cost-energy
 cost-of-goods
@@ -598,6 +616,9 @@ counter-productive
 counter-terror
 country-wide
 county-wide
+covid-19/epidemiology/prevention
+covid-19/immunology/epidemiology/prevention
+covid-19/psychology/epidemiology
 covid-9
 creative-learning
 credit-worthiness
@@ -619,6 +640,7 @@ crowd-sourcing
 cryo-preservation
 crypto-currencies
 crypto-currency
+ct-spectral
 cube-like
 curric-ula
 customer-algorithm
@@ -699,6 +721,7 @@ deepseek-r1
 defect-less
 defined-network
 delau-nay
+delayed-action
 dematel-ism
 depth-wise
 design-process
@@ -767,6 +790,8 @@ e-tail
 e-tailers
 e-tourism
 e-wom
+early-life
+ech-associated
 echo360-active
 eco-cement
 eco-centric
@@ -863,6 +888,7 @@ environment-organisation-technology
 environmental-assessment
 equi-join
 equi-vocal
+erbb-3/antagonists
 erythemato-squamous
 esp-32
 esvm-elm
@@ -893,6 +919,7 @@ eye-box
 f-topsis
 face-face
 face-recognition
+factor-alpha
 fail-over
 fair-capacitated
 fall-back
@@ -1065,6 +1092,7 @@ high-content
 high-light
 high-precise
 highly-correlated
+hiv-clinic
 ho-momorphic
 hold-out
 holt-winter
@@ -1472,6 +1500,7 @@ it-education
 it-infrastructure
 its-intelligent
 jack-knife
+jos-nigeria
 k-fix
 k-mean
 k-mooc
@@ -1510,6 +1539,7 @@ legal-tech
 length-scales
 lens-less
 lerner-facing
+leukemia-lymphoma/drug
 level-wise
 li-battery
 li-dar
@@ -1539,13 +1569,17 @@ load-ability
 lock-down
 lock-out
 log-file
+long-lasting
 long-short-term-memory
 long-time
 loop-back
 low-performance
 low-powered
 low-precision
+low-value
+low-yield
 lstm-long-short
+lung-map
 m-healthcare
 m-orchestrate
 m-planning
@@ -1827,6 +1861,7 @@ mid-season
 mid-stream
 mid-summer
 mid-term
+mid-turbinate
 mid-west
 mid-western
 midi-am
@@ -2220,6 +2255,7 @@ multi-wire
 multi-worker
 multi-zonal
 multi-zone
+multidrug-resistant/drug
 multiple-case
 multiple-object
 multiple-objectives
@@ -2558,6 +2594,13 @@ non-halide
 non-harmful
 non-harmonic
 non-hazardous
+non-hodgkin
+non-hodgkin/chemically
+non-hodgkin/diagnosis/etiology/prevention
+non-hodgkin/drug
+non-hodgkin/epidemiology/etiology
+non-hodgkin/etiology/complications
+non-hodgkin/genetics
 non-hollow
 non-homogenous
 non-horizontal
@@ -2781,6 +2824,7 @@ non-static
 non-stationary
 non-statistical
 non-sterile
+non-steroidal/adverse
 non-stiff
 non-stoichiometry
 non-storable
@@ -2863,6 +2907,7 @@ oil-field
 olap-cube
 olap-cubes
 olap-systems
+older-age
 omni-channel
 omni-directional
 omni-retailing
@@ -3065,6 +3110,7 @@ photobiore-actor
 physic-guided
 physico-chemical
 physics-ai
+pics-p
 piece-wise
 piezo-catalysis
 piezo-catalytic
@@ -3112,6 +3158,7 @@ post-adopt
 post-approval
 post-colonial
 post-colonialism
+post-concussion
 post-contrast
 post-digestion
 post-doctoral
@@ -3144,6 +3191,7 @@ post-synthetic
 post-test
 post-thermal
 post-traumatic
+post-traumatic/drug
 post-visit
 post-war
 postcovid-19
@@ -3436,6 +3484,7 @@ re-orientation
 re-oxidation
 re-patronage
 re-precipitation
+re-presentation
 re-projection
 re-purchase
 re-qualification
@@ -3476,6 +3525,7 @@ remote-labs
 repeat-customer
 res-idential
 res-irf
+reset-o
 resource-dynamic
 resourced-based
 retail-store
@@ -3511,6 +3561,8 @@ sale-forecasting
 salt-water
 sand-pack
 sap-lap
+sars-cov-2/pathogenicity/physiology
+sars-cov-2/physiology
 savings-investment
 scale-model
 scan-line
@@ -3926,9 +3978,12 @@ swot-ahp
 swot-go
 symbol-wise
 symptomatic-test
+syndrome-pediatric
 syntactic-semantic
 sys-tematic
 systemic-risk
+t-lymphocytes/drug
+t-lymphocytes/metabolism
 t-spherical
 table-top
 tail-pipe
@@ -4023,6 +4078,7 @@ thermo-tolerant
 thin-films
 thing-device
 thousand-fold
+three-dimensional/methods
 three-fold
 three-step
 through-flow
@@ -4074,6 +4130,7 @@ transformer-net
 transformer-xl
 transport-environment
 transportation-logistics
+treatment-resistant/drug
 tree-cognitive
 tree-width
 trees-based

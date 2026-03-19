@@ -10,7 +10,7 @@ def s01_affil(root_directory: str) -> int:
     marker = get_datab_marker(root_directory)
     function = {
         "OpenAlex": None,
-        "PubMed": None,
+        "PubMed": _pubmed,
         "Scopus": None,
         "WoS": _wos,
     }[marker]
@@ -19,6 +19,19 @@ def s01_affil(root_directory: str) -> int:
         return function(root_directory)
 
     return 0
+
+
+def _pubmed(root_directory: str) -> int:
+
+    df = load_main_csv_zip(root_directory)
+
+    df[Field.AFFIL.value] = df[Field.AFFIL.value].str.replace(".;", ";", regex=False)
+    df[Field.AFFIL.value] = df[Field.AFFIL.value].str.replace(".$", "", regex=True)
+    df[Field.AFFIL.value] = df[Field.AFFIL.value].str.replace(r"\s+", " ", regex=True)
+
+    save_main_csv_zip(df, root_directory)
+
+    return int(df[Field.AFFIL.value].notna().sum())
 
 
 def _wos(root_directory: str) -> int:

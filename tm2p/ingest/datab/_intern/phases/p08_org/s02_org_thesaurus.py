@@ -2,6 +2,7 @@ from pathlib import Path
 
 from tm2p import Field
 from tm2p._intern.data_access import load_main_csv_zip
+from tm2p.ingest.datab._intern.phases.get_datab_marker import get_datab_marker
 
 from ._intern.extract_org_name import extract_org_name_from_string
 
@@ -10,6 +11,21 @@ ORG = "ORG"
 
 
 def s02_org_thesaurus(root_directory: str) -> int:
+
+    marker = get_datab_marker(root_directory)
+    function = {
+        "OpenAlex": None,
+        "PubMed": _process,
+        "Scopus": _process,
+        "WoS": _process,
+    }[marker]
+
+    if function:
+        return function(root_directory)
+    return 0
+
+
+def _process(root_directory: str) -> int:
 
     df = load_main_csv_zip(root_directory)
     df = df[[AFFIL]]

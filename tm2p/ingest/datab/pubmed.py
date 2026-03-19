@@ -9,7 +9,8 @@ Smoke test - fintech - successful import:
     ...     PubMed()
     ...     .where_root_directory("tests/pubmed/")
     ...     .run()
-    ... )
+    ... )  # doctest: +ELLIPSIS
+    Note...
     >>> result.success
     True
 

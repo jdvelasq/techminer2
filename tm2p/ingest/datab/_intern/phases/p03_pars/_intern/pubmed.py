@@ -12,6 +12,10 @@ def pubmed_to_csv(root_directory: str) -> int:
 
     _generate_main_csv_zip_file(root_directory, zip_files)
 
+    from ...p16_review.s04_generate_review_table import s04_generate_review_table
+
+    s04_generate_review_table(root_directory)
+
     return len(zip_files)
 
 
@@ -67,22 +71,33 @@ def _record_to_mapping(records: list[str]) -> list[dict[str, str]]:
         mapping: dict[str, list[str]] = {}
 
         lines = record.split("\n")
+        previous_key = None
         current_key = None
+        stack = []
         for line in lines:
 
             if not line:
                 continue
 
             if line[0] != " ":
+                previous_key = current_key
                 current_key = line[:4].strip()
                 if current_key not in mapping:
                     mapping[current_key] = []
-                mapping[current_key].append(line[6:].strip())
+                if previous_key and stack:
+                    entry = " ".join(stack)
+                    mapping[previous_key].append(entry)
+                    stack = []
+                stack.append(line[6:].strip())
             elif current_key is not None:
                 assert (
                     current_key is not None
                 ), "Continuation line found without a current key"
-                mapping[current_key].append(line.strip())
+                stack.append(line.strip())
+
+        if current_key and stack:
+            entry = " ".join(stack)
+            mapping[current_key].append(entry)
 
         mappings.append(mapping)
 
@@ -90,7 +105,7 @@ def _record_to_mapping(records: list[str]) -> list[dict[str, str]]:
     for m in mappings:
         current_mapping = {}
         for key, value in m.items():
-            if key[:2] in ("AB", "AD", "COIS", "SO", "TI"):
+            if key[:2] in ("AB", "COIS", "SO", "TI"):
                 current_mapping[key] = " ".join(value)
             else:
                 current_mapping[key] = "; ".join(value)

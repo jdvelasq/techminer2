@@ -40,7 +40,7 @@ OPENALEX_TO_TM2 = {
 
 PUBMED_TO_TM2 = {
     "AB": Field.ABSTR_RAW.value,  #         → Abstract
-    "AD": Field.AFFIL.value,  #         → Affiliations
+    "AD": Field.AFFIL.value,  #             → Affiliations
     "AID": Field.DOI.value,  #              → DOI / Article Identifier
     "AU": Field.AUTH_RAW.value,  #          → Authors
     "AUID": Field.ORCID.value,  #           → ORCID
@@ -61,9 +61,9 @@ PUBMED_TO_TM2 = {
     "GR": Field.FUND_DET.value,  #          → Funding Details
     "IRAD": Field.IRAD.value,  #            → Investigator Affiliation
     "IS": Field.ISSN.value,  #              → ISSN
-    "JT": Field.SRC.value,  #           → Source Title
+    "JT": Field.SRC.value,  #               → Source Title
     "LA": Field.LANG.value,  #              → Language of Original Document
-    "LID": Field.ART_NO.value,  #              → ART_NO
+    "LID": Field.ART_NO.value,  #           → ART_NO
     "MH": Field.IDXKW_RAW.value,  #         → Index Keywords (controlled vocabulary)
     "MHDA": Field.MHDA.value,  #            → MeSH Date
     "MID": Field.MID.value,  #              → Manuscript ID
@@ -76,7 +76,7 @@ PUBMED_TO_TM2 = {
     "PL": Field.PUB_CTRY.value,  #          → Country of Publication
     "PMCID": Field.PMCID.value,  #          → PubMed Central ID
     "PMID": Field.PUBMED.value,  #          → PubMed ID
-    "PT": Field.PUBTYPE.value,  #       → Document Type
+    "PT": Field.PUBTYPE.value,  #           → Document Type
     "PUBM": Field.PUBLISHER.value,  #       → Publisher
     "RF": Field.N_GCR.value,  #             → Reference Count
     "RIN": Field.RIN.value,  #              → Retraction In
@@ -85,7 +85,7 @@ PUBMED_TO_TM2 = {
     "SI": Field.SUPPL_INF.value,  #         → Supplement Information
     "SO": Field.SRC_CITATION_INFO.value,  # → Source Title + Citation Info
     "STAT": Field.PUBSTAGE.value,  #        → Publication Status
-    "TA": Field.SRC_ISO4.value,  #      → Source Title (abbreviated)
+    "TA": Field.SRC_ISO4.value,  #          → Source Title (abbreviated)
     "TI": Field.TITLE_RAW.value,  #         → Title
     "TT": Field.TRANSL_TITLE.value,  #      → Translated Title
     "VI": Field.VOL.value,  #               → Volume
