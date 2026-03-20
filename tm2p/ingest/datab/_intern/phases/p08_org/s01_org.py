@@ -1,4 +1,5 @@
 from tm2p import Field
+from tm2p.ingest.datab._intern.oper.ltwa_col import ltwa_column
 from tm2p.ingest.datab._intern.oper.transform_col import transform_column
 from tm2p.ingest.datab._intern.phases.get_datab_marker import get_datab_marker
 
@@ -16,10 +17,15 @@ def s01_org(root_directory: str) -> int:
     }[marker]
 
     if function:
-        return transform_column(
+        transform_column(
             source=Field.AFFIL,
             target=Field.ORG,
             function=function,
+            root_directory=root_directory,
+        )
+        return ltwa_column(
+            source=Field.ORG,
+            target=Field.ORG,
             root_directory=root_directory,
         )
 

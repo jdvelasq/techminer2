@@ -10,7 +10,7 @@ AFFIL = Field.AFFIL.value
 ORG = "ORG"
 
 
-def s02_org_thesaurus(root_directory: str) -> int:
+def s03_org_thesaurus(root_directory: str) -> int:
 
     marker = get_datab_marker(root_directory)
     function = {

@@ -10,8 +10,8 @@ def s01_auth_full_name_wos(root_directory: str) -> int:
     marker = get_datab_marker(root_directory)
     function = {
         "OpenAlex": _openalex,
-        "PubMed": _openalex,
-        "Scopus": _openalex,
+        "PubMed": _pubmed,
+        "Scopus": _scopus,
         "WoS": _wos,
     }[marker]
 
@@ -33,6 +33,53 @@ def _openalex(row):
     if min_words < 2:
         return pd.NA
 
+    auth_full_name = auth_full_name.title()
+    return auth_full_name
+
+
+def _pubmed(row):
+
+    auth_full_name = row[Field.AUTH_FULL_NAME.value]
+
+    if pd.isna(auth_full_name):
+        return auth_full_name
+
+    auth_full_name = auth_full_name.split("; ")
+    min_words = min(len(au.split(" ")) for au in auth_full_name)
+    if min_words < 2:
+        return pd.NA
+
+    auth_full_name = [
+        au.split(", ")[1] + " " + au.split(", ")[0]
+        for au in auth_full_name
+        if "," in au
+    ]
+    auth_full_name = "; ".join(auth_full_name)
+
+    auth_full_name = auth_full_name.title()
+    return auth_full_name
+
+
+def _scopus(row):
+
+    auth_full_name = row[Field.AUTH_FULL_NAME.value]
+
+    if pd.isna(auth_full_name):
+        return auth_full_name
+
+    auth_full_name = auth_full_name.split("; ")
+    auth_full_name = [au.split(" (")[0] for au in auth_full_name]
+
+    min_words = min(len(au.split(" ")) for au in auth_full_name)
+    if min_words < 2:
+        return pd.NA
+
+    auth_full_name = [
+        au.split(", ")[1] + " " + au.split(", ")[0]
+        for au in auth_full_name
+        if "," in au
+    ]
+    auth_full_name = "; ".join(auth_full_name)
     auth_full_name = auth_full_name.title()
     return auth_full_name
 

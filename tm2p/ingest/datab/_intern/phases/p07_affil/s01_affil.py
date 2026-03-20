@@ -28,6 +28,9 @@ def _pubmed(root_directory: str) -> int:
     df[Field.AFFIL.value] = df[Field.AFFIL.value].str.replace(".;", ";", regex=False)
     df[Field.AFFIL.value] = df[Field.AFFIL.value].str.replace(".$", "", regex=True)
     df[Field.AFFIL.value] = df[Field.AFFIL.value].str.replace(r"\s+", " ", regex=True)
+    df[Field.AFFIL.value] = df[Field.AFFIL.value].str.replace(
+        ", Inc.", " Inc.", regex=False
+    )
 
     save_main_csv_zip(df, root_directory)
 

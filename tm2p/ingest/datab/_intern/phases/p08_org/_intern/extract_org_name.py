@@ -1,203 +1,6 @@
 import re
 from typing import List
 
-_AMBIGUOUS_INDICATOR = [
-    "institute of",
-    "institut de",
-    "instituto de",
-    "institutt for",
-    "center for",
-    "centre for",
-    "centro de",
-    "centro para",
-    "laboratory of",
-    "lab of",
-    "laboratoire de",
-    "laboratorio de",
-    "school of",
-    "école de",
-    "escuela de",
-    "escola de",
-    "graduate school",
-    "doctoral school",
-]
-
-_CORPORATE_SUFFIX = [
-    "ltd",
-    "limited",
-    "inc",
-    "incorporated",
-    "corp",
-    "corporation",
-    "gmbh",
-    "s.a.",
-    "s.l.",
-    "srl",
-    "s.r.l.",
-    "spa",
-    "s.p.a.",
-    "bv",
-    "b.v.",
-    "llc",
-    "l.l.c.",
-    "ag",
-    "plc",
-    "co.",
-    "company",
-]
-
-
-_DEPARTMENT_INDICATOR = [
-    "department of",
-    "dept of",
-    "dept.",
-    "faculty of",
-    "school of",
-    "college of",
-    "division of",
-    "unit of",
-    "section of",
-    "chair of",
-    "professorship",
-    "lehrstuhl",
-    "departamento de",
-    "département de",
-    "facoltà di",
-    "facultad de",
-    "dipartimento di",
-    "departement",
-    "división de",
-]
-
-_GOVERNMENT_KEYWORD = [
-    "ministry",
-    "government",
-    "agency",
-    "council",
-    "commission",
-    "authority",
-    "department of",
-    "bureau",
-    "office of",
-]
-
-
-_ORGANIZATION_KEYWORD = [
-    "univ",
-    "university",
-    "universidad",
-    "université",
-    "universität",
-    "università",
-    "universiteit",
-    "yliopisto",
-    "univerza",
-    "univerzita",
-    "universitas",
-    "universiti",
-    "universitet",
-    "universitāte",
-    "rijksuniversiteit",
-    "polytechnic",
-    "politecnico",
-    "politechnika",
-    "polytechnique",
-    "institute",
-    "instituto",
-    "institut",
-    "institutt",
-    "college",
-    "school",
-    "academy",
-    "academia",
-    "hospital",
-    "clinic",
-    "klinik",
-    "medical center",
-    "medical centre",
-    "research center",
-    "research centre",
-    "national laboratory",
-    "foundation",
-    "fundación",
-    "fondation",
-    "stiftung",
-]
-
-
-def _clean_part(part: str) -> str:
-    part = part.strip()
-    part = re.sub(r"\s*\([^)]*\)\s*$", "", part)
-    return part.strip()
-
-
-def _contains_corporate_suffix(text: str) -> bool:
-    if not text or not text.strip():
-        return False
-    text_lower = text.lower()
-    return any(
-        re.search(r"\b" + re.escape(suffix) + r"\b", text_lower)
-        for suffix in _CORPORATE_SUFFIX
-    )
-
-
-def _contains_government_keyword(text: str) -> bool:
-    if not text or not text.strip():
-        return False
-    text_lower = text.lower()
-    return any(keyword in text_lower for keyword in _GOVERNMENT_KEYWORD)
-
-
-def _contains_org_keyword(text: str) -> bool:
-    if not text or not text.strip():
-        return False
-    text_lower = text.lower()
-    return any(keyword in text_lower for keyword in _ORGANIZATION_KEYWORD)
-
-
-def _has_multiple_words(text: str) -> bool:
-    return len(text.split()) >= 2
-
-
-def _is_acronym(text: str) -> bool:
-    return text.isupper() and len(text) >= 2 and text.isalpha()
-
-
-def _is_organization(text: str) -> bool:
-    if not text or not text.strip():
-        return False
-    return (
-        _contains_org_keyword(text)
-        or _contains_corporate_suffix(text)
-        or _contains_government_keyword(text)
-        or _has_multiple_words(text)
-        or _is_acronym(text)
-    )
-
-
-def _remove_duplicate_segments(parts: List[str]) -> List[str]:
-    if len(parts) < 2:
-        return parts
-    result = []
-    for i, part in enumerate(parts):
-        if i == 0 or part.lower() != parts[i - 1].lower():
-            result.append(part)
-    return result
-
-
-def _starts_with_ambiguous_indicator(text: str) -> bool:
-    if not text or not text.strip():
-        return False
-    text_lower = text.lower().strip()
-    return any(text_lower.startswith(indicator) for indicator in _AMBIGUOUS_INDICATOR)
-
-
-def _starts_with_department(text: str) -> bool:
-    if not text or not text.strip():
-        return False
-    text_lower = text.lower().strip()
-    return any(text_lower.startswith(indicator) for indicator in _DEPARTMENT_INDICATOR)
-
 
 def extract_org_name_from_string(affiliation: str) -> str:
 
@@ -207,32 +10,333 @@ def extract_org_name_from_string(affiliation: str) -> str:
     #         return org
 
     parts = [_clean_part(p) for p in affiliation.split(",")]
-    parts = [p for p in parts if p]
+    # parts = [f" {p} " for p in parts if p]
 
     if not parts:
         return "[UNKNOWN]"
 
-    parts = _remove_duplicate_segments(parts)
+    org = _check_for_university(parts)
+    org = _check_for_bank(org, parts)
+    org = _check_for_research_center(org, parts)
+    org = _check_for_corporate_suffix(org, parts)
+    org = _check_for_school(org, parts)
+    org = _check_for_center(org, parts)
+    org = _check_for_college(org, parts)
+    org = _check_for_institute(org, parts)
+    org = _check_for_polytechnic(org, parts)
+    org = _check_for_association(org, parts)
+    org = _check_for_hospital(org, parts)
+    org = _check_for_boreau(org, parts)
 
-    if len(parts) >= 2:
-        first = parts[0]
-        second = parts[1]
+    return org
 
-        if _starts_with_ambiguous_indicator(first) and _is_organization(second):
-            return second
 
-        if _starts_with_department(first) and _is_organization(second):
-            return second
+def _check_for_boreau(org, parts: List[str]) -> str:
 
-    if len(parts) >= 1:
-        first = parts[0]
-        if not _starts_with_department(first) and _is_organization(first):
-            return first
+    _BUREAU = [
+        "agency",
+        "authority",
+        "bureau",
+        "commission",
+        "council",
+        "department of",
+        "division of",
+        "government",
+        "ministry",
+        "office of",
+        "section of",
+        "unit of",
+        "district",
+        "state",
+        "ministerio",
+        "ministère",
+    ]
 
-    if len(parts) >= 2 and _is_organization(parts[1]):
-        return parts[1]
+    if org != "[UNKNOWN]":
+        return org
 
-    if len(parts) >= 1 and _is_organization(parts[0]):
-        return parts[0]
+    for part in parts:
+        if any(f" {word} " in part.lower() for word in _BUREAU):
+            return part.strip()
+
+    return org
+
+
+def _check_for_hospital(org, parts: List[str]) -> str:
+
+    _HOSPITAL = [
+        "hospital",
+        "clinic",
+        "clinica",
+        "clínica",
+        "klinik",
+        "medical center",
+        "medical centre",
+        "centre hospitalier",
+        "centro médico",
+        "centro médico",
+        "centro de salud",
+        "centro sanitario",
+        "centro hospitalar",
+        "centro hospitalário",
+    ]
+
+    if org != "[UNKNOWN]":
+        return org
+
+    for part in parts:
+        if any(f" {word} " in part.lower() for word in _HOSPITAL):
+            return part.strip()
+
+    return org
+
+
+def _check_for_association(org, parts: List[str]) -> str:
+
+    _ASSOCIATION = [
+        "alianza",
+        "alliance",
+        "asociación",
+        "association",
+        "coalition",
+        "confederación",
+        "confederation",
+        "consorcio",
+        "consortium",
+        "directorate",
+        "federación",
+        "federation",
+        "fondation",
+        "foundation",
+        "fundacion",
+        "fundación",
+        "network",
+        "sociedad",
+        "society",
+        "stiftung",
+        "union",
+    ]
+
+    if org != "[UNKNOWN]":
+        return org
+
+    for part in parts:
+        if any(f" {word} " in part.lower() for word in _ASSOCIATION):
+            return part.strip()
+
+    return org
+
+
+def _check_for_research_center(org, parts: List[str]) -> str:
+
+    _RESEARCH_CENTER = [
+        "research center",
+        "research centre",
+        "national laboratory",
+        "national laboratories",
+    ]
+
+    if org != "[UNKNOWN]":
+        return org
+
+    for part in parts:
+        if any(f" {word} " in part.lower() for word in _RESEARCH_CENTER):
+            return part.strip()
+
+    return org
+
+
+def _check_for_polytechnic(org, parts: List[str]) -> str:
+
+    _POLYTECHNIC = [
+        "polytechnic",
+        "politecnico",
+        "politechnic",
+        "politechnische",
+        "politechnika",
+        "technological university",
+        "technische universität",
+        "tecnológico",
+    ]
+
+    if org != "[UNKNOWN]":
+        return org
+
+    for part in parts:
+        if any(f" {word} " in part.lower() for word in _POLYTECHNIC):
+            return part.strip()
+
+    return org
+
+
+def _check_for_institute(org, parts: List[str]) -> str:
+
+    _INSTITUTE = [
+        "institute",
+        "instituto",
+        "institut",
+        "institutt",
+    ]
+
+    if org != "[UNKNOWN]":
+        return org
+
+    for part in parts:
+        if any(f" {word} " in part.lower() for word in _INSTITUTE):
+            return part.strip()
+
+    return org
+
+
+def _check_for_college(org, parts: List[str]) -> str:
+
+    _COLLEGE = [
+        "college",
+        "colegio",
+        "colégio",
+    ]
+
+    if org != "[UNKNOWN]":
+        return org
+
+    for part in parts:
+        if any(f" {word} " in part.lower() for word in _COLLEGE):
+            return part.strip()
+
+    return org
+
+
+def _check_for_center(org, parts: List[str]) -> str:
+
+    _CENTER = [
+        "centre for",
+        "center for",
+    ]
+
+    if org != "[UNKNOWN]":
+        return org
+
+    for part in parts:
+        if any(f" {word} " in part.lower() for word in _CENTER):
+            return part.strip()
+
+    return org
+
+
+def _check_for_school(org, parts: List[str]) -> str:
+
+    _SCHOOL = [
+        "business school",
+        "école de",
+        "escola de",
+        "escuela de",
+        "law school",
+        "medical school",
+        "school of",
+        "university school",
+    ]
+
+    if org != "[UNKNOWN]":
+        return org
+
+    for part in parts:
+        if any(f" {word} " in part.lower() for word in _SCHOOL):
+            return part.strip()
 
     return "[UNKNOWN]"
+
+
+def _check_for_corporate_suffix(org, parts: List[str]) -> str:
+
+    _CORPORATE_SUFFIX = [
+        "ag",
+        "b.v.",
+        "bv",
+        "co.",
+        "company",
+        "corp",
+        "corp.",
+        "corporation",
+        "gmbh",
+        "inc.",
+        "inc",
+        "incorporated",
+        "l.l.c.",
+        "limited",
+        "llc",
+        "ltd.",
+        "ltd",
+        "plc",
+        "s.a.",
+        "s.l.",
+        "s.p.a.",
+        "s.r.l.",
+        "spa",
+        "srl",
+    ]
+
+    if org != "[UNKNOWN]":
+        return org
+
+    for part in parts:
+        if any(f" {word} " in part.lower() for word in _CORPORATE_SUFFIX):
+            return part.strip()
+
+    return "[UNKNOWN]"
+
+
+def _check_for_bank(org, parts: List[str]) -> str:
+
+    _BANK = [
+        "bank",
+        "banco",
+        "banque",
+    ]
+
+    if org != "[UNKNOWN]":
+        return org
+
+    for part in parts:
+        if any(f" {word} " in part.lower() for word in _BANK):
+            return part.strip()
+
+    return "[UNKNOWN]"
+
+
+def _check_for_university(parts: List[str]) -> str:
+
+    _UNIVERSITY = [
+        "rijksuniversiteit",
+        "univ",
+        "universidad",
+        "universidade",
+        "università",
+        "Universitair",
+        "universitas",
+        "universität",
+        "universitāte",
+        "universitatea",
+        "université",
+        "universiteit",
+        "universitet",
+        "universiti",
+        "university",
+        "univerza",
+        "univerzita",
+        "yliopisto",
+        "l'université",
+    ]
+
+    for part in parts:
+        if any(f" {word} " in part.lower() for word in _UNIVERSITY):
+            return part.strip()
+
+    return "[UNKNOWN]"
+
+
+def _clean_part(part: str) -> str:
+    part = part.strip()
+    part = re.sub(r"\s*\([^)]*\)\s*$", "", part)
+    part = part.strip()
+    part = f" {part} "
+    return part
