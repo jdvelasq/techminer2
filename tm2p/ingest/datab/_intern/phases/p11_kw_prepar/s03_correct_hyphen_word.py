@@ -24,17 +24,19 @@ TASK:
     - The hyphenated form is the only form correct.
     - The word is not standard English.
     - Both forms (hyphenated and non-hyphenated) are correct.
+    - The hyphenated form is commonly used and accepted in scientific or technical contexts, even if the non-hyphenated form is also correct.
     - Neither form is correct.
 3. Respond "no" if:
     - The non-hyphenated form is the only form correct.
     - The correct form is different from both provided forms.
-
+3. Respond "split" if:
+    - Both, the hyphenated and the non-hyphenated forms are incorrect, and thecorrect form is only obtained by reemplazing the "-" by an space ()" ").  
     
 OUTPUT FORMAT (STRICT — JSON ONLY):
 The output MUST be a JSON object with the following structure:
 
 {{
-    "answer": "yes" or "no",
+    "answer": "yes" or "no" or "split",
 }}
 
 Any output different of this must be considered invalid.
@@ -53,65 +55,199 @@ WORDS:
 def s03_correct_hyphen_word(root_directory: str) -> int:
 
     df = load_main_csv_zip(root_directory)
-    if Field.IDXKW_RAW.value not in df.columns:
-        return 0
-    if Field.AUTHKW_RAW.value not in df.columns:
-        return 0
 
-    words = _extract_hyphenated_words(df)
-    unknown_words = _extract_unknown_words(words, root_directory)
-    new_valid_words, new_invalid_words = _classify_unknown_words(unknown_words)
-
-    _report_new_words(
-        new_valid_words=new_valid_words,
-        new_invalid_words=new_invalid_words,
-        root_directory=root_directory,
+    words_valid, words_invalid, words_to_split = _classify_hyphenated_words(
+        root_directory, df
     )
 
-    known_valid_words = _get_valid_words(root_directory)
-    known_invalid_words = _get_invalid_words(root_directory)
-    df = _replace(
-        df,
-        new_valid_words | known_valid_words,
-        new_invalid_words | known_invalid_words,
-    )
+    df = _add_padding(df)
+    df = _split_to_space(df, words_to_split)
+    df = _compact_to_space(df, words_to_split)
+    df = _invalid_to_compact(df, words_invalid)
+    df = _compact_to_space(df, words_to_split)
+    df = _compact_to_hyphen(df, words_valid)
+    df = _remove_padding(df)
 
     save_main_csv_zip(df, root_directory)
 
-    return max(
-        int(df[Field.AUTHKW_TOK.value].notna().sum()),
-        int(df[Field.IDXKW_TOK.value].notna().sum()),
+    result = 0
+    if Field.AUTHKW_TOK.value in df.columns:
+        result = max(result, int(df[Field.AUTHKW_TOK.value].notna().sum()))
+    if Field.IDXKW_TOK.value in df.columns:
+        result = max(result, int(df[Field.IDXKW_TOK.value].notna().sum()))
+    return result
+
+
+def _remove_padding(df: pd.DataFrame) -> pd.DataFrame:
+
+    for col in [
+        Field.AUTHKW_TOK.value,
+        Field.IDXKW_TOK.value,
+    ]:
+        if col in df.columns:
+            df[col] = df[col].str.strip()
+            df[col] = df[col].str.replace(" ; ", "; ", regex=False)
+
+    return df
+
+
+def _split_to_space(df: pd.DataFrame, words_to_split: set) -> pd.DataFrame:
+
+    for col in [
+        Field.AUTHKW_TOK.value,
+        Field.IDXKW_TOK.value,
+    ]:
+        if col in df.columns:
+            for word in words_to_split:
+                df[col] = df[col].str.replace(
+                    f" {word} ",
+                    f" {word.replace('-', ' ')} ",
+                    regex=False,
+                )
+                df[col] = df[col].str.replace(
+                    f"/{word} ",
+                    f"/{word.replace('-', ' ')} ",
+                    regex=False,
+                )
+                df[col] = df[col].str.replace(
+                    f" {word}/",
+                    f" {word.replace('-', ' ')}/",
+                    regex=False,
+                )
+
+    return df
+
+
+def _compact_to_space(df: pd.DataFrame, words_to_split: set) -> pd.DataFrame:
+
+    for col in [
+        Field.AUTHKW_TOK.value,
+        Field.IDXKW_TOK.value,
+    ]:
+        if col in df.columns:
+            for word in words_to_split:
+                df[col] = df[col].str.replace(
+                    f" {word.replace('-', '')} ",
+                    f" {word.replace('-', ' ')} ",
+                    regex=False,
+                )
+                df[col] = df[col].str.replace(
+                    f"/{word.replace('-', '')} ",
+                    f"/{word.replace('-', ' ')} ",
+                    regex=False,
+                )
+                df[col] = df[col].str.replace(
+                    f" {word.replace('-', '')}/",
+                    f" {word.replace('-', ' ')}/",
+                    regex=False,
+                )
+    return df
+
+
+def _compact_to_hyphen(df: pd.DataFrame, words_to_split: set) -> pd.DataFrame:
+
+    for col in [
+        Field.AUTHKW_TOK.value,
+        Field.IDXKW_TOK.value,
+    ]:
+        if col in df.columns:
+            for word in words_to_split:
+                df[col] = df[col].str.replace(
+                    f" {word.replace('-', '')} ",
+                    f" {word} ",
+                    regex=False,
+                )
+                df[col] = df[col].str.replace(
+                    f"/{word.replace('-', '')} ",
+                    f"/{word} ",
+                    regex=False,
+                )
+                df[col] = df[col].str.replace(
+                    f" {word.replace('-', '')}/",
+                    f" {word}/",
+                    regex=False,
+                )
+    return df
+
+
+def _invalid_to_compact(df: pd.DataFrame, words_invalid: set) -> pd.DataFrame:
+
+    for col in [
+        Field.AUTHKW_TOK.value,
+        Field.IDXKW_TOK.value,
+    ]:
+        if col in df.columns:
+            for word in words_invalid:
+                df[col] = df[col].str.replace(
+                    f" {word} ",
+                    f" {word.replace('-', '')} ",
+                    regex=False,
+                )
+                df[col] = df[col].str.replace(
+                    f"/{word} ",
+                    f"/{word.replace('-', '')} ",
+                    regex=False,
+                )
+                df[col] = df[col].str.replace(
+                    f" {word}/",
+                    f" {word.replace('-', '')}/",
+                    regex=False,
+                )
+
+    return df
+
+
+def _add_padding(df: pd.DataFrame) -> pd.DataFrame:
+
+    for col in [
+        Field.AUTHKW_TOK.value,
+        Field.IDXKW_TOK.value,
+    ]:
+        if col in df.columns:
+            df[col] = df[col].map(lambda x: f" {x} " if pd.notna(x) else x)
+            df[col] = df[col].str.replace("; ", " ; ", regex=False)
+
+    return df
+
+
+def _classify_hyphenated_words(root_directory, df):
+
+    words = _extract_hyphenated_words(df)
+    if not words:
+        return set(), set(), set()
+
+    known_words_valid = load_builtin_word_list("valid_hyphenated_words.txt")
+    known_words_invalid = load_builtin_word_list("invalid_hyphenated_words.txt")
+    known_words_to_split = load_builtin_word_list(
+        "invalid_hyphenated_words_splitted.txt"
     )
 
+    known_words_valid = set(known_words_valid)
+    known_words_invalid = set(known_words_invalid)
+    known_words_to_split = set(known_words_to_split)
 
-def _get_valid_words(root_directory: str) -> set:
+    known_words = (
+        set(known_words_valid) | set(known_words_invalid) | set(known_words_to_split)
+    )
 
-    words: set[str] = set()
+    unknown_words = words - set(known_words)
 
-    my_keywords_path = Path(root_directory) / "refine" / "word_lists"
+    new_words_valid, new_words_invalid, new_words_split = _classify_unknown_words(
+        unknown_words
+    )
 
-    report_file = my_keywords_path / "valid_hyphenated_words.txt"
-    if report_file.exists():
-        with open(report_file, "r", encoding="utf-8") as f:
-            for line in f:
-                words.add(line.strip())
+    _report_new_words(
+        new_valid_words=new_words_valid,
+        new_invalid_words=new_words_invalid,
+        new_split_words=new_words_split,
+        root_directory=root_directory,
+    )
 
-    return words
-
-
-def _get_invalid_words(root_directory: str) -> set:
-
-    words: set[str] = set()
-
-    my_keywords_path = Path(root_directory) / "refine" / "word_lists"
-
-    report_file = my_keywords_path / "invalid_hyphenated_words.txt"
-    if report_file.exists():
-        with open(report_file, "r", encoding="utf-8") as f:
-            for line in f:
-                words.add(line.strip())
-
-    return words
+    return (
+        known_words_valid | new_words_valid,
+        known_words_invalid | new_words_invalid,
+        known_words_to_split | new_words_split,
+    )
 
 
 def _extract_hyphenated_words(dataframe: pd.DataFrame) -> set:
@@ -121,6 +257,8 @@ def _extract_hyphenated_words(dataframe: pd.DataFrame) -> set:
         Field.AUTHKW_TOK.value,
         Field.IDXKW_TOK.value,
     ]:
+        if col not in dataframe.columns:
+            continue
 
         series = dataframe[col].dropna()
         series = series.str.lower()
@@ -139,25 +277,7 @@ def _extract_hyphenated_words(dataframe: pd.DataFrame) -> set:
     return hypenated_words
 
 
-def _extract_unknown_words(words: set, root_directory: str) -> set:
-
-    invalid_hyphenated_words = load_builtin_word_list("invalid_hyphenated_words.txt")
-    valid_hyphenated_words = load_builtin_word_list("valid_hyphenated_words.txt")
-
-    known_words = set(valid_hyphenated_words) | set(invalid_hyphenated_words)
-
-    known_valid_words = _get_valid_words(root_directory)
-    known_invalid_words = _get_invalid_words(root_directory)
-    known_words.update(known_valid_words)
-    known_words.update(known_invalid_words)
-
-    words = set(words)
-    unknown_words = words - known_words
-
-    return unknown_words
-
-
-def _classify_unknown_words(unknown_words: set) -> tuple[set, set]:
+def _classify_unknown_words(unknown_words: set) -> tuple[set, set, set]:
 
     if not os.getenv("OPENAI_API_KEY"):
         raise ValueError("OPENAI_API_KEY environment variable is not set.")
@@ -166,9 +286,10 @@ def _classify_unknown_words(unknown_words: set) -> tuple[set, set]:
 
     valid_words: set[str] = set()
     invalid_words: set[str] = set()
+    split_words: set[str] = set()
 
     if not unknown_words:
-        return valid_words, invalid_words
+        return valid_words, invalid_words, split_words
 
     for word in tqdm(
         unknown_words,
@@ -186,9 +307,7 @@ def _classify_unknown_words(unknown_words: set) -> tuple[set, set]:
             invalid_words.add(word)
             continue
 
-        query = USER_PROMPT.format(
-            word.lower().replace("_", "-"), word.lower().replace("_", "")
-        )
+        query = USER_PROMPT.format(word.lower(), word.lower().replace("-", ""))
 
         try:
 
@@ -219,18 +338,23 @@ def _classify_unknown_words(unknown_words: set) -> tuple[set, set]:
 
             if answer == "no":
                 invalid_words.add(word)
-            else:
+            elif answer == "yes":
                 valid_words.add(word)
+            elif answer == "split":
+                split_words.add(word)
+            else:
+                print(f"Error: Invalid answer '{answer}' for word '{word}'")
 
         except (APIError, json.JSONDecodeError, KeyError) as e:
             print(f"Error processing {e}")
 
-    return valid_words, invalid_words
+    return valid_words, invalid_words, split_words
 
 
 def _report_new_words(
     new_valid_words: set,
     new_invalid_words: set,
+    new_split_words: set,
     root_directory: str,
 ) -> None:
 
@@ -260,30 +384,14 @@ def _report_new_words(
             "invalid_hyphenated_words.txt", list(new_invalid_words)
         )
 
+    if new_split_words:
 
-def _replace(
-    dataframe: pd.DataFrame,
-    new_valid_words: set,
-    new_invalid_words: set,
-) -> pd.DataFrame:
+        report_file = my_keywords_path / "invalid_hyphenated_words_splitted.txt"
 
-    invalid_hyphenated_words = load_builtin_word_list("invalid_hyphenated_words.txt")
-    valid_hyphenated_words = load_builtin_word_list("valid_hyphenated_words.txt")
+        with open(report_file, "w", encoding="utf-8") as f:
+            for word in sorted(new_split_words):
+                f.write(f"{word}\n")
 
-    for col in [
-        Field.AUTHKW_TOK.value,
-        Field.IDXKW_TOK.value,
-    ]:
-        dataframe[col] = dataframe[col].str.lower()
-
-        for word in invalid_hyphenated_words | new_invalid_words:
-            dataframe[col] = dataframe[col].str.replace(
-                word, word.replace("-", ""), regex=False
-            )
-
-        for word in valid_hyphenated_words | new_valid_words:
-            dataframe[col] = dataframe[col].str.replace(
-                word.replace("-", ""), word, regex=False
-            )
-
-    return dataframe
+        add_new_words_to_builtin_word_list(
+            "invalid_hyphenated_words_splitted.txt", list(new_split_words)
+        )
