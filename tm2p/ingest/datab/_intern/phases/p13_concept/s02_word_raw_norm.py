@@ -40,7 +40,7 @@ def _transform(series):
     series = _split_in_words(series)
     series = _remove_stopwords(series)
     series = _remove_invalid_words(series)
-    series = _singularize(series)
+    # series = _singularize(series)
     series = _sort_words(series)
 
     return series.str.join("; ")
