@@ -36,8 +36,7 @@ Smoke tests:
 
 from tm2p import Field, ThesaurusField
 from tm2p._intern import ParamsMixin
-
-from ..usr.merge_keys import MergeKeys as UserMergeKeys
+from tm2p.refine.usr.merge_keys import MergeKeys as UserMergeKeys
 
 CHANGED = ThesaurusField.CHANGED.value
 IS_KEYWORD = ThesaurusField.IS_KEYWORD.value
