@@ -57,10 +57,9 @@ import sys
 
 from tm2p import Field
 from tm2p._intern import ParamsMixin
+from tm2p.refine._intern.data_access import load_thesaurus_as_dataframe
 from tm2p.refine._intern.objs.thesaurus_match_result import ThesaurusMatchResult
 from tm2p.refine._intern.rule import apply_fuzzy_cutoff_0_word_rule
-
-from .._intern.data_access import load_thesaurus_as_dataframe
 
 
 class FuzzyCutoffZeroWordMatch(
