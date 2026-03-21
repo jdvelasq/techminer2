@@ -20,7 +20,6 @@ def mark_keywords(
 
     data_df = load_main_csv_zip(
         root_directory=params.root_directory,
-        # usecols=[params.source_field.value],
     )
 
     keywords = _extract_keywords_from_data(data_df)
