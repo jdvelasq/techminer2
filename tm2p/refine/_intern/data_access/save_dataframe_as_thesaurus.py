@@ -1,4 +1,4 @@
-import pandas as pd
+import pandas as pd  # type: ignore
 
 from tm2p import ThesaurusField
 from tm2p._intern import Params
