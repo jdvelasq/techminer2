@@ -22,7 +22,7 @@ def p08_org(params: Params) -> list[Step]:
             kwargs=common_kwargs,
         ),
         Step(
-            name="Creating ORG abbreviations",
+            name="Creating LTWA abbreviations",
             function=s02_org_lwta,
             kwargs=common_kwargs,
         ),
