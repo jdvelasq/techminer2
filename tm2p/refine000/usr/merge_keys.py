@@ -36,7 +36,7 @@ Smoke tests:
 
 """
 
-from tm2p import ThesaurusField
+from tm2p import ThField
 from tm2p._intern import ParamsMixin
 
 from ...refine._intern.data_access import (
@@ -44,13 +44,13 @@ from ...refine._intern.data_access import (
     save_dataframe_as_thesaurus,
 )
 
-CHANGED = ThesaurusField.CHANGED.value
-IS_KEYWORD = ThesaurusField.IS_KEYWORD.value
-OCC = ThesaurusField.OCC.value
-OLD = ThesaurusField.OLD.value
-PREFERRED = ThesaurusField.PREFERRED.value
-SIGNATURE = ThesaurusField.SIGNATURE.value
-VARIANT = ThesaurusField.VARIANT.value
+CHANGED = ThField.CHANGED.value
+IS_KEYWORD = ThField.IS_KEYWORD.value
+OCC = ThField.OCC.value
+OLD = ThField.OLD.value
+PREFERRED = ThField.PREFERRED.value
+SIGNATURE = ThField.SIGNATURE.value
+VARIANT = ThField.VARIANT.value
 
 
 class MergeKeys(

@@ -15,6 +15,7 @@ from tm2p.enum import (
     Field,
     ItemOrderBy,
     RecordOrderBy,
+    ThFile,
 )
 
 
@@ -39,6 +40,11 @@ class Params:
     # Cross-correlation operations:
     #
     cross_field: Field
+
+    #
+    # Thesaurus file:
+    #
+    thesaurus_file: ThFile
 
     #
     # Sankey plot:
@@ -238,7 +244,6 @@ class Params:
     tfidf_smooth_idf: bool = False
     tfidf_sublinear_tf: bool = False  # sublinear_tf
     tfidf_use_idf: bool = False  # using_idf_reweighting
-    thesaurus_file: str = "no_name.the.txt"
     time_window: int = 2
     title_text: Optional[str] = None
     top_items_by_theme: int = 5

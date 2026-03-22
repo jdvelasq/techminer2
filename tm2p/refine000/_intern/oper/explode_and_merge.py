@@ -1,11 +1,11 @@
 import pandas as pd
 
-from tm2p.enum import ThesaurusField
+from tm2p.enum import ThField
 
-CHANGED = ThesaurusField.CHANGED.value
-KEY = ThesaurusField.OLD.value
-PREFERRED = ThesaurusField.PREFERRED.value
-VARIANT = ThesaurusField.VARIANT.value
+CHANGED = ThField.CHANGED.value
+KEY = ThField.OLD.value
+PREFERRED = ThField.PREFERRED.value
+VARIANT = ThField.VARIANT.value
 
 
 def explode_and_merge(

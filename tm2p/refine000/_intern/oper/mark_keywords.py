@@ -3,14 +3,14 @@ import pandas as pd
 from tm2p import Field
 from tm2p._intern import Params
 from tm2p._intern.data_access import load_main_csv_zip
-from tm2p.enum import ThesaurusField
+from tm2p.enum import ThField
 
-CHANGED = ThesaurusField.CHANGED.value
-IS_KEYWORD = ThesaurusField.IS_KEYWORD.value
-OCC = ThesaurusField.OCC.value
-OLD = ThesaurusField.OLD.value
-PREFERRED = ThesaurusField.PREFERRED.value
-VARIANT = ThesaurusField.VARIANT.value
+CHANGED = ThField.CHANGED.value
+IS_KEYWORD = ThField.IS_KEYWORD.value
+OCC = ThField.OCC.value
+OLD = ThField.OLD.value
+PREFERRED = ThField.PREFERRED.value
+VARIANT = ThField.VARIANT.value
 
 
 def mark_keywords(

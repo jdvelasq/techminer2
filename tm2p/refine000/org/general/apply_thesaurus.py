@@ -42,7 +42,8 @@ Smoke tests:
 
 from tm2p._intern import ParamsMixin
 from tm2p.refine000.thesaurus_old._intern import internal__transform
-from tm2p.refine000.thesaurus_old.user import ApplyThesaurus as ApplyUserThesaurus
+
+# from tm2p.refine000.thesaurus_old.user import ApplyThesaurus as ApplyUserThesaurus
 
 
 #

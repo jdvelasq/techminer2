@@ -7,7 +7,7 @@ from .enum import (
     Field,
     ItemOrderBy,
     RecordOrderBy,
-    ThesaurusField,
+    ThField,
 )
 
 __all__ = [
@@ -19,5 +19,5 @@ __all__ = [
     "Field",
     "ItemOrderBy",
     "RecordOrderBy",
-    "ThesaurusField",
+    "ThField",
 ]

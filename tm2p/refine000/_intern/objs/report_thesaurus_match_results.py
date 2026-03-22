@@ -1,14 +1,14 @@
 import pandas as pd
 
 from tm2p._intern import Params
-from tm2p.enum import ThesaurusField
+from tm2p.enum import ThField
 
 from .thesaurus_match_result import ThesaurusMatchResult
 
-FLAG = ThesaurusField.CHANGED.value
-KEY = ThesaurusField.OLD.value
-PREFERRED = ThesaurusField.PREFERRED.value
-VARIANT = ThesaurusField.VARIANT.value
+FLAG = ThField.CHANGED.value
+KEY = ThField.OLD.value
+PREFERRED = ThField.PREFERRED.value
+VARIANT = ThField.VARIANT.value
 
 
 def report_thesaurus_match_results(
@@ -18,10 +18,10 @@ def report_thesaurus_match_results(
 
     df = df.copy()
 
-    counting = df[ThesaurusField.PREFERRED.value].value_counts()
+    counting = df[ThField.PREFERRED.value].value_counts()
     counting = counting[counting > 1]
     duplicated_items = counting.index.to_list()
-    df = df[df[ThesaurusField.PREFERRED.value].isin(duplicated_items)]
+    df = df[df[ThField.PREFERRED.value].isin(duplicated_items)]
 
     num_candidates = self.compute_num_candidates(df)
     num_groups = self.compute_num_groups(df)

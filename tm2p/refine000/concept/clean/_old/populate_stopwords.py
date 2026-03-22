@@ -41,7 +41,7 @@ Smoke tests:
 from tm2p._intern import ParamsMixin
 
 # from tm2p._intern.stopwords import load_user_stopwords, save_user_stopwords
-from tm2p.refine000.concept._init_ import IsStopword
+# from tm2p.refine000.concept._init_ import IsStopword
 
 # -----------------------------------------------------------------------------
 

@@ -38,7 +38,8 @@ Smoke tests:
 """
 
 from tm2p._intern import ParamsMixin
-from tm2p.refine000.thesaurus_old.user import ReduceKeys as UserReduceKeys
+
+# from tm2p.refine000.thesaurus_old.user import ReduceKeys as UserReduceKeys
 
 
 class ReduceKeys(

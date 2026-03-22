@@ -1,12 +1,12 @@
 import pandas as pd  # type: ignore
 
-from tm2p import ThesaurusField
+from tm2p import ThField
 from tm2p._intern import Params
 
 from .get_thesaurus_path import get_thesaurus_path
 
-PREFERRED = ThesaurusField.PREFERRED.value
-VARIANT = ThesaurusField.VARIANT.value
+PREFERRED = ThField.PREFERRED.value
+VARIANT = ThField.VARIANT.value
 
 INDENT = " " * 4
 

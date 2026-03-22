@@ -10,7 +10,9 @@ Smoke test:
 
 from pathlib import Path
 
+from tm2p.enum import ThFile
 
-def get_thesaurus_path(root_directory: str, file: str) -> Path:
 
-    return Path(root_directory) / "refine" / "thesaurus" / file
+def get_thesaurus_path(root_directory: str, file: ThFile) -> Path:
+
+    return Path(root_directory) / "refine" / "thesaurus" / file.value

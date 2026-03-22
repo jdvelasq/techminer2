@@ -56,21 +56,21 @@ Smoke tests:
 
 """
 
-from tm2p.refine000.thesaurus_old.user import SortByExactMatch as UserSortByExactMatch
+# from tm2p.refine000.thesaurus_old.user import SortByExactMatch as UserSortByExactMatch
 
 
-class SortByExactMatch(
-    UserSortByExactMatch,
-):
-    """:meta private:"""
+# class SortByExactMatch(
+#     UserSortByExactMatch,
+# ):
+#     """:meta private:"""
 
-    # -------------------------------------------------------------------------
-    def run(self):
-        """:meta private:"""
+#     # -------------------------------------------------------------------------
+#     def run(self):
+#         """:meta private:"""
 
-        self.with_thesaurus_file("system/descriptors.the.txt")
-        self.internal__build_system_thesaurus_path()
-        self.internal__run()
+#         self.with_thesaurus_file("system/descriptors.the.txt")
+#         self.internal__build_system_thesaurus_path()
+#         self.internal__run()
 
 
 # ===============================================================================

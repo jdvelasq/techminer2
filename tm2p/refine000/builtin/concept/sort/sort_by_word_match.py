@@ -56,20 +56,20 @@ Smoke tests:
 
 """
 
-from tm2p.refine000.thesaurus_old.user import SortByWordMatch as UserSortByWordMatch
+# from tm2p.refine000.thesaurus_old.user import SortByWordMatch as UserSortByWordMatch
 
 
-class SortByWordMatch(
-    UserSortByWordMatch,
-):
-    """:meta private:"""
+# class SortByWordMatch(
+#     UserSortByWordMatch,
+# ):
+#     """:meta private:"""
 
-    # -------------------------------------------------------------------------
-    def run(self):
+#     # -------------------------------------------------------------------------
+#     def run(self):
 
-        self.with_thesaurus_file("system/descriptors.the.txt")
-        self.internal__build_system_thesaurus_path()
-        self.internal__run()
+#         self.with_thesaurus_file("system/descriptors.the.txt")
+#         self.internal__build_system_thesaurus_path()
+#         self.internal__run()
 
 
 # =============================================================================

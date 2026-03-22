@@ -2,13 +2,13 @@ import pandas as pd  # type: ignore
 
 from tm2p._intern import Params
 from tm2p._intern.data_access import load_main_csv_zip
-from tm2p.enum import ThesaurusField
+from tm2p.enum import ThField
 
-CHANGED = ThesaurusField.CHANGED.value
-KEY = ThesaurusField.OLD.value
-OCC = ThesaurusField.OCC.value
-PREFERRED = ThesaurusField.PREFERRED.value
-VARIANT = ThesaurusField.VARIANT.value
+CHANGED = ThField.CHANGED.value
+KEY = ThField.OLD.value
+OCC = ThField.OCC.value
+PREFERRED = ThField.PREFERRED.value
+VARIANT = ThField.VARIANT.value
 
 
 def sort_thesaurus_by_occ(

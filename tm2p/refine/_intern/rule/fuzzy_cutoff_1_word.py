@@ -1,0 +1,47 @@
+import pandas as pd
+
+from tm2p._intern import Params
+from tm2p.enum import ThField
+
+from ._pre_process import _pre_process
+from .fuzzy_cutoff_0_word import (
+    _compute_matches,
+    _prepare_fuzzy_cutoff,
+    _report_mergings,
+)
+
+CHANGED = ThField.CHANGED.value
+IS_KEYWORD = ThField.IS_KEYWORD.value
+OCC = ThField.OCC.value
+OLD = ThField.OLD.value
+PREFERRED = ThField.PREFERRED.value
+SIGNATURE = ThField.SIGNATURE.value
+VARIANT = ThField.VARIANT.value
+
+
+def apply_fuzzy_cutoff_1_word_rule(
+    thesaurus_df: pd.DataFrame,
+    params: Params,
+) -> pd.DataFrame:
+
+    thesaurus_df = _pre_process(params=params, thesaurus_df=thesaurus_df)
+    thesaurus_df = _prepare_fuzzy_cutoff(thesaurus_df=thesaurus_df)
+
+    candidates_df = thesaurus_df[thesaurus_df["word_count"] >= 2].copy()
+    candidates_df = candidates_df.reset_index(drop=True)
+
+    mapping = _compute_matches(
+        thesaurus_df=candidates_df,
+        similarity_cutoff=params.similarity_cutoff,
+        fuzzy_threshold=params.fuzzy_threshold,
+        use_word_level=True,
+        word_count_tolerance=1,
+    )
+
+    _report_mergings(
+        params=params,
+        mapping=mapping,
+        filename="candidate_mergings.txt",
+    )
+
+    return thesaurus_df

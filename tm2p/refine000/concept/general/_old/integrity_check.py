@@ -37,7 +37,8 @@ Smoke tests:
 """
 
 from tm2p._intern import ParamsMixin
-from tm2p.refine000.thesaurus_old.user import IntegrityCheck as UserIntegrityCheck
+
+# from tm2p.refine000.thesaurus_old.user import IntegrityCheck as UserIntegrityCheck
 
 
 #

@@ -34,17 +34,17 @@ Smoke tests:
 
 """
 
-from tm2p import Field, ThesaurusField
+from tm2p import Field, ThField
 from tm2p._intern import ParamsMixin
 from tm2p.refine000.usr.merge_keys import MergeKeys as UserMergeKeys
 
-CHANGED = ThesaurusField.CHANGED.value
-IS_KEYWORD = ThesaurusField.IS_KEYWORD.value
-OCC = ThesaurusField.OCC.value
-OLD = ThesaurusField.OLD.value
-PREFERRED = ThesaurusField.PREFERRED.value
-SIGNATURE = ThesaurusField.SIGNATURE.value
-VARIANT = ThesaurusField.VARIANT.value
+CHANGED = ThField.CHANGED.value
+IS_KEYWORD = ThField.IS_KEYWORD.value
+OCC = ThField.OCC.value
+OLD = ThField.OLD.value
+PREFERRED = ThField.PREFERRED.value
+SIGNATURE = ThField.SIGNATURE.value
+VARIANT = ThField.VARIANT.value
 
 
 class MergeKeys(

@@ -38,10 +38,14 @@ Smoke test:
 
 import sys
 
-from tm2p import Field, ThesaurusField
+from tm2p import Field, ThField
 from tm2p._intern import ParamsMixin
 from tm2p.refine000._intern.objs.thesaurus_match_result import ThesaurusMatchResult
-from tm2p.refine000._intern.rule import (
+from tm2p.refine._intern.data_access import (
+    load_thesaurus_as_dataframe,
+    save_dataframe_as_thesaurus,
+)
+from tm2p.refine._intern.rule import (
     apply_chemical_compounds_rule,
     apply_common_and_basic_rule,
     apply_error_metrics_rule,
@@ -60,12 +64,8 @@ from tm2p.refine000._intern.rule import (
     apply_white_space_normalization_rule,
     apply_xml_encoding_rule,
 )
-from tm2p.refine._intern.data_access import (
-    load_thesaurus_as_dataframe,
-    save_dataframe_as_thesaurus,
-)
 
-PREFERRED = ThesaurusField.PREFERRED.value
+PREFERRED = ThField.PREFERRED.value
 
 
 class PreProcessThesaurus(

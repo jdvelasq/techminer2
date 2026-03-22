@@ -61,7 +61,8 @@ Smoke tests:
 """
 
 from tm2p._intern import ParamsMixin
-from tm2p.refine000.thesaurus_old.user import ReplaceWord as UserReplaceWord
+
+# from tm2p.refine000.thesaurus_old.user import ReplaceWord as UserReplaceWord
 
 
 class ReplaceWord(

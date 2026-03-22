@@ -19,7 +19,7 @@ Smoke test:
 
 import pandas as pd  # type: ignore
 
-from tm2p import ThesaurusField
+from tm2p import ThField
 from tm2p._intern import Params
 
 from .get_thesaurus_path import get_thesaurus_path
@@ -58,10 +58,8 @@ def load_thesaurus_as_dataframe(
 
     dataframe = pd.DataFrame(
         {
-            ThesaurusField.PREFERRED.value: keys,
-            ThesaurusField.VARIANT.value: [
-                "; ".join(sorted(mapping[key])) for key in keys
-            ],
+            ThField.PREFERRED.value: keys,
+            ThField.VARIANT.value: ["; ".join(sorted(mapping[key])) for key in keys],
         }
     )
 

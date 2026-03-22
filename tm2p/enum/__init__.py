@@ -6,16 +6,17 @@ from .coupl_unit import CouplingUnit
 from .field import Field
 from .item import ItemOrderBy
 from .rec import RecordOrderBy
-from .thesaur import ThesaurusField
+from .thesaur import ThField, ThFile
 
 __all__ = [
     "AssociationIndex",
     "CitationUnit",
     "CoCitationUnit",
-    "CouplingUnit",
     "Correlation",
+    "CouplingUnit",
     "Field",
     "ItemOrderBy",
     "RecordOrderBy",
-    "ThesaurusField",
+    "ThField",
+    "ThFile",
 ]

@@ -43,6 +43,8 @@ from tm2p.enum import (
     Field,
     ItemOrderBy,
     RecordOrderBy,
+    ThField,
+    ThFile,
 )
 from tm2p.enum.co_cit_unit import CoCitationUnit
 
@@ -1092,11 +1094,10 @@ class ParamsMixin:
         self.params.target_field = field
         return self
 
-    def with_thesaurus_file(self, thesaurus_file: str) -> Self:
-        thesaurus_file = check_required_str(
-            value=thesaurus_file,
-            param_name="thesaurus_file",
-        )
+    def with_thesaurus_file(self, thesaurus_file: ThFile) -> Self:
+        if not isinstance(thesaurus_file, ThFile):
+            raise TypeError("thesaurus_file must be an instance of ThFile enum")
+
         self.params.thesaurus_file = thesaurus_file
         return self
 
