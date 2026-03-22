@@ -1,6 +1,10 @@
+import sys
 from typing import Optional
 
+from pandarallel import pandarallel  # type: ignore
+
 from tm2p import Field
+from tm2p._intern import stdout_to_stderr
 from tm2p._intern.packag_data import load_builtin_mapping
 from tm2p._intern.packag_data.word_lists import load_builtin_word_list
 
@@ -76,7 +80,15 @@ def ltwa_column(
         )
 
     df[target.value] = df[target.value].str.split()
-    df[target.value] = df[target.value].map(_apply_ltwa_to_words, na_action="ignore")
+
+    with stdout_to_stderr():
+        progress_bar = True
+        pandarallel.initialize(progress_bar=progress_bar, verbose=0)
+        df[target.value] = df[target.value].parallel_apply(
+            lambda x: _apply_ltwa_to_words(x) if isinstance(x, list) else x
+        )
+        sys.stderr.write("\n")
+
     df[target.value] = df[target.value].str.join(" ")
     df[target.value] = df[target.value].str.replace(" ; ", "; ", regex=False)
     df[target.value] = df[target.value].str.upper()
