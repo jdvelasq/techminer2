@@ -1,6 +1,7 @@
 import sys
 from pathlib import Path
 
+# import pandas as pd  # type: ignore
 from pandarallel import pandarallel  # type: ignore
 
 from tm2p import Field
@@ -26,18 +27,59 @@ def s01_org_thesaurus(root_directory: str) -> int:
 
     marker = get_datab_marker(root_directory)
     function = {
-        "OpenAlex": None,
-        "PubMed": _process,
-        "Scopus": _process,
-        "WoS": _process,
+        "OpenAlex": _openalex,
+        "PubMed": _scopus,
+        "Scopus": _scopus,
+        "WoS": _scopus,
     }[marker]
 
-    if function:
-        return function(root_directory)
-    return 0
+    return function(root_directory)
 
 
-def _process(root_directory: str) -> int:
+def _openalex(root_directory: str) -> int:
+
+    df = load_main_csv_zip(root_directory)
+
+    df[ORG] = df[ORG].str.replace(".", "")
+    df[ORG] = df[ORG].str.replace('"', "")
+    df[ORG] = df[ORG].str.replace(",", "")
+    df[ORG] = df[ORG].str.replace("; ", " ; ")
+
+    df[ORG] = df[ORG].apply(lambda x: f" {x.lower()} " if isinstance(x, str) else x)
+
+    for stopword in STOPWORDS:
+        df[ORG] = df[ORG].str.replace(f" {stopword.lower()} ", " ", regex=False)
+
+    df[ORG] = df[ORG].str.split()
+    df[ORG] = df[ORG].apply(
+        lambda x: [y.strip() for y in x] if isinstance(x, list) else x
+    )
+
+    with stdout_to_stderr():
+
+        progress_bar = True
+        pandarallel.initialize(progress_bar=progress_bar, verbose=0)
+
+        df[ORG] = df[ORG].parallel_apply(
+            lambda x: _apply_ltwa_to_words(x) if isinstance(x, list) else x
+        )
+
+        sys.stderr.write("\n")
+
+    df[ORG] = df[ORG].apply(lambda x: [y for y in x if y] if isinstance(x, list) else x)
+    df[ORG] = df[ORG].str.join(" ").str.upper()
+    df[ORG] = df[ORG].str.strip()
+    df[ORG] = df[ORG].str.replace(" ; ", "; ", regex=False)
+    df[ORG] = df[ORG].str.strip()
+    df[ORG] = df[ORG].str.replace("^[; ]+ ", "", regex=True)
+    df[ORG] = df[ORG].str.replace("[ ;]+$", "", regex=True)
+
+    save_main_csv_zip(df=df, root_directory=root_directory)
+
+    return 1
+
+
+def _scopus(root_directory: str) -> int:
 
     df = load_main_csv_zip(root_directory)
     df = df[[AFFIL]]
