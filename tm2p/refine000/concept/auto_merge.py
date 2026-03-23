@@ -121,7 +121,7 @@ class PreProcessThesaurus(
                 thesaurus_df = rule(thesaurus_df, self.params)
 
         thesaurus_df = thesaurus_df.sort_values(by=[PREFERRED])
-        save_dataframe_as_thesaurus(params=self.params, dataframe=thesaurus_df)
+        save_dataframe_as_thesaurus(params=self.params, df=thesaurus_df)
 
         return ThesaurusMatchResult(
             colored_output=self.params.colored_output,

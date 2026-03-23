@@ -13,7 +13,7 @@ INDENT = " " * 4
 
 def save_dataframe_as_thesaurus(
     params: Params,
-    dataframe: pd.DataFrame,
+    df: pd.DataFrame,
 ) -> int:
 
     filepath = get_thesaurus_path(
@@ -23,7 +23,7 @@ def save_dataframe_as_thesaurus(
 
     with open(filepath, "w", encoding="utf-8") as file:
 
-        for _, row in dataframe.iterrows():
+        for _, row in df.iterrows():
 
             preferred = row[PREFERRED]
             variants = row[VARIANT]
@@ -34,4 +34,4 @@ def save_dataframe_as_thesaurus(
                 for variant in variants.split("; "):
                     file.write(f"{INDENT}{variant}\n")
 
-    return len(dataframe)
+    return len(df)

@@ -87,4 +87,4 @@ class MergeKeys(
             [CHANGED, PREFERRED], ascending=[False, True]
         )
 
-        save_dataframe_as_thesaurus(params=self.params, dataframe=groupby_df)
+        save_dataframe_as_thesaurus(params=self.params, df=groupby_df)
