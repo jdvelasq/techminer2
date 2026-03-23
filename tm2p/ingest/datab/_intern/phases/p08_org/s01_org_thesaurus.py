@@ -22,6 +22,72 @@ STOPWORDS = load_builtin_word_list("stopwords.txt")
 AFFIL = Field.AFFIL.value
 ORG = "ORG"
 
+_ABBREVIATIONS = (
+    "ab",
+    "acad",
+    "admin",
+    "ag",
+    "as",
+    "asa",
+    "assoc",
+    "auth",
+    "bv",
+    "co",
+    "commn",
+    "corp",
+    "ctr",
+    "dept",
+    "dept",
+    "dev",
+    "div",
+    "eng",
+    "fed",
+    "glob",
+    "gmbh",
+    "govt",
+    "grp",
+    "hldg",
+    "hldgs",
+    "inc",
+    "inst",
+    "intl",
+    "intl",
+    "lab",
+    "labs",
+    "llc",
+    "llp",
+    "lp",
+    "ltd",
+    "med",
+    "mfg",
+    "mfr",
+    "mgmt",
+    "min",
+    "mun",
+    "na",
+    "natl",
+    "natl",
+    "nv",
+    "oy",
+    "pa",
+    "pc",
+    "plc",
+    "pte",
+    "pty",
+    "sa",
+    "sci",
+    "se",
+    "sec",
+    "soln",
+    "solns",
+    "svc",
+    "svcs",
+    "sys",
+    "tech",
+    "univ",
+    "new",
+)
+
 
 def s01_org_thesaurus(root_directory: str) -> int:
 
@@ -48,7 +114,10 @@ def _openalex(root_directory: str) -> int:
     df[ORG] = df[ORG].apply(lambda x: f" {x.lower()} " if isinstance(x, str) else x)
 
     for stopword in STOPWORDS:
-        df[ORG] = df[ORG].str.replace(f" {stopword.lower()} ", " ", regex=False)
+        if stopword not in [
+            "new",
+        ]:
+            df[ORG] = df[ORG].str.replace(f" {stopword.lower()} ", " ", regex=False)
 
     df[ORG] = df[ORG].str.split()
     df[ORG] = df[ORG].apply(
@@ -93,7 +162,7 @@ def _scopus(root_directory: str) -> int:
         progress_bar = True
         pandarallel.initialize(progress_bar=progress_bar, verbose=0)
 
-        df[ORG] = df[AFFIL].parallel_apply(extract_org_name_from_string)
+        df[ORG] = df[AFFIL].parallel_apply(extract_org_name_from_string)  ####
         sys.stderr.write("\n")
 
         df[ORG] = df[ORG].str.replace(".", "")
@@ -102,14 +171,11 @@ def _scopus(root_directory: str) -> int:
         df[ORG] = df[ORG].apply(lambda x: f" {x.lower()} " if isinstance(x, str) else x)
 
         for stopword in STOPWORDS:
-            df[ORG] = df[ORG].str.replace(f" {stopword.lower()} ", " ", regex=False)
+            if stopword not in _ABBREVIATIONS:
+                df[ORG] = df[ORG].str.replace(f" {stopword.lower()} ", " ", regex=False)
 
         df[ORG] = df[ORG].str.split()
-        df[ORG] = df[ORG].apply(
-            lambda x: [y.strip() for y in x] if isinstance(x, list) else x
-        )
-
-        df[ORG] = df[ORG].parallel_apply(
+        df[ORG] = df[ORG].parallel_apply(  #####
             lambda x: _apply_ltwa_to_words(x) if isinstance(x, list) else x
         )
         df[ORG] = df[ORG].str.join(" ").str.upper()
@@ -149,6 +215,11 @@ def _apply_ltwa_to_words(words: list[str]) -> list[str]:
     new_words = []
 
     for word in words:
+
+        # word = word.replace(".", "")
+        # if word.lower() in _ABBREVIATIONS:
+        #     new_words.append(word)
+        #     continue
 
         for suffix in sorted(SUFFIXES.keys(), reverse=True):
             abbreviation = SUFFIXES[suffix]
