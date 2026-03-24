@@ -314,8 +314,8 @@ class ParamsMixin:
         self.params.regex_search = regex_search
         return self
 
-    def having_replacement(self, replacement: Optional[str]) -> Self:
-        replacement = check_optional_str(
+    def having_replacement(self, replacement: str) -> Self:
+        replacement = check_required_str(
             value=replacement,
             param_name="replacement",
         )

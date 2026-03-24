@@ -47,6 +47,10 @@ class Params:
     thesaurus_file: ThFile
 
     #
+    replacement: str
+    word: str
+
+    #
     # Sankey plot:
     #
     sankey_top_n: Tuple[int, ...]
@@ -222,7 +226,7 @@ class Params:
     records_order_by: RecordOrderBy = RecordOrderBy.YEAR_NEWEST
     regex_flags: int = 0
     regex_search: bool = False
-    replacement: Optional[str] = None
+
     root_directory: str = "./"
 
     #
@@ -277,7 +281,6 @@ class Params:
     #
     # W
     #
-    word: Optional[str] = None
     word_length: int = 50
 
     #
