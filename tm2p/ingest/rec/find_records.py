@@ -60,6 +60,7 @@ Smoke tests:
 
 """
 
+from tm2p import Field
 from tm2p._intern import ParamsMixin
 from tm2p._intern.data_access.load_filtered_main_csv_zip import (
     load_filtered_main_csv_zip,
@@ -102,7 +103,7 @@ class FindRecords(ParamsMixin):
 
         records = load_filtered_main_csv_zip(params=self.params)
         records = self._filter_records(records)
-        mapping = records_to_dicts(records)
+        mapping = records_to_dicts(records, field=Field.ABSTR_UPPER)
         documents = dicts_to_strings(mapping)
 
         return documents
