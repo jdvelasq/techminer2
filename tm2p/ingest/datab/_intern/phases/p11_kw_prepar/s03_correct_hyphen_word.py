@@ -131,6 +131,7 @@ def _remove_padding(df: pd.DataFrame) -> pd.DataFrame:
     ]:
         if col in df.columns:
             df[col] = df[col].str.replace(" ; ", "; ", regex=False)
+            df[col] = df[col].str.strip()
 
     return df
 

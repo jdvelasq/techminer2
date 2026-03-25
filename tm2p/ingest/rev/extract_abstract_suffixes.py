@@ -29,6 +29,7 @@ Smoke test:
 
 """
 
+from tm2p import Field
 from tm2p._intern import ParamsMixin
 from tm2p.ingest.rec.record_mapping import RecordMapping  # type: ignore
 
@@ -47,7 +48,12 @@ class ExtractAbstractSuffixes(
 
     def run(self) -> list[str]:
 
-        docs = RecordMapping().update(**self.params.__dict__).run()
+        docs = (
+            RecordMapping()
+            .update(**self.params.__dict__)
+            .with_source_field(Field.ABSTR_UPPER)
+            .run()
+        )
 
         abstracts = [doc["AB"] for doc in docs if isinstance(doc["AB"], str)]
         suffixes = [text[-self.params.n_chars :] for text in abstracts]

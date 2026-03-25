@@ -23,7 +23,7 @@ def _build_dicts(records):
     return records.to_dict(orient="records")
 
 
-def records_to_dicts(dataframe):
+def records_to_dicts(dataframe, field):
 
     names_mapping = {
         Field.REC_NO.value: "UT",
@@ -33,10 +33,17 @@ def records_to_dicts(dataframe):
         Field.GCS.value: "TC",
         Field.SRC_ISO4.value: "SO",
         Field.YEAR.value: "PY",
-        Field.ABSTR_UPPER.value: "AB",
         Field.AUTHKW_NORM.value: "DE",
         Field.IDXKW_NORM.value: "ID",
     }
+    if field == Field.ABSTR_UPPER:
+        names_mapping[Field.ABSTR_UPPER.value] = "AB"
+    elif field == Field.ABSTR_RAW:
+        names_mapping[Field.ABSTR_RAW.value] = "AB"
+    elif field == Field.ABSTR_TOK:
+        names_mapping[Field.ABSTR_TOK.value] = "AB"
+    else:
+        raise ValueError(f"Unsupported field: {field}")
 
     candiate_columns = names_mapping.keys()
 

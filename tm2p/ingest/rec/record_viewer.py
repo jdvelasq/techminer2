@@ -3,11 +3,12 @@ RecordViewer
 =======================================================================================
 
 Smoke tests:
-    >>> from tm2p import RecordOrderBy
+    >>> from tm2p import Field, RecordOrderBy
     >>> from tm2p.ingest.rec import RecordViewer
     >>> docs = (
     ...     RecordViewer()
     ...     #
+    ...     .with_source_field(Field.ABSTR_RAW)
     ...     .where_root_directory("tests/scopus/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
@@ -18,42 +19,40 @@ Smoke tests:
     >>> len(docs)
     180
     >>> print(docs[0])
-    UT 13
-    AR Al-Sartawi, 2024, J FINANC REPORT ACCOUNT
+    UT 54
+    AR Al-Sartawi A, 2024, J FINANC REP ACC, DOI 10.1108/JFRA-01-2024-0010
     TI The diffusion of financial technology-enabled innovation in GCC-listed banks
        and its relationship with profitability and market value
-    AU Al-Sartawi A.
+    AU Al-Sartawi A
     TC 125
-    SO J FINANC REPORT ACCOUNT
+    SO J FINANC REP ACC
     PY 2024
-    AB purpose : this_study_aims_to_examine_the_relationship_between the
-       DIFFUSION_OF_TECHNOLOGY enabled INNOVATION_IN_FINANCIAL_SERVICES ( i . e .
-       FINANCIAL_TECHNOLOGY [ FINTECH ] ) and THE_FINANCIAL_PERFORMANCE , i . e .
-       PROFITABILITY and MARKET_VALUE of THE_BANKS listed in the
-       GULF_COOPERATION_COUNCIL ( gcc ) COUNTRIES . design / methodology / approach
-       : AN_EXTENSIVE_REVIEW of THE_LITERATURE was carried out , and
-       A_DIFFUSION_INDEX of 73 items including was adopted to measure THE_LEVEL of
-       FINTECH_USAGE or DIFFUSION for THE_BANKS that are listed on
-       THE_GCC_STOCK_EXCHANGES . the_study used RETURN_ON_ASSETS ( ROA ) and
-       TOBIN_Q ( tq ) as PROXIES to measure PROFITABILITY and MARKET_VALUE ,
-       respectively . findings : the_findings of the empirical
-       results_indicate_that_there_is_a POSITIVE_RELATIONSHIP between
-       FINTECH_IMPLEMENTATION and MARKET_PERFORMANCE ( tq ) in THE_GCC_BANKS .
-       the_results also showed that THE_HIGHEST_LEVEL of FINTECH_IMPLEMENTATION was
-       79.7 % by UNITED_ARAB_EMIRATES_BANKS followed by BAHRAINI_BANKS at 76.7 %
-       based on THE_INDEX developed for this_study . practical implications :
-       this_study , hence , recommends that POLICYMAKERS and GOVERNMENTS implement
-       SUPPORTIVE_POLICIES and INITIATIVES , allowing CONSUMERS to
-       EMBRACE_TECHNOLOGY as part of THEIR_WAY of LIFE . this ENCOURAGES_BANKS and
-       OTHER_ORGANIZATIONS to FORMULATE_STRATEGIES that integrate TECHNOLOGY into
-       OPERATIONS . originality / value : this_paper_offers NEW_CONTRIBUTIONS to
-       THE_GCC_LITERATURE regarding FINANCIAL_TECHNOLOGY and provides
-       RECOMMENDATIONS to THE_GCC_FINANCIAL_INSTITUTIONS , FINANCIAL_MARKETS ,
-       POLICYMAKERS and GOVERNMENTS . 2024 , emerald publishing limited .
+    AB Purpose: This study aims to examine the relationship between the diffusion
+       of technology-enabled innovation in financial services (i.e.  financial
+       technology [FinTech]) and the financial performance, i.e.  profitability and
+       market value of the banks listed in the Gulf Cooperation Council (GCC)
+       countries.  Design/methodology/approach: An extensive review of the
+       literature was carried out, and a diffusion index of 73 items including was
+       adopted to measure the level of FinTech usage or diffusion for the banks
+       that are listed on the GCC stock exchanges.  The study used return on assets
+       (ROA) and Tobin’s Q (TQ) as proxies to measure profitability and market
+       value, respectively.  Findings: The findings of the empirical results
+       indicate that there is a positive relationship between FinTech
+       implementation and market performance (TQ) in the GCC banks.  The results
+       also showed that the highest level of FinTech implementation was 79.7% by
+       United Arab Emirates banks followed by Bahraini banks at 76.7% based on the
+       index developed for this study.  Practical implications: This study, hence,
+       recommends that policymakers and governments implement supportive policies
+       and initiatives, allowing consumers to embrace technology as part of their
+       way of life.  This encourages banks and other organizations to formulate
+       strategies that integrate technology into operations.  Originality/value:
+       This paper offers new contributions to the GCC literature regarding
+       financial technology and provides recommendations to the GCC financial
+       institutions, financial markets, policymakers and governments.  © 2024,
+       Emerald Publishing Limited.
     DE digital transformation; financial sector; fintech; fintech governance;
        fintech strategies; firm market value; gcc countries; profitability
     <BLANKLINE>
-
 
 
 

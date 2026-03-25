@@ -5,7 +5,9 @@ from datetime import timedelta
 from pathlib import Path
 from typing import Any
 
+from tm2p import Field
 from tm2p._intern import ParamsMixin
+from tm2p.ingest.rec import RecordViewer
 
 from .._intern import Step
 from .ingest_result import IngestResult
@@ -133,6 +135,20 @@ class BaseIngest(
         filepath = Path(self.params.root_directory) / "ingest" / "process" / filename
         filepath.touch()
 
+    def _generate_documents_report(self) -> None:
+
+        docs = (
+            RecordViewer()
+            .update(**self.params.__dict__)
+            .with_source_field(Field.ABSTR_RAW)
+            .run()
+        )
+
+        filepath = Path(self.params.root_directory) / "report" / "documents.txt"
+        with filepath.open("w", encoding="utf-8") as f:
+            for doc in docs:
+                f.write(f"{doc}\n---\n\n")
+
     def run(self) -> IngestResult:
 
         start_time = time.monotonic()
@@ -152,6 +168,8 @@ class BaseIngest(
         end_time = time.monotonic()
         elapsed = timedelta(seconds=end_time - start_time)
         status = f"Execution time : {self._format_elapsed_time(elapsed)}"
+
+        self._generate_documents_report()
 
         return IngestResult(
             colored_output=self.params.colored_output,
