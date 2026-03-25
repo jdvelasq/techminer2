@@ -23,4 +23,7 @@ def s03_descriptor_thesaurus(root_directory: str) -> int:
             file.write(f"{term}\n")
             file.write(f"    {term}\n")
 
+    filepath_bak = filepath.with_suffix(".bak")
+    filepath_bak.write_text(filepath.read_text(encoding="utf-8"), encoding="utf-8")
+
     return len(terms)

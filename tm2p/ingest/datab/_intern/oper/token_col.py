@@ -5,7 +5,7 @@ from typing import Optional
 
 import contractions  # type: ignore
 import pandas as pd  # type: ignore
-from nltk.tokenize import word_tokenize
+from nltk.tokenize import word_tokenize  # type: ignore
 
 from tm2p import Field
 from tm2p._intern.packag_data import load_builtin_mapping
@@ -151,7 +151,7 @@ def _tokenize(text: pd.Series) -> pd.Series:
     text = text.str.replace(";", ".", regex=False)
     text = text.str.replace("`", "'", regex=False)
     text = text.str.replace("—", "-", regex=False)
-    text = text.str.replace("-", " ", regex=False)
+    text = text.str.replace("-", "-", regex=False)
     text = text.str.replace("&", " and ", regex=False)  # and
 
     # Tokenize text into individual words:

@@ -45,4 +45,7 @@ def _process(root_directory: str) -> int:
             for affil in sorted(row[AFFIL]):
                 file.write(f"    {affil}\n")
 
+    filepath_bak = filepath.with_suffix(".bak")
+    filepath_bak.write_text(filepath.read_text(encoding="utf-8"), encoding="utf-8")
+
     return 1

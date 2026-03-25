@@ -36,31 +36,41 @@ def load_thesaurus_as_dataframe(
         file=params.thesaurus_file,
     )
 
-    mapping: dict[str, list[str]] = {}
+    records = []
     preferred = None
+    values: list[str] = []
 
     with open(filepath, "r", encoding="utf-8") as file:
+
         for line in file:
 
             line = line.replace("\t", INDENT)
 
             if not line.startswith(" "):
+                if preferred:
+                    records.append(
+                        {
+                            ThField.PREFERRED.value: preferred,
+                            ThField.VARIANT.value: "; ".join(values),
+                        }
+                    )
                 preferred = line.strip()
-                mapping[preferred] = []
+                values = []
             else:
                 if preferred is None:
                     raise ValueError(
                         "The thesaurus file is not well formatted. The first line must be a preferred term."
                     )
-                mapping[preferred].append(line.strip())
+                values.append(line.strip())
 
-    keys = sorted(mapping.keys())
+    if preferred is not None and values:
+        records.append(
+            {
+                ThField.PREFERRED.value: preferred,
+                ThField.VARIANT.value: "; ".join(values),
+            }
+        )
 
-    dataframe = pd.DataFrame(
-        {
-            ThField.PREFERRED.value: keys,
-            ThField.VARIANT.value: ["; ".join(sorted(mapping[key])) for key in keys],
-        }
-    )
+    df = pd.DataFrame(records)
 
-    return dataframe
+    return df

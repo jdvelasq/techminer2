@@ -37,7 +37,7 @@ from textblob import TextBlob  # type: ignore
 from tm2p._intern.utils.utils_format_prompt_for_paragraphs import (
     _utils_format_prompt_for_paragraphs,
 )
-from tm2p.refine000.thesaurus_old._intern.load_thesaurus_as_mapping import (
+from tm2p._refine000.thesaurus_old._intern.load_thesaurus_as_mapping import (
     internal__load_thesaurus_as_mapping,
 )
 

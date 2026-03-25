@@ -13,10 +13,9 @@ Smoke tests:
     ...     .run()
     ... )
 
+    >>> from tm2p.refine.org.reset import Reset
     >>> (
-    ...     ReplaceWord()
-    ...     .having_word("univ")
-    ...     .having_replacement("UNIV")
+    ...     ReplaceInitialWord()
     ...     .where_root_directory("tests/scopus/")
     ...     .run()
     ... )

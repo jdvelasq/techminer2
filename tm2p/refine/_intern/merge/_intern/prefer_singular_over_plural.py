@@ -1,0 +1,38 @@
+# pylint: disable=unused-argument
+
+import pandas as pd  # type: ignore
+from textblob import Word  # type: ignore
+
+from tm2p import ThField
+from tm2p._intern import Params
+
+PREFERRED = ThField.PREFERRED.value
+SIGNATURE = ThField.SIGNATURE.value
+VARIANT = ThField.VARIANT.value
+
+
+def apply_prefer_singular_over_plural_rule(
+    thesaurus_df: pd.DataFrame,
+    params: Params,
+) -> pd.DataFrame:
+
+    thesaurus_df[SIGNATURE] = thesaurus_df[VARIANT].copy()
+    thesaurus_df[SIGNATURE] = thesaurus_df[SIGNATURE].str.split("; ")
+    thesaurus_df[PREFERRED] = thesaurus_df.apply(_prefer_singular_over_plural, axis=1)
+
+    thesaurus_df.pop(SIGNATURE)
+
+    return thesaurus_df
+
+
+def _prefer_singular_over_plural(row):
+
+    preferred = row[PREFERRED]
+    preferred = preferred.split(" ")
+    last_word = preferred[-1]
+    singular_last_word = Word(last_word).singularize()
+    singular_preferred = " ".join(preferred[:-1] + [singular_last_word])
+    if singular_preferred in row[VARIANT].split("; "):
+        return singular_preferred
+
+    return row[PREFERRED]

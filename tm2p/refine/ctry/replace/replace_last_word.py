@@ -12,10 +12,9 @@ Smoke tests:
     ...     .run()
     ... )
 
+    >>> from tm2p.refine.ctry.reset import Reset
     >>> (
-    ...     ReplaceLastWord()
-    ...     .having_word("STATES")
-    ...     .having_replacement("States")
+    ...     ReplaceInitialWord()
     ...     .where_root_directory("tests/scopus/")
     ...     .run()
     ... )

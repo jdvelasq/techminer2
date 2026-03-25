@@ -18,7 +18,8 @@ from typing import Any
 from tm2p._intern import ParamsMixin
 from tm2p.ingest.datab._intern.step import Step
 
-# from ..datab._intern.__concept.build_steps import build_concept_steps
+from ..datab._intern.phases.p12_nlp_prepar import p12_nlp_prepar
+from ..datab._intern.phases.p13_concept import p13_concept
 
 __reviewed__ = "2026-01-28"
 
@@ -75,6 +76,9 @@ class ReprocessNounPhrases(
 
     def run(self) -> None:
 
+        steps = p12_nlp_prepar(params=self.params)
+        steps += p13_concept(params=self.params)
+
         self._print_header()
-        for step in build_concept_steps(params=self.params):
+        for step in steps:
             self._execute_step(step)
