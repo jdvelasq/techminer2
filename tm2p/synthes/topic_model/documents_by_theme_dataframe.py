@@ -54,11 +54,11 @@ Smoke tests:
     >>> df.head()
     cluster                                                    0  ...         9
     article                                                       ...
-    Agarwal, 2020, ASIAPACIFIC J FINANC STUD, V49, ...  0.014288  ...  0.014287
-    Ajouz, 2023, CUAD ECON, V46, P189                   0.016671  ...  0.016675
-    Al-Sartawi, 2024, J FINANC REPORT ACCOUNT           0.014290  ...  0.014288
-    Alam, 2019, FINTECH ISLAM FINANC DIGIT DEV DISR...  0.020003  ...  0.020002
-    Aldboush, 2023, INT J FINANC STUD, V11              0.020002  ...  0.020002
+    Agarwal S, 2020, ASIA-PAC J FINANC STUD, V49, P...  0.016669  ...  0.016672
+    Ajouz M, 2023, CUAD ECON, V46, P189, DOI 10.328...  0.020008  ...  0.020002
+    Al-Sartawi A, 2024, J FINANC REP ACC, DOI 10.11...  0.899964  ...  0.011115
+    Alam N, 2019, FINTECH ISLAM FINANC DIGIT DEV DI...  0.254455  ...  0.272736
+    Aldboush HHH, 2023, INTERN J FINANC STUD, V11, ...  0.261205  ...  0.020002
     <BLANKLINE>
     [5 rows x 10 columns]
 

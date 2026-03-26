@@ -12,7 +12,7 @@ Smoke tests:
     ...     .having_citation_threshold(0)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/wos/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     .where_records_match(None)
@@ -20,12 +20,12 @@ Smoke tests:
     ...     .run()
     ... )
     >>> print(df.head().to_string())
-                                                                  CITING_DOC                                                          CITED_DOC  POINTS
-    0                    Anagnostopoulos, 2018, J ECON BUS, V100, P7 1:00436            Arner, 2017, NORTHWEST J INT LAW BUS, V37, P373 1:00367      60
-    1      Becker, 2020, INTELL SYST ACCOUNT FINANC MANAG, V27, P161 1:00030                Anagnostopoulos, 2018, J ECON BUS, V100, P7 1:00436      12
-    2      Becker, 2020, INTELL SYST ACCOUNT FINANC MANAG, V27, P161 1:00030            Arner, 2017, NORTHWEST J INT LAW BUS, V37, P373 1:00367      12
-    3  Firmansyah, 2023, INDONES J ELECTR ENG INFORMATICS, V11, P453 1:00006            Arner, 2017, NORTHWEST J INT LAW BUS, V37, P373 1:00367       1
-    4  Firmansyah, 2023, INDONES J ELECTR ENG INFORMATICS, V11, P453 1:00006  Becker, 2020, INTELL SYST ACCOUNT FINANC MANAG, V27, P161 1:00030       3
+                                                                                  CITING_DOC                                                                               CITED_DOC  POINTS
+    0  Arner DW, 2020, EUR BUS ORGAN LAW RE, V21, P7, DOI 10.1007/s40804-020-00183-y 1:00338  Arner DW, 2019, EUR BUS ORGAN LAW RE, V20, P55, DOI 10.1007/s40804-019-00135-1 1:00045      37
+    1  Arner DW, 2020, EUR BUS ORGAN LAW RE, V21, P7, DOI 10.1007/s40804-020-00183-y 1:00338        Buckley RP, 2020, J BANK REGUL, V21, P26, DOI 10.1057/s41261-019-00104-1 1:00037      37
+    2                   Nasir A, 2021, APPL SCI-BASEL, V11, DOI 10.3390/app112110353 1:00040   Arner DW, 2020, EUR BUS ORGAN LAW RE, V21, P7, DOI 10.1007/s40804-020-00183-y 1:00338      30
+    3                   Nasir A, 2021, APPL SCI-BASEL, V11, DOI 10.3390/app112110353 1:00040  Arner DW, 2019, EUR BUS ORGAN LAW RE, V20, P55, DOI 10.1007/s40804-019-00135-1 1:00045      15
+    4                   Nasir A, 2021, APPL SCI-BASEL, V11, DOI 10.3390/app112110353 1:00040        Buckley RP, 2020, J BANK REGUL, V21, P26, DOI 10.1057/s41261-019-00104-1 1:00037      15
 
 """
 

@@ -8,13 +8,13 @@ Smoke test:
     >>> (
     ...     BaseFuzzyOneExactMatch()
     ...     .with_thesaurus_file(ThFile.CONCEPT)
-    ...     .with_source_field(Field.CONCEPT_RAW)
+    ...     .with_source_field(Field.DESCRIPTOR_RAW)
     ...     .using_similarity_cutoff(88)
     ...     .using_fuzzy_threshold(80)
     ...     .where_root_directory("tests/scopus/")
     ...     .run()
     ... )
-    1
+    '309 synonym groups found'
 
 
 """
@@ -23,15 +23,16 @@ import pandas as pd  # type: ignore
 from fuzzywuzzy import fuzz  # type: ignore
 from tqdm import tqdm  # type: ignore
 
-from tm2p._intern import ParamsMixin
+from tm2p._intern import Params, ParamsMixin
 from tm2p.enum import ThField
 
-from ._report_matches import report_matches
-from .wordorder import (
-    _add_padding,
-    _load_thesaurus,
-    _remove_builtin_stopwords,
-    _remove_thesaurus_stopwords,
+from ._intern import (
+    add_padding,
+    load_thesaurus,
+    remove_builtin_stopwords,
+    remove_punctuation,
+    remove_thesaurus_stopwords,
+    report_matches,
 )
 
 OCC = ThField.OCC.value
@@ -45,27 +46,29 @@ class BaseFuzzyOneExactMatch(
 
     def run(self):
 
-        thesaurus_df = _load_thesaurus(params=self.params)
-        thesaurus_df = _add_padding(thesaurus_df=thesaurus_df)
-        thesaurus_df = _remove_builtin_stopwords(thesaurus_df=thesaurus_df)
-        thesaurus_df = _remove_thesaurus_stopwords(thesaurus_df=thesaurus_df)
+        thesaurus_df = load_thesaurus(params=self.params)
+        thesaurus_df = add_padding(thesaurus_df=thesaurus_df)
+        thesaurus_df = remove_punctuation(thesaurus_df=thesaurus_df)
+        thesaurus_df = remove_builtin_stopwords(thesaurus_df=thesaurus_df)
+        thesaurus_df = remove_thesaurus_stopwords(thesaurus_df=thesaurus_df)
         thesaurus_df = _prepare_fuzzy_candidates(thesaurus_df=thesaurus_df)
         thesaurus_df = _select_one_exact_match_candidates(thesaurus_df=thesaurus_df)
 
-        mapping = _compute_fuzzy_matches(
+        matches = _compute_fuzzy_matches(
             thesaurus_df=thesaurus_df,
             similarity_cutoff=self.params.similarity_cutoff,
             fuzzy_threshold=self.params.fuzzy_threshold,
             use_word_level=True,
             word_count_tolerance=1,
+            params=self.params,
         )
 
         report_matches(
             params=self.params,
-            mapping=mapping,
+            mapping=matches,
         )
 
-        return 1
+        return f"{len(matches)} synonym groups found"
 
 
 def _prepare_fuzzy_candidates(thesaurus_df: pd.DataFrame) -> pd.DataFrame:
@@ -94,10 +97,35 @@ def _compute_fuzzy_matches(
     fuzzy_threshold: float,
     use_word_level: bool,
     word_count_tolerance: int,
+    params: Params,
 ) -> dict[str, list[str]]:
+
+    #
+
+    from tm2p.anal.item_metrics import Metrics
+
+    metrics = Metrics().update(**params.__dict__).run()
+    counters = dict(zip(metrics.index, metrics.COUNTERS))
 
     thesaurus_df = thesaurus_df.copy()
     thesaurus_df["matched"] = False
+
+    thesaurus_df["WITH_COUNTERS"] = thesaurus_df[PREFERRED].apply(counters.get)
+    thesaurus_df["METRICS"] = thesaurus_df["WITH_COUNTERS"].apply(
+        lambda x: x.split(" ")[-1].strip()
+    )
+    thesaurus_df["LENGTH"] = thesaurus_df["WITH_COUNTERS"].apply(
+        lambda x: len(x.split(" "))
+    )
+    thesaurus_df = thesaurus_df.sort_values(
+        ["METRICS", "LENGTH"], ascending=[False, True]
+    )  #  type: ignore
+    thesaurus_df = thesaurus_df.reset_index(drop=True)
+    thesaurus_df.pop("METRICS")
+    thesaurus_df.pop("LENGTH")
+    thesaurus_df.pop("WITH_COUNTERS")
+
+    #
 
     keys = thesaurus_df[PREFERRED].tolist()
     mergings: dict[str, list[str]] = {}
@@ -146,7 +174,10 @@ def _compute_fuzzy_matches(
             continue
 
         thesaurus_df.loc[candidates.index, "matched"] = True
-        mergings[key] = candidates[PREFERRED].tolist()
+
+        key_with_counters = counters[key.strip()]
+        candidates_with_counters = candidates[PREFERRED].apply(counters.get).tolist()
+        mergings[key_with_counters] = candidates_with_counters
 
     return mergings
 

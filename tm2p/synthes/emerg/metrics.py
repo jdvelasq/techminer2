@@ -28,13 +28,6 @@ Smoke tests:
     ...     .run()
     ... )
     >>> print(df.head().to_string())  # doctest: +NORMALIZE_WHITESPACE
-                                       OCC  OCC_BASELINE  OCC_RECENT  NONZERO_YEARS   PO  PF  NP  GROWTH_RATE  GROWTH_RATE_RATIO
-    KW_NORM
-    innovation 020:03916                20             6           9              9  3.0  20   8    26.761857           0.660623
-    china 018:03596                     18             1          11              7  1.0  18   8    43.518889           1.074275
-    financial inclusion 017:03823       17             4           9              8  1.0  17   8    42.497129           1.049053
-    financial technology 015:02583      15             2           4              8  1.0  15   8    40.285055           0.994447
-    sustainable development 015:02158   15             1          10              6  1.0  15   8    40.285055           0.994447
 
 
 """

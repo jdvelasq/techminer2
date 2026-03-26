@@ -5,11 +5,11 @@ Smoke tests:
     >>> (
     ...     BaseStemMatch()
     ...     .with_thesaurus_file(ThFile.CONCEPT)
-    ...     .with_source_field(Field.CONCEPT_RAW)
+    ...     .with_source_field(Field.DESCRIPTOR_RAW)
     ...     .where_root_directory("tests/scopus/")
     ...     .run()
     ... )
-    1
+    '1117 synonym groups found'
 
 """
 
@@ -21,15 +21,16 @@ from nltk.stem import PorterStemmer  # type: ignore
 from tm2p import ThField
 from tm2p._intern import ParamsMixin
 
-from ._report_matches import report_matches
-from .wordorder import (
-    _add_padding,
-    _compute_matches,
-    _load_thesaurus,
-    _remove_builtin_stopwords,
-    _remove_thesaurus_stopwords,
-    _string_to_words,
-    _words_to_string,
+from ._intern import (
+    add_padding,
+    compute_matches,
+    load_thesaurus,
+    remove_builtin_stopwords,
+    remove_punctuation,
+    remove_thesaurus_stopwords,
+    report_matches,
+    string_to_words,
+    words_to_string,
 )
 
 stemmer = PorterStemmer()
@@ -45,22 +46,23 @@ class BaseStemMatch(
 
     def run(self):
 
-        thesaurus_df = _load_thesaurus(params=self.params)
-        thesaurus_df = _add_padding(thesaurus_df=thesaurus_df)
-        thesaurus_df = _remove_builtin_stopwords(thesaurus_df=thesaurus_df)
-        thesaurus_df = _remove_thesaurus_stopwords(thesaurus_df=thesaurus_df)
-        thesaurus_df = _string_to_words(thesaurus_df=thesaurus_df)
+        thesaurus_df = load_thesaurus(params=self.params)
+        thesaurus_df = add_padding(thesaurus_df=thesaurus_df)
+        thesaurus_df = remove_punctuation(thesaurus_df=thesaurus_df)
+        thesaurus_df = remove_builtin_stopwords(thesaurus_df=thesaurus_df)
+        thesaurus_df = remove_thesaurus_stopwords(thesaurus_df=thesaurus_df)
+        thesaurus_df = string_to_words(thesaurus_df=thesaurus_df)
         thesaurus_df = _words_to_stems(thesaurus_df=thesaurus_df)
-        thesaurus_df = _words_to_string(thesaurus_df=thesaurus_df)
+        thesaurus_df = words_to_string(thesaurus_df=thesaurus_df)
 
-        matches = _compute_matches(thesaurus_df=thesaurus_df)
+        matches = compute_matches(thesaurus_df=thesaurus_df, params=self.params)
 
         report_matches(
             params=self.params,
             mapping=matches,
         )
 
-        return 1
+        return f"{len(matches)} synonym groups found"
 
 
 @lru_cache(maxsize=None)

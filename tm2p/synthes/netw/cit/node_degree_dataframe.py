@@ -19,7 +19,7 @@ Smoke tests:
     ...     .using_counters(True)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/wos/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     .where_records_match(None)
@@ -27,11 +27,11 @@ Smoke tests:
     ...     .run()
     ... ).head()
        NODE                                               NAME  DEGREE
-    0     0  Anagnostopoulos, 2018, J ECON BUS, V100, P7 1:...       3
-    1     1                    Hu, 2019, SYMMETRY, V11 1:00425       2
-    2     2  Arner, 2017, NORTHWEST J INT LAW BUS, V37, P37...       2
-    3     3         Gabor, 2017, POLIT ECON, V22, P423 1:00563       1
-    4     4  Arner, 2020, EUR BUS ORGAN LAW REV, V21, P7 1:...       1
+    0     0  Takeda A, 2021, INT J TECHNOL MANAG, V86, P67 ...       4
+    1     1  Nasir A, 2021, APPL SCI-BASEL, V11, DOI 10.339...       4
+    2     2  Arner DW, 2020, EUR BUS ORGAN LAW RE, V21, P7,...       3
+    3     3  Anagnostopoulos I, 2018, J ECON BUS, V100, P7,...       3
+    4     4  Arner DW, 2019, EUR BUS ORGAN LAW RE, V20, P55...       3
 
 
     >>> (
@@ -48,19 +48,19 @@ Smoke tests:
     ...     .using_counters(False)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/wos/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     .where_records_match(None)
     ...     #
     ...     .run()
     ... ).head()
-       NODE                                             NAME  DEGREE
-    0     0      Anagnostopoulos, 2018, J ECON BUS, V100, P7       3
-    1     1                          Hu, 2019, SYMMETRY, V11       2
-    2     2  Arner, 2017, NORTHWEST J INT LAW BUS, V37, P373       2
-    3     3               Gabor, 2017, POLIT ECON, V22, P423       1
-    4     4      Arner, 2020, EUR BUS ORGAN LAW REV, V21, P7       1
+       NODE                                               NAME  DEGREE
+    0     0      Takeda A, 2021, INT J TECHNOL MANAG, V86, P67       4
+    1     1  Nasir A, 2021, APPL SCI-BASEL, V11, DOI 10.339...       4
+    2     2  Arner DW, 2020, EUR BUS ORGAN LAW RE, V21, P7,...       3
+    3     3  Anagnostopoulos I, 2018, J ECON BUS, V100, P7,...       3
+    4     4  Arner DW, 2019, EUR BUS ORGAN LAW RE, V20, P55...       3
 
 
     >>> (
@@ -77,7 +77,7 @@ Smoke tests:
     ...     .using_counters(True)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/wos/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     .where_records_match(None)
@@ -85,11 +85,11 @@ Smoke tests:
     ...     .run()
     ... ).head()
        NODE           NAME  DEGREE
-    0     0  CHN 045:09715      22
-    1     1  AUS 014:03468      16
-    2     2  DEU 013:05295      16
-    3     3  FRA 011:02475      15
-    4     4  GBR 033:06802      14
+    0     0  GBR 026:01562      24
+    1     1  AUS 024:01072      24
+    2     2  JOR 003:00022      24
+    3     3  CHN 046:01426      23
+    4     4  USA 021:00494      23
 
 
     >>> (
@@ -106,7 +106,7 @@ Smoke tests:
     ...     .using_counters(False)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/wos/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     .where_records_match(None)
@@ -114,11 +114,11 @@ Smoke tests:
     ...     .run()
     ... ).head()
        NODE NAME  DEGREE
-    0     0  CHN      22
-    1     1  AUS      16
-    2     2  DEU      16
-    3     3  FRA      15
-    4     4  GBR      14
+    0     0  GBR      24
+    1     1  AUS      24
+    2     2  JOR      24
+    3     3  CHN      23
+    4     4  USA      23
 
 """
 

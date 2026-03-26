@@ -54,11 +54,11 @@ Smoke tests:
     >>> df.head()
     cluster                               0  ...                                  9
     term                                     ...
-    0                     fintech 155:33245  ...                  fintech 155:33245
-    1                       china 033:06419  ...      financial inclusion 022:04623
-    2             the development 026:05689  ...                  finance 050:10972
-    3        financial technology 051:09258  ...  sustainable development 018:02898
-    4                    evidence 018:03900  ...               innovation 033:07734
+    0        financial technology 047:08455  ...               blockchain 017:04405
+    1                     fintech 156:33429  ...                  finance 050:10972
+    2             the development 026:05689  ...                  fintech 156:33429
+    3        financial-technology 016:02809  ...  sustainable development 018:02898
+    4                       banks 031:06740  ...                consumers 017:03475
     <BLANKLINE>
     [5 rows x 10 columns]
 

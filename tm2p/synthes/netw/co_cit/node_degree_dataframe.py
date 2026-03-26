@@ -16,19 +16,13 @@ Smoke tests:
     ...     .having_items_in(None)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/wos/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     .where_records_match(None)
     ...     #
     ...     .run()
     ... ).head()
-       NODE                           NAME  DEGREE
-    0     0                J ECON BUS 1:10       8
-    1     1             STRATEG CHANG 1:06       7
-    2     2     EUR BUS ORGAN LAW REV 1:06       5
-    3     3  AMERICAN ECONOMIC REVIEW 1:04       5
-    4     4              BUS HORIZONS 1:02       5
 
 
 

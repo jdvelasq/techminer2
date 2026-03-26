@@ -8,14 +8,14 @@ Smoke test:
     >>> (
     ...     BaseStartsWithMatch()
     ...     .with_thesaurus_file(ThFile.CONCEPT)
-    ...     .with_source_field(Field.CONCEPT_RAW)
+    ...     .with_source_field(Field.DESCRIPTOR_RAW)
     ...     .having_text_matching("fint")
     ...     .using_similarity_cutoff(88)
     ...     .using_fuzzy_threshold(80)
     ...     .where_root_directory("tests/scopus/")
     ...     .run()
     ... )
-    1
+    '15 synonym groups found'
 
 
 """
@@ -25,19 +25,20 @@ import pandas as pd  # type: ignore
 from tm2p import ThField
 from tm2p._intern import Params, ParamsMixin
 
-from ._report_matches import report_matches
+from ._intern import (
+    add_padding,
+    load_thesaurus,
+    remove_builtin_stopwords,
+    remove_punctuation,
+    remove_thesaurus_stopwords,
+    report_matches,
+)
 from .fuzzy_one_exact import (
     _compute_fuzzy_matches,
     _prepare_fuzzy_candidates,
     _select_one_exact_match_candidates,
 )
 from .fuzzy_zero_exact import _select_zero_exact_match_candidates
-from .wordorder import (
-    _add_padding,
-    _load_thesaurus,
-    _remove_builtin_stopwords,
-    _remove_thesaurus_stopwords,
-)
 
 PREFERRED = ThField.PREFERRED.value
 
@@ -47,13 +48,14 @@ class BaseStartsWithMatch(
 ):
     """:meta private:"""
 
-    def run(self):
+    def run(self) -> str:
 
-        thesaurus_df = _load_thesaurus(params=self.params)
-        thesaurus_df = _add_padding(thesaurus_df=thesaurus_df)
+        thesaurus_df = load_thesaurus(params=self.params)
+        thesaurus_df = add_padding(thesaurus_df=thesaurus_df)
+        thesaurus_df = remove_punctuation(thesaurus_df=thesaurus_df)
         thesaurus_df = _startswith(thesaurus_df=thesaurus_df, params=self.params)
-        thesaurus_df = _remove_builtin_stopwords(thesaurus_df=thesaurus_df)
-        thesaurus_df = _remove_thesaurus_stopwords(thesaurus_df=thesaurus_df)
+        thesaurus_df = remove_builtin_stopwords(thesaurus_df=thesaurus_df)
+        thesaurus_df = remove_thesaurus_stopwords(thesaurus_df=thesaurus_df)
         thesaurus_df = _prepare_fuzzy_candidates(thesaurus_df=thesaurus_df)
 
         zero_exact_match_candidates = _select_zero_exact_match_candidates(
@@ -70,6 +72,7 @@ class BaseStartsWithMatch(
             fuzzy_threshold=0.0,
             use_word_level=False,
             word_count_tolerance=0,
+            params=self.params,
         )
 
         one_exact_match_mapping = _compute_fuzzy_matches(
@@ -78,14 +81,20 @@ class BaseStartsWithMatch(
             fuzzy_threshold=self.params.fuzzy_threshold,
             use_word_level=True,
             word_count_tolerance=1,
+            params=self.params,
         )
+
+        matches: dict[str, list[str]] = {
+            **zero_exact_match_mapping,
+            **one_exact_match_mapping,
+        }
 
         report_matches(
             params=self.params,
-            mapping={**zero_exact_match_mapping, **one_exact_match_mapping},
+            mapping=matches,
         )
 
-        return 1
+        return f"{len(matches)} synonym groups found"
 
 
 def _startswith(thesaurus_df: pd.DataFrame, params: Params) -> pd.DataFrame:
