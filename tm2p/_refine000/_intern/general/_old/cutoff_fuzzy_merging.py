@@ -121,7 +121,7 @@ from tm2p._intern import ParamsMixin
 from tm2p._intern.data_access import load_filtered_main_csv_zip
 from tm2p._intern.packag_data.word_lists import load_builtin_word_list
 from tm2p._refine000.thesaurus_old._intern import ThesaurusMixin
-from tm2p.anal.metrics.metrics import Metrics
+from tm2p.anal.item_metrics.metrics import Metrics
 
 tqdm.pandas()
 

@@ -1,32 +1,28 @@
 """
-ClevelandDotPlot
+WorldMap
 ===============================================================================
 
 .. raw:: html
 
-    <iframe src="../_generated/px.anal.bibliom.cleveland_dot_plot.html"
-    height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../_generated/px.anal.bibliom.world_map.html"
+    height="450px" width="100%" frameBorder="0"></iframe>
+
 
 Smoke tests:
     >>> from tm2p import Field, ItemOrderBy
-    >>> from tm2p.anal.metrics import ClevelandDotPlot
+    >>> from tm2p.anal.item_metrics import WorldMap
     >>> plot = (
-    ...     ClevelandDotPlot()
-    ...     #
-    ...     # FIELD:
-    ...     .with_source_field(Field.AUTHKW_NORM)
+    ...     WorldMap()
     ...     #
     ...     # TERMS:
-    ...     .having_items_in_top(10)
     ...     .having_items_ordered_by(ItemOrderBy.OCC)
     ...     .having_item_occurrences_between(None, None)
     ...     .having_item_citations_between(None, None)
     ...     .having_items_in(None)
     ...     #
     ...     # PLOT:
-    ...     .using_title_text("Cleveland Dot Plot")
-    ...     .using_xaxes_title_text("Author Keywords")
-    ...     .using_yaxes_title_text("OCC")
+    ...     .using_title_text("Countries' Scientific Production")
+    ...     .using_colormap("Blues")
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/scopus/")
@@ -37,28 +33,29 @@ Smoke tests:
     ... )
     >>> type(plot).__name__
     'Figure'
-    >>> plot.write_html("docsrc/_generated/px.anal.bibliom.cleveland_dot_plot.html")
+    >>> plot.write_html("docsrc/_generated/px.anal.bibliom.world_map.html")
+
+
 
 """
 
+from tm2p import Field
 from tm2p._intern import ParamsMixin
-from tm2p._intern.plot.cleveland_dot_plot import cleveland_dot_plot
+from tm2p._intern.plot.world_map import world_map
 
 from .metrics import Metrics
 
 
-class ClevelandDotPlot(
+class WorldMap(
     ParamsMixin,
 ):
     """:meta private:"""
 
     def run(self):
 
-        df = Metrics().update(**self.params.__dict__).run()
-        fig = cleveland_dot_plot(params=self.params, dataframe=df)
+        df = (
+            Metrics().update(**self.params.__dict__).with_source_field(Field.CTRY).run()
+        )
+        fig = world_map(params=self.params, df=df)
 
         return fig
-
-
-#
-#

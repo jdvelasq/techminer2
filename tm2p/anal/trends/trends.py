@@ -33,21 +33,19 @@ Smoke tests:
     True
     >>> df.shape[1] > 0
     True
-    >>> df.head(10) # doctest: +NORMALIZE_WHITESPACE
-    YEAR                     2015  2016  2017  2018  ...  2021  2022  2023  2024
-    AUTHKW_NORM                                      ...
-    fintech                     0    11    11    12  ...    17    13    17    17
-    financial inclusion         0     1     3     1  ...     0     4     3     2
-    financial technology        0     1     1     1  ...     4     0     1     2
-    green finance               0     0     0     0  ...     3     3     5     0
-    blockchain                  0     1     1     1  ...     1     0     1     2
-    banking                     0     1     1     0  ...     1     2     1     3
-    china                       0     1     0     0  ...     2     3     1     1
-    innovation                  0     3     2     1  ...     0     1     2     0
-    artificial intelligence     0     0     0     0  ...     1     0     2     1
-    financial services          0     1     0     4  ...     0     0     0     1
-    <BLANKLINE>
-    [10 rows x 10 columns]
+    >>> print(df.head(10).to_string())  # doctest: +NORMALIZE_WHITESPACE
+    YEAR                    2015  2016  2017  2018  2019  2020  2021  2022  2023  2024
+    AUTHKW_NORM
+    fintech                    0    11    11    12     6    13    17    13    17    17
+    financial inclusion        0     1     3     1     1     2     0     4     3     2
+    financial-technology       0     1     1     1     1     3     5     0     1     2
+    green finance              0     0     0     0     0     0     3     3     5     0
+    blockchain                 0     1     1     1     1     3     1     0     1     2
+    banking                    0     1     1     0     0     1     1     2     1     3
+    china                      0     1     0     0     0     1     2     3     1     1
+    innovation                 0     3     2     1     0     0     0     1     2     0
+    artificialintelligence     0     0     0     0     2     2     1     0     2     1
+    financial services         0     1     0     4     0     1     0     0     0     1
 
 
     >>> df = (
@@ -78,21 +76,19 @@ Smoke tests:
     True
     >>> df.shape[1] > 0
     True
-    >>> df.head(10)  # doctest: +NORMALIZE_WHITESPACE
-    YEAR                               2015  2016  2017  ...  2022  2023  2024
-    AUTHKW_NORM                                          ...
-    fintech 117:25478                     0    11    11  ...    13    17    17
-    financial inclusion 017:03823         0     1     3  ...     4     3     2
-    financial technology 014:02508        0     1     1  ...     0     1     2
-    green finance 011:02844               0     0     0  ...     3     5     0
-    blockchain 011:02023                  0     1     1  ...     0     1     2
-    banking 010:02599                     0     1     1  ...     2     1     3
-    china 009:01947                       0     1     0  ...     3     1     1
-    innovation 009:01703                  0     3     2  ...     1     2     0
-    artificial intelligence 008:01915     0     0     0  ...     0     2     1
-    financial services 007:01673          0     1     0  ...     0     0     1
-    <BLANKLINE>
-    [10 rows x 10 columns]
+    >>> print(df.head(10).to_string())  # doctest: +NORMALIZE_WHITESPACE
+    YEAR                              2015  2016  2017  2018  2019  2020  2021  2022  2023  2024
+    AUTHKW_NORM
+    fintech 117:25478                    0    11    11    12     6    13    17    13    17    17
+    financial inclusion 017:03823        0     1     3     1     1     2     0     4     3     2
+    financial-technology 015:02734       0     1     1     1     1     3     5     0     1     2
+    green finance 011:02844              0     0     0     0     0     0     3     3     5     0
+    blockchain 011:02023                 0     1     1     1     1     3     1     0     1     2
+    banking 010:02599                    0     1     1     0     0     1     1     2     1     3
+    china 009:01947                      0     1     0     0     0     1     2     3     1     1
+    innovation 009:01703                 0     3     2     1     0     0     0     1     2     0
+    artificialintelligence 008:01915     0     0     0     0     2     2     1     0     2     1
+    financial services 007:01673         0     1     0     4     0     1     0     0     0     1
 
 
 
@@ -104,7 +100,7 @@ from tm2p._intern import ParamsMixin, SortAxesMixin
 from tm2p._intern.data_access import load_filtered_main_csv_zip
 
 from ..._intern.get_zero_digits import get_zero_digits
-from ..metrics import Metrics
+from ..item_metrics import Metrics
 
 GCS = Field.GCS.value
 OCC = ItemOrderBy.OCC.value

@@ -4,28 +4,31 @@ RankingPlot
 
 .. raw:: html
 
-    <iframe src="../_generated/px.anal.annual_metrics.ranking_plot.html"
+    <iframe src="../_generated/px.anal.annual_metrics.mean_citations_per_year.html"
+    height="600px" width="100%" frameBorder="0"></iframe>
+
+    <iframe src="../_generated/px.anal.annual_metrics.annual_scientific_production.html"
     height="600px" width="100%" frameBorder="0"></iframe>
 
 
 Smoke tests:
->>> from tm2p.anal.annual_metrics import Column
+    >>> from tm2p.anal.annual_metrics import Column
     >>> from tm2p.anal.annual_metrics import RankingPlot
     >>> fig = (
     ...     RankingPlot()
     ...     #
-    ...     .with_plotting_column(Column.CUMUL_OCC)
+    ...     .with_plotting_column(Column.MEAN_GCS_PER_YEAR)
     ...     #
-    ...     .using_title_text("Average Citations Per Year")
+    ...     .using_title_text("Mean Citations Per Year")
     ...     .using_xaxes_title_text("Years")
-    ...     .using_yaxes_title_text("Average Citations Per Year")
+    ...     .using_yaxes_title_text("Mean Citations Per Year")
     ...     #
     ...     .using_line_width(1.5)
     ...     .using_marker_size(7)
     ...     .using_textfont_size(10)
     ...     .using_yshift(4)
     ...     #
-    ...     .where_root_directory("tests/regtech/")
+    ...     .where_root_directory("tests/scopus/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     #
@@ -33,8 +36,31 @@ Smoke tests:
     ... )
     >>> type(fig).__name__
     'Figure'
-    >>> fig.write_html("docsrc/_generated/px.anal.annual_metrics.ranking_plot.html")
+    >>> fig.write_html("docsrc/_generated/px.anal.annual_metrics.mean_citations_per_year.html")
 
+    >>> fig = (
+    ...     RankingPlot()
+    ...     #
+    ...     .with_plotting_column(Column.OCC)
+    ...     #
+    ...     .using_title_text("Annual Scientific Production")
+    ...     .using_xaxes_title_text("Years")
+    ...     .using_yaxes_title_text("Documents")
+    ...     #
+    ...     .using_line_width(1.5)
+    ...     .using_marker_size(7)
+    ...     .using_textfont_size(10)
+    ...     .using_yshift(4)
+    ...     #
+    ...     .where_root_directory("tests/scopus/")
+    ...     .where_record_years_range(None, None)
+    ...     .where_record_citations_range(None, None)
+    ...     #
+    ...     .run()
+    ... )
+    >>> type(fig).__name__
+    'Figure'
+    >>> fig.write_html("docsrc/_generated/px.anal.annual_metrics.annual_scientific_production.html")
 
 
 
@@ -104,7 +130,7 @@ class RankingPlot(
         for name, row in df.iterrows():
             fig.add_annotation(
                 x=row["Rank"],
-                y=row[self.params.items_order_by.value],
+                y=row[self.params.plotting_column.value],  # type: ignore
                 text=name,
                 showarrow=False,
                 textangle=-90,

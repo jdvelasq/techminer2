@@ -2,7 +2,6 @@
 Dataframe
 ===============================================================================
 
-
 Smoke tests:
     >>> from tm2p import Field
     >>> from tm2p.anal.topic_trends.bibliometrix.topic_dynamics import TopicDynamics
@@ -22,19 +21,17 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> df.head()
-    YEAR                            OCC  global_citations  ...  height  width
-    AUTHKW_RAW                                             ...
-    Biometric 001:00001               1                 1  ...    0.15      1
-    FIDO 001:00001                    1                 1  ...    0.15      1
-    Fast Identity Online 001:00001    1                 1  ...    0.15      1
-    PKI 001:00001                     1                 1  ...    0.15      1
-    Password 001:00001                1                 1  ...    0.15      1
-    <BLANKLINE>
-    [5 rows x 8 columns]
+    >>> print(df.head().to_string())  # doctest: +NORMALIZE_WHITESPACE
+    YEAR                            OCC  global_citations  year_q1  year_med  year_q3  rn  height  width
+    AUTHKW_RAW
+    biometric 001:00001               1                 1     2015      2015     2015   0    0.15      1
+    fast identity online 001:00001    1                 1     2015      2015     2015   1    0.15      1
+    fido 001:00001                    1                 1     2015      2015     2015   2    0.15      1
+    password 001:00001                1                 1     2015      2015     2015   3    0.15      1
+    pki 001:00001                     1                 1     2015      2015     2015   4    0.15      1
 
 
-    >>> (
+    >>> df = (
     ...     TopicDynamics()
     ...     #
     ...     # FIELD:
@@ -55,14 +52,13 @@ Smoke tests:
     ...     .where_records_match(None)
     ...     #
     ...     .run()
-    ... ).head()
-    YEAR                               OCC  global_citations  ...    height  width
-    AUTHKW_RAW                                                ...
-    fintech 008:01795                    8              1795  ...  0.970000      5
-    blockchain 001:00218                 1               218  ...  0.150000      1
-    artificial intelligence 002:00400    2               400  ...  0.267143      1
-    <BLANKLINE>
-    [3 rows x 8 columns]
+    ... )
+    >>> print(df.head().to_string())  # doctest: +NORMALIZE_WHITESPACE
+    YEAR                               OCC  global_citations  year_q1  year_med  year_q3  rn    height  width
+    AUTHKW_RAW
+    blockchain 011:02023                11              2023     2018      2020     2022   0  0.172569      5
+    fintech 117:25478                  117             25478     2018      2021     2023   0  0.970000      6
+    artificial intelligence 008:01915    8              1915     2020      2020     2023   1  0.150000      4
 
 
 """

@@ -10,7 +10,6 @@ DistributionPlot
 
 Smoke tests:
     >>> from tm2p.anal.lotka import DistributionPlot
-
     >>> fig = (
     ...     DistributionPlot()
     ...     #

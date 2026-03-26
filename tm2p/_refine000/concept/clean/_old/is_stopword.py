@@ -83,7 +83,7 @@ from pandarallel import pandarallel
 
 from tm2p._intern import ParamsMixin, load_builtin_template, stdout_to_stderr
 from tm2p._intern.packag_data.word_lists import load_builtin_word_list
-from tm2p.anal.metrics import Metrics as DominantDataFrame
+from tm2p.anal.item_metrics import Metrics as DominantDataFrame
 
 with stdout_to_stderr():
     pandarallel.initialize(progress_bar=True)

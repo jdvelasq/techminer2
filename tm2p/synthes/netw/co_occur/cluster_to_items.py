@@ -35,24 +35,25 @@ Smoke tests:
     >>> pprint(mapping)
     {0: ['fintech 117:25478',
          'financial inclusion 017:03823',
-         'green finance 011:02844',
          'blockchain 011:02023',
          'china 009:01947',
-         'artificial intelligence 008:01915',
-         'crowdfunding 007:01245',
-         'regtech 006:01481',
+         'artificialintelligence 008:01915',
+         'crowd-funding 007:01245',
+         'reg-tech 006:01481',
          'sustainability 006:01357',
-         'digital finance 005:02052',
-         'covid-19 005:01068',
-         'banks 005:00769'],
-     1: ['financial technology 014:02508',
+         'covid-19 006:01224',
+         'digital finance 005:02052'],
+     1: ['financial-technology 015:02734',
+         'green finance 011:02844',
          'financial literacy 005:00665',
-         'economic growth 005:00660',
+         'economic-growth 005:00660',
          'sustainable development 005:00604'],
      2: ['banking 010:02599',
          'innovation 009:01703',
          'financial services 007:01673',
-         'technology 007:01409']}
+         'technology 007:01409',
+         'banks 005:00769']}
+
 
     >>> mapping = (
     ...     ClusterToItems()
@@ -83,21 +84,21 @@ Smoke tests:
     >>> pprint(mapping)
     {0: ['fintech',
          'financial inclusion',
-         'green finance',
          'blockchain',
          'china',
-         'artificial intelligence',
-         'crowdfunding',
-         'regtech',
+         'artificialintelligence',
+         'crowd-funding',
+         'reg-tech',
          'sustainability',
-         'digital finance',
          'covid-19',
-         'banks'],
-     1: ['financial technology',
+         'digital finance'],
+     1: ['financial-technology',
+         'green finance',
          'financial literacy',
-         'economic growth',
+         'economic-growth',
          'sustainable development'],
-     2: ['banking', 'innovation', 'financial services', 'technology']}
+     2: ['banking', 'innovation', 'financial services', 'technology', 'banks']}
+
 
 """
 

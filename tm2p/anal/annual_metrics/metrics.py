@@ -6,7 +6,7 @@ Smoke tests:
     >>> from tm2p.anal.annual_metrics.metrics import Metrics
     >>> df = (
     ...     Metrics()
-    ...     .where_root_directory("tests/regtech/")
+    ...     .where_root_directory("tests/scopus/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     .run()
@@ -16,19 +16,18 @@ Smoke tests:
     >>> df.shape[0] > 0
     True
     >>> print(df.to_string())  # doctest: +NORMALIZE_WHITESPACE
-          OCC  CUMUL_OCC  CITAB_YEAR   GCS  CUMUL_GCS   MEAN_GCS  MEAN_GCS_PER_YEAR  LCS  CUMUL_LCS  MEAN_LCS  MEAN_LCS_PER_YEAR
+          OCC  CUMUL_OCC  CITAB_YEAR   GCS  CUMUL_GCS    MEAN_GCS  MEAN_GCS_PER_YEAR  LCS  CUMUL_LCS  MEAN_LCS  MEAN_LCS_PER_YEAR
     YEAR
-    2016    3          3          10   212        212  70.666667               7.07    0          0       0.0                0.0
-    2017    7         10           9   481        693  68.714286               7.63    0          0       0.0                0.0
-    2018   22         32           8   986       1679  44.818182               5.60    0          0       0.0                0.0
-    2019   20         52           7   999       2678  49.950000               7.14    0          0       0.0                0.0
-    2020   29         81           6  1456       4134  50.206897               8.37    0          0       0.0                0.0
-    2021   34        115           5   639       4773  18.794118               3.76    0          0       0.0                0.0
-    2022   35        150           4   515       5288  14.714286               3.68    0          0       0.0                0.0
-    2023   39        189           3   496       5784  12.717949               4.24    0          0       0.0                0.0
-    2024   48        237           2   216       6000   4.500000               2.25    0          0       0.0                0.0
-    2025   49        286           1    57       6057   1.163265               1.16    0          0       0.0                0.0
-
+    2015    6          6          10   132        132   22.000000               2.20    0          0       0.0                0.0
+    2016   18         24           9  1992       2124  110.666667              12.30    0          0       0.0                0.0
+    2017   19         43           8  3743       5867  197.000000              24.62    0          0       0.0                0.0
+    2018   18         61           7  6770      12637  376.111111              53.73    0          0       0.0                0.0
+    2019   19         80           6  4906      17543  258.210526              43.04    0          0       0.0                0.0
+    2020   20        100           5  5396      22939  269.800000              53.96    0          0       0.0                0.0
+    2021   20        120           4  5637      28576  281.850000              70.46    0          0       0.0                0.0
+    2022   20        140           3  5172      33748  258.600000              86.20    0          0       0.0                0.0
+    2023   20        160           2  2750      36498  137.500000              68.75    0          0       0.0                0.0
+    2024   20        180           1  1684      38182   84.200000              84.20    0          0       0.0                0.0
 
 
 """

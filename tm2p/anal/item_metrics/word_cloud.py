@@ -1,28 +1,31 @@
 """
-WorldMap
+WordCloud
 ===============================================================================
 
-.. raw:: html
-
-    <iframe src="../_generated/px.anal.bibliom.world_map.html"
-    height="450px" width="100%" frameBorder="0"></iframe>
-
+.. image:: ../_generated/px.anal.bibliom.word_cloud.png
+    :width: 800px
+    :align: center
 
 Smoke tests:
     >>> from tm2p import Field, ItemOrderBy
-    >>> from tm2p.anal.metrics import WorldMap
+    >>> from tm2p.anal.item_metrics import WordCloud
     >>> plot = (
-    ...     WorldMap()
+    ...     WordCloud()
+    ...     #
+    ...     # FIELD:
+    ...     .with_source_field(Field.AUTHKW_NORM)
     ...     #
     ...     # TERMS:
+    ...     .having_items_in_top(80)
     ...     .having_items_ordered_by(ItemOrderBy.OCC)
+    ...     #
     ...     .having_item_occurrences_between(None, None)
     ...     .having_item_citations_between(None, None)
     ...     .having_items_in(None)
     ...     #
     ...     # PLOT:
-    ...     .using_title_text("Countries' Scientific Production")
-    ...     .using_colormap("Blues")
+    ...     .using_plot_width(2400)
+    ...     .using_plot_height(2400)
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/scopus/")
@@ -32,30 +35,29 @@ Smoke tests:
     ...     .run()
     ... )
     >>> type(plot).__name__
-    'Figure'
-    >>> plot.write_html("docsrc/_generated/px.anal.bibliom.world_map.html")
-
+    'Image'
+    >>> plot.save("docsrc/_generated/px.anal.bibliom.word_cloud.png")
 
 
 """
 
-from tm2p import Field
 from tm2p._intern import ParamsMixin
-from tm2p._intern.plot.world_map import world_map
+from tm2p._intern.plot.word_cloud import word_cloud
 
 from .metrics import Metrics
 
 
-class WorldMap(
+class WordCloud(
     ParamsMixin,
 ):
     """:meta private:"""
 
     def run(self):
 
-        df = (
-            Metrics().update(**self.params.__dict__).with_source_field(Field.CTRY).run()
-        )
-        fig = world_map(params=self.params, df=df)
+        df = Metrics().update(**self.params.__dict__).run()
+        fig = word_cloud(params=self.params, dataframe=df)
 
         return fig
+
+
+#

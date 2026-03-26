@@ -33,16 +33,16 @@ Smoke tests:
     >>> print(len(documents_by_cluster))
     3
     >>> print(documents_by_cluster[0][0])
-    UT 13
-    AR Al-Sartawi, 2024, J FINANC REPORT ACCOUNT
+    UT 54
+    AR Al-Sartawi A, 2024, J FINANC REP ACC, DOI 10.1108/JFRA-01-2024-0010
     TI The diffusion of financial technology-enabled innovation in GCC-listed banks
        and its relationship with profitability and market value
-    AU Al-Sartawi A.
+    AU Al-Sartawi A
     TC 125
-    SO J FINANC REPORT ACCOUNT
+    SO J FINANC REP ACC
     PY 2024
     AB purpose : this_study_aims_to_examine_the_relationship_between the
-       DIFFUSION_OF_TECHNOLOGY enabled INNOVATION_IN_FINANCIAL_SERVICES ( i . e .
+       DIFFUSION_OF_TECHNOLOGY-enabled INNOVATION_IN_FINANCIAL_SERVICES ( i . e .
        FINANCIAL_TECHNOLOGY [ FINTECH ] ) and THE_FINANCIAL_PERFORMANCE , i . e .
        PROFITABILITY and MARKET_VALUE of THE_BANKS listed in the
        GULF_COOPERATION_COUNCIL ( gcc ) COUNTRIES . design / methodology / approach
@@ -72,6 +72,7 @@ Smoke tests:
 
 """
 
+from tm2p import Field
 from tm2p._intern import ParamsMixin
 from tm2p.ingest.rec import RecordViewer
 from tm2p.synthes.netw.co_occur.cluster_to_items import ClusterToItems
@@ -109,6 +110,7 @@ class DocumentsByClusterMapping(
             mapping[key] = (
                 RecordViewer()
                 .update(**self.params.__dict__)
+                .with_source_field(Field.ABSTR_UPPER)
                 .where_records_match(records_match)
                 .run()
             )

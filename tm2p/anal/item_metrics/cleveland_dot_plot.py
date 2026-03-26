@@ -1,18 +1,17 @@
 """
-RankingPlot
+ClevelandDotPlot
 ===============================================================================
 
 .. raw:: html
 
-    <iframe src="../_generated/px.anal.bibliom.ranking_plot.html"
+    <iframe src="../_generated/px.anal.bibliom.cleveland_dot_plot.html"
     height="600px" width="100%" frameBorder="0"></iframe>
-
 
 Smoke tests:
     >>> from tm2p import Field, ItemOrderBy
-    >>> from tm2p.anal.metrics import RankingPlot
+    >>> from tm2p.anal.item_metrics import ClevelandDotPlot
     >>> plot = (
-    ...     RankingPlot()
+    ...     ClevelandDotPlot()
     ...     #
     ...     # FIELD:
     ...     .with_source_field(Field.AUTHKW_NORM)
@@ -25,14 +24,9 @@ Smoke tests:
     ...     .having_items_in(None)
     ...     #
     ...     # PLOT:
-    ...     .using_line_color("black")
-    ...     .using_line_width(1.5)
-    ...     .using_marker_size(7)
-    ...     .using_textfont_size(10)
-    ...     .using_title_text("Ranking Plot")
+    ...     .using_title_text("Cleveland Dot Plot")
     ...     .using_xaxes_title_text("Author Keywords")
     ...     .using_yaxes_title_text("OCC")
-    ...     .using_yshift(4)
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/scopus/")
@@ -43,19 +37,17 @@ Smoke tests:
     ... )
     >>> type(plot).__name__
     'Figure'
-    >>> plot.write_html("docsrc/_generated/px.anal.bibliom.ranking_plot.html")
-
-
+    >>> plot.write_html("docsrc/_generated/px.anal.bibliom.cleveland_dot_plot.html")
 
 """
 
 from tm2p._intern import ParamsMixin
-from tm2p._intern.plot.ranking_chart import ranking_chart
+from tm2p._intern.plot.cleveland_dot_plot import cleveland_dot_plot
 
 from .metrics import Metrics
 
 
-class RankingPlot(
+class ClevelandDotPlot(
     ParamsMixin,
 ):
     """:meta private:"""
@@ -63,10 +55,10 @@ class RankingPlot(
     def run(self):
 
         df = Metrics().update(**self.params.__dict__).run()
-        df["Rank"] = range(1, len(df) + 1)
-        fig = ranking_chart(params=self.params, dataframe=df)
+        fig = cleveland_dot_plot(params=self.params, dataframe=df)
 
         return fig
 
 
+#
 #

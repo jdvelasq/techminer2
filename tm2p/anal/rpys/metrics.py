@@ -8,17 +8,15 @@ Smoke tests:
     ...     Metrics()
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/wos/")
     ...     .run()
     ... ).head()
           N_GCR  MEDIAN
-    2015      6    -6.0
-    2016     18   -18.0
-    2017     19   -19.0
-    2018     18   -18.0
-    2019     19    -1.0
-
-
+    2016      1    -1.0
+    2017      6    -6.0
+    2018     13   -13.0
+    2019     12   -12.0
+    2020     19    -7.0
 
 
 """
@@ -34,7 +32,7 @@ class Metrics(
 ):
     """:meta private:"""
 
-    def run(self):
+    def run(self) -> pd.DataFrame:
         """:meta private:"""
 
         references = load_filtered_main_csv_zip(params=self.params)
@@ -47,7 +45,7 @@ class Metrics(
         year_max = references_by_year.index.max()
         years = list(range(year_min, year_max + 1))
 
-        indicator = pd.DataFrame(
+        indicator: pd.DataFrame = pd.DataFrame(
             {
                 "N_GCR": 0,
             },
@@ -56,7 +54,10 @@ class Metrics(
 
         indicator.loc[references_by_year.index, "N_GCR"] = references_by_year
         indicator = indicator.sort_index(axis=0, ascending=True)
-        indicator["MEDIAN"] = indicator["N_GCR"].rolling(window=5).median().fillna(0)
+
+        median = indicator.loc[:, "N_GCR"].rolling(window=5).median().fillna(0)
+
+        indicator = indicator.assign(MEDIAN=median)
 
         indicator["MEDIAN"] = indicator["MEDIAN"] - indicator["N_GCR"]
 

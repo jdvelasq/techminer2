@@ -1,17 +1,18 @@
 """
-LinePlot
+RankingPlot
 ===============================================================================
 
 .. raw:: html
 
-    <iframe src="../_generated/px.anal.bibliom.line_plot.html"
+    <iframe src="../_generated/px.anal.bibliom.ranking_plot.html"
     height="600px" width="100%" frameBorder="0"></iframe>
+
 
 Smoke tests:
     >>> from tm2p import Field, ItemOrderBy
-    >>> from tm2p.anal.metrics import LinePlot
+    >>> from tm2p.anal.item_metrics import RankingPlot
     >>> plot = (
-    ...     LinePlot()
+    ...     RankingPlot()
     ...     #
     ...     # FIELD:
     ...     .with_source_field(Field.AUTHKW_NORM)
@@ -24,9 +25,14 @@ Smoke tests:
     ...     .having_items_in(None)
     ...     #
     ...     # PLOT:
-    ...     .using_title_text("Line Plot")
+    ...     .using_line_color("black")
+    ...     .using_line_width(1.5)
+    ...     .using_marker_size(7)
+    ...     .using_textfont_size(10)
+    ...     .using_title_text("Ranking Plot")
     ...     .using_xaxes_title_text("Author Keywords")
     ...     .using_yaxes_title_text("OCC")
+    ...     .using_yshift(4)
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/scopus/")
@@ -37,19 +43,19 @@ Smoke tests:
     ... )
     >>> type(plot).__name__
     'Figure'
-    >>> plot.write_html("docsrc/_generated/px.anal.bibliom.line_plot.html")
+    >>> plot.write_html("docsrc/_generated/px.anal.bibliom.ranking_plot.html")
 
 
 
 """
 
 from tm2p._intern import ParamsMixin
-from tm2p._intern.plot.line_plot import line_plot
+from tm2p._intern.plot.ranking_chart import ranking_chart
 
 from .metrics import Metrics
 
 
-class LinePlot(
+class RankingPlot(
     ParamsMixin,
 ):
     """:meta private:"""
@@ -57,7 +63,8 @@ class LinePlot(
     def run(self):
 
         df = Metrics().update(**self.params.__dict__).run()
-        fig = line_plot(params=self.params, df=df)
+        df["Rank"] = range(1, len(df) + 1)
+        fig = ranking_chart(params=self.params, df=df)
 
         return fig
 

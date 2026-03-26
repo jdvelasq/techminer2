@@ -8,7 +8,7 @@ Smoke test:
     ...     Metrics()
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("tests/regtech/")
+    ...     .where_root_directory("tests/scopus/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     .where_records_match(None)
@@ -22,24 +22,24 @@ Smoke test:
     >>> df  # doctest: +NORMALIZE_WHITESPACE
                                                                    VALUE
     CATEGORY       ITEM
-    MODEL OVERIEW  Saturation (K)                                    384
-                   Peak year (t0)                                   2023
-                   Peak annual (pubs/yr)                            46.5
-                   Growth duration (yrs)                             9.1
-    FIT QUALITY    R²                                             0.9956
-                   RMSE                                             6.14
-                   AIC                                             42.29
-    CURRENT STATUS Last observed year                               2025
-                   Annual publications                                49
-                   Cumulative total                                  286
-                   Progress to saturation                          74.55
-    MILESTONES     10% of K                                         2018
-                   50% of K  (midpoint)                             2023
-                   90% of K                                         2027
-                   99% of K                                         2032
-    FORECAST       2030  (+5 yrs)           372 cum | 7 ann | 96.9% of K
-                   2035 (+10 yrs)           383 cum | 1 ann | 99.7% of K
-                   2040 (+15 yrs)          384 cum | 0 ann | 100.0% of K
+    MODEL OVERIEW  Saturation (K)                                    205
+                   Peak year (t0)                                   2020
+                   Peak annual (pubs/yr)                            23.6
+                   Growth duration (yrs)                             9.5
+    FIT QUALITY    R²                                             0.9921
+                   RMSE                                             4.94
+                   AIC                                             37.95
+    CURRENT STATUS Last observed year                               2024
+                   Annual publications                                20
+                   Cumulative total                                  180
+                   Progress to saturation                          87.87
+    MILESTONES     10% of K                                         2015
+                   50% of K  (midpoint)                             2020
+                   90% of K                                         2025
+                   99% of K                                         2030
+    FORECAST       2029  (+5 yrs)           202 cum | 2 ann | 98.4% of K
+                   2034 (+10 yrs)           205 cum | 0 ann | 99.8% of K
+                   2039 (+15 yrs)          205 cum | 0 ann | 100.0% of K
 
 
 

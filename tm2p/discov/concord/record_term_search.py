@@ -25,7 +25,7 @@ Smoke test:
     >>> from pprint import pprint
     >>> pprint(mapping[0])
     {'AB': 'purpose : this_study_aims_to_examine_the_relationship_between the '
-           'DIFFUSION_OF_TECHNOLOGY enabled INNOVATION_IN_FINANCIAL_SERVICES ( i . '
+           'DIFFUSION_OF_TECHNOLOGY-enabled INNOVATION_IN_FINANCIAL_SERVICES ( i . '
            'e . FINANCIAL_TECHNOLOGY [ FINTECH ] ) and THE_FINANCIAL_PERFORMANCE , '
            'i . e . PROFITABILITY and MARKET_VALUE of THE_BANKS listed in the '
            'GULF_COOPERATION_COUNCIL ( gcc ) COUNTRIES . design / methodology / '
@@ -49,19 +49,17 @@ Smoke test:
            'THE_GCC_LITERATURE regarding FINANCIAL_TECHNOLOGY and provides '
            'RECOMMENDATIONS to THE_GCC_FINANCIAL_INSTITUTIONS , FINANCIAL_MARKETS '
            ', POLICYMAKERS and GOVERNMENTS . 2024 , emerald publishing limited .',
-     'AR': 'Al-Sartawi, 2024, J FINANC REPORT ACCOUNT',
-     'AU': 'Al-Sartawi A.',
+     'AR': 'Al-Sartawi A, 2024, J FINANC REP ACC, DOI 10.1108/JFRA-01-2024-0010',
+     'AU': 'Al-Sartawi A',
      'DE': 'digital transformation; financial sector; fintech; fintech governance; '
            'fintech strategies; firm market value; gcc countries; profitability',
      'ID': nan,
      'PY': 2024,
-     'SO': 'J FINANC REPORT ACCOUNT',
+     'SO': 'J FINANC REP ACC',
      'TC': 125,
      'TI': 'The diffusion of financial technology-enabled innovation in GCC-listed '
            'banks and its relationship with profitability and market value',
-     'UT': 13}
-
-
+     'UT': 54}
 
 
 """
@@ -131,6 +129,6 @@ class RecordTermSearch(ParamsMixin):
         dataframe = load_filtered_main_csv_zip(params=self.params)
         dataframe = self._filter_by_concordance(dataframe, search_for)
         dataframe = self._process_abstracts(dataframe, search_for)
-        mapping = records_to_dicts(dataframe)
+        mapping = records_to_dicts(dataframe, Field.ABSTR_UPPER)
 
         return mapping

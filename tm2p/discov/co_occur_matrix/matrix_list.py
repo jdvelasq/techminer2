@@ -37,15 +37,14 @@ Smoke tests:
                                  rows                         columns  OCC
     0               fintech 117:25478               fintech 117:25478  117
     1   financial inclusion 017:03823   financial inclusion 017:03823   17
-    2   financial inclusion 017:03823               fintech 117:25478   14
-    3  financial technology 014:02508  financial technology 014:02508   14
+    2  financial-technology 015:02734  financial-technology 015:02734   15
+    3   financial inclusion 017:03823               fintech 117:25478   14
     4               fintech 117:25478   financial inclusion 017:03823   14
     5            blockchain 011:02023            blockchain 011:02023   11
     6         green finance 011:02844         green finance 011:02844   11
     7               banking 010:02599               banking 010:02599   10
     8                 china 009:01947                 china 009:01947    9
     9            innovation 009:01703            innovation 009:01703    9
-
 
 
 """

@@ -1,32 +1,32 @@
 """
-BarPlot
+PiePlot
 ===============================================================================
 
 .. raw:: html
 
-    <iframe src="../_generated/px.anal.bibliom.bar_plot.html"
-    height="450" width="100%" frameBorder="0"></iframe>
+    <iframe src="../_generated/px.anal.bibliom.pie_plot.html"
+    height="600px" width="100%" frameBorder="0"></iframe>
+
 
 Smoke tests:
     >>> from tm2p import Field, ItemOrderBy
-    >>> from tm2p.anal.metrics import BarPlot
+    >>> from tm2p.anal.item_metrics import PiePlot
     >>> plot = (
-    ...     BarPlot()
+    ...     PiePlot()
     ...     #
     ...     # FIELD:
-    ...     .with_source_field(Field.SRC_ISO4)
+    ...     .with_source_field(Field.AUTHKW_NORM)
     ...     #
     ...     # TERMS:
-    ...     .having_items_in_top(10)
+    ...     .having_items_in_top(15)
     ...     .having_items_ordered_by(ItemOrderBy.OCC)
     ...     .having_item_occurrences_between(None, None)
     ...     .having_item_citations_between(None, None)
     ...     .having_items_in(None)
     ...     #
     ...     # PLOT:
-    ...     .using_title_text("Bar Plot")
-    ...     .using_xaxes_title_text("Occurrences")
-    ...     .using_yaxes_title_text("OCC")
+    ...     .using_title_text("Most Frequent Author Keywords")
+    ...     .using_pie_hole(0.4)
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/scopus/")
@@ -37,17 +37,19 @@ Smoke tests:
     ... )
     >>> type(plot).__name__
     'Figure'
-    >>> plot.write_html("docsrc/_generated/px.anal.bibliom.bar_plot.html")
+    >>> plot.write_html("docsrc/_generated/px.anal.bibliom.pie_plot.html")
+
+
 
 """
 
 from tm2p._intern import ParamsMixin
-from tm2p._intern.plot.bar_plot import bar_plot
+from tm2p._intern.plot.pie_plot import pie_plot
 
 from .metrics import Metrics
 
 
-class BarPlot(
+class PiePlot(
     ParamsMixin,
 ):
     """:meta private:"""
@@ -55,6 +57,9 @@ class BarPlot(
     def run(self):
 
         df = Metrics().update(**self.params.__dict__).run()
-        fig = bar_plot(params=self.params, df=df)
+        fig = pie_plot(params=self.params, dataframe=df)
 
         return fig
+
+
+#

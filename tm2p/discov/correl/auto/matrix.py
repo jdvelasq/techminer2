@@ -29,17 +29,17 @@ Smoke Test:
     ...     #
     ...     .run()
     ... ).round(3)
-                                       fintech 117:25478  ...  financial services 007:01673
-    fintech 117:25478                                1.0  ...                         0.000
-    financial inclusion 017:03823                    0.0  ...                         0.013
-    financial technology 014:02508                   0.0  ...                         0.031
-    green finance 011:02844                          0.0  ...                         0.000
-    blockchain 011:02023                             0.0  ...                         0.000
-    banking 010:02599                                0.0  ...                         0.190
-    china 009:01947                                  0.0  ...                         0.000
-    innovation 009:01703                             0.0  ...                         0.206
-    artificial intelligence 008:01915                0.0  ...                         0.000
-    financial services 007:01673                     0.0  ...                         1.000
+                                      fintech 117:25478  ...  financial services 007:01673
+    fintech 117:25478                               1.0  ...                         0.000
+    financial inclusion 017:03823                   0.0  ...                         0.013
+    financial-technology 015:02734                  0.0  ...                         0.025
+    green finance 011:02844                         0.0  ...                         0.000
+    blockchain 011:02023                            0.0  ...                         0.000
+    banking 010:02599                               0.0  ...                         0.190
+    china 009:01947                                 0.0  ...                         0.000
+    innovation 009:01703                            0.0  ...                         0.206
+    artificialintelligence 008:01915                0.0  ...                         0.000
+    financial services 007:01673                    0.0  ...                         1.000
     <BLANKLINE>
     [10 rows x 10 columns]
 
@@ -68,19 +68,20 @@ Smoke Test:
     ...     #
     ...     .run()
     ... ).round(3)
-                                       fintech 117:25478  ...  financial services 007:01673
-    fintech 117:25478                                1.0  ...                           0.0
-    financial inclusion 017:03823                    0.0  ...                           0.0
-    financial technology 014:02508                   0.0  ...                           0.0
-    green finance 011:02844                          0.0  ...                           0.0
-    blockchain 011:02023                             0.0  ...                           0.0
-    banking 010:02599                                0.0  ...                           0.0
-    china 009:01947                                  0.0  ...                           0.0
-    innovation 009:01703                             0.0  ...                           0.0
-    artificial intelligence 008:01915                0.0  ...                           0.0
-    financial services 007:01673                     0.0  ...                           0.0
+                                      fintech 117:25478  ...  financial services 007:01673
+    fintech 117:25478                               1.0  ...                           0.0
+    financial inclusion 017:03823                   0.0  ...                           0.0
+    financial-technology 015:02734                  0.0  ...                           0.0
+    green finance 011:02844                         0.0  ...                           0.0
+    blockchain 011:02023                            0.0  ...                           0.0
+    banking 010:02599                               0.0  ...                           0.0
+    china 009:01947                                 0.0  ...                           0.0
+    innovation 009:01703                            0.0  ...                           0.0
+    artificialintelligence 008:01915                0.0  ...                           0.0
+    financial services 007:01673                    0.0  ...                           0.0
     <BLANKLINE>
     [10 rows x 10 columns]
+
 
     >>> (
     ...     Matrix()
@@ -106,19 +107,20 @@ Smoke Test:
     ...     #
     ...     .run()
     ... ).round(3)
-                                       fintech 117:25478  ...  financial services 007:01673
-    fintech 117:25478                              1.000  ...                         0.034
-    financial inclusion 017:03823                  0.120  ...                         0.059
-    financial technology 014:02508                 0.060  ...                         0.071
-    green finance 011:02844                        0.068  ...                         0.000
-    blockchain 011:02023                           0.068  ...                         0.000
-    banking 010:02599                              0.060  ...                         0.200
-    china 009:01947                                0.060  ...                         0.000
-    innovation 009:01703                           0.051  ...                         0.222
-    artificial intelligence 008:01915              0.051  ...                         0.000
-    financial services 007:01673                   0.034  ...                         1.000
+                                      fintech 117:25478  ...  financial services 007:01673
+    fintech 117:25478                             1.000  ...                         0.034
+    financial inclusion 017:03823                 0.120  ...                         0.059
+    financial-technology 015:02734                0.068  ...                         0.067
+    green finance 011:02844                       0.068  ...                         0.000
+    blockchain 011:02023                          0.068  ...                         0.000
+    banking 010:02599                             0.060  ...                         0.200
+    china 009:01947                               0.060  ...                         0.000
+    innovation 009:01703                          0.051  ...                         0.222
+    artificialintelligence 008:01915              0.051  ...                         0.000
+    financial services 007:01673                  0.034  ...                         1.000
     <BLANKLINE>
     [10 rows x 10 columns]
+
 
 """
 

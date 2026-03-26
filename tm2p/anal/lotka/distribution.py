@@ -18,18 +18,17 @@ Smoke tests:
     ... )
     >>> print(df.to_string())  # doctest: +NORMALIZE_WHITESPACE
        DOC_WRITTEN  N_AUTH  AUTH_PROP  N_AUTH_THEO  PROP_AUTH_THEO
-    0            1     425      0.897      425.000           0.714
-    1            2      41      0.086      106.250           0.178
-    2            3       7      0.015       47.222           0.079
-    3            5       1      0.002       17.000           0.029
-
+    0            1     433      0.910      433.000           0.714
+    1            2      36      0.076      108.250           0.178
+    2            3       6      0.013       48.111           0.079
+    3            5       1      0.002       17.320           0.029
 
 
 """
 
 from tm2p import Field, ItemOrderBy
 from tm2p._intern import ParamsMixin
-from tm2p.anal.metrics import Metrics
+from tm2p.anal.item_metrics import Metrics
 
 
 class Distribution(

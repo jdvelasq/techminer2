@@ -1,31 +1,32 @@
 """
-WordCloud
+BarPlot
 ===============================================================================
 
-.. image:: ../_generated/px.anal.bibliom.word_cloud.png
-    :width: 800px
-    :align: center
+.. raw:: html
+
+    <iframe src="../_generated/px.anal.bibliom.bar_plot.html"
+    height="450" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
     >>> from tm2p import Field, ItemOrderBy
-    >>> from tm2p.anal.metrics import WordCloud
+    >>> from tm2p.anal.item_metrics import BarPlot
     >>> plot = (
-    ...     WordCloud()
+    ...     BarPlot()
     ...     #
     ...     # FIELD:
-    ...     .with_source_field(Field.AUTHKW_NORM)
+    ...     .with_source_field(Field.SRC_ISO4)
     ...     #
     ...     # TERMS:
-    ...     .having_items_in_top(80)
+    ...     .having_items_in_top(10)
     ...     .having_items_ordered_by(ItemOrderBy.OCC)
-    ...     #
     ...     .having_item_occurrences_between(None, None)
     ...     .having_item_citations_between(None, None)
     ...     .having_items_in(None)
     ...     #
     ...     # PLOT:
-    ...     .using_plot_width(2400)
-    ...     .using_plot_height(2400)
+    ...     .using_title_text("Bar Plot")
+    ...     .using_xaxes_title_text("Occurrences")
+    ...     .using_yaxes_title_text("OCC")
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/scopus/")
@@ -35,19 +36,18 @@ Smoke tests:
     ...     .run()
     ... )
     >>> type(plot).__name__
-    'Image'
-    >>> plot.save("docsrc/_generated/px.anal.bibliom.word_cloud.png")
-
+    'Figure'
+    >>> plot.write_html("docsrc/_generated/px.anal.bibliom.bar_plot.html")
 
 """
 
 from tm2p._intern import ParamsMixin
-from tm2p._intern.plot.word_cloud import word_cloud
+from tm2p._intern.plot.bar_plot import bar_plot
 
 from .metrics import Metrics
 
 
-class WordCloud(
+class BarPlot(
     ParamsMixin,
 ):
     """:meta private:"""
@@ -55,9 +55,6 @@ class WordCloud(
     def run(self):
 
         df = Metrics().update(**self.params.__dict__).run()
-        fig = word_cloud(params=self.params, dataframe=df)
+        fig = bar_plot(params=self.params, df=df)
 
         return fig
-
-
-#

@@ -9,7 +9,7 @@ ColumnPlot
 
 Smoke tests:
     >>> from tm2p import Field, ItemOrderBy
-    >>> from tm2p.anal.metrics import ColumnPlot
+    >>> from tm2p.anal.item_metrics import ColumnPlot
     >>> plot = (
     ...     ColumnPlot()
     ...     #

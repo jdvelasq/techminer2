@@ -3,7 +3,7 @@ Main information
 ===============================================================================
 
 Smoke test:
-    >>> from tm2p.discov.main_inf import Metrics
+    >>> from tm2p.anal.main_metrics import Metrics
     >>> df = (
     ...     Metrics()
     ...     #
@@ -47,35 +47,35 @@ Smoke test:
                    Retracted                                               1
                    Review                                                 14
                    Short survey                                            1
-    AUTHORS        Author appearances                                    533
-                   Average authors per document                         2.96
-                   Average authors per multi-authored documents         3.32
-                   Collaboration index                                  3.32
+    AUTHORS        Author appearances                                    528
+                   Average authors per document                         2.93
+                   Average authors per multi-authored documents         3.31
+                   Collaboration index                                  3.31
                    Documents per author appearance                      0.34
-                   Internationally co-authored documents %             41.11
-                   Number of authors                                     474
+                   Internationally co-authored documents %             42.05
+                   Number of authors                                     476
                    Number of authors of single-authored documents         28
-                   Number of multi-authored documents                    152
+                   Number of multi-authored documents                    151
                    Number of single-authored documents                    28
-    AFFILIATIONS   Number of countries                                    54
-                   Number of countries (1st author)                       37
-                   Number of organizations                               350
-                   Number of organizations (1st author)                  150
-                   Number of regions                                      19
-                   Number of subregions                                   32
-    KEYWORDS       Number of author keywords (norm)                      535
-                   Number of author keywords (raw)                       582
+    AFFILIATIONS   Number of countries                                    53
+                   Number of countries (1st author)                       36
+                   Number of organizations                               168
+                   Number of organizations (1st author)                  168
+                   Number of regions                                       5
+                   Number of subregions                                   14
+    KEYWORDS       Number of author keywords (norm)                      531
+                   Number of author keywords (raw)                       538
                    Number of index keywords (norm)                       544
-                   Number of index keywords (raw)                        571
-                   Number of keywords (norm)                             949
-                   Number of keywords (raw)                              949
-    NLP            Number of SpaCy NP phrases                           4992
-                   Number of TextBlob NP phrases                        3055
-                   Number of abstract NP phrases (tok)                  4873
-                   Number of title NP phrases (tok)                      489
-                   Number of NP phrases (tok)                           5066
-                   Number of keywords + NP phrases (tok)                 949
-                   Number of keywords + NP phrases (norm)                949
+                   Number of index keywords (raw)                        546
+                   Number of keywords (norm)                             944
+                   Number of keywords (raw)                              944
+    NLP            Number of SpaCy NP phrases                           4679
+                   Number of TextBlob NP phrases                        2837
+                   Number of abstract NP phrases (tok)                  4648
+                   Number of title NP phrases (tok)                      481
+                   Number of NP phrases (tok)                           4831
+                   Number of keywords + NP phrases (tok)                 944
+                   Number of keywords + NP phrases (norm)                944
 
 
 
@@ -301,11 +301,9 @@ class Metrics(
         #
         # =====================================================================
         def compute_document_type_stats(stats):
-            records = dataframe[[Field.DOCTYPE_NORM.value]].dropna()
+            records = dataframe[[Field.DOCTYPE.value]].dropna()
             document_types_count = (
-                records[[Field.DOCTYPE_NORM.value]]
-                .groupby(Field.DOCTYPE_NORM.value)
-                .size()
+                records[[Field.DOCTYPE.value]].groupby(Field.DOCTYPE.value).size()
             )
             for document_type, count in zip(
                 document_types_count.index, document_types_count

@@ -56,7 +56,7 @@ from tm2p._intern import ParamsMixin
 from tm2p._intern.packag_data.templates.load_builtin_template import (
     load_builtin_template,
 )
-from tm2p.anal.metrics.metrics import Metrics as DominantDataFrame
+from tm2p.anal.item_metrics.metrics import Metrics as DominantDataFrame
 
 # -----------------------------------------------------------------------------
 

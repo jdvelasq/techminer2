@@ -10,14 +10,14 @@ MARKER_LINE_COLOR = "#465c6b"
 
 def ranking_chart(
     params: Params,
-    dataframe: pd.DataFrame,
+    df: pd.DataFrame,
 ) -> go.Figure:
 
     fig = px.line(
-        dataframe,
+        df,
         x="Rank",
         y=params.items_order_by.value,
-        hover_data=dataframe.columns.to_list(),
+        hover_data=df.columns.to_list(),
         markers=True,
     )
 
@@ -55,7 +55,7 @@ def ranking_chart(
         title=params.xaxes_title_text,
     )
 
-    for name, row in dataframe.iterrows():
+    for name, row in df.iterrows():
         fig.add_annotation(
             x=row["Rank"],
             y=row[params.items_order_by.value],

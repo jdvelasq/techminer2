@@ -34,7 +34,7 @@ Smoke tests:
        NODE                            NAME  DEGREE
     0     0               fintech 117:25478      19
     1     1   financial inclusion 017:03823      13
-    2     2  financial technology 014:02508      11
+    2     2  financial-technology 015:02734      11
     3     3               banking 010:02599      10
     4     4         green finance 011:02844       9
 
@@ -68,7 +68,7 @@ Smoke tests:
        NODE                  NAME  DEGREE
     0     0               fintech      19
     1     1   financial inclusion      13
-    2     2  financial technology      11
+    2     2  financial-technology      11
     3     3               banking      10
     4     4         green finance       9
 

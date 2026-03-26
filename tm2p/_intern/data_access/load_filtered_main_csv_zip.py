@@ -157,7 +157,7 @@ def _filter_dataframe_by_match(params: Params, df: pd.DataFrame) -> pd.DataFrame
                 filtered_df[filter_name.value].isin(filter_value), :
             ]
             filtered_df = filtered_df.loc[
-                filtered_df[Field.RID.value].isin(filtered_df[Field.RID.value]), :
+                filtered_df[Field.REC_ID.value].isin(filtered_df[Field.REC_ID.value]), :
             ]
 
     final_df = df.loc[df[Field.REC_ID.value].isin(filtered_df[Field.REC_ID.value]), :]
@@ -251,7 +251,7 @@ def _sort_dataframe_by(params: Params, df: pd.DataFrame) -> pd.DataFrame:
     elif sort_by == RecordOrderBy.SRC_A_TO_Z:
         df = df.sort_values(
             [
-                Field.SRC_NORM.value,
+                Field.SRC_ISO4.value,
                 Field.GCS.value,
                 Field.LCS.value,
             ],
@@ -261,7 +261,7 @@ def _sort_dataframe_by(params: Params, df: pd.DataFrame) -> pd.DataFrame:
     elif sort_by == RecordOrderBy.SRC_Z_TO_A:
         df = df.sort_values(
             [
-                Field.SRC_NORM.value,
+                Field.SRC_ISO4.value,
                 Field.GCS.value,
                 Field.LCS.value,
             ],

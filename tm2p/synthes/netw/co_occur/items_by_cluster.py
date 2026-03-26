@@ -33,21 +33,20 @@ Smoke tests:
     ...     .run()
     ... )
     >>> df
-                                        0  ...                             2
-    0                   fintech 117:25478  ...             banking 010:02599
-    1       financial inclusion 017:03823  ...          innovation 009:01703
-    2             green finance 011:02844  ...  financial services 007:01673
-    3                blockchain 011:02023  ...          technology 007:01409
-    4                     china 009:01947  ...
-    5   artificial intelligence 008:01915  ...
-    6              crowdfunding 007:01245  ...
-    7                   regtech 006:01481  ...
-    8            sustainability 006:01357  ...
-    9           digital finance 005:02052  ...
-    10                 covid-19 005:01068  ...
-    11                    banks 005:00769  ...
+                                      0  ...                             2
+    0                 fintech 117:25478  ...             banking 010:02599
+    1     financial inclusion 017:03823  ...          innovation 009:01703
+    2              blockchain 011:02023  ...  financial services 007:01673
+    3                   china 009:01947  ...          technology 007:01409
+    4  artificialintelligence 008:01915  ...               banks 005:00769
+    5           crowd-funding 007:01245  ...
+    6                reg-tech 006:01481  ...
+    7          sustainability 006:01357  ...
+    8                covid-19 006:01224  ...
+    9         digital finance 005:02052  ...
     <BLANKLINE>
-    [12 rows x 3 columns]
+    [10 rows x 3 columns]
+
 
 
     >>> df = (
@@ -77,19 +76,17 @@ Smoke tests:
     ...     .run()
     ... )
     >>> df  # doctest: +NORMALIZE_WHITESPACE
-                              0                        1                   2
-    0                   fintech     financial technology             banking
-    1       financial inclusion       financial literacy          innovation
-    2             green finance          economic growth  financial services
-    3                blockchain  sustainable development          technology
-    4                     china
-    5   artificial intelligence
-    6              crowdfunding
-    7                   regtech
-    8            sustainability
-    9           digital finance
-    10                 covid-19
-    11                    banks
+                            0                        1                   2
+    0                 fintech     financial-technology             banking
+    1     financial inclusion            green finance          innovation
+    2              blockchain       financial literacy  financial services
+    3                   china          economic-growth          technology
+    4  artificialintelligence  sustainable development               banks
+    5           crowd-funding
+    6                reg-tech
+    7          sustainability
+    8                covid-19
+    9         digital finance
 
 
 """

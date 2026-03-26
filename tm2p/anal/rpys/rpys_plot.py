@@ -1,9 +1,5 @@
 """
-.. raw:: html
-
-    <iframe src="../_generated/px.anal.rpys.rpys_plot.html"
-    height="800px" width="100%" frameBorder="0"></iframe>
-
+RPYSPlot
 ===============================================================================
 
 .. raw:: html
@@ -18,11 +14,10 @@ Smoke tests:
     ...     RPYSPlot()
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/wos/")
     ...     .run()
     ... )
     >>> plot.write_html("docsrc/_generated/px.anal.rpys.rpys_plot.html")
-
 
 
 """

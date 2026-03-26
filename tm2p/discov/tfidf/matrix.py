@@ -41,14 +41,15 @@ Smoke tests:
     True
     >>> df.head()
     AUTHKW_NORM                                         fintech 117:25478  ...  financial services 007:01673
-    RID                                                                    ...
-    Agarwal, 2020, ASIAPACIFIC J FINANC STUD, V49, ...                  1  ...                             0
-    Ajouz, 2023, CUAD ECON, V46, P189                                   1  ...                             0
-    Al-Sartawi, 2024, J FINANC REPORT ACCOUNT                           1  ...                             0
-    Aldboush, 2023, INT J FINANC STUD, V11                              1  ...                             0
-    Allen, 2021, REV CORP FINANC, V1, P259                              1  ...                             0
+    REC_ID                                                                 ...
+    Agarwal S, 2020, ASIA-PAC J FINANC STUD, V49, P...                  1  ...                             0
+    Ajouz M, 2023, CUAD ECON, V46, P189, DOI 10.328...                  1  ...                             0
+    Al-Sartawi A, 2024, J FINANC REP ACC, DOI 10.11...                  1  ...                             0
+    Aldboush HHH, 2023, INTERN J FINANC STUD, V11, ...                  1  ...                             0
+    Allen F, 2021, REV CORP FINANC, V1, P259, DOI 1...                  1  ...                             0
     <BLANKLINE>
     [5 rows x 10 columns]
+
 
     >>> df = (
     ...     Matrix()
@@ -80,12 +81,12 @@ Smoke tests:
     ... )
     >>> df.head()
                                                         fintech  ...  financial services
-    RID                                                          ...
-    Agarwal, 2020, ASIAPACIFIC J FINANC STUD, V49, ...        1  ...                   0
-    Ajouz, 2023, CUAD ECON, V46, P189                         1  ...                   0
-    Al-Sartawi, 2024, J FINANC REPORT ACCOUNT                 1  ...                   0
-    Aldboush, 2023, INT J FINANC STUD, V11                    1  ...                   0
-    Allen, 2021, REV CORP FINANC, V1, P259                    1  ...                   0
+    REC_ID                                                       ...
+    Agarwal S, 2020, ASIA-PAC J FINANC STUD, V49, P...        1  ...                   0
+    Ajouz M, 2023, CUAD ECON, V46, P189, DOI 10.328...        1  ...                   0
+    Al-Sartawi A, 2024, J FINANC REP ACC, DOI 10.11...        1  ...                   0
+    Aldboush HHH, 2023, INTERN J FINANC STUD, V11, ...        1  ...                   0
+    Allen F, 2021, REV CORP FINANC, V1, P259, DOI 1...        1  ...                   0
     <BLANKLINE>
     [5 rows x 10 columns]
 
@@ -98,7 +99,7 @@ from sklearn.feature_extraction.text import TfidfTransformer  # type: ignore
 from tm2p._intern import ParamsMixin, SortAxesMixin
 from tm2p._intern.data_access import load_filtered_main_csv_zip
 from tm2p._intern.get_zero_digits import get_zero_digits
-from tm2p.anal.metrics import Metrics
+from tm2p.anal.item_metrics import Metrics
 from tm2p.enum.column import COUNTERS, GCS, OCC, RID
 
 

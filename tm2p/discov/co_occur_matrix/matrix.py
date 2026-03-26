@@ -33,21 +33,19 @@ Smoke tests:
     True
     >>> df.shape[1] > 1
     True
-    >>> df.head(10)
-    columns                            fintech 117:25478  ...  financial services 007:01673
-    rows                                                  ...
-    fintech 117:25478                                117  ...                             4
-    financial inclusion 017:03823                     14  ...                             1
-    financial technology 014:02508                     7  ...                             1
-    green finance 011:02844                            8  ...                             0
-    blockchain 011:02023                               8  ...                             0
-    banking 010:02599                                  7  ...                             2
-    china 009:01947                                    7  ...                             0
-    innovation 009:01703                               6  ...                             2
-    artificial intelligence 008:01915                  6  ...                             0
-    financial services 007:01673                       4  ...                             7
-    <BLANKLINE>
-    [10 rows x 10 columns]
+    >>> print(df.head(10).to_string())  # doctest: +NORMALIZE_WHITESPACE
+    columns                           fintech 117:25478  financial inclusion 017:03823  financial-technology 015:02734  green finance 011:02844  blockchain 011:02023  banking 010:02599  china 009:01947  innovation 009:01703  artificialintelligence 008:01915  financial services 007:01673
+    rows
+    fintech 117:25478                               117                             14                               8                        8                     8                  7                7                     6                                 6                             4
+    financial inclusion 017:03823                    14                             17                               1                        1                     1                  2                0                     0                                 1                             1
+    financial-technology 015:02734                    8                              1                              15                        1                     1                  0                2                     0                                 1                             1
+    green finance 011:02844                           8                              1                               1                       11                     0                  0                1                     0                                 0                             0
+    blockchain 011:02023                              8                              1                               1                        0                    11                  1                0                     0                                 2                             0
+    banking 010:02599                                 7                              2                               0                        0                     1                 10                0                     2                                 1                             2
+    china 009:01947                                   7                              0                               2                        1                     0                  0                9                     2                                 0                             0
+    innovation 009:01703                              6                              0                               0                        0                     0                  2                2                     9                                 0                             2
+    artificialintelligence 008:01915                  6                              1                               1                        0                     2                  1                0                     0                                 8                             0
+    financial services 007:01673                      4                              1                               1                        0                     0                  2                0                     2                                 0                             7
 
 
 

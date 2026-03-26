@@ -1,6 +1,6 @@
 import sys
 
-from tm2p.anal.metrics import Metrics  # type: ignore
+from tm2p.anal.item_metrics import Metrics  # type: ignore
 from tm2p.synthes.netw.co_occur import ClusterToItems
 
 

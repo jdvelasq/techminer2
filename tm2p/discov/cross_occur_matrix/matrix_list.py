@@ -42,18 +42,17 @@ Smoke tests:
     >>> df.shape[1] > 1
     True
     >>> df.head(10)
-                          rows            columns  OCC
-    0    Jagtiani J. 005:01156  fintech 117:25478    5
-    1      Dolata M. 003:00330  fintech 117:25478    3
-    2      Hornuf L. 003:00904  fintech 117:25478    3
-    3          Li X. 003:00894  fintech 117:25478    3
-    4     Schwabe G. 003:00330  fintech 117:25478    3
-    5  Zavolokina L. 003:00330  fintech 117:25478    3
-    6   Al-Okaily M. 002:00191  fintech 117:25478    2
-    7  Al-Sartawi A. 002:00274  fintech 117:25478    2
-    8       Allen F. 002:00474  fintech 117:25478    2
-    9     Arner D.W. 003:00911  fintech 117:25478    2
-
+                         rows            columns  OCC
+    0    Jagtiani J 005:01156  fintech 117:25478    5
+    1      Dolata M 003:00330  fintech 117:25478    3
+    2      Hornuf L 003:00904  fintech 117:25478    3
+    3     Schwabe G 003:00330  fintech 117:25478    3
+    4  Zavolokina L 003:00330  fintech 117:25478    3
+    5   Al-Okaily M 002:00191  fintech 117:25478    2
+    6  Al-Sartawi A 002:00274  fintech 117:25478    2
+    7       Allen F 002:00474  fintech 117:25478    2
+    8      Arner DW 003:00911  fintech 117:25478    2
+    9      Arnone G 002:00266  fintech 117:25478    2
 
 
     >>> from tm2p import Field, ItemOrderBy
@@ -95,17 +94,17 @@ Smoke tests:
     >>> df.shape[1] > 1
     True
     >>> df.head(10)
-                          rows               columns  OCC
-    0    Jagtiani J. 005:01156     fintech 117:25478    5
-    1      Dolata M. 003:00330     fintech 117:25478    3
-    2      Hornuf L. 003:00904     fintech 117:25478    3
-    3          Li X. 003:00894     fintech 117:25478    3
-    4     Schwabe G. 003:00330     fintech 117:25478    3
-    5  Zavolokina L. 003:00330     fintech 117:25478    3
-    6     Arner D.W. 003:00911     fintech 117:25478    2
-    7      Dolata M. 003:00330  innovation 009:01703    2
-    8     Schwabe G. 003:00330  innovation 009:01703    2
-    9  Zavolokina L. 003:00330  innovation 009:01703    2
+                         rows               columns  OCC
+    0    Jagtiani J 005:01156     fintech 117:25478    5
+    1      Dolata M 003:00330     fintech 117:25478    3
+    2      Hornuf L 003:00904     fintech 117:25478    3
+    3     Schwabe G 003:00330     fintech 117:25478    3
+    4  Zavolokina L 003:00330     fintech 117:25478    3
+    5      Arner DW 003:00911     fintech 117:25478    2
+    6      Dolata M 003:00330  innovation 009:01703    2
+    7     Schwabe G 003:00330  innovation 009:01703    2
+    8  Zavolokina L 003:00330  innovation 009:01703    2
+    9      Arner DW 003:00911       china 009:01947    1
 
 
 """
