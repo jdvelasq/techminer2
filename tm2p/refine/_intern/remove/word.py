@@ -1,18 +1,22 @@
 """
 Smoke tests:
     >>> from tm2p.enum import ThFile
-    >>> from tm2p.refine._intern.replace import BaseReplaceLastWord
+    >>> from tm2p.refine._intern.replace import BaseWord
     >>> (
-    ...     BaseReplaceLastWord()
+    ...     BaseWord()
     ...     .with_thesaurus_file(ThFile.CONCEPT)
     ...     .having_word("business")
-    ...     .having_replacement("BUSINESS")
     ...     .where_root_directory("tests/scopus/")
     ...     .using_colored_output(False)
     ...     .run()
     ... )
 
-
+    >>> from tm2p.refine.concept.reset import Reset
+    >>> (
+    ...     Reset()
+    ...     .where_root_directory("tests/scopus/")
+    ...     .run()
+    ... )
 
 """
 
@@ -24,7 +28,7 @@ from tm2p.refine._intern.data_access import (
 )
 
 
-class BaseReplaceLastWord(
+class BaseWord(
     ParamsMixin,
 ):
     """:meta private:"""
@@ -44,9 +48,9 @@ class BaseReplaceLastWord(
             lambda x: f" {x} " if isinstance(x, str) else x
         )
         df[ThField.PREFERRED.value] = df[ThField.PREFERRED.value].str.replace(
-            f" {self.params.word} $",
-            f" {self.params.replacement} ",
-            regex=True,
+            f" {self.params.word} ",
+            " ",
+            regex=False,
         )
         df[ThField.PREFERRED.value] = df[ThField.PREFERRED.value].str.strip()
         df = df.explode(ThField.VARIANT.value)  #  type: ignore

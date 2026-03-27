@@ -22,7 +22,7 @@ Smoke tests:
 
 from tm2p._intern import ParamsMixin
 from tm2p.enum import ThFile
-from tm2p.refine._intern.remove import BaseRemoveInitialWord
+from tm2p.refine._intern.remove import BaseInitialWord
 
 
 class RemoveInitialWord(
@@ -34,7 +34,7 @@ class RemoveInitialWord(
         """:meta private:"""
 
         return (
-            BaseRemoveInitialWord()
+            BaseInitialWord()
             .update(**self.params.__dict__)
             .with_thesaurus_file(ThFile.ORG)
             .run()

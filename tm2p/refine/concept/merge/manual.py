@@ -1,40 +1,43 @@
 """
-GetVariants
+Manual
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.refine.concept.get import GetVariants
-    >>> terms = (
-    ...     GetVariants()
+    >>> from tm2p.refine.concept.group import Auto
+    >>> (
+    ...     Auto()
     ...     .having_text_matching(
     ...         (
-    ...             "fintech",
-    ...             "fintech technology",
+    ...             "fintech innovation",
+    ...             "fin-tech innovation",
     ...         )
     ...     )
     ...     .where_root_directory("tests/scopus/")
     ...     .run()
     ... )
-    >>> terms[:5]
-    ['fintech', 'fintech technology']
 
 """
 
+from tm2p._intern import ParamsMixin
 from tm2p.enum import ThFile
-from tm2p.refine._intern.get import BaseGetVariants
+from tm2p.refine._intern.merge import BaseManual
 
 
-class GetVariants(
-    BaseGetVariants,
+class Manual(
+    ParamsMixin,
 ):
     """:meta private:"""
 
     def run(self):
         """:meta private:"""
 
-        return (
-            BaseGetVariants()
+        from ..apply import Apply
+
+        (
+            BaseManual()
             .update(**self.params.__dict__)
             .with_thesaurus_file(ThFile.CONCEPT)
             .run()
         )
+
+        return Apply().where_root_directory(self.params.root_directory).run()

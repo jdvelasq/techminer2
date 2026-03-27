@@ -1,5 +1,5 @@
 """
-Apply Thesaurus
+Apply
 ===============================================================================
 
 Smoke tests:
@@ -9,10 +9,6 @@ Smoke tests:
     ...     .where_root_directory("tests/scopus/")
     ...     .run()
     ... )
-    180
-
-
-
 
 """
 

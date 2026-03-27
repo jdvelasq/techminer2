@@ -1,9 +1,9 @@
 """
 Smoke tests:
     >>> from tm2p.enum import ThFile
-    >>> from tm2p.refine._intern.replace import BaseReplaceInitialWord
+    >>> from tm2p.refine._intern.replace import BaseInitialWord
     >>> (
-    ...     BaseReplaceInitialWord()
+    ...     BaseInitialWord()
     ...     .with_thesaurus_file(ThFile.CONCEPT)
     ...     .having_word("business")
     ...     .having_replacement("BUSINESS")
@@ -12,7 +12,12 @@ Smoke tests:
     ...     .run()
     ... )
 
-
+    >>> from tm2p.refine.concept.reset import Reset
+    >>> (
+    ...     Reset()
+    ...     .where_root_directory("tests/scopus/")
+    ...     .run()
+    ... )
 
 """
 
@@ -24,7 +29,7 @@ from tm2p.refine._intern.data_access import (
 )
 
 
-class BaseReplaceInitialWord(
+class BaseInitialWord(
     ParamsMixin,
 ):
     """:meta private:"""

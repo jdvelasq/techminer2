@@ -1,60 +1,54 @@
 """
-Define Key
+Define
 ===============================================================================
 
 Smoke tests:
-    >>> # Preparation
-    >>> from tm2p.refine.thesaurus_old.descriptors import InitializeThesaurus
-    >>> from tm2p.refine.thesaurus_old.descriptors import ApplyThesaurus
-    >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
-    >>> ApplyThesaurus(root_directory="examples/fintech/", quiet=True).run()
-
-    >>> # Use
-    >>> from tm2p.refine.thesaurus_old.descriptors import DefineTerm
+    >>> from tm2p.refine.concept.ai import Define
     >>> definitions = (
-    ...     DefineTerm()
+    ...     Define()
     ...     #
     ...     # FIELD:
     ...     .with_core_area("FINTECH (financial technologies)")
-    ...     .with_patterns(['FINTECH', 'FINANCIAL_TECHNOLOGIES'])
+    ...     .having_text_matching(('fintech', 'financial technologies'))
     ...     .having_n_contexts(10)
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/scopus/")
-    ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     .where_records_match(None)
     ...     #
     ...     .run()
-    ... ) # doctest: +SKIP
+    ... )  # doctest: +IGNORE
     >>> from textwrap import fill
     >>> for definiition in definitions:
-    ...     print(fill(definiition, width=70)) # doctest: +SKIP
-    FINTECH, short for financial technology, refers to the innovative use
-    of technology in the design and delivery of financial products and
-    services. it has become a crucial component of modern banking,
-    enabling banks to compete with nonfinancial institutions offering
-    services like payments. FINTECH encompasses a wide range of
-    applications, including robo-advising, artificial intelligence, and
-    cryptocurrencies, fundamentally altering banking operations, capital
-    raising, and even the concept of money. the rapid growth of FINTECH
-    has prompted regulatory bodies to prioritize its supervision.
-    understanding the perceived benefits and risks of FINTECH is essential
-    for its adoption across diverse user types and sectors, such as
-    agriculture sustainability.
-    FINANCIAL TECHNOLOGIES, commonly referred to as fintech, encompass the
-    design and delivery of financial products and services through
-    advanced technology. they have become integral to modern banking,
-    extending beyond traditional financial services to include innovations
-    like payment services, robo-advising, and cryptocurrencies. fintech
-    has transformed the financial landscape, prompting nonfinancial
-    institutions to enter the market and challenging existing regulatory
-    frameworks. the sector's growth is driven by technological and
-    economic factors, influencing user adoption based on perceived
-    benefits and risks. fintech also supports broader applications, such
-    as enhancing agricultural sustainability and reshaping capital raising
-    and monetary forms.
+    ...     print(fill(definiition, width=70))
+    ...     print("...")  # doctest: +IGNORE
+    FINTECH, short for financial technology, refers to the innovative
+    integration of technology into financial services, aiming to enhance
+    financial inclusion and efficiency. it encompasses a wide range of
+    applications, including blockchain, artificial intelligence, and the
+    metaverse, to offer new products and services. FINTECH plays a crucial
+    role in digital transformation within the financial sector, as seen in
+    regions like the uae, where it provides a competitive edge.
+    additionally, FINTECH contributes positively to environmental
+    sustainability by promoting green finance and improving the green
+    environmental index through financial breadth, depth, and
+    digitalization. its transformative potential is evident in its ability
+    to mediate green credit and investment.
+    ...
+    FINANCIAL TECHNOLOGIES, commonly referred to as fintech, represent the
+    integration of innovation and technology within the financial sector
+    to enhance and transform financial services. fintech encompasses a
+    wide range of applications, including blockchain, artificial
+    intelligence, and the metaverse, aimed at providing financial
+    inclusion and new products to stakeholders. it plays a crucial role in
+    digital transformation, as seen in regions like the united arab
+    emirates, where fintech drives competitive advantage in the banking
+    sector. additionally, fintech contributes to environmental
+    sustainability by promoting green finance and positively influencing
+    the green environmental index through financial breadth, depth, and
+    digitalization.
 
 
 """
@@ -71,14 +65,14 @@ from tm2p._intern.packag_data.templates.load_builtin_template import (
 )
 
 
-class DefineTerm(
+class Define(
     ParamsMixin,
 ):
     """:meta private:"""
 
     def run(self):
 
-        from tm2p._refine000.concept._init_ import GetContexts
+        from tm2p.refine.concept.get import GetContexts
 
         client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
         contexts = GetContexts().update(**self.params.__dict__).run()
@@ -113,7 +107,7 @@ class DefineTerm(
                             "role": "system",
                             "content": system_prompt,
                             "cache_control": {"type": "ephemeral"},
-                        },
+                        },  # type: ignore
                         {
                             "role": "user",
                             "content": user_prompt,
@@ -125,10 +119,10 @@ class DefineTerm(
 
             except openai.OpenAIError as e:
                 print(f"Error processing the query: {e}")
-                raise ValueError("API error")
+                raise ValueError("API error") from e
 
             answer = response.choices[0].message.content
-            answer = answer.strip()
+            answer = answer.strip()  # type: ignore
             answer = json.loads(answer)
             answer = answer["text"]
             answer = answer.lower().strip()

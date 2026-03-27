@@ -1,11 +1,11 @@
 """
-ReplaceInitialWord
+InitialWord
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.refine.concept.replace import ReplaceInitialWord
+    >>> from tm2p.refine.concept.replace import InitialWord
     >>> (
-    ...     ReplaceInitialWord()
+    ...     InitialWord()
     ...     .having_word("business")
     ...     .having_replacement("BUSINESS")
     ...     .where_root_directory("tests/scopus/")
@@ -14,7 +14,7 @@ Smoke tests:
 
     >>> from tm2p.refine.concept.reset import Reset
     >>> (
-    ...     ReplaceInitialWord()
+    ...     Reset()
     ...     .where_root_directory("tests/scopus/")
     ...     .run()
     ... )
@@ -23,10 +23,10 @@ Smoke tests:
 
 from tm2p._intern import ParamsMixin
 from tm2p.enum import ThFile
-from tm2p.refine._intern.replace import BaseReplaceInitialWord
+from tm2p.refine._intern.replace import BaseInitialWord
 
 
-class ReplaceInitialWord(
+class InitialWord(
     ParamsMixin,
 ):
     """:meta private:"""
@@ -35,7 +35,7 @@ class ReplaceInitialWord(
         """:meta private:"""
 
         return (
-            BaseReplaceInitialWord()
+            BaseInitialWord()
             .update(**self.params.__dict__)
             .with_thesaurus_file(ThFile.CONCEPT)
             .run()

@@ -1,7 +1,7 @@
-from .auto_merge import BaseAutoMerge
-from .manuaL_merge import BaseManualMerge
+from .auto import BaseAuto
+from .manual import BaseManual
 
 __all__ = [
-    "BaseAutoMerge",
-    "BaseManualMerge",
+    "BaseAuto",
+    "BaseManual",
 ]

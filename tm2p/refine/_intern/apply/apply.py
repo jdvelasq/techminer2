@@ -13,12 +13,6 @@ Smoke tests:
     ...     .where_root_directory("tests/scopus/")
     ...     .run()
     ... )
-    180
-
-
-
-
-
 
 """
 
@@ -39,7 +33,7 @@ class BaseApply(
     """:meta private:"""
 
     # -------------------------------------------------------------------------
-    def run(self) -> int:
+    def run(self) -> None:
         """:meta private:"""
 
         SOURCE = self.params.source_field.value
@@ -67,8 +61,6 @@ class BaseApply(
         save_main_csv_zip(df=df, root_directory=self.params.root_directory)
 
         sys.stderr.write(
-            f"\n{df.shape[0]} {self.params.target_field.value} field records updated using {self.params.thesaurus_file.value}"
+            f"\nUsing {self.params.thesaurus_file.value} to update {self.params.target_field.value}"
         )
         sys.stderr.flush()
-
-        return df.shape[0]

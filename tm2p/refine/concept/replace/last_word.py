@@ -1,19 +1,20 @@
 """
-RemoveLastWord
+LastWord
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.refine.concept.remove import RemoveLastWord
+    >>> from tm2p.refine.concept.replace import LastWord
     >>> (
-    ...     RemoveLastWord()
+    ...     LastWord()
     ...     .having_word("business")
+    ...     .having_replacement("BUSINESS")
     ...     .where_root_directory("tests/scopus/")
     ...     .run()
     ... )
 
     >>> from tm2p.refine.concept.reset import Reset
     >>> (
-    ...     ReplaceInitialWord()
+    ...     Reset()
     ...     .where_root_directory("tests/scopus/")
     ...     .run()
     ... )
@@ -22,10 +23,10 @@ Smoke tests:
 
 from tm2p._intern import ParamsMixin
 from tm2p.enum import ThFile
-from tm2p.refine._intern.remove import BaseRemoveLastWord
+from tm2p.refine._intern.replace import BaseLastWord
 
 
-class RemoveLastWord(
+class LastWord(
     ParamsMixin,
 ):
     """:meta private:"""
@@ -34,7 +35,7 @@ class RemoveLastWord(
         """:meta private:"""
 
         return (
-            BaseRemoveLastWord()
+            BaseLastWord()
             .update(**self.params.__dict__)
             .with_thesaurus_file(ThFile.CONCEPT)
             .run()

@@ -1,9 +1,9 @@
-from .remove_initial_word import BaseRemoveInitialWord
-from .remove_last_word import BaseRemoveLastWord
-from .remove_word import BaseRemoveWord
+from .initial_word import BaseInitialWord
+from .last_word import BaseLastWord
+from .word import BaseWord
 
 __all__ = [
-    "BaseRemoveInitialWord",
-    "BaseRemoveLastWord",
-    "BaseRemoveWord",
+    "BaseInitialWord",
+    "BaseLastWord",
+    "BaseWord",
 ]

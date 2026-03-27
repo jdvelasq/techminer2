@@ -1,9 +1,9 @@
 """
 Smoke tests:
     >>> from tm2p.enum import ThFile, Field
-    >>> from tm2p.refine._intern.merge import BaseManualMerge
+    >>> from tm2p.refine._intern.merge import BaseManual
     >>> (
-    ...     BaseManualMerge()
+    ...     BaseManual()
     ...     .with_thesaurus_file(ThFile.CONCEPT)
     ...     .having_text_matching(
     ...         (
@@ -29,7 +29,7 @@ PREFERRED = ThField.PREFERRED.value
 VARIANT = ThField.VARIANT.value
 
 
-class BaseManualMerge(
+class BaseManual(
     ParamsMixin,
 ):
     """:meta private:"""

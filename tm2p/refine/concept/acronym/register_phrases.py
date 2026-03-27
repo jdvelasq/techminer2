@@ -30,88 +30,88 @@ Smoke tests:
 
 """
 
-import sys
-from importlib.resources import files
+# import sys
+# from importlib.resources import files
 
-from tm2p._intern import Params, ParamsMixin
+# from tm2p._intern import Params, ParamsMixin
 
-# from tm2p._intern.packag_data.word_lists import (
-#     internal__sort_text_processing_terms,
-# )
-from tm2p._refine000.thesaurus_old._intern import (
-    internal__get_user_thesaurus_file_path,
-    internal__load_thesaurus_as_mapping,
-)
+# # from tm2p._intern.packag_data.word_lists import (
+# #     internal__sort_text_processing_terms,
+# # )
+# # from tm2p._refine000.thesaurus_old._intern import (
+# #     internal__get_user_thesaurus_file_path,
+# #     internal__load_thesaurus_as_mapping,
+# # )
 
 
-class RegisterPhrases(
-    ParamsMixin,
-):
-    """:meta private:"""
+# class RegisterPhrases(
+#     ParamsMixin,
+# ):
+#     """:meta private:"""
 
-    #
-    # NOTIFICATIONS:
-    # -------------------------------------------------------------------------
-    def internal__notify_process_start(self):
+#     #
+#     # NOTIFICATIONS:
+#     # -------------------------------------------------------------------------
+#     def internal__notify_process_start(self):
 
-        sys.stderr.write("Registering new noun phrases...\n")
-        sys.stderr.flush()
+#         sys.stderr.write("Registering new noun phrases...\n")
+#         sys.stderr.flush()
 
-    # -------------------------------------------------------------------------
-    def internal__notify_process_end(self):
+#     # -------------------------------------------------------------------------
+#     def internal__notify_process_end(self):
 
-        sys.stderr.write("  Registration process completed successfully\n\n")
-        sys.stderr.flush()
+#         sys.stderr.write("  Registration process completed successfully\n\n")
+#         sys.stderr.flush()
 
-    #
-    # ALGORITHM:
-    # -------------------------------------------------------------------------
-    def internal__get_abbrevaviations_thesaurus_file_path(self):
+#     #
+#     # ALGORITHM:
+#     # -------------------------------------------------------------------------
+#     def internal__get_abbrevaviations_thesaurus_file_path(self):
 
-        params = (
-            Params()
-            .update(**self.params.__dict__)
-            .update(thesaurus_file="acronyms.the.txt")
-        )
+#         params = (
+#             Params()
+#             .update(**self.params.__dict__)
+#             .update(thesaurus_file="acronyms.the.txt")
+#         )
 
-        self.acronyms_path = internal__get_user_thesaurus_file_path(params=params)
+#         # self.acronyms_path = internal__get_user_thesaurus_file_path(params=params)
 
-    # -------------------------------------------------------------------------
-    def internal__load_acronyms_thesaurus_as_mapping(self):
-        self.mapping = internal__load_thesaurus_as_mapping(self.acronyms_path)
+#     # -------------------------------------------------------------------------
+#     def internal__load_acronyms_thesaurus_as_mapping(self):
+#         # self.mapping = internal__load_thesaurus_as_mapping(self.acronyms_path)
 
-    # -------------------------------------------------------------------------
-    def internal__make_new_terms_list(self):
+#     # -------------------------------------------------------------------------
+#     def internal__make_new_terms_list(self):
 
-        self.new_terms = []
-        for abbr, values in self.mapping.items():
-            if "_" in abbr:
-                self.new_terms.append(abbr)
-            for value in values:
-                if "_" in value:
-                    self.new_terms.append(value)
+#         self.new_terms = []
+#         for abbr, values in self.mapping.items():
+#             if "_" in abbr:
+#                 self.new_terms.append(abbr)
+#             for value in values:
+#                 if "_" in value:
+#                     self.new_terms.append(value)
 
-    # -------------------------------------------------------------------------
-    def internal__register_new_terms(self):
+#     # -------------------------------------------------------------------------
+#     def internal__register_new_terms(self):
 
-        data_path = files("tm2p.package_data.text_processing.data").joinpath(
-            "noun_phrases.txt"
-        )
-        data_path = str(data_path)
+#         data_path = files("tm2p.package_data.text_processing.data").joinpath(
+#             "noun_phrases.txt"
+#         )
+#         data_path = str(data_path)
 
-        with open(data_path, "a", encoding="utf-8") as file:
-            for term in self.new_terms:
-                file.write(f"\n{term}")
+#         with open(data_path, "a", encoding="utf-8") as file:
+#             for term in self.new_terms:
+#                 file.write(f"\n{term}")
 
-        internal__sort_text_processing_terms()
+#         internal__sort_text_processing_terms()
 
-    # -------------------------------------------------------------------------
-    def run(self):
-        """:meta private:"""
+#     # -------------------------------------------------------------------------
+#     def run(self):
+#         """:meta private:"""
 
-        self.internal__notify_process_start()
-        self.internal__get_abbrevaviations_thesaurus_file_path()
-        self.internal__load_acronyms_thesaurus_as_mapping()
-        self.internal__make_new_terms_list()
-        self.internal__register_new_terms()
-        self.internal__notify_process_end()
+#         self.internal__notify_process_start()
+#         self.internal__get_abbrevaviations_thesaurus_file_path()
+#         self.internal__load_acronyms_thesaurus_as_mapping()
+#         self.internal__make_new_terms_list()
+#         self.internal__register_new_terms()
+#         self.internal__notify_process_end()

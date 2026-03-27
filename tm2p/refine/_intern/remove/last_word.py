@@ -1,9 +1,9 @@
 """
 Smoke tests:
     >>> from tm2p.enum import ThFile
-    >>> from tm2p.refine._intern.replace import BaseRemoveLastWord
+    >>> from tm2p.refine._intern.replace import BaseLastWord
     >>> (
-    ...     BaseRemoveLastWord()
+    ...     BaseLastWord()
     ...     .with_thesaurus_file(ThFile.CONCEPT)
     ...     .having_word("business")
     ...     .where_root_directory("tests/scopus/")
@@ -11,7 +11,12 @@ Smoke tests:
     ...     .run()
     ... )
 
-
+    >>> from tm2p.refine.concept.reset import Reset
+    >>> (
+    ...     Reset()
+    ...     .where_root_directory("tests/scopus/")
+    ...     .run()
+    ... )
 
 """
 
@@ -23,7 +28,7 @@ from tm2p.refine._intern.data_access import (
 )
 
 
-class BaseRemoveLastWord(
+class BaseLastWord(
     ParamsMixin,
 ):
     """:meta private:"""

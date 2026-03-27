@@ -24,7 +24,7 @@ Smoke tests:
 
 from tm2p._intern import ParamsMixin
 from tm2p.enum import ThFile
-from tm2p.refine._intern.replace import BaseReplaceLastWord
+from tm2p.refine._intern.replace import BaseLastWord
 
 
 class ReplaceLastWord(
@@ -36,7 +36,7 @@ class ReplaceLastWord(
         """:meta private:"""
 
         return (
-            BaseReplaceLastWord()
+            BaseLastWord()
             .update(**self.params.__dict__)
             .with_thesaurus_file(ThFile.ORG)
             .run()

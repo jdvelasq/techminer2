@@ -13,6 +13,8 @@ Smoke tests:
 
 """
 
+import sys
+
 import pandas as pd  # type: ignore
 
 from tm2p._intern import ParamsMixin
@@ -39,6 +41,11 @@ class BaseGroup(
             params=self.params,
             df=df,  # type: ignore
         )
+
+        sys.stderr.write(
+            f"\nGrouped {self.params.thesaurus_file.value} variants into separate records\n"
+        )
+        sys.stderr.flush()
 
 
 def _explode_variants(

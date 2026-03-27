@@ -1,9 +1,9 @@
-from .replace_initial_word import BaseReplaceInitialWord
-from .replace_last_word import BaseReplaceLastWord
-from .replace_word import BaseReplaceWord
+from .initial_word import BaseInitialWord
+from .last_word import BaseLastWord
+from .word import BaseWord
 
 __all__ = [
-    "BaseReplaceInitialWord",
-    "BaseReplaceLastWord",
-    "BaseReplaceWord",
+    "BaseInitialWord",
+    "BaseLastWord",
+    "BaseWord",
 ]

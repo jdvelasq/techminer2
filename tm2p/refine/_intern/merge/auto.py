@@ -1,12 +1,12 @@
 """
-BaseAutoMerge
+BaseAuto
 ===============================================================================
 
 Smoke test:
     >>> from tm2p.enum import Field, ThFile
-    >>> from tm2p.refine._intern.merge import BaseAutoMerge
+    >>> from tm2p.refine._intern.merge import BaseAuto
     >>> (
-    ...     BaseAutoMerge()
+    ...     BaseAuto()
     ...     .with_thesaurus_file(ThFile.CONCEPT)
     ...     .with_source_field(Field.DESCRIPTOR_RAW)
     ...     .where_root_directory("tests/scopus/")
@@ -54,7 +54,7 @@ PREFERRED = ThField.PREFERRED.value
 VARIANT = ThField.VARIANT.value
 
 
-class BaseAutoMerge(
+class BaseAuto(
     ParamsMixin,
 ):
     """:meta private:"""
