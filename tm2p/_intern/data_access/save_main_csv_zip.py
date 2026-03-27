@@ -6,7 +6,7 @@ Smoke test:
 
 """
 
-import pandas as pd
+import pandas as pd  # type: ignore
 
 from tm2p._intern.data_access.get_main_csv_zip_path import get_main_csv_zip_path
 

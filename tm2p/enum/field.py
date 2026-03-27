@@ -297,6 +297,7 @@ class Field(Enum):
     WORD_RAW = "WORD_RAW"
     WORD_NORM = "WORD_NORM"
     DESCRIPTOR_RAW = "DESCRIPTOR_RAW"
+    DESCRIPTOR_NORM = "DESCRIPTOR_NORM"
 
     # ======================================================================= #
     #                                                                         #

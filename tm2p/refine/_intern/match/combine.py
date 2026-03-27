@@ -10,14 +10,14 @@ Smoke tests:
     ...     #
     ...     # FIELD:
     ...     .with_thesaurus_file(ThFile.CONCEPT)
-    ...     .with_source_field(Field.DESCRIPTOR_RAW)
+    ...     .with_source_field(Field.DESCRIPTOR_NORM)
     ...     .where_root_directory("tests/scopus/")
     ...     .run()
     ... )
-    7
-
 
 """
+
+import sys
 
 import pandas as pd  # type: ignore
 
@@ -32,18 +32,19 @@ class BaseCombineMatch(
 ):
     """:meta private:"""
 
-    def run(self):
+    def run(self) -> None:
 
         matrix_list = compute_cooc_matrix(self.params)
         matrix_list = compute_probabilities(matrix_list)
-        mapping = compute_matches(matrix_list)
+        matches = compute_matches(matrix_list)
 
         report_matches(
             params=self.params,
-            mapping=mapping,
+            mapping=matches,
         )
 
-        return len(mapping)
+        sys.stderr.write(f"\n{len(matches.keys())} synonym groups found\n")
+        sys.stderr.flush()
 
 
 def compute_cooc_matrix(params: Params) -> pd.DataFrame:

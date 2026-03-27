@@ -10,7 +10,6 @@ Smoke tests:
     ...     .run()
     ... )
 
-
 """
 
 from tm2p._intern import ParamsMixin
@@ -30,6 +29,6 @@ class StemMatch(
             BaseStemMatch()
             .update(**self.params.__dict__)
             .with_thesaurus_file(ThFile.CONCEPT)
-            .with_source_field(Field.DESCRIPTOR_RAW)
+            .with_source_field(Field.DESCRIPTOR_NORM)
             .run()
         )

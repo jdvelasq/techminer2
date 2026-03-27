@@ -3,7 +3,6 @@ EndsWithMatch
 ===============================================================================
 
 Smoke test:
-    >>> from tm2p.enum import Field, ThFile
     >>> from tm2p.refine.concept.match import EndsWithMatch
     >>> (
     ...     EndsWithMatch()
@@ -13,8 +12,6 @@ Smoke test:
     ...     .where_root_directory("tests/scopus/")
     ...     .run()
     ... )
-    '34 synonym groups found'
-
 
 """
 
@@ -35,6 +32,6 @@ class EndsWithMatch(
             BaseEndsWithMatch()
             .update(**self.params.__dict__)
             .with_thesaurus_file(ThFile.CONCEPT)
-            .with_source_field(Field.DESCRIPTOR_RAW)
+            .with_source_field(Field.DESCRIPTOR_NORM)
             .run()
         )

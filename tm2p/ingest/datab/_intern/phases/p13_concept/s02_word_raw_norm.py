@@ -25,12 +25,18 @@ def s02_word_raw_norm(root_directory: str) -> int:
         root_directory=root_directory,
     )
 
-    return merge_columns(
+    merge_columns(
         sources=(
             Field.CONCEPT_RAW,
             Field.WORD_RAW,
         ),
         target=Field.DESCRIPTOR_RAW,
+        root_directory=root_directory,
+    )
+
+    return copy_column(
+        source=Field.DESCRIPTOR_RAW,
+        target=Field.DESCRIPTOR_NORM,
         root_directory=root_directory,
     )
 

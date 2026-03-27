@@ -8,16 +8,16 @@ Smoke test:
     >>> (
     ...     BaseFuzzyOneExactMatch()
     ...     .with_thesaurus_file(ThFile.CONCEPT)
-    ...     .with_source_field(Field.DESCRIPTOR_RAW)
+    ...     .with_source_field(Field.DESCRIPTOR_NORM)
     ...     .using_similarity_cutoff(88)
     ...     .using_fuzzy_threshold(80)
     ...     .where_root_directory("tests/scopus/")
     ...     .run()
     ... )
-    '309 synonym groups found'
-
 
 """
+
+import sys
 
 import pandas as pd  # type: ignore
 from fuzzywuzzy import fuzz  # type: ignore
@@ -44,10 +44,10 @@ class BaseFuzzyOneExactMatch(
 ):
     """:meta private:"""
 
-    def run(self):
+    def run(self) -> None:
 
         thesaurus_df = load_thesaurus(params=self.params)
-        thesaurus_df = add_padding(thesaurus_df=thesaurus_df)
+        thesaurus_df = add_padding(thesaurus_df=thesaurus_df)  # type: ignore
         thesaurus_df = remove_punctuation(thesaurus_df=thesaurus_df)
         thesaurus_df = remove_builtin_stopwords(thesaurus_df=thesaurus_df)
         thesaurus_df = remove_thesaurus_stopwords(thesaurus_df=thesaurus_df)
@@ -68,7 +68,8 @@ class BaseFuzzyOneExactMatch(
             mapping=matches,
         )
 
-        return f"{len(matches)} synonym groups found"
+        sys.stderr.write(f"\n{len(matches.keys())} synonym groups found\n")
+        sys.stderr.flush()
 
 
 def _prepare_fuzzy_candidates(thesaurus_df: pd.DataFrame) -> pd.DataFrame:
