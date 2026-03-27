@@ -21,10 +21,14 @@ import sys
 
 import pandas as pd  # type: ignore
 
+from tm2p import ThField
 from tm2p._intern import Params, ParamsMixin
 from tm2p.discov.co_occur_matrix import MatrixList
 
 from ._intern.report_matches import report_matches
+
+PREFERRED = ThField.PREFERRED.value
+SIGNATURE = ThField.SIGNATURE.value
 
 
 class BaseCombineMatch(
@@ -105,8 +109,8 @@ def compute_matches(matrix_list: pd.DataFrame) -> dict[str, list[str]]:
 
     for _, row in matrix_list.iterrows():
 
-        row_key = row["rows"].split(" ")[0]
-        column_key = row["columns"].split(" ")[0]
+        row_key = row["rows"]
+        column_key = row["columns"]
 
         if row_key not in mapping:
             mapping[row_key] = []
