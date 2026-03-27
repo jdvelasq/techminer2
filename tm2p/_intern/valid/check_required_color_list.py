@@ -1,9 +1,7 @@
-from typing import Any
+from typing import Any, Tuple
 
 
-def check_required_color_list(
-    value: tuple[Any, ...], param_name: str
-) -> tuple[Any, ...]:
+def check_required_color_list(value: Tuple[Any, ...], param_name: str) -> tuple[Any]:
     if not isinstance(value, tuple):
         raise TypeError(
             f"{param_name} must be a tuple of colors, got {type(value).__name__}"

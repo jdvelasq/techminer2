@@ -43,7 +43,6 @@ from tm2p.enum import (
     Field,
     ItemOrderBy,
     RecordOrderBy,
-    ThField,
     ThFile,
 )
 from tm2p.enum.co_cit_unit import CoCitationUnit
@@ -510,7 +509,7 @@ class ParamsMixin:
         self.params.cumulative_sum = cumulative_sum
         return self
 
-    def using_edge_colors(self, edge_colors: list[Any]) -> Self:
+    def using_edge_colors(self, edge_colors: Tuple[Any]) -> Self:
         edge_colors = check_required_color_list(
             value=edge_colors,
             param_name="edge_colors",
@@ -659,9 +658,7 @@ class ParamsMixin:
         self.params.minimum_items_in_cluster = minimum_items_in_cluster
         return self
 
-    def using_node_colors(
-        self, node_colors: List[Union[str, float, Sequence[float]]]
-    ) -> Self:
+    def using_node_colors(self, node_colors: Tuple[Any, ...]) -> Self:
         node_colors = check_required_color_list(
             value=node_colors,
             param_name="node_colors",

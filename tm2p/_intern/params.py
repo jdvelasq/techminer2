@@ -187,7 +187,7 @@ class Params:
     #
     n_chars: int = 100
     n_contexts: int = 10
-    node_colors: tuple[Union[str, float, Sequence[float]], ...] = ("#7793a5", "#465c6b")
+    node_colors: Tuple[Any, ...] = ("#7793a5", "#465c6b")
     node_size_range: Tuple[int, int] = (5, 20)
     node_size: int = 10
     node_n_labels: int = 1000
