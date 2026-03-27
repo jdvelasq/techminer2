@@ -21,7 +21,11 @@ def dicts_to_strings(dicts):
     for record in dicts:
         text = ""
         for col in column_order:
-            if record[col] is not None and str(record[col]) != "nan":
+            if (
+                col in record.keys()
+                and record[col] is not None
+                and str(record[col]) != "nan"
+            ):
                 text += col + " "
                 text += textwrap.fill(
                     str(record[col]),

@@ -34,7 +34,6 @@ from ._intern import (
     apply_error_metrics_rule,
     apply_exact_match_rule,
     apply_geographic_names_rule,
-    apply_hyphenation_rule,
     apply_inflected_verb_forms_rule,
     apply_leading_noise_removal_rule,
     apply_num_punct_to_space_rule,
@@ -43,6 +42,8 @@ from ._intern import (
     apply_prefer_singular_over_plural_rule,
     apply_punctuation_variation_rule,
     apply_scientific_and_academic_rule,
+    apply_single_letters_and_digits_rule,
+    apply_technology_rule,
     apply_trailing_noise_removal_rule,
     apply_white_space_normalization_rule,
     apply_xml_encoding_rule,
@@ -84,6 +85,7 @@ class BaseAutoMerge(
             self._write(f"\n[{phase+1}] {self._ORDINAL[phase]} Pass\n")
 
             for msg, rule in [
+                ("single letters and digits", apply_single_letters_and_digits_rule),
                 ("exact match", apply_exact_match_rule),
                 ("geographic names", apply_geographic_names_rule),
                 ("error metrics", apply_error_metrics_rule),
@@ -92,8 +94,8 @@ class BaseAutoMerge(
                 ("xml encoding", apply_xml_encoding_rule),
                 ("white space normalization", apply_white_space_normalization_rule),
                 ("chemical compounds", apply_chemical_compounds_rule),
+                ("technology", apply_technology_rule),
                 ("punctuation variation", apply_punctuation_variation_rule),
-                ("hyphenation", apply_hyphenation_rule),
                 ("plural singular", apply_plural_singular_rule),
                 ("prefer singular over plural", apply_prefer_singular_over_plural_rule),
                 ("common and basic", apply_common_and_basic_rule),

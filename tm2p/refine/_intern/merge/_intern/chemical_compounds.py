@@ -5,84 +5,48 @@ import pandas as pd  # type: ignore
 from tm2p import ThField
 from tm2p._intern import Params
 
-CHANGED = ThField.CHANGED.value
-IS_KEYWORD = ThField.IS_KEYWORD.value
-OCC = ThField.OCC.value
-OLD = ThField.OLD.value
 PREFERRED = ThField.PREFERRED.value
-SIGNATURE = ThField.SIGNATURE.value
-VARIANT = ThField.VARIANT.value
 
 
-# Consolidate chemical terms and formulas
-#
-# Load CHEMICAL_COMPOUNDS_THESAURUS:
-#   Structure:
-#     preferred_term
-#         variant1
-#         variant2
-#
-#   Example:
-#     iron oxide
-#         iron oxide
-#         iron oxides
-#         Fe2O3
-#         ferric oxide
-#
-# For each key in descriptor thesaurus:
-#   1. Search in chemical thesaurus (check if key is a variant)
-#
-#   2. If found as variant:
-#      a. Get preferred_term from chemical thesaurus
-#      b. In descriptor thesaurus:
-#         - Move key and all its variants under preferred_term
-#
-#   3. If not found:
-#      - Keep key as-is
-#
-#
-# Before:
-#
-# iron oxide
-#     iron oxide
-# Fe2O3
-#     Fe2O3
-# ferric oxide
-#     ferric oxide
-# titanium dioxide
-#     titanium dioxide
-# TiO2
-#     TiO2
-#
-#
-# Chemical compunds thesaurus:
-#
-# iron oxide
-#     iron oxide
-#     Fe2O3
-#     ferric oxide
-# titanium dioxide
-#     titanium dioxide
-#     TiO2
-#     titania
-#
-#
-# After:
-#
-# iron oxide
-#     iron oxide
-#     Fe2O3
-#     ferric oxide
-#
-# titanium dioxide
-#     titanium dioxide
-#     TiO2
-#
+_CHEMICAL_COMPOUNDS = {
+    "co 2": "carbon dioxide",
+    #
+    "chlorobenzene": "chlorobenzene",
+    "co-2": "carbon dioxide",
+    "co": "carbon monoxide",
+    "co2": "carbon dioxide",
+    "co3o4": "cobalt oxide",
+    "h2o": "water",
+    "h2so4": "sulfuric acid",
+    "koh": "potassium hydroxide",
+    "li2o2": "lithium peroxide",
+    "li2s": "lithium sulfide",
+    "licoo2": "lithium cobalt oxide",
+    "lifepo4": "lithium iron phosphate",
+    "mno2": "manganese dioxide",
+    "mos2": "molybdenum disulfide",
+    "o2": "oxygen",
+    "tio2": "titanium dioxide",
+    "toluene": "toluene",
+    "v2o5": "vanadium pentoxide",
+}
 
 
 def apply_chemical_compounds_rule(
     thesaurus_df: pd.DataFrame,
     params: Params,
 ) -> pd.DataFrame:
+
+    thesaurus_df[PREFERRED] = thesaurus_df[PREFERRED].apply(lambda x: f" {x} ")
+
+    for compound, name in _CHEMICAL_COMPOUNDS.items():
+
+        thesaurus_df[PREFERRED] = thesaurus_df[PREFERRED].str.replace(
+            rf" {compound} ",
+            f" {name} ",
+            regex=True,
+        )
+
+    thesaurus_df[PREFERRED] = thesaurus_df[PREFERRED].str.strip()
 
     return thesaurus_df
