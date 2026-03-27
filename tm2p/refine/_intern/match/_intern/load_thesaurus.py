@@ -14,6 +14,7 @@ def load_thesaurus(params):
         params=params,
         thesaurus_df=thesaurus_df,
     )
+    thesaurus_df = thesaurus_df[~thesaurus_df[PREFERRED].str.startswith("#")].copy()
 
     thesaurus_df[SIGNATURE] = thesaurus_df[PREFERRED].str.lower()
 

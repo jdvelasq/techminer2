@@ -1,5 +1,5 @@
 from .beider_morse import BaseBeiderMorseMatch
-from .bigram import BaseBiGramMatch
+from .bigram import BaseBigramMatch
 from .cologne_phonetics import BaseColognePhoneticsMatch
 from .combine import BaseCombineMatch
 from .contains import BaseContainsMatch
@@ -11,12 +11,12 @@ from .fuzzy_zero_exact import BaseFuzzyZeroExactMatch
 from .separator import BaseSeparatorMatch
 from .startswith import BaseStartsWithMatch
 from .stem import BaseStemMatch
-from .trigram import BaseTriGramMatch
+from .trigram import BaseTrigramMatch
 from .wordorder import BaseWordOrderMatch
 
 __all__ = [
     "BaseBeiderMorseMatch",
-    "BaseBiGramMatch",
+    "BaseBigramMatch",
     "BaseColognePhoneticsMatch",
     "BaseCombineMatch",
     "BaseContainsMatch",
@@ -28,6 +28,6 @@ __all__ = [
     "BaseSeparatorMatch",
     "BaseStartsWithMatch",
     "BaseStemMatch",
-    "BaseTriGramMatch",
+    "BaseTrigramMatch",
     "BaseWordOrderMatch",
 ]

@@ -8,11 +8,11 @@ Smoke test:
     >>> (
     ...     BaseAutoMerge()
     ...     .with_thesaurus_file(ThFile.CONCEPT)
-    ...     .with_source_field(Field.CONCEPT_RAW)
+    ...     .with_source_field(Field.DESCRIPTOR_RAW)
     ...     .where_root_directory("tests/scopus/")
     ...     .run()
     ... )
-    1
+    '7288 → 4623 preferred terms'
 
 
 """
@@ -61,7 +61,18 @@ class BaseAutoMerge(
 
     _HEADER_WIDTH = 70
     _STEP_PREFIX = "  → Rule : "
-    _ORDINAL = ["First", "Second"]
+    _ORDINAL = [
+        "First",
+        "Second",
+        "Third",
+        "Fourth",
+        "Fifth",
+        "Sixth",
+        "Seventh",
+        "Eighth",
+        "Ninth",
+        "Tenth",
+    ]
 
     def _write(self, text: str) -> None:
         sys.stderr.write(text)
@@ -71,20 +82,15 @@ class BaseAutoMerge(
         separator = "=" * self._HEADER_WIDTH
         self._write(f"\n{separator}\nPre-processing Thesaurus\n{separator}\n")
 
-    def run(self) -> int:
-
-        df = load_thesaurus_as_dataframe(params=self.params)
-        df = sort_thesaurus_df_by_occ(params=self.params, thesaurus_df=df)
-        df = _explode_variants(df)
-        df = mark_keywords(df, self.params)
+    def run(self) -> str:
 
         self._print_header()
 
-        for phase in range(2):
+        initial_length = None
+        final_length = None
 
-            self._write(f"\n[{phase+1}] {self._ORDINAL[phase]} Pass\n")
-
-            for msg, rule in [
+        phases = [
+            [
                 ("single letters and digits", apply_single_letters_and_digits_rule),
                 ("exact match", apply_exact_match_rule),
                 ("geographic names", apply_geographic_names_rule),
@@ -96,21 +102,46 @@ class BaseAutoMerge(
                 ("chemical compounds", apply_chemical_compounds_rule),
                 ("technology", apply_technology_rule),
                 ("punctuation variation", apply_punctuation_variation_rule),
+            ]
+        ] + [
+            [
+                ("geographic names", apply_geographic_names_rule),
                 ("plural singular", apply_plural_singular_rule),
                 ("prefer singular over plural", apply_prefer_singular_over_plural_rule),
                 ("common and basic", apply_common_and_basic_rule),
                 ("scientific and academic", apply_scientific_and_academic_rule),
                 ("inflected verb forms", apply_inflected_verb_forms_rule),
                 ("leading noise removal", apply_leading_noise_removal_rule),
+                ("punctuation variation", apply_punctuation_variation_rule),
                 ("trailing noise removal", apply_trailing_noise_removal_rule),
-            ]:
+                ("punctuation variation", apply_punctuation_variation_rule),
+            ],
+        ] * 4
+
+        for index, phase in enumerate(phases):
+
+            self._write(f"\n[{index+1}] {self._ORDINAL[index]} Pass\n")
+
+            df = load_thesaurus_as_dataframe(params=self.params)
+
+            if initial_length is None:
+                initial_length = df.shape[0]
+            else:
+                final_length = df.shape[0]
+
+            df = sort_thesaurus_df_by_occ(params=self.params, thesaurus_df=df)
+            df = _explode_variants(df)
+            df = mark_keywords(df, self.params)
+
+            for msg, rule in phase:
+
                 self._write(f"{self._STEP_PREFIX}{msg}\n")
                 df = rule(df, self.params)
 
-        df = df[[PREFERRED, VARIANT]].copy()
-        df = _group_variants(df)
-        df = df.sort_values(PREFERRED)  # type: ignore
+            df = df[[PREFERRED, VARIANT]].copy()
+            df = _group_variants(df)
+            df = df.sort_values(PREFERRED)  # type: ignore
 
-        save_dataframe_as_thesaurus(params=self.params, df=df)
+            save_dataframe_as_thesaurus(params=self.params, df=df)
 
-        return 1
+        return f"{initial_length} → {final_length} preferred terms"

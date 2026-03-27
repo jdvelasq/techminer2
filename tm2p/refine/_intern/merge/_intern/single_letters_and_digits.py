@@ -15,9 +15,9 @@ def apply_single_letters_and_digits_rule(
 
     thesaurus_df[PREFERRED] = thesaurus_df[PREFERRED].apply(
         lambda x: (
-            x
-            if not (len(x) == 1 and x.isalpha()) and not (x.isdigit())
-            else "#single_letters_and_digits"
+            "#single_letters_and_digits"
+            if (len(x) == 1 and x.isalpha()) or x.isdigit()
+            else x
         )
     )
 

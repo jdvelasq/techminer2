@@ -1,0 +1,40 @@
+"""
+StartsWithMatch
+===============================================================================
+
+Smoke test:
+    >>> from tm2p.enum import Field, ThFile
+    >>> from tm2p.refine.concept.match import StartsWithMatch
+    >>> (
+    ...     StartsWithMatch()
+    ...     .having_text_matching("fint")
+    ...     .using_similarity_cutoff(88)
+    ...     .using_fuzzy_threshold(80)
+    ...     .where_root_directory("tests/scopus/")
+    ...     .run()
+    ... )
+    '15 synonym groups found'
+
+
+"""
+
+from tm2p._intern import ParamsMixin
+from tm2p.enum import Field, ThFile
+from tm2p.refine._intern.match import BaseStartsWithMatch
+
+
+class StartsWithMatch(
+    ParamsMixin,
+):
+    """:meta private:"""
+
+    def run(self):
+        """:meta private:"""
+
+        return (
+            BaseStartsWithMatch()
+            .update(**self.params.__dict__)
+            .with_thesaurus_file(ThFile.CONCEPT)
+            .with_source_field(Field.DESCRIPTOR_RAW)
+            .run()
+        )
