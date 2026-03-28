@@ -25,9 +25,13 @@ class Group(
     def run(self):
         """:meta private:"""
 
-        return (
+        from ..apply import Apply
+
+        (
             BaseGroup()
             .update(**self.params.__dict__)
             .with_thesaurus_file(ThFile.CTRY)
             .run()
         )
+
+        return Apply().where_root_directory(self.params.root_directory).run()

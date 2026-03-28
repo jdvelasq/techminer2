@@ -1,11 +1,17 @@
 """
-Group
+Manual
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.refine.org.group import Group
+    >>> from tm2p.refine.ctry.group import Auto
     >>> (
-    ...     Group()
+    ...     Auto()
+    ...     .having_text_matching(
+    ...         (
+    ...             "fintech innovation",
+    ...             "fin-tech innovation",
+    ...         )
+    ...     )
     ...     .where_root_directory("tests/scopus/")
     ...     .run()
     ... )
@@ -14,10 +20,10 @@ Smoke tests:
 
 from tm2p._intern import ParamsMixin
 from tm2p.enum import ThFile
-from tm2p.refine._intern.group import BaseGroup
+from tm2p.refine._intern.merge import BaseManual
 
 
-class Group(
+class Manual(
     ParamsMixin,
 ):
     """:meta private:"""
@@ -28,9 +34,9 @@ class Group(
         from ..apply import Apply
 
         (
-            BaseGroup()
+            BaseManual()
             .update(**self.params.__dict__)
-            .with_thesaurus_file(ThFile.ORG)
+            .with_thesaurus_file(ThFile.CTRY)
             .run()
         )
 

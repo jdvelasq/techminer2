@@ -1,23 +1,25 @@
 """
-WordOrderMatch
+SortByCharacterLength
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.refine.ctry.match import WordOrderMatch
+    >>> from tm2p.refine.org.sort import SortByCharacterLength
     >>> (
-    ...     WordOrderMatch()
+    ...     SortByCharacterLength()
     ...     .where_root_directory("tests/scopus/")
     ...     .run()
     ... )
+    7722
+
 
 """
 
 from tm2p._intern import ParamsMixin
-from tm2p.enum import Field, ThFile
-from tm2p.refine._intern.match import BaseWordOrderMatch
+from tm2p.enum import ThFile
+from tm2p.refine._intern.sort import BaseSortByCharacterLength
 
 
-class WordOrderMatch(
+class SortByCharacterLength(
     ParamsMixin,
 ):
     """:meta private:"""
@@ -26,9 +28,8 @@ class WordOrderMatch(
         """:meta private:"""
 
         return (
-            BaseWordOrderMatch()
+            BaseSortByCharacterLength()
             .update(**self.params.__dict__)
-            .with_thesaurus_file(ThFile.CTRY)
-            .with_source_field(Field.CTRY)
+            .with_thesaurus_file(ThFile.ORG)
             .run()
         )

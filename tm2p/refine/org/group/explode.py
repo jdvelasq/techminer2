@@ -4,7 +4,6 @@ Explode
 
 Smoke tests:
     >>> from tm2p.refine.org.group import Explode
-
     >>> (
     ...     Explode()
     ...     .where_root_directory("tests/scopus/")

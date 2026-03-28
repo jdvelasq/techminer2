@@ -3,31 +3,20 @@ GetVariants
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.refine.ctry.oper import GetVariants
+    >>> from tm2p.refine.ctry.get import GetVariants
     >>> terms = (
     ...     GetVariants()
     ...     .having_text_matching(
     ...         (
-    ...             "Azerbaijan",
-    ...             "Bahrain",
+    ...             "fintech",
+    ...             "fintech technology",
     ...         )
     ...     )
     ...     .where_root_directory("tests/scopus/")
     ...     .run()
     ... )
-    >>> from pprint import pprint
-    >>> pprint(terms[:5])
-    ['Azerbaijan State University of Economics (UNEC), Baku, Azerbaijan',
-     'Accounting Finance & Banking Department, Ahlia University, Manama, Bahrain',
-     'College of Business Administration, University of Bahrain, Zallaq, Bahrain',
-     'Department of Banking and Finance, Ahlia University, Manama, Bahrain',
-     'Department of Finance and Accounting, Kingdom University, Riffa, Bahrain']
-
-
-
-
-
-
+    >>> terms[:5]
+    ['fintech', 'fintech technology']
 
 """
 

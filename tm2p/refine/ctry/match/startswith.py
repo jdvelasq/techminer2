@@ -1,11 +1,14 @@
 """
-WordOrderMatch
+StartsWithMatch
 ===============================================================================
 
-Smoke tests:
-    >>> from tm2p.refine.ctry.match import WordOrderMatch
+Smoke test:
+    >>> from tm2p.refine.ctry.match import StartsWithMatch
     >>> (
-    ...     WordOrderMatch()
+    ...     StartsWithMatch()
+    ...     .having_text_matching("fint")
+    ...     .using_similarity_cutoff(88)
+    ...     .using_fuzzy_threshold(80)
     ...     .where_root_directory("tests/scopus/")
     ...     .run()
     ... )
@@ -14,10 +17,10 @@ Smoke tests:
 
 from tm2p._intern import ParamsMixin
 from tm2p.enum import Field, ThFile
-from tm2p.refine._intern.match import BaseWordOrderMatch
+from tm2p.refine._intern.match import BaseStartsWithMatch
 
 
-class WordOrderMatch(
+class StartsWithMatch(
     ParamsMixin,
 ):
     """:meta private:"""
@@ -26,7 +29,7 @@ class WordOrderMatch(
         """:meta private:"""
 
         return (
-            BaseWordOrderMatch()
+            BaseStartsWithMatch()
             .update(**self.params.__dict__)
             .with_thesaurus_file(ThFile.CTRY)
             .with_source_field(Field.CTRY)

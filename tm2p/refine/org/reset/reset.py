@@ -5,7 +5,7 @@ Reset
 Smoke tests:
     >>> from tm2p.refine.org.reset import Reset
     >>> (
-    ...     ReplaceInitialWord()
+    ...     Reset()
     ...     .where_root_directory("tests/scopus/")
     ...     .run()
     ... )

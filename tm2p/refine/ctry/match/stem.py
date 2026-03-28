@@ -10,7 +10,6 @@ Smoke tests:
     ...     .run()
     ... )
 
-
 """
 
 from tm2p._intern import ParamsMixin

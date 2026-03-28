@@ -3,28 +3,20 @@ GetVariants
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.refine.org.oper import GetVariants
+    >>> from tm2p.refine.org.get import GetVariants
     >>> terms = (
     ...     GetVariants()
     ...     .having_text_matching(
     ...         (
-    ...             "Addis Ababa University",
-    ...             "Ahlia University",
+    ...             "ADDIS ABABA UNIV",
+    ...             "AIN UNIV",
     ...         )
     ...     )
     ...     .where_root_directory("tests/scopus/")
     ...     .run()
     ... )
-    >>> from pprint import pprint
-    >>> pprint(terms[:5])
-    ['Addis Ababa University, Addis Ababa, Ethiopia',
-     'Accounting Finance & Banking Department, Ahlia University, Manama, Bahrain',
-     'Department of Banking and Finance, Ahlia University, Manama, Bahrain']
-
-
-
-
-
+    >>> terms[:5]
+    ['Addis Ababa University, Addis Ababa, Ethiopia', 'College of Business, Al Ain University, Al Ain, Abu Dhabi, United Arab Emirates']
 
 """
 
