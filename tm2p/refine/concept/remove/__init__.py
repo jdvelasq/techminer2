@@ -1,9 +1,9 @@
-from .initial_word import RemoveInitialWord
+from .exact_word import ExactWord
+from .first_word import FirstWord
 from .last_word import LastWord
-from .word import Word
 
 __all__ = [
-    "RemoveInitialWord",
+    "FirstWord",
     "LastWord",
-    "Word",
+    "ExactWord",
 ]

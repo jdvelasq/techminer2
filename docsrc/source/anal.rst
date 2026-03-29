@@ -1,4 +1,4 @@
-Anal
+anal
 ################################################################################
 
 .. toctree::
@@ -7,8 +7,11 @@ Anal
 
     anal.annual_metrics
     anal.bradford
+    anal.doc
+    anal.item_metrics
     anal.lotka
-    anal.metrics
+    anal.main_metrics
+    anal.ref
     anal.rpys
     anal.topic_trends
     anal.trends

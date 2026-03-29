@@ -1,0 +1,11 @@
+sort
+################################################################################
+
+.. toctree::
+    :maxdepth: 1
+    :hidden:
+
+    refine.org.sort.alphabet_left_to_right
+    refine.org.sort.alphabet_right_to_left
+    refine.org.sort.character_length
+    refine.org.sort.max_token_length

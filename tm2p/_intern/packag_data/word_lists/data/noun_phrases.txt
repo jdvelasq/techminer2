@@ -18,6 +18,7 @@ ab initio studies
 ab initio study
 abatement cost
 abatement costs
+abdomen
 abdominal aortic aneurysm
 abdominal compartment syndrome
 abdominal compartment syndromes
@@ -624,7 +625,9 @@ adiabatic shear band
 adiabatic shear bands
 adipose derived stem cell
 adipose derived stem cells
+adipose tissue
 adipose tissue inflammation
+adjunctive therapy
 adjusted or
 adjustment factor
 adjustment factors
@@ -635,6 +638,8 @@ administrative claims healthcare
 administrative claims healthcares
 administrative data processing
 administrative health data
+adolescence
+adolescent
 adolescent and young adult
 adolescent and young adults
 adolescent girls and young women
@@ -643,6 +648,7 @@ adolescent health service
 adolescent health services
 adolescent sexual behavior
 adolescent sexual behaviors
+adolescents
 adolescents and young adult
 adolescents and young adults
 adopting smart technologies
@@ -677,6 +683,7 @@ adrenergic beta antagonist
 adrenergic beta antagonists
 adsorption kinetics and isotherm
 adsorption kinetics and isotherms
+adult
 adult adhd self report scale
 adult adhd self report scales
 adult education and lifelong learning
@@ -789,8 +796,10 @@ adverse drug reaction reporting systems
 adverse drug reactions
 adverse environmental impact
 adverse environmental impacts
+adverse events
 adverse outcome pathway
 adverse outcome pathways
+adverse reactions
 advertising and media
 advertising and medias
 advertising as topic
@@ -910,6 +919,7 @@ agile software engineering
 agile software engineerings
 agile supply chain
 agile supply chains
+aging
 aging in place
 aging in places
 aging of material
@@ -1265,6 +1275,7 @@ alanine aminotransferase blood level
 alanine aminotransferase blood levels
 alanine aminotransferase level
 alanine aminotransferase levels
+alberta
 albumin blood level
 albumin blood levels
 albumin to creatinine ratio
@@ -1461,6 +1472,7 @@ ambient backscatter communications
 ambient pressure x ray photoelectron spectroscopies
 ambient pressure x ray photoelectron spectroscopy
 ambulatory blood pressure monitoring
+ambulatory care
 ambulatory care facilities
 ambulatory care facility
 ambulatory care sensitive condition
@@ -1685,6 +1697,7 @@ animal cell cultures
 animal feed industries
 animal feed industry
 animal nutritional physiological phenomena
+animals
 animated pedagogical agent
 animated pedagogical agents
 anion exchange chromatographies
@@ -1842,6 +1855,8 @@ antigen presenting cell
 antigen presenting cells
 antimicrobial cationic peptide
 antimicrobial cationic peptides
+antimicrobial resistance
+antimicrobials
 antineoplastic agents
 antineoplastic agents hormonal
 antineoplastic agents immunological
@@ -1849,8 +1864,10 @@ antineoplastic agents phytogenic
 antineoplastic combined chemotherapy protocols
 antineoplastic hormone agonists and antagonist
 antineoplastic hormone agonists and antagonists
+antipsychotic
 antisocial personality disorder
 antisocial personality disorders
+anxiety
 anxiety and depression
 anything as a service
 anything as a services
@@ -2395,6 +2412,8 @@ athens insomnia scale
 athens insomnia scales
 atherosclerosis
 athlete
+athletes
+athletic training services
 atlantic ocean
 atmospheric and room temperature plasma mutagenesis
 atmospheric circulation anomalies
@@ -2420,6 +2439,7 @@ atomic layer deposition
 atomically dispersed catalyst
 atomically dispersed catalysts
 atp binding cassette transporters
+atrial fibrillation
 atrial fibrillation burden
 atrial natriuretic factor
 atrial natriuretic factors
@@ -2468,6 +2488,7 @@ attitude towards educational technologies
 attitude towards educational technology
 attitude towards technologies
 attitude towards technology
+attitudes
 attitudes and beliefs
 attitudes and perceptions
 attitudes toward internet
@@ -2671,6 +2692,7 @@ automated report generation
 automated report generations
 automated safety tracker
 automated safety trackers
+automated segmentation
 automated service composition
 automated service compositions
 automated short answer grading
@@ -3311,6 +3333,7 @@ beer distribution games
 beetle antenna search
 beetle antenna searches
 beginning of lives
+behavior
 behavior based pricing
 behavior change
 behavior change intervention
@@ -3738,6 +3761,7 @@ biological water treatments
 biologically active substances
 biologically inspired design
 biologically inspired designs
+biomarkers
 biomass derived carbon
 biomass derived carbons
 biomass oxidation reaction
@@ -3778,6 +3802,7 @@ bipolar complex fuzzy set
 bipolar complex fuzzy sets
 bipolar decision model
 bipolar decision models
+bipolar disorder
 bipolar fuzzy soft set
 bipolar fuzzy soft sets
 bipolar i disorder
@@ -3929,6 +3954,7 @@ blood donation managements
 blood flow velocity
 blood gas analyses
 blood gas analysis
+blood glucose
 blood glucose concentration
 blood glucose concentrations
 blood glucose detection
@@ -3990,6 +4016,7 @@ body area network
 body area networks
 body area sensor network
 body area sensor networks
+body composition
 body dysmorphic disorder
 body dysmorphic disorders
 body fat percentage
@@ -4185,12 +4212,14 @@ break even point
 break even points
 break through curve
 break through curves
+breast cancer
 breast cancer cell line
 breast cancer cell lines
 breast cancer classification
 breast cancer classifications
 breast cancer data
 breast cancer related lymphedema
+breast cancer screening
 breast conserving surgeries
 breast conserving surgery
 breast feeding education
@@ -4214,6 +4243,7 @@ brick and mortar
 brick and mortar store
 brick and mortar stores
 bricks and clicks
+brics economies
 bridge digital twin
 bridge health monitoring
 bridge information modeling
@@ -4509,10 +4539,12 @@ bulked segregant analysis
 bull whip effect
 bull whip effects
 buprenorphine plus naloxone
+burden
 burden of disease
 burden of diseases
 burning mouth syndrome
 burning mouth syndromes
+burnout
 bus rapid transit
 bus sensitivity factor
 bus sensitivity factors
@@ -4728,6 +4760,7 @@ calculation models
 calgary depression scale
 calgary depression scales
 calibration and validations
+california
 california mastitis test
 california mastitis tests
 california state universities
@@ -4746,7 +4779,9 @@ camera sensor network
 camera sensor networks
 campo de cartagena
 campus big data
+canada
 canadian armed forces
+cancer
 cancer adjuvant therapies
 cancer adjuvant therapy
 cancer care service
@@ -4769,6 +4804,8 @@ cancer stage classification
 cancer stage classifications
 cancer stem cell
 cancer stem cells
+cancer survivors
+cannabis
 cannabis use disorder
 cannabis use disorders
 canny edge detection
@@ -5005,10 +5042,12 @@ cardiac magnetic resonance
 cardiac muscle cell
 cardiac muscle cells
 cardiac output low
+cardiac rehabilitation
 cardiac resynchronization therapies
 cardiac resynchronization therapy
 cardiac resynchronization therapy device
 cardiac resynchronization therapy devices
+cardiac surgery
 cardiac surgical procedure
 cardiac surgical procedures
 cardiac troponin i
@@ -5020,15 +5059,19 @@ cardiometabolic risk factor
 cardiometabolic risk factors
 cardiopulmonary exercise test
 cardiopulmonary exercise tests
+cardiopulmonary resuscitation
+cardiovascular disease
 cardiovascular disease assessment
 cardiovascular disease assessments
 cardiovascular disease detection
 cardiovascular disease detections
 cardiovascular disease prediction
 cardiovascular disease predictions
+cardiovascular diseases
 cardiovascular implantable electronic device
 cardiovascular implantable electronic devices
 cardiovascular magnetic resonance
+cardiovascular risk
 cardiovascular risk factor
 cardiovascular risk factors
 cardiovascular system examination
@@ -5038,6 +5081,7 @@ care in place
 care in places
 career self management
 career self managements
+caribbean
 carica papaya extract
 carotid artery disease
 carotid artery diseases
@@ -5122,6 +5166,7 @@ cation exchange chromatographies
 cation exchange chromatography
 cattaneochristov double diffusion theories
 cattaneochristov double diffusion theory
+cattle
 causal loop diagram
 causal loop diagrams
 causal machine learning
@@ -5286,6 +5331,7 @@ cerium oxide nanoparticles
 certification systems
 certified emission reduction
 certified emission reductions
+cervical cancer
 cervical spinal cord
 chah nimeh reservoirs
 chain length distribution
@@ -5476,6 +5522,7 @@ chemistry techniques analytical
 chemistry techniques synthetic
 chemo mechanical model
 chemo mechanical models
+chemotherapy
 chemotherapy induced nausea and vomiting
 chemotherapy induced peripheral neuropathy
 chest ct scan
@@ -5506,6 +5553,7 @@ chief nursing officer
 chief nursing officers
 chief sustainability officer
 chief sustainability officers
+child
 child abuse sexual
 child abuse survivor
 child ai interaction
@@ -5546,6 +5594,7 @@ child sexual abuse
 childhood cancer survivor
 childhood obesity intervention
 childhood obesity interventions
+children
 children and adolescents
 children and young people
 children and young peoples
@@ -5613,6 +5662,7 @@ choice experiment
 choice experiments
 choice reaction time
 choice reaction times
+cholesterol
 cholesterol blood level
 cholesterol blood levels
 choline o acetyltransferase
@@ -5656,6 +5706,7 @@ chronic heart failures
 chronic hepatitis b
 chronic hepatitis c
 chronic inflammatory demyelinating polyneuropathy
+chronic kidney disease
 chronic kidney failure
 chronic kidney failures
 chronic liver disease
@@ -5685,6 +5736,7 @@ chronic respiratory tract diseases
 chronic traumatic encephalopathy
 chronicles based alarm management
 chronicles based alarm managements
+chronotype
 cigre thermal model
 cigre thermal models
 cinnamic acid derivative
@@ -5731,6 +5783,7 @@ circulating tumor cell
 circulating tumor cells
 circulating tumor dna
 circulating tumor dnas
+cirrhosis
 cities
 cities and towns
 citric acid cycle
@@ -5942,6 +5995,7 @@ clinical trial protocol
 clinical trial protocols
 clinical trial registration
 clinical trial registry
+clinical trials
 clinical trials as topic
 clinical trials as topics
 clinical trials data monitoring committees
@@ -6284,6 +6338,9 @@ cognitive task analysis
 cognitive theory of multimedia learning
 cognitive theory of multimedia learnings
 cohesion and couplings
+cohort
+cohort studies
+cohort study
 cold atmospheric plasmas
 cold chain logistics
 cold chain management
@@ -6531,6 +6588,7 @@ common weakness enumeration
 commonsense knowledge basis
 communicable disease control
 communicable disease controls
+communicable diseases
 communication aids for disabled
 communication and collaborations
 communication and control
@@ -6620,6 +6678,8 @@ community question answering
 community reinforcement approach
 community resource management
 community resource managements
+comorbidities
+comorbidity
 compact thermal modeling
 comparative advantage
 comparative advantages
@@ -6630,6 +6690,7 @@ comparative analysis
 comparative analyzes
 comparative assessment
 comparative assessments
+comparative effectiveness research
 comparative genomic hybridization
 comparative life cycle assessment
 comparative life cycle assessments
@@ -6872,6 +6933,7 @@ computational method
 computational methods
 computational modeling and simulation
 computational modeling and simulations
+computational phantoms
 computational social science
 computational social sciences
 computational thinking assessment
@@ -7222,6 +7284,7 @@ concurrent sexual partnership
 concurrent sexual partnerships
 concurrent triangulation design
 concurrent triangulation designs
+concussion
 condensed matter physics
 condensed spatial prompting
 condition base monitoring
@@ -7553,12 +7616,14 @@ contextual word embedding
 contextual word embeddings
 continental population group
 continental population groups
+contingency management
 contingent resource based view
 contingent resource based views
 contingent valuation
 contingent valuations
 continous conduction mode
 continous conduction modes
+continuance intention
 continuance intention to use
 continuance intention to uses
 continuance intentions
@@ -8133,6 +8198,7 @@ covariance matrix adaptation evolutionary strategy
 covenant of mayors
 coverage with evidence development
 coverage with evidence developments
+covid
 covid 19 age
 covid 19 crises
 covid 19 crisis
@@ -8229,6 +8295,7 @@ critical discourse analyses
 critical discourse analysis
 critical factor
 critical factors
+critical illness
 critical incident technique
 critical incident techniques
 critical infrastructure protection
@@ -9010,6 +9077,7 @@ data lake management
 data lake managements
 data life cycle
 data life cycles
+data linkage
 data management architecture
 data management architectures
 data management challenges
@@ -9313,6 +9381,7 @@ deaf and hard of hearing students
 deaf and hard of hearing users
 deaf and hard of hearings
 deaf and mute
+death
 death sudden cardiac
 debiased machine learning
 debiased machine learnings
@@ -9754,6 +9823,8 @@ demand sides
 demand supply balances
 demand uncertainties
 demand uncertainty
+dematel
+dementia
 democracy and education
 democracy and educations
 democratic republic congo
@@ -9832,6 +9903,7 @@ department of educations
 department of energies
 department of energy
 dependent task offloading
+depression
 depression and mood disorder
 depression and mood disorders
 depression anxiety and stress scale
@@ -10034,10 +10106,12 @@ dft data driven approach
 dft data driven approaches
 dh digital humanities
 dh digital humanity
+diabetes
 diabetes and endocrinology
 diabetes distress scale
 diabetes distress scales
 diabetes in pregnancy
+diabetes mellitus
 diabetes mellitus experimental
 diabetes self management
 diabetes self management education and support
@@ -10051,6 +10125,7 @@ diabetic macular edema
 diabetic retinopathy
 diagnoses of disease
 diagnoses of diseases
+diagnosis
 diagnosis and prognosis
 diagnosis computer assisted
 diagnosis related group
@@ -10085,6 +10160,7 @@ dialog state tracking
 dialogue based tutoring system
 dialogue based tutoring systems
 dialogue state tracking
+dialysis
 diamond like carbon
 diamond like carbons
 diaries as topic
@@ -10455,11 +10531,13 @@ digital system design
 digital system designs
 digital technologies in education
 digital technologies in educations
+digital technology
 digital terrain model
 digital terrain models
 digital terrestrial television
 digital textbook system
 digital textbook systems
+digital therapeutic
 digital to analog conversion
 digital to analog conversions
 digital to analog converter
@@ -10716,6 +10794,7 @@ disease modifying therapies
 disease modifying therapy
 disease outbreak
 disease outbreaks
+disease progression
 disease risk assessment
 disease risk assessments
 disease severity assessment
@@ -10741,6 +10820,7 @@ dispute resolution mechanisms
 disruption risk managements
 disruptive business model
 disruptive business models
+disruptive innovation
 disruptive technologies
 disruptive technology
 disseminated intravascular clotting
@@ -11058,6 +11138,7 @@ dna dna hybridization
 dna flanking region
 dna flanking regions
 dna glycosylase muty
+dna methylation
 dna ribosomal spacer
 dna ribosomal spacers
 dna topoisomerase b
@@ -11326,6 +11407,8 @@ drug induced diseases
 drug induced headache
 drug induced liver injuries
 drug induced liver injury
+drug interactions
+drug monitoring
 drug prescriptions
 drug products plants
 drug protein binding
@@ -11433,8 +11516,10 @@ dueling deep q networks
 duke activity status index
 duke activity status indexes
 duke activity status indices
+dukesim
 dung beetle optimizer
 dung beetle optimizers
+durability
 durability of concrete structure
 durability of concrete structures
 durability of concretes
@@ -11769,6 +11854,7 @@ early detection and interventions
 early detection of cancer
 early detection system
 early detection systems
+early diagnosis
 early disease detection
 early disease detections
 early disease prediction
@@ -11967,6 +12053,7 @@ economical assessments
 economical feasibilities
 economical feasibility
 economically viable
+economics
 economics analyses
 economics analysis
 economics and development
@@ -11996,6 +12083,7 @@ ecosystem service
 ecosystem service value
 ecosystem service values
 ecosystem services
+ecosystems
 eddy current testing
 edgar
 edge artificial intelligence
@@ -12228,6 +12316,7 @@ elasticity imaging techniques
 elasticity of substitution
 elasto plastic fatigue crack growth
 elasto plastic fatigue crack growths
+elderly
 elderly population
 elderly populations
 elective surgical procedure
@@ -12941,6 +13030,7 @@ emotion regulation questionnaires
 emotional artificial neural network
 emotional artificial neural networks
 emotional well being
+empagliflozin
 empirical analyses
 empirical analysis
 empirical assessment
@@ -13091,6 +13181,7 @@ endogenous directional distance function
 endogenous directional distance functions
 endogenous growth model
 endogenous growth models
+endometrial cancer
 endoplasmic reticulum stress
 endoscopic retrograde cholangiopancreatography
 endothelial progenitor cell
@@ -13976,6 +14067,7 @@ epidermal growth factor receptor
 epidermal growth factor receptor kinase inhibitor
 epidermal growth factor receptor kinase inhibitors
 epidermal growth factors
+epilepsy
 epilepsy complex partial
 epilepsy temporal lobe
 episode of care
@@ -14139,6 +14231,7 @@ ethics of cares
 ethinylestradiol plus etonogestrel
 ethnic and racial minorities
 ethnic or racial aspects
+ethnicity
 ethylene glycol oxidation reaction
 ethylene glycol oxidation reactions
 ethylene vinyl acetates
@@ -14853,6 +14946,7 @@ factory in a box
 factory in a boxes
 factory of the future
 factory of the futures
+faculty
 faculty of science
 faculty of sciences
 faculty professional development
@@ -15225,6 +15319,7 @@ fees and charges
 feld silverman learning style model
 feld silverman learning style models
 fellowships and scholarships
+female
 female genital tract cancer
 female genital tract tumor
 female headed household
@@ -15383,6 +15478,7 @@ financial engineering
 financial engineerings
 financial evaluation
 financial evaluations
+financial exclusion
 financial feasibilities
 financial feasibility
 financial fraud detection
@@ -15395,6 +15491,7 @@ financial incentives
 financial inclusions
 financial information
 financial informations
+financial innovation
 financial institution
 financial institutions
 financial institutions and service
@@ -15403,6 +15500,7 @@ financial instrument
 financial instruments
 financial intelligence
 financial intelligences
+financial intermediation
 financial literacies
 financial literacy
 financial loss/gain
@@ -15575,6 +15673,7 @@ firm digital transformation
 firm digital transformations
 firm dis performance
 firm dis performances
+firm performance
 first degree atrioventricular block
 first degree atrioventricular blocks
 first degree relative
@@ -16012,6 +16111,7 @@ forecast error variance decomposition
 forecast error variance decompositions
 forecast support system
 forecast support systems
+forecasting
 forecasting error
 forecasting errors
 forecasting method
@@ -16917,6 +17017,7 @@ gene deletion
 gene delivery system
 gene delivery systems
 gene editing
+gene expression
 gene expression level
 gene expression levels
 gene expression profile
@@ -17140,6 +17241,7 @@ genetic variabilities
 genetic variability
 genetically modified organism
 genetically modified plants
+genetics
 genetics based machine learning
 genetics based machine learnings
 geni generative artificial intelligence
@@ -17154,6 +17256,8 @@ genital tract infections
 genome wide association studies
 genome wide association study
 genome-wide association study
+genomics
+genotype
 genotype environment interaction
 genotype environment interactions
 genotype phenotype correlation
@@ -17170,6 +17274,7 @@ geo spatial analyses
 geo spatial analysis
 geo spatial data
 geo spatial informations
+geographic disparities
 geographic information science
 geographic information sciences
 geographic information system
@@ -17269,6 +17374,7 @@ glial cell line derived neurotrophic factor
 glial cell line derived neurotrophic factors
 glial fibrillary acidic protein
 glial fibrillary acidic proteins
+glioma
 global assessment of functioning
 global burden of disease
 global burden of diseases
@@ -17445,6 +17551,7 @@ golden section searches
 golomb rice coding
 gonadotropin releasing hormone
 gonadotropin releasing hormones
+gonorrhea
 good and service
 good and service tax
 good and service taxes
@@ -18422,9 +18529,11 @@ health check ups
 health data analytic
 health data analytics
 health disparities and inequities
+health economics
 health education impact questionnaire
 health education impact questionnaires
 health expenditures
+health facilities
 health facility closure
 health facility environment
 health facility environments
@@ -18440,6 +18549,7 @@ health impact
 health impact assessment
 health impact assessments
 health impacts
+health informatics
 health informatics health information systems medical is
 health information accuracy
 health information and communication technologies
@@ -18537,6 +18647,7 @@ health services research
 health services researches
 health state utilities
 health state utility
+health status
 health status disparities
 health status evaluation
 health status evaluations
@@ -18582,6 +18693,7 @@ healthcare monitoring systems
 healthcare operations management
 healthcare operations managements
 healthcare predictive analytics
+healthcare resource utilization
 healthcare service system
 healthcare service systems
 healthcare supply chain
@@ -18589,6 +18701,7 @@ healthcare supply chains
 healthcare technology integration
 healthcare technology integrations
 healthcare technology managements
+healthcare utilization
 healthcare waste management
 healthcare waste managements
 healthy eating index
@@ -18631,6 +18744,7 @@ heart disease predictions
 heart disease risk factor
 heart disease risk factors
 heart ejection fraction
+heart failure
 heart failure with mildly reduced ejection fraction
 heart failure with preserved ejection fraction
 heart failure with reduced ejection fraction
@@ -18668,6 +18782,7 @@ heart muscle injuries
 heart muscle injury
 heart muscle ischemia
 heart muscle revascularization
+heart rate
 heart rate and rhythm
 heart rate detection
 heart rate detections
@@ -18871,6 +18986,7 @@ help seeking behaviour
 hematopoietic stem cell
 hematopoietic stem cell transplantation
 hematopoietic stem cells
+hemodialysis
 hemoglobin blood level
 hemoglobin blood levels
 hemorrhagic fever ebola
@@ -18917,6 +19033,7 @@ herth hope indexes
 herth hope indices
 hertz contact theories
 hertz contact theory
+hesitancy
 hesitant fuzzy environment
 hesitant fuzzy environments
 hesitant fuzzy linguistic term set
@@ -18966,6 +19083,9 @@ hexagonal boron nitrides
 hexagonal image processing
 hexagonal wurtzite structure
 hexagonal wurtzite structures
+hfmref
+hfpef
+hfref
 hidden markov model
 hidden markov models
 hidden semi markov model
@@ -19587,6 +19707,7 @@ historic preservation
 historical building
 historical building information modeling
 historical buildings
+historical controls
 historical data
 historical performance data
 historical weather data
@@ -19741,6 +19862,8 @@ hospitality and tourism education
 hospitality and tourism educations
 hospitality and tourism industries
 hospitality and tourism industry
+hospitalization
+hospitals
 host bacterium interaction
 host bacterium interactions
 host based data collection
@@ -19802,6 +19925,7 @@ household level
 household levels
 household survey
 household surveys
+housing
 housing affordability
 housing association
 housing choice
@@ -19845,6 +19969,7 @@ hub and spoke networks
 hub height
 hub location problem
 hub location problems
+human
 human action recognition
 human activities
 human activity analyses
@@ -20358,6 +20483,7 @@ hypersonic flight vehicles
 hyperspectral imaging technologies
 hyperspectral imaging technology
 hyperspectral remote sensing
+hypertension
 hypertension in pregnancy
 hypertension pregnancy induced
 hypertensive disorders of pregnancy
@@ -20503,6 +20629,7 @@ image processing technique
 image processing techniques
 image processing technologies
 image processing technology
+image quality
 image quality assessment
 image quality assessments
 image quality index
@@ -20562,8 +20689,10 @@ immune related genes
 immune system disease
 immune system diseases
 immunisation
+immunization
 immunization information system
 immunization information systems
+immunization programs
 immunogenic cell death
 immunoglobulin a nephropathy
 immunoglobulin blood level
@@ -20578,6 +20707,7 @@ immunoglobulin m antibodies
 immunoglobulin m antibody
 immunological antineoplastic agent
 immunological antineoplastic agents
+immunotherapy
 impact assessment
 impact assessments
 impact of changes
@@ -20802,6 +20932,7 @@ in silico analyses
 in silico analysis
 in silico medicine
 in silico medicines
+in silico trials
 in situ burning
 in situ calibration
 in situ calibrations
@@ -20919,6 +21050,7 @@ incentive scheme
 incentive schemes
 incentives policies
 incentives policy
+incidence
 incident severity classification
 incident severity classifications
 incident solar radiation
@@ -21162,6 +21294,7 @@ infant
 infant low birth weight
 infant low birth weights
 infant small for gestational age
+infection
 infection prevention and control
 infection prevention and controls
 infectious disease medicine
@@ -21180,6 +21313,7 @@ inferior cava vein
 inferior frontal gyrus
 inferring social network
 inferring social networks
+inflammation
 inflammatory bowel disease
 inflammatory bowel diseases
 inflammatory joint disease
@@ -21194,6 +21328,7 @@ influencing factors analyses
 influencing factors analysis
 influencing human emotional state
 influencing human emotional states
+influenza
 influenza a virus
 influenza a viruses
 influenza b virus
@@ -21201,12 +21336,16 @@ influenza b viruses
 influenza like illness
 influenza vaccines
 infobright enterprise edition
+infodemic
+infodemic management
+infodemiology
 informal digital learning of english
 informal environmental regulation
 informal environmental regulations
 informal online learning
 informal online learnings
 informal sector recycling
+informatics
 informatics in nursing
 information adoption model
 information adoption models
@@ -21517,6 +21656,7 @@ injection site pain
 injection site reaction
 injection site reactions
 injections intra articular
+injury
 ink jet printing
 ink jet printings
 inlet air temperatures
@@ -21629,6 +21769,7 @@ institutional building
 institutional buildings
 institutional framework
 institutional frameworks
+institutional investors
 institutional review board
 institutional review boards
 institutions of higher education
@@ -21689,6 +21830,7 @@ insurance claim reporting
 insurance claim review
 insurance claim reviews
 insurance claim settlement
+insurance coverage
 insurance health reimbursement
 insurance long term care
 insurance long term cares
@@ -22424,6 +22566,7 @@ interval valued pythagorean fuzzy set
 interval valued pythagorean fuzzy sets
 interval valued spherical fuzzy set
 interval valued spherical fuzzy sets
+intervention
 intervention based research
 intervention based researches
 interventional cardiovascular procedure
@@ -22449,6 +22592,7 @@ intranasal drug administration
 intranasal drug administrations
 intraocular foreign bodies
 intraocular foreign body
+intratumor heterogeneity
 intrauterine contraceptive device
 intrauterine contraceptive devices
 intrauterine growth retardation
@@ -22594,6 +22738,7 @@ iodinated contrast media
 iodinated contrast medias
 iodinated contrast medium
 iodinated contrast mediums
+iodine
 ion conducting polymers
 ion exchange chromatographies
 ion exchange chromatography
@@ -22783,6 +22928,7 @@ italian legal bert
 italian national institute of statistics
 italian opera theater
 italian opera theatre
+italy
 item based collaborative filtering
 item response model
 item response models
@@ -22981,6 +23127,7 @@ karnofsky performance status
 karush kuhn tucker
 karush kuhn tucker condition
 karush kuhn tucker conditions
+kawasaki disease
 keep track of
 kellgren lawrence grade
 kelvin probe force microscopies
@@ -23044,6 +23191,7 @@ keyword co occurrence network
 keyword co occurrence networks
 keyword spotting system
 keyword spotting systems
+kidney
 kidney disease quality of life
 kidney disease quality of lives
 kidney failure chronic
@@ -24039,6 +24187,7 @@ legal term extraction
 legal term extractions
 legal text analytics
 legal text processing
+legaltech
 legislation and jurisprudence
 legislative frameworks
 lego serious play
@@ -24049,9 +24198,11 @@ lemon peel oil
 lempel ziv complexities
 lempel ziv complexity
 len tiu wright de montfort university faculty of business and law united kingdom
+lendingclub
 length of stay
 lennard jones potential
 lennard jones potentials
+leptospirosis
 lerma chapala santiago river basin
 lerma chapala santiago river basins
 less developed countries
@@ -24220,6 +24371,7 @@ life cycle sustainability assessments
 life cycle thinking
 life cycle thinkings
 life cycles
+life expectancy
 life extensions
 life insurance penetration
 life insurance penetrations
@@ -24346,6 +24498,7 @@ linear mixed effect
 linear mixed effects
 linear mixed model
 linear mixed models
+linear models
 linear parameter varying
 linear parameter varying model
 linear parameter varying models
@@ -24488,6 +24641,7 @@ liver imaging reporting and data systems
 liver protective agent
 liver protective agents
 living conditions
+living kidney donation
 living systematic review
 living systematic reviews
 llm as a judge
@@ -24726,6 +24880,7 @@ logistics service supply chains
 logistics supply chain
 logistics supply chain managements
 logistics supply chains
+loneliness
 long acting drug
 long acting drugs
 long acting insulin
@@ -25231,6 +25386,7 @@ low tier supplier
 low tier suppliers
 low to moderate income
 low to moderate incomes
+low value care
 low voltage dc microgrid
 low voltage distribution network
 low voltage distribution networks
@@ -25285,6 +25441,7 @@ lumped parameter thermal network
 lumped parameter thermal networks
 lunar surface analyses
 lunar surface analysis
+lunch
 lung artery pressure
 lung artery pressures
 lung cancer prediction
@@ -25520,6 +25677,7 @@ major adverse cardiac event
 major adverse cardiac events
 major clinical studies
 major clinical study
+major depressive disorder
 major histocompatibility complex
 major histocompatibility complexes
 make or buy
@@ -25529,6 +25687,7 @@ make to order manufacturing
 make to orders
 make to stock
 make to stocks
+malaria
 malaysia manufacturing industries
 malaysia manufacturing industry
 malaysian meteorological department
@@ -25713,6 +25872,7 @@ marker based augmented reality
 marker based tracking
 markerless augmented realities
 markerless augmented reality
+market
 market analyses
 market analysis
 market barriers
@@ -26159,6 +26319,7 @@ mediation effect model
 mediation effect models
 mediative fuzzy logic
 mediative fuzzy logics
+medicaid
 medical artificial intelligence
 medical artificial intelligences
 medical care need
@@ -26278,6 +26439,7 @@ medically underserved area
 medically underserved areas
 medically unexplained symptom
 medically unexplained symptoms
+medicare
 medicare claims data
 medicare part c
 medication adherence monitoring
@@ -26288,6 +26450,7 @@ medication for opioid use disorders
 medication systems hospital
 medication therapy management
 medication therapy managements
+medications
 medications for opioid use disorder
 medications for opioid use disorders
 medicine chinese traditional
@@ -26353,12 +26516,14 @@ memristive neural networks
 men who have sex with men
 mendelian randomization analyses
 mendelian randomization analysis
+menopause
 menopause rating scale
 menopause rating scales
 mental disease assessment
 mental disease assessments
 mental function assessment
 mental function assessments
+mental health
 mental health analyse
 mental health analyses
 mental health analysis
@@ -26389,6 +26554,7 @@ mentally disabled people
 mentally disabled peoples
 mentally disabled person
 mentally disabled persons
+menthol
 mercury intrusion porosimetry
 merger and acquisition
 merger and acquisitions
@@ -26513,6 +26679,7 @@ metallic matrix composites
 metallorganic chemical vapor deposition
 metallorganic vapor phase epitaxy
 metalorganic chemical vapor deposition
+metals
 metals and alloys
 metastatic breast cancer
 metastatic castration resistant prostate cancer
@@ -26583,6 +26750,7 @@ mexican council of educational researches
 mg air batteries
 mg air battery
 mg doped zno
+mhealth
 mice inbred balb c
 micellar electrokinetic chromatographies
 micellar electrokinetic chromatography
@@ -27151,6 +27319,7 @@ mode of operation
 mode of operations
 mode of transport
 mode of transports
+model
 model and algorithm
 model and algorithms
 model and analyses
@@ -27555,6 +27724,7 @@ morphology and size
 morphology and sizes
 morris water maze test
 morris water maze tests
+mortality
 mortality risk score
 mortality risk scores
 mortgage lending
@@ -27623,6 +27793,7 @@ moving object detections
 moving target defense
 mrna expression level
 mrna expression levels
+mrna vaccines
 ms word template
 mucoadhesive buccal film
 mucoadhesive buccal films
@@ -28392,6 +28563,7 @@ multimodal sentiment analyzes
 multimodality cancer therapies
 multimodality cancer therapy
 multimode process monitoring
+multimorbidity
 multinomial logistic regression
 multinomial logistic regression model
 multinomial logistic regression models
@@ -28476,6 +28648,7 @@ multiple linear regression models
 multiple linear regressions
 multiple listing service
 multiple listing services
+multiple myeloma
 multiple object detection
 multiple object detections
 multiple object tracking
@@ -28642,6 +28815,7 @@ mutual fund flow
 mutual fund flows
 mw wind turbine
 mw wind turbines
+myasthenia gravis
 mycobacterium avium subsp paratuberculosis
 mycobacterium bovis bcg
 mycobacterium tuberculosis complex
@@ -28650,10 +28824,12 @@ myeloid derived suppressor cell
 myeloid derived suppressor cells
 myers briggs type indicators
 myocardial perfusion imaging
+myocarditis
 myocytes smooth muscle
 myoelectrically controlled prosthetics
 myosin heavy chain
 myosin heavy chains
+myosteatosis
 n back task
 n back tasks
 n beats model
@@ -29214,6 +29390,7 @@ networked microgrid system
 networked microgrid systems
 networking and communication
 networking and communications
+networks
 networks and system
 networks and systems
 neural causal model
@@ -29445,6 +29622,7 @@ next token prediction
 next token predictions
 nf kappa b
 nf kb signaling
+nhanes
 ni al layered double hydroxides
 ni based catalyst
 ni based catalysts
@@ -29889,6 +30067,7 @@ north america
 north carolina
 north carolina insurance underwriting association
 north china plain
+north dakota
 north sea
 north sea grid
 north sea grids
@@ -29929,6 +30108,7 @@ novel xgboost classifiers
 novices and experts
 nox emission prediction
 nox emission predictions
+nsclc
 nsga ii
 nsga ii algorithm
 nsga ii algorithms
@@ -30024,6 +30204,7 @@ numerical weather prediction models
 nurse patient relations
 nurse patient relationship
 nurse patient relationships
+nurses
 nurses community health
 nurses community healths
 nursing as a profession
@@ -30036,9 +30217,11 @@ nursing faculty practices
 nursing home patient
 nursing home patients
 nursing home personnel
+nursing homes
 nursing methodology research
 nursing methodology researches
 nursing staff hospital
+nutrition
 nutrition and dietetics
 nutrition surveys
 nutritional physiological phenomena
@@ -30048,6 +30231,7 @@ o and m
 o and ms
 obd ii sensor
 obd ii sensors
+obesity
 obesity care
 object based image analyses
 object based image analysis
@@ -30083,8 +30267,11 @@ objective function values
 objective functions
 objective quality assessment
 objective quality assessments
+observational
+observational data
 observational studies as topic
 observational studies as topics
+observational study
 obsessive compulsive disorder
 obsessive compulsive disorders
 obstetric labor complications
@@ -30131,6 +30318,7 @@ ocular surface disease index
 ocular surface disease indexes
 ocular surface disease indices
 ocular surface diseases
+odds ratio
 odor regulation goal
 odor regulation goals
 odp enterprise language
@@ -30785,6 +30973,7 @@ onshore wind power plants
 onshore wind turbine
 onshore wind turbines
 onshore winds
+ontario
 ontology
 ontology based modeling
 ontology based system
@@ -31009,6 +31198,7 @@ opiate substitution treatment
 opiate substitution treatments
 opioid related disorder
 opioid related disorders
+opioid use disorder
 opportunities and challenges
 opportunities and threat
 opportunity cost
@@ -31375,6 +31565,7 @@ oscillating water column devices
 oscillating water columns
 osteoclast differentiation factor
 osteoclast differentiation factors
+osteoporosis
 oswestry disability index
 oswestry disability indexes
 oswestry disability indices
@@ -31439,6 +31630,8 @@ outlier removal clustering
 outlying aspect mining
 outlying aspect minings
 outpatient clinics
+outpatient treatment
+outpatients
 output power densities
 output power density
 outside in marketing
@@ -31553,6 +31746,7 @@ pain catastrophizing scales
 pain disability index
 pain disability indexes
 pain disability indices
+pain management
 pain of paying
 pain of payment
 pain of payments
@@ -31566,6 +31760,7 @@ paired t tests
 pairing based cryptographies
 pairing based cryptography
 pairwise comparison matrices
+palliative care
 palm kernel oil
 palm kernel shell
 palm kernel shell ash
@@ -31579,6 +31774,7 @@ pancreas islet beta cells
 pancreas islet transplantation
 pancreatic ductal adenocarcinoma
 pancreatic ductal carcinoma
+pandemic
 pandemic lifestyle care
 pandemic lifestyle cares
 pandemics
@@ -31683,6 +31879,7 @@ parameterized quantum circuits
 parameters self tuning
 parametric analyses
 parametric analysis
+parathyroid hormone
 parent child interaction
 parent child interactions
 parent child relations
@@ -31702,6 +31899,7 @@ pareto solution sets
 paris climate agreement
 paris climate agreements
 paris climate change conference
+parity
 park and ride
 park integrated energy system
 park integrated energy systems
@@ -31871,6 +32069,7 @@ patient and public involvement and engagement
 patient and public involvement and engagements
 patient assessment of chronic illness care
 patient assessment of chronic illness cares
+patient care
 patient care management
 patient care managements
 patient care planning
@@ -31946,6 +32145,8 @@ patient reported outcomes measures
 patient reported symptoms
 patient representation learning
 patient representation learnings
+patient safety
+patient satisfaction
 patient satisfaction assessment
 patient satisfaction assessments
 patient satisfaction questionnaire
@@ -32056,6 +32257,7 @@ pedestrian navigation system
 pedestrian navigation systems
 pedestrian wait time
 pedestrian wait times
+pediatric
 pediatric emergency medicine
 pediatric emergency medicines
 pediatric index of mortality
@@ -32067,6 +32269,7 @@ pediatric multisystem inflammatory syndrome
 pediatric multisystem inflammatory syndromes
 pediatric quality of life inventories
 pediatric quality of life inventory
+pediatrics
 peer assessment system
 peer assessment systems
 peer assisted learning
@@ -32186,6 +32389,7 @@ perceived performance risk
 perceived performance risks
 perceived privacy risk
 perceived privacy risks
+perceived risk
 perceived self efficacy
 perceived service qualities
 perceived strategic value
@@ -32194,6 +32398,7 @@ perceived stress scale
 perceived stress scales
 perceived task complexities
 perceived task complexity
+perceived usefulness
 percentage of completion
 percentage of correct scopes
 percentage of reinforcements
@@ -32335,6 +32540,8 @@ perovskite thin films
 peroxisome proliferator activated receptor
 peroxisome proliferator activated receptor alpha
 peroxisome proliferator activated receptor gamma
+persistence
+persistent high utilizers
 persistent organic pollutant
 persistent organic pollutants
 persistent vegetative state
@@ -32425,6 +32632,7 @@ personalized learning path
 personalized learning paths
 personalized learning pathway
 personalized learning pathways
+personalized medicine
 personalized pharmaceuticals and medicine
 personalized pharmaceuticals and medicines
 personalized recommendation system
@@ -32486,6 +32694,9 @@ pharmaceutical supply chain networks
 pharmaceutical supply chains
 pharmaceuticals and personal care product
 pharmaceuticals and personal care products
+pharmacoepidemiology
+pharmacovigilance
+pharmacy
 pharmacy service hospital
 phase change
 phase change energy storage
@@ -32596,6 +32807,7 @@ photon-counting ct
 photonic crystal fiber
 photonic crystal fibers
 photonic integrated circuits
+photons
 photovoltaic array reconfiguration
 photovoltaic battery system
 photovoltaic battery systems
@@ -32686,6 +32898,7 @@ physic informed machine learning
 physic informed machine learnings
 physic informed neural network
 physic informed neural networks
+physical activity
 physical activity exercise
 physical activity exercises
 physical activity monitoring
@@ -32927,6 +33140,7 @@ platelet derived growth factors
 platelet distribution width
 platelet lymphocyte ratio
 platelet lymphocyte ratios
+platform
 platform as a service
 platform as a services
 platform based design
@@ -33145,6 +33359,7 @@ polynomial time algorithm
 polynomial time algorithms
 polypeptide antibiotic agent
 polypeptide antibiotic agents
+polysubstance use
 polyunsaturated fatty acid
 polyunsaturated fatty acids
 pontryagin minimum principle
@@ -33167,6 +33382,8 @@ population extremal optimization
 population extremal optimizations
 population growth
 population growths
+population health
+population health analytics
 population health informatics
 population health management
 population health managements
@@ -33332,6 +33549,7 @@ potentially inappropriate medication list
 potentiodynamic polarization curves
 pouch lithium ion batteries
 pouch lithium ion battery
+poverty
 poverty alleviation
 powder bed fusion
 powder bed fusions
@@ -33731,6 +33949,7 @@ precision and recall
 precision floating point
 precision floating points
 precision livestock farming
+precision medicine
 precision mental health
 precision mental healths
 precision public health
@@ -33767,6 +33986,7 @@ prediction and optimization
 prediction and optimizations
 prediction and simulation
 prediction and simulations
+prediction model
 prediction of academic performance
 prediction of academic performances
 prediction of failure
@@ -33815,6 +34035,7 @@ predictive process monitoring
 predictive risk analytics
 predictive value of test
 predictive value of tests
+predictors
 prefabricated building supply chain
 prefabricated building supply chains
 prefabricated construction
@@ -33839,6 +34060,7 @@ preferred reporting items for systematic reviews and meta analyses
 preferred reporting items for systematic reviews and meta analysis
 prefix span algorithm
 prefix span algorithms
+pregnancy
 pregnancy associated plasma protein a
 pregnancy asssociated plasma protein as
 pregnancy complications cardiovascular
@@ -33869,9 +34091,11 @@ preschool child
 preschool children
 preschool teacher education
 preschool teacher educations
+prescription digital therapeutic
 prescription drug abuse
 prescription drug misuse
 prescription drug monitoring programs
+prescriptions
 prescriptive process monitoring
 present bias
 present biases
@@ -33902,6 +34126,7 @@ pressurised water reactors
 pressurized water reactors
 prestressed concrete
 prestressed concretes
+preterm birth
 pretest posttest control group design
 pretest posttest control group designs
 pretest posttest design
@@ -33912,6 +34137,7 @@ pretrained language model
 pretrained language models
 pretrained large language model
 pretrained large language models
+prevalence
 prevention and control
 prevention and controls
 prevention and detection
@@ -33920,6 +34146,7 @@ preventive health service
 preventive health services
 preventive maintenance
 preventive maintenances
+preventive medicine
 preventive proactive law
 preventive proactive laws
 price
@@ -33947,6 +34174,7 @@ primal dual methods
 primary and secondary school teachers
 primary and secondary schools
 primary biliary cirrhosis
+primary care
 primary care nursing
 primary care physician
 primary care physicians
@@ -34104,6 +34332,7 @@ probabilistic solar forecasting
 probabilistic timed automata
 probabilistic topic model
 probabilistic topic models
+probability
 probability and statistics
 probability density analyses
 probability density analysis
@@ -34396,6 +34625,7 @@ profitability analyses
 profitability analysis
 prognose and health management
 prognose and health managements
+prognosis
 prognostic and health management
 prognostic and health managements
 prognostic health managements
@@ -34585,6 +34815,8 @@ prospect theories
 prospect theory
 prospective payment system
 prospective payment systems
+prospective studies
+prostate cancer
 prostate cancer detection
 prostate cancer detections
 prostate imaging reporting and data system
@@ -34599,6 +34831,7 @@ protected designation of origin
 protected designation of origins
 protected health information
 protected health informations
+protection
 protection and control
 protection and controls
 protection and utilizations
@@ -34699,6 +34932,7 @@ pseudo two dimensional model
 pseudo two dimensional models
 psm did method
 psm did methods
+psoriasis
 psoriasis area and severity index
 psoriasis area and severity indexes
 psoriasis area and severity indices
@@ -34709,9 +34943,11 @@ psychiatric emergency service
 psychiatric emergency services
 psychiatric status rating scale
 psychiatric status rating scales
+psychiatry
 psychogenic nonepileptic seizure
 psychological and psychiatric procedure
 psychological and psychiatric procedures
+psychological distress
 psychological distress assessment
 psychological distress assessments
 psychological rating scale
@@ -34725,9 +34961,11 @@ psychological wellbeing assessment
 psychological wellbeing assessments
 psychology of design
 psychology of designs
+psychosis
 psychosocial support system
 psychosocial support systems
 psychosocial well being
+psychotherapy
 pt based alloy
 pt based alloys
 pt based catalyst
@@ -34800,6 +35038,7 @@ public key cryptographies
 public key cryptography
 public key infrastructure
 public key infrastructures
+public opinion
 public policies
 public policy
 public private collaboration
@@ -34835,8 +35074,10 @@ public transportation system
 public transportation systems
 public wi fi access
 publish or perish
+pubmed
 pull in voltage
 pull in voltages
+pulmonary arterial hypertension
 pulmonary artery occlusion pressure
 pulmonary artery occlusion pressures
 pulmonary artery systolic pressure
@@ -34856,6 +35097,7 @@ pulsating heat pipes
 pulse amplitude modulation
 pulse code modulation
 pulse oxygen saturation
+pulse pileup
 pulse power load
 pulse power loads
 pulse rate variabilities
@@ -35032,6 +35274,7 @@ qualitative descriptive researches
 qualitative interviews
 qualitative longitudinal case studies
 qualitative longitudinal case study
+qualitative research
 qualitative research method
 qualitative research methods
 quality adjusted life year
@@ -35511,6 +35754,7 @@ randomized controlled trials as topics
 randomized field experiment
 randomized field experiments
 randomized search cv
+randomized trials
 range gate pull off
 range gate pull offs
 range of motion
@@ -36094,6 +36338,7 @@ rectified linear unit
 rectified linear units
 rectifying circuits
 rectum anterior resection
+recurrence
 recurrence free survival
 recurrent convolutional network
 recurrent convolutional networks
@@ -36142,6 +36387,7 @@ red green blues
 red river delta
 red tailed hawk algorithm
 red tailed hawk algorithms
+reddit
 redox active material
 redox active materials
 redox reaction kinetic
@@ -36245,6 +36491,7 @@ register of processing activities
 register transfer level
 register transfer level codes
 register transfer levels
+registries
 regression analyses
 regression analysis
 regression based approach
@@ -36572,6 +36819,7 @@ representational state transfer
 representational state transfers
 representative volume element
 representative volume elements
+reproducibility
 reproducibility of results
 reproducing kernel hilbert space
 reproducing kernel hilbert spaces
@@ -36816,6 +37064,7 @@ respiratory function test
 respiratory function tests
 respiratory gas humidifier
 respiratory sinus arrhythmia
+respiratory syncytial virus
 respiratory syncytial virus human
 respiratory syncytial virus humans
 respiratory syncytial virus infection
@@ -36948,6 +37197,7 @@ retrofit strategies
 retrofit subsidies
 retrospective panel data
 retrospective studies
+rett syndrome
 return and volatility spillover
 return and volatility spillovers
 return of investment
@@ -37013,6 +37263,7 @@ reversible hydrogen electrode
 reversible hydrogen electrodes
 reversible pump turbine
 reversible pump turbines
+review
 review literature as topic
 review literature as topics
 review of research
@@ -37172,6 +37423,7 @@ risk seeking
 risk sensitive reinforcement learning
 risk sensitive reinforcement learnings
 risk sharing
+risk stratification
 risk taking behavior
 risk taking behaviors
 risk taking channel
@@ -37256,6 +37508,7 @@ robotics
 robotics + driving
 robotics + drivings
 robotics and flexible tooling
+robots
 robust adaptive control
 robust adaptive controls
 robust decision making
@@ -37446,6 +37699,7 @@ run to failures
 runge kutta fehlberg
 runge kutta method
 runge kutta methods
+rural
 rural and remote
 rural and urban
 rural area
@@ -37587,6 +37841,7 @@ sand cone models
 sandia national laboratories
 sap business objects
 saphenous vein graft
+sarcopenia
 sars related coronavirus
 satellite based precipitation
 satellite based precipitation product
@@ -37696,6 +37951,7 @@ scheduling and control
 scheduling and controls
 scheduling and routing
 scheme of the factor expand
+schizophrenia
 schizophrenia and psychotic disorder
 schizophrenia and psychotic disorders
 schizotypal personality disorder
@@ -37723,6 +37979,7 @@ school to work transition
 school to work transitions
 school university partnership
 school university partnerships
+schools
 schools public health
 schools public healths
 schottky barrier diodes
@@ -37777,6 +38034,7 @@ screen printed electrode
 screen printed electrodes
 screen printing technologies
 screen printing technology
+screening
 sea breeze
 sea level
 sea level change
@@ -37807,6 +38065,7 @@ seasonal autoregressive integrated moving average with exogenous factors models
 seasonal autoregressive integrated moving averages
 seasonal time series
 seasonal trend decomposition procedure with loess
+seasons
 seawater reverse osmosis
 second degree atrioventricular block
 second degree atrioventricular blocks
@@ -37973,6 +38232,8 @@ seismic retrofitting application
 seismic retrofitting applications
 seismic risk
 seismic risks
+seizure
+seizures
 selected area electron diffraction
 selected area electron diffractions
 selection and evaluation
@@ -38309,6 +38570,7 @@ sensor systems and applications
 sensors and actuators
 sensors data fusion
 sensors data fusions
+sentiment
 sentinel lymph node biopsy
 separate hydrolysis and fermentation
 separate hydrolysis and fermentations
@@ -38475,6 +38737,7 @@ sex distribution
 sex factors
 sexual and gender minorities
 sexual and gender minority
+sexual and reproductive health
 sexual and reproductive health and rights
 sexual dysfunction physiological
 sexual dysfunctions psychological
@@ -38483,6 +38746,7 @@ sexual health informations
 sexual well being
 sexually transmitted disease
 sexually transmitted diseases
+shadow banking
 shake flask cultivations
 shake flask cultures
 shake table test
@@ -38809,6 +39073,7 @@ simulated annealing optimizations
 simulated body fluids
 simulated physical control
 simulated physical controls
+simulation
 simulation analyses
 simulation analysis
 simulation and analyses
@@ -39018,6 +39283,7 @@ singular spectrum decomposition
 singular spectrum decompositions
 singular value decomposition
 singular value decompositions
+sirva
 sit to stand
 sit to stand test
 sit to stand tests
@@ -39070,12 +39336,14 @@ slacks based measure
 slacks based measure model
 slacks based measure models
 slacks based measures
+sleep
 sleep apnea obstructive
 sleep apnea syndrome
 sleep apnea syndromes
 sleep disorder assessment
 sleep disorder assessments
 sleep disordered breathing
+sleep duration
 sleep initiation and maintenance disorder
 sleep initiation and maintenance disorders
 sleep related breathing disorder
@@ -39134,6 +39402,7 @@ small and medium sized manufacturing enterprises
 small and medium-sized enterprise
 small angle x ray scattering
 small angle x ray scatterings
+small area estimation
 small batch production
 small batch productions
 small business credit
@@ -39402,6 +39671,8 @@ smes credit qualities
 smes credit quality
 smoke detection system
 smoke detection systems
+smokeless tobacco
+smoking
 smoking cessation
 smoldering multiple myeloma
 smooth muscle cell
@@ -39696,6 +39967,7 @@ sociotechnical system
 sociotechnical systems
 sociotechnical systems theories
 sociotechnical systems theory
+sodium
 sodium blood level
 sodium blood levels
 sodium boro hydrides
@@ -40370,6 +40642,7 @@ specific wear rate
 specific wear rates
 spectral clustering algorithm
 spectral clustering algorithms
+spectral ct
 spectral feature selection
 spectral feature selections
 spectral finite elements
@@ -40851,6 +41124,7 @@ stepwise weight assessment ratio analyse
 stepwise weight assessment ratio analyses
 stereo image processing
 stick slip vibration
+stigma
 stigma and discrimination
 stimulated raman scattering
 stimulated raman scatterings
@@ -41083,6 +41357,7 @@ stressor strain outcome model
 stressor strain outcome models
 stretchable strain sensor
 stretchable strain sensors
+stroke
 stroke risk score
 stroke risk scores
 stroke volume
@@ -41274,6 +41549,7 @@ student to student connectedness
 student well being
 student with disabilities
 student with disability
+students
 students academic achievement
 students academic performance
 students academic performances
@@ -41332,6 +41608,7 @@ substance abuse intravenous
 substance particle concept understanding
 substance related disorder
 substance related disorders
+substance use disorders
 substance withdrawal syndrome
 substance withdrawal syndromes
 substrate integrated waveguides
@@ -41748,6 +42025,7 @@ surrounding rock deformation
 surrounding rock deformations
 surveillance and enforcement
 surveillance and monitoring
+survey
 survey and analyses
 survey and analysis
 survey and overview
@@ -41763,9 +42041,12 @@ survey research design
 survey research designs
 surveys and overviews
 surveys and questionnaires
+survival
 survival and growth
 survival and growths
 survival rate
+survivors
+survivorship
 suspended particulate matter
 suspended particulate matters
 suspended sediment concentrations
@@ -41982,6 +42263,7 @@ symposium on virtual and augmented realities
 symposium on virtual and augmented reality
 symptom flare up
 symptom flare ups
+symptoms
 synchronized decision making
 synchronized decision makings
 synchronized phasor measurement
@@ -42628,8 +42910,11 @@ telecommunication in healthcares
 telecommunication industry
 telecommunications
 telecommunications service providers
+telehealth
 telemedicine
 telemedicine and telehealth
+telephone
+telepsychiatry
 temperature and humidities
 temperature and humidity sensor
 temperature and humidity sensors
@@ -42786,6 +43071,7 @@ text data minings
 text document clustering
 text feature extraction
 text feature extractions
+text messaging
 text mining
 text mining analyses
 text mining analysis
@@ -43099,6 +43385,7 @@ thoracic outlet syndrome
 thoracic outlet syndromes
 thoracic surgical procedure
 thoracic surgical procedures
+thorax
 thorium based molten salt reactor
 thorium based molten salt reactors
 threats and attack
@@ -43197,6 +43484,7 @@ three way decision
 three way decisions
 three way interaction
 three way interactions
+threshold
 threshold current densities
 threshold current density
 threshold effect model
@@ -43207,6 +43495,7 @@ threshold regression model
 threshold regression models
 thriving at work
 thriving at works
+thrombectomy
 thrombocyte rich plasma
 thrombocyte rich plasmas
 through the lens
@@ -43491,6 +43780,8 @@ tissue culture techniques
 tissue plasminogen activator
 titanium dioxide nanoparticle
 titanium dioxide nanoparticles
+tobacco products
+tobacco use
 tobacco use cessation
 tobacco use cessation device
 tobacco use cessation devices
@@ -43804,6 +44095,7 @@ transfer reinforcement learning
 transfer reinforcement learnings
 transform infrared spectroscopies
 transform infrared spectroscopy
+transformation
 transformation and loading
 transformation and loadings
 transformation of education
@@ -43950,6 +44242,7 @@ transtheoretical model of change
 transtheoretical model of changes
 transurethral resection of prostate
 trapezoidal fuzzy numbers
+trauma
 trauma focused cognitive behavioral therapies
 trauma focused cognitive behavioral therapy
 trauma informed care
@@ -43983,6 +44276,7 @@ travelling salesman problems
 treatment adherence
 treatment adherence and compliance
 treatment adherence and compliances
+treatment discontinuation
 treatment effect heterogeneity
 treatment effect model
 treatment effect models
@@ -44065,6 +44359,7 @@ trnsys simulations
 tropical dry forest
 tropical dry forests
 tropical rainfall measuring missions
+troponin
 truck and drone
 truck and drone routing
 truck and drone routing algorithm
@@ -44617,6 +44912,7 @@ unity power factors
 univariate time series
 universal design for learning
 universal design for learnings
+universal free school meals
 universal generating functions
 universal health care
 universal health cares
@@ -44624,6 +44920,7 @@ universal health insurance
 universal image quality index
 universal image quality indexes
 universal image quality indices
+universities
 universities and colleges
 university drop out
 university industry collaboration
@@ -44685,6 +44982,7 @@ unmanned underwater vehicle
 unmanned underwater vehicles
 unmet medical need
 unmet medical needs
+unmet needs
 unreinforced masonry
 unsaturated fatty acid
 unsaturated fatty acids
@@ -44858,6 +45156,7 @@ urban water supply system
 urban water supply systems
 urban wind energies
 urban wind energy
+urbanization
 urchin like structure
 urchin like structures
 urea blood level
@@ -45011,6 +45310,7 @@ uses and gratification theory
 uses and gratifications
 uses and gratifications theories
 uses and gratifications theory
+utaut
 uterine artery pulsatility index
 uterine artery pulsatility indexes
 uterine artery pulsatility indices
@@ -45032,14 +45332,22 @@ uv vis spectroscopies
 uv vis spectroscopy
 uv visible spectroscopies
 uv visible spectroscopy
+vaccination
+vaccination coverage
 vaccination hesitancy
+vaccination refusal
+vaccine
 vaccine adverse event reporting system
 vaccine adverse event reporting systems
+vaccine effectiveness
 vaccine efficacy
+vaccine hesitancy
 vaccine preventable disease
 vaccine preventable diseases
+vaccine safety
 vaccine supply chain
 vaccine supply chains
+vaccines
 vacuum applications
 vacuum assisted closure
 vacuum assisted resin transfer moulding
@@ -45048,6 +45356,7 @@ vacuum insulation panel
 vacuum insulation panels
 vaginal birth after cesarean
 vagus nerve stimulation
+validation
 validation and verification
 validation and verifications
 validation of safety critical collaboration system
@@ -45149,6 +45458,7 @@ vanadium redox flow battery
 vancomycin resistant enterococcus
 vanishing point detection
 vanishing point detections
+vaping
 vapor + liquid equilibria
 vapor phase epitaxy
 variable air volume
@@ -45381,6 +45691,7 @@ very short term solar forecasting
 vessel digital twin
 vessel traffic service
 vessel traffic services
+veterans
 veterans health administrations
 veterans health service
 veterans health services
@@ -45396,6 +45707,7 @@ vibrating tube densitometer
 vibration based monitoring
 vibration based structural health monitoring
 vibration energy harvesters
+victoria
 video assisted thoracoscopic surgeries
 video assisted thoracoscopic surgery
 video audio media
@@ -45446,6 +45758,7 @@ viral gene delivery systems
 viral load testing
 viral respiratory tract infection
 viral respiratory tract infections
+virginia
 virtual and augmented realities
 virtual and augmented reality
 virtual and real mapping
@@ -45469,6 +45782,7 @@ virtual education space
 virtual education spaces
 virtual educational technologies
 virtual educational technology
+virtual imaging trials
 virtual in situ calibration
 virtual in situ calibrations
 virtual inertial control
@@ -45616,6 +45930,7 @@ visible light sensing
 visible near infrared
 visible near infrared spectroscopies
 visible near infrared spectroscopy
+vision
 vision + language
 vision + languages
 vision and language
@@ -45699,6 +46014,7 @@ visual simultaneous localization and mappings
 visual system examination
 visual system examinations
 visual system parameters
+visualization
 visualization and analyses
 visualization and analysis
 visualization and simulation
@@ -46096,6 +46412,7 @@ wear condition warnings
 wear of material
 wear of materials
 wearable device
+wearable devices
 wearable electronic device
 wearable electronic devices
 wearable enhanced learning
@@ -46250,9 +46567,11 @@ weibull theories
 weibull theory
 weigh in motion
 weigh in motions
+weight change
 weight control
 weight gain prevention
 weight gain preventions
+weight loss
 weight loss method
 weight loss methods
 weight reduction programs
@@ -46776,6 +47095,7 @@ wolff parkinson white syndrome
 wolff parkinson white syndromes
 woman centred care
 woman centred cares
+women
 women in chemistries
 women in chemistry
 women in engineering
@@ -46850,6 +47170,7 @@ working fluid selection
 working fluid selections
 working from home
 working from homes
+workplace
 workplace health promotion
 workplace well being
 world bank
@@ -46969,6 +47290,7 @@ young adults
 young mania rating scale
 young mania rating scales
 young men who have sex with men
+youth
 youth and young adult
 youth and young adults
 youth research impact

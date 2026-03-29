@@ -119,7 +119,8 @@ def generate_index_file(key, children):
     filename = f"{SOURCE_DIR}/{key}.rst"
 
     with open(filename, "w", encoding="utf-8") as f:
-        title = key.split(".")[-1].replace("_", " ").capitalize()
+        # title = key.split(".")[-1].replace("_", " ").capitalize().upper()
+        title = key.split(".")[-1].lower()
         f.write(title + "\n")
         f.write("#" * 80 + "\n\n")
         f.write(".. toctree::\n")

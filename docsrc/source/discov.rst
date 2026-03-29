@@ -1,4 +1,4 @@
-Discov
+discov
 ################################################################################
 
 .. toctree::
@@ -12,6 +12,5 @@ Discov
     discov.cross_occur_matrix
     discov.doc_clust
     discov.life_cycle
-    discov.main_inf
     discov.sankey
     discov.tfidf

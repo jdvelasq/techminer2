@@ -1,11 +1,11 @@
-Ingest
+ingest
 ################################################################################
 
 .. toctree::
     :maxdepth: 1
     :hidden:
 
-    ingest.data_sourc
+    ingest.datab
     ingest.extr
     ingest.oper
     ingest.rec

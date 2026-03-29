@@ -1,9 +1,14 @@
-Org
+org
 ################################################################################
 
 .. toctree::
     :maxdepth: 1
     :hidden:
 
-    refine.org.create_thesaurus
-    refine.org.merge_keys
+    refine.org.apply
+    refine.org.get
+    refine.org.group
+    refine.org.match
+    refine.org.merge
+    refine.org.reset
+    refine.org.sort

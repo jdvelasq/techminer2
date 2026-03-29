@@ -1,17 +1,19 @@
-Concept
+concept
 ################################################################################
 
 .. toctree::
     :maxdepth: 1
     :hidden:
 
-    refine.concept.contains_match
-    refine.concept.create_thesaurus
-    refine.concept.endswith_match
-    refine.concept.fuzzy_cutoff_0_match
-    refine.concept.fuzzy_cutoff_1_match
-    refine.concept.merge_keys
-    refine.concept.preprocess_thesaurus
-    refine.concept.startswith_match
-    refine.concept.stemning_match
-    refine.concept.wordorder_match
+    refine.concept.acronym
+    refine.concept.ai
+    refine.concept.apply
+    refine.concept.get
+    refine.concept.group
+    refine.concept.match
+    refine.concept.merge
+    refine.concept.regist
+    refine.concept.remove
+    refine.concept.replace
+    refine.concept.reset
+    refine.concept.sort

@@ -10,6 +10,6 @@ Techminer 2+
     source/refine
     source/discov
     source/anal
-    source/innov
     source/synthes
+    source/innov    
     source/rep

@@ -23,7 +23,7 @@ Smoke tests:
 
 from tm2p._intern import ParamsMixin
 from tm2p.enum import ThFile
-from tm2p.refine._intern.replace import BaseWord
+from tm2p.refine._intern.replace import BaseExactWord
 
 
 class Word(
@@ -35,7 +35,7 @@ class Word(
         """:meta private:"""
 
         return (
-            BaseWord()
+            BaseExactWord()
             .update(**self.params.__dict__)
             .with_thesaurus_file(ThFile.CONCEPT)
             .run()
