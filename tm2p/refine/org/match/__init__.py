@@ -1,7 +1,6 @@
 from .beider_morse import BeiderMorseMatch
 from .bigram import BigramMatch
 from .cologne_phonetics import ColognePhoneticsMatch
-from .combine import CombineMatch
 from .contains import ContainsMatch
 from .daitch_mokotoff import DaitchMokotoffMatch
 from .doublemetaphone import DoubleMetaphoneMatch
@@ -18,7 +17,6 @@ __all__ = [
     "BeiderMorseMatch",
     "BigramMatch",
     "ColognePhoneticsMatch",
-    "CombineMatch",
     "ContainsMatch",
     "DaitchMokotoffMatch",
     "DoubleMetaphoneMatch",
