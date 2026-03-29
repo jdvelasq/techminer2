@@ -12,8 +12,6 @@ Smoke tests:
 
 """
 
-import sys
-
 from tm2p._intern import ParamsMixin
 from tm2p.refine._intern.data_access import (
     load_thesaurus_as_dataframe,
@@ -38,8 +36,3 @@ class BaseExplode(
             params=self.params,
             df=df,  # type: ignore
         )
-
-        sys.stderr.write(
-            f"\nExploded {self.params.thesaurus_file.value} variants into separate records\n"
-        )
-        sys.stderr.flush()

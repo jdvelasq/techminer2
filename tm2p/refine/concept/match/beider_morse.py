@@ -22,7 +22,7 @@ class BeiderMorseMatch(
 ):
     """:meta private:"""
 
-    def run(self):
+    def run(self) -> None:
         """:meta private:"""
 
         return (
