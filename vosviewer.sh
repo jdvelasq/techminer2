@@ -1,0 +1,1 @@
+java -jar /Applications/VOSviewer/VOSviewer.app/Contents/Java/VOSviewer.jar
