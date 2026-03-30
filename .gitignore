@@ -11,29 +11,29 @@ Thumbs.db
 # data for tests
 # ============================================================================
 
-tests/openalex/analyze/
-tests/openalex/ingest/process/
-tests/openalex/refine/
-tests/openalex/report/
-tests/openalex//zotero.log
+examples/openalex/analyze/
+examples/openalex/ingest/process/
+examples/openalex/refine/
+examples/openalex/report/
+examples/openalex//zotero.log
 
-tests/pubmed/analyze/
-tests/pubmed/ingest/process/
-tests/pubmed/refine/
-tests/pubmed/report/
-tests/pubmed//zotero.log
+examples/pubmed/analyze/
+examples/pubmed/ingest/process/
+examples/pubmed/refine/
+examples/pubmed/report/
+examples/pubmed//zotero.log
 
-tests/scopus/analyze/
-tests/scopus/ingest/process/
-tests/scopus/refine/
-tests/scopus/report/
-tests/scopus//zotero.log
+examples/scopus/analyze/
+examples/scopus/ingest/process/
+examples/scopus/refine/
+examples/scopus/report/
+examples/scopus//zotero.log
 
-tests/wos/analyze/
-tests/wos/ingest/process/
-tests/wos/refine/
-tests/wos/report/
-tests/wos//zotero.log
+examples/wos/analyze/
+examples/wos/ingest/process/
+examples/wos/refine/
+examples/wos/report/
+teexamplessts/wos//zotero.log
 
 
 
