@@ -19,11 +19,11 @@ Smoke tests:
     ...     .where_records_match(None)
     ...     #
     ...     .run()
-    ... )  # doctest: +IGNORE
+    ... )  # doctest: +SKIP
     >>> from textwrap import fill
     >>> for definiition in definitions:
     ...     print(fill(definiition, width=70))
-    ...     print("...")  # doctest: +IGNORE
+    ...     print("...")  # doctest: +SKIP
     FINTECH, short for financial technology, refers to the innovative
     integration of technology into financial services, aiming to enhance
     financial inclusion and efficiency. it encompasses a wide range of

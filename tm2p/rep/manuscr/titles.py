@@ -4,7 +4,7 @@ Titles
 
 Smoke tests:
 
-    >>> from tm2p.manuscript import Titles
+    >>> from tm2p.manuscr import Titles
     >>> (
     ...     Titles()
     ...     #

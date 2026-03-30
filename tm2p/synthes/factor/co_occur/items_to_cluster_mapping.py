@@ -25,7 +25,7 @@ Smoke test:
     ...     random_state=0,
     ... )
     >>> from tm2p import Field, ItemOrderBy
-    >>> from tm2p.synthes.factor_anal.co_occur import ItemsToClusterMapping
+    >>> from tm2p.synthes.factor.co_occur import ItemsToClusterMapping
     >>> mapping = (
     ...     ItemsToClusterMapping()
     ...     #

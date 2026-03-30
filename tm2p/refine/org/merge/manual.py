@@ -3,9 +3,9 @@ Manual
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.refine.org.group import Auto
+    >>> from tm2p.refine.org.group import Manual
     >>> (
-    ...     Auto()
+    ...     Manual()
     ...     .having_text_matching(
     ...         (
     ...             "fintech innovation",

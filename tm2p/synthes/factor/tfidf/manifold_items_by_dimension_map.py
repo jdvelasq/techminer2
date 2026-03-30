@@ -32,7 +32,7 @@ Smoke test:
     ...     n_jobs=None,
     ... )
     >>> from tm2p import Field, ItemOrderBy
-    >>> from tm2p.synthes.factor_anal.tfidf import ManifoldItemsByDimensionMap
+    >>> from tm2p.synthes.factor.tfidf import ManifoldItemsByDimensionMap
     >>> plot = (
     ...     ManifoldItemsByDimensionMap()
     ...     #
