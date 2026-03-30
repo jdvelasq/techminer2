@@ -7,7 +7,7 @@ Smoke tests:
     >>> from tm2p.manuscript import CountReferences
     >>> (
     ...     CountReferences()
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("examples/scopus/")
     ...     .run()
     ... )
 

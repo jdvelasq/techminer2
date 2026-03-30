@@ -1,0 +1,297 @@
+aca
+    automated continuous assurance
+ai
+    artificial intelligence
+    uch as automation of processes , advanced data analytics and artificialintelligence ( ai )
+ai-ocr
+    , and ai-enabled optical character recognition ( ai-ocr )
+airo
+    this compendium is centered around the ai risk ontology ( airo )
+aml
+    a unified compliance operations framework integrating anti-money laundering ( aml )
+    and blockchain in anti-money laundering ( aml )
+    anti money laundering
+    anti money laundry
+    background : anti-money laundering ( aml )
+    buted to 689 aml officers in indonesia with the expertise in anti-money laundering ( aml )
+    ergence of new , complex , and often unpredictable risks for anti-money laundering ( aml )
+    fintech companies , focusing on key compliance areas such as anti-money laundering ( aml )
+    highlights the practical applications of ai in areas such as anti-money laundering ( aml )
+    ilities and characteristics influence their effectiveness in anti-money laundering ( aml )
+    pe of financial technology , ensuring robust compliance with anti-money laundering ( aml )
+    regulatory compliance in areas such as anti-money laundering ( aml )
+    this paper explores how institutional readiness for anti-money laundering ( aml )
+    this paper proposes a strategic framework aimed at enhancing anti-money laundering ( aml )
+    with increasing demand of anti-money laundering ( aml )
+aml-cft
+     to strengthen anti-money laundering and countering the financing of terrorism ( aml-cft )
+ausera
+    second , we design a three-phase automated security risk assessment system ( ausera )
+bd
+    , big data analytics ( bd )
+bmc
+    business model canvas
+bnpl
+    buy now pay later
+bpmn
+    process model and notation
+cagr
+    compound annual growth rate
+cbs
+    core banking solutions
+cc
+    cloud computing
+ccfd
+    credit card fraud detection
+cdd
+    customer due diligence
+cftr
+    been established and published by the commodity futures trading regulatory agency ( cftr )
+cnn
+    convolutional neural network
+comp
+    , compliance ( comp )
+cr
+    cost reduction
+    customer relations
+ct
+    and time
+    time ( ct )
+cte
+    and time efficiencies
+cv
+    crystal validator
+cvar
+    conditional value at risk
+defi
+    additionally , emerging trends such as open banking , decentralized finance ( defi )
+    by novel financial products , digital payment systems , and decentralized finance ( defi )
+    government can embrace decentralized finance ( defi )
+did
+    and differences-in-differences ( did )
+dlt
+    distributed ledger technology
+dml
+    double machine learning
+dtx
+    digital therapies ( dtx )
+e-kyc
+     , the use of video broadcasting procedures , electronic identity authentication ( e-kyc )
+    electronic know your customer
+ec
+    european commission
+ecb
+    european central bank
+ehds
+    european health data space
+ehealth
+    and electronic health ( ehealth )
+ekyc
+    electronic know your customer
+erp
+    enterprise resource planning
+esg
+    , environmental , social , and governance ( esg )
+    ections , focusing on the salient areas of environmental , social , and governance ( esg )
+    key areas such as the influence of environmental , social , and governance ( esg )
+eu
+    european union
+fair
+    istration of ai systems in a findable , accessible , interoperable , and reusable ( fair )
+fatf
+    financial action task force
+fca
+    financial conduct authority
+financial
+    the topmost challenges in managing risks are credit ( financial )
+fintech
+    financial technologies
+    financial technology
+fiu
+    financial intelligence unit
+fomo
+    to behavioral distortions like herding , overconfidence , and fear-of-missing-out ( fomo )
+fra
+    financial regulatory authority
+fril
+    financial regulation innovation lab
+fsm
+    ely on stored databases or llm inference , ldos operates as a finite-state-machine ( fsm )
+gcc
+    gulf cooperation council
+genai
+    the discussion then shifts to generative ai ( genai )
+gfc
+    global financial crisis
+grc
+    , governance , risk , and compliance ( grc )
+ia
+    intelligent automation
+imps
+    y gained momentum in the 2010s with the introduction of immediate payment service ( imps )
+insurtech
+    insurance technology
+    services , online lending , investment technologies , insurance technologies ( insurtech )
+intrac
+    t the fiu in indonesia is the indonesian transaction report and analysis center ( intrac )
+iot
+    internet of things
+irta
+    d associations active in switzerland swisscom , international regtech association ( irta )
+iti
+    , and technology information infrastructure ( iti )
+ka
+    key activities
+kris
+    key risk indicators
+kyc
+    know your customer
+    multivariate analysis results indicate that electronic know-your-customer ( kyc )
+ldos
+    lawmadi os ( ldos )
+llm
+    large language models
+llms
+    large language models
+mcdm
+     start-ups and applies the delphi technique and multiple criteria decision-making ( mcdm )
+mica
+    rameworks-most notably the european union ' s markets in crypto-assets regulation ( mica )
+ml
+    machine learning
+    money laundering
+mlp
+    money laundering preventing
+    money laundering prevention
+mri
+    multilayered risk interception
+ner
+    named entity recognition
+nfc
+    near field communication
+nfts
+    on aligned with sars rules , wallet interaction mapping , and non-fungible tokens ( nfts )
+nlp
+    natural language processing
+npci
+    , launched by the national payments corporation of india ( npci )
+nsf
+    national science foundation
+operational
+    , internal process , and human error ( operational )
+osfi
+    th the requirements of the office of the superintendent of financial institutions ( osfi )
+p2p
+    peer-to-peer
+pls-sem
+    partial least squares structural equation modeling ( pls-sem )
+ppatk
+    tion reports to the indonesian financial transaction reports and analysis center ( ppatk )
+    transactions to the indonesian financial transaction reports and analysis center ( ppatk )
+ppsi
+    us act of 2026 has mandated that all ' ' permitted payment stablecoin issuers ' ' ( ppsi )
+processes
+    ulatory\ncompliance , where organizations need to ensure that their controls ( processes )
+profit
+    , and profitability ( profit )
+qa
+    quality assurance
+raml
+    hips between various regtech components-such as regtech for anti-money laundering ( raml )
+rba
+    this study explores the implementation of risk-based audit ( rba )
+rc
+    regulatory compliance
+reg-ir
+    to this end , we introduce regulatory information retrieval ( reg-ir )
+reglag
+    this article develops the regulatory lag theory ( reglag )
+regtech
+    , and regulatory technologies ( regtech )
+    , argues that regulatory technologies ( regtech )
+    , regulatory technologies ( regtech )
+    and regulatory technologies ( regtech )
+    ech , aml is one of the key factors in fintech and its regulatory technologies ( regtech )
+    eoretical overview of the promise and potential of the regulatory technologies ( regtech )
+    frameworks , the role of regulatory technologies ( regtech )
+    his review examines the current landscape of ai-driven regulatory technologies ( regtech )
+    ificial intelligence , advanced data engineering , and regulatory technologies ( regtech )
+    l understanding must be reviewed in view of developing regulatory technologies ( regtech )
+    mines the opportunities and prospects for implementing regulatory technologies ( regtech )
+    nd , triggered the extraordinary growth we have seen : regulatory technologies ( regtech )
+    new developments in regulatory technologies ( regtech )
+    paper discusses various types of financial technologies , primarily regulatory ( regtech )
+    regulatory technology
+    study aims to explore several challenges in the use of regulatory technologies ( regtech )
+    tforms provide innovative green financial products and regulatory technologies ( regtech )
+    this chapter explores the promise and potential of regulatory technologies ( regtech )
+    this paper presents a machine learning-based regulatory ( regtech )
+    tical role of advanced data processing architectures , regulatory technologies ( regtech )
+    ulatory reforms have unintentionally driven the use of regulatory technologies ( regtech )
+regtechs
+    anisms , while existing blockchain forensic tools and regulatory technologies ( regtechs )
+    regulatory technologies ( regtechs )
+rf
+    random forest
+rm
+    risk management
+roi
+    return on investment
+rpa
+    robotic process automation
+rr
+    regulatory reporting
+rts
+    these decisions contribute to the reliance on regtech and supervisory technology ( rts )
+sandboxes
+    infrastructure companies , startups , regulators , accelerators , incubators ( sandboxes )
+sar
+    suspicious activity reporting
+sars
+    south african revenue service
+sebi
+     retail investors is growing quickly , the securities and exchange board of india ( sebi )
+sem
+    structural equation modeling
+siem
+    information and event management
+slr
+    systematic literature review
+sme
+    and medium-sized enterprises
+smote
+    class imbalance was compensated using synthetic minority over-sampling technique ( smote )
+srl
+    shared research ledger
+suptech
+     and moral ai practices , and the fusion of regtech and supervisory technology ( suptech )
+    and supervisory ( suptech )
+    and supervisory technologies ( suptech )
+    and supervisory technology ( suptech )
+    into supervisory technology ( suptech )
+    ng and operations , as well as for authorities , which can leverage on regtech ( suptech )
+    rations of central banks , with a particular focus on supervisory technologies ( suptech )
+    regtech ( suptech )
+    this bibliometric study examines articles on supervisory technology ( suptech )
+    yzes the capabilities and implementation potential of supervisory technologies ( suptech )
+sus
+    , sustainability ( sus )
+tm
+    transaction monitoring
+    transactions monitoring
+toe
+    eory , organizational culture theory , and the technology-organisation-environment ( toe )
+trwa
+    particularly focusing on its role in the assessment of total risk-weighted assets ( trwa )
+upi
+    unified payments interface
+vair
+    al ontology for modeling ai risks , and its specialization the ai risk vocabulary ( vair )
+var
+    value at risk
+wealthtech
+    ultiple segments , including digital payments , lending , wealth management ( wealthtech )
+xai
+     and regulatory compliance systems- decision intelligence research- explainable ai ( xai )
+    explainable ai ( xai )
+    pipelines , mlops , explainable ai ( xai )

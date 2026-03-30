@@ -1,0 +1,5596 @@
+design/methodology/approach
+    design/methodology/approach
+#single_letters_and_digit
+    2
+    2016
+    30
+    40
+    8
+    k
+    r
+    x
+differences-in-difference
+    difference-in-differences
+    differences-in-differences
+#scientific_and_academic
+    a comparative analysis
+    a comprehensive analysis
+    a framework
+    a key factor
+    a literature review
+    a new approach
+    a questionnaire
+    a survey
+    a systematic literature review
+    a theoretical framework
+    acceptance
+    acceptance and use
+    accuracy
+    adoption
+    aggregating
+    aggregation
+    algorithmic
+    algorithms
+    an analysis
+    an approach
+    analysis
+    application
+    applications
+    approach
+    approaches
+    assessment
+    authentication
+    baseline
+    behavior
+    benefit distribution
+    biases
+    bibliometric
+    biometric
+    book
+    capabilities
+    case studies
+    case study
+    classification
+    cluster analysis
+    collaboration
+    collection
+    commentary
+    communication
+    communications
+    comparative
+    comparatives
+    concept
+    concepts
+    conceptual
+    conduct empirical analysis
+    content analysis
+    context
+    control
+    controls
+    convergence
+    criteria
+    database
+    design
+    designs
+    distribution
+    empirical
+    empirical evidence
+    empirical studies
+    error
+    errors
+    evaluation
+    evidence
+    exploration
+    factor
+    factors
+    forecasting
+    forecasts
+    framework
+    frameworks
+    further analysis
+    future researchers
+    guidelines
+    heterogeneity
+    hypotheses
+    implications
+    index
+    indicators
+    indices
+    intervention
+    interventions
+    interviews
+    its application
+    its implications
+    key factors
+    likelihood
+    limitations
+    literature review
+    logistic regression
+    measure
+    measures
+    meta-analysis
+    model
+    modeling
+    models
+    objectives
+    optimization
+    outcomes
+    participants
+    phenomena
+    phenomenon
+    population
+    populations
+    practical implications
+    precision
+    predictive models
+    primary data
+    procedures
+    qualitative
+    quality control
+    quantitative
+    questionnaire
+    regression
+    regression analysis
+    research questions
+    researchers
+    scores
+    scoring
+    sensitivity
+    sensitivity analysis
+    significance
+    statistical
+    statistical analysis
+    statistics
+    survey
+    surveys
+    systematic literature reviews
+    systematic review
+    technique
+    techniques
+    test
+    the adoption
+    the analysis
+    the application
+    the applications
+    the assessment
+    the book
+    the capabilities
+    the concept
+    the concepts
+    the design
+    the factors
+    the framework
+    the implications
+    the key factors
+    the models
+    the outcomes
+    the researchers
+    the significance
+    their application
+    their future behavior
+    their implications
+    their widespread adoption
+    thematic analysis
+    theoretical
+    theoretical frameworks
+    these concepts
+    these factors
+    these phenomena
+    this approach
+    this book
+    this commentary
+    this context
+    this framework
+    this phenomenon
+    trial
+    validity
+    variable
+    variables
+    verification
+expectation-confirmation
+    expectation-confirmation
+expectation-confirmation model
+    expectation-confirmation model
+expectation-confirmation models
+    expectation-confirmation models
+fintech innovations-innovations
+    fintech innovations-innovations
+survival-of-the-fittest
+    survival-of-the-fittest
+innovations-innovation
+    innovations-innovations
+reconceptualization
+    reconceptualization
+    the reconceptualization
+cost-effectiveness
+    cost-effectiveness
+light-touch/humble regulation
+    light-touch/humble regulation
+#common_and_basic
+    a case study
+    a comprehensive review
+    a discussion
+    a method
+    a need
+    a reference
+    a review
+    a study
+    ability
+    access
+    activities
+    activity
+    addressing
+    an empirical study
+    an example
+    an overview
+    appropriate
+    area
+    areas
+    article
+    articles
+    aspects
+    author
+    authors
+    cases
+    claims
+    combination
+    complex
+    comprehensive data
+    conclusion
+    current
+    current literature
+    current study
+    data
+    discussion
+    discussions
+    document
+    empirical results
+    ensure
+    et al
+    example
+    existing research
+    findings
+    further research
+    future
+    future research
+    future research potential
+    introduction
+    investigation
+    ledger system
+    levels
+    leverage research
+    light
+    limited access
+    line
+    literature
+    literatures
+    low levels
+    making
+    makings
+    method
+    methodologies
+    methodology
+    methods
+    mining
+    needs
+    our paper
+    overview
+    owned
+    paper
+    papers
+    parts
+    policies
+    policy
+    previous
+    previous studies
+    publications
+    pursue policies
+    recent
+    recent literature
+    reference
+    relevant
+    relevant literature
+    reporting
+    reports
+    research
+    researches
+    results
+    review
+    reviews
+    studies
+    study
+    subject
+    systems
+    the author
+    the case
+    the case study
+    the combination
+    the conclusion
+    the data
+    the discussion
+    the existing literature
+    the findings
+    the future
+    the future research
+    the introduction
+    the level
+    the literature
+    the main findings
+    the need
+    the needs
+    the results
+    the review
+    the studies
+    the subject
+    the system
+    the use
+    the you
+    their means
+    theories
+    theory
+    these findings
+    these results
+    this conclusion
+    this paper
+    this review
+    this system
+#geographic_names
+    africa
+    australia
+    australia and new zealand
+    bangladesh
+    botswana
+    brazil
+    canada
+    china
+    ethiopia
+    europe
+    hong kong
+    india
+    indonesia
+    jordan
+    kenya
+    netherlands
+    nigeria
+    philippines
+    russia
+    russian federation
+    saudi arabia
+    south africa
+    switzerland
+    taiwan
+    the netherlands
+    the united kingdom
+    the united states
+    ukraine
+    united arab emirates
+disintermediation
+    disintermediation
+financial disintermediation
+    financial disintermediation
+literature-review
+    literature-review
+literature-review methodology
+    literature-review methodology
+mobile telecommunication systems
+    mobile telecommunication systems
+socio-demographic
+    socio-demographic
+socio-demographic variables
+    socio-demographic variables
+telecommunication
+    telecommunication
+visekriterijumsko
+    visekriterijumsko
+visekriterijumsko kompromisno rangiranje
+    visekriterijumsko kompromisno rangiranje
+entrepreneurship
+    entrepreneurship
+entrepreneurship researchers
+    entrepreneurship researchers
+financialisation
+    financialisation
+financialization
+    financialization
+micro-foundation
+    micro-foundations
+principles-based regulation
+    principles-based regulation
+regression-based model
+    regression-based model
+small-and-medium
+    small-and-medium
+small-and-medium enterprise
+    small-and-medium enterprise
+small-and-medium enterprises
+    small-and-medium enterprises
+technology-based firms
+    technology-based firms
+ai interpretations
+    ai interpretations
+bank characteristics
+    bank characteristics
+business infrastructures
+    business infrastructures
+competitiveness
+    competitiveness
+credit infrastructures
+    credit infrastructures
+criteria decision-making method
+    multiple criteria decision-making method
+data-protection
+    data-protection
+data-protection policies
+    data-protection policies
+diversification
+    diversification
+entrepreneurial
+    entrepreneurial
+entrepreneurial finance
+    entrepreneurial finance
+experimentation
+    experimentation
+fintech-enabled services
+    fintech-enabled services
+governmentality
+    governmentality
+information technology implementations
+    information technology implementations
+infrastructural
+    infrastructural
+infrastructural development
+    infrastructural development
+innovation characteristics
+    innovation characteristics
+multi-attribute
+    multi-attribute
+multi-attribute group decision making
+    multi-attribute group decision making
+multi-attribute group decision makings magdm
+    multi-attribute group decision makings ( magdm )
+policy recommendations
+    policy recommendations
+portfolio diversification
+    portfolio diversification
+principles-base
+    principles-based
+regression-base
+    regression-based
+reproducibility
+    reproducibility
+risk-management
+    risk-management
+technology-base
+    technology-based
+trustworthiness
+    trustworthiness
+administration
+    administration
+administrative
+    administrative
+administrative costs
+    administrative costs
+agriculture sustainability
+    agriculture sustainability
+biometric authentication
+    biometric authentication
+blockchain implementation
+    blockchain implementation
+blockchain implementation study
+    blockchain implementation study
+business infrastructure
+    business infrastructure
+change financial intermediation
+    change financial intermediation
+characteristic
+    characteristics
+classification framework
+    classification framework
+collaboration-
+    collaboration-
+corporate digital responsibility cdr
+    corporate digital responsibility ( cdr )
+cryptocurrency
+    cryptocurrencies
+    cryptocurrency
+cryptocurrency regulations
+    cryptocurrency regulations
+digital financial transformation
+    digital financial transformation
+digital infrastructure
+    digital infrastructure
+digital transformation
+    digital transformation
+digitalization
+    digitalization
+    the digitalization
+digitalization strategies
+    digitalization strategies
+discrimination
+    discrimination
+distributional
+    distributional
+distributional semantics
+    distributional semantics
+economic sustainability
+    economic sustainability
+electronic payment infrastructure
+    electronic payment infrastructure
+enterprise transformation
+    enterprise transformation
+environment sustainability
+    environment sustainability
+environmental sustainability
+    environmental sustainability
+ethical considerations
+    ethical considerations
+financial infrastructure
+    financial infrastructure
+financial intermediaries
+    traditional financial intermediaries
+financial intermediation
+    financial intermediation
+    traditional financial intermediation
+fintech implementation
+    fintech implementation
+fintech transformation
+    fintech transformation
+fintech-enable
+    fintech-enabled
+global system for mobile communications
+    global system for mobile communications
+green finance policy implementation
+    green finance policy implementation
+highway administration
+    highway administration
+identification
+    identification
+impact environmental sustainability
+    impact environmental sustainability
+implementation
+    implementation
+    implementations
+    the implementation
+implementation strategies
+    implementation strategies
+individual innovativeness
+    individual innovativeness
+information and communications technology
+    information and communication technologies
+    information and communication technology
+    information and communications technology
+information classification
+    of information ( classification )
+information technology infrastructure
+    information technology infrastructure
+infrastructure
+    infrastructure
+    infrastructures
+    the infrastructure
+infrastructure investments
+    infrastructure investments
+infrastructure sectors
+    infrastructure sectors
+innovativeness
+    innovativeness
+intermediation
+    intermediation
+internet-based service
+    internet-based service
+internet-based services
+    internet-based services
+interpretation
+    interpretations
+least squares approximations
+    least squares approximations
+mutual authentication
+    mutual authentication
+organizational
+    organizational
+organizational affordances
+    organizational affordances
+organizational barriers
+    organizational barriers
+predictability
+    predictability
+privacy considerations
+    privacy considerations
+recommendation
+    practical recommendations
+    recommendations
+representative
+    representative
+representative case
+    representative case
+responsibility
+    responsibility
+semiparametric
+    semiparametric
+services transformation
+    services transformation
+social responsibility performance
+    social responsibility performance
+sociotechnical
+    sociotechnical
+statistical discrimination
+    statistical discrimination
+sustainability
+    sustainability
+    the sustainability
+technological infrastructure
+    technological infrastructure
+technology implementation
+    technology implementation
+transformation
+    the transformation
+    transformation
+transformative
+    transformative
+actualization
+    actualization
+advantages and disadvantages
+    advantages and disadvantages
+approximation
+    approximations
+authorization
+    authorization
+bank profitability
+    bank profitability
+bank-fintech collaboration
+    the bank-fintech collaboration
+business opportunities
+    increase business opportunities
+    new business opportunities
+business process reengineering
+    business process reengineering
+comprehensive
+    comprehensive
+consideration
+    consideration
+    considerations
+consolidation
+    consolidation
+customer relationships
+    customer relationships
+cybersecurity
+    cybersecurity
+cybersecurity measures
+    cybersecurity measures
+decentralized finance
+    decentralized finance
+decentralized financial markets
+    decentralized financial markets
+decision-make
+    decision-making
+deforestation
+    deforestation
+design robo-advisors
+    design robo-advisors
+deterioration
+    deterioration
+development organizations
+    development organizations
+effectiveness
+    effectiveness
+    the effectiveness
+environmental
+    environmental
+environmental damage
+    environmental damage
+environmental economics
+    environmental economics
+environmental governance
+    environmental governance
+environmental impact
+    environmental impact
+environmental improvements
+    environmental improvements
+environmental indicators
+    environmental indicators
+environmental issue
+    environmental issue
+environmental issues
+    environmental issues
+environmental kuznets curve
+    environmental kuznets curve
+environmental legislation
+    environmental legislation
+environmental management
+    environmental management
+environmental performance
+    environmental performance
+environmental policy
+    environmental policy
+environmental projects
+    environmental projects
+environmental protection
+    environmental protection
+environmental protection investment
+    environmental protection investment
+environmental quality
+    environmental quality
+environmental quality protection
+    environmental quality protection
+environmental regulation
+    environmental regulation
+environmental regulations
+    environmental regulations
+environmental restoration
+    environmental restoration
+environmental services
+    environmental services
+environmental technology
+    environmental technology
+finance professionals
+    finance professionals
+financial globalization
+    financial globalization
+financial organizations
+    financial organizations
+financial scenarization
+    financial scenarization
+forensic investigation
+    forensic investigation
+future research opportunities
+    future research opportunities
+globalization
+    globalization
+government effectiveness
+    government effectiveness
+governmental interventions
+    governmental interventions
+gratification
+    gratification
+green environmental index
+    green environmental index
+green manufacturing
+    green manufacturing
+growth opportunities
+    growth opportunities
+human-centred ai
+    human-centred ai
+incorporation
+    incorporation
+    the incorporation
+institutional
+    institutional
+institutional framework
+    institutional framework
+institutional theory
+    institutional theory
+international
+    international
+international development
+    international development
+international organization
+    international organization
+internet-base
+    internet-based
+opportunities and challenges
+    opportunities and challenges
+policy interventions
+    policy interventions
+probabilistic
+    probabilistic
+probabilistic linguistic term set
+    probabilistic linguistic term set
+probabilistic linguistic term sets
+    probabilistic linguistic term sets
+profitability
+    profitability
+proliferation
+    proliferation
+    the proliferation
+proportionate
+    proportionate
+research methodologies
+    research methodologies
+risk-adjusted return on capital
+    risk-adjusted return on capital
+robo-advisors adoption
+    robo-advisors adoption
+robo-advisory
+    robo-advisory
+scenarization
+    scenarization
+scientometric
+    scientometric
+scientometric analysis
+    scientometric analysis
+self-efficacy
+    self-efficacy
+self-efficacy theories
+    self-efficacy theories
+study investigation
+    a case study investigation
+technological
+    technological
+technological adoption
+    technological adoption
+technological advancements
+    technological advancements
+technological change
+    technological change
+technological development
+    technological development
+technological developments
+    technological developments
+technological innovation
+    technological innovation
+technological innovations
+    technological innovations
+technological progress
+    technological progress
+technological tools
+    technological tools
+use and gratification
+    use and gratification
+volatility transmissions
+    volatility transmissions
+vulnerability
+    vulnerabilities
+agroindustry
+    agroindustry
+algorithmic underwriting
+    algorithmic underwriting
+appropriate technologies
+    appropriate technologies
+artificial intelligence
+    artificial intelligence
+artificial intelligence ai
+    artificial intelligence ( ai )
+artificial intelligence in agriculture
+    artificial intelligence in agriculture
+artificial intelligence technology
+    artificial intelligence technology
+availability
+    availability
+bank-fintech
+    bank-fintech
+banking customer relationship management
+    banking customer relationship management
+banking institutions
+    banking institutions
+bibliometric analysis
+    bibliometric analysis
+business environments
+    business environments
+co-operation
+    co-operation
+co-opetition
+    co-opetition
+co-opetition theory
+    co-opetition theory
+comparatives studies
+    comparatives studies
+computer applications
+    computer applications
+confirmation
+    confirmation
+conservation
+    conservation
+conservation of energy resources
+    conservation of energy resources
+crowdfunding
+    crowdfunding
+crowdfunding platforms
+    crowdfunding platforms
+customer expectations
+    customer expectations
+customer relationship management
+    customer relationship management
+customer satisfaction
+    customer satisfaction
+cyber threat intelligence
+    cyber threat intelligence
+decentralize
+    decentralized
+digitization
+    digitization
+    the digitization
+disadvantage
+    disadvantages
+distribution approaches
+    benefit distribution approaches
+ecological environments
+    ecological environments
+electronic commerce research and applications
+    electronic commerce research and applications
+energy conservation
+    energy conservation
+entrepreneur
+    entrepreneur
+    entrepreneurs
+expectation confirmation model
+    expectation confirmation model
+facilitating condition
+    facilitating condition
+facilitation
+    facilitation
+financial service institutions
+    financial service institutions
+financial services industry participants
+    financial services industry participants
+financial technologies
+    financial technologies
+    the financial technology
+financial transactions
+    financial transactions
+fintech capabilities
+    fintech capabilities
+fintech developments
+    fintech developments
+    the fintech development
+fintech institutions
+    fintech institutions
+government intervention
+    government intervention
+governmental
+    governmental
+governmental intervention
+    governmental intervention
+high-quality
+    high-quality
+high-quality economic development
+    high-quality economic development
+industry developments
+    industry developments
+industry participants
+    industry participants
+inefficiency
+    inefficiencies
+instrumental
+    instrumental
+instrumental variable regression
+    instrumental variable regression
+intelligence
+    intelligence
+intermediary
+    intermediaries
+intersection
+    intersection
+    the intersection
+limited distribution
+    limited distribution
+longitudinal
+    longitudinal
+longitudinal method
+    longitudinal method
+market developments
+    market developments
+market participants
+    market participants
+mergers and acquisitions
+    mergers and acquisitions
+metafrontier
+    metafrontier
+microfinance
+    microfinance
+non-bank financial institutions
+    non-bank financial institutions
+omni-channel
+    omni-channel
+organization
+    an organization
+    organization
+    organizations
+    organizations need
+    other organizations
+    the organization
+organization for economic co-operation and development
+    organization for economic co-operation and development
+payment facilitation
+    payment facilitation
+peer-to-peer
+    peer-to-peer
+peer-to-peer lending
+    peer-to-peer lending
+peer-to-peer lending platform
+    peer-to-peer lending platform
+peer-to-peer networks
+    peer-to-peer networks
+perceived difficulties
+    perceived difficulties
+perspectives interaction
+    perspectives interaction
+policy implications
+    policy implications
+positive relationship
+    a positive relationship
+    positive relationship
+practitioner
+    practitioners
+productivity
+    productivity
+professional
+    professionals
+psychometric
+    psychometrics
+quantitative approach
+    quantitative approach
+quantitative research methods
+    quantitative research methods
+quantitative survey
+    quantitative survey
+registration
+    registration
+regtech developments
+    regtech developments
+relationship
+    relationship
+    relationships
+    significant relationship
+    the relationship
+    the relationships
+relationship banking
+    relationship banking
+renewable energy certificates
+    renewable energy certificates
+research institutions
+    research institutions
+resources utilizations
+    resources utilizations
+risk control capabilities
+    risk control capabilities
+robo-advisor
+    robo-advisor
+    robo-advisors
+role of technologies
+    role of technologies
+satisfaction
+    satisfaction
+shock transmission
+    shock transmission
+small and medium-sized enterprise
+    small and medium-sized enterprise
+state institutions
+    state institutions
+tech capabilities
+    tech capabilities
+the role of artificial intelligence in addressing poverty
+    the role of artificial intelligence in addressing poverty
+total factor productivity
+    total factor productivity
+transmission
+    transmission
+    transmissions
+transparency
+    transparency
+transparency impact
+    transparency impact
+unemployment
+    unemployment
+urbanization
+    urbanization
+view significance
+    view significance
+a comparative study
+    a comparative study
+acquisition
+    acquisitions
+advancement
+    advancement
+    advancements
+    the advancement
+aggregating operators
+    aggregating operators
+agriculture
+    agriculture
+alleviation
+    alleviation
+alternative
+    alternative
+alternative data
+    alternative data
+alternative energy
+    alternative energy
+alternative finance
+    alternative finance
+alternative lending
+    alternative lending
+application data
+    application data
+application security
+    application security
+asymmetric information
+    asymmetric information
+attribution
+    attribution
+bank competition
+    bank competition
+bank fintech partnership
+    bank fintech partnership
+bank performance
+    bank performance
+bank risk-taking
+    bank risk-taking
+banking authorities
+    banking authorities
+banking competition
+    banking competition
+banking industry competitive advantage
+    banking industry competitive advantage
+banking innovations
+    banking innovations
+behavioural
+    behavioural
+behavioural economics
+    behavioural economics
+behavioural intentions
+    behavioural intentions
+blockchain innovations
+    blockchain innovations
+business development
+    business development
+business environment
+    business environment
+certificate
+    certificates
+comparative analysis
+    comparative analysis
+comparative analyzes
+    comparative analyzes
+competition
+    competition
+competition economics
+    competition ( economics )
+competition issues
+    competition issues
+competitive
+    competitive
+competitive advantage
+    competitive advantage
+consequence
+    consequences
+consistency
+    consistency
+consumption
+    consumption
+consumption behavior
+    consumption behavior
+consumption emission
+    consumption emission
+consumption inequality
+    consumption inequality
+continuance
+    continuance
+continuance intention
+    continuance intention
+continuance intention to use fintech
+    continuance intention to use fintech
+continuance intentions
+    continuance intentions
+convenience
+    convenience
+convergence services
+    convergence services
+cooperation
+    cooperation
+cooperative
+    cooperative
+cooperative mechanisms
+    cooperative mechanisms
+credit constraint alleviation
+    credit constraint alleviation
+crowdsource
+    crowdsourcing
+customer expectation
+    customer expectation
+cyber threat attribution
+    cyber threat attribution
+data-driven
+    data-driven
+data-driven framework
+    data-driven framework
+description
+    description
+determinant
+    determinants
+    the key determinants
+development
+    development
+    developments
+    recent developments
+    the development
+    the developments
+    the rapid development
+    their development
+development countries
+    development countries
+development goals
+    development goals
+development level
+    development level
+development projects
+    development projects
+development strategy
+    development strategy
+differences cost
+    differences cost
+diffusion of innovation competition
+    diffusion of innovation competition
+digital innovations
+    digital innovations
+digital marketplace
+    digital marketplace
+disruptive innovations
+    disruptive innovations
+distributed ledger technology
+    distributed ledger technology
+economic development
+    economic development
+economic development strategy
+    economic development strategy
+economic forecasting
+    economic forecasting
+economic sustainable development
+    economic sustainable development
+ecosystem development
+    ecosystem development
+efficiency and performance
+    efficiency and performance
+elaboration
+    elaboration
+elaboration likelihood model
+    elaboration likelihood model
+electricity
+    electricity
+electricity industry
+    electricity industry
+empowerment
+    empowerment
+endogeneity
+    endogeneity
+energy consumption
+    energy consumption
+energy utilization
+    energy utilization
+engineering
+    engineering
+engineering research
+    engineering research
+environment
+    an environment
+    environment
+    environments
+    the environment
+eradication
+    eradication
+esg performance
+    esg performance
+expectation
+    expectation
+    expectations
+explainable
+    explainable
+explainable ai
+    explainable ai
+explanation
+    explanations
+finance literatures
+    finance literatures
+financial constraints
+    financial constraints
+financial development
+    financial development
+financial development outcomes
+    financial development outcomes
+financial information
+    financial information
+financial institution
+    financial institution
+    financial institutions
+financial institution strategy
+    financial institution strategy
+financial performance
+    financial performance
+financial sector development
+    financial sector development
+financial technology development
+    financial technology development
+financing constraints
+    financing constraints
+fintech application
+    fintech application
+    fintech applications
+fintech continuance intentions
+    fintech continuance intentions
+    the fintech continuance intention
+fintech development
+    fintech development
+fintech enterprises
+    fintech enterprises
+fintech environment
+    fintech environment
+fintech for development
+    fintech for development
+fintech industry development
+    fintech industry development
+fintech innovations
+    fintech innovations
+    the fintech innovation
+fintech investments
+    fintech investments
+    the fintech investment
+fintech regulations
+    fintech regulations
+fintech researchers
+    fintech researchers
+fintech threat attribution
+    fintech threat attribution
+firm performance
+    firm performance
+flexibility
+    flexibility
+    more flexibility
+fuzzy mathematics
+    fuzzy mathematics
+generalized method of moments
+    generalized method of moments
+generalized method of moments model
+    generalized method of moments model
+global perspective
+    global perspective
+green consumption
+    green consumption
+green innovations
+    green innovations
+gulf cooperation
+    the gulf cooperation council
+hedging instruments
+    hedging instruments
+hedonic motivations
+    hedonic motivations
+high probability
+    high probability
+historical development
+    historical development
+historical materialism
+    historical materialism
+hospitality
+    hospitality
+human computer interaction
+    human computer interaction
+human consumption
+    human consumption
+human-centr
+    human-centred
+improvement
+    improvement
+    improvements
+    the improvement
+industrial development
+    industrial development
+industrial performance
+    industrial performance
+industrial revolutions
+    industrial revolutions
+industry development
+    industry development
+influence sustainable development
+    influence sustainable development
+influencing factors
+    influencing factors
+information
+    information
+    information technologies
+    the information
+information asymmetry
+    information asymmetry
+information privacy
+    information privacy
+information security
+    information security
+information systems
+    information systems
+information systems perspective
+    information systems perspective
+information systems success model
+    information systems success model
+information technology
+    information technology
+    particularly information technology
+    the information technology
+information use
+    information use
+innovation development
+    innovation development
+innovations shape
+    innovations shape
+institution
+    institution
+    institutions
+integration
+    integration
+    the integration
+intelligent
+    intelligent
+intelligent robots
+    intelligent robots
+interaction
+    interaction
+    the interaction
+investment enterprises
+    investment enterprises
+kompromisno
+    kompromisno
+legislation
+    legislation
+lending application
+    lending application
+lendingclub
+    lendingclub
+lendingclub loans
+    lendingclub loans
+machine learning classifiers
+    machine learning classifiers
+maintenance
+    maintenance
+manufacture
+    manufacturing
+market competition
+    market competition
+market development
+    market development
+market integration
+    market integration
+market performance
+    market performance
+marketplace
+    marketplace
+marketplace lending
+    marketplace lending
+materialism
+    materialism
+medium-size
+    medium-sized
+mobile application securities
+    mobile application securities
+money application
+    money application
+multi-level
+    multi-level
+multi-level analysis
+    multi-level analysis
+operational
+    operational
+operational laws
+    operational laws
+opportunity
+    an opportunity
+    both opportunities
+    opportunities
+    opportunity
+    the opportunities
+    the opportunity
+paper contributes
+    paper contributes
+partnership
+    partnership
+    partnerships
+partnership for the goals
+    partnership for the goals
+performance
+    performance
+    their performance
+performance assessment
+    performance assessment
+performance expectancy
+    performance expectancy
+performance gaps
+    performance gaps
+perspective
+    perspective
+    perspectives
+    the perspective
+policy suggestions
+    policy suggestions
+policymaker
+    policymakers
+possibility
+    possibilities
+    possibility
+    the possibility
+poverty eradication
+    poverty eradication
+price perceptions
+    price perceptions
+probability
+    probability
+qualitative analysis
+    qualitative analysis
+qualitative interviews
+    qualitative interviews
+qualitative study
+    qualitative study
+quality environment and finance structure
+    quality environment and finance structure
+quality maintenance
+    quality maintenance
+regulation and supervision
+    regulation and supervision
+regulations and policies shape
+    regulations and policies shape
+regulatory authorities
+    regulatory authorities
+regulatory environment
+    regulatory environment
+renewable energy consumption
+    renewable energy consumption
+renewable energy development
+    renewable energy development
+reporting information
+    reporting information
+requirement
+    requirements
+research and application
+    research and application
+responsible
+    responsible
+responsible finance
+    responsible finance
+restoration
+    restoration
+risk-adjust
+    risk-adjusted
+roundtable discussions
+    roundtable discussions
+scholarship
+    scholarship
+small and medium enterprises
+    small and medium enterprises
+smes sustainable business models
+    smes sustainable business models
+smooth transitions
+    a smooth transition
+    smooth transitions
+social development
+    social development
+social empowerment
+    social empowerment
+socially responsible investing sri
+    socially responsible investing ( sri )
+source of information
+    source of information
+stakeholder
+    stakeholder
+    stakeholders
+stakeholder capitalism
+    stakeholder capitalism
+stakeholder values
+    stakeholder values
+statistical methods
+    statistical methods
+strategic information systems
+    strategic information systems
+study contributes
+    study contributes
+substantial
+    substantial
+supervision
+    supervision
+    the supervision
+sustainable
+    sustainable
+sustainable business
+    sustainable business
+sustainable business model
+    sustainable business model
+sustainable business models
+    sustainable business models
+sustainable competitive advantage
+    sustainable competitive advantage
+sustainable development
+    future sustainable development
+    sustainable development
+    the sustainable development
+sustainable development goal 8
+    sustainable development goal 8
+sustainable development goals
+    sustainable development goals
+    un sustainable development goals
+sustainable economic development
+    sustainable economic development
+sustainable economic growth
+    sustainable economic growth
+sustainable energy sectors
+    sustainable energy sectors
+sustainable finance
+    sustainable finance
+sustainable finance strategy
+    sustainable finance strategy
+sustainable growth
+    sustainable growth
+sustainable investment
+    sustainable investment
+sustainable resources
+    sustainable resources
+sustainable supply chain finance
+    sustainable supply chain finance
+sustainable supply chains
+    sustainable supply chains
+systems engineering
+    systems engineering
+technology development
+    technology development
+technology innovations
+    new technology innovations
+    technology innovations
+technology perspective
+    technology perspective
+terminology
+    terminology
+theoretical framework
+    theoretical framework
+tourism and hospitality
+    tourism and hospitality
+tourism and hospitality business objectives
+    tourism and hospitality business objectives
+tourism and hospitality industry
+    tourism and hospitality industry
+tourism and hospitality innovation
+    tourism and hospitality innovation
+traditional
+    traditional
+traditional stock market
+    traditional stock market
+transaction
+    transaction
+    transactions
+transaction cost
+    transaction cost
+transaction costs
+    transaction costs
+underserved populations
+    underserved populations
+usability engineering
+    usability engineering
+utilization
+    the utilization
+    utilization
+    utilizations
+academic literature
+    academic literature
+    the academic literature
+acceptance models
+    acceptance models
+adaptation
+    adaptation
+advanced technology
+    advanced technology
+affordance
+    affordances
+ai and ml techniques
+    ai and ml techniques
+ai in fintech risk management
+    ai in fintech risk management
+allocation
+    allocation
+antecedent
+    antecedents
+artificial
+    artificial
+asset management
+    asset management
+asymmetric
+    asymmetric
+automation
+    automation
+bank efficiency
+    bank efficiency
+banking executives
+    banking executives
+banking operations
+    banking operations
+banking regulation
+    banking regulation
+behavioral
+    behavioral
+behavioral biases
+    behavioral biases
+behavioral economics
+    behavioral economics
+behavioral intention
+    behavioral intention
+big data technology
+    big data technology
+blockchain
+    blockchain
+    blockchain technologies
+    blockchains
+blockchain security
+    blockchain security
+blockchain technology
+    blockchain technology
+business activities
+    business activities
+business dimensions
+    business dimensions
+business strategies
+    business strategies
+capability
+    capability
+capitalism
+    capitalism
+carbon neutrality
+    carbon neutrality
+carbon neutrality goals
+    carbon neutrality goals
+case-study
+    case-studies
+challenges banks
+    challenges banks
+change-the
+    change-the
+chinese enterprise
+    chinese enterprise
+classifier
+    classifiers
+clearing and settlement
+    clearing and settlement
+clearing and settlement services
+    clearing and settlement services
+climate change-the
+    climate change-the case
+cloud computing technology
+    cloud computing technology
+commercial
+    commercial
+commercial bank
+    commercial bank
+    commercial banks
+competitor
+    competitors
+complexity
+    complexity
+    the complexity
+compliance
+    compliance
+compliance processes
+    compliance processes
+compromise
+    compromise
+computing technology
+    computing technology
+conceptual framework
+    conceptual framework
+    conceptual frameworks
+    the conceptual framework
+conceptual model
+    conceptual model
+constraint
+    constraint
+    constraints
+constraint mitigation
+    constraint mitigation
+consumer protection
+    consumer protection
+continuous
+    continuous
+continuous intention
+    continuous intention to use
+contribute
+    contributes
+corporate green innovation
+    corporate green innovation
+corporate innovation
+    corporate innovation
+corruption
+    corruption
+cost efficiency
+    cost efficiency
+    the cost efficiency
+credit constraint
+    credit constraint
+credit risk management
+    credit risk management
+cumulative
+    cumulative
+cumulative abnormal returns
+    cumulative abnormal returns
+customer experience
+    customer experience
+cyber security mitigation
+    cyber security mitigation
+data management challenges
+    data management challenges
+data protection laws
+    data protection laws
+data techniques
+    data techniques
+decision making trial and evaluation laboratory
+    decision making trial and evaluation laboratory
+definition
+    definition
+dependence
+    dependence
+developing countries
+    developing countries
+developing world
+    developing world
+difference
+    difference
+    differences
+    the differences
+difference in difference
+    difference in difference
+difficulty
+    difficulties
+digital currencies
+    digital currencies
+digital ecosystems
+    digital ecosystems
+digital innovation
+    digital innovation
+digital innovation literature
+    digital innovation literature
+digital innovation research
+    digital innovation research
+digital technology
+    digital technologies
+    digital technology
+disruption
+    disruption
+    potential disruption
+    the future disruption
+disruptive
+    disruptive
+    disruptive technologies
+    the disruptive potential
+disruptive innovation
+    disruptive innovation
+disruptive innovation ecosystems
+    disruptive innovation ecosystems
+disruptive innovation theory
+    disruptive innovation theory
+distribute
+    distributed
+ecological
+    ecological
+economic efficiency
+    economic efficiency
+economic incentives
+    economic incentives
+economic indicators
+    economic indicators
+effective management
+    effective management
+efficiency
+    efficiency
+    the efficiency
+electronic
+    electronic
+electronic commerce
+    electronic commerce
+electronic commerce platforms
+    electronic commerce platforms
+electronic money
+    electronic money
+electronic payments systems
+    electronic payments systems
+emerging technology
+    emerging technologies
+    emerging technology
+empirical assessment
+    empirical assessment
+end-to-end
+    end-to-end
+energy efficiency
+    energy efficiency
+energy innovation
+    energy innovation
+engagement
+    engagement
+enterprise
+    enterprise
+    enterprises
+enterprise is
+    enterprise is
+estimation
+    estimation
+expectancy
+    expectancy
+experience
+    experience
+    international experience
+extended technology acceptance model
+    extended technology acceptance model
+extensible
+    extensible
+extensible business reporting language
+    extensible business reporting language
+facilitate
+    facilitating
+federation
+    federation
+finance technology
+    finance technology
+financial capability
+    financial capability
+financial inclusions
+    financial inclusions
+financial innovation
+    financial innovation
+financial management
+    financial management
+financial management fintech
+    financial management fintech
+financial management skills
+    financial management skills
+financial regulation
+    financial regulation
+financial regulators
+    financial regulators
+financial service innovation
+    financial service innovation
+financial services operations
+    financial services operations
+financial technology
+    financial technology
+financial technology companies
+    financial technology companies
+financial technology design
+    financial technology design
+financial technology ecosystem
+    the financial technology ecosystem
+financial technology fintech
+    financial technology ( fintech )
+financial technology firms
+    financial technology firms
+financial technology industry
+    financial technology industry
+    the financial technology industry
+financial technology innovation
+    financial technology innovation
+financial technology regulation
+    financial technology regulation
+financial technology research
+    financial technology research
+    the financial technology research
+financial technology services
+    financial technology services
+financing techniques
+    financing techniques
+fintech developers
+    fintech developers
+fintech disruption
+    fintech disruption
+    the fintech disruption
+fintech ecosystems
+    fintech ecosystems
+    the fintech ecosystem
+fintech governance
+    fintech governance
+fintech incubators
+    the fintech incubators
+fintech innovation
+    fintech innovation
+fintech innovation mapping
+    fintech innovation mapping
+fintech investment
+    fintech investment
+fintech investment decisions
+    fintech investment decisions
+fintech literature
+    the fintech literature
+fintech literature survey
+    fintech literature survey
+fintech regulation
+    fintech regulation
+fintech revolution
+    fintech revolution
+    the fintech revolution
+fintech risk management
+    fintech risk management
+fintech strategies
+    fintech strategies
+fintech technology
+    fintech technologies
+    fintech technology
+focus group discussion
+    focus group discussion
+foreign direct investment
+    foreign direct investment
+foundation
+    foundation
+    the foundation
+fourth industrial revolution
+    fourth industrial revolution
+generalize
+    generalized
+generation
+    generation
+governance
+    governance
+governance approach
+    governance approach
+governance mechanisms
+    governance mechanisms
+government
+    government
+    governments
+    the government
+government needs
+    the government needs
+government of india
+    government of india
+government services
+    government services
+government support
+    government support
+grand challenges
+    grand challenges
+green finance literature
+    green finance literature
+green innovation
+    green innovation
+green investment
+    green investment
+green technology innovation
+    green technology innovation
+greenhouse
+    greenhouse
+greenhouse gas emissions
+    greenhouse gas emissions
+greenhouse gasses
+    greenhouse gas
+    greenhouse gasses
+groundwork
+    groundwork
+    the groundwork
+help regulators
+    help regulators
+historical
+    historical
+human capital efficiency
+    human capital efficiency
+human processing
+    human processing
+impact mechanisms
+    the impact mechanisms
+importance
+    importance
+    the importance
+inadequacy
+    inadequacy
+    the inadequacy
+income inequality
+    income inequality
+indicators of compromise
+    indicators of compromise
+individual
+    individual
+    individuals
+    the individual
+industrial
+    industrial
+industrial economics
+    industrial economics
+industrial emission
+    industrial emission
+industrial emissions
+    industrial emissions
+industrial enterprise
+    industrial enterprise
+industrial structure
+    industrial structure
+industrial technology
+    industrial technology
+inequality
+    inequality
+influence natural resource management
+    influence natural resource management
+innovation
+    innovation
+    innovations
+    level of innovation
+innovation adoption
+    innovation adoption
+innovation and technology
+    innovation and technology
+innovation and technology market
+    innovation and technology market
+innovation in financial services
+    innovation in financial services
+innovation mechanisms
+    innovation mechanisms
+innovation model
+    innovation model
+innovation processes
+    innovation processes
+innovation types
+    innovation types
+innovative
+    innovative
+instrument
+    instruments
+insuretech
+    insuretech
+internet technology
+    internet technologies
+    internet technology
+internet wealth management
+    internet wealth management
+investment
+    increase investment
+    investment
+    investment potential
+    investments
+investment activities
+    investment activities
+investment decisions
+    investment decisions
+investment in fintech
+    investment in fintech
+investment management services
+    investment management services
+investment types
+    investment types
+investor protection
+    investor protection
+issues and challenges
+    issues and challenges
+knowledge management
+    knowledge management
+laboratory
+    laboratory
+laboratory method
+    laboratory method
+learning algorithms
+    learning algorithms
+legitimate
+    legitimate
+legitimate business necessity
+    legitimate business necessity
+lending activities
+    lending activities
+linguistic
+    linguistic
+    linguistics
+linguistic terms
+    linguistic terms
+literature analysis
+    literature analysis
+local government
+    local government
+low-carbon
+    low-carbon
+low-carbon economy
+    low-carbon economy
+machine processing
+    machine processing
+management
+    management
+    the management
+management efficiency
+    management efficiency
+management of finance
+    management of finance
+management of natural resource
+    management of natural resource
+management of natural resources
+    management of natural resources
+management research
+    management research
+market researches
+    market researches
+mathematic
+    mathematics
+method of moments quantile regression
+    method of moments quantile regression
+mitigation
+    mitigation
+moderating effect
+    moderating effect
+modularity
+    modularity
+moment quantile regression
+    moment quantile regression
+monitoring efficiency
+    monitoring efficiency
+motivation
+    motivation
+    motivations
+natural language processing
+    natural language processing
+natural language processing systems
+    natural language processing systems
+natural resource volatility
+    natural resource volatility
+natural resources management
+    natural resources management
+neutrality
+    neutrality
+oil price volatility
+    oil price volatility
+open innovation
+    open innovation
+operations management
+    operations management
+panel data regression methods
+    panel data regression methods
+partial least squares structural equation model
+    partial least square structural equation model
+    partial least squares structural equation model
+partial least squares structural equation modeling
+    partial least square structural equation modeling
+    partial least squares structural equation modeling
+parts strategies
+    parts strategies
+payment innovation
+    payment innovation
+perceived regulatory support
+    perceived regulatory support
+perceived usefulness
+    perceived usefulness
+perception
+    perceptions
+plspredict
+    plspredict
+policy discussion
+    policy discussion
+population growth
+    population growth
+population statistics
+    population statistics
+predictive
+    predictive
+predictive power
+    predictive power
+price volatility
+    price volatility
+principal regulatory objectives
+    the principal regulatory objectives
+privacy inhibitors
+    privacy inhibitors
+private enterprise
+    private enterprise
+process management
+    process management
+processing
+    processing
+production
+    production
+protection
+    protection
+    the protection
+prudential
+    prudential
+prudential safety
+    prudential safety
+public engagement
+    public engagement
+quantile regression
+    quantile regression
+r and d investment
+    r and d investment
+rangiranje
+    rangiranje
+reengineer
+    reengineering
+regression estimation
+    regression estimation
+regulation
+    global regulation
+    regulation
+    regulations
+    the regulation
+regulation focus theory
+    regulation focus theory
+regulation force
+    regulation force
+regulation technology
+    regulation technology
+regulatory
+    regulatory
+regulatory arbitrage
+    regulatory arbitrage
+regulatory challenges
+    regulatory challenges
+regulatory change
+    regulatory change
+regulatory changes
+    regulatory changes
+regulatory compliance
+    more efficient regulatory compliance
+    regulatory compliance
+regulatory framework
+    regulatory framework
+regulatory issues
+    regulatory issues
+regulatory measures
+    regulatory measures
+regulatory monitoring
+    regulatory monitoring
+regulatory policies
+    regulatory policies
+regulatory problems
+    regulatory problems
+regulatory regime
+    proportionate regulatory regime
+    regulatory regime
+regulatory responses
+    regulatory responses
+regulatory sandbox
+    regulatory sandbox
+regulatory sandboxes
+    regulatory sandboxes
+regulatory standard setters
+    regulatory standard setters
+regulatory support
+    regulatory support
+regulatory technology
+    regulatory technology
+research challenges
+    future research challenges
+    research challenges
+research directions
+    future research directions
+    potential future research directions
+research frameworks
+    research frameworks
+resilience
+    resilience
+resource allocation
+    resource allocation
+resource management
+    resource management
+return on investment
+    return on investment
+revolution
+    a revolution
+    revolution
+    revolutions
+    the revolution
+rice production
+    rice production
+risk management
+    risk management
+risk management approaches
+    risk management approaches
+risk management capability
+    risk management capability
+risk-based approach
+    risk-based approach
+role of technology
+    role of technology
+roundtable
+    roundtable
+sars-cov-2
+    sars-cov-2
+science and technology
+    science and technology
+science and technology rural
+    science and technology rural
+science and technology studies
+    science and technology studies
+scientific
+    scientific
+scientific literature
+    scientific literature
+security and privacy protection
+    security and privacy protection
+security challenges
+    security challenges
+senior management executives
+    senior management executives
+service efficiency
+    service efficiency
+service innovation
+    service innovation
+service innovation strategy
+    service innovation strategy
+settlement
+    settlement
+stablecoin
+    stablecoins
+state owned enterprise
+    state owned enterprise
+strategic capability
+    strategic capability
+structural
+    structural
+structural equation model
+    structural equation model
+structural equation modeling
+    structural equation modeling
+structural equation modeling technique
+    structural equation modeling technique
+    structural equation modeling techniques
+suggestion
+    suggestions
+supply chain management
+    supply chain management
+swiss fintech innovation
+    swiss fintech innovation
+systematic
+    systematic
+systematic literature review
+    systematic literature review
+tactics techniques and procedures
+    tactics techniques and procedures
+tech industries
+    tech industries
+technology
+    distributed ledger technologies
+    innovative technologies
+    new technologies
+    new technology
+    technologies
+    technology
+    technology use
+    the technologies
+    the technology
+    the technology potential
+    these technologies
+    use of technologies
+    use of technology
+technology acceptance
+    technology acceptance
+    the technology acceptance
+technology acceptance model
+    technology acceptance model
+technology adoption
+    technology adoption
+technology adoption model utaut
+    technology adoption model utaut
+technology adoption strategy
+    technology adoption strategy
+technology advantage
+    technology advantage
+technology assets
+    technology assets
+technology companies
+    technology companies
+technology designs
+    technology designs
+technology diffusion
+    technology diffusion
+technology ecosystem
+    technology ecosystem
+technology ecosystems
+    technology ecosystems
+technology gap ratios
+    technology gap ratios
+technology innovation
+    technology innovation
+technology management
+    technology management
+technology platforms
+    technology platforms
+technology research
+    technology research
+technology revolution
+    technology revolution
+technology risks
+    technology risks
+technology sectors
+    technology sectors
+technology selection
+    technology selection
+technology selection model
+    technology selection model
+telephone technology
+    telephone technology
+trading strategies
+    trading strategies
+transition
+    a transition
+    the transition
+    transition
+    transitions
+tremendous
+    tremendous
+ubiquitous
+    ubiquitous
+ubiquitous technology
+    ubiquitous technology
+unbanked population
+    unbanked population
+underlying components
+    underlying components
+underserve
+    underserved
+understand
+    a better understanding
+    a practical understanding
+    understanding
+unified theory of acceptance and use of technology
+    the unified theory of acceptance and use of technology
+    unified theory of acceptance and use of technology
+unified theory of acceptance and use of technology model
+    unified theory of acceptance and use of technology model
+usefulness
+    usefulness
+user interfaces
+    user interfaces
+value management issues
+    value management issues
+volatility
+    volatility
+wealth management
+    wealth management
+widespread
+    widespread
+work efficiency
+    work efficiency
+abundance
+    abundance
+adoption intention
+    adoption intention
+advantage
+    advantage
+    advantages
+    the potential advantages
+alignment
+    alignment
+analog processes
+    analog processes
+arbitrage
+    arbitrage
+asymmetry
+    asymmetry
+attention
+    attention
+attitudes
+    attitudes
+authority
+    authorities
+awareness
+    awareness
+bank customers
+    bank customers
+bank operating costs
+    bank operating costs
+banking landscape
+    banking landscape
+banking practices
+    banking practices
+    global banking practices
+behavior intention
+    behavior intention to use
+big data analytics
+    big data analytics
+body of knowledge
+    body of knowledge
+brics economies
+    brics economies
+business landscape
+    the business landscape
+business solutions
+    business solutions
+businesse
+    businesses
+carbon dioxide reduction
+    co2 reduction
+carbon emissions
+    carbon emissions
+carbon emissions green finance
+    carbon emission green finance
+    carbon emissions green finance
+carbon reduction
+    carbon reduction
+causality
+    causality
+challenge
+    a challenge
+    challenge
+    challenges
+    new challenges
+    several challenges
+    the challenge
+    the challenges
+    the future challenges
+    the main challenges
+    these challenges
+china financial sector
+    china financial sector
+chinese economics
+    chinese economics
+circular economy practices
+    circular economy practices
+cloud computing
+    cloud computing
+community
+    communities
+    community
+component
+    components
+    the components
+condition
+    condition
+    conditions
+consumers trust
+    consumer trust
+    consumers trust
+control variables
+    control variables
+corporate
+    corporate
+corporate carbon emissions
+    corporate carbon emissions
+corporate esg
+    corporate esg
+corporate strategy
+    corporate strategy
+cost reduction
+    cost reduction
+credit provision
+    credit provision
+data abundance
+    data abundance
+detection
+    detection
+    the detection
+detection method
+    detection method
+developer
+    developers
+diffusion
+    diffusion
+digital artifacts
+    digital artifacts
+digital financial inclusion
+    digital financial inclusion
+digital financial literacy
+    digital financial literacy
+digital financial markets
+    digital financial markets
+digital financial world
+    a digital financial world
+digital landscape
+    digital landscape
+digital platforms
+    digital platforms
+dimension
+    dimension
+    dimensions
+    main dimensions
+direction
+    direction
+    directions
+directive
+    directive
+disparity
+    disparities
+domestica
+    domestica
+e-finance
+    e-finance
+e7 economies
+    e7 economies
+economic structure
+    economic structure
+economies of scale
+    economies of scale
+ecosystem
+    ecosystem
+    ecosystems
+ecosystem service
+    ecosystem service
+ecosystem services
+    ecosystem services
+education
+    education
+effective
+    effective
+efficient
+    efficient
+emergence
+    emergence
+    the emergence
+emission inventory
+    emission inventory
+empirical analysis
+    empirical analysis
+error reduction
+    error reduction
+esg reporting
+    esg reporting
+estimator
+    estimator
+euclidean
+    euclidean
+euclidean distance measure
+    euclidean distance measure
+evolution
+    evolution
+    the evolution
+exclusion
+    exclusion
+execution
+    execution
+executive
+    executives
+existence
+    existence
+    the existence
+expertise
+    expertise
+explosive
+    explosive
+explosive growth
+    explosive growth
+factors influence
+    factors influence
+financial
+    financial
+    financial future
+    new financial technologies
+    the financial system
+financial access
+    financial access
+financial activity
+    financial activities
+    financial activity
+financial assets
+    financial assets
+financial center
+    global financial center
+financial computing
+    financial computing
+financial crisis
+    financial crisis
+    the global financial crisis
+financial data
+    financial data
+financial ecosystem
+    the financial ecosystem
+financial education
+    financial education
+financial exclusion
+    financial exclusion
+financial flows
+    financial flows
+financial fraud
+    financial fraud
+financial inclusion
+    financial inclusion
+financial industry
+    financial industry
+    the financial industry
+financial landscape
+    financial landscape
+financial literacy
+    financial literacy
+financial market
+    financial market
+    financial markets
+    the financial markets
+financial market law
+    the financial market law
+financial market products
+    financial market products
+financial mismatch
+    financial mismatch
+financial products
+    financial products
+financial resources
+    the financial resources
+financial risk
+    financial risk
+financial sector
+    financial sector
+    financial sectors
+    the financial sector
+financial sector companies
+    financial sector companies
+financial service
+    financial service
+    financial services
+    traditional financial services
+financial services industry
+    financial services industries
+    financial services industry
+    the financial services industry
+financial services platform
+    financial services platform
+financial services providers
+    financial service providers
+    financial services providers
+financial services sector
+    financial services sector
+financial services supply chains
+    financial services supply chains
+financial stability
+    financial stability
+financial startups
+    financial startups
+financial system
+    financial system
+financial system change
+    financial system change
+financial system design
+    financial system design
+financial systems
+    financial systems
+    traditional financial systems
+financial tools
+    financial tools
+financial world
+    the financial world
+fintech adoption intention
+    fintech adoption intention
+fintech companies
+    fintech companies
+fintech ecosystem
+    fintech ecosystem
+fintech evolution
+    fintech evolution
+fintech influence
+    fintech influence
+fintech landscape
+    fintech landscape
+    the fintech landscape
+fintech providers
+    fintech providers
+fintech reporting
+    fintech reporting
+fintech service companies
+    fintech service companies
+fintech service providers
+    fintech service providers
+fintech solutions
+    fintech solutions
+fintech variables
+    fintech variables
+formation
+    formation
+    the formation
+frame of reference
+    frame of reference
+fraud detection
+    fraud detection
+frequency
+    frequency
+frequency domain analysis
+    frequency domain analysis
+frequency trading
+    high frequency trading
+front-end
+    front-end
+future research direction
+    future research direction
+gas emissions
+    gas emissions
+gcc countries
+    gcc countries
+global financial crisis
+    global financial crisis
+granger causality test
+    granger causality test
+green finance solutions
+    green finance solutions
+green financing
+    green financing
+greenwash
+    greenwashing
+gse mortgages
+    gse mortgages
+help influence
+    help influence
+help investors
+    help investors
+highlight
+    highlights
+household
+    household
+    households
+    poor households
+household finance
+    household finance
+human decisions
+    human decisions
+incentive
+    incentives
+incidence
+    incidence
+inclusion
+    inclusion
+    inclusions
+incubator
+    incubators
+incumbent
+    incumbents
+indonesia market
+    indonesia market
+industry expertise
+    industry expertise
+industry landscape
+    industry landscape
+influence
+    influence
+    influencing
+    significant influence
+    the influence
+influence bank
+    influence bank
+influence users
+    influence users
+inhibitor
+    inhibitors
+initial coin offerings
+    initial coin offerings
+insurance
+    insurance
+insurance companies
+    insurance companies
+insurtech
+    insurtech
+integrity
+    integrity
+intention
+    intention
+    intention to use
+    intentions
+    intentions to use
+intention to adopt fintech
+    intention to adopt fintech
+interface
+    interface
+    interfaces
+intrusion
+    intrusion
+intrusion detection
+    intrusion detection
+inventory
+    inventory
+know your customers
+    know your customers
+knowledge
+    knowledge
+knowledge gaps
+    knowledge gaps
+knowledge resources
+    knowledge resources
+knowledge sharing
+    knowledge sharing
+landscape
+    landscape
+    the future landscape
+    the global landscape
+    the landscape
+lending companies
+    lending companies
+magnitude
+    magnitude
+malicious
+    malicious
+malicious behavior
+    malicious behavior
+malus x domestica
+    malus x domestica
+manual reporting
+    manual reporting
+market fintech companies
+    market fintech companies
+market integrity
+    market integrity
+market structure
+    market structure
+matthiola
+    matthiola
+matthiola incana
+    matthiola incana
+mechanism
+    mechanism
+    mechanisms
+mediating roles
+    mediating roles
+mediation
+    mediation
+metaverse
+    metaverse
+microloan
+    microloan
+mobile computing
+    mobile computing
+moderator
+    moderator
+money practices
+    money practices
+necessity
+    necessity
+    the necessity
+net valence framework
+    net valence framework
+numerical
+    numerical
+numerical model
+    numerical model
+online microloan
+    online microloan
+operating income
+    operating income
+operation
+    operations
+    their operations
+ordered weighted averaging
+    ordered weighted averaging
+oversight
+    oversight
+panel technique
+    panel technique
+payment services directive
+    payment services directive
+peer to peer lending platforms
+    peer to peer lending platforms
+perceived benefit
+    perceived benefit
+    perceived benefits
+perceived ease of use
+    perceived ease of use
+perceived privacy
+    perceived privacy
+perceived risk
+    perceived risk
+perceived security
+    perceived securities
+    perceived security
+perceived value
+    perceived value
+personnel
+    personnel
+platform providers
+    platform providers
+policy framework
+    policy framework
+political
+    political
+political economy
+    political economy
+pollution
+    pollution
+pollution incidence
+    pollution incidence
+pollution tax
+    pollution tax
+portfolio
+    portfolio
+positive influence
+    positive influence
+potential
+    great potential
+    immense potential
+    potential
+    significant potential
+    the full potential
+    the potential
+    the transformative potential
+    their potential
+potential customers
+    potential customers
+potential impacts
+    potential impacts
+practical
+    practical
+principal
+    principal
+principle
+    principles
+provision
+    provision
+    the provision
+quality economics
+    quality economics
+reduction
+    reduction
+regulator
+    regulator
+    regulators
+    the regulator
+    the regulators
+relevance
+    relevance
+    the relevance
+renewable
+    renewable
+renewable energy
+    renewable energies
+    renewable energy
+renewable energy projects
+    renewable energy projects
+renewable energy resources
+    renewable energy resources
+renewable energy sector
+    renewable energy sector
+renewable energy sources
+    renewable energy sources
+renewable energy use
+    renewable energy use
+research framework
+    research framework
+research potential
+    research potential
+risk reduction
+    risk reduction
+risk spillover
+    risk spillover
+risk-base
+    risk-based
+risk-take
+    risk-taking
+rural community
+    rural communities
+    rural community
+scope economies
+    scope economies
+security and privacy dimension
+    security and privacy dimension
+security mechanism
+    security mechanism
+selection
+    selection
+selection model
+    selection model
+sequenced reforms
+    sequenced reforms
+service companies
+    service companies
+social influence
+    social influence
+social sciences computing
+    social sciences computing
+soundness
+    soundness
+special attention
+    special attention
+spillover
+    spillover
+spillover effect
+    spillover effect
+stability
+    stability
+strategic
+    strategic
+strategic alliance
+    strategic alliance
+strategic approach
+    strategic approach
+strategic impacts
+    strategic impacts
+strategic planning
+    strategic planning
+structure
+    structure
+    the structure
+swiss fintech companies
+    swiss fintech companies
+switching behavior
+    switching behavior
+symbiosis
+    symbiosis
+tech companies
+    tech companies
+technical
+    technical
+technical aspects
+    technical aspects
+telephone
+    telephone
+territory
+    territories
+time and frequency domains
+    time and frequency domains
+trade-off
+    trade-off
+uk p2p platforms
+    uk p2p platforms
+underwrit
+    underwriting
+usability
+    usability
+user interface design
+    user interface design
+virtual addresses
+    virtual addresses
+way financial services
+    the way financial services
+wider financial ecosystem
+    the wider financial ecosystem
+abnormal
+    abnormal
+academia
+    academia
+academic
+    academic
+    academics
+academic research
+    academic research
+action research
+    action research
+adequacy
+    adequacy
+adoption drivers
+    adoption drivers
+adoption of fintech
+    adoption of fintech
+adoption of fintech services
+    adoption of fintech services
+adoption research
+    adoption research
+alliance
+    alliance
+analysis reveals
+    analysis reveals
+analytic
+    analytic
+    analytics
+analytic network process
+    analytic network process
+and systemic risk
+    and systemic risk
+apic-ist
+    apic-ist
+apic-ist 2016
+    apic-ist 2016
+artifact
+    artifacts
+assembly
+    assembly
+asset managers
+    asset managers
+attacker
+    attackers
+attitude
+    attitude
+bank business model
+    bank business model
+bank digital currency
+    central bank digital currencies
+    central bank digital currency
+banking business
+    banking business
+banking industry
+    banking industry
+    the banking industry
+    traditional banking industry
+banking industry sector
+    banking industry sector
+banking services
+    banking services
+barberis
+    barberis
+baseline studies
+    baseline studies
+big data analysis
+    big data analysis
+business
+    business
+    the business
+business cycle
+    business cycle
+business model
+    business model
+    business models
+    new business models
+    the business models
+business model canvas
+    business model canvas
+business modeling
+    business modeling
+business process
+    business process
+business sectors
+    business sectors
+business strategy
+    business strategy
+capacity
+    capacity
+    their capacity
+capacity building
+    capacity building
+capital adequacy ratio
+    capital adequacy ratio
+carbon dioxide emission
+    carbon dioxide emissions
+    co 2 emission
+    co2 emissions
+carbon emission
+    carbon emission
+cash payments
+    cash payments
+china banking industry
+    china banking industry
+circular
+    circular
+circular economy
+    circular economy
+client behavior
+    client behavior
+commerce
+    commerce
+computer
+    computer
+computer science
+    computer science
+consumer
+    consumer
+    consumers
+consumer behavior
+    consumer behavior
+content analysis method
+    content analysis method
+contract
+    contract
+    contracts
+control variable
+    control variable
+covid-19
+    covid-19
+creation
+    creation
+    the creation
+critical
+    critical
+currency
+    currencies
+    currency
+customer
+    customer
+    customers
+    their customers
+customer credit
+    customer credit
+customer data
+    customer data
+customer journey
+    customer journey
+customer loyalty
+    customer loyalty
+customer segments
+    customer segments
+customer services
+    customer services
+customer trust
+    customer trust
+cyber security
+    cyber security
+data analysis
+    data analysis
+data privacy breaches
+    data privacy breaches
+data security
+    data security
+data security and privacy
+    data security and privacy
+decision
+    decision
+    decisions
+decision makers
+    decision makers
+decision making
+    decision making
+deep learning neural network
+    deep learning neural network
+deep neural networks
+    deep neural networks
+delivery
+    delivery
+    the delivery
+digital identity
+    digital identity
+distance
+    distance
+division
+    division
+division of labor
+    division of labor
+domestic
+    domestic
+economic
+    economic
+    economics
+economic activity
+    economic activities
+    economic activity
+economic analysis
+    economic analysis
+economic and social effects
+    economic and social effects
+economic growth
+    economic growth
+economic growths
+    economic growths
+    increase economic growth
+economic policy
+    economic policy
+efficacy
+    efficacy
+emerging markets
+    emerging markets
+emerging risks
+    emerging risks
+emission
+    emission
+    emissions
+emission control
+    emission control
+energy security
+    energy security
+equality
+    equality
+equation
+    equation
+european
+    european
+european banking industry
+    european banking industry
+european union
+    the european union
+exchange
+    exchange
+    exchanges
+exercise
+    exercise
+factor analysis
+    factor analysis
+fast identity online
+    fast identity online
+finance green projects
+    finance green projects
+finance industry
+    the finance industry
+finance research
+    finance research
+fintech adoption
+    fintech adoption
+    fintech adoption and use
+    the fintech adoption
+fintech banking industry
+    fintech banking industry
+fintech business model
+    fintech business model
+    fintech business models
+    the fintech business model
+fintech industry
+    fintech industries
+    fintech industry
+    the fintech industry
+fintech payment services
+    fintech payment services
+fintech platform
+    fintech platform
+    fintech platforms
+fintech practice
+    fintech practice
+fintech products
+    fintech products
+fintech research
+    fintech research
+    future fintech research
+fintech startups
+    fintech startups
+food security
+    food security
+forensic
+    forensic
+fossil fuel reliance
+    fossil fuel reliance
+fully modified ols
+    fully modified ols
+function
+    functioning
+future prospect
+    future prospect
+green economic growth
+    green economic growth
+green finance products
+    green finance products
+green finance strategy
+    green finance strategy
+green finances
+    green finances
+gross domestic product
+    gross domestic product
+group decision making
+    group decision making
+guidance
+    guidance
+    practical guidance
+hesitant
+    hesitant
+hesitant fuzzy sets
+    hesitant fuzzy sets
+human activity
+    human activities
+    human activity
+identify
+    identify
+identity
+    identity
+increase
+    increase
+indirect
+    indirect
+indirect effects
+    indirect effects
+industry
+    an industry
+    diverse industries
+    industries
+    industry
+    other industries
+    the industry
+industry 40
+    industry 40
+industry experts
+    industry experts
+industry sources
+    industry sources
+integral
+    an integral part
+    integral
+internet
+    internet
+internet banking
+    internet banking
+internet credit
+    internet credit
+internet of thing iot
+    internet of thing ( iot )
+internet of things
+    future internet of things
+    internet of things
+internet users
+    internet users
+interval
+    interval
+interval type-2 fuzzy topsis
+    interval type-2 fuzzy topsis
+investor
+    investor
+    investors
+investor managers
+    investor managers
+islamic finance industry
+    islamic finance industry
+it adoption
+    it adoption
+juncture
+    juncture
+    the juncture
+language
+    language
+learning neural network
+    learning neural network
+learning neural networks
+    learning neural networks
+learning systems
+    learning systems
+leverage
+    leverage
+literacy
+    literacy
+logistic
+    logistic
+machine learning
+    machine learning
+majority
+    majority
+    the vast majority
+market analysis
+    the market analysis
+market dynamics
+    market dynamics
+market products
+    market products
+market research
+    market research
+market support services
+    market support services
+market theory and practice
+    market theory and practice
+material
+    material
+material culture
+    material culture
+merchant
+    merchants
+mismatch
+    mismatch
+mixed methods research
+    mixed methods research
+mobile bankings
+    mobile bankings
+mobile payments
+    mobile payments
+mobile security
+    mobile security
+moderate
+    moderating
+modified vikor
+    modified vikor
+money machines
+    money machines
+money services
+    money services
+monitore
+    monitoring
+mortgage
+    mortgage
+    mortgages
+mortgage lending
+    mortgage lending
+natural resource
+    natural resource
+    natural resources
+network security
+    network security
+networks circuits
+    networks ( circuits )
+non-bank
+    non-bank
+offline payments
+    offline payments
+online services
+    online services
+open banking adoption
+    open banking adoption
+openness
+    openness
+operator
+    operators
+outreach
+    outreach
+p2p lending platform
+    p2p lending platform
+pandemic
+    pandemic
+    pandemics
+    the pandemic
+paper explores
+    paper explores
+paradigm
+    new paradigm
+    paradigm
+paradigm shift
+    a paradigm shift
+password
+    password
+payment networks
+    payment networks
+payment services
+    payment services
+payments market
+    payments market
+perceive
+    perceived
+platform
+    platform
+    platforms
+platform lending
+    platform lending
+platform loans
+    platform loans
+policy insights
+    policy insights
+policy measures
+    policy measures
+position
+    position
+    the position
+positive
+    positive
+positive impact
+    positive impact
+positive role
+    the positive role
+practice
+    practice
+    practices
+privacy enablers
+    privacy enablers
+processe
+    processes
+products and services
+    products and services
+progress
+    progress
+prospect
+    prospect
+    prospects
+prospect theory
+    prospect theory
+provider
+    provider
+    providers
+quality economic growth
+    quality economic growth
+quality of services
+    quality of services
+quality services
+    quality services
+quantile
+    quantile
+question
+    future questions
+    question
+    questions
+    the question
+ready to use services
+    ready to use services
+regional
+    regional
+regional economy
+    regional economy
+reliance
+    reliance
+research areas
+    research areas
+research gaps
+    research gaps
+research model
+    research model
+research program
+    research program
+research results
+    research results
+research studies
+    research studies
+research work
+    research work
+resource
+    resource
+    resources
+resource rents
+    resource rents
+response
+    response
+    responses
+risky behavior
+    risky behavior
+safety business
+    safety business
+scenario
+    scenario
+security
+    securities
+    security
+    the security
+security and privacy
+    security and privacy
+security and privacy issues
+    security and privacy issues
+security control
+    security control
+security controls
+    security controls
+security features
+    security features
+security of data
+    security of data
+semantic
+    semantic
+    semantics
+semantic analysis
+    semantic analysis
+sequence
+    sequenced
+service concepts
+    service concepts
+service provider
+    service provider
+    service providers
+servperf
+    servperf
+servqual
+    servqual
+shadow banking business
+    shadow banking business
+smart contract
+    smart contract
+    smart contracts
+socially
+    socially
+software
+    software
+software tools
+    software tools
+solution
+    innovative solutions
+    potential solutions
+    solutions
+    these solutions
+standard
+    international standards
+    standard
+    standards
+standard errors
+    standard errors
+strategy
+    bottom up strategies
+    strategies
+    strategy
+study explores
+    study explores
+study findings
+    study findings
+supply chain finances
+    supply chain finances
+supply chain industry
+    supply chain industry
+survey and analysis
+    survey and analysis
+surveys research
+    surveys research
+survival
+    survival
+systemic
+    systemic
+systemic risk
+    systemic risk
+systemic risk fintech
+    systemic risk fintech
+systemic risks
+    potential systemic risk
+    systemic risks
+taiwan bank industry
+    taiwan bank industry
+taiwan fintech industry
+    taiwan fintech industry
+taxonomy
+    a taxonomy
+    taxonomy
+tendency
+    tendencies
+text analysis
+    text analysis
+thematic
+    thematic
+themes customer
+    themes customer
+theory of reasoned action
+    theory of reasoned action
+transfer
+    transfer
+underlie
+    underlying
+united arab emirates banks
+    united arab emirates banks
+value creation
+    value creation
+virtual currency
+    virtual currency
+web of science database
+    web of science database
+#remove
+    -an
+    -an analysis
+    -challenges
+access to finance
+    access to finance
+account
+    account
+    accounting
+actor network theory
+    actor network theory
+address
+    addresses
+advance
+    advanced
+agropay
+    agropay
+ai in fintech
+    ai in fintech
+analyze
+    analyzes
+attempt
+    an attempt
+    attempt
+average
+    average
+    averaging
+average annual growth
+    average annual growth
+balance
+    a balance
+    balance
+bank fintech
+    a bank fintech
+    bank fintech
+banking
+    banking
+    banking system
+    bankings
+    global banking
+    traditional banking
+banking and finance
+    banking and finance
+banking firms
+    banking firms
+banking model
+    banking model
+    traditional banking model
+banking scale
+    banking scale
+banking sector
+    the banking sector
+banking systems
+    banking systems
+barrier
+    barriers
+belt and road country
+    belt and road countries
+    belt and road country
+benefit
+    benefit
+    benefits
+    practical benefits
+    the benefit
+    the benefits
+benefit sharing
+    benefit sharing
+big data lending
+    big data lending
+bitcoin
+    bitcoin
+capital
+    capital
+capital markets
+    capital markets
+carbon dioxide
+    carbon dioxide
+    co2
+case study methods
+    case study methods
+central
+    central
+chief digital
+    chief digital officer
+chinese
+    chinese
+chinese telecom
+    chinese telecom
+circuit
+    circuits
+clarity
+    clarity
+clarity ai
+    clarity ai
+climate
+    climate
+climate change
+    climate change
+climate effect
+    climate effect
+climate finance
+    climate finance
+climate models
+    climate models
+climate quality
+    climate quality
+cluster
+    cluster
+company
+    companies
+compute
+    computing
+concern
+    concern
+conduct
+    conduct
+content
+    content
+control factors
+    control factors
+control state
+    control state
+cost savings
+    cost savings
+    tremendous cost savings
+council
+    council
+country
+    all countries
+    countries
+    country
+    developed countries
+    many countries
+    other countries
+    these countries
+country economy
+    country economy
+credit markets
+    credit markets
+credit scoring
+    credit scoring
+crucial
+    crucial
+culture
+    a culture
+    culture
+cutting edges
+    cutting edges
+cyber threats
+    cyber threats
+data privacy
+    data privacy
+data science
+    these data science
+decline
+    decline
+    the decline
+dematel
+    dematel
+deposit
+    deposits
+develop
+    developed
+    developing
+digital
+    digital
+    new digital technologies
+digital banking
+    digital banking
+digital economy
+    the digital economy
+    the global digital economy
+digital era
+    digital era
+digital finance
+    digital finance
+digital lending
+    digital lending
+digital payment
+    digital payment system
+digital skills
+    digital skills
+digital twin
+    digital twin
+dioxide
+    dioxide
+diverse
+    diverse
+douglas
+    douglas
+dynamic
+    dynamics
+eastern
+    eastern
+eastern region
+    eastern region
+    the eastern region
+ecology
+    ecology
+economy
+    economies
+    economy
+    global economies
+    global economy
+    the economy
+    the global economy
+emirate
+    emirates
+enabler
+    enablers
+    key enablers
+energy systems
+    energy systems
+entrant
+    entrants
+    new entrants
+equity markets
+    equity markets
+ethical
+    ethical
+ethical issues
+    ethical issues
+explore
+    explores
+feature
+    features
+finance
+    finance
+    finances
+    financing
+    global finance
+    the finance
+finance service
+    finance service
+fintech
+    fintech
+    fintech use
+    potential fintech
+    the fintech
+fintech action plan
+    fintech action plan
+fintech area
+    fintech area
+fintech areas
+    fintech areas
+fintech credit
+    fintech credit
+fintech digital banking
+    fintech digital banking
+fintech era
+    the fintech era
+fintech example
+    fintech example
+fintech firms
+    fintech firms
+fintech growth
+    fintech growth
+    the fintech growth
+fintech issues
+    fintech issues
+fintech lending
+    fintech lending
+    the fintech lending
+fintech market
+    fintech market
+fintech markets
+    fintech markets
+    the fintech market
+fintech models
+    fintech models
+fintech sector
+    fintech sector
+    the fintech sector
+fintech sector growth
+    fintech sector growth
+fintech service
+    fintech service
+    fintech services
+fintech users
+    fintech users
+foreign
+    foreign
+global warming
+    global warming
+granger
+    granger
+green economy
+    green economy
+    the green economy
+green finance
+    green finance
+green fintech
+    green fintech
+growth indices
+    growth indices
+hedonic
+    hedonic
+help fintech
+    help fintech
+highway
+    highway
+history
+    history
+human society
+    human society
+immense
+    immense
+initial
+    initial
+insight
+    an insight
+    insight
+    insights
+    new insights
+    theoretical insights
+    these insights
+islamic
+    islamic
+islamic finance
+    islamic finance
+journey
+    journey
+keyword
+    keywords
+kingdom
+    kingdom
+lending money
+    lending money
+local economy
+    local economy
+loyalty
+    loyalty
+machine
+    machine
+    machines
+machine tools presses
+    machine tools ( presses )
+malware
+    malware
+manager
+    managers
+market demands
+    market demands
+market returns
+    market returns
+market segment
+    market segment
+    market segments
+market support service
+    market support service
+mediate
+    mediating
+method of moments
+    method of moments
+mobile banking
+    mobile banking
+mobile devices
+    mobile devices
+mobile payment
+    mobile payment
+mobile payment market
+    mobile payment market
+mobile payment service
+    mobile payment service
+money control
+    money control
+natural
+    natural
+network
+    network
+    networks
+niche markets
+    niche markets
+officer
+    officer
+offline
+    offline
+online banking
+    online banking
+online vendors
+    online vendors
+open banking
+    open banking
+operate
+    operating
+outlook
+    an outlook
+    outlook
+p2p lending
+    p2p lending
+p2p lending apps
+    p2p lending apps
+partial
+    partial
+partial least square pls
+    partial least square ( pls )
+partial least squares
+    partial least squares
+partial least squares method
+    partial least squares method
+pathway
+    pathways
+payment
+    payment
+    payments
+payment systems
+    payment systems
+peer to peer lending
+    peer to peer lending
+peer to peer lending credit
+    peer to peer lending credit
+peer to peerp2p
+    peer to peerp2p
+peerp2p
+    peerp2p
+pivotal
+    pivotal
+pivotal role
+    pivotal role
+pls-sem
+    pls-sem
+popular
+    popular
+popular press
+    popular press
+poverty
+    poverty
+primary
+    primary
+privacy
+    privacy
+privacy control
+    privacy control
+privacy issues
+    privacy issues
+private
+    private
+private sector
+    private sector
+problem
+    problems
+process
+    process
+    the process
+    this process
+process model
+    the process model
+product
+    product
+    products
+product design
+    product design
+program
+    program
+    programs
+project
+    project
+    projects
+project actors
+    project actors
+promise
+    promise
+    the promise
+purpose
+    purpose
+    the core purpose
+    the purpose
+quality
+    quality
+    the quality
+quality bank
+    quality bank
+quality of service
+    quality of service
+real options
+    real options
+regtech
+    regtech
+resolve
+    resolve
+retail banking
+    retail banking
+retail payment
+    retail payment
+risk capital
+    risk capital
+risk factors
+    risk factors
+risk fintech
+    the risk fintech
+roads and streets
+    roads and streets
+russian
+    russian
+sandbox
+    sandbox
+    sandboxes
+scholar
+    scholars
+science
+    science
+    sciences
+search engines
+    search engines
+segment
+    segment
+    segments
+service
+    service
+    services
+    the services
+service models
+    service models
+service quality
+    service quality
+service users
+    service users
+shadow banking
+    shadow banking
+sharing economy
+    sharing economy
+sign-on
+    sign-on
+silicon
+    silicon
+single sign-on
+    single sign-on
+social lending
+    social lending
+social trading
+    social trading
+society
+    society
+sources of energy
+    sources of energy
+special
+    special
+startup
+    startups
+stirpat
+    stirpat
+stock returns
+    stock returns
+student
+    students
+success
+    success
+sulfur dioxide
+    sulfur dioxide
+supply chain finance
+    supply chain finance
+support
+    support
+survey results
+    survey results
+swiss fintech
+    swiss fintech
+targete
+    targeting
+tech lending
+    tech lending
+telecom
+    telecom
+the future of banking
+    the future of banking
+thought leaders
+    thought leaders
+tourism
+    tourism
+ukraine war
+    ukraine war
+united nations
+    united nations
+valence
+    valence
+venture
+    venture
+venture capital
+    venture capital
+virtual
+    virtual
+web of science
+    web of science
+webqual
+    webqual
+webqual 40
+    webqual 40
+zealand
+    zealand
+access loans
+    access loans
+access to credit
+    access to credit
+action
+    action
+    actions
+action plan
+    action plan
+advice
+    advice
+ai ethics
+    ai ethics
+alipay
+    alipay
+analog
+    analog
+annual
+    annual
+arabia
+    arabia
+attack
+    attacks
+    future attacks
+bank credit
+    bank credit
+bank growth
+    bank growth
+bank market
+    bank market
+banker
+    bankers
+behalf
+    behalf
+breach
+    breaches
+canvas
+    canvas
+capita
+    capita
+    per capita
+carbon
+    carbon
+carbon tax
+    carbon tax
+carbon taxes
+    carbon taxes
+center
+    center
+change
+    change
+    changes
+choice
+    choice
+cities policy
+    cities policy
+cleare
+    clearing
+client
+    client
+corona
+    corona
+corona virus
+    corona virus
+credit
+    credit
+credit access
+    credit access
+credit data
+    credit data
+credit risk
+    credit risk
+credit scores
+    credit scores
+crisis
+    crisis
+    the crisis
+damage
+    damage
+data mining
+    data mining
+decade
+    a decade
+    decade
+demand
+    demand
+    demands
+device
+    devices
+direct
+    direct
+domain
+    domain
+    domains
+driver
+    drivers
+    the key drivers
+effect
+    effect
+    effects
+    fixed effects
+    significant effect
+    the effect
+    the effects
+effort
+    efforts
+    the efforts
+    these efforts
+emerge
+    emerging
+energy
+    energies
+    energy
+energy policy
+    energy policy
+energy use
+    energy use
+energy web
+    energy web
+engine
+    engines
+entity
+    entities
+equity
+    equity
+equity and other prices
+    equity and other prices
+estate
+    estate
+eu policy
+    eu policy
+expert
+    experts
+extend
+    extended
+extent
+    extent
+    the extent
+firm market value
+    firm market value
+food supply
+    food supply
+fossil
+    fossil
+fossil fuel
+    fossil fuel
+    fossil fuels
+foster
+    foster
+fusion
+    fusion
+    the fusion
+gdp per capita
+    gdp per capita
+global
+    global
+green credit
+    green credit
+green growth
+    green growth
+    green growths
+green growth index
+    green growth index
+growth
+    growth
+    growths
+    the growth
+    the rapid growth
+    this growth
+health
+    health
+human-
+    human-
+hybrid
+    hybrid
+hybrid mcdm model
+    hybrid mcdm model
+impact
+    a substantial impact
+    an impact
+    impact
+    impacts
+    its impact
+    significant impact
+    the impact
+    the potential impact
+    their impact
+impact users
+    impact users
+incana
+    incana
+income
+    income
+invest
+    investing
+kuznet
+    kuznets
+law review
+    law review
+leader
+    leaders
+ledger
+    distributed ledger
+    ledger
+lesson
+    lessons
+local energy needs
+    local energy needs
+manual
+    manual
+market
+    market
+    markets
+    the global market
+    the market
+market force
+    market force
+market growth
+    market growth
+market niche
+    market niche
+market system
+    market system
+market value
+    market value
+medium
+    medium
+merger
+    mergers
+mobile
+    mobile
+mobile money
+    mobile money
+modify
+    modified
+moment
+    moment
+    moments
+mutual
+    mutual
+nation
+    nations
+nature
+    nature
+    the nature
+    transformative nature
+neural
+    neural
+north africa
+    north africa
+number
+    a large number
+    number
+    the number
+office
+    office
+    the office
+online
+    online
+online market
+    online market
+online model
+    online model
+option
+    options
+origin
+    origins
+    the origins
+patent
+    patents
+people
+    people
+policy action
+    policy action
+policy banks
+    policy banks
+policy makers
+    policy makers
+policy making
+    policy making
+presse
+    presses
+public
+    public
+public policy
+    public policy
+public policy needs
+    public policy needs
+pursue
+    pursue
+rapid growth
+    rapid growth
+ratios
+    ratios
+reason
+    reasoned
+    reasons
+    the reasons
+reform
+    reforms
+regard
+    regard
+    this regard
+regime
+    regime
+region
+    central region
+    central regions
+    region
+    regions
+    the region
+    these regions
+retail
+    retail
+retail banks
+    retail banks
+return
+    return
+    returns
+return on assets
+    return on assets
+reveal
+    reveals
+robo advice
+    robo advice
+safety
+    safety
+scopus
+    scopus
+search
+    search
+sector
+    sector
+    sectors
+    the sector
+    the sector potential
+    this sector
+senior
+    senior
+series
+    a series
+    series
+setter
+    setters
+shadow
+    shadow
+shadow banks
+    shadow banks
+sharia
+    sharia
+single
+    single
+skills
+    skills
+smooth
+    smooth
+social
+    social
+social change
+    social change
+social impact
+    social impact
+social media
+    social media
+source
+    source
+    sources
+spread
+    spread
+    the spread
+square
+    square
+    squares
+state-
+    state-
+stock market
+    stock market
+stream
+    streams
+street
+    streets
+sulfur
+    sulfur
+supply
+    supply
+supply chain
+    supply chain
+supply chains
+    supply chains
+survey data
+    survey data
+switch
+    switching
+tactic
+    tactics
+tech credit
+    tech credit
+tenpay
+    tenpay
+text mining method
+    text mining method
+themes
+    themes
+threat
+    a threat
+    new threats
+    threat
+    threats
+topsis
+    topsis
+type-2
+    type-2
+unbank
+    unbanked
+utaut2
+    utaut2
+values
+    added value
+    values
+vendor
+    vendors
+viewer
+    viewer
+vision
+    vision
+volume
+    the volume
+    volume
+vos viewer
+    vos viewer
+wallet
+    wallets
+wealth
+    wealth
+web survey
+    web survey
+weight
+    weighted
+actor
+    actor
+    actors
+adopt
+    adopt
+adult
+    adult
+ai model
+    explainable ai model
+areas
+    all areas
+    potential areas
+    this area
+asset
+    asset
+    assets
+audit
+    auditing
+bank users
+    bank users
+basis
+    basis
+    the basis
+build
+    building
+camel
+    camel
+chain
+    chain
+    chains
+chief
+    chief
+cloud
+    cloud
+covid
+    covid
+curve
+    curve
+cyber
+    cyber
+cyber risks
+    cyber risks
+cycle
+    cycle
+daily
+    daily
+daily datum
+    daily datum
+datum
+    datum
+death
+    death
+debit
+    debit
+debit cards
+    debit cards
+e-cny
+    e-cny
+e-kyc
+    e-kyc
+entry
+    entry
+    the entry
+ethic
+    ethics
+favor
+    favor
+field
+    field
+    fields
+    the field
+    this field
+flood
+    floodings
+focus
+    a focus
+    focus
+    the focus
+force
+    force
+    forces
+    the forces
+frame
+    frame
+fraud
+    fraud
+    frauds
+    potential frauds
+fraud risk
+    fraud risk
+fully
+    fully
+fuzzy
+    fuzzy
+gasse
+    gas
+    gasses
+globe
+    globe
+    the globe
+grand
+    grand
+green
+    green
+green bond
+    green bond
+    green bonds
+green loans
+    green loans
+green value
+    green value
+gross
+    gross
+group
+    group
+hedge
+    hedging
+help track
+    help track
+human
+    human
+    humans
+human error
+    human error
+issue
+    issue
+    issues
+    the complex issues
+    this issue
+labor
+    labor
+labor force
+    labor force
+learn
+    learning
+limit
+    limited
+local
+    local
+magdm
+    magdm
+maker
+    makers
+malus
+    malus
+media
+    media
+money
+    money
+nexus
+    nexus
+    the nexus
+niche
+    niche
+nodes
+    nodes
+    the key nodes
+north
+    north
+nvivo
+    nvivo
+offer
+    offerings
+order
+    order
+    ordered
+panel
+    panel
+panel data
+    panel data
+place
+    place
+point
+    points
+power
+    power
+    the power
+press
+    press
+price
+    price
+    prices
+price value
+    price value
+qardl
+    qardl
+range
+    a range
+    a wide range
+    range
+rapid
+    rapid
+ratio
+    ratio
+ready
+    ready
+risky
+    risky
+robot
+    robots
+rural
+    rural
+rural areas
+    rural areas
+rural banks
+    rural banks
+saudi
+    saudi
+scale
+    a global scale
+    scale
+    the scale
+scope
+    scope
+    the scope
+shape
+    shape
+share
+    sharing
+shift
+    shift
+shock
+    shock
+sizes of banks
+    sizes of banks
+smart
+    smart
+    smart technologies
+south
+    south
+speed
+    speed
+state
+    state
+    states
+    the current state
+    the state
+state banks
+    state banks
+state of the art
+    state of the art
+stock
+    stock
+stone
+    stone
+swiss
+    swiss
+task force
+    task force
+theft
+    theft
+thing
+    thing
+    things
+think
+    thought
+today
+    today
+topic
+    the topic
+    the topics
+    these topics
+    topic
+    topics
+track
+    track
+trade
+    trading
+train
+    training
+trend
+    future trends
+    new trends
+    recent trends
+    technologies trends
+    the future trends
+    trends
+trust
+    ensure trust
+    the trust
+    trust
+unify
+    unified
+union
+    union
+unite
+    united
+utaut
+    utaut
+value
+    value
+value chain
+    value chain
+vikor
+    vikor
+virus
+    virus
+wider
+    wider
+women
+    women
+world
+    the world
+    world
+world needs
+    the world needs
+youth
+    youth
+ally
+    ally
+apps
+    apps
+arab
+    arab
+bank
+    a bank
+    bank
+    banks
+    central bank
+    the bank
+    the banks
+    traditional banks
+bank 30
+    bank 30
+bank risk
+    bank risk
+belt
+    belt
+big data
+    big data
+big tech
+    big tech
+big to fail
+    too big to fail
+body
+    body
+bond
+    bond
+    bonds
+bric
+    brics
+buy or ally
+    make buy or ally
+card
+    cards
+cash
+    cash
+cbdc
+    cbdc
+    cbdcs
+city
+    cities
+coin
+    coin
+core
+    core
+cost
+    cost
+    cost and benefits
+    costs
+    costs and benefits
+    low cost
+danp
+    danp
+dark
+    dark
+    the dark side
+dark side
+    dark side
+data set
+    data set
+deep
+    deep
+ease
+    ease
+    ease of use
+edge
+    edges
+face
+    face
+    the face
+fail
+    fail
+fast
+    fast
+fido
+    fido
+firm
+    firm
+    firms
+flow
+    flows
+food
+    food
+form
+    a form
+    form
+    forms
+    new forms
+    the form
+fuel
+    fuel
+    fuels
+gage
+    gages
+game
+    game
+goal
+    goal
+    goals
+gold
+    gold
+gulf
+    gulf
+help
+    help
+hong
+    hong
+icos
+    icos
+know
+    know
+kong
+    kong
+lack
+    a lack
+    lack
+    the lack
+laws
+    laws
+lend
+    lending
+lens
+    lens
+    through the lens
+loan
+    loans
+mcdm
+    mcdm
+mmqr
+    mmqr
+near
+    near
+    the near future
+oecd
+    oecd
+open
+    open
+pace
+    pace
+past
+    past
+path
+    path
+    the path
+peer
+    peer
+plan
+    plan
+    planning
+poor
+    poor
+rate
+    interest rates
+    rates
+real
+    real
+    real estate
+rent
+    rents
+rice
+    rice
+rise
+    rise
+    the rise
+risk
+    addresses risk
+    increase risk
+    potential risks
+    risk
+    risks
+    the risk
+    the risks
+    these risks
+road
+    road
+    roads
+robo
+    robo
+role
+    a crucial role
+    a significant role
+    an important role
+    central role
+    critical role
+    crucial role
+    important role
+    role
+    roles
+    the role
+    the roles
+    their role
+rule
+    rules
+sale
+    sales
+save
+    savings
+sets
+    a set
+    sets
+shap
+    shaping
+    the shaping
+size
+    sizes
+smes
+    smes
+task
+    task
+tech
+    tech
+term
+    term
+    terms
+text
+    text
+time
+    a time
+    the time
+    time
+tool
+    tools
+turn
+    turn
+twin
+    twin
+type
+    new types
+    type
+    types
+user
+    potential users
+    user
+    users
+user type
+    user type
+vast
+    vast
+view
+    view
+warm
+    warming
+wide
+    wide
+work
+    work
+xbrl
+    xbrl
+year
+    recent years
+    the past ten years
+    years
+add
+    added
+aim
+    aim
+    the aim
+aml
+    aml
+art
+    art
+big
+    big
+buy
+    buy
+cdr
+    cdr
+cut
+    cutting
+dlt
+    dlt
+era
+    a new era
+    an era
+    era
+esg
+    esg
+fha
+    fha
+fix
+    fixed
+g11
+    g11
+g14
+    g14
+g15
+    g15
+g18
+    g18
+g20
+    g20
+g24
+    g24
+g28
+    g28
+g29
+    g29
+g34
+    g34
+g38
+    g38
+gap
+    a significant gap
+    gap
+    gaps
+    identify gaps
+    the gap
+    these gaps
+gcc
+    gcc
+gdp
+    gdp
+gse
+    gse
+h56
+    h56
+iot
+    iot
+k pay
+    k pay
+key
+    key
+    the key
+kyc
+    kyc
+l16
+    l16
+law
+    law
+m16
+    m16
+map
+    mapping
+mix
+    mixed
+net
+    net
+nlp
+    nlp
+oil
+    oil
+ols
+    ols
+p2p
+    p2p
+pay
+    pay
+pki
+    pki
+pls
+    pls
+q17
+    q17
+roa
+    roa
+sem
+    sem
+set
+    set
+sri
+    sri
+tam
+    tam
+tax
+    tax
+    taxes
+tfp
+    tfp
+uae
+    uae
+vos
+    vos
+war
+    war
+way
+    a way
+    new way
+    new ways
+    the way
+    the ways
+    way
+    ways
+web
+    web
+5g
+    5g
+6g
+    6g
+ai
+    ai
+e7
+    e7
+eu
+    eu
+    the eu
+ml
+    ml
+se
+    se
+uk
+    the uk
+    uk

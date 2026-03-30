@@ -6,7 +6,7 @@ Smoke tests:
     >>> from tm2p.refine.concept.sort import SortByCharacterLength
     >>> (
     ...     SortByCharacterLength()
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("examples/scopus/")
     ...     .run()
     ... )
     7722

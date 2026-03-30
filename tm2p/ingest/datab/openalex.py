@@ -7,7 +7,7 @@ Smoke test - fintech - successful import:
     >>> from tm2p.ingest.datab import OpenAlex
     >>> result = (
     ...     OpenAlex()
-    ...     .where_root_directory("tests/openalex/")
+    ...     .where_root_directory("examples/openalex/")
     ...     .run()
     ... )  # doctest: +ELLIPSIS
     Note...

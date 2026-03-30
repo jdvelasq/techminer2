@@ -18,7 +18,7 @@ Smoke tests:
     ...     .using_clustering_algorithm_or_dict("louvain")
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("tests/wos/")
+    ...     .where_root_directory("examples/wos/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     .where_records_match(None)

@@ -1,0 +1,224 @@
+0.10th-0.90th
+    mote environmental sustainability across lower to higher-order quantiles ( 0.10th-0.90th )
+a-a
+    using affordance-actualization ( a-a )
+ai
+    artificial intelligence
+    asymmetric information
+ant
+    this study applies the lens of actor-network theory ( ant )
+atms
+    automated teller machines
+b2b
+    , and businesstobusiness ( b2b )
+b2c
+    , businesstocustomer ( b2c )
+bct
+    urpose : this study aims to provide a new overview and opportunities of blockchain ( bct )
+c2c
+    pact along the whole value chain of financial services covering customertocustomer ( c2c )
+cbdcs
+    central bank digital currencies
+cces
+    corporate carbon emissions
+cdr
+    corporate digital responsibility
+ce
+    circular economy
+covid-19
+    novel corona virus ( covid-19 )
+crm
+    customer relationship management
+ctas
+    cyber threat actors
+cti
+    cyber threat intelligence
+cx
+    the purpose of this paper is to analyze customer experience ( cx )
+danp
+    dematel-based analytic network process
+dematel
+    ia is constructed and both the decision making trial and evaluation laboratory ( dematel )
+deposits
+    , depth ( deposits )
+dfd
+    digital financial divide
+did
+    and difference-in-differences ( did )
+digital
+    in an era of mounting student debt , increased ( digital )
+dlnn
+    deep learning neural network
+dlt
+    distributed ledger technology
+dols
+    , dynamic ols ( dols )
+e-cny
+    , digital banking , fintech lending , and the recent progress on its cbdc pilots ( e-cny )
+eni
+    supported by the ekc hypothesis , suggest that gfn , fintech and energy innovation ( eni )
+ep
+    environmental performance
+epam
+    we propose a research model using an extended post-acceptance model ( epam )
+eu
+    european union
+fa
+    fintech adoption
+fintech
+    financial technologies
+    financial technology
+    n international trend of adopting emerging technologies for financial services ( fintech )
+fintechs
+    ms that offer technology-driven financial services and novel service packages ( fintechs )
+fmols
+    to conduct empirical analysis , the study applies fully modified ols ( fmols )
+ftps
+    the aim of this study is to investigate the impact of fintech products ( ftps )
+g20-hlp-dfi
+    and the g20 high-level principles for digital financial inclusion ( g20-hlp-dfi )
+gcc
+    gulf cooperation council
+gdp
+    and economic growth ( gdp )
+gf
+    green finance
+gfc
+    global financial center
+gfn
+    in light of this , this paper examines the combined effects of green finance ( gfn )
+    in this study , we examine how green finance ( gfn )
+gg
+    green growth
+ghg
+    as a result , the brics nations ' greenhouse gas ( ghg )
+gi
+    green innovation
+gmm
+    quality economic development , and adopts a two-step generalized method of moments ( gmm )
+gplhowa
+    generalized probabilistic linguistic hamacher ordered weighted averaging
+gplhwa
+    generalized probabilistic linguistic hamacher weighted averaging
+green
+    fintech and the integration of fintech with other ( green )
+ict
+    and communication technology
+    and communications technology
+ict4d
+    the is literature and information and communication technologies for development ( ict4d )
+icts
+    information and communication technologies
+ies
+    hnology selection framework to determine the most suitable industry 4.0 technology ( ies )
+iocs
+    indicators of compromise
+iot
+    internet of thing
+    internet of things
+is
+    information systems
+ised
+    the digital revolution adds new layers to the material cultures of financial ( ised )
+issm
+    information systems success model
+it
+    information technologies
+    information technology
+it2
+    ices with an application of an original methodology that considers interval type-2 ( it2 )
+km
+    knowledge management
+loans
+    ings show that fintech supports financial sector development by enhancing access ( loans )
+magdm
+    any selection can be regarded as a kind of multi-attribute group decision making ( magdm )
+    multi-attribute group decision makings
+mcdm
+    multiple criteria decision-making method
+mena
+    east and north africa
+ml
+    machine learning
+mmqr
+    and method of moments quantile regression ( mmqr )
+    using the method of moments quantile regression ( mmqr )
+mnos
+    the basic platform continues to be governed by multinational operators ( mnos )
+nrr
+    natural resources rent
+ntsd
+    national tax survey database
+oecd
+    renewable energy use across organization for economic cooperation and development ( oecd )
+p2p
+    peer-to-peer
+pcse
+    using panel-corrected standard errors ( pcse )
+pd
+    additionally , the perceived difficulty of use ( pd )
+pes
+    benefit distribution in payments for ecosystem services ( pes )
+pls
+    partial least square
+pls-sem
+    tative survey analyzed using a partial least squares structural equation model ( pls-sem )
+    this study used partial least squares structural equation modeling ( pls-sem )
+    using partial least squares equation modeling ( pls-sem )
+plts
+    probabilistic linguistic term set
+pu
+    perceived usefulness
+roa
+    return on assets
+s-o-r
+    based on the stimulus-organism-response ( s-o-r )
+scf
+    supply chain finance
+sdgs
+    sustainable development goals
+sdid
+    employing the semi-parametric difference-in-differences ( sdid )
+sem
+    structural equation model
+    structural equation modeling
+sem-pls
+    theses were developed and tested using structural equation modeling techniques ( sem-pls )
+sis
+    strategic information systems
+slr
+    systematic literature review
+smes
+    small and medium enterprises
+    small-and medium-sized enterprises
+sri
+    socially responsible investing
+sscf
+    sustainable supply chain finance
+takaful
+    hing implications for islamic finance such as banking , investment , insurance ( takaful )
+tam
+    technology acceptance model
+tfp
+    total factor productivity
+tq
+    and tobin ' s q ( tq )
+    re is a positive relationship between fintech implementation and market performance ( tq )
+tra
+    and the theory of reasoned action ( tra )
+uae
+    purpose : the purpose of this study is to discuss the united arab emirates ' ( uae )
+un
+    by integrating fintech with the the united nations ' ( un )
+un-2030-asd
+    indeed , the un 2030 agenda for sustainable development ( un-2030-asd )
+utaut
+    unified theory of acceptance and use of technology
+utaut2
+    on , this study adopts the unified theory of acceptance and use of technology 2 ( utaut2 )
+vikor
+    finally , the modified visekriterijumsko kompromisno rangiranje ( vikor )
+vsi
+    virtual special issue
+xbrl
+     tax authorities encourage the adoption of extensible business reporting language ( xbrl )

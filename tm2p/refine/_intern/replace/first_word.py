@@ -7,7 +7,7 @@ Smoke tests:
     ...     .with_thesaurus_file(ThFile.CONCEPT)
     ...     .having_word("business")
     ...     .having_replacement("BUSINESS")
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("examples/scopus/")
     ...     .using_colored_output(False)
     ...     .run()
     ... )
@@ -15,7 +15,7 @@ Smoke tests:
     >>> from tm2p.refine.concept.reset import Reset
     >>> (
     ...     Reset()
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("examples/scopus/")
     ...     .run()
     ... )
 

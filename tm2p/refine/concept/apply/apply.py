@@ -6,7 +6,7 @@ Smoke tests:
     >>> from tm2p.refine.concept.apply import Apply
     >>> (
     ...     Apply()
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("examples/scopus/")
     ...     .run()
     ... )
 

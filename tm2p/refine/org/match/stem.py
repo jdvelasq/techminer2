@@ -6,7 +6,7 @@ Smoke tests:
     >>> from tm2p.refine.org.match import StemMatch
     >>> (
     ...     StemMatch()
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("examples/scopus/")
     ...     .run()
     ... )
 

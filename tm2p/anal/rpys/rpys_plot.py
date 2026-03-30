@@ -14,7 +14,7 @@ Smoke tests:
     ...     RPYSPlot()
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("tests/wos/")
+    ...     .where_root_directory("examples/wos/")
     ...     .run()
     ... )
     >>> plot.write_html("docsrc/_generated/px.anal.rpys.rpys_plot.html")

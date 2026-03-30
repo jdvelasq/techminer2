@@ -6,7 +6,7 @@ Smoke tests:
     >>> from tm2p.refine.ctry.group import Group
     >>> (
     ...     Group()
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("examples/scopus/")
     ...     .run()
     ... )
 
