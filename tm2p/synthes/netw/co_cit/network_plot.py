@@ -2,9 +2,111 @@
 NetworkPlot
 ===============================================================================
 
+
+* **CITED_AUTH**
+
 .. raw:: html
 
-    <iframe src="../_static/px.synthes.netw.co_cit.network_plot.html"
+    <iframe src="../_static/px.synthes.netw.co_cit.network_plot_cited_auth.html"
+    height="600px" width="100%" frameBorder="0"></iframe>
+
+
+Smoke tests:
+    >>> from tm2p import CoCitationUnit
+    >>> from tm2p.synthes.netw.co_cit import NetworkPlot
+    >>> plot = (
+    ...     NetworkPlot()
+    ...     #
+    ...     # ANALYSIS UNIT:
+    ...     .with_co_citation_unit(CoCitationUnit.CITED_AUTH)
+    ...     .having_items_in_top(30)
+    ...     .having_citation_threshold(0)
+    ...     .having_items_in(None)
+    ...     #
+    ...     # CLUSTERING:
+    ...     .using_clustering_algorithm_or_dict("louvain")
+    ...     #
+    ...     # NETWORK:
+    ...     .using_spring_layout_k(None)
+    ...     .using_spring_layout_iterations(30)
+    ...     .using_spring_layout_seed(0)
+    ...     #
+    ...     .using_edge_colors(("#7793a5",))
+    ...     .using_edge_width_range(0.8, 3.0)
+    ...     .using_node_size_range(30, 70)
+    ...     .using_textfont_opacity_range(0.35, 1.00)
+    ...     .using_textfont_size_range(10, 20)
+    ...     #
+    ...     .using_xaxes_range(None, None)
+    ...     .using_yaxes_range(None, None)
+    ...     .using_axes_visible(False)
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory("tests/wos/")
+    ...     .where_record_years_range(None, None)
+    ...     .where_record_citations_range(None, None)
+    ...     .where_records_match(None)
+    ...     #
+    ...     .run()
+    ... )
+    >>> plot.write_html("docsrc/_generated/px.synthes.netw.co_cit.network_plot_cited_auth.html")
+
+
+* **CITED_REF**
+
+.. raw:: html
+
+    <iframe src="../_static/px.synthes.netw.co_cit.network_plot_cited_ref.html"
+    height="600px" width="100%" frameBorder="0"></iframe>
+
+
+Smoke tests:
+    >>> from tm2p import CoCitationUnit
+    >>> from tm2p.synthes.netw.co_cit import NetworkPlot
+    >>> plot = (
+    ...     NetworkPlot()
+    ...     #
+    ...     # ANALYSIS UNIT:
+    ...     .with_co_citation_unit(CoCitationUnit.CITED_REF)
+    ...     .having_items_in_top(30)
+    ...     .having_citation_threshold(0)
+    ...     .having_items_in(None)
+    ...     #
+    ...     # CLUSTERING:
+    ...     .using_clustering_algorithm_or_dict("louvain")
+    ...     #
+    ...     # NETWORK:
+    ...     .using_spring_layout_k(None)
+    ...     .using_spring_layout_iterations(30)
+    ...     .using_spring_layout_seed(0)
+    ...     #
+    ...     .using_edge_colors(("#7793a5",))
+    ...     .using_edge_width_range(0.8, 3.0)
+    ...     .using_node_size_range(30, 70)
+    ...     .using_textfont_opacity_range(0.35, 1.00)
+    ...     .using_textfont_size_range(10, 20)
+    ...     #
+    ...     .using_xaxes_range(None, None)
+    ...     .using_yaxes_range(None, None)
+    ...     .using_axes_visible(False)
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory("tests/wos/")
+    ...     .where_record_years_range(None, None)
+    ...     .where_record_citations_range(None, None)
+    ...     .where_records_match(None)
+    ...     #
+    ...     .run()
+    ... )
+    >>> plot.write_html("docsrc/_generated/px.synthes.netw.co_cit.network_plot_cited_ref.html")
+
+
+
+* **CITED_SRC**
+
+.. raw:: html
+
+    <iframe src="../_static/px.synthes.netw.co_cit.network_plot_cited_src.html"
     height="600px" width="100%" frameBorder="0"></iframe>
 
 
@@ -39,14 +141,14 @@ Smoke tests:
     ...     .using_axes_visible(False)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/wos/")
+    ...     .where_root_directory("tests/wos/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     .where_records_match(None)
     ...     #
     ...     .run()
     ... )
-    >>> plot.write_html("docsrc/_generated/px.synthes.netw.co_cit.network_plot.html")
+    >>> plot.write_html("docsrc/_generated/px.synthes.netw.co_cit.network_plot_cited_src.html")
 
 
 """

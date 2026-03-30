@@ -7,7 +7,7 @@ synthes
 
     synthes.collabor
     synthes.emerg
-    synthes.factor_anal
-    synthes.main_path
+    synthes.factor
     synthes.netw
-    synthes.topic_model
+    synthes.path
+    synthes.topic

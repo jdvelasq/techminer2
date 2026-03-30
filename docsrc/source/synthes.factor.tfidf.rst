@@ -1,0 +1,17 @@
+tfidf
+################################################################################
+
+.. toctree::
+    :maxdepth: 1
+    :hidden:
+
+    synthes.factor.tfidf.cluster_centers_dataframe
+    synthes.factor.tfidf.cluster_to_items_mapping
+    synthes.factor.tfidf.cosine_similarities
+    synthes.factor.tfidf.factor_map
+    synthes.factor.tfidf.items_by_cluster_dataframe
+    synthes.factor.tfidf.items_by_dimension_dataframe
+    synthes.factor.tfidf.items_by_dimension_map
+    synthes.factor.tfidf.items_to_cluster_mapping
+    synthes.factor.tfidf.manifold_items_by_dimension_map
+    synthes.factor.tfidf.treemap

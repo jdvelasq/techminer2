@@ -5,6 +5,9 @@ from tm2p.enum.column import DEGREE, NAME, NODE
 
 def create_node_degree_plot(params, df):
 
+    df = df.copy()
+    df["NODE"] = df.index
+
     fig = px.line(
         df,
         x=NODE,

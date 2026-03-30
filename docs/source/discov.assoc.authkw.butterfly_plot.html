@@ -330,9 +330,9 @@
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="refine.concept.remove.html">remove</a><input aria-label="Toggle navigation of remove" class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" role="switch" type="checkbox"/><label for="toctree-checkbox-19"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l4"><a class="reference internal" href="refine.concept.remove.initial_word.html">RemoveInitialWord</a></li>
+<li class="toctree-l4"><a class="reference internal" href="refine.concept.remove.exact_word.html">ExactWord</a></li>
+<li class="toctree-l4"><a class="reference internal" href="refine.concept.remove.first_word.html">FirstWord</a></li>
 <li class="toctree-l4"><a class="reference internal" href="refine.concept.remove.last_word.html">LastWord</a></li>
-<li class="toctree-l4"><a class="reference internal" href="refine.concept.remove.word.html">RemoveWord</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="refine.concept.replace.html">replace</a><input aria-label="Toggle navigation of replace" class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" role="switch" type="checkbox"/><label for="toctree-checkbox-20"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
@@ -456,9 +456,11 @@
 </li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="discov.html">discov</a><input aria-label="Toggle navigation of discov" checked="" class="toctree-checkbox" id="toctree-checkbox-39" name="toctree-checkbox-39" role="switch" type="checkbox"/><label for="toctree-checkbox-39"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
 <li class="toctree-l2 current has-children"><a class="reference internal" href="discov.assoc.html">assoc</a><input aria-label="Toggle navigation of assoc" checked="" class="toctree-checkbox" id="toctree-checkbox-40" name="toctree-checkbox-40" role="switch" type="checkbox"/><label for="toctree-checkbox-40"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="discov.assoc.lemma_associations.html">Lemma Associations</a></li>
 <li class="toctree-l3 current has-children"><a class="reference internal" href="discov.assoc.authkw.html">authkw</a><input aria-label="Toggle navigation of authkw" checked="" class="toctree-checkbox" id="toctree-checkbox-41" name="toctree-checkbox-41" role="switch" type="checkbox"/><label for="toctree-checkbox-41"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
 <li class="toctree-l4 current current-page"><a class="current reference internal" href="#">ButterflyPlot</a></li>
 <li class="toctree-l4"><a class="reference internal" href="discov.assoc.authkw.dataframe.html">Data Frame</a></li>
+<li class="toctree-l4"><a class="reference internal" href="discov.assoc.authkw.lemma_associations.html">Lemma Associations</a></li>
 <li class="toctree-l4"><a class="reference internal" href="discov.assoc.authkw.matrix_plot.html">Matrix Plot</a></li>
 </ul>
 </li>
@@ -602,72 +604,49 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="innov.html">innov</a><input aria-label="Toggle navigation of innov" class="toctree-checkbox" id="toctree-checkbox-67" name="toctree-checkbox-67" role="switch" type="checkbox"/><label for="toctree-checkbox-67"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="innov.co_occur.html">co_occur</a><input aria-label="Toggle navigation of co_occur" class="toctree-checkbox" id="toctree-checkbox-68" name="toctree-checkbox-68" role="switch" type="checkbox"/><label for="toctree-checkbox-68"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="innov.co_occur.mixins.html"><code class="docutils literal notranslate"><span class="pre">RecursiveClusteringMixin</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="innov.co_occur.network_plot.html">Network Plot</a></li>
-<li class="toctree-l3"><a class="reference internal" href="innov.co_occur.terms_by_cluster_data_frame.html">Terms by Cluster Frame</a></li>
-<li class="toctree-l3"><a class="reference internal" href="innov.co_occur.terms_by_cluster_summary.html">TermsByClusterSummary</a></li>
-</ul>
-</li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="innov.emerg.html">emerg</a><input aria-label="Toggle navigation of emerg" class="toctree-checkbox" id="toctree-checkbox-69" name="toctree-checkbox-69" role="switch" type="checkbox"/><label for="toctree-checkbox-69"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="innov.emerg.mixins.html"><code class="docutils literal notranslate"><span class="pre">RecursiveClusteringMixin</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="innov.emerg.network_plot.html">Network Plot</a></li>
-<li class="toctree-l3"><a class="reference internal" href="innov.emerg.terms_by_cluster_data_frame.html">Terms by Cluster Frame</a></li>
-<li class="toctree-l3"><a class="reference internal" href="innov.emerg.terms_by_cluster_summary.html">Terms by Cluster Summary</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="synthes.html">synthes</a><input aria-label="Toggle navigation of synthes" class="toctree-checkbox" id="toctree-checkbox-70" name="toctree-checkbox-70" role="switch" type="checkbox"/><label for="toctree-checkbox-70"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="synthes.collabor.html">collabor</a><input aria-label="Toggle navigation of collabor" class="toctree-checkbox" id="toctree-checkbox-71" name="toctree-checkbox-71" role="switch" type="checkbox"/><label for="toctree-checkbox-71"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="synthes.html">synthes</a><input aria-label="Toggle navigation of synthes" class="toctree-checkbox" id="toctree-checkbox-67" name="toctree-checkbox-67" role="switch" type="checkbox"/><label for="toctree-checkbox-67"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="synthes.collabor.html">collabor</a><input aria-label="Toggle navigation of collabor" class="toctree-checkbox" id="toctree-checkbox-68" name="toctree-checkbox-68" role="switch" type="checkbox"/><label for="toctree-checkbox-68"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="synthes.collabor.bar_plot.html">BarPlot</a></li>
 <li class="toctree-l3"><a class="reference internal" href="synthes.collabor.metrics.html">Metrics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="synthes.collabor.world_map.html">WorldMap</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="synthes.emerg.html">emerg</a><input aria-label="Toggle navigation of emerg" class="toctree-checkbox" id="toctree-checkbox-72" name="toctree-checkbox-72" role="switch" type="checkbox"/><label for="toctree-checkbox-72"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="synthes.emerg.html">emerg</a><input aria-label="Toggle navigation of emerg" class="toctree-checkbox" id="toctree-checkbox-69" name="toctree-checkbox-69" role="switch" type="checkbox"/><label for="toctree-checkbox-69"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="synthes.emerg.metrics.html">Metrics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="synthes.emerg.plot_emergence.html">TODO: Plot Emergence</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="synthes.factor_anal.html">factor_anal</a><input aria-label="Toggle navigation of factor_anal" class="toctree-checkbox" id="toctree-checkbox-73" name="toctree-checkbox-73" role="switch" type="checkbox"/><label for="toctree-checkbox-73"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l3 has-children"><a class="reference internal" href="synthes.factor_anal.co_occur.html">co_occur</a><input aria-label="Toggle navigation of co_occur" class="toctree-checkbox" id="toctree-checkbox-74" name="toctree-checkbox-74" role="switch" type="checkbox"/><label for="toctree-checkbox-74"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l4"><a class="reference internal" href="synthes.factor_anal.co_occur.cluster_centers_dataframe.html">ClusterCentersDataFrame</a></li>
-<li class="toctree-l4"><a class="reference internal" href="synthes.factor_anal.co_occur.cluster_to_items_mapping.html">ClusterToItemsMapping</a></li>
-<li class="toctree-l4"><a class="reference internal" href="synthes.factor_anal.co_occur.cosine_similarities.html">CosineSimilarities</a></li>
-<li class="toctree-l4"><a class="reference internal" href="synthes.factor_anal.co_occur.factor_map.html">FactorMap</a></li>
-<li class="toctree-l4"><a class="reference internal" href="synthes.factor_anal.co_occur.items_by_cluster_data_frame.html">ItemsByClusterDataFrame</a></li>
-<li class="toctree-l4"><a class="reference internal" href="synthes.factor_anal.co_occur.items_by_dimension_data_frame.html">ItemsByDimensionDataFrame</a></li>
-<li class="toctree-l4"><a class="reference internal" href="synthes.factor_anal.co_occur.items_by_dimension_map.html">ItemsByDimensionMap</a></li>
-<li class="toctree-l4"><a class="reference internal" href="synthes.factor_anal.co_occur.items_to_cluster_mapping.html">ItemsToClusterMapping</a></li>
-<li class="toctree-l4"><a class="reference internal" href="synthes.factor_anal.co_occur.manifold_items_by_dimension_map.html">ManifoldItemsByDimensionMap</a></li>
-<li class="toctree-l4"><a class="reference internal" href="synthes.factor_anal.co_occur.treemap.html">Treemap</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="synthes.factor.html">factor</a><input aria-label="Toggle navigation of factor" class="toctree-checkbox" id="toctree-checkbox-70" name="toctree-checkbox-70" role="switch" type="checkbox"/><label for="toctree-checkbox-70"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="synthes.factor.co_occur.html">co_occur</a><input aria-label="Toggle navigation of co_occur" class="toctree-checkbox" id="toctree-checkbox-71" name="toctree-checkbox-71" role="switch" type="checkbox"/><label for="toctree-checkbox-71"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="synthes.factor.co_occur.cluster_centers_dataframe.html">ClusterCentersDataFrame</a></li>
+<li class="toctree-l4"><a class="reference internal" href="synthes.factor.co_occur.cluster_to_items_mapping.html">ClusterToItemsMapping</a></li>
+<li class="toctree-l4"><a class="reference internal" href="synthes.factor.co_occur.cosine_similarities.html">CosineSimilarities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="synthes.factor.co_occur.factor_map.html">FactorMap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="synthes.factor.co_occur.items_by_cluster_data_frame.html">ItemsByClusterDataFrame</a></li>
+<li class="toctree-l4"><a class="reference internal" href="synthes.factor.co_occur.items_by_dimension_data_frame.html">ItemsByDimensionDataFrame</a></li>
+<li class="toctree-l4"><a class="reference internal" href="synthes.factor.co_occur.items_by_dimension_map.html">ItemsByDimensionMap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="synthes.factor.co_occur.items_to_cluster_mapping.html">ItemsToClusterMapping</a></li>
+<li class="toctree-l4"><a class="reference internal" href="synthes.factor.co_occur.manifold_items_by_dimension_map.html">ManifoldItemsByDimensionMap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="synthes.factor.co_occur.treemap.html">Treemap</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="synthes.factor_anal.tfidf.html">tfidf</a><input aria-label="Toggle navigation of tfidf" class="toctree-checkbox" id="toctree-checkbox-75" name="toctree-checkbox-75" role="switch" type="checkbox"/><label for="toctree-checkbox-75"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l4"><a class="reference internal" href="synthes.factor_anal.tfidf.cluster_centers_dataframe.html">ClusterCentersDataFrame</a></li>
-<li class="toctree-l4"><a class="reference internal" href="synthes.factor_anal.tfidf.cluster_to_items_mapping.html">ClusterToItemsMapping</a></li>
-<li class="toctree-l4"><a class="reference internal" href="synthes.factor_anal.tfidf.cosine_similarities.html">CosineSimilarities</a></li>
-<li class="toctree-l4"><a class="reference internal" href="synthes.factor_anal.tfidf.factor_map.html">FactorMap</a></li>
-<li class="toctree-l4"><a class="reference internal" href="synthes.factor_anal.tfidf.items_by_cluster_dataframe.html">ItemsByClusterDataFrame</a></li>
-<li class="toctree-l4"><a class="reference internal" href="synthes.factor_anal.tfidf.items_by_dimension_dataframe.html">ItemsByDimensionDataFrame</a></li>
-<li class="toctree-l4"><a class="reference internal" href="synthes.factor_anal.tfidf.items_by_dimension_map.html">ItemsByDimensionMap</a></li>
-<li class="toctree-l4"><a class="reference internal" href="synthes.factor_anal.tfidf.items_to_cluster_mapping.html">ItemsToClusterMapping</a></li>
-<li class="toctree-l4"><a class="reference internal" href="synthes.factor_anal.tfidf.manifold_items_by_dimension_map.html">ManifoldItemsByDimensionMap</a></li>
-<li class="toctree-l4"><a class="reference internal" href="synthes.factor_anal.tfidf.treemap.html">Treemap</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="synthes.factor.tfidf.html">tfidf</a><input aria-label="Toggle navigation of tfidf" class="toctree-checkbox" id="toctree-checkbox-72" name="toctree-checkbox-72" role="switch" type="checkbox"/><label for="toctree-checkbox-72"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="synthes.factor.tfidf.cluster_centers_dataframe.html">ClusterCentersDataFrame</a></li>
+<li class="toctree-l4"><a class="reference internal" href="synthes.factor.tfidf.cluster_to_items_mapping.html">ClusterToItemsMapping</a></li>
+<li class="toctree-l4"><a class="reference internal" href="synthes.factor.tfidf.cosine_similarities.html">CosineSimilarities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="synthes.factor.tfidf.factor_map.html">FactorMap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="synthes.factor.tfidf.items_by_cluster_dataframe.html">ItemsByClusterDataFrame</a></li>
+<li class="toctree-l4"><a class="reference internal" href="synthes.factor.tfidf.items_by_dimension_dataframe.html">ItemsByDimensionDataFrame</a></li>
+<li class="toctree-l4"><a class="reference internal" href="synthes.factor.tfidf.items_by_dimension_map.html">ItemsByDimensionMap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="synthes.factor.tfidf.items_to_cluster_mapping.html">ItemsToClusterMapping</a></li>
+<li class="toctree-l4"><a class="reference internal" href="synthes.factor.tfidf.manifold_items_by_dimension_map.html">ManifoldItemsByDimensionMap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="synthes.factor.tfidf.treemap.html">Treemap</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="synthes.main_path.html">main_path</a><input aria-label="Toggle navigation of main_path" class="toctree-checkbox" id="toctree-checkbox-76" name="toctree-checkbox-76" role="switch" type="checkbox"/><label for="toctree-checkbox-76"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="synthes.main_path.main_path_documents.html">Main Path Documents</a></li>
-<li class="toctree-l3"><a class="reference internal" href="synthes.main_path.network_edges_dataframe.html">Network Edges Frame</a></li>
-<li class="toctree-l3"><a class="reference internal" href="synthes.main_path.network_plot.html">Network Plot</a></li>
-</ul>
-</li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="synthes.netw.html">netw</a><input aria-label="Toggle navigation of netw" class="toctree-checkbox" id="toctree-checkbox-77" name="toctree-checkbox-77" role="switch" type="checkbox"/><label for="toctree-checkbox-77"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l3 has-children"><a class="reference internal" href="synthes.netw.cit.html">cit</a><input aria-label="Toggle navigation of cit" class="toctree-checkbox" id="toctree-checkbox-78" name="toctree-checkbox-78" role="switch" type="checkbox"/><label for="toctree-checkbox-78"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="synthes.netw.html">netw</a><input aria-label="Toggle navigation of netw" class="toctree-checkbox" id="toctree-checkbox-73" name="toctree-checkbox-73" role="switch" type="checkbox"/><label for="toctree-checkbox-73"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="synthes.netw.cit.html">cit</a><input aria-label="Toggle navigation of cit" class="toctree-checkbox" id="toctree-checkbox-74" name="toctree-checkbox-74" role="switch" type="checkbox"/><label for="toctree-checkbox-74"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="synthes.netw.cit.items_by_cluster.html">ItemsByCluster</a></li>
 <li class="toctree-l4"><a class="reference internal" href="synthes.netw.cit.kernel_density_plot.html">KernelDensityPlot</a></li>
 <li class="toctree-l4"><a class="reference internal" href="synthes.netw.cit.network_plot.html">NetworkPlot</a></li>
@@ -675,7 +654,7 @@
 <li class="toctree-l4"><a class="reference internal" href="synthes.netw.cit.node_degree_plot.html">NodeDegreePlot</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="synthes.netw.co_cit.html">co_cit</a><input aria-label="Toggle navigation of co_cit" class="toctree-checkbox" id="toctree-checkbox-79" name="toctree-checkbox-79" role="switch" type="checkbox"/><label for="toctree-checkbox-79"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="synthes.netw.co_cit.html">co_cit</a><input aria-label="Toggle navigation of co_cit" class="toctree-checkbox" id="toctree-checkbox-75" name="toctree-checkbox-75" role="switch" type="checkbox"/><label for="toctree-checkbox-75"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="synthes.netw.co_cit.items_by_cluster.html">ItemsByCluster</a></li>
 <li class="toctree-l4"><a class="reference internal" href="synthes.netw.co_cit.kernel_density_plot.html">KernelDensityPlot</a></li>
 <li class="toctree-l4"><a class="reference internal" href="synthes.netw.co_cit.network_metrics.html">NetworkMetrics</a></li>
@@ -684,7 +663,7 @@
 <li class="toctree-l4"><a class="reference internal" href="synthes.netw.co_cit.node_degree_plot.html">NodeDegreePlot</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="synthes.netw.co_occur.html">co_occur</a><input aria-label="Toggle navigation of co_occur" class="toctree-checkbox" id="toctree-checkbox-80" name="toctree-checkbox-80" role="switch" type="checkbox"/><label for="toctree-checkbox-80"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="synthes.netw.co_occur.html">co_occur</a><input aria-label="Toggle navigation of co_occur" class="toctree-checkbox" id="toctree-checkbox-76" name="toctree-checkbox-76" role="switch" type="checkbox"/><label for="toctree-checkbox-76"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="synthes.netw.co_occur.cluster_to_items.html">ClusterToItems</a></li>
 <li class="toctree-l4"><a class="reference internal" href="synthes.netw.co_occur.concept_grid_plot.html">ConceptGridPlot</a></li>
 <li class="toctree-l4"><a class="reference internal" href="synthes.netw.co_occur.documents_by_cluster_mapping.html">Terms to Cluster Mapping</a></li>
@@ -699,7 +678,7 @@
 <li class="toctree-l4"><a class="reference internal" href="synthes.netw.co_occur.treemap.html">Treemap</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="synthes.netw.coupl.html">coupl</a><input aria-label="Toggle navigation of coupl" class="toctree-checkbox" id="toctree-checkbox-81" name="toctree-checkbox-81" role="switch" type="checkbox"/><label for="toctree-checkbox-81"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="synthes.netw.coupl.html">coupl</a><input aria-label="Toggle navigation of coupl" class="toctree-checkbox" id="toctree-checkbox-77" name="toctree-checkbox-77" role="switch" type="checkbox"/><label for="toctree-checkbox-77"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="synthes.netw.coupl.items_by_cluster.html">ItemsByCluster</a></li>
 <li class="toctree-l4"><a class="reference internal" href="synthes.netw.coupl.kernel_density_plot.html">Network Density Plot</a></li>
 <li class="toctree-l4"><a class="reference internal" href="synthes.netw.coupl.network_metrics.html">Network Metrics</a></li>
@@ -710,12 +689,35 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="synthes.topic_model.html">topic_model</a><input aria-label="Toggle navigation of topic_model" class="toctree-checkbox" id="toctree-checkbox-82" name="toctree-checkbox-82" role="switch" type="checkbox"/><label for="toctree-checkbox-82"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="synthes.topic_model.cluster_to_items_mapping.html">Cluster to Terms Mapping</a></li>
-<li class="toctree-l3"><a class="reference internal" href="synthes.topic_model.components_by_item_dataframe.html">Components by Term Frame</a></li>
-<li class="toctree-l3"><a class="reference internal" href="synthes.topic_model.documents_by_theme_dataframe.html">Documents by Theme Frame</a></li>
-<li class="toctree-l3"><a class="reference internal" href="synthes.topic_model.items_by_cluster_dataframe.html">Terms by Cluster Frame</a></li>
-<li class="toctree-l3"><a class="reference internal" href="synthes.topic_model.theme_to_documents_mapping.html">Theme to Documents Mapping</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="synthes.path.html">path</a><input aria-label="Toggle navigation of path" class="toctree-checkbox" id="toctree-checkbox-78" name="toctree-checkbox-78" role="switch" type="checkbox"/><label for="toctree-checkbox-78"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="synthes.path.main_path_documents.html">Main Path Documents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="synthes.path.network_edges_dataframe.html">Network Edges Frame</a></li>
+<li class="toctree-l3"><a class="reference internal" href="synthes.path.network_plot.html">Network Plot</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="synthes.topic.html">topic</a><input aria-label="Toggle navigation of topic" class="toctree-checkbox" id="toctree-checkbox-79" name="toctree-checkbox-79" role="switch" type="checkbox"/><label for="toctree-checkbox-79"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="synthes.topic.cluster_to_items_mapping.html">Cluster to Terms Mapping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="synthes.topic.components_by_item_dataframe.html">Components by Term Frame</a></li>
+<li class="toctree-l3"><a class="reference internal" href="synthes.topic.documents_by_theme_dataframe.html">Documents by Theme Frame</a></li>
+<li class="toctree-l3"><a class="reference internal" href="synthes.topic.items_by_cluster_dataframe.html">Terms by Cluster Frame</a></li>
+<li class="toctree-l3"><a class="reference internal" href="synthes.topic.theme_to_documents_mapping.html">Theme to Documents Mapping</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="innov.html">innov</a><input aria-label="Toggle navigation of innov" class="toctree-checkbox" id="toctree-checkbox-80" name="toctree-checkbox-80" role="switch" type="checkbox"/><label for="toctree-checkbox-80"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="innov.co_occur.html">co_occur</a><input aria-label="Toggle navigation of co_occur" class="toctree-checkbox" id="toctree-checkbox-81" name="toctree-checkbox-81" role="switch" type="checkbox"/><label for="toctree-checkbox-81"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="innov.co_occur.mixins.html"><code class="docutils literal notranslate"><span class="pre">RecursiveClusteringMixin</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="innov.co_occur.network_plot.html">Network Plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="innov.co_occur.terms_by_cluster_data_frame.html">Terms by Cluster Frame</a></li>
+<li class="toctree-l3"><a class="reference internal" href="innov.co_occur.terms_by_cluster_summary.html">TermsByClusterSummary</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="innov.emerg.html">emerg</a><input aria-label="Toggle navigation of emerg" class="toctree-checkbox" id="toctree-checkbox-82" name="toctree-checkbox-82" role="switch" type="checkbox"/><label for="toctree-checkbox-82"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="innov.emerg.mixins.html"><code class="docutils literal notranslate"><span class="pre">RecursiveClusteringMixin</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="innov.emerg.network_plot.html">Network Plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="innov.emerg.terms_by_cluster_data_frame.html">Terms by Cluster Frame</a></li>
+<li class="toctree-l3"><a class="reference internal" href="innov.emerg.terms_by_cluster_summary.html">Terms by Cluster Summary</a></li>
 </ul>
 </li>
 </ul>
@@ -807,7 +809,7 @@
 <span class="gp">... </span>    <span class="o">.</span><span class="n">using_title_text</span><span class="p">(</span><span class="s2">&quot;Butterfly Plot&quot;</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># DATABASE:</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">where_root_directory</span><span class="p">(</span><span class="s2">&quot;tests/scopus/&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_root_directory</span><span class="p">(</span><span class="s2">&quot;examples/scopus/&quot;</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_years_range</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_citations_range</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">where_records_match</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>

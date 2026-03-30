@@ -20,6 +20,6 @@ def create_node_degree_dataframe(node_degrees):
     )
     dataframe = dataframe.reset_index(drop=True)
     dataframe[NODE] = dataframe.index
-    dataframe = dataframe[[NODE, NAME, DEGREE]]
+    dataframe = dataframe[[NAME, DEGREE]]
 
     return dataframe

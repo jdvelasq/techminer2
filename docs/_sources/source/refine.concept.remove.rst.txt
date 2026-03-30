@@ -5,6 +5,6 @@ remove
     :maxdepth: 1
     :hidden:
 
-    refine.concept.remove.initial_word
+    refine.concept.remove.exact_word
+    refine.concept.remove.first_word
     refine.concept.remove.last_word
-    refine.concept.remove.word

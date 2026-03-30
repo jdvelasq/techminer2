@@ -2,9 +2,55 @@
 KernelDensityPlot
 ===============================================================================
 
+* **CITED_AUTH**
+
 .. raw:: html
 
-    <iframe src="../_static/px.synthes.netw.co_cit.kernel_density_plot.html"
+    <iframe src="../_static/px.synthes.netw.co_cit.kernel_density_plot_cited_auth.html"
+    height="600px" width="100%" frameBorder="0"></iframe>
+
+Smoke tests:
+    >>> from tm2p import CoCitationUnit
+    >>> from tm2p.synthes.netw.co_cit import KernelDensityPlot
+    >>> fig = (
+    ...     KernelDensityPlot()
+    ...     #
+    ...     # ANALYSIS UNIT:
+    ...     .with_co_citation_unit(CoCitationUnit.CITED_AUTH)
+    ...     .having_items_in_top(30)
+    ...     .having_citation_threshold(0)
+    ...     .having_items_in(None)
+    ...     #
+    ...     # CLUSTERING:
+    ...     .using_clustering_algorithm_or_dict("louvain")
+    ...     #
+    ...     # NETWORK:
+    ...     .using_spring_layout_k(None)
+    ...     .using_spring_layout_iterations(30)
+    ...     .using_spring_layout_seed(0)
+    ...     #
+    ...     # DENSITY:
+    ...     .using_kernel_bandwidth(0.1)
+    ...     .using_colormap("Aggrnyl")
+    ...     .using_contour_opacity(0.6)
+    ...     .using_textfont_size_range(10, 20)
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory("tests/wos/")
+    ...     .where_record_years_range(None, None)
+    ...     .where_record_citations_range(None, None)
+    ...     .where_records_match(None)
+    ...     #
+    ...     .run()
+    ... )
+    >>> fig.write_html("docsrc/_generated/px.synthes.netw.co_cit.kernel_density_plot_cited_auth.html")
+
+
+* **CITED_REF**
+
+.. raw:: html
+
+    <iframe src="../_static/px.synthes.netw.co_cit.kernel_density_plot_cited_ref.html"
     height="600px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
@@ -34,14 +80,61 @@ Smoke tests:
     ...     .using_textfont_size_range(10, 20)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/wos/")
+    ...     .where_root_directory("tests/wos/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     .where_records_match(None)
     ...     #
     ...     .run()
     ... )
-    >>> fig.write_html("docsrc/_generated/px.synthes.netw.co_cit.kernel_density_plot.html")
+    >>> fig.write_html("docsrc/_generated/px.synthes.netw.co_cit.kernel_density_plot_cited_ref.html")
+
+
+
+* **CITED_SRC**
+
+.. raw:: html
+
+    <iframe src="../_static/px.synthes.netw.co_cit.kernel_density_plot_cited_src.html"
+    height="600px" width="100%" frameBorder="0"></iframe>
+
+
+Smoke tests:
+    >>> from tm2p import CoCitationUnit
+    >>> from tm2p.synthes.netw.co_cit import KernelDensityPlot
+    >>> fig = (
+    ...     KernelDensityPlot()
+    ...     #
+    ...     # ANALYSIS UNIT:
+    ...     .with_co_citation_unit(CoCitationUnit.CITED_REF)
+    ...     .having_items_in_top(30)
+    ...     .having_citation_threshold(0)
+    ...     .having_items_in(None)
+    ...     #
+    ...     # CLUSTERING:
+    ...     .using_clustering_algorithm_or_dict("louvain")
+    ...     #
+    ...     # NETWORK:
+    ...     .using_spring_layout_k(None)
+    ...     .using_spring_layout_iterations(30)
+    ...     .using_spring_layout_seed(0)
+    ...     #
+    ...     # DENSITY:
+    ...     .using_kernel_bandwidth(0.1)
+    ...     .using_colormap("Aggrnyl")
+    ...     .using_contour_opacity(0.6)
+    ...     .using_textfont_size_range(10, 20)
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory("tests/wos/")
+    ...     .where_record_years_range(None, None)
+    ...     .where_record_citations_range(None, None)
+    ...     .where_records_match(None)
+    ...     #
+    ...     .run()
+    ... )
+    >>> fig.write_html("docsrc/_generated/px.synthes.netw.co_cit.kernel_density_plot_cited_src.html")
+
 
 
 """
