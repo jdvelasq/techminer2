@@ -1,11 +1,11 @@
-from .items_by_cluster_dataframe import ItemsByClusterDataFrame
-from .kernel_density_plot import KernelDensityPlot
-from .network_plot import NetworkPlot
-from .node_degree_dataframe import NodeDegreeDataFrame
+from .items_by_cluster import OtherItemsByCluster
+from .kernel_density_plot import OtherKernelDensityPlot
+from .network_plot import OtherNetworkPlot
+from .node_degree_dataframe import OtherNodeDegreeDataFrame
 
 __all__ = [
-    "NetworkPlot",
-    "KernelDensityPlot",
-    "NodeDegreeDataFrame",
-    "ItemsByClusterDataFrame",
+    "OtherNetworkPlot",
+    "OtherKernelDensityPlot",
+    "OtherNodeDegreeDataFrame",
+    "OtherItemsByCluster",
 ]

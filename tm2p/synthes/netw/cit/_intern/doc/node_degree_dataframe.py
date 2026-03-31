@@ -5,10 +5,10 @@ from tm2p._intern.nx import (
     create_node_degree_dataframe,
 )
 from tm2p.enum.column import NAME
-from tm2p.synthes.netw.cit._intern.doc.create_nx_graph import create_nx_graph
+from tm2p.synthes.netw.cit._intern.doc.create_nx_graph import doc_create_nx_graph
 
 
-class NodeDegreeDataFrame(
+class DocNodeDegreeDataFrame(
     ParamsMixin,
 ):
     """:meta private:"""
@@ -17,7 +17,7 @@ class NodeDegreeDataFrame(
 
         use_counters = self.params.counters
         self.params.counters = True
-        nx_graph = create_nx_graph(self.params)
+        nx_graph = doc_create_nx_graph(self.params)
         nx_graph = assign_degree_to_nodes(nx_graph)
         node_degrees = collect_node_degrees(nx_graph)
         df = create_node_degree_dataframe(node_degrees)

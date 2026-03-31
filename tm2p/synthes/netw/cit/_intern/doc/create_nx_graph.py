@@ -89,7 +89,7 @@ def _step_06_adds_links_to_the_network(data_frame_with_links, nx_graph):
 
 
 # -------------------------------------------------------------------------
-def create_nx_graph(params):
+def doc_create_nx_graph(params):
 
     records = load_filtered_main_csv_zip(params=params)
 

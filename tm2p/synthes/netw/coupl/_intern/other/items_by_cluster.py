@@ -3,7 +3,7 @@ from tm2p._intern.nx import cluster_nx_graph, extract_communities
 from tm2p.synthes.netw.coupl._intern.other.create_nx_graph import other_create_nx_graph
 
 
-class OtherItemsByClusterDataFrame(
+class OtherItemsByCluster(
     ParamsMixin,
 ):
     """:meta private:"""

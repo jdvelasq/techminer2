@@ -198,12 +198,8 @@ Smoke tests:
 
 from tm2p import CouplingUnit, ItemOrderBy
 from tm2p._intern import ParamsMixin
-from tm2p.synthes.netw.coupl._intern.doc import (
-    DocItemsByCluster as DocItemsByClusterDataFrame,
-)
-from tm2p.synthes.netw.coupl._intern.other import (
-    OtherItemsByClusterDataFrame as OtherItemsByClusterDataFrame,
-)
+from tm2p.synthes.netw.coupl._intern.doc import DocItemsByCluster
+from tm2p.synthes.netw.coupl._intern.other import OtherItemsByCluster
 
 from .._check_database import check_database
 
@@ -218,12 +214,12 @@ class ItemsByCluster(
         check_database(self.params.root_directory)
 
         if self.params.coupling_unit == CouplingUnit.DOC:
-            ItemsByCluster = DocItemsByClusterDataFrame
+            ItemsByCluster_ = DocItemsByCluster
         else:
-            ItemsByCluster = OtherItemsByClusterDataFrame
+            ItemsByCluster_ = OtherItemsByCluster
 
         return (
-            ItemsByCluster()
+            ItemsByCluster_()
             .update(**self.params.__dict__)
             .update(items_order_by=ItemOrderBy.OCC)
             .run()

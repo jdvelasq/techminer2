@@ -1,6 +1,6 @@
 """Coupling Network Analysis"""
 
-from .items_by_cluster import OtherItemsByClusterDataFrame
+from .items_by_cluster import OtherItemsByCluster
 from .kernel_density_plot import OtherKernelDensityPlot
 from .network_metrics import OtherNetworkMetrics
 from .network_plot import OtherNetworkPlot
@@ -13,5 +13,5 @@ __all__ = [
     "OtherNodeDegreeDataFrame",
     "OtherNodeDegreePlot",
     "OtherKernelDensityPlot",
-    "OtherItemsByClusterDataFrame",
+    "OtherItemsByCluster",
 ]

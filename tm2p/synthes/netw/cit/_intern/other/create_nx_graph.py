@@ -13,7 +13,7 @@ RID = Field.REC_ID.value
 LCR = Field.LCR_WOS_FORMAT.value
 
 
-def create_nx_graph(params):
+def other_create_nx_graph(params):
     #
     # Create the networkx graph
     nx_graph = nx.Graph()
