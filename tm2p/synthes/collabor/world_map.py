@@ -32,8 +32,10 @@ import plotly.express as px  # type: ignore
 
 from tm2p import Field, ItemOrderBy
 from tm2p._intern import ParamsMixin
-from tm2p.anal.item_metrics import WorldMap as OccWorldMap
-from tm2p.discov.co_occur_matrix.matrix_list import MatrixList as CoOccurrenceDataFrame
+from tm2p.analyze.item_metrics import WorldMap as OccWorldMap
+from tm2p.discover.co_occurrence_matrix.matrix_list import (
+    MatrixList as CoOccurrenceDataFrame,
+)
 
 
 class WorldMap(

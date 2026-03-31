@@ -36,9 +36,9 @@ import numpy as np
 
 from tm2p import ItemOrderBy
 from tm2p._intern import ParamsMixin
-from tm2p.anal.annual_metrics.metrics import Metrics as TrendMetricsDataFrame
-from tm2p.anal.main_metrics import Metrics as GeneralMetricsDataFrame
-from tm2p.anal.trends import Trends
+from tm2p.analyze.annual_metrics.metrics import Metrics as TrendMetricsDataFrame
+from tm2p.analyze.main_metrics import Metrics as GeneralMetricsDataFrame
+from tm2p.analyze.trends import Trends
 
 
 class Metrics(

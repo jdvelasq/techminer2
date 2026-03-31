@@ -9,7 +9,7 @@ Bibliometrix can be used in the command line, or using the Biblioshiny GUI.
 tm2+ implements a system of final user-faced classes that are similar to GUIs and wizards in many well-known sofware. In this way, all information for a specific result is stored in a Python file. This is an example:
 
     >>> from tm2p import Field, ItemOrderBy
-    >>> from tm2p.discov.cross_occur_matrix import Matrix
+    >>> from tm2p.discover.cross_occurrence_matrix import Matrix
     >>> df = (
     ...     Matrix()
     ...     #
@@ -126,7 +126,7 @@ Bibliometrix implements a complex sequence of filters for selecting records. Bib
 
 In tm2+, filters are applied per class. This is an example:
 
-    >>> from tm2p.discov.overview import MainInformation
+    >>> from tm2p.discover.overview import MainInformation
     >>> df = (
     ...     MainInformation()
     ...     #
@@ -230,7 +230,7 @@ Bibliometrix presents a table and a diagram with the sources ordened by the numb
 
 tm2+ implements a Metrics class to compute several indicators as is showed in this example:
 
-    >>> from tm2p.anal.metrics import Metrics
+    >>> from tm2p.analyze.metrics import Metrics
     >>> df = (
     ...     Metrics()
     ...     #

@@ -23,7 +23,7 @@ import pandas as pd  # type: ignore
 
 from tm2p import ThField
 from tm2p._intern import Params, ParamsMixin
-from tm2p.discov.co_occur_matrix import MatrixList
+from tm2p.discover.co_occurrence_matrix import MatrixList
 
 from ._intern.report_matches import report_matches
 

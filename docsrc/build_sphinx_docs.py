@@ -116,6 +116,9 @@ def delete_existent_files_in_source():
 
 _NAMES: dict[str, str] = {
     "Ai": "AI",
+    "Co occurrence matrix": "Co-occurrence matrix",
+    "Cross occurrence matrix": "Cross-occurrence matrix",
+    "Tfidf": "TF-IDF",
 }
 
 

@@ -6,10 +6,10 @@ Discov
     :hidden:
 
     discov.assoc
-    discov.co_occur_matrix
+    discov.co_occurrence_matrix
     discov.concord
     discov.correl
-    discov.cross_occur_matrix
+    discov.cross_occurrence_matrix
     discov.doc_clust
     discov.life_cycle
     discov.sankey
