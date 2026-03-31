@@ -1,27 +1,3 @@
-Netherlands
-    Erasmus Universiteit Rotterdam, Rotterdam, Zuid-Holland, Netherlands
-    Faculty of Economics and Business, Rijksuniversiteit Groningen, Groningen, Groningen, Netherlands
-    Universiteit van Amsterdam, Amsterdam, Noord-Holland, Netherlands
-    Wittenborg University of Applied Sciences, Apeldoorn, Gelderland, Netherlands
-Switzerland
-    Bank for International Settlements, Basel, BS, Switzerland
-    Department of Banking and Finance, Universität Zürich, Zurich, ZH, Switzerland
-    Department of Informatics, Universität Zürich, Zurich, ZH, Switzerland
-    Hochschule für Wirtschaft Fribourg, Fribourg, Switzerland
-    Institute of Informatics, Universität Zürich, Zurich, ZH, Switzerland
-    University of St. Gallen, St Gallen, SG, Switzerland
-    Universität Zürich, Zurich, ZH, Switzerland
-Azerbaijan
-    Azerbaijan State University of Economics (UNEC), Baku, Azerbaijan
-Brunei Darussalam
-    School of Business and Economics, Universiti Brunei Darussalam, Bandar Seri Begawan, Brunei Darussalam
-Kazakhstan
-    Department of Finance, KIMEP University, Almaty, Almaty, Kazakhstan
-Luxembourg
-    ADA Chair in Financial Law (Inclusive Finance), University of Luxembourg, Esch-sur-Alzette, Luxembourg
-Uzbekistan
-    Department of Financial Analysis and Audit, Tashkent State University of Economics, Tashkent, Uzbekistan
-    Tashkent State University of Economics, Tashkent, Uzbekistan
 Australia
     Australian Graduate School of Leadership, Torrens University Australia, Adelaide, SA, Australia
     Centre for Financial Econometrics, Deakin Business School, Melbourne, VIC, Australia
@@ -40,64 +16,8 @@ Australia
     The University of Sydney, Sydney, NSW, Australia
     UNSW Business School, Kensington, NSW, Australia
     UNSW Sydney, Sydney, NSW, Australia
-Indonesia
-    ABFI Institute Perbanas, Jakarta, Jakarta, Indonesia
-    Bank Indonesia, Jakarta, Java, Indonesia
-    Department of Agribusiness, Riau University, Pekanbaru, Indonesia
-    Department of Doctoral Program, Universitas Sumatera Utara, Medan, North Sumatra, Indonesia
-    Department of Informatics Engineering and Department of Information Systems, Islamic University of Kalimantan, Banjarmasin, Indonesia
-    Department of Information System, Universitas Islam Negeri Sultan Syarif Kasim Riau, Pekanbaru, Indonesia
-    Department of Information Systems, Universitas Islam Negeri Sultan Syarif Kasim Riau, Pekanbaru, Indonesia
-    Department of Management, Universitas Gadjah Mada, Yogyakarta, Yogyakarta, Indonesia
-    Department of Management, Universitas Islam Negeri Syarif Hidayatullah Jakarta, South Tangerang, Banten, Indonesia
-    Faculty of Economics, Universitas Indo Global Mandiri, Palembang, South Sumatra, Indonesia
-    Faculty of Engineering and Computer Science, Universitas Teknokrat Indonesia, Bandar Lampung, Lampung, Indonesia
-    Institut Teknologi Bandung, Bandung, West Java, Indonesia
-    PRO-Knowledge Research Group, Pekanbaru, Indonesia
-    Pradita University, Jakara, Indonesia
-    UIN Suska Riau University, Pekanbaru, Indonesia
-    Universitas Indonesia, Depok, West Java, Indonesia
-Palestine
-    Palestine Ahliya University, Bethlehem, Palestine
-Singapore
-    Department of Finance, National University of Singapore, Singapore City, Singapore
-    Department of Geography, National University of Singapore, Singapore City, Singapore
-    School of Information Systems, Singapore Management University, Singapore City, Singapore
-Cameroon
-    Department of Management Information Systems, Catholic University of Central Africa, Yaounde, Cameroon
-Ethiopia
-    Addis Ababa University, Addis Ababa, Ethiopia
-Malaysia
-    5 Jalan Universiti, Sunway University, Sunway City, Selangor, Malaysia
-    Azman Hashim International Business School, Kuala Lumpur, Malaysia
-    Economics and Accountancy, Universiti Malaysia Sabah, Kota Kinabalu, Sabah, Malaysia
-    Faculty of Business, Multimedia University, Cyberjaya, Selangor, Malaysia
-    Faculty of Business, Swinburne University of Technology Sarawak Campus, Kuching, Sarawak, Malaysia
-    School of Business and Economics, Universiti Putra Malaysia, Serdang, Selangor, Malaysia
-Pakistan
-    Air University Islamabad, Islamabad, Pakistan
-    Department of Computer Science and Software Engineering, International Islamic University, Islamabad, Islamabad, Pakistan
-    Department of Computing, School of Electrical Engineering and Computer Science, Islamabad, Pakistan
-    Department of Economics, Government Graduate College Kot Sultan, Layyah, Punjab, Pakistan
-    Department of Economics, The Islamia University of Bahawalpur, Bahawalpur, Punjab, Pakistan
-    Faisalabad Business School, National Textile University Faisalabad, Faisalabad, Pakistan
-    Institute of Management Sciences, The Women University Multan, Multhan, Punjab, Pakistan
-    Lahore School of Economics, Lahore, Pakistan
-    Suleman Dawood School of Business, Lahore, Punjab, Pakistan
-    University of Management and Technology Lahore, Lahore, Pakistan
-Portugal
-    Universidade Católica Portuguesa, Porto, Porto, Portugal
-Slovenia
-    Faculty of Economics, Univerza v Ljubljani, Ljubljana, Slovenia
-Thailand
-    College of Innovation, Thammasat University, Pathum Thani, Thailand
-United Arab Emirates
-    American University in Dubai, Dubai, United Arab Emirates
-    College of Business, Al Ain University, Al Ain, Abu Dhabi, United Arab Emirates
-    College of Technological Innovation, Zayed University, Dubai, United Arab Emirates
-    Department of Accounting and Finance, Liwa University, Abu Dhabi, Abu Dhabi, United Arab Emirates
-    Faculty in Accounting and Finance, Horizon University College, Ajman, Ajman, United Arab Emirates
-    School of Business, Horizon University College, Ajman, Ajman, United Arab Emirates
+Azerbaijan
+    Azerbaijan State University of Economics (UNEC), Baku, Azerbaijan
 Bahrain
     Accounting Finance & Banking Department, Ahlia University, Manama, Bahrain
     College of Business Administration, University of Bahrain, Zallaq, Bahrain
@@ -106,196 +26,13 @@ Bahrain
 Belgium
     European Corporate Governance Institute, Brussels, BRU, Belgium
     Vrije Universiteit Brussel, Brussels, BRU, Belgium
-Denmark
-    Department of IT Management, Copenhagen Business School, Frederiksberg, Hovedstaden, Denmark
-Finland
-    Innovalogy Capital Management, Tampere, Finland
-    School of Economics, Entrepreneurship and Management, Helsinki, Finland
-    Vaasan Yliopisto, Vaasa, Ostrobothnia, Finland
-Germany
-    CESifo GmbH, Munich, Bayern, Germany
-    Chair for Banking and Finance, Zeppelin University, Friedrichshafen, Baden-Wurttemberg, Germany
-    Chair of e-Finance, Goethe-Universität Frankfurt am Main, Frankfurt am Main, Hessen, Germany
-    Department of Information Systems, Goethe-Universität Frankfurt am Main, Frankfurt am Main, Hessen, Germany
-    Director, Heinrich-Heine-Universität Düsseldorf, Dusseldorf, Nordrhein-Westfalen, Germany
-    European Central Bank, Frankfurt am Main, Hessen, Germany
-    FIM Research Center, Universität Augsburg, Augsburg, Bayern, Germany
-    FIRAMIS, Frankfurt am Main, Germany
-    Fachbereich Wirtschaftswissenschaft, Bremen, Bremen, Germany
-    Fraunhofer Institute for Software and Systems Engineering ISST, Dortmund, Nordrhein-Westfalen, Germany
-    IU Internationale Hochschule GmbH, Erfurt, Thuringen, Germany
-    Information Technology, Villingen-Schwenningen, Germany
-    Institute for Software Technology IST, Universität Koblenz, Koblenz, Rheinland-Pfalz, Germany
-    Max Planck Institute for Innovation and Competition, Munich, Bayern, Germany
-    University of Münster, Munster, Nordrhein-Westfalen, Germany
-    Universität Bremen, Bremen, Bremen, Germany
-    Universität Hamburg, Hamburg, Hamburg, Germany
-    Universität Regensburg, Regensburg, Bayern, Germany
-    Universität Trier, Trier, Rheinland-Pfalz, Germany
-    Zeppelin University, Friedrichshafen, Baden-Wurttemberg, Germany
-Hungary
-    Doctoral School of Economic and Regional Sciences, Hungarian University of Agriculture and Life Sciences, Godollo, Pest, Hungary
-    McKinsey & Company, Hungary, Budapest, Hungary
-Ireland
-    Dublin City University, Dublin, Leinster, Ireland
-Lebanon
-    Adnan Kassar School of Business, Beirut, Beirut Governorate, Lebanon
-    Université Saint-Joseph de Beyrouth, Beirut, Beirut Governorate, Lebanon
-Morocco
-    Department of Marketing, International University of Rabat, Sale, Rabat-Sale-Kenitra, Morocco
-Romania
-    Department of Marketing, Universitatea Babeș-Bolyai, Cluj Napoca, Cluj, Romania
-    Department of Theory and Methodology of Motricity Activities, University of Craiova, Craiova, Dolj, Romania
-    Management Marketing Department, University of Craiova, Craiova, Dolj, Romania
-United Kingdom
-    Adam Smith Business School, Glasgow, Scotland, United Kingdom
-    Alliance Manchester Business School, Manchester, Greater Manchester, United Kingdom
-    Artificial Intelligence and Information Systems Research Group, Teesside University, Middlesbrough, North Yorkshire, United Kingdom
-    Bangor Business School, Bangor, Gwynedd, United Kingdom
-    Bayes Business School, City University of London, London, United Kingdom
-    Bristol Business School, Bristol, United Kingdom
-    Brunel University London, Uxbridge, Middlesex, United Kingdom
-    Cambridge Centre for Alternative Finance, Cambridge, Cambridgeshire, United Kingdom
-    Centre for Economic Policy Research, London, London, United Kingdom
-    Centre for Finance, Technology and Entrepreneurship (CFTE), Board Member, London, United Kingdom
-    Centre for Global Finance, SOAS University of London, London, United Kingdom
-    Coventry University, Coventry, West Midlands, United Kingdom
-    De Montfort University, Leicester, Leicestershire, United Kingdom
-    Department of Accounting, Finance and Informatics, Kingston Business School, Kingston Upon Thames, Surrey, United Kingdom
-    Department of Decision Analytics and Risk, Southampton Business School, Southampton, Hampshire, United Kingdom
-    Department of Management, Lincoln International Business School, Lincoln, Lincolnshire, United Kingdom
-    Department of Marketing, University of Greenwich, London, United Kingdom
-    Durham University, Durham, County Durham, United Kingdom
-    Finance and Accounting, Coventry University, Coventry, West Midlands, United Kingdom
-    Governance and Finance Research Group, Teesside University Business School, Middlesbrough, North Yorkshire, United Kingdom
-    Henley Business School, Reading, Berkshire, United Kingdom
-    Imperial College London, London, United Kingdom
-    London Office, London, England, United Kingdom
-    London School of Economics and Political Science, London, United Kingdom
-    Loughborough University, School of Business and Economics, Loughborough, Leicestershire, United Kingdom
-    Management School, University of St Andrews, St Andrews, Fife, United Kingdom
-    Mobile Technology, University of Sussex, Brighton, East Sussex, United Kingdom
-    Professor of Corporate Law and Financial Regulation, University College London, London, United Kingdom
-    Roehampton Business School, London, United Kingdom
-    School of Finance and Management, SOAS University of London, London, United Kingdom
-    School of Management, Swansea, Wales, United Kingdom
-    University of Essex, Colchester, Essex, United Kingdom
-    University of Leeds, Leeds, West Yorkshire, United Kingdom
-    University of Northumbria, Newcastle, Tyne and Wear, United Kingdom
-    University of Warwick, Coventry, West Midlands, United Kingdom
-    University of York, York, North Yorkshire, United Kingdom
-    Warwick Business School, Coventry, West Midlands, United Kingdom
-Vietnam
-    Department of Research Administration and International Relations, University of Economics Ho Chi Minh City, Ho Chi Minh City, Viet Nam
-    FPT University, Hanoi, Viet Nam
-    Faculty of Economics, HCMC University of Technical Education, Ho Chi Minh City, Viet Nam
-    International School, Vietnam National University, Hanoi, Hanoi, Viet Nam
-    School of Accounting, University of Economics Ho Chi Minh City, Ho Chi Minh City, Viet Nam
-    University of Finance - Marketing, Ho Chi Minh City, Viet Nam
+Brunei Darussalam
+    School of Business and Economics, Universiti Brunei Darussalam, Bandar Seri Begawan, Brunei Darussalam
+Cameroon
+    Department of Management Information Systems, Catholic University of Central Africa, Yaounde, Cameroon
 Canada
     Department of Accounting and Finance, St. Francis Xavier University, Antigonish, NS, Canada
     Université TÉLUQ, Quebec, QC, Canada
-France
-    Burgundy School of Business, Dijon, Bourgogne-Franche-Comte, France
-    CEREN EA 7477, Burgundy School of Business, Dijon, Bourgogne-Franche-Comte, France
-    Department of Information, Operations and Management Sciences, TBS Business School, Toulouse, Occitanie, France
-    Excelia Business School, La Rochelle, Nouvelle-Aquitaine, France
-    IPAG Business School, Paris, Ile-de-France, France
-    Lille School Management Research Center ( LSMRC ), Roubaix, Hauts-de-France, France
-    OCRE-Lab, EDC Paris Business School, Puteaux, Ile-de-France, France
-    Rennes School of Business, Rennes, France
-    SKEMA Business School, Lille, Hauts-de-France, France
-    Université Côte d'Azur, Nice, Provence-Alpes-Cote d'Azur, France
-Jordan
-    Applied Science Private University, Amman, Jordan
-    Applied Science Research Center, Applied Science Private University, Amman, Jordan
-    Business Faculty, Zarqa University, Zarqa, Zarqa, Jordan
-    Department of Finance and Banking, Philadelphia University, Amman, Amman, Jordan
-    Department of Financial Technology, Al-Ahliyya Amman University, Amman, Jordan
-    Financial Technology and Accounting Analytics, Princess Sumaya University, Amman, Amman, Jordan
-    Jadara University, Irbid, Irbid, Jordan
-    MIS Department, School of Business University of Jordan, Amman, Jordan
-    School of Business, Jadara University, Irbid, Irbid, Jordan
-Latvia
-    Faculty of Business, Latvijas Universitāte, Riga, Latvia
-    Faculty of Economics and Management, Latvijas Universitāte, Riga, Latvia
-    Finance Department, Latvijas Universitāte, Riga, Latvia
-    Latvijas Universitāte, Riga, Latvia
-    Transport and Telecomunication Institute, Latvia
-Norway
-    Westerdals Oslo ACT, Oslo, Oslo, Norway
-Poland
-    Faculty of Management, Politechnika Warszawska, Warsaw, MA, Poland
-    VIZJA University, Warsaw, MA, Poland
-Saudi Arabia
-    Department of Business Administration, Saudi Electronic University, Riyadh, Riyad, Saudi Arabia
-    Department of Computer Engineering, King Saud University, Riyadh, Riyad, Saudi Arabia
-    Department of Economics and Finance, University of Jeddah, Jeddah, Makkah Province, Saudi Arabia
-    Department of Industrial Engineering, King Saud University, Riyadh, Riyad, Saudi Arabia
-    Department of Special Education, Prince Sattam Bin Abdulaziz University, Al Kharj, Riyad, Saudi Arabia
-    KFUPM Business School, Dhahran, Ash Sharqiyah, Saudi Arabia
-    University of Business and Technology, Jeddah, Makkah, Saudi Arabia
-South Africa
-    College of Business and Economics, Johannesburg, Gauteng, South Africa
-    School of Economics, University of Cape Town, Cape Town, Western Cape, South Africa
-    School of Economics, University of Johannesburg, Johannesburg, Gauteng, South Africa
-Sweden
-    Department of Social Sciences, Luleå University of Technology, Lulea, Norrbotten, Sweden
-    Handelshögskolan i Stockholm, Stockholm, Stockholm, Sweden
-    Luleå University of Technology, Lulea, Norrbotten, Sweden
-    Lunds Universitet, Lund, Skane, Sweden
-Taiwan
-    Department of Banking and Finance, Chinese Culture University Taiwan, Taipei, Taiwan
-    Department of Information and Telecommunications Engineering, Ming Chuan University, Taipei, Taiwan
-    Department of Marketing and Logistics Management, National Penghu University of Science and Technology, Makung, Penghu, Taiwan
-    Institute of Law for Science and Technology, National Tsing Hua University, Hsinchu, Taiwan
-    Institute of Service Science, National Tsing Hua University, Hsinchu, Taiwan
-Turkey
-    College of Administrative Sciences and Economics, Koç University, Istanbul, Turkey
-    School of Business, İstanbul Medipol Üniversitesi, Istanbul, Turkey
-United States
-    AbleMarkets, New York, NY, United States
-    Baylor University, Waco, TX, United States
-    Boise State University, Boise, ID, United States
-    Business Development of AbleMarkets, United States
-    Columbia Business School, New York, NY, United States
-    Columbia University, New York, NY, United States
-    Cornell University, Ithaca, NY, United States
-    Department of Business and Information Technology, Missouri University of Science and Technology, Rolla, MO, United States
-    Department of Computer Information Systems, Appalachian State University, Boone, NC, United States
-    Department of Computer Science, Pace University, New York, NY, United States
-    Department of Economics and Finance, University of New Orleans, New Orleans, LA, United States
-    Department of Information Systems and Cyber Security, The University of Texas at San Antonio, San Antonio, TX, United States
-    Department of Information Technology and Decision Sciences, University of North Texas, Denton, TX, United States
-    Department of Management and Marketing, University of Massachusetts Dartmouth, Dartmouth, MA, United States
-    Department of Supply Chain and Information Systems, Penn State Smeal College of Business, University Park, PA, United States
-    Department of the Treasury, Haas School of Business, Berkeley, CA, United States
-    Federal Reserve Bank of Chicago, Chicago, IL, United States
-    Federal Reserve Bank of Philadelphia, Philadelphia, PA, United States
-    Georgetown Law, Washington, D.C., United States
-    Haas School of Business, Berkeley, CA, United States
-    Hankamer School of Business, Waco, TX, United States
-    Harvard Law School, Cambridge, MA, United States
-    J. Mack Robinson College of Business, Atlanta, GA, United States
-    Johns Hopkins University School of Advanced International Studies, Washington, D.C., DC, United States
-    Kasasa®, United States
-    Leavey School of Business, Santa Clara University, Santa Clara, CA, United States
-    Leonard N. Stern School of Business, New York, NY, United States
-    Lerner College of Business and Economics, University of Delaware, Newark, DE, United States
-    MIT Laboratory for Financial Engineering, United States
-    Mathematics and Computer Science, Fontbonne University, St. Louis, MO, United States
-    McCombs School of Business, Austin, TX, United States
-    New York University, New York, NY, United States
-    Princeton University, Princeton, NJ, United States
-    School of Computer Science, Western Illinois University, Macomb, IL, United States
-    Stanford Graduate School of Business, Stanford, CA, United States
-    Texas AandM University School of Law, Fort Worth, TX, United States
-    The University of Chicago, Chicago, IL, United States
-    The University of New Mexico, Albuquerque, NM, United States
-    United States, Olin Business School, St. Louis, MO, United States
-    University of California, Berkeley, Berkeley, CA, United States
-    University of Pennsylvania, Philadelphia, PA, United States
-    Vanderbilt Law School, Nashville, TN, United States
 China
     Agricultural Bank of China, Beijing, China
     Beijing Normal-Hong Kong Baptist University, Zhuhai, Guangdong, China
@@ -373,8 +110,58 @@ China
     Tsinghua University, Beijing, China
     University of Chinese Academy of Sciences, Beijing, China
     Xi'an Jiaotong University, Xi'an, Shaanxi, China
+Denmark
+    Department of IT Management, Copenhagen Business School, Frederiksberg, Hovedstaden, Denmark
+Ethiopia
+    Addis Ababa University, Addis Ababa, Ethiopia
+Finland
+    Innovalogy Capital Management, Tampere, Finland
+    School of Economics, Entrepreneurship and Management, Helsinki, Finland
+    Vaasan Yliopisto, Vaasa, Ostrobothnia, Finland
+France
+    Burgundy School of Business, Dijon, Bourgogne-Franche-Comte, France
+    CEREN EA 7477, Burgundy School of Business, Dijon, Bourgogne-Franche-Comte, France
+    Department of Information, Operations and Management Sciences, TBS Business School, Toulouse, Occitanie, France
+    Excelia Business School, La Rochelle, Nouvelle-Aquitaine, France
+    IPAG Business School, Paris, Ile-de-France, France
+    Lille School Management Research Center ( LSMRC ), Roubaix, Hauts-de-France, France
+    OCRE-Lab, EDC Paris Business School, Puteaux, Ile-de-France, France
+    Rennes School of Business, Rennes, France
+    SKEMA Business School, Lille, Hauts-de-France, France
+    Université Côte d'Azur, Nice, Provence-Alpes-Cote d'Azur, France
+Germany
+    CESifo GmbH, Munich, Bayern, Germany
+    Chair for Banking and Finance, Zeppelin University, Friedrichshafen, Baden-Wurttemberg, Germany
+    Chair of e-Finance, Goethe-Universität Frankfurt am Main, Frankfurt am Main, Hessen, Germany
+    Department of Information Systems, Goethe-Universität Frankfurt am Main, Frankfurt am Main, Hessen, Germany
+    Director, Heinrich-Heine-Universität Düsseldorf, Dusseldorf, Nordrhein-Westfalen, Germany
+    European Central Bank, Frankfurt am Main, Hessen, Germany
+    FIM Research Center, Universität Augsburg, Augsburg, Bayern, Germany
+    FIRAMIS, Frankfurt am Main, Germany
+    Fachbereich Wirtschaftswissenschaft, Bremen, Bremen, Germany
+    Fraunhofer Institute for Software and Systems Engineering ISST, Dortmund, Nordrhein-Westfalen, Germany
+    IU Internationale Hochschule GmbH, Erfurt, Thuringen, Germany
+    Information Technology, Villingen-Schwenningen, Germany
+    Institute for Software Technology IST, Universität Koblenz, Koblenz, Rheinland-Pfalz, Germany
+    Max Planck Institute for Innovation and Competition, Munich, Bayern, Germany
+    University of Münster, Munster, Nordrhein-Westfalen, Germany
+    Universität Bremen, Bremen, Bremen, Germany
+    Universität Hamburg, Hamburg, Hamburg, Germany
+    Universität Regensburg, Regensburg, Bayern, Germany
+    Universität Trier, Trier, Rheinland-Pfalz, Germany
+    Zeppelin University, Friedrichshafen, Baden-Wurttemberg, Germany
 Ghana
     University of Ghana Business School, Accra, Ghana
+Hong Kong
+    Faculty of Law, The University of Hong Kong, Hong Kong, Hong Kong
+    FinTech Association, Hong Kong, Hong Kong
+    HKBU School of Business, Hong Kong, Hong Kong
+    Kerry Holdings Professor in Law and Director, The University of Hong Kong, Hong Kong, Hong Kong
+    School of Professional Education and Executive Development, The Hong Kong Polytechnic University, Hong Kong, Hong Kong, Hong Kong
+    The University of Hong Kong, Hong Kong, Hong Kong
+Hungary
+    Doctoral School of Economic and Regional Sciences, Hungarian University of Agriculture and Life Sciences, Godollo, Pest, Hungary
+    McKinsey & Company, Hungary, Budapest, Hungary
 India
     Amity University, Noida, UP, India
     Chandigarh University, Mohali, PB, India
@@ -391,6 +178,25 @@ India
     Research Scholar, Amity University, Noida, UP, India
     Sharda University, Greater Noida, UP, India
     Shri Vile Parle Kelvani Mandal’s Narsee Monjee Institute of Management Studies (Deemed to be University), Mumbai, Mumbai, MH, India
+Indonesia
+    ABFI Institute Perbanas, Jakarta, Jakarta, Indonesia
+    Bank Indonesia, Jakarta, Java, Indonesia
+    Department of Agribusiness, Riau University, Pekanbaru, Indonesia
+    Department of Doctoral Program, Universitas Sumatera Utara, Medan, North Sumatra, Indonesia
+    Department of Informatics Engineering and Department of Information Systems, Islamic University of Kalimantan, Banjarmasin, Indonesia
+    Department of Information System, Universitas Islam Negeri Sultan Syarif Kasim Riau, Pekanbaru, Indonesia
+    Department of Information Systems, Universitas Islam Negeri Sultan Syarif Kasim Riau, Pekanbaru, Indonesia
+    Department of Management, Universitas Gadjah Mada, Yogyakarta, Yogyakarta, Indonesia
+    Department of Management, Universitas Islam Negeri Syarif Hidayatullah Jakarta, South Tangerang, Banten, Indonesia
+    Faculty of Economics, Universitas Indo Global Mandiri, Palembang, South Sumatra, Indonesia
+    Faculty of Engineering and Computer Science, Universitas Teknokrat Indonesia, Bandar Lampung, Lampung, Indonesia
+    Institut Teknologi Bandung, Bandung, West Java, Indonesia
+    PRO-Knowledge Research Group, Pekanbaru, Indonesia
+    Pradita University, Jakara, Indonesia
+    UIN Suska Riau University, Pekanbaru, Indonesia
+    Universitas Indonesia, Depok, West Java, Indonesia
+Ireland
+    Dublin City University, Dublin, Leinster, Ireland
 Italy
     Alma Mater Studiorum Università di Bologna, Bologna, BO, Italy
     Banking Law and Financial Markets Regulation, Università degli Studi di Genova, Genoa, Italy
@@ -406,8 +212,89 @@ Italy
     Università degli Studi di Padova, Padua, PD, Italy
 Japan
     Tokai University, Tokyo, Japan
+Jordan
+    Applied Science Private University, Amman, Jordan
+    Applied Science Research Center, Applied Science Private University, Amman, Jordan
+    Business Faculty, Zarqa University, Zarqa, Zarqa, Jordan
+    Department of Finance and Banking, Philadelphia University, Amman, Amman, Jordan
+    Department of Financial Technology, Al-Ahliyya Amman University, Amman, Jordan
+    Financial Technology and Accounting Analytics, Princess Sumaya University, Amman, Amman, Jordan
+    Jadara University, Irbid, Irbid, Jordan
+    MIS Department, School of Business University of Jordan, Amman, Jordan
+    School of Business, Jadara University, Irbid, Irbid, Jordan
+Kazakhstan
+    Department of Finance, KIMEP University, Almaty, Almaty, Kazakhstan
+Latvia
+    Faculty of Business, Latvijas Universitāte, Riga, Latvia
+    Faculty of Economics and Management, Latvijas Universitāte, Riga, Latvia
+    Finance Department, Latvijas Universitāte, Riga, Latvia
+    Latvijas Universitāte, Riga, Latvia
+    Transport and Telecomunication Institute, Latvia
+Lebanon
+    Adnan Kassar School of Business, Beirut, Beirut Governorate, Lebanon
+    Université Saint-Joseph de Beyrouth, Beirut, Beirut Governorate, Lebanon
+Luxembourg
+    ADA Chair in Financial Law (Inclusive Finance), University of Luxembourg, Esch-sur-Alzette, Luxembourg
+Malaysia
+    5 Jalan Universiti, Sunway University, Sunway City, Selangor, Malaysia
+    Azman Hashim International Business School, Kuala Lumpur, Malaysia
+    Economics and Accountancy, Universiti Malaysia Sabah, Kota Kinabalu, Sabah, Malaysia
+    Faculty of Business, Multimedia University, Cyberjaya, Selangor, Malaysia
+    Faculty of Business, Swinburne University of Technology Sarawak Campus, Kuching, Sarawak, Malaysia
+    School of Business and Economics, Universiti Putra Malaysia, Serdang, Selangor, Malaysia
 Malta
     American University of Malta, Cospicua, Malta
+Morocco
+    Department of Marketing, International University of Rabat, Sale, Rabat-Sale-Kenitra, Morocco
+Netherlands
+    Erasmus Universiteit Rotterdam, Rotterdam, Zuid-Holland, Netherlands
+    Faculty of Economics and Business, Rijksuniversiteit Groningen, Groningen, Groningen, Netherlands
+    Universiteit van Amsterdam, Amsterdam, Noord-Holland, Netherlands
+    Wittenborg University of Applied Sciences, Apeldoorn, Gelderland, Netherlands
+Norway
+    Westerdals Oslo ACT, Oslo, Oslo, Norway
+Pakistan
+    Air University Islamabad, Islamabad, Pakistan
+    Department of Computer Science and Software Engineering, International Islamic University, Islamabad, Islamabad, Pakistan
+    Department of Computing, School of Electrical Engineering and Computer Science, Islamabad, Pakistan
+    Department of Economics, Government Graduate College Kot Sultan, Layyah, Punjab, Pakistan
+    Department of Economics, The Islamia University of Bahawalpur, Bahawalpur, Punjab, Pakistan
+    Faisalabad Business School, National Textile University Faisalabad, Faisalabad, Pakistan
+    Institute of Management Sciences, The Women University Multan, Multhan, Punjab, Pakistan
+    Lahore School of Economics, Lahore, Pakistan
+    Suleman Dawood School of Business, Lahore, Punjab, Pakistan
+    University of Management and Technology Lahore, Lahore, Pakistan
+Palestine
+    Palestine Ahliya University, Bethlehem, Palestine
+Peru
+    Department of Business Administration, Universidad César Vallejo, Trujillo, La Libertad, Peru
+Poland
+    Faculty of Management, Politechnika Warszawska, Warsaw, MA, Poland
+    VIZJA University, Warsaw, MA, Poland
+Portugal
+    Universidade Católica Portuguesa, Porto, Porto, Portugal
+Romania
+    Department of Marketing, Universitatea Babeș-Bolyai, Cluj Napoca, Cluj, Romania
+    Department of Theory and Methodology of Motricity Activities, University of Craiova, Craiova, Dolj, Romania
+    Management Marketing Department, University of Craiova, Craiova, Dolj, Romania
+Saudi Arabia
+    Department of Business Administration, Saudi Electronic University, Riyadh, Riyad, Saudi Arabia
+    Department of Computer Engineering, King Saud University, Riyadh, Riyad, Saudi Arabia
+    Department of Economics and Finance, University of Jeddah, Jeddah, Makkah Province, Saudi Arabia
+    Department of Industrial Engineering, King Saud University, Riyadh, Riyad, Saudi Arabia
+    Department of Special Education, Prince Sattam Bin Abdulaziz University, Al Kharj, Riyad, Saudi Arabia
+    KFUPM Business School, Dhahran, Ash Sharqiyah, Saudi Arabia
+    University of Business and Technology, Jeddah, Makkah, Saudi Arabia
+Singapore
+    Department of Finance, National University of Singapore, Singapore City, Singapore
+    Department of Geography, National University of Singapore, Singapore City, Singapore
+    School of Information Systems, Singapore Management University, Singapore City, Singapore
+Slovenia
+    Faculty of Economics, Univerza v Ljubljani, Ljubljana, Slovenia
+South Africa
+    College of Business and Economics, Johannesburg, Gauteng, South Africa
+    School of Economics, University of Cape Town, Cape Town, Western Cape, South Africa
+    School of Economics, University of Johannesburg, Johannesburg, Gauteng, South Africa
 South Korea
     Chung-Ang University Business School, Seoul, South Korea
     College of Business Administration, Soongsil University, Seoul, South Korea
@@ -433,12 +320,125 @@ Spain
     Department of Business Administration, Universidad Carlos III de Madrid, Getafe, Madrid, Spain
     Department of Marketing Management and Market Research, Universidad de Zaragoza, Zaragoza, Zaragoza, Spain
     Management Solutions, Madrid, Madrid, Spain
-Hong Kong
-    Faculty of Law, The University of Hong Kong, Hong Kong, Hong Kong
-    FinTech Association, Hong Kong, Hong Kong
-    HKBU School of Business, Hong Kong, Hong Kong
-    Kerry Holdings Professor in Law and Director, The University of Hong Kong, Hong Kong, Hong Kong
-    School of Professional Education and Executive Development, The Hong Kong Polytechnic University, Hong Kong, Hong Kong, Hong Kong
-    The University of Hong Kong, Hong Kong, Hong Kong
-Peru
-    Department of Business Administration, Universidad César Vallejo, Trujillo, La Libertad, Peru
+Sweden
+    Department of Social Sciences, Luleå University of Technology, Lulea, Norrbotten, Sweden
+    Handelshögskolan i Stockholm, Stockholm, Stockholm, Sweden
+    Luleå University of Technology, Lulea, Norrbotten, Sweden
+    Lunds Universitet, Lund, Skane, Sweden
+Switzerland
+    Bank for International Settlements, Basel, BS, Switzerland
+    Department of Banking and Finance, Universität Zürich, Zurich, ZH, Switzerland
+    Department of Informatics, Universität Zürich, Zurich, ZH, Switzerland
+    Hochschule für Wirtschaft Fribourg, Fribourg, Switzerland
+    Institute of Informatics, Universität Zürich, Zurich, ZH, Switzerland
+    University of St. Gallen, St Gallen, SG, Switzerland
+    Universität Zürich, Zurich, ZH, Switzerland
+Taiwan
+    Department of Banking and Finance, Chinese Culture University Taiwan, Taipei, Taiwan
+    Department of Information and Telecommunications Engineering, Ming Chuan University, Taipei, Taiwan
+    Department of Marketing and Logistics Management, National Penghu University of Science and Technology, Makung, Penghu, Taiwan
+    Institute of Law for Science and Technology, National Tsing Hua University, Hsinchu, Taiwan
+    Institute of Service Science, National Tsing Hua University, Hsinchu, Taiwan
+Thailand
+    College of Innovation, Thammasat University, Pathum Thani, Thailand
+Turkey
+    College of Administrative Sciences and Economics, Koç University, Istanbul, Turkey
+    School of Business, İstanbul Medipol Üniversitesi, Istanbul, Turkey
+United Arab Emirates
+    American University in Dubai, Dubai, United Arab Emirates
+    College of Business, Al Ain University, Al Ain, Abu Dhabi, United Arab Emirates
+    College of Technological Innovation, Zayed University, Dubai, United Arab Emirates
+    Department of Accounting and Finance, Liwa University, Abu Dhabi, Abu Dhabi, United Arab Emirates
+    Faculty in Accounting and Finance, Horizon University College, Ajman, Ajman, United Arab Emirates
+    School of Business, Horizon University College, Ajman, Ajman, United Arab Emirates
+United Kingdom
+    Adam Smith Business School, Glasgow, Scotland, United Kingdom
+    Alliance Manchester Business School, Manchester, Greater Manchester, United Kingdom
+    Artificial Intelligence and Information Systems Research Group, Teesside University, Middlesbrough, North Yorkshire, United Kingdom
+    Bangor Business School, Bangor, Gwynedd, United Kingdom
+    Bayes Business School, City University of London, London, United Kingdom
+    Bristol Business School, Bristol, United Kingdom
+    Brunel University London, Uxbridge, Middlesex, United Kingdom
+    Cambridge Centre for Alternative Finance, Cambridge, Cambridgeshire, United Kingdom
+    Centre for Economic Policy Research, London, London, United Kingdom
+    Centre for Finance, Technology and Entrepreneurship (CFTE), Board Member, London, United Kingdom
+    Centre for Global Finance, SOAS University of London, London, United Kingdom
+    Coventry University, Coventry, West Midlands, United Kingdom
+    De Montfort University, Leicester, Leicestershire, United Kingdom
+    Department of Accounting, Finance and Informatics, Kingston Business School, Kingston Upon Thames, Surrey, United Kingdom
+    Department of Decision Analytics and Risk, Southampton Business School, Southampton, Hampshire, United Kingdom
+    Department of Management, Lincoln International Business School, Lincoln, Lincolnshire, United Kingdom
+    Department of Marketing, University of Greenwich, London, United Kingdom
+    Durham University, Durham, County Durham, United Kingdom
+    Finance and Accounting, Coventry University, Coventry, West Midlands, United Kingdom
+    Governance and Finance Research Group, Teesside University Business School, Middlesbrough, North Yorkshire, United Kingdom
+    Henley Business School, Reading, Berkshire, United Kingdom
+    Imperial College London, London, United Kingdom
+    London Office, London, England, United Kingdom
+    London School of Economics and Political Science, London, United Kingdom
+    Loughborough University, School of Business and Economics, Loughborough, Leicestershire, United Kingdom
+    Management School, University of St Andrews, St Andrews, Fife, United Kingdom
+    Mobile Technology, University of Sussex, Brighton, East Sussex, United Kingdom
+    Professor of Corporate Law and Financial Regulation, University College London, London, United Kingdom
+    Roehampton Business School, London, United Kingdom
+    School of Finance and Management, SOAS University of London, London, United Kingdom
+    School of Management, Swansea, Wales, United Kingdom
+    University of Essex, Colchester, Essex, United Kingdom
+    University of Leeds, Leeds, West Yorkshire, United Kingdom
+    University of Northumbria, Newcastle, Tyne and Wear, United Kingdom
+    University of Warwick, Coventry, West Midlands, United Kingdom
+    University of York, York, North Yorkshire, United Kingdom
+    Warwick Business School, Coventry, West Midlands, United Kingdom
+United States
+    AbleMarkets, New York, NY, United States
+    Baylor University, Waco, TX, United States
+    Boise State University, Boise, ID, United States
+    Business Development of AbleMarkets, United States
+    Columbia Business School, New York, NY, United States
+    Columbia University, New York, NY, United States
+    Cornell University, Ithaca, NY, United States
+    Department of Business and Information Technology, Missouri University of Science and Technology, Rolla, MO, United States
+    Department of Computer Information Systems, Appalachian State University, Boone, NC, United States
+    Department of Computer Science, Pace University, New York, NY, United States
+    Department of Economics and Finance, University of New Orleans, New Orleans, LA, United States
+    Department of Information Systems and Cyber Security, The University of Texas at San Antonio, San Antonio, TX, United States
+    Department of Information Technology and Decision Sciences, University of North Texas, Denton, TX, United States
+    Department of Management and Marketing, University of Massachusetts Dartmouth, Dartmouth, MA, United States
+    Department of Supply Chain and Information Systems, Penn State Smeal College of Business, University Park, PA, United States
+    Department of the Treasury, Haas School of Business, Berkeley, CA, United States
+    Federal Reserve Bank of Chicago, Chicago, IL, United States
+    Federal Reserve Bank of Philadelphia, Philadelphia, PA, United States
+    Georgetown Law, Washington, D.C., United States
+    Haas School of Business, Berkeley, CA, United States
+    Hankamer School of Business, Waco, TX, United States
+    Harvard Law School, Cambridge, MA, United States
+    J. Mack Robinson College of Business, Atlanta, GA, United States
+    Johns Hopkins University School of Advanced International Studies, Washington, D.C., DC, United States
+    Kasasa®, United States
+    Leavey School of Business, Santa Clara University, Santa Clara, CA, United States
+    Leonard N. Stern School of Business, New York, NY, United States
+    Lerner College of Business and Economics, University of Delaware, Newark, DE, United States
+    MIT Laboratory for Financial Engineering, United States
+    Mathematics and Computer Science, Fontbonne University, St. Louis, MO, United States
+    McCombs School of Business, Austin, TX, United States
+    New York University, New York, NY, United States
+    Princeton University, Princeton, NJ, United States
+    School of Computer Science, Western Illinois University, Macomb, IL, United States
+    Stanford Graduate School of Business, Stanford, CA, United States
+    Texas AandM University School of Law, Fort Worth, TX, United States
+    The University of Chicago, Chicago, IL, United States
+    The University of New Mexico, Albuquerque, NM, United States
+    United States, Olin Business School, St. Louis, MO, United States
+    University of California, Berkeley, Berkeley, CA, United States
+    University of Pennsylvania, Philadelphia, PA, United States
+    Vanderbilt Law School, Nashville, TN, United States
+Uzbekistan
+    Department of Financial Analysis and Audit, Tashkent State University of Economics, Tashkent, Uzbekistan
+    Tashkent State University of Economics, Tashkent, Uzbekistan
+Vietnam
+    Department of Research Administration and International Relations, University of Economics Ho Chi Minh City, Ho Chi Minh City, Viet Nam
+    FPT University, Hanoi, Viet Nam
+    Faculty of Economics, HCMC University of Technical Education, Ho Chi Minh City, Viet Nam
+    International School, Vietnam National University, Hanoi, Hanoi, Viet Nam
+    School of Accounting, University of Economics Ho Chi Minh City, Ho Chi Minh City, Viet Nam
+    University of Finance - Marketing, Ho Chi Minh City, Viet Nam

@@ -500,7 +500,7 @@ AB As the number of FinTech start-ups continues to rise globally, the
    behaviour related to technology use.  These insights contribute to an
    enhanced understanding of the factors driving the utilization of FinTech
    services.  © 2024
-DE behavioural intentions; financial technology; fintech; payment services;
+DE behavioral intentions; financial technology; fintech; payment services;
    service quality; servqual; tam; technology adoption
 
 ---
@@ -2717,7 +2717,7 @@ AB This paper aims to bridge the knowledge gap in the existing literature on
    making.  © 2019, © 2019 Informa UK Limited, trading as Taylor & Francis
    Group.
 DE bitcoin; blockchain; fintech; supply chain
-ID blockchain; of information ( classification ); competition; decision making;
+ID blockchain; classification ( of information ); competition; decision making;
    supply chains; baseline studies; business strategy; classification
    framework; competitive advantage; fintech; knowledge gaps; research
    methodologies; systematic review; bitcoin
@@ -2826,7 +2826,7 @@ AB Germany is falling behind its peers in adopting new digital technologies and
    transparency are characterized by a higher probability of adopting FinTech.
    In contrast, household price perceptions do not appear to significantly
    impact switching probability.  © 2019 Elsevier Inc.
-DE digital banking; financial services; financial technology ( fintech ); non-
+DE digital banking; financial services; fintech ( financial technology ); non-
    bank financial institutions; switching behavior; technology acceptance model
 
 ---
@@ -4224,7 +4224,7 @@ AB The emergence of financial technology around the globe is driven by efforts
    diversity and range of emergent innovations and technologies that Q2 are
    transforming the financial services industry worldwide.  © © Taylor &
    Francis Group, LLC.
-ID of information ( classification ); cluster analysis; business
+ID classification ( of information ); cluster analysis; business
    infrastructure; cooperative mechanisms; financial information; financial
    service; financial services industries; innovation mechanisms;
    representative case; underlying components; finance
@@ -4466,7 +4466,7 @@ AB This paper examines the growing importance of digital-based financial
    ‘legible’, and global finance new forms of ‘profiling’ poor households into
    generators of financial assets.  © 2016 Informa UK Limited, trading as
    Taylor & Francis Group.
-DE behavioural economics; digital technologies; financial inclusion;
+DE behavioral economics; digital technologies; financial inclusion;
    financialisation; fintech; governmentality; international development
 ID economic development; financial system; globalization; government;
    institutional framework; international organization; investment; material
@@ -5241,8 +5241,8 @@ AB FinTech, the word which originates from marriage of "finance" and
    FinTech, how it is reflected in the popular media.
 DE content analysis; digitalization; fintech; innovation; popular press
 ID information systems; innovation; conceptual frameworks; content analysis;
-   digital innovations; digitalization; fintech; scientific literature; machine
-   tools ( presses )
+   digital innovations; digitalization; fintech; scientific literature; presses
+   ( machine tools )
 
 ---
 

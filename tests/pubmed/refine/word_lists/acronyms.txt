@@ -2088,8 +2088,6 @@ pico
     ed extraction of participants , intervention , comparison / control , and outcome ( pico )
 picos
     the focus question ( picos )
-pics-p
-    post intensive care syndrome-pediatric
 pinteraction
     no autoimmune condition and a t1 prs , ptrend < 0.0001 , p-interaction ( pinteraction )
 pioneer

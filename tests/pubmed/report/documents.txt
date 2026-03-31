@@ -6580,7 +6580,7 @@ AB OBJECTIVE: To design and assess a visual genomic explainer focusing on plain
    CONCLUSION: This genomic resource was acceptable to clinicians and could be
    a useful tool to support paediatricians integrating genomic testing into
    mainstream care.
-DE child health; genetics; paediatrics
+DE child health; genetics; pediatrics
 ID humans; genomics/education/methods; surveys and questionnaires; australia;
    ireland; prospective studies; genetic testing/methods;
    pediatricians/psychology; attitude of health personnel; male; female;
@@ -7116,7 +7116,7 @@ AB Multiple myeloma is biologically and clinically a complex and heterogeneous
    unmet medical need that require additional strategies to improve the
    outcome.  In this review, we provide an overview of the evolution of risk
    stratification and the treatment of multiple myeloma.
-DE bcma; car-t-cell therapy; cd38; gprc5d; bispecific antibody; immunotherapy;
+DE bcma; car t-cell therapy; cd38; gprc5d; bispecific antibody; immunotherapy;
    multiple myeloma; risk stratification
 
 ---
@@ -10820,7 +10820,7 @@ AB BACKGROUND: International variation in lung cancer survival may be partly
    within age-stage strata.  Reasons for these variations are unclear.
    Differences in non-surgical treatment use are plausibly associated with
    international variation in lung cancer survival.
-DE chemotherapy; epidemiology; non-small cell ( lung cancer ); lung cancer (
+DE chemotherapy; epidemiology; lung cancer ( non-small cell ); lung cancer (
    small-cell ); radiotherapy
 
 ---
@@ -14467,7 +14467,7 @@ AB Microscopic haematuria is a common incidental finding in childhood which
    kidney disease.  It is best practice to repeat testing to ensure resolution.
    Using data from the electronic medical record, we set out to find children
    without follow up, offer testing, and look for genetic kidney disease.
-DE genetics; haematuria; health analytics; kidney; paediatrics
+DE genetics; haematuria; health analytics; kidney; pediatrics
 ID child; humans; kidney; electronic health records; kidney diseases
 
 ---
@@ -17727,7 +17727,7 @@ AB BACKGROUND: In some jurisdictions, individuals become eligible or
    minority of the population is Black, a substantial number of individuals may
    no longer meet referral criteria for different types of kidney healthcare
    following adoption of the new 2021 eGFR equation.
-DE chronic kidney disease ( ckd ); clinical guidelines; estimated glomerular
+DE ckd ( chronic kidney disease ); clinical guidelines; estimated glomerular
    filtration rate; health services research; referral
 
 ---
@@ -17866,7 +17866,7 @@ AB BACKGROUND: Demand for health data and analytics to support research,
    significant innovation potential for health system improvement be left
    untapped.
 DE capacity building; data analytics; government employees; public sector
-   organisation
+   organization
 ID humans; covid-19/epidemiology; new brunswick/epidemiology; cross-sectional
    studies; public sector; capacity building; pandemics; sars-cov-2
 
@@ -17953,7 +17953,7 @@ AB INTRODUCTION: Despite increasing survival of children following
    12 months of the acute episode.  Acute care hospitalization confers
    iatrogenic risks that warrant long-term mental and behavioral health follow-
    up.
-DE icu; post intensive care syndrome-pediatric ( pics-p ); ptsd; anxiety;
+DE icu; pics-p ( post intensive care syndrome-pediatric ); ptsd; anxiety;
    depression; hospitalization; mental health
 
 ---
@@ -18544,7 +18544,7 @@ TC 0
 SO HEAR LUNG CIRC
 PY 2023 Sep
 DE adolescents; blood pressure; cardiovascular risk; children; guidelines;
-   hypertension; paediatrics
+   hypertension; pediatrics
 ID child; humans; australia/epidemiology; hypertension/diagnosis/therapy; blood
    pressure
 
@@ -19179,8 +19179,8 @@ AB INTRODUCTION: In Australia, the Victorian State Government has established a
    study has received ethical approval from Deakin University HREC (Ref No.
    2023-046) and Barwon Health HREC (Ref No.  94374). Findings will be
    disseminated as reports, presentations and peer-reviewed journal articles.
-DE accident  and  emergency medicine; electronic health records; see internal
-   medicine ( general medicine ); health services administration  and
+DE accident  and  emergency medicine; electronic health records; general
+   medicine ( see internal medicine ); health services administration  and
    management; health equity; hospitals public
 ID humans; victoria; general practitioners; primary health care; emergency
    service hospital; interrupted time series analysis
@@ -33110,7 +33110,7 @@ AB PURPOSE: To compare the performance of energy-integrating detector (EID) CT,
    compared with EID or PCCT reconstructions.Keywords: CT-Spectral Imaging
    (Dual Energy), Phantom Studies, Cardiac, Physics, Technology
    Assessment© RSNA, 2021.
-DE dual energy ( ct-spectral imaging ); cardiac; phantom studies; physics;
+DE ct-spectral imaging ( dual energy ); cardiac; phantom studies; physics;
    technology assessment
 
 ---
@@ -34643,8 +34643,8 @@ AB INTRODUCTION: Flavored tobacco appeals to new users.  This paper describes
    matched jurisdictions without an ordinance, but many still advertised
    flavored products they could not sell.  Comprehensive ordinances and
    retailer outreach may facilitate sales-restriction support and compliance.
-DE design and evaluation of programs and policies; flavored tobacco; other than
-   economic evaluation ( outcome evaluation ); policy tracking; tobacco
+DE design and evaluation of programs and policies; flavored tobacco; outcome
+   evaluation ( other than economic evaluation ); policy tracking; tobacco
    advertising; tobacco marketing; tobacco retailers
 ID california; commerce; flavoring agents; marketing; tobacco
    products/legislation  and  jurisprudence/supply  and  distribution

@@ -1,4 +1,4 @@
-refine
+Refine
 ################################################################################
 
 .. toctree::
@@ -7,5 +7,5 @@ refine
 
     refine.builtin
     refine.concept
-    refine.ctry
-    refine.org
+    refine.country
+    refine.organization

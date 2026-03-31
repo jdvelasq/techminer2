@@ -114,13 +114,18 @@ def delete_existent_files_in_source():
             os.remove(file)
 
 
+_NAMES: dict[str, str] = {
+    "Ai": "AI",
+}
+
+
 def generate_index_file(key, children):
 
     filename = f"{SOURCE_DIR}/{key}.rst"
 
     with open(filename, "w", encoding="utf-8") as f:
-        # title = key.split(".")[-1].replace("_", " ").capitalize().upper()
-        title = key.split(".")[-1].lower()
+        title = key.split(".")[-1].replace("_", " ").capitalize()
+        title = _NAMES.get(title) or title
         f.write(title + "\n")
         f.write("#" * 80 + "\n\n")
         f.write(".. toctree::\n")

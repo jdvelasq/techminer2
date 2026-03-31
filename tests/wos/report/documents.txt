@@ -1211,8 +1211,8 @@ AB Purpose - This study examines how SEBI's RegTech-driven T+0 settlement
    vital implications for maritime resources and industries.  It thus provides
    insights to policymakers for cross-border collaboration, and the advancement
    of sustainable economic practices in regional financial markets.
-DE t+0 settlement system; fintech ) and regulatory technologies ( regtech (
-   financial technologies ); blue economy stocks; event study analysis; market-
+DE t+0 settlement system; financial technologies ( fintech ) and regulatory
+   technologies ( regtech ); blue economy stocks; event study analysis; market-
    efficiency; car cumulative abnormal returns; caar cumulative average
    abnormal returns; sebi securities and exchange board of india; cbdc central
    bank digital currency; fe fixed effect model; cda crude dependence
@@ -4605,8 +4605,8 @@ AB Europe's road to RegTech has rested upon four apparently unrelated pillars:
    societies in developing their own RegTech ecosystems in order to support
    more efficient, stable, inclusive financial systems.
 DE data protection; digital identity; fintech; european union; financial
-   regulation; general data protection regulation ( gdpr ); open banking; psd 2
-   ( payment services directive 2 ); regtech
+   regulation; general data protection regulation ( gdpr ); open banking;
+   payment services directive 2 ( psd 2 ); regtech
 ID contracts
 
 ---

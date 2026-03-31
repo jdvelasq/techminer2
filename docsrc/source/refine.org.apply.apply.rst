@@ -1,5 +1,0 @@
-.. automodule:: tm2p.refine.org.apply.apply
-     :members:
-     :undoc-members:
-     :show-inheritance:
-
