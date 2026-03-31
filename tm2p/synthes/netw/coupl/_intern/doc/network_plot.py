@@ -11,12 +11,10 @@ from tm2p._intern.nx import (
     compute_spring_layout_positions,
     plot_nx_graph,
 )
-from tm2p.synthes.netw.coupl._intern.doc.create_nx_graph import (
-    internal__create_nx_graph,
-)
+from tm2p.synthes.netw.coupl._intern.doc.create_nx_graph import doc_create_nx_graph
 
 
-class NetworkPlot(
+class DocNetworkPlot(
     ParamsMixin,
 ):
     """:meta private:"""
@@ -26,7 +24,7 @@ class NetworkPlot(
         use_counters = self.params.counters
         self.params.counters = True
 
-        nx_graph = internal__create_nx_graph(params=self.params)
+        nx_graph = doc_create_nx_graph(params=self.params)
         nx_graph = cluster_nx_graph(params=self.params, nx_graph=nx_graph)
         nx_graph = compute_spring_layout_positions(
             params=self.params, nx_graph=nx_graph

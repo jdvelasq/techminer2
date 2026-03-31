@@ -7,7 +7,7 @@ Smoke test - fintech - successful import:
     >>> from tm2p.ingest.datab.scopus import Scopus
     >>> result = (
     ...     Scopus()
-    ...     .where_root_directory("examples/scopus/")
+    ...     .where_root_directory("tests/scopus/")
     ...     .run()
     ... )  # doctest: +ELLIPSIS
     Note...

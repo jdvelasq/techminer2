@@ -7,7 +7,7 @@ Smoke test - fintech - successful import:
     >>> from tm2p.ingest.datab.wos import WoS
     >>> result = (
     ...     WoS()
-    ...     .where_root_directory("examples/wos/")
+    ...     .where_root_directory("tests/wos/")
     ...     .run()
     ... )  # doctest: +ELLIPSIS
     Note...

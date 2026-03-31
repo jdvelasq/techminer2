@@ -2,21 +2,108 @@
 Network Density Plot
 ===============================================================================
 
+* **CouplingUnit.AUTH**
+
 .. raw:: html
 
-    <iframe src="../_generated/px.synthes.networks.coupling.kernel_density_plot_1.html"
+    <iframe src="../_generated/px.synthes.networks.coupling.kernel_density_plot_auth.html"
     height="800px" width="100%" frameBorder="0"></iframe>
 
-    <iframe src="../_generated/px.synthes.networks.coupling.kernel_density_plot_2.html"
+Smoke tests:
+    >>> from tm2p import CouplingUnit
+    >>> from tm2p.synthes.netw.coupl import KernelDensityPlot
+    >>> fig = (
+    ...     KernelDensityPlot()
+    ...     #
+    ...     # COUPLING UNIT:
+    ...     .with_coupling_unit(CouplingUnit.AUTH)
+    ...     .having_items_in_top(30)
+    ...     .having_items_in(None)
+    ...     .having_citation_threshold(0)
+    ...     .having_occurrence_threshold(2)
+    ...     #
+    ...     # COUNTERS:
+    ...     .using_counters(True)
+    ...     #
+    ...     # CLUSTERING:
+    ...     .using_clustering_algorithm_or_dict("louvain")
+    ...     #
+    ...     # NETWORK:
+    ...     .using_spring_layout_k(None)
+    ...     .using_spring_layout_iterations(30)
+    ...     .using_spring_layout_seed(0)
+    ...     #
+    ...     # DENSITY:
+    ...     .using_kernel_bandwidth(0.1)
+    ...     .using_colormap("Aggrnyl")
+    ...     .using_contour_opacity(0.6)
+    ...     .using_textfont_size_range(10, 20)
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory("tests/wos/")
+    ...     .where_record_years_range(None, None)
+    ...     .where_record_citations_range(None, None)
+    ...     .where_records_match(None)
+    ...     #
+    ...     .run()
+    ... )
+    >>> fig.write_html("docsrc/_generated/px.synthes.networks.coupling.kernel_density_plot_auth.html")
+
+
+* **CouplingUnit.CTRY**
+
+.. raw:: html
+
+    <iframe src="../_generated/px.synthes.networks.coupling.kernel_density_plot_ctry.html"
     height="800px" width="100%" frameBorder="0"></iframe>
 
-    <iframe src="../_generated/px.synthes.networks.coupling.kernel_density_plot_3.html"
+Smoke tests:
+    >>> from tm2p import CouplingUnit
+    >>> from tm2p.synthes.netw.coupl import KernelDensityPlot
+    >>> fig = (
+    ...     KernelDensityPlot()
+    ...     #
+    ...     # COUPLING UNIT:
+    ...     .with_coupling_unit(CouplingUnit.CTRY)
+    ...     .having_items_in_top(30)
+    ...     .having_items_in(None)
+    ...     .having_citation_threshold(0)
+    ...     .having_occurrence_threshold(2)
+    ...     #
+    ...     # COUNTERS:
+    ...     .using_counters(True)
+    ...     #
+    ...     # CLUSTERING:
+    ...     .using_clustering_algorithm_or_dict("louvain")
+    ...     #
+    ...     # NETWORK:
+    ...     .using_spring_layout_k(None)
+    ...     .using_spring_layout_iterations(30)
+    ...     .using_spring_layout_seed(0)
+    ...     #
+    ...     # DENSITY:
+    ...     .using_kernel_bandwidth(0.1)
+    ...     .using_colormap("Aggrnyl")
+    ...     .using_contour_opacity(0.6)
+    ...     .using_textfont_size_range(10, 20)
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory("tests/wos/")
+    ...     .where_record_years_range(None, None)
+    ...     .where_record_citations_range(None, None)
+    ...     .where_records_match(None)
+    ...     #
+    ...     .run()
+    ... )
+    >>> fig.write_html("docsrc/_generated/px.synthes.networks.coupling.kernel_density_plot_ctry.html")
+
+
+* **CouplingUnit.DOC**
+
+.. raw:: html
+
+    <iframe src="../_generated/px.synthes.networks.coupling.kernel_density_plot_doc.html"
     height="800px" width="100%" frameBorder="0"></iframe>
-
-    <iframe src="../_generated/px.synthes.networks.coupling.kernel_density_plot_4.html"
-    height="800px" width="100%" frameBorder="0"></iframe>
-
-
 
 Smoke tests:
     >>> from tm2p import CouplingUnit
@@ -49,52 +136,29 @@ Smoke tests:
     ...     .using_textfont_size_range(10, 20)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/scopus/")
+    ...     .where_root_directory("tests/wos/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     .where_records_match(None)
     ...     #
     ...     .run()
     ... )
-    >>> fig.write_html("docsrc/_generated/px.synthes.networks.coupling.kernel_density_plot_1.html")
+    >>> fig.write_html("docsrc/_generated/px.synthes.networks.coupling.kernel_density_plot_doc.html")
 
-    >>> fig = (
-    ...     KernelDensityPlot()
-    ...     #
-    ...     # COUPLING UNIT:
-    ...     .with_coupling_unit(CouplingUnit.DOC)
-    ...     .having_items_in_top(30)
-    ...     .having_items_in(None)
-    ...     .having_citation_threshold(0)
-    ...     .having_occurrence_threshold(2)
-    ...     #
-    ...     # COUNTERS:
-    ...     .using_counters(False)
-    ...     #
-    ...     # CLUSTERING:
-    ...     .using_clustering_algorithm_or_dict("louvain")
-    ...     #
-    ...     # NETWORK:
-    ...     .using_spring_layout_k(None)
-    ...     .using_spring_layout_iterations(30)
-    ...     .using_spring_layout_seed(0)
-    ...     #
-    ...     # DENSITY:
-    ...     .using_kernel_bandwidth(0.1)
-    ...     .using_colormap("Aggrnyl")
-    ...     .using_contour_opacity(0.6)
-    ...     .using_textfont_size_range(10, 20)
-    ...     #
-    ...     # DATABASE:
-    ...     .where_root_directory("examples/scopus/")
-    ...     .where_record_years_range(None, None)
-    ...     .where_record_citations_range(None, None)
-    ...     .where_records_match(None)
-    ...     #
-    ...     .run()
-    ... )
-    >>> fig.write_html("docsrc/_generated/px.synthes.networks.coupling.kernel_density_plot_2.html")
 
+
+* **CouplingUnit.ORG**
+
+.. raw:: html
+
+    <iframe src="../_generated/px.synthes.networks.coupling.kernel_density_plot_org.html"
+    height="800px" width="100%" frameBorder="0"></iframe>
+
+
+
+Smoke tests:
+    >>> from tm2p import CouplingUnit
+    >>> from tm2p.synthes.netw.coupl import KernelDensityPlot
     >>> fig = (
     ...     KernelDensityPlot()
     ...     #
@@ -123,27 +187,38 @@ Smoke tests:
     ...     .using_textfont_size_range(10, 20)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/scopus/")
+    ...     .where_root_directory("tests/wos/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     .where_records_match(None)
     ...     #
     ...     .run()
     ... )
-    >>> fig.write_html("docsrc/_generated/px.synthes.networks.coupling.kernel_density_plot_3.html")
+    >>> fig.write_html("docsrc/_generated/px.synthes.networks.coupling.kernel_density_plot_org.html")
 
+
+* **CouplingUnit.SRC**
+
+.. raw:: html
+
+    <iframe src="../_generated/px.synthes.networks.coupling.kernel_density_plot_src.html"
+    height="800px" width="100%" frameBorder="0"></iframe>
+
+Smoke tests:
+    >>> from tm2p import CouplingUnit
+    >>> from tm2p.synthes.netw.coupl import KernelDensityPlot
     >>> fig = (
     ...     KernelDensityPlot()
     ...     #
     ...     # COUPLING UNIT:
-    ...     .with_coupling_unit(CouplingUnit.ORG)
+    ...     .with_coupling_unit(CouplingUnit.SRC)
     ...     .having_items_in_top(30)
     ...     .having_items_in(None)
     ...     .having_citation_threshold(0)
     ...     .having_occurrence_threshold(2)
     ...     #
     ...     # COUNTERS:
-    ...     .using_counters(False)
+    ...     .using_counters(True)
     ...     #
     ...     # CLUSTERING:
     ...     .using_clustering_algorithm_or_dict("louvain")
@@ -160,26 +235,24 @@ Smoke tests:
     ...     .using_textfont_size_range(10, 20)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/scopus/")
+    ...     .where_root_directory("tests/wos/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     .where_records_match(None)
     ...     #
     ...     .run()
     ... )
-    >>> fig.write_html("docsrc/_generated/px.synthes.networks.coupling.kernel_density_plot_4.html")
-
-
-
-
+    >>> fig.write_html("docsrc/_generated/px.synthes.networks.coupling.kernel_density_plot_src.html")
 
 
 """
 
 from tm2p import CouplingUnit, ItemOrderBy
 from tm2p._intern import ParamsMixin
-from tm2p.synthes.netw.coupl._intern.doc import KernelDensityPlot as DocDensityPlot
-from tm2p.synthes.netw.coupl._intern.other import KernelDensityPlot as OtherDensityPlot
+from tm2p.synthes.netw.coupl._intern.doc import DocKernelDensityPlot
+from tm2p.synthes.netw.coupl._intern.other import OtherKernelDensityPlot
+
+from .._check_database import check_database
 
 
 class KernelDensityPlot(
@@ -189,10 +262,12 @@ class KernelDensityPlot(
 
     def run(self):
 
+        check_database(self.params.root_directory)
+
         if self.params.coupling_unit == CouplingUnit.DOC:
-            DensityPlot = DocDensityPlot
+            DensityPlot = DocKernelDensityPlot
         else:
-            DensityPlot = OtherDensityPlot
+            DensityPlot = OtherKernelDensityPlot
 
         return (
             DensityPlot()

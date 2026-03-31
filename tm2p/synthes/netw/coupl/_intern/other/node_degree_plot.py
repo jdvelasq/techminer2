@@ -1,17 +1,17 @@
 from tm2p._intern import ParamsMixin
 from tm2p._intern.nx import create_node_degree_plot
 
-from .node_degree_data_frame import NodeDegreeDataFrame
+from .node_degree_dataframe import OtherNodeDegreeDataFrame
 
 
-class NodeDegreePlot(
+class OtherNodeDegreePlot(
     ParamsMixin,
 ):
     """:meta private:"""
 
     def run(self):
 
-        df = NodeDegreeDataFrame().update(**self.params.__dict__).run()
+        df = OtherNodeDegreeDataFrame().update(**self.params.__dict__).run()
         plot = create_node_degree_plot(self.params, df)
 
         return plot

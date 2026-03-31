@@ -9,7 +9,7 @@ Smoke test:
     ...     BaseAuto()
     ...     .with_thesaurus_file(ThFile.CONCEPT)
     ...     .with_source_field(Field.DESCRIPTOR_RAW)
-    ...     .where_root_directory("examples/scopus/")
+    ...     .where_root_directory("tests/scopus/")
     ...     .run()
     ... )
     '7288 → 4623 preferred terms'

@@ -11,7 +11,7 @@ Smoke tests:
     ...             "fin-tech innovation",
     ...         )
     ...     )
-    ...     .where_root_directory("examples/scopus/")
+    ...     .where_root_directory("tests/scopus/")
     ...     .run()
     ... )
     1

@@ -1,5 +1,4 @@
 import networkx as nx  # type: ignore
-import numpy as np
 
 from tm2p import Field
 from tm2p._intern.data_access import load_filtered_main_csv_zip
@@ -106,7 +105,7 @@ def step_05_set_node_text_attribute(nx_graph):
 
 
 # ------------------------------------------------------------------------------
-def internal__create_nx_graph(params):
+def doc_create_nx_graph(params):
 
     nx_graph = nx.Graph()
 

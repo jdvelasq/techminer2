@@ -6,7 +6,7 @@ Smoke tests:
     >>> from tm2p.refine.concept.match import DaitchMokotoffMatch
     >>> (
     ...     DaitchMokotoffMatch()
-    ...     .where_root_directory("examples/scopus/")
+    ...     .where_root_directory("tests/scopus/")
     ...     .run()
     ... )
 

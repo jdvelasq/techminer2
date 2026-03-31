@@ -28,7 +28,7 @@ Smoke tests:
     ...     .using_counters(True)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/scopus/")
+    ...     .where_root_directory("tests/scopus/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     .where_records_match(None)
@@ -80,7 +80,7 @@ Smoke tests:
     ...     .using_counters(False)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/scopus/")
+    ...     .where_root_directory("tests/scopus/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     .where_records_match(None)

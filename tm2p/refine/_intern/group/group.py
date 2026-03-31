@@ -5,7 +5,7 @@ Smoke tests:
     >>> (
     ...     BaseGroup()
     ...     .with_thesaurus_file(ThFile.CONCEPT)
-    ...     .where_root_directory("examples/scopus/")
+    ...     .where_root_directory("tests/scopus/")
     ...     .run()
     ... )
 

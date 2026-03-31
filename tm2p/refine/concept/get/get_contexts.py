@@ -8,7 +8,7 @@ Smoke tests:
     ...     GetContexts()
     ...     .having_text_matching("fintech")
     ...     .having_n_contexts(10)
-    ...     .where_root_directory("examples/scopus/")
+    ...     .where_root_directory("tests/scopus/")
     ...     .run()
     ... )
     >>> from pprint import pprint

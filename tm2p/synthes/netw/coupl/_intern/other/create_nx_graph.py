@@ -3,7 +3,6 @@ import numpy as np
 
 from tm2p import Field
 from tm2p._intern.data_access import load_filtered_main_csv_zip
-from tm2p._intern.get_zero_digits import get_zero_digits
 from tm2p.anal.item_metrics.metrics import Metrics
 from tm2p.enum import CouplingUnit
 
@@ -98,7 +97,7 @@ def step_05_set_node_text_attribute(nx_graph):
 
 
 # ------------------------------------------------------------------------------
-def create_nx_graph(params):
+def other_create_nx_graph(params):
     #
     # Create the networkx graph
     nx_graph = nx.Graph()

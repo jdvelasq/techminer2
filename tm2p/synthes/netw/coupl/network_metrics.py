@@ -2,6 +2,79 @@
 Network Metrics
 ===============================================================================
 
+* **CouplingUnit.AUTH**
+
+Smoke tests:
+    >>> from tm2p import CouplingUnit
+    >>> from tm2p.synthes.netw.coupl import NetworkMetrics
+    >>> df = (
+    ...     NetworkMetrics()
+    ...     #
+    ...     # COUPLING UNIT:
+    ...     .with_coupling_unit(CouplingUnit.AUTH)
+    ...     .having_items_in_top(30)
+    ...     .having_items_in(None)
+    ...     .having_citation_threshold(0)
+    ...     .having_occurrence_threshold(2)
+    ...     #
+    ...     # COUNTERS:
+    ...     .using_counters(True)
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory("tests/wos/")
+    ...     .where_record_years_range(None, None)
+    ...     .where_record_citations_range(None, None)
+    ...     .where_records_match(None)
+    ...     #
+    ...     .run()
+    ... )
+    >>> print(df.head(5).to_string())  # doctest: +NORMALIZE_WHITESPACE
+                              DEGREE  BETWEENNESS  CLOSENESS  PAGERANK  EIGENVECTOR  CLUSTERING  CORE  STRENGTH
+    Becker M 002:00017      0.655172     0.067639   0.667586  0.014239     0.245340    0.719298    15       106
+    Miglionico A 002:00011  0.655172     0.067639   0.667586  0.020757     0.245340    0.719298    15       218
+    Xia YF 004:00008        0.620690     0.015094   0.641910  0.043459     0.250664    0.836601    15       527
+    Shi HY 002:00004        0.620690     0.015094   0.641910  0.024763     0.250664    0.836601    15       272
+    Shi ZX 002:00003        0.620690     0.015094   0.641910  0.037544     0.250664    0.836601    15       446
+
+
+
+* **CouplingUnit.CTRY**
+
+Smoke tests:
+    >>> from tm2p import CouplingUnit
+    >>> from tm2p.synthes.netw.coupl import NetworkMetrics
+    >>> df = (
+    ...     NetworkMetrics()
+    ...     #
+    ...     # COUPLING UNIT:
+    ...     .with_coupling_unit(CouplingUnit.CTRY)
+    ...     .having_items_in_top(30)
+    ...     .having_items_in(None)
+    ...     .having_citation_threshold(0)
+    ...     .having_occurrence_threshold(2)
+    ...     #
+    ...     # COUNTERS:
+    ...     .using_counters(True)
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory("tests/wos/")
+    ...     .where_record_years_range(None, None)
+    ...     .where_record_citations_range(None, None)
+    ...     .where_records_match(None)
+    ...     #
+    ...     .run()
+    ... )
+    >>> print(df.head(5).to_string())  # doctest: +NORMALIZE_WHITESPACE
+                     DEGREE  BETWEENNESS  CLOSENESS  PAGERANK  EIGENVECTOR  CLUSTERING  CORE  STRENGTH
+    CHN 046:01426  0.965517     0.008613   0.966667  0.124097     0.200834    0.883598    23      4622
+    GBR 026:01562  0.965517     0.008613   0.966667  0.087696     0.200834    0.883598    23      3286
+    AUS 024:01072  0.965517     0.008613   0.966667  0.120769     0.200834    0.883598    23      4555
+    USA 021:00494  0.965517     0.008613   0.966667  0.055047     0.200834    0.883598    23      1890
+    ITA 012:00116  0.965517     0.008613   0.966667  0.047270     0.200834    0.883598    23      1538
+
+
+* **CouplingUnit.DOC**
+
 Smoke tests:
     >>> from tm2p import CouplingUnit
     >>> from tm2p.synthes.netw.coupl import NetworkMetrics
@@ -19,59 +92,32 @@ Smoke tests:
     ...     .using_counters(True)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/scopus/")
+    ...     .where_root_directory("tests/wos/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     .where_records_match(None)
     ...     #
     ...     .run()
     ... )
-    >>> df.head(5)
-                                                 DEGREE  ...  PAGERANK
-    Bollaert, 2021, J CORP FINANC 1:00393             4  ...  0.089492
-    Cai, 2018, ACCOUNT FINANC 1:00251                 4  ...  0.064559
-    Gomber, 2017, J BUS ECON 1:01152                  3  ...  0.072873
-    Haddad, 2019, BUS ECON 1:00530                    3  ...  0.046680
-    Belanche, 2019, IND MANAG DATA SYST 1:00605       2  ...  0.076812
-    <BLANKLINE>
-    [5 rows x 4 columns]
+    >>> print(df.head(5).to_string())  # doctest: +NORMALIZE_WHITESPACE
+                                                    DEGREE  BETWEENNESS  CLOSENESS  PAGERANK  EIGENVECTOR  CLUSTERING  CORE  STRENGTH
+    Omarova ST, 2020, J FINANC REGUL 1:00065      0.653846     0.127481   0.702703  0.060487     0.309930    0.529412    10        31
+    Arner DW, 2020, EUR BUS ORGAN LAW RE 1:00338  0.576923     0.038647   0.634146  0.093622     0.299687    0.657143    10        54
+    Sangwan V, 2019, STUD ECON FINANC 1:00082     0.576923     0.093467   0.666667  0.083089     0.286860    0.590476    10        47
+    Fast V, 2023, J TECHNOL 1:00040               0.576923     0.252514   0.702703  0.038973     0.277005    0.542857    10        18
+    Anagnostopoulos I, 2018, J ECON BUS 1:00284   0.538462     0.028638   0.619048  0.047678     0.286553    0.692308    10        25
 
 
+* **CouplingUnit.ORG**
+
+Smoke tests:
+    >>> from tm2p import CouplingUnit
+    >>> from tm2p.synthes.netw.coupl import NetworkMetrics
     >>> df = (
     ...     NetworkMetrics()
     ...     #
     ...     # COUPLING UNIT:
-    ...     .with_coupling_unit(CouplingUnit.DOC)
-    ...     .having_items_in_top(30)
-    ...     .having_items_in(None)
-    ...     .having_citation_threshold(0)
-    ...     .having_occurrence_threshold(2)
-    ...     #
-    ...     # COUNTERS:
-    ...     .using_counters(False)
-    ...     #
-    ...     # DATABASE:
-    ...     .where_root_directory("examples/scopus/")
-    ...     .where_record_years_range(None, None)
-    ...     .where_record_citations_range(None, None)
-    ...     .where_records_match(None)
-    ...     #
-    ...     .run()
-    ... )
-    >>> df.head(5)
-                                         DEGREE  BETWEENNESS  CLOSENESS  PAGERANK
-    Bollaert, 2021, J CORP FINANC             4     0.026144   0.231481  0.089492
-    Cai, 2018, ACCOUNT FINANC                 4     0.026144   0.231481  0.064559
-    Gomber, 2017, J BUS ECON                  3     0.000000   0.198413  0.072873
-    Haddad, 2019, BUS ECON                    3     0.000000   0.198413  0.046680
-    Belanche, 2019, IND MANAG DATA SYST       2     0.006536   0.111111  0.076812
-
-
-    >>> df = (
-    ...     NetworkMetrics()
-    ...     #
-    ...     # COUPLING UNIT:
-    ...     .with_coupling_unit(CouplingUnit.AUTH)
+    ...     .with_coupling_unit(CouplingUnit.ORG)
     ...     .having_items_in_top(30)
     ...     .having_items_in(None)
     ...     .having_citation_threshold(0)
@@ -81,58 +127,55 @@ Smoke tests:
     ...     .using_counters(True)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/scopus/")
+    ...     .where_root_directory("tests/wos/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     .where_records_match(None)
     ...     #
     ...     .run()
     ... )
-    >>> df.head(5)
-                           DEGREE  BETWEENNESS  CLOSENESS  PAGERANK
-    Li X. 003:00894            12     0.155263   0.625000  0.082741
-    Jagtiani J. 005:01156      11     0.110526   0.592105  0.058820
-    Luo S. 002:00670            9     0.034211   0.535714  0.060131
-    Zhou G. 002:00670           9     0.034211   0.535714  0.060131
-    Lee C.-C. 002:00717         8     0.000000   0.511364  0.053898
+    >>> print(df.head(5).to_string())  # doctest: +NORMALIZE_WHITESPACE
 
 
+* **CouplingUnit.SRC**
+
+Smoke tests:
+    >>> from tm2p import CouplingUnit
+    >>> from tm2p.synthes.netw.coupl import NetworkMetrics
     >>> df = (
     ...     NetworkMetrics()
     ...     #
     ...     # COUPLING UNIT:
-    ...     .with_coupling_unit(CouplingUnit.AUTH)
+    ...     .with_coupling_unit(CouplingUnit.SRC)
     ...     .having_items_in_top(30)
     ...     .having_items_in(None)
     ...     .having_citation_threshold(0)
     ...     .having_occurrence_threshold(2)
     ...     #
     ...     # COUNTERS:
-    ...     .using_counters(False)
+    ...     .using_counters(True)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/scopus/")
+    ...     .where_root_directory("tests/wos/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     .where_records_match(None)
     ...     #
     ...     .run()
     ... )
-    >>> df.head(5)
-                 DEGREE  BETWEENNESS  CLOSENESS  PAGERANK
-    Li X.            12     0.155263   0.625000  0.082741
-    Jagtiani J.      11     0.110526   0.592105  0.058820
-    Luo S.            9     0.034211   0.535714  0.060131
-    Zhou G.           9     0.034211   0.535714  0.060131
-    Lee C.-C.         8     0.000000   0.511364  0.053898
+    >>> print(df.head(5).to_string())  # doctest: +NORMALIZE_WHITESPACE
+
+
 
 
 """
 
 from tm2p import CouplingUnit, ItemOrderBy
 from tm2p._intern import ParamsMixin, remove_counters
-from tm2p.synthes.netw.coupl._intern.doc import NetworkMetrics as DocNetworkMetrics
-from tm2p.synthes.netw.coupl._intern.other import NetworkMetrics as OtherNetworkMetrics
+from tm2p.synthes.netw.coupl._intern.doc import DocNetworkMetrics
+from tm2p.synthes.netw.coupl._intern.other import OtherNetworkMetrics
+
+from .._check_database import check_database
 
 
 class NetworkMetrics(
@@ -141,6 +184,8 @@ class NetworkMetrics(
     """:meta private:"""
 
     def run(self):
+
+        check_database(self.params.root_directory)
 
         if self.params.coupling_unit == CouplingUnit.DOC:
             Metrics = DocNetworkMetrics

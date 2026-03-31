@@ -8,7 +8,7 @@ Smoke tests:
     ...     Metrics()
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/wos/")
+    ...     .where_root_directory("tests/wos/")
     ...     .run()
     ... ).head()
           N_GCR  MEDIAN

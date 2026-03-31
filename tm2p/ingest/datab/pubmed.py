@@ -7,7 +7,7 @@ Smoke test - fintech - successful import:
     >>> from tm2p.ingest.datab.pubmed import PubMed
     >>> result = (
     ...     PubMed()
-    ...     .where_root_directory("examples/pubmed/")
+    ...     .where_root_directory("tests/pubmed/")
     ...     .run()
     ... )  # doctest: +ELLIPSIS
     Note...

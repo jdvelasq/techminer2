@@ -1,17 +1,17 @@
 """Coupling Network Analysis"""
 
-from .items_by_cluster_data_frame import ItemsByClusterDataFrame
-from .kernel_density_plot import KernelDensityPlot
-from .network_metrics import NetworkMetrics
-from .network_plot import NetworkPlot
-from .node_degree_data_frame import NodeDegreeDataFrame
-from .node_degree_plot import NodeDegreePlot
+from .items_by_cluster import DocItemsByCluster
+from .kernel_density_plot import DocKernelDensityPlot
+from .network_metrics import DocNetworkMetrics
+from .network_plot import DocNetworkPlot
+from .node_degree_dataframe import DocNodeDegreeDataFrame
+from .node_degree_plot import DocNodeDegreePlot
 
 __all__ = [
-    "NetworkMetrics",
-    "NetworkPlot",
-    "NodeDegreeDataFrame",
-    "NodeDegreePlot",
-    "KernelDensityPlot",
-    "ItemsByClusterDataFrame",
+    "DocNetworkMetrics",
+    "DocNetworkPlot",
+    "DocNodeDegreeDataFrame",
+    "DocNodeDegreePlot",
+    "DocKernelDensityPlot",
+    "DocItemsByCluster",
 ]

@@ -10,7 +10,7 @@ Smoke tests:
     ...     .with_thesaurus_file(ThFile.CONCEPT)
     ...     .with_source_field(Field.DESCRIPTOR_RAW)
     ...     .with_target_field(Field.DESCRIPTOR_NORM)
-    ...     .where_root_directory("examples/scopus/")
+    ...     .where_root_directory("tests/scopus/")
     ...     .run()
     ... )
 

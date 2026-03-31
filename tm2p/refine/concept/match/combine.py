@@ -8,7 +8,7 @@ Smoke tests:
     ...     CombineMatch()
     ...     #
     ...     # FIELD:
-    ...     .where_root_directory("examples/scopus/")
+    ...     .where_root_directory("tests/scopus/")
     ...     .run()
     ... )
 

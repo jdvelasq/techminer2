@@ -5,12 +5,10 @@ from tm2p._intern.nx import (
     compute_spring_layout_positions,
     create_network_density_plot,
 )
-from tm2p.synthes.netw.coupl._intern.doc.create_nx_graph import (
-    internal__create_nx_graph,
-)
+from tm2p.synthes.netw.coupl._intern.doc.create_nx_graph import doc_create_nx_graph
 
 
-class KernelDensityPlot(
+class DocKernelDensityPlot(
     ParamsMixin,
 ):
     """:meta private:"""
@@ -19,7 +17,7 @@ class KernelDensityPlot(
 
         use_counters = self.params.counters
         self.params.counters = True
-        nx_graph = internal__create_nx_graph(self.params)
+        nx_graph = doc_create_nx_graph(self.params)
         nx_graph = cluster_nx_graph(self.params, nx_graph)
         nx_graph = compute_spring_layout_positions(self.params, nx_graph)
         nx_graph = assign_textfont_sizes_based_on_citations(self.params, nx_graph)

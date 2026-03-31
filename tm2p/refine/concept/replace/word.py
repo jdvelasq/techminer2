@@ -8,14 +8,14 @@ Smoke tests:
     ...     Word()
     ...     .having_word("business")
     ...     .having_replacement("BUSINESS")
-    ...     .where_root_directory("examples/scopus/")
+    ...     .where_root_directory("tests/scopus/")
     ...     .run()
     ... )
 
     >>> from tm2p.refine.concept.reset import Reset
     >>> (
     ...     Reset()
-    ...     .where_root_directory("examples/scopus/")
+    ...     .where_root_directory("tests/scopus/")
     ...     .run()
     ... )
 

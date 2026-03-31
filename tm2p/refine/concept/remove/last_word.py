@@ -7,14 +7,14 @@ Smoke tests:
     >>> (
     ...     LastWord()
     ...     .having_word("business")
-    ...     .where_root_directory("examples/scopus/")
+    ...     .where_root_directory("tests/scopus/")
     ...     .run()
     ... )
 
     >>> from tm2p.refine.concept.reset import Reset
     >>> (
     ...     Reset()
-    ...     .where_root_directory("examples/scopus/")
+    ...     .where_root_directory("tests/scopus/")
     ...     .run()
     ... )
 

@@ -6,7 +6,7 @@ Smoke tests:
     >>> from tm2p.refine.org.sort import SortByAlphabetLeftToRight
     >>> (
     ...     SortByAlphabetLeftToRight()
-    ...     .where_root_directory("examples/scopus/")
+    ...     .where_root_directory("tests/scopus/")
     ...     .run()
     ... )
     7722
