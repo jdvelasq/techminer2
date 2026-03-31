@@ -486,7 +486,7 @@
 <li class="toctree-l3 current has-children"><a class="reference internal" href="discover.correlation.auto.html">Auto</a><input aria-label="Toggle navigation of Auto" checked="" class="toctree-checkbox" id="toctree-checkbox-45" name="toctree-checkbox-45" role="switch" type="checkbox"/><label for="toctree-checkbox-45"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
 <li class="toctree-l4 current current-page"><a class="current reference internal" href="#">NetworkMap</a></li>
 <li class="toctree-l4"><a class="reference internal" href="discover.correlation.auto.matrix.html">Matrix</a></li>
-<li class="toctree-l4"><a class="reference internal" href="discover.correlation.auto.matrix_list.html">Matrix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="discover.correlation.auto.matrix_list.html">MatrixList</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="discover.correlation.cross.html">Cross</a><input aria-label="Toggle navigation of Cross" class="toctree-checkbox" id="toctree-checkbox-46" name="toctree-checkbox-46" role="switch" type="checkbox"/><label for="toctree-checkbox-46"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
@@ -791,7 +791,7 @@ height="800px" width="100%" frameBorder="0"></iframe><dl>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># FIELD:</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">with_source_field</span><span class="p">(</span><span class="n">Field</span><span class="o">.</span><span class="n">AUTHKW_NORM</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">having_items_in_top</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">having_items_in_top</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">having_items_ordered_by</span><span class="p">(</span><span class="n">ItemOrderBy</span><span class="o">.</span><span class="n">OCC</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">having_item_occurrences_between</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">having_item_citations_between</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
@@ -802,20 +802,20 @@ height="800px" width="100%" frameBorder="0"></iframe><dl>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># NETWORK:</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">using_spring_layout_k</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">using_spring_layout_iterations</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">using_spring_layout_iterations</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">using_spring_layout_seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">using_edge_colors</span><span class="p">((</span><span class="s2">&quot;#7793a5&quot;</span><span class="p">,</span> <span class="s2">&quot;#7793a5&quot;</span><span class="p">,</span> <span class="s2">&quot;#7793a5&quot;</span><span class="p">,</span> <span class="s2">&quot;#7793a5&quot;</span><span class="p">))</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">using_edge_similarity_threshold</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">using_edge_similarity_threshold</span><span class="p">(</span><span class="mf">0.20</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">using_edge_top_n</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">using_edge_widths</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">using_edge_widths</span><span class="p">((</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">))</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">using_node_colors</span><span class="p">((</span><span class="s2">&quot;#7793a5&quot;</span><span class="p">,))</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">using_node_size_range</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">70</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">using_node_size_range</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">90</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="c1">#</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">using_node_n_labels</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">using_textfont_opacity_range</span><span class="p">(</span><span class="mf">0.35</span><span class="p">,</span> <span class="mf">1.00</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">using_textfont_size_range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">using_node_n_labels</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">using_textfont_opacity_range</span><span class="p">(</span><span class="mf">0.75</span><span class="p">,</span> <span class="mf">1.00</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">using_textfont_size_range</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">using_xaxes_range</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">using_yaxes_range</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
