@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=a430633e" />
     
     
 
@@ -781,6 +782,93 @@
         <article role="main" id="furo-main-content">
           <section id="itemsbycluster">
 <span id="module-tm2p.synthes.netw.coupl.items_by_cluster"></span><h1>ItemsByCluster<a class="headerlink" href="#itemsbycluster" title="Link to this heading">¶</a></h1>
+<ul class="simple">
+<li><p><strong>CouplingUnit.AUTH</strong></p></li>
+</ul>
+<dl>
+<dt>Smoke tests:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">tm2p</span><span class="w"> </span><span class="kn">import</span> <span class="n">CouplingUnit</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">tm2p.synthes.netw.coupl</span><span class="w"> </span><span class="kn">import</span> <span class="n">ItemsByCluster</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="p">(</span>
+<span class="gp">... </span>    <span class="n">ItemsByCluster</span><span class="p">()</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># COUPLING UNIT:</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">with_coupling_unit</span><span class="p">(</span><span class="n">CouplingUnit</span><span class="o">.</span><span class="n">AUTH</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">having_items_in_top</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">having_items_in</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">having_citation_threshold</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">having_occurrence_threshold</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># COUNTERS:</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">using_counters</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># CLUSTERING:</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">using_clustering_algorithm_or_dict</span><span class="p">(</span><span class="s2">&quot;louvain&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># DATABASE:</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_root_directory</span><span class="p">(</span><span class="s2">&quot;tests/wos/&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_years_range</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_citations_range</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_records_match</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>  
+<span class="go">                       0  ...                     7</span>
+<span class="go">0       Xia YF 004:00008  ...   Currie WL 002:00061</span>
+<span class="go">1  von Solms J 002:00029  ...  Seddon JJM 002:00061</span>
+<span class="go">2   Lokanan ME 002:00021  ...</span>
+<span class="go">3     Becker M 002:00017  ...</span>
+<span class="go">4    Kshetri N 002:00006  ...</span>
+
+<span class="go">[5 rows x 8 columns]</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<ul class="simple">
+<li><p><strong>CouplingUnit.CTRY</strong></p></li>
+</ul>
+<dl>
+<dt>Smoke tests:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">tm2p</span><span class="w"> </span><span class="kn">import</span> <span class="n">CouplingUnit</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">tm2p.synthes.netw.coupl</span><span class="w"> </span><span class="kn">import</span> <span class="n">ItemsByCluster</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="p">(</span>
+<span class="gp">... </span>    <span class="n">ItemsByCluster</span><span class="p">()</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># COUPLING UNIT:</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">with_coupling_unit</span><span class="p">(</span><span class="n">CouplingUnit</span><span class="o">.</span><span class="n">CTRY</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">having_items_in_top</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">having_items_in</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">having_citation_threshold</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">having_occurrence_threshold</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># COUNTERS:</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">using_counters</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># CLUSTERING:</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">using_clustering_algorithm_or_dict</span><span class="p">(</span><span class="s2">&quot;louvain&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># DATABASE:</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_root_directory</span><span class="p">(</span><span class="s2">&quot;tests/wos/&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_years_range</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_citations_range</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_records_match</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>  
+<span class="go">     0    1    2    3</span>
+<span class="go">0  IND  CHN  USA  FRA</span>
+<span class="go">1  CAN  GBR  ITA  NLD</span>
+<span class="go">2  UKR  AUS  TWN  BEL</span>
+<span class="go">3  JPN  DEU  ESP  KOR</span>
+<span class="go">4  IDN  LUX  SGP  IRL</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<ul class="simple">
+<li><p><strong>CouplingUnit.DOC</strong></p></li>
+</ul>
 <dl>
 <dt>Smoke tests:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">tm2p</span><span class="w"> </span><span class="kn">import</span> <span class="n">CouplingUnit</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">tm2p.synthes.netw.coupl</span><span class="w"> </span><span class="kn">import</span> <span class="n">ItemsByCluster</span>
@@ -801,7 +889,7 @@
 <span class="gp">... </span>    <span class="o">.</span><span class="n">using_clustering_algorithm_or_dict</span><span class="p">(</span><span class="s2">&quot;louvain&quot;</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># DATABASE:</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">where_root_directory</span><span class="p">(</span><span class="s2">&quot;examples/scopus/&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_root_directory</span><span class="p">(</span><span class="s2">&quot;tests/wos/&quot;</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_years_range</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_citations_range</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">where_records_match</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
@@ -809,40 +897,29 @@
 <span class="gp">... </span>    <span class="o">.</span><span class="n">run</span><span class="p">()</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>  
+<span class="go">                                                 0  ...                                            3</span>
+<span class="go">0     Arner DW, 2020, EUR BUS ORGAN LAW RE 1:00338  ...      Mirza N, 2023, ECON ANAL POLICY 1:00112</span>
+<span class="go">1        Zetzsche DA, 2020, J FINANC REGUL 1:00222  ...        Muganyi T, 2022, FINANC INNOV 1:00109</span>
+<span class="go">2         Omarova ST, 2020, J FINANC REGUL 1:00065  ...    Sangwan V, 2019, STUD ECON FINANC 1:00082</span>
+<span class="go">3  Zetzsche DA, 2022, EUR BUS ORGAN LAW RE 1:00051  ...  Takeda A, 2021, INT J TECHNOL MANAG 1:00066</span>
+<span class="go">4     Arner DW, 2019, EUR BUS ORGAN LAW RE 1:00045  ...        Nasir A, 2021, APPL SCI-BASEL 1:00040</span>
+
+<span class="go">[5 rows x 4 columns]</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="p">(</span>
+</dd>
+</dl>
+<ul class="simple">
+<li><p><strong>CouplingUnit.SRC</strong></p></li>
+</ul>
+<dl>
+<dt>Smoke tests:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">tm2p</span><span class="w"> </span><span class="kn">import</span> <span class="n">CouplingUnit</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">tm2p.synthes.netw.coupl</span><span class="w"> </span><span class="kn">import</span> <span class="n">ItemsByCluster</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="p">(</span>
 <span class="gp">... </span>    <span class="n">ItemsByCluster</span><span class="p">()</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># COUPLING UNIT:</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">with_coupling_unit</span><span class="p">(</span><span class="n">CouplingUnit</span><span class="o">.</span><span class="n">DOC</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">having_items_in_top</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">having_items_in</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">having_citation_threshold</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">having_occurrence_threshold</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="c1">#</span>
-<span class="gp">... </span>    <span class="c1"># COUNTERS:</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">using_counters</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="c1">#</span>
-<span class="gp">... </span>    <span class="c1"># CLUSTERING:</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">using_clustering_algorithm_or_dict</span><span class="p">(</span><span class="s2">&quot;louvain&quot;</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="c1">#</span>
-<span class="gp">... </span>    <span class="c1"># DATABASE:</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">where_root_directory</span><span class="p">(</span><span class="s2">&quot;examples/scopus/&quot;</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_years_range</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_citations_range</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">where_records_match</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="c1">#</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">run</span><span class="p">()</span>
-<span class="gp">... </span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>  
-</pre></div>
-</div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="p">(</span>
-<span class="gp">... </span>    <span class="n">ItemsByCluster</span><span class="p">()</span>
-<span class="gp">... </span>    <span class="c1">#</span>
-<span class="gp">... </span>    <span class="c1"># COUPLING UNIT:</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">with_coupling_unit</span><span class="p">(</span><span class="n">CouplingUnit</span><span class="o">.</span><span class="n">AUTH</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">with_coupling_unit</span><span class="p">(</span><span class="n">CouplingUnit</span><span class="o">.</span><span class="n">SRC</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">having_items_in_top</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">having_items_in</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">having_citation_threshold</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -855,7 +932,7 @@
 <span class="gp">... </span>    <span class="o">.</span><span class="n">using_clustering_algorithm_or_dict</span><span class="p">(</span><span class="s2">&quot;louvain&quot;</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># DATABASE:</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">where_root_directory</span><span class="p">(</span><span class="s2">&quot;examples/scopus/&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_root_directory</span><span class="p">(</span><span class="s2">&quot;tests/wos/&quot;</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_years_range</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_citations_range</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">where_records_match</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
@@ -863,26 +940,42 @@
 <span class="gp">... </span>    <span class="o">.</span><span class="n">run</span><span class="p">()</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>  
+<span class="go">                                     0  ...                              2</span>
+<span class="go">0  J FINANC REGUL COMPLIANCE 005:00014  ...      INT J LAW MANAG 002:00012</span>
+<span class="go">1                  J TECHNOL 004:00110  ...  J ISLAM ACC BUS RES 002:00001</span>
+<span class="go">2      J MONEY LAUND CONTROL 003:00040  ...</span>
+<span class="go">3            FINANC RES LETT 003:00002  ...</span>
+<span class="go">4        INT REV FINANC ANAL 002:00030  ...</span>
+
+<span class="go">[5 rows x 3 columns]</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="p">(</span>
+</dd>
+</dl>
+<ul class="simple">
+<li><p><strong>CouplingUnit.ORG</strong></p></li>
+</ul>
+<dl>
+<dt>Smoke tests:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">tm2p</span><span class="w"> </span><span class="kn">import</span> <span class="n">CouplingUnit</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">tm2p.synthes.netw.coupl</span><span class="w"> </span><span class="kn">import</span> <span class="n">ItemsByCluster</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="p">(</span>
 <span class="gp">... </span>    <span class="n">ItemsByCluster</span><span class="p">()</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># COUPLING UNIT:</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">with_coupling_unit</span><span class="p">(</span><span class="n">CouplingUnit</span><span class="o">.</span><span class="n">AUTH</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">with_coupling_unit</span><span class="p">(</span><span class="n">CouplingUnit</span><span class="o">.</span><span class="n">ORG</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">having_items_in_top</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">having_items_in</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">having_citation_threshold</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">having_occurrence_threshold</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># COUNTERS:</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">using_counters</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">using_counters</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># CLUSTERING:</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">using_clustering_algorithm_or_dict</span><span class="p">(</span><span class="s2">&quot;louvain&quot;</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># DATABASE:</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">where_root_directory</span><span class="p">(</span><span class="s2">&quot;examples/scopus/&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_root_directory</span><span class="p">(</span><span class="s2">&quot;tests/wos/&quot;</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_years_range</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_citations_range</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">where_records_match</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>

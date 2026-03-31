@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=a430633e" />
     
     
 
@@ -781,16 +782,112 @@
         <article role="main" id="furo-main-content">
           <section id="network-plot">
 <span id="module-tm2p.synthes.netw.coupl.network_plot"></span><h1>Network Plot<a class="headerlink" href="#network-plot" title="Link to this heading">¶</a></h1>
-<iframe src="../_generated/px.synthes.netw.coupl.network_plot_1.html"
-height="800px" width="100%" frameBorder="0"></iframe>
-
-<iframe src="../_generated/px.synthes.netw.coupl.network_plot_2.html"
-height="800px" width="100%" frameBorder="0"></iframe>
-
-<iframe src="../_generated/px.synthes.netw.coupl.network_plot_3.html"
-height="800px" width="100%" frameBorder="0"></iframe>
-
-<iframe src="../_generated/px.synthes.netw.coupl.network_plot_4.html"
+<ul class="simple">
+<li><p><strong>CouplingUnit.AUTH</strong></p></li>
+</ul>
+<iframe src="../_generated/px.synthes.netw.coupl.network_plot_auth.html"
+height="800px" width="100%" frameBorder="0"></iframe><dl>
+<dt>Smoke tests:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">tm2p</span><span class="w"> </span><span class="kn">import</span> <span class="n">CouplingUnit</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">tm2p.synthes.netw.coupl</span><span class="w"> </span><span class="kn">import</span> <span class="n">NetworkPlot</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span> <span class="o">=</span> <span class="p">(</span>
+<span class="gp">... </span>    <span class="n">NetworkPlot</span><span class="p">()</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># COUPLING UNIT:</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">with_coupling_unit</span><span class="p">(</span><span class="n">CouplingUnit</span><span class="o">.</span><span class="n">AUTH</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">having_items_in_top</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">having_items_in</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">having_citation_threshold</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">having_occurrence_threshold</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># COUNTERS:</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">using_counters</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># CLUSTERING:</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">using_clustering_algorithm_or_dict</span><span class="p">(</span><span class="s2">&quot;louvain&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># NETWORK:</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">using_spring_layout_k</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">using_spring_layout_iterations</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">using_spring_layout_seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">using_edge_colors</span><span class="p">((</span><span class="s2">&quot;#7793a5&quot;</span><span class="p">,))</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">using_edge_width_range</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">using_node_size_range</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">70</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">using_textfont_opacity_range</span><span class="p">(</span><span class="mf">0.35</span><span class="p">,</span> <span class="mf">1.00</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">using_textfont_size_range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">using_xaxes_range</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">using_yaxes_range</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">using_axes_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># DATABASE:</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_root_directory</span><span class="p">(</span><span class="s2">&quot;tests/wos/&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_years_range</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_citations_range</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_records_match</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="s2">&quot;docsrc/_generated/px.synthes.netw.coupl.network_plot_auth.html&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<ul class="simple">
+<li><p><strong>CouplingUnit.CTRY</strong></p></li>
+</ul>
+<iframe src="../_generated/px.synthes.netw.coupl.network_plot_ctry.html"
+height="800px" width="100%" frameBorder="0"></iframe><dl>
+<dt>Smoke tests:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">tm2p</span><span class="w"> </span><span class="kn">import</span> <span class="n">CouplingUnit</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">tm2p.synthes.netw.coupl</span><span class="w"> </span><span class="kn">import</span> <span class="n">NetworkPlot</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span> <span class="o">=</span> <span class="p">(</span>
+<span class="gp">... </span>    <span class="n">NetworkPlot</span><span class="p">()</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># COUPLING UNIT:</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">with_coupling_unit</span><span class="p">(</span><span class="n">CouplingUnit</span><span class="o">.</span><span class="n">CTRY</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">having_items_in_top</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">having_items_in</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">having_citation_threshold</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">having_occurrence_threshold</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># COUNTERS:</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">using_counters</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># CLUSTERING:</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">using_clustering_algorithm_or_dict</span><span class="p">(</span><span class="s2">&quot;louvain&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># NETWORK:</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">using_spring_layout_k</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">using_spring_layout_iterations</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">using_spring_layout_seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">using_edge_colors</span><span class="p">((</span><span class="s2">&quot;#7793a5&quot;</span><span class="p">,))</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">using_edge_width_range</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">using_node_size_range</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">70</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">using_textfont_opacity_range</span><span class="p">(</span><span class="mf">0.35</span><span class="p">,</span> <span class="mf">1.00</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">using_textfont_size_range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">using_xaxes_range</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">using_yaxes_range</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">using_axes_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># DATABASE:</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_root_directory</span><span class="p">(</span><span class="s2">&quot;tests/wos/&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_years_range</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_citations_range</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_records_match</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="s2">&quot;docsrc/_generated/px.synthes.netw.coupl.network_plot_ctry.html&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<ul class="simple">
+<li><p><strong>CouplingUnit.DOC</strong></p></li>
+</ul>
+<iframe src="../_generated/px.synthes.netw.coupl.network_plot_doc.html"
 height="800px" width="100%" frameBorder="0"></iframe><dl>
 <dt>Smoke tests:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">tm2p</span><span class="w"> </span><span class="kn">import</span> <span class="n">CouplingUnit</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">tm2p.synthes.netw.coupl</span><span class="w"> </span><span class="kn">import</span> <span class="n">NetworkPlot</span>
@@ -826,63 +923,30 @@ height="800px" width="100%" frameBorder="0"></iframe><dl>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">using_axes_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># DATABASE:</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">where_root_directory</span><span class="p">(</span><span class="s2">&quot;examples/scopus/&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_root_directory</span><span class="p">(</span><span class="s2">&quot;tests/wos/&quot;</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_years_range</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_citations_range</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">where_records_match</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">run</span><span class="p">()</span>
 <span class="gp">... </span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="s2">&quot;docsrc/_generated/px.synthes.netw.coupl.network_plot_1.html&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="s2">&quot;docsrc/_generated/px.synthes.netw.coupl.network_plot_doc.html&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span> <span class="o">=</span> <span class="p">(</span>
+</dd>
+</dl>
+<ul class="simple">
+<li><p><strong>CouplingUnit.ORG</strong></p></li>
+</ul>
+<iframe src="../_generated/px.synthes.netw.coupl.network_plot_org.html"
+height="800px" width="100%" frameBorder="0"></iframe><dl>
+<dt>Smoke tests:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">tm2p</span><span class="w"> </span><span class="kn">import</span> <span class="n">CouplingUnit</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">tm2p.synthes.netw.coupl</span><span class="w"> </span><span class="kn">import</span> <span class="n">NetworkPlot</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span> <span class="o">=</span> <span class="p">(</span>
 <span class="gp">... </span>    <span class="n">NetworkPlot</span><span class="p">()</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># COUPLING UNIT:</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">with_coupling_unit</span><span class="p">(</span><span class="n">CouplingUnit</span><span class="o">.</span><span class="n">DOC</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">having_items_in_top</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">having_items_in</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">having_citation_threshold</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">having_occurrence_threshold</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="c1">#</span>
-<span class="gp">... </span>    <span class="c1"># COUNTERS:</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">using_counters</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="c1">#</span>
-<span class="gp">... </span>    <span class="c1"># CLUSTERING:</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">using_clustering_algorithm_or_dict</span><span class="p">(</span><span class="s2">&quot;louvain&quot;</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="c1">#</span>
-<span class="gp">... </span>    <span class="c1"># NETWORK:</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">using_spring_layout_k</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">using_spring_layout_iterations</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">using_spring_layout_seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="c1">#</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">using_edge_colors</span><span class="p">((</span><span class="s2">&quot;#7793a5&quot;</span><span class="p">,))</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">using_edge_width_range</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">using_node_size_range</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">70</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">using_textfont_opacity_range</span><span class="p">(</span><span class="mf">0.35</span><span class="p">,</span> <span class="mf">1.00</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">using_textfont_size_range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="c1">#</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">using_xaxes_range</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">using_yaxes_range</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">using_axes_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="c1">#</span>
-<span class="gp">... </span>    <span class="c1"># DATABASE:</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">where_root_directory</span><span class="p">(</span><span class="s2">&quot;examples/scopus/&quot;</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_years_range</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_citations_range</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">where_records_match</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="c1">#</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">run</span><span class="p">()</span>
-<span class="gp">... </span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="s2">&quot;docsrc/_generated/px.synthes.netw.coupl.network_plot_2.html&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span> <span class="o">=</span> <span class="p">(</span>
-<span class="gp">... </span>    <span class="n">NetworkPlot</span><span class="p">()</span>
-<span class="gp">... </span>    <span class="c1">#</span>
-<span class="gp">... </span>    <span class="c1"># COUPLING UNIT:</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">with_coupling_unit</span><span class="p">(</span><span class="n">CouplingUnit</span><span class="o">.</span><span class="n">AUTH</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">with_coupling_unit</span><span class="p">(</span><span class="n">CouplingUnit</span><span class="o">.</span><span class="n">ORG</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">having_items_in_top</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">having_items_in</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">having_citation_threshold</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -910,61 +974,64 @@ height="800px" width="100%" frameBorder="0"></iframe><dl>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">using_axes_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># DATABASE:</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">where_root_directory</span><span class="p">(</span><span class="s2">&quot;examples/scopus/&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_root_directory</span><span class="p">(</span><span class="s2">&quot;tests/wos/&quot;</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_years_range</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_citations_range</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">where_records_match</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">run</span><span class="p">()</span>
 <span class="gp">... </span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="s2">&quot;docsrc/_generated/px.synthes.netw.coupl.network_plot_3.html&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span> <span class="o">=</span> <span class="p">(</span>
-<span class="gp">... </span>    <span class="n">NetworkPlot</span><span class="p">()</span>
-<span class="gp">... </span>    <span class="c1">#</span>
-<span class="gp">... </span>    <span class="c1"># COUPLING UNIT:</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">with_coupling_unit</span><span class="p">(</span><span class="n">CouplingUnit</span><span class="o">.</span><span class="n">AUTH</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">having_items_in_top</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">having_items_in</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">having_citation_threshold</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">having_occurrence_threshold</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="c1">#</span>
-<span class="gp">... </span>    <span class="c1"># COUNTERS:</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">using_counters</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="c1">#</span>
-<span class="gp">... </span>    <span class="c1"># CLUSTERING:</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">using_clustering_algorithm_or_dict</span><span class="p">(</span><span class="s2">&quot;louvain&quot;</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="c1">#</span>
-<span class="gp">... </span>    <span class="c1"># NETWORK:</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">using_spring_layout_k</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">using_spring_layout_iterations</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">using_spring_layout_seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="c1">#</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">using_edge_colors</span><span class="p">((</span><span class="s2">&quot;#7793a5&quot;</span><span class="p">,))</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">using_edge_width_range</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">using_node_size_range</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">70</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">using_textfont_opacity_range</span><span class="p">(</span><span class="mf">0.35</span><span class="p">,</span> <span class="mf">1.00</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">using_textfont_size_range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="c1">#</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">using_xaxes_range</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">using_yaxes_range</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">using_axes_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="c1">#</span>
-<span class="gp">... </span>    <span class="c1"># DATABASE:</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">where_root_directory</span><span class="p">(</span><span class="s2">&quot;examples/scopus/&quot;</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_years_range</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_citations_range</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">where_records_match</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="c1">#</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">run</span><span class="p">()</span>
-<span class="gp">... </span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="s2">&quot;docsrc/_generated/px.synthes.netw.coupl.network_plot_4.html&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="s2">&quot;docsrc/_generated/px.synthes.netw.coupl.network_plot_org.html&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd>
 </dl>
-</section>
+<ul class="simple">
+<li><p><strong>CouplingUnit.SRC</strong></p></li>
+</ul>
+<iframe src="../_generated/px.synthes.netw.coupl.network_plot_src.html"
+height="800px" width="100%" frameBorder="0"></iframe>
+
+>>> fig = (
+...     NetworkPlot()
+...     #
+...     # COUPLING UNIT:
+...     .with_coupling_unit(CouplingUnit.SRC)
+...     .having_items_in_top(30)
+...     .having_items_in(None)
+...     .having_citation_threshold(0)
+...     .having_occurrence_threshold(2)
+...     #
+...     # COUNTERS:
+...     .using_counters(False)
+...     #
+...     # CLUSTERING:
+...     .using_clustering_algorithm_or_dict("louvain")
+...     #
+...     # NETWORK:
+...     .using_spring_layout_k(None)
+...     .using_spring_layout_iterations(30)
+...     .using_spring_layout_seed(0)
+...     #
+...     .using_edge_colors(("#7793a5",))
+...     .using_edge_width_range(0.8, 3.0)
+...     .using_node_size_range(30, 70)
+...     .using_textfont_opacity_range(0.35, 1.00)
+...     .using_textfont_size_range(10, 20)
+...     #
+...     .using_xaxes_range(None, None)
+...     .using_yaxes_range(None, None)
+...     .using_axes_visible(False)
+...     #
+...     # DATABASE:
+...     .where_root_directory("tests/wos/")
+...     .where_record_years_range(None, None)
+...     .where_record_citations_range(None, None)
+...     .where_records_match(None)
+...     #
+...     .run()
+... )
+>>> fig.write_html("docsrc/_generated/px.synthes.netw.coupl.network_plot_src.html")</section>
 
         </article>
       </div>

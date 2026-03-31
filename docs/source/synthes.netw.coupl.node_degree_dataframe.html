@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=a430633e" />
     
     
 
@@ -781,6 +782,47 @@
         <article role="main" id="furo-main-content">
           <section id="network-degree-frame">
 <span id="module-tm2p.synthes.netw.coupl.node_degree_dataframe"></span><h1>Network Degree Frame<a class="headerlink" href="#network-degree-frame" title="Link to this heading">¶</a></h1>
+<ul class="simple">
+<li><p><strong>CouplingUnit.AUTH</strong></p></li>
+</ul>
+<dl>
+<dt>Smoke tests:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">tm2p</span><span class="w"> </span><span class="kn">import</span> <span class="n">CouplingUnit</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">tm2p.synthes.netw.coupl</span><span class="w"> </span><span class="kn">import</span> <span class="n">NodeDegreeDataFrame</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="p">(</span>
+<span class="gp">... </span>    <span class="n">NodeDegreeDataFrame</span><span class="p">()</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># COUPLING UNIT:</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">with_coupling_unit</span><span class="p">(</span><span class="n">CouplingUnit</span><span class="o">.</span><span class="n">AUTH</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">having_items_in_top</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">having_items_in</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">having_citation_threshold</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">having_occurrence_threshold</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># COUNTERS:</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">using_counters</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># DATABASE:</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_root_directory</span><span class="p">(</span><span class="s2">&quot;tests/wos/&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_years_range</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_citations_range</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_records_match</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>  
+<span class="go">                     NAME  DEGREE</span>
+<span class="go">0      Becker M 002:00017      19</span>
+<span class="go">1  Miglionico A 002:00011      19</span>
+<span class="go">2        Xia YF 004:00008      18</span>
+<span class="go">3        Shi HY 002:00004      18</span>
+<span class="go">4        Shi ZX 002:00003      18</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<ul class="simple">
+<li><p><strong>CouplingUnit.CTRY</strong></p></li>
+</ul>
 <dl>
 <dt>Smoke tests:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">tm2p</span><span class="w"> </span><span class="kn">import</span> <span class="n">CouplingUnit</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">tm2p.synthes.netw.coupl</span><span class="w"> </span><span class="kn">import</span> <span class="n">NodeDegreeDataFrame</span>
@@ -798,7 +840,7 @@
 <span class="gp">... </span>    <span class="o">.</span><span class="n">using_counters</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># DATABASE:</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">where_root_directory</span><span class="p">(</span><span class="s2">&quot;examples/scopus/&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_root_directory</span><span class="p">(</span><span class="s2">&quot;tests/wos/&quot;</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_years_range</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_citations_range</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">where_records_match</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
@@ -806,14 +848,94 @@
 <span class="gp">... </span>    <span class="o">.</span><span class="n">run</span><span class="p">()</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>  
-<span class="go">   NODE                                         NAME  DEGREE</span>
-<span class="go">0     0        Bollaert, 2021, J CORP FINANC 1:00393       4</span>
-<span class="go">1     1            Cai, 2018, ACCOUNT FINANC 1:00251       4</span>
-<span class="go">2     2             Gomber, 2017, J BUS ECON 1:01152       3</span>
-<span class="go">3     3               Haddad, 2019, BUS ECON 1:00530       3</span>
-<span class="go">4     4  Belanche, 2019, IND MANAG DATA SYST 1:00605       2</span>
+<span class="go">                                           NAME  DEGREE</span>
+<span class="go">0      Omarova ST, 2020, J FINANC REGUL 1:00065      17</span>
+<span class="go">1  Arner DW, 2020, EUR BUS ORGAN LAW RE 1:00338      15</span>
+<span class="go">2     Sangwan V, 2019, STUD ECON FINANC 1:00082      15</span>
+<span class="go">3               Fast V, 2023, J TECHNOL 1:00040      15</span>
+<span class="go">4   Anagnostopoulos I, 2018, J ECON BUS 1:00284      14</span>
 </pre></div>
 </div>
+</dd>
+</dl>
+<ul class="simple">
+<li><p><strong>CouplingUnit.DOC</strong></p></li>
+</ul>
+<dl>
+<dt>Smoke tests:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">tm2p</span><span class="w"> </span><span class="kn">import</span> <span class="n">CouplingUnit</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">tm2p.synthes.netw.coupl</span><span class="w"> </span><span class="kn">import</span> <span class="n">NodeDegreeDataFrame</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="p">(</span>
+<span class="gp">... </span>    <span class="n">NodeDegreeDataFrame</span><span class="p">()</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># COUPLING UNIT:</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">with_coupling_unit</span><span class="p">(</span><span class="n">CouplingUnit</span><span class="o">.</span><span class="n">DOC</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">having_items_in_top</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">having_items_in</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">having_citation_threshold</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">having_occurrence_threshold</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># COUNTERS:</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">using_counters</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># DATABASE:</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_root_directory</span><span class="p">(</span><span class="s2">&quot;tests/wos/&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_years_range</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_citations_range</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_records_match</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>  
+<span class="go">                                           NAME  DEGREE</span>
+<span class="go">0      Omarova ST, 2020, J FINANC REGUL 1:00065      17</span>
+<span class="go">1  Arner DW, 2020, EUR BUS ORGAN LAW RE 1:00338      15</span>
+<span class="go">2     Sangwan V, 2019, STUD ECON FINANC 1:00082      15</span>
+<span class="go">3               Fast V, 2023, J TECHNOL 1:00040      15</span>
+<span class="go">4   Anagnostopoulos I, 2018, J ECON BUS 1:00284      14</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<ul class="simple">
+<li><p><strong>CouplingUnit.ORG</strong></p></li>
+</ul>
+<dl>
+<dt>Smoke tests:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">tm2p</span><span class="w"> </span><span class="kn">import</span> <span class="n">CouplingUnit</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">tm2p.synthes.netw.coupl</span><span class="w"> </span><span class="kn">import</span> <span class="n">NodeDegreeDataFrame</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="p">(</span>
+<span class="gp">... </span>    <span class="n">NodeDegreeDataFrame</span><span class="p">()</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># COUPLING UNIT:</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">with_coupling_unit</span><span class="p">(</span><span class="n">CouplingUnit</span><span class="o">.</span><span class="n">DOC</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">having_items_in_top</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">having_items_in</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">having_citation_threshold</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">having_occurrence_threshold</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># COUNTERS:</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">using_counters</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># DATABASE:</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_root_directory</span><span class="p">(</span><span class="s2">&quot;tests/wos/&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_years_range</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_citations_range</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_records_match</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>  
+<span class="go">                                           NAME  DEGREE</span>
+<span class="go">0      Omarova ST, 2020, J FINANC REGUL 1:00065      17</span>
+<span class="go">1  Arner DW, 2020, EUR BUS ORGAN LAW RE 1:00338      15</span>
+<span class="go">2     Sangwan V, 2019, STUD ECON FINANC 1:00082      15</span>
+<span class="go">3               Fast V, 2023, J TECHNOL 1:00040      15</span>
+<span class="go">4   Anagnostopoulos I, 2018, J ECON BUS 1:00284      14</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<ul>
+<li><p><strong>CouplingUnit.SRC</strong></p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="p">(</span>
 <span class="gp">... </span>    <span class="n">NodeDegreeDataFrame</span><span class="p">()</span>
 <span class="gp">... </span>    <span class="c1">#</span>
@@ -828,7 +950,7 @@
 <span class="gp">... </span>    <span class="o">.</span><span class="n">using_counters</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># DATABASE:</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">where_root_directory</span><span class="p">(</span><span class="s2">&quot;examples/scopus/&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_root_directory</span><span class="p">(</span><span class="s2">&quot;tests/wos/&quot;</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_years_range</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_citations_range</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">where_records_match</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
@@ -836,76 +958,16 @@
 <span class="gp">... </span>    <span class="o">.</span><span class="n">run</span><span class="p">()</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>  
-<span class="go">   NODE                                 NAME  DEGREE</span>
-<span class="go">0     0        Bollaert, 2021, J CORP FINANC       4</span>
-<span class="go">1     1            Cai, 2018, ACCOUNT FINANC       4</span>
-<span class="go">2     2             Gomber, 2017, J BUS ECON       3</span>
-<span class="go">3     3               Haddad, 2019, BUS ECON       3</span>
-<span class="go">4     4  Belanche, 2019, IND MANAG DATA SYST       2</span>
+<span class="go">                                   NAME  DEGREE</span>
+<span class="go">0      Omarova ST, 2020, J FINANC REGUL      17</span>
+<span class="go">1  Arner DW, 2020, EUR BUS ORGAN LAW RE      15</span>
+<span class="go">2     Sangwan V, 2019, STUD ECON FINANC      15</span>
+<span class="go">3               Fast V, 2023, J TECHNOL      15</span>
+<span class="go">4   Anagnostopoulos I, 2018, J ECON BUS      14</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="p">(</span>
-<span class="gp">... </span>    <span class="n">NodeDegreeDataFrame</span><span class="p">()</span>
-<span class="gp">... </span>    <span class="c1">#</span>
-<span class="gp">... </span>    <span class="c1"># COUPLING UNIT:</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">with_coupling_unit</span><span class="p">(</span><span class="n">CouplingUnit</span><span class="o">.</span><span class="n">CTRY</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">having_items_in_top</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">having_items_in</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">having_citation_threshold</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">having_occurrence_threshold</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="c1">#</span>
-<span class="gp">... </span>    <span class="c1"># COUNTERS:</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">using_counters</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="c1">#</span>
-<span class="gp">... </span>    <span class="c1"># DATABASE:</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">where_root_directory</span><span class="p">(</span><span class="s2">&quot;examples/scopus/&quot;</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_years_range</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_citations_range</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">where_records_match</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="c1">#</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">run</span><span class="p">()</span>
-<span class="gp">... </span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>  
-<span class="go">   NODE           NAME  DEGREE</span>
-<span class="go">0     0  CHN 045:09715      24</span>
-<span class="go">1     1  GBR 033:06802      17</span>
-<span class="go">2     2  USA 031:09562      17</span>
-<span class="go">3     3  FRA 011:02475      17</span>
-<span class="go">4     4  SAU 007:00748      17</span>
-</pre></div>
-</div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="p">(</span>
-<span class="gp">... </span>    <span class="n">NodeDegreeDataFrame</span><span class="p">()</span>
-<span class="gp">... </span>    <span class="c1">#</span>
-<span class="gp">... </span>    <span class="c1"># COUPLING UNIT:</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">with_coupling_unit</span><span class="p">(</span><span class="n">CouplingUnit</span><span class="o">.</span><span class="n">CTRY</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">having_items_in_top</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">having_items_in</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">having_citation_threshold</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">having_occurrence_threshold</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="c1">#</span>
-<span class="gp">... </span>    <span class="c1"># COUNTERS:</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">using_counters</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="c1">#</span>
-<span class="gp">... </span>    <span class="c1"># DATABASE:</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">where_root_directory</span><span class="p">(</span><span class="s2">&quot;examples/scopus/&quot;</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_years_range</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_citations_range</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">where_records_match</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="c1">#</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">run</span><span class="p">()</span>
-<span class="gp">... </span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>  
-<span class="go">   NODE NAME  DEGREE</span>
-<span class="go">0     0  CHN      24</span>
-<span class="go">1     1  GBR      17</span>
-<span class="go">2     2  USA      17</span>
-<span class="go">3     3  FRA      17</span>
-<span class="go">4     4  SAU      17</span>
-</pre></div>
-</div>
-</dd>
-</dl>
+</li>
+</ul>
 </section>
 
         </article>
