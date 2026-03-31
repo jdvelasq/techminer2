@@ -63,19 +63,19 @@ Smoke test:
                    Number of organizations (1st author)                  168
                    Number of regions                                       5
                    Number of subregions                                   14
-    KEYWORDS       Number of author keywords (norm)                      531
+    KEYWORDS       Number of author keywords (norm)                      533
                    Number of author keywords (raw)                       538
                    Number of index keywords (norm)                       544
                    Number of index keywords (raw)                        546
-                   Number of keywords (norm)                             944
-                   Number of keywords (raw)                              944
+                   Number of keywords (norm)                             946
+                   Number of keywords (raw)                              946
     NLP            Number of SpaCy NP phrases                           4679
                    Number of TextBlob NP phrases                        2837
                    Number of abstract NP phrases (tok)                  4648
-                   Number of title NP phrases (tok)                      481
-                   Number of NP phrases (tok)                           4831
-                   Number of keywords + NP phrases (tok)                 944
-                   Number of keywords + NP phrases (norm)                944
+                   Number of title NP phrases (tok)                      480
+                   Number of NP phrases (tok)                           4833
+                   Number of keywords + NP phrases (tok)                 946
+                   Number of keywords + NP phrases (norm)                946
 
 
 

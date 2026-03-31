@@ -1,5 +1,0 @@
-.. automodule:: tm2p.synthes.topic.components_by_item_dataframe
-     :members:
-     :undoc-members:
-     :show-inheritance:
-

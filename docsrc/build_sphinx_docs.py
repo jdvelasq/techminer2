@@ -21,11 +21,11 @@ def read_package_directories():
     directories = [
         f"{PACKAGE_ROOT}/ingest",
         f"{PACKAGE_ROOT}/refine",
-        f"{PACKAGE_ROOT}/discov",
-        f"{PACKAGE_ROOT}/anal",
-        f"{PACKAGE_ROOT}/innov",
-        f"{PACKAGE_ROOT}/synthes",
-        f"{PACKAGE_ROOT}/rep",
+        f"{PACKAGE_ROOT}/discover",
+        f"{PACKAGE_ROOT}/analyze",
+        f"{PACKAGE_ROOT}/innovate",
+        f"{PACKAGE_ROOT}/synthesize",
+        f"{PACKAGE_ROOT}/report",
     ]
     files = []
     for directory in directories:
@@ -119,6 +119,7 @@ _NAMES: dict[str, str] = {
     "Co occurrence matrix": "Co-occurrence matrix",
     "Cross occurrence matrix": "Cross-occurrence matrix",
     "Tfidf": "TF-IDF",
+    "Co occurrence": "Co-occurrence",
 }
 
 

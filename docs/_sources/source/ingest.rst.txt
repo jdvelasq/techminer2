@@ -8,5 +8,5 @@ Ingest
     ingest.data_source
     ingest.extr
     ingest.oper
-    ingest.rec
+    ingest.records
     ingest.rev

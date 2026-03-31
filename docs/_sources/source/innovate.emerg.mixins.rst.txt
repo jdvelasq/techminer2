@@ -1,0 +1,5 @@
+.. automodule:: tm2p.innovate.emerg.mixins
+     :members:
+     :undoc-members:
+     :show-inheritance:
+
