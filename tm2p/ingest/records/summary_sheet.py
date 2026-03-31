@@ -3,7 +3,7 @@ SummarySheet
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.ingest.rec import SummarySheet
+    >>> from tm2p.ingest.records import SummarySheet
     >>> df = (
     ...     SummarySheet()
     ...     #

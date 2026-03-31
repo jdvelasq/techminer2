@@ -4,7 +4,7 @@ Coverage
 
 Smoke tests:
     >>> from tm2p import Field
-    >>> from tm2p.ingest.rec import Coverage
+    >>> from tm2p.ingest.records import Coverage
     >>> (
     ...     Coverage()
     ...     .with_source_field(Field.AUTHKW_RAW)

@@ -31,7 +31,7 @@ from tm2p._intern import ParamsMixin
 from tm2p._intern.packag_data.templates.load_builtin_template import (
     load_builtin_template,
 )
-from tm2p.ingest.rec import RecordMapping
+from tm2p.ingest.records import RecordMapping
 
 
 class Abstract(

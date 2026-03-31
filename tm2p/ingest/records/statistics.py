@@ -4,7 +4,7 @@ Statistics
 
 Smoke tests:
     >>> from tm2p import Field
-    >>> from tm2p.ingest.rec import Statistics
+    >>> from tm2p.ingest.records import Statistics
     >>> df = (
     ...     Statistics()
     ...     .with_source_field(Field.AUTHKW_RAW)

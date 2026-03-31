@@ -4,7 +4,7 @@ Find records
 
 Smoke tests:
     >>> from tm2p import Field, RecordOrderBy
-    >>> from tm2p.ingest.rec import FindRecords
+    >>> from tm2p.ingest.records import FindRecords
     >>> docs = (
     ...     FindRecords()
     ...     #

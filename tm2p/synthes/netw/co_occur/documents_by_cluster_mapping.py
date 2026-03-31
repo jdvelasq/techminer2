@@ -74,7 +74,7 @@ Smoke tests:
 
 from tm2p import Field
 from tm2p._intern import ParamsMixin
-from tm2p.ingest.rec import RecordViewer
+from tm2p.ingest.records import RecordViewer
 from tm2p.synthes.netw.co_occur.cluster_to_items import ClusterToItems
 
 

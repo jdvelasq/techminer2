@@ -31,7 +31,7 @@ Smoke test:
 
 from tm2p import Field
 from tm2p._intern import ParamsMixin
-from tm2p.ingest.rec.record_mapping import RecordMapping  # type: ignore
+from tm2p.ingest.records.record_mapping import RecordMapping  # type: ignore
 
 __reviewed__ = "2026-01-28"
 

@@ -4,7 +4,7 @@ RecordViewer
 
 Smoke tests:
     >>> from tm2p import Field, RecordOrderBy
-    >>> from tm2p.ingest.rec import RecordViewer
+    >>> from tm2p.ingest.records import RecordViewer
     >>> docs = (
     ...     RecordViewer()
     ...     #
@@ -60,7 +60,7 @@ Smoke tests:
 
 from tm2p._intern import ParamsMixin
 from tm2p._intern.rec_build import dicts_to_strings
-from tm2p.ingest.rec import RecordMapping
+from tm2p.ingest.records import RecordMapping
 
 
 class RecordViewer(ParamsMixin):

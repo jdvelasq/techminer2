@@ -4,7 +4,7 @@ RecordsDataFrame
 
 Smoke tests:
     >>> from tm2p import RecordOrderBy
-    >>> from tm2p.ingest.rec import FilteredRecords
+    >>> from tm2p.ingest.records import FilteredRecords
 
     >>> df = (
     ...     FilteredRecords()
