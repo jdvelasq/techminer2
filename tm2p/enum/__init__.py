@@ -5,6 +5,7 @@ from .correl import Correlation
 from .coupl_unit import CouplingUnit
 from .field import Field
 from .item import ItemOrderBy
+from .node_scaling import NodeScaling
 from .rec import RecordOrderBy
 from .thesaur import ThField, ThFile
 
@@ -16,6 +17,7 @@ __all__ = [
     "CouplingUnit",
     "Field",
     "ItemOrderBy",
+    "NodeScaling",
     "RecordOrderBy",
     "ThField",
     "ThFile",

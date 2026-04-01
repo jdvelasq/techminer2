@@ -9,7 +9,7 @@ Cross-correlation Map
 
 Smoke tests:
     >>> # grey colors: https://www.w3schools.com/colors/colors_shades.asp
-    >>> from tm2p import ItemOrderBy, Field, Correlation
+    >>> from tm2p import ItemOrderBy, Field, Correlation, NodeScaling
     >>> from tm2p.discover.correlation.cross import CorrelationMap
     >>> plot = (
     ...     CorrelationMap()
@@ -27,20 +27,22 @@ Smoke tests:
     ...     #
     ...     .with_correlation_method(Correlation.PEARSON)
     ...     #
-    ...     # NETWORK:
+    ...     # MAP:
     ...     .using_spring_layout_k(None)
-    ...     .using_spring_layout_iterations(30)
+    ...     .using_spring_layout_iterations(100)
     ...     .using_spring_layout_seed(0)
     ...     #
     ...     .using_edge_colors(("#7793a5", "#7793a5", "#7793a5", "#7793a5"))
-    ...     .using_edge_similarity_threshold(0.001)
-    ...     .using_edge_top_n(None)
-    ...     .using_edge_widths((2, 2, 4, 6))
+    ...     .using_edge_widths((1, 1, 2, 3.5))
+    ...     .using_edge_similarity_threshold(0.1)
+    ...     .using_edge_top_n(1000)
+    ...     .using_max_edges_per_node(5)
     ...     #
     ...     .using_node_colors(("#7793a5",))
     ...     .using_node_size_range(30, 70)
+    ...     .using_node_scaling(NodeScaling.SQRT)
     ...     #
-    ...     .using_node_n_labels(5)
+    ...     .using_node_n_labels(10)
     ...     .using_textfont_opacity_range(0.35, 1.00)
     ...     .using_textfont_size_range(10, 20)
     ...     #

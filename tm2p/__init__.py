@@ -6,6 +6,7 @@ from .enum import (
     CouplingUnit,
     Field,
     ItemOrderBy,
+    NodeScaling,
     RecordOrderBy,
     ThField,
 )
@@ -18,6 +19,7 @@ __all__ = [
     "CouplingUnit",
     "Field",
     "ItemOrderBy",
+    "NodeScaling",
     "RecordOrderBy",
     "ThField",
 ]

@@ -14,6 +14,7 @@ from tm2p.enum import (
     CouplingUnit,
     Field,
     ItemOrderBy,
+    NodeScaling,
     RecordOrderBy,
     ThFile,
 )
@@ -142,7 +143,8 @@ class Params:
     edge_colors: Tuple[Any, ...] = ("#b8c6d0",)
     edge_opacity_range: Tuple[float, float] = (0.1, 0.9)
     edge_similarity_threshold: float = 0.0
-    edge_top_n: Optional[int] = None
+    edge_top_n: int = 1000
+    max_edges_per_node: int = 5
     edge_width_range: Tuple[float, float] = (0.5, 0.8)
     edge_widths: Tuple[
         Union[float, int],
@@ -188,6 +190,7 @@ class Params:
     n_chars: int = 100
     n_contexts: int = 10
     node_colors: Tuple[Any, ...] = ("#7793a5", "#465c6b")
+    node_scaling: NodeScaling = NodeScaling.LINEAR
     node_size_range: Tuple[int, int] = (5, 20)
     node_size: int = 10
     node_n_labels: int = 1000

@@ -10,14 +10,14 @@ NetworkMap
 
 Smoke tests:
     >>> # grey colors: https://www.w3schools.com/colors/colors_shades.asp
-    >>> from tm2p import ItemOrderBy, Field, Correlation
+    >>> from tm2p import ItemOrderBy, Field, Correlation, NodeScaling
     >>> from tm2p.discover.correlation.auto import CorrelationMap
     >>> plot = (
     ...     CorrelationMap()
     ...     #
     ...     # FIELD:
     ...     .with_source_field(Field.AUTHKW_NORM)
-    ...     .having_items_in_top(20)
+    ...     .having_items_in_top(30)
     ...     .having_items_ordered_by(ItemOrderBy.OCC)
     ...     .having_item_occurrences_between(None, None)
     ...     .having_item_citations_between(None, None)
@@ -26,18 +26,20 @@ Smoke tests:
     ...     # CORRELATION:
     ...     .with_correlation_method(Correlation.PEARSON)
     ...     #
-    ...     # NETWORK:
+    ...     # MAP:
     ...     .using_spring_layout_k(None)
     ...     .using_spring_layout_iterations(100)
     ...     .using_spring_layout_seed(0)
     ...     #
     ...     .using_edge_colors(("#7793a5", "#7793a5", "#7793a5", "#7793a5"))
+    ...     .using_edge_widths((1.0, 1.0, 2.0, 3.5))
     ...     .using_edge_similarity_threshold(0.20)
-    ...     .using_edge_top_n(None)
-    ...     .using_edge_widths((0.6, 1.0, 2.0, 3.5))
+    ...     .using_edge_top_n(1000)
+    ...     .using_max_edges_per_node(5)
     ...     #
     ...     .using_node_colors(("#7793a5",))
     ...     .using_node_size_range(18, 90)
+    ...     .using_node_scaling(NodeScaling.SQRT)
     ...     #
     ...     .using_node_n_labels(4)
     ...     .using_textfont_opacity_range(0.75, 1.00)
@@ -78,13 +80,13 @@ class CorrelationMap(
 
     def run(self):
 
-        df = Matrix().update(**self.params.__dict__).run()
+        matrix = Matrix().update(**self.params.__dict__).using_counters(True).run()
 
         if self.params.correlation_method != Correlation.COSINE:
-            df = pd.DataFrame(
-                cosine_similarity(df),
-                index=df.index,
-                columns=df.columns,
+            matrix = pd.DataFrame(
+                cosine_similarity(matrix),
+                index=matrix.index,
+                columns=matrix.columns,
             )
 
-        return plot_correl_map(self.params, df)
+        return plot_correl_map(self.params, matrix)

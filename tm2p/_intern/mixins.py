@@ -42,6 +42,7 @@ from tm2p.enum import (
     CouplingUnit,
     Field,
     ItemOrderBy,
+    NodeScaling,
     RecordOrderBy,
     ThFile,
 )
@@ -525,12 +526,20 @@ class ParamsMixin:
         self.params.edge_similarity_threshold = edge_similarity_threshold
         return self
 
-    def using_edge_top_n(self, edge_top_n: Optional[int]) -> Self:
-        edge_top_n = check_optional_positive_int(
+    def using_edge_top_n(self, edge_top_n: int) -> Self:
+        edge_top_n = check_required_positive_int(
             value=edge_top_n,
             param_name="edge_top_n",
         )
         self.params.edge_top_n = edge_top_n
+        return self
+
+    def using_max_edges_per_node(self, max_edges_per_node: int) -> Self:
+        max_edges_per_node = check_required_positive_int(
+            value=max_edges_per_node,
+            param_name="max_edges_per_node",
+        )
+        self.params.max_edges_per_node = max_edges_per_node
         return self
 
     def using_edge_opacity_range(self, min_opacity: float, max_opacity: float) -> Self:
@@ -664,6 +673,10 @@ class ParamsMixin:
             param_name="node_colors",
         )
         self.params.node_colors = node_colors
+        return self
+
+    def using_node_scaling(self, node_scaling: NodeScaling) -> Self:
+        self.params.node_scaling = node_scaling
         return self
 
     def using_node_n_labels(self, node_n_labels: int) -> Self:

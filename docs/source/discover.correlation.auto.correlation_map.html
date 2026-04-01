@@ -800,15 +800,16 @@ height="800px" width="100%" frameBorder="0"></iframe><dl>
 <span class="gp">... </span>    <span class="c1"># CORRELATION:</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">with_correlation_method</span><span class="p">(</span><span class="n">Correlation</span><span class="o">.</span><span class="n">PEARSON</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="c1">#</span>
-<span class="gp">... </span>    <span class="c1"># NETWORK:</span>
+<span class="gp">... </span>    <span class="c1"># MAP:</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">using_spring_layout_k</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">using_spring_layout_iterations</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">using_spring_layout_seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">using_edge_colors</span><span class="p">((</span><span class="s2">&quot;#7793a5&quot;</span><span class="p">,</span> <span class="s2">&quot;#7793a5&quot;</span><span class="p">,</span> <span class="s2">&quot;#7793a5&quot;</span><span class="p">,</span> <span class="s2">&quot;#7793a5&quot;</span><span class="p">))</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">using_edge_widths</span><span class="p">((</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">))</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">using_edge_similarity_threshold</span><span class="p">(</span><span class="mf">0.20</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">using_edge_top_n</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">using_edge_widths</span><span class="p">((</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">))</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">using_edge_top_n</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">using_max_edges_per_node</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">using_node_colors</span><span class="p">((</span><span class="s2">&quot;#7793a5&quot;</span><span class="p">,))</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">using_node_size_range</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">90</span><span class="p">)</span>
