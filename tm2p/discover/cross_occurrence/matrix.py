@@ -4,7 +4,7 @@ Matrix
 
 Smoke tests:
     >>> from tm2p import Field, ItemOrderBy
-    >>> from tm2p.discover.cross_occurrence_matrix import Matrix
+    >>> from tm2p.discover.cross_occurrence import Matrix
     >>> df = (
     ...     Matrix()
     ...     #
@@ -59,7 +59,7 @@ Smoke tests:
 
 
     >>> from tm2p import Field, ItemOrderBy
-    >>> from tm2p.discover.cross_occurrence_matrix import Matrix
+    >>> from tm2p.discover.cross_occurrence import Matrix
     >>> df = (
     ...     Matrix()
     ...     #

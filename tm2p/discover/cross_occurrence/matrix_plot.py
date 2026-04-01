@@ -10,7 +10,7 @@ MatrixPlot
 
 Smoke tests:
     >>> from tm2p import Field, ItemOrderBy
-    >>> from tm2p.discover.cross_occurrence_matrix import MatrixPlot
+    >>> from tm2p.discover.cross_occurrence import MatrixPlot
     >>> fig = (
     ...     MatrixPlot()
     ...     #
@@ -78,7 +78,7 @@ from tm2p._intern.nx import (
     compute_spring_layout_positions,
     plot_nx_graph,
 )
-from tm2p.discover.cross_occurrence_matrix.matrix import Matrix
+from tm2p.discover.cross_occurrence.matrix import Matrix
 
 
 def _create_co_occurrence_matrix(params):

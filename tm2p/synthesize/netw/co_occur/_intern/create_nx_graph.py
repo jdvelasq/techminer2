@@ -1,6 +1,6 @@
 import networkx as nx  # type: ignore
 
-from tm2p.discover.co_occurrence_matrix import Matrix as CoOccurrenceMatrix
+from tm2p.discover.co_occurrence import Matrix as CoOccurrenceMatrix
 from tm2p.synthesize.netw.co_occur._intern.comput_assoc_index import comput_assoc_index
 
 

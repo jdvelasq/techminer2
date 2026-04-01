@@ -132,7 +132,7 @@ Smoke tests:
 
 from tm2p import ItemOrderBy
 from tm2p._intern import ParamsMixin
-from tm2p.discover.cross_occurrence_matrix import Matrix as OCCMatrix
+from tm2p.discover.cross_occurrence import Matrix as OCCMatrix
 
 from .._intern import comput_correl_matrix
 

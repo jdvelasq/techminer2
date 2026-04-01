@@ -9,7 +9,7 @@ Heatmap
 
 Smoke tests:
     >>> from tm2p import Field, ItemOrderBy
-    >>> from tm2p.discover.cross_occurrence_matrix import Heatmap
+    >>> from tm2p.discover.cross_occurrence import Heatmap
     >>> fig = (
     ...     Heatmap()
     ...     #
@@ -55,7 +55,7 @@ Smoke tests:
 
 from tm2p._intern import ParamsMixin
 from tm2p._intern.plot.heatmap import heatmap
-from tm2p.discover.cross_occurrence_matrix.matrix import Matrix
+from tm2p.discover.cross_occurrence.matrix import Matrix
 
 
 class Heatmap(

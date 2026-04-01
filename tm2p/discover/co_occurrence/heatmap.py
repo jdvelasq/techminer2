@@ -9,7 +9,7 @@ Heatmap
 
 Smoke tests:
     >>> from tm2p import Field, ItemOrderBy
-    >>> from tm2p.discover.co_occurrence_matrix import Heatmap
+    >>> from tm2p.discover.co_occurrence import Heatmap
     >>> fig = (
     ...     Heatmap()
     ...     #

@@ -4,7 +4,7 @@ Matrix
 
 Smoke tests:
     >>> from tm2p import Field, ItemOrderBy
-    >>> from tm2p.discover.co_occurrence_matrix import Matrix
+    >>> from tm2p.discover.co_occurrence import Matrix
     >>> df = (
     ...     Matrix()
     ...     #
@@ -54,7 +54,7 @@ Smoke tests:
 
 from tm2p._intern import ParamsMixin
 
-from ..cross_occurrence_matrix.matrix_list import Matrix as BaseMatrix
+from ..cross_occurrence.matrix_list import Matrix as BaseMatrix
 
 
 class Matrix(

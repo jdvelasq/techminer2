@@ -4,7 +4,7 @@ MatrixList
 
 Smoke tests:
     >>> from tm2p import Field, ItemOrderBy
-    >>> from tm2p.discover.cross_occurrence_matrix import MatrixList
+    >>> from tm2p.discover.cross_occurrence import MatrixList
     >>> df = (
     ...     MatrixList()
     ...     #
@@ -56,7 +56,7 @@ Smoke tests:
 
 
     >>> from tm2p import Field, ItemOrderBy
-    >>> from tm2p.discover.cross_occurrence_matrix import MatrixList
+    >>> from tm2p.discover.cross_occurrence import MatrixList
     >>> df = (
     ...     MatrixList()
     ...     #

@@ -9,7 +9,7 @@ MatrixPlot
 
 Smoke tests:
     >>> from tm2p import Field, ItemOrderBy
-    >>> from tm2p.discover.co_occurrence_matrix import MatrixPlot
+    >>> from tm2p.discover.co_occurrence import MatrixPlot
     >>> fig = (
     ...     MatrixPlot()
     ...     #
@@ -58,7 +58,7 @@ Smoke tests:
 
 from tm2p._intern import ParamsMixin
 
-from ..cross_occurrence_matrix.matrix_plot import MatrixPlot as BaseMatrixPlot
+from ..cross_occurrence.matrix_plot import MatrixPlot as BaseMatrixPlot
 
 
 class MatrixPlot(

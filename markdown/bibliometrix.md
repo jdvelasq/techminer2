@@ -9,7 +9,7 @@ Bibliometrix can be used in the command line, or using the Biblioshiny GUI.
 tm2+ implements a system of final user-faced classes that are similar to GUIs and wizards in many well-known sofware. In this way, all information for a specific result is stored in a Python file. This is an example:
 
     >>> from tm2p import Field, ItemOrderBy
-    >>> from tm2p.discover.cross_occurrence_matrix import Matrix
+    >>> from tm2p.discover.cross_occurrence import Matrix
     >>> df = (
     ...     Matrix()
     ...     #

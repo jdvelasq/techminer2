@@ -51,7 +51,7 @@ import plotly.graph_objects as go  # type: ignore
 
 from tm2p import ItemOrderBy
 from tm2p._intern import ParamsMixin
-from tm2p.discover.cross_occurrence_matrix.matrix import Matrix
+from tm2p.discover.cross_occurrence.matrix import Matrix
 
 
 class SankeyPlot(
