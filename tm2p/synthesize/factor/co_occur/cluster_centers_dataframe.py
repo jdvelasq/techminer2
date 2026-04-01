@@ -61,9 +61,7 @@ Smoke test:
 """
 
 from tm2p._intern import ParamsMixin
-from tm2p.synthesize.factor.co_occur.items_by_dimension_data_frame import (
-    terms_by_dimension_frame,
-)
+from tm2p.synthesize.factor.co_occur.items_by_dimension import terms_by_dimension_frame
 from tm2p.synthesize.factor.co_occur.items_to_cluster_mapping import (
     terms_to_cluster_mapping,
 )

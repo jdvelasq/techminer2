@@ -69,7 +69,7 @@ Smoke tests:
 import pandas as pd  # type: ignore
 
 from tm2p._intern import ParamsMixin
-from tm2p.discover.tfidf.matrix import Matrix as TfIdf
+from tm2p.papers.thematic.tfidf.matrix import Matrix as TfIdf
 
 
 class DocumentsByThemeDataFrame(

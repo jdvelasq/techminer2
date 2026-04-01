@@ -66,10 +66,10 @@ Smoke test:
 """
 
 from tm2p._intern import ParamsMixin
-from tm2p.synthesize.factor._intern.manifold_2d_map import manifold_2d_map
-from tm2p.synthesize.factor.tfidf.items_by_dimension_dataframe import (
+from tm2p.papers.thematic.first_order_factors.items_by_dimension import (
     terms_by_dimension_frame,
 )
+from tm2p.synthesize.factor._intern.manifold_2d_map import manifold_2d_map
 
 
 class ItemsByDimensionMap(

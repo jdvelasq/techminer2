@@ -73,7 +73,7 @@ import plotly.express as px  # type: ignore
 import plotly.graph_objs as go  # type: ignore
 
 from tm2p._intern import ParamsMixin
-from tm2p.synthesize.factor.tfidf.items_to_cluster_mapping import (
+from tm2p.papers.thematic.first_order_factors.item_to_cluster import (
     terms_to_cluster_mapping,
 )
 

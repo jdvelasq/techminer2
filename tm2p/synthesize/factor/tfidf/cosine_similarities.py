@@ -55,7 +55,7 @@ from sklearn.metrics.pairwise import (
 )
 
 from tm2p._intern import ParamsMixin
-from tm2p.synthesize.factor.tfidf.items_by_dimension_dataframe import (
+from tm2p.papers.thematic.first_order_factors.items_by_dimension import (
     terms_by_dimension_frame,
 )
 

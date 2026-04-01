@@ -65,9 +65,7 @@ from tm2p._intern import ParamsMixin
 from tm2p.synthesize.factor._intern.terms_to_cluster_mapping import (
     _terms_to_cluster_mapping,
 )
-from tm2p.synthesize.factor.co_occur.items_by_dimension_data_frame import (
-    terms_by_dimension_frame,
-)
+from tm2p.synthesize.factor.co_occur.items_by_dimension import terms_by_dimension_frame
 
 
 class ItemsToClusterMapping(
