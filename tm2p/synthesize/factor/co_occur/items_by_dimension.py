@@ -49,7 +49,9 @@ Smoke test:
 import pandas as pd  # type: ignore
 
 from tm2p._intern import ParamsMixin
-from tm2p.synthesize.netw.co_occur._intern.comput_assoc_index import comput_assoc_index
+from tm2p.portfolio.thematic_structure.co_occurrence.network._intern.comput_assoc_index import (
+    comput_assoc_index,
+)
 
 
 class ItemsByDimensionDataFrame(

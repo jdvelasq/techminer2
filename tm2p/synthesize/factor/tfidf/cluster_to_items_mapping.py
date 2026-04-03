@@ -66,8 +66,8 @@ Smoke test:
 """
 
 from tm2p._intern import ParamsMixin
-from tm2p.papers.thematic.first_order_factors.item_to_cluster import (
-    terms_to_cluster_mapping,
+from tm2p.portfolio.thematic_structure.factorial_analysis.first_order.item_to_cluster import (
+    ItemToCluster,
 )
 
 
@@ -116,7 +116,7 @@ def cluster_to_terms_mapping(
 ):
     """:meta private:"""
 
-    t2c_mapping = terms_to_cluster_mapping(
+    t2c_mapping = ItemToCluster(
         #
         # FUNCTION PARAMS:
         field=field,

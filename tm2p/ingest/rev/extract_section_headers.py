@@ -23,7 +23,7 @@ Smoke test:
 
 from tm2p import Field
 from tm2p._intern import ParamsMixin
-from tm2p.discover.concord import KWICConcordance
+from tm2p.portfolio.thematic_structure.co_occurrence.concordance import KWICConcordance
 
 __reviewed__ = "2026-01-28"
 

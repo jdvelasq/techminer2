@@ -55,8 +55,8 @@ from sklearn.metrics.pairwise import (
 )
 
 from tm2p._intern import ParamsMixin
-from tm2p.papers.thematic.first_order_factors.items_by_dimension import (
-    terms_by_dimension_frame,
+from tm2p.portfolio.thematic_structure.factorial_analysis.first_order.items_by_dimension import (
+    ItemsByDimension,
 )
 
 
@@ -102,7 +102,7 @@ def cosine_similarities(
 ):
     """:meta private:"""
 
-    embedding = terms_by_dimension_frame(
+    embedding = ItemsByDimension(
         #
         # FUNCTION PARAMS:
         field=field,

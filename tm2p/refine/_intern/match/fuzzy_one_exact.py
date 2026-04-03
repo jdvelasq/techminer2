@@ -103,7 +103,7 @@ def _compute_fuzzy_matches(
 
     #
 
-    from tm2p.analyze.item_metrics import Metrics
+    from tm2p.portfolio.performance_mapping.item_metrics import Metrics
 
     metrics = Metrics().update(**params.__dict__).run()
     counters = dict(zip(metrics.index, metrics.COUNTERS))
