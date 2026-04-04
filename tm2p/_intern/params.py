@@ -144,7 +144,8 @@ class Params:
     edge_opacity_range: Tuple[float, float] = (0.1, 0.9)
     edge_similarity_threshold: float = 0.0
     edge_top_n: int = 1000
-    max_edges_per_node: int = 5
+    top_edges_per_node: int = 5
+    min_edges_per_node: int = 5
     edge_width_range: Tuple[float, float] = (0.5, 0.8)
     edge_widths: Tuple[
         Union[float, int],
