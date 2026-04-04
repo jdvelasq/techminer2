@@ -15,7 +15,7 @@ Smoke test:
     ...     random_state=0,
     ... )
     >>> from tm2p import Field, ItemOrderBy
-    >>> from tm2p.papers.thematic.first_order_factors import ItemsByCluster
+    >>> from tm2p.portfolio.thematic_structure.factorial_analysis.first_order import ItemsByCluster
     >>> df = (
     ...     ItemsByCluster()
     ...     #
