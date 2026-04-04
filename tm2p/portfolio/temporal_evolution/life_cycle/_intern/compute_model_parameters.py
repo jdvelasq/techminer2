@@ -1,7 +1,7 @@
 from scipy.optimize import curve_fit  # type: ignore
 
-from tm2p.portfolio.performance_mapping.annual_metrics import Metrics as AnnualMetrics
-from tm2p.portfolio.performance_mapping.annual_metrics.column import (
+from tm2p.portfolio.performance_metrics.annual_metrics import Metrics as AnnualMetrics
+from tm2p.portfolio.performance_metrics.annual_metrics.column import (
     Column as AnnualColumn,
 )
 
