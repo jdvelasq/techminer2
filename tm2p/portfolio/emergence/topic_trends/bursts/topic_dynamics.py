@@ -4,7 +4,7 @@ TopicDynamics
 
 Smoke tests:
     >>> from tm2p import Field, ItemOrderBy
-    >>> from tm2p.analyze.topic_trends.burst.topic_dynamics import TopicDynamics
+    >>> from tm2p.portfolio.emergence.topic_trends.bursts import TopicDynamics
     >>> df = (
     ...     TopicDynamics()
     ...     #
@@ -32,13 +32,13 @@ Smoke tests:
     ...     .run()
     ... )
     >>> df.head()  # doctest: +NORMALIZE_WHITESPACE
-                                    LEVEL  START   END  DURATION  OCC
+                                   LEVEL  START   END  DURATION  OCC
     ITEM
-    fintech companies 014:03279         1   2016  2017         1   14
-    china 033:06419                     1   2021  2023         2   33
-    fintech development 015:03625       1   2021  2022         1   15
-    economic growth 012:01976           1   2022  2024         2   12
-    financial technology 051:09258      1   2023  2023         0   51
+    fintech companies 014:03279        1   2016  2017         1   14
+    china 033:06419                    1   2021  2023         2   33
+    fintech development 015:03625      1   2021  2022         1   15
+    economic growth 012:01976          1   2022  2024         2   12
+    countries 010:02793                1   2022  2024         2   10
 
 
     >>> df = (
@@ -68,14 +68,13 @@ Smoke tests:
     ...     .run()
     ... )
     >>> df.head()  # doctest: +NORMALIZE_WHITESPACE
-                          LEVEL  START   END  DURATION  OCC
+                         LEVEL  START   END  DURATION  OCC
     ITEM
-    fintech companies         1   2016  2017         1   14
-    china                     1   2021  2023         2   33
-    fintech development       1   2021  2022         1   15
-    economic growth           1   2022  2024         2   12
-    financial technology      1   2023  2023         0   51
-
+    fintech companies        1   2016  2017         1   14
+    china                    1   2021  2023         2   33
+    fintech development      1   2021  2022         1   15
+    economic growth          1   2022  2024         2   12
+    countries                1   2022  2024         2   10
 
 """
 
@@ -85,7 +84,7 @@ import numpy as np
 import pandas as pd  # type: ignore
 
 from tm2p._intern import ParamsMixin, remove_counters
-from tm2p.portfolio.performance_mapping.trends import Trends
+from tm2p.portfolio.performance_metrics.trends import Trends
 
 
 class TopicDynamics(
