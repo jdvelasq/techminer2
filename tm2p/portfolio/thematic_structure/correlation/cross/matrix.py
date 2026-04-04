@@ -4,7 +4,7 @@ Matrix
 
 Smoke tests:
     >>> from tm2p import ItemOrderBy, Field, Correlation
-    >>> from tm2p.discover.correlation.cross import Matrix
+    >>> from tm2p.portfolio.thematic_structure.correlation.cross import Matrix
     >>> df = (
     ...     Matrix()
     ...     #
