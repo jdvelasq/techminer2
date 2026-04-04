@@ -4,12 +4,12 @@ TopicDynamicsPlot
 
 .. raw:: html
 
-    <iframe src="../_generated/px.anal.topic_trends.scientopy.topic_dynamics_plot.html"
+    <iframe src="../_generated/px.portfolio.emergence.topic_trends.scientopy.topic_dynamics_plot.html"
     height="600px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
     >>> from tm2p import Field, ItemOrderBy
-    >>> from tm2p.analyze.topic_trends.scientopy.topic_dynamics_plot import TopicDynamicsPlot
+    >>> from tm2p.portfolio.emergence.topic_trends.scientopy.topic_dynamics_plot import TopicDynamicsPlot
     >>> fig = (
     ...     TopicDynamicsPlot()
     ...     #
@@ -38,7 +38,7 @@ Smoke tests:
     ... )
     >>> type(fig).__name__
     'Figure'
-    >>> fig.write_html("docsrc/_generated/px.anal.topic_trends.scientopy.topic_dynamics_plot.html")
+    >>> fig.write_html("docsrc/_generated/px.portfolio.emergence.topic_trends.scientopy.topic_dynamics_plot.html")
 
 
 
