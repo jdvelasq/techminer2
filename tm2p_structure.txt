@@ -1,0 +1,69 @@
+tm2p/
+|-- ingest/
+|-- portfolio/
+|   +-- thematic/
+|       |-- co_occurrence/
+|       |   |-- matrix/
+|       |   |   |-- BubblePlot
+|       |   |   |-- Heatmap
+|       |   |   |-- Matrix
+|       |   |   |-- MatrixList
+|       |   |   +-- MatrixPlot
+|       |   +-- network/
+|       |       |-- ClusterToItems
+|       |       |-- ConceptGridPlot
+|       |       |-- DocumentsByClusterMapping
+|       |       |-- ItemToCluster
+|       |       |-- ItemsByCluster
+|       |       |-- KernelDensityPlot
+|       |       |-- NetworkMetrics
+|       |       |-- NetworkPlot
+|       |       |-- NodeDegreeDataFrame
+|       |       |-- NodeDegreePlot
+|       |       |-- Summary
+|       |       +-- Treemap
+|       |-- correlation/
+|       |   |-- auto/
+|       |   |   |-- CorrelationMap
+|       |   |   |-- Matrix
+|       |   |   +-- MatrixList
+|       |   +-- cross/
+|       |       |-- CorrelationMap
+|       |       |-- Matrix
+|       |       +-- MatrixList
+|       |-- cross_occurrence/
+|       |   +-- matrix/
+|       |       |-- BubblePlot
+|       |       |-- Heatmap
+|       |       |-- Matrix
+|       |       |-- MatrixList
+|       |       +-- MatrixPlot
+|       |-- document_clustering/
+|       |   |-- ClustersToTermsMapping
+|       |   |-- TermOccurrenceByCluster
+|       |   |-- TermsByClusterDataFrame
+|       |   +-- TermsByClusterSummary
+|       |-- factorial_analysis/
+|       |   |-- first_order/
+|       |   |   |-- ClusterCenters
+|       |   |   |-- FactorMap
+|       |   |   |-- ItemToCluster
+|       |   |   |-- ItemsByCluster
+|       |   |   +-- ItemsByDimension
+|       |   +-- second_order/
+|       |       |-- ClusterCenters
+|       |       |-- FactorMap
+|       |       |-- ItemToCluster
+|       |       |-- ItemsByCluster
+|       |       +-- ItemsByDimension
+|       |-- rec/
+|       |-- sankey/
+|       |   +-- SankeyPlot
+|       |-- tfidf/
+|       |   +-- Matrix
+|       +-- topic_modeling/
+|           |-- ClusterToItemsMapping
+|           |-- ComponentsByItemDataFrame
+|           |-- DocumentsByThemeDataFrame
+|           |-- ItemsByClusterDataFrame
+|           +-- ThemeToDocumentsMapping
