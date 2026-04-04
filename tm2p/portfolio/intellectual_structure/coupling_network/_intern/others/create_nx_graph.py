@@ -4,7 +4,7 @@ import numpy as np
 from tm2p import Field
 from tm2p._intern.data_access import load_filtered_main_csv_zip
 from tm2p.enum import CouplingUnit
-from tm2p.portfolio.performance_mapping.item_metrics.metrics import Metrics
+from tm2p.portfolio.performance_metrics.item_metrics.metrics import Metrics
 
 GCS = Field.GCS.value
 LCS = Field.LCS.value
