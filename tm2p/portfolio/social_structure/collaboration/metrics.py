@@ -38,7 +38,7 @@ Smoke tests:
 from tm2p._intern import ParamsMixin
 from tm2p._intern.data_access import load_filtered_main_csv_zip
 from tm2p.enum.column import GCS, LCS, MP, MP_RATIO, OCC, RID, SP
-from tm2p.portfolio.performance_mapping.item_metrics.metrics import (
+from tm2p.portfolio.performance_metrics.item_metrics.metrics import (
     Metrics as PerformanceMetrics,
 )
 
