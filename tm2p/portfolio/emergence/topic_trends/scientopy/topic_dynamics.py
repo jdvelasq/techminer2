@@ -4,7 +4,7 @@ Data Frame
 
 Smoke tests:
     >>> from tm2p import Field, ItemOrderBy
-    >>> from tm2p.analyze.topic_trends.scientopy.topic_dynamics import TopicDynamics
+    >>> from tm2p.portfolio.emergence.topic_trends.scientopy import TopicDynamics
     >>> df = (
     ...     TopicDynamics()
     ...     #
@@ -32,10 +32,9 @@ Smoke tests:
     AUTHKW_NORM
     fintech                      1         1         1  117  25478    0        2016       2024    9   2830.888889           0.0   217.760684          0.0       97       17    10.78               fintech 117:25478      83       34              29.06                  2.0                   17.0
     financial inclusion          2         2         2   17   3823    0        2016       2024    9    424.777778           0.0   224.882353          0.0       17       11     1.89   financial inclusion 017:03823      12        5              29.41                 -1.0                    2.5
-    financial technology         3         5         5   14   2508    0        2016       2024    9    278.666667           0.0   179.142857          0.0       13       10     1.44  financial technology 014:02508      11        3              21.43                  1.0                    1.5
+    financial technology         3         4         4   15   2734    0        2016       2024    9    303.777778           0.0   182.266667          0.0       14       11     1.56  financial technology 015:02734      12        3              20.00                  1.0                    1.5
     green finance                4         3         3   11   2844    0        2021       2024    4    711.000000           0.0   258.545455          0.0       11       10     2.75         green finance 011:02844       6        5              45.45                 -1.5                    2.5
     blockchain                   5         7         7   11   2023    0        2016       2024    9    224.777778           0.0   183.909091          0.0       11        8     1.22            blockchain 011:02023       8        3              27.27                  1.0                    1.5
-
 
 
 """
@@ -79,9 +78,9 @@ Smoke tests:
 # If ``Y_end = 2018`` and ``time_window = 2``, then ``Y_start = 2017``.
 #
 from tm2p._intern import ParamsMixin
-from tm2p.portfolio.performance_mapping.item_metrics import Metrics
+from tm2p.portfolio.performance_metrics.item_metrics import Metrics
 
-from ....performance_mapping.trends import Trends
+from ....performance_metrics.trends import Trends
 
 
 class TopicDynamics(
