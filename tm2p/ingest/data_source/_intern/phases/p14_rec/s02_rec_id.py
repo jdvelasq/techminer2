@@ -3,8 +3,8 @@ import pandas as pd  # type: ignore
 
 from tm2p import Field
 from tm2p._intern.data_access import load_main_csv_zip, save_main_csv_zip
+from tm2p.explore.lemma.authkw import dataframe
 from tm2p.ingest.data_source._intern.phases.get_datab_marker import get_datab_marker
-from tm2p.portfolio.thematic_structure.co_occurrence.lemma.authkw import dataframe
 
 
 def s02_rec_id(root_directory: str) -> int:
