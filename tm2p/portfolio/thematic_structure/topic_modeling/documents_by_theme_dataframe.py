@@ -17,7 +17,7 @@ Smoke tests:
     ...     random_state=0,
     ... )
     >>> from tm2p import ItemOrderBy, Field
-    >>> from tm2p.synthesize.topic_model import DocumentsByThemeDataFrame
+    >>> from tm2p.portfolio.thematic_structure.topic_modeling import DocumentsByThemeDataFrame
     >>> df =(
     ...     DocumentsByThemeDataFrame()
     ...     #
@@ -54,11 +54,11 @@ Smoke tests:
     >>> df.head()
     cluster                                                    0  ...         9
     article                                                       ...
-    Agarwal S, 2020, ASIA-PAC J FINANC STUD, V49, P...  0.016669  ...  0.016672
-    Ajouz M, 2023, CUAD ECON, V46, P189, DOI 10.328...  0.020008  ...  0.020002
-    Al-Sartawi A, 2024, J FINANC REP ACC, DOI 10.11...  0.899964  ...  0.011115
-    Alam N, 2019, FINTECH ISLAM FINANC DIGIT DEV DI...  0.254455  ...  0.272736
-    Aldboush HHH, 2023, INTERN J FINANC STUD, V11, ...  0.261205  ...  0.020002
+    Agarwal S, 2020, ASIA-PAC J FINANC STUD, V49, P...  0.501882  ...  0.020001
+    Ajouz M, 2023, CUAD ECON, V46, P189, DOI 10.328...  0.020006  ...  0.020005
+    Al-Sartawi A, 2024, J FINANC REP ACC, DOI 10.11...  0.899981  ...  0.011113
+    Alam N, 2019, FINTECH ISLAM FINANC DIGIT DEV DI...  0.020003  ...  0.020002
+    Aldboush HHH, 2023, INTERN J FINANC STUD, V11, ...  0.020002  ...  0.020006
     <BLANKLINE>
     [5 rows x 10 columns]
 
