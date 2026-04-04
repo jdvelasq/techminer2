@@ -4,12 +4,12 @@ Heatmap
 
 .. raw:: html
 
-    <iframe src="../_generated/px.discov.co_occur_matrix.heatmap.html"
+    <iframe src="../_generated/px.portfolio.thematic_structure.co_occurrence.matrix.heatmap.html"
     height="600px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
     >>> from tm2p import Field, ItemOrderBy
-    >>> from tm2p.discover.co_occurrence import Heatmap
+    >>> from tm2p.portfolio.thematic_structure.co_occurrence.matrix import Heatmap
     >>> fig = (
     ...     Heatmap()
     ...     #
@@ -38,7 +38,7 @@ Smoke tests:
     ... )
     >>> type(fig).__name__
     'Figure'
-    >>> fig.write_html("docsrc/_generated/px.discov.co_occur_matrix.heatmap.html")
+    >>> fig.write_html("docsrc/_generated/px.portfolio.thematic_structure.co_occurrence.matrix.heatmap.html")
 
 
 
