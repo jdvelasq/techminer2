@@ -4,6 +4,8 @@
 
 - Subpackage: `intellectual/`
 
+- Research question: What is the knowledge base and intellectual lineage of the field?
+
 - Data requirements: WoS
 
 - Key tables and plots:
@@ -21,6 +23,8 @@
 ## Thematic Structure
 
 - Subpackage: `thematic/`
+
+- Research question: What are the main conceptual domains (themes) of the field?
 
 - Data requirements: keywords or extracted concepts (all sources via NLP pipeline)
 
@@ -48,7 +52,10 @@
 
 ## Temporal Evolution
 
-- Subpackage: `dynamics/`
+- Subpackage: `temporal_evolution/`
+
+- Research question: How have the themes evolved over time?
+
 
 - Data requirements: publication year + concepts (all sources)
 
@@ -67,6 +74,8 @@
 
 - Subpackage: `emergence/`
 
+- Research question: Which topics show significant recent growth and define the research frontier?
+
 - Data requirements: time + concepts (all sources)
 
 - Key tables and plots:
@@ -77,13 +86,15 @@
   - union-of-signals table (multiple emergence metrics)
 
 - Contribution:
-  - identifies emerging topics and current research frontiers
+  - identifies topics with statistically significant temporal growth, signaling research frontiers
 
 ---
 
 ## Structural Gaps / Novelty
 
 - Subpackage: `novelty/`
+
+- Research question: Where are the structural gaps and opportunities in the field?
 
 - Data requirements: network structure (concepts or citations; stronger with Scopus/WoS)
 
@@ -104,6 +115,8 @@
 
 - Subpackage: `performance/`
 
+- Research question: What is the productivity and impact profile of the field?
+
 - Data requirements: basic metadata (all sources)
 
 - Key tables and plots:
@@ -121,6 +134,8 @@
 
 - Subpackage: `social/`
 
+- Research question:How is the field socially organized?
+
 - Data requirements: author and affiliation fields (stronger in Scopus/WoS)
 
 - Key tables and plots:
@@ -136,6 +151,8 @@
 
 - Subpackage: `techmining/`
 
+- Research question: How can the scientific structure be translated into actionable technological and application insights?
+
 - Data requirements: concepts + optional metadata (stronger in Scopus/WoS)
 
 - Key tables and plots:
@@ -145,5 +162,5 @@
   - portfolio tables
 
 - Contribution:
-  - translates scientific structure into applied and technological insights
+  - transforms thematic and structural results into actionable technological and application-oriented insights
 
