@@ -4,13 +4,13 @@ Sankey Plot
 
 .. raw:: html
 
-    <iframe src="../_generated/px.discov.sankey/sankey_plot.html"
+    <iframe src="../_generated/px.portfolio.thematic_structure.sankey.sankey_plot.html"
     height="800px" width="100%" frameBorder="0"></iframe>
 
 
 Smoke tests:
     >>> from tm2p import Field
-    >>> from tm2p.discover.sankey import SankeyPlot
+    >>> from tm2p.portfolio.thematic_structure.sankey import SankeyPlot
     >>> fig = (
     ...     SankeyPlot()
     ...     #
@@ -42,7 +42,7 @@ Smoke tests:
     ... )
     >>> type(fig).__name__
     'Figure'
-    >>> fig.write_html("docsrc/_generated/px.discov.sankey.sankey_plot.html")
+    >>> fig.write_html("docsrc/_generated/px.portfolio.thematic_structure.sankey.sankey_plot.html")
 
 
 """
