@@ -4,7 +4,7 @@ Matrix
 
 Smoke tests:
     >>> from tm2p import Field, ItemOrderBy
-    >>> from tm2p.discover.co_occurrence import Matrix
+    >>> from tm2p.portfolio.thematic_structure.co_occurrence.matrix import Matrix
     >>> df = (
     ...     Matrix()
     ...     #
