@@ -17,7 +17,7 @@ Smoke tests:
     ...     random_state=0,
     ... )
     >>> from tm2p import ItemOrderBy, Field
-    >>> from tm2p.synthesize.topic_model import ItemsByClusterDataFrame
+    >>> from tm2p.portfolio.thematic_structure.topic_modeling import ItemsByClusterDataFrame
     >>> df = (
     ...     ItemsByClusterDataFrame()
     ...     #
@@ -52,16 +52,15 @@ Smoke tests:
     ...     .run()
     ... )
     >>> df.head()
-    cluster                               0  ...                                  9
-    term                                     ...
-    0        financial technology 047:08455  ...               blockchain 017:04405
-    1                     fintech 156:33429  ...                  finance 050:10972
-    2             the development 026:05689  ...                  fintech 156:33429
-    3        financial-technology 016:02809  ...  sustainable development 018:02898
-    4                       banks 031:06740  ...                consumers 017:03475
+    cluster                     0  ...                                 9
+    term                           ...
+    0        technology 026:04985  ...  information technology 011:03183
+    1           fintech 157:34856  ...                 fintech 157:34856
+    2           finance 050:10972  ...  the financial industry 011:04250
+    3         customers 013:02933  ...              innovation 033:07734
+    4             banks 031:06740  ...           practitioners 010:03018
     <BLANKLINE>
     [5 rows x 10 columns]
-
 
 """
 
