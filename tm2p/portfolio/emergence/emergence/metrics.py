@@ -36,13 +36,13 @@ import numpy as np
 
 from tm2p import ItemOrderBy
 from tm2p._intern import ParamsMixin
-from tm2p.portfolio.performance_mapping.annual_metrics.metrics import (
+from tm2p.portfolio.performance_metrics.annual_metrics.metrics import (
     Metrics as TrendMetricsDataFrame,
 )
-from tm2p.portfolio.performance_mapping.main_metrics import (
+from tm2p.portfolio.performance_metrics.main_metrics import (
     Metrics as GeneralMetricsDataFrame,
 )
-from tm2p.portfolio.performance_mapping.trends import Trends
+from tm2p.portfolio.performance_metrics.trends import Trends
 
 
 class Metrics(
