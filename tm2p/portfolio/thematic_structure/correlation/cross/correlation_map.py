@@ -4,13 +4,13 @@ Cross-correlation Map
 
 .. raw:: html
 
-    <iframe src="../_generated/px.discov.correl.cross.netw_map_plot.html"
+    <iframe src="../_generated/px.portfolio.thematic_structure.correlation.cross.correlation_map.html"
     height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
     >>> # grey colors: https://www.w3schools.com/colors/colors_shades.asp
     >>> from tm2p import ItemOrderBy, Field, Correlation, NodeScaling
-    >>> from tm2p.discover.correlation.cross import CorrelationMap
+    >>> from tm2p.portfolio.thematic_structure.correlation.cross import CorrelationMap
     >>> plot = (
     ...     CorrelationMap()
     ...     #
@@ -36,7 +36,8 @@ Smoke tests:
     ...     .using_edge_widths((1, 1, 2, 3.5))
     ...     .using_edge_similarity_threshold(0.1)
     ...     .using_edge_top_n(1000)
-    ...     .using_max_edges_per_node(5)
+    ...     .using_top_edges_per_node(10)
+    ...     .using_min_edges_per_node(2)
     ...     #
     ...     .using_node_colors(("#7793a5",))
     ...     .using_node_size_range(30, 70)
@@ -58,7 +59,7 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> plot.write_html("docsrc/_generated/px.discov.correl.cross.netw_map_plot.html")
+    >>> plot.write_html("docsrc/_generated/px.portfolio.thematic_structure.correlation.cross.correlation_map.html")
 
 
 """
