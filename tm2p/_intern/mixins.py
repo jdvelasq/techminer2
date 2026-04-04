@@ -534,12 +534,20 @@ class ParamsMixin:
         self.params.edge_top_n = edge_top_n
         return self
 
-    def using_max_edges_per_node(self, max_edges_per_node: int) -> Self:
-        max_edges_per_node = check_required_positive_int(
-            value=max_edges_per_node,
-            param_name="max_edges_per_node",
+    def using_top_edges_per_node(self, top_edges_per_node: int) -> Self:
+        top_edges_per_node = check_required_positive_int(
+            value=top_edges_per_node,
+            param_name="top_edges_per_node",
         )
-        self.params.max_edges_per_node = max_edges_per_node
+        self.params.top_edges_per_node = top_edges_per_node
+        return self
+
+    def using_min_edges_per_node(self, min_edges_per_node: int) -> Self:
+        min_edges_per_node = check_required_positive_int(
+            value=min_edges_per_node,
+            param_name="min_edges_per_node",
+        )
+        self.params.min_edges_per_node = min_edges_per_node
         return self
 
     def using_edge_opacity_range(self, min_opacity: float, max_opacity: float) -> Self:
