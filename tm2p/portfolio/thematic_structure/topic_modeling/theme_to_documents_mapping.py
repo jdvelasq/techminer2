@@ -18,7 +18,7 @@ Smoke tests:
     ...     random_state=0,
     ... )
     >>> from tm2p import ItemOrderBy, Field
-    >>> from tm2p.synthesize.topic_model import ThemeToDocumentsMapping
+    >>> from tm2p.portfolio.thematic_structure.topic_modeling import ThemeToDocumentsMapping
     >>> mapping = (
     ...     ThemeToDocumentsMapping()
     ...     #
@@ -54,16 +54,15 @@ Smoke tests:
     ... )
     >>> import pprint
     >>> pprint.pprint(mapping)  # doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
-    {0: ['Al-Sartawi A, 2024, J FINANC REP ACC, DOI 10.1108/JFRA-01-2024-0010',
+    {0: ['Agarwal S, 2020, ASIA-PAC J FINANC STUD, V49, P353, DOI '
+         '10.1111/ajfs.12294',
+         'Al-Sartawi A, 2024, J FINANC REP ACC, DOI 10.1108/JFRA-01-2024-0010',
+         'Aldridge I, 2017, REAL-TIME RISK INVESTORS KNOW FINTECH HIGH-FREQUENCY '
+         'TRADING FLASH CRASHES, P1, DOI 10.1002/9781119319030',
          'Anagnostopoulos I, 2018, J ECON BUS, V100, P7, DOI '
-         '10.1016/j.jeconbus.2018.07.003',
-         'Arner DW, 2020, EUR BUS ORG LAW REV, V21, P7, DOI '
-         '10.1007/s40804-020-00183-y',
-         'Awais M, 2023, RESOUR POLIC, V81, DOI 10.1016/j.resourpol.2023.103309',
-         'Barberis J, 2016, ECON WIND, P69, DOI 10.1007/978-3-319-42448-4_5',
-         'Barbu CM, 2021, J THEOR APPL ELECTRON COMMER RES, V16, P1415, DOI '
-         '10.3390/jtaer16050080',
     ...
+
+
 """
 
 from tm2p._intern import ParamsMixin
