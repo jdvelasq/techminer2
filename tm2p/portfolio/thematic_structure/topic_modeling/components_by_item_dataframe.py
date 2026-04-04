@@ -17,7 +17,7 @@ Smoke tests:
     ...     random_state=0,
     ... )
     >>> from tm2p import ItemOrderBy, Field
-    >>> from tm2p.synthesize.topic_model import ComponentsByItemDataFrame
+    >>> from tm2p.portfolio.thematic_structure.topic_modeling import ComponentsByItemDataFrame
     >>> df = (
     ...     ComponentsByItemDataFrame()
     ...     #
@@ -52,18 +52,18 @@ Smoke tests:
     ...     .run()
     ... )
     >>> df
-    term       fintech 156:33429  ...  trust 010:01822
+    term       fintech 157:34856  ...  the emergence 010:01933
     component                     ...
-    0                  32.716710  ...         0.100019
-    1                  19.153503  ...         5.099967
-    2                   7.687558  ...         0.100008
-    3                  22.604802  ...         0.100000
-    4                  10.566184  ...         0.100000
-    5                  12.849147  ...         0.100013
-    6                  10.594632  ...         0.100000
-    7                  15.481768  ...         0.100000
-    8                  11.683185  ...         0.100000
-    9                  13.662511  ...         5.099993
+    0                  21.047484  ...                 0.100005
+    1                  38.575909  ...                 3.099910
+    2                  14.623242  ...                 0.100000
+    3                  10.610498  ...                 0.100000
+    4                   4.579642  ...                 0.100022
+    5                  15.809338  ...                 0.100012
+    6                  18.323350  ...                 4.100031
+    7                  15.558222  ...                 0.100000
+    8                  10.942926  ...                 1.099976
+    9                   7.929388  ...                 2.100044
     <BLANKLINE>
     [10 rows x 50 columns]
 
