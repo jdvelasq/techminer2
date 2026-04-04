@@ -4,7 +4,7 @@ FactorMap
 
 .. raw:: html
 
-    <iframe src="../_generated/px.papers.thematic.second_order_factors.factor_map.html"
+    <iframe src="../_generated/px.portfolio.thematic_structure.factorial_analysis.second_order.html"
     height="800px" width="100%" frameBorder="0"></iframe>
 
 
@@ -31,7 +31,7 @@ Smoke test:
     ...     random_state=0,
     ... )
     >>> from tm2p import Field, ItemOrderBy, NodeScaling
-    >>> from tm2p.papers.thematic.second_order_factors import FactorMap
+    >>> from tm2p.portfolio.thematic_structure.factorial_analysis.second_order import FactorMap
     >>> plot = (
     ...     FactorMap()
     ...     #
@@ -51,7 +51,8 @@ Smoke test:
     ...     .using_edge_widths((1.0, 1.0, 2.0, 3.5))
     ...     .using_edge_similarity_threshold(0.00001)
     ...     .using_edge_top_n(1000)
-    ...     .using_max_edges_per_node(10)
+    ...     .using_top_edges_per_node(10)
+    ...     .using_min_edges_per_node(2)
     ...     #
     ...     .using_node_colors(("#7793a5",))
     ...     .using_node_size_range(18, 90)
@@ -69,7 +70,7 @@ Smoke test:
     ...     #
     ...     .run()
     ... )
-    >>> plot.write_html("docsrc/_generated/px.papers.thematic.second_order_factors.factor_map.html")
+    >>> plot.write_html("docsrc/_generated/px.portfolio.thematic_structure.factorial_analysis.second_order.html")
 
 
 
