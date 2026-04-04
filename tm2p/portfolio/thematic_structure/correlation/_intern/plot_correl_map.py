@@ -25,7 +25,8 @@ def plot_correl_map(
         matrix_list, params.edge_similarity_threshold
     )
     matrix_list = _select_top_links(matrix_list, params.edge_top_n)
-    matrix_list = _select_top_links_per_node(matrix_list, params.max_edges_per_node)
+    matrix_list = _select_min_links_per_node(matrix_list, params.min_edges_per_node)
+    matrix_list = _select_top_links_per_node(matrix_list, params.top_edges_per_node)
     nx_graph = _add_weighted_edges_from(nx_graph, matrix_list)
     nx_graph = _set_node_properties(params, nx_graph, matrix_list)
 
@@ -97,6 +98,34 @@ def _apply_similarity_threshold(
 ) -> pd.DataFrame:
     matrix_list = matrix_list.copy()
     matrix_list = matrix_list.loc[matrix_list["CORR"] >= threshold, :]
+    return matrix_list
+
+
+def _select_min_links_per_node(
+    matrix_list: pd.DataFrame, min_edges_per_node: int
+) -> pd.DataFrame:
+
+    matrix_list = matrix_list.copy()
+    matrix_list["selected"] = False
+
+    nodes = matrix_list["rows"].to_list() + matrix_list["columns"].to_list()
+    node_counts = pd.Series(nodes).value_counts()
+    node_counts = node_counts[node_counts >= min_edges_per_node]
+    selected_nodes = node_counts.index.to_list()  # type: ignore
+
+    matrix_list["retain"] = False
+
+    for i, row in matrix_list.iterrows():
+
+        row_node = row["rows"]
+        col_node = row["columns"]
+
+        if row_node in selected_nodes or col_node in selected_nodes:
+            matrix_list.loc[i, "retain"] = True
+
+    matrix_list = matrix_list.loc[matrix_list.retain, :]
+    matrix_list.pop("retain")
+
     return matrix_list
 
 
