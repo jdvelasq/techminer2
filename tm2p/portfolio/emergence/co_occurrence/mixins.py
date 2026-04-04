@@ -1,6 +1,6 @@
 import sys
 
-from tm2p.portfolio.performance_mapping.item_metrics import Metrics  # type: ignore
+from tm2p.portfolio.performance_metrics.item_metrics import Metrics  # type: ignore
 from tm2p.portfolio.thematic_structure.co_occurrence.network import ClusterToItems
 
 
