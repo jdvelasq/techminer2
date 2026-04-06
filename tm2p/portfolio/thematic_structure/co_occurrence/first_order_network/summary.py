@@ -1,13 +1,13 @@
 """
-ItemToCluster
+Summary
 ===============================================================================
 
 
 Smoke tests:
     >>> from tm2p import Field, AssociationIndex, ItemOrderBy
-    >>> from tm2p.synthesize.netw.co_occur import ItemToCluster
-    >>> mapping = (
-    ...     ItemToCluster()
+    >>> from tm2p.synthesize.netw.co_occur import Summary
+    >>> df = (
+    ...     Summary()
     ...     #
     ...     # FIELD:
     ...     .with_source_field(Field.AUTHKW_NORM)
@@ -32,31 +32,17 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> from pprint import pprint
-    >>> pprint(mapping)
-    {'artificialintelligence 008:01915': 0,
-     'banking 010:02599': 2,
-     'banks 005:00769': 2,
-     'blockchain 011:02023': 0,
-     'china 009:01947': 0,
-     'covid-19 006:01224': 0,
-     'crowd-funding 007:01245': 0,
-     'digital finance 005:02052': 0,
-     'economic-growth 005:00660': 1,
-     'financial inclusion 017:03823': 0,
-     'financial literacy 005:00665': 1,
-     'financial services 007:01673': 2,
-     'financial-technology 015:02734': 1,
-     'fintech 117:25478': 0,
-     'green finance 011:02844': 1,
-     'innovation 009:01703': 2,
-     'reg-tech 006:01481': 0,
-     'sustainability 006:01357': 0,
-     'sustainable development 005:00604': 1,
-     'technology 007:01409': 2}
+    >>> df.head(10)
+       CLUSTER  ...                                              ITEMS
+    0        0  ...  fintech 117:25478; financial inclusion 017:038...
+    1        1  ...  financial-technology 015:02734; green finance ...
+    2        2  ...  banking 010:02599; innovation 009:01703; finan...
+    <BLANKLINE>
+    [3 rows x 4 columns]
 
-    >>> mapping = (
-    ...     ItemToCluster()
+
+    >>> df = (
+    ...     Summary()
     ...     #
     ...     # FIELD:
     ...     .with_source_field(Field.AUTHKW_NORM)
@@ -81,39 +67,26 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> from pprint import pprint
-    >>> pprint(mapping)
-    {'artificialintelligence': 0,
-     'banking': 2,
-     'banks': 2,
-     'blockchain': 0,
-     'china': 0,
-     'covid-19': 0,
-     'crowd-funding': 0,
-     'digital finance': 0,
-     'economic-growth': 1,
-     'financial inclusion': 0,
-     'financial literacy': 1,
-     'financial services': 2,
-     'financial-technology': 1,
-     'fintech': 0,
-     'green finance': 1,
-     'innovation': 2,
-     'reg-tech': 0,
-     'sustainability': 0,
-     'sustainable development': 1,
-     'technology': 2}
+    >>> df.head(10)
+       CLUSTER  ...                                              ITEMS
+    0        0  ...  fintech; financial inclusion; blockchain; chin...
+    1        1  ...  financial-technology; green finance; financial...
+    2        2  ...  banking; innovation; financial services; techn...
+    <BLANKLINE>
+    [3 rows x 4 columns]
+
 
 """
 
 from tm2p._intern import ParamsMixin, remove_counters
-from tm2p._intern.nx import cluster_nx_graph, create_terms_to_clusters_mapping
-from tm2p.portfolio.thematic_structure.co_occurrence.network._intern.create_nx_graph import (
+from tm2p._intern.enum.column import ITEMS
+from tm2p._intern.nx import cluster_nx_graph, summarize_communities
+from tm2p.portfolio.thematic_structure.co_occurrence.first_order_network._intern.create_nx_graph import (
     create_nx_graph,
 )
 
 
-class ItemToCluster(
+class Summary(
     ParamsMixin,
 ):
     """:meta private:"""
@@ -125,13 +98,12 @@ class ItemToCluster(
         self.params.counters = True
         nx_graph = create_nx_graph(self.params)
         nx_graph = cluster_nx_graph(self.params, nx_graph)
-        mapping = create_terms_to_clusters_mapping(nx_graph)
-
+        df = summarize_communities(self.params, nx_graph)
         if use_counters is False:
             self.params.counters = False
-            result = {}
-            for key, value in mapping.items():
-                result[remove_counters(key)] = value
-            return result
+            df[ITEMS] = df[ITEMS].apply(
+                lambda x: "; ".join([remove_counters(item) for item in x.split("; ")])
+            )
+        self.params.counters = use_counters
 
-        return mapping
+        return df
