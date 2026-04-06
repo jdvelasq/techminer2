@@ -20,7 +20,7 @@ Smoke tests:
 
 """
 
-from tm2p.enum import ThFile
+from tm2p._intern.enum import ThFile
 from tm2p.refine._intern.get import BaseGetVariants
 
 
