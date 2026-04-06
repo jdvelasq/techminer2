@@ -1,10 +1,10 @@
 from tm2p._intern import ParamsMixin
+from tm2p._intern.enum.column import NAME
 from tm2p._intern.nx import (
     assign_degree_to_nodes,
     collect_node_degrees,
     create_node_degree_dataframe,
 )
-from tm2p.enum.column import NAME
 from tm2p.portfolio.intellectual_structure.citation_network._intern.other.create_nx_graph import (
     other_create_nx_graph,
 )
