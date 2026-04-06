@@ -66,7 +66,7 @@ Smoke test:
 """
 
 from tm2p._intern import ParamsMixin
-from tm2p.portfolio.thematic_structure.co_occurrence.clustering.latent.manifold_2d_map import (
+from tm2p.portfolio.thematic_structure.co_occurrence.second_order_clustering.manifold_2d_map import (
     manifold_2d_map,
 )
 from tm2p.portfolio.thematic_structure.factorial_analysis.first_order.items_by_dimension import (

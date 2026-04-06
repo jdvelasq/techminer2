@@ -32,7 +32,7 @@ Smoke test:
     ...     n_jobs=None,
     ... )
     >>> from tm2p import Field, ItemOrderBy
-    >>> from tm2p.synthesize.factor.tfidf import ManifoldItemsByDimensionMap
+    >>> from tm2p.synthesize.factor.co_occur import ManifoldItemsByDimensionMap
     >>> plot = (
     ...     ManifoldItemsByDimensionMap()
     ...     #
@@ -44,18 +44,17 @@ Smoke test:
     ...     .having_item_citations_between(None, None)
     ...     .having_items_in(None)
     ...     #
+    ...     # DECOMPOSITION:
+    ...     .using_decomposition_estimator(pca)
+    ...     #
     ...     # MANIFOLD:
     ...     .using_manifold_estimator(tsne)
     ...     #
-    ...     # TFIDF:
-    ...     .using_binary_item_frequencies(False)
-    ...     .using_tfidf_norm(None)
-    ...     .using_tfidf_smooth_idf(False)
-    ...     .using_tfidf_sublinear_tf(False)
-    ...     .using_tfidf_use_idf(False)
+    ...     # ASSOCIATION INDEX:
+    ...     .using_association_index(None)
     ...     #
     ...     # MAP:
-    ...     .using_node_colors(["#7793a5"])
+    ...     .using_node_colors(["#465c6b"])
     ...     .using_node_size(10)
     ...     .using_textfont_size(8)
     ...     .using_textfont_color("#465c6b")
@@ -72,22 +71,22 @@ Smoke test:
     ...     #
     ...     .run()
     ... )
-    >>> plot.write_html("docsrc/_generated/px.packages.factor_analysis/tfidf/manifold_terms_by_dimension_map.html")
+    >>> plot.write_html("docsrc/_generated/px.packages.factor_analysis/co_occurrence/manifold_terms_by_dimension_map.html")
 
 .. raw:: html
 
-    <iframe src="../_generated/px.packages.factor_analysis/tfidf/manifold_terms_by_dimension_map.html"
+    <iframe src="../_generated/px.packages.factor_analysis/co_occurrence/manifold_terms_by_dimension_map.html"
     height="800px" width="100%" frameBorder="0"></iframe>
 
 
 """
 
 from tm2p._intern import ParamsMixin
+from tm2p.portfolio.thematic_structure.co_occurrence.second_order_clustering.items_by_dimension import (
+    terms_by_dimension_frame,
+)
 from tm2p.portfolio.thematic_structure.co_occurrence.second_order_clustering.manifold_2d_map import (
     manifold_2d_map,
-)
-from tm2p.portfolio.thematic_structure.factorial_analysis.first_order.items_by_dimension import (
-    ItemsByDimension,
 )
 
 
@@ -104,22 +103,13 @@ def manifold_terms_by_dimension_map(
     #
     # PARAMS:
     field,
-    #
-    # TF PARAMS:
-    is_binary: bool = True,
-    cooc_within: int = 1,
+    association_index=None,
     #
     # TERM PARAMS:
     top_n=None,
     occ_range=(None, None),
     gc_range=(None, None),
     custom_terms=None,
-    #
-    # TF-IDF parameters:
-    norm=None,
-    use_idf=False,
-    smooth_idf=False,
-    sublinear_tf=False,
     #
     # DECOMPOSITION:
     decomposition_estimator=None,
@@ -148,22 +138,13 @@ def manifold_terms_by_dimension_map(
         #
         # FUNCTION PARAMS:
         field=field,
-        #
-        # TF PARAMS:
-        is_binary=is_binary,
-        cooc_within=cooc_within,
+        association_index=association_index,
         #
         # TERM PARAMS:
         top_n=top_n,
         occ_range=occ_range,
         gc_range=gc_range,
         custom_terms=custom_terms,
-        #
-        # TF-IDF parameters:
-        norm=norm,
-        use_idf=use_idf,
-        smooth_idf=smooth_idf,
-        sublinear_tf=sublinear_tf,
         #
         # DECOMPOSITION:
         decomposition_estimator=decomposition_estimator,
@@ -191,3 +172,6 @@ def manifold_terms_by_dimension_map(
         xaxes_range=xaxes_range,
         yaxes_range=yaxes_range,
     )
+
+
+#

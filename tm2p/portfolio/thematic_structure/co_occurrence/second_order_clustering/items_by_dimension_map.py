@@ -1,5 +1,5 @@
 """
-ManifoldItemsByDimensionMap
+ItemsByDimensionMap
 ===============================================================================
 
 Smoke test:
@@ -14,27 +14,10 @@ Smoke test:
     ...     power_iteration_normalizer="auto",
     ...     random_state=0,
     ... )
-    >>> from sklearn.manifold import TSNE
-    >>> tsne = TSNE(
-    ...     perplexity=10.0,
-    ...     early_exaggeration=12.0,
-    ...     learning_rate="auto",
-    ...     max_iter=1000,
-    ...     n_iter_without_progress=300,
-    ...     min_grad_norm=1e-07,
-    ...     metric="euclidean",
-    ...     metric_params=None,
-    ...     init="pca",
-    ...     verbose=0,
-    ...     random_state=0,
-    ...     method="barnes_hut",
-    ...     angle=0.5,
-    ...     n_jobs=None,
-    ... )
     >>> from tm2p import Field, ItemOrderBy
-    >>> from tm2p.synthesize.factor.tfidf import ManifoldItemsByDimensionMap
+    >>> from tm2p.synthesize.factor.co_occur import ItemsByDimensionMap
     >>> plot = (
-    ...     ManifoldItemsByDimensionMap()
+    ...     ItemsByDimensionMap()
     ...     #
     ...     # FIELD:
     ...     .with_source_field(Field.CONCEPT_NORM)
@@ -44,18 +27,15 @@ Smoke test:
     ...     .having_item_citations_between(None, None)
     ...     .having_items_in(None)
     ...     #
-    ...     # MANIFOLD:
-    ...     .using_manifold_estimator(tsne)
+    ...     # DECOMPOSITION:
+    ...     .using_decomposition_estimator(pca)
     ...     #
-    ...     # TFIDF:
-    ...     .using_binary_item_frequencies(False)
-    ...     .using_tfidf_norm(None)
-    ...     .using_tfidf_smooth_idf(False)
-    ...     .using_tfidf_sublinear_tf(False)
-    ...     .using_tfidf_use_idf(False)
+    ...     # ASSOCIATION INDEX:
+    ...     .using_association_index(None)
     ...     #
     ...     # MAP:
-    ...     .using_node_colors(["#7793a5"])
+    ...     .using_plot_dimensions(0, 1)
+    ...     .using_node_colors(["#465c6b"])
     ...     .using_node_size(10)
     ...     .using_textfont_size(8)
     ...     .using_textfont_color("#465c6b")
@@ -72,26 +52,25 @@ Smoke test:
     ...     #
     ...     .run()
     ... )
-    >>> plot.write_html("docsrc/_generated/px.packages.factor_analysis/tfidf/manifold_terms_by_dimension_map.html")
+    >>> plot.write_html("docsrc/__static/factor_analysis/co_occurrence/terms_by_dimension_map.html")
 
 .. raw:: html
 
-    <iframe src="../_generated/px.packages.factor_analysis/tfidf/manifold_terms_by_dimension_map.html"
-    height="800px" width="100%" frameBorder="0"></iframe>
-
+    <iframe src="../../_static/factor_analysis/co_occurrence/terms_by_dimension_map.html"
+    height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 
 from tm2p._intern import ParamsMixin
+from tm2p.portfolio.thematic_structure.co_occurrence.second_order_clustering.items_by_dimension import (
+    terms_by_dimension_frame,
+)
 from tm2p.portfolio.thematic_structure.co_occurrence.second_order_clustering.manifold_2d_map import (
     manifold_2d_map,
 )
-from tm2p.portfolio.thematic_structure.factorial_analysis.first_order.items_by_dimension import (
-    ItemsByDimension,
-)
 
 
-class ManifoldItemsByDimensionMap(
+class ItemsByDimensionMap(
     ParamsMixin,
 ):
     """:meta private:"""
@@ -100,14 +79,11 @@ class ManifoldItemsByDimensionMap(
         pass
 
 
-def manifold_terms_by_dimension_map(
+def terms_by_dimension_map(
     #
     # PARAMS:
     field,
-    #
-    # TF PARAMS:
-    is_binary: bool = True,
-    cooc_within: int = 1,
+    association_index=None,
     #
     # TERM PARAMS:
     top_n=None,
@@ -115,19 +91,12 @@ def manifold_terms_by_dimension_map(
     gc_range=(None, None),
     custom_terms=None,
     #
-    # TF-IDF parameters:
-    norm=None,
-    use_idf=False,
-    smooth_idf=False,
-    sublinear_tf=False,
-    #
     # DECOMPOSITION:
     decomposition_estimator=None,
     #
-    # MANIFOLD PARAMS:
-    manifold_estimator=None,
-    #
     # MAP PARAMS:
+    dim_x=0,
+    dim_y=1,
     node_color="#465c6b",
     node_size=10,
     textfont_size=8,
@@ -148,22 +117,13 @@ def manifold_terms_by_dimension_map(
         #
         # FUNCTION PARAMS:
         field=field,
-        #
-        # TF PARAMS:
-        is_binary=is_binary,
-        cooc_within=cooc_within,
+        association_index=association_index,
         #
         # TERM PARAMS:
         top_n=top_n,
         occ_range=occ_range,
         gc_range=gc_range,
         custom_terms=custom_terms,
-        #
-        # TF-IDF parameters:
-        norm=norm,
-        use_idf=use_idf,
-        smooth_idf=smooth_idf,
-        sublinear_tf=sublinear_tf,
         #
         # DECOMPOSITION:
         decomposition_estimator=decomposition_estimator,
@@ -176,16 +136,14 @@ def manifold_terms_by_dimension_map(
         **filters,
     )
 
-    manifold = manifold_estimator.fit_transform(embedding)
-
     return manifold_2d_map(
-        node_x=manifold[:, 0],
-        node_y=manifold[:, 1],
+        node_x=embedding[dim_x],
+        node_y=embedding[dim_y],
         node_text=embedding.index.to_list(),
         node_color=node_color,
         node_size=node_size,
-        title_x="Dim 0",
-        title_y="Dim 1",
+        title_x=dim_x,
+        title_y=dim_y,
         textfont_size=textfont_size,
         textfont_color=textfont_color,
         xaxes_range=xaxes_range,
