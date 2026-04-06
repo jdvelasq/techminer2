@@ -4,12 +4,12 @@ RPYSPlot
 
 .. raw:: html
 
-    <iframe src="../_generated/px.anal.rpys.rpys_plot.html"
+    <iframe src="../_generated/px.portfolio.intellectual_structure.rpys.rpys_plot.html"
     height="800px" width="100%" frameBorder="0"></iframe>
 
 
 Smoke tests:
-    >>> from tm2p.analyze.rpys import RPYSPlot
+    >>> from tm2p.portfolio.intellectual_structure.rpys import RPYSPlot
     >>> plot = (
     ...     RPYSPlot()
     ...     #
@@ -17,7 +17,7 @@ Smoke tests:
     ...     .where_root_directory("tests/wos/")
     ...     .run()
     ... )
-    >>> plot.write_html("docsrc/_generated/px.anal.rpys.rpys_plot.html")
+    >>> plot.write_html("docsrc/_generated/px.portfolio.intellectual_structure.rpys.rpys_plot.html")
 
 
 """

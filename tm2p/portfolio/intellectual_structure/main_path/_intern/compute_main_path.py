@@ -8,8 +8,8 @@ import copy
 import sys
 
 from tm2p._intern.data_access import load_filtered_main_csv_zip
+from tm2p._intern.enum import Field
 from tm2p._intern.get_zero_digits import get_zero_digits
-from tm2p.enum import Field
 
 YEAR = Field.YEAR.value
 GCS = Field.GCS.value

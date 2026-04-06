@@ -100,7 +100,7 @@ Smoke tests:
 """
 
 from tm2p._intern import ParamsMixin, remove_counters
-from tm2p._intern.nx.compute_network_metrics import compute_network_metrics
+from tm2p._intern.nx.compute_node_metrics import compute_node_metrics
 from tm2p.portfolio.intellectual_structure.co_citation_network._intern.create_nx_graph import (
     create_nx_graph,
 )
@@ -116,7 +116,7 @@ class NetworkMetrics(
         use_counters = self.params.counters
         self.params.counters = True
         nx_graph = create_nx_graph(self.params)
-        df = compute_network_metrics(nx_graph=nx_graph)
+        df = compute_node_metrics(nx_graph=nx_graph)
 
         if use_counters is False:
             self.params.counters = False

@@ -3,14 +3,15 @@ Metrics
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.analyze.rpys import Metrics
-    >>> (
+    >>> from tm2p.portfolio.intellectual_structure.rpys import Metrics
+    >>> df = (
     ...     Metrics()
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/wos/")
     ...     .run()
-    ... ).head()
+    ... )
+    >>> df.head()
           N_GCR  MEDIAN
     2016      1    -1.0
     2017      6    -6.0
