@@ -1,6 +1,6 @@
 import plotly.express as px  # type: ignore
 
-from tm2p.enum.column import DEGREE, NAME, NODE
+from tm2p._intern.enum.column import DEGREE, NAME, NODE
 
 
 def create_node_degree_plot(params, df):

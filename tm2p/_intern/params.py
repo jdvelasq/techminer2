@@ -6,7 +6,7 @@ from typing import Any, Callable, Dict, List, Optional, Sequence, Tuple, Union
 import pandas as pd  # type: ignore
 from sklearn.base import BaseEstimator  # type: ignore
 
-from tm2p.enum import (
+from tm2p._intern.enum import (
     AssociationIndex,
     CitationUnit,
     CoCitationUnit,
