@@ -1,0 +1,108 @@
+from .field import Field
+
+#
+# A
+#
+AGE = "AGE"
+
+#
+# B
+#
+BETWEENNESS = "BETWEENNESS"
+
+#
+# C
+#
+CITED_UNIT = "CITED_UNIT"
+CITING_UNIT = "CITING_UNIT"
+CLOSENESS = "CLOSENESS"
+CLUSTER = "CLUSTER"
+CLUSTERING = "CLUSTERING"
+COLUMN = "COLUMN"
+CORE = "CORE"
+COUNTERS = "COUNTERS"
+COVERAGE = "COVERAGE"
+CUM_SUM_DOCS = "CUM_SUM_DOCS"
+CUM_SUM_ITEMS = "CUM_SUM_ITEMS"
+
+#
+# D
+#
+DEGREE = "DEGREE"
+
+#
+# E
+#
+EIGENVECTOR = "EIGENVECTOR"
+
+#
+# G
+#
+G_INDEX = "G_INDEX"
+GCS = Field.GCS.value
+GCS_PER_YEAR = "GCS_PER_YEAR"
+GCS_PER_YEAR_AVG = "GCS_PER_YEAR_AVG"
+GCS_PER_DOC = "GCS_PER_DOC"
+#
+# H
+#
+H_INDEX = "H_INDEX"
+
+#
+# I
+#
+ITEMS = "ITEMS"
+
+#
+# L
+#
+LCS = Field.LCS.value
+LCS_PER_YEAR = "LCS_PER_YEAR"
+LCS_PER_DOC = "LCS_PER_DOC"
+#
+# M
+#
+M_INDEX = "M_INDEX"
+MP = "MP"  # multiple publications
+MP_RATIO = "MP_RATIO"  # multiple publications ratio
+
+#
+# N
+#
+NAME = "NAME"
+NODE = "NODE"
+NUM_ITEMS = "NUM_ITEMS"
+NUM_REC = "NUM_REC"
+
+#
+# O
+#
+OCC = "OCC"
+
+#
+# P
+#
+PAGERANK = "PAGERANK"
+PERCENTAGE = "PERCENTAGE"
+
+#
+# R
+#
+RANK_OCC = "RANK_OCC"
+RANK_GCS = "RANK_GCS"
+RANK_LCS = "RANK_LCS"
+RID = Field.REC_ID.value
+
+
+#
+# S
+#
+SP = "SP"  # single publication
+STRENGTH = "STRENGTH"
+
+#
+# Y
+#
+YEAR = Field.YEAR.value
+YEAR_FIRST = YEAR + "_FIRST"
+YEAR_LAST = YEAR + "_LAST"

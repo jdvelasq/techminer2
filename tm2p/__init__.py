@@ -1,4 +1,4 @@
-from .enum import (
+from ._intern.enum import (
     AssociationIndex,
     CitationUnit,
     CoCitationUnit,

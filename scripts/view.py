@@ -1,7 +1,7 @@
 from pathlib import Path
 
 from tm2p._intern.data_access import load_main_csv_zip
-from tm2p.enum import Field
+from tm2p._intern.enum import Field
 
 SIZE = 100
 
