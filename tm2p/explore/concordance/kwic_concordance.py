@@ -4,7 +4,7 @@ KWICConcordance
 
 Smoke test:
     >>> from tm2p import Field, RecordOrderBy
-    >>> from tm2p.discover.concord import KWICConcordance
+    >>> from tm2p.explore.concordance import KWICConcordance
     >>> contexts = (
     ...     KWICConcordance()
     ...     #

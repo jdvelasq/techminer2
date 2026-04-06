@@ -4,7 +4,7 @@ RecordTermSearch
 
 Smoke test:
     >>> from tm2p import RecordOrderBy
-    >>> from tm2p.discover.concord import RecordTermSearch
+    >>> from tm2p.explore.concordance import RecordTermSearch
     >>> mapping = (
     ...     RecordTermSearch()
     ...     #

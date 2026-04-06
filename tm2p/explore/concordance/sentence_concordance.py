@@ -4,7 +4,7 @@ SentenceConcordance
 
 Smoke test:
     >>> from tm2p import RecordOrderBy
-    >>> from tm2p.discover.concord import SentenceConcordance
+    >>> from tm2p.explore.concordance import SentenceConcordance
     >>> sentences = (
     ...     SentenceConcordance()
     ...     .having_text_matching("FINTECH")

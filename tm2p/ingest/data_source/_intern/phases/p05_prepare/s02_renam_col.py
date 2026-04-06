@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from tm2p.enum.field import Field
+from tm2p._intern.enum.field import Field
 
 from ..get_datab_marker import get_datab_marker
 from ._renam_col import renam_col

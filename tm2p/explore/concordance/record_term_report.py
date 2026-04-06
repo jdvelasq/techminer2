@@ -4,7 +4,7 @@ RecordTermReport
 
 Smoke test:
     >>> from tm2p import RecordOrderBy
-    >>> from tm2p.discover.concord import RecordTermReport
+    >>> from tm2p.explore.concordance import RecordTermReport
     >>> docs = (
     ...     RecordTermReport()
     ...     #
@@ -21,16 +21,16 @@ Smoke test:
     >>> assert len(docs) > 0
     >>> assert all(isinstance(d, str) for d in docs)
     >>> print(docs[0])  # doctest: +NORMALIZE_WHITESPACE
-    UT 13
-    AR Al-Sartawi, 2024, J FINANC REPORT ACCOUNT
+    UT 54
+    AR Al-Sartawi A, 2024, J FINANC REP ACC, DOI 10.1108/JFRA-01-2024-0010
     TI The diffusion of financial technology-enabled innovation in GCC-listed banks
        and its relationship with profitability and market value
-    AU Al-Sartawi A.
+    AU Al-Sartawi A
     TC 125
-    SO J FINANC REPORT ACCOUNT
+    SO J FINANC REP ACC
     PY 2024
     AB purpose : this_study_aims_to_examine_the_relationship_between the
-       DIFFUSION_OF_TECHNOLOGY enabled INNOVATION_IN_FINANCIAL_SERVICES ( i . e .
+       DIFFUSION_OF_TECHNOLOGY-enabled INNOVATION_IN_FINANCIAL_SERVICES ( i . e .
        FINANCIAL_TECHNOLOGY [ FINTECH ] ) and THE_FINANCIAL_PERFORMANCE , i . e .
        PROFITABILITY and MARKET_VALUE of THE_BANKS listed in the
        GULF_COOPERATION_COUNCIL ( gcc ) COUNTRIES . design / methodology / approach
