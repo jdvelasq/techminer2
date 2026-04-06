@@ -4,6 +4,18 @@ import pandas as pd  # type: ignore
 from sklearn.base import BaseEstimator  # type: ignore
 from typing_extensions import Self
 
+from tm2p._intern.enum import (
+    AssociationIndex,
+    CitationUnit,
+    Correlation,
+    CouplingUnit,
+    Field,
+    ItemOrderBy,
+    NodeScaling,
+    RecordOrderBy,
+    ThFile,
+)
+from tm2p._intern.enum.co_cit_unit import CoCitationUnit
 from tm2p._intern.valid import (
     check_optional_base_estimator,
     check_optional_positive_float,
@@ -35,18 +47,6 @@ from tm2p._intern.valid import (
     check_required_str_tuple,
     check_tuple_of_ordered_four_floats,
 )
-from tm2p.enum import (
-    AssociationIndex,
-    CitationUnit,
-    Correlation,
-    CouplingUnit,
-    Field,
-    ItemOrderBy,
-    NodeScaling,
-    RecordOrderBy,
-    ThFile,
-)
-from tm2p.enum.co_cit_unit import CoCitationUnit
 
 from .params import Params
 

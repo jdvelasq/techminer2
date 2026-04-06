@@ -1,7 +1,7 @@
 import networkx as nx  # type: ignore
 import pandas as pd  # type: ignore
 
-from tm2p.enum.column import (
+from tm2p._intern.enum.column import (
     BETWEENNESS,
     CLOSENESS,
     CLUSTERING,
@@ -13,7 +13,7 @@ from tm2p.enum.column import (
 )
 
 
-def compute_network_metrics(
+def compute_node_metrics(
     nx_graph,
 ):
     """Compute network statistics."""

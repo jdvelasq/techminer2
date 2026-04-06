@@ -37,7 +37,7 @@ from .assign_textfont_sizes_based_on_occurrences import (
 from .cluster_nx_graph import cluster_nx_graph
 from .collect_node_degrees import collect_node_degrees
 from .compute_circular_layout_positions import compute_circular_layout_positions
-from .compute_network_metrics import compute_network_metrics
+from .compute_node_metrics import compute_node_metrics
 from .compute_spring_layout_positions import compute_spring_layout_positions
 from .create_clusters_to_terms_mapping import create_clusters_to_terms_mapping
 from .create_concept_grid_plot import concept_grid_plot
@@ -74,7 +74,7 @@ __all__ = [
     "cluster_nx_graph",
     "collect_node_degrees",
     "compute_circular_layout_positions",
-    "compute_network_metrics",
+    "compute_node_metrics",
     "compute_spring_layout_positions",
     "concept_grid_plot",
     "create_clusters_to_terms_mapping",
