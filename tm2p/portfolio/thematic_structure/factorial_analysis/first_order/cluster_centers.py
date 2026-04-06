@@ -58,7 +58,7 @@ Smoke test:
 
 from tm2p._intern import Params, ParamsMixin
 from tm2p._intern.data_access import load_filtered_main_csv_zip
-from tm2p.enum import Field
+from tm2p._intern.enum import Field
 
 from .item_to_cluster import ItemToCluster
 from .items_by_dimension import ItemsByDimension
