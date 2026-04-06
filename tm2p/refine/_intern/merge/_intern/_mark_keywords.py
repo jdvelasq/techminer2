@@ -3,7 +3,7 @@ import pandas as pd  # type: ignore
 from tm2p import Field
 from tm2p._intern import Params
 from tm2p._intern.data_access import load_main_csv_zip
-from tm2p.enum import ThField
+from tm2p._intern.enum import ThField
 
 CHANGED = ThField.CHANGED.value
 IS_KEYWORD = ThField.IS_KEYWORD.value

@@ -10,7 +10,7 @@ Smoke test:
 
 from pathlib import Path
 
-from tm2p.enum import ThFile
+from tm2p._intern.enum import ThFile
 
 
 def get_thesaurus_path(root_directory: str, file: ThFile) -> Path:
