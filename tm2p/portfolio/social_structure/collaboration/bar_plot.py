@@ -4,13 +4,13 @@ BarPlot
 
 .. raw:: html
 
-    <iframe src="../_generated/px.synthes.collabor.bar_plot.html"
+    <iframe src="../_generated/px.portfolio.social_structure.collaboration.bar_plot.html"
     height="600px" width="100%" frameBorder="0"></iframe>
 
 
 Smoke tests:
     >>> from tm2p import Field, ItemOrderBy
-    >>> from tm2p.synthesize.collaboration import BarPlot
+    >>> from tm2p.portfolio.social_structure.collaboration import BarPlot
     >>> fig = (
     ...     BarPlot()
     ...     #
@@ -37,7 +37,7 @@ Smoke tests:
     ... )
     >>> type(fig).__name__
     'Figure'
-    >>> fig.write_html("docsrc/_generated/px.synthes.collabor.bar_plot.html")
+    >>> fig.write_html("docsrc/_generated/px.portfolio.social_structure.collaboration.bar_plot.html")
 
 
 
@@ -48,7 +48,7 @@ Smoke tests:
 import plotly.express as px  # type: ignore
 
 from tm2p._intern import ParamsMixin
-from tm2p.enum.column import MP, SP
+from tm2p._intern.enum.column import MP, SP
 from tm2p.portfolio.social_structure.collaboration.metrics import Metrics
 
 

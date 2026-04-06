@@ -1,4 +1,4 @@
-from tm2p.enum import Field
+from tm2p._intern.enum import Field
 
 AUTH = Field.AUTH_NORM.value
 GCS = Field.GCS.value

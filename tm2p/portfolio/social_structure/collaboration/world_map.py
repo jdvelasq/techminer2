@@ -4,14 +4,14 @@ WorldMap
 
 .. raw:: html
 
-    <iframe src="../_generated/px.synthes.collabor.world_map.html"
+    <iframe src="../_generated/px.portfolio.social_structure.collaboration.world_map.html"
     height="450" width="100%" frameBorder="0"></iframe>
 
 
 Smoke tests:
     >>> from tm2p import Field, ItemOrderBy
-    >>> from tm2p.synthesize.collaboration import WorldMap
-    >>> plotter = (
+    >>> from tm2p.portfolio.social_structure.collaboration import WorldMap
+    >>> fig = (
     ...     WorldMap()
     ...     #
     ...     # DATABASE:
@@ -19,12 +19,9 @@ Smoke tests:
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     .where_records_match(None)
+    ...     .run()
     ... )
-    >>> plot = plotter.run()
-    >>> plot.write_html("docsrc/_generated/px.synthes.collabor.world_map.html")
-
-
-
+    >>> fig.write_html("docsrc/_generated/px.portfolio.social_structure.collaboration.world_map.html")
 
 """
 
