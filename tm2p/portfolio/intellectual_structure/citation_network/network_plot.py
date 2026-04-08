@@ -272,7 +272,7 @@ from tm2p.portfolio.intellectual_structure.citation_network._intern.other import
     OtherNetworkPlot,
 )
 
-from ...._intern.check_database import check_database
+from ...._intern.helpers.check_database import check_database
 
 
 class NetworkPlot(

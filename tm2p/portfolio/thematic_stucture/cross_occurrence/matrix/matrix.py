@@ -216,7 +216,7 @@ class Matrix(
     # -------------------------------------------------------------------------
     def _step_07_build_mapping(self, dataframe):
 
-        from tm2p._intern.get_zero_digits import get_zero_digits
+        from tm2p._intern.helpers.get_zero_digits import get_zero_digits
 
         GCS = Field.GCS.value
 

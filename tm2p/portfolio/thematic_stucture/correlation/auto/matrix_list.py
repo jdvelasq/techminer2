@@ -41,7 +41,7 @@ Smoke Test:
 """
 
 from tm2p._intern import ParamsMixin
-from tm2p._intern.matrix_to_matrix_list import matrix_to_matrix_list
+from tm2p._intern.helpers.matrix_to_matrix_list import matrix_to_matrix_list
 
 from .matrix import Matrix
 

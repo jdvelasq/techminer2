@@ -256,7 +256,7 @@ from tm2p.portfolio.intellectual_structure.coupling_network._intern.others impor
     OtherKernelDensityPlot,
 )
 
-from ...._intern.check_database import check_database
+from ...._intern.helpers.check_database import check_database
 
 
 class KernelDensityPlot(

@@ -3,7 +3,7 @@ import math
 
 def get_zero_digits(root_directory: str) -> tuple[int, int]:
 
-    from .data_access.load_main_csv_zip import load_main_csv_zip
+    from ..data_access.load_main_csv_zip import load_main_csv_zip
 
     df = load_main_csv_zip(root_directory)
     n = len(df)

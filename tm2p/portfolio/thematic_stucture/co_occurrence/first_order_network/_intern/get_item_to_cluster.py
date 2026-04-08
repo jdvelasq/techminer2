@@ -7,7 +7,7 @@ from sklearn.cluster import (  # type: ignore
 )
 
 from tm2p._intern import Params
-from tm2p._intern.assign_cluter_numbers_by_cluster_size import (
+from tm2p._intern.helpers.assign_cluter_numbers_by_cluster_size import (
     assign_cluter_numbers_by_cluster_size,
 )
 from tm2p._intern.nx import (

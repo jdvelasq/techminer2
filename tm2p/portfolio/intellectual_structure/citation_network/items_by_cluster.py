@@ -191,7 +191,7 @@ from tm2p.portfolio.intellectual_structure.citation_network._intern.other import
     OtherItemsByCluster as OtherItemsByClusterDataFrame,
 )
 
-from ...._intern.check_database import check_database
+from ...._intern.helpers.check_database import check_database
 
 
 class ItemsByCluster(

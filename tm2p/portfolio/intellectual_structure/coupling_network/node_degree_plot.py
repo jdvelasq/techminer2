@@ -215,7 +215,7 @@ Smoke tests:
 from tm2p._intern import ParamsMixin
 from tm2p._intern.nx import create_node_degree_plot
 
-from ...._intern.check_database import check_database
+from ...._intern.helpers.check_database import check_database
 from .node_degree_dataframe import NodeDegreeDataFrame
 
 

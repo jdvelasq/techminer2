@@ -20,7 +20,12 @@ import re
 from dataclasses import dataclass
 from typing import Optional
 
-from tm2p._intern.colors import RESET, TABLEAU10_BLUE, TABLEAU10_IRON, TABLEAU10_ORANGE
+from tm2p._intern.helpers.colors import (
+    RESET,
+    TABLEAU10_BLUE,
+    TABLEAU10_IRON,
+    TABLEAU10_ORANGE,
+)
 
 TRUNCATE_FILEPATH_THRESHOLD = 64
 TRUNCATE_FILEPATH_TAIL = 60

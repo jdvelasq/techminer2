@@ -2,7 +2,7 @@ import networkx as nx  # type: ignore
 import pandas as pd  # type: ignore
 
 from tm2p._intern import Params
-from tm2p._intern.matrix_to_matrix_list import matrix_to_matrix_list
+from tm2p._intern.helpers.matrix_to_matrix_list import matrix_to_matrix_list
 from tm2p._intern.nx import (
     add_weighted_edges_from_matrix_list,
     assign_node_sizes_based_on_occurrences,

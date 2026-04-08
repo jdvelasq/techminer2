@@ -390,7 +390,7 @@ class Metrics(
     # -------------------------------------------------------------------------
     def _create_counters_column(self, grouped_df):
 
-        from tm2p._intern.get_zero_digits import get_zero_digits
+        from tm2p._intern.helpers.get_zero_digits import get_zero_digits
 
         occ_zeros, gcs_zeros = get_zero_digits(
             root_directory=self.params.root_directory

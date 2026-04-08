@@ -98,7 +98,7 @@ from sklearn.feature_extraction.text import TfidfTransformer  # type: ignore
 
 from tm2p._intern import ParamsMixin, SortAxesMixin
 from tm2p._intern.data_access import load_filtered_main_csv_zip
-from tm2p._intern.get_zero_digits import get_zero_digits
+from tm2p._intern.helpers.get_zero_digits import get_zero_digits
 from tm2p.enum.column import COUNTERS, GCS, OCC, RID
 from tm2p.portfolio.performance_metrics.item_metrics import Metrics
 
