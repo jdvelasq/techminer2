@@ -1,5 +1,5 @@
 """
-Trends
+Matrix
 ===============================================================================
 
 Smoke tests:
@@ -90,14 +90,11 @@ Smoke tests:
     artificial intelligence 008:01915     0     0     0     0     2     2     1     0     2     1
     financial services 007:01673          0     1     0     4     0     1     0     0     0     1
 
-
-
-
 """
 
-from tm2p.enum import Field, ItemOrderBy
 from tm2p._intern import ParamsMixin, SortAxesMixin
 from tm2p._intern.data_access import load_filtered_main_csv_zip
+from tm2p.enum import Field, ItemOrderBy
 
 from ...._intern.get_zero_digits import get_zero_digits
 from ..item_metrics import Metrics
