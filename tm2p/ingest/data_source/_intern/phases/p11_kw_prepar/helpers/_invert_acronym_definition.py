@@ -2,7 +2,7 @@ from typing import Optional
 
 import pandas as pd  # type: ignore
 
-from tm2p import Field
+from tm2p.enum import Field
 
 
 def invert_acronym_definition_in_list(keywords: Optional[str]) -> Optional[str]:

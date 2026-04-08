@@ -6,9 +6,9 @@ import pandas as pd  # type: ignore
 import spacy
 from pandarallel import pandarallel  # type: ignore
 
-from tm2p import Field
 from tm2p._intern import stdout_to_stderr
 from tm2p._intern.data_access import load_main_csv_zip, save_main_csv_zip
+from tm2p.enum import Field
 
 spacy_nlp = spacy.load("en_core_web_lg")
 

@@ -16,7 +16,7 @@ Smoke tests:
     ...     max_doc_update_iter=100,
     ...     random_state=0,
     ... )
-    >>> from tm2p import ItemOrderBy, Field
+    >>> from tm2p.enum import ItemOrderBy, Field
     >>> from tm2p.portfolio.thematic_structure.topic_modeling import ItemsByClusterDataFrame
     >>> df = (
     ...     ItemsByClusterDataFrame()

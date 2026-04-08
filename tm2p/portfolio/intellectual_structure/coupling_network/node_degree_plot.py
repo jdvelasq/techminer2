@@ -10,7 +10,7 @@ Network Degree Plot
     height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
-    >>> from tm2p import CouplingUnit
+    >>> from tm2p.enum import CouplingUnit
     >>> from tm2p.synthesize.netw.coupl import NodeDegreePlot
     >>> fig = (
     ...     NodeDegreePlot()
@@ -53,7 +53,7 @@ Smoke tests:
     idth="100%" frameBorder="0"></iframe>
 
 Smoke tests:
-    >>> from tm2p import CouplingUnit
+    >>> from tm2p.enum import CouplingUnit
     >>> from tm2p.synthesize.netw.coupl import NodeDegreePlot
     >>> fig = (
     ...     NodeDegreePlot()
@@ -94,7 +94,7 @@ Smoke tests:
     height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
-    >>> from tm2p import CouplingUnit
+    >>> from tm2p.enum import CouplingUnit
     >>> from tm2p.synthesize.netw.coupl import NodeDegreePlot
     >>> fig = (
     ...     NodeDegreePlot()
@@ -135,7 +135,7 @@ Smoke tests:
     height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
-    >>> from tm2p import CouplingUnit
+    >>> from tm2p.enum import CouplingUnit
     >>> from tm2p.synthesize.netw.coupl import NodeDegreePlot
     >>> fig = (
     ...     NodeDegreePlot()
@@ -177,7 +177,7 @@ Smoke tests:
 
 
 Smoke tests:
-    >>> from tm2p import CouplingUnit
+    >>> from tm2p.enum import CouplingUnit
     >>> from tm2p.synthesize.netw.coupl import NodeDegreePlot
     >>> fig = (
     ...     NodeDegreePlot()

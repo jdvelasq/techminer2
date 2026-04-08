@@ -2,8 +2,8 @@ from typing import Optional
 
 import pandas as pd
 
-from tm2p import Field
 from tm2p._intern.packag_data import load_builtin_word_list
+from tm2p.enum import Field
 
 from ._file_dispatch import get_file_operations
 

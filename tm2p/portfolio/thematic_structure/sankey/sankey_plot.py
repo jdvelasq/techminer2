@@ -9,7 +9,7 @@ Sankey Plot
 
 
 Smoke tests:
-    >>> from tm2p import Field
+    >>> from tm2p.enum import Field
     >>> from tm2p.portfolio.thematic_structure.sankey import SankeyPlot
     >>> fig = (
     ...     SankeyPlot()
@@ -49,8 +49,8 @@ Smoke tests:
 
 import plotly.graph_objects as go  # type: ignore
 
-from tm2p import ItemOrderBy
 from tm2p._intern import ParamsMixin
+from tm2p.enum import ItemOrderBy
 from tm2p.portfolio.thematic_structure.cross_occurrence.matrix import Matrix
 
 

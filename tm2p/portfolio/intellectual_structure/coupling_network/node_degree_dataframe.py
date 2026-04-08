@@ -5,7 +5,7 @@ Network Degree Frame
 * **CouplingUnit.AUTH**
 
 Smoke tests:
-    >>> from tm2p import CouplingUnit
+    >>> from tm2p.enum import CouplingUnit
     >>> from tm2p.synthesize.netw.coupl import NodeDegreeDataFrame
     >>> df = (
     ...     NodeDegreeDataFrame()
@@ -40,7 +40,7 @@ Smoke tests:
 * **CouplingUnit.CTRY**
 
 Smoke tests:
-    >>> from tm2p import CouplingUnit
+    >>> from tm2p.enum import CouplingUnit
     >>> from tm2p.synthesize.netw.coupl import NodeDegreeDataFrame
     >>> df = (
     ...     NodeDegreeDataFrame()
@@ -76,7 +76,7 @@ Smoke tests:
 * **CouplingUnit.DOC**
 
 Smoke tests:
-    >>> from tm2p import CouplingUnit
+    >>> from tm2p.enum import CouplingUnit
     >>> from tm2p.synthesize.netw.coupl import NodeDegreeDataFrame
     >>> df = (
     ...     NodeDegreeDataFrame()
@@ -112,7 +112,7 @@ Smoke tests:
 * **CouplingUnit.ORG**
 
 Smoke tests:
-    >>> from tm2p import CouplingUnit
+    >>> from tm2p.enum import CouplingUnit
     >>> from tm2p.synthesize.netw.coupl import NodeDegreeDataFrame
     >>> df = (
     ...     NodeDegreeDataFrame()
@@ -178,8 +178,8 @@ Smoke tests:
 
 """
 
-from tm2p import CouplingUnit, ItemOrderBy
 from tm2p._intern import ParamsMixin
+from tm2p.enum import CouplingUnit, ItemOrderBy
 from tm2p.portfolio.intellectual_structure.coupling_network._intern.doc import (
     DocNodeDegreeDataFrame,
 )

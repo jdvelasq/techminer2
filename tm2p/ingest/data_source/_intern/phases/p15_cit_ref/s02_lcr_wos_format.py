@@ -1,7 +1,7 @@
 import pandas as pd  # type: ignore
 
-from tm2p import Field
 from tm2p._intern.data_access import load_main_csv_zip, save_main_csv_zip
+from tm2p.enum import Field
 from tm2p.ingest.data_source._intern.phases.get_datab_marker import get_datab_marker
 
 REC_ID = Field.REC_ID.value

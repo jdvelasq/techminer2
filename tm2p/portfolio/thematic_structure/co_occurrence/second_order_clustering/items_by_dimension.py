@@ -14,7 +14,7 @@ Smoke test:
     ...     power_iteration_normalizer="auto",
     ...     random_state=0,
     ... )
-    >>> from tm2p import Field, ItemOrderBy
+    >>> from tm2p.enum import Field, ItemOrderBy
     >>> from tm2p.synthesize.factor.co_occur import ItemsByDimensionDataFrame
     >>> (
     ...     ItemsByDimensionDataFrame()
@@ -49,8 +49,8 @@ Smoke test:
 import pandas as pd  # type: ignore
 
 from tm2p._intern import ParamsMixin
-from tm2p.portfolio.thematic_structure.co_occurrence.first_order_network._intern.comput_assoc_index import (
-    comput_assoc_index,
+from tm2p.portfolio.thematic_structure.co_occurrence.first_order_network._intern.normalize_matrix import (
+    normalize_matrix,
 )
 
 
@@ -106,7 +106,7 @@ def terms_by_dimension_frame(
         **filters,
     )
 
-    matrix_values = comput_assoc_index(matrix_values, association_index)
+    matrix_values = normalize_matrix(matrix_values, association_index)
     decomposition_estimator.fit(matrix_values)
     trans_matrix_values = decomposition_estimator.transform(matrix_values)
 

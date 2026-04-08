@@ -1,7 +1,7 @@
 import plotly.graph_objs as go  # type: ignore
 
-from tm2p._intern.nx.create_clusters_to_terms_mapping import (
-    create_clusters_to_terms_mapping,
+from tm2p._intern.nx.create_cluster_to_items_mapping import (
+    create_cluster_to_items_mapping,
 )
 
 
@@ -17,7 +17,7 @@ def plot_node_treemap(
     node_text = []
     parents = []
 
-    clusters = create_clusters_to_terms_mapping(nx_graph=nx_graph)
+    clusters = create_cluster_to_items_mapping(nx_graph=nx_graph)
     cluster_occ = {key: 0 for key in clusters}
     for key, names in clusters.items():
         for name in names:

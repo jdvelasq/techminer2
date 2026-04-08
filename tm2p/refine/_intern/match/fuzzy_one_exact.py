@@ -24,7 +24,7 @@ from fuzzywuzzy import fuzz  # type: ignore
 from tqdm import tqdm  # type: ignore
 
 from tm2p._intern import Params, ParamsMixin
-from tm2p._intern.enum import ThField
+from tm2p.enum import ThField
 
 from ._intern import (
     add_padding,

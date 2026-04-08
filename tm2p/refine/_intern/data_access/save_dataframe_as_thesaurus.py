@@ -1,6 +1,6 @@
 import pandas as pd  # type: ignore
 
-from tm2p import ThField
+from tm2p.enum import ThField
 from tm2p._intern import Params
 
 from .get_thesaurus_path import get_thesaurus_path

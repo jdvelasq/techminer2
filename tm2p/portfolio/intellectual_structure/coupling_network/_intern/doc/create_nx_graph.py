@@ -1,8 +1,8 @@
 import networkx as nx  # type: ignore
 
-from tm2p import Field
 from tm2p._intern.data_access import load_filtered_main_csv_zip
 from tm2p._intern.get_zero_digits import get_zero_digits
+from tm2p.enum import Field
 
 GCS = Field.GCS.value
 LCS = Field.LCS.value

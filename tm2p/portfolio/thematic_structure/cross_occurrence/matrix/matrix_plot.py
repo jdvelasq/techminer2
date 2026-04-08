@@ -9,7 +9,7 @@ MatrixPlot
 
 
 Smoke tests:
-    >>> from tm2p import Field, ItemOrderBy
+    >>> from tm2p.enum import Field, ItemOrderBy
     >>> from tm2p.portfolio.thematic_structure.cross_occurrence.matrix import MatrixPlot
     >>> fig = (
     ...     MatrixPlot()

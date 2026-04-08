@@ -9,7 +9,7 @@ RankingPlot
 
 
 Smoke tests:
-    >>> from tm2p import Field, ItemOrderBy
+    >>> from tm2p.enum import Field, ItemOrderBy
     >>> from tm2p.portfolio.performance_metrics.item_metrics import RankingPlot
     >>> plot = (
     ...     RankingPlot()

@@ -1,4 +1,4 @@
-from tm2p import Field
+from tm2p.enum import Field
 
 
 def check_required_corpus_field_enum(value: Field, param_name: str) -> Field:

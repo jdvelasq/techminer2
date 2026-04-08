@@ -3,7 +3,7 @@ Matrix
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p import ItemOrderBy, Field, Correlation
+    >>> from tm2p.enum import ItemOrderBy, Field, Correlation
     >>> from tm2p.portfolio.thematic_structure.correlation.cross import Matrix
     >>> df = (
     ...     Matrix()
@@ -31,7 +31,8 @@ Smoke tests:
     ...     .run()
     ... )
     >>> df.round(3)
-                                       fintech 117:25478  ...  financial services 007:01673
+    columns                            fintech 117:25478  ...  financial services 007:01673
+    rows                                                  ...
     fintech 117:25478                              1.000  ...                         0.128
     financial inclusion 017:03823                  0.262  ...                         0.244
     financial technology 015:02734                 0.000  ...                         0.206
@@ -72,7 +73,8 @@ Smoke tests:
     ...     .run()
     ... )
     >>> df.round(3)
-                                       fintech 117:25478  ...  financial services 007:01673
+    columns                            fintech 117:25478  ...  financial services 007:01673
+    rows                                                  ...
     fintech 117:25478                                1.0  ...                           0.0
     financial inclusion 017:03823                    1.0  ...                           0.0
     financial technology 015:02734                   1.0  ...                           0.0
@@ -113,7 +115,8 @@ Smoke tests:
     ...     .run()
     ... )
     >>> df.round(3)
-                                       fintech 117:25478  ...  financial services 007:01673
+    columns                            fintech 117:25478  ...  financial services 007:01673
+    rows                                                  ...
     fintech 117:25478                              1.000  ...                         0.163
     financial inclusion 017:03823                  0.465  ...                         0.250
     financial technology 015:02734                 0.465  ...                         0.227
@@ -130,8 +133,8 @@ Smoke tests:
 
 """
 
-from tm2p import ItemOrderBy
 from tm2p._intern import ParamsMixin
+from tm2p.enum import ItemOrderBy
 from tm2p.portfolio.thematic_structure.cross_occurrence.matrix import (
     Matrix as OCCMatrix,
 )
@@ -180,5 +183,8 @@ class Matrix(
             params=self.params,
             tfidf=data_matrix,
         )
+
+        matrix.columns.name = "columns"
+        matrix.index.name = "rows"
 
         return matrix

@@ -1,18 +1,19 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Any, Callable, Dict, List, Optional, Sequence, Tuple, Union
+from typing import Any, Callable, Dict, List, Literal, Optional, Sequence, Tuple, Union
 
 import pandas as pd  # type: ignore
 from sklearn.base import BaseEstimator  # type: ignore
 
-from tm2p._intern.enum import (
+from tm2p.enum import (
     AssociationIndex,
     CitationUnit,
     CoCitationUnit,
     Correlation,
     CouplingUnit,
     Field,
+    GraphClusteringAlgorithm,
     ItemOrderBy,
     NodeScaling,
     RecordOrderBy,
@@ -55,6 +56,15 @@ class Params:
     # Sankey plot:
     #
     sankey_top_n: Tuple[int, ...]
+
+    #
+    # Clustering:
+    #
+    clustering: Union[
+        BaseEstimator,
+        GraphClusteringAlgorithm,
+        dict,
+    ]
 
     #
     # Ingestion and basic operations:
@@ -103,7 +113,7 @@ class Params:
     #
     # A
     #
-    association_index: AssociationIndex = AssociationIndex.NONE
+    association_index: AssociationIndex = AssociationIndex.ASSOCIATION_STRENGTH
     axes_visible: bool = False
 
     #
@@ -119,7 +129,7 @@ class Params:
     citation_threshold: int = 0
     cluster_coverages: Optional[list[str]] = None
     cluster_names: Optional[list[str]] = None
-    clustering_algorithm_or_dict: Optional[Union[str, dict]] = None
+
     color: Optional[str] = None
     colored_output: bool = True
     colored_stderr: bool = True
@@ -236,6 +246,8 @@ class Params:
     #
     # S
     #
+    spring_layout_cluster_scale: float = 1.0
+    spring_layout_intra_scale: float = 0.9
     spring_layout_iterations: int = 50
     spring_layout_k: Optional[float] = 0.1
     spring_layout_seed: int = 42

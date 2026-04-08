@@ -19,7 +19,7 @@ Smoke test:
 
 import sys
 
-from tm2p import ThField
+from tm2p.enum import ThField
 from tm2p._intern import ParamsMixin
 from tm2p.refine._intern.data_access import (
     load_thesaurus_as_dataframe,

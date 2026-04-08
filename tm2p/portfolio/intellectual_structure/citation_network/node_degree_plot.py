@@ -10,7 +10,7 @@ NodeDegreePlot
     height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
-    >>> from tm2p import CitationUnit
+    >>> from tm2p.enum import CitationUnit
     >>> from tm2p.synthesize.netw.cit import NodeDegreePlot
     >>> fig = (
     ...     NodeDegreePlot()
@@ -54,7 +54,7 @@ Smoke tests:
     height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
-    >>> from tm2p import CitationUnit
+    >>> from tm2p.enum import CitationUnit
     >>> from tm2p.synthesize.netw.cit import NodeDegreePlot
     >>> fig = (
     ...     NodeDegreePlot()
@@ -98,7 +98,7 @@ Smoke tests:
     height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
-    >>> from tm2p import CitationUnit
+    >>> from tm2p.enum import CitationUnit
     >>> from tm2p.synthesize.netw.cit import NodeDegreePlot
     >>> fig = (
     ...     NodeDegreePlot()
@@ -142,7 +142,7 @@ Smoke tests:
     height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
-    >>> from tm2p import CitationUnit
+    >>> from tm2p.enum import CitationUnit
     >>> from tm2p.synthesize.netw.cit import NodeDegreePlot
     >>> fig = (
     ...     NodeDegreePlot()
@@ -186,7 +186,7 @@ Smoke tests:
     height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
-    >>> from tm2p import CitationUnit
+    >>> from tm2p.enum import CitationUnit
     >>> from tm2p.synthesize.netw.cit import NodeDegreePlot
     >>> fig = (
     ...     NodeDegreePlot()

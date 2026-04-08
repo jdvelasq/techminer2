@@ -54,9 +54,10 @@ Smoke tests:
 
 from tm2p._intern import ParamsMixin
 from tm2p.portfolio.emergence.co_occurrence.mixins import RecursiveClusteringMixin
-from tm2p.portfolio.thematic_structure.co_occurrence.first_order_network import (
-    ItemsByCluster as ClassicalTermsByClusterDataFrame,
-)
+
+# from tm2p.portfolio.thematic_structure.co_occurrence.first_order_network_ import (
+#     ItemsByCluster as ClassicalTermsByClusterDataFrame,
+# )
 
 
 class TermsByClusterDataFrame(
@@ -94,7 +95,7 @@ class TermsByClusterDataFrame(
             ClassicalTermsByClusterDataFrame()
             .update(**self.params.__dict__)
             #
-            .using_clustering_algorithm_or_dict(mapping)
+            .using_graph_clustering_algorithm_or_dict(mapping)
             #
             .having_items_in_top(None)
             .having_items_ordered_by("OCC")

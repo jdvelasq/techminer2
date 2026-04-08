@@ -1,4 +1,4 @@
-from tm2p._intern.enum import Field
+from tm2p.enum import Field
 from tm2p.ingest.data_source._intern.oper.transform_col import transform_column
 from tm2p.ingest.data_source._intern.phases.get_datab_marker import get_datab_marker
 

@@ -9,7 +9,7 @@ Cross-correlation Map
 
 Smoke tests:
     >>> # grey colors: https://www.w3schools.com/colors/colors_shades.asp
-    >>> from tm2p import ItemOrderBy, Field, Correlation, NodeScaling
+    >>> from tm2p.enum import ItemOrderBy, Field, Correlation, NodeScaling
     >>> from tm2p.portfolio.thematic_structure.correlation.cross import CorrelationMap
     >>> plot = (
     ...     CorrelationMap()
@@ -67,8 +67,8 @@ Smoke tests:
 import pandas as pd  # type: ignore
 from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
 
-from tm2p import Correlation
 from tm2p._intern import ParamsMixin
+from tm2p.enum import Correlation
 from tm2p.portfolio.thematic_structure.correlation.cross.matrix import Matrix
 
 from .._intern import plot_correl_map

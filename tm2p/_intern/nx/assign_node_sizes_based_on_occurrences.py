@@ -3,7 +3,7 @@
 # Example: nx.draw_networkx_nodes(G, pos, node_size=node_sizes)
 import numpy as np
 
-from tm2p._intern.enum import NodeScaling
+from tm2p.enum import NodeScaling
 
 
 def assign_node_sizes_based_on_occurrences(

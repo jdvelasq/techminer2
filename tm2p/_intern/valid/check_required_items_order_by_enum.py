@@ -1,4 +1,4 @@
-from tm2p import ItemOrderBy
+from tm2p.enum import ItemOrderBy
 
 
 def check_required_items_order_by_enum(

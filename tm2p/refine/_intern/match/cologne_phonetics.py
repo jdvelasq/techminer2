@@ -19,7 +19,7 @@ import sys
 import cologne_phonetics  # type: ignore
 import pandas as pd  # type: ignore
 
-from tm2p import ThField
+from tm2p.enum import ThField
 from tm2p._intern import ParamsMixin
 
 from ._intern import (

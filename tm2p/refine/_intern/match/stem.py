@@ -18,7 +18,7 @@ from functools import lru_cache
 import pandas as pd  # type: ignore
 from nltk.stem import PorterStemmer  # type: ignore
 
-from tm2p import ThField
+from tm2p.enum import ThField
 from tm2p._intern import ParamsMixin
 
 from ._intern import (

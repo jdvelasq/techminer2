@@ -13,7 +13,7 @@ Smoke tests:
 """
 
 from tm2p._intern import ParamsMixin
-from tm2p._intern.enum import Field, ThFile
+from tm2p.enum import Field, ThFile
 from tm2p.refine._intern.match import BaseTrigramMatch
 
 

@@ -4,7 +4,7 @@ Metrics
 
 
 Smoke tests:
-    >>> from tm2p import ItemOrderBy
+    >>> from tm2p.enum import ItemOrderBy
     >>> from tm2p.portfolio.performance_metrics.document import Metrics
     >>> df = (
     ...     Metrics()

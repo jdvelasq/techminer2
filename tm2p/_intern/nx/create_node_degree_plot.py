@@ -1,18 +1,21 @@
 import plotly.express as px  # type: ignore
 
-from tm2p._intern.enum.column import DEGREE, NAME, NODE
+STRENGTH = "STRENGTH"
+NAME = "NAME"
+NODE = "NODE"
+RANK = "RANK"
 
 
 def create_node_degree_plot(params, df):
 
     df = df.copy()
-    df["NODE"] = df.index
+    df[RANK] = range(1, len(df) + 1)
 
     fig = px.line(
         df,
-        x=NODE,
-        y=DEGREE,
-        hover_data=NAME,
+        x=RANK,
+        y=STRENGTH,
+        hover_data=NODE,
         markers=True,
     )
     fig.update_traces(
@@ -35,9 +38,16 @@ def create_node_degree_plot(params, df):
         linewidth=2,
         gridcolor="lightgray",
         griddash="dot",
-        title="Degree",
+        title="Strength",
     )
+
+    nticks = min(30, len(df))
+
     fig.update_xaxes(
+        tickmode="linear",
+        tick0=1,
+        dtick=1,
+        nticks=nticks,
         linecolor="gray",
         linewidth=2,
         gridcolor="lightgray",
@@ -47,9 +57,9 @@ def create_node_degree_plot(params, df):
 
     for _, row in df.iterrows():
         fig.add_annotation(
-            x=row[NODE],
-            y=row[DEGREE],
-            text=row[NAME],
+            x=row[RANK],
+            y=row[STRENGTH],
+            text=row[NODE],
             showarrow=False,
             textangle=-90,
             yanchor="bottom",

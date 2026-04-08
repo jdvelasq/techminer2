@@ -1,4 +1,4 @@
-from tm2p import Field
+from tm2p.enum import Field
 
 
 def _get_existent_columns(records, candiate_columns):

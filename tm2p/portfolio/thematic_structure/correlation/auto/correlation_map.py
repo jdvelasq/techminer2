@@ -10,7 +10,7 @@ NetworkMap
 
 Smoke tests:
     >>> # grey colors: https://www.w3schools.com/colors/colors_shades.asp
-    >>> from tm2p import ItemOrderBy, Field, Correlation, NodeScaling
+    >>> from tm2p.enum import ItemOrderBy, Field, Correlation, NodeScaling
     >>> from tm2p.portfolio.thematic_structure.correlation.auto import CorrelationMap
     >>> plot = (
     ...     CorrelationMap()
@@ -26,7 +26,7 @@ Smoke tests:
     ...     # CORRELATION:
     ...     .with_correlation_method(Correlation.PEARSON)
     ...     #
-    ...     # MAP:
+    ...     # PLOT:
     ...     .using_spring_layout_k(None)
     ...     .using_spring_layout_iterations(100)
     ...     .using_spring_layout_seed(0)
@@ -67,8 +67,8 @@ Smoke tests:
 import pandas as pd  # type: ignore
 from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
 
-from tm2p import Correlation
 from tm2p._intern import ParamsMixin
+from tm2p.enum import Correlation
 
 from .._intern import plot_correl_map
 from .matrix import Matrix

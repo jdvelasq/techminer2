@@ -14,7 +14,7 @@ Smoke test:
     ...     power_iteration_normalizer="auto",
     ...     random_state=0,
     ... )
-    >>> from tm2p import Field, ItemOrderBy
+    >>> from tm2p.enum import Field, ItemOrderBy
     >>> from tm2p.portfolio.thematic_structure.factorial_analysis.second_order import ItemsByDimension
     >>> df = (
     ...     ItemsByDimension()
@@ -56,7 +56,9 @@ import numpy as np
 import pandas as pd  # type: ignore
 
 from tm2p._intern import ParamsMixin
-from tm2p.portfolio.thematic_structure.co_occurrence.matrix.matrix import Matrix
+from tm2p.portfolio.thematic_structure.co_occurrence.co_occurrence_matrix.matrix import (
+    Matrix,
+)
 
 
 class ItemsByDimension(

@@ -1,6 +1,6 @@
 import pandas as pd  # type: ignore
 
-from tm2p import Field
+from tm2p.enum import Field
 from tm2p.ingest.data_source._intern.oper import transform_column
 
 

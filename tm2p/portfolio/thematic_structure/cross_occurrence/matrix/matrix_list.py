@@ -3,7 +3,7 @@ MatrixList
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p import Field, ItemOrderBy
+    >>> from tm2p.enum import Field, ItemOrderBy
     >>> from tm2p.portfolio.thematic_structure.cross_occurrence.matrix import MatrixList
     >>> df = (
     ...     MatrixList()
@@ -55,7 +55,7 @@ Smoke tests:
     9      Arnone G 002:00266  fintech 117:25478    2
 
 
-    >>> from tm2p import Field, ItemOrderBy
+    >>> from tm2p.enum import Field, ItemOrderBy
     >>> from tm2p.portfolio.thematic_structure.cross_occurrence.matrix import MatrixList
     >>> df = (
     ...     MatrixList()

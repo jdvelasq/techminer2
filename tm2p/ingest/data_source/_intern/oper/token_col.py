@@ -7,8 +7,8 @@ import contractions  # type: ignore
 import pandas as pd  # type: ignore
 from nltk.tokenize import word_tokenize  # type: ignore
 
-from tm2p import Field
 from tm2p._intern.packag_data import load_builtin_mapping
+from tm2p.enum import Field
 
 from ._file_dispatch import get_file_operations
 

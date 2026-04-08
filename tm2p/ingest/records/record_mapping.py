@@ -4,7 +4,7 @@ RecordMapping
 
 Smoke Test:
     >>> from pprint import pprint
-    >>> from tm2p import Field, RecordOrderBy
+    >>> from tm2p.enum import Field, RecordOrderBy
     >>> from tm2p.ingest.records import RecordMapping
     >>> mapping = (
     ...     RecordMapping()

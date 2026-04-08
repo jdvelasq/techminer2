@@ -24,7 +24,7 @@ Smoke test:
     ...     algorithm="elkan",
     ...     random_state=0,
     ... )
-    >>> from tm2p import Field, ItemOrderBy
+    >>> from tm2p.enum import Field, ItemOrderBy
     >>> from tm2p.synthesize.factor.co_occur import ClusterCentersDataFrame
     >>> (
     ...     ClusterCentersDataFrame()

@@ -5,8 +5,8 @@ from datetime import timedelta
 from pathlib import Path
 from typing import Any
 
-from tm2p import Field
 from tm2p._intern import ParamsMixin
+from tm2p.enum import Field
 from tm2p.ingest.records import RecordViewer
 
 from .._intern import Step

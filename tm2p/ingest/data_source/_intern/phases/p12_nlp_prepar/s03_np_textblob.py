@@ -6,9 +6,9 @@ import pandas as pd  # type: ignore
 from pandarallel import pandarallel  # type: ignore
 from textblob import TextBlob  # type: ignore
 
-from tm2p import Field
 from tm2p._intern import stdout_to_stderr
 from tm2p._intern.data_access import load_main_csv_zip, save_main_csv_zip
+from tm2p.enum import Field
 
 
 def s03_np_textblob(root_directory: str) -> int:

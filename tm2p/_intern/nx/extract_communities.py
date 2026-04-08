@@ -1,8 +1,8 @@
 import pandas as pd  # type: ignore
 
 from tm2p._intern import Params
-from tm2p._intern.nx.create_clusters_to_terms_mapping import (
-    create_clusters_to_terms_mapping,
+from tm2p._intern.nx.create_cluster_to_items_mapping import (
+    create_cluster_to_items_mapping,
 )
 
 
@@ -22,7 +22,7 @@ def extract_communities(
         x = [v for k in sorted(mapping.keys(), reverse=True) for v in mapping[k]]
         return x
 
-    communities = create_clusters_to_terms_mapping(nx_graph)
+    communities = create_cluster_to_items_mapping(nx_graph)
     communities = {key: f(value) for key, value in communities.items()}
     communities = pd.DataFrame.from_dict(communities, orient="index").T
     communities = communities.fillna("")

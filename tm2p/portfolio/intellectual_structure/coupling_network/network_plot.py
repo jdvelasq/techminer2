@@ -11,7 +11,7 @@ Network Plot
     height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
-    >>> from tm2p import CouplingUnit
+    >>> from tm2p.enum import CouplingUnit
     >>> from tm2p.synthesize.netw.coupl import NetworkPlot
     >>> fig = (
     ...     NetworkPlot()
@@ -63,7 +63,7 @@ Smoke tests:
     height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
-    >>> from tm2p import CouplingUnit
+    >>> from tm2p.enum import CouplingUnit
     >>> from tm2p.synthesize.netw.coupl import NetworkPlot
     >>> fig = (
     ...     NetworkPlot()
@@ -115,7 +115,7 @@ Smoke tests:
     height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
-    >>> from tm2p import CouplingUnit
+    >>> from tm2p.enum import CouplingUnit
     >>> from tm2p.synthesize.netw.coupl import NetworkPlot
     >>> fig = (
     ...     NetworkPlot()
@@ -167,7 +167,7 @@ Smoke tests:
     height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
-    >>> from tm2p import CouplingUnit
+    >>> from tm2p.enum import CouplingUnit
     >>> from tm2p.synthesize.netw.coupl import NetworkPlot
     >>> fig = (
     ...     NetworkPlot()
@@ -261,8 +261,8 @@ Smoke tests:
 
 """
 
-from tm2p import CouplingUnit, ItemOrderBy
 from tm2p._intern import ParamsMixin
+from tm2p.enum import CouplingUnit, ItemOrderBy
 from tm2p.portfolio.intellectual_structure.coupling_network._intern.doc import (
     DocNetworkPlot,
 )

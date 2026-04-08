@@ -1,9 +1,3 @@
-"""
-Creates a co-occurrence networkx graph from a co-occurrence matrix.
-
-
-"""
-
 from cdlib import algorithms  # type: ignore
 
 
@@ -12,18 +6,18 @@ def cluster_nx_graph(
     nx_graph,
 ):
 
-    algorithm_or_dict = params.clustering_algorithm_or_dict
+    clustering = params.clustering
 
-    if isinstance(algorithm_or_dict, str):
-        nx_graph = _apply_cdlib_algorithm(nx_graph, algorithm_or_dict)
+    if isinstance(clustering, str):
+        nx_graph = _apply_cdlib_algorithm(nx_graph, clustering)
 
-    if isinstance(algorithm_or_dict, dict):
+    if isinstance(clustering, dict):
         #
         # The group is assigned using and external algorithm. It is designed
         # to provide analysis capabilities to the system when other types of
         # analysis are conducted, for example, factor analysis.
 
-        for node, group in algorithm_or_dict.items():
+        for node, group in clustering.items():
             nx_graph.nodes[node]["group"] = group
 
     for node in nx_graph.nodes:
@@ -55,21 +49,27 @@ def _apply_cdlib_algorithm(
     """Network community detection."""
 
     cdlib_algorithm = {
-        "label_propagation": algorithms.label_propagation,
-        "leiden": algorithms.leiden,
-        "louvain": algorithms.louvain,
-        "walktrap": algorithms.walktrap,
+        "INFOMAP": algorithms.infomap,
+        "LEIDEN": algorithms.leiden,
+        "LOUVAIN": algorithms.louvain,
+        "WALKTRAP": algorithms.walktrap,
     }[algorithm]
 
-    communities = []
-    if algorithm == "label_propagation":
-        communities = cdlib_algorithm(nx_graph).communities
-    elif algorithm == "leiden":
-        communities = cdlib_algorithm(nx_graph).communities
-    elif algorithm == "louvain":
-        communities = cdlib_algorithm(nx_graph, randomize=False).communities
-    elif algorithm == "walktrap":
-        communities = cdlib_algorithm(nx_graph).communities
+    kwargs = {}
+
+    if algorithm in [
+        "LOUVAIN",
+    ]:
+        kwargs["weight"] = "weight"
+        kwargs["randomize"] = False
+
+    if algorithm in [
+        "LEIDEN",
+    ]:
+        kwargs["weights"] = "weight"
+        kwargs["seed"] = 0
+
+    communities = cdlib_algorithm(nx_graph, **kwargs).communities
 
     for i_community, community in enumerate(communities):
         for node in community:

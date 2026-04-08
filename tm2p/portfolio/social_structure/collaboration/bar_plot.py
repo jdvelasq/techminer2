@@ -9,7 +9,7 @@ BarPlot
 
 
 Smoke tests:
-    >>> from tm2p import Field, ItemOrderBy
+    >>> from tm2p.enum import Field, ItemOrderBy
     >>> from tm2p.portfolio.social_structure.collaboration import BarPlot
     >>> fig = (
     ...     BarPlot()
@@ -48,7 +48,7 @@ Smoke tests:
 import plotly.express as px  # type: ignore
 
 from tm2p._intern import ParamsMixin
-from tm2p._intern.enum.column import MP, SP
+from tm2p.enum.column import MP, SP
 from tm2p.portfolio.social_structure.collaboration.metrics import Metrics
 
 

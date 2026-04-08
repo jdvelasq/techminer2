@@ -14,7 +14,7 @@ Smoke test:
     ...     power_iteration_normalizer="auto",
     ...     random_state=0,
     ... )
-    >>> from tm2p import Field, ItemOrderBy
+    >>> from tm2p.enum import Field, ItemOrderBy
     >>> from tm2p.portfolio.thematic_structure.factorial_analysis.second_order import ClusterCenters
     >>> df = (
     ...     ClusterCenters()
@@ -50,7 +50,7 @@ Smoke test:
 
 from tm2p._intern import Params, ParamsMixin
 from tm2p._intern.data_access import load_filtered_main_csv_zip
-from tm2p._intern.enum import Field
+from tm2p.enum import Field
 
 from .item_to_cluster import ItemToCluster
 from .items_by_dimension import ItemsByDimension

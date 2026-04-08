@@ -3,8 +3,20 @@ ClusterToItems
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p import Field, AssociationIndex, ItemOrderBy
-    >>> from tm2p.synthesize.netw.co_occur import ClusterToItems
+    >>> # ---------------------------------------------------------------------
+    >>> # AgglomerativeClustering
+    >>> # ---------------------------------------------------------------------
+    >>> from sklearn.cluster import AgglomerativeClustering
+    >>> estimator = AgglomerativeClustering(
+    ...     n_clusters=6,
+    ...     metric="precomputed",
+    ...     linkage="average",  #       linkage ∈ {"average", "complete", "single"}
+    ...     distance_threshold=None,  # always None
+    ...     compute_full_tree=True,  #  always
+    ...     compute_distances=True,  #  always True
+    ... )
+    >>> from tm2p.enum import AssociationIndex, Field, GraphClusteringAlgorithm, ItemOrderBy
+    >>> from tm2p.portfolio.thematic_structure.co_occurrence.first_order_network import ClusterToItems
     >>> mapping = (
     ...     ClusterToItems()
     ...     #
@@ -20,8 +32,10 @@ Smoke tests:
     ...     .using_counters(True)
     ...     #
     ...     # NETWORK:
-    ...     .using_association_index(AssociationIndex.NONE)
-    ...     .using_clustering_algorithm_or_dict("louvain")
+    ...     .using_association_index(AssociationIndex.JACCARD)
+    ...     #
+    ...     # CLUSTERING:
+    ...     .using_clustering(estimator)
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/scopus/")
@@ -32,29 +46,27 @@ Smoke tests:
     ...     .run()
     ... )
     >>> from pprint import pprint
-    >>> pprint(mapping)
-    {0: ['fintech 117:25478',
-         'financial inclusion 017:03823',
-         'blockchain 011:02023',
-         'china 009:01947',
-         'artificialintelligence 008:01915',
-         'crowd-funding 007:01245',
-         'reg-tech 006:01481',
-         'sustainability 006:01357',
-         'covid-19 006:01224',
-         'digital finance 005:02052'],
-     1: ['financial-technology 015:02734',
-         'green finance 011:02844',
+    >>> pprint(mapping) # doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
+    {0: ['financial technology 015:02734',
          'financial literacy 005:00665',
-         'economic-growth 005:00660',
+         'economic growth 005:00660',
          'sustainable development 005:00604'],
+     1: ['blockchain 011:02023',
+         'artificial intelligence 008:01915',
+         'crowdfunding 007:01245',
+         'digital finance 005:02052'],
      2: ['banking 010:02599',
          'innovation 009:01703',
          'financial services 007:01673',
-         'technology 007:01409',
-         'banks 005:00769']}
+         'technology 007:01409'],
+     3: ['green finance 011:02844', 'covid-19 006:01224', 'banks 005:00769'],
+     4: ['china 009:01947', 'regtech 006:01481', 'sustainability 006:01357'],
+     5: ['fintech 117:25478', 'financial inclusion 017:03823']}
 
 
+    >>> # ---------------------------------------------------------------------
+    >>> # LOOUVAIN
+    >>> # ---------------------------------------------------------------------
     >>> mapping = (
     ...     ClusterToItems()
     ...     #
@@ -67,11 +79,13 @@ Smoke tests:
     ...     .having_items_in(None)
     ...     #
     ...     # COUNTERS:
-    ...     .using_counters(False)
+    ...     .using_counters(True)
     ...     #
     ...     # NETWORK:
-    ...     .using_association_index(AssociationIndex.NONE)
-    ...     .using_clustering_algorithm_or_dict("louvain")
+    ...     .using_association_index(AssociationIndex.JACCARD)
+    ...     #
+    ...     # CLUSTERING:
+    ...     .using_clustering(GraphClusteringAlgorithm.LOUVAIN)
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/scopus/")
@@ -81,32 +95,38 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> pprint(mapping)
-    {0: ['fintech',
-         'financial inclusion',
-         'blockchain',
-         'china',
-         'artificialintelligence',
-         'crowd-funding',
-         'reg-tech',
-         'sustainability',
-         'covid-19',
-         'digital finance'],
-     1: ['financial-technology',
-         'green finance',
-         'financial literacy',
-         'economic-growth',
-         'sustainable development'],
-     2: ['banking', 'innovation', 'financial services', 'technology', 'banks']}
+    >>> from pprint import pprint
+    >>> pprint(mapping) # doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
+    {0: ['fintech 117:25478',
+         'financial inclusion 017:03823',
+         'china 009:01947',
+         'regtech 006:01481',
+         'sustainability 006:01357'],
+     1: ['financial technology 015:02734',
+         'green finance 011:02844',
+         'financial literacy 005:00665',
+         'economic growth 005:00660',
+         'sustainable development 005:00604'],
+     2: ['blockchain 011:02023',
+         'artificial intelligence 008:01915',
+         'crowdfunding 007:01245',
+         'covid-19 006:01224',
+         'digital finance 005:02052'],
+     3: ['banking 010:02599',
+         'innovation 009:01703',
+         'financial services 007:01673',
+         'technology 007:01409',
+         'banks 005:00769']}
+
+
+
 
 
 """
 
 from tm2p._intern import ParamsMixin
-from tm2p._intern.nx import cluster_nx_graph, create_clusters_to_terms_mapping
-from tm2p.portfolio.thematic_structure.co_occurrence.first_order_network._intern.create_nx_graph import (
-    create_nx_graph,
-)
+
+from .item_to_cluster import ItemToCluster
 
 
 class ClusterToItems(
@@ -118,13 +138,18 @@ class ClusterToItems(
         """:meta private:"""
 
         use_counters = self.params.counters
-        self.params.counters = True
-        nx_graph = create_nx_graph(params=self.params)
-        nx_graph = cluster_nx_graph(params=self.params, nx_graph=nx_graph)
-        mapping = create_clusters_to_terms_mapping(nx_graph=nx_graph)
-        if use_counters is False:
-            self.params.counters = False
-            for cluster, items in mapping.items():
-                mapping[cluster] = [" ".join(item.split(" ")[:-1]) for item in items]
 
-        return mapping
+        i2c = ItemToCluster().update(**self.params.__dict__).using_counters(True).run()
+
+        c2i = {}
+        for item, cluster in i2c.items():
+            if cluster not in c2i:
+                c2i[cluster] = []
+            c2i[cluster].append(item)
+
+        if use_counters is False:
+
+            for cluster, items in c2i.items():
+                c2i[cluster] = [" ".join(item.split(" ")[:-1]) for item in items]
+
+        return c2i

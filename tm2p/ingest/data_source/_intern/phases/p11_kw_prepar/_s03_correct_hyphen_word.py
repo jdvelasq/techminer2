@@ -6,12 +6,12 @@ import pandas as pd  # type: ignore
 from openai import APIError, OpenAI
 from tqdm import tqdm  # type: ignore
 
-from tm2p import Field
 from tm2p._intern.data_access import load_main_csv_zip, save_main_csv_zip
 from tm2p._intern.packag_data import (
     add_new_words_to_builtin_word_list,
     load_builtin_word_list,
 )
+from tm2p.enum import Field
 
 SYSTEM_PROMPT = """
 INSTRUCTION:

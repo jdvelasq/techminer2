@@ -1,6 +1,6 @@
 from enum import Enum
 
-from tm2p import Field
+from tm2p.enum import Field
 
 
 class Column(Enum):

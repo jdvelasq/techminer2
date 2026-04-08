@@ -3,7 +3,7 @@ Matrix
 ===============================================================================
 
 Smoke Test:
-    >>> from tm2p import ItemOrderBy, Field, Correlation
+    >>> from tm2p.enum import ItemOrderBy, Field, Correlation
     >>> from tm2p.portfolio.thematic_structure.correlation.auto import Matrix
     >>> df = (
     ...     Matrix()
@@ -30,7 +30,8 @@ Smoke Test:
     ...     .run()
     ... )
     >>> df.round(3)
-                                       fintech 117:25478  ...  financial services 007:01673
+    columns                            fintech 117:25478  ...  financial services 007:01673
+    rows                                                  ...
     fintech 117:25478                                1.0  ...                         0.000
     financial inclusion 017:03823                    0.0  ...                         0.013
     financial technology 015:02734                   0.0  ...                         0.025
@@ -71,7 +72,8 @@ Smoke Test:
     ...     .run()
     ... )
     >>> df.round(3)
-                                       fintech 117:25478  ...  financial services 007:01673
+    columns                            fintech 117:25478  ...  financial services 007:01673
+    rows                                                  ...
     fintech 117:25478                                1.0  ...                           0.0
     financial inclusion 017:03823                    0.0  ...                           0.0
     financial technology 015:02734                   0.0  ...                           0.0
@@ -112,7 +114,8 @@ Smoke Test:
     ...     .run()
     ... )
     >>> df.round(3)
-                                       fintech 117:25478  ...  financial services 007:01673
+    columns                            fintech 117:25478  ...  financial services 007:01673
+    rows                                                  ...
     fintech 117:25478                              1.000  ...                         0.034
     financial inclusion 017:03823                  0.120  ...                         0.059
     financial technology 015:02734                 0.068  ...                         0.067
@@ -157,5 +160,8 @@ class Matrix(
             params=self.params,
             tfidf=tfidf_matrix,
         )
+
+        matrix.columns.name = "columns"
+        matrix.index.name = "rows"
 
         return matrix

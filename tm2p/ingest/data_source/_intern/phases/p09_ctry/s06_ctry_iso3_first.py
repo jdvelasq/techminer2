@@ -1,7 +1,7 @@
 import pandas as pd  # type: ignore
 
-from tm2p import Field
 from tm2p._intern.packag_data import load_builtin_mapping
+from tm2p.enum import Field
 from tm2p.ingest.oper.transform_column import transform_column
 
 

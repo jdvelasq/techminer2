@@ -1,6 +1,6 @@
 import pandas as pd  # type: ignore
 
-from tm2p import Field
+from tm2p.enum import Field
 
 KEYWORDS_MAX_LENGTH = 60
 

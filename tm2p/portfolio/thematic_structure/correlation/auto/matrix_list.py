@@ -3,7 +3,7 @@ MatrixList
 ===============================================================================
 
 Smoke Test:
-    >>> from tm2p import ItemOrderBy, Field, Correlation
+    >>> from tm2p.enum import ItemOrderBy, Field, Correlation
     >>> from tm2p.portfolio.thematic_structure.correlation.auto import MatrixList
     >>> df = (
     ...     MatrixList()
@@ -41,6 +41,7 @@ Smoke Test:
 """
 
 from tm2p._intern import ParamsMixin
+from tm2p._intern.matrix_to_matrix_list import matrix_to_matrix_list
 
 from .matrix import Matrix
 
@@ -53,12 +54,6 @@ class MatrixList(
     def run(self):
 
         matrix = Matrix().update(**self.params.__dict__).run()
-        matrix_list = matrix.stack().reset_index()
-        matrix_list.columns = ["rows", "columns", "CORR"]
-        matrix_list = matrix_list.sort_values(
-            by=["CORR", "rows", "columns"],
-            ascending=[False, True, True],
-        )
-        matrix_list = matrix_list.reset_index(drop=True)
+        matrix_list = matrix_to_matrix_list(matrix, "CORR")
 
         return matrix_list

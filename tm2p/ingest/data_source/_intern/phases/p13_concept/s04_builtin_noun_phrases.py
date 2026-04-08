@@ -2,11 +2,11 @@ from pathlib import Path
 
 import pandas as pd  # type: ignore
 
-from tm2p import Field
 from tm2p._intern.packag_data.word_lists import (
     load_builtin_word_list,
     save_text_processing_terms,
 )
+from tm2p.enum import Field
 
 
 def s04_builtin_noun_phrases(root_directory: str) -> int:

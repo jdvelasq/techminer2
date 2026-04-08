@@ -1,7 +1,7 @@
 # CODE_REVIEW: 2025-01-27
 """
 Smoke test:
-    # >>> from tm2p import Field
+    # >>> from tm2p.enum import Field
     # >>> from tm2p.ingest.data_sourc._intern.oper.count_col_item import count_column_items
     # >>> count_column_items(
     # ...     source=Field.AUTH_RAW,
@@ -31,7 +31,7 @@ Smoke test:
 
 from typing import Optional
 
-from tm2p import Field
+from tm2p.enum import Field
 
 from ._file_dispatch import get_file_operations
 

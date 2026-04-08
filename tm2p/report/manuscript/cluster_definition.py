@@ -58,10 +58,11 @@ from tm2p._intern import ParamsMixin
 from tm2p._intern.packag_data.templates.load_builtin_template import (
     load_builtin_template,
 )
-from tm2p.portfolio.thematic_structure.co_occurrence.first_order_network import (
-    DocumentsByClusterMapping,
-    Summary,
-)
+
+# from tm2p.portfolio.thematic_structure.co_occurrence.first_order_network_ import (
+#     DocumentsByCluster,
+#     Summary,
+# )
 
 
 class ClusterDefinition(
@@ -99,7 +100,7 @@ class ClusterDefinition(
     # -------------------------------------------------------------------------
     def internal__generate_documents_by_cluster_mapping(self):
         self.documents_by_cluster_mapping = (
-            DocumentsByClusterMapping()
+            DocumentsByCluster()
             .update(**self.params.__dict__)
             .with_source_field("descriptors")
             .run()

@@ -3,7 +3,7 @@ MatrixList
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p import ItemOrderBy, Field, Correlation
+    >>> from tm2p.enum import ItemOrderBy, Field, Correlation
     >>> from tm2p.portfolio.thematic_structure.correlation.cross import MatrixList
     >>> df = (
     ...     MatrixList()

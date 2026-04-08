@@ -2,8 +2,8 @@ import re
 
 from textblob import Word  # type: ignore
 
-from tm2p import Field
 from tm2p._intern.packag_data import load_builtin_word_list
+from tm2p.enum import Field
 from tm2p.ingest.data_source._intern.oper import copy_column, merge_columns
 from tm2p.ingest.data_source._intern.oper.transform_col import transform_column
 

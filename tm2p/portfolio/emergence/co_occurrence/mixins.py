@@ -1,9 +1,10 @@
 import sys
 
 from tm2p.portfolio.performance_metrics.item_metrics import Metrics  # type: ignore
-from tm2p.portfolio.thematic_structure.co_occurrence.first_order_network import (
-    ClusterToItems,
-)
+
+# from tm2p.portfolio.thematic_structure.co_occurrence.first_order_network_ import (
+#     ClusterToItems,
+# )
 
 
 class RecursiveClusteringMixin:

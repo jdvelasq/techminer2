@@ -1,6 +1,6 @@
 import pandas as pd  # type: ignore
 
-from tm2p import Field
+from tm2p.enum import Field
 
 
 def transform_keywords_to_lower_case(dataframe: pd.DataFrame) -> pd.DataFrame:

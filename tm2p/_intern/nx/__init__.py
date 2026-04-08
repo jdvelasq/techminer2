@@ -1,3 +1,5 @@
+from .add_weighted_edges_from_matrix_list import add_weighted_edges_from_matrix_list
+from .assign_clusters_to_nodes import assign_clusters_to_nodes
 from .assign_constant_to_edge_colors import assign_constant_to_edge_colors
 from .assign_constant_to_node_colors import assign_constant_to_node_colors
 from .assign_constant_to_node_sizes import assign_constant_to_node_sizes
@@ -37,20 +39,30 @@ from .assign_textfont_sizes_based_on_occurrences import (
 from .cluster_nx_graph import cluster_nx_graph
 from .collect_node_degrees import collect_node_degrees
 from .compute_circular_layout_positions import compute_circular_layout_positions
+from .compute_clustered_spring_layout_positions import (
+    compute_clustered_spring_layout_positions,
+)
 from .compute_node_metrics import compute_node_metrics
 from .compute_spring_layout_positions import compute_spring_layout_positions
-from .create_clusters_to_terms_mapping import create_clusters_to_terms_mapping
+from .create_cluster_to_items_mapping import create_cluster_to_items_mapping
 from .create_concept_grid_plot import concept_grid_plot
+from .create_item_to_cluster_mapping import create_item_to_cluster_mapping
 from .create_network_density_plot import create_network_density_plot
 from .create_node_degree_dataframe import create_node_degree_dataframe
 from .create_node_degree_plot import create_node_degree_plot
-from .create_terms_to_clusters_mapping import create_terms_to_clusters_mapping
+from .create_nx_graph_from_matrix import create_nx_graph_from_matrix
 from .extract_communities import extract_communities
 from .plot_node_treemap import plot_node_treemap
 from .plot_nx_graph import plot_nx_graph
+from .remove_isolated_nodes_from_matrix_list import (
+    remove_isolated_nodes_from_matrix_list,
+)
+from .remove_nodes_and_links import remove_nodes_and_links
 from .summarize_communities import summarize_communities
 
 __all__ = [
+    "add_weighted_edges_from_matrix_list",
+    "assign_clusters_to_nodes",
     "assign_constant_textfont_size_to_nodes",
     "assign_constant_to_edge_colors",
     "assign_constant_to_node_colors",
@@ -74,16 +86,20 @@ __all__ = [
     "cluster_nx_graph",
     "collect_node_degrees",
     "compute_circular_layout_positions",
+    "compute_clustered_spring_layout_positions",
     "compute_node_metrics",
     "compute_spring_layout_positions",
     "concept_grid_plot",
-    "create_clusters_to_terms_mapping",
+    "create_cluster_to_items_mapping",
     "create_network_density_plot",
-    "create_node_degree_plot",
     "create_node_degree_dataframe",
-    "create_terms_to_clusters_mapping",
+    "create_node_degree_plot",
+    "create_nx_graph_from_matrix",
+    "create_item_to_cluster_mapping",
     "extract_communities",
     "plot_node_treemap",
     "plot_nx_graph",
+    "remove_isolated_nodes_from_matrix_list",
+    "remove_nodes_and_links",
     "summarize_communities",
 ]

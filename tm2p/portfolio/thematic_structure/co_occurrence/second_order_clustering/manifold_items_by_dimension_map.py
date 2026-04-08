@@ -31,7 +31,7 @@ Smoke test:
     ...     angle=0.5,
     ...     n_jobs=None,
     ... )
-    >>> from tm2p import Field, ItemOrderBy
+    >>> from tm2p.enum import Field, ItemOrderBy
     >>> from tm2p.synthesize.factor.co_occur import ManifoldItemsByDimensionMap
     >>> plot = (
     ...     ManifoldItemsByDimensionMap()

@@ -1,9 +1,8 @@
 import networkx as nx  # type: ignore
 import numpy as np
 
-from tm2p import Field
 from tm2p._intern.data_access import load_filtered_main_csv_zip
-from tm2p._intern.enum import CoCitationUnit
+from tm2p.enum import CoCitationUnit, Field
 
 GCR = Field.GCR_WOS_FORMAT.value
 

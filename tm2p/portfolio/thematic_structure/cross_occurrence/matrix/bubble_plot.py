@@ -8,7 +8,7 @@ Bubble Plot
     height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
-    >>> from tm2p import Field, ItemOrderBy
+    >>> from tm2p.enum import Field, ItemOrderBy
     >>> from tm2p.portfolio.thematic_structure.cross_occurrence.matrix import BubblePlot
     >>> fig = (
     ...     BubblePlot()

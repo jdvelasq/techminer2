@@ -25,10 +25,10 @@ from pathlib import Path
 import pandas as pd  # type: ignore
 from textblob import TextBlob  # type: ignore
 
-from tm2p import Field
 from tm2p._intern import ParamsMixin
 from tm2p._intern.data_access import load_main_csv_zip
 from tm2p._intern.packag_data import load_builtin_mapping
+from tm2p.enum import Field
 
 _EXCLUDED_COMMON_WORDS = [
     "classification",

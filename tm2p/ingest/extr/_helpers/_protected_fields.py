@@ -1,4 +1,4 @@
-from tm2p import Field
+from tm2p.enum import Field
 
 PROTECTED_FIELDS = [
     Field.NP_ABSTR_RAW.value,

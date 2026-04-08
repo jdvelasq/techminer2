@@ -1,16 +1,14 @@
 import networkx as nx  # type: ignore
 import pandas as pd  # type: ignore
 
-from tm2p._intern.enum.column import (
-    BETWEENNESS,
-    CLOSENESS,
-    CLUSTERING,
-    CORE,
-    DEGREE,
-    EIGENVECTOR,
-    PAGERANK,
-    STRENGTH,
-)
+BETWEENNESS_CENTRALITY = "BETWEENNESS_CENTRALITY"
+CLOSENESS_CENTRALITY = "CLOSENESS_CENTRALITY"
+CLUSTERING = "CLUSTERING"
+CORE_NUMBER = "CORE_NUMBER"
+DEGREE_CENTRALITY = "DEGREE_CENTRALITY"
+EIGENVECTOR_CENTRALITY = "EIGENVECTOR_CENTRALITY"
+PAGERANK = "PAGERANK"
+STRENGTH = "STRENGTH"
 
 
 def compute_node_metrics(
@@ -33,13 +31,13 @@ def compute_node_metrics(
 
     data_frame = pd.DataFrame(
         {
-            DEGREE: nx.degree_centrality(nx_graph),
-            BETWEENNESS: nx.betweenness_centrality(nx_graph),
-            CLOSENESS: nx.closeness_centrality(nx_graph),
+            DEGREE_CENTRALITY: nx.degree_centrality(nx_graph),
+            BETWEENNESS_CENTRALITY: nx.betweenness_centrality(nx_graph),
+            CLOSENESS_CENTRALITY: nx.closeness_centrality(nx_graph),
             PAGERANK: nx.pagerank(nx_graph),
-            EIGENVECTOR: nx.eigenvector_centrality(nx_graph),
+            EIGENVECTOR_CENTRALITY: nx.eigenvector_centrality(nx_graph),
             CLUSTERING: nx.clustering(nx_graph),
-            CORE: nx.core_number(nx_graph),
+            CORE_NUMBER: nx.core_number(nx_graph),
             STRENGTH: dict(nx_graph.degree(weight="weight")),
             "_occ_gc_": occ_gc,
             "_name_": nodes,
@@ -48,7 +46,7 @@ def compute_node_metrics(
     )
 
     data_frame = data_frame.sort_values(
-        by=[DEGREE, "_occ_gc_", "_name_"],
+        by=[STRENGTH, "_occ_gc_", "_name_"],
         ascending=[False, False, True],
     )
     data_frame = data_frame.drop(columns=["_name_", "_occ_gc_"])

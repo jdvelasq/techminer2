@@ -58,9 +58,9 @@ Smoke test:
 
 import pandas as pd  # type: ignore
 
-from tm2p import Field, RecordOrderBy
 from tm2p._intern import Params
 from tm2p._intern.data_access.load_main_csv_zip import load_main_csv_zip
+from tm2p.enum import Field, RecordOrderBy
 
 
 def _filter_dataframe_by_year(params: Params, df: pd.DataFrame) -> pd.DataFrame:

@@ -2,7 +2,7 @@ from typing import Callable, Optional
 
 from pandas import Series  # type: ignore
 
-from tm2p import Field
+from tm2p.enum import Field
 
 from ._file_dispatch import get_file_operations
 

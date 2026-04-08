@@ -30,7 +30,7 @@ Smoke test:
     ...     algorithm="elkan",
     ...     random_state=0,
     ... )
-    >>> from tm2p import Field, ItemOrderBy, NodeScaling
+    >>> from tm2p.enum import Field, ItemOrderBy, NodeScaling
     >>> from tm2p.portfolio.thematic_structure.factorial_analysis.second_order import FactorMap
     >>> plot = (
     ...     FactorMap()

@@ -1,4 +1,4 @@
-from tm2p import ThField
+from tm2p.enum import ThField
 from tm2p.refine._intern.data_access import load_thesaurus_as_dataframe
 from tm2p.refine._intern.oper import sort_thesaurus_df_by_occ
 

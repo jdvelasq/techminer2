@@ -3,7 +3,7 @@ Matrix
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p import Field, ItemOrderBy
+    >>> from tm2p.enum import Field, ItemOrderBy
     >>> from tm2p.portfolio.thematic_structure.cross_occurrence.matrix import Matrix
     >>> df = (
     ...     Matrix()
@@ -58,7 +58,7 @@ Smoke tests:
     [10 rows x 10 columns]
 
 
-    >>> from tm2p import Field, ItemOrderBy
+    >>> from tm2p.enum import Field, ItemOrderBy
     >>> from tm2p.portfolio.thematic_structure.cross_occurrence.matrix import Matrix
     >>> df = (
     ...     Matrix()
@@ -119,9 +119,9 @@ Smoke tests:
 
 """
 
-from tm2p import Field
 from tm2p._intern import ParamsMixin
 from tm2p._intern.data_access import load_filtered_main_csv_zip
+from tm2p.enum import Field
 from tm2p.portfolio.performance_metrics.item_metrics import Metrics
 
 

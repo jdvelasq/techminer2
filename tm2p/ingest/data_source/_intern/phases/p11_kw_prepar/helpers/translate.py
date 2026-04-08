@@ -1,7 +1,7 @@
 import pandas as pd  # type: ignore
 
-from tm2p import Field
 from tm2p._intern.packag_data import load_builtin_mapping
+from tm2p.enum import Field
 
 
 def translate(dataframe: pd.DataFrame) -> pd.DataFrame:

@@ -3,7 +3,7 @@ Find records
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p import Field, RecordOrderBy
+    >>> from tm2p.enum import Field, RecordOrderBy
     >>> from tm2p.ingest.records import FindRecords
     >>> docs = (
     ...     FindRecords()
@@ -60,12 +60,12 @@ Smoke tests:
 
 """
 
-from tm2p import Field
 from tm2p._intern import ParamsMixin
 from tm2p._intern.data_access.load_filtered_main_csv_zip import (
     load_filtered_main_csv_zip,
 )
 from tm2p._intern.rec_build import dicts_to_strings, records_to_dicts
+from tm2p.enum import Field
 
 
 class FindRecords(ParamsMixin):

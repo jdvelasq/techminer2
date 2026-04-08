@@ -240,8 +240,8 @@ Smoke tests:
 
 """
 
-from tm2p import CitationUnit, ItemOrderBy
 from tm2p._intern import ParamsMixin
+from tm2p.enum import CitationUnit, ItemOrderBy
 from tm2p.portfolio.intellectual_structure.citation_network._intern.doc import (
     DocKernelDensityPlot as DocDensityPlot,
 )

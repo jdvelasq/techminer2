@@ -18,7 +18,7 @@ import sys
 import pandas as pd  # type: ignore
 from abydos.phonetic import BeiderMorse  # type: ignore
 
-from tm2p import ThField
+from tm2p.enum import ThField
 from tm2p._intern import ParamsMixin
 
 from ._intern import (

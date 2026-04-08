@@ -1,7 +1,7 @@
 # CODE_REVIEW: 2025-01-27
 """
 # Smoke test:
-#     >>> from tm2p import Field
+#     >>> from tm2p.enum import Field
 #     >>> from tm2p.ingest.data_sourc._intern.oper.copy_col import copy_column
 #     >>> copy_column(
 #     ...     source=Field.SRC_ISO4_RAW,
@@ -31,7 +31,7 @@
 
 from typing import Optional
 
-from tm2p import Field
+from tm2p.enum import Field
 
 from ._file_dispatch import get_file_operations
 

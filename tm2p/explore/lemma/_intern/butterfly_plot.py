@@ -9,7 +9,7 @@ ButterflyPlot
 
 
 Smoke tests:
-    >>> from tm2p import Field, ItemOrderBy
+    >>> from tm2p.enum import Field, ItemOrderBy
     >>> from tm2p.discover.assoc import ButterflyPlot
     >>> plot = (
     ...     ButterflyPlot()

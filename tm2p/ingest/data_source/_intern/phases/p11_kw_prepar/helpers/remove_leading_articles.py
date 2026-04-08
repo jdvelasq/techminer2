@@ -2,7 +2,7 @@ import re
 
 import pandas as pd  # type: ignore
 
-from tm2p import Field
+from tm2p.enum import Field
 
 
 def remove_leading_articles(dataframe: pd.DataFrame) -> pd.DataFrame:

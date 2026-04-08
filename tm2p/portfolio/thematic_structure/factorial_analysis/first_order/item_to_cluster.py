@@ -14,7 +14,7 @@ Smoke test:
     ...     power_iteration_normalizer="auto",
     ...     random_state=0,
     ... )
-    >>> from tm2p import Field, ItemOrderBy
+    >>> from tm2p.enum import Field, ItemOrderBy
     >>> from tm2p.portfolio.thematic_structure.factorial_analysis.first_order import ItemToCluster
     >>> mapping = (
     ...     ItemToCluster()

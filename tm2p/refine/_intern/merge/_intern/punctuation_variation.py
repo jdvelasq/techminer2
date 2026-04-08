@@ -2,7 +2,7 @@
 
 import pandas as pd  # type: ignore
 
-from tm2p import ThField
+from tm2p.enum import ThField
 from tm2p._intern import Params
 
 PREFERRED = ThField.PREFERRED.value

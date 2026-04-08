@@ -3,7 +3,7 @@ ButterflyPlot
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p import Field
+    >>> from tm2p.enum import Field
     >>> from tm2p.packages.associations import ButterflyPlot
     >>> plot = (
     ...     ButterflyPlot()

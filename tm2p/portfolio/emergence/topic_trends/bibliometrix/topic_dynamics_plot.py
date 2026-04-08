@@ -9,7 +9,7 @@ TopicDynamicsPlot
 
 
 Smoke tests:
-    >>> from tm2p import Field
+    >>> from tm2p.enum import Field
     >>> from tm2p.portfolio.emergence.topic_trends.bibliometrix import TopicDynamicsPlot
     >>> fig = (
     ...     TopicDynamicsPlot()

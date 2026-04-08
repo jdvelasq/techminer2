@@ -21,8 +21,8 @@ Smoke test:
 
 """
 
-from tm2p import Field
 from tm2p._intern import ParamsMixin
+from tm2p.enum import Field
 from tm2p.explore.concordance import KWICConcordance
 
 __reviewed__ = "2026-01-28"

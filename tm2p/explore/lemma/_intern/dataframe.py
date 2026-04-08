@@ -1,6 +1,6 @@
 """
 Smoke tests:
-    >>> from tm2p import Field
+    >>> from tm2p.enum import Field
     >>> from tm2p.discover.associations._internals import DataFrame
     >>> (
     ...     DataFrame()
@@ -46,7 +46,7 @@ Smoke tests:
 """
 
 from tm2p._intern import ParamsMixin
-from tm2p.portfolio.thematic_structure.co_occurrence.matrix import Matrix
+from tm2p.portfolio.thematic_structure.co_occurrence.co_occurrence_matrix import Matrix
 
 
 class DataFrame(

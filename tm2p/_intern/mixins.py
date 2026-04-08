@@ -4,25 +4,12 @@ import pandas as pd  # type: ignore
 from sklearn.base import BaseEstimator  # type: ignore
 from typing_extensions import Self
 
-from tm2p._intern.enum import (
-    AssociationIndex,
-    CitationUnit,
-    Correlation,
-    CouplingUnit,
-    Field,
-    ItemOrderBy,
-    NodeScaling,
-    RecordOrderBy,
-    ThFile,
-)
-from tm2p._intern.enum.co_cit_unit import CoCitationUnit
 from tm2p._intern.valid import (
     check_optional_base_estimator,
     check_optional_positive_float,
     check_optional_positive_int,
     check_optional_str,
     check_optional_str_list,
-    check_optional_str_or_dict,
     check_plotly_color,
     check_required_bool,
     check_required_color_list,
@@ -47,6 +34,19 @@ from tm2p._intern.valid import (
     check_required_str_tuple,
     check_tuple_of_ordered_four_floats,
 )
+from tm2p.enum import (
+    AssociationIndex,
+    CitationUnit,
+    Correlation,
+    CouplingUnit,
+    Field,
+    GraphClusteringAlgorithm,
+    ItemOrderBy,
+    NodeScaling,
+    RecordOrderBy,
+    ThFile,
+)
+from tm2p.enum.co_cit_unit import CoCitationUnit
 
 from .params import Params
 
@@ -374,18 +374,26 @@ class ParamsMixin:
     # USING_* → Parameters (HOW to analyze/display?)
     # ==========================================================================
 
-    def using_association_index(self, normalization: AssociationIndex) -> Self:
+    def using_association_index(
+        self,
+        normalization: AssociationIndex,
+    ) -> Self:
         self.params.association_index = normalization
         return self
 
-    def using_clustering_algorithm_or_dict(
-        self, clustering_algorithm_or_dict: Optional[Union[str, dict]]
+    def using_clustering(
+        self,
+        clustering: Union[
+            GraphClusteringAlgorithm,
+            BaseEstimator,
+            dict,
+        ],
     ) -> Self:
-        clustering_algorithm_or_dict = check_optional_str_or_dict(
-            value=clustering_algorithm_or_dict,
-            param_name="clustering_algorithm_or_dict",
-        )
-        self.params.clustering_algorithm_or_dict = clustering_algorithm_or_dict
+        if not isinstance(clustering, (GraphClusteringAlgorithm, BaseEstimator, dict)):
+            raise ValueError(
+                f"Invalid clustering algorithm: expected a scikit-learn estimator or str or dict, got {type(clustering)}"
+            )
+        self.params.clustering = clustering
         return self
 
     def using_colored_output(self, colored_output: bool) -> Self:
@@ -761,6 +769,24 @@ class ParamsMixin:
             param_name="recent_periods",
         )
         self.params.recent_periods = recent_periods
+        return self
+
+    def using_spring_layout_intra_scale(self, spring_layout_intra_scale: float) -> Self:
+        spring_layout_intra_scale = check_required_positive_float(
+            value=spring_layout_intra_scale,
+            param_name="spring_layout_intra_scale",
+        )
+        self.params.spring_layout_intra_scale = spring_layout_intra_scale
+        return self
+
+    def using_spring_layout_cluster_scale(
+        self, spring_layout_cluster_scale: float
+    ) -> Self:
+        spring_layout_cluster_scale = check_required_positive_float(
+            value=spring_layout_cluster_scale,
+            param_name="spring_layout_cluster_scale",
+        )
+        self.params.spring_layout_cluster_scale = spring_layout_cluster_scale
         return self
 
     def using_spring_layout_iterations(self, spring_layout_iterations: int) -> Self:

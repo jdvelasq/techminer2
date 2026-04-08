@@ -4,8 +4,8 @@ Metrics
 
 
 Smoke tests:
-    >>> from tm2p import Field, ItemOrderBy
-    >>> from tm2p import Field
+    >>> from tm2p.enum import Field, ItemOrderBy
+    >>> from tm2p.enum import Field
     >>> from tm2p.portfolio.performance_metrics.item_metrics import Metrics
     >>> df = (
     ...     Metrics()
@@ -73,7 +73,7 @@ import pandas as pd  # type: ignore
 
 from tm2p._intern import ParamsMixin
 from tm2p._intern.data_access import load_filtered_main_csv_zip
-from tm2p._intern.enum.column import (
+from tm2p.enum.column import (
     AGE,
     COUNTERS,
     G_INDEX,

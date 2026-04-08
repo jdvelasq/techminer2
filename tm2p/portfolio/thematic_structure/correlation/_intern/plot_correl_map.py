@@ -2,13 +2,16 @@ import networkx as nx  # type: ignore
 import pandas as pd  # type: ignore
 
 from tm2p._intern import Params
+from tm2p._intern.matrix_to_matrix_list import matrix_to_matrix_list
 from tm2p._intern.nx import (
+    add_weighted_edges_from_matrix_list,
     assign_node_sizes_based_on_occurrences,
     assign_text_positions_based_on_quadrants,
     assign_textfont_opacity_based_on_occurrences,
     assign_textfont_sizes_based_on_occurrences,
     compute_spring_layout_positions,
     plot_nx_graph,
+    remove_isolated_nodes_from_matrix_list,
 )
 
 
@@ -19,15 +22,15 @@ def plot_correl_map(
 
     nx_graph = nx.Graph()
 
-    matrix_list = _matrix_to_matrix_list(matrix)
-    matrix_list = _remove_isolated_nodes(matrix_list)
+    matrix_list = matrix_to_matrix_list(matrix, value_name="CORR")
+    matrix_list = remove_isolated_nodes_from_matrix_list(matrix_list)
     matrix_list = _apply_similarity_threshold(
         matrix_list, params.edge_similarity_threshold
     )
     matrix_list = _select_top_links(matrix_list, params.edge_top_n)
     matrix_list = _select_min_links_per_node(matrix_list, params.min_edges_per_node)
     matrix_list = _select_top_links_per_node(matrix_list, params.top_edges_per_node)
-    nx_graph = _add_weighted_edges_from(nx_graph, matrix_list)
+    nx_graph = add_weighted_edges_from_matrix_list(nx_graph, matrix_list)
     nx_graph = _set_node_properties(params, nx_graph, matrix_list)
 
     nx_graph = compute_spring_layout_positions(params, nx_graph)
@@ -39,20 +42,6 @@ def plot_correl_map(
     nx_graph = _set_edge_properties(params, nx_graph)
 
     return plot_nx_graph(params=params, nx_graph=nx_graph)
-
-
-def _add_weighted_edges_from(
-    nx_graph,
-    matrix_list,
-):
-    matrix_list = matrix_list.copy()
-
-    for _, row in matrix_list.iterrows():
-        nx_graph.add_weighted_edges_from(
-            ebunch_to_add=[(row["rows"], row["columns"], row["CORR"])],
-        )
-
-    return nx_graph
 
 
 def _set_node_properties(params, nx_graph, matrix_list):
@@ -155,43 +144,6 @@ def _select_top_links_per_node(
 
 def _select_top_links(matrix_list: pd.DataFrame, top_n: int) -> pd.DataFrame:
     matrix_list = matrix_list.head(top_n)
-    return matrix_list
-
-
-def _remove_isolated_nodes(matrix_list: pd.DataFrame) -> pd.DataFrame:
-    matrix_list = matrix_list.copy()
-    selected = [row["rows"] != row["columns"] for _, row in matrix_list.iterrows()]
-    matrix_list = matrix_list.loc[selected, :]
-    return matrix_list
-
-
-def _matrix_to_matrix_list(matrix):
-
-    matrix_list = matrix.melt(
-        ignore_index=False, var_name="col", value_name="CORR"
-    ).reset_index()
-
-    matrix_list = matrix_list.rename({"index": "rows", "col": "columns"}, axis=1)
-    matrix_list["row_OCC"] = matrix_list["rows"].apply(
-        lambda x: int(x.split(" ")[-1].split(":")[0])
-    )
-    matrix_list["row_GCS"] = matrix_list["rows"].apply(
-        lambda x: int(x.split(" ")[-1].split(":")[1])
-    )
-    matrix_list["col_OCC"] = matrix_list["columns"].apply(
-        lambda x: int(x.split(" ")[-1].split(":")[0])
-    )
-    matrix_list["col_GCS"] = matrix_list["columns"].apply(
-        lambda x: int(x.split(" ")[-1].split(":")[1])
-    )
-
-    matrix_list = matrix_list.sort_values(
-        by=["CORR", "row_OCC", "col_OCC", "row_GCS", "col_GCS", "rows", "columns"],
-        ascending=[False, False, False, False, False, True, True],
-    ).reset_index(drop=True)
-
-    matrix_list = matrix_list[["rows", "columns", "CORR"]]
-
     return matrix_list
 
 

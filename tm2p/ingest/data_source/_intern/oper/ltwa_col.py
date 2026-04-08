@@ -3,10 +3,10 @@ from typing import Optional
 
 from pandarallel import pandarallel  # type: ignore
 
-from tm2p import Field
 from tm2p._intern import stdout_to_stderr
 from tm2p._intern.packag_data import load_builtin_mapping
 from tm2p._intern.packag_data.word_lists import load_builtin_word_list
+from tm2p.enum import Field
 
 from ._file_dispatch import get_file_operations
 

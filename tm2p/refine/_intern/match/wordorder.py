@@ -14,7 +14,7 @@ Smoke tests:
 
 import sys
 
-from tm2p import ThField
+from tm2p.enum import ThField
 from tm2p._intern import ParamsMixin
 
 from ._intern import (

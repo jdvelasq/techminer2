@@ -3,7 +3,7 @@ TopicDynamics
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p import Field, ItemOrderBy
+    >>> from tm2p.enum import Field, ItemOrderBy
     >>> from tm2p.portfolio.emergence.topic_trends.bursts import TopicDynamics
     >>> df = (
     ...     TopicDynamics()

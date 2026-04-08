@@ -5,7 +5,7 @@ ItemsByCluster
 * **CitationUnit.AUTH**
 
 Smoke tests:
-    >>> from tm2p import CitationUnit
+    >>> from tm2p.enum import CitationUnit
     >>> df = (
     ...     ItemsByCluster()
     ...     #
@@ -44,7 +44,7 @@ Smoke tests:
 * **CitationUnit.CTRY**
 
 Smoke tests:
-    >>> from tm2p import CitationUnit
+    >>> from tm2p.enum import CitationUnit
     >>> df = (
     ...     ItemsByCluster()
     ...     #
@@ -81,7 +81,7 @@ Smoke tests:
 * **CitationUnit.DOC**
 
 Smoke tests:
-    >>> from tm2p import CitationUnit
+    >>> from tm2p.enum import CitationUnit
     >>> from tm2p.synthesize.netw.cit import ItemsByCluster
     >>> df = (
     ...     ItemsByCluster()
@@ -122,7 +122,7 @@ Smoke tests:
 * **CitationUnit.ORG**
 
 Smoke tests:
-    >>> from tm2p import CitationUnit
+    >>> from tm2p.enum import CitationUnit
     >>> df = (
     ...     ItemsByCluster()
     ...     #
@@ -182,8 +182,8 @@ Smoke tests:
 
 """
 
-from tm2p import CitationUnit, ItemOrderBy
 from tm2p._intern import ParamsMixin
+from tm2p.enum import CitationUnit, ItemOrderBy
 from tm2p.portfolio.intellectual_structure.citation_network._intern.doc import (
     DocItemsByCluster as DocItemsByClusterDataFrame,
 )

@@ -3,7 +3,7 @@ RecordViewer
 =======================================================================================
 
 Smoke tests:
-    >>> from tm2p import Field, RecordOrderBy
+    >>> from tm2p.enum import Field, RecordOrderBy
     >>> from tm2p.ingest.records import RecordViewer
     >>> docs = (
     ...     RecordViewer()

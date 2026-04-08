@@ -3,7 +3,7 @@ Metrics
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p import Field
+    >>> from tm2p.enum import Field
     >>> from tm2p.synthesize.emergence import Metrics
     >>> df = (
     ...     Metrics()
@@ -34,8 +34,8 @@ Smoke tests:
 
 import numpy as np
 
-from tm2p import ItemOrderBy
 from tm2p._intern import ParamsMixin
+from tm2p.enum import ItemOrderBy
 from tm2p.portfolio.performance_metrics.annual_metrics.metrics import (
     Metrics as TrendMetricsDataFrame,
 )

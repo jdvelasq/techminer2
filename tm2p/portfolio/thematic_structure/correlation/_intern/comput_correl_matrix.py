@@ -2,8 +2,8 @@ import numpy as np  # type: ignore
 import pandas as pd  # type: ignore
 from sklearn.metrics.pairwise import cosine_similarity
 
-from tm2p import Correlation
 from tm2p._intern import Params
+from tm2p.enum import Correlation
 
 
 def _compute_similarity(x: pd.Series, y: pd.Series, method: Correlation) -> float:
