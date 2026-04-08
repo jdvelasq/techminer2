@@ -88,9 +88,9 @@ from typing import Union
 import numpy as np
 import pandas as pd  # type: ignore
 
-from tm2p.enum import Field
 from tm2p._intern import ParamsMixin
 from tm2p._intern.data_access import load_filtered_main_csv_zip
+from tm2p.enum import Field
 
 __reviewed__ = "2026-02-03"
 

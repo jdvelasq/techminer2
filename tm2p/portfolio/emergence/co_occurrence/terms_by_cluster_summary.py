@@ -71,7 +71,7 @@ Smoke tests:
 from tm2p._intern import ParamsMixin
 from tm2p.portfolio.emergence.co_occurrence.mixins import RecursiveClusteringMixin
 
-# from tm2p.portfolio.thematic_structure.co_occurrence.first_order_network_ import (
+# from tm2p.portfolio.thematic_stucture.co_occurrence.first_order_network_ import (
 #     Summary as ClassicalTermsByClusterSummary,
 # )
 

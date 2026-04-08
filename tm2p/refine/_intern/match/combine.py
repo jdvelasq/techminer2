@@ -21,9 +21,9 @@ import sys
 
 import pandas as pd  # type: ignore
 
-from tm2p.enum import ThField
 from tm2p._intern import Params, ParamsMixin
-from tm2p.portfolio.thematic_structure.co_occurrence.co_occurrence_matrix import (
+from tm2p.enum import ThField
+from tm2p.portfolio.thematic_stucture.co_occurrence.co_occurrence_matrix import (
     MatrixList,
 )
 

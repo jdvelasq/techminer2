@@ -46,7 +46,7 @@ Smoke tests:
 """
 
 from tm2p._intern import ParamsMixin
-from tm2p.portfolio.thematic_structure.co_occurrence.co_occurrence_matrix import Matrix
+from tm2p.portfolio.thematic_stucture.co_occurrence.co_occurrence_matrix import Matrix
 
 
 class DataFrame(

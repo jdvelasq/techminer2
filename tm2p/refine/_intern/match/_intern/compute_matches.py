@@ -1,7 +1,7 @@
 import pandas as pd  # type: ignore
 
-from tm2p.enum import ThField
 from tm2p._intern import Params
+from tm2p.enum import ThField
 
 PREFERRED = ThField.PREFERRED.value
 SIGNATURE = ThField.SIGNATURE.value

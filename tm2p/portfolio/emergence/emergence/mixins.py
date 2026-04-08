@@ -2,7 +2,7 @@ import sys
 
 from tm2p.portfolio.emergence.emergence import Metrics
 
-# from tm2p.portfolio.thematic_structure.co_occurrence.first_order_network_ import (
+# from tm2p.portfolio.thematic_stucture.co_occurrence.first_order_network_ import (
 #     ClusterToItems,
 # )
 
