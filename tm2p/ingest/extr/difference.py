@@ -3,7 +3,7 @@ DifferenceExtractor
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p import Field
+    >>> from tm2p.enum import Field
     >>> from tm2p.ingest.extr import DifferenceExtractor
     >>> terms = (
     ...     DifferenceExtractor()

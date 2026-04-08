@@ -3,7 +3,7 @@ CountColumnItems
 ===============================================================================
 
 Smoke test:
-    >>> from tm2p import Field
+    >>> from tm2p.enum import Field
     >>> from tm2p.ingest.oper import CountColumnItems
     >>> (
     ...     CountColumnItems()
