@@ -8,7 +8,7 @@ MatrixPlot
     height="600px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
-    >>> from tm2p.enum import Field, ItemOrderBy
+    >>> from tm2p.enum import Field, ItemOrderBy, Scaling
     >>> from tm2p.portfolio.thematic_stucture.co_occurrence.co_occurrence_matrix import MatrixPlot
     >>> fig = (
     ...     MatrixPlot()
@@ -29,14 +29,19 @@ Smoke tests:
     ...     .using_spring_layout_iterations(30)
     ...     .using_spring_layout_seed(0)
     ...     #
-    ...     .using_node_n_labels(4)
-    ...     .using_node_size_range(30, 70)
     ...     .using_node_colors(("#7793a5", "#465c6b"))
-    ...     .using_textfont_size_range(10, 20)
+    ...     .using_node_scaling(Scaling.SQRT)
+    ...     .using_node_size_range(30, 70)
     ...     .using_textfont_opacity_range(0.35, 1.00)
+    ...     .using_textfont_size_range(10, 20)
+    ...     .using_top_n_node_labels(4)
     ...     #
     ...     .using_edge_colors(("#b8c6d0",))
+    ...     .using_edge_scaling(Scaling.SQRT)
+    ...     .using_edge_top_n(1000)
     ...     .using_edge_width_range(0.8, 4.0)
+    ...     .using_min_edges_per_node(2)
+    ...     .using_top_edges_per_node(5)
     ...     #
     ...     .using_xaxes_range(None, None)
     ...     .using_yaxes_range(None, None)
@@ -57,8 +62,9 @@ Smoke tests:
 """
 
 from tm2p._intern import ParamsMixin
+from tm2p._intern.plots.advanced.co_occ_matrix_plot import build_co_occ_matrix_plot
 
-from ...cross_occurrence.matrix.matrix_plot import MatrixPlot as BaseMatrixPlot
+from .matrix import Matrix
 
 
 class MatrixPlot(
@@ -68,37 +74,7 @@ class MatrixPlot(
 
     def run(self):
 
-        return (
-            BaseMatrixPlot()
-            .update(**self.params.__dict__)
-            #
-            # COLUMNS:
-            .with_column_field(self.params.source_field)
-            .having_column_items_in_top(self.params.top_n)
-            .having_column_items_ordered_by(self.params.items_order_by)
-            .having_column_item_occurrences_between(
-                self.params.item_occurrences_range[0],
-                self.params.item_occurrences_range[1],
-            )
-            .having_column_item_citations_between(
-                self.params.item_citations_range[0],
-                self.params.item_citations_range[1],
-            )
-            .having_column_items_in(self.params.items_in)
-            #
-            # ROWS:
-            .with_index_field(self.params.source_field)
-            .having_index_items_in_top(self.params.top_n)
-            .having_index_items_ordered_by(self.params.items_order_by)
-            .having_index_item_occurrences_between(
-                self.params.item_occurrences_range[0],
-                self.params.item_occurrences_range[1],
-            )
-            .having_index_item_citations_between(
-                self.params.item_citations_range[0],
-                self.params.item_citations_range[1],
-            )
-            .having_index_items_in(self.params.items_in)
-            #
-            .run()
-        )
+        matrix = Matrix().update(**self.params.__dict__).run()
+        fig = build_co_occ_matrix_plot(self.params, matrix)
+
+        return fig

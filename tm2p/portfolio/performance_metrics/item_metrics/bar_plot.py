@@ -42,7 +42,7 @@ Smoke tests:
 """
 
 from tm2p._intern import ParamsMixin
-from tm2p._intern.plot.bar_plot import bar_plot
+from tm2p._intern.plots.basic.bar_plot import bar_plot
 
 from .metrics import Metrics
 

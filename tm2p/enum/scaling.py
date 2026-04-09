@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class NodeScaling(str, Enum):
+class Scaling(str, Enum):
 
     LINEAR = "LINEAR"
     LOG = "LOG"

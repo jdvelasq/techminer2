@@ -40,7 +40,7 @@ Smoke tests:
 """
 
 from tm2p._intern import ParamsMixin
-from tm2p._intern.plot.world_map import world_map
+from tm2p._intern.plots.basic.world_map import world_map
 from tm2p.enum import Field
 
 from .metrics import Metrics

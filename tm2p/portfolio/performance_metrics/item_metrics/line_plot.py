@@ -44,7 +44,7 @@ Smoke tests:
 """
 
 from tm2p._intern import ParamsMixin
-from tm2p._intern.plot.line_plot import line_plot
+from tm2p._intern.plots.basic.line_plot import line_plot
 
 from .metrics import Metrics
 

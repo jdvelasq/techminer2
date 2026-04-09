@@ -54,7 +54,7 @@ Smoke tests:
 """
 
 from tm2p._intern import ParamsMixin
-from tm2p._intern.plot.heatmap import heatmap
+from tm2p._intern.plots.basic.heatmap import heatmap
 
 
 class Heatmap(

@@ -42,7 +42,7 @@ Smoke tests:
 """
 
 from tm2p._intern import ParamsMixin
-from tm2p._intern.plot.cleveland_dot_plot import cleveland_dot_plot
+from tm2p._intern.plots.basic.cleveland_dot_plot import cleveland_dot_plot
 
 from .metrics import Metrics
 

@@ -3,7 +3,7 @@
 # Example: nx.draw_networkx_nodes(G, pos, node_size=node_sizes)
 import numpy as np
 
-from tm2p.enum import NodeScaling
+from tm2p.enum import Scaling
 
 
 def assign_node_sizes_based_on_occurrences(
@@ -25,9 +25,9 @@ def assign_node_sizes_based_on_occurrences(
 
         #
         # Node scaling
-        if params.node_scaling == NodeScaling.SQRT:
+        if params.node_scaling == Scaling.SQRT:
             occ = np.sqrt(occ)
-        if params.node_scaling == NodeScaling.LOG:
+        if params.node_scaling == Scaling.LOG:
             occ = np.log1p(occ)
 
         width = node_size_range[1] - node_size_range[0]

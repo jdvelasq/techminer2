@@ -43,7 +43,7 @@ Smoke tests:
 """
 
 from tm2p._intern import ParamsMixin
-from tm2p._intern.plot.column_plot import column_plot
+from tm2p._intern.plots.basic.column_plot import column_plot
 
 from .metrics import Metrics
 

@@ -42,7 +42,7 @@ Smoke tests:
 """
 
 from tm2p._intern import ParamsMixin
-from tm2p._intern.plot.word_cloud import word_cloud
+from tm2p._intern.plots.basic.word_cloud import word_cloud
 
 from .metrics import Metrics
 

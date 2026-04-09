@@ -6,8 +6,8 @@ from .coupl_unit import CouplingUnit
 from .field import Field
 from .graph_cluster_algorithm import GraphClusteringAlgorithm
 from .item import ItemOrderBy
-from .node_scaling import NodeScaling
 from .rec import RecordOrderBy
+from .scaling import Scaling
 from .thesaur import ThField, ThFile
 
 __all__ = [
@@ -18,7 +18,7 @@ __all__ = [
     "Field",
     "GraphClusteringAlgorithm",
     "ItemOrderBy",
-    "NodeScaling",
+    "Scaling",
     "RecordOrderBy",
     "ThField",
     "ThFile",

@@ -50,7 +50,7 @@ Smoke tests:
 """
 
 from tm2p._intern import ParamsMixin
-from tm2p._intern.plot.ranking_chart import ranking_chart
+from tm2p._intern.plots.basic.ranking_chart import ranking_chart
 
 from .metrics import Metrics
 

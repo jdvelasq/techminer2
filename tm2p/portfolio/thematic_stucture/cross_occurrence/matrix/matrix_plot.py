@@ -9,14 +9,14 @@ MatrixPlot
 
 
 Smoke tests:
-    >>> from tm2p.enum import Field, ItemOrderBy
+    >>> from tm2p.enum import Field, ItemOrderBy, Scaling
     >>> from tm2p.portfolio.thematic_stucture.cross_occurrence.matrix import MatrixPlot
     >>> fig = (
     ...     MatrixPlot()
     ...     #
     ...     # COLUMNS:
-    ...     .with_column_field(Field.AUTHKW_TOK)
-    ...     .having_column_items_in_top(10)
+    ...     .with_column_field(Field.KW_TOK)
+    ...     .having_column_items_in_top(20)
     ...     .having_column_items_ordered_by(ItemOrderBy.OCC)
     ...     .having_column_item_occurrences_between(None, None)
     ...     .having_column_item_citations_between(None, None)
@@ -35,17 +35,22 @@ Smoke tests:
     ...     #
     ...     # NETWORK:
     ...     .using_spring_layout_k(None)
-    ...     .using_spring_layout_iterations(30)
+    ...     .using_spring_layout_iterations(100)
     ...     .using_spring_layout_seed(0)
     ...     #
-    ...     .using_node_n_labels(1000)
-    ...     .using_node_size_range(30, 70)
     ...     .using_node_colors(("#7793a5", "#465c6b"))
-    ...     .using_textfont_size_range(10, 20)
+    ...     .using_node_scaling(Scaling.SQRT)
+    ...     .using_node_size_range(30, 70)
     ...     .using_textfont_opacity_range(0.35, 1.00)
+    ...     .using_textfont_size_range(10, 20)
+    ...     .using_top_n_node_labels(4)
     ...     #
     ...     .using_edge_colors(("#b8c6d0",))
+    ...     .using_edge_scaling(Scaling.SQRT)
+    ...     .using_edge_top_n(1000)
     ...     .using_edge_width_range(0.8, 4.0)
+    ...     .using_min_edges_per_node(2)
+    ...     .using_top_edges_per_node(5)
     ...     #
     ...     .using_xaxes_range(None, None)
     ...     .using_yaxes_range(None, None)
@@ -65,53 +70,12 @@ Smoke tests:
 
 """
 
-import networkx as nx  # type: ignore
-
 from tm2p._intern import ParamsMixin
-from tm2p._intern.nx import (
-    assign_constant_to_edge_colors,
-    assign_edge_widths_based_on_weight,
-    assign_node_sizes_based_on_occurrences,
-    assign_text_positions_based_on_quadrants,
-    assign_textfont_opacity_based_on_occurrences,
-    assign_textfont_sizes_based_on_occurrences,
-    compute_spring_layout_positions,
-    plot_nx_graph,
+from tm2p._intern.plots.advanced.cross_occ_matrix_plot import (
+    build_cross_occ_matrix_plot,
 )
-from tm2p.portfolio.thematic_stucture.cross_occurrence.matrix import Matrix
 
-
-def _create_co_occurrence_matrix(params):
-    return Matrix().update(**params.__dict__).run()
-
-
-def _create_a_empty_networkx_graph():
-    return nx.Graph()
-
-
-def _add_nodes_from_matrix(params, nx_graph, matrix):
-
-    matrix = matrix.copy()
-
-    idx_node_color = params.node_colors[0]
-    col_node_color = params.node_colors[1]
-
-    idx_nodes = matrix.index.tolist()
-    idx_labeled = idx_nodes[: params.node_n_labels]
-    nx_graph.add_nodes_from(idx_nodes, group=0, node_color=idx_node_color)
-
-    col_nodes = matrix.columns.tolist()
-    col_labeled = col_nodes[: params.node_n_labels]
-    nx_graph.add_nodes_from(col_nodes, group=1, node_color=col_node_color)
-
-    for node in nx_graph.nodes():
-        nx_graph.nodes[node]["text"] = node
-        if node in idx_labeled or node in col_labeled:
-            nx_graph.nodes[node]["labeled"] = True
-        else:
-            nx_graph.nodes[node]["labeled"] = False
-
-    return nx_graph
+from .matrix import Matrix
 
 
 class MatrixPlot(
@@ -119,103 +83,9 @@ class MatrixPlot(
 ):
     """:meta private:"""
 
-    def _step_04_add_weighted_edges_from_matrix(self, nx_graph, matrix):
-
-        matrix = matrix.copy()
-
-        if matrix.index.tolist() == matrix.columns.tolist():
-            #
-            # This is a symmetric matrix:
-            #
-            for i_row, row in enumerate(matrix.index.tolist()):
-                for i_col, col in enumerate(matrix.columns.tolist()):
-                    #
-                    if matrix.iloc[i_row, i_col] > 0:
-                        #
-                        # Unicamente toma valores por encima de la diagonal principal
-                        if i_col <= i_row:
-                            continue
-
-                        weight = matrix.loc[row, col]
-                        nx_graph.add_weighted_edges_from(
-                            ebunch_to_add=[(row, col, weight)],
-                            dash="solid",
-                        )
-
-            return nx_graph
-
-        #
-        # This is a non-symmetric matrix:
-        #
-        for i_row, row in enumerate(matrix.index.tolist()):
-            for i_col, col in enumerate(matrix.columns.tolist()):
-                #
-                if matrix.loc[row, col] > 0:
-                    #
-                    weight = matrix.loc[row, col]
-                    nx_graph.add_weighted_edges_from(
-                        ebunch_to_add=[(row, col, weight)],
-                        dash="solid",
-                    )
-
-        return nx_graph
-
-    def _step_05_compute_spring_layout_positions(self, nx_graph):
-        return compute_spring_layout_positions(
-            self.params,
-            nx_graph,
-        )
-
-    def _step_06_assign_node_sizes_based_on_occurrences(self, nx_graph):
-        return assign_node_sizes_based_on_occurrences(
-            self.params,
-            nx_graph,
-        )
-
-    def _step_07_assign_textfont_sizes_based_on_occurrences(self, nx_graph):
-        return assign_textfont_sizes_based_on_occurrences(
-            self.params,
-            nx_graph,
-        )
-
-    def _step_08_assign_text_opacity_based_on_occurrences(self, nx_graph):
-        return assign_textfont_opacity_based_on_occurrences(self.params, nx_graph)
-
-    def _step_09_assign_edge_colors_based_on_weight(self, nx_graph):
-        return assign_constant_to_edge_colors(
-            self.params,
-            nx_graph,
-        )
-
-    def _step_10_assign_edge_widths_based_on_weight(self, nx_graph):
-        return assign_edge_widths_based_on_weight(
-            self.params,
-            nx_graph,
-        )
-
-    def _step_11_assign_text_positions_based_on_quadrants(self, nx_graph):
-        return assign_text_positions_based_on_quadrants(nx_graph)
-
     def run(self):
 
-        matrix = _create_co_occurrence_matrix(self.params)
-        nx_graph = _create_a_empty_networkx_graph()
+        matrix = Matrix().update(**self.params.__dict__).run()
+        fig = build_cross_occ_matrix_plot(self.params, matrix)
 
-        nx_graph = _add_nodes_from_matrix(self.params, nx_graph, matrix)
-
-        nx_graph = self._step_04_add_weighted_edges_from_matrix(nx_graph, matrix)
-        nx_graph = self._step_05_compute_spring_layout_positions(nx_graph)
-        nx_graph = self._step_06_assign_node_sizes_based_on_occurrences(nx_graph)
-        nx_graph = self._step_07_assign_textfont_sizes_based_on_occurrences(nx_graph)
-        nx_graph = self._step_08_assign_text_opacity_based_on_occurrences(nx_graph)
-        nx_graph = self._step_09_assign_edge_colors_based_on_weight(nx_graph)
-        nx_graph = self._step_10_assign_edge_widths_based_on_weight(nx_graph)
-        nx_graph = self._step_11_assign_text_positions_based_on_quadrants(nx_graph)
-
-        return plot_nx_graph(
-            params=self.params,
-            nx_graph=nx_graph,
-        )
-
-
-#
+        return fig

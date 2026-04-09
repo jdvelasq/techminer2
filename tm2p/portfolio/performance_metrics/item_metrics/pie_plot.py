@@ -44,7 +44,7 @@ Smoke tests:
 """
 
 from tm2p._intern import ParamsMixin
-from tm2p._intern.plot.pie_plot import pie_plot
+from tm2p._intern.plots.basic.pie_plot import pie_plot
 
 from .metrics import Metrics
 

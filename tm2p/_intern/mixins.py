@@ -42,8 +42,8 @@ from tm2p.enum import (
     Field,
     GraphClusteringAlgorithm,
     ItemOrderBy,
-    NodeScaling,
     RecordOrderBy,
+    Scaling,
     ThFile,
 )
 from tm2p.enum.co_cit_unit import CoCitationUnit
@@ -526,6 +526,18 @@ class ParamsMixin:
         self.params.edge_colors = edge_colors
         return self
 
+    def using_edge_color(self, edge_color: Any) -> Self:
+        if not isinstance(edge_color, (str, int, float)):
+            raise TypeError(
+                f"edge color must be a string or number (valid Plotly color), got {type(edge_color).__name__}"
+            )
+        self.params.edge_color = edge_color
+        return self
+
+    def using_edge_scaling(self, edge_scaling: Scaling) -> Self:
+        self.params.edge_scaling = edge_scaling
+        return self
+
     def using_edge_similarity_threshold(self, edge_similarity_threshold: float) -> Self:
         edge_similarity_threshold = check_required_positive_float(
             value=edge_similarity_threshold,
@@ -691,16 +703,24 @@ class ParamsMixin:
         self.params.node_colors = node_colors
         return self
 
-    def using_node_scaling(self, node_scaling: NodeScaling) -> Self:
+    def using_node_color(self, node_color: Any) -> Self:
+        if not isinstance(node_color, (str, int, float)):
+            raise TypeError(
+                f"node color must be a string or number (valid Plotly color), got {type(node_color).__name__}"
+            )
+        self.params.node_color = node_color
+        return self
+
+    def using_node_scaling(self, node_scaling: Scaling) -> Self:
         self.params.node_scaling = node_scaling
         return self
 
-    def using_node_n_labels(self, node_n_labels: int) -> Self:
-        node_n_labels = check_required_positive_int(
-            value=node_n_labels,
-            param_name="node_n_labels",
+    def using_top_n_node_labels(self, top_n_node_labels: int) -> Self:
+        top_n_node_labels = check_required_positive_int(
+            value=top_n_node_labels,
+            param_name="top_n_node_labels",
         )
-        self.params.node_n_labels = node_n_labels
+        self.params.top_n_node_labels = top_n_node_labels
         return self
 
     def using_node_size(self, node_size: int) -> Self:
