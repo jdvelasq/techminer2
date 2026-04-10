@@ -46,12 +46,12 @@ Smoke test:
     ...     .run()
     ... )
     >>> print(df.to_string())  # doctest: +NORMALIZE_WHITESPACE
-    DIM                                    0         1         2         3         4
-    china 200:46633                 0.035293  0.056406  0.001443 -0.007858  0.009859
-    banks 209:47043                -0.009322 -0.000832 -0.095635 -0.010942 -0.011048
-    finance 171:35598               0.053512 -0.014615  0.014651 -0.007385 -0.030657
-    fintech 282:65597               0.011562 -0.027787 -0.029043 -0.004600  0.078268
-    financial technology 134:26722 -0.019021 -0.004472 -0.003820 -0.097122  0.014566
+    DIM                 0         1         2         3         4
+    0 200:46633  0.035293  0.056406  0.001443 -0.007858  0.009859
+    1 209:47043 -0.009322 -0.000832 -0.095635 -0.010942 -0.011048
+    2 171:35598  0.053512 -0.014615  0.014651 -0.007385 -0.030657
+    3 282:65597  0.011562 -0.027787 -0.029043 -0.004600  0.078268
+    4 134:26722 -0.019021 -0.004472 -0.003820 -0.097122  0.014566
 
 
 """
@@ -75,11 +75,11 @@ class ClusterCenters(
     def run(self):
 
         df = ItemsByDimension().update(**self.params.__dict__).run()
-        i2c_mapping = ItemToCluster().update(**self.params.__dict__).run()
+        i2c = ItemToCluster().update(**self.params.__dict__).run()
 
-        df["CLUSTER"] = df.index.map(i2c_mapping)
+        df["CLUSTER"] = df.index.map(i2c)
         df = df.groupby("CLUSTER").mean()
-        df.index = _compute_occ_and_gcs(self.params, i2c_mapping)
+        df.index = _compute_occ_and_gcs(self.params, i2c)
 
         return df
 
@@ -103,24 +103,8 @@ def _compute_occ_and_gcs(params: Params, i2c_mapping: dict):
     df = df.dropna()
     df = df.groupby("CLUSTER").agg({OCC: "sum", GCS: "sum"})
 
-    i2n = {}
-    for item, cluster in i2c_mapping.items():
-        if cluster not in i2n:
-            i2n[cluster] = item
-        else:
-            current_occ = int(i2n[cluster].split(" ")[-1].split(":")[0])
-            current_gcs = int(i2n[cluster].split(" ")[-1].split(":")[1])
-            item_occ = int(item.split(" ")[-1].split(":")[0])
-            item_gcs = int(item.split(" ")[-1].split(":")[1])
-            if item_occ > current_occ or (
-                item_occ == current_occ and item_gcs > current_gcs
-            ):
-                i2n[cluster] = item
-
-    i2n = {key: " ".join(value.split(" ")[:-1]) for key, value in i2n.items()}
-
     occ_gcs = [
-        f"{i2n[int(i)]} {int(occ)}:{int(gcs)}"
+        f"{int(i)} {int(occ)}:{int(gcs)}"
         for i, occ, gcs in zip(df.index, df[OCC], df[GCS])
     ]
 

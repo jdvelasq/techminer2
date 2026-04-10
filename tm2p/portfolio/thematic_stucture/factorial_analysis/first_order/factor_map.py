@@ -20,17 +20,7 @@ Smoke test:
     ...     power_iteration_normalizer="auto",
     ...     random_state=0,
     ... )
-    >>> from sklearn.cluster import KMeans
-    >>> kmeans = KMeans(
-    ...     n_clusters=6,
-    ...     init="k-means++",
-    ...     n_init=10,
-    ...     max_iter=300,
-    ...     tol=0.0001,
-    ...     algorithm="elkan",
-    ...     random_state=0,
-    ... )
-    >>> from tm2p.enum import Field, ItemOrderBy, NodeScaling
+    >>> from tm2p.enum import Field, ItemOrderBy, Scaling
     >>> from tm2p.portfolio.thematic_stucture.factorial_analysis.first_order import FactorMap
     >>> plot = (
     ...     FactorMap()
@@ -54,16 +44,22 @@ Smoke test:
     ...     .using_tfidf_use_idf(False)
     ...     #
     ...     # MAP:
+    ...     .using_node_colors(("#7793a5",))
+    ...     .using_node_scaling(Scaling.SQRT)
+    ...     .using_node_size_range(18, 90)
+    ...     .using_textfont_opacity_range(0.75, 1.00)
+    ...     .using_textfont_size_range(11, 16)
+    ...     .using_top_n_node_labels(5)
+    ...     #
     ...     .using_edge_colors(("#7793a5", "#7793a5", "#7793a5", "#7793a5"))
-    ...     .using_edge_widths((1.0, 1.0, 2.0, 3.5))
+    ...     .using_edge_scaling(Scaling.SQRT)
     ...     .using_edge_similarity_threshold(0.00001)
     ...     .using_edge_top_n(1000)
-    ...     .using_top_edges_per_node(10)
+    ...     .using_edge_widths((1.0, 1.0, 2.0, 3.5))
     ...     .using_min_edges_per_node(2)
+    ...     .using_top_edges_per_node(10)
     ...     #
-    ...     .using_node_colors(("#7793a5",))
-    ...     .using_node_size_range(18, 90)
-    ...     .using_node_scaling(NodeScaling.SQRT)
+    ...     .using_cluster_names([f"CL_{i}" for i in range(1, 6)])
     ...     #
     ...     .using_xaxes_range(None, None)
     ...     .using_yaxes_range(None, None)
@@ -83,14 +79,8 @@ Smoke test:
 
 """
 
-import numpy as np
-import pandas as pd  # type: ignore
-from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
-
 from tm2p._intern import ParamsMixin
-from tm2p.portfolio.thematic_stucture.correlation._intern.plot_correl_map import (
-    plot_correl_map,
-)
+from tm2p._intern.plots.advanced import build_factor_map
 
 from .cluster_centers import ClusterCenters
 
@@ -103,9 +93,5 @@ class FactorMap(
     def run(self):
 
         matrix = ClusterCenters().update(**self.params.__dict__).run()
-        matrix = pd.DataFrame(
-            np.abs(cosine_similarity(matrix)),
-            index=matrix.index,
-            columns=matrix.index,
-        )
-        return plot_correl_map(self.params, matrix)
+
+        return build_factor_map(self.params, matrix)

@@ -15,6 +15,7 @@ from .scale_edge_widths import scale_edge_widths
 from .scale_node_sizes_by_occ import scale_node_sizes_by_occ
 from .scale_textfont_opacity_by_occ import scale_textfont_opacity_by_occ
 from .scale_textfont_sizes_by_occ import scale_textfont_sizes_by_occ
+from .set_cluster_names import set_cluster_names
 from .set_node_color_by_group import set_node_color_by_group
 from .set_node_textposition import set_node_textposition
 from .set_top_n_node_labels import set_top_n_node_labels
@@ -48,4 +49,5 @@ __all__ = [
     "set_uniform_node_color",
     "spring_layout",
     "style_edges_by_weight_bins",
+    "set_cluster_names",
 ]

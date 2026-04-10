@@ -43,9 +43,9 @@ Smoke tests:
     ...     #
     ...     .using_edge_colors(("#7793a5", "#7793a5", "#7793a5", "#7793a5"))
     ...     .using_edge_scaling(Scaling.SQRT)
+    ...     .using_edge_similarity_threshold(0.60)
     ...     .using_edge_top_n(1000)
     ...     .using_edge_widths((1.0, 1.0, 2.0, 3.5))
-    ...     .using_edge_similarity_threshold(0.60)
     ...     .using_min_edges_per_node(2)
     ...     .using_top_edges_per_node(5)
     ...     #
@@ -67,7 +67,7 @@ Smoke tests:
 """
 
 from tm2p._intern import ParamsMixin
-from tm2p._intern.plots.advanced.correlatioin_map import build_correlation_map
+from tm2p._intern.plots.advanced import build_correlation_map
 from tm2p.portfolio.thematic_stucture.correlation.cross.matrix import Matrix
 
 

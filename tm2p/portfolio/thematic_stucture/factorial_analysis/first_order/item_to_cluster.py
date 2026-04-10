@@ -78,10 +78,10 @@ class ItemToCluster(
         abs_embedding = np.abs(embedding)
         factor_assignment = abs_embedding.values.argmax(axis=1)  # type: ignore
         factor_assignment = [int(x) for x in factor_assignment]
-        mapping = dict(zip(embedding.index, factor_assignment))
+        i2c = dict(zip(embedding.index, factor_assignment))
 
         clusters = {}
-        for item, cluster in mapping.items():
+        for item, cluster in i2c.items():
             clusters.setdefault(cluster, []).append(item)
 
         values = list(clusters.values())
@@ -91,12 +91,13 @@ class ItemToCluster(
                 len(x),
                 x[0].split(" ")[-1].split(":")[0],
                 x[0].split(" ")[-1].split(":")[1],
+                x[0],
             )
 
         sorted_values = sorted(values, key=f, reverse=True)
-        mapping = {}
+        i2c = {}
         for cluster, items in enumerate(sorted_values):
             for item in items:
-                mapping[item] = cluster
+                i2c[item] = cluster
 
-        return mapping
+        return i2c
