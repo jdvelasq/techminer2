@@ -243,11 +243,8 @@ class NetworkPlot(
     def run(self):
         """:meta private:"""
 
-        use_counters = self.params.counters
-        self.params.counters = True
-
-        matrix = Matrix().update(**self.params.__dict__).run()
-        i2c = ItemToCluster().update(**self.params.__dict__).run()
+        matrix = Matrix().update(**self.params.__dict__).using_counters(True).run()
+        i2c = ItemToCluster().update(**self.params.__dict__).using_counters(True).run()
 
         fig = build_co_occ_network_plot(
             params=self.params,

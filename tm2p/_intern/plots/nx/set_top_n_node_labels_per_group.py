@@ -1,7 +1,10 @@
 import networkx as nx  # type: ignore
 
+from tm2p._intern import Params
+
 
 def set_top_n_node_labels_per_group(
+    params: Params,
     nx_graph: nx.Graph,
     i2c: dict[str, int],
     top_n: int,
@@ -9,7 +12,11 @@ def set_top_n_node_labels_per_group(
 
     for node in nx_graph.nodes():
         if "text" not in nx_graph.nodes[node]:
-            nx_graph.nodes[node]["text"] = node
+            if params.counters:
+                nx_graph.nodes[node]["text"] = node
+            else:
+                nx_graph.nodes[node]["text"] = " ".join(node.split(" ")[:-1])
+
         if "labeled" not in nx_graph.nodes[node]:
             nx_graph.nodes[node]["labeled"] = False
 

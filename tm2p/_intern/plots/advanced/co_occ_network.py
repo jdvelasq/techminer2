@@ -44,6 +44,7 @@ def build_co_occ_network_plot(
     nx_graph = remove_weak_nodes(params, nx_graph)
 
     nx_graph = set_top_n_node_labels_per_group(
+        params=params,
         nx_graph=nx_graph,
         i2c=i2c,
         top_n=params.top_n_node_labels,
