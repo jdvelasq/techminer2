@@ -66,7 +66,7 @@ Smoke tests:
 
 
 
-    >>> from tm2p.enum import AssociationIndex, Field, GraphClusteringAlgorithm, NodeScaling, ItemOrderBy
+    >>> from tm2p.enum import AssociationIndex, Field, GraphClusteringAlgorithm, ItemOrderBy, Scaling
     >>> from tm2p.portfolio.thematic_stucture.co_occurrence.first_order_network import NetworkPlot
     >>> fig = (
     ...     NetworkPlot()
@@ -89,23 +89,39 @@ Smoke tests:
     ...     .using_clustering(GraphClusteringAlgorithm.LOUVAIN)
     ...     #
     ...     # PLOT:
-    ...     .using_spring_layout_intra_scale(2.0)
-    ...     .using_spring_layout_cluster_scale(5.0)
+    ...     .using_spring_layout_intra_scale(1.0)
+    ...     .using_spring_layout_cluster_scale(10.0)
     ...     .using_spring_layout_k(None)
     ...     .using_spring_layout_iterations(100)
     ...     .using_spring_layout_seed(0)
     ...     #
+    ...     .using_node_colors(
+    ...         (
+    ...             "#1f77b4",
+    ...             "#ff7f0e",
+    ...             "#2ca02c",
+    ...             "#d62728",
+    ...             "#9467bd",
+    ...             "#8c564b",
+    ...             "#e377c2",
+    ...             "#7f7f7f",
+    ...             "#bcbd22",
+    ...             "#17becf",
+    ...         )
+    ...     )
+    ...     .using_node_scaling(Scaling.SQRT)
     ...     .using_node_size_range(30, 70)
-    ...     .using_node_scaling(NodeScaling.SQRT)
-    ...     .using_textfont_size_range(10, 20)
     ...     .using_textfont_opacity_range(0.35, 1.00)
-    ...     .using_node_n_labels(3)
+    ...     .using_textfont_size_range(10, 20)
+    ...     .using_top_n_node_labels(5)
     ...     #
+    ...     # https://www.w3schools.com/colors/colors_shades.asp
+    ...     .using_edge_color("#e0e0e0")
+    ...     .using_edge_scaling(Scaling.SQRT)
     ...     .using_edge_top_n(1000)
-    ...     .using_top_edges_per_node(5)
-    ...     .using_min_edges_per_node(2)
-    ...     .using_edge_colors(("#7793a5",))
     ...     .using_edge_width_range(0.1, 3.0)
+    ...     .using_min_edges_per_node(3)
+    ...     .using_top_edges_per_node(5)
     ...     #
     ...     .using_xaxes_range(None, None)
     ...     .using_yaxes_range(None, None)
@@ -144,21 +160,42 @@ Smoke tests:
     ...     .using_clustering(GraphClusteringAlgorithm.LOUVAIN)
     ...     #
     ...     # PLOT:
+    ...     .using_spring_layout_intra_scale(2.0)
+    ...     .using_spring_layout_cluster_scale(6.0)
     ...     .using_spring_layout_k(None)
     ...     .using_spring_layout_iterations(100)
     ...     .using_spring_layout_seed(0)
     ...     #
-    ...     .using_node_n_labels(4)
+    ...     .using_node_colors(
+    ...         (
+    ...             "#1f77b4",
+    ...             "#ff7f0e",
+    ...             "#2ca02c",
+    ...             "#d62728",
+    ...             "#9467bd",
+    ...             "#8c564b",
+    ...             "#e377c2",
+    ...             "#7f7f7f",
+    ...             "#bcbd22",
+    ...             "#17becf",
+    ...         )
+    ...     )
+    ...     .using_node_scaling(Scaling.SQRT)
     ...     .using_node_size_range(30, 70)
-    ...     .using_node_scaling(NodeScaling.SQRT)
-    ...     .using_textfont_size_range(10, 20)
     ...     .using_textfont_opacity_range(0.35, 1.00)
+    ...     .using_textfont_size_range(10, 20)
+    ...     .using_top_n_node_labels(5)
     ...     #
+    ...     .using_edge_color("#000000")
+    ...     .using_edge_scaling(Scaling.SQRT)
     ...     .using_edge_top_n(1000)
-    ...     .using_top_edges_per_node(5)
-    ...     .using_min_edges_per_node(2)
-    ...     .using_edge_colors(("#7793a5",))
     ...     .using_edge_width_range(0.1, 3.0)
+    ...     .using_min_edges_per_node(2)
+    ...     .using_top_edges_per_node(5)
+    ...     #
+    ...     .using_xaxes_range(None, None)
+    ...     .using_yaxes_range(None, None)
+    ...     .using_axes_visible(False)
     ...     #
     ...     .using_xaxes_range(None, None)
     ...     .using_yaxes_range(None, None)
@@ -191,9 +228,11 @@ from tm2p._intern.nx import (
     plot_nx_graph,
     remove_nodes_and_links,
 )
+from tm2p._intern.plots.advanced.co_occ_network import build_co_occ_network_plot
 
 from ._intern.create_nx_graph import create_nx_graph
 from .item_to_cluster import ItemToCluster
+from .matrix import Matrix
 
 
 class NetworkPlot(
@@ -206,24 +245,14 @@ class NetworkPlot(
 
         use_counters = self.params.counters
         self.params.counters = True
-        nx_graph = create_nx_graph(self.params)
-        item2cluster = ItemToCluster().update(**self.params.__dict__).run()
-        nx_graph = assign_clusters_to_nodes(self.params, nx_graph, item2cluster)
-        nx_graph = remove_nodes_and_links(self.params, nx_graph)
 
-        nx_graph = compute_clustered_spring_layout_positions(self.params, nx_graph)
-        nx_graph = assign_node_colors_based_on_group_attribute(nx_graph)
-        nx_graph = assign_node_sizes_based_on_occurrences(self.params, nx_graph)
-        nx_graph = assign_textfont_sizes_based_on_occurrences(self.params, nx_graph)
-        nx_graph = assign_textfont_opacity_based_on_occurrences(self.params, nx_graph)
-        nx_graph = assign_edge_widths_based_on_weight(self.params, nx_graph)
-        nx_graph = assign_text_positions_based_on_quadrants(nx_graph)
-        nx_graph = assign_edge_color_opacity(self.params, nx_graph)
+        matrix = Matrix().update(**self.params.__dict__).run()
+        i2c = ItemToCluster().update(**self.params.__dict__).run()
 
-        if use_counters is False:
-            self.params.counters = False
-            for node, data in nx_graph.nodes(data=True):
-                text = data["text"]
-                nx_graph.nodes[node]["text"] = remove_counters(text)
+        fig = build_co_occ_network_plot(
+            params=self.params,
+            matrix=matrix,
+            i2c=i2c,
+        )
 
-        return plot_nx_graph(self.params, nx_graph)
+        return fig

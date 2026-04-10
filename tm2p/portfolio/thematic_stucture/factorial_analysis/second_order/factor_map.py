@@ -37,6 +37,7 @@ Smoke test:
     ...     .using_decomposition_algorithm(pca)
     ...     #
     ...     # MAP:
+    ...     # https://www.w3schools.com/colors/colors_shades.asp
     ...     .using_node_colors(("#7793a5",))
     ...     .using_node_scaling(Scaling.SQRT)
     ...     .using_node_size_range(18, 90)

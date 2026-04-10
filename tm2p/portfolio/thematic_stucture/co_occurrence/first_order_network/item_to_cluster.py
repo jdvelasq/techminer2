@@ -376,7 +376,7 @@ Smoke tests:
 
 from tm2p._intern import ParamsMixin
 
-from ._intern.get_item_to_cluster import get_item_to_cluster
+from ._intern.get_i2c import get_i2c
 
 
 class ItemToCluster(
@@ -387,6 +387,6 @@ class ItemToCluster(
     def run(self):
         """:meta private:"""
 
-        i2c = get_item_to_cluster(params=self.params)
+        i2c = get_i2c(params=self.params)
 
         return i2c

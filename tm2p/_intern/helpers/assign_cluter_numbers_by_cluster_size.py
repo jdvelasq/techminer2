@@ -1,4 +1,4 @@
-def assign_cluter_numbers_by_cluster_size(
+def assign_cluster_numbers_by_cluster_size(
     items: list[str],
     clusters: list[int],
 ) -> dict[int, list[str]]:
