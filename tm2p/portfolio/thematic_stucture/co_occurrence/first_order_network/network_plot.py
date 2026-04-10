@@ -214,23 +214,9 @@ Smoke tests:
 
 """
 
-from tm2p._intern import ParamsMixin, remove_counters
-from tm2p._intern.nx import (
-    assign_clusters_to_nodes,
-    assign_edge_color_opacity,
-    assign_edge_widths_based_on_weight,
-    assign_node_colors_based_on_group_attribute,
-    assign_node_sizes_based_on_occurrences,
-    assign_text_positions_based_on_quadrants,
-    assign_textfont_opacity_based_on_occurrences,
-    assign_textfont_sizes_based_on_occurrences,
-    compute_clustered_spring_layout_positions,
-    plot_nx_graph,
-    remove_nodes_and_links,
-)
+from tm2p._intern import ParamsMixin
 from tm2p._intern.plots.advanced.co_occ_network import build_co_occ_network_plot
 
-from ._intern.create_nx_graph import create_nx_graph
 from .item_to_cluster import ItemToCluster
 from .matrix import Matrix
 
