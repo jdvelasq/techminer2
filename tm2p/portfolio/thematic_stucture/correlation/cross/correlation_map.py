@@ -9,43 +9,45 @@ Cross-correlation Map
 
 Smoke tests:
     >>> # grey colors: https://www.w3schools.com/colors/colors_shades.asp
-    >>> from tm2p.enum import ItemOrderBy, Field, Correlation, NodeScaling
+    >>> from tm2p.enum import ItemOrderBy, Field, Correlation, Scaling
     >>> from tm2p.portfolio.thematic_stucture.correlation.cross import CorrelationMap
     >>> plot = (
     ...     CorrelationMap()
     ...     #
     ...     # FIELD:
     ...     .with_source_field(Field.AUTHKW_NORM)
-    ...     .having_items_in_top(10)
+    ...     .having_items_in_top(20)
     ...     .having_items_ordered_by(ItemOrderBy.OCC)
     ...     .having_item_occurrences_between(None, None)
     ...     .having_item_citations_between(None, None)
     ...     .having_items_in(None)
     ...     #
-    ...     # CROSS WITH:
+    ...     # CORRELATION:
     ...     .with_cross_field(Field.CTRY_ISO3)
-    ...     #
     ...     .with_correlation_method(Correlation.PEARSON)
+    ...     #
+    ...     # COUNTERS:
+    ...     .using_counters(True)
     ...     #
     ...     # MAP:
     ...     .using_spring_layout_k(None)
     ...     .using_spring_layout_iterations(100)
     ...     .using_spring_layout_seed(0)
     ...     #
-    ...     .using_edge_colors(("#7793a5", "#7793a5", "#7793a5", "#7793a5"))
-    ...     .using_edge_widths((1, 1, 2, 3.5))
-    ...     .using_edge_similarity_threshold(0.1)
-    ...     .using_edge_top_n(1000)
-    ...     .using_top_edges_per_node(10)
-    ...     .using_min_edges_per_node(2)
-    ...     #
     ...     .using_node_colors(("#7793a5",))
-    ...     .using_node_size_range(30, 70)
-    ...     .using_node_scaling(NodeScaling.SQRT)
+    ...     .using_node_scaling(Scaling.SQRT)
+    ...     .using_node_size_range(18, 90)
+    ...     .using_textfont_opacity_range(0.75, 1.00)
+    ...     .using_textfont_size_range(11, 16)
+    ...     .using_top_n_node_labels(10)
     ...     #
-    ...     .using_node_n_labels(10)
-    ...     .using_textfont_opacity_range(0.35, 1.00)
-    ...     .using_textfont_size_range(10, 20)
+    ...     .using_edge_colors(("#7793a5", "#7793a5", "#7793a5", "#7793a5"))
+    ...     .using_edge_scaling(Scaling.SQRT)
+    ...     .using_edge_top_n(1000)
+    ...     .using_edge_widths((1.0, 1.0, 2.0, 3.5))
+    ...     .using_edge_similarity_threshold(0.60)
+    ...     .using_min_edges_per_node(2)
+    ...     .using_top_edges_per_node(5)
     ...     #
     ...     .using_xaxes_range(None, None)
     ...     .using_yaxes_range(None, None)
@@ -64,14 +66,9 @@ Smoke tests:
 
 """
 
-import pandas as pd  # type: ignore
-from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
-
 from tm2p._intern import ParamsMixin
-from tm2p.enum import Correlation
+from tm2p._intern.plots.advanced.correlatioin_map import build_correlation_map
 from tm2p.portfolio.thematic_stucture.correlation.cross.matrix import Matrix
-
-from .._intern import plot_correl_map
 
 
 class CorrelationMap(
@@ -81,13 +78,6 @@ class CorrelationMap(
 
     def run(self):
 
-        df = Matrix().update(**self.params.__dict__).run()
+        matrix = Matrix().update(**self.params.__dict__).run()
 
-        if self.params.correlation_method != Correlation.COSINE:
-            df = pd.DataFrame(
-                cosine_similarity(df),
-                index=df.index,
-                columns=df.columns,
-            )
-
-        return plot_correl_map(self.params, df)
+        return build_correlation_map(self.params, matrix)

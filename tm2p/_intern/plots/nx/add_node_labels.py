@@ -19,7 +19,7 @@ def add_node_labels(
         fig.add_annotation(
             x=data["x"],
             y=data["y"],
-            text=data["text"],
+            text=f" {data['text']} ",
             showarrow=False,
             font={"size": data["textfont_size"]},
             bordercolor="grey",

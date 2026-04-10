@@ -1,5 +1,6 @@
 import networkx as nx  # type: ignore
 import pandas as pd  # type: ignore
+import plotly.graph_objects as go  # type: ignore
 
 from tm2p._intern import Params
 
@@ -30,11 +31,13 @@ from ..nx import (
 def build_cross_occ_matrix_plot(
     params: Params,
     matrix: pd.DataFrame,
-):
+) -> go.Figure:
+
     nx_graph = _from_pandas_cross_occ_matrix(matrix)
 
     nx_graph = remove_selfloop_edges(nx_graph)
     nx_graph = remove_isolated_nodes(nx_graph)
+    nx_graph = keep_top_k_edges_per_node(params, nx_graph)
     nx_graph = remove_weak_nodes(params, nx_graph)
 
     nx_graph = set_top_n_node_labels(
@@ -48,7 +51,6 @@ def build_cross_occ_matrix_plot(
         params.top_n_node_labels,
     )
 
-    nx_graph = keep_top_k_edges_per_node(params, nx_graph)
     nx_graph = scale_edge_weights(params, nx_graph)
     nx_graph = spring_layout(params, nx_graph)
     nx_graph = scale_node_sizes_by_occ(params, nx_graph)

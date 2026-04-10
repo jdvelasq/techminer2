@@ -1,19 +1,25 @@
 import numpy as np  # type: ignore
 import pandas as pd  # type: ignore
-from sklearn.metrics.pairwise import cosine_similarity
+from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
 
 from tm2p._intern import Params
 from tm2p.enum import Correlation
 
 
 def _compute_similarity(x: pd.Series, y: pd.Series, method: Correlation) -> float:
+
     if method == Correlation.COSINE:
         return cosine_similarity(x.values.reshape(-1, 1), y.values.reshape(-1, 1))[0][0]  # type: ignore
-    elif method in (Correlation.PEARSON, Correlation.SPEARMAN, Correlation.KENDALL):
-        corr = x.corr(other=y, method=method.value)
+
+    if method in (
+        Correlation.PEARSON,
+        Correlation.SPEARMAN,
+        Correlation.KENDALL,
+    ):
+        corr = x.corr(other=y, method=method.value.lower())  # type: ignore
         return max(0.0, corr)
-    else:
-        raise ValueError(f"Unknown correlation method: {method}")
+
+    raise ValueError(f"Unknown correlation method: {method}")
 
 
 def comput_correl_matrix(
