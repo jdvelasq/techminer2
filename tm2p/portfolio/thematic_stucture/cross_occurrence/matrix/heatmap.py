@@ -29,6 +29,8 @@ Smoke tests:
     ...     .having_index_item_citations_between(None, None)
     ...     .having_index_items_in(None)
     ...     #
+    ...     .using_co_occurrence_threshold(1)
+    ...     #
     ...     # COUNTERS:
     ...     .using_counters(True)
     ...     #

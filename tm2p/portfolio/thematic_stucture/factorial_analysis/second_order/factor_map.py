@@ -33,6 +33,8 @@ Smoke test:
     ...     .having_item_citations_between(None, None)
     ...     .having_items_in(None)
     ...     #
+    ...     .using_co_occurrence_threshold(1)
+    ...     #
     ...     # DECOMPOSITION:
     ...     .using_decomposition_algorithm(pca)
     ...     #

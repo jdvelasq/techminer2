@@ -24,6 +24,8 @@ Smoke tests:
     ...     .having_index_item_citations_between(None, None)
     ...     .having_index_items_in(None)
     ...     #
+    ...     .using_co_occurrence_threshold(1)
+    ...     #
     ...     # COUNTERS:
     ...     .using_counters(True)
     ...     #
@@ -288,6 +290,11 @@ class Matrix(
         return matrix
 
     # -------------------------------------------------------------------------
+    def _step_13_apply_co_occurrence_threshold(self, matrix):
+        matrix = matrix.where(matrix >= self.params.co_occurrence_threshold, other=0)
+        return matrix
+
+    # -------------------------------------------------------------------------
     def run(self):
 
         col_metrics = self._step_01_compute_column_peformance_metrics()
@@ -318,5 +325,6 @@ class Matrix(
         matrix = self._step_10_check_terms(matrix, row_mapping, col_mapping)
         matrix = self._step_11_sort_matrix_axis(matrix)
         matrix = self._step_12_remove_counters(matrix)
+        matrix = self._step_13_apply_co_occurrence_threshold(matrix)
 
         return matrix

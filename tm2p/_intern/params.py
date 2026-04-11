@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Any, Callable, Dict, List, Literal, Optional, Sequence, Tuple, Union
+from typing import Any, Callable, Dict, List, Optional, Sequence, Tuple, Union
 
 import pandas as pd  # type: ignore
 from sklearn.base import BaseEstimator  # type: ignore
@@ -139,6 +139,7 @@ class Params:
     core_area: Optional[str] = None
     correlation_method: Correlation = Correlation.PEARSON
     cumulative_sum: bool = False
+    co_occurrence_threshold: int = 1
     similarity_cutoff: float = 85.0
 
     #

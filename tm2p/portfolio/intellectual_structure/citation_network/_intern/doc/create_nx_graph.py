@@ -41,10 +41,10 @@ def _step_03_explode_local_references(data_frame):
 
 
 # -------------------------------------------------------------------------
-def _step_04_get_dataframe_with_links(data_frame):
+def _step_04_get_dataframe_with_links(records):
     # Local references must be in article column
-    data_frame_with_links = data_frame[
-        data_frame[LCR].map(lambda x: x in data_frame[RID].to_list())
+    data_frame_with_links = records[
+        records[LCR].map(lambda x: x in records[RID].to_list())
     ]
     return data_frame_with_links
 

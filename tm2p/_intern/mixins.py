@@ -396,6 +396,14 @@ class ParamsMixin:
         self.params.clustering = clustering
         return self
 
+    def using_co_occurrence_threshold(self, co_occurrence_threshold: int) -> Self:
+        co_occurrence_threshold = check_required_positive_int(
+            value=co_occurrence_threshold,
+            param_name="co_occurrence_threshold",
+        )
+        self.params.co_occurrence_threshold = co_occurrence_threshold
+        return self
+
     def using_colored_output(self, colored_output: bool) -> Self:
         colored_output = check_required_bool(
             value=colored_output,

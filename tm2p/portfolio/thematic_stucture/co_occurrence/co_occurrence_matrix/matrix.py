@@ -16,6 +16,8 @@ Smoke tests:
     ...     .having_item_citations_between(None, None)
     ...     .having_items_in(None)
     ...     #
+    ...     .using_co_occurrence_threshold(1)
+    ...     #
     ...     # COUNTERS:
     ...     .using_counters(True)
     ...     #
@@ -46,6 +48,7 @@ Smoke tests:
     innovation 009:01703                               6                              0                               0                        0                     0                  2                2                     9                                  0                             2
     artificial intelligence 008:01915                  6                              1                               1                        0                     2                  1                0                     0                                  8                             0
     financial services 007:01673                       4                              1                               1                        0                     0                  2                0                     2                                  0                             7
+
 
     >>> df = (
     ...     Matrix()
@@ -102,7 +105,7 @@ class Matrix(
     """:meta private:"""
 
     def run(self):
-        return (
+        matrix = (
             BaseMatrix()
             .update(**self.params.__dict__)
             #
@@ -134,5 +137,14 @@ class Matrix(
             )
             .having_index_items_in(self.params.items_in)
             #
+            .using_co_occurrence_threshold(1)
+            #
             .run()
         )
+
+        diag = matrix.values.diagonal()
+        matrix = matrix.where(matrix >= self.params.co_occurrence_threshold, other=0)
+        for i, value in enumerate(diag):
+            matrix.values[i, i] = value
+
+        return matrix
