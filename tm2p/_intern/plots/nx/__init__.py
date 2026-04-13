@@ -2,9 +2,13 @@ from .add_node_labels import add_node_labels
 from .build_network_figure import build_network_figure
 from .build_scatter_edge_traces import build_scatter_edge_traces
 from .build_scatter_node_trace import build_scatter_node_trace
+from .compute_node_metrics import compute_node_metrics
 from .configure_figure_axes import configure_figure_axes
+from .create_nx_graph_from_matrix import create_nx_graph_from_matrix
+from .create_nx_graph_from_matrix_list import create_nx_graph_from_matrix_list
 from .detect_communities import detect_communities
 from .keep_top_k_edges_per_node import keep_top_k_edges_per_node
+from .keep_top_n_nodes import keep_top_n_nodes
 from .nodes_to_clusters import nodes_to_clusters
 from .remove_edges_below_similarity_threshold import (
     remove_edges_below_similarity_threshold,
@@ -28,15 +32,19 @@ from .set_uniform_edge_line_style import set_uniform_edge_line_style
 from .set_uniform_node_color import set_uniform_node_color
 from .spring_layout import spring_layout
 from .style_edges_by_weight_bins import style_edges_by_weight_bins
+from .validate_association_index import validate_association_index
 
 __all__ = [
     "add_node_labels",
     "build_network_figure",
     "build_scatter_edge_traces",
     "build_scatter_node_trace",
+    "compute_node_metrics",
     "configure_figure_axes",
+    "create_nx_graph_from_matrix",
     "detect_communities",
     "keep_top_k_edges_per_node",
+    "keep_top_n_nodes",
     "nodes_to_clusters",
     "remove_edges_below_similarity_threshold",
     "remove_isolated_nodes",
@@ -58,4 +66,6 @@ __all__ = [
     "set_uniform_node_color",
     "spring_layout",
     "style_edges_by_weight_bins",
+    "create_nx_graph_from_matrix_list",
+    "validate_association_index",
 ]

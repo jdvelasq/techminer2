@@ -5,7 +5,7 @@ from .field import Field
 
 class CitationUnit(str, Enum):
 
-    AUTH = Field.AUTH_NORM.value
+    AUTH = Field.AUTH_FULL_NAME.value
     CTRY = Field.CTRY_ISO3.value
     DOC = "DOC"
     ORG = Field.ORG.value

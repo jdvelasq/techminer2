@@ -209,6 +209,7 @@ class Params:
     node_size_range: Tuple[int, int] = (5, 20)
     node_size: int = 10
     top_n_node_labels: int = 1000
+    top_n_nodes: int = 1000
     novelty_threshold: float = 0.15
 
     #
@@ -242,6 +243,7 @@ class Params:
     record_years_range: Tuple[Optional[int], Optional[int]] = (None, None)
     records_match: Optional[Dict[Field, List[str]]] = None
     records_order_by: RecordOrderBy = RecordOrderBy.YEAR_NEWEST
+    # records_top_n: int = 100000
     regex_flags: int = 0
     regex_search: bool = False
 

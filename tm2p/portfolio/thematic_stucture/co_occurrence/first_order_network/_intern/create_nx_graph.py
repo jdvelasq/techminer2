@@ -1,5 +1,5 @@
 from tm2p._intern import Params
-from tm2p._intern.nx import create_nx_graph_from_matrix
+from tm2p._intern.plots.nx import create_nx_graph_from_matrix
 
 from ..matrix import Matrix
 

@@ -11,6 +11,7 @@ from ..nx import (
     build_scatter_node_trace,
     configure_figure_axes,
     keep_top_k_edges_per_node,
+    keep_top_n_nodes,
     remove_isolated_nodes,
     remove_selfloop_edges,
     remove_weak_nodes,
@@ -42,6 +43,7 @@ def build_co_occ_network_plot(
     nx_graph = remove_isolated_nodes(nx_graph)
     nx_graph = keep_top_k_edges_per_node(params, nx_graph)
     nx_graph = remove_weak_nodes(params, nx_graph)
+    nx_graph = keep_top_n_nodes(params, nx_graph)
 
     nx_graph = set_top_n_node_labels_per_group(
         params=params,

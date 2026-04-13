@@ -2,7 +2,7 @@
 NodeDegreePlot
 ===============================================================================
 
-* **CitationUnit.AUTH**
+* **CitationUnit.DOC**
 
 .. raw:: html
 
@@ -12,6 +12,49 @@ NodeDegreePlot
 Smoke tests:
     >>> from tm2p.enum import CitationUnit
     >>> from tm2p.synthesize.netw.cit import NodeDegreePlot
+    >>> # ---------------------------------------------------------------------
+    >>> # DOC
+    >>> # ---------------------------------------------------------------------
+    >>> fig = (
+    ...     NodeDegreePlot()
+    ...     #
+    ...     # CITATION UNIT:
+    ...     .with_citation_unit(CitationUnit.DOC)
+    ...     #
+    ...     # COUNTERS:
+    ...     .using_counters(True)
+    ...     #
+    ...     # PLOT:
+    ...     .using_textfont_size(10)
+    ...     .using_marker_size(7)
+    ...     .using_line_color("black")
+    ...     .using_line_width(1.5)
+    ...     .using_yshift(4)
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory("tests/wos/")
+    ...     .where_record_years_range(None, None)
+    ...     .where_record_citations_range(None, None)
+    ...     .where_records_match(None)
+    ...     #
+    ...     .run()
+    ... )
+    >>> type(fig).__name__
+    'Figure'
+    >>> fig.write_html("docsrc/_generated/px.synthes.netw.cit.node_degree_plot_doc.html")
+
+
+* **CitationUnit.AUTH**
+
+.. raw:: html
+
+    <iframe src="../_generated/px.synthes.netw.cit.node_degree_plot_auth.html"
+    height="800px" width="100%" frameBorder="0"></iframe>
+
+Smoke tests:
+    >>> # ---------------------------------------------------------------------
+    >>> # AUTH
+    >>> # ---------------------------------------------------------------------
     >>> fig = (
     ...     NodeDegreePlot()
     ...     #
@@ -45,7 +88,6 @@ Smoke tests:
     >>> fig.write_html("docsrc/_generated/px.synthes.netw.cit.node_degree_plot_auth.html")
 
 
-
 * **CitationUnit.CTRY**
 
 .. raw:: html
@@ -54,8 +96,9 @@ Smoke tests:
     height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
-    >>> from tm2p.enum import CitationUnit
-    >>> from tm2p.synthesize.netw.cit import NodeDegreePlot
+    >>> # ---------------------------------------------------------------------
+    >>> # CTRY
+    >>> # ---------------------------------------------------------------------
     >>> fig = (
     ...     NodeDegreePlot()
     ...     #
@@ -90,50 +133,6 @@ Smoke tests:
 
 
 
-* **CitationUnit.DOC**
-
-.. raw:: html
-
-    <iframe src="../_generated/px.synthes.netw.cit.node_degree_plot_doc.html"
-    height="800px" width="100%" frameBorder="0"></iframe>
-
-Smoke tests:
-    >>> from tm2p.enum import CitationUnit
-    >>> from tm2p.synthesize.netw.cit import NodeDegreePlot
-    >>> fig = (
-    ...     NodeDegreePlot()
-    ...     #
-    ...     # CITATION UNIT:
-    ...     .with_citation_unit(CitationUnit.DOC)
-    ...     .having_items_in_top(30)
-    ...     .having_items_in(None)
-    ...     .having_citation_threshold(0)
-    ...     .having_occurrence_threshold(2)
-    ...     #
-    ...     # COUNTERS:
-    ...     .using_counters(True)
-    ...     #
-    ...     # PLOT:
-    ...     .using_textfont_size(10)
-    ...     .using_marker_size(7)
-    ...     .using_line_color("black")
-    ...     .using_line_width(1.5)
-    ...     .using_yshift(4)
-    ...     #
-    ...     # DATABASE:
-    ...     .where_root_directory("tests/wos/")
-    ...     .where_record_years_range(None, None)
-    ...     .where_record_citations_range(None, None)
-    ...     .where_records_match(None)
-    ...     #
-    ...     .run()
-    ... )
-    >>> type(fig).__name__
-    'Figure'
-    >>> fig.write_html("docsrc/_generated/px.synthes.netw.cit.node_degree_plot_doc.html")
-
-
-
 * **CitationUnit.ORG**
 
 .. raw:: html
@@ -142,8 +141,9 @@ Smoke tests:
     height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
-    >>> from tm2p.enum import CitationUnit
-    >>> from tm2p.synthesize.netw.cit import NodeDegreePlot
+    >>> # ---------------------------------------------------------------------
+    >>> # ORG
+    >>> # ---------------------------------------------------------------------
     >>> fig = (
     ...     NodeDegreePlot()
     ...     #
@@ -186,8 +186,9 @@ Smoke tests:
     height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
-    >>> from tm2p.enum import CitationUnit
-    >>> from tm2p.synthesize.netw.cit import NodeDegreePlot
+    >>> # ---------------------------------------------------------------------
+    >>> # SRC
+    >>> # ---------------------------------------------------------------------
     >>> fig = (
     ...     NodeDegreePlot()
     ...     #
@@ -219,8 +220,6 @@ Smoke tests:
     >>> type(fig).__name__
     'Figure'
     >>> fig.write_html("docsrc/_generated/px.synthes.netw.cit.node_degree_plot_src.html")
-
-
 
 
 """

@@ -116,6 +116,7 @@ Smoke tests:
     ...     .using_textfont_opacity_range(0.35, 1.00)
     ...     .using_textfont_size_range(10, 20)
     ...     .using_top_n_node_labels(5)
+    ...     .using_top_n_nodes(1000)
     ...     #
     ...     # https://www.w3schools.com/colors/colors_shades.asp
     ...     .using_edge_color("#e0e0e0")
@@ -217,7 +218,7 @@ Smoke tests:
 """
 
 from tm2p._intern import ParamsMixin
-from tm2p._intern.plots.advanced.co_occ_network import build_co_occ_network_plot
+from tm2p._intern.plots.advanced.co_occ_network_plot import build_co_occ_network_plot
 
 from .item_to_cluster import ItemToCluster
 from .matrix import Matrix

@@ -204,10 +204,13 @@ def _scopus(root_directory: str) -> int:
     df = load_main_csv_zip(root_directory)
     df[ORG] = df[AFFIL].str.split("; ")
     df[ORG] = df[ORG].apply(
-        lambda affils: [
+        lambda affils: (
             [mapping[affil] for affil in affils] if isinstance(affils, list) else affils
-        ]
+        )
     )
+
+    df[ORG] = df[ORG].str.join("; ")
+
     save_main_csv_zip(df=df, root_directory=root_directory)
 
     return 1

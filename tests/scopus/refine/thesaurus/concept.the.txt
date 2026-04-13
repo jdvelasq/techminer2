@@ -1664,6 +1664,8 @@ barriers
     barriers
 base
     base
+basel
+    basel
 baseline
     baseline
 baseline studies

@@ -731,6 +731,14 @@ class ParamsMixin:
         self.params.top_n_node_labels = top_n_node_labels
         return self
 
+    def using_top_n_nodes(self, top_n_nodes: int) -> Self:
+        top_n_nodes = check_required_positive_int(
+            value=top_n_nodes,
+            param_name="top_n_nodes",
+        )
+        self.params.top_n_nodes = top_n_nodes
+        return self
+
     def using_node_size(self, node_size: int) -> Self:
         node_size = check_required_positive_int(
             value=node_size,
@@ -1229,6 +1237,14 @@ class ParamsMixin:
             )
         self.params.records_order_by = records_order_by
         return self
+
+    # def where_records_top_n(self, records_top_n: int) -> Self:
+    #     records_top_n = check_required_positive_int(
+    #         value=records_top_n,
+    #         param_name="records_top_n",
+    #     )
+    #     self.params.records_top_n = records_top_n
+    #     return self
 
     def where_root_directory(self, root_directory: str) -> Self:
         root_directory = check_required_str(

@@ -78,7 +78,7 @@ Smoke tests:
 """
 
 from tm2p._intern import ParamsMixin, remove_counters
-from tm2p._intern.nx import compute_node_metrics
+from tm2p._intern.plots.nx import compute_node_metrics
 
 from ._intern.create_nx_graph import create_nx_graph
 
