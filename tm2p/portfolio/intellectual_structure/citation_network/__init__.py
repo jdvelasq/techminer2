@@ -3,8 +3,8 @@ from .items_by_cluster import ItemsByCluster
 from .kernel_density_plot import KernelDensityPlot
 from .matrix_list import MatrixList
 from .network_plot import NetworkPlot
-from .node_degree_dataframe import NodeDegreeDataFrame
-from .node_degree_plot import NodeDegreePlot
+from .node_metrics import NodeDegreeDataFrame
+from .strength_plot import StrengthPlot
 
 __all__ = [
     "ItemToCluster",
@@ -13,5 +13,5 @@ __all__ = [
     "MatrixList",
     "NetworkPlot",
     "NodeDegreeDataFrame",
-    "NodeDegreePlot",
+    "StrengthPlot",
 ]

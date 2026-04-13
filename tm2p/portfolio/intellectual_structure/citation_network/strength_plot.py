@@ -1,29 +1,35 @@
 """
-ItemsByCluster
+StrengthPlot
 ===============================================================================
 
 * **CitationUnit.DOC**
 
+.. raw:: html
+
+    <iframe src="../_generated/px.synthes.netw.cit.node_degree_plot_auth.html"
+    height="800px" width="100%" frameBorder="0"></iframe>
+
 Smoke tests:
     >>> from tm2p.enum import CitationUnit
-    >>> from tm2p.portfolio.intellectual_structure.citation_network import ItemsByCluster
+    >>> from tm2p.portfolio.intellectual_structure.citation_network import StrengthPlot
     >>> # ---------------------------------------------------------------------
     >>> # DOC
     >>> # ---------------------------------------------------------------------
-    >>> df = (
-    ...     ItemsByCluster()
+    >>> fig = (
+    ...     StrengthPlot()
     ...     #
     ...     # CITATION UNIT:
     ...     .with_citation_unit(CitationUnit.DOC)
     ...     #
-    ...     # NETWORK:
-    ...     .using_association_index(AssociationIndex.ASSOCIATION_STRENGTH)
-    ...     #
-    ...     # CLUSTERING:
-    ...     .using_clustering(GraphClusteringAlgorithm.LOUVAIN)
-    ...     #
     ...     # COUNTERS:
     ...     .using_counters(True)
+    ...     #
+    ...     # PLOT:
+    ...     .using_textfont_size(10)
+    ...     .using_marker_size(7)
+    ...     .using_line_color("black")
+    ...     .using_line_width(1.5)
+    ...     .using_yshift(4)
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/wos/")
@@ -33,33 +39,41 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> df.head()  # doctest: +NORMALIZE_WHITESPACE
+    >>> type(fig).__name__
+    'Figure'
+    >>> fig.write_html("docsrc/_generated/px.synthes.netw.cit.node_degree_plot_doc.html")
 
 
 * **CitationUnit.AUTH**
+
+.. raw:: html
+
+    <iframe src="../_generated/px.synthes.netw.cit.node_degree_plot_auth.html"
+    height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
     >>> # ---------------------------------------------------------------------
     >>> # AUTH
     >>> # ---------------------------------------------------------------------
-    >>> df = (
-    ...     ItemsByCluster()
+    >>> fig = (
+    ...     StrengthPlot()
     ...     #
-    ...     # ANALYSIS UNIT:
+    ...     # CITATION UNIT:
     ...     .with_citation_unit(CitationUnit.AUTH)
     ...     .having_items_in_top(30)
+    ...     .having_items_in(None)
     ...     .having_citation_threshold(0)
     ...     .having_occurrence_threshold(2)
-    ...     .having_items_in(None)
-    ...     #
-    ...     # NETWORK:
-    ...     .using_association_index(AssociationIndex.ASSOCIATION_STRENGTH)
-    ...     #
-    ...     # CLUSTERING:
-    ...     .using_clustering(GraphClusteringAlgorithm.LOUVAIN)
     ...     #
     ...     # COUNTERS:
     ...     .using_counters(True)
+    ...     #
+    ...     # PLOT:
+    ...     .using_textfont_size(10)
+    ...     .using_marker_size(7)
+    ...     .using_line_color("black")
+    ...     .using_line_width(1.5)
+    ...     .using_yshift(4)
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/wos/")
@@ -69,34 +83,41 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> df.head()  # doctest: +NORMALIZE_WHITESPACE
-
+    >>> type(fig).__name__
+    'Figure'
+    >>> fig.write_html("docsrc/_generated/px.synthes.netw.cit.node_degree_plot_auth.html")
 
 
 * **CitationUnit.CTRY**
+
+.. raw:: html
+
+    <iframe src="../_generated/px.synthes.netw.cit.node_degree_plot_ctry.html"
+    height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
     >>> # ---------------------------------------------------------------------
     >>> # CTRY
     >>> # ---------------------------------------------------------------------
-    >>> df = (
-    ...     ItemsByCluster()
+    >>> fig = (
+    ...     StrengthPlot()
     ...     #
-    ...     # ANALYSIS UNIT:
+    ...     # CITATION UNIT:
     ...     .with_citation_unit(CitationUnit.CTRY)
     ...     .having_items_in_top(30)
+    ...     .having_items_in(None)
     ...     .having_citation_threshold(0)
     ...     .having_occurrence_threshold(2)
-    ...     .having_items_in(None)
-    ...     #
-    ...     # NETWORK:
-    ...     .using_association_index(AssociationIndex.ASSOCIATION_STRENGTH)
-    ...     #
-    ...     # CLUSTERING:
-    ...     .using_clustering(GraphClusteringAlgorithm.LOUVAIN)
     ...     #
     ...     # COUNTERS:
     ...     .using_counters(True)
+    ...     #
+    ...     # PLOT:
+    ...     .using_textfont_size(10)
+    ...     .using_marker_size(7)
+    ...     .using_line_color("black")
+    ...     .using_line_width(1.5)
+    ...     .using_yshift(4)
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/wos/")
@@ -106,73 +127,87 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> df.head()  # doctest: +NORMALIZE_WHITESPACE
-
+    >>> type(fig).__name__
+    'Figure'
+    >>> fig.write_html("docsrc/_generated/px.synthes.netw.cit.node_degree_plot_ctry.html")
 
 
 
 * **CitationUnit.ORG**
 
+.. raw:: html
+
+    <iframe src="../_generated/px.synthes.netw.cit.node_degree_plot_org.html"
+    height="800px" width="100%" frameBorder="0"></iframe>
+
 Smoke tests:
     >>> # ---------------------------------------------------------------------
     >>> # ORG
     >>> # ---------------------------------------------------------------------
-    >>> df = (
-    ...     ItemsByCluster()
+    >>> fig = (
+    ...     StrengthPlot()
     ...     #
-    ...     # ANALYSIS UNIT:
+    ...     # CITATION UNIT:
     ...     .with_citation_unit(CitationUnit.ORG)
     ...     .having_items_in_top(30)
+    ...     .having_items_in(None)
     ...     .having_citation_threshold(0)
     ...     .having_occurrence_threshold(2)
-    ...     .having_items_in(None)
-    ...     #
-    ...     # NETWORK:
-    ...     .using_association_index(AssociationIndex.ASSOCIATION_STRENGTH)
-    ...     #
-    ...     # CLUSTERING:
-    ...     .using_clustering(GraphClusteringAlgorithm.LOUVAIN)
     ...     #
     ...     # COUNTERS:
     ...     .using_counters(True)
+    ...     #
+    ...     # PLOT:
+    ...     .using_textfont_size(10)
+    ...     .using_marker_size(7)
+    ...     .using_line_color("black")
+    ...     .using_line_width(1.5)
+    ...     .using_yshift(4)
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/wos/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
-    ...     .where_records_ordered_by(RecordOrderBy.YEAR_NEWEST)
     ...     .where_records_match(None)
     ...     #
     ...     .run()
     ... )
-    >>> df.head()  # doctest: +NORMALIZE_WHITESPACE
+    >>> type(fig).__name__
+    'Figure'
+    >>> fig.write_html("docsrc/_generated/px.synthes.netw.cit.node_degree_plot_org.html")
 
 
 
 * **CitationUnit.SRC**
 
+.. raw:: html
+
+    <iframe src="../_generated/px.synthes.netw.cit.node_degree_plot_src.html"
+    height="800px" width="100%" frameBorder="0"></iframe>
+
 Smoke tests:
     >>> # ---------------------------------------------------------------------
     >>> # SRC
     >>> # ---------------------------------------------------------------------
-    >>> df = (
-    ...     ItemsByCluster()
+    >>> fig = (
+    ...     StrengthPlot()
     ...     #
-    ...     # UNIT OF ANALYSIS:
+    ...     # CITATION UNIT:
     ...     .with_citation_unit(CitationUnit.SRC)
     ...     .having_items_in_top(30)
+    ...     .having_items_in(None)
     ...     .having_citation_threshold(0)
     ...     .having_occurrence_threshold(2)
-    ...     .having_items_in(None)
-    ...     #
-    ...     # NETWORK:
-    ...     .using_association_index(AssociationIndex.ASSOCIATION_STRENGTH)
-    ...     #
-    ...     # CLUSTERING:
-    ...     .using_clustering(GraphClusteringAlgorithm.LOUVAIN)
     ...     #
     ...     # COUNTERS:
-    ...     .using_counters(False)
+    ...     .using_counters(True)
+    ...     #
+    ...     # PLOT:
+    ...     .using_textfont_size(10)
+    ...     .using_marker_size(7)
+    ...     .using_line_color("black")
+    ...     .using_line_width(1.5)
+    ...     .using_yshift(4)
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/wos/")
@@ -182,40 +217,34 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> df.head()  # doctest: +NORMALIZE_WHITESPACE
+    >>> type(fig).__name__
+    'Figure'
+    >>> fig.write_html("docsrc/_generated/px.synthes.netw.cit.node_degree_plot_src.html")
 
 
 """
 
 from tm2p._intern import ParamsMixin
-from tm2p.enum import CitationUnit, ItemOrderBy
-from tm2p.portfolio.intellectual_structure.citation_network._intern.doc import (
-    DocItemsByCluster as DocItemsByClusterDataFrame,
-)
-from tm2p.portfolio.intellectual_structure.citation_network._intern.other import (
-    OtherItemsByCluster as OtherItemsByClusterDataFrame,
-)
+from tm2p._intern.nx import create_node_degree_plot
 
-from ...._intern.helpers.check_database import check_database
+from .node_metrics import NodeMetrics
 
 
-class ItemsByCluster(
+class StrengthPlot(
     ParamsMixin,
 ):
     """:meta private:"""
 
     def run(self):
 
-        check_database(self.params.root_directory)
+        use_counters = self.params.counters
 
-        if self.params.citation_unit == CitationUnit.DOC:
-            ItemsByCluster_ = DocItemsByClusterDataFrame
-        else:
-            ItemsByCluster_ = OtherItemsByClusterDataFrame
+        self.params.counters = True
+        metrics = NodeMetrics().update(**self.params.__dict__).run()
+        metrics = metrics.reset_index().rename(columns={"index": "NODE"})
+        if use_counters is False:
+            self.params.counters = False
+            metrics["NODE"] = metrics["NODE"].str.split(" ").str[:-1].str.join(" ")
+        plot = create_node_degree_plot(self.params, metrics)
 
-        return (
-            ItemsByCluster_()
-            .update(**self.params.__dict__)
-            .update(items_order_by=ItemOrderBy.OCC)
-            .run()
-        )
+        return plot

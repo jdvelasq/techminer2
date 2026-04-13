@@ -1,35 +1,29 @@
 """
-NodeDegreePlot
+ClusterToItems
 ===============================================================================
 
 * **CitationUnit.DOC**
 
-.. raw:: html
-
-    <iframe src="../_generated/px.synthes.netw.cit.node_degree_plot_auth.html"
-    height="800px" width="100%" frameBorder="0"></iframe>
-
 Smoke tests:
-    >>> from tm2p.enum import CitationUnit
-    >>> from tm2p.synthesize.netw.cit import NodeDegreePlot
+    >>> from tm2p.enum import AssociationIndex, CitationUnit, GraphClusteringAlgorithm
+    >>> from tm2p.portfolio.intellectual_structure.citation_network import ClusterToItems
     >>> # ---------------------------------------------------------------------
     >>> # DOC
     >>> # ---------------------------------------------------------------------
-    >>> fig = (
-    ...     NodeDegreePlot()
+    >>> mapping = (
+    ...     ClusterToItems()
     ...     #
     ...     # CITATION UNIT:
     ...     .with_citation_unit(CitationUnit.DOC)
     ...     #
+    ...     # NETWORK:
+    ...     .using_association_index(AssociationIndex.ASSOCIATION_STRENGTH)
+    ...     #
+    ...     # CLUSTERING:
+    ...     .using_clustering(GraphClusteringAlgorithm.LOUVAIN)
+    ...     #
     ...     # COUNTERS:
     ...     .using_counters(True)
-    ...     #
-    ...     # PLOT:
-    ...     .using_textfont_size(10)
-    ...     .using_marker_size(7)
-    ...     .using_line_color("black")
-    ...     .using_line_width(1.5)
-    ...     .using_yshift(4)
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/wos/")
@@ -39,41 +33,35 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> type(fig).__name__
-    'Figure'
-    >>> fig.write_html("docsrc/_generated/px.synthes.netw.cit.node_degree_plot_doc.html")
+    >>> from pprint import pprint
+    >>> pprint(mapping)  # doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
 
 
 * **CitationUnit.AUTH**
-
-.. raw:: html
-
-    <iframe src="../_generated/px.synthes.netw.cit.node_degree_plot_auth.html"
-    height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
     >>> # ---------------------------------------------------------------------
     >>> # AUTH
     >>> # ---------------------------------------------------------------------
-    >>> fig = (
-    ...     NodeDegreePlot()
+    >>> mapping = (
+    ...     ClusterToItems()
     ...     #
-    ...     # CITATION UNIT:
+    ...     # ANALYSIS UNIT:
     ...     .with_citation_unit(CitationUnit.AUTH)
-    ...     .having_items_in_top(30)
-    ...     .having_items_in(None)
+    ...     #
+    ...     .having_items_in_top(50)
     ...     .having_citation_threshold(0)
-    ...     .having_occurrence_threshold(2)
+    ...     .having_occurrence_threshold(1)
+    ...     .having_items_in(None)
+    ...     #
+    ...     # NETWORK:
+    ...     .using_association_index(AssociationIndex.ASSOCIATION_STRENGTH)
+    ...     #
+    ...     # CLUSTERING:
+    ...     .using_clustering(GraphClusteringAlgorithm.LOUVAIN)
     ...     #
     ...     # COUNTERS:
     ...     .using_counters(True)
-    ...     #
-    ...     # PLOT:
-    ...     .using_textfont_size(10)
-    ...     .using_marker_size(7)
-    ...     .using_line_color("black")
-    ...     .using_line_width(1.5)
-    ...     .using_yshift(4)
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/wos/")
@@ -83,41 +71,34 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> type(fig).__name__
-    'Figure'
-    >>> fig.write_html("docsrc/_generated/px.synthes.netw.cit.node_degree_plot_auth.html")
+    >>> pprint(mapping)  # doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
 
 
 * **CitationUnit.CTRY**
-
-.. raw:: html
-
-    <iframe src="../_generated/px.synthes.netw.cit.node_degree_plot_ctry.html"
-    height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
     >>> # ---------------------------------------------------------------------
     >>> # CTRY
     >>> # ---------------------------------------------------------------------
-    >>> fig = (
-    ...     NodeDegreePlot()
+    >>> mapping = (
+    ...     ClusterToItems()
     ...     #
-    ...     # CITATION UNIT:
+    ...     # ANALYSIS UNIT:
     ...     .with_citation_unit(CitationUnit.CTRY)
+    ...     #
     ...     .having_items_in_top(30)
-    ...     .having_items_in(None)
     ...     .having_citation_threshold(0)
     ...     .having_occurrence_threshold(2)
+    ...     .having_items_in(None)
+    ...     #
+    ...     # NETWORK:
+    ...     .using_association_index(AssociationIndex.ASSOCIATION_STRENGTH)
+    ...     #
+    ...     # CLUSTERING:
+    ...     .using_clustering(GraphClusteringAlgorithm.LOUVAIN)
     ...     #
     ...     # COUNTERS:
     ...     .using_counters(True)
-    ...     #
-    ...     # PLOT:
-    ...     .using_textfont_size(10)
-    ...     .using_marker_size(7)
-    ...     .using_line_color("black")
-    ...     .using_line_width(1.5)
-    ...     .using_yshift(4)
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/wos/")
@@ -127,42 +108,34 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> type(fig).__name__
-    'Figure'
-    >>> fig.write_html("docsrc/_generated/px.synthes.netw.cit.node_degree_plot_ctry.html")
-
+    >>> pprint(mapping)  # doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
 
 
 * **CitationUnit.ORG**
-
-.. raw:: html
-
-    <iframe src="../_generated/px.synthes.netw.cit.node_degree_plot_org.html"
-    height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
     >>> # ---------------------------------------------------------------------
     >>> # ORG
     >>> # ---------------------------------------------------------------------
-    >>> fig = (
-    ...     NodeDegreePlot()
+    >>> mapping = (
+    ...     ClusterToItems()
     ...     #
-    ...     # CITATION UNIT:
+    ...     # ANALYSIS UNIT:
     ...     .with_citation_unit(CitationUnit.ORG)
+    ...     #
     ...     .having_items_in_top(30)
-    ...     .having_items_in(None)
     ...     .having_citation_threshold(0)
     ...     .having_occurrence_threshold(2)
+    ...     .having_items_in(None)
+    ...     #
+    ...     # NETWORK:
+    ...     .using_association_index(AssociationIndex.ASSOCIATION_STRENGTH)
+    ...     #
+    ...     # CLUSTERING:
+    ...     .using_clustering(GraphClusteringAlgorithm.LOUVAIN)
     ...     #
     ...     # COUNTERS:
     ...     .using_counters(True)
-    ...     #
-    ...     # PLOT:
-    ...     .using_textfont_size(10)
-    ...     .using_marker_size(7)
-    ...     .using_line_color("black")
-    ...     .using_line_width(1.5)
-    ...     .using_yshift(4)
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/wos/")
@@ -172,42 +145,34 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> type(fig).__name__
-    'Figure'
-    >>> fig.write_html("docsrc/_generated/px.synthes.netw.cit.node_degree_plot_org.html")
-
+    >>> pprint(mapping)  # doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
 
 
 * **CitationUnit.SRC**
-
-.. raw:: html
-
-    <iframe src="../_generated/px.synthes.netw.cit.node_degree_plot_src.html"
-    height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
     >>> # ---------------------------------------------------------------------
     >>> # SRC
     >>> # ---------------------------------------------------------------------
-    >>> fig = (
-    ...     NodeDegreePlot()
+    >>> mapping = (
+    ...     ClusterToItems()
     ...     #
-    ...     # CITATION UNIT:
+    ...     # UNIT OF ANALYSIS:
     ...     .with_citation_unit(CitationUnit.SRC)
+    ...     #
     ...     .having_items_in_top(30)
-    ...     .having_items_in(None)
     ...     .having_citation_threshold(0)
     ...     .having_occurrence_threshold(2)
+    ...     .having_items_in(None)
+    ...     #
+    ...     # NETWORK:
+    ...     .using_association_index(AssociationIndex.ASSOCIATION_STRENGTH)
+    ...     #
+    ...     # CLUSTERING:
+    ...     .using_clustering(GraphClusteringAlgorithm.LOUVAIN)
     ...     #
     ...     # COUNTERS:
-    ...     .using_counters(True)
-    ...     #
-    ...     # PLOT:
-    ...     .using_textfont_size(10)
-    ...     .using_marker_size(7)
-    ...     .using_line_color("black")
-    ...     .using_line_width(1.5)
-    ...     .using_yshift(4)
+    ...     .using_counters(False)
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/wos/")
@@ -217,30 +182,37 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> type(fig).__name__
-    'Figure'
-    >>> fig.write_html("docsrc/_generated/px.synthes.netw.cit.node_degree_plot_src.html")
+    >>> pprint(mapping)  # doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
 
 
 """
 
 from tm2p._intern import ParamsMixin
-from tm2p._intern.nx import create_node_degree_plot
 
-from ...._intern.helpers.check_database import check_database
-from .node_degree_dataframe import NodeDegreeDataFrame
+from .item_to_cluster import ItemToCluster
 
 
-class NodeDegreePlot(
+class ClusterToItems(
     ParamsMixin,
 ):
     """:meta private:"""
 
     def run(self):
+        """:meta private:"""
 
-        check_database(self.params.root_directory)
+        use_counters = self.params.counters
 
-        df = NodeDegreeDataFrame().update(**self.params.__dict__).run()
-        fig = create_node_degree_plot(self.params, df)
+        i2c = ItemToCluster().update(**self.params.__dict__).using_counters(True).run()
 
-        return fig
+        c2i = {}
+        for item, cluster in i2c.items():
+            if cluster not in c2i:
+                c2i[cluster] = []
+            c2i[cluster].append(item)
+
+        if use_counters is False:
+
+            for cluster, items in c2i.items():
+                c2i[cluster] = [" ".join(item.split(" ")[:-1]) for item in items]
+
+        return c2i
