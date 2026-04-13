@@ -11,9 +11,10 @@ from tm2p._intern.nx import (
     compute_spring_layout_positions,
     plot_nx_graph,
 )
-from tm2p.portfolio.intellectual_structure.citation_network._intern.doc.create_nx_graph import (
-    doc_create_nx_graph,
-)
+
+# from tm2p.portfolio.intellectual_structure.citation_network._intern.doc.create_nx_graph import (
+#     doc_create_nx_graph,
+# )
 
 
 class DocNetworkPlot(

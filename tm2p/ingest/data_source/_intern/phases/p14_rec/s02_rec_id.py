@@ -1,9 +1,7 @@
-import numpy as np
 import pandas as pd  # type: ignore
 
 from tm2p._intern.data_access import load_main_csv_zip, save_main_csv_zip
 from tm2p.enum import Field
-from tm2p.explore.lemma.authkw import dataframe
 from tm2p.ingest.data_source._intern.phases.get_datab_marker import get_datab_marker
 
 
@@ -17,10 +15,7 @@ def s02_rec_id(root_directory: str) -> int:
         "WoS": _wos,
     }[marker]
 
-    if function:
-        return function(root_directory)
-
-    return 0
+    return function(root_directory)
 
 
 def _wos(root_directory: str) -> int:

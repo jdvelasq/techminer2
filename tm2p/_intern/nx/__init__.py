@@ -102,4 +102,5 @@ __all__ = [
     "remove_isolated_nodes_from_matrix_list",
     "remove_nodes_and_links",
     "summarize_communities",
+    "compute_clustered_spring_layout_positions",
 ]

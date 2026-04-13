@@ -1,15 +1,13 @@
-from .items_by_cluster import ItemsByCluster
-from .kernel_density_plot import KernelDensityPlot
-from .network_metrics import NetworkMetrics
-from .network_plot import NetworkPlot
-from .node_degree_dataframe import NodeDegreeDataFrame
-from .node_degree_plot import NodeDegreePlot
+from ._items_by_cluster import ItemsByCluster
+from ._kernel_density_plot import KernelDensityPlot
+from ._network_plot import NetworkPlot
+from ._node_metrics import NodeMetrics
+from ._strength_plot import StrengthPlot
 
 __all__ = [
     "ItemsByCluster",
-    "NetworkMetrics",
-    "NetworkPlot",
-    "NodeDegreeDataFrame",
-    "NodeDegreePlot",
     "KernelDensityPlot",
+    "NetworkPlot",
+    "NodeMetrics",
+    "StrengthPlot",
 ]

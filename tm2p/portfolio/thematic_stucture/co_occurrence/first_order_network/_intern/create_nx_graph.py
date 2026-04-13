@@ -1,7 +1,7 @@
 from tm2p._intern import Params
 from tm2p._intern.plots.nx import create_nx_graph_from_matrix
 
-from ..matrix import Matrix
+from .._matrix import Matrix
 
 
 def create_nx_graph(params: Params):

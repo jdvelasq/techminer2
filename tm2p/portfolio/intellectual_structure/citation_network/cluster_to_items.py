@@ -35,7 +35,11 @@ Smoke tests:
     ... )
     >>> from pprint import pprint
     >>> pprint(mapping)  # doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
-
+    {0: ['Anagnostopoulos I 2018 1:00284',
+         'Lui A 2018 1:00096',
+         'Das SR 2019 1:00090',
+         'Takeda A 2021 1:00066',
+    ...
 
 * **CitationUnit.AUTH**
 
@@ -72,7 +76,11 @@ Smoke tests:
     ...     .run()
     ... )
     >>> pprint(mapping)  # doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
-
+    {0: ['Dirk A. Zetzsche 008:00699',
+         'Ross P. Buckley 007:00887',
+         'Douglas W. Arner 007:00887',
+         'Michael Becker 002:00017',
+    ...
 
 * **CitationUnit.CTRY**
 
@@ -109,7 +117,11 @@ Smoke tests:
     ...     .run()
     ... )
     >>> pprint(mapping)  # doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
-
+    {0: ['CHN 046:01426',
+         'GBR 026:01562',
+         'AUS 024:01072',
+         'USA 021:00494',
+    ...
 
 * **CitationUnit.ORG**
 
@@ -146,7 +158,11 @@ Smoke tests:
     ...     .run()
     ... )
     >>> pprint(mapping)  # doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
-
+    {0: ['UNIV MACAU 003:00019',
+         'MONASH UNIV 003:00006',
+         'HARV UNIV 002:00046',
+         'UNIV TASMAN 002:00019',
+    ...
 
 * **CitationUnit.SRC**
 
@@ -183,36 +199,25 @@ Smoke tests:
     ...     .run()
     ... )
     >>> pprint(mapping)  # doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
-
+    {0: ['EUR BUS ORGAN LAW REV',
+         'J FINANC REGUL COMPLIANCE',
+         'J FINANC REGUL',
+         'LAW FINANC MARK REV',
+         'J GLOB MANAG'],
+     1: ['J BANK REGUL',
+    ...
 
 """
 
-from tm2p._intern import ParamsMixin
+from tm2p._intern.networks.cluster_to_items import BaseClusterToItems
 
 from .item_to_cluster import ItemToCluster
 
 
 class ClusterToItems(
-    ParamsMixin,
+    BaseClusterToItems,
 ):
     """:meta private:"""
 
-    def run(self):
-        """:meta private:"""
-
-        use_counters = self.params.counters
-
-        i2c = ItemToCluster().update(**self.params.__dict__).using_counters(True).run()
-
-        c2i = {}
-        for item, cluster in i2c.items():
-            if cluster not in c2i:
-                c2i[cluster] = []
-            c2i[cluster].append(item)
-
-        if use_counters is False:
-
-            for cluster, items in c2i.items():
-                c2i[cluster] = [" ".join(item.split(" ")[:-1]) for item in items]
-
-        return c2i
+    def item_to_cluster(self):
+        return ItemToCluster()

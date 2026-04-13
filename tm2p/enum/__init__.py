@@ -1,6 +1,8 @@
 from .assoc_index import AssociationIndex
 from .cit_unit import CitationUnit
 from .co_cit_unit import CoCitationUnit
+from .co_occ_unit import CoOccurrenceUnit
+from .collab_unit import CollaborationUnit
 from .correl import Correlation
 from .coupl_unit import CouplingUnit
 from .field import Field
@@ -11,8 +13,11 @@ from .scaling import Scaling
 from .thesaur import ThField, ThFile
 
 __all__ = [
+    "AssociationIndex",
     "CitationUnit",
     "CoCitationUnit",
+    "CoOccurrenceUnit",
+    "CollaborationUnit",
     "Correlation",
     "CouplingUnit",
     "Field",

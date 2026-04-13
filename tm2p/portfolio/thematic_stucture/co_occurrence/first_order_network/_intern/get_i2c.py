@@ -17,7 +17,7 @@ from tm2p._intern.plots.nx import (
     remove_selfloop_edges,
 )
 
-from ..matrix import Matrix
+from .._matrix import Matrix
 
 
 def get_i2c(

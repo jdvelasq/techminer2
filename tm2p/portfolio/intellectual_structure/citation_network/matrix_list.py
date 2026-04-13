@@ -28,17 +28,17 @@ Smoke tests:
     ...     .run()
     ... )
     >>> print(df.head(10).to_string())  # doctest: +NORMALIZE_WHITESPACE
-                                                                                      CITED_UNIT                                                                            CITING_UNIT  OCC
-    0     Arner DW, 2019, EUR BUS ORGAN LAW RE, V20, P55, DOI 10.1007/s40804-019-00135-1 1:00045  Arner DW, 2020, EUR BUS ORGAN LAW RE, V21, P7, DOI 10.1007/s40804-020-00183-y 1:00338    1
-    1           Buckley RP, 2020, J BANK REGUL, V21, P26, DOI 10.1057/s41261-019-00104-1 1:00037  Arner DW, 2020, EUR BUS ORGAN LAW RE, V21, P7, DOI 10.1007/s40804-020-00183-y 1:00338    1
-    2                 Omarova ST, 2020, J FINANC REGUL, V6, P75, DOI 10.1093/jfr/fjaa004 1:00065           Zetzsche DA, 2020, J FINANC REGUL, V6, P172, DOI 10.1093/jfr/fjaa010 1:00222    1
-    3          Kavassalis P, 2018, J RISK FINANC, V19, P39, DOI 10.1108/JRF-07-2017-0111 1:00026       Mirza N, 2023, ECON ANAL POLICY, V78, P33, DOI 10.1016/j.eap.2023.02.001 1:00112    1
-    4  Anagnostopoulos I, 2018, J ECON BUS, V100, P7, DOI 10.1016/j.jeconbus.2018.07.003 1:00284              Muganyi T, 2022, FINANC INNOV, V8, DOI 10.1186/s40854-021-00313-6 1:00109    1
-    5  Anagnostopoulos I, 2018, J ECON BUS, V100, P7, DOI 10.1016/j.jeconbus.2018.07.003 1:00284                                  Takeda A, 2021, INT J TECHNOL MANAG, V86, P67 1:00066    1
-    6        Currie WL, 2018, J INF TECHNOL-UK, V33, P304, DOI 10.1057/s41265-017-0047-5 1:00043                                  Takeda A, 2021, INT J TECHNOL MANAG, V86, P67 1:00066    1
-    7    Lui A, 2018, INF COMMUN TECHNOL L, V27, P267, DOI 10.1080/13600834.2018.1488659 1:00096                                  Takeda A, 2021, INT J TECHNOL MANAG, V86, P67 1:00066    1
-    8  Yang D, 2018, EMERG MARK FINANC TR, V54, P3256, DOI 10.1080/1540496X.2018.1496422 1:00043                                  Takeda A, 2021, INT J TECHNOL MANAG, V86, P67 1:00066    1
-    9                                             Baxter LG, 2016, DUKE LAW J, V66, P567 1:00030             Omarova ST, 2020, J FINANC REGUL, V6, P75, DOI 10.1093/jfr/fjaa004 1:00065    1
+                           CITED_UNIT               CITING_UNIT  OCC
+    0           Arner DW 2019 1:00045     Arner DW 2020 1:00338    1
+    1         Buckley RP 2020 1:00037     Arner DW 2020 1:00338    1
+    2         Omarova ST 2020 1:00065  Zetzsche DA 2020 1:00222    1
+    3       Kavassalis P 2018 1:00026      Mirza N 2023 1:00112    1
+    4  Anagnostopoulos I 2018 1:00284    Muganyi T 2022 1:00109    1
+    5  Anagnostopoulos I 2018 1:00284     Takeda A 2021 1:00066    1
+    6          Currie WL 2018 1:00043     Takeda A 2021 1:00066    1
+    7              Lui A 2018 1:00096     Takeda A 2021 1:00066    1
+    8             Yang D 2018 1:00043     Takeda A 2021 1:00066    1
+    9          Baxter LG 2016 1:00030   Omarova ST 2020 1:00065    1
 
 
 * **CitationUnit.AUTH**

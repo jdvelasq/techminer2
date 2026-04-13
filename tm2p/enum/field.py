@@ -8,6 +8,7 @@ class Field(str, Enum):
     # -------------------------------------------------------------------------
     REC_NO = "REC_NO"  # Record number
     REC_ID = "REC_ID"  # Record ID
+    REC_SHORT_NAME = "REC_SHORT_NAME"
     ART_NO = "ART_NO"  # Record  (Scopus)
     DATABASE = "DATABASE"  # Database (Scopus, WOS, OpenAlex, etc.)
 

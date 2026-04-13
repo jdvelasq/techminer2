@@ -224,27 +224,15 @@ Smoke tests:
 
 """
 
-from tm2p._intern import ParamsMixin
-from tm2p._intern.nx import create_node_degree_plot
+from tm2p._intern.networks import BaseStrengthPlot
 
 from .node_metrics import NodeMetrics
 
 
 class StrengthPlot(
-    ParamsMixin,
+    BaseStrengthPlot,
 ):
     """:meta private:"""
 
-    def run(self):
-
-        use_counters = self.params.counters
-
-        self.params.counters = True
-        metrics = NodeMetrics().update(**self.params.__dict__).run()
-        metrics = metrics.reset_index().rename(columns={"index": "NODE"})
-        if use_counters is False:
-            self.params.counters = False
-            metrics["NODE"] = metrics["NODE"].str.split(" ").str[:-1].str.join(" ")
-        plot = create_node_degree_plot(self.params, metrics)
-
-        return plot
+    def get_node_metrics(self):
+        return NodeMetrics()

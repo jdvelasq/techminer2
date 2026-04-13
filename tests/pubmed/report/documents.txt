@@ -7116,7 +7116,7 @@ AB Multiple myeloma is biologically and clinically a complex and heterogeneous
    unmet medical need that require additional strategies to improve the
    outcome.  In this review, we provide an overview of the evolution of risk
    stratification and the treatment of multiple myeloma.
-DE bcma; car t-cell therapy; cd38; gprc5d; bispecific antibody; immunotherapy;
+DE bcma; car-t-cell therapy; cd38; gprc5d; bispecific antibody; immunotherapy;
    multiple myeloma; risk stratification
 
 ---

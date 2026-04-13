@@ -51,7 +51,7 @@ Smoke tests:
 from tm2p._intern import ParamsMixin
 from tm2p._intern.plots.basic.heatmap import heatmap
 
-from ..first_order_network.matrix import Matrix
+from ..first_order_network._matrix import Matrix
 
 
 class Heatmap(

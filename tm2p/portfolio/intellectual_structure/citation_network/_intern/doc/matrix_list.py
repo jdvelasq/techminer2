@@ -10,6 +10,7 @@ RID = Field.REC_ID.value
 LCR = Field.LCR_WOS_FORMAT.value
 GCR = Field.GCR_WOS_FORMAT.value
 OCC = "OCC"
+SHORT_NAME = Field.REC_SHORT_NAME.value
 
 
 class DocMatrixList(
@@ -50,6 +51,37 @@ class DocMatrixList(
 
         df_with_links = df_with_links.reset_index(drop=True)
 
+        # ----------
+        _, gcs_digits = get_zero_digits(root_directory=self.params.root_directory)
+
+        fmt = " 1:{:0" + str(gcs_digits) + "d}"
+
+        rename_dict = {
+            key: value
+            for key, value in zip(
+                df_full[RID].to_list(),
+                (df_full[RID] + df_full[GCS].map(fmt.format)).to_list(),
+            )
+        }
+        df_full.loc[:, RID] = df_full[RID].map(rename_dict)
+
+        # ----------
+
+        rename_dict = {
+            key: value
+            for key, value in zip(
+                df_full[SHORT_NAME].to_list(),
+                (df_full[SHORT_NAME] + df_full[GCS].map(fmt.format)).to_list(),
+            )
+        }
+        df_full.loc[:, SHORT_NAME] = df_full[SHORT_NAME].map(rename_dict)
+
+        # ----------
+
+        mapping = dict(zip(df_full[RID].to_list(), df_full[SHORT_NAME].to_list()))
+        df_with_links.loc[:, "CITING_UNIT"] = df_with_links["CITING_UNIT"].map(mapping)
+        df_with_links.loc[:, "CITED_UNIT"] = df_with_links["CITED_UNIT"].map(mapping)
+
         return df_with_links
 
 
@@ -59,6 +91,7 @@ def _remove_records_without_local_cited_references(data_frame_with_links):
 
 
 def _add_counters_to_records(params, df_full, df_with_links):
+
     _, gcs_digits = get_zero_digits(root_directory=params.root_directory)
 
     fmt = " 1:{:0" + str(gcs_digits) + "d}"
@@ -90,8 +123,8 @@ def _explode_local_cited_references(df_full):
 def _get_records(params):
     records = load_filtered_main_csv_zip(params=params)
     records = records.sort_values(
-        [GCS, LCS, YEAR, RID],
-        ascending=[False, False, False, True],
+        [GCS, LCS, YEAR, RID, SHORT_NAME],
+        ascending=[False, False, False, True, True],
     )
-    records = records[[RID, LCR, GCS]]
+    records = records[[RID, LCR, GCS, SHORT_NAME]]
     return records
