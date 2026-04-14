@@ -15,7 +15,7 @@ Smoke tests:
     ...     #
     ...     # UNIT OF ANALYSIS:
     ...     .having_items_in_top(None)
-    ...     .having_citation_threshold(0)
+    ...     .having_minimum_citation_count(0)
     ...     #
     ...     # NETWORK:
     ...     .using_spring_layout_k(None)

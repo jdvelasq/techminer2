@@ -37,6 +37,9 @@ from tm2p._intern.valid import (
 from tm2p.enum import (
     AssociationIndex,
     CitationUnit,
+    CoCitationUnit,
+    CollaborationUnit,
+    CoOccurrenceUnit,
     Correlation,
     CouplingUnit,
     Field,
@@ -46,7 +49,6 @@ from tm2p.enum import (
     Scaling,
     ThFile,
 )
-from tm2p.enum.co_cit_unit import CoCitationUnit
 
 from .params import Params
 
@@ -106,20 +108,34 @@ class ParamsMixin:
     # HAVING_* → Item filtering (WHICH items?)
     # ==========================================================================
 
+    #
+    # Related reference-based networks
+    #
+    def having_minimum_citation_count(self, minimum_citation_count: int) -> Self:
+        minimum_citation_count = check_required_non_negative_int(
+            value=minimum_citation_count,
+            param_name="minimum_citation_count",
+        )
+        self.params.minimum_citation_count = minimum_citation_count
+        return self
+
+    def having_cited_items_in_top(self, cited_top_n: int) -> Self:
+        cited_top_n = check_required_positive_int(
+            value=cited_top_n,
+            param_name="cited_top_n",
+        )
+        self.params.cited_top_n = cited_top_n
+        return self
+
+    #
+    # Other cases
+    #
     def having_case_sensitive(self, case_sensitive: bool) -> Self:
         case_sensitive = check_required_bool(
             value=case_sensitive,
             param_name="case_sensitive",
         )
         self.params.case_sensitive = case_sensitive
-        return self
-
-    def having_citation_threshold(self, citation_threshold: int) -> Self:
-        citation_threshold = check_required_non_negative_int(
-            value=citation_threshold,
-            param_name="citation_threshold",
-        )
-        self.params.citation_threshold = citation_threshold
         return self
 
     def having_column_item_citations_between(
@@ -396,12 +412,12 @@ class ParamsMixin:
         self.params.clustering = clustering
         return self
 
-    def using_co_occurrence_threshold(self, co_occurrence_threshold: int) -> Self:
-        co_occurrence_threshold = check_required_positive_int(
-            value=co_occurrence_threshold,
-            param_name="co_occurrence_threshold",
+    def using_minimum_item_co_occurrence(self, minimum_item_co_occurrence: int) -> Self:
+        minimum_item_co_occurrence = check_required_positive_int(
+            value=minimum_item_co_occurrence,
+            param_name="minimum_item_co_occurrence",
         )
-        self.params.co_occurrence_threshold = co_occurrence_threshold
+        self.params.minimum_item_co_occurrence = minimum_item_co_occurrence
         return self
 
     def using_colored_output(self, colored_output: bool) -> Self:
@@ -1067,6 +1083,22 @@ class ParamsMixin:
         if not isinstance(coupling_unit, CouplingUnit):
             raise TypeError("coupling_unit must be an instance of CouplingUnit enum")
         self.params.coupling_unit = coupling_unit
+        return self
+
+    def with_co_occurrence_unit(self, co_occurrence_unit: CoOccurrenceUnit) -> Self:
+        if not isinstance(co_occurrence_unit, CoOccurrenceUnit):
+            raise TypeError(
+                "co_occurrence_unit must be an instance of CoOccurrenceUnit enum"
+            )
+        self.params.co_occurrence_unit = co_occurrence_unit
+        return self
+
+    def with_collaboration_unit(self, collaboration_unit: CollaborationUnit) -> Self:
+        if not isinstance(collaboration_unit, CollaborationUnit):
+            raise TypeError(
+                "co_occurrence_unit must be an instance of CollaborationUnit enum"
+            )
+        self.params.collaboration_unit = collaboration_unit
         return self
 
     def with_column(self, column: str) -> Self:

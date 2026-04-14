@@ -73,7 +73,7 @@ Smoke tests:
     ...     #
     ...     .having_items_in_top(30)
     ...     .having_items_in(None)
-    ...     .having_citation_threshold(0)
+    ...     .having_minimum_citation_count(0)
     ...     .having_occurrence_threshold(2)
     ...     #
     ...     # NETWORK:
@@ -126,7 +126,7 @@ Smoke tests:
     ...     #
     ...     .having_items_in_top(30)
     ...     .having_items_in(None)
-    ...     .having_citation_threshold(0)
+    ...     .having_minimum_citation_count(0)
     ...     .having_occurrence_threshold(2)
     ...     #
     ...     # NETWORK:
@@ -180,7 +180,7 @@ Smoke tests:
     ...     #
     ...     .having_items_in_top(30)
     ...     .having_items_in(None)
-    ...     .having_citation_threshold(0)
+    ...     .having_minimum_citation_count(0)
     ...     .having_occurrence_threshold(2)
     ...     #
     ...     # NETWORK:
@@ -233,7 +233,7 @@ Smoke tests:
     ...     #
     ...     .having_items_in_top(30)
     ...     .having_items_in(None)
-    ...     .having_citation_threshold(0)
+    ...     .having_minimum_citation_count(0)
     ...     .having_occurrence_threshold(2)
     ...     #
     ...     # NETWORK:
@@ -273,7 +273,7 @@ Smoke tests:
 from tm2p._intern.networks.kernel_density_plot import BaseKernelDensityPlot
 from tm2p._intern.plots.nx import set_node_size_by_gcs
 
-from .item_to_cluster import _create_nx_graph
+from ._item_to_cluster import _create_nx_graph
 
 
 class KernelDensityPlot(

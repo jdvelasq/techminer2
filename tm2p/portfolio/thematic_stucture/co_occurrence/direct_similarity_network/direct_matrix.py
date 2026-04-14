@@ -1,0 +1,139 @@
+"""
+DirectMatrix
+===============================================================================
+
+Smoke tests:
+    >>> from tm2p.enum import AssociationIndex, CoOccurrenceUnit, ItemOrderBy
+    >>> from tm2p.portfolio.thematic_stucture.co_occurrence.direct_similarity_network import DirectMatrix
+    >>> df = (
+    ...     DirectMatrix()
+    ...     #
+    ...     # UNIT OF ANALYSIS:
+    ...     .with_co_occurrence_unit(CoOccurrenceUnit.KW)
+    ...     #
+    ...     .having_items_in_top(10)
+    ...     .having_items_ordered_by(ItemOrderBy.OCC)
+    ...     .having_item_occurrences_between(None, None)
+    ...     .having_item_citations_between(None, None)
+    ...     .having_items_in(None)
+    ...     #
+    ...     .using_minimum_item_co_occurrence(1)
+    ...     #
+    ...     # COUNTERS:
+    ...     .using_counters(True)
+    ...     #
+    ...     # NORMALIZATION:
+    ...     .using_association_index(AssociationIndex.ASSOCIATION_STRENGTH)
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory("tests/scopus/")
+    ...     .where_record_years_range(None, None)
+    ...     .where_record_citations_range(None, None)
+    ...     .where_records_match(None)
+    ...     #
+    ...     .run()
+    ... )
+    >>> type(df).__name__
+    'DataFrame'
+    >>> df.shape[0] > 1
+    True
+    >>> df.shape[1] > 1
+    True
+    >>> print(df.round(3).head(10).to_string())  # doctest: +NORMALIZE_WHITESPACE
+    COLUMNS                            fintech 119:26148  finance 029:07137  innovation 020:03916  china 018:03596  financial inclusion 017:03823  financial technology 016:02809  sustainable development 015:02158  banking 013:03043  sustainability 013:02308  blockchain 012:03450
+    ROWS
+    fintech 119:26148                              0.000              0.005                 0.006            0.006                          0.007                           0.004                              0.004              0.006                     0.006                 0.006
+    finance 029:07137                              0.005              0.000                 0.014            0.011                          0.004                           0.004                              0.016              0.005                     0.011                 0.011
+    innovation 020:03916                           0.006              0.014                 0.000            0.019                          0.000                           0.003                              0.017              0.015                     0.015                 0.008
+    china 018:03596                                0.006              0.011                 0.019            0.000                          0.000                           0.010                              0.022              0.013                     0.021                 0.000
+    financial inclusion 017:03823                  0.007              0.004                 0.000            0.000                          0.000                           0.004                              0.000              0.009                     0.005                 0.005
+    financial technology 016:02809                 0.004              0.004                 0.003            0.010                          0.004                           0.000                              0.012              0.000                     0.005                 0.005
+    sustainable development 015:02158              0.004              0.016                 0.017            0.022                          0.000                           0.012                              0.000              0.005                     0.041                 0.006
+    banking 013:03043                              0.006              0.005                 0.015            0.013                          0.009                           0.000                              0.005              0.000                     0.006                 0.006
+    sustainability 013:02308                       0.006              0.011                 0.015            0.021                          0.005                           0.005                              0.041              0.006                     0.000                 0.000
+    blockchain 012:03450                           0.006              0.011                 0.008            0.000                          0.005                           0.005                              0.006              0.006                     0.000                 0.000
+
+
+    >>> df = (
+    ...     DirectMatrix()
+    ...     #
+    ...     # UNIT OF ANALYSIS:
+    ...     .with_co_occurrence_unit(CoOccurrenceUnit.KW)
+    ...     #
+    ...     .having_items_in_top(10)
+    ...     .having_items_ordered_by(ItemOrderBy.OCC)
+    ...     .having_item_occurrences_between(None, None)
+    ...     .having_item_citations_between(None, None)
+    ...     .having_items_in(None)
+    ...     #
+    ...     # COUNTERS:
+    ...     .using_counters(False)
+    ...     #
+    ...     # NORMALIZATION:
+    ...     .using_association_index(AssociationIndex.ASSOCIATION_STRENGTH)
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory("tests/scopus/")
+    ...     .where_record_years_range(None, None)
+    ...     .where_record_citations_range(None, None)
+    ...     .where_records_match(None)
+    ...     #
+    ...     .run()
+    ... )
+    >>> type(df).__name__
+    'DataFrame'
+    >>> df.shape[0] > 1
+    True
+    >>> df.shape[1] > 1
+    True
+    >>> print(df.round(3).head(10).to_string())  # doctest: +NORMALIZE_WHITESPACE
+    COLUMNS                  fintech  finance  innovation  china  financial inclusion  financial technology  sustainable development  banking  sustainability  blockchain
+    ROWS
+    fintech                    0.000    0.005       0.006  0.006                0.007                 0.004                    0.004    0.006           0.006       0.006
+    finance                    0.005    0.000       0.014  0.011                0.004                 0.004                    0.016    0.005           0.011       0.011
+    innovation                 0.006    0.014       0.000  0.019                0.000                 0.003                    0.017    0.015           0.015       0.008
+    china                      0.006    0.011       0.019  0.000                0.000                 0.010                    0.022    0.013           0.021       0.000
+    financial inclusion        0.007    0.004       0.000  0.000                0.000                 0.004                    0.000    0.009           0.005       0.005
+    financial technology       0.004    0.004       0.003  0.010                0.004                 0.000                    0.012    0.000           0.005       0.005
+    sustainable development    0.004    0.016       0.017  0.022                0.000                 0.012                    0.000    0.005           0.041       0.006
+    banking                    0.006    0.005       0.015  0.013                0.009                 0.000                    0.005    0.000           0.006       0.006
+    sustainability             0.006    0.011       0.015  0.021                0.005                 0.005                    0.041    0.006           0.000       0.000
+    blockchain                 0.006    0.011       0.008  0.000                0.005                 0.005                    0.006    0.006           0.000       0.000
+
+
+"""
+
+from tm2p._intern import ParamsMixin
+from tm2p._intern.networks.normalize_matrix import normalize_matrix
+from tm2p.enum import CoOccurrenceUnit, Field
+
+from ..matrix.matrix import Matrix as CoOccurrenceMatrix
+
+
+class DirectMatrix(
+    ParamsMixin,
+):
+    """:meta private:"""
+
+    def run(self):
+
+        field = {
+            CoOccurrenceUnit.AUTHKW: Field.AUTHKW_NORM,
+            CoOccurrenceUnit.IDXKW: Field.IDXKW_NORM,
+            CoOccurrenceUnit.KW: Field.KW_NORM,
+            CoOccurrenceUnit.CONCEPT: Field.CONCEPT_NORM,
+            CoOccurrenceUnit.WORD: Field.WORD_NORM,
+        }[self.params.co_occurrence_unit]
+
+        self.with_source_field(field)
+
+        matrix = CoOccurrenceMatrix().update(**self.params.__dict__).run()
+        matrix = normalize_matrix(
+            association_index=self.params.association_index,
+            matrix=matrix,
+            params=self.params,
+        )
+        matrix.columns.name = "COLUMNS"
+        matrix.index.name = "ROWS"
+
+        return matrix

@@ -20,25 +20,6 @@ def detect_communities(
         for node, group in clustering.items():
             nx_graph.nodes[node]["group"] = group
 
-    # for node in nx_graph.nodes:
-    #     nx_graph.nodes[node]["top_n"] = False
-
-    # clusters = {}
-    # for node in nx_graph.nodes:
-    #     group = nx_graph.nodes[node]["group"]
-    #     if group not in clusters:
-    #         clusters[group] = []
-    #     clusters[group].append(node)
-
-    # for _, value in clusters.items():
-    #     sorted_value = sorted(
-    #         value,
-    #         key=lambda x: int(x.split(" ")[-1].split(":")[0]),
-    #         reverse=False,
-    #     )
-    #     for node in sorted_value[: params.node_n_labels]:
-    #         nx_graph.nodes[node]["labeled"] = True
-
     return nx_graph
 
 

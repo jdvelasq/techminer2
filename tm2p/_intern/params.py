@@ -10,6 +10,8 @@ from tm2p.enum import (
     AssociationIndex,
     CitationUnit,
     CoCitationUnit,
+    CollaborationUnit,
+    CoOccurrenceUnit,
     Correlation,
     CouplingUnit,
     Field,
@@ -99,11 +101,23 @@ class Params:
     # Co-citation network:
     #
     co_citation_unit: CoCitationUnit = CoCitationUnit.CITED_AUTH
+    minimum_citation_count: int = 0
+    cited_top_n: int = 1000
 
     #
     # Coupling network:
     #
     coupling_unit: CouplingUnit = CouplingUnit.AUTH
+
+    #
+    # Co-occurrence network:
+    #
+    co_occurrence_unit: CoOccurrenceUnit = CoOccurrenceUnit.AUTHKW
+
+    #
+    # Collaboration network:
+    #
+    collaboration_unit: CollaborationUnit = CollaborationUnit.AUTH
 
     #
     # Plotting:
@@ -126,7 +140,6 @@ class Params:
     # C
     #
     case_sensitive: bool = False
-    citation_threshold: int = 0
     cluster_coverages: Optional[list[str]] = None
     cluster_names: Optional[list[str]] = None
 
@@ -139,7 +152,7 @@ class Params:
     core_area: Optional[str] = None
     correlation_method: Correlation = Correlation.PEARSON
     cumulative_sum: bool = False
-    co_occurrence_threshold: int = 1
+    minimum_item_co_occurrence: int = 1
     similarity_cutoff: float = 85.0
 
     #

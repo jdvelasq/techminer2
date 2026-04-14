@@ -21,7 +21,7 @@ Smoke tests:
     ...     .having_column_item_citations_between(None, None)
     ...     .having_column_items_in(None)
     ...     #
-    ...     .using_co_occurrence_threshold(1)
+    ...     .using_minimum_item_co_occurrence(1)
     ...     #
     ...     # ROWS:
     ...     .with_index_field(Field.AUTH_NORM)

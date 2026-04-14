@@ -14,7 +14,7 @@ Smoke tests:
     ...     .with_coupling_unit(CouplingUnit.AUTH)
     ...     .having_items_in_top(30)
     ...     .having_items_in(None)
-    ...     .having_citation_threshold(0)
+    ...     .having_minimum_citation_count(0)
     ...     .having_occurrence_threshold(2)
     ...     #
     ...     # COUNTERS:
@@ -50,7 +50,7 @@ Smoke tests:
     ...     .with_coupling_unit(CouplingUnit.CTRY)
     ...     .having_items_in_top(30)
     ...     .having_items_in(None)
-    ...     .having_citation_threshold(0)
+    ...     .having_minimum_citation_count(0)
     ...     .having_occurrence_threshold(2)
     ...     #
     ...     # COUNTERS:
@@ -85,7 +85,7 @@ Smoke tests:
     ...     .with_coupling_unit(CouplingUnit.DOC)
     ...     .having_items_in_top(30)
     ...     .having_items_in(None)
-    ...     .having_citation_threshold(0)
+    ...     .having_minimum_citation_count(0)
     ...     .having_occurrence_threshold(2)
     ...     #
     ...     # COUNTERS:
@@ -120,7 +120,7 @@ Smoke tests:
     ...     .with_coupling_unit(CouplingUnit.ORG)
     ...     .having_items_in_top(30)
     ...     .having_items_in(None)
-    ...     .having_citation_threshold(0)
+    ...     .having_minimum_citation_count(0)
     ...     .having_occurrence_threshold(2)
     ...     #
     ...     # COUNTERS:
@@ -149,7 +149,7 @@ Smoke tests:
     ...     .with_coupling_unit(CouplingUnit.SRC)
     ...     .having_items_in_top(30)
     ...     .having_items_in(None)
-    ...     .having_citation_threshold(0)
+    ...     .having_minimum_citation_count(0)
     ...     .having_occurrence_threshold(2)
     ...     #
     ...     # COUNTERS:
@@ -174,8 +174,8 @@ from tm2p._intern.networks import BaseNodeMetrics
 from tm2p.enum import CouplingUnit
 
 from ...._intern.helpers.check_database import check_database
-from ._intern.doc.create_nx_graph import doc_create_nx_graph
-from ._intern.others.create_nx_graph import other_create_nx_graph
+from ._intern.doc._create_nx_graph import doc_create_nx_graph
+from ._intern.others._create_nx_graph import other_create_nx_graph
 
 
 class NodeMetrics(

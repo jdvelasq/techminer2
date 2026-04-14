@@ -1,4 +1,5 @@
 from .cluster_to_items import BaseClusterToItems
+from .item_to_cluster import BaseItemToCluster
 from .items_by_cluster import BaseItemsByCluster
 from .kernel_density_plot import BaseKernelDensityPlot
 from .node_metrics import BaseNodeMetrics
@@ -8,6 +9,7 @@ from .strength_plot import BaseStrengthPlot
 __all__ = [
     "BaseClusterToItems",
     "BaseItemsByCluster",
+    "BaseItemToCluster",
     "BaseKernelDensityPlot",
     "BaseNodeMetrics",
     "BaseStrengthPlot",

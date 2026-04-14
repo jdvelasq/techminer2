@@ -1,0 +1,107 @@
+"""
+ClusterToItems
+===============================================================================
+
+Smoke tests:
+    >>> # ---------------------------------------------------------------------
+    >>> # AgglomerativeClustering
+    >>> # ---------------------------------------------------------------------
+    >>> from sklearn.cluster import AgglomerativeClustering
+    >>> estimator = AgglomerativeClustering(
+    ...     n_clusters=6,
+    ...     metric="precomputed",
+    ...     linkage="average",  #       linkage ∈ {"average", "complete", "single"}
+    ...     distance_threshold=None,  # always None
+    ...     compute_full_tree=True,  #  always
+    ...     compute_distances=True,  #  always True
+    ... )
+    >>> from tm2p.enum import AssociationIndex, Field, GraphClusteringAlgorithm, ItemOrderBy
+    >>> from tm2p.portfolio.thematic_stucture.co_occurrence.first_order_network import ClusterToItems
+    >>> mapping = (
+    ...     ClusterToItems()
+    ...     #
+    ...     # UNIT OF ANALYSIS:
+    ...     .with_co_occurrence_unit(CoOccurrenceUnit.KW)
+    ...     #
+    ...     .having_items_in_top(20)
+    ...     .having_items_ordered_by(ItemOrderBy.OCC)
+    ...     .having_item_occurrences_between(None, None)
+    ...     .having_item_citations_between(None, None)
+    ...     .having_items_in(None)
+    ...     #
+    ...     .using_minimum_item_co_occurrence(1)
+    ...     #
+    ...     # COUNTERS:
+    ...     .using_counters(True)
+    ...     #
+    ...     # NETWORK:
+    ...     .using_association_index(AssociationIndex.JACCARD)
+    ...     #
+    ...     # CLUSTERING:
+    ...     .using_clustering(estimator)
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory("tests/scopus/")
+    ...     .where_record_years_range(None, None)
+    ...     .where_record_citations_range(None, None)
+    ...     .where_records_match(None)
+    ...     #
+    ...     .run()
+    ... )
+    >>> from pprint import pprint
+    >>> pprint(mapping) # doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
+
+
+    >>> # ---------------------------------------------------------------------
+    >>> # LOOUVAIN
+    >>> # ---------------------------------------------------------------------
+    >>> mapping = (
+    ...     ClusterToItems()
+    ...     #
+    ...     # UNIT OF ANALYSIS:
+    ...     .with_co_occurrence_unit(CoOccurrenceUnit.KW)
+    ...     #
+    ...     .having_items_in_top(20)
+    ...     .having_items_ordered_by(ItemOrderBy.OCC)
+    ...     .having_item_occurrences_between(None, None)
+    ...     .having_item_citations_between(None, None)
+    ...     .having_items_in(None)
+    ...     #
+    ...     # COUNTERS:
+    ...     .using_counters(True)
+    ...     #
+    ...     # NETWORK:
+    ...     .using_association_index(AssociationIndex.JACCARD)
+    ...     #
+    ...     # CLUSTERING:
+    ...     .using_clustering(GraphClusteringAlgorithm.LOUVAIN)
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory("tests/scopus/")
+    ...     .where_record_years_range(None, None)
+    ...     .where_record_citations_range(None, None)
+    ...     .where_records_match(None)
+    ...     #
+    ...     .run()
+    ... )
+    >>> from pprint import pprint
+    >>> pprint(mapping) # doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
+
+
+
+
+
+"""
+
+from tm2p._intern.networks.cluster_to_items import BaseClusterToItems
+
+from .item_to_cluster import ItemToCluster
+
+
+class ClusterToItems(
+    BaseClusterToItems,
+):
+    """:meta private:"""
+
+    def item_to_cluster(self):
+        return ItemToCluster()

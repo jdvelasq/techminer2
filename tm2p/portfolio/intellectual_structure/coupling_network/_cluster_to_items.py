@@ -50,7 +50,7 @@ Smoke tests:
     ...     .with_citation_unit(CitationUnit.AUTH)
     ...     #
     ...     .having_items_in_top(50)
-    ...     .having_citation_threshold(0)
+    ...     .having_minimum_citation_count(0)
     ...     .having_occurrence_threshold(1)
     ...     .having_items_in(None)
     ...     #
@@ -87,7 +87,7 @@ Smoke tests:
     ...     .with_citation_unit(CitationUnit.CTRY)
     ...     #
     ...     .having_items_in_top(30)
-    ...     .having_citation_threshold(0)
+    ...     .having_minimum_citation_count(0)
     ...     .having_occurrence_threshold(2)
     ...     .having_items_in(None)
     ...     #
@@ -124,7 +124,7 @@ Smoke tests:
     ...     .with_citation_unit(CitationUnit.ORG)
     ...     #
     ...     .having_items_in_top(30)
-    ...     .having_citation_threshold(0)
+    ...     .having_minimum_citation_count(0)
     ...     .having_occurrence_threshold(2)
     ...     .having_items_in(None)
     ...     #
@@ -161,7 +161,7 @@ Smoke tests:
     ...     .with_citation_unit(CitationUnit.SRC)
     ...     #
     ...     .having_items_in_top(30)
-    ...     .having_citation_threshold(0)
+    ...     .having_minimum_citation_count(0)
     ...     .having_occurrence_threshold(2)
     ...     .having_items_in(None)
     ...     #
@@ -189,7 +189,7 @@ Smoke tests:
 
 from tm2p._intern.networks.cluster_to_items import BaseClusterToItems
 
-from ._item_to_cluster import ItemToCluster
+from .item_to_cluster import ItemToCluster
 
 
 class ClusterToItems(

@@ -18,7 +18,7 @@ Smoke tests:
     ...     # ANALYSIS UNIT:
     ...     .with_co_citation_unit(CoCitationUnit.CITED_AUTH)
     ...     .having_items_in_top(30)
-    ...     .having_citation_threshold(0)
+    ...     .having_minimum_citation_count(0)
     ...     .having_items_in(None)
     ...     #
     ...     # CLUSTERING:
@@ -62,7 +62,7 @@ Smoke tests:
     ...     # ANALYSIS UNIT:
     ...     .with_co_citation_unit(CoCitationUnit.CITED_REF)
     ...     .having_items_in_top(30)
-    ...     .having_citation_threshold(0)
+    ...     .having_minimum_citation_count(0)
     ...     .having_items_in(None)
     ...     #
     ...     # CLUSTERING:
@@ -108,7 +108,7 @@ Smoke tests:
     ...     # ANALYSIS UNIT:
     ...     .with_co_citation_unit(CoCitationUnit.CITED_REF)
     ...     .having_items_in_top(30)
-    ...     .having_citation_threshold(0)
+    ...     .having_minimum_citation_count(0)
     ...     .having_items_in(None)
     ...     #
     ...     # CLUSTERING:

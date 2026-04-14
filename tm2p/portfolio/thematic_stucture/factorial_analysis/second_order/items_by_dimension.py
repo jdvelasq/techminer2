@@ -27,7 +27,7 @@ Smoke test:
     ...     .having_item_citations_between(None, None)
     ...     .having_items_in(None)
     ...     #
-    ...     .using_co_occurrence_threshold(1)
+    ...     .using_minimum_item_co_occurrence(1)
     ...     #
     ...     # DECOMPOSITION:
     ...     .using_decomposition_algorithm(pca)
@@ -58,9 +58,7 @@ import numpy as np
 import pandas as pd  # type: ignore
 
 from tm2p._intern import ParamsMixin
-from tm2p.portfolio.thematic_stucture.co_occurrence.co_occurrence_matrix.matrix import (
-    Matrix,
-)
+from tm2p.portfolio.thematic_stucture.co_occurrence.matrix.matrix import Matrix
 
 
 class ItemsByDimension(
