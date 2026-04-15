@@ -95,9 +95,10 @@ from tm2p._intern import ParamsMixin
 from tm2p.portfolio.thematic_stucture.co_occurrence.latent_similarity_network._cluster_centers_dataframe import (
     cluster_centers_frame,
 )
-from tm2p.portfolio.thematic_stucture.co_occurrence.latent_similarity_network._cluster_to_items_mapping import (
-    cluster_to_terms_mapping,
-)
+
+# from tm2p.portfolio.thematic_stucture.co_occurrence.latent_similarity_network._cluster_to_items_mapping import (
+#     cluster_to_terms_mapping,
+# )
 
 
 class FactorMap(

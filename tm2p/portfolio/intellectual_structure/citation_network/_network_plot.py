@@ -298,7 +298,7 @@ Smoke tests:
 
 from tm2p._intern.networks import BaseStrengthPlot
 
-from ._node_metrics import NodeMetrics
+from .node_metrics import NodeMetrics
 
 
 class NetworkPlot(

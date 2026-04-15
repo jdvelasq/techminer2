@@ -9,7 +9,7 @@ Heatmap
 
 Smoke tests:
     >>> from tm2p.enum import AssociationIndex, Field, ItemOrderBy
-    >>> from tm2p.portfolio.thematic_stucture.co_occurrence.first_order_network import Heatmap
+    >>> from tm2p.portfolio.thematic_stucture.co_occurrence.direct_similarity_network import Heatmap
     >>> fig = (
     ...     Heatmap()
     ...     #

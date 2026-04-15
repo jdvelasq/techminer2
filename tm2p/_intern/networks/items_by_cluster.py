@@ -23,4 +23,7 @@ class BaseItemsByCluster(
         df = df.fillna("")
         df = df.sort_index(axis=1)
 
+        df.columns.name = "CLUSTER"
+        df.index.name = "ITEM"
+
         return df

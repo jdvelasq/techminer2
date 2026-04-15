@@ -249,14 +249,15 @@ Smoke tests:
 
 from tm2p._intern import ParamsMixin
 from tm2p.enum import CouplingUnit, ItemOrderBy
-from tm2p.portfolio.intellectual_structure.coupling_network._intern.doc import (
-    DocKernelDensityPlot,
-)
-from tm2p.portfolio.intellectual_structure.coupling_network._intern.others import (
-    OtherKernelDensityPlot,
-)
 
 from ...._intern.helpers.check_database import check_database
+
+# from tm2p.portfolio.intellectual_structure.coupling_network._intern.doc import (
+#     DocKernelDensityPlot,
+# )
+# from tm2p.portfolio.intellectual_structure.coupling_network._intern.others import (
+#     OtherKernelDensityPlot,
+# )
 
 
 class KernelDensityPlot(

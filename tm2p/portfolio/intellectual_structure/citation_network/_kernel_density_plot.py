@@ -273,7 +273,7 @@ Smoke tests:
 from tm2p._intern.networks.kernel_density_plot import BaseKernelDensityPlot
 from tm2p._intern.plots.nx import set_node_size_by_gcs
 
-from ._item_to_cluster import _create_nx_graph
+# from ._item_to_cluster import _create_nx_graph
 
 
 class KernelDensityPlot(

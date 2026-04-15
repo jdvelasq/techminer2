@@ -13,7 +13,7 @@ Smoke tests:
     ...     compute_distances=True,  #  always True
     ... )
     >>> from tm2p.enum import Field, AssociationIndex, ItemOrderBy
-    >>> from tm2p.portfolio.thematic_stucture.co_occurrence.first_order_network import Summary
+    >>> from tm2p.portfolio.thematic_stucture.co_occurrence.direct_similarity_network import Summary
     >>> df = (
     ...     Summary()
     ...     #
@@ -85,7 +85,7 @@ import pandas as pd  # type: ignore
 
 from tm2p._intern import ParamsMixin
 
-from ._cluster_to_items import ClusterToItems
+from .cluster_to_items import ClusterToItems
 
 CLUSTER = "CLUSTER"
 NUM_ITEMS = "NUM_ITEMS"

@@ -13,7 +13,7 @@ KernelDensityPlot
 
 Smoke tests:
     >>> from tm2p.enum import Field, AssociationIndex, ItemOrderBy
-    >>> from tm2p.portfolio.thematic_stucture.co_occurrence.first_order_network import KernelDensityPlot
+    >>> from tm2p.portfolio.thematic_stucture.co_occurrence.direct_similarity_network import KernelDensityPlot
     >>> fig = (
     ...     KernelDensityPlot()
     ...     #

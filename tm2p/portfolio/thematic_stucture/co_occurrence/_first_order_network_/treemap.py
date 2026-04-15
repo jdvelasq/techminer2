@@ -12,7 +12,7 @@ Treemap
 
 Smoke tests:
     >>> from tm2p.enum import Field, ItemOrderBy, AssociationIndex
-    >>> from tm2p.portfolio.thematic_stucture.co_occurrence.first_order_network import Treemap
+    >>> from tm2p.portfolio.thematic_stucture.co_occurrence.direct_similarity_network import Treemap
     >>> fig = (
     ...     Treemap()
     ...     #

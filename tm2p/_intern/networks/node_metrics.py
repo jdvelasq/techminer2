@@ -27,4 +27,7 @@ class BaseNodeMetrics(
             names = [remove_counters(name) for name in names]
             df.index = names
 
+        df.columns.name = "METRIC"
+        df.index.name = "NODE"  # type: ignore
+
         return df

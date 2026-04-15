@@ -13,7 +13,7 @@ Network Plot
 Smoke tests:
 
     >>> from tm2p.enum import Field, AssociationIndex, ItemOrderBy, GraphClusteringAlgorithm
-    >>> from tm2p.portfolio.thematic_stucture.co_occurrence.first_order_network import ItemsByCluster
+    >>> from tm2p.portfolio.thematic_stucture.co_occurrence.direct_similarity_network import ItemsByCluster
     >>> df = (
     ...     ItemsByCluster()
     ...     #
@@ -70,7 +70,7 @@ Smoke tests:
 
 
     >>> from tm2p.enum import AssociationIndex, Field, GraphClusteringAlgorithm, ItemOrderBy, Scaling
-    >>> from tm2p.portfolio.thematic_stucture.co_occurrence.first_order_network import NetworkPlot
+    >>> from tm2p.portfolio.thematic_stucture.co_occurrence.direct_similarity_network import NetworkPlot
     >>> fig = (
     ...     NetworkPlot()
     ...     #

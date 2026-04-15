@@ -146,7 +146,7 @@ from tm2p._intern.nx import (
     compute_spring_layout_positions,
     create_network_density_plot,
 )
-from tm2p.portfolio.intellectual_structure.co_citation_network._intern.create_nx_graph import (
+from tm2p.portfolio.intellectual_structure.co_citation_network._intern.__create_nx_graph import (
     create_nx_graph,
 )
 

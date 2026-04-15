@@ -166,7 +166,7 @@ from tm2p._intern.nx import (
     compute_spring_layout_positions,
     plot_nx_graph,
 )
-from tm2p.portfolio.intellectual_structure.co_citation_network._intern.create_nx_graph import (
+from tm2p.portfolio.intellectual_structure.co_citation_network._intern.__create_nx_graph import (
     create_nx_graph,
 )
 

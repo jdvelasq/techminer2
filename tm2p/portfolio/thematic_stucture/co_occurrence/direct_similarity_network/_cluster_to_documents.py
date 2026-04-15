@@ -14,7 +14,7 @@ Smoke tests:
     ...     compute_distances=True,  #  always True
     ... )
     >>> from tm2p.enum import AssociationIndex, Field, GraphClusteringAlgorithm, ItemOrderBy, RecordOrderBy
-    >>> from tm2p.portfolio.thematic_stucture.co_occurrence.first_order_network import ClusterToDocuments
+    >>> from tm2p.portfolio.thematic_stucture.co_occurrence.direct_similarity_network import ClusterToDocuments
     >>> mapping = (
     ...     ClusterToDocuments()
     ...     #
@@ -58,7 +58,7 @@ from tm2p._intern import ParamsMixin
 from tm2p.enum import Field
 from tm2p.ingest.records import RecordViewer
 
-from ._cluster_to_items import ClusterToItems
+from .cluster_to_items import ClusterToItems
 
 
 class ClusterToDocuments(
