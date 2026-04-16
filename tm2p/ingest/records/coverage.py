@@ -10,7 +10,7 @@ Smoke tests:
     ...     .with_source_field(Field.AUTHKW_RAW)
     ...     .where_root_directory("tests/scopus/")
     ...     .where_record_years_range(None, None)
-    ...     .where_record_citations_range(None, None)
+    ...     .where_record_global_citations_range(None, None)
     ...     .run()
     ... )
         OCC  CUM_SUM_DOCS COVERAGE  CUM_SUM_ITEMS

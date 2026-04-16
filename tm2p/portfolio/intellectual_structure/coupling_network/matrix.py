@@ -19,7 +19,7 @@ Smoke tests:
     ...     # DATABASE:
     ...     .where_root_directory("tests/wos/")
     ...     .where_record_years_range(None, None)
-    ...     .where_record_citations_range(None, None)
+    ...     .where_record_global_citations_range(None, None)
     ...     .where_records_match(None)
     ...     #
     ...     .run()
@@ -61,7 +61,7 @@ Smoke tests:
     ...     # DATABASE:
     ...     .where_root_directory("tests/wos/")
     ...     .where_record_years_range(None, None)
-    ...     .where_record_citations_range(None, None)
+    ...     .where_record_global_citations_range(None, None)
     ...     .where_records_match(None)
     ...     #
     ...     .run()
@@ -103,7 +103,7 @@ Smoke tests:
     ...     # DATABASE:
     ...     .where_root_directory("tests/wos/")
     ...     .where_record_years_range(None, None)
-    ...     .where_record_citations_range(None, None)
+    ...     .where_record_global_citations_range(None, None)
     ...     .where_records_match(None)
     ...     #
     ...     .run()
@@ -145,7 +145,7 @@ Smoke tests:
     ...     # DATABASE:
     ...     .where_root_directory("tests/wos/")
     ...     .where_record_years_range(None, None)
-    ...     .where_record_citations_range(None, None)
+    ...     .where_record_global_citations_range(None, None)
     ...     .where_records_match(None)
     ...     #
     ...     .run()
@@ -185,7 +185,7 @@ Smoke tests:
     ...     # DATABASE:
     ...     .where_root_directory("tests/wos/")
     ...     .where_record_years_range(None, None)
-    ...     .where_record_citations_range(None, None)
+    ...     .where_record_global_citations_range(None, None)
     ...     .where_records_match(None)
     ...     #
     ...     .run()

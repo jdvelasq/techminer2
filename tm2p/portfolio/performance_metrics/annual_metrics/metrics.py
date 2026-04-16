@@ -8,7 +8,7 @@ Smoke tests:
     ...     Metrics()
     ...     .where_root_directory("tests/scopus/")
     ...     .where_record_years_range(None, None)
-    ...     .where_record_citations_range(None, None)
+    ...     .where_record_global_citations_range(None, None)
     ...     .run()
     ... )
     >>> type(df).__name__

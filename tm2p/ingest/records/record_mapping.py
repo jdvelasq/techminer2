@@ -12,7 +12,7 @@ Smoke Test:
     ...     .with_source_field(Field.ABSTR_RAW)
     ...     .where_root_directory("tests/scopus/")
     ...     .where_record_years_range(None, None)
-    ...     .where_record_citations_range(None, None)
+    ...     .where_record_global_citations_range(None, None)
     ...     .where_records_match(None)
     ...     .where_records_ordered_by(RecordOrderBy.GCS_HIGHEST)
     ...     .run()

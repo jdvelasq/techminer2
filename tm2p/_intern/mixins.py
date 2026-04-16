@@ -1273,7 +1273,7 @@ class ParamsMixin:
     #     self.params.database = database
     #     return self
 
-    def where_record_citations_range(
+    def where_record_global_citations_range(
         self, start: Optional[int], end: Optional[int]
     ) -> Self:
         self.params.record_citations_range = check_required_open_ended_int_range(

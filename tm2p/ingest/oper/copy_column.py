@@ -20,7 +20,7 @@ Smoke Test:
     ...     .with_query_expression("SELECT USR0 FROM database LIMIT 5;")
     ...     .where_root_directory("tests/scopus/")
     ...     .where_record_years_range(None, None)
-    ...     .where_record_citations_range(None, None)
+    ...     .where_record_global_citations_range(None, None)
     ...     #
     ...     .run()
     ... )
