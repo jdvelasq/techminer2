@@ -17,7 +17,7 @@ Smoke tests:
     ...     .having_item_citations_between(None, None)
     ...     .having_items_in(None)
     ...     #
-    ...     .using_minimum_item_co_occurrence(1)
+    ...     .using_minimum_pair_co_occurrence(1)
     ...     #
     ...     # COUNTERS:
     ...     .using_counters(True)
@@ -138,13 +138,13 @@ class Matrix(
             )
             .having_index_items_in(self.params.items_in)
             #
-            .using_minimum_item_co_occurrence(1)
+            .using_minimum_pair_co_occurrence(1)
             #
             .run()
         )
 
         diag = matrix.values.diagonal()
-        matrix = matrix.where(matrix >= self.params.minimum_item_co_occurrence, other=0)
+        matrix = matrix.where(matrix >= self.params.minimum_pair_co_occurrence, other=0)
         for i, value in enumerate(diag):
             matrix.values[i, i] = value
 

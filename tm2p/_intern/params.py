@@ -26,60 +26,167 @@ from tm2p.enum import (
 @dataclass
 class Params:
 
-    #
+    # ####################################################################### #
+    #                                                                         #
+    #                    PARAMETERS WITH NO DEFAULT VALUE                     #
+    #                                                                         #
+    # ####################################################################### #
+
+    # -------------------------------------------------------------------------
     # Ingestion and basic operations:
-    #
+    # -------------------------------------------------------------------------
     source_field: Field
     source_fields: tuple[Field, ...]
     target_field: Field
     stemming_fn: Callable
 
-    #
+    # -------------------------------------------------------------------------
     # Occurrence matrix:
-    #
+    # -------------------------------------------------------------------------
     column_field: Field
     index_field: Field
 
-    #
+    # -------------------------------------------------------------------------
     # Cross-correlation operations:
-    #
+    # -------------------------------------------------------------------------
     cross_field: Field
 
-    #
+    # -------------------------------------------------------------------------
     # Thesaurus file:
-    #
+    # -------------------------------------------------------------------------
     thesaurus_file: ThFile
 
-    #
     replacement: str
     word: str
 
-    #
+    # -------------------------------------------------------------------------
     # Sankey plot:
-    #
+    # -------------------------------------------------------------------------
     sankey_top_n: Tuple[int, ...]
 
-    #
+    # -------------------------------------------------------------------------
     # Clustering:
-    #
+    # -------------------------------------------------------------------------
     clustering: Union[
         BaseEstimator,
         GraphClusteringAlgorithm,
         dict,
     ]
 
-    #
+    # ####################################################################### #
+    #                                                                         #
+    #                        NETWORKS AND MAPS PLOTS                          #
+    #                                                                         #
+    # ####################################################################### #
+
+    unit_of_analysis: Optional[str] = None
+
+    # -------------------------------------------------------------------------
+    # Analysis units:
+    # -------------------------------------------------------------------------
+    citation_unit: CitationUnit = CitationUnit.AUTH
+    co_citation_unit: CoCitationUnit = CoCitationUnit.CITED_AUTH
+    co_occurrence_unit: CoOccurrenceUnit = CoOccurrenceUnit.AUTHKW
+    collaboration_unit: CollaborationUnit = CollaborationUnit.AUTH
+    coupling_unit: CouplingUnit = CouplingUnit.AUTH
+
+    # -------------------------------------------------------------------------
+    # Co-citation network algorithm:
+    # -------------------------------------------------------------------------
+    minimum_citation_count: int = 0
+    cited_top_n: int = 1000
+
+    # -------------------------------------------------------------------------
+    # Normalization:
+    # -------------------------------------------------------------------------
+    association_index: AssociationIndex = AssociationIndex.ASSOCIATION_STRENGTH
+
+    # -------------------------------------------------------------------------
+    # Edges:
+    # -------------------------------------------------------------------------
+    edge_color: Any = "#b8c6d0"
+    edge_colors: Tuple[Any, ...] = ("#b8c6d0",)
+    edge_opacity_range: Tuple[float, float] = (0.1, 0.9)
+    edge_scaling: Scaling = Scaling.LINEAR
+    edge_similarity_threshold: float = 0.0
+    edge_top_n: int = 1000
+    edge_width_range: Tuple[float, float] = (0.5, 0.8)
+    edge_widths: Tuple[
+        Union[float, int],
+        Union[float, int],
+        Union[float, int],
+        Union[float, int],
+    ] = (0.5, 0.8, 1.0, 1.2)
+    min_edges_per_node: int = 5
+    top_edges_per_node: int = 5
+
+    draw_arrows: bool = False
+
+    # -------------------------------------------------------------------------
+    # Nodes:
+    # -------------------------------------------------------------------------
+    node_colors: Tuple[Any, ...] = ("#7793a5", "#465c6b")
+    node_color: Any = "#7793a5"
+    node_opacity: float = 0.8
+    node_scaling: Scaling = Scaling.LINEAR
+    node_size_range: Tuple[int, int] = (5, 20)
+    node_size: int = 10
+    top_n_node_labels: int = 1000
+    top_n_nodes: int = 1000
+
+    # -------------------------------------------------------------------------
+    # Textfont:
+    # -------------------------------------------------------------------------
+    textfont_color: Union[str, float, Sequence[float]] = "#465c6b"
+    textfont_opacity_range: Tuple[float, float] = (0.5, 1)
+    textfont_opacity: float = 1.0
+    textfont_size_range: Tuple[float, float] = (8.0, 16.0)
+    textfont_size: float = 10
+
+    # -------------------------------------------------------------------------
+    # Spring layout:
+    # -------------------------------------------------------------------------
+    # spring_layout_cluster_scale: float = 1.0  # DELETE!
+    # spring_layout_intra_scale: float = 0.9. # DELETE!
+    spring_layout_iterations: int = 50
+    spring_layout_k: Optional[float] = 0.1
+    spring_layout_seed: int = 42
+
+    # -------------------------------------------------------------------------
+    # Kernel density plot:
+    # -------------------------------------------------------------------------
+    colormap: str = "Blues"
+    contour_opacity: float = 0.6
+    kernel_bandwidth: float = 0.1
+
+    # -------------------------------------------------------------------------
+    # Graph clustering:
+    # -------------------------------------------------------------------------
+
+    # ####################################################################### #
+    #                                                                         #
+    #                           NETWORK ANALYSIS                              #
+    #                                                                         #
+    # ####################################################################### #
+
+    # ####################################################################### #
+    #                                                                         #
+    #                     PARAMETERS WITH DEFAULT VALUES                      #
+    #                                                                         #
+    # ####################################################################### #
+
+    # -------------------------------------------------------------------------
     # Ingestion and basic operations:
-    #
+    # -------------------------------------------------------------------------
     item_citations_range: Tuple[Optional[int], Optional[int]] = (None, None)
     item_occurrences_range: Tuple[Optional[int], Optional[int]] = (None, None)
     items_in: Optional[list[str]] = None
     items_order_by: ItemOrderBy = ItemOrderBy.OCC
     top_n: Optional[int] = None
 
-    #
-    # Occurrence matrix:
-    #
+    # -------------------------------------------------------------------------
+    # Occurrence matrix algorithm:
+    # -------------------------------------------------------------------------
     column_item_citations_range: Tuple[Optional[int], Optional[int]] = (None, None)
     column_item_occurrences_range: Tuple[Optional[int], Optional[int]] = (None, None)
     column_items_in: Optional[list[str]] = None
@@ -93,33 +200,6 @@ class Params:
     index_top_n: Optional[int] = None
 
     #
-    # Citation network:
-    #
-    citation_unit: CitationUnit = CitationUnit.AUTH
-
-    #
-    # Co-citation network:
-    #
-    co_citation_unit: CoCitationUnit = CoCitationUnit.CITED_AUTH
-    minimum_citation_count: int = 0
-    cited_top_n: int = 1000
-
-    #
-    # Coupling network:
-    #
-    coupling_unit: CouplingUnit = CouplingUnit.AUTH
-
-    #
-    # Co-occurrence network:
-    #
-    co_occurrence_unit: CoOccurrenceUnit = CoOccurrenceUnit.AUTHKW
-
-    #
-    # Collaboration network:
-    #
-    collaboration_unit: CollaborationUnit = CollaborationUnit.AUTH
-
-    #
     # Plotting:
     #
     plotting_column = None
@@ -127,7 +207,7 @@ class Params:
     #
     # A
     #
-    association_index: AssociationIndex = AssociationIndex.ASSOCIATION_STRENGTH
+
     axes_visible: bool = False
 
     #
@@ -146,39 +226,23 @@ class Params:
     color: Optional[str] = None
     colored_output: bool = True
     colored_stderr: bool = True
-    colormap: str = "Blues"
+
     column: Optional[str] = None
-    contour_opacity: float = 0.6
+
     core_area: Optional[str] = None
     correlation_method: Correlation = Correlation.PEARSON
     cumulative_sum: bool = False
-    minimum_item_co_occurrence: int = 1
+    minimum_pair_co_occurrence: int = 1
     similarity_cutoff: float = 85.0
 
     #
     # D
     #
     decomposition_algorithm: Optional[BaseEstimator] = None
-    draw_arrows: bool = False
 
     #
     # E
     #
-    edge_colors: Tuple[Any, ...] = ("#b8c6d0",)
-    edge_color: Any = "#b8c6d0"
-    edge_opacity_range: Tuple[float, float] = (0.1, 0.9)
-    edge_similarity_threshold: float = 0.0
-    edge_top_n: int = 1000
-    top_edges_per_node: int = 5
-    min_edges_per_node: int = 5
-    edge_width_range: Tuple[float, float] = (0.5, 0.8)
-    edge_widths: Tuple[
-        Union[float, int],
-        Union[float, int],
-        Union[float, int],
-        Union[float, int],
-    ] = (0.5, 0.8, 1.0, 1.2)
-    edge_scaling: Scaling = Scaling.LINEAR
 
     #
     # I
@@ -190,7 +254,7 @@ class Params:
     #
     # K
     #
-    kernel_bandwidth: float = 0.1
+
     keys_order_by: str = "alphabetical"
     kleinberg_burst_rate: float = 2.0
     kleinberg_burst_gamma: float = 1.0
@@ -216,13 +280,6 @@ class Params:
     #
     n_chars: int = 100
     n_contexts: int = 10
-    node_colors: Tuple[Any, ...] = ("#7793a5", "#465c6b")
-    node_color: Any = "#7793a5"
-    node_scaling: Scaling = Scaling.LINEAR
-    node_size_range: Tuple[int, int] = (5, 20)
-    node_size: int = 10
-    top_n_node_labels: int = 1000
-    top_n_nodes: int = 1000
     novelty_threshold: float = 0.15
 
     #
@@ -259,26 +316,16 @@ class Params:
     # records_top_n: int = 100000
     regex_flags: int = 0
     regex_search: bool = False
-
     root_directory: str = "./"
 
     #
     # S
     #
-    spring_layout_cluster_scale: float = 1.0
-    spring_layout_intra_scale: float = 0.9
-    spring_layout_iterations: int = 50
-    spring_layout_k: Optional[float] = 0.1
-    spring_layout_seed: int = 42
 
     #
     # T
     #
-    textfont_color: Union[str, float, Sequence[float]] = "#465c6b"
-    textfont_opacity_range: Tuple[float, float] = (0.5, 1)
-    textfont_opacity: float = 1.0
-    textfont_size_range: Tuple[float, float] = (8.0, 16.0)
-    textfont_size: float = 10
+
     tfidf_norm: Optional[str] = None
     tfidf_smooth_idf: bool = False
     tfidf_sublinear_tf: bool = False  # sublinear_tf
@@ -293,7 +340,6 @@ class Params:
     #
     # U
     #
-    unit_of_analysis: Optional[str] = None
 
     #
     # V

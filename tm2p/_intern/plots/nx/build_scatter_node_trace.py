@@ -12,6 +12,7 @@ def build_scatter_node_trace(
     node_color = [data["node_color"] for _, data in nx_graph.nodes(data=True)]
     node_size = [data["node_size"] for _, data in nx_graph.nodes(data=True)]
     node_text = [data["text"] for _, data in nx_graph.nodes(data=True)]
+    node_opacity = nx_graph.graph["node_opacity"]  # type: ignore
 
     node_trace = go.Scatter(
         x=node_x,
@@ -19,11 +20,12 @@ def build_scatter_node_trace(
         mode="markers",
         text=node_text,
         hoverinfo="text",
+        opacity=node_opacity,
         marker={
             "color": node_color,
             "size": node_size,
             "line": {"width": 1.5, "color": "white"},
-            "opacity": 1.0,
+            "opacity": min(1.0, node_opacity + 0.15),
         },
     )
 

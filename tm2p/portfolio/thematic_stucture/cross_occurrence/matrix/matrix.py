@@ -24,7 +24,7 @@ Smoke tests:
     ...     .having_index_item_citations_between(None, None)
     ...     .having_index_items_in(None)
     ...     #
-    ...     .using_minimum_item_co_occurrence(1)
+    ...     .using_minimum_pair_co_occurrence(1)
     ...     #
     ...     # COUNTERS:
     ...     .using_counters(True)
@@ -291,7 +291,7 @@ class Matrix(
 
     # -------------------------------------------------------------------------
     def _step_13_apply_co_occurrence_threshold(self, matrix):
-        matrix = matrix.where(matrix >= self.params.minimum_item_co_occurrence, other=0)
+        matrix = matrix.where(matrix >= self.params.minimum_pair_co_occurrence, other=0)
         return matrix
 
     # -------------------------------------------------------------------------

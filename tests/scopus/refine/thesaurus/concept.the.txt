@@ -1664,8 +1664,6 @@ barriers
     barriers
 base
     base
-basel
-    basel
 baseline
     baseline
 baseline studies
@@ -6194,10 +6192,6 @@ indian
     indian
 indian states
     indian states
-indiana
-    indiana
-indiana university
-    indiana university
 indicator
     indicator
 indicators

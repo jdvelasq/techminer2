@@ -20,6 +20,9 @@ def set_top_n_node_labels_per_group(
         if "labeled" not in nx_graph.nodes[node]:
             nx_graph.nodes[node]["labeled"] = False
 
+        if "bold" not in nx_graph.nodes[node]:
+            nx_graph.nodes[node]["bold"] = False
+
     c2i: dict[int, list[str]] = {}
     for i, c in i2c.items():
         if c not in c2i:

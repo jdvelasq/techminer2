@@ -5,7 +5,7 @@ from tm2p._intern import Params
 from tm2p.enum import Scaling
 
 
-def scale_edge_weights(params: Params, nx_graph: nx.Graph) -> nx.Graph:
+def scale_edge_weight(params: Params, nx_graph: nx.Graph) -> nx.Graph:
 
     weights = np.array([data["weight"] for _, _, data in nx_graph.edges(data=True)])
 

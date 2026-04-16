@@ -1,0 +1,1472 @@
+resents A_THOROUGH_DISCUSSION of MEC-based IOMT_HEALTHCARE_SYSTEMS . 2022 the author ( s )
+e with PRECAUTIONARY_REMARKS and GUIDELINES for FUTURE_RESEARCHERS . 2022 the author ( s )
+DEVICES and AN_ALTERNATIVE for CONNECTION to 2g/3g MOBILE_NETWORKS . 2023 the author ( s )
+UTION toward REAL-WORLD_DEPLOYMENT of FACE_MASKS_DETECTION_SYSTEMS . 2023 the author ( s )
+m achieve ACCURACY comparable to when trained on BALANCED_DATASETS . 2023 the author ( s )
+-t246187 and ta120-t246189 is 528 bytes and 744 bytes respectively . 2023 the author ( s )
+ERSPECTIVE on THIS_CHALLENGING_AND_RAPIDLY_EVOLVING_RESEARCH_FIELD . 2024 the author ( s )
+ork have been meticulously benchmarked on 13 open-sourced DATASETS . 2024 the author ( s )
+EFITS and CHALLENGES of THIS_KIND of TINYML_ANALYSIS are described . 2024 the author ( s )
+hes EDUCATIONAL_PROGRAMS by encouraging INTERDISCIPLINARY_LEARNING . 2025 the author ( s )
+ such as IOT , AUTONOMOUS_TECHNOLOGIES , and CONTINUOUS_MONITORING . 2025 the author ( s )
+for low-POWER_EDGE_DEPLOYMENT in INTELLIGENT_TRANSPORTATION_SYSTEM . 2025 the author ( s )
+rtrayed A_SUPERIOR_ACCURACY_VALUE of 98.11 % over OTHER_TECHNIQUES . 2025 the author ( s )
+derscores ITS_USEFULNESS in DETECTING_CYBERATTACKS in IOT_SETTINGS . 2025 the author ( s )
+ON for low-POWER and EDGE_AI_SCENARIOS in EMBEDDED_AND_IOT_SYSTEMS . 2025 the author ( s )
+_CHALLENGES in AGRICULTURAL_PRACTICES , including POWER_MANAGEMENT . 2025 the author ( s )
+for real-TIME , PRIVACY-PRESERVING_EDGE_INTELLIGENCE are discussed . 2025 the author ( s )
+THE_ROBUSTNESS of A_LUNAR_HABITAT in TECHNICAL_COMPARTMENTS . 2025 by'COPYRIGHT holder ' .
+ns attribution ( cc by ) LICENSE ( HTTP:// creativecommons . org / licenses / by/ 4.0/ ) .
+use permitted under creative commons license attribution 4.0 international ( cc by 4.0 ) .
+attained even by using A_SIMPLE_CNN_MODEL . 2024 EUROPEAN_MICROWAVE_ASSOCIATION ( EUMA ) .
+OURCE_SAVINGS , and ENGINEERING_EFFORT_REDUCTION . 2024 held by THE_OWNER / AUTHOR ( s ) .
+ith 8 less NON-volatile MEMORY in SPECIFIC_CASES . 2024 held by THE_OWNER / AUTHOR ( s ) .
+SIGNAL ( a ) , stressed PPG_SIGNAL ( b ) 2025 COPYRIGHT held by THE_OWNER / AUTHOR ( s ) .
+data_collection using ( adxl354c ) [ 1 ] 2025 COPYRIGHT held by THE_OWNER / AUTHOR ( s ) .
+ and STATE-of-the-ART_ARCHITECTURES . 2024 COPYRIGHT is held by THE_OWNER / AUTHOR ( s ) .
+ve NETWORK_LIFETIME and RELIABILITY . 2024 COPYRIGHT is held by THE_OWNER / AUTHOR ( s ) .
+ABORATION to tackle OPEN_CHALLENGES . 2025 COPYRIGHT is held by THE_OWNER / AUTHOR ( s ) .
+g THE_DEVICE ' s COST , PERFORMANCE , and ENERGY_CONSUMPTION . 2023 owner / AUTHOR ( s ) .
+by leveraging HARDWARE-optimized HYPERDIMENSIONAL_OPERATIONS . 2023 owner / AUTHOR ( s ) .
+ndicate THE_FEASIBILITY of BATTERY-FREE_ML_INFERENCE on MCUS . 2023 owner / AUTHOR ( s ) .
+METHODS , enabling real-TIME_EXECUTION . copyright 2025 held by the owner / author ( s ) .
+RACY_DROP with respect to THE_BASELINE . 2022 copyright held by the owner / author ( s ) .
+OTH_SOFTWARE_AND_HARDWARE_PERSPECTIVES . 2022 copyright held by the owner / author ( s ) .
+utperforms THE_PRIOR_TINYML_FRAMEWORKS . 2023 copyright held by the owner / author ( s ) .
+INEON_PSOC 62s2 WI-FI bt pioneer kit ) . 2024 copyright held by the owner / author ( s ) .
+CROCONTROLLERS , such as the stm32h743 . 2024 copyright held by the owner / author ( s ) .
+ INFERENCE , and 3.7x THE_SILICON_AREA . 2024 copyright held by the owner / author ( s ) .
+YPTION on commodity low-POWER_HARDWARE . 2024 copyright held by the owner / author ( s ) .
+_AND_SCALABLE_SOLUTION for AGRICULTURE . 2024 copyright held by the owner / author ( s ) .
+_DL_MODELS with THE_GA for ONBOARD_CIL . 2024 copyright held by the owner / author ( s ) .
+VISUALIZATION of LOGIC_ANALYZER_TRACES . 2024 copyright held by the owner / author ( s ) .
+the-SHELF_RESOURCE-CONSTRAINED_DEVICES . 2024 copyright held by the owner / author ( s ) .
+ING on HARDWARE with LIMITED_RESOURCES . 2024 copyright held by the owner / author ( s ) .
+nd HUMAN-centered SENSING_TECHNOLOGIES . 2024 copyright held by the owner / author ( s ) .
+EL by 39.3 % for TINY_EMBEDDED_SYSTEMS . 2024 copyright held by the owner / author ( s ) .
+with THE_CHALLENGES and CONSIDERATIONS . 2024 copyright held by the owner / author ( s ) .
+ to enhance long-RANGE_IOT_DEPLOYMENTS . 2024 copyright held by the owner / author ( s ) .
+ENSOR_LIFETIME and RESOURCE-EFFICIENCY . 2024 copyright held by the owner / author ( s ) .
+TIFIC_COMMUNITY as A_PUBLIC_REPOSITORY . 2024 copyright held by the owner / author ( s ) .
+ARE , and ENVIRONMENTAL_SUSTAINABILITY . 2024 copyright held by the owner / author ( s ) .
+ for advancing TINY , DECENTRALIZED_AI . 2025 copyright held by the owner / author ( s ) .
+2 based CHIP for A_CONCRETE_VALIDATION . 2025 copyright held by the owner / author ( s ) .
+calable and HARDWARE-aware INTEGRATION . 2025 copyright held by the owner / author ( s ) .
+CATION on RESOURCE_CONSTRAINED_DEVICES . 2025 copyright held by the owner / author ( s ) .
+RA-LOW-POWER_EXECUTION on EDGE_DEVICES . 2025 copyright held by the owner / author ( s ) .
+INED_ENVIRONMENTS such as EDGE_DEVICES . 2025 copyright held by the owner / author ( s ) .
+ULTI-DNN_INFERENCE in WEARABLE_DEVICES . 2025 copyright held by the owner / author ( s ) .
+ENSURE_TRUSTWORTHY_AI in k-12 SETTINGS . 2025 copyright held by the owner / author ( s ) .
+IGHER_EFFICACY in fulfilling THE_TASKS . 2025 copyright held by the owner / author ( s ) .
+QUIREMENTS of low-POWER_CAMERA_SYSTEMS . 2025 copyright held by the owner / author ( s ) .
+DETECTION to improve ENERGY_EFFICIENCY . 2025 copyright held by the owner / author ( s ) .
+00 MHZ_FREQUENCY in a 12 NM_TECHNOLOGY . 2025 copyright held by the owner / author ( s ) .
+ , but LONGER_LATENCY can be tolerated . 2025 copyright held by the owner / author ( s ) .
+LANGUAGE ( ASL ) using TINYML_ON_ARDUINO_UNO along with FLEX_SENSORS . 2024 author ( s ) .
+MPLEMENTATIONS , without ANY_SIGNIFICANT_DROP in TEST_ACCURACY . 2022 , the author ( s ) .
+E_DL_PROCESSING over CONNECTED_HETEROGENEOUS_PERVASIVE_DEVICES . 2023 , the author ( s ) .
+_SYSTEM designed to protect and ALERT_INDIVIDUALS during FALLS . 2023 , the author ( s ) .
+ETECTING_ACCURACY-drop EVENTS , outperforming ALL_PRIOR_WORKS . 2025 by the author ( s ) .
+, few_studies_have_investigated TINYML as it is AN_EMERGING_FIELD . 2024 by author ( s ) .
+SIGNAL_PROCESSING and ELECTRONIC_SYSTEMS , POZNAN_UNIVERSITY of TECHNOLOGY ( DSPES put ) .
+. the author ( s ) , under exclusive license to springer nature singapore pte ltd . 2021 .
+and the author ( s ) , under exclusive license to springer nature singapore pte ltd 2021 .
+etected REPLAY_AND_SYNTHETIC_VOICE_ATTACKS with an 88 % f1 SCORE . the author ( s ) 2023 .
+xclusive license to springer science+business media , llc , part of springer nature 2023 .
+xclusive license to springer science+business media , llc , part of springer nature 2023 .
+ICES . the author ( s ) , under exclusive license to springer nature switzerland ag 2023 .
+n RESOURCE-CONSTRAINED_IOT_DEVICES . king fahd university of petroleum and minerals 2023 .
+enabled IOT_NETWORKS . graphical abstract : ( figure presented . ) the author ( s ) 2024 .
+T and to foster THE_FULL_REALIZATION of EDGE_COMPUTING_POTENTIAL . the author ( s ) 2024 .
+ETES_MANAGEMENT , ultimately offering IMPROVED_HEALTH_MANAGEMENT . the author ( s ) 2024 .
+ demonstrates COST_EFFICIENCY and HIGH_POTENTIAL for SCALABILITY . the author ( s ) 2024 .
+TURE-A_PIVOTAL_STRIDE toward PRECISION_FARMING_FUTURE . grenze scientific society , 2024 .
+ting EMBEDDED_ARTIFICIAL_INTELLIGENCE . tsinghua university press , beijing CHINA . 2024 .
+. the author ( s ) , under exclusive license to springer nature singapore pte ltd . 2024 .
+. the author ( s ) , under exclusive license to springer nature singapore pte ltd . 2024 .
+. the author ( s ) , under exclusive license to springer nature singapore pte ltd . 2024 .
+xclusive license to springer science+business media , llc , part of springer nature 2024 .
+xclusive license to springer science+business media , llc , part of springer nature 2024 .
+xclusive license to springer science+business media , llc , part of springer nature 2024 .
+xclusive license to springer science+business media , llc , part of springer nature 2024 .
+xclusive license to springer science+business media , llc , part of springer nature 2024 .
+21 % . the author ( s ) , under exclusive license to springer nature switzerland ag 2024 .
+ENCE . the author ( s ) , under exclusive license to springer nature switzerland ag 2024 .
+LIFE . the author ( s ) , under exclusive license to springer nature switzerland ag 2024 .
+ITHM . the author ( s ) , under exclusive license to springer nature switzerland ag 2024 .
+TION . the author ( s ) , under exclusive license to springer nature switzerland ag 2024 .
+ETER . the author ( s ) , under exclusive license to springer nature switzerland ag 2024 .
+RROR . the author ( s ) , under exclusive license to springer nature switzerland ag 2024 .
+TIES . the author ( s ) , under exclusive license to springer nature switzerland ag 2024 .
+ILES . the author ( s ) , under exclusive license to springer nature switzerland ag 2024 .
+ACKS . the author ( s ) , under exclusive license to springer nature switzerland ag 2024 .
+ALLS . the author ( s ) , under exclusive license to springer nature switzerland ag 2024 .
+AINS . the author ( s ) , under exclusive license to springer nature switzerland ag 2024 .
+IONS . the author ( s ) , under exclusive license to springer nature switzerland ag 2024 .
+IONS . the author ( s ) , under exclusive license to springer nature switzerland ag 2024 .
+IONS . the author ( s ) , under exclusive license to springer nature switzerland ag 2024 .
+IONS . the author ( s ) , under exclusive license to springer nature switzerland ag 2024 .
+APPS . the author ( s ) , under exclusive license to springer nature switzerland ag 2024 .
+SORS . the author ( s ) , under exclusive license to springer nature switzerland ag 2024 .
+SETS . the author ( s ) , under exclusive license to springer nature switzerland ag 2024 .
+MENT . the author ( s ) , under exclusive license to springer nature switzerland ag 2024 .
+LITY . the author ( s ) , under exclusive license to springer nature switzerland ag 2024 .
+yond . the author ( s ) , under exclusive license to springer nature switzerland ag 2024 .
+.7 k . the author ( s ) , under exclusive license to springer nature switzerland ag 2024 .
+ fps . the author ( s ) , under exclusive license to springer nature switzerland ag 2024 .
+ fps . the author ( s ) , under exclusive license to springer nature switzerland ag 2024 .
+vely . the author ( s ) , under exclusive license to springer nature switzerland ag 2024 .
+itute for computer sciences , social informatics and telecommunications engineering 2024 .
+g INFERENCE on THE_MICROCONTROLLER . king fahd university of petroleum and minerals 2024 .
+ing OPTIMAL_PERFORMANCE and EFFICIENCY in TINYML_APPLICATIONS . science china press 2024 .
+e effective for ESTIMATING_MOISTURE with A_QUICKER_RESPONSE_TIME . the author ( s ) 2025 .
+HE_OPEN_PROBLEMS due_to optimize THE_PROBLEM_IDENTIFICATION_TIME . the author ( s ) 2025 .
+g THE_WAY for secure , scalable , and INTELLIGENT_ICU_MONITORING . the author ( s ) 2025 .
+SARY_DATA for OPERATIONAL_MODE_SELECTION in HOUSEHOLD_MICROGRIDS . the author ( s ) 2025 .
+t suitable for real-TIME_HUMAN_ACTIVITY_RECOGNITION APPLICATIONS . the author ( s ) 2025 .
+_POTENTIAL for FUTURE_WIRELESS_SENSORS with TINY_ML_APPLICATIONS . the author ( s ) 2025 .
+_ROAD_SAFETY , and supporting AUTONOMOUS_NAVIGATION_APPLICATIONS . the author ( s ) 2025 .
+ATION can be eliminated by integrating MULTILINGUAL_INSTRUCTIONS . the author ( s ) 2025 .
+ure ITS_RELIABILITY and ACCURACY in real-WORLD_TRAFFIC_SCENARIOS . the author ( s ) 2025 .
+HISTICATED_MACHINE_LEARNING_MODELS on low-POWER_MICROCONTROLLERS . the author ( s ) 2025 .
+ISING_POTENTIAL for HOME-based REHABILITATION of STROKE_PATIENTS . the author ( s ) 2025 .
+ng real-TIME_HUMAN-AI_COLLABORATION in INDUSTRY 5.0 ENVIRONMENTS . the author ( s ) 2025 .
+dependent PROTOCOL trade-offs for real-TIME_EMBEDDED DEPLOYMENTS . the author ( s ) 2025 .
+TA_PRIVACY , improving LATENCY and reducing INFRASTRUCTURE_COSTS . the author ( s ) 2025 .
+8x in INFERENCE_LATENCY , and 7.18 PERCENTAGE_POINTS in ACCURACY . the author ( s ) 2025 .
+Y , surpassing TRADITIONAL_METHODS in PRECISION and ADAPTABILITY . the author ( s ) 2025 .
+. the author ( s ) , under exclusive license to springer nature singapore pte ltd . 2025 .
+. the author ( s ) , under exclusive license to springer nature singapore pte ltd . 2025 .
+. the author ( s ) , under exclusive license to springer nature singapore pte ltd . 2025 .
+. the author ( s ) , under exclusive license to springer nature singapore pte ltd . 2025 .
+. the author ( s ) , under exclusive license to springer nature singapore pte ltd . 2025 .
+. the author ( s ) , under exclusive license to springer nature singapore pte ltd . 2025 .
+. the author ( s ) , under exclusive license to springer nature singapore pte ltd . 2025 .
+. the author ( s ) , under exclusive license to springer nature singapore pte ltd . 2025 .
+. the author ( s ) , under exclusive license to springer nature singapore pte ltd . 2025 .
+. the author ( s ) , under exclusive license to springer nature singapore pte ltd . 2025 .
+e used as A_CHEAP_WAY to boost ABILITY of OTHER_AI_MODELS . springer nature limited 2025 .
+, under exclusive license to springer-verlag gmbh austria , part of springer nature 2025 .
+, under exclusive license to springer-verlag gmbh austria , part of springer nature 2025 .
+xclusive license to springer science+business media , llc , part of springer nature 2025 .
+xclusive license to springer science+business media , llc , part of springer nature 2025 .
+xclusive license to springer science+business media , llc , part of springer nature 2025 .
+, under exclusive license to springer-verlag gmbh germany , part of springer nature 2025 .
+, under exclusive license to springer-verlag gmbh germany , part of springer nature 2025 .
+ 4 % . the author ( s ) , under exclusive license to springer nature switzerland ag 2025 .
+97 % . the author ( s ) , under exclusive license to springer nature switzerland ag 2025 .
+IELD . the author ( s ) , under exclusive license to springer nature switzerland ag 2025 .
+EDGE . the author ( s ) , under exclusive license to springer nature switzerland ag 2025 .
+TURE . the author ( s ) , under exclusive license to springer nature switzerland ag 2025 .
+ALTH . the author ( s ) , under exclusive license to springer nature switzerland ag 2025 .
+MARK . the author ( s ) , under exclusive license to springer nature switzerland ag 2025 .
+TION . the author ( s ) , under exclusive license to springer nature switzerland ag 2025 .
+TION . the author ( s ) , under exclusive license to springer nature switzerland ag 2025 .
+YOLO . the author ( s ) , under exclusive license to springer nature switzerland ag 2025 .
+ATOR . the author ( s ) , under exclusive license to springer nature switzerland ag 2025 .
+ANDS . the author ( s ) , under exclusive license to springer nature switzerland ag 2025 .
+NGES . the author ( s ) , under exclusive license to springer nature switzerland ag 2025 .
+CHES . the author ( s ) , under exclusive license to springer nature switzerland ag 2025 .
+TIES . the author ( s ) , under exclusive license to springer nature switzerland ag 2025 .
+ESIS . the author ( s ) , under exclusive license to springer nature switzerland ag 2025 .
+TEMS . the author ( s ) , under exclusive license to springer nature switzerland ag 2025 .
+IONS . the author ( s ) , under exclusive license to springer nature switzerland ag 2025 .
+IONS . the author ( s ) , under exclusive license to springer nature switzerland ag 2025 .
+IONS . the author ( s ) , under exclusive license to springer nature switzerland ag 2025 .
+CESS . the author ( s ) , under exclusive license to springer nature switzerland ag 2025 .
+SETS . the author ( s ) , under exclusive license to springer nature switzerland ag 2025 .
+INTS . the author ( s ) , under exclusive license to springer nature switzerland ag 2025 .
+MCUS . the author ( s ) , under exclusive license to springer nature switzerland ag 2025 .
+NDEX . the author ( s ) , under exclusive license to springer nature switzerland ag 2025 .
+VACY . the author ( s ) , under exclusive license to springer nature switzerland ag 2025 .
+XITY . the author ( s ) , under exclusive license to springer nature switzerland ag 2025 .
+them . the author ( s ) , under exclusive license to springer nature switzerland ag 2025 .
+-zoo . the author ( s ) , under exclusive license to springer nature switzerland ag 2025 .
+EDICTION , and PREVENTIVE_MAINTENANCE of INDUSTRIAL_EQUIPMENT . science china press 2025 .
+YAND_ACCURACY . 2025 american nuclear society , incorporated , WESTMONT , ILLINOIS 60559 .
+G in real-WORLD_SCENARIOS . 2024 by scitepress science and technology publications , LDA .
+START and stop occurring during NORMAL_TRAFFIC_DRIVING . 2021 university of split , FESB .
+and THE_COMPUTATIONAL_TIME required for CLASSIFICATION . 2022 university of split , FESB .
+monstrating ITS_EFFECTIVENESS in a real-WORLD_SCENARIO . 2023 university of split , FESB .
+and EASE_OF_USE when controlling a three-wheeled ROBOT . 2023 university of split , FESB .
+E_IMPLEMENTATION can help OPTIMIZE_COSTS and MATERIALS . 2025 university of split , FESB .
+is licensed under a creative commons attribution-noncommercial-noderivatives 4.0 LICENSE .
+T is licensed under a creative commons attribution-share alike 4.0 INTERNATIONAL_LICENSE .
+ PERSONAL_USE is permitted , but republication / redistribution requires IEEE_PERMISSION .
+ORMANCE_AND_ENERGY_EFFICIENCY in MODERN_SYSTEMS . 2025 semi-therm EDUCATIONAL_FOUNDATION .
+vely . 2023 m . zhang , j . xue , p . kadam , h . prajapati , s . LIU and c.-c . JAY_KUO .
+rved , including those for TEXT_AND_DATA_MINING , AI_TRAINING , and SIMILAR_TECHNOLOGIES .
+rved , including those for TEXT_AND_DATA_MINING , AI_TRAINING , and SIMILAR_TECHNOLOGIES .
+rved , including those for TEXT_AND_DATA_MINING , AI_TRAINING , and SIMILAR_TECHNOLOGIES .
+rved , including those for TEXT_AND_DATA_MINING , AI_TRAINING , and SIMILAR_TECHNOLOGIES .
+rved , including those for TEXT_AND_DATA_MINING , AI_TRAINING , and SIMILAR_TECHNOLOGIES .
+rved , including those for TEXT_AND_DATA_MINING , AI_TRAINING , and SIMILAR_TECHNOLOGIES .
+rved , including those for TEXT_AND_DATA_MINING , AI_TRAINING , and SIMILAR_TECHNOLOGIES .
+rved , including those for TEXT_AND_DATA_MINING , AI_TRAINING , and SIMILAR_TECHNOLOGIES .
+rved , including those for TEXT_AND_DATA_MINING , AI_TRAINING , and SIMILAR_TECHNOLOGIES .
+rved , including those for TEXT_AND_DATA_MINING , AI_TRAINING , and SIMILAR_TECHNOLOGIES .
+rved , including those for TEXT_AND_DATA_MINING , AI_TRAINING , and SIMILAR_TECHNOLOGIES .
+rved , including those for TEXT_AND_DATA_MINING , AI_TRAINING , and SIMILAR_TECHNOLOGIES .
+rved , including those for TEXT_AND_DATA_MINING , AI_TRAINING , and SIMILAR_TECHNOLOGIES .
+rved , including those for TEXT_AND_DATA_MINING , AI_TRAINING , and SIMILAR_TECHNOLOGIES .
+rved , including those for TEXT_AND_DATA_MINING , AI_TRAINING , and SIMILAR_TECHNOLOGIES .
+ TEXT_AND_DATA_MINING , and TRAINING of ARTIFICIAL_INTELLIGENCE and SIMILAR_TECHNOLOGIES .
+THE_DEVELOPMENT_PROCESS , EDGE_AI_SYSTEMS could be realized with MINIMIZED_PROJECT_RISKS .
+SSIVE_THROUGHPUT_RATES of 888mbps and 1.3gbps . 2025 world scientific publishing COMPANY .
+ THE_PHINETS is publicly available on GITHUB .1 2022 ASSOCIATION for COMPUTING_MACHINERY .
+HE_SMARTWATCH , and 1.82 less than STREAMING ALL_THE_INPUT_DATA to THE_PHONE . 2023 edaa .
+y 2x for THE_STUDIED_CNNS by focusing exclusively on avoiding MISPREDICTIONS . 2023 edaa .
+CY , and THE_ABSOLUTE_PEAK_PERFORMANCE , i . e . , 6 % better than SOA_MODEL . 2024 edaa .
+t we can achieve up to 25.2 % LESS_ENERGY_CONSUMPTION for varying QOS_LEVELS . 2024 edaa .
+ , 23.8 X_CODE_SIZE_REDUCTION , and 15.38 X_ENERGY_REDUCTION at iso-ACCURACY . 2024 edaa .
+MENT on LOW-COST , ULTRA-LOW-POWER_MICROCONTROLLERS without LOSS_OF_ACCURACY . 2024 edaa .
+ SUPER-linear 4.7 speedup when using 4 MCUS compared to a single-CHIP_SYSTEM . 2025 edaa .
+y , in AN_OFFICE_ENVIRONMENT ( 500 lux ) . SOURCE_CODE is available at [ 1 ] . 2025 edaa .
+ARATION_PERFORMANCE with VANILLA_SEPFORMER on wsj0-2/3mix DATASETS . copyright 2022 isca .
+_TECHNOLOGIES such as 5g and TINYML to broaden ITS_SCOPE . 2026 scrivener publishing llc .
+POTENTIAL and EFFECTS . 2026 the institute of electrical and electronics engineers , inc .
+ we share THE_CODE in A_PUBLIC_REPOSITORY to ENHANCE_REPRODUCIBILITY . 2022 elsevier inc .
+MODEL to run for YEARS in DEVICES that are very RESOURCE-CONSTRAINED . 2024 elsevier inc .
+d for A_LARGER_SAMPLE_SPACE , and DATA_PRIVACY_NEEDS to be addressed . 2024 elsevier inc .
+ and BENEFITS that can arise from THEIR_DEPLOYMENT will be discussed . 2024 elsevier inc .
+ building upon the material in any medium so long as the original work is properly cited .
+ , and reproduction in any medium , provided the original author and source are credited .
+ , and reproduction in any medium , provided the original author and source are credited .
+ , and reproduction in any medium , provided the original author and source are credited .
+at supports to the MULTI-dimensional SCALING ( mds ) . 2022 , emerald publishing limited .
+ODEL_OUTPERFORMS THE_PRIOR_WORK in terms of PERFORMANCE . ( 2023 ) , all rights reserved .
+or the advancement of artificial intelligence ( www . aaai . org ) . all rights reserved .
+th BOTH_CONTROLLERS is around 0.2 - 0.5 ms . 2023 the author ( s ) . all rights reserved .
+ ( 2024 ) , ( research institute of intelligent computer systems ) . all rights reserved .
+S ( IOT ) . ( 2023 ) , ( intelligent network and systems society ) . all rights reserved .
+ONS . 2025 institute of electrical and electronics engineers inc . . all rights reserved .
+NIT . the_editor ( s ) ( if applicable ) and the author ( s ) 2021 . all rights reserved .
+S and EARLY-EXIT dnns . the_editor ( s ) and the author ( s ) 2025 . all rights reserved .
+URGENT_CASES . 2025 , al-nahrain UNIVERSITY college of ENGINEERING . all rights reserved .
+RLY . 2023 GUOJIA_JIAOWEI_QUANGUO_GAOXIAO_CHUANGAN_JISHU_YANJIUHUI . all rights reserved .
+t was tested . 2024 INTERNATIONAL_SPEECH_COMMUNICATION_ASSOCIATION . all rights reserved .
+FIGURATIONS . 2022 european signal processing conference , EUSIPCO . all rights reserved .
+T , etc . ) . 2025 european signal processing conference , EUSIPCO . all rights reserved .
+S . 2025 , RESEARCH_CENTER of COMPUTING_AND_BIOMEDICAL_INFORMATICS . all rights reserved .
+SYSTEMS that SUPPORT_TINYML_TECHNOLOGY . 2024 , university of kufa . all rights reserved .
+OF_THINGS . 2023 , universidade do porto - faculdade de engenharia . all rights reserved .
+abled SMART_CITY_APPLICATIONS . 2024 nova science publishers , inc . all rights reserved .
+RIES and SCOPE of THE_ECONOMY . 2024 nova science publishers , inc . all rights reserved .
+hancing CYBER-ATTACK_DETECTION in IOT_NETWORKS . 2025 elsevier inc . all rights reserved .
+N_BATTERIES . 2025 , institute of advanced engineering and science . all rights reserved .
+nd DATASETS . 2025 , institute of advanced engineering and science . all rights reserved .
+on THE_DEVICE . 2023 institute of advanced engineering and science . all rights reserved .
+WARE_PLATFORM . 2023 institute of advanced engineering and science . all rights reserved .
+EALTH_THREATS . 2023 institute of advanced engineering and science . all rights reserved .
+E_DIGITAL_ERA . 2024 institute of advanced engineering and science . all rights reserved .
+I and EE-HI to enable MORE_EFFICIENT_ML in IOT_SYSTEMS . 2025 ieee . all rights reserved .
+EL_CONVOLUTION BLOCK for SINGLE_IMAGE_SUPER-RESOLUTION . 2022 spie . all rights reserved .
+d ENGINEERING_SOLUTIONS . 2026 by igi global scientific publishing . all rights reserved .
+set by 3 % to 9 % of THE_ORIGINAL_DNN . 2022 , junction publishing . all rights reserved .
+OTOCOLS for ENHANCED_INTEROPERABILITY . 2024 , junction publishing . all rights reserved .
+ISSION and MEMORY_CONSUMPTION_CONTROL . 2026 , junction publishing . all rights reserved .
+_CONFIDENCE_SCORES of EACH_PREDICTION . 2026 , junction publishing . all rights reserved .
+nd TINYML_DEPLOYMENT in IOT_SCENARIOS . 2026 , junction publishing . all rights reserved .
+MS suitable for REAL-WORLD_DEPLOYMENT . 2026 , junction publishing . all rights reserved .
+R_MODEL for predicting WIND_SPEED . 2023 , semarak ilmu publishing . all rights reserved .
+E_ARTIFICIAL_INTELLIGENCE_OF_THINGS_SYSTEMS . 2025 , penerbit uthm . all rights reserved .
+VIOUS_WORK . 2022 neural information processing systems foundation . all rights reserved .
+-extension . 2024 neural information processing systems foundation . all rights reserved .
+025 , innovative information science and technology research group . all rights reserved .
+selection and editorial matter , anuj kumar singh and sachin kumar . all rights reserved .
+RENT_EMBEDDED_ML_IMPLEMENTATIONS . 2025 , universidad de santander . all rights reserved .
+OSTS_NODE_LIFETIME . 2025 national institute of telecommunications . all rights reserved .
+_DETECTION_SYSTEMS . 2025 , international association of engineers . all rights reserved .
+_POSSIBILITIES for THIS_KIND of VEHICLES . 2022 tech science press . all rights reserved .
+RESOURCE-EFFICIENT_ECG MONITORING_SYSTEM . 2023 tech science press . all rights reserved .
+intaining and safeguarding ROAD_NETWORKS . 2024 tech science press . all rights reserved .
+ERENT_TIMES and by SIX_DIFFERENT_PERSONS . 2023 penerbit utm press . all rights reserved .
+S accountable for THEIR_WASTE_FOOTPRINTS . 2025 penerbit utm press . all rights reserved .
+TIRE_DESIGN_PROCESS of THIS_ALGORITHM . 2025 wydawnictwo sigma-not . all rights reserved .
+_NEXT_GENERATION of WEARABLES . 2021 by the author . licensee mdpi , basel , switzerland .
+E_COGNITIVE_HEALTHCARE_FIELD . 2021 by the_authors . licensee mdpi , basel , switzerland .
+DDED_MACHINE_LEARNING_DOMAIN . 2021 by the_authors . licensee mdpi , basel , switzerland .
+-TO-NOISE_RATIO in ALL_CASES . 2021 by the_authors . licensee mdpi , basel , switzerland .
+SKS in A_CROWDED_ENVIRONMENT . 2021 by the_authors . licensee mdpi , basel , switzerland .
+GES of the_proposed_solution . 2021 by the_authors . licensee mdpi , basel , switzerland .
+ % and 3.27 % , respectively . 2021 by the_authors . licensee mdpi , basel , switzerland .
+m ACTORS in THE_SUPPLY_CHAIN . 2022 by the_authors . licensee mdpi , basel , switzerland .
+ only 33 mw during OPERATION . 2022 by the_authors . licensee mdpi , basel , switzerland .
+AD disaggregation ALGORITHMS . 2022 by the_authors . licensee mdpi , basel , switzerland .
+HEALTHCARE and OTHER_SECTORS . 2022 by the_authors . licensee mdpi , basel , switzerland .
+ion DEVELOPMENT_REQUIREMENTS . 2022 by the_authors . licensee mdpi , basel , switzerland .
+REAL-TIME_DATA_ANALYSIS tool . 2022 by the_authors . licensee mdpi , basel , switzerland .
+ANULARITY_MEASURE of gco2/km . 2022 by the_authors . licensee mdpi , basel , switzerland .
+ON that can be customized to meet THE_NEEDS of ANY_CITY . 2023 john wiley and sons , ltd .
+. 2022 , the author ( s ) , under exclusive license to springer nature singapore pte ltd .
+. 2023 , the author ( s ) , under exclusive license to springer nature singapore pte ltd .
+. 2023 , the author ( s ) , under exclusive license to springer nature singapore pte ltd .
+. 2023 , the author ( s ) , under exclusive license to springer nature singapore pte ltd .
+. 2023 , the author ( s ) , under exclusive license to springer nature singapore pte ltd .
+. 2023 , the author ( s ) , under exclusive license to springer nature singapore pte ltd .
+. 2024 , the author ( s ) , under exclusive license to springer nature singapore pte ltd .
+. 2024 , the author ( s ) , under exclusive license to springer nature singapore pte ltd .
+AY for FUTURE_INNOVATIONS in AUTOMATED_INSPECTION_TECHNOLOGIES . 2024 iop publishing ltd .
+ity-level SCALING_CAPABILITIES . 2025 the author ( s ) . published by iop publishing ltd .
+A_PRIVACY in MODEL_DEVELOPMENT . 2025 the author ( s ) . published by iop publishing ltd .
+TIONS , hence reducing LATENCY . 2025 the author ( s ) . published by iop publishing ltd .
+d compare THE_OUTCOMES of THE_EXPERIMENT . published under license by iop publishing ltd .
+UST_AND_PRACTICAL_SOLUTION for REAL_TIME_SMART_HEALTHCARE_MONITORING . 2025 elsevier ltd .
+ICIENCY in DIVERSE_OPERATIONAL_ENVIRONMENTS . copyright 2025 . published by elsevier ltd .
+TTERED_ENVIRONMENT and RECONSTRUCTION of impaired WALKING . 2021 john wiley and sons ltd .
+or real-TIME_NETWORK_SECURITY in next-GENERATION_NETWORKS . 2024 john wiley and sons ltd .
+how that our_proposed_model achieves A_HIGHER_PERFORMANCE . 2025 john wiley and sons ltd .
+ng A_VIABLE_APPROACH for INTELLIGENT_EDUCATION_EVALUATION . 2025 john wiley and sons ltd .
+ MAKING it ideal for always-on AIOT_PDM in CNC_PRODUCTION . 2025 john wiley and sons ltd .
+HE_PRACTICAL_APPLICATION_REQUIREMENTS of PORTABLE_DEVICES . 2025 john wiley and sons ltd .
+CHANICAL_ANALYSIS and AI-powered virtual coaching SYSTEMS . 2025 john wiley and sons ltd .
+TASET confirm that our_approach YIELDS_COMPARABLE_RESULTS . 2025 john wiley and sons ltd .
+UOUS_SPORTS_FATIGUE_ASSESSMENT in REAL-WORLD_ENVIRONMENTS . 2025 john wiley and sons ltd .
+cing BOTH_TECHNICAL_ACCURACY and USER_INTERACTION_QUALITY . 2025 john wiley and sons ltd .
+th SIGNIFICANT_MOTION_NOISE and ENVIRONMENTAL_VARIABILITY . 2025 john wiley and sons ltd .
+ USE_CASES such as SMART_FACTORIES and RURAL_CONNECTIVITY . 2025 john wiley and sons ltd .
+ithout relying on next-GENERATION_COMMUNICATION standards . 2025 john wiley and sons ltd .
+_MANNER and serve SMALL_SCALE_FARMERS who are at THE_BOTTOM_ECONOMIC_PYRAMID . 2020 ieee .
+TION close to ENVIRONMENTAL_SENSORS , avoiding RAW_DATA_TRAFFIC to THE_CLOUD . 2020 ieee .
+ORLD through THE_DATA to create A_SUSTAINABLE_FOOD for OUR_COLLECTIVE_FUTURE . 2020 ieee .
+RALL_ACCURACY of 99.95 % without QUANTIZATION and 99.85 % after QUANTIZATION . 2020 ieee .
+FRAMEWORK across DIFFERENT_APPLICATION_DOMAINS and TYPES of EDGE_IOT_DEVICES . 2020 ieee .
+FMAC of 121.3-28.9tops / w from binary to 4bin-4bw-11bout COMPUTE_PRECISIONS . 2020 ieee .
+ready , beyond THE_STATE-of-the-ART_MODELS , within 1 h on GOOGLE_COLAB_CPUS . 2020 ieee .
+E_AIM to prioritize and TRIAGE_COVID-19 PATIENTS in THE_EMERGENCY_DEPARTMENT . 2020 ieee .
+s about 185 kb post-QUANTIZATION and INFERENCE_SPEED is 20 FRAMES per second . 2020 ieee .
+ A_LIFETIME of 535h when LEARNING A_NEW_MINI-BATCH of DATA once every minute . 2011 ieee .
+ECOGNITION and DETECTION of IMAGE-oriented SURVEYING and MAPPING_DRONES . 2000-2011 ieee .
+ , AUTONOMOUS_VEHICLE_PERCEPTION , and ADAPTIVE_TRAFFIC_CONTROL_SYSTEMS . 2000-2011 ieee .
+_SECURITY and COMPUTATIONAL_CONSTRAINTS in real-WORLD_TCPS ENVIRONMENTS . 2000-2011 ieee .
+ng TO_SAFER_AND_MORE_EFFICIENT_TRANSPORTATION_INFRASTRUCTURE_MANAGEMENT . 2000-2011 ieee .
+rate that the_proposed_method achieves SUPERIOR_EFFICIENCY and ACCURACY . 2000-2011 ieee .
+while df-a excels in COMPUTATIONAL_SYNERGY , STABILITY , and EFFICIENCY . 2000-2011 ieee .
+ORM . our_proposed_model achieves REMARKABLE_RESULTS in INFERENCE_SPEED . 1975-2011 ieee .
+ECURITY_MECHANISMS incurred less than 5 % COMPUTATIONAL_OVERHEAD . IEEE . 1975-2011 ieee .
+, and improve THE_INTERFERENCE_EFFICIENCY and THROUGHPUT of THE_NETWORK . 1975-2011 ieee .
+lts_show_that our_method is more accurate than STATE-of-the-ART_SCHEMES . 1975-2011 ieee .
+AY for SECURE_AND_EFFICIENT_COLLABORATIVE_LEARNING in CONSUMER_NETWORKS . 1975-2011 ieee .
+RE_INNOVATIONS in IOT_EDGE_DEVICES and ENVIRONMENTAL_MONITORING_SYSTEMS . 1975-2011 ieee .
+NCY of 93.21 % in URBAN_USER_RECOMMENDATION and 94.72 % for RURAL_USERS . 1975-2011 ieee .
+COMPRESSION_RATIO and compressing SPEED compared with OTHER_COMPETITORS . 1975-2011 ieee .
+INYML on DIFFERENT_CONSUMER_EDGE_DEVICES_DEMONSTRATES ITS_EFFECTIVENESS . 1975-2011 ieee .
+ENTS of IIOT_DEPLOYMENTS , promising A_MORE_ROBUST_AND_SUSTAINABLE_IIOT . 1975-2011 ieee .
+ANCE of FEDLV is at_least 12 % lower than that of BOTH_FEDAVG and q-ffl . 1975-2011 ieee .
+ 9.24 ms and 0.47 MJ_ENERGY_CONSUMPTION and AN_ACCURACY_IMPROVEMENT of 3.5 % . 2021 ieee .
+E_TYPE and 89 % classifying VEHICLE_SPEED ) and BATTERY_LIFE ( THREE_YEARS ) . 2021 ieee .
+E read scheme [ 1-5 ] and only achieve a low in-w PRECISION ( binary to 4b ) . 2021 ieee .
+NE_PROCESSING_PERFORMANCE has also been observed on GENERAL_PURPOSE_HARDWARE . 2021 ieee .
+d improve VARIOUS_ASPECTS during THE_DESIGN_PHASE of ml-powered IOT_HARDWARE . 2021 ieee .
+ABILITY of our_solution for real-TIME long-term EMBEDDED_EPILEPSY MONITORING . 2021 ieee .
+ THE_DOMAIN of TINYML , BENCHMARKING , and EMERGING_APPLICATIONS for EDGE-AI . 2021 ieee .
+ns ) while consuming ONLY_A_FRACTION of THE_TOTAL_ENERGY in A_TYPICAL_SYSTEM . 2021 ieee .
+ INTERMEDIATE_NODES in THE_CHAIN to obtain THE_FINAL_CLASSIFICATION_DECISION . 2021 ieee .
+d using in VITRO_TESTS , is promising for FUTURE_WEARABLE_ELECTRONIC_DEVICES . 2021 ieee .
+ith THE_MODELS ported by the sklearn-porter , m2cgen , and EMLEARN_LIBRARIES . 2021 ieee .
+E using THESE_TECHNOLOGIES . and ( c ) outline FUTURE_RESEARCH_OPPORTUNITIES . 2021 ieee .
+ reported to THE_BASE_STATION operated by THE_GOVERNING_SECURITY_AUTHORITIES . 2021 ieee .
+_DATA to enable THE_TRAINING of EFFICIENT_AI_MODELS for RESPIRATORY_DISEASES . 2021 ieee .
+rther , A_TINYML_BASED_MODEL is proposed to predict THE_GREEN_SIGNAL_TIMINGS . 2021 ieee .
+ages to produce high-QUALITY_MODELS even under CHALLENGING_LEARNING_SETTINGS . 2021 ieee .
+D provides IMMEDIATE_FEEDBACK to NURSES to assist them with THEIR_CARE_TASKS . 2021 ieee .
+AGE_COMPRESSION is particularly well suited for APPLICATION-SPECIFIC_DOMAINS . 2021 ieee .
+paving THE_WAY for THE_DEVELOPMENT of NEW_PROMISING_SUSTAINABLE_APPLICATIONS . 2021 ieee .
+t OUR_SYSTEM could detect not angry , about to be angry , and ANGRY_EMOTIONS . 2021 ieee .
+HE_CLASSIFIER_MODEL reached SIGNIFICANT_PERFORMANCE in THE_DEFINED_SCENARIOS . 2021 ieee .
+to select and develop A_RELIABLE_AND_EFFICIENT_MODEL in SMALL_DEVICES of IOT . 2021 ieee .
+ATION_AND_GYROSCOPE_SENSORS will be A_GOOD_WAY to detect THE_FALL of ELDERLY . 2021 ieee .
+ as 3.4mw , demonstrating up to 35 days of LIFETIME with A_SINGLE_AA_BATTERY . 2021 ieee .
+formance_of_the proposed SOLUTION and show ITS_EFFECTIVENESS and FEASIBILITY . 2021 ieee .
+L in AFRICA where THE_USE of EMBEDDED_SYSTEMS and AI is still underexploited . 2021 ieee .
+ ITS_DEMAND increases in URBAN_CITIES and DEVELOPING_COUNTRIES in_the_future . 2021 ieee .
+ES of THE_OUTPUT_INDUCTOR and CAPACITOR are 2.28 % and 2.86 % , respectively . 2021 ieee .
+REAT accurately 96.8 % and 96.3 % for TRAINING_AND_TEST_DATASET respectively . 2021 ieee .
+ERIMENTS , with RESPECTIVE_ACCURACY_ENHANCEMENTS of 44.9 % and 22.2 % . IEEE . 2012 ieee .
+TS_SHOWS THE_FEASIBILITY of what is proposed in real-WORLD_PERVASIVE_SYSTEMS . 2012 ieee .
+nearly 97 % and that of GAIT_CLASSIFICATION was also approximately 97 % . 2001-2012 ieee .
+SING_RESULTS in terms of ALGORITHM_ACCURACY and COMPUTATION_PERFORMANCE . 2001-2012 ieee .
+he three-WAY trade-off among ACCURACY , RESOURCE_COST , and POWER_USAGE . 2001-2012 ieee .
+ INDOOR_USE or in A_DYNAMIC_STATE mounted on AN_UNMANNED_AERIAL_VEHICLE . 2001-2012 ieee .
+EVICE , suitable for providing SEPSIS_ONSET_ALERTS at the POINT_OF_CARE . 2001-2012 ieee .
+7 % with a 3.5 % DEGRADATION for the 6-bit ds-CNN_MODEL in THE_KWS_TASK . 2001-2012 ieee .
+ has THE_ADVANTAGE_AND_POTENTIAL_IMPACT to be effective in ANY_SCENARIO . 2001-2012 ieee .
+RLD_PERFORMANCE of our TAG_VERSUS EXISTING_OCEANIC_SENSING_TECHNOLOGIES . 2001-2012 ieee .
+_MODEL that can be deployed on EDGE_DEVICES for real-WORLD_APPLICATIONS . 2001-2012 ieee .
+Y_CORRECTIONS , benefiting PRACTICAL_APPLICATIONS in MULTIPLE_SCENARIOS . 2001-2012 ieee .
+IGITAL_TECHNOLOGY with LEGACY_SYSTEMS for INTELLIGENT_ENERGY_MANAGEMENT . 2001-2012 ieee .
+ performing MULTIPLE_PREDICTIONS using high-RESOLUTION_IMAGES on AN_MCU . 2001-2012 ieee .
+ and UNSOLVED_QUESTIONS demanding CAREFUL_CONSIDERATIONS moving forward . 2001-2012 ieee .
+able REAL-TIME_PERFORMANCE , respectively , equal to 5 and 2 FRAMES / s . 2001-2012 ieee .
+ consumes less than 80 nj per INFERENCE with AN_INFERENCE_TIME of 3.3 s . 2001-2012 ieee .
+S while eliminating THE_NEED to store or transmit SENSITIVE_HEALTH_DATA . 1981-2012 ieee .
+8.7 % OFF-CHIP_ENERGY saved across SEVERAL_NEURAL_NETWORK_ARCHITECTURES . 1981-2012 ieee .
+of TINYML_ACCENTUATES ITS_PERTINENCE across A_BROAD_SPECTRUM of DOMAINS . 1981-2012 ieee .
+STNESS because of THE_USE of THE_INTERPRETER_METHOD on MICROCONTROLLERS . 1981-2012 ieee .
+et , but we also show how they fit into THE_ML_MODEL_MANAGEMENT_PROCESS . 1981-2012 ieee .
+2 TOPS / w for KWS and vwws with 8-/6-/4-bit ACTIVATIONS , respectively . 1981-2012 ieee .
+ARNING_BASED_POINT_CLOUD_PROCESSING_SOLUTIONS on FPGA with A_BIG_MARGIN . 1991-2012 ieee .
+real-TIME_LIDAR-CAMERA_FUSION_DETECTION_FRAMEWORK for EDGE_APPLICATIONS . 1991-2012 ieee .
+Y by 73.9 % and POWER_CONSUMPTION by 15.8 % , compared to THE_BASELINES . 2002-2012 ieee .
+S demonstrated ITS_CAPABILITY to DIAGNOSE_PV_MODULES with GOOD_ACCURACY . 1972-2012 ieee .
+OVEMENT for THE_FUTURE_TINYML_DESIGN for HEALTH_MONITORING_APPLICATIONS . 1982-2012 ieee .
+TIMES_INFERENCE_SPEEDUP , especially under fluctuating POWER_CONDITIONS . 1982-2012 ieee .
+ allowing A_SPEEDUP of up to 8.7 compared to fully updating ALL_WEIGHTS . 1982-2012 ieee .
+y , it provides STRONG_SUPPORT for ONLINE_CONTINUOUS_NONDESTRUCTIVE_SHM . 1963-2012 ieee .
+ng THE_GAP between EDGE_PROCESSING and FINE_GRANULARITY_DATA_EVALUATION . 1963-2012 ieee .
+ly SYSTEM-on-a-CHIP ( SOC ) integrated WEARABLE_SYSTEM for SA_DETECTION . 1963-2012 ieee .
+E-CONSTRAINED_SMART WEARABLE us DEVICES with A_SMALL_NUMBER of CHANNELS . 1963-2012 ieee .
+d NO_MISCLASSIFICATION during THE_DIFFERENT_RADIATION_TESTING_CAMPAIGNS . 1963-2012 ieee .
+ LOPDM provides VALUABLE_GUIDANCE for FUTURE_UBIQUITOUS_AI_APPLICATIONS . 1963-2012 ieee .
+ BOTH_DIAGNOSTIC_ACCURACY and REAL-TIME_PERFORMANCE in SHM_APPLICATIONS . 1963-2012 ieee .
+NTOMOLOGICAL_MONITORING_MODEL to a proactive and PREDICTIVE_DIGITAL one . 1963-2012 ieee .
+LoWing_repositorY : https://github.com/humanmachineinterface/gest-infer . 1963-2012 ieee .
+PUT of 320 gops and A_PEAK_ENERGY_EFFICIENCY of 578 TOPS / w at 136 mhz . 1993-2012 ieee .
+DESIGN into THE_CMOS_CIRCUITRY closely coupled with THE_MEMS_MICROPHONE . 2004-2012 ieee .
+SULTS show 1.8x to 2.9x INFERENCE speedup over A_BASELINE_CIM_PROCESSOR . 2004-2012 ieee .
+ER_EXPERIENCE and save POWER_BUDGET in RESOURCE-CONSTRAINED_IOT_DEVICES . 2004-2012 ieee .
+SCENARIOS and to greatly expand THE_SCOPE of DEEP_LEARNING_APPLICATIONS . 2004-2012 ieee .
+acY_impRoVement concerning anY_otheR_publisheD_solution for mcu_DeVices . 2004-2012 ieee .
+_Demo_viDeo is available on https://www.youtube.com/watch?v=mizpxtj-9ey . 2004-2012 ieee .
+uce PEAK_MEMORY_CONSUMPTION by 2-5 with NEGLIGIBLE_COMPUTATION_OVERHEAD . 2005-2012 ieee .
+mvrms INPUTS while maintaining > 85 % ACCURACY over a 75-db INPUT_RANGE . 1966-2012 ieee .
+table for EDGE_AI_APPLICATIONS with STATE-of-the-ART low-POWER_FEATURES . 1966-2012 ieee .
+THE_PROPOSED_FLASHMAC achieved 3.15 higher normalized ENERGY_EFFICIENCY . 1966-2012 ieee .
+G USE_CASE for MACHINE_MONITORING , THIS_POWER is reduced to below 10 w . 1966-2012 ieee .
+_REQUIREMENTS for accurate and real-TIME_INCREMENTAL_TRAINING-on-DEVICE . 2007-2012 ieee .
+AMETERS ( WEIGHTS and BIASES ) and the remaining for OUTPUT_ACTIVATIONS . 2007-2012 ieee .
+ thereby exploiting THE_FULL_POTENTIAL of INTELLIGENT_SIGNAL_PROCESSING . 1967-2012 ieee .
+f MEMORY_UNITS , then loading and executing on SEVEN_POPULAR_MCU_BOARDS . 1997-2012 ieee .
+PTIVE_TRANSMISSION of AN_ML_MODEL can INCREASE_COMMUNICATION_EFFICIENCY . 1997-2012 ieee .
+mj , ensuring COMPATIBILITY with the NANOSATELLITE_RESOURCE_CONSTRAINTS . 2008-2012 ieee .
+NCE and thus can be used for UBIQUITOUS_WIFI_SENSING_SYSTEM_DEPLOYMENTS . 1998-2012 ieee .
+ 1 ] , LEADING_COMPANIES to produce higher-QUALITY goods at LOWER_COSTS . 1998-2012 ieee .
+ORK_MODELS for COMMERCIAL_EMBEDDED_SYSTEMS with little RUNTIME_OVERHEAD . 2009-2012 ieee .
+ELATIVELY_THE_SAME_INFERENCE_SPEED ( 1.1 ms ) on THE_TARGET_EDGE_DEVICE . 2009-2012 ieee .
+N , at THE_COST of slightly lower-OVERALL_ACCURACY of THE_TINYML_SYSTEM . 2009-2012 ieee .
+OLLERS with 20.44-KB_FLASH_MEMORY and 26.44-KB_RAM without QUANTIZATION . 2009-2012 ieee .
+ENT . VIEW A_VIDEO_DEMONSTRATION of THE_METATINYML_FRAMEWORK at : VIDEO . 2009-2012 ieee .
+NE_LEARNING_APPLICATION_IMPLEMENTATIONS in BATTERY-powered EDGE_DEVICES . 2009-2012 ieee .
+ real-TIME_HUMAN_ACTIVITY_RECOGNITION on DEVICES with LIMITED_RESOURCES . 2009-2012 ieee .
+EIGHT_EDGE_TINYML_MODELS with only 0.5 % 10 % of TOTAL_TRAINING_DATASET . 2009-2012 ieee .
+ on 13 open-sourced DATASETS showing a mean 10.8 % ACCURACY_ENHANCEMENT . 2009-2012 ieee .
+STRAINED_DEVICE with A_MEMORY_USAGE of slightly more than 100 kb of RAM . 1979-2012 ieee .
+PTION for developing TINYML_AND_EDGE_COMPUTING in CYBERPHYSICAL_SYSTEMS . 1999-2012 ieee .
+er every 120 ms , and has an overall subject-independent ACCURACY of 96.43 % . 2022 ieee .
+ms of ACCURACY ( +2 % ) , MEMORY_FOOTPRINT ( +15 % ) , and LATENCY ( +25 % ) . 2022 ieee .
+ART_SENSOR_APPLICATION , INTELLIGENT_MANUFACTURING constituting INDUSTRY 4.0 . 2022 ieee .
+ whereas for THE_AMMONIA_TEST_CASE THE_EVALUATION_METRIC of f1-SCORE is 0.70 . 2022 ieee .
+sing THE_IMPACT of SUCH_IMPLEMENTATION_CHOICE in terms of COSTS and OVERHEAD . 2022 ieee .
+rized into A_COVID_INFECTED_PERSON_COUGH or A_NOISE without COVID_BACKGROUND . 2022 ieee .
+GY_CONSUMPTION , 8.79 % on LATENCY , and 3.93 % on THE_REQUIRED_MEMORY_SPACE . 2022 ieee .
+tilizing TENSORFLOW_LITE to accurately predict co2 using ONLY_GAS_RESISTANCE . 2022 ieee .
+findings_suggest_that MCUS can PLAY A_MUCH_GREATER_ROLE in EDGE_INTELLIGENCE . 2022 ieee .
+s for THE_INTUITIVE_LEARNING of SIGN_LANGUAGES using ARTIFICIAL_INTELLIGENCE . 2022 ieee .
+ ADVANTAGE of THE_BENEFITS_TINYML has to offer over CLOUD-BASED_AI_INFERENCE . 2022 ieee .
+has THE_POTENTIAL to popularize SOCIAL_ROBOTS and THEIR_USE in EVERYDAY_LIFE . 2022 ieee .
+TOR of the max78000 to REACH 53.2 MULTIPLY-ACCUMULATION_OPERATIONS per CYCLE . 2022 ieee .
+VE_DEVICES capable of DETECTING_ALCOHOL and ALERTING THE_DRIVER in real-TIME . 2022 ieee .
+ , 10 to 17 TIMES LESS_MEMORY is required to achieve THE_SAME_RESULT on MAPE . 2022 ieee .
+UIREMENTS and THE_REAL_TIME_CONSTRAINT for A_DEMODULATION with LOW_DATA_RATE . 2022 ieee .
+TIME , PERFORMANCE_ACCURACY , COMPUTATIONAL_COMPLEXITY , and THE_MEMORY_SIZE . 2022 ieee .
+s deployed on a low-POWER single-BOARD_COMPUTER for real-TIME_NOISE_CLEANING . 2022 ieee .
+ed through RPI_CAMERA thus demonstrating LEARNING through PHYSICAL_COMPUTING . 2022 ieee .
+ONAL_AND_TECHNOLOGICAL_CONSTRAINTS are relevant in THE_NEURAL_NETWORK_SEARCH . 2022 ieee .
+T in a semi-AUTONOMOUS_ENVIRONMENT to predict THE_LEAF_AREA and PLANT_GROWTH . 2022 ieee .
+hen be sent via BLE to ANOTHER_DEVICE , such as A_SMARTPHONE of RASPBERRY_PI . 2022 ieee .
+LS providing ADEQUATE_OPTIMIZED_OPERATORS adapted to THIS_NEW_SYNAPTIC_MODEL . 2022 ieee .
+NT_PLANETS ' LANDING_SITE_DATA that can be exploited for FUTURE_SPACE_TRAVEL . 2022 ieee .
+MAP for UNDERSTANDING THE_LITERATURE within THE_NEW_EMERGING_FIELD of TINYML . 2022 ieee .
+ded by THE_UAV which examines THE_CONSTRAINTS and APPLICATIONS of THE_SYSTEM . 2022 ieee .
+ of a TINY low-POWER_END-to-END_NEURAL_NETWORK-based KEYWORD_SPOTTING_SYSTEM . 2022 ieee .
+SOME_CHALLENGES that limit TINY-ml APPLICABILITY in THE_ENVIRONMENTAL_DOMAIN . 2022 ieee .
+ TENSORFLOW and THE_MODEL with THE_BEST_ACCURACY has been used for DETECTION . 2022 ieee .
+SENCE_DETECTION and on a real-WORLD_APPLICATION of in-CAR_PRESENCE_DETECTION . 2022 ieee .
+n achieving over 10 % HIGHER_ACCURACY on ML_TASKS and over 6 POWER_REDUCTION . 2022 ieee .
+ROPOSED_SYSTEM has been found to achieve almost 97 % ACCURACY of RECOGNITION . 2022 ieee .
+SH_MEMORY that can run for 48 days on BATTERY without ANY_HUMAN_INTERVENTION . 2022 ieee .
+ICATIONS since MANY_SVSS provide BOTH_IMAGE_FORMATS at LOW_POWER_CONSUMPTION . 2022 ieee .
+UCES_ENERGY_CONSUMPTION by up to 23 % compared to A_FULLY_NEVERMIND_SOLUTION . 2022 ieee .
+ THE_TWO_ENTRANCE_DIRECTIONS of A_PRESENT_PERSON and THE_ABSENCE of A_PERSON . 2022 ieee .
+ION , THE_EXISTING_SYSTEMS , and THE_PROPOSED_SYSTEM using RASPBERRY_PI_PICO . 2022 ieee .
+ted METHODOLOGY could be generalized to TARGETS such as CPUS , GPUS or FPGAS . 2022 ieee .
+of MEMORY_UNITS , then loading and executing on 7 POPULAR_ARDUINO_IOT_BOARDS . 2022 ieee .
+is highly STORAGE conservative and more suitable for TINY , EMBEDDED_DEVICES . 2022 ieee .
+nstrate THE_EFFECTIVENESS and FEASIBILITY of TINY_ML for HAR in EDGE_DEVICES . 2022 ieee .
+L_ARCHITECTURE_SEARCH ( NAS ) and CNN_INFERENCE_OPTIMIZATION on EDGE_DEVICES . 2022 ieee .
+o run ARTIFICIAL_INTELLIGENCE_ALGORITHMS directly on MICROCONTROLLER_DEVICES . 2022 ieee .
+ THE_CLOUD to THE_EDGE and DEVICE_COMPUTING for THE_INTELLIGENT_IOT_SERVICES . 2022 ieee .
+he REAL-TIME_PREDICTION of RUL in THE_EMBEDDED_SYSTEM with LIMITED_RESOURCES . 2022 ieee .
+OPOSAL has A_BETTER_PERFORMANCE reducing THE_ERRORS from PREVIOUS_APPROACHES . 2022 ieee .
+of MASKED_FACE_RECOGNITION compared to the other STATE-of-the-ART_APPROACHES . 2022 ieee .
+upporting TARGETED_PREVENTIVE_MAINTENANCE , and optimizing PRODUCTION_CYCLES . 2022 ieee .
+GNITION achieves A_VERY_HIGH_ACCURACY of over 96 % over 6 DIFFERENT_GESTURES . 2022 ieee .
+EL is that it is designed with TINYML for IMPLEMENTATION on EMBEDDED_SYSTEMS . 2022 ieee .
+provides A_CANDIDATE_SOLUTION for ECG_CLASSIFICATION in THE_EMBEDDED_SYSTEMS . 2022 ieee .
+TS with respect to THE_ORIGINAL_MODELS for UNCONSTRAINED_COMPUTING_PLATFORMS . 2022 ieee .
+s , which is A_VERY_PROMISING_RESULT for real-TIME_LOCALIZATION APPLICATIONS . 2022 ieee .
+, increasing ACCURACY by more than 10 % with respect to IMU ONLY_ESTIMATIONS . 2022 ieee .
+VERY_RATIO are then analyzed in A_SIMULATOR with DIFFERENT_NETWORK_SCENARIOS . 2022 ieee .
+e then STUDY THE_ENERGY_CONSUMPTION of OUR_SYSTEM in DIFFERENT_IOT_SCENARIOS . 2022 ieee .
+HER_RESEARCHERS to run FUTURE_COMPARISONS on NOVEL_LOW_POWER_MICROPROCESSORS . 2022 ieee .
+NTENANCE of A_HYDRAULICS_SYSTEM with VARIOUS_NETWORKED_SENSORS and ACTUATORS . 2022 ieee .
+83 % is obtained for the emo-db DATASET and 96.63 % for THE_RAVDESS_DATASETS . 2022 ieee .
+ODE-red server was used to TEST and display THE_DIFFERENT_PREDICTION_RESULTS . 2022 ieee .
+he former achieved A_TINY_MEMORY suitable for THE_MICROCONTROLLER_DEPLOYMENT . 2022 ieee .
+_MULTITUDE of OPTIMIZATION that TARGETS_MEMORY and / or PROCESSING_FOOTPRINT . 2022 ieee .
+DESIGN that can achieve SIMILAR_HIGH_PERFORMANCE to CURRENT_STATE-of the-ART . 2022 ieee .
+HM , THE_MICROCONTROLLER_PROCESSING_TIME is not affected in A_MEANINGFUL_WAY . 2022 ieee .
+ 27 % respectively compared to a LAYER-WISE_APPROACH , for THE_SAME_ACCURACY . 2022 ieee .
+for improving QUALITY_OF_LIFE or USER_EXPERIENCE without sacrificing PRIVACY . 2022 ieee .
+OBUSTNESS , ACCESSIBILITY , RELIABILITY , SECURITY , as well as DATA_PRIVACY . 2022 ieee .
+GNITION with LOW_COST , strong ANTI-INTERFERENCE_CAPABILITY and GOOD_PRIVACY . 2022 ieee .
+ml ) SOLUTIONS which offer LOW_LATENCY , AUTONOMY and HIGH_ENERGY_EFFICIENCY . 2022 ieee .
+_NANO 33 BLE_SENSE at LOW_POWER_CONSUMPTION and with LOW_INFERENCING_LATENCY . 2022 ieee .
+ to A_LARGER_MEMORY_BUDGET and adapting A_MODEL to NEW_DATA in LOWER_LATENCY . 2022 ieee .
+also demonstrate THE_VIABILITY of THESE_APPROACHES using A_SIMPLE_CASE_STUDY . 2022 ieee .
+ as protecting A_MODEL ' s INTELLECTUAL_PROPERTY and verifying ITS_INTEGRITY . 2022 ieee .
+IONS and TAGS using BLE and THE_IBEACON_PROTOCOL were designed and developed . 2022 ieee .
+rted into DEVICES with EXTERNAL_MEMORY . IMPLEMENTATION_ISSUES are discussed . 2022 ieee .
+TS of THE_PROJECT related to THE_SPEECH-controlled SYSTEM are also discussed . 2022 ieee .
+f ELEVEN_GYM_WORKOUTS collected from TEN_SUBJECTS that is publicly available . 2022 ieee .
+kable considering that THE_MODELS under STUDY are extremely LIGHT and simple . 2022 ieee .
+Y-powered SONY_SPRESENSE_PLATFORM , which FEATURES a six-CORE_ARM_CORTEX-m4f . 2022 ieee .
+nsiderably while maintaining THE_ALMOST_SAME_MEMORY_USAGE as that of b-dcgan . 2022 ieee .
+HE_PRE-TRAINED_MODEL in_order_to INCREASE THE_OVERALL_PRECISION even further . 2022 ieee .
+ml_moDEls easier for physicAl_computinG_stuDEnts and tinkErErs at All_lEVEls . 2022 ieee .
+NCY of A_MODEL in THE_NETWORK_ARCHITECTURE_SEARCH_PROCESS for AI enabled cps . 2022 ieee .
+rforming THE_STATE-of-the-ART in SILICON-proven TINYML_ACCELERATORS by 1.67x . 2022 ieee .
+RACY of 90.1 % and 91.6 % on THE_ON_CIFAR-10 and MNIST_DATASETS respectively . 2022 ieee .
+_PICO_MODEL were 1 . 912ms , 12.579ms , 2 . 263ms and 2 . 264ms respectively . 2022 ieee .
+UALITY_PSNRAVG of 41.35 db , psnr of 30.94 db , and OUTPUT_FRAME_RATE of 5.2 . 2013 ieee .
+L_THESE_CLASSIFIERS , THE_OBTAINED_SPEEDUP compared to the stm32 is 8.3-14.9 . 2013 ieee .
+mmercial off-the-SHELF_IOT_HARDWARE and a well-known OPEN-ACCESS_IOT TESTBED . 2013 ieee .
+rlining THE_IMPORTANCE of STABLE_CONNECTIVITY for OPTIMAL_SYSTEM_PERFORMANCE . 2013 ieee .
+TINYML and THE_SYNERGY of RESOURCE-CONSTRAINED_DEVICES and EDGE_INTELLIGENCE . 2013 ieee .
+ANAGEMENT , ushering in A_NEW_ERA of CROP_PROTECTION and ECONOMIC_RESILIENCE . 2013 ieee .
+APA_REDDY , HARVARD_UNIVERSITY , usa - EVGENI_GOUSEV , QUALCOMM , usa . IEEE . 2013 ieee .
+HE_REFERENCE_MODELS optimized for EDGE_DEVICES in terms of INFERENCE_RUNTIME . 2013 ieee .
+RRENT_DIFFICULTY of THE_DATA_STREAM and bring BENEFITS in THE_INFERENCE_TIME . 2013 ieee .
+_LOSS due_to WEIGHT_QUANTIZATION with AN_INCREASE of THE_NEURAL_NETWORK_SIZE . 2013 ieee .
+st , ml-enabled MAGNETOMETER_SYSTEMS for real-TIME_SPACE WEATHER_FORECASTING . 2013 ieee .
+USTAINABLE_FUTURE powered by ACCURATE_AND_EFFICIENT_SOLAR_ENERGY_FORECASTING . 2013 ieee .
+rior ACCURACY on STATE-of-the-ART_HAND-tuned DEEP_NEURAL_NETWORKS for TINYML . 2013 ieee .
+ and PRACTICABILITY of OUR_EMBEDDED_SYSTEM for real-TIME_EMOTION_RECOGNITION . 2013 ieee .
+xecuted on RESOURCE-LIMITED_HARDWARE while maintaining LOW_POWER_CONSUMPTION . 2013 ieee .
+an be applied to DIFFERENT_IMAGE_SIZES by modifying THE_PRE-PROCESSING_LAYER . 2013 ieee .
+ to DIFFERENT_INDUSTRIAL_SETTINGS and for SCALE-up to WIDER_MONITORED_SPACES . 2013 ieee .
+ABILITY for real-TIME , accurate , and PRIVACY-conscious HAR on EDGE_DEVICES . 2013 ieee .
+of TINYML in transforming THE_INTERACTION between HUMANS and DIGITAL_DEVICES . 2013 ieee .
+r_solution enables low-POWER , low-LATENCY_INFERENCE of mp-qnns on IOT_NODES . 2013 ieee .
+embedding MACHINE_LEARNING_MODELS on MCUS , focusing_on HEALTHCARE_WEARABLES . 2013 ieee .
+ECTURE_IOT_MALWARE DATASET that includes BOTH_MALWARE_AND_BENIGNWARE_SAMPLES . 2013 ieee .
+strating INCREASED_EFFECTIVENESS and ACCURACY in predicting VARIOUS_DISEASES . 2013 ieee .
+R_APPLICATIONS in secure , PRIVACY-PRESERVING_MEDICAL_DATA_SECURITY_ANALYSIS . 2013 ieee .
+STRAINTS are essential for PRACTICAL_DEPLOYMENT in EMBEDDED_LEARNING_SYSTEMS . 2013 ieee .
+RS in DESIGNING scalable , resilient , and ethically grounded TINYML_SYSTEMS . 2013 ieee .
+DISTRIBUTED_INTELLIGENCE on COMMUNICATION- and COMPUTE-limited IOT_PLATFORMS . 2013 ieee .
+dvancing TECHNOLOGY in PDM_FRAMEWORKS for real-WORLD_INDUSTRIAL_APPLICATIONS . 2013 ieee .
+DGE_APPLICATIONS . finally , we_discuss THE_CHALLENGES and FUTURE_DIRECTIONS . 2013 ieee .
+tended to EDGE-aware APPLICATIONS of EQUIPMENT such as AUTOMOBILES and SHIPS . 2013 ieee .
+it significantly DECREASES_RESIDUAL_VARIANCE during TASK_ENERGY_MEASUREMENTS . 2013 ieee .
+_PI_GPU to run A_HEAD_POSE_ESTIMATION_ALGORITHM to boost THE_SYSTEM_ACCURACY . 2013 ieee .
+STEM used for THE_PREDICTION can be AN_INDICATOR of REDUCED_PLANT_EFFICIENCY . 2013 ieee .
+ THE_TMLAAS_ARCHITECTURE has been demonstrated with_the_help_of A_CASE_STUDY . 2013 ieee .
+UES of FUTURE_RESEARCH to SCALE and improve THE_APPLICATION of TINYML to pdm . 2013 ieee .
+ETER OPTIMIZATION_TECHNIQUES on BOTH_DNNS and DATASETS studied in_this_paper . 2013 ieee .
+AMEWORK occupies 3.62 % of THE_MEMORY_SPACE and THE_EXTRACTION_TIME is 328ms . 2013 ieee .
+-VIJAY_JANAPA_REDDY , HARVARD_UNIVERSITY , usa -EVGENI_GOUSEV , QUALCOMM , usa 2013 ieee .
+-VIJAY_JANAPA_REDDY , HARVARD_UNIVERSITY , usa -EVGENI_GOUSEV , QUALCOMM , usa 2013 ieee .
+-VIJAY_JANAPA_REDDY , HARVARD_UNIVERSITY , usa -EVGENI_GOUSEV , QUALCOMM , usa 2013 ieee .
+UAV_TOTAL_ENERGY_BUDGET , with AN_ACCURACY of 93.5 % and PRECISION of 94.0 % . 2023 ieee .
+SED_FAULT_DIAGNOSIS_FRAMEWORK can reduce THE_EDGE_LOAD by approximately 94 % . 2023 ieee .
+connected to it via A_RELAY . THE_ACCURACY of THE_SYSTEM is found to be 97 % . 2023 ieee .
+from PIG_VOCALS generated THE_BEST_RESULTS , with A_MAXIMUM_ACCURACY of 99 % . 2023 ieee .
+MISING_SOLUTION to THE_UBIQUITOUS_ARTIFICIAL_INTELLIGENCE of THINGS ( AIOT ) . 2023 ieee .
+ess than 300mw , working at more than 15fps with AN_FID_SCORE lower than 150 . 2023 ieee .
+ATIONS , including CHARACTER_RECOGNITION from a davis240c EVENT-BASED_CAMERA . 2023 ieee .
+R_OF_DATA partitions used for generating THE_DISTRIBUTED_LOCAL_TRAINING_DATA . 2023 ieee .
+S within THE_MCU : the compile-based METHOD and the interpreter-based METHOD . 2023 ieee .
+_FACTORS are evaluated to guide THE_IMPLEMENTATION of FEDTINYAUG in PRACTICE . 2023 ieee .
+TOMATED_FASHION using VIZIER , an open-SOURCE black-box OPTIMIZATION_SERVICE . 2023 ieee .
+PPROACH to ensure that APPLICATIONS meet THE_ENERGY-ACCURACY-LATENCY_BALANCE . 2023 ieee .
+st two FACTORS compared with BASELINE_ALGORITHMS with COMPARABLE_PERFORMANCE . 2023 ieee .
+, achieving a 70 % REDUCTION in ENERGY_REQUIREMENTS with SIMILAR_PERFORMANCE . 2023 ieee .
+OWER_CONSUMPTION and PARALLEL_COMPUTING_CAPABILITIES that SPEED_UP_INFERENCE . 2023 ieee .
+CONTOURS of HUMAN-TECHNOLOGY_INTERACTION impacting everyone in EVERYDAY_LIFE . 2023 ieee .
+ CROPS to make PREDICTIONS and make INTELLIGENT_DECISIONS toward WATER_USAGE . 2023 ieee .
+_OPERATION over MULTIPLE_DAYS ( up to 300 HOURS ) without requiring RECHARGE . 2023 ieee .
+rforms better with A_WINDOW_SIZE of ONE_SECOND with 590.96 us INFERENCE_TIME . 2023 ieee .
+MUNICATION_ENERGY saving in both tx / rx HARDWARE_DEVICES and INFRASTRUCTURE . 2023 ieee .
+ING and EVALUATION , as well as POTENTIAL_RESEARCH_DIRECTIONS for THE_FUTURE . 2023 ieee .
+ to BLOCK_SPECTRAL_FEATURES delivers THE_HIGHEST_ACCURACY with a 96.3 % RATE . 2023 ieee .
+DBACK_SYSTEM is appropriately designed for MORE_EFFECTIVE_COGNITIVE_TRAINING . 2023 ieee .
+ith THE_PEAK_POWER_EFFICIENCY of 102.34 gop / s/w at 75 mhz and 75 % PRUNING . 2023 ieee .
+TIONS such as SPEAKER_VERIFICATION , SPEECH_DETECTION , and KEYWORD_SPOTTING . 2023 ieee .
+Y , EFFICIENCY , and TECHNOLOGICAL_PROGRESS in predicting E-BIKE_BATTERY SOH . 2023 ieee .
+vides A_VALUABLE_REFERENCE for realizing PERVASIVE_SENSING and UBIQUITOUS_AI . 2023 ieee .
+MOVAL of TRASH accumulated beneath , with THE_ADDED_BENEFIT of removing MUCK . 2023 ieee .
+RIMENTATION and DEVELOPMENT of arspi-net as A_HYBRID_DEEP_LEARNING_FRAMEWORK . 2023 ieee .
+HE_TFLITE_MODEL is then compared to THE_INFERENCE_TIME of THE_ORIGINAL_MODEL . 2023 ieee .
+AL_AREA is only 2.03 ~mm2 while integrating 433 ~KB_SRAM and 32 ~kb IMC_SRAM . 2023 ieee .
+CTIVE_INENABLING_CUSTOMIZED_SOLUTIONS for a RESOURCE-limited TARGET_PLATFORM . 2023 ieee .
+p to 38.23 % in INFERENCE while maintaining THE_PERFORMANCE of OOD_DETECTION . 2023 ieee .
+STEM_ABILITY to provide RELIABLE and COST-effective fire and SMOKE_DETECTION . 2023 ieee .
+ng out as the quickest and most ENERGY-EFFICIENT_MODEL for POTHOLE_DETECTION . 2023 ieee .
+ developed to_demonstrate COMPARABLE_PREDICTION_ACCURACY with SIZE_REDUCTION . 2023 ieee .
+olicy and self-greedy policy in CONSIDERATION of TIME and ENERGY_CONSUMPTION . 2023 ieee .
+between DETECTION_PERFORMANCE , LOW_LATENCY , and MINIMAL_MEMORY_CONSUMPTION . 2023 ieee .
+OR_ACCURACY and DRIFT as well as capture THE_SPATIAL_DISPERSION of POLLUTION . 2023 ieee .
+ION-MAKING through a compact , LOW-COST , and low-POWER_CONSUMPTION_SOLUTION . 2023 ieee .
+sed_approach for optimizing DATA_PROCESSING with MINIMAL_COMPUTATIONAL_POWER . 2023 ieee .
+ICANT_IMPLICATIONS for HEALTHCARE in UNDERSERVED_COMMUNITIES and RURAL_AREAS . 2023 ieee .
+ESIGN for DEPLOYMENT on VARIOUS_TINYML or EDGEAI_PLATFORMS , including FPGAS . 2023 ieee .
+ESIGN for DEPLOYMENT on VARIOUS_TINYML or EDGEAI_PLATFORMS , including FPGAS . 2023 ieee .
+LY_EXIT_SOLUTIONS paving THE_WAY for A_NEW_ERA in THE_PROMINENT_FIELD of NAS . 2023 ieee .
+_AND_BANDWIDTH_ISSUES becoming OUTSTANDING_METHODS for real-TIME_DIAGNOSTICS . 2023 ieee .
+ENT_DETECTION , aiming for sustainable and high-YIELD_AGRICULTURAL_PRACTICES . 2023 ieee .
+ORS to enhance THE_ACCURACY of ch4 DETECTION using LOW_POWER_IOT_END_DEVICES . 2023 ieee .
+ANCE of this_study for optimizing DATA_TRANSMISSION in low-POWER_IOT_DEVICES . 2023 ieee .
+t-of-LABORATORY_RESEARCH on LIMB_PROSTHETICS as well as PRE-CLINICAL_STUDIES . 2023 ieee .
+A_TINY_ML_MODEL to DETECT_SUAS through visual , AUDIO , and RADAR_MODALITIES . 2023 ieee .
+AL_MAZE_PROTOTYPE with VARIABLE_NUMBERS of REPOSITIONABLE_WALLS across GAMES . 2023 ieee .
+ARE_TECHNOLOGY , enabling TIMELY_INTERVENTIONS and improved PATIENT_OUTCOMES . 2023 ieee .
+th SIGNIFICANT_ENERGY and EDP_IMPROVEMENTS for a diverse of TINYML_USE_CASES . 2023 ieee .
+and HEALTHCARE_FACILITIES and enable EARLY_DETECTION of RESPIRATORY_DISEASES . 2023 ieee .
+IMAGING_SYSTEMS for MEDICAL_DIAGNOSTIC_APPLICATIONS in LOW-RESOURCE_SETTINGS . 2023 ieee .
+ARE_RESOURCE- CONSTRAINED_ENVIRONMENTS , promising IMPROVED_CANCER_DIAGNOSIS . 2023 ieee .
+OLUTION for enhancing GENERALIZATION in DATA-limited TRANSFER_LEARNING_TASKS . 2023 ieee .
+ GREAT_CONVENIENCE for INDIVIDUALS in THEIR_DAILY_WASTE_CLASSIFICATION_TASKS . 2023 ieee .
+DVANCED_AND_EXPENSIVE_DEVICES for DETECTION of SLEEP_APNEA using ECG_SIGNALS . 2023 ieee .
+CED_AND_EXPENSIVE_DEVICES for THE_DETECTION of SLEEP_APNEA using ECG_SIGNALS . 2023 ieee .
+DG ) will also be discussed along with our_contribution to some_of_the GOALS . 2023 ieee .
+mating SOME_ADMINISTRATIVE_ACTIVITIES and offers A_FUN_WAY to EDUCATE_PUPILS . 2023 ieee .
+ES_TRAINING_VALUES such as ACCURACY and LOSS given VARIOUS_FEDAVG_ALGORITHMS . 2023 ieee .
+or optimizing MODELS for RESOURCE-LIMITED_DEVICES in real-WORLD_APPLICATIONS . 2023 ieee .
+TATIONAL_COST , which makes it a PERFECT_OPTION for EDGE_DEVICE_APPLICATIONS . 2023 ieee .
+bles MACHINE_LEARNING in real-TIME_STRUCTURAL_HEALTH_MONITORING_APPLICATIONS . 2023 ieee .
+W-COST and low-POWER_HUMAN_ACTIVITY_RECOGNITION_SYSTEMS for IOT_APPLICATIONS . 2023 ieee .
+OMPOSITE_SANDWICH_STRUCTURE ( hcss ) in PRESENCE of LARGE_THERMAL_VARIATIONS . 2023 ieee .
+ORLD_PROBLEM by potentially reducing ACCIDENTS caused by DRIVER_DISTRACTIONS . 2023 ieee .
+ALYZES of PATIENT_DATA in_order_to deliver PERSONALIZED_HEALTHCARE_SOLUTIONS . 2023 ieee .
+ABLE_SYSTEMS that do not invade or restrict MOBILITY and ACTIVITIES of USERS . 2023 ieee .
+implement in AN_IOT_HARDWARE_SYSTEM , reducing THE_COST of EXPENSIVE_SENSORS . 2023 ieee .
+LER is still appropriate and effective for extremely low-RESOURCE_PROCESSORS . 2023 ieee .
+POSES using TINYML and compared with MANY_ALGORITHMS and THEIR_EFFECTIVENESS . 2023 ieee .
+d by A_SOFTMAX_CLASSIFIER trained with BACKPROPAGATION on ALL_THESE_DATASETS . 2023 ieee .
+WARE_IMPLEMENTATION_RESULTS show SUCCESSFUL_INFERENCE for HANDWRITTEN_DIGITS . 2023 ieee .
+m , and should be considered as A_VIABLE_SOLUTION for FUTURE_IOT_DEPLOYMENTS . 2023 ieee .
+YML_SYSTEMS as ALL_DATA is processed locally within A_SERVERLESS_ENVIRONMENT . 2023 ieee .
+NTATION is shown , reveling INTERESTING_INSIGHTS toward ITS_FULL_DEVELOPMENT . 2023 ieee .
+ORY_AI_ACCELERATORS , at 120x IMPROVED_PERFORMANCE over PLAIN_TVM_DEPLOYMENT . 2023 ieee .
+ad capable of providing A_CLASSIFICATION as soon as it receives A_DATA_POINT . 2023 ieee .
+ , as well as a 2.1 TIMES_REDUCTION in THE_REQUIRED_STORAGE_MEMORY_FOOTPRINT . 2023 ieee .
+ERVASIVE_SMART_SENSING and , thus , contributes to THE_BRIGHT_FUTURE of AIOT . 2023 ieee .
+3 . 30ghz equipped with 16 gb of RAM and 512 gb of SSD , without using A_GPU . 2023 ieee .
+( INSTRUCTION_SET_ARCHITECTURES ) developed is also presented in THIS_REVIEW . 2023 ieee .
+ is THE_BEST_PERFORMER for THE_CASE_STUDY in terms of STABILITY and ACCURACY . 2023 ieee .
+s and successfully deploy to A_ST_MICROCONTROLLER while maintaining ACCURACY . 2023 ieee .
+ART_METHODS in terms of CLASSIFICATION_ACCURACY and COMPUTATIONAL_EFFICIENCY . 2023 ieee .
+Y_CONSTRAINT while maximizing MODEL_ACCURACY and improving ENERGY_EFFICIENCY . 2023 ieee .
+POWER_ERROR_PRODUCT ( pep ) at THE_COST of 2.6x increased THROUGHPUT_LATENCY . 2023 ieee .
+h EMBEDDED_ML_TECHNIQUES , expanding THE_LITERATURE on SMART_HOME_TECHNOLOGY . 2023 ieee .
+M consumes only 16 mw and enables MULTI-DAY_OPERATION with a 320 MAH_BATTERY . 2023 ieee .
+of ONGOING_COMMUNICATION , resulting_in IMPROVED_PERFORMANCE and RELIABILITY . 2023 ieee .
+NARRATION_MODEL is employed in THE_SERVER and requires INTERNET_CONNECTIVITY . 2023 ieee .
+M , allowing real-TIME updates to be viewed remotely and easily comprehended . 2023 ieee .
+tlined , and A_SUMMARY of THE_MOST_RECENT_TINYML_APPS and SYSTEMS is offered . 2023 ieee .
+AL_OPEN_RESEARCH_CHALLENGES that DEMAND_CAREFUL_CONSIDERATION moving forward . 2023 ieee .
+ERENCE by A_FACTOR of 20 , with A_SPEEDUP in LATENCY of up to 1.7 on average . 2023 ieee .
+onstrating STML_REDUCES 40 % of MODEL_PROTECTION_RUNTIME_OVERHEAD on average . 2023 ieee .
+OW ' s 'TINY ' MODEL . THE_SCOPE of TINYML should evolve and adapt over_time . 2023 ieee .
+ICIENT_TINYML_SYSTEMS , pushing THE_BOUNDARIES of EDGE_AI faster than before . 2023 ieee .
+ERENCE_TIME of 12 ms , in 126kib FLASH and 45 KIB_RAM being 91.65 % accurate . 2023 ieee .
+e to correctly recognize 92 % of THE_FINGER_NUMBER_GESTURES from one to five . 2023 ieee .
+ature set and THE_EFFECTIVENESS of the_proposed_model in a real-TIME setting . 2023 ieee .
+ with only 70 ms of LATENCY and OVERALL_POWER_CONSUMPTION of less than 10 mj . 2023 ieee .
+RENCE_TIME of 34 ms , and AN_ENERGY_CONSUMPTION during INFERENCE of 3.685 mj . 2023 ieee .
+EN_SCIENCE for data_collection and ANALYSIS is described in the_current_work . 2023 ieee .
+00 ' S_CNN_ACCELERATOR . PERFORMANCE_EVALUATIONS are presented in_this_paper . 2023 ieee .
+n synthesized with 40 NM_TECHNOLOGY and compared with STATE-of-the-ART works . 2023 ieee .
+S of 0.8 with both of THE_MODELS , and with AN_INFERENCE_TIME less than 1 ms . 2023 ieee .
+E THE_COURSE_WORKLOAD for MORE_SIGNIFICANT_CHANGES in STUDENTS ' perceptions . 2023 ieee .
+SING_SOLUTION for THE_DEVELOPMENT of THE_NEXT_GENERATION of SHM-oriented its . 2023 ieee .
+nn . from this , THE_PERFORMANCE_DECREASE in PDTINYML is not too significant . 2023 ieee .
+N_ACCURACY of 77 % for TEST_SAMPLES and consumes AN_AVERAGE_POWER of 85.1 mw . 2023 ieee .
+and ANALYSIS to produce EDGE_MACHINE_LEARNING_MODELS for DOS_ATTACK_MITIGATION 2023 ieee .
+significantly decreases THE_LABELING_EFFORT required from 28.06 % to 65.47 % . 2014 ieee .
+RS and PRACTITIONERS in harnessing THE_CAPABILITIES of TINYML to ADVANCE_HBA . 2014 ieee .
+EMENTS , and the_results have fully proved THE_FAVORABLE_SUPERIORITY of ASAC . 2014 ieee .
+ing THE_EFFICIENCY of the noma-based APPROACH for enhanced c-v2x PERFORMANCE . 2014 ieee .
+ of RDD_SYSTEMS , thereby improving PASSENGER_SAFETY and OVERALL_PERFORMANCE . 2014 ieee .
+FICATION , while significantly accelerating INFERENCE_EFFICIENCY at THE_EDGE . 2014 ieee .
+G , with POTENTIAL in AFFECTIVE_COMPUTING and PERSONALIZED_MENTAL_HEALTHCARE . 2014 ieee .
+NEEDS to be considered while reducing THE_COMPUTATIONAL_COST of DNN_TRAINING . 2014 ieee .
+CIENCY in creating ENERGY-saving paths for LAUS in THE_INTEGRATED_AC_NETWORK . 2014 ieee .
+ECTION for NETWORKS and offers A_PROACTIVE_SECURITY_SOLUTION at THE_AP_LEVEL . 2014 ieee .
+ THE_EFFICIENCY of THE_PROPOSED_ALGORITHM compared to THE_BASELINE_ALGORITHM . 2014 ieee .
+gle-CORE_IMPLEMENTATION on CORTEX-m4 for continuous REAL-TIME_CLASSIFICATION . 2014 ieee .
+SUBREGIONS , minimize THE_NUMBER of UAV_TURNS , and LOWER_ENERGY_CONSUMPTION . 2014 ieee .
+effectively reduces THE_ENERGY_CONSUMPTION of UAVS compared to OTHER_METHODS . 2014 ieee .
+STRATEGY of maximizing SUCCESSFUL_OFFLOADING_PROBABILITY has MORE_ADVANTAGES . 2014 ieee .
+d 1.4 faster LATENCY compared to STATE-of-the-ART_INTERNAL_MEMORY_APPROACHES . 2014 ieee .
+ATION_ENERGY_REDUCTION compared with REPRESENTATIVE_SYNCHRONIZATION_POLICIES . 2014 ieee .
+near THE_DATA_SOURCES , thereby reducing NETWORK_LATENCY_AND_SECURITY_ISSUES . 2014 ieee .
+NTS in USER_INTERFACES , HEALTH_DIAGNOSTICS , and HANDS-free CONTROL_SYSTEMS . 2014 ieee .
+THE_SUITABILITY of SECUREQNN for mission-critical and real-TIME_APPLICATIONS . 2014 ieee .
+RONMENTS , including MOBILE , WEARABLE , and INTERNET_OF_THINGS_APPLICATIONS . 2014 ieee .
+EFFICIENCY , and addressing THE_CHALLENGES posed by DYNAMIC_IOT_ENVIRONMENTS . 2014 ieee .
+UTATION ultimately enhancing THE_PRACTICAL_TASK_EXECUTION_CAPABILITY of UAVS . 2014 ieee .
+NS , the_proposed_method can effectively ADDRESS_INTRUSION_DETECTION in UAVS . 2014 ieee .
+_TIME , TINYML_EXHIBITS_SUPERIOR_PERFORMANCE without compromising EFFICIENCY . 2014 ieee .
+er , experiencing ONLY_TWO_CRASHES on A_CUMULATIVE_FLIGHT_DISTANCE of 1.7 km . 2014 ieee .
+l-rff METHODS , exhibiting IMPROVEMENTS of 14.16 % and 5.17 % , respectively . 2014 ieee .
+_coDEs and DatasEt are available at https://github.com/ism-ail11/xtiny-fastkan 2014 ieee .
+NMENTAL_STATES . furthermore , OUR_MODEL showcases a 4.5 % INCREASE in SPEED , 2024 ieee .
+IGINAL_MODEL without QUANTIZATION while attaining A_HIGH_ACCURACY of 99.82 % . 2024 ieee .
+SIBLE_TESTING_ACCURACY for this_work using THE_COLLECTED_DATASET was 88.24 % . 2024 ieee .
+achieved AN_ACCURACY of 83 % , with A_PRECISION of 97 % and A_RECALL of 68 % . 2024 ieee .
+ATURATE THE_DEVICE , pointing to FUTURE_DYNAMIC_SAMPLING ( ACTIVE_DELIVERY ) . 2024 ieee .
+_SIZE / total SRAM_AREA ) . it also achieves A_COMPACT_FOOTPRINT of 2.73 mm2 . 2024 ieee .
+was calculated to be 9.664 SECONDS in a simulated arm7 ENVIRONMENT with gem5 . 2024 ieee .
+sistently YIELD confident r2 SCORES , ranging from approximately 0.8 to 0.99 . 2024 ieee .
+est reported for A_PREDICTION_CLASSIFIER by > 134x in POWER and > 5x in AREA . 2024 ieee .
+TION in ENERGY per OPERATION and 3 3 . 3 2 % INCREASE in THROUGHPUT per AREA . 2024 ieee .
+, by ESTIMATING_PROCESSOR_PERFORMANCE , POWER_CONSUMPTION , and SILICON_AREA . 2024 ieee .
+, by ESTIMATING_PROCESSOR_PERFORMANCE , POWER_CONSUMPTION , and SILICON_AREA . 2024 ieee .
+posed_method , and THE_OUTDOOR_TEST was held in THE_SAHARA_REGION of ALGERIA . 2024 ieee .
+HNIQUES for THE_CONVERSION_PROCESS and to compare MODELS with OTHER_CRITERIA . 2024 ieee .
+ offering A_VALUABLE_ADDITION to THE_EXISTING_BODY of KNOWLEDGE in THE_FIELD . 2024 ieee .
+COMPLEX_SYSTEMS , marking A_SUBSTANTIAL_ADVANCEMENT in THE_EMBEDDED_ML_FIELD . 2024 ieee .
+CTIVENESS , paving THE_WAY for FUTURE_RESEARCH_AND_DEVELOPMENT in THIS_FIELD . 2024 ieee .
+GITAL_SAFETY_AND_SECURITY in AN_INCREASINGLY_INTERCONNECTED_INDUSTRIAL_WORLD . 2024 ieee .
+MODELS and BENCHMARK_DATASETS prove the_effectiveness_of_the PROPOSED_METHOD . 2024 ieee .
+formance_of_the TINYML-vae and THE_BENCHMARK established by THE_STANDARD_VAE . 2024 ieee .
+ED_MACHINE_LEARNING and PROMOTES_HEALTH and WELL-BEING through YOGA_PRACTICE . 2024 ieee .
+en to run INFERENCE on THE_HARDWARE-accelerated MICROCONTROLLER-BASED_DEVICE . 2024 ieee .
+ORAGE_MEMORY , MAKING it an OPTIMAL_CHOICE for DEPLOYMENT on OUR_TINY_DEVICE . 2024 ieee .
+f FLASH and 517kib of RAM and consuming 252 mw for a 1s AUDIO clip INFERENCE . 2024 ieee .
+of INFERENCE_TIME , MEMORY_OCCUPATION , and ENERGY_CONSUMPTION per INFERENCE . 2024 ieee .
+in THE_MICRO-CONTROLLER with 103.9 KB_RAM and 850 milliseconds for INFERENCE . 2024 ieee .
+or WEARABLE_HMIS by combining WEARABLE_HD_ACQUISITION and EMBEDDED_INFERENCE . 2024 ieee .
+TION_PROBLEM instead of being CONTRAST-enhanced or converted to BINARY_IMAGE . 2024 ieee .
+LTS include : ( a ) spool stuck ( b ) SPRING_FAILURE and ( c ) under VOLTAGE . 2024 ieee .
+RT_ROUTING-based METHODS without THE_NEED for hosting THE_ROUTER ON_THE_EDGE . 2024 ieee .
+e implemented in THE_EMBEDDED_DEVICE , ON_THE_EDGE , and tested in real-TIME . 2024 ieee .
+ , respectively , at -5 DB_INPUT_SNR and 63 COMPRESSION compared to BASELINE . 2024 ieee .
+TION on SURFACES of CONCRETE_STRUCTURAL_MEMBERS used in CIVIL_INFRASTRUCTURE . 2024 ieee .
+ACCURACY on VARIOUS_DATASETS from THE_UCR_TIME_SERIES_CLASSIFICATION_ARCHIVE . 2024 ieee .
+SED_LIGHTWEIGHT_ARCHITECTURE ( ETINYNET ) for THE_SAME_OR_SMALLER_MODEL_SIZE . 2024 ieee .
+ENERGY_CONSUMPTION and DEPENDANCE on CONNECTED_TOOLCHAINS during PROGRAMMING . 2024 ieee .
+ HEALTHCARE , REHABILITATION , SPORTS , PROSTHETICS , and AUGMENTED_LEARNING . 2024 ieee .
+SIMILAR_EXISTING_MODELS , with BETTER_PERFORMANCE and COMPROMISED_PROCESSING . 2024 ieee .
+I-TARGET_DETECTION , enabling LOW_POWER_CONSUMPTION and REAL-TIME_PROCESSING . 2024 ieee .
+DGE_COMPUTING and INCREMENTAL_ALGORITHMS in real-TIME_DATA_STREAM_PROCESSING . 2024 ieee .
+or capturing DYNAMIC_COMPLEXITIES in the context of TRANSMISSION_LINE_RATING . 2024 ieee .
+STAINABILITY by reducing THE_FREQUENCY accessing CENTRALIZED_CLOUD_COMPUTING . 2024 ieee .
+CIALLY_THOSE that run on DEVICES themselves or LEVERAGE_EDGE / FOG_COMPUTING . 2024 ieee .
+ROCESS . ALL_THE_ABOVE_FACTS confirm THE_BENEFITS of OUR_INNOVATIVE_APPROACH . 2024 ieee .
+ved in real-TIME_SIGN_LANGUAGE_RECOGNITION and THE_NEED for FURTHER_RESEARCH . 2024 ieee .
+f FLASH , while THE_TFLITE_MODEL occupied 3.0 kb of RAM and 34.5 kb of FLASH . 2024 ieee .
+off-the-SHELF_MICRO-CONTROLLER requiring 0.74 mb of RAM and 0.35 mb of FLASH . 2024 ieee .
+ while meeting THE_ACCURACY_REQUIREMENT of 90 % set by MLPERF_TINY_BENCHMARK . 2024 ieee .
+AD , THE_ANN exhibits A_DISTINCT_ADVANTAGE over THE_MORE_INTRICATE_CNN_MODEL . 2024 ieee .
+MPLEXITY while maintaining A_HIGH_ACCURACY of over 98,5 % for THE_BEST_MODEL . 2024 ieee .
+ased a remarkable 97.3 % ACCURACY in pinpointing USERS on the stm32l4 SYSTEM . 2024 ieee .
+ables real-TIME_ANALYSIS for a SUSTAINABLE_BATTERY - based MONITORING_SYSTEM . 2024 ieee .
+ ( 0.35-0.59 s ) PERFORMANCE when implemented on THE_FPGA_COMPUTING_PLATFORM . 2024 ieee .
+w-POWER_FEATURES . keywords : TINYML , POWER_MANAGEMENT , mep , EVENT-DRIVEN . 2024 ieee .
+ING_PROCEDURE makes THE_DIFFERENCE between succeeding or failing THE_MISSION . 2024 ieee .
+and underscore persisting KNOWLEDGE_GAPS that call for FURTHER_INVESTIGATION . 2024 ieee .
+oposed_model also includes CAMERA-BASED_FALL_DETECTION for INDOOR_NAVIGATION . 2024 ieee .
+is 700 lower in POWER_CONSUMPTION compared to TRADITIONAL_GPU_IMPLEMENTATION . 2024 ieee .
+tes significantly to GLOBAL_EFFORTS in ECOSYSTEM_MONITORING and CONSERVATION . 2024 ieee .
+BATTERY_CHARGE is extended from 2 weeks to 8 weeks , almost an ENTIRE_SEASON . 2024 ieee .
+N_FEATURES in THE_SUPPORT_VECTOR_MACHINE_MODEL to COMPLETE_RESULT_COMPARISON . 2024 ieee .
+LOYMENT of SEVERAL_TINYML_DEVICES working together A_MORE_PRACTICAL_SCENARIO . 2024 ieee .
+ed THE_IMPLEMENTATION of a high-SPEED detector on CHEAP_MICROCONTROLLER_CHIP . 2024 ieee .
+TYPE was developed , and THE_MODEL was EMBEDDED in the esp32 MICROCONTROLLER . 2024 ieee .
+, underscoring ITS_SIGNIFICANT_VALUE in AGRICULTURE and OTHER_RELATED_FIELDS . 2024 ieee .
+.818 with the float32 quantized MODEL , outputting INFERENCE in 3.18 SECONDS . 2024 ieee .
+32f303k8 BOARD with an ARM_CORTEX-m4 PROCESSOR compared to COMPETING_METHODS . 2024 ieee .
+ on VARIOUS_MODELS show PROMISING_GAINS compared to STATE-of-the-ART_METHODS . 2024 ieee .
+E_SPEECH_COMMANDS and 5.0 j /FRAME and 3.8 ms at 81.5 % on VISUAL_WAKE_WORDS . 2024 ieee .
+ARCH_DIRECTIONS to realize THEIR_FULL_POTENTIAL to prevent and DIAGNOSE_CVDS . 2024 ieee .
+ we perform SYSTEMATIC_ABLATION_STUDIES on ndt to justify THE_DESIGN_CHOICES . 2024 ieee .
+ibute to THE_DEVELOPMENT of MORE_SUSTAINABLE_AND_EFFICIENT_FARMING_PRACTICES . 2024 ieee .
+ft , OFFLINE_SOLUTION for mdd , fostering SUSTAINABLE_AGRICULTURAL_PRACTICES . 2024 ieee .
+ith as little as 806 mj in only 14 s on always-on , BATTERY-operated DEVICES . 2024 ieee .
+AKE_WORD_DATASET , A_STANDARD_TINYML_BENCHMARK , on SEVERAL_EMBEDDED_DEVICES . 2024 ieee .
+RKS ( dnns ) and enable THE_DEPLOYMENT of AI on RESOURCE-CONSTRAINED_DEVICES . 2024 ieee .
+HE_SIMPLICITY of EDGE_IMPULSE for deploying them on low-powered EDGE_DEVICES . 2024 ieee .
+_DEPLOYMENT of EMBEDDED_TINYML_MODELS in SPECIALIZED_INDUSTRIAL_EDGE_DEVICES . 2024 ieee .
+ICES . lastly , we will describe THE_FEASIBILITY of OUR_MODEL on IOT_DEVICES . 2024 ieee .
+G_MALLS , this_study_offers PERCEPTIVE_MANAGEMENT and SCHOLARLY_CONSEQUENCES . 2024 ieee .
+NTELLIGENCE with low-CAPACITY networked ADAPTIVE_MICROCONTROLLER-based NODES . 2024 ieee .
+INYML in creating SMART , SUSTAINABLE_SOLUTIONS for ENVIRONMENTAL_CHALLENGES . 2024 ieee .
+MORE_EFFECTIVE_OFFLOADING_DECISIONS while outperforming BENCHMARK_APPROACHES . 2024 ieee .
+CISE_CARBON_INVENTORIES and supporting EFFECTIVE_EMISSION_REDUCTION_POLICIES . 2024 ieee .
+to continuously monitor in real-TIME THE_HEALTH and TEMPERATURE of BATTERIES . 2024 ieee .
+A from TOF_SENSORS for ultra-LITE_GESTURE_RECOGNITION in low-POWER_WEARABLES . 2024 ieee .
+HITECTURE for SMALL_DATASETS , compared to MODELS_PRE-trained on LARGER_ONES . 2024 ieee .
+S , EFFICIENCY , and INTERPRETABILITY on BOTH_CLOUD_AND_EDGE_INFRASTRUCTURES . 2024 ieee .
+TERIES ) to a pervasive , full-TIME feature of next-GENERATION_SMART_GLASSES . 2024 ieee .
+ THE_OCCURRENCE of ABNORMAL_SIGNALS , which can be used for FURTHER_ANALYZES . 2024 ieee .
+s it feasible and COST-effective to deploy in DIFFERENT_HEALTH_CARE_SETTINGS . 2024 ieee .
+E_EXPLORATIONS harnessing NEUROMORPHIC_COMPUTING for real-WORLD_EEG_ANALYSIS . 2024 ieee .
+w to visualize THE_NEXT_STEPS toward THE_APPLICATION of TINY_NEURAL_NETWORKS . 2024 ieee .
+ intuitive VOICE-based interface for BLIND_AND_VISUALLY_IMPAIRED_INDIVIDUALS . 2024 ieee .
+REDFAULT_TOLERANCE_STRATEGIES for enhancing THE_RELIABILITY of TINYML_MODELS . 2024 ieee .
+NDITIONS is required to confirm ITS_EFFECTIVENESS in REAL_AQUATIC_ECOSYSTEMS . 2024 ieee .
+STEM paves THE_WAY toward intelligent and ENERGY-AUTONOMOUS_WEARABLE_SYSTEMS . 2024 ieee .
+TH toward RESPONSIBLE_INNOVATION in generative and HYPER-INTELLIGENT_SYSTEMS . 2024 ieee .
+LLIGENT_CONDITION_MONITORING in VARIOUS_TRANSPORTATION_AND_MACHINERY_SYSTEMS . 2024 ieee .
+LITATE_INTEGRATION into MORE_COMPREHENSIVE_PREVENTIVE_MAINTENANCE_ALGORITHMS . 2024 ieee .
+D_EXPERIMENT_SCOPE , and THE_USE of ALTERNATIVE_TINYML_DEVELOPMENT_PLATFORMS . 2024 ieee .
+ilitating THE_DEVELOPMENT and IMPLEMENTATION of MORE_SECURE_HARDWARE_DESIGNS . 2024 ieee .
+ING_CONDITIONS while requiring ONLY_A_FEW_DATA_POINTS from THESE_NEW_DOMAINS . 2024 ieee .
+CK THE_POSITIONS of SOCCER_PLAYER_SHOTS in THE_GOAL during TRAINING_SESSIONS . 2024 ieee .
+fore , it can be fitted into MOST_MICROCONTROLLERS for EMBEDDED_APPLICATIONS . 2024 ieee .
+irming THE_FEASIBILITY of deploying PHINET_MODELS in real-WORLD_APPLICATIONS . 2024 ieee .
+ enabling efficient , low-POWER_ML_IMPLEMENTATIONS in AEROSPACE_APPLICATIONS . 2024 ieee .
+TO_PLANTS , paving THE_WAY for INTELLIGENT_SYSTEMS with DIVERSE_APPLICATIONS . 2024 ieee .
+POTENTIAL of TINYML for EFFICIENT_AND_RESPONSIVE_EDGE_COMPUTING_APPLICATIONS . 2024 ieee .
+OOR to INCREASED_PRECISION and EFFICIENCY in FUTURE_EMBEDDED_ML_APPLICATIONS . 2024 ieee .
+ORING_SYSTEMS and suggests FURTHER_EXPLORATION into ITS_BROADER_APPLICATIONS . 2024 ieee .
+OGY in leveraging VISION-BASED_ROAD_SAFETY FEATURES for VARIOUS_APPLICATIONS . 2024 ieee .
+ICANT_ENHANCEMENT in THE_OVERALL_QUALITY of RESULTS for VARIOUS_APPLICATIONS . 2024 ieee .
+_OBSERVATORY_NETWORK and can be used for SPACE_MISSIONS and IOT_APPLICATIONS . 2024 ieee .
+IENCY and DATA_SECURITY , marking A_NOTABLE_ADVANCEMENT in MIOT_APPLICATIONS . 2024 ieee .
+ON , ENERGY , and THROUGHPUT in MULTI-bit MULTIPLY-AND-ACCUMULATE_OPERATIONS . 2024 ieee .
+NSOR_CALIBRATION , ensuring OPTIMAL_PERFORMANCE in SHRIMP_FARMING_OPERATIONS . 2024 ieee .
+MANUFACTURING_PROCESS by bridging THE_AUTOMATED_SYSTEMS and HUMAN_OPERATIONS . 2024 ieee .
+TS toward more efficient , AUTONOMOUS unmanned STRUCTURAL_HEALTH_INSPECTIONS . 2024 ieee .
+g THE_WAY for MORE_ACCESSIBLE_AND_PRACTICAL_MYOELECTRIC_PROSTHETIC_SOLUTIONS . 2024 ieee .
+g THE_POTENTIAL for FUTURE_ADVANCEMENTS in EDGE_AIBASED_HEALTHCARE_SOLUTIONS . 2024 ieee .
+C_VEHICLES to meet THE_GROWING_DEMAND for EFFICIENT_TRANSPORTATION_SOLUTIONS . 2024 ieee .
+ACTICAL_DEPLOYMENT of GESTURE-based TIFINAGH_CHARACTER_RECOGNITION_SOLUTIONS . 2024 ieee .
+n selecting APPROPRIATE_OPTIMIZATION_TOOLS for SPECIFIC_DEPLOYMENT_SCENARIOS . 2024 ieee .
+PUTING_SCENARIOS , eliminating THE_NEED for A_DEDICATED_TEAM of ML_ENGINEERS . 2024 ieee .
+ow_that our MODEL_OUTPERFORMS_OTHERS with SIMILAR_PEAK_MEMORY and PARAMETERS . 2024 ieee .
+ANT_MILESTONE in developing COST-effective and accurate CYCLING_POWER_METERS . 2024 ieee .
+HE_INPUT_DEVICE for THE_GAME by recognizing THE_HAND_GESTURES of THE_PLAYERS . 2024 ieee .
+PRIATE_METHOD that makes use of LOW-COST , off-the-shelve ELECTRONIC_SENSORS . 2024 ieee .
+BLE while consuming only 10.02 mw , yielding A_BATTERY_LIFE of over 92 HOURS . 2024 ieee .
+E_MLPERF_TINY_BENCHMARK_SUITE as part of AN_EVOLUTIONARY_ALGORITHMIC_PROCESS . 2024 ieee .
+ int8 COMPRESSED_MODELS to just 2.59 mb , but with SIGNIFICANT_ACCURACY_LOSS . 2024 ieee .
+cf , benefiting OLDER_INDIVIDUALS in remote or RESOURCE-limited ENVIRONMENTS . 2024 ieee .
+VICE ensures ITS_APPLICABILITY across A_DIVERSE_RANGE of TEMPLE_ENVIRONMENTS . 2024 ieee .
+g THE_FOUNDATION for EFFICIENT_ALGORITHMS tailored to low-POWER_ENVIRONMENTS . 2024 ieee .
+ing COMMUNICATION and ACCESSIBILITY for INDIVIDUALS with HEARING_IMPAIRMENTS . 2024 ieee .
+NG helps bringing BNNS_PERFORMANCES on PAR with THEIR_QUANTIZED_COUNTERPARTS . 2024 ieee .
+R , 3.7 x higher transmitted POWER and 1.4x higher DDT_SPEED than PRIOR_ARTS . 2024 ieee .
+E_NETWORK presents A_PROMISING_APPROACH for FUTURE_WLAN_OPTIMIZATION_EFFORTS . 2024 ieee .
+, but also presents SIGNIFICANT_BENEFITS in SCIENTIFIC_AND_ECONOMIC_CONTEXTS . 2024 ieee .
+HE_POTENTIAL_IMPACT on WEATHER_MONITORING_PRACTICES in AGRICULTURAL_CONTEXTS . 2024 ieee .
+an 0.5 MW_POWER on ALL_TASKS of MLPERF_TINY while meeting THE_QUALITY_TARGET . 2024 ieee .
+ANDING_CONFIGURATION , i . e . , a mobilenetv2 trained on the core50 DATASET . 2024 ieee .
+_BROKEN_WINGS , FAN stuck , and FAN unstable , on the self-collected DATASET . 2024 ieee .
+ith THE_DATASET recorded from an INDIVIDUAL acting as A_VOLUNTEERING_PATIENT . 2024 ieee .
+ACTICES_HERALDS a cleaner , TECHNOLOGY-driven FUTURE in RECYCLING_MANAGEMENT . 2024 ieee .
+_ENERGY_CONSUMPTION , which comes at THE_COST of A_LARGER_MEMORY_REQUIREMENT . 2024 ieee .
+_DEMANDS in IOT_DEVICES , which is crucial for SUSTAINABLE_TINYML_DEPLOYMENT . 2024 ieee .
+rk on BIODIVERSITY_CONSERVATION , a topic discussed later in THIS_MANUSCRIPT . 2024 ieee .
+TAINTY to determine THE_RELIABILITY of the_results and THE_DEVICE under TEST . 2024 ieee .
+CIENT_USE of THE_ENERGY_CONSUMPTION while THE_RASPBERRY_PI THE_BEST_ACCURACY . 2024 ieee .
+se provided by CURRENT_COMMERCIAL_SYSTEMS , all while upholding USER_PRIVACY . 2024 ieee .
+ SQUEEZENET - show that we achieve up to 71 % REDUCTION in INFERENCE_LATENCY . 2024 ieee .
+ieve up to 12.5 TOPS / w at 0.65 v SUPPLY_VOLTAGE and 15 MHZ_CLOCK_FREQUENCY . 2024 ieee .
+ibuting to A_MORE_INTELLIGENT_AND_EFFICIENT_SOLAR_ENERGY_MANAGEMENT_STRATEGY . 2024 ieee .
+also performed on THE_TWO_DIFFERENT_CORES as A_VALIDATION of OUR_METHODOLOGY . 2024 ieee .
+here there will be A_SIGNIFICANT_IMPROVEMENT in SAFETY_MONITORING_TECHNOLOGY . 2024 ieee .
+_DEVICES , thus significantly enhancing THE_SYSTEM_INTELLIGENCE and AUTONOMY . 2024 ieee .
+UNNING for THE_FIRST_TIME on AN_MCU-CLASS_DEVICE without THE_EXTERNAL_MEMORY . 2024 ieee .
+nabling TIMELY_INTERVENTION and reducing FALLRELATED_MORBIDITY and MORTALITY . 2024 ieee .
+CATIONS on RESOURCE-CONSTRAINED_DEVICES without compromising VISUAL_FIDELITY . 2024 ieee .
+A_SIGNIFICANT_STRIDE toward EFFICIENT_URBAN_LIVING with GLOBAL_APPLICABILITY . 2024 ieee .
+NDARD_FACE_RECOGNITION_DATASETS with HIGH_ACCURACY , showing ITS_SCALABILITY . 2024 ieee .
+RACY_REQUIREMENTS , THE_CORRESPONDING_REDUCTION becomes even more pronounced . 2024 ieee .
+RACY_REQUIREMENTS , THE_CORRESPONDING_REDUCTION becomes even more pronounced . 2024 ieee .
+dress THIS_GAP , MACHINE_LEARNING_SYSTEMS_ENGINEERING ( mlse ) , has emerged . 2024 ieee .
+ested on THE_ARDUINO_NICLA_VISION , showing THE_FEASIBILITY of what proposed . 2024 ieee .
+ionally , THE_EDGE_DEVICE_DURABILITY and POWER_EFFICIENCY are also evaluated . 2024 ieee .
+inally , SEVERAL_RESEARCH_PROBLEMS and POTENTIAL_FUTURE_DIRECTIONS are noted . 2024 ieee .
+NERGY consumed varying from 4.09 mj to 7.52 mj for THE_ENTIRE_DATASET tested . 2024 ieee .
+received , cochleagram and THE_CLASSIFIED_OUTPUTS to THE_PC to be visualized . 2024 ieee .
+ACCURACY , less than 60kb in SIZE are generated within 20 minutes on average . 2024 ieee .
+arly in HEAVY_LOAD_SCENARIOS where THE_NETWORK_CONDITIONS may rapidly change . 2024 ieee .
+ding APPLICATIONS in INDUSTRY 4.0 , where ACCURATE_SENSORS are indispensable . 2024 ieee .
+NG_CHANGES HENCE_THE_POSSIBILITIES to perform SPLIT_COMPUTING vary over_time . 2024 ieee .
+APPROACH , with A_MASSIVE_DIFFERENCE in PERFORMANCE for THE_TIME-SERIES case . 2024 ieee .
+NET and achieves a record ultra-HIGH_ENERGY_EFFICIENCY of 3809.52 FRAMES / j . 2024 ieee .
+roach , highlighting THE_SCENARIOS where BATCHING is particularly beneficial . 2024 ieee .
+ISE_CORRELATION of FLIGHT_TEST_DATA with SPECIFIC_FLIGHT_PHASES is essential . 2024 ieee .
+ASSIFICATION_SYSTEMS and use TINYML in OTHER_CLASSIFICATION_PROBLEMS as well . 2024 ieee .
+ONSTRAINED_MICROCONTROLLERS to assess THE_VIABILITY of the_proposed_solution . 2024 ieee .
+Y off-the-SHELF_MCU ( stm32u5 , 160mhz ) achieving AN_INFERENCE_TIME of 50 s . 2024 ieee .
+SELINE while still maintaining THE_QUALITY of THE_RETRIEVED_IMAGES at the es . 2024 ieee .
+ent than TRADITIONAL_CLASSIFICATION_FRAMEWORKS with just less than 1k slices . 2024 ieee .
+TINGS , MII achieves 33 % and 24 % more SUCCESSFUL_JOBS_INDOORS and outdoors . 2024 ieee .
+_SIZE of 49.40 kb , which is comparable to THE_STATE-of-the-ART counterparts . 2024 ieee .
+ery MEMORY_INTENSIVE , THE_METHOD requires only 1 % of THE_ORIGINAL_DATA set . 2024 ieee .
+MOTE_MONITORING_SYSTEM to near-zero , with an always-on POWER of just 1.29mw . 2024 ieee .
+812 , 0.803 , 0.644 , and 0.997 for co , NOX , n02 , and c6h6 , respectively . 2024 ieee .
+tbps / w and 2.7 tbps / w for four- and eight-WEIGHT_DECODING , respectively . 2024 ieee .
+6jgy MICROCONTROLLER based on an ARM_CORTEX-m4 PROCESSOR operating at 80 mhz . 2024 ieee .
+TPRINT significantly , are approximately 13.3 % less accurate than MICRONET-s. 2024 ieee .
+uRcE_coDE of tinyts can be obtained from https://github.com/nycu-caslab/tinyts 2024 ieee .
+TION for real-TIME_ENERGY_MANAGEMENT in RESOURCE-CONSTRAINED_SETTINGS . IEEE . 2015 ieee .
+educing THE_TRAINING_TIME by 33 % and PEAK_RAM_USAGE during TRAINING by 76 % . 2025 ieee .
+RACY ( 98 % ) , PRECISION ( 98 % ) , RECALL ( 97 % ) , and f1-SCORE ( 97 % ) . 2025 ieee .
+E_HIGHEST_PRECISION ( 0.9995 ) , RECALL ( 0.9996 ) , and f1-SCORE ( 0.9998 ) . 2025 ieee .
+ANCES ( ACCURACY above 96 % ) and ENERGY_CONSUMPTION ( less than 40 mj / h ) . 2025 ieee .
+MIC_RANGE ( dr ) of ANALOG-MAC-values ( amacvs ) , as illustrated in fig . 1 . 2025 ieee .
+ , PRECISION of 0.92 , RECALL of 0.9465 , and f1-SCORE between 0.92 and 0.93 . 2025 ieee .
+CROCONTROLLER was approximately 205 ms for ECG_DATA and 186 ms for spo2 DATA . 2025 ieee .
+ROR compared to A_MODEL-driven APPROACH with THE_SAME_COMMUNICATION_OVERHEAD . 2025 ieee .
+p to 25 compared to COMPILER auto-VECTORIZATION on a commercial RISC-V BOARD . 2025 ieee .
+% compared to the existing STATE-of-the-ART_METHOD on the artix-7 FPGA_BOARD . 2025 ieee .
+for this_work_has been made public as AN_ASSET of THE_AGRIFOODTEF_DATA_SPACE . 2025 ieee .
+ES , aligned with PRINCIPLES of ENERGY_EFFICIENCY and PROACTIVE_SURVEILLANCE . 2025 ieee .
+CTING_EARLY_MECHANICAL_FAILURES and enabling TARGETED_PREVENTIVE_MAINTENANCE . 2025 ieee .
+ALANCING_ACCURACY , EFFICIENCY , and COMPACTNESS for EMBEDDED_SYSTEMS . IEEE . 2025 ieee .
+SCORE , in addition to 987 ms of INFERENCE_TIME and 547.50 kb of FLASH_USAGE . 2025 ieee .
+with INFERENCING_TIME 1368ms , 119.4k PEAK_RAM_USAGE , and 90.2k FLASH_USAGE . 2025 ieee .
+GHT , accurate , and AUTONOMOUS_ANOMALY_DETECTION and CORRECTION at THE_EDGE . 2025 ieee .
+nable , and DEPLOYABLE_TINYML_MODELS for PLANT_DISEASE_DETECTION at THE_EDGE . 2025 ieee .
+CTICALITY of HARDWARE-constrained MODEL_DESIGN for real-TIME_IDS at THE_EDGE . 2025 ieee .
+omplete , validated blueprint for deploying PRACTICAL_FL at THE_EXTREME_EDGE . 2025 ieee .
+_DIAGNOSTICS and ENHANCED_SAFETY_MANAGEMENT throughout THE_BATTERY_LIFECYCLE . 2025 ieee .
+ALLER_DATATYPE for INTERMEDIATE_VALUES with only a 8 % higher EXECUTION_TIME . 2025 ieee .
+hnologically advanced APPROACH in promoting HEALTH_AND_FITNESS across EUROPE . 2025 ieee .
+d in AN_EXEMPLARY_USE_CASE to show THE_ADAPTABILITY of THE_PROPOSED_HARDWARE . 2025 ieee .
+bles ACCURATE_AND_EFFICIENT_INFERENCE in TINYML_APPLICATIONS on MCU_HARDWARE . 2025 ieee .
+or THE_DESIGN of LOWLATENCY_VEHICULAR_IOT_SOLUTIONS using COMMODITY_HARDWARE . 2025 ieee .
+_EFFICIENCY , paving THE_WAY for SUSTAINABLE_TINYML_SOLUTIONS in AGRICULTURE . 2025 ieee .
+ANOMALIES is deployable on THE_RESOURCE-constrained PLATFORM of THE_USE_CASE . 2025 ieee .
+ that THE_SYSTEM reduced the false-positive RATE with MINIMAL_POWER_INCREASE . 2025 ieee .
+ALERT_CAREGIVERS and MEDICAL_PROFESSIONALS and REQUEST THEIR_PROMPT_RESPONSE . 2025 ieee .
+l for CONTINUOUS_EMOTIONAL_MONITORING and enhancing institutional WELL-BEING . 2025 ieee .
+, ENERGY-efficient , and secure SOLUTION for real-TIME_HEALTHCARE_MONITORING . 2025 ieee .
+ALGORITHMS , MAKING it A_PROMISING_SOLUTION for CONTINUOUS_HEALTH_MONITORING . 2025 ieee .
+LE_DEVICES , MAKING it A_PRACTICAL_SOLUTION for CONTINUOUS_HEALTH_MONITORING . 2025 ieee .
+DEL , and ( 4 ) PRACTICAL_DESIGN_INSIGHTS for TINYML-based DRIVER_MONITORING . 2025 ieee .
+HANCES_MINER_SAFETY through proactive , scalable , and AUTONOMOUS_MONITORING . 2025 ieee .
+CY , contributing to scalable and COST-effective CONTINUOUS_HEART_MONITORING . 2025 ieee .
+SHOWS 4 % better read SUCCESS_RATE , but also suffers from more SELF-HEATING . 2025 ieee .
+d INTEGRATION with other next-GENERATION_TECHNOLOGIES such as EDGE_COMPUTING . 2025 ieee .
+NOSE_SKIN_LESIONS in REMOTE_AREAS . we_conclude by outlining FUTURE_RESEARCH . 2025 ieee .
+the POTENTIAL of GREEN_EVOLUTIONARY_ALGORITHMS and motivate FURTHER_RESEARCH . 2025 ieee .
+NYAP_MODEL achieved AN_AVERAGE_ACCURACY of 98.63 % in DETECTING_KRACK_ATTACK . 2025 ieee .
+rk and the best-performing ARCHITECTURES are made publicly available at LINK . 2025 ieee .
+ACHES , validating THE_EFFICACY of the proposed ON-DEVICE_LEARNING_FRAMEWORK . 2025 ieee .
+ved when THE_INPUT_STRUCTURE enabled BETTER_USE of THE_AVAILABLE_PARALLELISM . 2025 ieee .
+TECTURE , and SYSTEMS_OPTIMIZATION by incorporating real-WORLD SYSTEM_DESIGN . 2025 ieee .
+ATION and the other providing AN_ADVANCED_NETWORK_SERVICE to THE_APPLICATION . 2025 ieee .
+ME_SPAM DETECTION and improving THE_OPERATIONAL_SECURITY of AV_COMMUNICATION . 2025 ieee .
+RE are employed to create COMPREHENSIVE_DATASETS for TRAINING and VALIDATION . 2025 ieee .
+to move beyond THE_INTELLIGENT_AUTOMATION_SYSTEMS of THE_PREVIOUS_GENERATION . 2025 ieee .
+USE of PROGRAMMING to SIMPLIFY_UNDERSTANDING and INCREASE_STUDENT_MOTIVATION . 2025 ieee .
+ ACCURACY comparable with_that of TINYML_MODELS requiring FEATURE_EXTRACTION . 2025 ieee .
+WER_EMBEDDED_ENVIRONMENTS such as FOOD_AUTHENTICATION and SPOILAGE_DETECTION . 2025 ieee .
+PPLICATIONS , particularly in DESIGNING_TINYML_SOLUTIONS for FAULT_DETECTION . 2025 ieee .
+ING OUR_SYSTEM as A_TRANSFORMATIVE_TOOL for early PRE-ECLAMPSIA_INTERVENTION . 2025 ieee .
+OVEMENT on THE_RESULTING_HETEROGENEOUS_SYSTEM compared to CPU-only EXECUTION . 2025 ieee .
+ZED_STORAGE_NEEDS enabling PRIVACY-PRESERVING and RESOURCEEFFICIENT_SOLUTION . 2025 ieee .
+LABLE_DEPLOYMENT during AN_EMERGENCY_RESPONSE and CLINICAL_TRAINING_SCENARIO . 2025 ieee .
+SH_USAGE ) and AN_AVERAGE_INFERENCE_SPEEDUP of 4.67 on esp32 MICROCONTROLLER . 2025 ieee .
+ly mitigating POTENTIAL_CYBER_SECURITY_THREATS in AN_ENERGY_EFFICIENT_MANNER . 2025 ieee .
+TION for accessible , DATA-driven QUALITY_CONTROL in THE_AGRICULTURAL_SECTOR . 2025 ieee .
+_MEMORY-in-SITU_MACRO capable of supporting mixed-PRECISION_TINYML WORKLOADS . 2025 ieee .
+oring THE_IMPORTANCE of aligning MODEL_CHOICE with SPECIFIC_DEPLOYMENT_NEEDS . 2025 ieee .
+ITY of scalable , low-POWER_EDGE_AI ARCHITECTURES in ASSISTIVE_MOBILITY_AIDS . 2025 ieee .
+DS , OUR_MODEL can PROCESS 23 DIFFERENT_KEYWORDS , enabling COMPLEX_COMMANDS . 2025 ieee .
+ORMANCE , SITUATIONAL_AWARENESS , and ADHERENCE to AVIATION_SAFETY_STANDARDS . 2025 ieee .
+IENCY , conserve WATER_RESOURCES , and SUPPORT_SUSTAINABLE_FARMING_PRACTICES . 2025 ieee .
+RDS in KWS_APPLICATIONS that is compatible with RESOURCE-CONSTRAINED_DEVICES . 2025 ieee .
+novel solution for blood pressure PREDICTION on RESOURCE-CONSTRAINED_DEVICES . 2025 ieee .
+hile being LIGHTWEIGHT enough for DEPLOYMENT on RESOURCE-CONSTRAINED_DEVICES . 2025 ieee .
+ APPLICATIONS prior to REAL-WORLD_DEPLOYMENT on RESOURCE-CONSTRAINED_DEVICES . 2025 ieee .
+ould be used as GUIDELINES for NEURAL_NETWORK_IMPLEMENTATION on EDGE_DEVICES . 2025 ieee .
+HT_AI_SOLUTIONS suitable for THE_NEXT_GENERATION of INTELLIGENT_EDGE_DEVICES . 2025 ieee .
+OLUTION suitable for APPLICATIONS such as SMART_GLASSES and WEARABLE_DEVICES . 2025 ieee .
+ING_ALGORITHMS , demonstrating ITS_SUITABILITY for TINY_AND_WEARABLE_DEVICES . 2025 ieee .
+are verified on THE_SMART_BRACELET_PLATFORM with EXTREMELY_LIMITED_RESOURCES . 2025 ieee .
+essfully be implemented on A_MICROCONTROLLER without depleting ITS_RESOURCES . 2025 ieee .
+ACY-PRESERVING_CONTINUOUS_MONITORING in EMERGING_WEARABLE_ULTRASOUND_PATCHES . 2025 ieee .
+E in advancing AI-driven INTERNET_OF_UNDERWATER_THINGS ( iout ) TECHNOLOGIES . 2025 ieee .
+ted on THREE_DIFFERENT_EDGE_DEVICES with VARYING_HEAP_AND_STORAGE_CAPACITIES . 2025 ieee .
+UTATIONAL_EFFICIENCY while retaining CRITICAL_ANOMALY_DETECTION_CAPABILITIES . 2025 ieee .
+low-POWER_DEEP_LEARNING_MODELS for real-TIME_APPLICATIONS in GAMING_MACHINES . 2025 ieee .
+ without demanding HIGH_SAMPLING_FREQUENCIES or OVERLY_COMPLEX_ARCHITECTURES . 2025 ieee .
+EMOTE_SERVERS or DISASTER_RESCUE_CENTERS upon DETECTION for TIMELY_RESPONSES . 2025 ieee .
+from a tsmc 65 NM_CMOS_SILICON_IMPLEMENTATION of x-HEEP , called HEEPOCRATES . 2025 ieee .
+IDENTIFICATION and it achieves COMMENDABLE_ACCURACY and FALSE_POSITIVE_RATES . 2025 ieee .
+PROVEMENTS in TRANSIENT_RESPONSE compared to CONVENTIONAL_CONTROL_TECHNIQUES . 2025 ieee .
+S_MAKING it suitable for TELESURGICAL_OPERATIONS in SCARCE_RESOURCE_SETTINGS . 2025 ieee .
+_DETECTION on EDGE_DEVICES , supporting EARLY_DIAGNOSIS in CLINICAL_SETTINGS . 2025 ieee .
+Y_DETECTION and ADVANCES_AUTOMATION_EFFORTS in PRACTICAL_INDUSTRIAL_SETTINGS . 2025 ieee .
+GITAL_INNOVATION to SUPPORT_EARLY_INTERVENTION and reduce PREVENTABLE_DEATHS . 2025 ieee .
+aving THE_WAY for ONLINE_MOTOR_INTENTION_DECODING on low-POWER_WEARABLE_BMIS . 2025 ieee .
+NG for enhancing THE_RELIABILITY and EFFICIENCY of CONNECTED_ELECTRIC_TRUCKS . 2025 ieee .
+LTITUDE_ECONOMY_SECURITY , with SCALABILITY to DIVERSE_REGULATORY_FRAMEWORKS . 2025 ieee .
+CURITY APPLICATIONS , particularly in IOT and EDGE-BASED_SECURITY_FRAMEWORKS . 2025 ieee .
+G it particularly well suited for under PROVISIONED_OR_RURAL_HEALTH_NETWORKS . 2025 ieee .
+NICATION taking into ACCOUNT THE_HIGHLY_DYNAMIC_NATURE of VEHICULAR_NETWORKS . 2025 ieee .
+ real-TIME , secure , and EFFICIENT_DATA_CONSUMPTION in INTELLIGENT_NETWORKS . 2025 ieee .
+NAL_METABOLIC_DIFFERENCES and VALIDATING_PERFORMANCE through CLINICAL_TRIALS . 2025 ieee .
+_SET achieves SUPERIOR_DETECTION_ACCURACY compared to LOCALLY_TRAINED_MODELS . 2025 ieee .
+ring A_SUSTAINABLE_ALTERNATIVE to traditional , RESOURCE-intensive AI_MODELS . 2025 ieee .
+SUBSTANTIALLY_HIGHER_COMPUTATIONAL_EFFICIENCY compared to TRADITIONAL_MODELS . 2025 ieee .
+ THE_GAP in BUILDING a HARDWARE-agnostic LATENCY predictor for TINYML_MODELS . 2025 ieee .
+tial to BUILDING secure , ENERGY_EFFICIENT , and INTELLIGENT_EDGE_ECOSYSTEMS . 2025 ieee .
+LITY for AUTONOMOUS_INSPECTION_TASKS in RESOURCE-CONSTRAINED_ROBOTIC_SYSTEMS . 2025 ieee .
+able , and INTELLIGENT_TRUST_MANAGEMENT in THE_NEXT_GENERATION of SC_SYSTEMS . 2025 ieee .
+ween THEORETICAL_ADVANCEMENTS and PRACTICAL_APPLICATIONS in EMBEDDED_SYSTEMS . 2025 ieee .
+E-aware TINYML_STRATEGIES for OPTIMIZED_MODEL_DEPLOYMENT in EMBEDDED_SYSTEMS . 2025 ieee .
+_NETWORKS , EXPERIMENTATIONS with PRIVACY_PRESERVING for DISTRIBUTED_SYSTEMS . 2025 ieee .
+ML to develop AUTONOMOUS , robust , and ENERGY-efficient MAINTENANCE_SYSTEMS . 2025 ieee .
+MOTE_DIAGNOSTICS , as well as next-GENERATION_IOT-enabled HEALTHCARE_SYSTEMS . 2025 ieee .
+PROACH_TO_TINYML_SYSTEM_DESIGN can generate LEAN_BUT_HIGHLY_ACCURATE_SYSTEMS . 2025 ieee .
+to allow for FUTURE_SMARTER , safer , and more RESPONSIVE_AUTOMOTIVE_SYSTEMS . 2025 ieee .
+ironmental CONTROL_APPLICATIONS in RESOURCE-CONSTRAINED_AGRICULTURAL_SYSTEMS . 2025 ieee .
+ION but also provides THE_POSSIBILITY for ENERGY-AUTONOMOUS_EDGE SHM_SYSTEMS . 2025 ieee .
+D_RESILIENT_DEFENSE_MECHANISM for SPACE-based MILITARY_COMMUNICATION_SYSTEMS . 2025 ieee .
+ed by POTENTIAL_SECURE_AND_SUSTAINABLE_STANDARDS in THE_MODERN_POWER_SYSTEMS . 2025 ieee .
+SOR_HEALTH_DIAGNOSTICS and improved long-term AIR_QUALITY_MANAGEMENT_SYSTEMS . 2025 ieee .
+T THE_CONTINUED_GROWTH of intelligent , resilient , and RELIABLE_IOT_SYSTEMS . 2025 ieee .
+TASETS , and INSUFFICIENT_INTEGRATION with widely-used EDUCATIONAL_PLATFORMS . 2025 ieee .
+ suitable for ENERGY-CONSTRAINED_IOT and always-on MICROCONTROLLER_PLATFORMS . 2025 ieee .
+GE_GENERATION_TASKS , MAKING BOTH_MODELS pivotal in THEIR_RESPECTIVE_DOMAINS . 2025 ieee .
+I-MODAL_PERCEPTION using rgb and EVENT-BASED_CAMERAS in ROBOTIC_APPLICATIONS . 2025 ieee .
+or developing and simulating VOICE_RECOGNITION_SYSTEMS for EDGE_APPLICATIONS . 2025 ieee .
+ed on TINY_MACHINE_LEARNING into MICROCONTROLLERS for real-TIME_APPLICATIONS . 2025 ieee .
+SYSTEMS , MAKING it suitable for MODERN_RAIL_VEHICLE_MONITORING_APPLICATIONS . 2025 ieee .
+_ADVANTAGE for EMBEDDED_BATTERY_DIAGNOSTICS and SAFETY-CRITICAL_APPLICATIONS . 2025 ieee .
+-effective , and ENERGY-efficient FAULT_DETECTION in INDUSTRIAL_APPLICATIONS . 2025 ieee .
+ deploying ADAPTIVE_QUANTIZED_MODELS in PRODUCTION-grade TINYML_APPLICATIONS . 2025 ieee .
+TRUCTION_PROFILING in enhancing RISC-V ARCHITECTURES for TINYML_APPLICATIONS . 2025 ieee .
+cient , low-POWER_ROAD_SURFACE_CLASSIFICATION for EMBEDDED_ADAS_APPLICATIONS . 2025 ieee .
+_ATTACK_VECTORS as well as deploying THE_FRAMEWORK to OTHER_IOT_APPLICATIONS . 2025 ieee .
+itable for RESIDENTIAL , commercial , as well as RURAL_SECURITY_APPLICATIONS . 2025 ieee .
+T_CITIES , advancing GLOBAL_SUSTAINABILITY in ELECTRONICS and COMMUNICATIONS . 2025 ieee .
+ICATION , OPENING THE_DOOR for MORE_INTELLIGENT_AND_GREENER_PV_INSTALLATIONS . 2025 ieee .
+s , on average , 19 % lower than for comparable KERNEL-based IMPLEMENTATIONS . 2025 ieee .
+nd post-PROCESSING_OVERHEAD varies across DIFFERENT_HARDWARE_IMPLEMENTATIONS . 2025 ieee .
+CCURACY and EFFICIENCY across DIFFERENT_PLATFORMS for AUTONOMOUS_INSPECTIONS . 2025 ieee .
+ EDGE_DEVICES , despite LIMITATIONS in HARDWARE_AND_ENVIRONMENTAL_CONDITIONS . 2025 ieee .
+NUOUS_STRESS_MONITORING to SUPPORT_PROACTIVE_MENTAL_HEALTHCARE_INTERVENTIONS . 2025 ieee .
+educing DATA_TRANSMISSION by up to 60 % over server-only INFERENCE_SOLUTIONS . 2025 ieee .
+REAS and paving THE_WAY for THE_NEXT_GENERATION of INTELLIGENT_PPE_SOLUTIONS . 2025 ieee .
+e , efficient , and scalable TINYML-based ENVIRONMENTAL_MONITORING_SOLUTIONS . 2025 ieee .
+NCY were assessed , supporting PRACTICAL_EXPLOITATION in REALWORLD_SCENARIOS . 2025 ieee .
+_ENVIRONMENTS , potentially applicable to VARIOUS_EMBEDDED_SENSING_SCENARIOS . 2025 ieee .
+ensuring ITS_FUNCTIONALITY and DURABILITY in REAL-WORLD_DEPLOYMENT_SCENARIOS . 2025 ieee .
+e for SMART_WEARABLE_DEVICES , enabling A_DEVICE_LIFETIME of OVER_FOUR_YEARS . 2025 ieee .
+DEL_SUMMARIZATION_METHODS helped save more than 80 % of THE_MODEL_PARAMETERS . 2025 ieee .
+INY_ROBOTS , or even faster and ENERGY-efficient SLAM on high-END_PROCESSORS . 2025 ieee .
+E in INITIAL_SCREENING for SLEEP_APNEA and assessing TREATMENT_EFFECTIVENESS . 2025 ieee .
+YSTEMS , which are starting to take THEIR_TOLL on THE_NEXT_PHASE of PROGRESS . 2025 ieee .
+_BASED_ACCELERATOR from XILINX , while incurring less than 1 % ACCURACY_LOSS . 2025 ieee .
+LOGIES for maintaining ROBUSTNESS while preserving MEMORY_FOOTPRINT_BENEFITS . 2025 ieee .
+ADITIONAL_MODELS including LSTM and GRU within RESOURCE-limited ENVIRONMENTS . 2025 ieee .
+TELLIGENT_WEARABLE_HEALTH_SYSTEMS in remote or RESOURCE-limited ENVIRONMENTS . 2025 ieee .
+E is crucial for real-TIME , ON-DEVICE_INFERENCE in CONSTRAINED_ENVIRONMENTS . 2025 ieee .
+S into THE_DEPLOYMENT of OPTIMIZED_TINYML_MODELS in CONSTRAINED_ENVIRONMENTS . 2025 ieee .
+ITS_SUITABILITY for DEPLOYMENT in remote , RESOURCE-CONSTRAINED_ENVIRONMENTS . 2025 ieee .
+ntaining A_COMPACT_MODEL_SIZE suitable for RESOURCE-CONSTRAINED_ENVIRONMENTS . 2025 ieee .
+URE_ADAPTIVE_TINYML_SYSTEMS , especially in BATTERY-CONSTRAINED_ENVIRONMENTS . 2025 ieee .
+y VIABLE_SOLUTION for ASSISTIVE_ROBOTIC_CONTROL in low-RESOURCE_ENVIRONMENTS . 2025 ieee .
+ PERFORMANCE , ADAPTABILITY , and SECURITY in FUTURE_TINYML-IOE_ENVIRONMENTS . 2025 ieee .
+ated with deploying DEEP_LEARNING_MODELS in EMBEDDED_AUTOMOTIVE_ENVIRONMENTS . 2025 ieee .
+SOLUTION feasible for EDGE_COMPUTING_APPLICATIONS in INDUSTRIAL_ENVIRONMENTS . 2025 ieee .
+G , enabling PRIVACY-PRESERVING_ENERGY_MANAGEMENT in SMART_CITY_ENVIRONMENTS . 2025 ieee .
+UIDELINES for MODE_AND_MODEL_SELECTION in ENERGY-CONSTRAINED_IOT_DEPLOYMENTS . 2025 ieee .
+EDDED_ACOUSTIC_ANOMALY_DETECTION for SCALABLE_AND_RESPONSIVE_IOT_DEPLOYMENTS . 2025 ieee .
+E_RESOURCE_CONSTRAINTS and SECURITY_REQUIREMENTS in EMBEDDED_UAV_DEPLOYMENTS . 2025 ieee .
+continuous blood pressure MONITORING in NON-CLINICAL_SETTINGS by NON-EXPERTS . 2025 ieee .
+ME_DECISION_MAKING on improving SECURITY in THE_IOBT through THE_USE of UAVS . 2025 ieee .
+NS about DATA_POINT_RETENTION without requiring ACCESS to THE_ENTIRE_DATASET . 2025 ieee .
+Y and 0.2 PERCENTAGE_POINTS of MORE_ACCURACY in the case of THE_CWRU_DATASET . 2025 ieee .
+ is easier to construct because it TRAINS the meta-MODEL using A_HOLDOUT_SET . 2025 ieee .
+AINED_MICROCONTROLLER-BASED ( MCU-based ) DEVICES to deal with CONCEPT_DRIFT . 2025 ieee .
+HEALTH , where THE_DETECTION of ANOMALOUS_EVENTS must be efficient and LIGHT . 2025 ieee .
+on how to make AI_SYSTEMS that are both helpful and good for THE_ENVIRONMENT . 2025 ieee .
+ demonstrating THE_FRAMEWORK_EFFECTIVENESS for real-TIME_EMBEDDED_DEPLOYMENT . 2025 ieee .
+NABLE_ENHANCEMENTS , MAKING it A_PRACTICAL_SOLUTION for REALWORLD_DEPLOYMENT . 2025 ieee .
+G , presenting A_PROMISING_SOLUTION for long-term WEARABLE_DEVICE_DEPLOYMENT . 2025 ieee .
+E_INFORMATION . THE_FRAMEWORK achieves 85 % ACCURACY using < 1 ma of CURRENT . 2025 ieee .
+ficantly well with respect to THE_BASELINE and OTHER_RECENT_STATE-of-the-ART . 2025 ieee .
+ AREA_OVERHEAD ( less than 4 % ) compared to PROCESSORS without BNRV_SUPPORT . 2025 ieee .
+T_ACCURACY and LATENCY_DEGRADATION , highlighting GENERALITY of THE_WORKFLOW . 2025 ieee .
+ on RESOURCE-CONSTRAINED_DEVICES without sacrificing PERFORMANCE or ACCURACY . 2025 ieee .
+ng AN_EFFICIENT_IOT_ANOMALY_DETECTION_SOLUTION without COMPROMISING_ACCURACY . 2025 ieee .
+d to THE_REGULAR_INFERENCE_PIPELINE on THE_MCU , while having EQUAL_ACCURACY . 2025 ieee .
+ATENCY , LOW_RESOURCE_UTILIZATION_REQUIREMENTS , and HIGH_DETECTION_ACCURACY . 2025 ieee .
+ME_WEARABLE_HEALTHCARE_APPLICATIONS targeting FALL_MONITORING in the ELDERLY . 2025 ieee .
+ OPERATIONAL_TIMES of up to 143 h on a single compact 600 mah , 3.7v BATTERY . 2025 ieee .
+RACTICAL_WAY for RELIABLE , DATA-efficient MONITORING outside THE_LABORATORY . 2025 ieee .
+TION even for COMPLEX_INDUSTRIAL_GRADE_CONTROL_PROBLEMS in THE_FOOD_INDUSTRY . 2025 ieee .
+ABLE_INTELLIGENCE without sacrificing ACCURACY , EFFICIENCY , or RELIABILITY . 2025 ieee .
+ith ENERGY_STORAGE_SOLUTIONS to ENHANCE_POWER_QUALITY and SYSTEM_RELIABILITY . 2025 ieee .
+with on-DEVICE_MODEL RETRAINING_TECHNIQUES to ENABLE_AUTONOMOUS_ADAPTABILITY . 2025 ieee .
+YOLO , with LOWER_LATENCY and PARAMETER_COUNT while maximizing COMPATIBILITY . 2025 ieee .
+MONITORING directly at THE_EDGE , supporting DATA-driven policy and MOBILITY . 2025 ieee .
+ BOTH_NASCENT_THREATS and THE_REQUIREMENT for robust , USER-centric SECURITY . 2025 ieee .
+ATIONS where RESPONSIVENESS and ENERGY_EFFICIENCY must be carefully balanced . 2025 ieee .
+_SYSTEMS that are more responsive , ENERGY-aware , and biologically inspired . 2025 ieee .
+ LOSS , PRECISION-RECALL curve , ROC_CURVE and ITS_PERFORMANCE is calculated . 2025 ieee .
+made OUR_IMPLEMENTATION , DATASETS , and EVALUATION_TOOLS publicly available . 2025 ieee .
+_EFFICIENCY , and STANDARDIZATION , which are also discussed in_this_article . 2025 ieee .
+sonalized and easy-to-use REHABILITATION_TOOLS might look like in_the_future . 2025 ieee .
+ons for iot_seCUritY , interACtiVe_dispLAYs , and hUMAn-CoMpUter_interACtion . 2025 ieee .
+cleo-f401re ) show THE_EFFECTIVENESS and EFFICIENCY of the_proposed_solution . 2025 ieee .
+n at our github repository : https://github.com/ahmedradwan02/tinyeco2ai-nlp . 2025 ieee .
+LEARNING_CAPABILITIES to ENHANCE_SYSTEM_ROBUSTNESS and FUNCTIONALITY further . 2025 ieee .
+er THE_PRIOR_BEST_NEURAL_ACCELERATOR in all THE_MLPERF-TINY_BENCHMARK suites . 2025 ieee .
+, while maintaining A_SIGNIFICANTLY_SMALLER_MEMORY_FOOTPRINT compared to rfs . 2025 ieee .
+S , SECTION_V_EXPLORES_FUTURE_TRENDS , and SECTION_VI_CONCLUDES the_findings . 2025 ieee .
+broader adoption and Further_research in resource-eFFicient_tinymL_soLutions . 2025 ieee .
+onstrating THE_PRACTICAL_FEASIBILITY of ddsnn for TINYML_DEPLOYMENTS in wsns . 2025 ieee .
+athbf { 5 8 . 4 4 \ % } $ , and $ \mathbf { 9 7 . 0 2 \ % } $ , respectively . 2025 ieee .
+2 % and 99.84 % , and PRECISION_SCORES of 98.88 % and 99.84 % , respectively . 2025 ieee .
+ MOBILE_NOTIFICATIONS . this makes sure that EMERGENCIES are handled quickly . 2025 ieee .
+ns well with KNOWN_SLEEP_STAGES , USES LOW_ENERGY , and performs excellently . 2025 ieee .
+EASE , respectively . EXPERIMENTAL_EVALUATION_DEMONSTRATES AN_ACCURACY of 94.9 2025 ieee .
+roviding A_USABLE_AND_EFFICIENT_SOLUTION for real-WORLD_HEARING aid DEPLOYMENT 2025 ieee .
+strate_that_the_proposed scheme achieves HIGH_THROUGHPUT_AND_ENERGY_EFFICIENCY 2025 ieee .
+ION_INTERVALS , supporting SMARTER_AND_EFFICIENT_WAREHOUSE_MANAGEMENT . IEEE . 2017 ieee .
+IVES for VARIOUS_BIOMEDICAL_APPLICATIONS , such as POSTSTROKE_REHABILITATION . 2017 ieee .
+ables on-SENSOR_FALL_DETECTION with 95 % TEST_ACCURACY under 0.3 mw of POWER . 2017 ieee .
+L_W . are . t . THE_FEATURE_EXTRACTOR , for TRAINING_AND_INFERENCE_WORKLOADS . 2017 ieee .
+E , we can further reduce THE_MODEL_SIZE but slightly degrade THE_ACCURACIES . 2017 ieee .
+_CHEMICAL_SENSING_SOLUTIONS in the next-GENERATION automated SMART_FACTORIES . 2017 ieee .
+generate TINY_CNNS while preserving STATE-of-the-ART_CLASSIFICATION_ACCURACY . 2017 ieee .
+nto THE_PATH forward for efficient , AI-assisted EMBEDDED SYSTEM_DEVELOPMENT . 2018 ieee .
+ON_MODEL capable of producing single-IMAGE_SUPER-RESOLUTION in THE_IR_DOMAIN . 2023 spie .
+to handle THE_DEMANDS spanning from THE_DAILY_COMMUTE to COMBAT_ENVIRONMENTS . 2023 spie .
+ in solving real-WORLD_PROBLEMS with MINIMAL_RESOURCES and POWER_CONSUMPTION . 2025 spie .
+der exclusive license to springer science+business media , llc , part of springer nature .
+t while it is operating in STANDARD_CONTROL_MODE . 2020 , springer nature switzerland ag .
+bit NETWORKS fitting THE_SAME_MEMORY_CONSTRAINTS . 2020 , springer nature switzerland ag .
+ with respect to MEMORY_USAGE and INFERENCE_TIME . 2022 , springer nature switzerland ag .
+NS . 2021 , the author ( s ) , under exclusive license to springer nature switzerland ag .
+ON . 2022 , the author ( s ) , under exclusive license to springer nature switzerland ag .
+NS . 2022 , the author ( s ) , under exclusive license to springer nature switzerland ag .
+RS . 2022 , the author ( s ) , under exclusive license to springer nature switzerland ag .
+NT . 2022 , the author ( s ) , under exclusive license to springer nature switzerland ag .
+GY . 2022 , the author ( s ) , under exclusive license to springer nature switzerland ag .
+ed . 2022 , the author ( s ) , under exclusive license to springer nature switzerland ag .
+ ) . 2023 , the author ( s ) , under exclusive license to springer nature switzerland ag .
+CE . 2023 , the author ( s ) , under exclusive license to springer nature switzerland ag .
+NG . 2023 , the author ( s ) , under exclusive license to springer nature switzerland ag .
+ML . 2023 , the author ( s ) , under exclusive license to springer nature switzerland ag .
+ON . 2023 , the author ( s ) , under exclusive license to springer nature switzerland ag .
+ON . 2023 , the author ( s ) , under exclusive license to springer nature switzerland ag .
+ER . 2023 , the author ( s ) , under exclusive license to springer nature switzerland ag .
+ES . 2023 , the author ( s ) , under exclusive license to springer nature switzerland ag .
+LS . 2023 , the author ( s ) , under exclusive license to springer nature switzerland ag .
+MS . 2023 , the author ( s ) , under exclusive license to springer nature switzerland ag .
+NS . 2023 , the author ( s ) , under exclusive license to springer nature switzerland ag .
+IT . 2023 , the author ( s ) , under exclusive license to springer nature switzerland ag .
+OR . 2024 , the author ( s ) , under exclusive license to springer nature switzerland ag .
+LS . 2024 , the author ( s ) , under exclusive license to springer nature switzerland ag .
+PUT given to THE_MODEL . 2022 , ifip international federation for information processing .
+hat we outperform them . 2022 , ifip international federation for information processing .
+PROCESSING at THE_EDGE . 2023 , ifip international federation for information processing .
+OT and COMPUTER_VISION . 2024 , ifip international federation for information processing .
+TION in SMART_VILLAGES . 2024 , ifip international federation for information processing .
+ DEVELOPMENT_DISORDERS . 2024 the_authors . ADVANCED_SCIENCE published by wiley-vch gmbh .
+ELIABILITY . 2023 the_authors . ADVANCED_INTELLIGENT_SYSTEMS published by wiley-vch gmbh .
+L_WORLD_TIME_SERIES_DATA_APPLICATIONS is demonstrated . vde verlag gmbh berlin offenbach .
+NIQUES , which will enable THE_IOT_FIELD to move toward SMART_ENERGY_SAVINGS . MYU_K . k .
+ng THE_WAY for efficient , EMBEDDED_SPEECH_RECOGNITION_SYSTEMS . 2025 hien vu pham et al .
+LTHCARE_SOLUTIONS , as ALL_PROCESSES occur within THE_LOCAL_HOST . 2024 johnvictor et al .
+M_SIZE_FLEXIBLE_PHOTOVOLTAIC_PANELS and WORK perpetually after THE_COLD_START . 2020 acm .
+ARE_PLATFORMS show THE_FEASIBILITY and EFFECTIVENESS of the_proposed_solution . 2020 acm .
+ bring INTELLIGENCE and AUTONOMY in DEVICES used in FIELDS such as HEALTHCARE . 2021 acm .
+ESS and FEASIBILITY using AN_INDUSTRIAL_USE_CASE of MACHINE_SAFETY_MONITORING . 2021 acm .
+ on MACHINE_LEARNING to CLASSIFY_SENSORS based on THEIR_SEMANTIC_DESCRIPTIONS . 2021 acm .
+ , and finally A_TINYML-based FALL_MONITORING_SYSTEM for the ELDERLY is built . 2021 acm .
+Dels . nas is freely available for DoWnloaD at https://github.com/eliberis/unas 2021 acm .
+R and can predict well THE_INTERNAL_FRIDGE_TEMPERATURE at AN_ACCURACY of 96 % . 2022 acm .
+ver LONG_DISTANCES . THIS_INSECT_MONITORING_SOLUTION can REACH A_GLOBAL_SCALE . 2022 acm .
+ THE_LAST_FULLY_CONNECTED_LAYER , and another that retrains THE_WHOLE_NETWORK . 2022 acm .
+ THE_UNIQUE_CHALLENGES in THE_ENGINEERING of TINYML_BASED_IOT_EMBEDDED_VISION . 2022 acm .
+ LOSS in ACCURACY , allowing us to DEPLOY_KGNNS on MEMORY-CONSTRAINED_DEVICES . 2022 acm .
+are very promising and constitute A_SOLID_BASELINE for motivating OUR_CONCEPT . 2022 acm .
+ORING_AMBIENT_CONDITIONS and PLANTS ' SOIL_MOISTURE is presented in_this_work . 2022 acm .
+EPTS_COMPUTER_SYSTEMS_ORGANIZATION_EMBEDDED and cyber-PHYSICAL_SYSTEMS_ROBOTICS 2022 acm .
+ A_SAVINGS of about 30 % ) at THE_COST of A_REDUCTION in ACCURACY of only 2 % . 2023 acm .
+ extracted in END-to-END_EXECUTION of BENCHMARKS based on MOBILENET-v1 and v2 . 2023 acm .
+MODELS in accurately DETECTING_BUSINESS and SCHOOL_CHILDREN ' s FORMAL_ATTIRE . 2023 acm .
+ing 43h of BATTERY_LIFE on a miniature 32mah li-ion CELL without DUTY_CYCLING . 2023 acm .
+43h of BATTERY_LIFE on a miniature 32mah li-ion CELL and without DUTY_CYCLING . 2023 acm .
+tive for ensuring THE_SECURITY and TRUSTWORTHINESS of EDGE-deployed ML_MODELS . 2023 acm .
+that THE_PROPOSED_SYSTEM can be accurate and WORK well across DIFFERENT_USERS . 2023 acm .
+ATIONS , is made available to THE_SCIENTIFIC_COMMUNITY as A_PUBLIC_REPOSITORY . 2023 acm .
+ and enables ON-DEVICE_INFERENCE , even when LIMITED_TARGET_DATA is available . 2023 acm .
+HODS consistently outperform POPULAR_PRIOR_WORKS on the TINY-CNNS we_evaluate . 2023 acm .
+STRUMENTATION ( AAMI ) and THE_BRITISH_HYPERTENSION_SOCIETY ( bhs ) standards . 2023 acm .
+hat tries to embed SOME_INTELLIGENCE into A_MOBILE_AIR_QUALITY_SENSING_DEVICE . 2024 acm .
+nd DATA_AUGMENTATION , to ENHANCE_MACHINE_LEARNING_CLASSIFICATION_PERFORMANCE . 2024 acm .
+ay AN_EMPIRICAL_FOUNDATION for THE_DEVELOPMENT of HEAT-safe WEARABLE_HARDWARE . 2024 acm .
+rating THE_POTENTIAL of EDGE_FOUNDATION_MODELS to ACCELERATE_EDGE_AI_ADOPTION . 2024 acm .
+ORMANCE_DEGRADATION_EFFECT , again reaching MLPERFTINY_STANDARDS on ALL_TASKS . 2024 acm .
+ of TIME . 2023 is held by THE_OWNER / AUTHOR ( s ) . publication rights licensed to acm .
+ELERATOR . 2023 is held by THE_OWNER / AUTHOR ( s ) . publication rights licensed to acm .
+ 2023 COPYRIGHT is held by THE_OWNER / AUTHOR ( s ) . publication rights licensed to acm .
+ 2023 COPYRIGHT is held by THE_OWNER / AUTHOR ( s ) . publication rights licensed to acm .
+ 2024 COPYRIGHT is held by THE_OWNER / AUTHOR ( s ) . publication rights licensed to acm .
+ 2024 COPYRIGHT is held by THE_OWNER / AUTHOR ( s ) . publication rights licensed to acm .
+ 2025 COPYRIGHT is held by THE_OWNER / AUTHOR ( s ) . publication rights licensed to acm .
+ 2025 COPYRIGHT is held by THE_OWNER / AUTHOR ( s ) . publication rights licensed to acm .
+E . 2023 copyright held by the owner / author ( s ) . publication rights licensed to acm .
+G . 2023 copyright held by the owner / author ( s ) . publication rights licensed to acm .
+I . 2023 copyright held by the owner / author ( s ) . publication rights licensed to acm .
+E . 2024 copyright held by the owner / author ( s ) . publication rights licensed to acm .
+S . 2024 copyright held by the owner / author ( s ) . publication rights licensed to acm .
+S . 2024 copyright held by the owner / author ( s ) . publication rights licensed to acm .
+S . 2024 copyright held by the owner / author ( s ) . publication rights licensed to acm .
+S . 2024 copyright held by the owner / author ( s ) . publication rights licensed to acm .
+S . 2024 copyright held by the owner / author ( s ) . publication rights licensed to acm .
+Y . 2024 copyright held by the owner / author ( s ) . publication rights licensed to acm .
+l . 2024 copyright held by the owner / author ( s ) . publication rights licensed to acm .
+s . 2024 copyright held by the owner / author ( s ) . publication rights licensed to acm .
+3 . 2025 copyright held by the owner / author ( s ) . publication rights licensed to acm .
+E . 2025 copyright held by the owner / author ( s ) . publication rights licensed to acm .
+K . 2025 copyright held by the owner / author ( s ) . publication rights licensed to acm .
+R . 2025 copyright held by the owner / author ( s ) . publication rights licensed to acm .
+TINY_MACHINE_LEARNING and ITS_FUTURE_DEVELOPMENT . 2022 riku immonen and timo hamalainen .
+NG and INFERENCE under 8 kb of MEMORY . 2023 international society of information fusion .
+UIDELINES for COMPRESSION of OTHER_OD_MODELS based on YOLO . 2022 croatian society mipro .
+_ACCURACY_LOSS ( < 0.5 % ) THE_EF of the reram-NVCIM_MACRO was 38.6 TOPS / w . 2023 jsap .
+INTELLIGENCE and IOT toward fully exploiting THE_POTENTIAL of EDGE_COMPUTING . 2023 ifip .
+leg CONTROL_APPLICATIONS . 2021 informa uk limited , trading as taylor and francis group .
+achieve RELIABLE_RESULTS . 2024 informa uk limited , trading as taylor and francis group .
+RE for SUCH_ENVIRONMENTS . 2025 informa uk limited , trading as taylor and francis group .
+ SEVEN_HAND_GESTURES from A_SINGLE_USER with AN_ACCURACY of 96.4 % . 2021 owner / author .
+_MODEL that TRAINS ALL_INPUT_DATA_VARIATIONS for DIFFERENT_DOMAINS . 2021 owner / author .
+RT and WORK perpetually with ONLY_A_SMALL_PHOTOVOLTAIC_PANEL_ARRAY . 2021 owner / author .
+CROCONTROLLER_UNITS ( MCUS ) , and SINGLE_BOARD_COMPUTERS ( sbcs ) . 2022 owner / author .
+YSTEM , which RAN at 80 fps and consumed only 1 kb of RAM on esp32 . 2022 owner / author .
+geting AN_EVEN_BROADER_AUDIENCE , to introduce THE_WORLD to TINYML . 2022 owner / author .
+S in A_GIVEN_ENVIRONMENT without requiring SENSORS on THEIR_BODIES . 2022 owner / author .
+idly PROTOTYPE THEIR_APPLICATIONS using OUR_DATASET and ALGORITHMS . 2022 owner / author .
+chniQues . auritus is available at https://github.com/nesl/auritus . 2022 owner / author .
+IVITY . for THE_RTE , we obtained an f1-SCORE of 67 % ( ONE_USER ) . 2023 owner / author .
+be used to chase away MOSQUITOES in A_ROOM of SMALL_TO_MEDIUM_SIZE . 2023 owner / author .
+s PEOPLE_TRACK THEIR_ACTIVITY_PATTERNS and OTHER_HEALTH_STATISTICS . 2023 owner / author .
+TIONS and SIZE as CONSTRAINTS for FINAL_DEPLOYMENT on EDGE_DEVICES . 2023 owner / author .
+erscoring ITS_VAST_POTENTIAL in DIVERSE_SMART_ENVIRONMENT_SETTINGS . 2023 owner / author .
+ THE_ENVIRONMENTAL_IMPACTS of MACHINE_LEARNING_ON_MICROCONTROLLERS . 2023 owner / author .
+T_COMPUTATIONAL_OR_ENERGY_CONSUMPTION_IMPACT on THE_BROADER_SYSTEM . 2024 owner / author .
+A_DROP-in replacement with MINIMAL_CHANGES to THE_COMPILATION_FLOW . 2024 owner / author .
+MEMORY_CONSTRAINT , achieving 75.2 % ACCURACY with a 1615s LATENCY . 2024 owner / author .
+ICIENCY is not an acceptable trade-off with respect to AI_SECURITY . 2024 owner / author .
+ exceeded THE_SIMULATED_ANNEALING_HEURISTICS by 15 % approximately . 2024 owner / author .
+sed DEMAND-RESPONSE program can reduce THE_POWER_COST by about 30 % . 2023 by the author .
+scerning GENUINE_INSTANCES of AGGRESSION from NON-violent SCENARIOS . 2024 by the author .
+EFFECTS of DISCRETIZATION on CLASSIFICATION_AND_REGRESSION_ACCURACY . 2024 by the author .
+SOURCE-CONSTRAINED_ENVIRONMENTS . copyright 2025 nakhle , harfouche , karam and tserolas .
+_DEPLOYMENT of DNN on-DEVICE for real-TIME_GESTURE_CLASSIFICATION INFERENCE . 2022 icros .
+lt utilizing MOBILENET-v2 as THE_UNDERLYING_FOUNDATION . 2025 bentham science publishers .
+RGY and effectively combat CLIMATE_CHANGE . 2024 copyright for this_paper by its authors .
+T_ANOMALOUS_BEHAVIORS of COMPROMISED_DRONES of THE_FLEET in REAL_TIME . 2024 the_authors .
+a HANDS-on ASSESSMENT of TINYML_APPLICATION in CYBERSECURITY for EVCI . 2024 the_authors .
+t OPEN_QUESTIONS and FURTHER_RESEARCH_DIRECTIONS based_on_our_results . 2024 the_authors .
+IENT_AND_EFFECTIVE_MICROPLASTIC_DETECTION in ENVIRONMENTAL_MONITORING . 2025 the_authors .
+ASED_ADVANCEMENTS to TINYML-powered PPG-based bp MONITORING_WEARABLES . 2025 the_authors .
+2 SECONDS , MAKING THE_CLASSIFIER suitable for real-TIME_APPLICATIONS . 2025 the_authors .
+lored to THEIR_SPECIFIC_NEEDS and APPLICATIONS across VARIOUS_SECTORS . 2025 the_authors .
+UTION for DEPLOYMENT in beyond 5g ( b5g ) and 6g NETWORK_ENVIRONMENTS . 2025 the_authors .
+ THE_DEVELOPMENT of AUTONOMOUS_SATELLITES with PROCESSING on BOARD . 2022 by the_authors .
+of DRAMATICALLY_REDUCED_ENERGY_CONSUMPTION by THE_REPELLENT_DEVICE . 2022 by the_authors .
+MORE_GAS_TYPES , CONCENTRATIONS , and GAS_MIXES in FUTURE_RESEARCH . 2022 by the_authors .
+IOT / CLOUD_RESEARCH_COMMUNITY and pave THE_WAY for FUTURE_STUDIES . 2022 by the_authors .
+ain ITS_APPLICATION and BENEFITS in OTHER_NAMED_RESEARCHED_DOMAINS . 2022 by the_authors .
+UREMENT of 95 % ACCURACY for wv and 92 % for WIND_DIRECTION ( wd ) . 2023 by the_authors .
+ of 0.77 , whereas the f1-SCORE for THE_AMMONIA_TEST_CASE was 0.70 . 2023 by the_authors .
+ESS under AN_OPERATING_FREQUENCY of 100 mhz on a XILINX zc702 FPGA . 2023 by the_authors .
+ET and OUR_RELABELED_DATASET for accurate on-DEVICE_CROWD_COUNTING . 2023 by the_authors .
+ii ) adding ARTIFICIAL_INTELLIGENCE ( AI ) with TINY_EDGE_APPROACH . 2023 by the_authors .
+lly estimate THE_COSTS of THE_HARDWARE_IMPLEMENTATION of THE_MODEL . 2023 by the_authors .
+OT_DEVICES and show the trade-offs for employing them using TINYML . 2023 by the_authors .
+A_PROMISING_TOOL for EFFICIENT_AND_ACCURATE_CARDIOMEGALY_DETECTION . 2023 by the_authors .
+_TYPES , contributing to ENHANCED_ENERGY_EFFICIENCY in IOT_DEVICES . 2023 by the_authors .
+Y to provide A_TRANSPARENT_AND_IRREFUTABLE_REPOSITORY of ANOMALIES . 2023 by the_authors .
+_QUALITY_PARAMETERS , and ESTIMATING THE_SHELF_LIFE of FRESH_DATES . 2023 by the_authors .
+KILOBYTES , and A_FLASH_USAGE_REQUIREMENT of merely 48.7 KILOBYTES . 2023 by the_authors .
+or TINYML , in DESIGNING_WEARABLE_SENSOR_DEVICES for GAIT_ANALYSIS . 2023 by the_authors .
+sible , COST-effective , and PORTABLE_WAY to CONDUCT_GAIT_ANALYSIS . 2023 by the_authors .
+, DIGITAL_TWIN , AUTONOMOUS_VEHICLE and INDUSTRY 4.0. APPLICATIONS . 2023 by the_authors .
+MANCE and EFFICIENCY for ACOUSTIC_AND_AMBIENT_SENSING_APPLICATIONS . 2023 by the_authors .
+_COMPLEXITY , which should be considered for FUTURE_INVESTIGATIONS . 2023 by the_authors .
+egligible LOSS_OF_PERFORMANCE with respect to OFFLINE_REALIZATIONS . 2023 by the_authors .
+gned to , which is essential in ANY_SYSTEM to avoid BUGS or ERRORS . 2023 by the_authors .
+ estimations of THE_SHELF_LIFE of FRESH_DATES using TINYML_SENSORS . 2023 by the_authors .
+n of mems pressure SENSORS affected by DRIFT in THEIR_MEASUREMENTS . 2023 by the_authors .
+ , and helping to fight CLIMATE_CHANGE and protect THE_ENVIRONMENT . 2023 by the_authors .
+ING_IMPACTS on THE_STRUCTURE , achieving higher than 90 % ACCURACY . 2023 by the_authors .
+ FORMULA presented . ) when a post-PROCESSING stage is implemented . 2023 by the_authors .
+ELS , with 0.9951 and 0.9924 ACCURACIES , respectively , using drq . 2023 by the_authors .
+vailable for FREE_DOWNLOAD from GITLAB , as reported in_this_paper . 2023 by the_authors .
+,000 TIMES THE_AMOUNT of POWER and CARBON_EMISSIONS , respectively . 2023 by the_authors .
+ and OUR_SPIKING_WTA is 576.319 mhz and 514.095 mhz , respectively . 2023 by the_authors .
+ng THE_MODEL_SIZE by 20.5 % while increasing THE_ACCURACY by 4.0 % . 2024 by the_authors .
+. the 4-bit QUANTIZATION_LIMITS THE_SILICON_AREA_FOOTPRINT by 90 % . 2024 by the_authors .
+TACKS in 3.51 ms on A_SMART_THERMOSTAT with AN_ACCURACY of 97.59 % . 2024 by the_authors .
+TECTING_DOS and MITM_ATTACKS without relying on A_GATEWAY or CLOUD . 2024 by the_authors .
+E_TINY , DECENTRALIZED_ARTIFICIAL_INTELLIGENCE_SYSTEM_ARCHITECTURE . 2024 by the_authors .
+RELESS_SENSOR_NETWORK ( WSN ) , EMBEDDED_AI , and a KNOWLEDGE_BASE . 2024 by the_authors .
+ and reduce LATENCY at THE_COST of A_SLIGHT_INCREASE in MODEL_SIZE . 2024 by the_authors .
+BRIEF_OVERVIEW of THE_POTENTIAL of transitioning to SWARM_LEARNING . 2024 by the_authors .
+ROACH to managing THE_COMPLEXITIES of IOT , BIG_DATA , and EDGE_AI . 2024 by the_authors .
+EN , THE_ANN has A_CLEAR_ADVANTAGE over THE_MORE_COMPLEX_CNN_MODEL . 2024 by the_authors .
+establishing a DECENTRALIZED and COST-effective FORECASTING SYSTEM . 2024 by the_authors .
+ , offering A_NONINVASIVE_APPROACH for DIABETES_MELLITUS_DETECTION . 2024 by the_authors .
+OSPECT of AUTOMATED_RESPIRATORY_HEALTH_SCREENING using LUNG_SOUNDS . 2024 by the_authors .
+AINABLE_SOLUTION will add ANOTHER_TOOL for dealing with PEST_BIRDS . 2024 by the_authors .
+THESE_MODELS and validate THEIR_EFFECTIVENESS in CLINICAL_SETTINGS . 2024 by the_authors .
+OT_SYSTEMS and THEIR_PRACTICAL_IMPLICATIONS in INDUSTRIAL_SETTINGS . 2024 by the_authors .
+ ARDUINO_NANO 33 BLE_SENSE , is presented for PERFORMANCE_ANALYSIS . 2024 by the_authors .
+cantly enhancing POWER_DELIVERY in implanted and BODY worn SYSTEMS . 2024 by the_authors .
+ , EFFICIENT_SOLUTIONS for RESOURCE-CONSTRAINED_AUTOMOTIVE_SYSTEMS . 2024 by the_authors .
+ing THE_ACCESSIBILITY and FUNCTIONALITY of HOME_AUTOMATION_SYSTEMS . 2024 by the_authors .
+ransforming THE_LANDSCAPE of AI_AND_ML in EMBEDDED_AND_IOT_SYSTEMS . 2024 by the_authors .
+ENTIAL of TINYML-powered e-NOSE_SYSTEMS in HEALTHCARE_APPLICATIONS . 2024 by the_authors .
+roving the EFFICIENCY_AND_SUSTAINABILITY of VEHICULAR_APPLICATIONS . 2024 by the_authors .
+E_WAY for FURTHER_INNOVATION in ENVIRONMENTAL_MONITORING_SOLUTIONS . 2024 by the_authors .
+PUTATIONAL_REQUIREMENTS of nns when addressing low-POWER_SCENARIOS . 2024 by the_authors .
+T_ACCURACY of 85 % when trained on THE_ISIC 2020 CHALLENGE_DATASET . 2024 by the_authors .
+ effectively within THE_CONSTRAINTS of CURRENT_WEARABLE_TECHNOLOGY . 2024 by the_authors .
+ific OPTIMIZATIONS to ENHANCE_SYSTEM_RELIABILITY and ACCESSIBILITY . 2024 by the_authors .
+RACTICAL_TECHNICAL_SOLUTIONS for improving INFRASTRUCTURE_SECURITY . 2024 by the_authors .
+LUES , REQUIRED_RESOURCES , and INFERENCE_TIMES remained unchanged . 2024 by the_authors .
+f A_MICRO_AERIAL_VEHICLE ( MAV ) , achieving AN_ERROR of only 2.84 . 2025 by the_authors .
+NITY on this emerging , impactful , and quite under-explored FIELD . 2025 by the_authors .
+D_STORAGE_FACILITIES , de-greening rooms and directly in THE_FIELD . 2025 by the_authors .
+OPTIMIZATION , and CLINICALLY_RELEVANT_GAIT_PREDICTION_PERFORMANCE . 2025 by the_authors .
+_FACTORIES that require high LEVELS_OF_AUTOMATION and INTELLIGENCE . 2025 by the_authors .
+ARE , supporting scalable and PRIVACY-PRESERVING_EDGE_INTELLIGENCE . 2025 by the_authors .
+CHITECTURE suitable for SMART_ENVIRONMENTS and EMBEDDED_MONITORING . 2025 by the_authors .
+ will allow us to create an intelligent INTERNET_OF_THINGS_NETWORK . 2025 by the_authors .
+ed sdgs , and 13 STUDIES considered PRIVACY in THEIR_SYSTEM_DESIGN . 2025 by the_authors .
+luate ITS_FEASIBILITY and POTENTIAL for large-SCALE_IMPLEMENTATION . 2025 by the_authors .
+FECTIVE_SOLUTION for AUTONOMOUS in-PIPE_EXPLORATION and INSPECTION . 2025 by the_authors .
+IOR_RECOGNITION may represent A_CRITICAL_FUTURE_RESEARCH_DIRECTION . 2025 by the_authors .
+ EPILEPSY , enhancing BOTH_SPEED and ACCURACY in SEIZURE_DETECTION . 2025 by the_authors .
+_PROCESSING_UNITS in less than 147 ms of single-threaded EXECUTION . 2025 by the_authors .
+IZATION of the_results can be achieved by simplifying THE_HEAT_MAP . 2025 by the_authors .
+ES , meeting MODERN_IOT_SYSTEMS ' SCALABILITY and COMPLIANCE_NEEDS . 2025 by the_authors .
+ and industrial APPLICATIONS_OF_AI in RESOURCE-CONSTRAINED_DEVICES . 2025 by the_authors .
+NSTRAINED_SETTINGS while addressing URGENT_CONSERVATION_CHALLENGES . 2025 by the_authors .
+ted alongside PERFORMANCE_COMPARISONS with CONVENTIONAL_APPROACHES . 2025 by the_authors .
+NG_CONTINUOUS_LINGUISTIC_ADJUSTMENT feasible within TINYML_SYSTEMS . 2025 by the_authors .
+AL of TINYML to ADVANCE_EDGE_AI for real-TIME_MEDICAL_APPLICATIONS . 2025 by the_authors .
+XPERIMENTAL_PERFORMANCE for FUTURE_RESEARCH on TINYML_APPLICATIONS . 2025 by the_authors .
+HEME effectively protects THE_NETWORKS against THESE_MANIPULATIONS . 2025 by the_authors .
+ORT_DATA-driven DECISION-MAKING in MODERN_MANUFACTURING_OPERATIONS . 2025 by the_authors .
+itate more efficient , robust and SCALABLE_EDGE_AI_IMPLEMENTATIONS . 2025 by the_authors .
+rom THE_CALIBRATED_HEALTH_SENSORS for real-TIME_STRESS_PREDICTIONS . 2025 by the_authors .
+ing ITS_PRACTICAL_FEASIBILITY under REALISTIC_OPERATING_CONDITIONS . 2025 by the_authors .
+ll suited for securing sc-IOV_DEPLOYMENTS against EVOLVING_THREATS . 2025 by the_authors .
+TENCY , MAKING it highly suitable for real-WORLD_CCTV_ENVIRONMENTS . 2025 by the_authors .
+_CAPABILITIES specifically for THE_CASE of hgr based on EIT_INPUTS . 2025 by the_authors .
+NCE on MANUAL_OBSERVATIONS , and enhancing OVERALL_HERD_MANAGEMENT . 2025 by the_authors .
+FICIENT real-TIME_RUL ESTIMATION for UAV_BATTERY_HEALTH_MANAGEMENT . 2025 by the_authors .
+S while maintaining INTERPRETABILITY for PRACTICAL_FARM_DEPLOYMENT . 2025 by the_authors .
+WORK_INTELLECTUAL_PROPERTY without degrading THE_ORIGINAL_ACCURACY . 2025 by the_authors .
+E_PROCESSING in enhancing EFFICIENCY and reducing CLOUD_DEPENDENCY . 2025 by the_authors .
+o attain CONSIDERABLE_PIPELINING_PERFORMANCE_AND_ENERGY_EFFICIENCY . 2025 by the_authors .
+ to ACTUAL_MCUS , validating THE_EFFICACY of the_proposed_approach . 2025 by the_authors .
+INDUSTRIAL_AUTOMATION where EFFICIENT_IMAGE_PROCESSING is critical . 2025 by the_authors .
+AL_NEURAL_NETWORK_DEPLOYMENT_FRAMEWORK for EDGE_DEVICES . 2022 the_authors and ios press .
+G . TINYML . COPYRIGHT the author ( s ) , 2022 . published by cambridge university press .
+_COMMUNITY and pave THE_WAY for FURTHER_RESEARCH in THIS_DIRECTION . 2021 elsevier b . v .
+m4 MICROCONTROLLER to_demonstrate THE_EFFICIENCY of THIS_PROCEDURE . 2022 elsevier b . v .
+rade-off between COMPUTATIONAL_COST_AND_ANOMALY_DETECTION_ACCURACY . 2022 elsevier b . v .
+THE_CLOUD-based MODEL . otherwise , it switches to LOCAL_INFERENCE . 2023 elsevier b . v .
+, RECALL , and f1-SCORE while also reducing THE_OVERALL_MODEL_SIZE . 2023 elsevier b . v .
+nt to employ ENERGY-aware on-DEVICE_ML_MODELS for IOT_APPLICATIONS . 2023 elsevier b . v .
+POTENTIAL for FUTURE_AUTOMATIC_CONCRETE_DEFECT_REPAIR_ADVANCEMENTS . 2023 elsevier b . v .
+, GAUSSIAN_NAIVE_BAYES , and MULTI-LAYER perceptron ) is presented . 2023 elsevier b . v .
+tackle OTHER_CLASSES of COMMON_LINEAR_ALGEBRA_PROBLEMS efficiently . 2023 elsevier b . v .
+VICES to those with MEDIUM_AND_ADVANCED_COMPUTATIONAL_CAPABILITIES . 2024 elsevier b . v .
+SCOPY_I . e . , ACCURATE_IDENTIFICATION of COMPLEX_SPECTRA_CLASSES . 2024 elsevier b . v .
+FEATURES , 2 estimators , and A_TREE_DEPTH of 16 for nf-bot-IOT-v2 . 2025 elsevier b . v .
+_ACCURACY of THE_ROBOT by adapting to THE_ENVIRONMENT in real-TIME . 2025 elsevier b . v .
+e for NON-COMPRESSED_MODELS it has HIGHER_UTILITY 99 % of THE_TIME . 2025 elsevier b . v .
+CANT_ADVANTAGES in COST-EFFICIENCY and MINIATURIZATION for e-NOSES . 2025 elsevier b . v .
+g ITS_POTENTIAL for secure and PRIVACY-aware IOT-EDGE_APPLICATIONS . 2025 elsevier b . v .
+_AREAS alike , with MEASURABLE_ENVIRONMENTAL_AND_ECONOMIC_BENEFITS . 2025 elsevier b . v .
+IMPROVED_ACCURACY , while switching to THE_SMALLER_MODEL otherwise . 2025 elsevier b . v .
+tally RESPONSIBLE_IOT_SECURITY_FRAMEWORKS . copyright 2025 . published by elsevier b . v .
+n VARIOUS_GESTURE_RECOGNITION_SCENARIOS . 2024 the_authors . published by elsevier b . v .
+o validate its real-WORLD_EFFECTIVENESS . 2024 the_authors . published by elsevier b . v .
+ in real-TIME using TINYML . 2023 by the_authors of this_article . published under cc-by .
+CATION_ACCURACY using FEWER_DATA_POINTS yet less TRAINING_ENERGY_CONSUMPTION . 2023 ccby .
+ed by john wiley and sons ltd on behalf of the institution of engineering and technology .
+NT of efficient on-DEVICE_ANOMALY_DETECTION_SYSTEMS . 2025 lodz university of technology .
+TUNING . copyright spie . downloading of the abstract is permitted for personal use only .
+CURACY . copyright spie . downloading of the abstract is permitted for personal use only .
+NING which will help us in achieving EVEN_HIGHER_MODEL_ACCURACY . 2022 deere and company .
+NING which will help us in achieving EVEN_HIGHER_MODEL_ACCURACY . 2022 deere and company .
+GE_DEVICES at AN_OPTIMUM_LEVEL of PERFORMANCE . 2022 association for computing machinery .
+sed TINYML-based DETECTION on THE_EDGE_SCHEME . 2022 association for computing machinery .
+_IOT_SEMANTIC_MANAGEMENT_SYSTEM are discussed . 2022 association for computing machinery .
+T_COMPUTABLE_ML_MODELS on MICRONCONTROLLERS . 2023 polish information processing society .
+MES , at the same time strengthening DATA_PRIVACY_AND_SECURITY . 2023 vilnius university .
+ international license . license_Details : https://creativecommons.org/licenses/by-sa/4.0/
+TION in HARDWARE_USAGES , without applying ANY_QUANTIZATION_TECHNIQUES of THE_MODEL . 2022
+RATION of BIOINSPIRED_DESIGNS and ARTIFICIAL_INTELLIGENCE in STRUCTURAL_INSPECTIONS . 2023
+OLO ALGORITHMS while surpassing in SPEED , exceeding 30fps on A_RASPBERRY_PI 4b CPU . 2023
+SENSE , NICLA_SENSE , and RASPBERRY_PI 4 , with A_REMARKABLE_GAIN of 94 % for esp32 . 2024
+DEPENDENCIES and mitigating COMPUTATIONAL_OVERHEAD within RESOURCE-limited SETTINGS . 2025
+al-TIME settlement MONITORING in SAFETY-critical GEOTECHNICAL_ENGINEERING_SCENARIOS . 2025
+ maintaining MEASUREMENT_DEVIATIONS within 0.5 HPA across MULTIPLE_STRESS_SCENARIOS . 2025
+NDATIONS instantaneously and locally without CLOUD_SUPPORT or INTERNET_CONNECTIVITY . 2025
+ reaching AN_AVERAGE_ACCURACY and PRECISION of 95 % and 94 % , respectively . 2021 by ASME
+real-TIME_SYNCHRONIZATION in INDUSTRIAL_IOT_APPLICATIONS . 2025 emerald publishing limited
+lly inform DECISION-makers based on EXTENDED_SOUND_ANALYSIS . ica 2022.all rights reserved
+CLEANING_PV_MODULES , changing PV_MODULES , replacing DIODES , etc . ) . 2022 elsevier ltd
+RETRAINING at THE_EDGE by fine-TUNING only the BIASES of HIDDEN_LAYERS . 2022 elsevier ltd
+TIAL for real-LIFE_FALL_DETECTION APPLICATIONS among OLDER_INDIVIDUALS . 2023 elsevier ltd
+TIONS and TREATMENTS are responsive and timely for DIFFERENT_SCENARIOS . 2023 elsevier ltd
+S would have SIMILAR_TOLERANCE to 14-mev neutron RADIATION_SOFT_ERRORS . 2023 elsevier ltd
+ed on SIGNTALK to vocalize THE_PREDICTED_SIGN for BETTER_COMMUNICATION . 2024 elsevier ltd
+E_SOLUTION for improving THE_SAFETY and DURABILITY of STEEL_STRUCTURES . 2024 elsevier ltd
+ailable upon REQUEST to THE_CORRESPONDING_AUTHOR for RESEARCH_PURPOSES . 2024 elsevier ltd
+owing THE_SUPERIORITY of what was proposed in terms of INFERENCE_SPEED . 2025 elsevier ltd
+THE_SYSTEM and ITS_CAPABILITIES for possible real-WORLD_IMPLEMENTATION . 2025 elsevier ltd
+COMPLETE_STUDIES close to INDUSTRIAL_PRODUCTION or COMMERCIAL_PRODUCTS . 2025 elsevier ltd
+ating ITS_USE in SCENARIOS prioritizing ACCURACY over POWER_EFFICIENCY . 2025 elsevier ltd
+GHT on THEIR_EFFICACY and POTENTIAL in advancing HEALTHCARE_TECHNOLOGY . 2025 elsevier ltd
+EX-m4 ) , reducing THE_LATENCY by over 13x and THE_ENERGY consummation by 92 % . 2021 ieee
+ssfully deployed and evaluated on AN_ARDUINO_NANO 33 BLE_SENSE_MICROCONTROLLER . 2021 ieee
+ROSS-LAYER_FRAMEWORK for realizing robust and ENERGY-EFFICIENT_EDGE_AI_SYSTEMS . 2021 ieee
+ded open-SOURCE , allowing the_research community to build and use the h-watch . 2021 ieee
+SION_FACTORS ( 99.8 % ) with respect to CURRENT_STATE-of-the-ART_ARCHITECTURES . 2022 ieee
+X-m0 was also reduced by 1.2 and LATENCY by 1.2 at THE_COST of 2.21 % ACCURACY . 2022 ieee
+SSING of DAMAGE_AND_HEALING_EVENTS to CONTROL THE_HEALING_PROCESS ( es ) . 2022 the author
+nd can replace TRADITIONAL_MONITORING_METHODS . 2023 the institution of chemical engineers
+cribe A_FUTURE_ROADMAP for mitigating SEVERAL_RESEARCH_ISSUES of TINYML . 2021 the_authors
+tly deployed in MICROCONTROLLERS within REAL_WORLD_OPERATING_CONDITIONS . 2022 the_authors
+ FREE_ONLINE_GPU_SERVICES such as GOOGLE_COLABORATORY_AND_KAGGLE_KERNEL . 2023 the_authors
+te THESE_CONSTRAINTS , and DRIVE_MAJOR_ADVANCEMENTS in WILDLIFE_STUDIES . 2023 the_authors
+TY_MEASURES in THE_DYNAMIC_LANDSCAPE of IOT and ASSOCIATED_TECHNOLOGIES . 2024 the_authors
+NCE and POWER_CONSUMPTION on some_of_the commonly used MICROCONTROLLERS . 2024 the_authors
+YSTEMS , ultimately benefiting AGRICULTURAL_PRACTICES and FOOD_SECURITY . 2024 the_authors
+LITY_OF_LIFE for OLDER_ADULTS and guide FUTURE_INNOVATIONS in THE_FIELD . 2025 the_authors
+UTING-based METHODS without THE_NEED for hosting THE_ROUTER ON_THE_EDGE . 2025 the_authors
+EDDED_SYSTEMS and contribute to THE_GROWING_BODY of KNOWLEDGE on TINYML . 2025 the_authors
+coring THE_CRITICAL_ROLE of DATA-aware OPTIMIZATION in ADVANCING_TINYML . 2025 the_authors
+ENERGY_SAVINGS compared to TRADITIONAL_CONTINUOUS_MONITORING_APPROACHES . 2025 the_authors
+ACCESSIBLE_REFERENCE for FUTURE_WEARABLE_HEALTH_MONITORING_TECHNOLOGIES . 2025 the_authors
+TS , while EDGEMARK_LOWERS the BARRIERS_TO_ADOPTION of EAI_TECHNOLOGIES . 2025 the_authors
+WER_ML_MODELS for WATER_MONITORING , especially in DEVELOPING_COUNTRIES . 2025 the_authors
+ION via FRIEDMAN_AND_FISHER_TESTS further SUPPORTS_MO_PERFORMANCE_GAINS . 2025 the_authors
+PLES to ADVANCE intelligent , secure , and PRACTICAL_DIGITAL_CARDIOLOGY . 2025 the_authors
+ODELS in CRITICAL_ENVIRONMENTS where RESOURCES are particularly limited . 2025 the_authors
+ND_SIZE_REDUCTION of THE_MODELS were 99.61 % and 88.61 % , respectively . 2025 the_authors
+S and it is also amenable for DEPLOYMENT in SMALL_SATELLITES . 2023 korean nuclear society

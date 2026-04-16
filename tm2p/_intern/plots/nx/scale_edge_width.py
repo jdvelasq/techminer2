@@ -4,14 +4,14 @@ import numpy as np
 from tm2p._intern import Params
 
 
-def scale_edge_widths(
+def scale_edge_width(
     params: Params,
     nx_graph: nx.Graph,
 ) -> nx.Graph:
 
     edge_width_range = params.edge_width_range
 
-    widths = np.array([data["weight"] for _, _, data in nx_graph.edges(data=True)])
+    widths = np.array([data["width"] for _, _, data in nx_graph.edges(data=True)])
 
     if max(widths) == min(widths):
         widths = np.array([widths[0]] * len(widths))

@@ -27,7 +27,7 @@ Smoke test:
     ...     .having_item_citations_between(None, None)
     ...     .having_items_in(None)
     ...     #
-    ...     .using_minimum_item_co_occurrence(1)
+    ...     .using_minimum_pair_co_occurrence(1)
     ...     #
     ...     # DECOMPOSITION:
     ...     .using_decomposition_estimator(pca)

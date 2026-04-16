@@ -104,6 +104,270 @@ class ParamsMixin:
             setattr(self.params, key, value)
         return self
 
+    # ####################################################################### #
+    #                                                                         #
+    #                        NETWORKS AND MAPS PLOTS                          #
+    #                                                                         #
+    # ####################################################################### #
+
+    # -------------------------------------------------------------------------
+    # Analysis units:
+    # -------------------------------------------------------------------------
+
+    def with_citation_unit(self, citation_unit: CitationUnit) -> Self:
+        if not isinstance(citation_unit, CitationUnit):
+            raise TypeError("citation_unit must be an instance of CitationUnit enum")
+        self.params.citation_unit = citation_unit
+        return self
+
+    def with_co_citation_unit(self, co_citation_unit: CoCitationUnit) -> Self:
+        if not isinstance(co_citation_unit, CoCitationUnit):
+            raise TypeError(
+                "co_citation_unit must be an instance of CoCitationUnit enum"
+            )
+        self.params.co_citation_unit = co_citation_unit
+        return self
+
+    def with_coupling_unit(self, coupling_unit: CouplingUnit) -> Self:
+        if not isinstance(coupling_unit, CouplingUnit):
+            raise TypeError("coupling_unit must be an instance of CouplingUnit enum")
+        self.params.coupling_unit = coupling_unit
+        return self
+
+    def with_co_occurrence_unit(self, co_occurrence_unit: CoOccurrenceUnit) -> Self:
+        if not isinstance(co_occurrence_unit, CoOccurrenceUnit):
+            raise TypeError(
+                "co_occurrence_unit must be an instance of CoOccurrenceUnit enum"
+            )
+        self.params.co_occurrence_unit = co_occurrence_unit
+        return self
+
+    def with_collaboration_unit(self, collaboration_unit: CollaborationUnit) -> Self:
+        if not isinstance(collaboration_unit, CollaborationUnit):
+            raise TypeError(
+                "co_occurrence_unit must be an instance of CollaborationUnit enum"
+            )
+        self.params.collaboration_unit = collaboration_unit
+        return self
+
+    # -------------------------------------------------------------------------
+    # Normalization:
+    # -------------------------------------------------------------------------
+
+    def using_association_index(
+        self,
+        normalization: AssociationIndex,
+    ) -> Self:
+        self.params.association_index = normalization
+        return self
+
+    # -------------------------------------------------------------------------
+    # Edges:
+    # -------------------------------------------------------------------------
+
+    def using_edge_color(self, edge_color: Any) -> Self:
+        if not isinstance(edge_color, (str, int, float)):
+            raise TypeError(
+                f"edge color must be a string or number (valid Plotly color), got {type(edge_color).__name__}"
+            )
+        self.params.edge_color = edge_color
+        return self
+
+    def using_edge_colors(self, edge_colors: Tuple[Any]) -> Self:
+        edge_colors = check_required_color_list(
+            value=edge_colors,
+            param_name="edge_colors",
+        )
+        self.params.edge_colors = edge_colors
+        return self
+
+    def using_edge_opacity_range(self, min_opacity: float, max_opacity: float) -> Self:
+        min_opacity, max_opacity = check_required_float_0_1_range(
+            min_value=min_opacity,
+            max_value=max_opacity,
+            min_param_name="min_opacity",
+            max_param_name="max_opacity",
+        )
+        self.params.edge_opacity_range = (min_opacity, max_opacity)
+        return self
+
+    def using_edge_scaling(self, edge_scaling: Scaling) -> Self:
+        self.params.edge_scaling = edge_scaling
+        return self
+
+    def using_edge_similarity_threshold(self, edge_similarity_threshold: float) -> Self:
+        edge_similarity_threshold = check_required_positive_float(
+            value=edge_similarity_threshold,
+            param_name="edge_similarity_threshold",
+        )
+        self.params.edge_similarity_threshold = edge_similarity_threshold
+        return self
+
+    def using_edge_top_n(self, edge_top_n: int) -> Self:
+        edge_top_n = check_required_positive_int(
+            value=edge_top_n,
+            param_name="edge_top_n",
+        )
+        self.params.edge_top_n = edge_top_n
+        return self
+
+    def using_edge_width_range(self, min_width: float, max_width: float) -> Self:
+        min_width, max_width = check_required_positive_float_range(
+            range_tuple=(min_width, max_width),
+            param_name="edge_width_range",
+        )
+        self.params.edge_width_range = (min_width, max_width)
+        return self
+
+    def using_edge_widths(
+        self,
+        edge_widths: Tuple[
+            Union[float, int],
+            Union[float, int],
+            Union[float, int],
+            Union[float, int],
+        ],
+    ) -> Self:
+        values = cast(Tuple[float, float, float, float], edge_widths)
+        values = check_tuple_of_ordered_four_floats(
+            value=values,
+            param_name="edge_widths",
+        )
+        self.params.edge_widths = values
+        return self
+
+    def using_min_edges_per_node(self, min_edges_per_node: int) -> Self:
+        min_edges_per_node = check_required_positive_int(
+            value=min_edges_per_node,
+            param_name="min_edges_per_node",
+        )
+        self.params.min_edges_per_node = min_edges_per_node
+        return self
+
+    def using_top_edges_per_node(self, top_edges_per_node: int) -> Self:
+        top_edges_per_node = check_required_positive_int(
+            value=top_edges_per_node,
+            param_name="top_edges_per_node",
+        )
+        self.params.top_edges_per_node = top_edges_per_node
+        return self
+
+    # -------------------------------------------------------------------------
+    # Nodes:
+    # -------------------------------------------------------------------------
+
+    def using_node_color(self, node_color: Any) -> Self:
+        if not isinstance(node_color, (str, int, float)):
+            raise TypeError(
+                f"node color must be a string or number (valid Plotly color), got {type(node_color).__name__}"
+            )
+        self.params.node_color = node_color
+        return self
+
+    def using_node_colors(self, node_colors: Tuple[Any, ...]) -> Self:
+        node_colors = check_required_color_list(
+            value=node_colors,
+            param_name="node_colors",
+        )
+        self.params.node_colors = node_colors
+        return self
+
+    def using_node_opacity(self, node_opacity: float) -> Self:
+        node_opacity = check_required_float_0_1(
+            value=node_opacity,
+            param_name="node_opacity",
+        )
+        self.params.node_opacity = node_opacity
+        return self
+
+    def using_node_scaling(self, node_scaling: Scaling) -> Self:
+        self.params.node_scaling = node_scaling
+        return self
+
+    def using_node_size_range(self, min_size: int, max_size: int) -> Self:
+        min_size, max_size = check_required_int_range(
+            range_tuple=(min_size, max_size),
+            param_name="node_size_range",
+        )
+        self.params.node_size_range = (min_size, max_size)
+        return self
+
+    def using_node_size(self, node_size: int) -> Self:
+        node_size = check_required_positive_int(
+            value=node_size,
+            param_name="node_size",
+        )
+        self.params.node_size = node_size
+        return self
+
+    def using_top_n_node_labels(self, top_n_node_labels: int) -> Self:
+        top_n_node_labels = check_required_positive_int(
+            value=top_n_node_labels,
+            param_name="top_n_node_labels",
+        )
+        self.params.top_n_node_labels = top_n_node_labels
+        return self
+
+    def using_top_n_nodes(self, top_n_nodes: int) -> Self:
+        top_n_nodes = check_required_positive_int(
+            value=top_n_nodes,
+            param_name="top_n_nodes",
+        )
+        self.params.top_n_nodes = top_n_nodes
+        return self
+
+    # -------------------------------------------------------------------------
+    # Textfont:
+    # -------------------------------------------------------------------------
+
+    def using_textfont_color(
+        self, textfont_color: Union[str, float, Sequence[float]]
+    ) -> Self:
+        textfont_color = check_plotly_color(
+            value=textfont_color,
+            param_name="textfont_color",
+        )
+        self.params.textfont_color = textfont_color
+        return self
+
+    def using_textfont_opacity_range(
+        self, min_opacity: float, max_opacity: float
+    ) -> Self:
+        min_opacity, max_opacity = check_required_float_0_1_range(
+            min_value=min_opacity,
+            max_value=max_opacity,
+            min_param_name="min_opacity",
+            max_param_name="max_opacity",
+        )
+        self.params.textfont_opacity_range = (min_opacity, max_opacity)
+        return self
+
+    def using_textfont_opacity(self, textfont_opacity: float) -> Self:
+        textfont_opacity = check_required_float_0_1(
+            value=textfont_opacity,
+            param_name="textfont_opacity",
+        )
+        self.params.textfont_opacity = textfont_opacity
+        return self
+
+    def using_textfont_size_range(
+        self, min_size: Union[float, int], max_size: Union[float, int]
+    ) -> Self:
+        min_size, max_size = check_required_positive_number_range(
+            range_tuple=(min_size, max_size),
+            param_name="textfont_size_range",
+        )
+        self.params.textfont_size_range = (min_size, max_size)
+        return self
+
+    def using_textfont_size(self, textfont_size: float) -> Self:
+        textfont_size = check_required_positive_float(
+            value=textfont_size,
+            param_name="textfont_size",
+        )
+        self.params.textfont_size = textfont_size
+        return self
+
     # ==========================================================================
     # HAVING_* → Item filtering (WHICH items?)
     # ==========================================================================
@@ -390,13 +654,6 @@ class ParamsMixin:
     # USING_* → Parameters (HOW to analyze/display?)
     # ==========================================================================
 
-    def using_association_index(
-        self,
-        normalization: AssociationIndex,
-    ) -> Self:
-        self.params.association_index = normalization
-        return self
-
     def using_clustering(
         self,
         clustering: Union[
@@ -412,12 +669,12 @@ class ParamsMixin:
         self.params.clustering = clustering
         return self
 
-    def using_minimum_item_co_occurrence(self, minimum_item_co_occurrence: int) -> Self:
-        minimum_item_co_occurrence = check_required_positive_int(
-            value=minimum_item_co_occurrence,
+    def using_minimum_pair_co_occurrence(self, minimum_pair_co_occurrence: int) -> Self:
+        minimum_pair_co_occurrence = check_required_positive_int(
+            value=minimum_pair_co_occurrence,
             param_name="minimum_item_co_occurrence",
         )
-        self.params.minimum_item_co_occurrence = minimum_item_co_occurrence
+        self.params.minimum_pair_co_occurrence = minimum_pair_co_occurrence
         return self
 
     def using_colored_output(self, colored_output: bool) -> Self:
@@ -542,93 +799,6 @@ class ParamsMixin:
         self.params.cumulative_sum = cumulative_sum
         return self
 
-    def using_edge_colors(self, edge_colors: Tuple[Any]) -> Self:
-        edge_colors = check_required_color_list(
-            value=edge_colors,
-            param_name="edge_colors",
-        )
-        self.params.edge_colors = edge_colors
-        return self
-
-    def using_edge_color(self, edge_color: Any) -> Self:
-        if not isinstance(edge_color, (str, int, float)):
-            raise TypeError(
-                f"edge color must be a string or number (valid Plotly color), got {type(edge_color).__name__}"
-            )
-        self.params.edge_color = edge_color
-        return self
-
-    def using_edge_scaling(self, edge_scaling: Scaling) -> Self:
-        self.params.edge_scaling = edge_scaling
-        return self
-
-    def using_edge_similarity_threshold(self, edge_similarity_threshold: float) -> Self:
-        edge_similarity_threshold = check_required_positive_float(
-            value=edge_similarity_threshold,
-            param_name="edge_similarity_threshold",
-        )
-        self.params.edge_similarity_threshold = edge_similarity_threshold
-        return self
-
-    def using_edge_top_n(self, edge_top_n: int) -> Self:
-        edge_top_n = check_required_positive_int(
-            value=edge_top_n,
-            param_name="edge_top_n",
-        )
-        self.params.edge_top_n = edge_top_n
-        return self
-
-    def using_top_edges_per_node(self, top_edges_per_node: int) -> Self:
-        top_edges_per_node = check_required_positive_int(
-            value=top_edges_per_node,
-            param_name="top_edges_per_node",
-        )
-        self.params.top_edges_per_node = top_edges_per_node
-        return self
-
-    def using_min_edges_per_node(self, min_edges_per_node: int) -> Self:
-        min_edges_per_node = check_required_positive_int(
-            value=min_edges_per_node,
-            param_name="min_edges_per_node",
-        )
-        self.params.min_edges_per_node = min_edges_per_node
-        return self
-
-    def using_edge_opacity_range(self, min_opacity: float, max_opacity: float) -> Self:
-        min_opacity, max_opacity = check_required_float_0_1_range(
-            min_value=min_opacity,
-            max_value=max_opacity,
-            min_param_name="min_opacity",
-            max_param_name="max_opacity",
-        )
-        self.params.edge_opacity_range = (min_opacity, max_opacity)
-        return self
-
-    def using_edge_width_range(self, min_width: float, max_width: float) -> Self:
-        min_width, max_width = check_required_positive_float_range(
-            range_tuple=(min_width, max_width),
-            param_name="edge_width_range",
-        )
-        self.params.edge_width_range = (min_width, max_width)
-        return self
-
-    def using_edge_widths(
-        self,
-        edge_widths: Tuple[
-            Union[float, int],
-            Union[float, int],
-            Union[float, int],
-            Union[float, int],
-        ],
-    ) -> Self:
-        values = cast(Tuple[float, float, float, float], edge_widths)
-        values = check_tuple_of_ordered_four_floats(
-            value=values,
-            param_name="edge_widths",
-        )
-        self.params.edge_widths = values
-        return self
-
     def using_initial_newline(self, initial_newline) -> Self:
         initial_newline = check_required_bool(
             value=initial_newline,
@@ -719,58 +889,6 @@ class ParamsMixin:
         self.params.minimum_items_in_cluster = minimum_items_in_cluster
         return self
 
-    def using_node_colors(self, node_colors: Tuple[Any, ...]) -> Self:
-        node_colors = check_required_color_list(
-            value=node_colors,
-            param_name="node_colors",
-        )
-        self.params.node_colors = node_colors
-        return self
-
-    def using_node_color(self, node_color: Any) -> Self:
-        if not isinstance(node_color, (str, int, float)):
-            raise TypeError(
-                f"node color must be a string or number (valid Plotly color), got {type(node_color).__name__}"
-            )
-        self.params.node_color = node_color
-        return self
-
-    def using_node_scaling(self, node_scaling: Scaling) -> Self:
-        self.params.node_scaling = node_scaling
-        return self
-
-    def using_top_n_node_labels(self, top_n_node_labels: int) -> Self:
-        top_n_node_labels = check_required_positive_int(
-            value=top_n_node_labels,
-            param_name="top_n_node_labels",
-        )
-        self.params.top_n_node_labels = top_n_node_labels
-        return self
-
-    def using_top_n_nodes(self, top_n_nodes: int) -> Self:
-        top_n_nodes = check_required_positive_int(
-            value=top_n_nodes,
-            param_name="top_n_nodes",
-        )
-        self.params.top_n_nodes = top_n_nodes
-        return self
-
-    def using_node_size(self, node_size: int) -> Self:
-        node_size = check_required_positive_int(
-            value=node_size,
-            param_name="node_size",
-        )
-        self.params.node_size = node_size
-        return self
-
-    def using_node_size_range(self, min_size: int, max_size: int) -> Self:
-        min_size, max_size = check_required_int_range(
-            range_tuple=(min_size, max_size),
-            param_name="node_size_range",
-        )
-        self.params.node_size_range = (min_size, max_size)
-        return self
-
     def using_novelty_threshold(self, novelty_threshold: float) -> Self:
         novelty_threshold = check_required_float_0_1(
             value=novelty_threshold,
@@ -823,23 +941,23 @@ class ParamsMixin:
         self.params.recent_periods = recent_periods
         return self
 
-    def using_spring_layout_intra_scale(self, spring_layout_intra_scale: float) -> Self:
-        spring_layout_intra_scale = check_required_positive_float(
-            value=spring_layout_intra_scale,
-            param_name="spring_layout_intra_scale",
-        )
-        self.params.spring_layout_intra_scale = spring_layout_intra_scale
-        return self
+    # def using_spring_layout_intra_scale(self, spring_layout_intra_scale: float) -> Self:
+    #     spring_layout_intra_scale = check_required_positive_float(
+    #         value=spring_layout_intra_scale,
+    #         param_name="spring_layout_intra_scale",
+    #     )
+    #     self.params.spring_layout_intra_scale = spring_layout_intra_scale
+    #     return self
 
-    def using_spring_layout_cluster_scale(
-        self, spring_layout_cluster_scale: float
-    ) -> Self:
-        spring_layout_cluster_scale = check_required_positive_float(
-            value=spring_layout_cluster_scale,
-            param_name="spring_layout_cluster_scale",
-        )
-        self.params.spring_layout_cluster_scale = spring_layout_cluster_scale
-        return self
+    # def using_spring_layout_cluster_scale(
+    #     self, spring_layout_cluster_scale: float
+    # ) -> Self:
+    #     spring_layout_cluster_scale = check_required_positive_float(
+    #         value=spring_layout_cluster_scale,
+    #         param_name="spring_layout_cluster_scale",
+    #     )
+    #     self.params.spring_layout_cluster_scale = spring_layout_cluster_scale
+    #     return self
 
     def using_spring_layout_iterations(self, spring_layout_iterations: int) -> Self:
         spring_layout_iterations = check_required_positive_int(
@@ -871,54 +989,6 @@ class ParamsMixin:
             param_name="counters",
         )
         self.params.counters = counters
-        return self
-
-    def using_textfont_color(
-        self, textfont_color: Union[str, float, Sequence[float]]
-    ) -> Self:
-        textfont_color = check_plotly_color(
-            value=textfont_color,
-            param_name="textfont_color",
-        )
-        self.params.textfont_color = textfont_color
-        return self
-
-    def using_textfont_opacity(self, textfont_opacity: float) -> Self:
-        textfont_opacity = check_required_float_0_1(
-            value=textfont_opacity,
-            param_name="textfont_opacity",
-        )
-        self.params.textfont_opacity = textfont_opacity
-        return self
-
-    def using_textfont_opacity_range(
-        self, min_opacity: float, max_opacity: float
-    ) -> Self:
-        min_opacity, max_opacity = check_required_float_0_1_range(
-            min_value=min_opacity,
-            max_value=max_opacity,
-            min_param_name="min_opacity",
-            max_param_name="max_opacity",
-        )
-        self.params.textfont_opacity_range = (min_opacity, max_opacity)
-        return self
-
-    def using_textfont_size(self, textfont_size: float) -> Self:
-        textfont_size = check_required_positive_float(
-            value=textfont_size,
-            param_name="textfont_size",
-        )
-        self.params.textfont_size = textfont_size
-        return self
-
-    def using_textfont_size_range(
-        self, min_size: Union[float, int], max_size: Union[float, int]
-    ) -> Self:
-        min_size, max_size = check_required_positive_number_range(
-            range_tuple=(min_size, max_size),
-            param_name="textfont_size_range",
-        )
-        self.params.textfont_size_range = (min_size, max_size)
         return self
 
     def using_tfidf_norm(self, tfidf_norm: Optional[str]) -> Self:
@@ -1064,42 +1134,6 @@ class ParamsMixin:
     # ==========================================================================
     # WITH_* → Configuration (WHAT to analyze?)
     # ==========================================================================
-
-    def with_citation_unit(self, citation_unit: CitationUnit) -> Self:
-        if not isinstance(citation_unit, CitationUnit):
-            raise TypeError("citation_unit must be an instance of CitationUnit enum")
-        self.params.citation_unit = citation_unit
-        return self
-
-    def with_co_citation_unit(self, co_citation_unit: CoCitationUnit) -> Self:
-        if not isinstance(co_citation_unit, CoCitationUnit):
-            raise TypeError(
-                "co_citation_unit must be an instance of CoCitationUnit enum"
-            )
-        self.params.co_citation_unit = co_citation_unit
-        return self
-
-    def with_coupling_unit(self, coupling_unit: CouplingUnit) -> Self:
-        if not isinstance(coupling_unit, CouplingUnit):
-            raise TypeError("coupling_unit must be an instance of CouplingUnit enum")
-        self.params.coupling_unit = coupling_unit
-        return self
-
-    def with_co_occurrence_unit(self, co_occurrence_unit: CoOccurrenceUnit) -> Self:
-        if not isinstance(co_occurrence_unit, CoOccurrenceUnit):
-            raise TypeError(
-                "co_occurrence_unit must be an instance of CoOccurrenceUnit enum"
-            )
-        self.params.co_occurrence_unit = co_occurrence_unit
-        return self
-
-    def with_collaboration_unit(self, collaboration_unit: CollaborationUnit) -> Self:
-        if not isinstance(collaboration_unit, CollaborationUnit):
-            raise TypeError(
-                "co_occurrence_unit must be an instance of CollaborationUnit enum"
-            )
-        self.params.collaboration_unit = collaboration_unit
-        return self
 
     def with_column(self, column: str) -> Self:
         column = check_required_str(

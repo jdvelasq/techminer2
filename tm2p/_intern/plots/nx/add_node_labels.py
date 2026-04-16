@@ -14,21 +14,28 @@ def add_node_labels(
         if not data["labeled"]:
             continue
 
+        textfont_opacity = data.get("textfont_opacity", 1.0)
+
+        text = data["text"]
+        if data.get("bold", False):
+            text = f"<b>{text}</b>"
+            textfont_opacity = 1.0
+
         xanchor, yanchor, xshift, yshift = _map_text_position(data["textposition"])
 
         fig.add_annotation(
             x=data["x"],
             y=data["y"],
-            text=f" {data['text']} ",
+            text=f" {text} ",
             showarrow=False,
             font={"size": data["textfont_size"]},
-            bordercolor="grey",
-            bgcolor="white",
+            # bordercolor="grey",
+            # bgcolor="white",
             xanchor=xanchor,
             yanchor=yanchor,
             xshift=xshift,
             yshift=yshift,
-            opacity=data["textfont_opacity"],
+            opacity=textfont_opacity,
         )
 
     return fig

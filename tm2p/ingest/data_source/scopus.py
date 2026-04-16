@@ -3,6 +3,17 @@
 Scopus
 ===============================================================================
 
+
+Database for plot comparisons with other software:
+    >>> from tm2p.ingest.data_source import Scopus
+    >>> (
+    ...     Scopus()
+    ...     .where_root_directory("tests/tinyml/")
+    ...     .run()
+    ... )  # doctest: +ELLIPSIS
+    Note...
+
+
 Smoke test - fintech - successful import:
     >>> from tm2p.ingest.data_source import Scopus
     >>> (

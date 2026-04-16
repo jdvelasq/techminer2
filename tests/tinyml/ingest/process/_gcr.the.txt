@@ -1,0 +1,607 @@
+Abadade Y, 2023, IEEE ACCESS, V11, P96892, DOI 10.1109/ACCESS.2023.3294111
+    Abadade Y., A comprehensive survey on TinyML, IEEE Access, (2023)
+    Abadade Y., A comprehensive survey on TinyML, IEEE Access, 11, (2023)
+    Abadade Y., A comprehensive survey on TinyML, IEEE Access, 11, pp. 96892-96922, (2023)
+    Abadade Y., A comprehensive survey on tinyml, IEEE Access, (2023)
+    Abadade Y., A comprehensive survey on tinyml, IEEE Access, 11, pp. 96892-96922, (2023)
+    Abadade Youssef, A comprehensive survey on tinyml, IEEE Access, (2023)
+Ahmed K, 2022, PROC - IEEE INT CONF HEAL INFORMATICS ICHI, P264, DOI 10.1109/ICHI54592.2022.00047
+    Ahmed K., tinyCare: A tinyML-based Low-Cost Continuous Blood Pressure Estimation on the Extreme Edge, Proceedings of the 2022 IEEE 10th International Conference on Healthcare Informatics (ICHI), (2022)
+Akram J, 2024, IEEE TRANS CONSUM ELECTRON, V70, P4287, DOI 10.1109/TCE.2024.3376440
+    Akram A., DroneSSL: self-supervised multimodal anomaly detection in internet of drone things, IEEE Trans Consum Electron, (2024)
+    Akram A., Dronessl: Self-supervised multimodal anomaly detection in internet of drone things, IEEE Trans. Consum. Electron., 70, pp. 4287-4298, (2024)
+    Akram Y.A., DroneSSL: self-supervised multimodal anomaly detection in Internet of drone things, IEEE Trans. Consum. Electron, 70, n.o 1, pp. 4287-4298, (2024)
+Alajlan NN, 2022, MICROMACHINES, V13, DOI 10.3390/mi13060851
+    Alajlan N., TinyML: Enabling of Inference Deep Learning Models on Ultra-Low-Power IoT Edge Devices for AI Applications, Micromachines, 13, (2022)
+Alajlan NN, 2024, J AUT INTELL, V7, DOI 10.32629/jai.v7i4.1186
+    Alajlan N., Original Research Article TinyML: Adopting tiny machine learning in smart cities, J. Auton. Intell, 7, pp. 1-14, (2024)
+Ali Lodhi M, 2024, IEEE INTERNET THINGS J, V11, P30714, DOI 10.1109/JIOT.2024.3413585
+    Ali Lodhi M., Tiny machine learning for efficient channel selection in LoRaWAN, IEEE Internet Things J., 11, n.o 19, pp. 30714-30724, (2024)
+Alongi F, 2020, PROC - IEEE INT CONF SMART COMPUT SMARTCOMP, P350, DOI 10.1109/SMARTCOMP50058.2020.00076
+    Alongi F., Tiny neural networks for environmental predictions: An integrated approach with Miosix, Proc. Ieee Int. Conf. Smart Comput. (SMARTCOMP), pp. 350-355, (2020)
+Altayeb M, 2023, NUCL ENG TECHNOL, V55, P443, DOI 10.1016/j.net.2022.09.032
+    Altayeb M., TinyML Gamma Radiation Classifier, Nuclear Engi. and Tech., 55, pp. 443-451, (2023)
+Andrade P, 2021, IEEE INT WORK METROL IND 40 IOT METROIND 40 IOT - PROC, P642, DOI 10.1109/MetroInd4.0IoT51437.2021.9488546
+    Andrade P., An Unsupervised TinyML Approach Applied for Pavement Anomalies Detection Under the Internet of Intelligent Vehicles, 2021 IEEE International Workshop on Metrology for Industry 4. 0 & IoT (MetroInd4. 0&IoT), pp. 642-647, (2021)
+    Andrade P., An Unsupervised TinyML Approach Applied for Pavement Anomalies Detection Under the Internet of Intelligent Vehicles, pp. 642-647, (2021)
+    Andrade P., An unsupervised TinyML approach applied for pavement anomalies detection under the Internet of Intelligent Vehicles, Proc. IEEE Int. Workshop Metrol. Ind. 4.0 IoT (MetroInd4. 0 IoT), pp. 642-647, (2021)
+    Andrade P., An unsupervised TinyML approach applied for pavement anomalies detection under the Internet of Intelligent Vehicles, Proc. IEEE Int. Workshop Metrol. Ind. 4.0 IoT (MetroInd4.0 IoT), pp. 642-647, (2021)
+    Andrade P., An unsupervised TinyML approach applied for pavement anomalies detection under the internet of intelligent vehicles, 2021 IEEE International Workshop on Metrology for Industry 4.0 & IoT (MetroInd4.0&IoT), pp. 642-647, (2021)
+    Andrade P., An unsupervised TinyML approach applied for pavement anomalies detection under the internet of intelligent vehicles, Proc. IEEE Int. Workshop Metrology Ind. 4. 0 IoT, pp. 642-647, (2021)
+    Andrade P., An unsupervised tinyML approach applied for pavement anomalies detection under the internet of intelligent vehicles, IEEE Int.Workshop Metrol. Ind. 4.0 & IoT (MetroInd 4.0 & IoT), pp. 642-647, (2021)
+    Andrade P., An unsupervised tinyML approach applied for pavement anomalies detection under the internet of intelligent vehicles, Proc. IEEE Int. Workshop Metrol. Ind. 4.0 IoT (MetroInd4.0&IoT), pp. 642-647, (2021)
+Andrade P, 2022, SENSORS, V22, DOI 10.3390/s22103838
+    Andrade P., A TinyML Soft-sensor Approach for Low-cost Detection and Monitoring of Vehicular Emissions, Sensors, 22, 3838, (2022)
+    Andrade P., A tinyML soft-sensor approach for low-cost detection and monitoring of vehicular emissions, Sensors, 22, 10, (2022)
+Antonini M, 2023, SENSORS, V23, DOI 10.3390/s23042344
+    Antonini M., An Adaptable and Unsupervised TinyML Anomaly Detection System for Extreme Industrial Environments, Sensors, 23, 4, (2023)
+Aoueileyine MO-E, 2023, LECT NOTES NETWORKS SYST, V669 LNNS, P242, DOI 10.1007/978-3-031-29860-8_25
+    Aoueileyine M.O.-E., Tiny machine learning for IoT and eHealth applications: Epileptic seizure prediction use case, Proc. Int. Conf. Digit. Technol. Appl., pp. 242-251, (2023)
+    Aoueileyine M.O.E., Tiny Machine Learning for IoT and eHealth Applications: Epileptic Seizure Prediction Use Case, (2023)
+    Aoueileyine M.O.E., Tiny machine learning for IoT and eHealth applications: Epileptic seizure prediction use case, Proc. Int. Conf. Digit. Technol. Appl., pp. 242-251, (2023)
+    Aoueileyine M.O.E., Tiny machine learning for IoT and eHealth applications: epileptic seizure prediction use case, Digital Technologies and Applications. ICDTA 2023 Lecture Notes in Networks and Systems, 669, (2023)
+    Aoueileyine Mohamed Ould-Elhassen, Tiny Machine Learning for IoT and eHealth Applications: Epileptic Seizure Prediction Use Case, International Conference on Digital Technologies and Applications, (2023)
+Arif M, 2025, COMPUT MATER CONTIN, V83, P13, DOI 10.32604/cmc.2025.062819
+    Muhammad Arif M.R., A literature review on model conversion, inference, and learning strategies in edgeml with tinyml deployment, Computers, Materials & Continua, 83, 1, pp. 13-64, (2025)
+Bader S, 2023, IEEE INSTRUM MEAS MAG, V26, P28, DOI 10.1109/MIM.2023.10238387
+    Bader S., Instrumentation and Measurement Systems: Methods, Applications and Opportunities for Instrumentation and Measurement, IEEE Instrum. Meas. Mag, 26, pp. 28-33, (2023)
+    Bader S., Instrumentation and Measurement Systems: Methods, Applications and Opportunities for Instrumentation and Measurement, IEEE Instrumentation & Measurement Magazine, 26, 7, pp. 28-33, (2023)
+Bao B, 2024, ADV SCI, V11, DOI 10.1002/advs.202306025
+    Bao B., Intelligence sparse sensor network for automatic early evaluation of general movements in infants, Adv. Sci., 11, n.o 19, (2024)
+Behnam P, 2023, IEEE MICRO, V43, P93, DOI 10.1109/MM.2023.3317243
+    Behnam P., Hardware-software co-design for real-time latency-accuracy navigation in tiny machine learning applications, IEEE Micro, 43, n.o 6, pp. 93-101, (2023)
+Beltrán-Escobar M, 2024, ALGORITHMS, V17, DOI 10.3390/a17110476
+    Beltran-Escobar M., A Review on resource-constrained embedded vision systems-based tiny machine learning for robotic applications, Algorithms, 17, 11, (2024)
+Bosse S, 2023, PROC CONF COMPUT SCI INTELL SYST FEDCSIS, P367, DOI 10.15439/2023F7745
+    Bosse S., IoT and Edge Computing using virtualized low-resource integer Machine Learning with support for CNN, ANN, and Decision Trees, IoT-ECAW, Proceedings of the 18th Conference on Computer Science and Intelligence Systems FedCSIS 2023 (IEEE #57573)
+Brander C, 2023, IEEE SENSORS APPL SYMP SAS - PROC, DOI 10.1109/SAS58821.2023.10254154
+    Brander C., Improving data-scarce image classification through multimodal synthetic data pretraining, Proc. IEEE Sens. Appl. Symp. (SAS), 2023, pp. 1-6
+Burrello A, 2024, IEEE TRANS EMERG COMPUT, V12, P780, DOI 10.1109/TETC.2023.3322033
+    Burrello A., Enhancing neural architecture search with multiple hardware constraints for deep learning model deployment on tiny IoT devices, IEEE Trans. Emerg. Top. Comput, pp. 1-15, (2023)
+Buteau E, 2024, PROC ANNU INT CONF IEEE ENG MED BIOL SOC EMBS, DOI 10.1109/EMBC53108.2024.10781755
+    Buteau E., TinyML for real-time embedded HD-EMG hand gesture recognition with on-device fine-tuning, 2024 46th Annual International Conference of the IEEE Engineering in Medicine and Biology Society (EMBC), (2024)
+Cai H, 2022, ACM TRANS DES AUTOM ELECTRON SYST, V27, DOI 10.1145/3486618
+    Cai H., Enable deep learning on mobile devices: Methods, systems, and applications, ACM Trans. Design Autom. Electron. Syst., 27, 3, pp. 1-50, (2022)
+    Cai H., Enable deep learning on mobile devices:Methods, systems, and applications, ACM Trans. Des. Autom. Electron. Syst., 27, 3, pp. 201-2050, (2022)
+Capogrosso L, 2024, IEEE ACCESS, V12, P23406, DOI 10.1109/ACCESS.2024.3365349
+    CAPOGROSSO L., A Machine Learning-oriented Survey on Tiny Machine Learning, 2, (2023)
+    Capogrosso L., A Machine Learning-oriented Survey on Tiny Machine Learning, IEEE Access, 12, pp. 23406-23426, (2024)
+Capotondi A, 2020, IEEE TRANS CIRCUITS SYST EXPRESS BRIEFS, V67, P871, DOI 10.1109/TCSII.2020.2983648
+    Capotondi A., CMix-NN: Mixed Low-Precision CNN Library for Memory-Constrained Edge Devices, IEEE Tran. Circuits Syst. II: Express Briefs, (2020)
+    Capotondi A., CMix-NN: Mixed low-precision CNN library for memory-constrained edge devices, IEEE Trans. Circuits Syst. II Express Briefs IEEE T CIRCUITS-II, 67, 5, pp. 871-875, (2020)
+    Capotondi A., CMix-NN: Mixed low-precision CNN library for memory-constrained edge devices, IEEE Trans. Circuits Syst. II, Exp. Briefs, 67, 5, pp. 871-875, (2020)
+    Capotondi A., CMix-NN: Mixed low-precision CNN library for memory-constrained edge devices, IEEE Transactions on Circuits and Systems II: Express Briefs, (2020)
+    Capotondi A., CMix-NN: Mixed low-precision CNN library for memoryconstrained edge devices, Ieee Trans. Circuits Syst. II, Exp. Briefs, 67, 5, pp. 871-875, (2020)
+Carnelos M, 2025, INTERNET THING, V30, DOI 10.1016/j.iot.2025.101498
+    Carnelos M., MicroFlow: An Efficient Rust-Based Inference Engine for TinyML, IoT, 30, (2025)
+Chepyk O, 2023, INT CONF SMART SUSTAIN TECHNOL SPLIT, DOI 10.23919/SpliTech58164.2023.10193265
+    Chepyk O., An embedded EOG-based brain–computer interface system for robotic control, Proc. 8th Int. Conf. Smart Sustain. Technol. (SpliTech), pp. 1-6, (2023)
+Cho H, 2023, IEEE SENSORS J, V23, P23336, DOI 10.1109/JSEN.2023.3305024
+    Cho H., Walking speed estimation and gait classification using plantar pressure and on-device deep learning, IEEE Sensors J., 23, 19, pp. 23336-23347, (2023)
+Chowdhary M, 2023, IEEE SENSORS LET, V7, P1, DOI 10.1109/LSENS.2023.3327914
+    Chowdhary M., Automl for on-sensor tiny machine learning, IEEE Sens. Lett., 7, 11, (2023)
+Cioflan C, 2024, IEEE INT CONF AI CIRCUITS SYST AICAS - PROC, P6, DOI 10.1109/AICAS59952.2024.10595987
+    Cioflan C., On-device domain learning for keyword spotting on low-power extreme edge embedded systems, 2024 IEEE 6th International Conference on AI Circuits and Systems (AICAS), pp. 6-10, (2024)
+Cui S, 2025, INTERNET TECHNOL LETT, V8, DOI 10.1002/itl2.636
+    Cui S., Context-aware TinyML model for Korean handwriting recognition under online assisted learning scenes, Internet Technol. Lett., 8, 6, (2025)
+De Prado M, 2021, PROC IEEE INT SYMP CIRCUITS SYST, V2021-May, DOI 10.3390/s21041339
+    De Prado M., Robustifying the deployment of TinyML models for autonomous Mini-Vehicles, Sensors, 21, (2021)
+    De Prado M., Robustifying the deployment of tinyML models for autonomous mini-vehicles, Sensors, 21, 1339, pp. 1-16, (2021)
+    De Pradoeta M., Robustifying the deployment of TinyML models for autonomous mini-vehicles, Sensors, 21, 4, (2021)
+    de Prado M., Robustifying the deployment of tinyML Models for autonomous mini-vehicles, Proceedings – IEEE International Symposium on Circuits and Systems, (2020)
+Dhaou IB, 2023, ELECTRON (SWITZERLAND), V12, DOI 10.3390/electronics12194041
+    Dhaou I.B., Design and implementation of an Internet-of-Things-enabled smart meter and smart plug for home-energy-management system, Electronics, 12, n.o 19, (2023)
+Dharani A, 2024, SN COMPUT SCI, V5, DOI 10.1007/s42979-023-02304-z
+    Dharani A., Object detection at edge using TinyML models, SN Comput. Sci., 5, 1, (2023)
+Disabato S, 2020, AICHALLENGEIOT - PROC INT WORK CHALL ARTIF INTELL MACH LEARN INTERNET THINGS, P7, DOI 10.1145/3417313.3429378
+    Disabato AndManuel Roveri S., Incremental on-device tiny machine learning, Proceedings of the InternationalWorkshop on Challenges in Artificial Intelligence and Machine Learning for Internet of Things (AIChallengeIoT'20), pp. 7-13, (2020)
+Disabato S, 2023, SPRINGERBRIEFS APPL SCI TECHNOL, P79, DOI 10.1007/978-3-031-15374-7_7
+    Disabato S., Deep and Wide Tiny Machine Learning, (2022)
+Dogaru R, 2023, INT SYMP ELECTR ELECTRON ENG ISEEE - PROC, P44, DOI 10.1109/ISEEE58596.2023.10310339
+    Dogaru I., V-CNN: A Versatile Light CNN Structure for Image Recognition on Resources Constrained Platforms, 2023 8th International Symposium on Electrical and Electronics Engineering (ISEEE), pp. 44-47, (2023)
+    Dogaru I., V-CNN: A versatile light CNN structure for image recognition on resources-constrained platforms, 2023 8th International Symposium on Electrical and Electronics Engineering (ISEEE), pp. 44-47, (2023)
+    Dogaru I., V-CNN: A versatile light CNN structure for image recognition on resources-constrained platforms, Accepted at ISEEE (International Symposium on Electrical and Electronics Engineering, (2023)
+Dogaru R, 2024, PROC INT CONF ELECTRON COMPUT ARTIF INTELL ECAI, DOI 10.1109/ECAI61503.2024.10607405
+    Dogaru I., VRES-CNN: A Tiny Convolutional Image Classifier with Versatile Choice of Hyperparameters, 2024 16th International Conference on Electronics, Computers and Artificial Intelligence (ECAI), pp. 1-6, (2024)
+    Dogaru Y.I., VRES-CNN: a tiny convolutional image classifier with versatile choice of hyperparameters, presentado en Proceedings of the 16th International Conference on Electronics, Computers and Artificial Intelligence, ECAI 2024, (2024)
+Dong Y, 2023, PROC DES AUTOM CONF, V2023-July, DOI 10.1109/DAC56929.2023.10247791
+    Dong Y., A Model-Specific End-to-End design methodology for Resource-Constrained TinyML hardware, Presentado en Proceedings - Design Automation Conference, (2023)
+    Dong Y., A model-specific end-to-end design methodology for resource-constrained TinyML hardware, Proc. 60th ACM/IEEE Design Autom. Conf. (DAC), pp. 1-6, (2023)
+Dutta DL, 2021, INTERNET THING, V16, DOI 10.1016/j.iot.2021.100461
+    Dutta L., Tinyml meets iot: A comprehensive survey, Inet. of Things, 16, (2021)
+Fang K, 2021, PROC - INT CONF TECHNOL MED EDUC ITME, P222, DOI 10.1109/ITME53901.2021.00053
+    Fang K., A Fall Detection using Sound Technology Based on TinyML, Proceedings of ITME, Wuyishan, China, (2021)
+Fasolino A, 2024, IEEE SENSORS APPL SYMP SAS - PROC, DOI 10.1109/SAS60918.2024.10636597
+    Fasolino A., Object classification using ultra low resolution Time-of-Flight sensor and tiny convolutional neural network, presentado en 2024 IEEE Sensors Applications Symposium, SAS 2024 - Proceedings, (2024)
+Fedorov I, 2022, ADV NEURAL PROCES SYST, V35
+    Fedorov I., UDC: Unified DNAS for compressible TinyML models for neural processing units, Proc. Adv. Neural Inf. Process. Syst., 2022, pp. 18456-18471
+    Fedorov I., UDC: Unified DNAS for compressible TinyML models for neural processing units, Proc. Adv. Neural Inf. Process. Syst., pp. 1-16, (2022)
+Ficco M/1, 2024, FUSION, V104, DOI 10.1016/j.inffus.2023.102189
+    Ficco M., Federated learning for iot devices: Enhancing tinyml with on-board training, Information Fusion, 104, (2024)
+Flores T, 2022, IEEE INT WORK METROL AUTOMOT METROAUTOMOTIVE - PROC, P18, DOI 10.1109/MetroAutomotive54295.2022.9855110
+    Flores T., A TinyML soft-sensor for the internet of intelligent vehicles, 2022 IEEE International Workshop on Metrology for Automotive, MetroAutomotive 2022 - Proceedings, pp. 18-23, (2022)
+    Flores T., A tinyML soft-sensor for the internet of intelligent vehicles, Proc. IEEE Int. Workshop Metrol. Autom. (MetroAutom.), pp. 18-23, (2022)
+Flores T, 2023, IEEE INT WORK METROL AUTOMOT METROAUTOMOTIVE - PROC, P62, DOI 10.1109/MetroAutomotive57488.2023.10219132
+    Flores T., TinyML for safe driving: The use of embedded machine learning for detecting driver distraction, Proc. IEEE Int. Workshop Metrol. Autom. (MetroAutomotive), pp. 62-66, (2023)
+Garavagno AM, 2024, IEEE SENSORS LET, V8, P1, DOI 10.1109/LSENS.2024.3387056
+    Garavagno A.M., An affordable hardware-aware neural architecture search for deploying convolutional neural networks on ultra-lowpower computing platforms, IEEE Sensors Letters, 8, 5, (2024)
+Garbay T, 2022, INT SYST CHIP CONF, V2022-September, DOI 10.1109/SOCC56010.2022.9908108
+    Garbay T., Accurate estimation of the cnn inference cost for tinyml devices, 2022 IEEE 35th International System-on-Chip Conference (SOCC), pp. 1-6, (2022)
+Giordano M, 2022, IEEE TRANS INSTRUM MEAS, V71, DOI 10.1109/TIM.2022.3165816
+    Giordano M., Design and Performance Evaluation of an Ultralow-Power Smart IoT Device With Embedded TinyML for Asset Activity Monitoring, IEEE Transactions on Instrumentation and Measurement, 71, pp. 1-11, (2022)
+    Giordano M., Design and performance evaluation of an Ultralow-Power smart IoT device with embedded TinyML for asset activity monitoring, IEEE Trans. Instrum. Meas, 71, pp. 1-11, (2022)
+    Giordano M., Design and performance evaluation of an Ultralow-power smart IoT device with embedded TinyML for asset activity monitoring, IEEE Trans. Instrum. Meas., 71, pp. 1-11, (2022)
+Giorgio A, 2024, ELECTRON (SWITZERLAND), V13, DOI 10.3390/electronics13091766
+    Giorgio A., No pain device: empowering personal safety with an artificial Intelligence-Based nonviolence embedded system, Electronics, 13, n.o 9, (2024)
+Gkogkidis A, 2022, INT CONF MOD CIRCUITS SYST TECHNOL MOCAST, DOI 10.1109/MOCAST54814.2022.9837510
+    Gkogkidis A., A TinyML-based system for gas leakage detection, Proc. 11th Int. Conf. Modern Circuits Syst. Technol. (MOCAST), pp. 1-5, (2022)
+Gupta S, 2022, J PHYS CONF SER, V2273, DOI 10.1088/1742-6596/2273/1/012025
+    Gupta S., A TinyML approach to human activity recognition, J. Phys., Conf. Ser, 2273, 1, (2022)
+Hashir M, 2023, PROC IEEE INT SYMP CIRCUITS SYST, V2023-May, DOI 10.1109/ISCAS46773.2023.10181746
+    Hashir M., A TinyML based portable, low-cost microwave head imaging system for brain stroke detection, Proc. IEEE Int. Symp. Circuits Syst. (ISCAS), pp. 1-4, (2023)
+    Hashir M., A TinyML based portable, low-cost microwave head imaging system for brain stroke detection, presentado en Proceedings - IEEE International Symposium on Circuits and Systems, (2023)
+Hassan H, 2024, IEEE INT CONF CONVERG TECHNOL I2CT, DOI 10.1109/I2CT61223.2024.10543752
+    Hassan H., TinyML-based gait recognition for user detection on an STM32L4 IoT node, Proc. IEEE 9th Int. Conf. Converg. Technol. (I2CT), pp. 1-6, (2024)
+Hassan O, 2023, IEEE TRANS INSTRUM MEAS, V72, DOI 10.1109/TIM.2023.3279880
+    Hassan O., An Optimized Hardware Inference of SABiNN: Shift-Accumulate Binarized Neural Network for Sleep Apnea Detection, IEEE Transactions on Instrumentation and Measurement, 72, pp. 1-11, (2023)
+    Hassan O., An optimized hardware inference of SABiNN: Shift-accumulate binarized neural network for sleep apnea detection, IEEE Trans. Instrum. Meas., 72, pp. 1-11, (2023)
+Hayajneh AM, 2022, IEEE MIDDLE EAST NORTH AFR COMMUN CONF MENACOMM, P215, DOI 10.1109/MENACOMM57252.2022.9998267
+    Hayajneh A.M., Channel state information based device free wireless sensing for IoT devices employing TinyML, Proceedings of the 4th IEEE Middle East and North Africa Communications Conference (MENACOMM), pp. 215-222, (2022)
+    Hayajneh A.M., Channel state information based device free wireless sensing for iot devices employing tinyml, 2022 4th IEEE Middle East and North Africa COMMunications Conference (MENACOMM), pp. 215-222, (2022)
+Hayajneh AM, 2024, IEEE OPEN J COMMUN SOC, V5, P1656, DOI 10.1109/OJCOMS.2024.3373177
+    Hayajneh A.M., TinyML Empowered Transfer Learning on the Edge, IEEE Open Journal of the Communications Society, (2024)
+Huang J, 2024, IEEE TRANS CONSUM ELECTRON, V70, P7346, DOI 10.1109/TCE.2024.3419784
+    Huang J., An Energy Harvesting Algorithm for UAV-Assisted TinyML Consumer Electronic in Low-Power IoT Networks, IEEE Transactions on Consumer Electronics, 70, 4, pp. 7346-7356, (2024)
+Huang Z/1, 2024, IEEE INT SYMP INTERNET SOUNDS IS2, DOI 10.1109/IS262782.2024.10704131
+    Huang Z., TinyChirp: Bird Song Recognition Using TinyML Models on Low-power Wireless Acoustic Sensors, 2024 IEEE 5th International Symposium on The Internet of Sounds (IS2), (2024)
+Huang Z/2, 2023, IFIP/IEEE INT CONF PERFORM EVAL MODEL WIRED WIREL NETWORKS PEMWN, DOI 10.23919/PEMWN58813.2023.10304946
+    Huang Z., U-TOE: Universal TinyML On-Board Evaluation Toolkit for Low-Power IoT, Proceedings of IFIP/, (2023)
+Huang Z/2, 2025, ANN TELECOMMUN, V80, P283, DOI 10.1007/s12243-024-01041-5
+    Huang Z., RIOT-ML: Toolkit for over-The-Air secure updates and performance evaluation of TinyML models, Annals of Telecommunications, pp. 1-15, (2024)
+Höhne E, 2024, LECT NOTES NETWORKS SYST, V1028 LNNS, P32, DOI 10.1007/978-3-031-61905-2_4
+    Hohne E., Data-Driven mobility and transport planning in municipalities: smart solutions for limited resources, presentado en Lecture Notes in Networks and Systems, pp. 32-39, (2024)
+Immonen R, 2022, J SENSORS, V2022, DOI 10.1155/2022/7437023
+    Riku Immonen T.H., Tiny machine learning for resource-constrained microcontrollers, J Sens, (2022)
+Jain V, 2023, IEEE J SOLID STATE CIRCUITS, V58, P2360, DOI 10.1109/JSSC.2023.3236566
+    Jain V., TinyVers: A 0. 8-17 TOPS/W, 1. 7 ?W-20 mW, Tiny Versatile System-on-chip with State-Retentive eMRAM for Machine Learning Inference at the Extreme Edge, VLSI, (2022)
+    Jain V., TinyVers: A Tiny Versatile System-on-Chip With State-Retentive eMRAM for ML Inference at the Extreme Edge, IEEE JSSC, 58, 8, pp. 2360-2371, (2023)
+Jia B, 2024, IEEE INTERNET THINGS J, V11, P21103, DOI 10.1109/JIOT.2024.3361857
+    Jia B., Coverage path planning for IoUAVs with tiny machine learning in complex areas based on convex decomposition, IEEE Internet Things J., 11, 12, pp. 21103-21111, (2024)
+    Jia B., Coverage path planning for IoUAVs with tiny machine learning in complex areas based on convex decomposition, IEEE Internet Things J., 11, n.o 12, pp. 21103-21111, (2024)
+Jia Z, 2024, IEEE TRANS COMPUT AIDED DES INTEGR CIRCUITS SYST, V43, P127, DOI 10.1109/TCAD.2023.3309744
+    Jia Z., TinyML design contest for Life-Threatening ventricular arrhythmia detection, IEEE Trans. Comput. Aided Des. Integr. Circuits Syst., 43, n.o 1, pp. 127-140, (2024)
+    Jia Z., TinyML design contest for life-threatening ventricular arrhythmia detection, IEEE Trans. Comput.-Aided Des. Integr. Circuits Syst., 43, 1, pp. 127-140, (2024)
+    Jia Z., Tinyml design contest for life-threatening ventricular arrhythmia detection, IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems, pp. 1-1, (2023)
+Jiang S, 2025, INTERNET TECHNOL LETT, V8, DOI 10.1002/itl2.70072
+    Jiang S., TinyML based edge intelligent English classroom quality assessment scheme, Internet Technol. Lett., 8, 4, (2025)
+Kalenberg K, 2024, IEEE INTERNET THINGS J, V11, P21372, DOI 10.1109/JIOT.2024.3363036
+    Kalenberg K., Stargate: Multimodal sensor fusion for autonomous navigation on miniaturized UAVs, IEEE Internet Things J., 11, 12, pp. 21372-21390, (2024)
+    Kalenberg K., Stargate: multimodal sensor fusion for autonomous navigation on miniaturized UAVs, IEEE Internet Things J., 11, n.o 12, pp. 21372-21390, (2024)
+Kallimani R, 2024, MULTIMED TOOLS APPL, V83, P29015, DOI 10.1007/s11042-023-16740-9
+    Kallimani R., TinyML: Tools, applications, challenges, and future research directions, Multim. Tools Appl., 83, 10, pp. 29015-29045, (2024)
+Karavaev A, 2024, SOFTWAREX, V27, DOI 10.1016/j.softx.2024.101778
+    Karavaev A., TinyDecisionTreeClassifier: Embedded C++ library for training and applying decision trees on the edge, SoftwareX, 27, (2024)
+Karras A, 2024, FUTUR INTERNET, V16, DOI 10.3390/fi16020042
+    Karras A., TinyML Algorithms for Big Data Management in Large-Scale IoT Systems, Future Internet, 16, 2, (2024)
+    Karras A., TinyML algorithms for big data management in Large-Scale IoT systems, Future Internet, 16, n.o 2, (2024)
+    Karras A., TinyML algorithms for big data management in large-scale IoT systems, Future Int., 16, 2, (2024)
+    Karras A., TinyML algorithms for big data management in large-scale IoT systems, Future Internet, 16, 2, (2024)
+    Karras A., TinyML algorithms for big data management in large-scale iot systems, Fut. Inter, 16, 2, (2024)
+    Karras A., Tinyml algorithms for big data management in large-scale IOT systems, Future Internet, 16, (2024)
+Karras A, 2024, TINYML EDGE INTELL IOT LPWAN NETWORKS, P255, DOI 10.1016/B978-0-44-322202-3.00016-6
+    Karras Y.C., Bayesian-driven optimizations of TinyML for efficient edge intelligence in LPWANs, en TinyML for Edge Intelligence in IoT and LPWAN Networks, pp. 255-281, (2024)
+Keerthana NL, 2023, INT CONF ADV COMPUT COMMUN SYST ICACCS, P1035, DOI 10.1109/ICACCS57279.2023.10112834
+    Keerthana N.L., Developing an automatic evaluation of exertion using a smart phone, Proc. IEEE 9th Int. Conf. Adv. Comput. Commun. Syst. (ICAccS), 1, pp. 1035-1041, (2023)
+Khan MW, 2024, IEEE INTERNET THINGS J, V11, P21347, DOI 10.1109/JIOT.2024.3385994
+    Khan M.W., Real-Time road damage detection and infrastructure evaluation leveraging unmanned aerial vehicles and tiny machine learning, IEEE Internet Things J., 11, 12, pp. 21347-21358, (2024)
+    Khan M.W., Real-Time road damage detection and infrastructure evaluation leveraging unmanned aerial vehicles and tiny machine learning, IEEE Internet Things J., 11, n.o 12, pp. 21347-21358, (2024)
+Kim E/1, 2023, COMPUT MATER CONTIN, V75, P1751, DOI 10.32604/cmc.2023.031663
+    Kim E., TinyML-based classification in an ECG monitoring embedded system, Computers, Materials and Continua, 75, 1, pp. 1751-1764, (2023)
+Korber N, 2021, PROC - IEEE INT CONF MACH LEARN APPL ICMLA, P564, DOI 10.1109/ICMLA52953.2021.00094
+    Korber N., Tiny generative image compression for bandwidthconstrained sensor applications, 2021 20th IEEE Int. Conf. Mach. Learn. Appl. (ICMLA). IEEE, pp. 564-569, (2021)
+Krayden A, 2022, ENG PROC, V27, DOI 10.3390/ecsa-9-13316
+    Krayden A., CMOS-MEMS Gas Sensor Dubbed GMOS for SelectiveAnalysis of Gases with Tiny Edge Machine Learning, Engineering Proceedings 2022, 27, 1, (2022)
+Krishna A, 2024, IEEE INTERNET THINGS J, V11, P24831, DOI 10.1109/JIOT.2024.3386832
+    Krishna A., RAMAN: A reconfigurable and sparse tinyML accelerator for inference on edge, IEEE Internet Things J, 11, 14, pp. 24831-24845, (2024)
+    Krishna A., Raman: a reconfigurable and sparse tinyML accelerator for inference on edge, IEEE Internet Things J., 11, n.o 14, pp. 24831-24845, (2024)
+Kunhoth J, 2023, INT SYMP NETWORKS COMPUT COMMUN ISNCC, DOI 10.1109/ISNCC58260.2023.10323988
+    Kunhoth Jayakanth, VisualAid+: Assistive System for Visually Impaired with TinyML Enhanced Object Detection and Scene Narration, 2023 International Symposium on Networks, Computers and Communications (ISNCC), (2023)
+Kwon C-K, 2023, PROC - CONGR COMPUT SCI COMPUT ENG APPL COMPUT CSCE, P2697, DOI 10.1109/CSCE60160.2023.00433
+    Kwon C.K., Development of embedded machine learning finger number recognition application using edge impulse platform, Proc. IEEE Congr. Comput. Sci. Comput. Eng. Appl. Comput. (CSCE), pp. 2697-2699, (2023)
+Lamaakal I, 2024, PROCEDIA COMPUT SCI, V236, P589, DOI 10.1016/j.procs.2024.05.070
+    Lamaakal I., A TinyML Technology for Gesture-Based Air Handwriting Arabic Numbers Recognition, Proc. Com. Sci., 236, pp. 589-596, (2024)
+Lamaakal I, 2025, IEEE INTERNET THINGS J, V12, P32419, DOI 10.1109/JIOT.2025.3565688
+    Lamaakal I., A comprehensive survey on tiny machine learning for human behavior analysis, IEEE Internet Things J, 12, 16, pp. 32419-32443, (2025)
+Li B/1, 2024, EMBED ARTIF INTELL PRINC PLATFORMS PRACT, P1, DOI 10.1007/978-981-97-5038-2
+    Li B., Software framework for embedded neural networks, Embedded Artificial Intelligence: Principles, Platforms and Practices, pp. 181-210, (2024)
+Liao J/1, 2024, J SUPERCOMPUT, V80, P21508, DOI 10.1007/s11227-024-06160-3
+    Liao J., MWformer: a novel low computational cost image restoration algorithm, J. Supercomput, 80, n.o 14, pp. 21508-21532, (2024)
+Liberis E, 2021, PROC WORK MACH LEARN SYST EUROMLSYS, P70, DOI 10.1145/3437984.3458836
+    Liberis E., nAS: Constrained Neural Architecture Search for Microcontrollers, EuroMLSys, (2021)
+    Liberis E., μnAS: Constrained neural architecture search for microcon-trollers, Euromlsys, (2021)
+    Liberis E., μnas: Constrained neural architecture search for microcontrollers, Proceedings of the 1st Workshop on Machine Learning and Systems, EuroMLSys 2021, (2021)
+Lin C-T, 2024, IEEE J SOLID STATE CIRCUITS, V59, P2684, DOI 10.1109/JSSC.2024.3362274
+    Lin C., iMCU: A 28-nm Digital In-Memory Computing-Based Microcontroller Unit for TinyML, JSSC, (2024)
+Lin J/1, 2023, IEEE CIRCUITS SYST MAG, V23, P8, DOI 10.1109/MCAS.2023.3302182
+    Lin J., Tiny Machine Learning: Progress and Futures, IEEE Circuits Syst. Mag., (2023)
+Lin T-H, 2024, MEAS SCI TECHNOL, V35, DOI 10.1088/1361-6501/ad2665
+    Lin T.-H., Real-time Hollow Defect Detection in Tiles Using On-device Tiny Machine Learning, Measurement Science and Technology, 35, 5, pp. 1-20, (2024)
+Liu H-I, 2024, ACM COMPUT SURV, V56, DOI 10.1145/3657282
+    Liu H.-I., Lightweight deep learning for resource-constrained environments: a survey, ACM Comput. Surv., 56, n.o 10, (2024)
+Liu S, 2025, INTERNET TECHNOL LETT, V8, DOI 10.1002/itl2.645
+    Liu S., Edge Computing Enables Assessment of Student Community Building: An Emotion Recognition Method Based on TinyML, Internet Technology Letters, 8, 2, (2025)
+    Liu S., Edge computing enables assessment of student community building: An emotion recognition method based on TinyML, Internet Technol. Lett., 8, 2, (2025)
+Lu J, 2024, IEEE TRANS CONSUM ELECTRON, V70, P7334, DOI 10.1109/TCE.2024.3397863
+    Lu J., Lyapunov-guided long-term fairness-aware federated learning for collaborative TinyML on edge devices, IEEE Trans. Consum. Electron, (2024)
+    Lu J., Lyapunov-guided long-term fairness-aware federated learning for collaborative TinyML on edge devices, IEEE Trans. Consum. Electron., 70, 4, pp. 7334-7345, (2024)
+MacHetti S, 2025, PROC IEEE COMPUT SOC ANNU SYMP VLSI ISVLSI, DOI 10.1109/ISVLSI65124.2025.11130281
+    MacHetti S., X-heep: An open-source, configurable and extendible risc-v platform for tinyai applications, IEEE Computer Society Annual Symposium on VLSI (ISVLSI 2025)., (2025)
+Medeiros T, 2023, IEEE INT WORK METROL IND 40 IOT METROIND40 IOT - PROC, P54, DOI 10.1109/MetroInd4.0IoT57462.2023.10180152
+    Medeiros T., TinyML custom AI algorithms for Low-Power IoT data compression: a bridge monitoring case study, presentado en 2023 IEEE International Workshop on Metrology for Industry 4.0 and IoT, MetroInd4.0 and IoT 2023 - Proceedings, pp. 54-59, (2023)
+    Medeiros T., TinyML custom AI algorithms for low-power IoT data compression: a bridge monitoring case study, 2023 IEEE International Workshop on Metrology for Industry 4.0 and IoT, MetroInd4.0 and IoT 2023-Proceedings, pp. 54-59, (2023)
+Mellit A/1, 2022, ENG APPL ARTIF INTELL, V116, DOI 10.1016/j.engappai.2022.105459
+    Mellit A., An embedded solution for fault detection and diagnosis of photovoltaic modules using thermographic images and deep convolutional neural networks, Eng Appl Artif Intell, 116, 5668, (2022)
+    Mellit A., An embedded solution for fault detection and diagnosis of photovoltaic modules using thermographic images and deep convolutional neural networks, Eng Appl Artif Intelligence, 116, (2022)
+    Mellit A., An embedded solution for fault detection and diagnosis of photovoltaic modules using thermographic images and deep convolutional neural networks, Eng. Appl. Artif. Intell., 116, (2022)
+    Mellit A., An embedded solution for fault detection and diagnosis of photovoltaic modules using thermographic images and deep convolutional neural networks, Engineering Applications of Artificial Intelligence, 116, (2022)
+Miao H, 2022, PROC - IEEE/ACM SYMP EDGE COMPUT SEC, P1, DOI 10.1109/SEC54971.2022.00008
+    Miao H., Towards out-of-core neural networks on microcontrollers, SEC, IEEE, (2022)
+Mnif M, 2024, IEEE INT SYMP ROBOT SENSORS ENV ROSE - CONF PROC, DOI 10.1109/ROSE62198.2024.10591116
+    Mnif M., Ultra-fast edge computing approach for hand gesture classification based on EIT measurements, Proc. IEEE Int. Symp. Robot. Sensors Environ. (ROSE), pp. 1-7, (2024)
+Moosmann J, 2025, LECT NOTES COMPUT SCI, V15645 LNCS, P262, DOI 10.1007/978-3-031-91989-3_17
+    Moosmann J., Ultra-efficient on-device object detection on ai-integrated smart glasses with tinyissimoyolo, Computer Vision – ECCV 2024 Workshops., 15645, (2025)
+Motetti BA, 2024, PROC DES AUTOM TEST EUR DATE
+    Motetti B.A., Adaptive Deep Learning for Efficient Visual Pose Estimation Aboard Ultra-Low-Power Nano-Drones, (2024)
+    Motetti B.A., Adaptive Deep Learning for Efficient Visual Pose Estimation aboard Ultra-Low-Power Nano-Drones. Arxiv, 2401, (2024)
+Mukhopadhyay S/1, 2023, IEEE INT CONF PERVASIVE COMPUT COMMUN WORK AFFIL EVENTS PERCOM WORK, P392, DOI 10.1109/PerComWorkshops56833.2023.10150311
+    Mukhopadhyay S., Generating tiny deep neural networks for ECG classification on micro-controllers, 2023 IEEE International Conference on Pervasive Computing and Communications Workshops and other Affiliated Events (PerCom Workshops)., pp. 392-397, (2023)
+    Mukhopadhyay S., Generating tiny deep neural networks for ecg classification on micro-controllers, 2023 IEEE International Conference on Pervasive Computing and Communications Workshops and other Affiliated Events (PerCom Workshops), pp. 392-397, (2023)
+Mukhopadhyay S/1, 2024, IEEE INT CONF PERVASIVE COMPUT COMMUN WORK AFFIL EVENTS PERCOM WORK, P487, DOI 10.1109/PerComWorkshops59983.2024.10502748
+    Mukhopadhyay S., Time Series Classification on Edge with Lightweight Attention Networks, 2024 IEEE International Conference on Pervasive Computing and Communications Workshops and Other Affiliated Events (PerCom Workshops), 2024, pp. 487-492
+Nagaty KA, 2023, FRONT QUAL ELECTRON DES (QED) AI IOT HARDW SECUR, P465, DOI 10.1007/978-3-031-16344-9_12
+    Nagaty K.A., IoT commercial and industrial applications and AI-powered IoT, Frontiers of Quality Electronic Design (QED). AI, IoT and Hardware Security, pp. 465-500, (2023)
+Nakhle F, 2024, DEVICE, V2, DOI 10.1016/j.device.2024.100411
+    Nakhle F., Shrinking the giants: Paving the way for TinyAI, Device, 2, (2024)
+    Nakhle F., Shrinking the giants: paving the way for TinyAI, Device, 2, n.o 8, (2024)
+Nguyen V-K, 2023, INT J ELECTR COMPUT ENG, V13, P5727, DOI 10.11591/ijece.v13i5.pp5727-5736
+    Nguyen C.N., A multi-microcontroller-based hardware for deploying Tiny machine learning model, Int. J. Electr. Comput. Eng., 13, 5, pp. 5727-5736, (2023)
+Oliveira F, 2024, INTERNET THING, V26, DOI 10.1016/j.iot.2024.101153
+    Oliveira F., Internet of Intelligent Things: A convergence of embedded systems, edge computing and machine learning, Internet Things, (2024)
+Osman A, 2022, LECT NOTES ELECTR ENG, V866 LNEE, P139, DOI 10.1007/978-3-030-95498-7_20
+    Osman A., Tinyml platforms benchmarking, Applications in Electronics Pervading Industry, Environment and Society: APPLEPIES, 2021, 2022, pp. 139-148
+Paul J, 2024, PROCEDIA COMPUT SCI, V246, P2002, DOI 10.1016/j.procs.2024.09.670
+    Paul J., Extraction of Measurement Device Information on an ESP32 Microcontroller: TinyML for Image Processing, Procedia Computer Science, 246, pp. 2002-2011, (2024)
+Pavan M, 2025, PROC INT CONF AI-ML SYST AIMLSYSTEMS, DOI 10.1145/3703412.3703415
+    Pavan M., TinySV: Speaker Verification in TinyML with On-Device Learning, (2024)
+Pazmiño Ortiz LA, 2025, FUTUR INTERNET, V17, DOI 10.3390/fi17060257
+    Pazmino Ortiz L., Advancing TinyML in Internet of Things: A Holistic System-Level Perspective for Resource-Constrained AI, 17, (2025)
+Penner K, 2023, IEEE INT CONF BODY SENS NETWORKS BSN - PROC, DOI 10.1109/BSN58485.2023.10330937
+    Penner K., TinyML optimization for activity classification on the resource-constrained body sensor BI-Vital, 2023 IEEE 19th International Conference on Body Sensor Networks (BSN), (2023)
+Pleterski J, 2023, IEEE TRANS INSTRUM MEAS, V72, DOI 10.1109/TIM.2023.3318710
+    Pleterski J., Miniature mobile robot detection using an ultra-low resolution time-of-flight sensor dataset, IEEE Dataport, (2023)
+Polonelli T, 2021, PROC IEEE INT SYMP CIRCUITS SYST, V2021-May, DOI 10.1109/ISCAS51556.2021.9401362
+    Polonelli T., H-watch: An open, connected platform for aienhanced covid19 infection symptoms monitoring and contact tracing, Proc. IEEE ISCAS 2021, pp. 1-5
+Prakash S, 2023, COMMUN ACM, V66, P68, DOI 10.1145/3608473
+    Prakash S., Is TinyML sustainable?, Assessing the Environmental Impacts of Machine Learning on Microcontrollers, (2023)
+    Prakash S., Is TinyML sustainable?, Commun. ACM, 66, 11, pp. 68-77, (2023)
+Prakash S, 2023, PROC - IEEE INT SYMP PERFORM ANAL SYST SOFTW ISPASS, P157, DOI 10.1109/ISPASS57527.2023.00024
+    Prakash S., CFU Playground: Full-Stack Open-Source Framework for Tiny Machine Learning (TinyML) Acceleration on FPGAs, 2023 IEEE International Symposium on Performance Analysis of Systems and Software (ISPASS), 23-25 April 2023 2023, pp. 157-167
+    Prakash S., CFU playground: Full-stack open-source framework for tiny machine learning (tinyML) acceleration on FPGAS, (2022)
+    Prakash S., CFU playground: Full-stack open-source framework for tiny machine learning (tinyml) acceleration on FPGAS, IEEE International Symposium on Performance Analysis of Systems and Software (ISPASS), (2023)
+    Prakash S., Cfu playground: Full-stack open-source framework for tiny machine learning (tinyml) acceleration on fpgas, 2023 IEEE In-ternational Symposium on Performance Analysis of Systems and Software (ISPASS), pp. 157-167, (2023)
+    Prakash S., Cfu playground: Full-stack open-source framework for tiny machine learning (tinyml) acceleration on fpgas, 2023 IEEE International Symposium on Performance Analysis of Systems and Software (ISPASS), pp. 157-167, (2023)
+Putra PD, 2024, ICT-PEP - INT CONF TECHNOL POLIC ENERGY ELECTR POWER RESILIENT POWER SYST NAVIG CLEAN ENERGY TRANSIT PROC, P79, DOI 10.1109/ICT-PEP63827.2024.10733513
+    Putra P.D., Implementation of Audio Classification Using Tiny Machine Learning for Predictive Maintenance in Muara Karang Power Plant, 2024 International Conference on Technology and Policy in Energy and Electric Power (ICTPEP), pp. 79-84, (2024)
+Raha A, 2021, PROC IEEE INT CONF COMPUT DES VLSI COMPUT PROCESS, V2021-October, P13, DOI 10.1109/ICCD53106.2021.00015
+    Raha A., Special session: approximate TinyML systems: full system approximations for extreme energy-efficiency in intelligent edge devices, 2021 IEEE 39th International Conference on Computer Design (ICCD), pp. 13-16, (2021)
+Rashid H-A, 2024, ACM TRANS EMBED COMPUT SYST, V23, DOI 10.1145/3595633
+    Rashid H.-A., Tinym2net-v2: A compact low power software hardware architecture for Multimodal deep neural networks, ACM Transactions on Embedded Computing Systems, (2023)
+Ravaglia L, 2021, IEEE J EMERG SEL CIRCUITS SYST, V11, P789, DOI 10.1109/JETCAS.2021.3121554
+    Ravaglia L., A tinyml platform for on-device continual learning with quantized latent replays, IEEE J. Emerg. Sel. Topics Circuits Syst., 11, 4, pp. 789-802, (2021)
+    Ravaglia L., A tinyml platform for on-device continual learning with quantized latent replays, IEEE J. on Emerging and Selected Topics in Circuits and sys, 11, 4, (2021)
+Ray PP, 2022, J KING SAUD UNIV - COMPUT INF SCI, V34, P1595, DOI 10.1016/j.jksuci.2021.11.019
+    Partha Pratim Ray, A review on TinyML: stateof-the-art and prospects, Journal of King Saud University - Computer and Information Sciences, 34, 4, pp. 1595-1623, (2022)
+    Pratim Ray P., A review on TinyML: State-of-the-art and prospcts, Journal of King Saud University-Computer and Information Sciences, 34, 4, pp. 1595-1623, (2022)
+    Pratim Ray P., A review on TinyML: State-of-the-art and prospects, J. King Saud Univ. – Comput. Inform. Sci., 34, 4, pp. 1595-1623, (2022)
+    Pratim Ray P., A review on TinyML: State-of-the-art and prospects, J. King Saud Univ.-Comput. Inf. Sci., 34, 4, (2021)
+    Pratim Ray P., A review on TinyML: State-of-the-art and prospects, Journal of King Saud University -Computer and Information Sciences, 34, 4, pp. 1595-1623, (2022)
+    Pratim Ray P., A review on TinyML: State-of-the-art and prospects, Journal of King Saud University-Computer and Information Sciences, (2021)
+    Pratim Ray P., A review on TinyML: State-of-the-art and prospects, Journal of King Saud University-Computer and Information Sciences, 34, 4, pp. 1595-1623, (2022)
+    Pratim Ray P., A review on TinyML: State-of-theart and prospects, Journal of King Saud University-Computer and Information Sciences, 34, 4, pp. 1595-1623, (2022)
+    Pratim Ray P., A review on TinyML: Stateof-The-Art and prospects, Journal of King Saud University-Computer and Information Sciences, 34, 4, pp. 1595-1623, (2022)
+    Pratim Ray P., A review on tinyml: State-of-The-Art and prospects, Journal of King Saud University-Computer and Information Sciences, 34, 4, pp. 1595-1623, (2022)
+    Pratim Ray P., A review on tinyml: Stateof-the-art and prospects, Journal of King Saud University-Computer and Information Sciences, 34, 4, pp. 1595-1623, (2022)
+    Ray P P., A review on TinyML: State-of-The-Art and prospectsJ, Journal of King Saud University-Computer and Information Sciences, (2021)
+    Ray P. P., A Review on TinyML: State-of-the-art and prospects, J. King Saud Univ.-Comput. Inf. Sci, 34, 4, pp. 1595-1623, (2022)
+    Ray P. P., A Review on Tinyml: State-Of-The-Art and Prospects, Journal of King Saud University - Computer and Information Sciences, 34, 4, pp. 1595-1623, (2022)
+    Ray P. P., A review on TinyML: State-of-the-art and prospects, (2022)
+    Ray P. P., A review on TinyML: State-of-the-art and prospects, Journal of King Saud University - Computer and Information Sciences, 34, 4, pp. 1595-1623, (2022)
+    Ray P. P., A review on TinyML: State-of-the-art and prospects, Journal of King Saud University-Computer and Information Sciences, 34, 4, pp. 1595-1623, (2022)
+    Ray P. P., A review on TinyML: state-of-the-art and prospects, Journal of King Saud University - Computer and Information Sciences, 34, 4, pp. 1595-1623, (2022)
+    Ray P. P., A review on tinyml: State-of-the-art and prospects, Journal of King Saud University-Computer and Information Sciences, 34, pp. 1595-1623, (2022)
+    Ray P., A Review on TinyML: State-of-the-art and Prospects, J. King Saud Univ.-Comput. Inf. Sci, 34, pp. 1595-1623, (2021)
+    Ray P., A review on TinyML: State-of-the-art and prospects, J. King Saud Univ. Comput. Inf. Sci., 34, 4, pp. 1595-1623, (2022)
+    Ray P., A review on TinyML: State-of-the-art and prospects, J. King Saud Univ. Comput. Inf. Sci., 34, pp. 1595-1623, (2022)
+    Ray P., A review on TinyML: State-of-the-art and prospects, J. King Saud-Univ.-Comput. Inf. Sci, 34, pp. 1595-1623, (2022)
+    Ray P.P., A Review on TinyML: State-of-the-Art and Prospects, J. King Saud Univ. Comput. Inf. Sci, 34, pp. 1595-1623, (2021)
+    Ray P.P., A Review on TinyML: State-of-the-art and Prospects, Journal of King Saud University-Computer and Information Sciences, 1595, 4, (2022)
+    Ray P.P., A Review on Tinyml: State-Of-The-Art and Prospects, (2021)
+    Ray P.P., A Review onTinyML: State-of-the-Art and Prospects, J. King Saud Univ. Comput. Inf. Sci, 34, pp. 1595-1623, (2022)
+    Ray P.P., A review on TinyML: State-of the-art and prospects, J. King Saud Univ. Inf. Sci, 34, pp. 1595-1623, (2021)
+    Ray P.P., A review on TinyML: State-of-The-Art and prospects, J. King Saud Univ. Comput. Inf. Sci., 34, 4, pp. 1595-1623, (2022)
+    Ray P.P., A review on TinyML: State-of-The-Art and prospects, J. King Saud Univ.-Comput. Inf. Sci., 34, 4, pp. 1595-1623, (2022)
+    Ray P.P., A review on TinyML: State-of-The-Art and prospects, Journal of King Saud University-Computer and Information Sciences, 34, 4, pp. 1595-1623, (2022)
+    Ray P.P., A review on TinyML: State-of-The-art and prospects, J. King Saud Uni. Comput. Inform. Sci, 34, 4, pp. 1595-1623, (2022)
+    Ray P.P., A review on TinyML: State-of-the-art and prospects, J King Saud Univ Comput Inf Sci, 34, 4, pp. 1595-1623, (2022)
+    Ray P.P., A review on TinyML: State-of-the-art and prospects, J King Saud Univ Coput Inf Sci, 34, 4, pp. 1595-1623, (2022)
+    Ray P.P., A review on TinyML: State-of-the-art and prospects, J King Saud University-Comput Inf Sci, 34, pp. 1595-1623, (2022)
+    Ray P.P., A review on TinyML: State-of-the-art and prospects, J. King Saud Univ. - Comput. Inf. Sci., 34, 4, pp. 1595-1623, (2022)
+    Ray P.P., A review on TinyML: State-of-the-art and prospects, J. King Saud Univ. - Comput. Inf. Sci., 34, pp. 1595-1623, (2022)
+    Ray P.P., A review on TinyML: State-of-the-art and prospects, J. King Saud Univ. - Comput. Inf. Sci., xxxx, (2021)
+    Ray P.P., A review on TinyML: State-of-the-art and prospects, J. King Saud Univ. Comp. Info. Sci., 34, 4, pp. 1595-1623, (2021)
+    Ray P.P., A review on TinyML: State-of-the-art and prospects, J. King Saud Univ. Comput. Inf. Sci, 34, 4, pp. 1595-1623, (2021)
+    Ray P.P., A review on TinyML: State-of-the-art and prospects, J. King Saud Univ. Comput. Inf. Sci, 34, 4, pp. 1595-1623, (2022)
+    Ray P.P., A review on TinyML: State-of-the-art and prospects, J. King Saud Univ. Comput. Inf. Sci, 34, pp. 1595-1623, (2022)
+    Ray P.P., A review on TinyML: State-of-the-art and prospects, J. King Saud Univ. Comput. Inf. Sci., 34, 4, (2022)
+    Ray P.P., A review on TinyML: State-of-the-art and prospects, J. King Saud Univ. Comput. Inf. Sci., 34, 4, pp. 1595-1623, (2021)
+    Ray P.P., A review on TinyML: State-of-the-art and prospects, J. King Saud Univ. Comput. Inf. Sci., 34, 4, pp. 1595-1623, (2022)
+    Ray P.P., A review on TinyML: State-of-the-art and prospects, J. King Saud Univ. Comput. Inf. Sci., 34, pp. 1595-1623, (2021)
+    Ray P.P., A review on TinyML: State-of-the-art and prospects, J. King Saud Univ. Inf. Sci., 34, 4, pp. 1595-1623, (2022)
+    Ray P.P., A review on TinyML: State-of-the-art and prospects, J. King Saud Univ. – Comput. Inform. Sci., 34, pp. 1595-1623, (2022)
+    Ray P.P., A review on TinyML: State-of-the-art and prospects, J. King Saud Univ.- Comput. Inf. Sci., 34, 4, pp. 1595-1623, (2022)
+    Ray P.P., A review on TinyML: State-of-the-art and prospects, J. King Saud Univ.-Comp. Inform. Sci., (2021)
+    Ray P.P., A review on TinyML: State-of-the-art and prospects, J. King Saud Univ.-Comput. Inf. Sci, 34, 4, pp. 1595-1623, (2022)
+    Ray P.P., A review on TinyML: State-of-the-art and prospects, J. King Saud Univ.-Comput. Inf. Sci, 34, pp. 1595-1623, (2021)
+    Ray P.P., A review on TinyML: State-of-the-art and prospects, J. King Saud Univ.-Comput. Inf. Sci, 34, pp. 1595-1623, (2022)
+    Ray P.P., A review on TinyML: State-of-the-art and prospects, J. King Saud Univ.-Comput. Inf. Sci., 2021, (2021)
+    Ray P.P., A review on TinyML: State-of-the-art and prospects, J. King Saud Univ.-Comput. Inf. Sci., 34, 4, pp. 1595-1623, (2022)
+    Ray P.P., A review on TinyML: State-of-the-art and prospects, J. King Saud Univ.-Comput. Info. Sci., 34, 4, pp. 1595-1623, (2022)
+    Ray P.P., A review on TinyML: State-of-the-art and prospects, J. King Saud Univ.-Comput. Inform. Sci., (2021)
+    Ray P.P., A review on TinyML: State-of-the-art and prospects, J. King Saud Univ.—Comput. Inf. Sci, 34, pp. 1595-1623, (2021)
+    Ray P.P., A review on TinyML: State-of-the-art and prospects, J. King Saud Univ.—Comput. Inf. Sci, 34, pp. 1595-1623, (2022)
+    Ray P.P., A review on TinyML: State-of-the-art and prospects, J. King Saud Univer. - Comput. Inform. Sci, (2022)
+    Ray P.P., A review on TinyML: State-of-the-art and prospects, J. King Saud. Univ. Comput. Inf. Sci., 34, 4, pp. 1595-1623, (2022)
+    Ray P.P., A review on TinyML: State-of-the-art and prospects, J. King Saud. Univ. Comput. Inform. Sci., 34, pp. 1595-1623, (2021)
+    Ray P.P., A review on TinyML: State-of-the-art and prospects, J. King Saud. Univ.-Comput. Inf. Sci, 34, pp. 1595-1623, (2022)
+    Ray P.P., A review on TinyML: State-of-the-art and prospects, Journal of King Saud University - Computer and Information Sciences, (2021)
+    Ray P.P., A review on TinyML: State-of-the-art and prospects, Journal of King Saud University - Computer and Information Sciences, 34, 4, pp. 1595-1623, (2021)
+    Ray P.P., A review on TinyML: State-of-the-art and prospects, Journal of King Saud University - Computer and Information Sciences, 34, 4, pp. 1595-1623, (2022)
+    Ray P.P., A review on TinyML: State-of-the-art and prospects, Journal of King Saud University - Computer and Information Sciences, 34, 6, pp. 1595-1623, (2022)
+    Ray P.P., A review on TinyML: State-of-the-art and prospects, Journal of King Saud University – Computer and Information Sciences, 34, pp. 1595-1623, (2022)
+    Ray P.P., A review on TinyML: State-of-the-art and prospects, Journal of King Saud University-CIS, 34, 4, pp. 1595-1623, (2022)
+    Ray P.P., A review on TinyML: State-of-the-art and prospects, Journal of King Saud University-Computer and Information Sciences, (2021)
+    Ray P.P., A review on TinyML: State-of-the-art and prospects, Journal of King Saud University-Computer and Information Sciences, (2022)
+    Ray P.P., A review on TinyML: State-of-the-art and prospects, Journal of King Saud University-Computer and Information Sciences, 2021, (2021)
+    Ray P.P., A review on TinyML: State-of-the-art and prospects, Journal of King Saud University-Computer and Information Sciences, 2021, pp. 1595-1623
+    Ray P.P., A review on TinyML: State-of-the-art and prospects, Journal of King Saud University-Computer and Information Sciences, 34, 4, pp. 1595-1623, (2022)
+    Ray P.P., A review on TinyML: State-of-the-art and prospects, Journal of King Saud University: Computer and Information Sciences, 34, pp. 1595-1623, (2021)
+    Ray P.P., A review on TinyML: State-of-the-art and prospects, Journal of King Saud University–Computer and Information Sciences, 34, 4, pp. 1595-1623, (2022)
+    Ray P.P., A review on TinyML: State-of-the-art and prospects, ScienceDirect, pp. 1595-1623, (2022)
+    Ray P.P., A review on TinyML: State-ofthe- art and prospects, Journal of King Saud University- Computer and Information Sciences, (2021)
+    Ray P.P., A review on TinyML: State-ofthe-art and prospects, Journal of King Saud University-Computer and Information Sciences, (2021)
+    Ray P.P., A review on TinyML: state-of-the-art and prospects, J King Saud Uni. Comput. Inf. Sci., 34, pp. 1595-1623, (2022)
+    Ray P.P., A review on TinyML: state-of-the-art and prospects, J King Saud Univ Comput Inf Sci, 34, 4, pp. 1595-1623, (2022)
+    Ray P.P., A review on TinyML: state-of-the-art and prospects, J King Saud Univ-Comput Inf Sci, 34, 4, pp. 1595-1623, (2022)
+    Ray P.P., A review on TinyML: state-of-the-art and prospects, J. King Saud Univ, Comput. Inf. Sci., 34, 4, pp. 1595-1623, (2022)
+    Ray P.P., A review on TinyML: state-of-the-art and prospects, J. King Saud Univ, Comput. Inf. Sci., 34, pp. 1595-1623, (2022)
+    Ray P.P., A review on TinyML: state-of-the-art and prospects, J. King Saud Univ. -Comput. Inf. Sci., 34, 4, pp. 1595-1623, (2022)
+    Ray P.P., A review on TinyML: state-of-the-art and prospects, J. King Saud Univ. Comp. Inform. Sci., 34, 4, pp. 1595-1623, (2022)
+    Ray P.P., A review on TinyML: state-of-the-art and prospects, J. King Saud Univ.-Comp. Inform. Sci., 34, 4, pp. 1595-1623, (2022)
+    Ray P.P., A review on TinyML: state-of-the-art and prospects, J. King Saud Univ.-Comput.Inform. Sci., (2021)
+    Ray P.P., A review on TinyML: state-of-the-art and prospects, J. King Saud University-Comput. Inf. Sci., (2021)
+    Ray P.P., A review on TinyML: state-of-the-art and prospects, J. King Saud. Univ. Comput. Inf. Sci., 34, n.o 4, pp. 1595-1623, (2022)
+    Ray P.P., A review on TinyML: state-of-the-art and prospects, Journal of King Saud University - Computer and Information Sciences, 34, 4, pp. 1595-1623, (2022)
+    Ray P.P., A review on TinyML: state-of-the-art and prospects, Journal of King Saud University - Computer and Information Sciences, 34, pp. 1595-1623, (2022)
+    Ray P.P., A review on TinyML: state-of-the-art and prospects, Journal of King Saud University: Computer and Information Sciences, 34, 4, pp. 1595-1623, (2022)
+    Ray P.P., A review on TinyMl: state-of-the-art and prospects, J King Saud Univ Comput Inf Sci, 34, 4, pp. 1595-1623, (2022)
+    Ray P.P., A review on tinyML: State-of-The-art and prospects, J. King Saud Univ. - Comput. Inf. Sci., 34, 4, pp. 1595-1623, (2022)
+    Ray P.P., A review on tinyml: State-of-The-Art and prospects, Journal of King Saud University-Computer and Information Sciences, 2021
+    Ray P.P., A review on tinyml: State-of-The-Art and prospects, Journal of King Saud University-Computer and Information Sciences, 34, 4, pp. 1595-1623, (2022)
+    Ray P.P., A review on tinyml: State-of-The-art and prospects, Journal of King Saud University - Computer and Information Sciences, 34, 4, pp. 1595-1623, (2022)
+    Ray P.P., A review on tinyml: State-of-The-art and prospects, Journal of King Saud University-Computer and Information Sciences, 34, 4, pp. 1595-1623, (2021)
+    Ray P.P., A review on tinyml: State-of-the-art and prospects, 4, pp. 1595-1623, (2022)
+    Ray P.P., A review on tinyml: State-of-the-art and prospects, J King Saud Univ - Comput Inform Sci, 34, pp. 1595-1623, (2022)
+    Ray P.P., A review on tinyml: State-of-the-art and prospects, J King Saud University - Comput Inf Sci, 34, 4, pp. 1595-1623, (2022)
+    Ray P.P., A review on tinyml: State-of-the-art and prospects, J. King Saud Univ. Comput. Inf. Sci, 34, pp. 1595-1623, (2022)
+    Ray P.P., A review on tinyml: State-of-the-art and prospects, J. King Saud Univ. Comput. Inf. Sci., 32, 4, pp. 1595-1623, (2021)
+    Ray P.P., A review on tinyml: State-of-the-art and prospects, J. King Saud Univ.-Comput. Inf. Sci, 34, pp. 1595-1623, (2022)
+    Ray P.P., A review on tinyml: State-of-the-art and prospects, J. King Saud Univer. Comput. Inf. Sci., 34, 4, pp. 1595-1623, (2022)
+    Ray P.P., A review on tinyml: State-of-the-art and prospects, J. of King Saud University-Computer and Info. Sciences, (2021)
+    Ray P.P., A review on tinyml: State-of-the-art and prospects, JKSUCI, 34, 4, pp. 1595-1623, (2022)
+    Ray P.P., A review on tinyml: State-of-the-art and prospects, Journal of King Saud University - Computer and Information Sciences, 34, 4, pp. 1595-1623, (2022)
+    Ray P.P., A review on tinyml: State-of-the-art and prospects, Journal of King Saud University-Computer and Information Sciences, (2021)
+    Ray P.P., A review on tinyml: State-of-the-art and prospects, Journal of King Saud University-Computer and Information Sciences, 34, 4, pp. 1595-1623, (2022)
+    Ray P.P., A review on tinyml: State-of-the-art and prospects, Journal of King Saud University-Computer and Information Sciences, pp. 1-29, (2021)
+    Ray PP., A review on TinyML: State-of-the-art and prospects, J King Saud Univ – Comput Inform Sci, 34, 4, pp. 1595-1623, (2022)
+    Ray PP., A review on TinyML: State-of-the-art and prospects, Journal of King Saud University-Computer and Information Sciences, 34, 4, pp. 1595-1623, (2022)
+    Ray Partha Pratim, A review on TinyML: State-of-the-art and prospects, Journal of King Saud University-Computer and Information Sciences, 34, 4, pp. 1595-1623, (2022)
+Raza W, 2021, DRONES, V5, DOI 10.3390/drones5040127
+    Raza Wamiq, Energy-efficient inference on the edge exploiting TinyML capabilities for UAVs, Drones, 5, 4, (2021)
+Reddi VJ, 2024, PROC - INT CONF HARDW/SOFTW CODESIGN SYST SYNTH CODES+ISSS, P41, DOI 10.1109/CODES-ISSS60120.2024.00015
+    Reddi V.J., Machine Learning Systems: Principles and Practices of Engineering Artificially Intelligent Systems, (2025)
+Ren H, 2021, DEBS - PROC ACM INT CONF DISTRIB EVENT-BASED SYST, P126, DOI 10.1145/3465480.3466928
+    Ren H., The synergy of complex event processing and tiny machine learning in industrial IoT, Arxiv:2105.03371V1 [Cs.Dc] 4 May 2021, (2021)
+Ren H, 2021, PROC INT JT CONF NEURAL NETWORKS, V2021-July, DOI 10.1109/IJCNN52387.2021.9533927
+    Ren H., Tinyol: Tinyml with online-learning on microcontrollers, 2021 Intl. joint Conf. on neural networks (IJCNN). IEEE, (2021)
+Risso M, 2022, IEEE INT GREEN SUSTAIN COMPUT CONF IGSC, DOI 10.1109/IGSC55832.2022.9969373
+    Risso M., Channel-wise mixed-precision assignment for dnn inference on constrained edge nodes, IEEE IGSC, (2022)
+Roveri M, 2023, LECT NOTES DATA ENG COMMUN TECH, V142, P23, DOI 10.1007/978-981-19-3391-2_2
+    Roveri M., Is Tiny Deep Learning the New Deep Learning?, Computational Intelligence and Data Analytics, 142, pp. 23-39, (2023)
+    Roveri M., Is Tiny Deep Learning the New Deep Learning?, Computational Intelligence and Data Analytics, pp. 23-39, (2023)
+    Roveri M., Is Tiny Deep Learning the New Deep Learning?, Hitendra Sarma, editors, Computational Intelligence and Data Analytics, 142, pp. 23-39, (2023)
+    Roveri M., Is Tiny Deep Learning the New Deep Learning?, Proceedings of the Computational Intelligence and Data Analytics, pp. 23-39, (2023)
+    Roveri M., Is tiny deep learning the new deep learning?, Computational Intelligence and Data Analytics, pp. 23-39, (2023)
+    Roveri M., Is tiny deep learning the new deep learning?, Computational Intelligence and Data Analytics: Proceedings of ICCIDA 2022, pp. 23-39, (2022)
+    Roveri M., Is tiny deep learning the new deep learning?, en Lecture Notes on Data Engineering and Communications Technologies, 142, pp. 23-39, (2023)
+Sabovic A, 2023, INTERNET THING, V22, DOI 10.1016/j.iot.2023.100736
+    Sabovic A., Towards Energy-aware TinyML on Battery-less IoT Devices, Internet of Things, 22, (2023)
+    Sabovic A., Towards energy-aware tinyml on battery-less iot devices, Internet of Things, 22, (2023)
+    Sabovic Adnan, Towards energy-aware tinyML on battery-less IoT devices, Internet of Things, 22, (2023)
+Sai Charan K, 2022, SAE INT J ADV CURR PR MOB, V5, P1496, DOI 10.4271/2022-28-0406
+    Charan Sai K., An auto-encoder based TinyML approach for real-time anomaly detection, SAE Int. J. Adv. Curr. Pract. Mobil, 5, pp. 1496-1501, (2022)
+    Sai Charan K., An Auto-Encoder Based TinyML Approach for Real-Time Anomaly Detection, SAE Int. J. Adv. & Curr. Prac. in Mobility, 5, 4, pp. 1496-1501, (2022)
+Sakr F, 2024, ELECTRON (SWITZERLAND), V13, DOI 10.3390/electronics13091624
+    Sakr F., CBin-NN: An inference engine for Binarized neural networks, Electronics, 13, (2024)
+    Sakr F., CBin-NN: An inference engine for binarized neural networks, Electronics, 13, 9, (2024)
+    Sakr F., CBin-NN: an inference engine for binarized neural networks, Electronics, 13, n.o 9, (2024)
+Salazar C, 2022, REMOTE SENS, V14, DOI 10.3390/rs14215597
+    Salazar C., Cloud Detection Autonomous System Based on ML and COTS Components On-Board Small Satellites, 14, (2022)
+    Salazar C., Cloud detection autonomous system based on machine learning and cots components on-board small satellites, Remote Sens, 14, 21, (2022)
+Samakovlis D, 2025, IEEE DES TEST, V42, P45, DOI 10.1109/MDAT.2024.3483034
+    Samakovlis D., BiomedBench: A benchmark suite of TinyML biomedical applications for low-power wearables, (2024)
+    Samakovlis D., BiomedBench: A benchmark suite of TinyML biomedical applications for low-power wearables, IEEE Design and Test, pp. 1-1, (2024)
+Sanchez-Iborra R, 2020, IEEE CIRCUITS SYST MAG, V20, P4, DOI 10.1109/MCAS.2020.3005467
+    Sanchez-Iborra R., Tinyml-enabled frugal smart objects: Challenges and opportunities, IEEE Circuits and Systems Magazine, 20, 3, pp. 4-18, (2020)
+    Sanchez-Iborra R., Tinyml-enabled frugal smart objects: Challenges and opportunities, IEEE Circuits and sys. Magazine, 20, 3, (2020)
+Sanchez-Iborra R, 2021, SENSORS, V21, DOI 10.3390/s21155218
+    Sanchez-Iborra R., LPWAN and Embedded Machine Learning as Enablers for the Next Generation of Wearable Devices, Sensors, 21, (2021)
+    Sanchez-Iborra R., LPWAN and embedded machine learning as enablers for the next generation of wearable devices, Sensors, 21, (2021)
+    Sanchez-Iborra R., LPWAN and embedded machine learning as enablers for the next generation of wearable devices, Sensors, 21, 15, (2021)
+    Sanchez-Iborra R., Lpwan and embedded machine learning as enablers for the next generation of wearable devices, Sensors, 21, (2021)
+    Sanchez-Iborra R., Lpwan and embedded machine learning as enablers for the next generation of wearable devices, Sensors, 21, 15, (2021)
+    Sanchez-Iborra R., Lpwan and embedded machine learning as enablers for the next generation of wearable devices, Sensors, 21, 2021, pp. 5218-5240, (2021)
+Sayan Saha S, 2022, IEEE SENSORS J, V22, P21362, DOI 10.1109/JSEN.2022.3210773
+    Sayan Saha S., Machine learning for microcontroller-class hardware-A review, IEEE Sensors Journal, (2022)
+Scherer M, 2024, IEEE TRANS COMPUT AIDED DES INTEGR CIRCUITS SYST, V43, P4009, DOI 10.1109/TCAD.2024.3443718
+    Scherer M., Deeploy: Enabling energy-efficient deployment of small language models on heterogeneous microcontrollers, IEEE Trans. Comput.Aided Design Integr. Circuits Syst., 43, 11, pp. 4009-4020, (2024)
+Schizas N, 2022, FUTUR INTERNET, V14, DOI 10.3390/fi14120363
+    Schizas N., TinyML for Ultra-Low Power AI and Large Scale IoT Deployments: A Systematic Review, Future Internet, 14, (2022)
+    Schizas N., TinyML for Ultra-Low Power AI and Large Scale IoT Deployments: A Systematic Review, Future Internet, 14, 12, (2022)
+    Schizas N., Tinyml for ultra-low power ai and large scale iot deployments: A systematic review, Future Internet, 14, 12, (2022)
+    Schizas Nikolaos, TinyML for Ultra-Low Power AI and Large Scale IoT Deployments: A Systematic Review, Future Internet, 14, 12, (2022)
+Shafique M, 2021, PROC DES AUTOM CONF, V2021-December, P1303, DOI 10.1109/DAC18074.2021.9586232
+    Shafique M., TinyML: Current progress, research challenges, and future roadmap, Proc. 58th ACM/ IEEE Design Autom. Conf. (DAC), pp. 1303-1306, (2021)
+    Shafique M., TinyML: Current progress, research challenges, and future roadmap, Proc. 58th ACM/IEEE Design Autom. Conf. (DAC), pp. 1303-1306, (2021)
+Shamim MZM, 2022, IEEE SENSORS LET, V6, DOI 10.1109/LSENS.2022.3201398
+    Shamim M.Z., TinyML model for classifying hazardous volatile organic compounds using low-power embedded edge sensors: Perfecting factory 5.0 using edge ai, IEEE Sensors Letters, 6, 9, pp. 1-4, (2022)
+    Shamim M.Z.M., TinyML Model for Classifying Hazardous Volatile Organic Compounds Using Low-Power Embedded Edge Sensors: Perfecting Factory 5.0 Using Edge AI, IEEE Sens. Lett, 6, pp. 1-4, (2022)
+    Shamim M.Z.M., TinyML model for classifying hazardous volatile organic compounds using low-power embedded edge sensors: Perfecting factory 5.0 using edge AI, IEEE Sens. Lett, 6, (2022)
+    Shamim M.Z.M., TinyML model for classifying hazardous volatile organic compounds using low-power embedded edge sensors: Perfecting factory 5.0 using edge AI, IEEE Sens. Lett, 6, 9, (2022)
+    Shamim M.Z.M., TinyML model for classifying hazardous volatile organic compounds using low-power embedded edge sensors: Perfecting factory 5.0 using edge AI, IEEE Sensors Letters, 6, 9, pp. 1-4, (2022)
+Shamim MZM/1, 2022, IEEE EMDED SYST LETT, V14, P183, DOI 10.1109/LES.2022.3160281
+    Shamim M.Z.M., Hardware Deployable Edge-AI Solution for Pre-screening of Oral Tongue Lesions using TinyML on Embedded Devices, IEEE Embed. Syst. Lett, 14, pp. 183-186, (2022)
+    Shamim M.Z.M., Hardware Deployable Edge-AI Solution for Prescreening of Oral Tongue Lesions Using TinyML on Embedded Devices, IEEE Embed. Syst. Lett, 14, pp. 183-186, (2022)
+    Shamim M.Z.M., Hardware deployable edge-AI solution for prescreening of oral tongue lesions using TinyML on embedded devices, IEEE Embedded Syst. Lett., 14, 4, pp. 183-186, (2022)
+    Shamim MZM., Hardware deployable edge-AI solution for prescreening of oral tongue lesions using TinyML on embedded devices, IEEE Embedd Syst Lett, 14, 4, pp. 183-186, (2022)
+Shiraishi J, 2024, IEEE COMMUN LETT, V28, P2101, DOI 10.1109/LCOMM.2024.3436816
+    Shiraishi J., TinyAirNet: TinyML model transmission for energyefficient image retrieval from IoT devices, IEEE Commn. Lett, (2024)
+Signoretti G, 2021, SENSORS, V21, DOI 10.3390/s21124153
+    Signoretti G., An evolving tinyml compression algorithm for IoT environments based on data eccentricity, Sensors, 21, 12, (2021)
+Silva M, 2022, IEEE INT WORK METROL IND 40 IOT METROIND 40 IOT - PROC, P408, DOI 10.1109/MetroInd4.0IoT54413.2022.9831606
+    Silva M., A data-stream TinyML compression algorithm for vehicular applications: A case study, Proc. IEEE Int. Workshop Metrol. Ind. 4.0 IoT (MetroInd4.0 IoT), pp. 408-413, (2022)
+Silva M, 2023, IEEE INT WORK METROL AUTOMOT METROAUTOMOTIVE - PROC, P199, DOI 10.1109/MetroAutomotive57488.2023.10219125
+    Silva M., An adaptive TinyML unsupervised online learning algorithm for driver behavior analysis, Proc. IEEE Int. Workshop Metrol. Autom. (MetroAutomotive), pp. 199-204, (2023)
+    Silva M., An adaptive TinyML unsupervised online learning algorithm for driver behavior analysis, presentado en 2023 IEEE International Workshop on Metrology for Automotive, MetroAutomotive 2023 - Proceedings, pp. 199-204, (2023)
+Song Y, 2022, PROC ASIA SOUTH PAC DES AUTOM CONF, V2022-January, P314, DOI 10.1109/ASP-DAC52403.2022.9712585
+    Song Y., BSC: block-based stochastic computing to enable accurate and efficient TinyML, 2022 27th Asia and South Pacific Design Automation Conference (ASP-DAC), pp. 314-319, (2022)
+Sowmiya V, 2024, WIREL NETWORKS, V30, P7153, DOI 10.1007/s11276-023-03537-9
+    Sowmiya V., Tiny ML-Based Reconfigurable IoT Platform Design for Brackish Water Aquaculture Monitoring, Wireless Networks, (2023)
+Spadaro G, 2023, PROC - IEEE/CVF INT CONF COMPUT VIS WORK ICCVW, P1510, DOI 10.1109/ICCVW60793.2023.00165
+    Spadaro G., Shannon strikes again! Entropy-based pruning in deep neural networks for transfer learning under extreme memory and computation budgets, presentado en Proceedings - 2023 IEEE/CVF International Conference on Computer Vision Workshops, ICCVW 2023, pp. 1510-1514, (2023)
+Srivastava P, 2024, ENG PROC, V78, DOI 10.3390/engproc2024078003
+    Srivastava P., Microcontroller-Based EdgeML: Health Monitoring for Stress and Sleep via HRV, 78, (2024)
+Sudharsan B, 2021, IEEE WORLD FORUM INTERNET THINGS WF-IOT, P883, DOI 10.1109/WF-IoT51360.2021.9595024
+    Sudharsan B., TinyML Benchmark: Executing Fully Connected Neural Networks on Commodity Microcontrollers, 2021 IEEE 7th World Forum on Internet of Things (WF-IoT), pp. 883-884, (2021)
+    Sudharsan B., TinyML benchmark: Executing fully connected neural networks on commodity microcontrollers, 2021 IEEE 7Th World Forum on Internet of Things (Wf-Iot), 1, pp. 883-884, (2021)
+    Sudharsan B., TinyML benchmark: Executing fully connected neural networks on commodity microcontrollers, 2021 IEEE 7th World Forum on Internet of Things (WF-IoT), (2021)
+    Sudharsan B., TinyML benchmark: Executing fully connected neural networks on commodity microcontrollers, 7Th IEEE World Forum on Internet of Things, Wf-Iot 2021, Pp. 883–884. Institute of Electrical and Electronics Engineers Inc, (2021)
+    Sudharsan B., TinyML benchmark: Executing fully connected neural networks on commodity microcontrollers, IEEE 7Th World Forum on Internet of Things (Wf-Iot), (2021)
+    Sudharsan B., TinyML benchmark: Executing fully connected neural networks on commodity microcontrollers, Proc. IEEE 7th World Forum Internet Things (WF-IoT), pp. 883-884, (2021)
+    Sudharsan B., TinyML benchmark: Executing fully connected neural networks on commodity microcontrollers, Proc. IEEE 7thWorld Forum Internet Things, pp. 883-884, (2021)
+    Sudharsan B., Tinyml benchmark: Executing fully connected neural networks on commodity microcontrollers, 2021 IEEE 7Th World Forum on Internet of Things (Wf-Iot), pp. 883-884, (2021)
+    Sudharsan B., Tinyml benchmark: Executing fully connected neural networks on commodity microcontrollers, 2021 IEEE 7th World Forum on Internet of Things (WF-IoT), pp. 883-884, (2021)
+    Sudharsan B., Tinyml benchmark: Executing fully connected neural networks on commodity microcontrollers, 2021 IEEE 7th World Forum on Internet of Things (WF-IoT). IEEE., pp. 883-884, (2021)
+Sudharsan B, 2021, PROC - IEEE INT CONF SERV COMPUT SCC, P319, DOI 10.1109/SCC53864.2021.00045
+    Sudharsan B., An sram optimized approach for constant memory consumption and ultra-fast execution of ml classifiers on tinyml hardware, 2021 IEEE International Conference on Services Computing (SCC). IEEE, pp. 319-328, (2021)
+Sudharsan B, 2022, IEEE INTERNET COMPUT, V26, P69, DOI 10.1109/MIC.2021.3133552
+    Sudharsan B., OTA-TinyML: over the air deployment of TinyML models and execution on IoT devices, IEEE Internet Computing, 26, 3, pp. 69-78, (2022)
+    Sudharsan B., Ota-tinyml: over the air deployment of tinyml models and execution on iot devices, IEEE Internet Computing, 26, 3, pp. 69-78, (2022)
+Sun B/1, 2023, PROC ACM SYMP APPL COMPUT, P629, DOI 10.1145/3555776.3577747
+    Sun B., The Case for tinyML in Healthcare: CNNs for Real-Time On-Edge Blood Pressure Estimation, ACM/SIGAPP Symposium on Applied Computing (SAC), (2023)
+Tang J, 2024, IEEE INTERNET THINGS J, V11, P28437, DOI 10.1109/JIOT.2024.3401229
+    Tang J., UAV-Assisted Digital-Twin synchronization with Tiny-Machine-Learning-Based semantic communications, IEEE Internet Things J., 11, n.o 17, pp. 28437-28451, (2024)
+Tekin N, 2024, AD HOC NETW, V153, DOI 10.1016/j.adhoc.2023.103348
+    Tekin N., A review of on-device machine learning for IoT: An energy perspective, Ad Hoc Netw., 153, (2024)
+Tjonck K, 2021, INT SCI CONF ELECTRON - PROC, DOI 10.1109/ET52713.2021.9579991
+    T'Jonck K., Real-time activity tracking using tinyml to support elderly care, 2021 XXX Intl. Scientific Conf. Elec. IEEE, (2021)
+    Tjonck K., Real-time activity tracking using TinyML to support elderly care, Proc. 30th Int. Scientific Conf. Electron. (ET), pp. 1-6, (2021)
+Tsoukas V, 2021, ACM INT CONF PROC SER, P69, DOI 10.1145/3503823.3503836
+    Tsoukas V., A review of machine learning and TinyML in healthcare, Proc. 25th Pan-Hellenic Conf. Inform., pp. 69-73, (2021)
+Umutoni RM, 2023, ACM INT CONF PROC SER, P349, DOI 10.1145/3587828.3587880
+    Umutoni R.M., Integration of TinyML-based proximity and couch sensing in wearable devices for monitoring infectious disease's social distance compliance, Proceedings of the 2023 12th International Conference on Software and Computer Applications, pp. 349-355, (2023)
+Van Delm J, 2023, PROC DES AUTOM CONF, V2023-July, DOI 10.1109/DAC56929.2023.10247664
+    Van Delm J., HTVM: efficient neural network deployment on heterogeneous TinyML platforms, presentado en Proceedings - Design Automation Conference, (2023)
+Van Kempen P, 2024, PROC ACM INT CONF COMPUT WORK SPEC SESS CF COMPANION, P75, DOI 10.1145/3637543.3652878
+    Van Kempen P., MuRISCV-NN: Challenging Zve32x Autovectorization with TinyML Inference Library for RISC-V Vector Extension, Proceedings of the 21st ACM International Conference on Computing Frontiers: Workshops and Special Sessions. CF '24 Companion, pp. 75-78, (2024)
+Vitolo P, 2022, PROCEEDING - IEEE INT CONF ARTIF INTELL CIRCUITS SYST AICAS, P154, DOI 10.1109/AICAS54282.2022.9869909
+    Vitolo P., Quantized ID-CNN for a low-power PDM-to-PCM conversion in TinyML KWS applications, IEEE 4Th International Conference on Artificial Intelligence Circuits and Systems (AICAS), pp. 154-157, (2022)
+    Vitolo P., Quantized ID-CNN for a low-power PDM-to-PCM conversion in TinyML KWS applications, Proc. IEEE 4th Int. Conf. Artif. Intell. Circuits Syst. (AICAS), pp. 154-157, (2022)
+    Vitolo P., Quantized id-CNN for a low-power PDM-to-PCM conversion in tinyml KWS applications, IEEE 4Th International Conference on Artificial Intelligence Circuits and Systems (AICAS), pp. 154-157, (2022)
+Vitolo P, 2023, LECT NOTES ELECTR ENG, V1005 LNEE, P146, DOI 10.1007/978-3-031-26066-7_23
+    Vitolo P., A 0. 8 mw tinyml-based pdm-to-pcm conversion for in-sensor kws applications, Proceedings of SIE 2022, pp. 146-151, (2023)
+Vostrikov S, 2024, IEEE TRANS INSTRUM MEAS, V73, P1, DOI 10.1109/TIM.2023.3335535
+    Vostrikov S., A muscle pennation angle estimation framework from raw ultrasound data for wearable biomedical instrumentation, IEEE Trans. Instrum. Meas., 73, pp. 1-12, (2024)
+Vuppalapati C, 2020, PROC - IEEE INT CONF BIG DATA BIG DATA, P2375, DOI 10.1109/BigData50022.2020.9377755
+    Vuppalapati C., Automating tiny ML intelligent sensors DevOPS using Microsoft Azure, Proc. Ieee Int. Conf. Big Data, pp. 2375-2384, (2020)
+Vuppalapati C, 2020, PROC - INT CONF COMPUT TECHNOL ICICT, P525, DOI 10.1109/ICICT50521.2020.00089
+    Vuppalapati C., Democratization of AI, Albeit Constrained IoT Devices & Tiny ML, for Creating a Sustainable Food Future, Proc. IEEE 3rd Int. Conf. on Information and Computer Technologies (ICICT), pp. 525-530, (2020)
+    Vuppalapati C., Democratization of AI, albeit constrained IoT devices & tiny ML, for creating a sustainable food future, Proc. 3rd Int. Conf. Inf.comput. Technol., pp. 525-530, (2020)
+    Vuppalapati R., Democratization of AI, Albeit Constrained IoT Devices & Tiny ML, for Creating a Sustainable Food Future, 2020 3rd International Conference on Information and Computer Technologies (ICICT, pp. 525-530, (2020)
+    Vuppalapati R., Democratization of AI, Albeit Constrained IoT Devices Tiny ML, for Creating a Sustainable Food Future, Proceedings of the 2020 3rd International Conference on Information and Computer Technologies (ICICT), pp. 525-530
+    Vuppalapati R., Democratization of AI, Albeit constrained IoT devices & tiny ML, for creating a sustainable food future, 3rd International Conference on Information and Computer Technologies (ICICT), pp. 525-530, (2020)
+    Vuppalapati R., Democratization of AI, albeit constrained IoT devices & Tiny ML, for creating a sustainable food future, International Conference on Information and Computer Technologies, pp. 525-530, (2020)
+    Vuppalapati R., Democratization of AI, albeit constrained IoT devices & tiny ML, for creating a sustainable food future, 3rd International Conference on Information and Computer Technologies (ICICT’20), pp. 525-530, (2020)
+Wang Y/1, 2023, IEEE WORK STAT SIGNAL PROCESS PROC, V2023-July, P695, DOI 10.1109/SSP53291.2023.10207930
+    Wang Y., Optimized preprocessing and Tiny ML for Attention State Classification, IEEE SSP, (2023)
+Wiese P, 2025, IEEE DES TEST, V42, P63, DOI 10.1109/MDAT.2025.3527371
+    Wiese P., Toward Attention-based TinyML: A Heterogeneous Accelerated Architecture and Automated Deployment Flow, IEEE Design & Test, (2025)
+    Wiese P., Toward Attention-based TinyML: A Heterogeneous Accelerated Architecture and Automated Deployment Flow, IEEE Design & Test, pp. 1-1, (2025)
+Wu X/1, 2024, IEEE TRANS CONSUM ELECTRON, V70, P7322, DOI 10.1109/TCE.2024.3417890
+    Wu X., TinyML-enabled intelligent question-answer services in IoT edge consumer devices, IEEE Trans. Consum. Electron., 70, 4, pp. 7322-7333, (2024)
+Wulfert L, 2024, IEEE TRANS PATTERN ANAL MACH INTELL, V46, P4519, DOI 10.1109/TPAMI.2024.3355495
+    Wulfert L., AIfES: A Next-Generation Edge AI Framework, IEEE Trans. Pattern Anal. Mach. Intell., 46, 6, pp. 4519-4533, (2024)
+    Wulfert L., AIfES: A Next-Generation Edge AI Framework, IEEE Transactions on Pattern Analysis and Machine Intelligence, 46, 6, pp. 4519-4533, (2024)
+    Wulfert L., AIfES: a Next-Generation edge AI framework, IEEE Trans. Pattern Anal. Mach. Intell., 46, n.o 6, pp. 4519-4533, (2024)
+Xi M, 2024, IEEE INTERNET THINGS J, V11, P21061, DOI 10.1109/JIOT.2024.3350525
+    Xi M., A lightweight reinforcement-learning-based real-time path-planning method for unmanned aerial vehicles, IEEE Internet Things J., 11, n.o 12, pp. 21061-21071, (2024)
+Xu K, 2022, PROC AAAI CONF ARTIF INTELL AAAI, V36, P4628, DOI 10.1609/aaai.v36i4.20387
+    Xu K., EtinyNet: Extremely tiny network for TinyML, Proc. AAAI conf. artif. intell, 36, 4, pp. 4628-4636, (2022)
+Xu K, 2023, IEEE TRANS CIRCUITS SYST EXPRESS BRIEFS, V70, P2640, DOI 10.1109/TCSII.2023.3239044
+    Xu K., An Ultra-low Power TinyML System for Real-time Visual Processing at Edge, (2022)
+    Xu K., An ultra-low power TinyML system for real-time visual processing at edge, IEEE Trans. Circuits Sys. II Exp. Briefs, 70, pp. 2640-2644, (2023)
+    Xu K., An ultra-low power tinyML system for real-time visual processing at edge, IEEE Trans. Circuits Syst. II: Express Briefs*, 70, 7, pp. 2640-2644, (2023)
+    Xu K., An ultra-low power tinyml system for real-time visual processing at edge, IEEE Transactions on Circuits and Systems II: Express Briefs, (2023)
+Xue C-X, 2020, DIG TECH PAP IEEE INT SOLID STATE CIRCUITS CONF, V2020-February, P244, DOI 10.1109/ISSCC19947.2020.9063078
+    Xue C.-X., A 22nm 2mb reram compute-in-memory macro with 121-28tops/w for multibit mac computing for tiny ai edge devices, ISSCC, pp. 244-245, (2020)
+Xue C-X, 2021, DIG TECH PAP IEEE INT SOLID STATE CIRCUITS CONF, V64, P245, DOI 10.1109/ISSCC42613.2021.9365769
+    Xue C.-X., 16.1 A 22nm 4Mb 8b-Precision ReRAM Computing-in-Memory Macro with 11.91 to 195.7TOPS/W for Tiny AI Edge Devices, 2021 Ieee International Solid-State Circuits Conference (ISSCC, pp. 245-247, (2021)
+    Xue C.-X., 16.1 A 22nm 4Mb 8b-precision ReRAM computingin-memory macro with 11.91 to 195.7TOPS/W for tiny AI edge devices, IEEE Int. Solid-State Circuits Conf. (ISSCC) Dig. Tech. Papers, pp. 245-247, (2021)
+Yadav P/1, 2024, PROC - IEEE WORK MACH LEARN EDGE SENS SYST SENSYS-ML, P1, DOI 10.1109/SenSys-ML62579.2024.00005
+    Yadav P., Advancements in Machine Learning in Sensor Systems: Insights from Sensys-ML and TinyML Communities, 2024 IEEE 3rd Workshop on Machine Learning on Edge in Sensor Systems (SenSys-ML)
+Yu X/2, 2023, BIOMED SIGNAL PROCESS CONTROL, V86, DOI 10.1016/j.bspc.2023.105325
+    Yu X., A practical wearable fall detection system based on tiny convolutional neural networks, Biomed. Signal Process. Control, 86, (2023)
+Zacharia A, 2022, SOUTH-EAST EUR DES AUTOM COMPUT ENG COMPUT NETWORKS SOC MEDIA CONF SEEDA-CECNSM, DOI 10.1109/SEEDA-CECNSM57760.2022.9932982
+    Zacharia A., An intelligent microprocessor integrating TinyML in smart hotels for rapid accident prevention, 2022 7th South-East Europe Design Automation, Computer Engineering, Computer Networks and Social Media Conference (SEEDA-CECNSM), Ioannina, Greece, pp. 1-7, (2022)
+    Zacharia A., An intelligent microprocessor integrating TinyML in smart hotels for rapid accident prevention, 7th South-East Europe Design Automation, Computer Engineering, Computer Networks and Social Media Conference, SEEDA-CECNSM 2022, (2022)
+    Zacharia A., An intelligent microprocessor integrating TinyML in smart hotels for rapid accident prevention, Proc. 7th South-East Europe Design Autom. Comput. Eng. Comput. Netw. Soc. Media Conf. (SEEDA-CECNSM), pp. 1-7, (2022)
+Zaidi SAR/1, 2022, IEEE ACCESS, V10, P100867, DOI 10.1109/ACCESS.2022.3207200
+    ZAIDI S.A. R., Unlocking Edge Intelligence Through Tiny Machine Learning (TinyML), Digital Object Identifier 10.1109/ACCESS.2022.3207200, (2022)
+    Zaidi S.A.R., Unlocking edge intelligence through tiny machine learning (TinyML), IEEE Access, 10, pp. 100867-100877, (2022)
+Zanghieri M, 2021, IEEE SENSORS APPL SYMP SAS - PROC, DOI 10.1109/SAS51076.2021.9530181
+    Zanghieri M., Low-latency detection of epileptic seizures from iEEG with temporal convolutional networks on a low-power parallel MCU, 2021 IEEE Sensors Applications Symposium (SAS), pp. 1-6, (2021)
+Zanghieri M, 2024, IEEE ACCESS, V12, P16009, DOI 10.1109/ACCESS.2024.3357510
+    Zanghieri M., An Extreme-Edge TCN-Based Low-Latency Collision-Avoidance Safety System for Industrial Machinery, IEEE Access, 12, pp. 16009-16021, (2024)
+Zanghieri M, 2024, IEEE TRANS BIOMED CIRCUITS SYST, V18, P810, DOI 10.1109/TBCAS.2024.3415392
+    Zanghieri M., SEMG-driven hand dynamics estimation with incremental online learning on a parallel ultra-low-power microcontroller, IEEE Transactions on Biomedical Circuits and Systems, ACCEPTED: TO APPEAR, (2024)
+Zhang J/3, 2024, SCI CHINA SCI, V67, DOI 10.1007/s11432-023-3958-4
+    Zhang J., A comprehensive analysis of DAC-SDC FPGA low power object detection challenge, Sci. China Inf. Sci., 67, n.o 8, (2024)
+Zhou C, 2022, IEEE MICRO, V42, P76, DOI 10.1109/MM.2022.3198321
+    Zhou C., AnalogNets: ML-HW co-design of noise-robust TinyML models and always-on analog compute-in-memory accelerator, (2021)
+    Zhou C., AnalogNets: ML-HW co-design of noiserobust TinyML models and always-on analog computein-memory accelerator, (2021)
+    Zhou C., Analognets: ML-HW Co-Design of Noise-Robust Tinyml Models and Always-On Analog Compute-In-Memory Accelerator. Arxiv Preprint Arxiv, 2111, (2021)
+    Zhou C., Analognets: Ml-Hw Co-Design of Noise-Robust Tinyml Models and Always-On Analog Compute-In-Memory Accelerator. Arxiv Preprint Arxiv, 2111, (2021)
+    Zhou C., ML-HW Co-Design of Noise-Robust TinyML Models and Always-On Analog Compute-in-Memory Edge Accelerator, IEEE Micro, 42, 6, pp. 76-87, (2022)
+mrabet AE, 2023, INDONES J ELECTR ENG INFORMATICS, V11, P515, DOI 10.52549/ijeei.v11i2.4756
+    El Mrabet A., Unlocking doors: A tinyml-based approach for realtime face mask detection in door lock systems, Indonesian Journal of Electrical Engineering and Informatics (IJEEI), 11, (2023)
+Ćojbašić EŽ, 2025, INT SCI CONF COMMUN ENERGY SYST TECHNOL ICEST - PROC, DOI 10.1109/ICEST66328.2025.11098440
+    Cojbasic Z., TinyML and IIoT based product quality classification for food industry, Proc. of the 60th ICEST Conf., pp. 1-4, (2025)

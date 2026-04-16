@@ -1,0 +1,3181 @@
++ve
+    or idc- ( +ve )
+-ve
+    ancer slide specimens and extracts the features necessary to classify them as idc- ( -ve )
+1.15watts
+    we present captainglove , a textile-based , low-power ( 1.15watts )
+15.8ms
+    , the fourth-fastest single-trial inference time ( 15.8ms )
+1d-cae
+    id anomaly detection model based on a one-dimensional convolutional autoencoder ( 1d-cae )
+1d-cnn
+    , 1d-convolutional neural network ( 1d-cnn )
+    , and 1-d convolution neural network ( 1d-cnn )
+    , and one-dimensional convolutional neural network ( 1d-cnn )
+    1d convolutional neural network
+    a 1d convolutional neural network ( 1d-cnn )
+    and one-dimensional convolutional neural network ( 1d-cnn )
+    by exploring two lightweight deep learners with a 1d convolution neural network ( 1d-cnn )
+    nt cardiovascular diseases using a one-dimensional convolutional neural network ( 1d-cnn )
+    nverts them in pcm format by using a 1-dimensional convolutional neural network ( 1d-cnn )
+1d-cnns
+    for 1d convolutional neural networks ( 1d-cnns )
+1iot
+    ve maintenance , enabling smart sensors within the industrial in-ternet of things ( 1iot )
+1tx3rx
+    channels ( 1tx3rx )
+200w
+    and reliable power supply ( 200w )
+254mw
+    and power consumption ( 254mw )
+26.09s
+    than 1d cnn ( 26.09s )
+2c
+    2 class
+2d
+    afterwards , two-dimensional ( 2d )
+2d-cnn
+    and 2d convolution neural network ( 2d-cnn )
+2mb
+    glove-based solution with a tiny memory footprint ( 2mb )
+317.1kb
+    , the second-lowest ram usage ( 317.1kb )
+32-bit
+    methods , achieving accuracy levels comparable to full precision ( 32-bit )
+37.83s
+    though tinyml takes slightly longer processing time ( 37.83s )
+69.18s
+    it is comparatively faster than lstm ( 69.18s )
+6g
+    the next generation of wireless systemssixth generation ( 6g )
+72ms
+    and low latency ( 72ms )
+8.5msec
+    ntroller , the tinyml algorithm performed the classification task in real-time ( 8.5msec )
+a-bpsk
+    and an adaptive encoded binary phase-shift keying ( a-bpsk )
+a-cps
+    agriculture cyber-physical system
+aagto
+    adaptive artificial gorilla troops optimization
+aami
+    ns , and also meet the association for the advancement of medical instrumentation ( aami )
+abft
+    to address this , algorithm-based fault tolerance ( abft )
+ac
+    aerial computing
+acc
+    the integration of multi-modal sensor data , such as , acceleration ( acc )
+accuracy
+    it turns out that functional performance ( accuracy )
+    orm requires an intricate balance between keeping high predictive performance ( accuracy )
+acf
+    the autocorrelation function ( acf )
+acim
+    analog compute-in-memory ( acim )
+ad
+    anomaly detection
+adam
+    and adaptive moment estimation ( adam )
+adas
+    advanced driver assistance systems
+    algorithms into advanced driver-assistance systems ( adas )
+adc
+    enges , including conductance drift , read / write noise , fixed analog-to-digital ( adc )
+    the digital domain for subsequent ai processing using analog-to-digital converters ( adc )
+    the trade-off between cim output a / d conversion ( adc )
+adl
+    activity daily living
+    is the process of automatic recognition of activities of daily living ( adl )
+ads
+    attack detection system
+adsr
+    absolutized difference sensor response
+adxl354c
+    for data collection using ( adxl354c )
+ae
+    achieving ulp of 284w and 9mw for different autoencoder ( ae )
+    acoustic emission
+    among various ad methods , autoencoder ( ae )
+aeao
+    this paper puts forward an ai-driven adaptive edge computing framework ( aeao )
+aed
+    acoustic event detection
+aee
+    automatic emotion evaluation
+aepus
+    d by means of a delay-and-sum beamformer , and an automated computer vision tool ( aepus )
+aersut
+    n this paper , an automatic emotion recognition system implemented using tinyml ( aersut )
+af
+    atrial fibrillation
+agc
+    automatic gain control
+ahgs
+    arabic hand gestures
+ai
+    /artificial intelligence ( ai )
+    adaptive inference
+    adaptive iot
+    age identification
+    agriculture innovation
+    ai interoperability
+    ai-powered iot
+    appliance identification
+    artificial inteligence
+    artificial intelli-gence
+    artificial intelligence
+    artificial intelligent
+    automotive industry
+    e monitoring , and a data acquisition unit to train and develop an artificial model ( ai )
+ai-rescu
+     real-time artificial intelligence-based reconfigurable self-calibration unit ( ai-rescu )
+ai-socs
+    emerging artificial-intelligence-enabled system-on-chips ( ai-socs )
+aid-stick
+    -based approaches , we have developed the ai diagnostic stick ( aid-stick )
+aifes
+    artificial intelligence for embedded systems framework ( aifes )
+    controller-based ai architectures : tinyml and ai for embedded systems framework ( aifes )
+aiot
+    artificial intelligence of thing
+    artificial intelligence of things
+    artificial internet of things
+    on the edge realizing ai-of-things ( aiot )
+    the combination of artificial intelligence and the internet of things ( aiot )
+    with the development of artificial intelligence iot ( aiot )
+al
+    active learning
+algorithm
+    therefore , this work presents a new data compression solution ( algorithm )
+alis
+    integrated with a novel adaptive learning-informed simulation ( alis )
+altsdp
+    and its fast solver , alternating structured directional pruning ( altsdp )
+alu
+    arithmetic logic unit
+amacvs
+    of analog-mac-values ( amacvs )
+ami
+    and ambient intelligence ( ami )
+ams
+    however , they employ analog-mixed-signal ( ams )
+    in addition , most existing works use analog-mixed-signal ( ams )
+ann
+    adaptive neural networks
+    artificial neural network
+    artificial neural networks
+    artificial neuron networks
+anns
+    artificial neural networks
+aon
+    always-on ( aon )
+ap
+    access point
+    average precision
+api
+    analog passive infrared
+    application programming interfaces
+apis
+    application programming interfaces
+application-specific
+    in this work we implement a super-tinyml architecture for bespoke ( application-specific )
+aps
+    access points
+aqi
+    air quality index
+ar
+    augmented reality
+arlstmima
+    ed through auto regressive long short-term memory integrated moving averages ( arlstmima )
+arm
+    advanced risc machines
+ars
+    augmented random search
+as7265x
+    a multispectral sensor ( as7265x )
+as7265x-multi-spectral
+    spectral sensors ( as7265x-multi-spectral )
+asac
+    real-time path-planning method for uavs , adaptive sac ( asac )
+asc
+    attention score calculation
+asic
+    s , tpus , and application-specific integrated circuit ( asic )
+asl
+    adaptive security layer
+    american sign language
+asq
+    adaptive scale quantization
+at
+    adaptive threshold
+att
+    auto time tracking
+auc
+     accuracy of 97.25 % and an area under the receiver operating characteristic curve ( auc )
+    area under the curve
+auc-roc
+    uch as global accuracy , true positive accuracy , the area under the roc curve ( auc-roc )
+augq
+    to address accuracy loss at sub-byte levels , we introduce augmented quantization ( augq )
+automl
+    a promising route to simplifying tinyml is through automatic machine learning ( automl )
+    this paper introduces nanodeploy automator , an automated machine learning ( automl )
+autotinyml
+    ios , emphasizing three key contributions : a cutting-edge automated tinyml ( autotinyml )
+auv
+    autonomous underwater vehicle
+avh
+    arm virtual hardware
+avrfb
+    nes and enumerates the experimental setup for two types of rfbs : vanadium-based ( avrfb )
+avs
+    autonomous vehicles
+axc
+    approximate computing ( axc )
+b-adr
+    the blind adaptive rate ( b-adr )
+b5g
+    scalable , low-latency , and energy-efficient solution for deployment in beyond 5g ( b5g )
+ba
+    building automation
+backbones
+    rently , we introduce algorithms for finding proper decentralized topologies ( backbones )
+baseline
+    best decoding accuracy in the literature on the bci competition iv 2a dataset ( baseline )
+bci
+    accelerators into the braincomputer interface ( bci )
+    brain computer interface
+    new pathways to fixing brain impairments and devising new brain-computer interface ( bci )
+    one such innovation would be the improvement of brain-computer interfaces ( bci )
+bcis
+    brain computer interfaces
+bcnn
+    binary convolutional neural network
+bert
+    er-based models like the bidi-rectional encoder representations from transformers ( bert )
+bespoke
+    in this paper , we propose a resource estimator for fully customized ( bespoke )
+bfp-cpp
+    this novel back-and-forth path-coverage path-planning ( bfp-cpp )
+bgl
+    blood glucose level
+    blood glucose levels
+bhs
+    british hypertension society
+bi-lstm
+    bi-directional long short-term memory
+bih
+    -beth israel hospital ( bih )
+binn
+    binarized neural network
+ble
+    bluetooth low energy
+    custom smartwatch prototype , including the stm32wb55 mcu and bluetooth low-energy ( ble )
+bliomc
+    a bl-in-out multibit computing ( bliomc )
+bmi
+    brain machine interface
+bmis
+    brain-machine interfaces ( bmis )
+bms
+    battery management system
+    battery management systems
+    building management systems
+bmss
+    battery management systems
+bnn
+    binarized neural network
+    binary neural network
+    binary neural networks
+bnns
+    binarized neural networks
+    binary neural networks
+bp
+    back propagation
+    balance performance
+    battery pack
+    battery powered
+    biodegradable pcb
+    biodiversity patterns
+    biomechanical phenomena
+    biosignal processing
+    bit precision
+    blood pressure
+    bone plate
+    bone plates
+    business process
+bps
+    blood pressure sensor
+brd
+    the beam-range-doppler ( brd )
+brnn
+    bi-directional recurrent neural networks
+bsc
+    block-based stochastic computing
+bsn
+    body sensor network
+bte
+    irst , a wearable ear-centric device captures multimodal biosignals-behind-the-ear ( bte )
+bvip
+    blind and visually impaired people
+bvs
+    boundary voltages
+c-ran
+    compared to centralized architectures such as cloud ran ( c-ran )
+c-rnn
+    this paper proposes a shallow convolutional recurrent neural network ( c-rnn )
+c-v2x
+    cellular vehicle to everything
+    ime-sensitive applications like safety alerts via cellular vehicle-to-everything ( c-v2x )
+c22t
+    a 22-transistor ( c22t )
+ca
+    convolution-attention ( ca )
+ca-nmd
+    ploits cascading early exit and channel-attention-based neural mean discrepancy ( ca-nmd )
+cad
+    coronary artery disease
+    hence , we propose the development of a computer-aided diagnostic ( cad )
+cae
+    in this paper , we propose an efficient and robust convolutional autoencoder ( cae )
+cam
+    class activation map
+can
+    controller area network
+capstoa
+    and a capsule neural network for toa ( capstoa )
+car
+    s human hearing , specifically by employing the ' cascade of asymmetric resonators ( car )
+cavs
+    connected and autonomous vehicles
+cdc
+    centers for disease control and prevention ( cdc )
+cdt
+    change detection test
+ceg
+    clarke error grid
+cega
+    clarke error grid analysis
+cep
+    complex event processing
+cep-tml
+    between a large number of consumer electronics products integrated with tinyml ( cep-tml )
+cf
+    cognitive frailty
+    control flow
+cgm
+    continuous glucose monitoring
+ch
+    cluster head
+chris
+    collaborative heart rate inference system
+cil
+    class incremental learning
+cim
+    additionally , a two-stage compute-in-memory ( cim )
+    aflow orchestration co-design to achieve high utilization of the compute-in-memory ( cim )
+    analog compute-in-memory ( cim )
+    compute in memory
+    compute-in-memory ( cim )
+cir
+    channel impulse response
+cl
+    centralized learning
+    continual learning
+clap
+    contrastive language-audio pretraining ( clap )
+cmos-soi-mems
+    oxide semiconductor silicon on insulator micro electro-mechanical system ( cmos-soi-mems )
+cms
+    checkpointing mechanisms
+cnas
+     , for the first time in the literature , a nas solution , called constrained nas ( cnas )
+cnh
+    compact normalized histogram
+cnibp
+    cuffless continuous noninvasive blood pressure ( cnibp )
+cnn
+    a 1d-convolution neural network ( cnn )
+    capsule neural network
+    compression neural networks
+    conventional neural network
+    convolution neural network
+    convolution neural networks
+    convolutional neural network
+    convolutional neural networks
+    convolutional neuron network
+    e proposed architecture of the neural model was composed of convolutional networks ( cnn )
+cnn-lstm-tl
+    erimenting with a convolutional neural network , long short-term memory tl ( cnn-lstm-tl )
+cnns
+    convolution neural networks
+    convolutional neural networks
+co
+    o nano 33 ble sense microcontroller equipped with an mq7 sensor for carbon monoxide ( co )
+    quality monitoring device capable of detecting particulate matter , carbon monoxide ( co )
+com
+    , communication ( com )
+computing
+    common information model
+control
+    parameters and shelf life of packaged fresh dates under the natural atmosphere ( control )
+conv
+    models [ 8 ] replace standard convolution ( conv )
+cook
+    in addition , a cyclic on-off-keying ( cook )
+copd
+    chronic obstructive pulmonary disease
+correct
+    or confirmation by saying ' s7i7 ' ( correct )
+cortex-m4
+     s solution outperforms any other implementation on the stm32l4 and nxp k64f ( cortex-m4 )
+cots
+    commercial off-the-shelf ( cots )
+    on a commercial off-the-shelf ( cots )
+covid-19
+    angerous pandemics of all time with the rapid spread of the novel coronavirus ( covid-19 )
+cp
+    conformal prediction
+cps
+    , and cyberphysical systems ( cps )
+    cyber physical systems
+    enabled cyber-physical systems ( cps )
+cpss
+    miniaturized cyber-physical systems ( cpss )
+cpu
+    central processing unit
+cpus
+    central processing units
+cr
+    cosmic rays
+    the results highlight that the encoder demonstrates a compression-ratio ( cr )
+cre
+    cosmic ray ensembles
+crnn
+    convolutional recurrent neural network
+crs
+    crop recommendation system
+cs
+     environment running under a standard operating system in a control software region ( cs )
+    cloud server
+cscyti
+    edge devices ( cscyti )
+csi
+    channel state information
+csr
+    and social responsibility
+ct
+    computerized tomography
+ctgan
+    dresses this limitation by employing conditional generative adversarial networks ( ctgan )
+cti
+    cyber threat intelligence
+cv
+    and 95.05 % in ten-fold cross-validation ( cv )
+    computer vision
+cvd
+    af is also associated with an increased risk of cardiovascular diseases ( cvd )
+cvds
+    cardiovascular diseases ( cvds )
+    more than half of the deaths from cardiovascular diseases ( cvds )
+cwru
+    and ball-bearing anomaly detection ( cwru )
+    moreover , further validation on the case western reserve university dataset ( cwru )
+cwt
+    continuous wavelet transformation
+d2d
+    strategy in uav-assisted internet of things system which supports device-to-device ( d2d )
+d3qn
+    r conjectured that the structure can be enhanced by double dueling deep q network ( d3qn )
+da
+    domain adaptation
+daiaas
+    as a service ( daiaas )
+    distributed ai as a service
+dapc
+    to address these limitations , we propose a drift-aware prototype clustering ( dapc )
+db1
+    the datasets used were baby chillanto ( db1 )
+db2
+    and donate a cry ( db2 )
+dbns
+    deep belief networks
+dbp
+    , diastolic ( dbp )
+    and diastolic bp ( dbp )
+dbso-csa
+    a dual-bit small-offset current-mode sense amplifier ( dbso-csa )
+dcnn
+    deep convolutional neural network
+dcnns
+    deep conventional neural networks
+dcore
+    core and digital core ( dcore )
+dct
+    discrete cosine transform
+ddos
+    attacks , distributed denial-of-service ( ddos )
+    distributed denial of service
+    loods , botnet attacks , privilege escalation , and distributed denial-of-service ( ddos )
+ddsnn
+    decentralized distributed sequential neural network
+desktop-47m82uc
+    on a desktop pc ( desktop-47m82uc )
+dex
+    to address this challenge , we propose data channel extension ( dex )
+dfa
+    direct feedback alignment
+    dynamic fan adjustment
+dfg
+    data flow graph
+dfl
+    decentralized federated learning
+dft
+    discrete fourier transform
+dfws
+    the design space of device-free wireless sensing ( dfws )
+dgpf
+    dynamic geomechanical prediction framework
+dilcnn
+    rieval in processing ae signals , namely a dilated convolutional neural network ( dilcnn )
+dipf
+    guided by the design , implementation , potential failure and functional failure ( dipf )
+dl
+    daily lives
+    damage localization
+    damage location
+    data labeling
+    data logger
+    deep learnig
+    deep learning
+    dense layer
+    design learning
+    device lifetime
+    device-free localization
+    device-free localizations
+    devices has created a pressing need for efficient and accurate deep-learning ( dl )
+    distillation learning
+    distributed learning
+    domain learning
+dltml-rtadpm
+    with tinyml driven real-time anomaly detection for predictive maintenance ( dltml-rtadpm )
+dm
+    distance map
+dma
+    ices , such as programmable on-chip sram , aes hardware , and direct-memory access ( dma )
+dmp-ems
+    -based emss : driving mode predictor-based ems ( dmp-ems )
+    driving mode predictor-based energy management strategy
+dmrland
+    with a sophisticated redundancy mechanism called dual module redundancy island ( dmrland )
+dnas
+    y considered simultaneously , in particular by low-search-cost differentiable nas ( dnas )
+dnn
+    -deep neural network ( dnn )
+    deep learning network
+    deep neural network
+    deep neural networks
+    deep neuron network
+    dense neural network
+    dense neural networks
+    distributed neural networks
+    dynamic neural networks
+    in modern edge computing , deploying multi-deep neural network ( dnn )
+dnnruntime
+    ing dnns can be executed with a self-developed runtime for embedded devices ( dnnruntime )
+dnns
+    deep neural networks
+    in size and complexity , large storage cim holds promise for accelerating deep nn ( dnns )
+dof
+    outage from 9-degrees of freedom ( dof )
+dos
+    , to detect and mitigate denial-of-service ( dos )
+    denial of service
+    security threats like malware injections , unauthorized access , denial-of-service ( dos )
+dp
+    differential privacy
+dpd
+    digital predistortion ( dpd )
+dr
+    diabetic retinopathy
+    dynamic range
+drl
+    deep reinforcement learning
+drls
+    deep reinforcement learning-based synchronization
+drnn
+    delta recurrent neural network
+drones
+     they are frequently used in autonomous drives such as unmanned aerial vehicles ( drones )
+drq
+    dynamic range quantization
+ds
+    dichotomic search
+    is developed based on damper shafer ' s ( ds )
+ds-cnns
+    , depthwise separable cnns ( ds-cnns )
+ds-conv
+    with depth-wise separable convolution ( ds-conv )
+dscnn
+    we tested and reported the performance of cnn and depthwise separable cnn ( dscnn )
+dsconv
+    harp-unet incorporates depthwise separable convolutions ( dsconv )
+dse
+    design space exploration
+dset
+    dempster-shafer evidence theory
+dsev
+    dual-source electric vehicle
+dsevs
+    in the actual context of dual-source electric vehicles ( dsevs )
+dsp
+    data streams processing
+    digital signal processing
+    digital signal processor
+    digital signal processors
+dt
+    decision tree
+    decision trees
+    digital twin
+    semantic communication is an emerging paradigm for digital-twin ( dt )
+dtc
+    decision tree classifier
+dtmf
+    dual-tone multi-frequency ( dtmf )
+dtnn
+    this paper describes how deep but tiny neural networks ( dtnn )
+dts
+    decision trees
+dtsn
+    distributed tinyml sensor network
+dvfs
+    voltage and frequency scaling
+dvs
+    dynamic vision sensor
+dwconv2d
+    n , network depth reduction , and the use of depthwise separable convolutions ( dwconv2d )
+dynp
+     on a xilinx artix-7 fpga results in 917 luts , 361 ffs , and 182 w dynamic power ( dynp )
+    been implemented on a xilinx artix-7 fpga , achieving a dynamic power consumption ( dynp )
+e-bikes
+    focusing on electric bicycles ( e-bikes )
+e-nose
+    in this work , we propose a 5g ai-iot electronic nose ( e-nose )
+e-noses
+     has driven the development of non-invasive methods , such as electronic noses ( e-noses )
+     noninvasive detection of acetone , a primary biomarker using electronic noses ( e-noses )
+    to process high-dimensional time-series data in electronic noses ( e-noses )
+e2p
+    monitors are developed to be aware of the runtime energy , event , and performance ( e2p )
+    the energy-event-performance ( e2p )
+eai
+    edge artificial intelligence
+    embedded artificial intelligence
+    explainable artificial intelligence
+eas
+    evolutionary algorithms
+eats
+    entity attestation tokens
+ebpf
+    extended berkeley packet filter
+ec
+    ecg classification
+    edge caching
+    edge computing
+    embedded classifiers
+    emotion classification
+    end-edge collaboration
+    energy compression
+    entrance counting
+    environmental compensation
+    environmental conditions
+    eps32 cam
+    esp32 cam
+    event-based camera
+    event-based cameras
+    evolutionary computation
+    exercise classification
+eca
+    efficient channel attention
+ecg
+    , and transformers in the domain of electrocardiogram ( ecg )
+    an automatic classification of abnormal heart rhythms using electrocardiogram ( ecg )
+    an electrocardiogram ( ecg )
+    and other abnormal rhythms from single-lead electrocardiogram ( ecg )
+    blood pressures using electrocardiogram ( ecg )
+    for electrocardiograms ( ecg )
+    has enabled continuous and personal electrocardiogram ( ecg )
+    leveraging the unique characteristics of electrocardiogram ( ecg )
+    oduces a novel cardiac monitoring system using tinyml to analyze electrocardiogram ( ecg )
+    s issue by developing a small companion robot and a heart signal monitoring system ( ecg )
+    sensor data from electrocardiogram ( ecg )
+    single-lead electrocardiogram ( ecg )
+    single-lead electrocardiography ( ecg )
+    t approaches have explored automated sleep apnea detection using electrocardiogram ( ecg )
+    this study introduces a novel approach to real-time electrocardiogram ( ecg )
+    ts real-time local monitoring and classification of five-class electrocardiography ( ecg )
+ecm
+    equivalent circuit model
+    port in which data are extracted directly from the engine control unit ( ecm )
+eco2
+    , humidity , equivalent carbon dioxide ( eco2 )
+ecus
+    electronic control units
+ed
+    end device
+eda
+    ormed with the help of non-invasive sensing modalities like electrodermal activity ( eda )
+edanas
+     literature , a framework called early exit adaptive neural architecture search ( edanas )
+edge
+    this evaluated its effectiveness for on-device ( edge )
+edgeml
+    edge machine learning ( edgeml )
+edp
+    by 88x in energy-delay product ( edp )
+    energy delay product
+    rom sensors and analog to digital conversions by 21 , and the energy-delay product ( edp )
+eds
+    edge devices
+ee
+    embedded edge
+    energy efficiency
+    energy efficient
+    extreme edge
+ee-hi
+    to address this , we propose a hybrid system called early exit with hi ( ee-hi )
+eeg
+    , emg-net , 50.42 % for single-modal electroencephalography ( eeg )
+    electroencephalogram ( eeg )
+    electroencephalography ( eeg )
+    embedded on edge devices to process the electroencephalographic ( eeg )
+    ng , and classification of different biosignals such as the electroencephalography ( eeg )
+    processing real-time electroencephalographic ( eeg )
+    propose an end-to-end emotion recognition system using an ear-electroencephalogram ( eeg )
+    s like drowsiness , fatigue , and stress in real time using electroencephalography ( eeg )
+    the accurate decoding of electroencephalography ( eeg )
+eenns
+    early exit neural networks
+ef
+    processors prefer using nvcim to achieve low standby power , high energy efficiency ( ef )
+efmac
+    and energy-efficiency ( efmac )
+efms
+    embodied foundation models
+eh
+    ered by harvested ambient energy , which are often referred to as energy-harvesting ( eh )
+ei
+    edge impulse platform
+    edge intelligence
+    embedded intelligence
+    environmental intelligence
+    ne learning model for training compressed quantization on the edge impulse platform ( ei )
+eis
+    edge impulse studio
+    electrical impedance spectroscopy
+    electrochemical impedance spectroscopy
+    embedded iot systems
+eit
+    electrical impe dance tomography
+    electrical impedance tomography
+el
+    dels for defect classification of photovoltaic modules based on electroluminescence ( el )
+electroencephalography
+    ic challenges and risks associated with the development of eeg- ( electroencephalography )
+elm
+    extreme learning machines
+elms
+    extreme learning machines
+emg
+    , electromyography ( emg )
+    electromyography ( emg )
+    fline average classification accuracy of 93.14 % for single-modal electromyography ( emg )
+eml
+    embedded machine learning
+emram
+    embedded magnetoresistive random access memory
+ems
+    energy management systems
+emss
+    energy management strategies
+enas
+    based nas ( enas )
+entropi
+    e an entropy-based efficient neural transfer with reduced overhead via pruning ( entropi )
+eog
+    alternatively , systems based on electrooculography ( eog )
+    this study proposes using four types of electrooculography ( eog )
+eon
+    se and an accelerometer sensor to recognize human activities using an auto-encoder ( eon )
+epr
+    extended producer responsibility
+ert
+    electrical resistivity tomography
+es
+    edge server
+    embedded systems
+    omplex event processing of damage and healing events to control the healing process ( es )
+esp32-cam
+    antized cnn models for drowsiness detection on a resource-constrained device ( esp32-cam )
+    tic and metal sorting , enabled by machine learning on low-cost edge devices ( esp32-cam )
+esp8266
+    using a low-cost wifi module ( esp8266 )
+esweek
+    this paper , as an overview of a special session at embedded systems week ( esweek )
+esysid
+    ostics , which combines the unique advantages of embedded system identification ( esysid )
+et
+    electromagnetic testing
+    execution time
+etdfad
+    ework with deep fl supported real- time anomaly detection in an iot environment ( etdfad )
+etinynet
+    e-art range and much better than a recently proposed lightweight architecture ( etinynet )
+euma
+    2024 european microwave association ( euma )
+ev
+    a case study using real driving data from a bmw i3 ( ev )
+    electric vehicle
+evci
+    electric vehicle charging infrastructure
+evcis
+    electric vehicle charging infrastructures
+evs
+    electric vehicles
+    electrical vehicles
+evses
+    electric vehicle supply equipments
+ewt-sas
+    hreshold method and empirical wavelet transform-spectrum adaptive segmentation ( ewt-sas )
+f-iran
+    this paper proposes a novel fog-based intelligent radio access network ( f-iran )
+f-ran
+    , and fog radio access network ( f-ran )
+fakd
+    this study introduces a novel flops-aware knowledge distillation ( fakd )
+fann
+    fast artificial neural network
+fastkan
+    iver drowsiness detection model grounded in the fast kolmogorov-arnold network ( fastkan )
+fbanks
+    the method extracts mel filter banks ( fbanks )
+fc
+    a substantial storage reduction of 4.5 , when compared to classical fully-connected ( fc )
+fcnns
+    fully connected neural networks
+fdd
+    detection and description
+    fall detection dataset
+fdi
+    detection and isolation
+    false data injection
+fdrl
+    federated deep reinforcement learning
+fe
+    feature extraction
+fedavg
+    federated averaging
+    xpansion , we explore different models , the integration of federated averaging ( fedavg )
+fef
+    a novel front-end filter ( fef )
+femu
+    in this paper , we present the new fpga emulation ( femu )
+fer
+    facial emotion recognition
+    facial expression recognition
+fex
+    feature extractor
+    its analog feature extractor ( fex )
+ffa
+    in the dltml-rtadpm method , the fennec fox optimization algorithm ( ffa )
+ffnn
+    tegrates embedded sensor data fusion with an optimized feedforward neural network ( ffnn )
+ffs
+    , flip-flops ( ffs )
+fft
+    fast fourier transform
+fgsm
+    fast gradient sign method
+fiq
+    , full-integer quantization ( fiq )
+fir
+    finite impulse response
+firebase
+    -time processing , lorawan for long-range communication , and cloud platforms ( firebase )
+fl
+    -enabled federated learning framework ( fl )
+    fault localization
+    federated learning
+    few-shot learning
+    formal logic
+    fused layer
+    fused layers
+    fuzzy logic
+float32
+    lized tensorflow lite for microcontrollers to quantize a 32-bit floating point ( float32 )
+flops
+    , floating point operations ( flops )
+    accuracy and number of floating-point operations per second ( flops )
+    additionally , the floating-point operations ( flops )
+    by integrating floating point operations ( flops )
+    e findings indicated that , despite using only 43 % of floating point operations ( flops )
+    it demands 2.3 m floating-point operations ( flops )
+    models , tinydnn reduces the number of floating-point operations ( flops )
+    optimized cnn reaches 97.2 % with 190kb flash and 840k floating-point operations ( flops )
+fmcw
+    the frequency-modulated continuous-wave ( fmcw )
+    tured using texas instrument ' s iwr1843boost frequency-modulated continuous-wave ( fmcw )
+fmg
+    and forcemyography ( fmg )
+fms
+    foundation models
+foc
+    field oriented control
+fog
+    freezing of gait
+    freezing of gaits
+fom
+    figure of merit
+fomo
+    ents a real-time pothole detection system using the faster objects , more objects ( fomo )
+    fast object more object
+    faster objects more objects
+    oposes a fault detection algorithm based on ' ' faster objects , more objects ' ' ( fomo )
+    the system employs the faster objects , more objects ( fomo )
+fp32
+    augq segments the range of real-valued ( fp32 )
+    critical aspect of effective quantization is identifying the range of real values ( fp32 )
+fpga
+     % across the four mlperf tiny models-measured on a field-programmable gate array ( fpga )
+    ce modules that can be suitably imported to edge or field-programmable gate array ( fpga )
+    em has been implemented on a microchip mpfs250t soc field-programmable gate array ( fpga )
+    field programmable gate array
+    field programmable gate arrays
+    implemented on an amd zynq ultrascale+ zcu106 field-programmable gate array ( fpga )
+    the dnn-based decoders were deployed on a field-programmable gate array ( fpga )
+fpgas
+    field programmable gate arrays
+    with ice40 series field-programmable gate arrays ( fpgas )
+fpr
+    false positive rate
+fps
+    frame per second
+    frames per second
+    frames per seconds
+    ingle board computers , may lead to poor performance in terms of frames-per-second ( fps )
+fqt
+    fully quantized training
+frs
+    fuzzy rough set
+fs
+    feature selection
+    full search
+    future selection
+fscd
+    fluent speech commands dataset
+fuota
+    firmware update over the air
+fxc1
+    our results shown that our proposed method ( fxc1 )
+ga
+    genetic algorithm
+    goal attainment
+gan
+    generative adversarial network
+    generative adversarial networks
+gans
+    generative adversarial networks
+gap9
+     and fine-tuned our xgboost model for a risc-v based low power parallel processor ( gap9 )
+gateways
+    while machine learning-based ids have typically been deployed at the edge ( gateways )
+gdims
+    ground disaster information management system
+gdpr
+    general data protection regulation
+gemm
+     gflops / w and 920 gflops / w during regular general matrixmatrix multiplication ( gemm )
+gemm-ops
+     conceived for multi-precision floating-point general matrixmatrix operations ( gemm-ops )
+genai
+    generative ai ( genai )
+    generative artificial intelligence ( genai )
+ghg
+    climate change has spurred a demand for precise methods to quantify greenhouse gas ( ghg )
+ghi
+    global horizontal irradiance
+gho
+     this paper , we develop a novel greedy approach-based hyperparameter optimization ( gho )
+gic
+    geomagnetically induced current
+gics
+    geomagnetically induced currents
+glms-bilstm
+    ts gradient least mean squares with a bidirectional long short-term memory ( glms-bilstm )
+gmds
+    space weather phenomena like geomagnetic disturbances ( gmds )
+gmms
+    gaussian mixture model
+    gaussian mixture models
+gms
+    general movements
+gnb
+    gaussian naive bayes
+gnn
+    graph neural network
+    graph neural networks
+gnns
+    on-device micro-graph neural networks ( gnns )
+gops
+    giga operations per second
+gps
+    global positioning system
+gpu
+    and vegetables for 17 classes and achieved 94 % testing accuracy on a google colab ( gpu )
+    graphic processing units
+    graphical processing unit
+    graphics processing unit
+gr
+    this paper introduces an improved version of golomb-rice ( gr )
+graboost-aagt
+    ch proposes a gradient boosting based adaptive artificial gorilla troops ( graboost-aagt )
+gru
+    gated recurrent unit
+    gated recurrent units
+gsr
+    galvanic skin response
+gtsrb
+    german traffic sign recognition benchmark
+gw-shm
+    algorithms reported for ultrasonic guided wave structural health monitoring ( gw-shm )
+h-cran
+    and heterogeneous cloud ran ( h-cran )
+har
+    human activity recognition
+has
+    hardware aware scaling
+    hardware-aware scaling ( has )
+haus
+    , high-altitude uavs ( haus )
+hba
+    human behavior analysis
+hc-eml
+    ally , we present a pipeline to develop human-centric embedded machine learning ( hc-eml )
+hcai
+    applications leveraging a generic human-centric ai ( hcai )
+hci
+     recognition , as an important technology for realizing human-computer interaction ( hci )
+    human computer interaction
+    ition has emerged as a promising solution for touchless human-computer interaction ( hci )
+hclm
+    a hybrid of cnn-lstm-based deep neural network ( hclm )
+hcss
+    honeycomb composite sandwich structure
+hcws
+    maintaining patient safety and the safety of health-care workers ( hcws )
+hd
+    approach , represented by hyperdimensional computing ( hd )
+hd-semg
+    high-density surface electromyography ( hd-semg )
+    real-time hand gesture recognition using high-density surface electromyography ( hd-semg )
+hdc
+    investigates the potential efficiency improvements that hyperdimensional computing ( hdc )
+    le low-power , resource-efficient processing , we adopt hyperdimensional computing ( hdc )
+he
+    homomorphic encryption
+hems
+    hybrid energy management system
+heog
+    sight , a system built upon a new concept we define as hybrid electro-oculography ( heog )
+hgr
+    hand gesture recognition
+hhmlm
+    this paper presents a hybrid hierarchical machine-learning model ( hhmlm )
+hi
+    hierarchical inference
+hil
+     and especially microcontrollers , this research introduces a hardware-in-the-loop ( hil )
+    secondly , auritus provides a tightly-integrated hardware-in-the-loop ( hil )
+hls
+    e develop hardware implementations of the ml models and apply high-level synthesis ( hls )
+    through the analysis of bespoke mlps synthesized using xilinx high-level synthesis ( hls )
+hmd
+    hardware-assisted malware detection
+hmi
+    human machine interface
+hmis
+    holds promise for advancing intuitive and non-invasive human-machine interfaces ( hmis )
+hmm
+    hidden markov models
+hog
+    histogram of gradient
+hpa
+    highpower amplifier
+    to compensate for the non-linear high-power amplifier ( hpa )
+hpc
+    hardware performance counter
+hpo
+    es are not only computationally expensive , especially hyperparameter optimization ( hpo )
+hr
+    heart rate
+    herbicide reduction
+    home rehabilitation
+    humanoid robotics
+hri
+    human-robot interaction ( hri )
+hrst
+    second , a high-resolution superlet transform ( hrst )
+hrv
+    heart rate variability
+    hearth rate variability
+hs
+    heterogeneous systems
+hw
+    , hardware ( hw )
+    hamming weight
+    sents an extensive design space exploration toward the optimal design of a hardware ( hw )
+    this brings challenges in hardware ( hw )
+hw-nas
+    hardware-aware neural architecture search
+    hardware-aware neural architecture search ( hw-nas )
+    search for tree-based classifiers and hardware-aware neural architecture search ( hw-nas )
+hybrid-net
+    , eeg-net , and 93.35 % for hybrid-modal biosignal ( hybrid-net )
+hyper-i
+    as we approach the era of hyper intelligence ( hyper-i )
+i2s
+    inter-ic sound
+ia
+    input activation
+ia-mbc
+    scheme using a single wl-on and input-aware multibit bl clamping ( ia-mbc )
+ia-slvb
+    voltage biasing ( ia-slvb )
+iaps
+    international affective picture system
+iaq
+    indoor air quality
+ibl
+    a large number of activated wls provides a wide range of bl current ( ibl )
+    as well as a large ( ibl )
+ibug
+    in this paper we demonstrate an energy efficient iot platform ( ibug )
+iccad
+    held at the 41st international conference on computer-aided design ( iccad )
+icd
+    implantable cardioverter de-fibrillator
+icds
+    er low-power microcontrollers utilized in implantable cardioverter-defibrillators ( icds )
+    implantable cardioverter defibrillators
+icg
+    integrated clock gating
+ict
+    and communication technologies
+ict4d
+    , and the information technology for development ( ict4d )
+icu
+    intensive care unit
+icve
+    and a volkswagen polo ( icve )
+id
+    xtensively evaluate tinyood using four public datasets , one as the in-distribution ( id )
+idc
+    invasive ductal carcinoma
+idct
+    , transmitted as text files , reconstructed via inverse dct ( idct )
+idps
+    intrusion detection and prevention system
+ids
+    intrusion detection system
+    intrusion detection systems
+idsh
+    we developed a unique dataset , named as intrusion detection in the smart homes ( idsh )
+idss
+    intrusion detection systems
+ie
+    infrastructure evaluation
+ieeg
+    n system to accurately detect seizures in real-time by analyzing intracranial eeg ( ieeg )
+iegms
+    the dataset contains more than 38000 5-s intracardiac electrograms ( iegms )
+igbt
+    insulated gate bipolar transistors
+igbts
+    this design also incorporates insulated-gate bipolar transistors ( igbts )
+ih-ehra
+    roposes an interference hypergraph-based energy harvesting resource allocation ( ih-ehra )
+iid
+    and identically distributed
+iiot
+    and industrial iot ( iiot )
+    focusing on comprehensive networking , the industrial internet-of-things ( iiot )
+    industrial internet of thing
+    industrial internet of things
+    industrial iot
+    inference , confirming its suitability for industrial iot ( iiot )
+    intelligent internet of thing
+    powered by pervasive embedded devices , the industrial iot ( iiot )
+iiots
+    industrial internet of things
+ilms
+    inner loop memories
+ilp
+    inference latency prediction
+    integer linear program
+images
+    pression techniques have relied on linear transforms to approximate 2-d signals ( images )
+imbp
+    esearch introduces two innovative decoders : an interleaved-memory-based parallel ( imbp )
+imc
+    in-memory computing
+    inertial motion capture
+    integrate in-memory computing ( imc )
+    toward this vision , some of the recent mcus integrated in-memory computing ( imc )
+imu
+    inertia measurement unit
+    inertial measurement unit
+    inertial measurement units
+    inertial measurements units
+imus
+    inertial measurement units
+in
+    , with multibit input ( in )
+    prior nvcims have proven effective for binary input ( in )
+in-phase
+    the current industrial , scientific and medical band transceivers provide i ( in-phase )
+incorrect
+    ing a hands-free method to indicate misclassification by saying ' mas7i7ch ' ( incorrect )
+int8
+    furthermore , the quantized ( int8 )
+    in addition , this study investigates the efficiency of pruning and 8-bit integer ( int8 )
+    precision model into an 8-bit integer ( int8 )
+    the proposed model ' s parameters were quantized to 8 bits ( int8 )
+    the quantized ( int8 )
+ioat
+    internet of agro things
+iobt
+    internet of battlefield things
+iodt
+    internet of drone things
+ioe
+    internet of everything
+ioit
+    internet of intelligent things
+iomt
+    internet of medical thing
+    internet of medical things
+ios
+    internet of sounds
+iot
+    , the internet-of-things ( iot )
+    application for edge computing in the internet-of-things ( iot )
+    e for neuro-inspired control of the dexterous hand devoid of an internet-of-things ( iot )
+    extreme edge devices or internet-of-things ( iot )
+    given the advancements in the internet-of-things ( iot )
+    in many new-age applications such as internet-of-things ( iot )
+    inference on a resource-constrained internet-of-things ( iot )
+    internet of thing
+    internet of things
+    models on internet-of-things ( iot )
+    nomaly detection is a very valuable functionality in sensor and internet-of-things ( iot )
+    on in gps-denied environments on extremely resource-constrained internet-of-things ( iot )
+    on the other hand , pervasive technologies-internet of things ( iot )
+    opened a new opportunity to bring intelligence to the low-end internet-of-things ( iot )
+    sed for sign language recognition using a low-cost , wearable , internet-of things ( iot )
+    techniques able to operate in embedded systems and the internet-of-things ( iot )
+    techniques meant to be executed on embedded systems and internet-of-things ( iot )
+    time sense the complex running states of the rail vehicle on an internet-of-things ( iot )
+    with internet-of-things ( iot )
+iou
+     impressive 96 percent accuracy based on the intersection over the union threshold ( iou )
+    intersection over union
+iou=0.50:0.95
+     that ' ' yolov5-fpn_175k ' ' achieved 3.03 frames per second with a map ( iou=0.50:0.95 )
+iouavs
+    internet of unmanned aerial vehicles
+iout
+    internet of underwater things
+iov
+    internet of vehicles
+ip
+    intellectual properties
+    intellectual property
+ipba
+    intelligent plastic brand audit
+ipds
+    inference tasks on the intermittently-powered batteryless devices ( ipds )
+ipfs
+    interplanetary file system
+ir
+    employed for infrared ( ir )
+    low-resolution infrared ( ir )
+    the current state-of-the-art technology heavily relies on infrared ( ir )
+irrhs
+    intelligent remote radio heads
+is
+    inertial sensors
+isa
+    instruction set architecture
+    iot security architecture
+isl
+     new nas has been designed and then validated on the italian sign language dataset ( isl )
+    indian sign language
+iso-accuracy
+    imagenet results show udc networks are up to 3.35 smaller ( iso-accuracy )
+isp
+    image signal processing
+ispu
+    intelligent sensor processing unit
+iss
+    intelligent sensors
+it
+    information technology
+its
+    intelligent transportation systems
+iuavs
+    internet unmanned aerial vehicles
+joa
+    jaya optimization algorithm
+jrl-qp
+    by employing joint reinforcement learning enabled quantization and pruning ( jrl-qp )
+k-nns
+    , k-nearest neighbors ( k-nns )
+    solution based on deep learning feature extractors and a k-nearest neighbors ( k-nns )
+kan
+    en proposed so far , mostly when adopting transformer or kolmogorov-arnold network ( kan )
+    nterpretable tinyml model based on a fast variant of the kolmogorov-arnold network ( kan )
+kans
+    kolmogorov-arnold networks ( kans )
+    this research investigates the implementation of kolmogorovarnold networks ( kans )
+kd
+    knowledge distillation
+kg
+    knowledge graph
+kgd
+    generation and distillation
+kgnns
+    knowledge graph neural networks
+kick
+    and fetal ( kick )
+knn
+    k-nearest neighbor
+    using iot flock data demonstrated 99.67 % accuracy with k-nearest neighbors ( knn )
+kpis
+    key performance indicators
+krack
+    col suite has been challenged by a recently discovered key reinstallation attack ( krack )
+kvis
+    key value indicators
+kws
+    -of-the-art accuracy of 98.8 % and 99.1 % on the google speech v2 keyword spotting ( kws )
+    bes analognets : tinyml models for the popular always-on tasks of keyword spotting ( kws )
+    he first step of a tiny low-power end-to-end neural network-based keyword spotting ( kws )
+    his article , we present a low-power heterogeneous tinyml soc for keyword spotting ( kws )
+    however , deploying keyword spotting ( kws )
+    key word spotting
+    keyword spotting
+    keyword spotting ( kws )
+    oth tsmc 22nm and 55nm technology for mlperf tiny benchmark and a keyword spotting ( kws )
+    our method is evaluated on image classification and keyword spotting ( kws )
+    s , which takes pcm signals , in scenarios of in-sensor computing keyword spotting ( kws )
+    se study , we apply this methodology to a resnetbased model for a keyword spotting ( kws )
+    task and 28 % on the keyword spotting ( kws )
+    ty in machine learning models through the development of a keyword spotting system ( kws )
+l-bnn
+     to classify osa through the inference of a lightweight binarized neural network ( l-bnn )
+lae
+    lightweight adaptive enhancement
+latency
+    afterward , we discuss how to further improve the performance ( latency )
+laus
+    system , leveraging the collective capabilities of low-altitude uavs ( laus )
+lbl
+    for multibit inputs , increase in # , and reduce the ( lbl )
+    previous positive-negative-split weight-mapping consumes high total ( lbl )
+    to shorten ( lbl )
+lbs
+    as context-aware location-based services ( lbs )
+lcs
+    low-cost gas sensors ( lcs )
+lda
+    linear discriminant analysis
+ldr
+    based on real-time feedback from a light-dependent resistor ( ldr )
+led
+    thm was implemented to dynamically adjust the brightness of a light-emitting diode ( led )
+lems
+    to address these issues , an optimized lightweight large model framework ( lems )
+lg
+    lateral gastrocnemius
+li-ion
+    lithium-ion ( li-ion )
+lif
+    integrate and fire
+lime
+    local interpretable model-agnostic ex-planations
+lipo
+    of lithium-polymer ( lipo )
+litecen
+    , and a simplified convolutional encoder network ( litecen )
+litert
+    to tensorflow lite ( litert )
+llm
+    large language model
+    large language models
+    lightweight large model
+    lightweight large models
+llms
+    large language models
+lmagnet
+    in this paper , we propose a lightweight magnetic convolutional neural network ( lmagnet )
+loc
+    system is proposed by utilizing lab-on-a-chip ( loc )
+loocv
+    the system achieved 92.07 % accuracy in leave-one-out cross-validation ( loocv )
+lopdm
+    emands , in this article , we introduce a self-contained low-power on-device pdm ( lopdm )
+lora
+    etection system that integrates on-device ai , low-power long-range communication ( lora )
+lorawan
+    challenges and optimize channel allocation within long range wide area network ( lorawan )
+    es a smart bin with ai-driven waste sorting , low-power wireless communication ( lorawan )
+    long-range wide area network
+low-cost
+    this paper ' s demonstrates the feasibility of using low-power ( low-cost )
+lpodc
+    lower power object detection challenge
+lpwan
+    concretely , they are the low-power wide-area network ( lpwan )
+    ed by an examination of networking solutions such as low-power wide area network ( lpwan )
+    low power wide area network
+    low power wide area networks
+lpwans
+    and low-power wide area networks ( lpwans )
+    low power wide area networks
+lr
+    latent replay
+    logistic regression
+lrs
+    latent replays
+lsms
+    liquid state machines
+lstm
+    , and long short-term memory ( lstm )
+    , long short-term memory ( lstm )
+    and long short-term memory ( lstm )
+    estigates the feasibility of converting a tensorflow-based long short-term memory ( lstm )
+    long short-term memory
+    ng 15-min energy demand forecast models based on two-layer long-short-term memory ( lstm )
+    o learn from sequences and perform well on ser tasks , the long short-term memory ( lstm )
+    ors for redundancy , and an ensemble network consisting of long short-term memory ( lstm )
+    urbation into the control signal , and finally utilizing a long short-term memory ( lstm )
+    with a long short-term memory ( lstm )
+lte
+    working on skills such as learning and teamwork ( lte )
+lut
+     xilinx artix-7 fpga using vivado , resulting in a 27 % reduction in look-up table ( lut )
+lutnet-rc
+    by combining a look-up tables networks based rc ( lutnet-rc )
+luts
+    accurately predict the required resources in terms of the utilized look-up tables ( luts )
+m-dnn
+    to mimic multimodal human perception , multimodal deep neural networks ( m-dnn )
+m-nas
+    this paper proposed a microarchitecture aware neural architecture search ( m-nas )
+ma
+    we define a micro-accelerator ( ma )
+mac
+    , with a minimal 17.33 kib memory footprint and low multiply-accumulate ( mac )
+    [ 1-5 ] , enabling high-parallel multiply-and-accumulate ( mac )
+    constraints , conventional digital-only implementations of multiply-and-accumulate ( mac )
+    for multiply-and-accumulate ( mac )
+    in this paper , we present a novel precision-scalable multiply-and-accumulate ( mac )
+    latency of just 385s and a neural network throughput of 52 multiply and accumulate ( mac )
+    mechanical arm control
+    medium access control
+    ments - such as ram usage , energy consumption , latency , and multiply-accumulate ( mac )
+    mixed signal multiply-and-accumulate
+    multi-class attack classification
+    odel was further increased by redesigning the xnor gate of the multiply-accumulate ( mac )
+    of tiny ai edge devices performing multiply-and-accumulate ( mac )
+    orted quantization scheme to intralayer level by introducing multiply-accumulation ( mac )
+    precision , energy , and throughput in multi-bit multiply-and-accumulate ( mac )
+    r per-layer quantization , we reduce inference latency and multiply-and-accumulate ( mac )
+macc
+    , and the fourth-lowest number of multiply-accumulate operations ( macc )
+    in terms of complexity , tinyrce requires 22 less multiply and accumulate ( macc )
+macs
+     fewer neurons and with a hugely reduced number of multiply-accumulate operations ( macs )
+    ence time , 79 % less flash usage , and 90 % fewer multiply-accumulate operations ( macs )
+    es through pareto optimization based on accuracy , multiply-accumulate operations ( macs )
+maddpg
+    dress this problem , we propose a multiagent deep deterministic policy gradient ( maddpg )
+    multi-agent deep deterministic policy gradient
+mae
+    mean absolute error
+maes
+    mean absolute errors
+maesd
+    with 4 features , the model achieved a mean absolute errorstandard deviation ( maesd )
+mail
+    we propose a ma-in-the-loop ( mail )
+mamdani-type
+     , adapted for constrained hardware online on-device tuning of linguistic ( mamdani-type )
+map
+    , and mean arterial ( map )
+    mean average precision
+    modified atmosphere packaging
+map1
+    , and map with different gas combinations : 20 % co2 + n balance ( map1 )
+map2
+    , and 20 % co2 + 10 % o2 + n balance ( map2 )
+map5095
+    veness , achieving a mean average precision at iou thresholds from 0.5 to 0.95 ( map5095 )
+mape
+    mean absolute percentage error
+marl
+    multi-agent reinforcement learning
+maup
+    -based algorithm for uav path planning ( maup )
+mav
+    micro aerial vehicle
+    micro air vehicle
+mc
+    moisture content
+    ommunicating with the survivors offers a promising alternative for mission-critical ( mc )
+mc-dropout
+    alternatively , monte carlo dropout ( mc-dropout )
+mcu
+     an edge device , which makes it paramount to create a neural microcontroller unit ( mcu )
+     network such that can be deployed on a cheap , off-the-shelf microcontroller unit ( mcu )
+    -based ids deployed on a tiny microcontroller unit ( mcu )
+    a trained tinyml model is deployed on the low-cost microcontroller ( mcu )
+    additionally , the task of migrating such models to a differentmicrocontroller ( mcu )
+    after the training phase , the cnn-mdd was deployed on a microcontroller unit ( mcu )
+    application on a low-power microcontroller unit ( mcu )
+    applications has driven interest in microcontroller unit ( mcu )
+    applications on microcontroller unit ( mcu )
+    at the most resource-constrained level in iot containing microcontroller unit ( mcu )
+    counterpart deployed on a microcontroller unit ( mcu )
+    custom-made board with dedicated components and a stm32l476rg microcontroller unit ( mcu )
+    demonstrate our approach on a prototype node based on an stm32h743 microcontroller ( mcu )
+    ed , converted to tensorflow lite format and deployed on the esp32 microcontroller ( mcu )
+    efore , the use of a low-power integrated circuit , such as a microcontroller unit ( mcu )
+    emory , making it suitable for implementation on a commercial microcontroller unit ( mcu )
+    ethod enables large classifiers to be comfortably executed on microcontroller unit ( mcu )
+    evaluated on the cifar-100 dataset and deployed on an stm32h7 microcontroller ( mcu )
+    fline plant leaf disease detection , leveraging the esp32-cam microcontroller unit ( mcu )
+    following training , the cnn-mdd model is deployed on a microcontroller unit ( mcu )
+    however , achieving the end-to-end deployment of slms on the microcontroller ( mcu )
+    however , the stringent tiny memory space on the microcontroller unit ( mcu )
+    materials is presented and deployed on a resource-constrained microcontroller unit ( mcu )
+    ments and evaluates nano vs on a novel milliwatt multi-core risc-v microcontroller ( mcu )
+    micro control unit
+    microcontroller unit
+    model running on a microcontroller ( mcu )
+    models are successfully deployed on a low-cost microcontroller ( mcu )
+    n , model training , and subsequent deployment to the wearable ' s microcontroller ( mcu )
+    ors using an on-device deep learning inference mechanism on a microcontroller unit ( mcu )
+    our approach partitions the cnn between the ispu and the microcontroller ( mcu )
+    ped tinyml model by integrating it into a low-cost and lower power microcontroller ( mcu )
+    pulse platform , and deployed to an arduino nano 33 ble sense microcontroller unit ( mcu )
+    rchitecture search targeting resource constrained devices such as microcontrollers ( mcu )
+    sensor and a microcontroller ( mcu )
+    stem that conducts ml inference with various ml techniques on microcontroller unit ( mcu )
+    suitable for deployment directly at the edge on a low-power microcontroller unit ( mcu )
+    tasks in microcontroller unit ( mcu )
+    the solution , implemented on a low-power microcontroller ( mcu )
+    the tight memory constraints of commodity electronics , like microcontroller units ( mcu )
+    this article presents an innovative sensor system with three microcontroller unit ( mcu )
+    using a low-cost current sensor and stm32 microcontroller unit ( mcu )
+    when deployed on a commercial low-power parallel microcontroller unit ( mcu )
+    whereas microcontroller unit ( mcu )
+mcu-based
+     easily be stored and executed on resource-constrained microcontroller-based ( mcu-based )
+mcu-blocks
+    then , the enhanced attention depthwise blocks ( mcu-blocks )
+mcus
+     area committed to democratizing deep learning for all-pervasive microcontrollers ( mcus )
+     ml design under low memory and computation power constraints of microcontrollers ( mcus )
+     newly collected data or changing domains while deployed on microcontroller units ( mcus )
+     online learning replay-based approach for hardware-limited microcontroller units ( mcus )
+     squeezing deep learning models into billions of iot devices and microcontrollers ( mcus )
+     with specialized hardware accelerators , data caches , and microcontroller units ( mcus )
+    , microcontroller units ( mcus )
+    -based mechanisms within small objects powered by microcontroller units ( mcus )
+    -effective , privacy-focused machine learning inference on micro-controller units ( mcus )
+    : first of all , it requires handling even complex ml tasks with microcontrollers ( mcus )
+    age classification locally on small , cheap , and low-power microcontroller units ( mcus )
+    are gradually becoming a standard feature in microcontrollers ( mcus )
+    as iot applications grow , low-power microcontroller units ( mcus )
+    by coupling numerous sensors with small , low-power micro-controller units ( mcus )
+    ce and power characterization of diverse tinyml applications on micro-controllers ( mcus )
+    data on edge devices , such as low-power microcontroller units ( mcus )
+    deployment of neural network models on resource-constrained microcontroller units ( mcus )
+    despite the widespread adoption of energy-efficient microcontroller units ( mcus )
+    devices and microcontrollers ( mcus )
+    e-size and energy-use for efficient execution on low-power micro-controller units ( mcus )
+    earning and deep learning on highly energy-efficient frugal microcontroller units ( mcus )
+    embedded systems based on microcontroller units ( mcus )
+    ese low end devices are often equipped with ultra-low-power microcontroller units ( mcus )
+    for dynamic and efficient ood detection on microcontroller units ( mcus )
+    for resource-constrained microcontrollers ( mcus )
+    gration of ml-based processes into small devices powered by microcontroller units ( mcus )
+    i algorithms in units with limited computing resources , such as microcontrollers ( mcus )
+    ing models hinders their deployment on resource-constrained microcontroller units ( mcus )
+    iot devices are powered by microcontroller units ( mcus )
+    is an essential component of emerging smart microcontrollers ( mcus )
+    l as recently developed software tools , when trying to use microcontroller units ( mcus )
+    led the deployment of ml models directly on resource-constrained microcontrollers ( mcus )
+    machine control units
+    many of them are based on the use of microcontroller units ( mcus )
+    menting bp-based training on various edge devices such as fpga , microcontrollers ( mcus )
+    microcontroller units
+    microcontroller units ( mcus )
+    microcontrollers ( mcus )
+    models on microcontroller units ( mcus )
+    models on microcontrollers ( mcus )
+    models on tiny microcontroller units ( mcus )
+    n of iot applications has led to increased use of low-power microcontroller units ( mcus )
+    ntinually on-device is a fast emerging trend for ultra-low-power microcontrollers ( mcus )
+    o apply on the edge devices where the resource-constrained micro-controller units ( mcus )
+    offer substantial performance improvements over traditional microcontroller units ( mcus )
+    on empowering resource-constrained devices such as smartphones , microcontrollers ( mcus )
+    on microcontroller units ( mcus )
+    on resource-constrained microcontroller units ( mcus )
+    on these memory-constrained iiot devices embedded with microcontrollers ( mcus )
+    on tiny micro-controller units ( mcus )
+    optimized for low-power microcontroller units ( mcus )
+    promising solution for resource-constrained devices such as microcontroller units ( mcus )
+    real-time traffic sign recognition on microcontrollers ( mcus )
+    rend in wearable bmis is to execute algorithms on low-power microcontroller units ( mcus )
+    ry-free ml inference and model personalization pipeline for microcontroller units ( mcus )
+    s for arrhythmia detection directly on wearables supporting microcontroller units ( mcus )
+    search primarily focusing on low-cost and energy-efficiency microcontroller units ( mcus )
+    solutions that fit within the size constraints imposed by the microcontroller ' s ( mcus )
+    sors and are difficult to run efficiently on resourceconstrained microcontrollers ( mcus )
+    tances of up to 2.5 meters , utilizing tinyml technology on microcontroller units ( mcus )
+    targeting low-end microcontroller units ( mcus )
+    techniques on edge micro-controller units ( mcus )
+    the hardware includes two microcontroller units ( mcus )
+    the methodology is evaluated over several nn architectures and microcontrollers ( mcus )
+    the proposed tiling enables object detection on low-power microcontroller units ( mcus )
+    tion of machine learning models on weak iot devices such as microcontroller units ( mcus )
+    toward this vision , recent microcontroller units ( mcus )
+    uals using ecg signals in resource constrained devices like microcontroller units ( mcus )
+    units , embedded systems , and micro-controller units ( mcus )
+    utation bottleneck for enabling audio processing on low-end microcontroller units ( mcus )
+    ution , while the porting of tml-cd on three off-the-shelf micro-controller units ( mcus )
+mdd
+    maize disease detection
+mdloss
+    to enhance the robustness of non-iid data , we introduce a moment distance loss ( mdloss )
+mds
+    ble to perform the same function as that supports to the multi-dimensional scaling ( mds )
+mec
+    mobile edge computing
+mel-ems
+    and multiensemble learning-based ems ( mel-ems )
+    multi-ensemble learning-based ems
+mems
+    it integrates a microelectromechanical systems ( mems )
+    k , we present an architecture based on tinyml and microelectromechanical systems ( mems )
+    signals acquired from digital micro-electro-mechanical system ( mems )
+    the system uses a micro-electro-mechanical system ( mems )
+mems-imus
+    -calibrate micro-electro-mechanical systems-based inertial measurement units ( mems-imus )
+mep
+    minimum energy point
+mfc
+    spectral analysis techniques , such as mel-frequency cepstrum ( mfc )
+mfcc
+    and mel-frequency cepstral coefficients ( mfcc )
+    are-aware integer quantization schemes for the melfrequency cepstral coefficients ( mfcc )
+    mel frequency cepstral coefficients
+    the model leverages inter-domain interaction to extract spectral ( mfcc )
+    work architectures optimized for kws based on mel-frequency cepstral coefficients ( mfcc )
+mfccs
+    architecture and mel-frequency cepstral coefficients ( mfccs )
+    ass filtering and feature extraction through mel-frequency cepstral coefficients ( mfccs )
+    eraging edge impulse for model development , mel-frequency cepstral coefficients ( mfccs )
+    mel frequency cepstral coefficients
+    tional acoustic feature extraction-including mel-frequency cepstral coefficients ( mfccs )
+mfe
+    features are extracted by the melfrequency energy ( mfe )
+    lves preprocessing the audio data , extracting features using mel-frequency energy ( mfe )
+    mel filterbank energy
+    this research employs the mel-filterbank energy ( mfe )
+mhcnls
+    ( mhcnls )
+mi
+    motor imagery
+microservices
+    the vm offers fundamental computations for ann and dt models ( microservices )
+mimic-iii
+    ly , data collected from the medical information mart for intensive care iii ( mimic-iii )
+mimo-ofdm
+    ed multiple-input multiple-output orthogonal frequency division multiplexing ( mimo-ofdm )
+miot
+    medical internet of things
+mis
+    this paper presents fermi-ml , a flexible and resource-efficient memory-in-situ ( mis )
+mit
+    -based model using ecg data from the massachusetts institute of technology ( mit )
+mitm
+    and man-in-the-middle ( mitm )
+    attacks , and man-in-the-middle ( mitm )
+    creasingly vulnerable to cyber-attacks such as data injection , man-in-the-middle ( mitm )
+    ed the raspberry pi 4-based adversary to generate a dataset for man-in-the-middle ( mitm )
+ml
+    ficient memory and computational power to accommodate light-weight machine-learning ( ml )
+    formation about physical phenomena in complex settings , requiring machine-learning ( ml )
+    mac layer
+    machine learning
+    magnetic levitation
+    memory latencies
+    memory layout
+    modeling languages
+    multi-modal learning
+    multipath-assisted localization
+    multiple layers
+    multitask learning
+    ptimizer and tinyml interface to develop lightweight and real-time machine-learning ( ml )
+mlaas
+    allows importing pre-trained ml models on the edge for providing ml-as-a-service ( mlaas )
+    and evaluates a virtual machine architecture that provides ml as a service layer ( mlaas )
+mlas
+    prominence as a promising hardware architecture for machine-learning accelerators ( mlas )
+mlc
+    machine learning core
+mlops
+    eamless integration of verifiable frameworks such as machine learning operations ( mlops )
+    ing state-of-the-art machine learning frameworks and machine learning operations ( mlops )
+    w this digital twin pipeline is essential for robust machine learning operations ( mlops )
+mlp
+     compact machine learning models , including decision tree , multilayer perceptron ( mlp )
+     selected the top ten features for classification using both multilayer perceptron ( mlp )
+    , multilayer perceptron ( mlp )
+    an 97 % , which is significantly better than the traditional multilayer perceptron ( mlp )
+    and multilayer perceptron ( mlp )
+    cevse2024 dataset , we trained and optimized three models - multi-layer perceptron ( mlp )
+    d considering different quantization methods and multi-layer perceptron regressors ( mlp )
+    dded systems and compare its performance with a conventional multilayer perceptron ( mlp )
+    in particular , a simple multilayer perceptron ( mlp )
+    multi layer perceptron
+    multilayer perceptron
+    n and 0.04 % in multiclass classification when compared with multilayer perceptron ( mlp )
+    orithms including single-layer feed-forward neural network , multilayer perceptron ( mlp )
+    rovements in terms of execution time and cpu usage , when a multi-layer perceptron ( mlp )
+    sor array with a machine learning algorithm that combines a multi-layer perceptron ( mlp )
+    the performances of two lightweight models of multilayer perceptron ( mlp )
+    we present a tiny multilayer perceptron ( mlp )
+    we trained two different models , the first based on a multi-layer perceptron ( mlp )
+mlpnas
+    we employed nas for multilevel perceptrons ( mlpnas )
+mlps
+     dataset is used to train and five-fold cross-validate 90 multi-layer perceptrons ( mlps )
+    e latter was used to train , cross-validate , and test 90 multi-layer perceptrons ( mlps )
+    multilayer perceptrons ( mlps )
+    ny integer-based federated learning algorithm for training multilayer perceptrons ( mlps )
+mlr
+    multiple linear regression
+mlse
+    machine learning systems engineering
+mlx90640
+    the proposed system employs a low-resolution thermal sensor ( mlx90640 )
+mmwave
+    , and memory-efficient posture classification system based on a millimeter-wave ( mmwave )
+    millimeter-wave ( mmwave )
+    n detection , localization , and classification solution with a millimeter-wave ( mmwave )
+    this paper proposes a novel millimeter-wave ( mmwave )
+    this work used the texas instruments iwr6843 millimeter wave ( mmwave )
+    we propose tinyradar , a novel on-edge millimeter wave ( mmwave )
+mn+rtn
+    a theoretical analysis reveals mo ' s time complexity is o ( mn+rtn )
+mnist
+    on the cifar10 ( mnist )
+mo
+    machine object
+    monkeypox optimization
+moa
+    oencoder model and our proposed model modified overcomplete asymmetric autoencoder ( moa )
+mobopt
+     a novel nas strategy for tinyml based on multi-objective bayesian optimization ( mobopt )
+mos
+    iot end devices that incorporate metal-oxide-semiconductor ( mos )
+    machine objects
+    metal oxide semiconductor
+mov
+    machine object vision
+mp
+    margin propagation
+mp-qnn
+    sing interest in hardware support for mixed-precision quantized neural-networks ( mp-qnn )
+mpq
+    mixed-precision quantization ( mpq )
+mpt
+    multivariate parallel teda
+mrmr
+    maximum relevance minimum redundancy
+ms
+    memory space
+ms-lsa
+    additionally , we built a multi-scale lightweight spatial attention ( ms-lsa )
+msa
+    moreover , the multi-head self-attention ( msa )
+mscag
+    and multi-scale channel attention ( mscag )
+mse
+    mean square error
+    mean squared error
+msi
+    this paper details a non-destructive system integrating multi-spectral imaging ( msi )
+mst
+    multivariate sequential teda
+mtb-ml
+    del quantization was performed using infineon ' s modustoolbox machine learning ( mtb-ml )
+    ization of the models was performed employing the modustoolbox machine learning ( mtb-ml )
+mtc
+    machine type communications
+    machinetype communication
+mtf
+    markov transition field
+mtpa
+    maximum torque per ampere
+multiclassification
+     can detect the threats with an accuracy of 99.50 % at cloud level ( multiclassification )
+multicore+npu
+    tradeoffs involved in the aggressive slm deployment on the heterogeneous ( multicore+npu )
+mwi
+    microwave imaging
+    microwave imaging ( mwi )
+mx
+    modified xception
+mxt
+    modified xception tiny
+n2
+    parison with other architectures in forecasting with time complexity of the order o ( n2 )
+nacu
+    , this imposes a tradeoff between ef and accuracy , due to mac accumulationnumber ( nacu )
+nadam
+    and lstm 293.85 kb ( nadam )
+    lts , however , they needed larger model capacities with gru requiring 237.73 kb ( nadam )
+nanomst
+    k parameters and 7.59m floating-point operations , nano multiscale transformer ( nanomst )
+nas
+    nanoedge ai studio
+    network architecture search
+    neural architecture search
+nas-tinyml
+    es , this paper proposes a neural architecture search-tiny machine learning ( nas-tinyml )
+nb-iot
+    technologies , such as narrow band-iot ( nb-iot )
+ncp
+    in addition , a customized neural co-processor ( ncp )
+    then , a specially designed neural co-processor ( ncp )
+ndt
+    ithin aircraft structures poses a significant challenge in non-destructive testing ( ndt )
+    neural decision tree
+nevermind
+    due to the low read-disturbfree voltage of nonvolatile memory ( nevermind )
+    emerging non-volatile memory ( nevermind )
+    s study investigates vulnerabilities of future generation nonvolatile memory ( nevermind )
+    using nonvolatile memory ( nevermind )
+nids
+    network intrusion detection
+    network intrusion detection systems
+    network-based intrusion detection systems
+nilm
+     electrical device classification methods , such as non-intrusive load monitoring ( nilm )
+nlos
+    non-line-of-sight ( nlos )
+nlp
+    natural language processing
+nmc
+    national meteorological center
+nn
+    neu-ronal network
+    neu-ronal networks
+    neural network
+    neural networks
+    neural-network ( nn )
+nns
+    neural networks
+nnw
+    neural networks watermarking
+nodes
+    the model was deployed on arduino nano 33 ble sense ( nodes )
+noma
+    non-orthogonal multiple access
+    this study presents a nonorthogonal multiple access ( noma )
+npu
+    neural processing unit
+npus
+    neural processing units
+nrf52840
+    we further demonstrate portability to another mcu platform ( nrf52840 )
+nsai
+    neurosymbolic ai ( nsai )
+nst
+    neural style transfer
+nt-rff
+    to address this issue , a novel noise-tolerant radio frequency fingerprinting ( nt-rff )
+nucleo-f746zg
+    when evaluated on an arm cortex-m7 ( nucleo-f746zg )
+nvcim
+    nonvolatile compute-in-memory
+    nonvolatile computing-in-memory ( nvcim )
+    owered tiny-ai edge devices require large-capacity nonvolatile compute-in-memory ( nvcim )
+    the novel nonvolatile computing-in-memory ( nvcim )
+nvm
+    nonvolatile memory
+nwp
+    numerical weather prediction
+o-ran
+    furthermore , when evaluated against recent architectures such as open ran ( o-ran )
+oa
+    output activation
+obd
+    ter and a gyroscope , while the second also includes data from on-board diagnostic ( obd )
+obd-ii
+     with soft sensors derived from physical data captured via on-board diagnostics ( obd-ii )
+    and the other as the microcontroller of an onboard diagnostic ( obd-ii )
+    on-board diagnostics
+    this algorithm was implemented in an on-board diagnostics ( obd-ii )
+obu
+    that analyzes data captured from a range of sensors integrated on an on-board unit ( obu )
+occ
+    oral cavity cancer
+ocr
+    optical character recognition
+od
+    object detection
+odl
+    and wearable devices , and more recently , it has expanded into on-device learning ( odl )
+oems
+    original equipment manufacturers
+ofa
+    once-for-all network
+ofdm
+    orthogonal frequency division multiplexing
+old
+    currently , to address this issue , online machine learning ( old )
+ood
+    however , the deployed tinyml model can not handle outof-distribution ( ood )
+    urpose this study aim to propose a low-power , edge-deployable out-of-distribution ( ood )
+osa
+    obstructive sleep apnea
+oscasa
+    online student community assessment sentiment analysis
+ota
+    ml , exploring different approaches from system-level strategies like over-the-air ( ota )
+    send device-specific over-the-air ( ota )
+    this article presents a novel over-the-air ( ota )
+    we propose a novel fl-iot framework that combines over-the-air ( ota )
+our
+    moreover , optimized arithmetic units and output revision ( our )
+out
+    , and 3b output ( out )
+    , and output ( out )
+ova
+    in this work , we consider a modification of the one-versus-all ( ova )
+    it also leverages the concept of the one-vs-all ( ova )
+p2m
+    to mitigate this problem , we propose a novel processing-in-pixel-in-memory ( p2m )
+pa
+    precision agriculture
+pas
+    power amplifiers
+paste
+    furthermore , we introduce a novel algorithm , partially shared teacher-student ( paste )
+pawsns
+    pervasive acoustic wireless sensor networks
+pbd
+    eaves the device in which it was collected , thus implementing a privacy-by-design ( pbd )
+pc
+    personal computer
+pca
+    principal component analysis
+pcbs
+    printed circuit boards
+pcm
+    pulse code modulation
+    we also describe aon-cim , a programmable , minimal-area phase-change memory ( pcm )
+pcs
+    probabilistic circuits
+pcu
+    percent current unbalance
+pd
+    photo detectors
+    this paper implements a new pre-distorter ( pd )
+pdk
+    process design kit
+pdm
+    0 has revolutionized maintenance strategies and has brought predictive maintenance ( pdm )
+    automatically predictive maintenance ( pdm )
+    nd unpredictable stress , posing significant challenges for predictive maintenance ( pdm )
+    predictive maintenance
+    predictive maintenance ( pdm )
+    pulse density modulation
+    r , we investigate techniques used to optimize tinyml based predictive maintenance ( pdm )
+pe
+    printed electronics
+pegnet
+    e a lightweight network , termed privacy-aware efficient generalization network ( pegnet )
+pep
+    power error product
+pfi
+    physiological fatigue index
+pgd
+    projected gradient descent
+ph
+    persistent homology
+    personalized healthcare
+    plant healths
+    public health
+phm
+    and health management
+    prognostic and health management
+phy
+    authentication through the intrinsic characteristics of rf signals at the physical ( phy )
+piml
+    , self-attention , and a physics-informed merge layer ( piml )
+pinns
+    physics-informed neural networks
+pir
+    as an alternative , digital passive infrared ( pir )
+plc
+    programmable logic controller
+plf
+    precision livestock farming
+pm
+    predictive maintenance
+pmsm
+    permanent magnet synchronous motor
+pmut
+    piezoelectric micro-machined ultrasonic transducer
+poc
+    a proof-of-concept ( poc )
+    to address this problem , a point-of-care ( poc )
+poee
+    the proposed model also uses a proof-of-energy efficiency ( poee )
+pois
+    it efficiently processes multimodal data from diverse points-of-interest ( pois )
+pos
+    pulse oximeter sensor
+ppe
+    personal protective equipment
+ppg
+    and in-ear photoplethysmography ( ppg )
+    and photoplethysmogram ( ppg )
+    and photoplethysmography ( ppg )
+    ion to enable accurate and continuous bp estimation using only photo-plethysmogram ( ppg )
+    k , using only data from low-power wearable sensors , such as photoplethysmography ( ppg )
+    modern smartwatches often include photoplethysmographic ( ppg )
+    monitoring based on photoplethysmography ( ppg )
+    taset was used to develop and evaluate the model , leveraging photoplethysmography ( ppg )
+    to address this issue , photoplethysmography ( ppg )
+    tudy presents a tinyml based authentication system leveraging photoplethysmography ( ppg )
+    using four photoplethysmography ( ppg )
+ppma
+    on polymethyl methacrylate ( ppma )
+pps
+    pipelined pixel streaming
+pqat
+    , pruning , prune-preserving quantization-aware training ( pqat )
+pqc
+    egrates tinyml-powered decision trees with lattice-based post-quantum cryptography ( pqc )
+priority
+    microcontroller that receives the image and returns the cloud level ( priority )
+prisma
+    based on the preferred reporting items for systematic reviews and meta-analyses ( prisma )
+psd
+    post-stroke dysarthria ( psd )
+    power spectral density
+psg
+     model was trained , validated , and tested with open-source apnea polysomnography ( psg )
+    ently , the gold standard for diagnosing sleep apnea clinically is polysomnography ( psg )
+pso
+    particle swarm optimization
+psr
+    packet success ratio
+psum
+    the dataflow allows raman to locally reduce the partial sum ( psum )
+ptb
+    physikalisch technische bundesanstalt
+    w ecg signals of different subjects from the physikalisch-technische bundesanstalt ( ptb )
+ptq
+     three quantization techniques : dynamic quantization , post-training quantization ( ptq )
+    , and post-training quantization ( ptq )
+    and post-training quantization ( ptq )
+    post training quantization
+    this work presents an adaptive post-training quantization ( ptq )
+    we evaluated augq using both post-training quantization ( ptq )
+    we tested two quantization methods : post-training quantization ( ptq )
+pulp
+    , based on the parallel ultra-low power ( pulp )
+    mplement and evaluate the proposed models on leading-edge parallel ultralow-power ( pulp )
+    n both the arm cortex-m series and the novel risc-v-based parallel ultralow-power ( pulp )
+    tform for end-to-end cl based on a 10-core fp32 -enabled parallel ultra-low-power ( pulp )
+    we integrate redmule into a parallel ultra-low-power ( pulp )
+pv
+    approach to classify the severity of photovoltaic ( pv )
+    being largely utilized as alternative sources of energy , photovoltaic ( pv )
+    gnosis are critical for increasing the efficiency and dependability of photovoltaic ( pv )
+    in this paper a fault diagnosis method for photovoltaic ( pv )
+    in this work , a predictive method for planning the cleaning of photovoltaic ( pv )
+    in this work , an embedded system for fault detection and diagnosis of photovoltaic ( pv )
+    l shift to renewable energy depends critically on the dependability of photovoltaic ( pv )
+    model is developed for fault classification of photovoltaic ( pv )
+    the availability of reliable photovoltaic ( pv )
+    the increasing deployment of photovoltaic ( pv )
+pvt
+     hardware , exhibiting limited robustness over process , voltage , and temperature ( pvt )
+    versions , exhibiting limited robustness over process , voltage , and temperature ( pvt )
+pwm
+    pulsewidth modulations
+pzts
+     detection and localization is proposed , using ceramic piezoelectric transducers ( pzts )
+q-cae
+    o recognize bangla fonts from images using a quantized convolutional autoencoder ( q-cae )
+q-cnn
+    different plant diseases using a quantized cnn ( q-cnn )
+qat
+     the quantized weights of the deep learning models are quantization-aware training ( qat )
+    , and quantization-aware training ( qat )
+    and quantization-aware training ( qat )
+    ey tensorflow toolkit optimization methods , including quantization-aware training ( qat )
+    ilored to smart agriculture environments , integrating quantization-aware training ( qat )
+    of dark web traffic , this study employs a quantization-aware trained ( qat )
+    orms standard dequantization , autoencoder-based , and quantization-aware training ( qat )
+    quantization aware training
+    three quantization methods were applied : quantization-aware training ( qat )
+qcnet
+    in this work , we propose quantization compensator network ( qcnet )
+qmx
+    quantized modified xception
+qnns
+    quantized neural networks
+qor
+    s and an energy efficiency of 364 tops / w , while maintaining a quality-of-result ( qor )
+qos
+    quality of service
+quadrature
+    q ( quadrature )
+quantization
+    ng a handful of configurations belonging to different combinations of nnq ( quantization )
+qvae
+    quantum variational autoencoder
+r2
+    and the regression correlation coefficient ( r2 )
+    o measure the accuracy of the mlr and ann models , the coefficient of determination ( r2 )
+    of 0.155 , and a coefficient of determination ( r2 )
+    the main circuit breaker exhibited a 96.67 % r-squared score ( r2 )
+ram
+    mdd optimization parameters recorded a latency of 7.60 ms , a random-access memory ( ram )
+    trade-off by optimizing the number of operations , parameters , and working memory ( ram )
+ran
+    radio access network
+rat
+    concretely , we propose a multi-radio access network ( rat )
+rbf-nns
+     this study to reduce such errors adopts radial basis function neural networks ( rbf-nns )
+rbfs
+    radial basis functions
+rc
+    reservoir computing
+rdd
+    road damage detection
+rdfm
+    oped instrument measures the ore moisture by using the real-dual-frequency method ( rdfm )
+rdss
+    radiation detection systems
+reads
+    resource efficient attack detection system
+recordings
+    the robustness of the model was enhanced by adding a new class ( recordings )
+relu
+    hannel , multi-bit convolution , batch normalization , and rectified linear units ( relu )
+    the accelerator supports both linear and rectified linear unit ( relu )
+res
+    renewable energy sources
+resnet
+    , and a self-defined residual network ( resnet )
+    a deep residual network ( resnet )
+resolution
+    or nnr ( resolution )
+resource-friendly
+    ota-tinyml does not strain hardware ( resource-friendly )
+retrained
+    using a decompiler , models can be updated ( retrained )
+retraining
+    we report that fine-tuning ( retraining )
+rf
+    random forest
+    we evaluated tinyml-cam by using it to create a randomforestclassifier ( rf )
+rfbs
+    redox flow batteries
+rfc
+    random forest classifier
+rfdn
+    we baseline our approach on the residual feature distillation model ( rfdn )
+rff
+    radio frequency fingerprinting
+rfid
+    radio frequency identification
+rfr
+    , random forest ( rfr )
+rfs
+    random forests
+rh
+    to combine the under-development hs implemented in a reconfigurable hardware region ( rh )
+risc-v
+    the soc combines an reduced instruction set computer-v ( risc-v )
+rl
+    reinforcement learning
+rl-based
+    this article proposes a lightweight , reinforcement-learning-based ( rl-based )
+rle
+    mmunication , and lossless data compression techniques such as run-length encoding ( rle )
+rls
+    recursive least squares
+rms
+    results show that the root-mean-square ( rms )
+    root mean square
+rmse
+    experimental verification demonstrates a root-mean-square error ( rmse )
+    root mean square error
+    root mean squared error
+rmses
+    for the second-order output filter , the root-mean-square errors ( rmses )
+rmutsv
+     industrial technician school at rajamangala university of technology srivijaya ( rmutsv )
+rna
+    ch relies on nasopharyngeal swabs to examine the existence of the ribonucleic acid ( rna )
+rnn
+    random neural network
+    random neural networks
+    recurrent neural network
+    recurrent neural networks
+    residual neural network
+rnns
+    recurrent neural networks
+roc-auc
+    and receiver operating characteristic-area under the curve ( roc-auc )
+    t of up to 0.212 on the area under the receiver operating characteristic curve ( roc-auc )
+ronin
+    ions on benchmark datasets , including oxiod , robust neural inertial navigation ( ronin )
+rpa
+    robotic process automation
+rpi
+    this paper first discusses tinyml , with raspberry pi ( rpi )
+rpm
+    raised pavement marker
+    remote patient monitoring
+rram
+    resistive random access memory
+rrc
+     our pruned neural network provides up to 2 db papr saving over root-raised-cosine ( rrc )
+rs
+    radio station
+    resistance
+rses
+     persistent diagrams , which can be computed in a resource-scarce embedded system ( rses )
+    implementing such models in resource-scarce embedded systems ( rses )
+    tationally expensive and implementing ph in such resource-scarce embedded systems ( rses )
+rss
+    received signal strength
+rssi
+    received signal strength indicator
+    received signal strength indicators
+rsus
+    , where resource-constrained vehicles and powerful roadside units ( rsus )
+    delegating the intensive cross-validation to the central module or roadside units ( rsus )
+rt-pcr
+    currently , the reverse transcription-polymerase chain reaction ( rt-pcr )
+rte
+    , privacy-conscious , real-time on-the-edge ( rte )
+    afted to monitor facial expressions and eating activities in real-time on-the-edge ( rte )
+rto
+    further , the run-time overhead ( rto )
+rtos
+    real time operating system
+rul
+    remaining useful life
+rv32
+     , we demonstrate high efficiency end-to-end slm deployment on a multicore risc-v ( rv32 )
+rx
+    and three receiver ( rx )
+rx-lr
+    er intermittently short the excessive power at the rx input for local regulation ( rx-lr )
+s-hil
+    using signal hardware-in-the-loop ( s-hil )
+s2c
+    scrambled 2 ' s complement ( s2c )
+s2cvc
+    , and an s2c value combiner ( s2cvc )
+s2cwm
+    weight mapping ( s2cwm )
+sa
+    architectures outperformed sum-apart ( sa )
+    sentiment analysis
+    sleep apnea
+sabinn
+    called a shift-accumulate binarized nn ( sabinn )
+sagins
+    space-air-ground integrated networks ( sagins )
+sagvn
+    ation on consumer edge devices of space-air-ground integrated vehicular networks ( sagvn )
+sat
+    brid optimization solution , which integrates prepositional satisfiability problem ( sat )
+sbcs
+    single board computers
+sbp
+    ered edge devices to predict blood-pressure-related vital metrics such as systolic ( sbp )
+    of 2.812.84 and 1.511.85 mmhg for systolic bp ( sbp )
+    systolic blood pressure
+sbss
+    small base stations
+sbtm
+    symmetric bipartite table method
+sc
+    skin conductance
+    spatial crowdsourcing
+    stochastic computing
+    sugar content
+sca
+    side channel attack
+scada
+     paper explores integration of low-cost supervisory control and data acquisition ( scada )
+scalin
+    , s ( scalin )
+scas
+    -backed persistent tinyml hardware neural networks to side-channel attacks ( scas )
+sci
+    spinal cord injury
+scr
+    sports command recognition
+scs
+    re essential to optimize energy distribution between batteries and supercapacitors ( scs )
+sda
+    in bogota , colombia , studies by the district department of environment ( sda )
+sdc
+    silent data corruption
+sdg
+    sustainable development goals
+sdgs
+    sustainable development goals
+sdp
+    structured directional pruning
+sdr
+    software defined radio
+se
+    software engineering
+    spectral efficiency
+secr
+    robot ( secr )
+sed
+    sound event detection
+seda
+    shared encoder domain adaptation
+sefis
+    single event functional interrupts
+semg
+    , a collection of surface electromyography ( semg )
+    model for real-time robotic arm control using multimodal surface electromyography ( semg )
+    surface electromyography
+    surface electromyography ( semg )
+    technology enables the decoding of surface electromyographic ( semg )
+sep
+    5.55 mg / dl , standard error of prediction ( sep )
+ser
+    speech emotion recognition
+sers
+    surface enhanced raman spectroscopy
+seus
+    single event upsets
+sf
+    smart farming
+    spreading factor
+sf-kws
+    keyword spotting with a small footprint ( sf-kws )
+sgd
+    stochastic gradient descent
+sgo
+    semantic and goal-oriented ( sgo )
+shap
+    er tuning with optuna , further refining them using shapley additive explanations ( shap )
+    methods namely , shapley additive explanations ( shap )
+    shapley additive explanations
+sheaf
+    this research puts forward ( sheaf )
+shm
+    structural health monitoring
+    structure health monitoring
+sim808
+    using a gsm module ( sim808 )
+sip
+    we present an iot prototype featuring a smart camera and a system-in-package ( sip )
+sl
+    , input-aware source-line ( sl )
+    split learning
+    swarm learning
+slam
+    achieving simultaneous localization and mapping ( slam )
+slms
+    small language models
+slr
+    sign language recognition
+    systematic literature review
+slu
+    spoken language understanding
+small
+    and 99.0 % ( small )
+smartwatch
+    ition dataset and show the demonstration with the help of a wearable device ( smartwatch )
+smeesi
+    search presents sustainable micro-neural energy-efficient security intelligence ( smeesi )
+smote
+    handle intensity variations , and the synthetic minority over-sampling technique ( smote )
+    synthetic minority oversampling technique
+smpc
+    and secure multi-party computation ( smpc )
+snl
+    sandia national lab
+snn
+    sequential neural networks
+    siamese neural network
+    sparse neural networks
+    spiking neural network
+    spiking neural networks
+    static neural networks
+snns
+    siamese neural networks
+    spiking neural networks
+snr
+     to reduce the computational complexity while preserving its signal-to-noise ratio ( snr )
+    es in adverse conditions including high compression and low signal to noise ratios ( snr )
+    reduced compute signal-to-noise ratio ( snr )
+snrs
+    the accurate estimation of the toa may be hampered by poor signal-to-noise ratios ( snrs )
+    wo pretrained models and three real-world noise sources at signal-to-noise ratios ( snrs )
+soa
+     a set of pareto-optimal configurations demonstrating the same mae as state-of-art ( soa )
+    comparing it with the state-of-the-art ( soa )
+    is a state-of-the-art ( soa )
+    noise of an industrial facility , an accuracy comparable with the state-of-the-art ( soa )
+    s resource-demanding and significantly more energy-efficient than state-of-the-art ( soa )
+    tency and energy on 8-bit attention layers , compared to previous state-of-the-art ( soa )
+    tinyeegconformer shows comparable classification accuracy as state-of-the-art ( soa )
+    we leverage two state-of-the-art ( soa )
+soc
+    femu leverages the capability of system-on-chip ( soc )
+    his brief , we demonstrate a low-power heterogeneous microprocessor system-on-chip ( soc )
+    on an arm cortex-m4-based system-on-chip ( soc )
+    radar system-on-chip ( soc )
+    s of this design technique can be leveraged in developing a fully system-on-a-chip ( soc )
+    state of charge
+    this article presents tinyvers , a tiny versatile ulp ml system-on-chip ( soc )
+    to achieve these on system-on-chip ( soc )
+socs
+    and system-on-a-chip ( socs )
+    on state-of-the-art systems-on-chips ( socs )
+software
+    n conference is a premier contest in low-power object detection and algorithm ( software )
+soh
+    state of health
+soi
+    silicon on insulator
+sort
+    online and realtime tracking
+sota
+     the proposed method also enables the quantized model to achieve state-of-the-art ( sota )
+    all three models surpass current state-of-the-art ( sota )
+splvp
+    single perceptron linear vector processor
+spo2
+    a lightweight neural network processed parameters like blood oxygen saturation ( spo2 )
+spoofing
+    and integrity / authenticity ( spoofing )
+sps
+    a lightweight piezoelectric self-powered sensor ( sps )
+    oelectric energy harvester is utilized as an energy source and self-powered sensor ( sps )
+    system based on the cutting-edge self-powered sensor ( sps )
+sqi
+     with an int8-quantized autoencoder that produces a real-time signal-quality index ( sqi )
+    signal quality index
+    signal quality indices
+sram
+    100 million macs and adhering to the stringent 320 kb static random-access memory ( sram )
+srnn
+    spiking recurrent neural networks
+ss
+    semantic segmentation
+ssd
+    , single shot multibox detector ( ssd )
+ssl
+    of 0.724. this work uniquely combines self-supervised learning ( ssl )
+    this work initiates the application of self-supervised learning ( ssl )
+ssm
+    state space models
+st
+    architecture variations were also explored wherein sum-together ( st )
+    sensing technology
+    sensor tag
+    sensor tags
+    sensor traffic
+    signal timing
+    signal transduction
+    signal transmission
+    smart transportation
+    soft threshold
+    software testing
+    spatial temporals
+    statistical tests
+    supervised trainings
+    suppression technique
+st-gcn
+    model based on a spatiotemporal graph convolutional network ( st-gcn )
+    we propose a lightweight spatial-temporal graph convolutional network ( st-gcn )
+staas
+    storage as a service
+stfpm
+    student teacher feature pyramid matching
+stft
+    d edge adaptive convolutional neural network using a short-time fourier transform ( stft )
+    short time fourier transform
+stm
+    rovides an assessment of the ai integration tools furnished by st-microelectronics ( stm )
+stm32-nucleo-f401re
+    sults on two public-available datasets and an off-the-shelf device ( stm32-nucleo-f401re )
+stm32h743iit6
+    the birdcallnet can be successfully executed on a 32-bit microcontroller ( stm32h743iit6 )
+storage
+    tor for inference on edge , architected to exploit the sparsity to reduce area ( storage )
+suas
+    small unmanned air-craft systems
+sv
+    solenoid valve
+svm
+    smart village micro-utilities
+    support vector machine
+    support vector machines
+    the system uses a template-based support-vector-machine ( svm )
+svms
+    support vector machine
+    support vector machines
+svpwm
+    space vector pulse width modulation
+svr
+    support vector regressors
+svss
+    smart vision sensors
+sw
+    and software ( sw )
+swds
+    the sparse network consisting of only five sensor nodes ( swds )
+    this work presents a sparse sensor network with soft wireless imu devices ( swds )
+syntiant
+    through the integration of audio ( syntiant )
+t-sne
+    re and visualization techniques like t-distributed stochastic neighbor embedding ( t-sne )
+tac
+    can improve the latency ( tac )
+    long ( tac )
+    tiny anomaly compressor
+tc
+    tannin content
+tcn
+    temporal convolutional network
+    temporal convolutional networks
+tcnn
+    temporal convolutional neural network
+tcps
+    the rapid evolution of transportation cyber-physical systems ( tcps )
+td
+    thing description
+tdc
+    tinyml design contest
+teda
+    and eccentricity data analytics
+tee
+    trusted execution environment
+tees
+    trusted execution environments
+telmed
+    ices samples for resource allocation and scheduling using telemedicine protocol ( telmed )
+tf
+    specific data and , by using post-training quantization , converted from tensorflow ( tf )
+tfl
+    , along with the tensorflow lite ( tfl )
+tflite
+     the model is quantized to reduce its size and converted into a tensorflow lite ( tflite )
+    e have converted these trained models into tinyml models using tensor flow lite ( tflite )
+    ons and originally implemented with tensorflow was converted to tensorflow lite ( tflite )
+    tensorflow lite
+tflite-micro
+    ftware dev framework [ 1-3 ] such as tensorflow lite for microcontrollers ( tflite-micro )
+    ftware development framework such as tensorflow lite for microcontrollers ( tflite-micro )
+tflm
+    els trained with qkeras and using a modified tensorflow lite for microcontrollers ( tflm )
+    finally , we compare aifes with tensorflow lite for microcontrollers ( tflm )
+    for feature extraction , and tensorflow lite for microcontrollers ( tflm )
+    l network model , and deploying it using the tensorflow lite for microcontrollers ( tflm )
+    ng inference on edge devices using a modified tensorflow lite for microcontroller ( tflm )
+    on for common machine learning kernels using tensorflow lite for microcontrollers ( tflm )
+    owcase the performance of widely used eai tools , including tensorflow lite micro ( tflm )
+    s paper , we focus on benchmarking two popular frameworks : tensorflow lite micro ( tflm )
+    tensorflow lite for microcontrollers
+    using the tensorflow lite for microcontroller ( tflm )
+tgc
+    temporal gated classification
+them
+    technologies has significantly advanced environmental monitoring ( them )
+    using electromagnetic ( them )
+ti
+    texas instruments
+timegpt
+    per showcases the novel application of time generative pre-trained transformer ( timegpt )
+tiny
+    ayesian learning is executed in parallel across multiple edge devices using local ( tiny )
+    model into a lite weight ( tiny )
+    s latencies of 6.5-7.2 ms and energy use of 0.18-0.21 j with accuracies of 97.5 % ( tiny )
+tiny-ml
+    in this work , we present a tiny machine learning ( tiny-ml )
+    meanwhile , tiny machine learning ( tiny-ml )
+tinyad
+    constraints of mcus , we propose a novel framework named tiny anomaly detection ( tinyad )
+tinyai
+     potential of small architecture-based , compressed , and accelerated ai models ( tinyai )
+    figurable , and extendible risc-v platform for ultra-lowpower edge applications ( tinyai )
+    this design leverages a trained tiny artificial neural network ( tinyai )
+tinycnn
+    in this study , a tiny convolutional neural network ( tinycnn )
+    tinynids addresses these challenges by leveraging a lightweight cnn ( tinycnn )
+    using a compact convolutional neural network ( tinycnn )
+tinydl
+    and introduce tiny deep learning ( tinydl )
+    for the first time , we introduce a novel tiny deep learning ( tinydl )
+    this paper presents a tiny deep learning ( tinydl )
+    tiny deep learning
+tinyfdrl
+    er sagin entities , we introduce a tiny federated deep reinforcement learning ( tinyfdrl )
+tinyml
+     a novel real-time fish disease detection system based on tiny machine learning ( tinyml )
+     a real-time bolt-defect detection system that integrates tiny machine learning ( tinyml )
+     ai deploys diversified ai models on resource-constrained tiny machine learning ( tinyml )
+     analyzing the trends , challenges , and opportunities in tiny machine learning ( tinyml )
+     and classification methods by proposing an effective iot tiny machine learning ( tinyml )
+     are further examined for their applicability in embedded tiny machine learning ( tinyml )
+     centralized servers , but advances in edge computing and tiny machine learning ( tinyml )
+     data compression with arithmetic coding algorithm on the tiny machine learning ( tinyml )
+     for performing motor axis misalignment judgment based on tiny machine learning ( tinyml )
+     health monitoring system for snoring detection utilizing tiny machine learning ( tinyml )
+     machine learning solutions , leading to the emergence of tiny machine learning ( tinyml )
+     most relevant and interesting challenges in the field of tiny machine learning ( tinyml )
+     nano 33 ble sense in a real-time environment by means of tiny machine learning ( tinyml )
+     new algorithm for incremental learning in the context of tiny machine learning ( tinyml )
+     proposes the integration of low-power edge devices using tiny machine learning ( tinyml )
+     yolov8 , and fomo models for pothole detection using the tiny machine learning ( tinyml )
+    , a dual-mode system that leverages tiny machine learning ( tinyml )
+    , although this scenario has supported the development of tiny machine learning ( tinyml )
+    , and local data processing becomes efficient through tiny machine learning ( tinyml )
+    , calterah cal60s344-ae , enabled by tiny machine learning ( tinyml )
+    , tiny machine learning ( tinyml )
+    , tiny-machine learning ( tinyml )
+    -based solution that leverages tiny machine learning ( tinyml )
+    -powered tiny machine learning ( tinyml )
+    a low-computational tiny machine learning ( tinyml )
+    a low-power , resource-constrained mi-crocontroller using tiny machine learning ( tinyml )
+    a paradigm shift has occurred with the emergence of tiny machine learning ( tinyml )
+    a system that leverages machine learning on highly constrained microcontrollers ( tinyml )
+    a tiny machine learning ( tinyml )
+    additionally , we leverage tiny machine learning ( tinyml )
+    advances in non-invasive monitoring and tiny machine learning ( tinyml )
+    all these variables are used to create a tiny machine-learning ( tinyml )
+    alyzes the energy impact of audio feature extractions for tiny machine learning ( tinyml )
+    amework for real-time sports action recognition using the tiny machine learning ( tinyml )
+    and efficient on-the-edge tiny machine learning ( tinyml )
+    and tiny machine learning ( tinyml )
+    and tiny machine-learning ( tinyml )
+    arp-unet , a novel deep learning model optimized based on tiny machine learning ( tinyml )
+    as a tiny machine learning ( tinyml )
+    as an energy-efficient , privacy-preserving tiny machine learning ( tinyml )
+    at the same time , a tiny machine learning ( tinyml )
+    atically reads the value of the water meter using a tiny machine learning model ( tinyml )
+    ation for designing dtmm comes from the emerging field of tiny machine learning ( tinyml )
+    based cluster and routing algorithms leveraging efficient tiny machine learning ( tinyml )
+    based on tiny machine learning ( tinyml )
+    bedded devices , we investigate lightweight ml algorithms and propose a tiny ml ( tinyml )
+    both tiny machine learning ( tinyml )
+    by applying tiny machine learning ( tinyml )
+    by combining tiny machine learning ( tinyml )
+    by means of tiny machine learning ( tinyml )
+    by utilizing small scale machine learning framework known as ( tinyml )
+    ce the novel applications of ai and ml techniques such as tiny machine learning ( tinyml )
+    chniques have gained increasing attention in the field of tiny machine learning ( tinyml )
+    conventional approaches to tiny machine learning ( tinyml )
+    conversely , the emerging field of tiny machine learning ( tinyml )
+    ctural damage in water supply canals and deployed it as a tiny machine learning ( tinyml )
+    cultural settings , this paper presents a next-generation tiny machine learning ( tinyml )
+    cy properties of the models were investigated considering tiny machine-learning ( tinyml )
+    decentralized reputation tracking framework that utilizes tiny machine learning ( tinyml )
+    deploying a tiny machine learning ( tinyml )
+    designed for low-power mcus in tiny machine learning ( tinyml )
+    designing accurate and efficient models for tiny machine learning ( tinyml )
+    devices that use tiny machine learning ( tinyml )
+    diabetes detection and bgl prediction , integrated into a tiny machine learning ( tinyml )
+    ds limit their applications , leading to the emergence of tiny machine learning ( tinyml )
+    e-of-the-art inference energy across a range of always-on tiny machine learning ( tinyml )
+    edge platform , designed for efficient and reliable tiny machine learning ( tinyml )
+    een delays and energy consumption by using the concept of tiny machine learning ( tinyml )
+    ensively investigated to enhance the energy efficiency of tiny machine-learning ( tinyml )
+    ent neural network architectures specifically tailored to tiny machine learning ( tinyml )
+    environmental parameters , enhanced by the integration of tiny machine learning ( tinyml )
+    equally noteworthy is the ascendancy of tiny machine learning ( tinyml )
+    er proposes an ultra-low-power hardware architecture of a tiny machine learning ( tinyml )
+    ers that turn on low-power model-driven microcontrollers using machine learning ( tinyml )
+    ess of cnns in resource con-strained edge devices through tiny machine learning ( tinyml )
+    ethod for rail vehicle running state is proposed based on tiny machine learning ( tinyml )
+    evelop a cost-effective , non-destructive technique using tiny machine learning ( tinyml )
+    f an offline stm32 based portable kit locally embedding a tiny machine learning ( tinyml )
+    for precision agriculture 5.0 using tiny machine learning ( tinyml )
+    framework powered by tiny machine learning ( tinyml )
+    friendly ai platform-edge impulse-to develop and evaluate tiny machine learning ( tinyml )
+    from a software perspective , and introduce tiny machine learning ( tinyml )
+    gly taking part in various kinds of decision-making using tiny machine learning ( tinyml )
+    gnitive architectures to implement neuromorphic chips and tiny machine learning ( tinyml )
+    gorithm co-design approach is paramount in the context of tiny machine learning ( tinyml )
+    he problems of delayed charging , this study introduces a tiny machine learning ( tinyml )
+    hence , this article presents a self-attention-assisted tiny machine learning ( tinyml )
+    herein , the requirements to implement an embedded ai model ( tinyml )
+    ice with edge or fog computing and more recently with the tiny machine learning ( tinyml )
+    in recent years , tiny machine learning ( tinyml )
+    in response to these challenges , tiny machine learning ( tinyml )
+    in the tiny machine learning ( tinyml )
+    in this context , the concept of embedded machine learning ( tinyml )
+    in this context , tiny machine learning ( tinyml )
+    in this paper , a neural network compression method for tiny machine learning ( tinyml )
+    in this paper , a tiny machine learning ( tinyml )
+    in this paper , we present an end-to-end solution that utilizes tiny ml ( tinyml )
+    in this research paper , we proposed a low-computational tiny machine learning ( tinyml )
+    in this study , we propose a hybrid tiny machine learning ( tinyml )
+    in this study , we propose leveraging tiny ml ( tinyml )
+    incorporating advancements in tiny machine learning ( tinyml )
+    ing metareasoning as a higher-level controller along with tiny machine learning ( tinyml )
+    integrating tiny machine learning ( tinyml )
+    intelligent embedded platforms with built-in tiny machine learning ( tinyml )
+    introduces a novel approach for threat detection based on tiny machine learning ( tinyml )
+    ir signals as the data source and leveraging the emerging tiny machine learning ( tinyml )
+    is crucial for tiny machine learning ( tinyml )
+    is paper proposes a sleep apnea detection method based on tiny machine learning ( tinyml )
+    itations , in this study , we present a solution based on tiny machine learning ( tinyml )
+    l leverages only six digitally acquirable vital signs and tiny machine learning ( tinyml )
+    lar candidates for introducing machine learning in resource-constrained devices ( tinyml )
+    lidate the impact of this compression on eight real-world tiny machine learning ( tinyml )
+    llers are converging with the recently popular concept of tiny machine learning ( tinyml )
+    machine learning ( tinyml )
+    many emerging techniques , such as tiny machine learning ( tinyml )
+    meet deployment criteria on a microcontroller and how the tiny machine learning ( tinyml )
+    methodology tailored for mobile applications , leveraging tiny machine learning ( tinyml )
+    methods : with the advent of tiny machine learning ( tinyml )
+    model for classifying pig vocalizations using tiny machine learning ( tinyml )
+    nable ml capabilities on microcontrollers with less than 1 mw power consumption ( tinyml )
+    nd early implementation of a graduate-level curriculum in tiny machine learning ( tinyml )
+    nd latency constraints and to address this , we propose a tiny machine learning ( tinyml )
+    ne learning has revolutionized medical technology through tiny machine learning ( tinyml )
+    ne learning paradigm that enables a collaborative form of tiny machine learning ( tinyml )
+    ne such paradigm-shifting advancement is the emergence of tiny machine learning ( tinyml )
+    nesia and non-dysarthric micro speech recognition , using tiny machine learning ( tinyml )
+    new research on edge computing and tiny machine learning ( tinyml )
+    niques optimized for low power devices through the use of tiny machine learning ( tinyml )
+    novel interface for training , evaluating , and deploying tiny machine learning ( tinyml )
+    nsing platform , has given rise to a new area of research tiny machine learning ( tinyml )
+    nsumption on a low-power resource-constrained device with tiny machine learning ( tinyml )
+    o resolve these dilemmas , we propose an effective binary tiny machine learning ( tinyml )
+    ocally executed compression techniques , aligned with the tiny machine learning ( tinyml )
+    ome those issues , recent research brought new tools like tiny machine learning ( tinyml )
+    on , optimized for resource-constrained iot devices using tiny machine learning ( tinyml )
+    on microcontrollers ( tinyml )
+    on milliwatt-scale edge devices ( tinyml )
+    on of artificial intelligence algorithms , giving rise to tiny machine learning ( tinyml )
+    on program , this research explores the implementation of tiny machine learning ( tinyml )
+    on strategy with the computational / energy advantages of tiny machine learning ( tinyml )
+    or tiny machine learning ( tinyml )
+    oses a portable lightweight detection scheme based on terminal machine learning ( tinyml )
+    otential data acquisition strategies using an event-based tiny machine learning ( tinyml )
+    our study proposes an optimized tiny machine learning ( tinyml )
+    our system harnesses the capabilities of tiny machine learning ( tinyml )
+    our system leverages tiny machine learning ( tinyml )
+    powered by tiny machine learning ( tinyml )
+    r technology enables the cross-architecture deployment of tiny machine learning ( tinyml )
+    re accessible to developing countries , which is based on tiny machine learning ( tinyml )
+    recent advancements in the field of ultra-low-power machine learning ( tinyml )
+    recent advances in edge ai and tiny machine learning ( tinyml )
+    recent advances in tiny machine learning ( tinyml )
+    recent progress has investigated the utilization of tiny machine learning ( tinyml )
+    rms is presented in this paper that makes use of advanced tiny machine learning ( tinyml )
+    ropose in this paper energy-efficient and highly accurate tiny machine learning ( tinyml )
+    roposes a novel approach using iot , edge computing , and tiny machine learning ( tinyml )
+    rsonal data before it is sent to the cloud , and applying tiny machine learning ( tinyml )
+    rticle investigates the combination of embedded systems , tiny machine learning ( tinyml )
+    sattenconvlstm model , designed for edge deployment using tiny machine learning ( tinyml )
+    scheme using tiny machine learning ( tinyml )
+    since tiny machine learning ( tinyml )
+    sion quantization algorithms hold significant promise for tiny machine learning ( tinyml )
+    source-constrained devices is ever-growing , the realm of tiny machine learning ( tinyml )
+    ssing capabilities alongside the main feature of embedded signal classification ( tinyml )
+    systems and on-device machine learning ( tinyml )
+    t data processing on the edge and inaugurating the era of tiny machine learning ( tinyml )
+    techniques on resource-constrained edge devices ( tinyml )
+    technology and tiny machine learning ( tinyml )
+    that is why tiny machine learning ( tinyml )
+    that utilizes tiny machine learning ( tinyml )
+    the advent of tiny machine learning ( tinyml )
+    the aim of this paper is to explore tiny machine learning ( tinyml )
+    the application of tiny machine learning ( tinyml )
+    the collected data is recognized by a tiny machine learning ( tinyml )
+    the combination of tiny machine learning ( tinyml )
+    the emergence of tiny machine learning ( tinyml )
+    the emerging field of tiny machine learning ( tinyml )
+    the field of tiny machine learning ( tinyml )
+    the focus of this study is the presentation of a tiny machine learning ( tinyml )
+    the integration of tiny machine learning ( tinyml )
+    the nano module executes pretrained tiny ml ( tinyml )
+    the primary motive of encapsulating tiny machine learning ( tinyml )
+    the proposed architecture integrates tiny machine learning ( tinyml )
+    the proposed method integrates tiny machine learning ( tinyml )
+    the proposed solution employs lightweight machine learning algorithms ( tinyml )
+    the rapid advancement of edge computing and tiny machine learning ( tinyml )
+    the success of tiny machine learning ( tinyml )
+    the term ' tiny machine learning ' ( tinyml )
+    the tiny machine learning ( tinyml )
+    the use of tiny-machine-learning ( tinyml )
+    this approach is supported by the tiny machine learning ( tinyml )
+    this article has also discussed the role of tiny machine learning ( tinyml )
+    this interest is fueled mainly by the rapidity with which tiny machine learning ( tinyml )
+    this is the tiny machine learning ( tinyml )
+    this letter explores the architecture of tiny machine learning ( tinyml )
+    this method is suitable for tiny machine learning ( tinyml )
+    this paper addresses this challenge by proposing a tiny machine learning ( tinyml )
+    this paper employs tiny machine learning ( tinyml )
+    this paper explores the feasibility of harnessing tiny machine learning ( tinyml )
+    this paper explores the feasibility of using tiny machine learning ( tinyml )
+    this paper explores the integration of tiny machine learning ( tinyml )
+    this paper explores the potential of tiny machine learning ( tinyml )
+    this paper investigates the application of tiny machine learning ( tinyml )
+    this paper investigates the possibility of utilizing tiny machine learning ( tinyml )
+    this paper presents a wearable device design utilizing tiny machine learning ( tinyml )
+    this paper presents an innovative approach integrating tiny machine learning ( tinyml )
+    this paper proposes a framework for deploying tiny machine learning ( tinyml )
+    this paper proposes a novel tiny machine learning ( tinyml )
+    this paper proposes small and efficient machine learning models ( tinyml )
+    this research explores the groundbreaking synergy between tiny machine learning ( tinyml )
+    this research explores the potential of tiny machine learning ( tinyml )
+    this solution exploiting tiny machine learning ( tinyml )
+    this study explores the emerging sub-discipline of tiny machine learning ( tinyml )
+    this study explores the implementation of tiny machine learning ( tinyml )
+    this study introduces a novel integration of tiny machine learning ( tinyml )
+    this study investigates the use of tiny machine learning ( tinyml )
+    through the implementation of tiny machine learning ( tinyml )
+    through the integration of tiny machine learning ( tinyml )
+    thus , the developed secr trained by tiny machine learning ( tinyml )
+    tine machine learning ( tinyml )
+    tiny machine learning
+    tiny machine learning ( tinyml )
+    tion , data augmentation to boost the training data , and tiny machine learning ( tinyml )
+    to address these challenges , a stacking-based tiny machine learning ( tinyml )
+    to address these challenges , we developed tiny machine learning ( tinyml )
+    to address this , we explore the potential of tiny machine learning ( tinyml )
+    to bridge this gap , tiny machine learning ( tinyml )
+    to mitigate this problem , this paper proposes a tiny machine learning ( tinyml )
+    to tackle these issues , there is a new technology called tiny machine learning ( tinyml )
+    to tackle this pressing issue , the application of tiny machine learning ( tinyml )
+    to this end , we applied tiny machine learning ( tinyml )
+    ues , we develop an effective multi-scale semantic fusion tiny machine learning ( tinyml )
+    uesting uds as soon as possible , this article first uses tiny machine learning ( tinyml )
+    ural architectural search , we can automatically identify tiny machine learning ( tinyml )
+    us of this study is cardiac monitoring use-case involving tiny machine learning ( tinyml )
+    uses on the development of an embedded system integrating tiny machine learning ( tinyml )
+    using tiny machine learning ( tinyml )
+    ution for this limitation is embedded machine learning or tiny machine learning ( tinyml )
+    ve these issues , we design a robust and efficient hybrid tiny machine learning ( tinyml )
+    viding early feedback on research involving machine learning for sensor systems ( tinyml )
+    we review the state-of-the-art strategies available for tiny machine learning ( tinyml )
+    with advancements in edge ai , a new paradigm known as tiny machine learning ( tinyml )
+    with potential application in marine environments , using tiny machine learning ( tinyml )
+    with the advent of tiny machine learning ( tinyml )
+    with the introduction of ultra-low-power machine learning ( tinyml )
+    with tiny machine learning ( tinyml )
+    xtremes show how ai has made progress in different ways : tiny machine learning ( tinyml )
+    y modifications are required to adapt neural networks for tiny machine learning ( tinyml )
+tinymlaas
+    tinyml-as-a-service ( tinymlaas )
+tinynas+tinyengine
+    these results outperform mcunet ( tinynas+tinyengine )
+tinyndc
+    tiny neural deep clustering ( tinyndc )
+tinyofl
+    we name tiny online federated learning ( tinyofl )
+tinyood
+    , we propose a novel effective out-of-distribution detection method for tinyml ( tinyood )
+tinyrce
+    in such a context , this letter proposes tiny restricted coulomb energy ( tinyrce )
+tinysv
+    ion that can be used in tasks , such as the presented tiny speaker verification ( tinysv )
+tl
+    transfer learning
+tm
+    core ( tm )
+    tsetlin machine
+tml
+    tiny machine learning
+tml-cd
+     first time in the literature , this article introduces a tml for concept drift ( tml-cd )
+tmlaas
+    this article presents a tinymlaas ( tmlaas )
+tmm
+    tensor memory mapping
+tmos
+     with the standard cmos-soi process , based on a suspended thermal transistor mos ( tmos )
+tnn
+    temporal neural networks
+    ternary neural network
+    tiny neural networks
+tnr
+    true negative ratio
+toa
+    time of arrival
+tobnn
+    and ternary output bnn ( tobnn )
+    ternary output bnn
+tof
+    crorobotics due to their size and cost-effectiveness is a multizone time-of-flight ( tof )
+    in this work , we exploit a new time-of-flight ( tof )
+    time of flight
+    time-of-flight ( tof )
+tova
+    this modification , named thresholded ova ( tova )
+tpe
+    tree-structured parzen estimator
+tpr
+    true positive ratio
+tpu
+    tensor processing unit
+tpus
+    tensor processing units
+trustzone-m
+    ose secureqnn , a framework that leverages state-of-the-art tee technology ( trustzone-m )
+tsc
+    time series classification
+tt
+    table tennis
+ttps
+    enforcement of upgraded tactics , technology and procedure ( ttps )
+tubp
+    gr decoder and a scalable tree-unary-based parallel ( tubp )
+tvm
+    tensor virtual machine
+tvoc
+    total volatile organic compounds
+twr
+    , and short wakeupto-response latency ( twr )
+tx
+    radar operates in the 60 ghz band and comprises one transmitter ( tx )
+tx-gr
+    he condition to the tx-end via udt to correct the tx power for global regulation ( tx-gr )
+uart
+    communicate with each other using the universal asynchronous receiver-transmitter ( uart )
+uav
+    designed to perform real-time pothole segmentation using autonomous aerial vehicle ( uav )
+    unmanned aerial vehicle
+    unmanned aerial vehicles
+uav-cepc-tml
+    algorithm in uav-assisted cep-tml communication ( uav-cepc-tml )
+uavs
+    uncrewed aerial vehicles
+    unmanned aerial vehicles
+    unmanned areal vehicles
+ucm
+    underground coal mine
+udc
+    this paper demonstrates unified dnas for compressible ( udc )
+udi
+    unauthorized device identification
+udn
+    ultra-dense network
+udns
+    -based resource allocation for c-v2x in ultradense networks ( udns )
+uds
+    user devices
+ugvs
+    unmanned ground vehicles
+ugws
+    ultrasonic guided waves
+uhpc
+    integrating ultra-high performance concrete ( uhpc )
+    the integration of the shotcrete system with ultra-high performance concrete ( uhpc )
+ui
+    user interface
+ulp
+    and are unsuitable for ultra-low-power ( ulp )
+    nodes require both ultra-low power ( ulp )
+    ultra-low power
+ulr
+    to be closely coupled with ultralow spatial resolution ( ulr )
+    ultra-low-resolution ( ulr )
+uma
+    universal modular accelerator
+umlformer
+    a unified multi task learning transformer ( umlformer )
+uq
+    uncertainty quantification
+urllc
+    proposed framework leverages 6g-enabled ultra-reliable low-latency communication ( urllc )
+us
+    ultrasonic
+    ultrasound
+    ultrasounds
+uwb
+    in this technological scenario , ultra-wideband ( uwb )
+    n the literature , a tinyml solution for presence-detection based on ultrawideband ( uwb )
+    solutions have demonstrated promising outcomes in ultra-wideband ( uwb )
+    typically , the utilization of ultra-wideband ( uwb )
+    ultra-wideband ( uwb )
+    ultrawideband ( uwb )
+    we present an exploration of the advancements in ultrawideband ( uwb )
+v-ran
+    and virtualized ran ( v-ran )
+v2v
+    scenario with vehicle-to-vehicle ( v2v )
+v2x
+    ight-weight method of classification of spam messages within vehicle-to-everything ( v2x )
+va
+    ventricular arrhythmia
+vad
+    visual anomaly detection
+    voice activity detection
+vaes
+    computationally intensive probabilistic models , such as variational autoencoders ( vaes )
+vas
+    ventricular arrhythmias
+vblc
+    range / size for accurate ( vblc )
+    resulting in an inaccurate bl-clamping voltage ( vblc )
+vdds
+    visually detectable diseases
+visnir
+    low-cost visiblenearinfrared ( visnir )
+vit
+    , a vision transformer ( vit )
+vits
+    thodology for modeling the performance and energy behavior of vision transformers ( vits )
+    vision transformers ( vits )
+vlp
+    visible light positioning
+vmcu
+    in this paper , we report on a neuromorphic tinyml architecture ( vmcu )
+vmm
+    leverage its high energy efficiency and throughput in vector-matrix multiplication ( vmm )
+voc
+    volatile organic compounds
+vocs
+    volatile organic compounds
+vpr
+    visual place recognition
+vsa
+    video streaming analysis
+vsbs
+    , vacuum-sealed bags ( vsbs )
+vtinyml
+    neuromorphic tinyml ( vtinyml )
+vww
+     processing a mobilenetv2 model on a tinyml use case for visual wake words dataset ( vww )
+    our results show a parameter reduction of 93 % on the mlperftiny visual wakewords ( vww )
+    visual wake word
+    visual wake words
+wamr
+    proof-of-concept of the tinymlaas architecture based on webassembly micro runtime ( wamr )
+wban
+    wireless body area network
+wd
+    wind direction
+wdsn
+    wide distributed sensors networks
+weka
+     ready-to-use fs-ranker methods in the waikato environment for knowledge analysis ( weka )
+wfds
+    wearablebased fall detection system
+wgan-gp
+    we employ a wasserstein generative adversarial network with gradient penalty ( wgan-gp )
+who
+    as reported by ( who )
+    world health organization
+wlan
+    wireless local area networks
+wlans
+    wireless local area networks
+wot
+    web of things
+wpa2
+    wi-fi protected access 2
+wpdt
+    power and data transmission
+wqm
+    water quality monitoring
+wsn
+    wearable sensor networks
+    wireless sensor network
+    wireless sensor networks
+    wireless sensor node
+    wireless sensors networks
+wsns
+    wireless sensor networks
+wta
+    this processor includes a winner-take-all ( wta )
+wteg
+    wind turbine energy generator
+wuc
+    dataflow reconfigurable ml accelerator , a 1.7- w deep sleep wake-up controller ( wuc )
+wui
+    wildfires in the wildland-urban interface ( wui )
+wv
+    wind velocity
+x-heep
+    -7020 soc and integrates the extendible heterogeneous energy efficient platform ( x-heep )
+x-heep-femu
+    to evaluate our approach , we built the x-heep fpga emulation ( x-heep-femu )
+xai
+    and explainable ai ( xai )
+    explainable artificial intelligence
+    this paper proposes an explainable ai ( xai )
+xaif
+    x-heep features the extendible accelerator interface ( xaif )
+xgb
+    , extreme gradient boosting ( xgb )
+xgboost
+    and boosting ( xgboost )
+    and extreme gradient boosting ( xgboost )
+    method alongside extreme gradient boosting ( xgboost )
+xr
+    this resulted in an extended reality ( xr )
+yet
+    which are used in embedded scenarios are not ( yet )
+yolic
+    in the realm of tiny ai , we introduce ' ' you only look at interested cells ' ' ( yolic )
+yolo
+    nd processing power capabilities of gap9 for object detection using deep learning ( yolo )
+    you only look once
+yolo11n
+    by integrating the you only look once 11 nano ( yolo11n )
+yolov3
+    we demonstrate such an application that uses you look only once ( yolov3 )
+yolov4-tiny
+    secondly , the use of tiny machine learning ( yolov4-tiny )
+yolov5
+    you only look once version 5
+zbrfb
+    and zinc bromide-based ( zbrfb )
+zeds
+    zero energy devices

@@ -17,10 +17,10 @@ from ..nx import (
     remove_isolated_nodes,
     remove_selfloop_edges,
     remove_weak_nodes,
-    scale_edge_weights,
-    scale_node_sizes_by_occ,
+    scale_edge_weight,
+    scale_node_size_by_occ,
     scale_textfont_opacity_by_occ,
-    scale_textfont_sizes_by_occ,
+    scale_textfont_size_by_occ,
     set_cluster_names,
     set_node_textposition,
     set_top_n_node_labels,
@@ -57,10 +57,10 @@ def build_factor_map(
 
     nx_graph = set_cluster_names(params, nx_graph)
     nx_graph = style_edges_by_weight_bins(params, nx_graph)
-    nx_graph = scale_edge_weights(params, nx_graph)
+    nx_graph = scale_edge_weight(params, nx_graph)
     nx_graph = spring_layout(params, nx_graph)
-    nx_graph = scale_node_sizes_by_occ(params, nx_graph)
-    nx_graph = scale_textfont_sizes_by_occ(params, nx_graph)
+    nx_graph = scale_node_size_by_occ(params, nx_graph)
+    nx_graph = scale_textfont_size_by_occ(params, nx_graph)
     nx_graph = scale_textfont_opacity_by_occ(params, nx_graph)
     nx_graph = set_uniform_node_color(params, nx_graph)
 

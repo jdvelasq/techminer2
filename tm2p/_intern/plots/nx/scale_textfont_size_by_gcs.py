@@ -1,7 +1,7 @@
 import numpy as np
 
 
-def set_textfont_size_by_gcs(
+def scale_textfont_size_by_gcs(
     params,
     nx_graph,
 ):

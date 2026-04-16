@@ -14,11 +14,11 @@ from ..nx import (
     remove_isolated_nodes,
     remove_selfloop_edges,
     remove_weak_nodes,
-    scale_edge_weights,
-    scale_edge_widths,
-    scale_node_sizes_by_occ,
+    scale_edge_weight,
+    scale_edge_width,
+    scale_node_size_by_occ,
     scale_textfont_opacity_by_occ,
-    scale_textfont_sizes_by_occ,
+    scale_textfont_size_by_occ,
     set_node_color_by_group,
     set_node_textposition,
     set_top_n_node_labels,
@@ -51,14 +51,14 @@ def build_cross_occ_matrix_plot(
         params.top_n_node_labels,
     )
 
-    nx_graph = scale_edge_weights(params, nx_graph)
+    nx_graph = scale_edge_weight(params, nx_graph)
     nx_graph = spring_layout(params, nx_graph)
-    nx_graph = scale_node_sizes_by_occ(params, nx_graph)
-    nx_graph = scale_textfont_sizes_by_occ(params, nx_graph)
+    nx_graph = scale_node_size_by_occ(params, nx_graph)
+    nx_graph = scale_textfont_size_by_occ(params, nx_graph)
     nx_graph = scale_textfont_opacity_by_occ(params, nx_graph)
     nx_graph = set_node_color_by_group(params, nx_graph)
     nx_graph = set_uniform_edge_color(params, nx_graph)
-    nx_graph = scale_edge_widths(params, nx_graph)
+    nx_graph = scale_edge_width(params, nx_graph)
     nx_graph = set_node_textposition(nx_graph)
 
     nx_graph = set_uniform_edge_line_style(nx_graph, "solid")

@@ -17,7 +17,7 @@ Smoke tests:
     ...     .having_item_citations_between(None, None)
     ...     .having_items_in(None)
     ...     #
-    ...     .using_minimum_item_co_occurrence(1)
+    ...     .using_minimum_pair_co_occurrence(1)
     ...     #
     ...     # COUNTERS:
     ...     .using_counters(True)
@@ -105,9 +105,8 @@ Smoke tests:
 
 from tm2p._intern import ParamsMixin
 from tm2p._intern.networks.normalize_matrix import normalize_matrix
-from tm2p.enum import CollaborationUnit, Field
 
-from ...thematic_stucture.co_occurrence.matrix import Matrix as CoOccurrenceMatrix
+from .matrix import Matrix
 
 
 class DirectMatrix(
@@ -117,15 +116,7 @@ class DirectMatrix(
 
     def run(self):
 
-        field = {
-            CollaborationUnit.AUTH: Field.AUTH_FULL_NAME,
-            CollaborationUnit.CTRY: Field.CTRY_ISO3,
-            CollaborationUnit.ORG: Field.ORG,
-        }[self.params.collaboration_unit]
-
-        self.with_source_field(field)
-
-        matrix = CoOccurrenceMatrix().update(**self.params.__dict__).run()
+        matrix = Matrix().update(**self.params.__dict__).run()
         matrix = normalize_matrix(
             association_index=self.params.association_index,
             matrix=matrix,

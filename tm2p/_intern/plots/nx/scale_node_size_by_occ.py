@@ -5,7 +5,7 @@ from tm2p._intern import Params
 from tm2p.enum import Scaling
 
 
-def scale_node_sizes_by_occ(
+def scale_node_size_by_occ(
     params: Params,
     nx_graph: nx.Graph,
 ) -> nx.Graph:

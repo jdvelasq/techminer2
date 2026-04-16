@@ -2,6 +2,7 @@ from pathlib import Path
 
 _DIRECTORIES = [
     "analyze",
+    "process",
     "ingest/process",
     "refine/thesaurus",
     "refine/word_lists",
