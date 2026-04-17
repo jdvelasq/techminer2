@@ -2,7 +2,7 @@
 Network Density Plot
 ===============================================================================
 
-* **CouplingUnit.AUTH**
+* **AnalysisUnit.AUTH**
 
 .. raw:: html
 
@@ -10,13 +10,13 @@ Network Density Plot
     height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
-    >>> from tm2p.enum import CouplingUnit
+    >>> from tm2p.enum import AnalysisUnit
     >>> from tm2p.synthesize.netw.coupl import KernelDensityPlot
     >>> fig = (
     ...     KernelDensityPlot()
     ...     #
     ...     # COUPLING UNIT:
-    ...     .with_coupling_unit(CouplingUnit.AUTH)
+    ...     .with_analysis_unit(AnalysisUnit.AUTH)
     ...     .having_top_n_units(30)
     ...     .having_units_in(None)
     ...     .having_minimum_cited_unit_occurrences(0)
@@ -50,7 +50,7 @@ Smoke tests:
     >>> fig.write_html("docsrc/_generated/px.synthes.networks.coupling.kernel_density_plot_auth.html")
 
 
-* **CouplingUnit.CTRY**
+* **AnalysisUnit.CTRY**
 
 .. raw:: html
 
@@ -58,13 +58,13 @@ Smoke tests:
     height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
-    >>> from tm2p.enum import CouplingUnit
+    >>> from tm2p.enum import AnalysisUnit
     >>> from tm2p.synthesize.netw.coupl import KernelDensityPlot
     >>> fig = (
     ...     KernelDensityPlot()
     ...     #
     ...     # COUPLING UNIT:
-    ...     .with_coupling_unit(CouplingUnit.CTRY)
+    ...     .with_analysis_unit(AnalysisUnit.CTRY)
     ...     .having_top_n_units(30)
     ...     .having_units_in(None)
     ...     .having_minimum_cited_unit_occurrences(0)
@@ -98,7 +98,7 @@ Smoke tests:
     >>> fig.write_html("docsrc/_generated/px.synthes.networks.coupling.kernel_density_plot_ctry.html")
 
 
-* **CouplingUnit.DOC**
+* **AnalysisUnit.DOC**
 
 .. raw:: html
 
@@ -106,13 +106,13 @@ Smoke tests:
     height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
-    >>> from tm2p.enum import CouplingUnit
+    >>> from tm2p.enum import AnalysisUnit
     >>> from tm2p.synthesize.netw.coupl import KernelDensityPlot
     >>> fig = (
     ...     KernelDensityPlot()
     ...     #
     ...     # COUPLING UNIT:
-    ...     .with_coupling_unit(CouplingUnit.DOC)
+    ...     .with_analysis_unit(AnalysisUnit.DOC)
     ...     .having_top_n_units(30)
     ...     .having_units_in(None)
     ...     .having_minimum_cited_unit_occurrences(0)
@@ -147,7 +147,7 @@ Smoke tests:
 
 
 
-* **CouplingUnit.ORG**
+* **AnalysisUnit.ORG**
 
 .. raw:: html
 
@@ -157,13 +157,13 @@ Smoke tests:
 
 
 Smoke tests:
-    >>> from tm2p.enum import CouplingUnit
+    >>> from tm2p.enum import AnalysisUnit
     >>> from tm2p.synthesize.netw.coupl import KernelDensityPlot
     >>> fig = (
     ...     KernelDensityPlot()
     ...     #
     ...     # COUPLING UNIT:
-    ...     .with_coupling_unit(CouplingUnit.ORG)
+    ...     .with_analysis_unit(AnalysisUnit.ORG)
     ...     .having_top_n_units(30)
     ...     .having_units_in(None)
     ...     .having_minimum_cited_unit_occurrences(0)
@@ -197,7 +197,7 @@ Smoke tests:
     >>> fig.write_html("docsrc/_generated/px.synthes.networks.coupling.kernel_density_plot_org.html")
 
 
-* **CouplingUnit.SRC**
+* **AnalysisUnit.SRC**
 
 .. raw:: html
 
@@ -205,13 +205,13 @@ Smoke tests:
     height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
-    >>> from tm2p.enum import CouplingUnit
+    >>> from tm2p.enum import AnalysisUnit
     >>> from tm2p.synthesize.netw.coupl import KernelDensityPlot
     >>> fig = (
     ...     KernelDensityPlot()
     ...     #
     ...     # COUPLING UNIT:
-    ...     .with_coupling_unit(CouplingUnit.SRC)
+    ...     .with_analysis_unit(AnalysisUnit.SRC)
     ...     .having_top_n_units(30)
     ...     .having_units_in(None)
     ...     .having_minimum_cited_unit_occurrences(0)

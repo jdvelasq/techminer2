@@ -2,16 +2,16 @@
 ItemToCluster
 ===============================================================================
 
-* **CouplingUnit.DOC**
+* **AnalysisUnit.DOC**
 
 Smoke tests:
-    >>> from tm2p.enum import AssociationIndex, CouplingUnit, GraphClusteringAlgorithm, UnitOrderBy
+    >>> from tm2p.enum import AssociationIndex, AnalysisUnit, GraphClusteringAlgorithm, UnitOrderBy
     >>> from tm2p.portfolio.intellectual_structure.coupling_network import ItemToCluster
     >>> mapping = (
     ...     ItemToCluster()
     ...     #
     ...     # COUPLING UNIT:
-    ...     .with_coupling_unit(CouplingUnit.DOC)
+    ...     .with_analysis_unit(AnalysisUnit.DOC)
     ...     #
     ...     # COUNTERS:
     ...     .using_counters(True)
@@ -41,14 +41,14 @@ Smoke tests:
      'Arsyad I 2025 1:00005': 1,
     ...
 
-* **CouplingUnit.AUTH**
+* **AnalysisUnit.AUTH**
 
 Smoke tests:
     >>> mapping = (
     ...     ItemToCluster()
     ...     #
     ...     # COUPLING UNIT:
-    ...     .with_coupling_unit(CouplingUnit.AUTH)
+    ...     .with_analysis_unit(AnalysisUnit.AUTH)
     ...     #
     ...     .having_top_n_units(100)
     ...     .having_units_ordered_by(UnitOrderBy.OCC)
@@ -84,14 +84,14 @@ Smoke tests:
      'Nir Kshetri 002:00006': 0,
     ...
 
-* **CouplingUnit.CTRY**
+* **AnalysisUnit.CTRY**
 
 Smoke tests:
     >>> mapping = (
     ...     ItemToCluster()
     ...     #
     ...     # COUPLING UNIT:
-    ...     .with_coupling_unit(CouplingUnit.CTRY)
+    ...     .with_analysis_unit(AnalysisUnit.CTRY)
     ...     #
     ...     .having_top_n_units(10)
     ...     .having_units_ordered_by(UnitOrderBy.OCC)
@@ -130,14 +130,14 @@ Smoke tests:
      'USA 021:00494': 0}
 
 
-* **CouplingUnit.ORG**
+* **AnalysisUnit.ORG**
 
 Smoke tests:
     >>> mapping = (
     ...     ItemToCluster()
     ...     #
     ...     # COUPLING UNIT:
-    ...     .with_coupling_unit(CouplingUnit.ORG)
+    ...     .with_analysis_unit(AnalysisUnit.ORG)
     ...     #
     ...     .having_top_n_units(10)
     ...     .having_units_ordered_by(UnitOrderBy.OCC)
@@ -169,14 +169,14 @@ Smoke tests:
      'R RD UNIV 003:00024': 1,
      'UNIV MACAU 003:00019': 0}
 
-* **CouplingUnit.SRC**
+* **AnalysisUnit.SRC**
 
 Smoke tests:
     >>> mapping = (
     ...     ItemToCluster()
     ...     #
     ...     # COUPLING UNIT:
-    ...     .with_coupling_unit(CouplingUnit.SRC)
+    ...     .with_analysis_unit(AnalysisUnit.SRC)
     ...     #
     ...     .having_top_n_units(10)
     ...     .having_units_ordered_by(UnitOrderBy.OCC)

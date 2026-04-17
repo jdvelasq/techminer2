@@ -2,16 +2,16 @@
 ItemsByCluster
 ===============================================================================
 
-* **CouplingUnit.AUTH**
+* **AnalysisUnit.AUTH**
 
 Smoke tests:
-    >>> from tm2p.enum import AssociationIndex, CouplingUnit, GraphClusteringAlgorithm, UnitOrderBy
+    >>> from tm2p.enum import AssociationIndex, AnalysisUnit, GraphClusteringAlgorithm, UnitOrderBy
     >>> from tm2p.portfolio.intellectual_structure.coupling_network import ItemsByCluster
     >>> df = (
     ...     ItemsByCluster()
     ...     #
     ...     # COUPLING UNIT:
-    ...     .with_coupling_unit(CouplingUnit.AUTH)
+    ...     .with_analysis_unit(AnalysisUnit.AUTH)
     ...     #
     ...     .having_top_n_units(100)
     ...     .having_units_in(None)
@@ -46,14 +46,14 @@ Smoke tests:
     [4 rows x 4 columns]
 
 
-* **CouplingUnit.CTRY**
+* **AnalysisUnit.CTRY**
 
 Smoke tests:
     >>> df = (
     ...     ItemsByCluster()
     ...     #
     ...     # COUPLING UNIT:
-    ...     .with_coupling_unit(CouplingUnit.CTRY)
+    ...     .with_analysis_unit(AnalysisUnit.CTRY)
     ...     .having_top_n_units(30)
     ...     .having_units_in(None)
     ...     .having_minimum_cited_unit_occurrences(0)
@@ -86,14 +86,14 @@ Smoke tests:
     4        FRA  JPN
 
 
-* **CouplingUnit.DOC**
+* **AnalysisUnit.DOC**
 
 Smoke tests:
     >>> df = (
     ...     ItemsByCluster()
     ...     #
     ...     # COUPLING UNIT:
-    ...     .with_coupling_unit(CouplingUnit.DOC)
+    ...     .with_analysis_unit(AnalysisUnit.DOC)
     ...     .having_top_n_units(30)
     ...     .having_units_in(None)
     ...     .having_minimum_cited_unit_occurrences(0)
@@ -128,14 +128,14 @@ Smoke tests:
     [5 rows x 9 columns]
 
 
-* **CouplingUnit.SRC**
+* **AnalysisUnit.SRC**
 
 Smoke tests:
     >>> df = (
     ...     ItemsByCluster()
     ...     #
     ...     # COUPLING UNIT:
-    ...     .with_coupling_unit(CouplingUnit.SRC)
+    ...     .with_analysis_unit(AnalysisUnit.SRC)
     ...     .having_top_n_units(30)
     ...     .having_units_in(None)
     ...     .having_minimum_cited_unit_occurrences(0)
@@ -170,14 +170,14 @@ Smoke tests:
     [5 rows x 4 columns]
 
 
-* **CouplingUnit.ORG**
+* **AnalysisUnit.ORG**
 
 Smoke tests:
     >>> df = (
     ...     ItemsByCluster()
     ...     #
     ...     # COUPLING UNIT:
-    ...     .with_coupling_unit(CouplingUnit.ORG)
+    ...     .with_analysis_unit(AnalysisUnit.ORG)
     ...     .having_top_n_units(30)
     ...     .having_units_in(None)
     ...     .having_minimum_cited_unit_occurrences(0)

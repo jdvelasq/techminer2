@@ -50,13 +50,13 @@ def step_02_create_data_frame(params, records):
 # ------------------------------------------------------------------------------
 def step_03_filter_the_data_frame(params, data_frame):
 
-    if params.coupling_unit == CouplingUnit.AUTH:
+    if params.coupling_unit == AnalysisUnit.AUTH:
         source_field = Field.AUTH_NORM
-    elif params.coupling_unit == CouplingUnit.CTRY:
+    elif params.coupling_unit == AnalysisUnit.CTRY:
         source_field = Field.CTRY_ISO3
-    elif params.coupling_unit == CouplingUnit.ORG:
+    elif params.coupling_unit == AnalysisUnit.ORG:
         source_field = Field.ORG
-    elif params.coupling_unit == CouplingUnit.SRC:
+    elif params.coupling_unit == AnalysisUnit.SRC:
         source_field = Field.SRC_ISO4
     else:
         raise ValueError("Invalid coupling unit")

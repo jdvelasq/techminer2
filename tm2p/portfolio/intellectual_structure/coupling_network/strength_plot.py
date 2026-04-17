@@ -2,15 +2,7 @@
 Network Degree Plot
 ===============================================================================
 
-* **CouplingUnit.AUTH**
-
-* **CouplingUnit.CTRY**
-
-* **CouplingUnit.DOC**
-
-* **CouplingUnit.ORG**
-
-* **CouplingUnit.SRC**
+* **AnalysisUnit.AUTH** /  **AnalysisUnit.CTRY** / **AnalysisUnit.DOC** / **AnalysisUnit.ORG** / **AnalysisUnit.SRC**
 
 
 .. raw:: html
@@ -19,13 +11,13 @@ Network Degree Plot
     height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
-    >>> from tm2p.enum import AssociationIndex, CouplingUnit, GraphClusteringAlgorithm, UnitOrderBy
+    >>> from tm2p.enum import AssociationIndex, AnalysisUnit, GraphClusteringAlgorithm, UnitOrderBy
     >>> from tm2p.portfolio.intellectual_structure.coupling_network import StrengthPlot
     >>> fig = (
     ...     StrengthPlot()
     ...     #
     ...     # COUPLING UNIT:
-    ...     .with_coupling_unit(CouplingUnit.AUTH)
+    ...     .with_analysis_unit(AnalysisUnit.AUTH)
     ...     #
     ...     .having_top_n_units(30)
     ...     .having_units_in(None)
@@ -42,7 +34,7 @@ Smoke tests:
     ...     .using_line_color("black")
     ...     .using_line_width(1.5)
     ...     .using_marker_size(7)
-    ...     .using_textfont_size(10)
+    ...     .using_uniform_textfont_size(10)
     ...     .using_yshift(4)
     ...     #
     ...     # DATABASE:

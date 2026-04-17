@@ -2,16 +2,16 @@
 MatrixList
 ===============================================================================
 
-* **CouplingUnit.DOC**
+* **AnalysisUnit.DOC**
 
 Smoke tests:
-    >>> from tm2p.enum import CouplingUnit, UnitOrderBy
+    >>> from tm2p.enum import AnalysisUnit, UnitOrderBy
     >>> from tm2p.portfolio.intellectual_structure.coupling_network import MatrixList
     >>> df = (
     ...     MatrixList()
     ...     #
     ...     # COUPLING UNIT:
-    ...     .with_coupling_unit(CouplingUnit.DOC)
+    ...     .with_analysis_unit(AnalysisUnit.DOC)
     ...     #
     ...     # COUNTERS:
     ...     .using_counters(True)
@@ -48,7 +48,7 @@ Smoke tests:
     ...     MatrixList()
     ...     #
     ...     # COUPLING UNIT:
-    ...     .with_coupling_unit(CouplingUnit.DOC)
+    ...     .with_analysis_unit(AnalysisUnit.DOC)
     ...     #
     ...     # COUNTERS:
     ...     .using_counters(False)
@@ -81,14 +81,14 @@ Smoke tests:
     9      Takeda A 2021     Sangwan V 2019   17
 
 
-* **CouplingUnit.AUTH**
+* **AnalysisUnit.AUTH**
 
 Smoke tests:
     >>> df = (
     ...     MatrixList()
     ...     #
     ...     # COUPLING UNIT:
-    ...     .with_coupling_unit(CouplingUnit.AUTH)
+    ...     .with_analysis_unit(AnalysisUnit.AUTH)
     ...     #
     ...     .having_top_n_units(100)
     ...     .having_units_ordered_by(UnitOrderBy.OCC)
@@ -131,7 +131,7 @@ Smoke tests:
     ...     MatrixList()
     ...     #
     ...     # COUPLING UNIT:
-    ...     .with_coupling_unit(CouplingUnit.AUTH)
+    ...     .with_analysis_unit(AnalysisUnit.AUTH)
     ...     #
     ...     .having_top_n_units(100)
     ...     .having_units_ordered_by(UnitOrderBy.OCC)
@@ -171,14 +171,14 @@ Smoke tests:
 
 
 
-* **CouplingUnit.CTRY**
+* **AnalysisUnit.CTRY**
 
 Smoke tests:
     >>> df = (
     ...     MatrixList()
     ...     #
     ...     # COUPLING UNIT:
-    ...     .with_coupling_unit(CouplingUnit.CTRY)
+    ...     .with_analysis_unit(AnalysisUnit.CTRY)
     ...     #
     ...     .having_top_n_units(10)
     ...     .having_units_ordered_by(UnitOrderBy.OCC)
@@ -217,14 +217,14 @@ Smoke tests:
     9  DEU 014:00785  GBR 026:01562   53
 
 
-* **CouplingUnit.ORG**
+* **AnalysisUnit.ORG**
 
 Smoke tests:
     >>> df = (
     ...     MatrixList()
     ...     #
     ...     # COUPLING UNIT:
-    ...     .with_coupling_unit(CouplingUnit.ORG)
+    ...     .with_analysis_unit(AnalysisUnit.ORG)
     ...     #
     ...     .having_top_n_units(10)
     ...     .having_units_ordered_by(UnitOrderBy.OCC)
@@ -260,14 +260,14 @@ Smoke tests:
     6        MONASH UNIV 003:00006  JIANGSU NORM UNIV 004:00008    1
 
 
-* **CouplingUnit.SRC**
+* **AnalysisUnit.SRC**
 
 Smoke tests:
     >>> df = (
     ...     MatrixList()
     ...     #
     ...     # COUPLING UNIT:
-    ...     .with_coupling_unit(CouplingUnit.SRC)
+    ...     .with_analysis_unit(AnalysisUnit.SRC)
     ...     #
     ...     .having_top_n_units(10)
     ...     .having_units_ordered_by(UnitOrderBy.OCC)

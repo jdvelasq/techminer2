@@ -8,13 +8,13 @@ Network Plot
     height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
-    >>> from tm2p.enum import AssociationIndex, CouplingUnit, GraphClusteringAlgorithm, UnitOrderBy, Scaling
+    >>> from tm2p.enum import AssociationIndex, AnalysisUnit, GraphClusteringAlgorithm, UnitOrderBy, Scaling
     >>> from tm2p.portfolio.intellectual_structure.coupling_network import NetworkPlot
     >>> fig = (
     ...     NetworkPlot()
     ...     #
     ...     # COUPLING UNIT:
-    ...     .with_coupling_unit(CouplingUnit.DOC)
+    ...     .with_analysis_unit(AnalysisUnit.DOC)
     ...     #
     ...     .using_minimum_pair_co_occurrence(2)
     ...     #

@@ -2,16 +2,16 @@
 Matrix
 ===============================================================================
 
-* **CouplingUnit.DOC**
+* **AnalysisUnit.DOC**
 
 Smoke tests:
-    >>> from tm2p.enum import CouplingUnit, UnitOrderBy
+    >>> from tm2p.enum import AnalysisUnit, UnitOrderBy
     >>> from tm2p.portfolio.intellectual_structure.coupling_network import Matrix
     >>> df = (
     ...     Matrix()
     ...     #
     ...     # COUPLING UNIT:
-    ...     .with_coupling_unit(CouplingUnit.DOC)
+    ...     .with_analysis_unit(AnalysisUnit.DOC)
     ...     #
     ...     # COUNTERS:
     ...     .using_counters(True)
@@ -40,14 +40,14 @@ Smoke tests:
     Mirza N 2023 1:00112                                1                               1                       0                      0                         1                     1
 
 
-* **CouplingUnit.AUTH**
+* **AnalysisUnit.AUTH**
 
 Smoke tests:
     >>> df = (
     ...     Matrix()
     ...     #
     ...     # COUPLING UNIT:
-    ...     .with_coupling_unit(CouplingUnit.AUTH)
+    ...     .with_analysis_unit(AnalysisUnit.AUTH)
     ...     #
     ...     .having_top_n_units(100)
     ...     .having_units_ordered_by(UnitOrderBy.OCC)
@@ -82,14 +82,14 @@ Smoke tests:
     Sanjiv R. Das 001:00090                                            0                          0                            0                      0                                0                        1
 
 
-* **CouplingUnit.CTRY**
+* **AnalysisUnit.CTRY**
 
 Smoke tests:
     >>> df = (
     ...     Matrix()
     ...     #
     ...     # COUPLING UNIT:
-    ...     .with_coupling_unit(CouplingUnit.CTRY)
+    ...     .with_analysis_unit(AnalysisUnit.CTRY)
     ...     #
     ...     .having_top_n_units(10)
     ...     .having_units_ordered_by(UnitOrderBy.OCC)
@@ -124,14 +124,14 @@ Smoke tests:
     ITA 012:00116             48             37             37              6             31             12
 
 
-* **CouplingUnit.ORG**
+* **AnalysisUnit.ORG**
 
 Smoke tests:
     >>> df = (
     ...     Matrix()
     ...     #
     ...     # COUPLING UNIT:
-    ...     .with_coupling_unit(CouplingUnit.ORG)
+    ...     .with_analysis_unit(AnalysisUnit.ORG)
     ...     #
     ...     .having_top_n_units(10)
     ...     .having_units_ordered_by(UnitOrderBy.OCC)
@@ -164,14 +164,14 @@ Smoke tests:
     MONASH UNIV 003:00006                                  1                    0                     0                      3
 
 
-* **CouplingUnit.SRC**
+* **AnalysisUnit.SRC**
 
 Smoke tests:
     >>> df = (
     ...     Matrix()
     ...     #
     ...     # COUPLING UNIT:
-    ...     .with_coupling_unit(CouplingUnit.SRC)
+    ...     .with_analysis_unit(AnalysisUnit.SRC)
     ...     #
     ...     .having_top_n_units(10)
     ...     .having_units_ordered_by(UnitOrderBy.OCC)

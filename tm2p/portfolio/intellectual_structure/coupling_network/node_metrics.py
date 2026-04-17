@@ -2,24 +2,24 @@
 Network Metrics
 ===============================================================================
 
-* **CouplingUnit.AUTH**
+* **AnalysisUnit.AUTH**
 
-* **CouplingUnit.CTRY**
+* **AnalysisUnit.CTRY**
 
-* **CouplingUnit.DOC**
+* **AnalysisUnit.DOC**
 
-* **CouplingUnit.ORG**
+* **AnalysisUnit.ORG**
 
-* **CouplingUnit.SRC**
+* **AnalysisUnit.SRC**
 
 Smoke tests:
-    >>> from tm2p.enum import AssociationIndex, CouplingUnit, GraphClusteringAlgorithm, UnitOrderBy
+    >>> from tm2p.enum import AssociationIndex, AnalysisUnit, GraphClusteringAlgorithm, UnitOrderBy
     >>> from tm2p.portfolio.intellectual_structure.coupling_network import NodeMetrics
     >>> df = (
     ...     NodeMetrics()
     ...     #
     ...     # COUPLING UNIT:
-    ...     .with_coupling_unit(CouplingUnit.AUTH)
+    ...     .with_analysis_unit(AnalysisUnit.AUTH)
     ...     #
     ...     .having_top_n_units(30)
     ...     .having_units_in(None)
