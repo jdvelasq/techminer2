@@ -9,18 +9,18 @@ Cross-correlation Map
 
 Smoke tests:
     >>> # grey colors: https://www.w3schools.com/colors/colors_shades.asp
-    >>> from tm2p.enum import ItemOrderBy, Field, Correlation, Scaling
+    >>> from tm2p.enum import UnitOrderBy, Field, Correlation, Scaling
     >>> from tm2p.portfolio.thematic_stucture.correlation.cross import CorrelationMap
     >>> plot = (
     ...     CorrelationMap()
     ...     #
     ...     # FIELD:
     ...     .with_source_field(Field.AUTHKW_NORM)
-    ...     .having_items_in_top(20)
-    ...     .having_items_ordered_by(ItemOrderBy.OCC)
-    ...     .having_item_occurrences_between(None, None)
-    ...     .having_item_citations_between(None, None)
-    ...     .having_items_in(None)
+    ...     .having_top_n_units(20)
+    ...     .having_units_ordered_by(UnitOrderBy.OCC)
+    ...     .having_unit_occurrence_between(None, None)
+    ...     .having_unit_global_citation_between(None, None)
+    ...     .having_units_in(None)
     ...     #
     ...     # CORRELATION:
     ...     .with_cross_field(Field.CTRY_ISO3)
@@ -39,14 +39,14 @@ Smoke tests:
     ...     .using_node_size_range(18, 90)
     ...     .using_textfont_opacity_range(0.75, 1.00)
     ...     .using_textfont_size_range(11, 16)
-    ...     .using_top_n_node_labels(10)
+    ...     .using_max_node_labels(10)
     ...     #
     ...     .using_edge_colors(("#7793a5", "#7793a5", "#7793a5", "#7793a5"))
     ...     .using_edge_scaling(Scaling.SQRT)
     ...     .using_edge_similarity_threshold(0.60)
-    ...     .using_edge_top_n(1000)
+    ...     .using_global_top_edges(1000)
     ...     .using_edge_widths((1.0, 1.0, 2.0, 3.5))
-    ...     .using_min_edges_per_node(2)
+    ...     .using_min_node_degree(2)
     ...     .using_top_edges_per_node(5)
     ...     #
     ...     .using_xaxes_range(None, None)

@@ -14,7 +14,7 @@ Smoke tests:
     ...     NetworkPlot()
     ...     #
     ...     # UNIT OF ANALYSIS:
-    ...     .having_items_in_top(None)
+    ...     .having_top_n_units(None)
     ...     .having_minimum_cited_unit_occurrences(0)
     ...     #
     ...     # NETWORK:

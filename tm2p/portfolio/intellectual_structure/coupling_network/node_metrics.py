@@ -13,7 +13,7 @@ Network Metrics
 * **CouplingUnit.SRC**
 
 Smoke tests:
-    >>> from tm2p.enum import AssociationIndex, CouplingUnit, GraphClusteringAlgorithm, ItemOrderBy
+    >>> from tm2p.enum import AssociationIndex, CouplingUnit, GraphClusteringAlgorithm, UnitOrderBy
     >>> from tm2p.portfolio.intellectual_structure.coupling_network import NodeMetrics
     >>> df = (
     ...     NodeMetrics()
@@ -21,8 +21,8 @@ Smoke tests:
     ...     # COUPLING UNIT:
     ...     .with_coupling_unit(CouplingUnit.AUTH)
     ...     #
-    ...     .having_items_in_top(30)
-    ...     .having_items_in(None)
+    ...     .having_top_n_units(30)
+    ...     .having_units_in(None)
     ...     .having_minimum_cited_unit_occurrences(0)
     ...     .having_occurrence_threshold(1)
     ...     #

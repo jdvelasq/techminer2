@@ -11,7 +11,7 @@ Smoke tests:
     ...     # FIELD:
     ...     .with_source_field(Field.AUTHKW_RAW)
     ...     .having_items_per_year(5)
-    ...     .having_items_in(None)
+    ...     .having_units_in(None)
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/scopus/")
@@ -37,7 +37,7 @@ Smoke tests:
     ...     # FIELD:
     ...     .with_source_field(Field.AUTHKW_RAW)
     ...     .having_items_per_year(5)
-    ...     .having_items_in(
+    ...     .having_units_in(
     ...         [
     ...             "fintech",
     ...             "blockchain",

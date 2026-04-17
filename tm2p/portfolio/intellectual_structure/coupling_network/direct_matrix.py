@@ -5,7 +5,7 @@ DirectMatrix
 * **CouplingUnit.DOC**
 
 Smoke tests:
-    >>> from tm2p.enum import AssociationIndex, CouplingUnit, ItemOrderBy
+    >>> from tm2p.enum import AssociationIndex, CouplingUnit, UnitOrderBy
     >>> from tm2p.portfolio.intellectual_structure.coupling_network import DirectMatrix
     >>> df = (
     ...     DirectMatrix()
@@ -53,11 +53,11 @@ Smoke tests:
     ...     # COUPLING UNIT:
     ...     .with_coupling_unit(CouplingUnit.AUTH)
     ...     #
-    ...     .having_items_in_top(100)
-    ...     .having_items_ordered_by(ItemOrderBy.OCC)
-    ...     .having_item_occurrences_between(None, None)
-    ...     .having_item_citations_between(None, None)
-    ...     .having_items_in(None)
+    ...     .having_top_n_units(100)
+    ...     .having_units_ordered_by(UnitOrderBy.OCC)
+    ...     .having_unit_occurrence_between(None, None)
+    ...     .having_unit_global_citation_between(None, None)
+    ...     .having_units_in(None)
     ...     #
     ...     # COUNTERS:
     ...     .using_counters(True)
@@ -99,11 +99,11 @@ Smoke tests:
     ...     # COUPLING UNIT:
     ...     .with_coupling_unit(CouplingUnit.CTRY)
     ...     #
-    ...     .having_items_in_top(10)
-    ...     .having_items_ordered_by(ItemOrderBy.OCC)
-    ...     .having_item_occurrences_between(None, None)
-    ...     .having_item_citations_between(None, None)
-    ...     .having_items_in(None)
+    ...     .having_top_n_units(10)
+    ...     .having_units_ordered_by(UnitOrderBy.OCC)
+    ...     .having_unit_occurrence_between(None, None)
+    ...     .having_unit_global_citation_between(None, None)
+    ...     .having_units_in(None)
     ...     #
     ...     # COUNTERS:
     ...     .using_counters(True)
@@ -146,11 +146,11 @@ Smoke tests:
     ...     # COUPLING UNIT:
     ...     .with_coupling_unit(CouplingUnit.ORG)
     ...     #
-    ...     .having_items_in_top(10)
-    ...     .having_items_ordered_by(ItemOrderBy.OCC)
-    ...     .having_item_occurrences_between(None, None)
-    ...     .having_item_citations_between(None, None)
-    ...     .having_items_in(None)
+    ...     .having_top_n_units(10)
+    ...     .having_units_ordered_by(UnitOrderBy.OCC)
+    ...     .having_unit_occurrence_between(None, None)
+    ...     .having_unit_global_citation_between(None, None)
+    ...     .having_units_in(None)
     ...     #
     ...     # COUNTERS:
     ...     .using_counters(True)
@@ -191,11 +191,11 @@ Smoke tests:
     ...     # COUPLING UNIT:
     ...     .with_coupling_unit(CouplingUnit.SRC)
     ...     #
-    ...     .having_items_in_top(10)
-    ...     .having_items_ordered_by(ItemOrderBy.OCC)
-    ...     .having_item_occurrences_between(None, None)
-    ...     .having_item_citations_between(None, None)
-    ...     .having_items_in(None)
+    ...     .having_top_n_units(10)
+    ...     .having_units_ordered_by(UnitOrderBy.OCC)
+    ...     .having_unit_occurrence_between(None, None)
+    ...     .having_unit_global_citation_between(None, None)
+    ...     .having_units_in(None)
     ...     #
     ...     # COUNTERS:
     ...     .using_counters(True)

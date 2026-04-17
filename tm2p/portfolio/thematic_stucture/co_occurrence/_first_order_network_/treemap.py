@@ -11,18 +11,18 @@ Treemap
     height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
-    >>> from tm2p.enum import Field, ItemOrderBy, AssociationIndex
+    >>> from tm2p.enum import Field, UnitOrderBy, AssociationIndex
     >>> from tm2p.portfolio.thematic_stucture.co_occurrence.direct_similarity_network import Treemap
     >>> fig = (
     ...     Treemap()
     ...     #
     ...     # FIELD:
     ...     .with_source_field(Field.AUTHKW_NORM)
-    ...     .having_items_in_top(20)
-    ...     .having_items_ordered_by(ItemOrderBy.OCC)
-    ...     .having_item_occurrences_between(None, None)
-    ...     .having_item_citations_between(None, None)
-    ...     .having_items_in(None)
+    ...     .having_top_n_units(20)
+    ...     .having_units_ordered_by(UnitOrderBy.OCC)
+    ...     .having_unit_occurrence_between(None, None)
+    ...     .having_unit_global_citation_between(None, None)
+    ...     .having_units_in(None)
     ...     #
     ...     # COUNTERS:
     ...     .using_counters(True)
@@ -48,11 +48,11 @@ Smoke tests:
     ...     #
     ...     # FIELD:
     ...     .with_source_field(Field.AUTHKW_NORM)
-    ...     .having_items_in_top(20)
-    ...     .having_items_ordered_by(ItemOrderBy.OCC)
-    ...     .having_item_occurrences_between(None, None)
-    ...     .having_item_citations_between(None, None)
-    ...     .having_items_in(None)
+    ...     .having_top_n_units(20)
+    ...     .having_units_ordered_by(UnitOrderBy.OCC)
+    ...     .having_unit_occurrence_between(None, None)
+    ...     .having_unit_global_citation_between(None, None)
+    ...     .having_units_in(None)
     ...     #
     ...     # COUNTERS:
     ...     .using_counters(False)

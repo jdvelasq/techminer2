@@ -16,9 +16,9 @@ from ..nx import (
     remove_weak_nodes,
     scale_edge_weight,
     scale_edge_width,
-    scale_node_size_by_occ,
-    scale_textfont_opacity_by_occ,
-    scale_textfont_size_by_occ,
+    scale_node_size,
+    scale_textfont_opacity,
+    scale_textfont_size,
     set_node_textposition,
     set_top_n_node_labels,
     set_uniform_edge_color,
@@ -48,9 +48,9 @@ def build_co_occ_matrix_plot(
 
     nx_graph = scale_edge_weight(params, nx_graph)
     nx_graph = spring_layout(params, nx_graph)
-    nx_graph = scale_node_size_by_occ(params, nx_graph)
-    nx_graph = scale_textfont_size_by_occ(params, nx_graph)
-    nx_graph = scale_textfont_opacity_by_occ(params, nx_graph)
+    nx_graph = scale_node_size(params, nx_graph)
+    nx_graph = scale_textfont_size(params, nx_graph)
+    nx_graph = scale_textfont_opacity(params, nx_graph)
     nx_graph = set_uniform_node_color(params, nx_graph)
     nx_graph = set_uniform_edge_color(params, nx_graph)
     nx_graph = scale_edge_width(params, nx_graph)

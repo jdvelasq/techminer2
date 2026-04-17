@@ -9,16 +9,16 @@ WorldMap
 
 
 Smoke tests:
-    >>> from tm2p.enum import Field, ItemOrderBy
+    >>> from tm2p.enum import Field, UnitOrderBy
     >>> from tm2p.portfolio.performance_metrics.item_metrics import WorldMap
     >>> plot = (
     ...     WorldMap()
     ...     #
     ...     # TERMS:
-    ...     .having_items_ordered_by(ItemOrderBy.OCC)
-    ...     .having_item_occurrences_between(None, None)
-    ...     .having_item_citations_between(None, None)
-    ...     .having_items_in(None)
+    ...     .having_units_ordered_by(UnitOrderBy.OCC)
+    ...     .having_unit_occurrence_between(None, None)
+    ...     .having_unit_global_citation_between(None, None)
+    ...     .having_units_in(None)
     ...     #
     ...     # PLOT:
     ...     .using_title_text("Countries' Scientific Production")

@@ -8,7 +8,7 @@ Network Plot
     height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
-    >>> from tm2p.enum import AssociationIndex, CouplingUnit, GraphClusteringAlgorithm, ItemOrderBy, Scaling
+    >>> from tm2p.enum import AssociationIndex, CouplingUnit, GraphClusteringAlgorithm, UnitOrderBy, Scaling
     >>> from tm2p.portfolio.intellectual_structure.coupling_network import NetworkPlot
     >>> fig = (
     ...     NetworkPlot()
@@ -46,21 +46,21 @@ Smoke tests:
     ...             "#17becf",
     ...         )
     ...     )
-    ...     .using_node_opacity(0.75)
+    ...     .using_uniform_node_opacity(0.75)
     ...     .using_node_scaling(Scaling.SQRT)
     ...     .using_node_size_range(12, 80)
     ...     .using_textfont_opacity_range(0.55, 1.00)
     ...     .using_textfont_size_range(10, 24)
-    ...     .using_top_n_node_labels(15)
+    ...     .using_max_node_labels(15)
     ...     .using_top_n_nodes(50)
     ...     #
     ...     # https://www.w3schools.com/colors/colors_shades.asp
-    ...     .using_edge_color("#d8d8d8")
+    ...     .using_uniform_edge_color("#d8d8d8")
     ...     .using_edge_opacity_range(0.25, 0.65)
     ...     .using_edge_scaling(Scaling.SQRT)
-    ...     .using_edge_top_n(200)
+    ...     .using_global_top_edges(200)
     ...     .using_edge_width_range(1.5, 5.0)
-    ...     .using_min_edges_per_node(2)
+    ...     .using_min_node_degree(2)
     ...     .using_top_edges_per_node(5)
     ...     #
     ...     .using_xaxes_range(None, None)
@@ -109,7 +109,7 @@ class NetworkPlot(
 
         fig = build_co_occ_network_plot(
             params=self.params,
-            similariity_matrix=similarity_matrix,
+            similarity_matrix=similarity_matrix,
             co_occurrence_matrix=co_occ_matrix,
             i2c=i2c,
         )

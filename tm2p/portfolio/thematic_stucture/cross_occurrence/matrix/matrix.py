@@ -3,7 +3,7 @@ Matrix
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.enum import Field, ItemOrderBy
+    >>> from tm2p.enum import Field, UnitOrderBy
     >>> from tm2p.portfolio.thematic_stucture.cross_occurrence.matrix import Matrix
     >>> df = (
     ...     Matrix()
@@ -11,7 +11,7 @@ Smoke tests:
     ...     # COLUMNS:
     ...     .with_column_field(Field.AUTHKW_TOK)
     ...     .having_column_items_in_top(10)
-    ...     .having_column_items_ordered_by(ItemOrderBy.OCC)
+    ...     .having_column_items_ordered_by(UnitOrderBy.OCC)
     ...     .having_column_item_occurrences_between(None, None)
     ...     .having_column_item_citations_between(None, None)
     ...     .having_column_items_in(None)
@@ -19,7 +19,7 @@ Smoke tests:
     ...     # ROWS:
     ...     .with_index_field(Field.AUTH_NORM)
     ...     .having_index_items_in_top(None)
-    ...     .having_index_items_ordered_by(ItemOrderBy.OCC)
+    ...     .having_index_items_ordered_by(UnitOrderBy.OCC)
     ...     .having_index_item_occurrences_between(2, None)
     ...     .having_index_item_citations_between(None, None)
     ...     .having_index_items_in(None)
@@ -60,7 +60,7 @@ Smoke tests:
     [10 rows x 10 columns]
 
 
-    >>> from tm2p.enum import Field, ItemOrderBy
+    >>> from tm2p.enum import Field, UnitOrderBy
     >>> from tm2p.portfolio.thematic_stucture.cross_occurrence.matrix import Matrix
     >>> df = (
     ...     Matrix()
@@ -68,7 +68,7 @@ Smoke tests:
     ...     # COLUMNS:
     ...     .with_column_field(Field.AUTHKW_TOK)
     ...     .having_column_items_in_top(10)
-    ...     .having_column_items_ordered_by(ItemOrderBy.OCC)
+    ...     .having_column_items_ordered_by(UnitOrderBy.OCC)
     ...     .having_column_item_occurrences_between(None, None)
     ...     .having_column_item_citations_between(None, None)
     ...     .having_column_items_in(None)
@@ -76,7 +76,7 @@ Smoke tests:
     ...     # ROWS:
     ...     .with_index_field(Field.AUTH_NORM)
     ...     .having_index_items_in_top(10)
-    ...     .having_index_items_ordered_by(ItemOrderBy.OCC)
+    ...     .having_index_items_ordered_by(UnitOrderBy.OCC)
     ...     .having_index_item_occurrences_between(None, None)
     ...     .having_index_item_citations_between(None, None)
     ...     .having_index_items_in(None)
@@ -137,7 +137,7 @@ class Matrix(
         metrics = (
             Metrics()
             .update(**self.params.__dict__)
-            .with_source_field(self.params.column_analysis_unit)
+            .with_analysis_unit(self.params.column_analysis_unit)
             .having_top_n_units(self.params.top_n_column_units)
             .having_units_ordered_by(self.params.column_unit_order_by)
             .having_unit_occurrence_between(
@@ -158,7 +158,7 @@ class Matrix(
         metrics = (
             Metrics()
             .update(**self.params.__dict__)
-            .with_source_field(self.params.index_analysis_unit)
+            .with_analysis_unit(self.params.index_analysis_unit)
             .having_top_n_units(self.params.top_n_index_units)
             .having_units_ordered_by(self.params.index_item_order_by)
             .having_unit_occurrence_between(

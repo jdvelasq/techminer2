@@ -17,9 +17,9 @@ Smoke tests:
     ...     #
     ...     # ANALYSIS UNIT:
     ...     .with_co_citation_unit(CoCitationUnit.CITED_AUTH)
-    ...     .having_items_in_top(30)
+    ...     .having_top_n_units(30)
     ...     .having_minimum_cited_unit_occurrences(0)
-    ...     .having_items_in(None)
+    ...     .having_units_in(None)
     ...     #
     ...     # CLUSTERING:
     ...     .using_clustering_algorithm_or_dict("louvain")
@@ -61,9 +61,9 @@ Smoke tests:
     ...     #
     ...     # ANALYSIS UNIT:
     ...     .with_co_citation_unit(CoCitationUnit.CITED_REF)
-    ...     .having_items_in_top(30)
+    ...     .having_top_n_units(30)
     ...     .having_minimum_cited_unit_occurrences(0)
-    ...     .having_items_in(None)
+    ...     .having_units_in(None)
     ...     #
     ...     # CLUSTERING:
     ...     .using_clustering_algorithm_or_dict("louvain")
@@ -107,9 +107,9 @@ Smoke tests:
     ...     #
     ...     # ANALYSIS UNIT:
     ...     .with_co_citation_unit(CoCitationUnit.CITED_REF)
-    ...     .having_items_in_top(30)
+    ...     .having_top_n_units(30)
     ...     .having_minimum_cited_unit_occurrences(0)
-    ...     .having_items_in(None)
+    ...     .having_units_in(None)
     ...     #
     ...     # CLUSTERING:
     ...     .using_clustering_algorithm_or_dict("louvain")

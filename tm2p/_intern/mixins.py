@@ -40,6 +40,7 @@ from tm2p.enum import (
     Correlation,
     Field,
     GraphClusteringAlgorithm,
+    NodeSizeMetric,
     RecordOrderBy,
     Scaling,
     ThFile,
@@ -933,6 +934,14 @@ class ParamsMixin:
 
     # -------------------------------------------------------------------------
 
+    def using_node_size_metric(self, metric: NodeSizeMetric) -> Self:
+        if not isinstance(metric, NodeSizeMetric):
+            raise TypeError(
+                f"node_size_metric must be an instance of NodeSizeMetric enum, got {type(metric).__name__}"
+            )
+        self.params.node_size_metric = metric
+        return self
+
     def using_node_size_range(self, min_size: int, max_size: int) -> Self:
         min_size, max_size = check_required_int_range(
             range_tuple=(min_size, max_size),
@@ -958,6 +967,16 @@ class ParamsMixin:
         )
         self.params.max_node_labels = n
         return self
+
+    def using_node_label_max_length(self, max_length: int) -> Self:
+        max_length = check_required_positive_int(
+            value=max_length,
+            param_name="max_length",
+        )
+        self.params.node_label_max_length = max_length
+        return self
+
+    # -------------------------------------------------------------------------
 
     def using_min_node_degree(self, min_node_degree: int) -> Self:
         min_node_degree = check_required_positive_int(

@@ -3,19 +3,19 @@ Matrix
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.enum import AssociationIndex, CollaborationUnit, ItemOrderBy
+    >>> from tm2p.enum import AssociationIndex, AnalysisUnit, UnitOrderBy
     >>> from tm2p.portfolio.social_structure.collaboration_network import Matrix
     >>> df = (
     ...     Matrix()
     ...     #
     ...     # ANALYSIS UNIT:
-    ...     .with_collaboration_unit(CollaborationUnit.AUTH)
+    ...     .with_analysis_unit(AnalysisUnit.AUTH)
     ...     #
-    ...     .having_items_in_top(10)
-    ...     .having_items_ordered_by(ItemOrderBy.OCC)
-    ...     .having_item_occurrences_between(None, None)
-    ...     .having_item_citations_between(None, None)
-    ...     .having_items_in(None)
+    ...     .having_top_n_units(10)
+    ...     .having_units_ordered_by(UnitOrderBy.OCC)
+    ...     .having_unit_occurrence_between(None, None)
+    ...     .having_unit_global_citation_between(None, None)
+    ...     .having_units_in(None)
     ...     #
     ...     .using_minimum_pair_co_occurrence(1)
     ...     #
@@ -58,7 +58,6 @@ Smoke tests:
 """
 
 from tm2p._intern import ParamsMixin
-from tm2p.enum import AnalysisUnit, Field
 
 from ...thematic_stucture.co_occurrence.matrix import Matrix as CoOccurrenceMatrix
 
@@ -69,14 +68,6 @@ class Matrix(
     """:meta private:"""
 
     def run(self):
-
-        field = {
-            AnalysisUnit.AUTH: Field.AUTH_FULL_NAME,
-            AnalysisUnit.CTRY: Field.CTRY_ISO3,
-            AnalysisUnit.ORG: Field.ORG,
-        }[self.params.analysis_unit]
-
-        self.with_source_field(field)
 
         matrix = CoOccurrenceMatrix().update(**self.params.__dict__).run()
 

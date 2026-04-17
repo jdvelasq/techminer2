@@ -9,22 +9,22 @@ ButterflyPlot
 
 
 Smoke tests:
-    >>> from tm2p.enum import Field, ItemOrderBy
+    >>> from tm2p.enum import Field, UnitOrderBy
     >>> from tm2p.discover.assoc import ButterflyPlot
     >>> plot = (
     ...     ButterflyPlot()
     ...     #
     ...     # FIELD:
     ...     .with_source_field(Field.AUTHKW_RAW)
-    ...     .having_items_in_top(10)
-    ...     .having_items_ordered_by(ItemOrderBy.OCC)
-    ...     .having_item_occurrences_between(None, None)
-    ...     .having_item_citations_between(None, None)
-    ...     .having_items_in(["fintech", "innovation", "financial services"])
+    ...     .having_top_n_units(10)
+    ...     .having_units_ordered_by(UnitOrderBy.OCC)
+    ...     .having_unit_occurrence_between(None, None)
+    ...     .having_unit_global_citation_between(None, None)
+    ...     .having_units_in(["fintech", "innovation", "financial services"])
     ...     #
     ...     # ROWS:
     ...     .having_other_terms_in_top(10)
-    ...     .having_other_terms_ordered_by(ItemOrderBy.OCC)
+    ...     .having_other_terms_ordered_by(UnitOrderBy.OCC)
     ...     .having_other_term_occurrences_between(None, None)
     ...     .having_other_term_citations_between(None, None)
     ...     .having_other_terms_in(None)

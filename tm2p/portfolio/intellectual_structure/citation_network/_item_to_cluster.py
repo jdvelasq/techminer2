@@ -55,10 +55,10 @@ Smoke tests:
     ...     # ANALYSIS UNIT:
     ...     .with_citation_unit(CitationUnit.AUTH)
     ...     #
-    ...     .having_items_in_top(50)
+    ...     .having_top_n_units(50)
     ...     .having_minimum_cited_unit_occurrences(0)
     ...     .having_occurrence_threshold(1)
-    ...     .having_items_in(None)
+    ...     .having_units_in(None)
     ...     #
     ...     # NETWORK:
     ...     .using_association_index(AssociationIndex.ASSOCIATION_STRENGTH)
@@ -97,10 +97,10 @@ Smoke tests:
     ...     # ANALYSIS UNIT:
     ...     .with_citation_unit(CitationUnit.CTRY)
     ...     #
-    ...     .having_items_in_top(30)
+    ...     .having_top_n_units(30)
     ...     .having_minimum_cited_unit_occurrences(0)
     ...     .having_occurrence_threshold(2)
-    ...     .having_items_in(None)
+    ...     .having_units_in(None)
     ...     #
     ...     # NETWORK:
     ...     .using_association_index(AssociationIndex.ASSOCIATION_STRENGTH)
@@ -140,10 +140,10 @@ Smoke tests:
     ...     # ANALYSIS UNIT:
     ...     .with_citation_unit(CitationUnit.ORG)
     ...     #
-    ...     .having_items_in_top(30)
+    ...     .having_top_n_units(30)
     ...     .having_minimum_cited_unit_occurrences(0)
     ...     .having_occurrence_threshold(2)
-    ...     .having_items_in(None)
+    ...     .having_units_in(None)
     ...     #
     ...     # NETWORK:
     ...     .using_association_index(AssociationIndex.ASSOCIATION_STRENGTH)
@@ -184,10 +184,10 @@ Smoke tests:
     ...     # UNIT OF ANALYSIS:
     ...     .with_citation_unit(CitationUnit.SRC)
     ...     #
-    ...     .having_items_in_top(30)
+    ...     .having_top_n_units(30)
     ...     .having_minimum_cited_unit_occurrences(0)
     ...     .having_occurrence_threshold(2)
-    ...     .having_items_in(None)
+    ...     .having_units_in(None)
     ...     #
     ...     # NETWORK:
     ...     .using_association_index(AssociationIndex.ASSOCIATION_STRENGTH)

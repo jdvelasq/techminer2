@@ -3,7 +3,7 @@ Matrix
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.enum import Field, ItemOrderBy
+    >>> from tm2p.enum import Field, UnitOrderBy
     >>> from tm2p.portfolio.thematic_stucture.co_occurrence.matrix import Matrix
     >>> df = (
     ...     Matrix()
@@ -11,11 +11,11 @@ Smoke tests:
     ...     # FIELD:
     ...     .with_source_field(Field.AUTHKW_NORM)
     ...     #
-    ...     .having_items_in_top(10)
-    ...     .having_items_ordered_by(ItemOrderBy.OCC)
-    ...     .having_item_occurrences_between(None, None)
-    ...     .having_item_citations_between(None, None)
-    ...     .having_items_in(None)
+    ...     .having_top_n_units(10)
+    ...     .having_units_ordered_by(UnitOrderBy.OCC)
+    ...     .having_unit_occurrence_between(None, None)
+    ...     .having_unit_global_citation_between(None, None)
+    ...     .having_units_in(None)
     ...     #
     ...     .using_minimum_pair_co_occurrence(1)
     ...     #
@@ -56,11 +56,11 @@ Smoke tests:
     ...     #
     ...     # FIELD:
     ...     .with_source_field(Field.AUTHKW_NORM)
-    ...     .having_items_in_top(10)
-    ...     .having_items_ordered_by(ItemOrderBy.OCC)
-    ...     .having_item_occurrences_between(None, None)
-    ...     .having_item_citations_between(None, None)
-    ...     .having_items_in(None)
+    ...     .having_top_n_units(10)
+    ...     .having_units_ordered_by(UnitOrderBy.OCC)
+    ...     .having_unit_occurrence_between(None, None)
+    ...     .having_unit_global_citation_between(None, None)
+    ...     .having_units_in(None)
     ...     #
     ...     # COUNTERS:
     ...     .using_counters(False)
@@ -111,7 +111,7 @@ class Matrix(
             .update(**self.params.__dict__)
             #
             # COLUMNS:
-            .with_column_analysis_unit(self.params.source_field)
+            .with_column_analysis_unit(self.params.analysis_unit)
             .having_column_items_in_top(self.params.top_n_units)
             .having_column_units_ordered_by(self.params.unit_order_by)
             .having_column_item_occurrence_between(
@@ -125,7 +125,7 @@ class Matrix(
             .having_column_items_in(self.params.units_in)
             #
             # ROWS:
-            .with_index_analysis_unit(self.params.source_field)
+            .with_index_analysis_unit(self.params.analysis_unit)
             .having_index_units_in_top(self.params.top_n_units)
             .having_index_items_ordered_by(self.params.unit_order_by)
             .having_index_unit_occurrence_between(

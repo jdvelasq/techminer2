@@ -3,7 +3,7 @@ TopItemsExtractor
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.enum import Field, ItemOrderBy
+    >>> from tm2p.enum import Field, UnitOrderBy
     >>> from tm2p.ingest.extr import TopItemsExtractor
     >>> items = (
     ...     TopItemsExtractor()
@@ -12,11 +12,11 @@ Smoke tests:
     ...     .with_source_field(Field.AUTHKW_NORM)
     ...     #
     ...     # SEARCH:
-    ...     .having_items_in_top(10)
-    ...     .having_items_ordered_by(ItemOrderBy.OCC)
-    ...     .having_item_occurrences_between(None, None)
-    ...     .having_item_citations_between(None, None)
-    ...     .having_items_in(None)
+    ...     .having_top_n_units(10)
+    ...     .having_units_ordered_by(UnitOrderBy.OCC)
+    ...     .having_unit_occurrence_between(None, None)
+    ...     .having_unit_global_citation_between(None, None)
+    ...     .having_units_in(None)
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/scopus/")

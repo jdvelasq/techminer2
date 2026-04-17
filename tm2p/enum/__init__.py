@@ -1,7 +1,13 @@
 from .analysis_unit import AnalysisUnit
 from .col import Col
 from .field import Field
-from .methods import AssociationIndex, Correlation, GraphClusteringAlgorithm, Scaling
+from .methods import (
+    AssociationIndex,
+    Correlation,
+    GraphClusteringAlgorithm,
+    NodeSizeMetric,
+    Scaling,
+)
 from .order_by import RecordOrderBy, UnitOrderBy
 from .thesaur import ThField, ThFile
 
@@ -12,6 +18,7 @@ __all__ = [
     "Correlation",
     "Field",
     "GraphClusteringAlgorithm",
+    "NodeSizeMetric",
     "RecordOrderBy",
     "Scaling",
     "ThField",

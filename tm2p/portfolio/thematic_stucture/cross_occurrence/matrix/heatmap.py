@@ -8,7 +8,7 @@ Heatmap
     height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
-    >>> from tm2p.enum import Field, ItemOrderBy
+    >>> from tm2p.enum import Field, UnitOrderBy
     >>> from tm2p.portfolio.thematic_stucture.cross_occurrence.matrix import Heatmap
     >>> fig = (
     ...     Heatmap()
@@ -16,7 +16,7 @@ Smoke tests:
     ...     # COLUMNS:
     ...     .with_column_field(Field.AUTHKW_TOK)
     ...     .having_column_items_in_top(10)
-    ...     .having_column_items_ordered_by(ItemOrderBy.OCC)
+    ...     .having_column_items_ordered_by(UnitOrderBy.OCC)
     ...     .having_column_item_occurrences_between(None, None)
     ...     .having_column_item_citations_between(None, None)
     ...     .having_column_items_in(None)
@@ -24,7 +24,7 @@ Smoke tests:
     ...     # ROWS:
     ...     .with_index_field(Field.AUTH_NORM)
     ...     .having_index_items_in_top(15)
-    ...     .having_index_items_ordered_by(ItemOrderBy.OCC)
+    ...     .having_index_items_ordered_by(UnitOrderBy.OCC)
     ...     .having_index_item_occurrences_between(0, None)
     ...     .having_index_item_citations_between(None, None)
     ...     .having_index_items_in(None)

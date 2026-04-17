@@ -8,11 +8,11 @@ ConceptGridPlot
 ## ...     #
 ## ...     # FIELD:
 ## ...     .with_field("author_keywords")
-## ...     .having_items_in_top(30)
-## ...     .having_items_ordered_by("OCC")
-## ...     .having_item_occurrences_between(None, None)
-## ...     .having_item_citations_between(None, None)
-## ...     .having_items_in(None)
+## ...     .having_top_n_units(30)
+## ...     .having_units_ordered_by("OCC")
+## ...     .having_unit_occurrence_between(None, None)
+## ...     .having_unit_global_citation_between(None, None)
+## ...     .having_units_in(None)
 ## ...     #
 ## ...     # COUNTERS:
 ## ...     .using_counters(True)

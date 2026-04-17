@@ -3,19 +3,19 @@ NodeMetrics
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.enum import AssociationIndex, AnalysisUnit, Field, ItemOrderBy
+    >>> from tm2p.enum import AssociationIndex, AnalysisUnit, Field, UnitOrderBy
     >>> from tm2p.portfolio.thematic_stucture.co_occurrence.direct_similarity_network import NodeMetrics
     >>> df = (
     ...     NodeMetrics()
     ...     #
     ...     # UNIT OF ANALYSIS:
-    ...     .with_co_occurrence_unit(AnalysisUnit.KW)
+    ...     .with_analysis_unit(AnalysisUnit.KW)
     ...     #
-    ...     .having_items_in_top(20)
-    ...     .having_items_ordered_by(ItemOrderBy.OCC)
-    ...     .having_item_occurrences_between(None, None)
-    ...     .having_item_citations_between(None, None)
-    ...     .having_items_in(None)
+    ...     .having_top_n_units(20)
+    ...     .having_units_ordered_by(UnitOrderBy.OCC)
+    ...     .having_unit_occurrence_between(None, None)
+    ...     .having_unit_global_citation_between(None, None)
+    ...     .having_units_in(None)
     ...     #
     ...     .using_minimum_pair_co_occurrence(1)
     ...     #
@@ -41,7 +41,6 @@ Smoke tests:
     innovation 020:03916                           0.947                   0.053                 0.950     0.065                   0.288       0.627            9     0.216
     finance 029:07137                              1.000                   0.057                 1.000     0.065                   0.303       0.632            9     0.211
     economic growth 009:01654                      0.526                   0.005                 0.679     0.059                   0.183       0.822            9     0.196
-
 
 """
 

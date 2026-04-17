@@ -40,8 +40,8 @@ class RecursiveClusteringMixin:
                         #
                         # rewrite the parameters used by the recursive clustering:
                         .having_items_in_top(None)
-                        .having_items_ordered_by("OCC")
-                        .having_item_occurrences_between(None, None)
+                        .having_units_ordered_by("OCC")
+                        .having_unit_occurrence_between(None, None)
                         .having_item_citations_between(None, None)
                         .having_items_in(terms)
                         #

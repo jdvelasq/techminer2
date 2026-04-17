@@ -5,30 +5,28 @@ from tm2p._intern import Params
 from tm2p.enum import Scaling
 
 
-def scale_textfont_size_by_occ(
+def scale_textfont_size(
     params: Params,
     nx_graph: nx.Graph,
 ) -> nx.Graph:
     textfont_size_range = params.textfont_size_range
 
     nodes = list(nx_graph.nodes())
-    counters = [node.split(" ")[-1] for node in nodes]
-    occ = [counter.split(":")[0] for counter in counters]
-    occ = np.array([float(value) for value in occ])  # type: ignore
+    raw_sizes = [nx_graph.nodes[node]["raw_node_size"] for node in nodes]  # type: ignore
 
     percentile_75 = None
 
-    if max(occ) == min(occ):
-        node_sizes = np.array([textfont_size_range[0]] * len(occ))
+    if max(raw_sizes) == min(raw_sizes):
+        node_sizes = np.array([textfont_size_range[0]] * len(raw_sizes))
     else:
 
         if params.node_scaling == Scaling.SQRT:
-            occ = np.sqrt(occ)  # type: ignore
+            raw_sizes = np.sqrt(raw_sizes)  # type: ignore
         if params.node_scaling == Scaling.LOG:
-            occ = np.log1p(occ)  # type: ignore
+            raw_sizes = np.log1p(raw_sizes)  # type: ignore
 
         width = textfont_size_range[1] - textfont_size_range[0]
-        prop = (occ - occ.min()) / (occ.max() - occ.min())  # type: ignore
+        prop = (raw_sizes - raw_sizes.min()) / (raw_sizes.max() - raw_sizes.min())  # type: ignore
         node_sizes = textfont_size_range[0] + prop * width
 
         percentile_75 = np.percentile(node_sizes, 75)

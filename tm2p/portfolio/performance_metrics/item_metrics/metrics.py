@@ -4,24 +4,25 @@ Metrics
 
 
 Smoke tests:
-    >>> from tm2p.enum import Field, ItemOrderBy
-    >>> from tm2p.enum import Field
+    >>> from tm2p.enum import AnalysisUnit, UnitOrderBy, RecordOrderBy
     >>> from tm2p.portfolio.performance_metrics.item_metrics import Metrics
     >>> df = (
     ...     Metrics()
     ...     #
     ...     # FIELD:
-    ...     .with_source_field(Field.AUTHKW_NORM)
-    ...     .having_items_in_top(10)
-    ...     .having_items_ordered_by(ItemOrderBy.OCC)
-    ...     .having_item_occurrences_between(None, None)
-    ...     .having_item_citations_between(None, None)
-    ...     .having_items_in(None)
+    ...     .with_analysis_unit(AnalysisUnit.AUTHKW)
+    ...     .having_top_n_units(10)
+    ...     .having_units_ordered_by(UnitOrderBy.OCC)
+    ...     .having_unit_occurrence_between(None, None)
+    ...     .having_unit_global_citation_between(None, None)
+    ...     .having_units_in(None)
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/scopus/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_global_citations_range(None, None)
+    ...     .where_records_match(None)
+    ...     .where_records_ordered_by(RecordOrderBy.YEAR_NEWEST)
     ...     #
     ...     .run()
     ... )
@@ -132,7 +133,7 @@ class Metrics(
         df = load_filtered_main_csv_zip(params=self.params)
         df = df[
             [
-                self.params.source_field.value,
+                self.params.analysis_unit.value,
                 GCS,
                 LCS,
                 YEAR,
@@ -142,12 +143,12 @@ class Metrics(
         return df  # type: ignore
 
     # -------------------------------------------------------------------------
-    def _explode_source_field(self, df: pd.DataFrame) -> pd.DataFrame:
+    def _explode_analysis_unit(self, df: pd.DataFrame) -> pd.DataFrame:
 
         df = df.copy()
-        source_field = self.params.source_field.value
-        df[source_field] = df[source_field].str.split("; ")
-        df = df.explode(source_field)
+        analysis_unit = self.params.analysis_unit.value
+        df[analysis_unit] = df[analysis_unit].str.split("; ")
+        df = df.explode(analysis_unit)
 
         return df
 
@@ -155,31 +156,31 @@ class Metrics(
     def _filter_stopitems(self, df):
 
         df = df.copy()
-        source_field = self.params.source_field.value
-        df = df[~df[source_field].str.startswith("#")]
+        analysis_unit = self.params.analysis_unit.value
+        df = df[~df[analysis_unit].str.startswith("#")]
 
         return df
 
     # -------------------------------------------------------------------------
     def _compute_primary_bibliometric_indicators(self, df):
 
-        source_field = self.params.source_field.value
+        analysis_unit = self.params.analysis_unit.value
 
         df = df.sort_values(
             [
-                source_field,
+                analysis_unit,
                 GCS,
                 LCS,
             ],
             ascending=[True, False, False],
         )
 
-        df[POS] = df.groupby(source_field).cumcount() + 1
+        df[POS] = df.groupby(analysis_unit).cumcount() + 1
         df[POS2] = df[POS].map(lambda w: w * w)
         df = df.reset_index(drop=True)
 
         df["OCC"] = 1
-        grouped_df = df.groupby(source_field).agg(
+        grouped_df = df.groupby(analysis_unit).agg(
             {
                 OCC: "sum",
                 GCS: "sum",
@@ -210,13 +211,13 @@ class Metrics(
     # -------------------------------------------------------------------------
     def _compute_h_index(self, df, grouped_df):
 
-        source_field = self.params.source_field.value
+        analysis_unit = self.params.analysis_unit.value
 
         df = df.copy()
         grouped_df = grouped_df.copy()
 
         h_indexes = df.query(f"{GCS} >= {POS}")
-        h_indexes = h_indexes.groupby(source_field, as_index=True).agg(
+        h_indexes = h_indexes.groupby(analysis_unit, as_index=True).agg(
             {f"{POS}": "max"}
         )
         h_indexes = h_indexes.rename(columns={f"{POS}": H_INDEX})
@@ -228,13 +229,13 @@ class Metrics(
     # -------------------------------------------------------------------------
     def _compute_g_index(self, df, grouped_df):
 
-        source_field = self.params.source_field.value
+        analysis_unit = self.params.analysis_unit.value
 
         df = df.copy()
         grouped_df = grouped_df.copy()
 
         g_indexes = df.query(f"{GCS} >= {POS2}")
-        g_indexes = g_indexes.groupby(source_field, as_index=True).agg({POS: "max"})
+        g_indexes = g_indexes.groupby(analysis_unit, as_index=True).agg({POS: "max"})
         g_indexes = g_indexes.rename(columns={POS: G_INDEX})
         grouped_df.loc[g_indexes.index, G_INDEX] = g_indexes.astype(int)
         grouped_df[G_INDEX] = grouped_df[G_INDEX].fillna(0)
@@ -413,7 +414,7 @@ class Metrics(
     def run(self):
 
         df = self._load_filtered_main_csv_zip()
-        df = self._explode_source_field(df)
+        df = self._explode_analysis_unit(df)
         df = self._filter_stopitems(df)
 
         df, grouped_df = self._compute_primary_bibliometric_indicators(df)

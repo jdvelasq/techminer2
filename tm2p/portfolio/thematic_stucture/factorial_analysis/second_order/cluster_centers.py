@@ -14,18 +14,18 @@ Smoke test:
     ...     power_iteration_normalizer="auto",
     ...     random_state=0,
     ... )
-    >>> from tm2p.enum import Field, ItemOrderBy
+    >>> from tm2p.enum import Field, UnitOrderBy
     >>> from tm2p.portfolio.thematic_stucture.factorial_analysis.second_order import ClusterCenters
     >>> df = (
     ...     ClusterCenters()
     ...     #
     ...     # FIELD:
     ...     .with_source_field(Field.CONCEPT_NORM)
-    ...     .having_items_in_top(50)
-    ...     .having_items_ordered_by(ItemOrderBy.OCC)
-    ...     .having_item_occurrences_between(None, None)
-    ...     .having_item_citations_between(None, None)
-    ...     .having_items_in(None)
+    ...     .having_top_n_units(50)
+    ...     .having_units_ordered_by(UnitOrderBy.OCC)
+    ...     .having_unit_occurrence_between(None, None)
+    ...     .having_unit_global_citation_between(None, None)
+    ...     .having_units_in(None)
     ...     #
     ...     .using_minimum_pair_co_occurrence(1)
     ...     #

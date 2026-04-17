@@ -42,3 +42,10 @@ class Scaling(str, Enum):
     LINEAR = "LINEAR"
     LOG = "LOG"
     SQRT = "SQRT"
+
+
+class NodeSizeMetric(str, Enum):
+
+    OCC = "OCC"
+    LINKS = "LINKS"
+    TLS = "TLS"

@@ -3,7 +3,7 @@ MatrixList
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.enum import Field, ItemOrderBy
+    >>> from tm2p.enum import Field, UnitOrderBy
     >>> from tm2p.portfolio.thematic_stucture.cross_occurrence.matrix import MatrixList
     >>> df = (
     ...     MatrixList()
@@ -11,7 +11,7 @@ Smoke tests:
     ...     # COLUMNS:
     ...     .with_column_field(Field.AUTHKW_TOK)
     ...     .having_column_items_in_top(10)
-    ...     .having_column_items_ordered_by(ItemOrderBy.OCC)
+    ...     .having_column_items_ordered_by(UnitOrderBy.OCC)
     ...     .having_column_item_occurrences_between(None, None)
     ...     .having_column_item_citations_between(None, None)
     ...     .having_column_items_in(None)
@@ -19,7 +19,7 @@ Smoke tests:
     ...     # ROWS:
     ...     .with_index_field(Field.AUTH_NORM)
     ...     .having_index_items_in_top(None)
-    ...     .having_index_items_ordered_by(ItemOrderBy.OCC)
+    ...     .having_index_items_ordered_by(UnitOrderBy.OCC)
     ...     .having_index_item_occurrences_between(2, None)
     ...     .having_index_item_citations_between(None, None)
     ...     .having_index_items_in(None)
@@ -57,7 +57,7 @@ Smoke tests:
     9      Arnone G 002:00266  fintech 117:25478    2
 
 
-    >>> from tm2p.enum import Field, ItemOrderBy
+    >>> from tm2p.enum import Field, UnitOrderBy
     >>> from tm2p.portfolio.thematic_stucture.cross_occurrence.matrix import MatrixList
     >>> df = (
     ...     MatrixList()
@@ -65,7 +65,7 @@ Smoke tests:
     ...     # COLUMNS:
     ...     .with_column_field(Field.AUTHKW_TOK)
     ...     .having_column_items_in_top(10)
-    ...     .having_column_items_ordered_by(ItemOrderBy.OCC)
+    ...     .having_column_items_ordered_by(UnitOrderBy.OCC)
     ...     .having_column_item_occurrences_between(None, None)
     ...     .having_column_item_citations_between(None, None)
     ...     .having_column_items_in(None)
@@ -73,7 +73,7 @@ Smoke tests:
     ...     # ROWS:
     ...     .with_index_field(Field.AUTH_NORM)
     ...     .having_index_items_in_top(10)
-    ...     .having_index_items_ordered_by(ItemOrderBy.OCC)
+    ...     .having_index_items_ordered_by(UnitOrderBy.OCC)
     ...     .having_index_item_occurrences_between(None, None)
     ...     .having_index_item_citations_between(None, None)
     ...     .having_index_items_in(None)

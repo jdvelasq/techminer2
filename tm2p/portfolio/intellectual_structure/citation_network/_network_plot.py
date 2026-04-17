@@ -52,15 +52,15 @@ Smoke tests:
     ...     .using_node_size_range(30, 70)
     ...     .using_textfont_opacity_range(0.35, 1.00)
     ...     .using_textfont_size_range(10, 20)
-    ...     .using_top_n_node_labels(5)
+    ...     .using_max_node_labels(5)
     ...     .using_top_n_nodes(1000)
     ...     #
     ...     # https://www.w3schools.com/colors/colors_shades.asp
-    ...     .using_edge_color("#e0e0e0")
+    ...     .using_uniform_edge_color("#e0e0e0")
     ...     .using_edge_scaling(Scaling.SQRT)
-    ...     .using_edge_top_n(1000)
+    ...     .using_global_top_edges(1000)
     ...     .using_edge_width_range(0.1, 3.0)
-    ...     .using_min_edges_per_node(3)
+    ...     .using_min_node_degree(3)
     ...     .using_top_edges_per_node(5)
     ...     #
     ...     .using_xaxes_range(None, None)
@@ -95,8 +95,8 @@ Smoke tests:
     ...     #
     ...     # CITATION UNIT:
     ...     .with_citation_unit(CitationUnit.AUTH)
-    ...     .having_items_in_top(30)
-    ...     .having_items_in(None)
+    ...     .having_top_n_units(30)
+    ...     .having_units_in(None)
     ...     .having_minimum_cited_unit_occurrences(0)
     ...     .having_occurrence_threshold(2)
     ...     #
@@ -149,8 +149,8 @@ Smoke tests:
     ...     #
     ...     # CITATION UNIT:
     ...     .with_citation_unit(CitationUnit.CTRY)
-    ...     .having_items_in_top(30)
-    ...     .having_items_in(None)
+    ...     .having_top_n_units(30)
+    ...     .having_units_in(None)
     ...     .having_minimum_cited_unit_occurrences(0)
     ...     .having_occurrence_threshold(2)
     ...     #
@@ -202,8 +202,8 @@ Smoke tests:
     ...     #
     ...     # CITATION UNIT:
     ...     .with_citation_unit(CitationUnit.ORG)
-    ...     .having_items_in_top(30)
-    ...     .having_items_in(None)
+    ...     .having_top_n_units(30)
+    ...     .having_units_in(None)
     ...     .having_minimum_cited_unit_occurrences(0)
     ...     .having_occurrence_threshold(2)
     ...     #
@@ -256,8 +256,8 @@ Smoke tests:
     ...     #
     ...     # CITATION UNIT:
     ...     .with_citation_unit(CitationUnit.SRC)
-    ...     .having_items_in_top(30)
-    ...     .having_items_in(None)
+    ...     .having_top_n_units(30)
+    ...     .having_units_in(None)
     ...     .having_minimum_cited_unit_occurrences(0)
     ...     .having_occurrence_threshold(2)
     ...     #
@@ -311,7 +311,7 @@ class NetworkPlot(
 
 
 # from tm2p._intern import ParamsMixin
-# from tm2p.enum import CitationUnit, ItemOrderBy
+# from tm2p.enum import CitationUnit, UnitOrderBy
 # from tm2p.portfolio.intellectual_structure.citation_network._intern.doc import (
 #     DocNetworkPlot,
 # )
@@ -339,6 +339,6 @@ class NetworkPlot(
 #         return (
 #             Plot()
 #             .update(**self.params.__dict__)
-#             .update(items_order_by=ItemOrderBy.OCC)
+#             .update(items_order_by=UnitOrderBy.OCC)
 #             .run()
 #         )

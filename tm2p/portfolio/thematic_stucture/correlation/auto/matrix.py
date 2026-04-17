@@ -3,18 +3,18 @@ Matrix
 ===============================================================================
 
 Smoke Test:
-    >>> from tm2p.enum import ItemOrderBy, Field, Correlation
+    >>> from tm2p.enum import UnitOrderBy, Field, Correlation
     >>> from tm2p.portfolio.thematic_stucture.correlation.auto import Matrix
     >>> df = (
     ...     Matrix()
     ...     #
     ...     # FIELD:
     ...     .with_source_field(Field.AUTHKW_NORM)
-    ...     .having_items_in_top(10)
-    ...     .having_items_ordered_by(ItemOrderBy.OCC)
-    ...     .having_item_occurrences_between(None, None)
-    ...     .having_item_citations_between(None, None)
-    ...     .having_items_in(None)
+    ...     .having_top_n_units(10)
+    ...     .having_units_ordered_by(UnitOrderBy.OCC)
+    ...     .having_unit_occurrence_between(None, None)
+    ...     .having_unit_global_citation_between(None, None)
+    ...     .having_units_in(None)
     ...     #
     ...     # CORRELATION:
     ...     .with_correlation_method(Correlation.PEARSON)
@@ -52,11 +52,11 @@ Smoke Test:
     ...     #
     ...     # FIELD:
     ...     .with_source_field(Field.AUTHKW_NORM)
-    ...     .having_items_in_top(10)
-    ...     .having_items_ordered_by(ItemOrderBy.OCC)
-    ...     .having_item_occurrences_between(None, None)
-    ...     .having_item_citations_between(None, None)
-    ...     .having_items_in(None)
+    ...     .having_top_n_units(10)
+    ...     .having_units_ordered_by(UnitOrderBy.OCC)
+    ...     .having_unit_occurrence_between(None, None)
+    ...     .having_unit_global_citation_between(None, None)
+    ...     .having_units_in(None)
     ...     #
     ...     # CORRELATION:
     ...     .with_correlation_method(Correlation.COSINE)
@@ -94,11 +94,11 @@ Smoke Test:
     ...     #
     ...     # FIELD:
     ...     .with_source_field(Field.AUTHKW_NORM)
-    ...     .having_items_in_top(10)
-    ...     .having_items_ordered_by(ItemOrderBy.OCC)
-    ...     .having_item_occurrences_between(None, None)
-    ...     .having_item_citations_between(None, None)
-    ...     .having_items_in(None)
+    ...     .having_top_n_units(10)
+    ...     .having_units_ordered_by(UnitOrderBy.OCC)
+    ...     .having_unit_occurrence_between(None, None)
+    ...     .having_unit_global_citation_between(None, None)
+    ...     .having_units_in(None)
     ...     #
     ...     # CORRELATION:
     ...     .with_correlation_method(Correlation.MAXPROPORTIONAL)

@@ -8,19 +8,19 @@ Network Plot
     height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
-    >>> from tm2p.enum import AssociationIndex, CollaborationUnit, GraphClusteringAlgorithm, ItemOrderBy, Scaling
+    >>> from tm2p.enum import AssociationIndex, AnalysisUnit, GraphClusteringAlgorithm, UnitOrderBy, Scaling
     >>> from tm2p.portfolio.social_structure.collaboration_network import NetworkPlot
     >>> fig = (
     ...     NetworkPlot()
     ...     #
     ...     # ANALYSIS UNIT:
-    ...     .with_collaboration_unit(CollaborationUnit.AUTH)
+    ...     .with_analysis_unit(AnalysisUnit.AUTH)
     ...     #
-    ...     .having_items_in_top(50)
-    ...     .having_items_ordered_by(ItemOrderBy.OCC)
-    ...     .having_item_occurrences_between(None, None)
-    ...     .having_item_citations_between(None, None)
-    ...     .having_items_in(None)
+    ...     .having_top_n_units(50)
+    ...     .having_units_ordered_by(UnitOrderBy.OCC)
+    ...     .having_unit_occurrence_between(None, None)
+    ...     .having_unit_global_citation_between(None, None)
+    ...     .having_units_in(None)
     ...     #
     ...     .using_minimum_pair_co_occurrence(1)
     ...     #
@@ -38,7 +38,7 @@ Smoke tests:
     ...     .using_spring_layout_iterations(10)
     ...     .using_spring_layout_seed(0)
     ...     #
-    ...     .using_node_colors(
+    ...     .using_discrete_node_colors(
     ...         (
     ...             "#1f77b4",
     ...             "#ff7f0e",
@@ -52,21 +52,21 @@ Smoke tests:
     ...             "#17becf",
     ...         )
     ...     )
-    ...     .using_node_opacity(0.75)
+    ...     .using_uniform_node_opacity(0.75)
     ...     .using_node_scaling(Scaling.SQRT)
     ...     .using_node_size_range(12, 80)
     ...     .using_textfont_opacity_range(0.55, 1.00)
     ...     .using_textfont_size_range(10, 24)
-    ...     .using_top_n_node_labels(15)
+    ...     .using_max_node_labels(15)
     ...     .using_top_n_nodes(50)
     ...     #
     ...     # https://www.w3schools.com/colors/colors_shades.asp
-    ...     .using_edge_color("#c8c8c8")
+    ...     .using_uniform_edge_color("#c8c8c8")
     ...     .using_edge_opacity_range(0.45, 0.70)
     ...     .using_edge_scaling(Scaling.SQRT)
-    ...     .using_edge_top_n(200)
+    ...     .using_global_top_edges(200)
     ...     .using_edge_width_range(1.5, 5.0)
-    ...     .using_min_edges_per_node(2)
+    ...     .using_min_node_degree(2)
     ...     .using_top_edges_per_node(5)
     ...     #
     ...     .using_xaxes_range(None, None)
@@ -118,7 +118,7 @@ class NetworkPlot(
 
         fig = build_co_occ_network_plot(
             params=self.params,
-            similariity_matrix=similarity_matrix,
+            similarity_matrix=similarity_matrix,
             co_occurrence_matrix=co_occ_matrix,
             i2c=i2c,
         )

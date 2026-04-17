@@ -25,10 +25,9 @@ from .remove_weak_nodes import remove_weak_nodes
 from .scale_edge_opacity import scale_edge_opacity
 from .scale_edge_weight import scale_edge_weight
 from .scale_edge_width import scale_edge_width
-from .scale_node_size_by_occ import scale_node_size_by_occ
-from .scale_textfont_opacity_by_occ import scale_textfont_opacity_by_occ
-from .scale_textfont_size_by_gcs import scale_textfont_size_by_gcs
-from .scale_textfont_size_by_occ import scale_textfont_size_by_occ
+from .scale_node_size import scale_node_size
+from .scale_textfont_opacity import scale_textfont_opacity
+from .scale_textfont_size import scale_textfont_size
 from .set_cluster_names import set_cluster_names
 from .set_edge_color_by_group import set_edge_color_by_group
 from .set_edge_width_from_pandas_adjacency import set_edge_width_from_pandas_adjacency
@@ -37,9 +36,9 @@ from .set_node_group import set_node_group
 from .set_node_opacity import set_node_opacity
 from .set_node_size_by_gcs import set_node_size_by_gcs
 from .set_node_size_by_occ import set_node_size_by_occ
+from .set_node_size_properties import set_node_size_properties
 from .set_node_textposition import set_node_textposition
 from .set_top_n_node_labels import set_top_n_node_labels
-from .set_top_n_node_labels_per_group import set_top_n_node_labels_per_group
 from .set_uniform_edge_color import set_uniform_edge_color
 from .set_uniform_edge_line_style import set_uniform_edge_line_style
 from .set_uniform_node_color import set_uniform_node_color
@@ -71,10 +70,9 @@ __all__ = [
     "scale_edge_opacity",
     "scale_edge_weight",
     "scale_edge_width",
-    "scale_node_size_by_occ",
-    "scale_textfont_opacity_by_occ",
-    "scale_textfont_size_by_gcs",
-    "scale_textfont_size_by_occ",
+    "scale_node_size",
+    "scale_textfont_opacity",
+    "scale_textfont_size",
     "set_cluster_names",
     "set_edge_color_by_group",
     "set_edge_width_from_pandas_adjacency",
@@ -83,8 +81,8 @@ __all__ = [
     "set_node_opacity",
     "set_node_size_by_gcs",
     "set_node_size_by_occ",
+    "set_node_size_properties",
     "set_node_textposition",
-    "set_top_n_node_labels_per_group",
     "set_top_n_node_labels",
     "set_uniform_edge_color",
     "set_uniform_edge_line_style",

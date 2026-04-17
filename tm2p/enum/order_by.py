@@ -5,18 +5,18 @@ from .col import Col
 
 class UnitOrderBy(str, Enum):
 
-    OCC = Col.OCC
-    GCS = Col.GCS
-    LCS = Col.LCS
+    OCC = Col.OCC.value
+    GCS = Col.GCS.value
+    LCS = Col.LCS.value
 
-    LCS_PER_YEAR = Col.LCS_PER_YEAR
-    GCS_PER_YEAR = Col.GCS_PER_YEAR
+    LCS_PER_YEAR = Col.LCS_PER_YEAR.value
+    GCS_PER_YEAR = Col.GCS_PER_YEAR.value
 
-    GCS_PER_YEAR_AVG = Col.GCS_PER_YEAR_AVG
+    GCS_PER_YEAR_AVG = Col.GCS_PER_YEAR_AVG.value
 
-    H_INDEX = Col.H_INDEX
-    G_INDEX = Col.G_INDEX
-    M_INDEX = Col.M_INDEX
+    H_INDEX = Col.H_INDEX.value
+    G_INDEX = Col.G_INDEX.value
+    M_INDEX = Col.M_INDEX.value
 
 
 class RecordOrderBy(str, Enum):

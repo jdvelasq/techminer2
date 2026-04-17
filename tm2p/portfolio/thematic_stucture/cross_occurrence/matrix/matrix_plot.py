@@ -9,7 +9,7 @@ MatrixPlot
 
 
 Smoke tests:
-    >>> from tm2p.enum import Field, ItemOrderBy, Scaling
+    >>> from tm2p.enum import Field, UnitOrderBy, Scaling
     >>> from tm2p.portfolio.thematic_stucture.cross_occurrence.matrix import MatrixPlot
     >>> fig = (
     ...     MatrixPlot()
@@ -17,7 +17,7 @@ Smoke tests:
     ...     # COLUMNS:
     ...     .with_column_field(Field.KW_TOK)
     ...     .having_column_items_in_top(20)
-    ...     .having_column_items_ordered_by(ItemOrderBy.OCC)
+    ...     .having_column_items_ordered_by(UnitOrderBy.OCC)
     ...     .having_column_item_occurrences_between(None, None)
     ...     .having_column_item_citations_between(None, None)
     ...     .having_column_items_in(None)
@@ -25,7 +25,7 @@ Smoke tests:
     ...     # ROWS:
     ...     .with_index_field(Field.AUTH_NORM)
     ...     .having_index_items_in_top(15)
-    ...     .having_index_items_ordered_by(ItemOrderBy.OCC)
+    ...     .having_index_items_ordered_by(UnitOrderBy.OCC)
     ...     .having_index_item_occurrences_between(0, None)
     ...     .having_index_item_citations_between(None, None)
     ...     .having_index_items_in(None)
@@ -45,13 +45,13 @@ Smoke tests:
     ...     .using_node_size_range(30, 70)
     ...     .using_textfont_opacity_range(0.35, 1.00)
     ...     .using_textfont_size_range(10, 20)
-    ...     .using_top_n_node_labels(4)
+    ...     .using_max_node_labels(4)
     ...     #
     ...     .using_edge_colors(("#b8c6d0",))
     ...     .using_edge_scaling(Scaling.SQRT)
-    ...     .using_edge_top_n(1000)
+    ...     .using_global_top_edges(1000)
     ...     .using_edge_width_range(0.8, 4.0)
-    ...     .using_min_edges_per_node(2)
+    ...     .using_min_node_degree(2)
     ...     .using_top_edges_per_node(5)
     ...     #
     ...     .using_xaxes_range(None, None)

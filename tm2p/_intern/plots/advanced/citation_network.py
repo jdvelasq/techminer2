@@ -19,9 +19,9 @@ from ..nx import (
     scale_edge_opacity,
     scale_edge_weight,
     scale_edge_width,
-    scale_node_size_by_occ,
-    scale_textfont_opacity_by_occ,
-    scale_textfont_size_by_occ,
+    scale_node_size,
+    scale_textfont_opacity,
+    scale_textfont_size,
     set_edge_color_by_group,
     set_edge_width_from_pandas_adjacency,
     set_node_color_by_group,
@@ -61,9 +61,9 @@ def build_citation_network_plot(
 
     nx_graph = scale_edge_weight(params, nx_graph)
     nx_graph = spring_layout(params, nx_graph)
-    nx_graph = scale_node_size_by_occ(params, nx_graph)
-    nx_graph = scale_textfont_size_by_occ(params, nx_graph)
-    nx_graph = scale_textfont_opacity_by_occ(params, nx_graph)
+    nx_graph = scale_node_size(params, nx_graph)
+    nx_graph = scale_textfont_size(params, nx_graph)
+    nx_graph = scale_textfont_opacity(params, nx_graph)
 
     nx_graph = set_uniform_edge_color(params, nx_graph)
     nx_graph = set_node_color_by_group(params, nx_graph)

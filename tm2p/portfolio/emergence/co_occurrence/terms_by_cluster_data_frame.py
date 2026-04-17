@@ -16,11 +16,11 @@ Smoke tests:
     ...     TermsByClusterDataFrame()
     ...     #
     ...     # FIELD:
-    ...     .having_items_in_top(20)
-    ...     .having_items_ordered_by("OCC")
-    ...     .having_item_occurrences_between(None, None)
-    ...     .having_item_citations_between(None, None)
-    ...     .having_items_in(None)
+    ...     .having_top_n_units(20)
+    ...     .having_units_ordered_by("OCC")
+    ...     .having_unit_occurrence_between(None, None)
+    ...     .having_unit_global_citation_between(None, None)
+    ...     .having_units_in(None)
     ...     #
     ...     # NETWORK:
     ...     .using_clustering_algorithm_or_dict("louvain")
@@ -98,8 +98,8 @@ class TermsByClusterDataFrame(
             .using_graph_clustering_algorithm_or_dict(mapping)
             #
             .having_items_in_top(None)
-            .having_items_ordered_by("OCC")
-            .having_item_occurrences_between(None, None)
+            .having_units_ordered_by("OCC")
+            .having_unit_occurrence_between(None, None)
             .having_item_citations_between(None, None)
             .having_items_in(self.selected_terms)
             #

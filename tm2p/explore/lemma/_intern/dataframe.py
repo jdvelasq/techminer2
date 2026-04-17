@@ -7,11 +7,11 @@ Smoke tests:
     ...     #
     ...     # COLUMNS:
     ...     .with_field(CorpusField.AUTH_KEY_RAW)
-    ...     .having_items_in_top(None)
-    ...     .having_items_ordered_by("OCC")
-    ...     .having_item_occurrences_between(None, None)
-    ...     .having_item_citations_between(None, None)
-    ...     .having_items_in(["FINTECH", "INNOVATION", "FINANCIAL_SERVICES"])
+    ...     .having_top_n_units(None)
+    ...     .having_units_ordered_by("OCC")
+    ...     .having_unit_occurrence_between(None, None)
+    ...     .having_unit_global_citation_between(None, None)
+    ...     .having_units_in(["FINTECH", "INNOVATION", "FINANCIAL_SERVICES"])
     ...     #
     ...     # ROWS:
     ...     .having_other_terms_in_top(10)

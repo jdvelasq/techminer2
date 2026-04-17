@@ -3,7 +3,7 @@ import networkx as nx  # type: ignore
 from tm2p._intern import Params
 
 
-def set_top_n_node_labels_per_group(
+def __set_top_n_node_labels_per_group(
     params: Params,
     nx_graph: nx.Graph,
     i2c: dict[str, int],

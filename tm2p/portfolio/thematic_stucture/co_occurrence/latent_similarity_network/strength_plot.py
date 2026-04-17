@@ -11,19 +11,19 @@ StrenghtPlot
     height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
-    >>> from tm2p.enum import AssociationIndex, AnalysisUnit, ItemOrderBy
+    >>> from tm2p.enum import AssociationIndex, AnalysisUnit, UnitOrderBy
     >>> from tm2p.portfolio.thematic_stucture.co_occurrence.latent_similarity_network import StrengthPlot
     >>> fig = (
     ...     StrengthPlot()
     ...     #
     ...     # UNIT OF ANALYSIS:
-    ...     .with_co_occurrence_unit(AnalysisUnit.KW)
+    ...     .with_analysis_unit(AnalysisUnit.KW)
     ...     #
-    ...     .having_items_in_top(20)
-    ...     .having_items_ordered_by(ItemOrderBy.OCC)
-    ...     .having_item_occurrences_between(None, None)
-    ...     .having_item_citations_between(None, None)
-    ...     .having_items_in(None)
+    ...     .having_top_n_units(20)
+    ...     .having_units_ordered_by(UnitOrderBy.OCC)
+    ...     .having_unit_occurrence_between(None, None)
+    ...     .having_unit_global_citation_between(None, None)
+    ...     .having_units_in(None)
     ...     #
     ...     .using_minimum_pair_co_occurrence(1)
     ...     #
@@ -56,13 +56,13 @@ Smoke tests:
     ...     StrengthPlot()
     ...     #
     ...     # UNIT OF ANALYSIS:
-    ...     .with_co_occurrence_unit(AnalysisUnit.KW)
+    ...     .with_analysis_unit(AnalysisUnit.KW)
     ...     #
-    ...     .having_items_in_top(20)
-    ...     .having_items_ordered_by(ItemOrderBy.OCC)
-    ...     .having_item_occurrences_between(None, None)
-    ...     .having_item_citations_between(None, None)
-    ...     .having_items_in(None)
+    ...     .having_top_n_units(20)
+    ...     .having_units_ordered_by(UnitOrderBy.OCC)
+    ...     .having_unit_occurrence_between(None, None)
+    ...     .having_unit_global_citation_between(None, None)
+    ...     .having_units_in(None)
     ...     #
     ...     # COUNTERS:
     ...     .using_counters(False)

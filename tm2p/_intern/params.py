@@ -12,6 +12,7 @@ from tm2p.enum import (
     Correlation,
     Field,
     GraphClusteringAlgorithm,
+    NodeSizeMetric,
     RecordOrderBy,
     Scaling,
     ThFile,
@@ -323,12 +324,17 @@ class Params:
 
     # -------------------------------------------------------------------------
 
+    node_size_metric: NodeSizeMetric
     node_size_range: Tuple[int, int]
     node_size_uniform: int
 
     # -------------------------------------------------------------------------
 
     max_node_labels: int
+    node_label_max_length: int
+
+    # -------------------------------------------------------------------------
+
     min_node_degree: int
     top_n_nodes: int
 

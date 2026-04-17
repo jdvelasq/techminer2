@@ -24,18 +24,18 @@ Smoke test:
     ...     algorithm="elkan",
     ...     random_state=0,
     ... )
-    >>> from tm2p.enum import Field, ItemOrderBy
+    >>> from tm2p.enum import Field, UnitOrderBy
     >>> from tm2p.synthesize.factor.co_occur import FactorMap
     >>> plot = (
     ...     FactorMap()
     ...     #
     ...     # FIELD:
     ...     .with_source_field(Field.CONCEPT_NORM)
-    ...     .having_items_in_top(50)
-    ...     .having_items_ordered_by(ItemOrderBy.OCC)
-    ...     .having_item_occurrences_between(None, None)
-    ...     .having_item_citations_between(None, None)
-    ...     .having_items_in(None)
+    ...     .having_top_n_units(50)
+    ...     .having_units_ordered_by(UnitOrderBy.OCC)
+    ...     .having_unit_occurrence_between(None, None)
+    ...     .having_unit_global_citation_between(None, None)
+    ...     .having_units_in(None)
     ...     #
     ...     .using_minimum_pair_co_occurrence(1)
     ...     #
@@ -60,7 +60,7 @@ Smoke test:
     ...     #
     ...     .using_edge_colors(["#7793a5", "#7793a5", "#7793a5", "#7793a5"])
     ...     .using_edge_similarity_threshold(0)
-    ...     .using_edge_top_n(None)
+    ...     .using_global_top_edges(None)
     ...     .using_edge_widths([2, 2, 4, 6])
     ...     #
     ...     .using_xaxes_range(None, None)

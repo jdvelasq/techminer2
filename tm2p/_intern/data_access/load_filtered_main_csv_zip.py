@@ -167,6 +167,9 @@ def _filter_dataframe_by_match(params: Params, df: pd.DataFrame) -> pd.DataFrame
 
 def _sort_dataframe_by(params: Params, df: pd.DataFrame) -> pd.DataFrame:
 
+    if "records_order_by" not in params.__dict__:
+        return df
+
     sort_by = params.records_order_by
 
     if sort_by is None:

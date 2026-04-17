@@ -98,7 +98,7 @@ Smoke tests:
 #         self.keywords = (
 #             Metrics()
 #             .with_source_field("raw_keywords")
-#             .having_items_ordered_by("OCC")
+#             .having_units_ordered_by("OCC")
 #             .where_root_directory(self.params.root_directory)
 #         ).run()
 

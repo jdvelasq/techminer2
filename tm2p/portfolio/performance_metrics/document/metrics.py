@@ -4,17 +4,17 @@ Metrics
 
 
 Smoke tests:
-    >>> from tm2p.enum import ItemOrderBy
+    >>> from tm2p.enum import UnitOrderBy
     >>> from tm2p.portfolio.performance_metrics.document import Metrics
     >>> df = (
     ...     Metrics()
     ...     #
     ...     # FIELD:
-    ...     .having_items_in_top(10)
-    ...     .having_items_ordered_by(ItemOrderBy.GCS)
-    ...     .having_item_occurrences_between(None, None)
-    ...     .having_item_citations_between(None, None)
-    ...     .having_items_in(None)
+    ...     .having_top_n_units(10)
+    ...     .having_units_ordered_by(UnitOrderBy.GCS)
+    ...     .having_unit_occurrence_between(None, None)
+    ...     .having_unit_global_citation_between(None, None)
+    ...     .having_units_in(None)
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/scopus/")

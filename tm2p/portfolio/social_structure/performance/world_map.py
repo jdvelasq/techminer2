@@ -9,7 +9,7 @@ WorldMap
 
 
 Smoke tests:
-    >>> from tm2p.enum import Field, ItemOrderBy
+    >>> from tm2p.enum import Field, UnitOrderBy
     >>> from tm2p.portfolio.social_structure.collaboration import WorldMap
     >>> fig = (
     ...     WorldMap()
