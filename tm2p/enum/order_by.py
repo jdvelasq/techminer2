@@ -1,5 +1,23 @@
 from enum import Enum
 
+from .cols import Cols
+
+
+class UnitOrderBy(str, Enum):
+
+    OCC = Cols.OCC
+    GCS = Cols.GCS
+    LCS = Cols.LCS
+
+    LCS_PER_YEAR = Cols.LCS_PER_YEAR
+    GCS_PER_YEAR = Cols.GCS_PER_YEAR
+
+    GCS_PER_YEAR_AVG = Cols.GCS_PER_YEAR_AVG
+
+    H_INDEX = Cols.H_INDEX
+    G_INDEX = Cols.G_INDEX
+    M_INDEX = Cols.M_INDEX
+
 
 class RecordOrderBy(str, Enum):
 

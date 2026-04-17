@@ -68,7 +68,9 @@ class Metrics(
                 YEAR,
             ]
         ].dropna()
-        top_n = int(self.params.top_n) if self.params.top_n is not None else 0
+        top_n = (
+            int(self.params.top_n_units) if self.params.top_n_units is not None else 0
+        )
         df = df.head(top_n)
         df = df.reset_index(drop=True)
 

@@ -8,5 +8,5 @@ def set_uniform_node_color(
     nx_graph: nx.Graph,
 ) -> nx.Graph:
     for node in nx_graph.nodes():
-        nx_graph.nodes[node]["node_color"] = params.node_color
+        nx_graph.nodes[node]["node_color"] = params.node_color_uniform
     return nx_graph

@@ -102,7 +102,7 @@ class BaseItemToCluster(
         )
         i2c = {item: cluster for cluster, items in c2i.items() for item in items}
 
-        if self.params.counters is False:
+        if self.params.use_counters is False:
             i2c = {
                 " ".join(item.split(" ")[:-1]): cluster for item, cluster in i2c.items()
             }

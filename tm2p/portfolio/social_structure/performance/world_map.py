@@ -28,7 +28,7 @@ Smoke tests:
 import plotly.express as px  # type: ignore
 
 from tm2p._intern import ParamsMixin
-from tm2p.enum import Field, ItemOrderBy
+from tm2p.enum import Field, UnitOrderBy
 from tm2p.portfolio.performance_metrics.item_metrics import WorldMap as OccWorldMap
 from tm2p.portfolio.thematic_stucture.co_occurrence.matrix.matrix_list import (
     MatrixList as CoOccurrenceDataFrame,
@@ -47,7 +47,7 @@ class WorldMap(
             CoOccurrenceDataFrame()
             .update(**self.params.__dict__)
             .with_source_field(Field.CTRY)
-            .update(terms_order_by=ItemOrderBy.OCC)
+            .update(terms_order_by=UnitOrderBy.OCC)
             .run()
         )
 

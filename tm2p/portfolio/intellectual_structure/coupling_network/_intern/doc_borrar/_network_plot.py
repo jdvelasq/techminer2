@@ -23,8 +23,8 @@ class xDocNetworkPlot(
 
     def run(self):
 
-        use_counters = self.params.counters
-        self.params.counters = True
+        use_counters = self.params.use_counters
+        self.params.use_counters = True
 
         nx_graph = doc_create_nx_graph(params=self.params)
         nx_graph = cluster_nx_graph(params=self.params, nx_graph=nx_graph)
@@ -48,7 +48,7 @@ class xDocNetworkPlot(
         nx_graph = assign_constant_to_edge_colors(params=self.params, nx_graph=nx_graph)
 
         if use_counters is False:
-            self.params.counters = False
+            self.params.use_counters = False
             for node, data in nx_graph.nodes(data=True):
                 text = data["text"]
                 nx_graph.nodes[node]["text"] = remove_counters(text)

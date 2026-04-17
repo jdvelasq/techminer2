@@ -88,7 +88,7 @@ class RankingPlot(
         fig = px.line(
             df,
             x="Rank",
-            y=self.params.plotting_column.value,  # type: ignore
+            y=self.params.ranking_plotting_column.value,  # type: ignore
             hover_data=df.columns.to_list(),
             markers=True,
         )
@@ -130,13 +130,13 @@ class RankingPlot(
         for name, row in df.iterrows():
             fig.add_annotation(
                 x=row["Rank"],
-                y=row[self.params.plotting_column.value],  # type: ignore
+                y=row[self.params.ranking_plotting_column.value],  # type: ignore
                 text=name,
                 showarrow=False,
                 textangle=-90,
                 yanchor="bottom",
                 font={
-                    "size": self.params.textfont_size,
+                    "size": self.params.textfont_size_uniform,
                 },
                 yshift=self.params.yshift,
             )

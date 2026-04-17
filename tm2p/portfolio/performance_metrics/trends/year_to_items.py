@@ -94,12 +94,12 @@ Smoke tests:
 
 from tm2p._intern import Params, ParamsMixin, SortAxesMixin
 from tm2p._intern.data_access import load_filtered_main_csv_zip
-from tm2p.enum import Field, ItemOrderBy
+from tm2p.enum import Field, UnitOrderBy
 
 from ..item_metrics import Metrics
 
 GCS = Field.GCS.value
-OCC = ItemOrderBy.OCC.value
+OCC = UnitOrderBy.OCC.value
 YEAR = Field.YEAR.value
 
 COUNTERS = "COUNTERS"
@@ -116,7 +116,7 @@ class YearToItems(
 
         mapping = {}
 
-        use_counters = self.params.counters
+        use_counters = self.params.use_counters
 
         years = _get_years(params=self.params)
         for year in years:

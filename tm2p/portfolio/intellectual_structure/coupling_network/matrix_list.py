@@ -329,14 +329,14 @@ class MatrixList(
     def run(self):
         """:meta private:"""
 
-        use_counters = self.params.counters
-        self.params.counters = True
+        use_counters = self.params.use_counters
+        self.params.use_counters = True
 
         matrix_list = self._compute_document_bibliographic_coupling()
 
         def remove_counters(matrix_list):
             if use_counters is False:
-                self.params.counters = False
+                self.params.use_counters = False
                 matrix_list["ROWS"] = matrix_list["ROWS"].apply(
                     lambda x: " ".join(x.split(" ")[:-1])
                 )

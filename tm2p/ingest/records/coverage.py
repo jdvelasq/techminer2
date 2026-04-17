@@ -36,7 +36,7 @@ from tm2p._intern import ParamsMixin
 from tm2p._intern.data_access.load_filtered_main_csv_zip import (
     load_filtered_main_csv_zip,
 )
-from tm2p.enum.column import COVERAGE, CUM_SUM_DOCS, CUM_SUM_ITEMS, OCC, RID
+from tm2p.enum.cols import COVERAGE, CUM_SUM_DOCS, CUM_SUM_ITEMS, OCC, RID
 
 
 class Coverage(

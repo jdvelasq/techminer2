@@ -56,7 +56,7 @@ def build_co_occ_network_plot(
         params=params,
         nx_graph=nx_graph,
         i2c=i2c,
-        top_n=params.top_n_node_labels,
+        top_n=params.max_node_labels,
     )
 
     nx_graph = scale_edge_weight(params, nx_graph)

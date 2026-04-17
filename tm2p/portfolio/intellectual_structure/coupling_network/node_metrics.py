@@ -23,7 +23,7 @@ Smoke tests:
     ...     #
     ...     .having_items_in_top(30)
     ...     .having_items_in(None)
-    ...     .having_minimum_citation_count(0)
+    ...     .having_minimum_cited_unit_occurrences(0)
     ...     .having_occurrence_threshold(1)
     ...     #
     ...     # COUNTERS:

@@ -26,7 +26,7 @@ Smoke tests:
 """
 
 from tm2p._intern import ParamsMixin
-from tm2p.enum import Field, ItemOrderBy
+from tm2p.enum import Field, UnitOrderBy
 from tm2p.portfolio.performance_metrics.item_metrics import Metrics
 
 
@@ -53,7 +53,7 @@ class Distribution(
             Metrics()
             .update(**self.params.__dict__)
             .with_source_field(Field.AUTH_NORM)
-            .having_items_ordered_by(ItemOrderBy.OCC)
+            .having_units_ordered_by(UnitOrderBy.OCC)
             .run()
         )
 

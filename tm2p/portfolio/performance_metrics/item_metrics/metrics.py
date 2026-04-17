@@ -73,7 +73,7 @@ import pandas as pd  # type: ignore
 
 from tm2p._intern import ParamsMixin
 from tm2p._intern.data_access import load_filtered_main_csv_zip
-from tm2p.enum.column import (
+from tm2p.enum.cols import (
     AGE,
     COUNTERS,
     G_INDEX,
@@ -305,10 +305,10 @@ class Metrics(
 
         grouped_df = grouped_df.copy()
 
-        if self.params.item_occurrences_range is None:
+        if self.params.unit_occurrence_range is None:
             return grouped_df
 
-        min_value, max_value = self.params.item_occurrences_range
+        min_value, max_value = self.params.unit_occurrence_range
 
         if min_value is not None:
             grouped_df = grouped_df[grouped_df[OCC] >= min_value]
@@ -322,10 +322,10 @@ class Metrics(
 
         grouped_df = grouped_df.copy()
 
-        if self.params.item_citations_range is None:
+        if self.params.unit_global_citation_range is None:
             return grouped_df
 
-        min_value, max_value = self.params.item_citations_range
+        min_value, max_value = self.params.unit_global_citation_range
 
         if min_value is not None:
             grouped_df = grouped_df[grouped_df[GCS] >= min_value]
@@ -339,12 +339,12 @@ class Metrics(
 
         grouped_df = grouped_df.copy()
 
-        if self.params.items_in is None:
+        if self.params.units_in is None:
             return grouped_df
 
-        if self.params.items_in is not None:
+        if self.params.units_in is not None:
             #
-            items_in = [t for t in self.params.items_in if t in grouped_df.index]
+            items_in = [t for t in self.params.units_in if t in grouped_df.index]
             #
             grouped_df = grouped_df.loc[items_in, :]
 
@@ -353,15 +353,15 @@ class Metrics(
     # -------------------------------------------------------------------------
     def _filter_by_top_n_items(self, grouped_df):
 
-        columns = SELECTED_COLUMNS[self.params.items_order_by.value]
+        columns = SELECTED_COLUMNS[self.params.unit_order_by.value]
         ascending = [False] * (len(columns) - 1) + [True]
 
         grouped_df["_name_"] = grouped_df.index.tolist()
         grouped_df = grouped_df.sort_values(columns, ascending=ascending)
         grouped_df = grouped_df.drop(columns=["_name_"])
 
-        if self.params.top_n is not None:
-            grouped_df = grouped_df.head(self.params.top_n)
+        if self.params.top_n_units is not None:
+            grouped_df = grouped_df.head(self.params.top_n_units)
 
         return grouped_df
 

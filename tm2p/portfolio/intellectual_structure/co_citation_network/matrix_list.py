@@ -11,11 +11,11 @@ Smoke tests:
     >>> df = (
     ...     MatrixList()
     ...     #
-    ...     # CO-CITATION UNIT:
+    ...     # ANALYSIS UNIT:
     ...     .with_co_citation_unit(CoCitationUnit.CITED_REF)
     ...     #
     ...     .having_cited_items_in_top(50)
-    ...     .having_minimum_citation_count(0)
+    ...     .having_minimum_cited_unit_occurrences(0)
     ...     #
     ...     # COUNTERS:
     ...     .using_counters(True)
@@ -52,11 +52,11 @@ Smoke tests:
     >>> df = (
     ...     MatrixList()
     ...     #
-    ...     # CO-CITATION UNIT:
+    ...     # ANALYSIS UNIT:
     ...     .with_co_citation_unit(CoCitationUnit.CITED_REF)
     ...     #
     ...     .having_cited_items_in_top(50)
-    ...     .having_minimum_citation_count(0)
+    ...     .having_minimum_cited_unit_occurrences(0)
     ...     #
     ...     # COUNTERS:
     ...     .using_counters(False)
@@ -95,11 +95,11 @@ Smoke tests:
     >>> df = (
     ...     MatrixList()
     ...     #
-    ...     # CO-CITATION UNIT:
+    ...     # ANALYSIS UNIT:
     ...     .with_co_citation_unit(CoCitationUnit.CITED_AUTH)
     ...     #
     ...     .having_cited_items_in_top(50)
-    ...     .having_minimum_citation_count(0)
+    ...     .having_minimum_cited_unit_occurrences(0)
     ...     #
     ...     # COUNTERS:
     ...     .using_counters(True)
@@ -138,11 +138,11 @@ Smoke tests:
     >>> df = (
     ...     MatrixList()
     ...     #
-    ...     # CO-CITATION UNIT:
+    ...     # ANALYSIS UNIT:
     ...     .with_co_citation_unit(CoCitationUnit.CITED_SRC)
     ...     #
     ...     .having_cited_items_in_top(50)
-    ...     .having_minimum_citation_count(1)
+    ...     .having_minimum_cited_unit_occurrences(1)
     ...     #
     ...     # COUNTERS:
     ...     .using_counters(True)
@@ -224,7 +224,7 @@ class MatrixList(
 
     def _add_counters(self, matrix_list, counts):
 
-        if not self.params.counters:
+        if not self.params.use_counters:
             return matrix_list
 
         mapping = dict(
@@ -292,8 +292,8 @@ class MatrixList(
         df = df.explode(GCR)  # type: ignore
         df[GCR] = df[GCR].str.strip()
         counts = df[GCR].value_counts()
-        counts = counts.loc[counts >= self.params.minimum_citation_count]
-        counts = counts.head(self.params.cited_top_n)
+        counts = counts.loc[counts >= self.params.minimum_cited_unit_occurrences]
+        counts = counts.head(self.params.top_n_cited_units)
         return counts
 
     def _transform_refs_to_cited_units(self, df):

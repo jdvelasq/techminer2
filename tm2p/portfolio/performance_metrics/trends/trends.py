@@ -94,13 +94,13 @@ Smoke tests:
 
 from tm2p._intern import ParamsMixin, SortAxesMixin
 from tm2p._intern.data_access import load_filtered_main_csv_zip
-from tm2p.enum import Field, ItemOrderBy
+from tm2p.enum import Field, UnitOrderBy
 
 from ...._intern.helpers.get_zero_digits import get_zero_digits
 from ..item_metrics import Metrics
 
 GCS = Field.GCS.value
-OCC = ItemOrderBy.OCC.value
+OCC = UnitOrderBy.OCC.value
 YEAR = Field.YEAR.value
 
 COUNTERS = "COUNTERS"
@@ -188,7 +188,7 @@ class Trends(
         return self.sort_index(df)
 
     def _remove_counter_from_axis(self, df):
-        if self.params.counters is False:
+        if self.params.use_counters is False:
             df.index = df.index.str.split().str[:-1].str.join(" ")
         return df
 

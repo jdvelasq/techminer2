@@ -111,32 +111,32 @@ class Matrix(
             .update(**self.params.__dict__)
             #
             # COLUMNS:
-            .with_column_field(self.params.source_field)
-            .having_column_items_in_top(self.params.top_n)
-            .having_column_items_ordered_by(self.params.items_order_by)
-            .having_column_item_occurrences_between(
-                self.params.item_occurrences_range[0],
-                self.params.item_occurrences_range[1],
+            .with_column_analysis_unit(self.params.source_field)
+            .having_column_items_in_top(self.params.top_n_units)
+            .having_column_units_ordered_by(self.params.unit_order_by)
+            .having_column_item_occurrence_between(
+                self.params.unit_occurrence_range[0],
+                self.params.unit_occurrence_range[1],
             )
-            .having_column_item_citations_between(
-                self.params.item_citations_range[0],
-                self.params.item_citations_range[1],
+            .having_column_unit_citation_between(
+                self.params.unit_global_citation_range[0],
+                self.params.unit_global_citation_range[1],
             )
-            .having_column_items_in(self.params.items_in)
+            .having_column_items_in(self.params.units_in)
             #
             # ROWS:
-            .with_index_field(self.params.source_field)
-            .having_index_items_in_top(self.params.top_n)
-            .having_index_items_ordered_by(self.params.items_order_by)
-            .having_index_item_occurrences_between(
-                self.params.item_occurrences_range[0],
-                self.params.item_occurrences_range[1],
+            .with_index_analysis_unit(self.params.source_field)
+            .having_index_units_in_top(self.params.top_n_units)
+            .having_index_items_ordered_by(self.params.unit_order_by)
+            .having_index_unit_occurrence_between(
+                self.params.unit_occurrence_range[0],
+                self.params.unit_occurrence_range[1],
             )
-            .having_index_item_citations_between(
-                self.params.item_citations_range[0],
-                self.params.item_citations_range[1],
+            .having_index_unit_citation_between(
+                self.params.unit_global_citation_range[0],
+                self.params.unit_global_citation_range[1],
             )
-            .having_index_items_in(self.params.items_in)
+            .having_index_units_in(self.params.units_in)
             #
             .using_minimum_pair_co_occurrence(1)
             #

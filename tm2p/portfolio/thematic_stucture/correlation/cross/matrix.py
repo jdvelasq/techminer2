@@ -134,7 +134,7 @@ Smoke tests:
 """
 
 from tm2p._intern import ParamsMixin
-from tm2p.enum import ItemOrderBy
+from tm2p.enum import UnitOrderBy
 from tm2p.portfolio.thematic_stucture.cross_occurrence.matrix import Matrix as OCCMatrix
 
 from .._intern import comput_correl_matrix
@@ -151,24 +151,24 @@ class Matrix(
             OCCMatrix()
             .update(**self.params.__dict__)
             #
-            .with_column_field(self.params.source_field)
-            .having_column_items_in_top(self.params.top_n)
-            .having_column_items_ordered_by(ItemOrderBy.OCC)
-            .having_column_item_occurrences_between(
-                self.params.item_occurrences_range[0],
-                self.params.item_occurrences_range[1],
+            .with_column_analysis_unit(self.params.source_field)
+            .having_column_items_in_top(self.params.top_n_units)
+            .having_column_units_ordered_by(UnitOrderBy.OCC)
+            .having_column_item_occurrence_between(
+                self.params.unit_occurrence_range[0],
+                self.params.unit_occurrence_range[1],
             )
-            .having_column_item_citations_between(
-                self.params.item_citations_range[0],
-                self.params.item_citations_range[1],
+            .having_column_unit_citation_between(
+                self.params.unit_global_citation_range[0],
+                self.params.unit_global_citation_range[1],
             )
-            .having_column_items_in(self.params.items_in)
+            .having_column_items_in(self.params.units_in)
             #
-            .with_index_field(self.params.cross_field)
-            .having_index_items_ordered_by(ItemOrderBy.OCC)
-            .having_index_item_occurrences_between(None, None)
-            .having_index_item_citations_between(None, None)
-            .having_index_items_in(None)
+            .with_index_analysis_unit(self.params.cross_analysis_unit)
+            .having_index_items_ordered_by(UnitOrderBy.OCC)
+            .having_index_unit_occurrence_between(None, None)
+            .having_index_unit_citation_between(None, None)
+            .having_index_units_in(None)
             #
             .run()
         )

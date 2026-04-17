@@ -10,12 +10,20 @@ def style_edges_by_weight_bins(
 
     def get_properties(weight: float):
         if weight < 0.25:
-            return params.edge_widths[0], "dot", params.edge_colors[0]
+            return params.edge_widths_discrete[0], "dot", params.edge_colors_discrete[0]
         if weight < 0.5:
-            return params.edge_widths[1], "dash", params.edge_colors[1]
+            return (
+                params.edge_widths_discrete[1],
+                "dash",
+                params.edge_colors_discrete[1],
+            )
         if weight < 0.75:
-            return params.edge_widths[2], "solid", params.edge_colors[2]
-        return params.edge_widths[3], "solid", params.edge_colors[3]
+            return (
+                params.edge_widths_discrete[2],
+                "solid",
+                params.edge_colors_discrete[2],
+            )
+        return params.edge_widths_discrete[3], "solid", params.edge_colors_discrete[3]
 
     for edge in nx_graph.edges():
 

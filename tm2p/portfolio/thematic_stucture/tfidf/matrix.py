@@ -99,7 +99,7 @@ from sklearn.feature_extraction.text import TfidfTransformer  # type: ignore
 from tm2p._intern import ParamsMixin, SortAxesMixin
 from tm2p._intern.data_access import load_filtered_main_csv_zip
 from tm2p._intern.helpers.get_zero_digits import get_zero_digits
-from tm2p.enum.column import COUNTERS, GCS, OCC, RID
+from tm2p.enum.cols import COUNTERS, GCS, OCC, RID
 from tm2p.portfolio.performance_metrics.item_metrics import Metrics
 
 
@@ -157,7 +157,7 @@ class Matrix(
         )
         matrix = matrix.fillna(0)
 
-        if self.params.binary_item_frequencies is True:
+        if self.params.tfidf_binary_frequencies is True:
             matrix = matrix.map(lambda w: 1 if w > 0 else 0)
 
         return matrix
@@ -206,7 +206,7 @@ class Matrix(
         return self.sort_columns(data_frame)
 
     def _remove_counters_from_axes(self, data_frame):
-        if self.params.counters is False:
+        if self.params.use_counters is False:
             data_frame.columns = [" ".join(x.split()[:-1]) for x in data_frame.columns]
         return data_frame
 

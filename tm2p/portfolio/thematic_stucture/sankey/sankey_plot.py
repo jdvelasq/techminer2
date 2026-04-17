@@ -50,7 +50,7 @@ Smoke tests:
 import plotly.graph_objects as go  # type: ignore
 
 from tm2p._intern import ParamsMixin
-from tm2p.enum import ItemOrderBy
+from tm2p.enum import UnitOrderBy
 from tm2p.portfolio.thematic_stucture.cross_occurrence.matrix import Matrix
 
 
@@ -64,7 +64,7 @@ class SankeyPlot(
 
         matrices = []
         fields = self.params.source_fields
-        top_n = self.params.sankey_top_n
+        top_n = self.params.top_n_sankey_units
 
         for (
             idx,
@@ -83,14 +83,14 @@ class SankeyPlot(
                 .update(**self.params.__dict__)
                 #
                 # COLUMNS:
-                .with_column_field(col_field)
-                .having_column_items_ordered_by(ItemOrderBy.OCC)
+                .with_column_analysis_unit(col_field)
+                .having_column_units_ordered_by(UnitOrderBy.OCC)
                 .having_column_items_in_top(col_top_n)
                 #
                 # ROWS:
-                .with_index_field(idx)
-                .having_index_items_ordered_by(ItemOrderBy.OCC)
-                .having_index_items_in_top(
+                .with_index_analysis_unit(idx)
+                .having_index_items_ordered_by(UnitOrderBy.OCC)
+                .having_index_units_in_top(
                     idx_top_n,
                 )
                 #
@@ -149,7 +149,7 @@ class SankeyPlot(
         )
         fig.update_layout(
             title_text=self.params.title_text,
-            font_size=self.params.textfont_size,
+            font_size=self.params.textfont_size_uniform,
         )
         return fig
 

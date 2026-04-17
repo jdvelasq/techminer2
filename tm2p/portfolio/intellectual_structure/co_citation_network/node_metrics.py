@@ -19,7 +19,7 @@ Smoke tests:
     ...     .with_co_citation_unit(CoCitationUnit.CITED_AUTH)
     ...     #
     ...     .having_items_in_top(30)
-    ...     .having_minimum_citation_count(0)
+    ...     .having_minimum_cited_unit_occurrences(0)
     ...     #
     ...     # COUNTERS:
     ...     .using_counters(True)

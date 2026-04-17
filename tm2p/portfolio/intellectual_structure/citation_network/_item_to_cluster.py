@@ -56,7 +56,7 @@ Smoke tests:
     ...     .with_citation_unit(CitationUnit.AUTH)
     ...     #
     ...     .having_items_in_top(50)
-    ...     .having_minimum_citation_count(0)
+    ...     .having_minimum_cited_unit_occurrences(0)
     ...     .having_occurrence_threshold(1)
     ...     .having_items_in(None)
     ...     #
@@ -98,7 +98,7 @@ Smoke tests:
     ...     .with_citation_unit(CitationUnit.CTRY)
     ...     #
     ...     .having_items_in_top(30)
-    ...     .having_minimum_citation_count(0)
+    ...     .having_minimum_cited_unit_occurrences(0)
     ...     .having_occurrence_threshold(2)
     ...     .having_items_in(None)
     ...     #
@@ -141,7 +141,7 @@ Smoke tests:
     ...     .with_citation_unit(CitationUnit.ORG)
     ...     #
     ...     .having_items_in_top(30)
-    ...     .having_minimum_citation_count(0)
+    ...     .having_minimum_cited_unit_occurrences(0)
     ...     .having_occurrence_threshold(2)
     ...     .having_items_in(None)
     ...     #
@@ -185,7 +185,7 @@ Smoke tests:
     ...     .with_citation_unit(CitationUnit.SRC)
     ...     #
     ...     .having_items_in_top(30)
-    ...     .having_minimum_citation_count(0)
+    ...     .having_minimum_cited_unit_occurrences(0)
     ...     .having_occurrence_threshold(2)
     ...     .having_items_in(None)
     ...     #
@@ -250,7 +250,7 @@ class ItemToCluster(
 
     def run(self):
 
-        use_counters = self.params.counters
+        use_counters = self.params.use_counters
         nx_graph = _create_nx_graph(params=self.params)
         nx_graph = detect_communities(self.params, nx_graph)
         i2c = nodes_to_clusters(nx_graph)

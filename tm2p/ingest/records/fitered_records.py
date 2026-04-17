@@ -32,7 +32,7 @@ Smoke tests:
 
 from tm2p._intern import ParamsMixin
 from tm2p._intern.data_access import load_filtered_main_csv_zip
-from tm2p.enum import Field, ItemOrderBy
+from tm2p.enum import Field, UnitOrderBy
 
 AUTH_RAW = Field.AUTH_RAW.value
 GCS = Field.GCS.value
@@ -42,8 +42,8 @@ RID = Field.REC_ID.value
 TITLE_RAW = Field.TITLE_RAW.value
 YEAR = Field.YEAR.value
 
-GCS_PER_YEAR = ItemOrderBy.GCS_PER_YEAR.value
-LCS_PER_YEAR = ItemOrderBy.LCS_PER_YEAR.value
+GCS_PER_YEAR = UnitOrderBy.GCS_PER_YEAR.value
+LCS_PER_YEAR = UnitOrderBy.LCS_PER_YEAR.value
 RANK_GCS = "RANK_GCS"
 RANK_LCS = "RANK_LCS"
 

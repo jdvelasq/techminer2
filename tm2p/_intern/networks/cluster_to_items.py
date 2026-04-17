@@ -15,7 +15,7 @@ class BaseClusterToItems(
 
     def run(self):
 
-        use_counters = self.params.counters
+        use_counters = self.params.use_counters
 
         i2c = (
             self.item_to_cluster()

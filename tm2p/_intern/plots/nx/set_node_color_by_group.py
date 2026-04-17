@@ -10,7 +10,7 @@ def set_node_color_by_group(
 ) -> nx.Graph:
 
     colors = (
-        list(params.node_colors)
+        list(params.node_colors_discrete)
         + px.colors.qualitative.Pastel1
         + px.colors.qualitative.Pastel2
         + px.colors.qualitative.Dark24

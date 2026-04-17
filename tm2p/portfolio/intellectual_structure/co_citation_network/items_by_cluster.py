@@ -13,7 +13,7 @@ ItemsByCluster
     ...     .with_co_citation_unit(CoCitationUnit.CITED_AUTH)
     ...     #
     ...     .having_items_in_top(30)
-    ...     .having_minimum_citation_count(0)
+    ...     .having_minimum_cited_unit_occurrences(0)
     ...     #
     ...     # COUNTERS:
     ...     .using_counters(True)
@@ -55,7 +55,7 @@ ItemsByCluster
     ...     .with_co_citation_unit(CoCitationUnit.CITED_REF)
     ...     #
     ...     .having_items_in_top(30)
-    ...     .having_minimum_citation_count(0)
+    ...     .having_minimum_cited_unit_occurrences(0)
     ...     .having_items_in(None)
     ...     #
     ...     # COUNTERS:
@@ -99,7 +99,7 @@ ItemsByCluster
     ...     .with_co_citation_unit(CoCitationUnit.CITED_SRC)
     ...     #
     ...     .having_items_in_top(50)
-    ...     .having_minimum_citation_count(0)
+    ...     .having_minimum_cited_unit_occurrences(0)
     ...     .having_items_in(None)
     ...     #
     ...     # COUNTERS:

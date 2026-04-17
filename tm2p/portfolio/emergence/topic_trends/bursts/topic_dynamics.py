@@ -222,8 +222,8 @@ class TopicDynamics(
 
     def run(self):
 
-        use_counters = self.params.counters
-        self.params.counters = True
+        use_counters = self.params.use_counters
+        self.params.use_counters = True
         df = Trends().update(**self.params.__dict__).run()
         results = self.detect_bursts_from_df(df)
         summary = self.burst_summary_table(results)
@@ -242,7 +242,7 @@ class TopicDynamics(
         summary = summary.set_index("ITEM")
 
         if use_counters is False:
-            self.params.counters = False
+            self.params.use_counters = False
             summary.index = summary.index.map(remove_counters)
 
         return summary

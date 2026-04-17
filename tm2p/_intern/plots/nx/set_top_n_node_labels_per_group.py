@@ -12,7 +12,7 @@ def set_top_n_node_labels_per_group(
 
     for node in nx_graph.nodes():
         if "text" not in nx_graph.nodes[node]:
-            if params.counters:
+            if params.use_counters:
                 nx_graph.nodes[node]["text"] = node
             else:
                 nx_graph.nodes[node]["text"] = " ".join(node.split(" ")[:-1])

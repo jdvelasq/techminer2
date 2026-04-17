@@ -27,8 +27,8 @@ def plot_correl_map(
     matrix_list = _apply_similarity_threshold(
         matrix_list, params.edge_similarity_threshold
     )
-    matrix_list = _select_top_links(matrix_list, params.edge_top_n)
-    matrix_list = _select_min_links_per_node(matrix_list, params.min_edges_per_node)
+    matrix_list = _select_top_links(matrix_list, params.global_top_edges)
+    matrix_list = _select_min_links_per_node(matrix_list, params.min_node_degree)
     matrix_list = _select_top_links_per_node(matrix_list, params.top_edges_per_node)
     nx_graph = add_weighted_edges_from_matrix_list(nx_graph, matrix_list)
     nx_graph = _set_node_properties(params, nx_graph, matrix_list)

@@ -3,7 +3,7 @@ import pandas as pd  # type: ignore
 from tm2p._intern.nx.create_cluster_to_items_mapping import (
     create_cluster_to_items_mapping,
 )
-from tm2p.enum.column import CLUSTER, ITEMS, NUM_ITEMS, PERCENTAGE
+from tm2p.enum.cols import CLUSTER, ITEMS, NUM_ITEMS, PERCENTAGE
 
 
 def summarize_communities(

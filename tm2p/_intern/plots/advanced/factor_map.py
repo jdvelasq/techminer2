@@ -52,7 +52,7 @@ def build_factor_map(
     nx_graph = set_top_n_node_labels(
         nx_graph,
         matrix.columns.to_list(),
-        params.top_n_node_labels,
+        params.max_node_labels,
     )
 
     nx_graph = set_cluster_names(params, nx_graph)

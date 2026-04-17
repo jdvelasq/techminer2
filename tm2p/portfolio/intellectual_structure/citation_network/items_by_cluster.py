@@ -57,7 +57,7 @@ Smoke tests:
     ...     # ANALYSIS UNIT:
     ...     .with_citation_unit(CitationUnit.AUTH)
     ...     .having_items_in_top(30)
-    ...     .having_minimum_citation_count(0)
+    ...     .having_minimum_cited_unit_occurrences(0)
     ...     .having_occurrence_threshold(2)
     ...     .having_items_in(None)
     ...     #
@@ -103,7 +103,7 @@ Smoke tests:
     ...     # ANALYSIS UNIT:
     ...     .with_citation_unit(CitationUnit.CTRY)
     ...     .having_items_in_top(30)
-    ...     .having_minimum_citation_count(0)
+    ...     .having_minimum_cited_unit_occurrences(0)
     ...     .having_occurrence_threshold(2)
     ...     .having_items_in(None)
     ...     #
@@ -147,7 +147,7 @@ Smoke tests:
     ...     # ANALYSIS UNIT:
     ...     .with_citation_unit(CitationUnit.ORG)
     ...     .having_items_in_top(30)
-    ...     .having_minimum_citation_count(0)
+    ...     .having_minimum_cited_unit_occurrences(0)
     ...     .having_occurrence_threshold(2)
     ...     .having_items_in(None)
     ...     #
@@ -194,7 +194,7 @@ Smoke tests:
     ...     # UNIT OF ANALYSIS:
     ...     .with_citation_unit(CitationUnit.SRC)
     ...     .having_items_in_top(30)
-    ...     .having_minimum_citation_count(0)
+    ...     .having_minimum_cited_unit_occurrences(0)
     ...     .having_occurrence_threshold(2)
     ...     .having_items_in(None)
     ...     #

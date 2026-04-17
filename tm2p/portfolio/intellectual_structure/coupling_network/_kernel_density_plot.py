@@ -19,7 +19,7 @@ Smoke tests:
     ...     .with_coupling_unit(CouplingUnit.AUTH)
     ...     .having_items_in_top(30)
     ...     .having_items_in(None)
-    ...     .having_minimum_citation_count(0)
+    ...     .having_minimum_cited_unit_occurrences(0)
     ...     .having_occurrence_threshold(2)
     ...     #
     ...     # COUNTERS:
@@ -67,7 +67,7 @@ Smoke tests:
     ...     .with_coupling_unit(CouplingUnit.CTRY)
     ...     .having_items_in_top(30)
     ...     .having_items_in(None)
-    ...     .having_minimum_citation_count(0)
+    ...     .having_minimum_cited_unit_occurrences(0)
     ...     .having_occurrence_threshold(2)
     ...     #
     ...     # COUNTERS:
@@ -115,7 +115,7 @@ Smoke tests:
     ...     .with_coupling_unit(CouplingUnit.DOC)
     ...     .having_items_in_top(30)
     ...     .having_items_in(None)
-    ...     .having_minimum_citation_count(0)
+    ...     .having_minimum_cited_unit_occurrences(0)
     ...     .having_occurrence_threshold(2)
     ...     #
     ...     # COUNTERS:
@@ -166,7 +166,7 @@ Smoke tests:
     ...     .with_coupling_unit(CouplingUnit.ORG)
     ...     .having_items_in_top(30)
     ...     .having_items_in(None)
-    ...     .having_minimum_citation_count(0)
+    ...     .having_minimum_cited_unit_occurrences(0)
     ...     .having_occurrence_threshold(2)
     ...     #
     ...     # COUNTERS:
@@ -214,7 +214,7 @@ Smoke tests:
     ...     .with_coupling_unit(CouplingUnit.SRC)
     ...     .having_items_in_top(30)
     ...     .having_items_in(None)
-    ...     .having_minimum_citation_count(0)
+    ...     .having_minimum_cited_unit_occurrences(0)
     ...     .having_occurrence_threshold(2)
     ...     #
     ...     # COUNTERS:
@@ -248,7 +248,7 @@ Smoke tests:
 """
 
 from tm2p._intern import ParamsMixin
-from tm2p.enum import CouplingUnit, ItemOrderBy
+from tm2p.enum import CouplingUnit, UnitOrderBy
 
 from ...._intern.helpers.check_database import check_database
 
@@ -277,6 +277,6 @@ class KernelDensityPlot(
         return (
             DensityPlot()
             .update(**self.params.__dict__)
-            .update(items_order_by=ItemOrderBy.OCC)
+            .update(items_order_by=UnitOrderBy.OCC)
             .run()
         )

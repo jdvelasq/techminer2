@@ -114,7 +114,7 @@ class DirectMatrixList(
 
     def run(self):
 
-        counters = self.params.counters
+        counters = self.params.use_counters
         matrix = (
             DirectMatrix().update(**self.params.__dict__).using_counters(True).run()
         )

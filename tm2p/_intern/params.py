@@ -7,19 +7,15 @@ import pandas as pd  # type: ignore
 from sklearn.base import BaseEstimator  # type: ignore
 
 from tm2p.enum import (
+    AnalysisUnit,
     AssociationIndex,
-    CitationUnit,
-    CoCitationUnit,
-    CollaborationUnit,
-    CoOccurrenceUnit,
     Correlation,
-    CouplingUnit,
     Field,
     GraphClusteringAlgorithm,
-    ItemOrderBy,
     RecordOrderBy,
     Scaling,
     ThFile,
+    UnitOrderBy,
 )
 
 
@@ -28,348 +24,367 @@ class Params:
 
     # ####################################################################### #
     #                                                                         #
-    #                    PARAMETERS WITH NO DEFAULT VALUE                     #
+    #                          DATABASE PARAMETERS                            #
+    #                                                                         #
+    # ####################################################################### #
+
+    word_length: int
+
+    #
+    # Shell otuput:
+    #
+    quiet: bool
+    tqdm_disable: bool
+    use_counters: bool
+    colored_output: bool
+    colored_stderr: bool
+
+    n_chars: int
+    n_contexts: int
+
+    cumulative_sum: bool
+
+    core_area: Optional[str]
+
+    # column: Optional[str] = None
+
+    # initial_newline: bool = False
+
+    #
+    # Record filtering:
+    #
+    root_directory: str
+    record_citations_range: Tuple[Optional[int], Optional[int]]
+    record_years_range: Tuple[Optional[int], Optional[int]]
+    records_match: Optional[Dict[Field, List[str]]]
+    records_order_by: RecordOrderBy
+
+    #
+    # Database operations:
+    #
+    source_field: Field
+    source_fields: tuple[Field, ...]
+    stemming_fn: Callable
+    target_field: Field
+    transformation_function: Optional[Callable[[pd.Series], pd.Series]]
+
+    query_expression: str
+
+    # ####################################################################### #
+    #                                                                         #
+    #                      PORTFOLIO GENERIC PARAMETERS                       #
     #                                                                         #
     # ####################################################################### #
 
     # -------------------------------------------------------------------------
-    # Ingestion and basic operations:
+    # Analysis units:
     # -------------------------------------------------------------------------
-    source_field: Field
-    source_fields: tuple[Field, ...]
-    target_field: Field
-    stemming_fn: Callable
+
+    analysis_unit: AnalysisUnit
+    column_analysis_unit: AnalysisUnit
+    cross_analysis_unit: AnalysisUnit
+    index_analysis_unit: AnalysisUnit
 
     # -------------------------------------------------------------------------
-    # Occurrence matrix:
+    # Analysis unit filtering and ordering:
     # -------------------------------------------------------------------------
-    column_field: Field
-    index_field: Field
+
+    top_n_units: Optional[int]
+    unit_global_citation_range: Tuple[Optional[int], Optional[int]]
+    unit_occurrence_range: Tuple[Optional[int], Optional[int]]
+    unit_order_by: UnitOrderBy
+    units_in: Optional[list[str]]
 
     # -------------------------------------------------------------------------
-    # Cross-correlation operations:
-    # -------------------------------------------------------------------------
-    cross_field: Field
+
+    column_unit_citation_range: Tuple[Optional[int], Optional[int]]
+    column_unit_occurrence_range: Tuple[Optional[int], Optional[int]]
+    column_unit_order_by: UnitOrderBy
+    column_units_in: Optional[list[str]]
+    top_n_column_units: Optional[int]
 
     # -------------------------------------------------------------------------
-    # Thesaurus file:
-    # -------------------------------------------------------------------------
-    thesaurus_file: ThFile
 
-    replacement: str
-    word: str
+    index_unit_citation_range: Tuple[Optional[int], Optional[int]]
+    index_unit_occurrence_range: Tuple[Optional[int], Optional[int]]
+    index_units_in: Optional[list[str]]
+    index_item_order_by: UnitOrderBy
+    top_n_index_units: Optional[int]
 
     # -------------------------------------------------------------------------
-    # Sankey plot:
+
+    correlation_method: Correlation
+
+    # ####################################################################### #
+    #                                                                         #
+    #                            CO-OCCURRENCE                                #
+    #                                                                         #
+    # ####################################################################### #
+
+    minimum_pair_co_occurrence: int
+    # maximum_occurrence: int = 10
+
+    # ####################################################################### #
+    #                                                                         #
+    #                             TFIDF MATRIX                                #
+    #                                                                         #
+    # ####################################################################### #
+
+    tfidf_binary_frequencies: bool
+    tfidf_norm: Optional[str]
+    tfidf_smooth_idf: bool
+    tfidf_sublinear_tf: bool
+    tfidf_use_idf: bool
+
+    # ####################################################################### #
+    #                                                                         #
+    #                               EMERGENCE                                 #
+    #                                                                         #
+    # ####################################################################### #
+
+    emergence_baseline_periods: int
+    emergence_min_active_periods: int
+    emergence_min_total_records: int
+    emergence_novelty_threshold: float
+    emergence_ratio_threshold: float
+    emergence_recent_periods: int
+
+    # ####################################################################### #
+    #                                                                         #
+    #                            TOPIC DYNAMICS                               #
+    #                                                                         #
+    # ####################################################################### #
+
+    kleinberg_burst_rate: float
+    kleinberg_burst_gamma: float
+    time_window: int
+    top_n_units_per_year: int
+
+    # ####################################################################### #
+    #                                                                         #
+    #                             DECOMPOSITION                               #
+    #                                                                         #
+    # ####################################################################### #
+
+    decomposition_algorithm: BaseEstimator
+    # manifold_algorithm: Optional[BaseEstimator] = None
+
+    # ####################################################################### #
+    #                                                                         #
+    #                            TOPIC MODELING                               #
+    #                                                                         #
+    # ####################################################################### #
+
+    top_n_units_per_theme: int
+
+    # ####################################################################### #
+    #                                                                         #
+    #                          NETWORK ALGORITHMS                             #
+    #                                                                         #
+    # ####################################################################### #
+
     # -------------------------------------------------------------------------
-    sankey_top_n: Tuple[int, ...]
+    # Normalization:
+    # -------------------------------------------------------------------------
+
+    association_index: AssociationIndex
 
     # -------------------------------------------------------------------------
     # Clustering:
     # -------------------------------------------------------------------------
+
     clustering: Union[
         BaseEstimator,
         GraphClusteringAlgorithm,
         dict,
     ]
 
+    cluster_coverages: Optional[list[str]]
+    cluster_names: Optional[list[str]]
+
+    # minimum_items_in_cluster: int = 5
+    # minimum_number_of_clusters: int = 10
+
+    # -------------------------------------------------------------------------
+    # Coupling network:
+    # -------------------------------------------------------------------------
+    occurrence_threshold: int
+
+    # -------------------------------------------------------------------------
+    # Co-citation network:
+    # -------------------------------------------------------------------------
+
+    minimum_cited_unit_occurrences: int
+    top_n_cited_units: int
+
     # ####################################################################### #
     #                                                                         #
-    #                        NETWORKS AND MAPS PLOTS                          #
+    #                           REPORTING PLOTS                               #
     #                                                                         #
     # ####################################################################### #
 
-    unit_of_analysis: Optional[str] = None
+    axes_visible: bool
+    title_text: Optional[str]
+    xaxes_range: Optional[Tuple[float, float]]
+    xaxes_title_text: Optional[str]
+    yaxes_range: Optional[Tuple[float, float]]
+    yaxes_title_text: Optional[str]
 
     # -------------------------------------------------------------------------
-    # Analysis units:
-    # -------------------------------------------------------------------------
-    citation_unit: CitationUnit = CitationUnit.AUTH
-    co_citation_unit: CoCitationUnit = CoCitationUnit.CITED_AUTH
-    co_occurrence_unit: CoOccurrenceUnit = CoOccurrenceUnit.AUTHKW
-    collaboration_unit: CollaborationUnit = CollaborationUnit.AUTH
-    coupling_unit: CouplingUnit = CouplingUnit.AUTH
+
+    yshift: float
 
     # -------------------------------------------------------------------------
-    # Co-citation network algorithm:
-    # -------------------------------------------------------------------------
-    minimum_citation_count: int = 0
-    cited_top_n: int = 1000
+
+    color: Optional[str]
+    colormap: str
+    line_color: Union[str, float, Sequence[float]]
+    line_width: float
+    marker_size: float
 
     # -------------------------------------------------------------------------
-    # Normalization:
-    # -------------------------------------------------------------------------
-    association_index: AssociationIndex = AssociationIndex.ASSOCIATION_STRENGTH
+
+    top_n_sankey_units: Tuple[int, ...]
 
     # -------------------------------------------------------------------------
-    # Edges:
-    # -------------------------------------------------------------------------
-    edge_color: Any = "#b8c6d0"
-    edge_colors: Tuple[Any, ...] = ("#b8c6d0",)
-    edge_opacity_range: Tuple[float, float] = (0.1, 0.9)
-    edge_scaling: Scaling = Scaling.LINEAR
-    edge_similarity_threshold: float = 0.0
-    edge_top_n: int = 1000
-    edge_width_range: Tuple[float, float] = (0.5, 0.8)
-    edge_widths: Tuple[
-        Union[float, int],
-        Union[float, int],
-        Union[float, int],
-        Union[float, int],
-    ] = (0.5, 0.8, 1.0, 1.2)
-    min_edges_per_node: int = 5
-    top_edges_per_node: int = 5
 
-    draw_arrows: bool = False
+    ranking_plotting_column = None
 
     # -------------------------------------------------------------------------
-    # Nodes:
-    # -------------------------------------------------------------------------
-    node_colors: Tuple[Any, ...] = ("#7793a5", "#465c6b")
-    node_color: Any = "#7793a5"
-    node_opacity: float = 0.8
-    node_scaling: Scaling = Scaling.LINEAR
-    node_size_range: Tuple[int, int] = (5, 20)
-    node_size: int = 10
-    top_n_node_labels: int = 1000
-    top_n_nodes: int = 1000
+
+    pie_hole: float
 
     # -------------------------------------------------------------------------
-    # Textfont:
-    # -------------------------------------------------------------------------
-    textfont_color: Union[str, float, Sequence[float]] = "#465c6b"
-    textfont_opacity_range: Tuple[float, float] = (0.5, 1)
-    textfont_opacity: float = 1.0
-    textfont_size_range: Tuple[float, float] = (8.0, 16.0)
-    textfont_size: float = 10
+
+    wordcloud_plot_height: float
+    wordcloud_plot_width: float
+
+    # ####################################################################### #
+    #                                                                         #
+    #                     MAP (SCATTER) -BASED PLOTS                          #
+    #                                                                         #
+    # ####################################################################### #
+
+    embedding_axes: Tuple[int, int]
+
+    # ####################################################################### #
+    #                                                                         #
+    #                         NETWORK-BASED PLOTS                             #
+    #                                                                         #
+    # ####################################################################### #
 
     # -------------------------------------------------------------------------
     # Spring layout:
     # -------------------------------------------------------------------------
-    # spring_layout_cluster_scale: float = 1.0  # DELETE!
-    # spring_layout_intra_scale: float = 0.9. # DELETE!
-    spring_layout_iterations: int = 50
-    spring_layout_k: Optional[float] = 0.1
-    spring_layout_seed: int = 42
+    spring_layout_iterations: int
+    spring_layout_k: Optional[float]
+    spring_layout_seed: int
+
+    # -------------------------------------------------------------------------
+    # Edges:
+    # -------------------------------------------------------------------------
+
+    edge_color_uniform: Any
+    edge_colors_discrete: Tuple[Any, ...]
+
+    # -------------------------------------------------------------------------
+
+    edge_width_range: Tuple[float, float]
+    edge_widths_discrete: Tuple[
+        Union[float, int],
+        Union[float, int],
+        Union[float, int],
+        Union[float, int],
+    ]
+
+    # -------------------------------------------------------------------------
+
+    edge_opacity_range: Tuple[float, float]
+    edge_scaling: Scaling
+    edge_similarity_threshold: float
+
+    # -------------------------------------------------------------------------
+
+    global_top_edges: int
+    top_edges_per_node: int
+
+    # -------------------------------------------------------------------------
+    # Nodes:
+    # -------------------------------------------------------------------------
+
+    node_color_uniform: Any
+    node_colormap: str
+    node_colors_discrete: Tuple[Any, ...]
+
+    # -------------------------------------------------------------------------
+
+    node_opacity_uniform: float
+    node_scaling: Scaling
+
+    # -------------------------------------------------------------------------
+
+    node_size_range: Tuple[int, int]
+    node_size_uniform: int
+
+    # -------------------------------------------------------------------------
+
+    max_node_labels: int
+    min_node_degree: int
+    top_n_nodes: int
+
+    # -------------------------------------------------------------------------
+    # Textfont:
+    # -------------------------------------------------------------------------
+
+    textfont_color_uniform: Union[str, float, Sequence[float]]
+    textfont_opacity_range: Tuple[float, float]
+    textfont_opacity_uniform: float
+    textfont_size_range: Tuple[float, float]
+    textfont_size_uniform: float
 
     # -------------------------------------------------------------------------
     # Kernel density plot:
     # -------------------------------------------------------------------------
-    colormap: str = "Blues"
-    contour_opacity: float = 0.6
-    kernel_bandwidth: float = 0.1
 
-    # -------------------------------------------------------------------------
-    # Graph clustering:
-    # -------------------------------------------------------------------------
+    density_contour_opacity: float
+    kernel_bandwidth: float
 
     # ####################################################################### #
     #                                                                         #
-    #                           NETWORK ANALYSIS                              #
+    #                              THESAURUS                                  #
     #                                                                         #
     # ####################################################################### #
 
-    # ####################################################################### #
-    #                                                                         #
-    #                     PARAMETERS WITH DEFAULT VALUES                      #
-    #                                                                         #
-    # ####################################################################### #
+    thesaurus_file: ThFile
 
-    # -------------------------------------------------------------------------
-    # Ingestion and basic operations:
-    # -------------------------------------------------------------------------
-    item_citations_range: Tuple[Optional[int], Optional[int]] = (None, None)
-    item_occurrences_range: Tuple[Optional[int], Optional[int]] = (None, None)
-    items_in: Optional[list[str]] = None
-    items_order_by: ItemOrderBy = ItemOrderBy.OCC
-    top_n: Optional[int] = None
+    preferred_key: str
+    variant_keys: tuple[str, ...]
 
-    # -------------------------------------------------------------------------
-    # Occurrence matrix algorithm:
-    # -------------------------------------------------------------------------
-    column_item_citations_range: Tuple[Optional[int], Optional[int]] = (None, None)
-    column_item_occurrences_range: Tuple[Optional[int], Optional[int]] = (None, None)
-    column_items_in: Optional[list[str]] = None
-    column_items_order_by: ItemOrderBy = ItemOrderBy.OCC
-    column_top_n: Optional[int] = None
-
-    index_item_citations_range: Tuple[Optional[int], Optional[int]] = (None, None)
-    index_item_occurrences_range: Tuple[Optional[int], Optional[int]] = (None, None)
-    index_items_in: Optional[list[str]] = None
-    index_items_order_by: ItemOrderBy = ItemOrderBy.OCC
-    index_top_n: Optional[int] = None
-
-    #
-    # Plotting:
-    #
-    plotting_column = None
-
-    #
-    # A
-    #
-
-    axes_visible: bool = False
-
-    #
-    # B
-    #
-    baseline_periods: int = 3
-    binary_item_frequencies: bool = False
-
-    #
-    # C
-    #
-    case_sensitive: bool = False
-    cluster_coverages: Optional[list[str]] = None
-    cluster_names: Optional[list[str]] = None
-
-    color: Optional[str] = None
-    colored_output: bool = True
-    colored_stderr: bool = True
-
-    column: Optional[str] = None
-
-    core_area: Optional[str] = None
-    correlation_method: Correlation = Correlation.PEARSON
-    cumulative_sum: bool = False
-    minimum_pair_co_occurrence: int = 1
-    similarity_cutoff: float = 85.0
-
-    #
-    # D
-    #
-    decomposition_algorithm: Optional[BaseEstimator] = None
-
-    #
-    # E
-    #
-
-    #
-    # I
-    #
-    initial_newline: bool = False
-    counters: bool = True
-    items_per_year: int = 5
-
-    #
-    # K
-    #
-
-    keys_order_by: str = "alphabetical"
-    kleinberg_burst_rate: float = 2.0
-    kleinberg_burst_gamma: float = 1.0
-
-    #
-    # L
-    #
-    line_color: Union[str, float, Sequence[float]] = "black"
-    line_width: float = 1.5
-
-    #
-    # M
-    #
-    manifold_algorithm: Optional[BaseEstimator] = None
-    marker_size: float = 7
-    fuzzy_threshold: float = 95.0
-    maximum_occurrence: int = 10
-    minimum_items_in_cluster: int = 5
-    minimum_number_of_clusters: int = 10
-
-    #
-    # N
-    #
-    n_chars: int = 100
-    n_contexts: int = 10
-    novelty_threshold: float = 0.15
-
-    #
-    # O
-    #
-    occurrence_threshold: int = 2
-
-    #
-    # P
-    #
-    pattern: Union[str, tuple[str, ...]] = ""
-    periods_with_at_least_one_record: int = 3
-    pie_hole: float = 0.4
-    plot_dimensions: Tuple[int, int] = (0, 1)
-    plot_height: float = 400
-    plot_width: float = 400
-    preferred_key: str = ""
-
-    #
-    # Q
-    #
-    query_expression: Optional[str] = None
-    quiet: bool = False
-
-    #
-    # R
-    #
-    ratio_threshold: float = 0.5
-    recent_periods: int = 3
-    record_citations_range: Tuple[Optional[int], Optional[int]] = (None, None)
-    record_years_range: Tuple[Optional[int], Optional[int]] = (None, None)
-    records_match: Optional[Dict[Field, List[str]]] = None
-    records_order_by: RecordOrderBy = RecordOrderBy.YEAR_NEWEST
-    # records_top_n: int = 100000
+    word: str
+    pattern: Union[str, tuple[str, ...]]
+    replacement: str
     regex_flags: int = 0
     regex_search: bool = False
-    root_directory: str = "./"
+    case_sensitive: bool = False
 
-    #
-    # S
-    #
+    similarity_cutoff: float = 85.0
+    fuzzy_threshold: float = 95.0
 
-    #
-    # T
-    #
+    # ####################################################################### #
+    #                                                                         #
+    #                               ZOTERO                                    #
+    #                                                                         #
+    # ####################################################################### #
 
-    tfidf_norm: Optional[str] = None
-    tfidf_smooth_idf: bool = False
-    tfidf_sublinear_tf: bool = False  # sublinear_tf
-    tfidf_use_idf: bool = False  # using_idf_reweighting
-    time_window: int = 2
-    title_text: Optional[str] = None
-    top_items_by_theme: int = 5
-    total_records_threshold: int = 7
-    tqdm_disable: bool = False
-    transformation_function: Optional[Callable[[pd.Series], pd.Series]] = None
-
-    #
-    # U
-    #
-
-    #
-    # V
-    #
-    variant_keys: tuple[str, ...] = ()
-
-    #
-    # X
-    #
-    xaxes_range: Optional[Tuple[float, float]] = None
-    xaxes_title_text: Optional[str] = None
-
-    #
-    # Y
-    #
-    yaxes_range: Optional[Tuple[float, float]] = None
-    yaxes_title_text: Optional[str] = None
-    yshift: float = 4
-
-    #
-    # W
-    #
-    word_length: int = 50
-
-    #
-    # Z
-    #
     zotero_api_key: Optional[str] = None
     zotero_library_id: Optional[str] = None
     zotero_library_type: Optional[str] = None
+
+    # ####################################################################### #
+    #                                                                         #
+    #                             CLASS  METHODS                              #
+    #                                                                         #
+    # ####################################################################### #
 
     def __init__(self, **kwargs):
         self.update(**kwargs)

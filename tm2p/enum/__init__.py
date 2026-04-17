@@ -1,30 +1,18 @@
-from .assoc_index import AssociationIndex
-from .cit_unit import CitationUnit
-from .co_cit_unit import CoCitationUnit
-from .co_occ_unit import CoOccurrenceUnit
-from .collab_unit import CollaborationUnit
-from .correl import Correlation
-from .coupl_unit import CouplingUnit
+from .analysis_unit import AnalysisUnit
 from .field import Field
-from .graph_cluster_algorithm import GraphClusteringAlgorithm
-from .item import ItemOrderBy
-from .rec import RecordOrderBy
-from .scaling import Scaling
+from .methods import AssociationIndex, Correlation, GraphClusteringAlgorithm, Scaling
+from .order_by import RecordOrderBy, UnitOrderBy
 from .thesaur import ThField, ThFile
 
 __all__ = [
+    "AnalysisUnit",
     "AssociationIndex",
-    "CitationUnit",
-    "CoCitationUnit",
-    "CoOccurrenceUnit",
-    "CollaborationUnit",
     "Correlation",
-    "CouplingUnit",
     "Field",
     "GraphClusteringAlgorithm",
-    "ItemOrderBy",
-    "Scaling",
+    "UnitOrderBy",
     "RecordOrderBy",
+    "Scaling",
     "ThField",
     "ThFile",
 ]

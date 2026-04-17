@@ -35,7 +35,7 @@ Smoke tests:
 import numpy as np
 
 from tm2p._intern import ParamsMixin
-from tm2p.enum import ItemOrderBy
+from tm2p.enum import UnitOrderBy
 from tm2p.portfolio.performance_metrics.annual_metrics.metrics import (
     Metrics as TrendMetricsDataFrame,
 )
@@ -55,15 +55,15 @@ class Metrics(
         return (
             Trends()
             .update(**self.params.__dict__)
-            .update(items_order_by=ItemOrderBy.OCC)
+            .update(items_order_by=UnitOrderBy.OCC)
             .using_cumulative_sum(False)
             .run()
         )
 
     def _step_2_compute_base_indicators(self, occurrences_by_year):
         #
-        baseline_periods = self.params.baseline_periods
-        recent_periods = self.params.recent_periods
+        baseline_periods = self.params.emergence_baseline_periods
+        recent_periods = self.params.emergence_recent_periods
         #
         data_frame = occurrences_by_year.sum(axis=1).to_frame()
         data_frame.columns = ["OCC"]
@@ -78,7 +78,7 @@ class Metrics(
         return data_frame
 
     def _step_3_compute_records_by_bas_period(self):
-        baseline_periods = self.params.baseline_periods
+        baseline_periods = self.params.emergence_baseline_periods
         return (
             TrendMetricsDataFrame()
             .update(**self.params.__dict__)
@@ -97,7 +97,7 @@ class Metrics(
         #
         # Threshold: The term  appear in 15% or less of the base period records
         #
-        novelty_threshold = self.params.novelty_threshold
+        novelty_threshold = self.params.emergence_novelty_threshold
         data_frame["selected"] = data_frame["selected"] & (
             data_frame["OCC_BASELINE"] / records_by_base_period <= novelty_threshold
         )
@@ -105,7 +105,7 @@ class Metrics(
         #
         # Threshold: The term appears in at least 'total_records_threshold' records
         #
-        total_records_threshold = self.params.total_records_threshold
+        total_records_threshold = self.params.emergence_min_total_records
         data_frame["selected"] = data_frame["selected"] & (
             data_frame["OCC"] >= total_records_threshold
         )
@@ -113,7 +113,7 @@ class Metrics(
         #
         # Threshold: The term appears in at leat 'periods_with_at_least_one_record' periods
         #
-        periods_with_at_least_one_record = self.params.periods_with_at_least_one_record
+        periods_with_at_least_one_record = self.params.emergence_min_active_periods
         data_frame["selected"] = data_frame["selected"] & (
             data_frame["NONZERO_YEARS"] >= periods_with_at_least_one_record
         )
@@ -162,7 +162,7 @@ class Metrics(
             lambda x: x / global_growth_rate
         )
 
-        ratio_threshold = self.params.ratio_threshold
+        ratio_threshold = self.params.emergence_ratio_threshold
         data_frame["selected"] = data_frame["selected"] & (
             data_frame["GROWTH_RATE_RATIO"] >= ratio_threshold
         )

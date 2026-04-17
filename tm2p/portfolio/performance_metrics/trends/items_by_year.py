@@ -93,12 +93,12 @@ Smoke tests:
 import pandas as pd  # type: ignore
 
 from tm2p._intern import ParamsMixin, SortAxesMixin
-from tm2p.enum import Field, ItemOrderBy
+from tm2p.enum import Field, UnitOrderBy
 
 from .year_to_items import YearToItems
 
 GCS = Field.GCS.value
-OCC = ItemOrderBy.OCC.value
+OCC = UnitOrderBy.OCC.value
 YEAR = Field.YEAR.value
 
 COUNTERS = "COUNTERS"

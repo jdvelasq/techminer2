@@ -71,7 +71,7 @@ class Metrics(
             }
         )
 
-        top_n = self.params.top_n if self.params.top_n else len(result)
+        top_n = self.params.top_n_units if self.params.top_n_units else len(result)
         result = result.head(top_n)
 
         return result

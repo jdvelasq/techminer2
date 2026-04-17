@@ -148,7 +148,7 @@ class Matrix(
         tfidf_matrix = (
             TfIdf()
             .update(**self.params.__dict__)
-            .using_binary_item_frequencies(True)
+            .using_tfidf_binary_frequencies(True)
             .using_tfidf_norm(None)
             .using_tfidf_smooth_idf(False)
             .using_tfidf_sublinear_tf(False)

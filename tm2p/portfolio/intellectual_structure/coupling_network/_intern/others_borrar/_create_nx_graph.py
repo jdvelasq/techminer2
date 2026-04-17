@@ -22,19 +22,19 @@ def step_01_load_and_select_records(params):
 # ------------------------------------------------------------------------------
 def step_02_create_data_frame(params, records):
 
-    unit_of_analysis = params.coupling_unit.value
+    analysis_unit = params.coupling_unit.value
 
-    df = records[[unit_of_analysis, GCR]]
+    df = records[[analysis_unit, GCR]]
     df = df.dropna()
-    df[unit_of_analysis] = (
-        df[unit_of_analysis].str.split("; ").map(lambda x: [y.strip() for y in x])
+    df[analysis_unit] = (
+        df[analysis_unit].str.split("; ").map(lambda x: [y.strip() for y in x])
     )
     df[GCR] = df[GCR].str.split(";").map(lambda x: [y.strip() for y in x])
 
-    df = df.explode(unit_of_analysis)
+    df = df.explode(analysis_unit)
     df = df.explode(GCR)
 
-    df = df.groupby([GCR], as_index=True).agg({unit_of_analysis: list})
+    df = df.groupby([GCR], as_index=True).agg({analysis_unit: list})
 
     df.columns = ["row"]
     df["column"] = df.row.copy()

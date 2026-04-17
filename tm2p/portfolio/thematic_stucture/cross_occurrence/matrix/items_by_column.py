@@ -111,7 +111,7 @@ class ItemsByColumn(
 
     def run(self) -> pd.DataFrame:
 
-        use_counters = self.params.counters
+        use_counters = self.params.use_counters
 
         c2i = ColumnToItems().update(**self.params.__dict__).using_counters(True).run()
 

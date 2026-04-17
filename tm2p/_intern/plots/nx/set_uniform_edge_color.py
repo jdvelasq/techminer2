@@ -8,5 +8,5 @@ def set_uniform_edge_color(
     nx_graph: nx.Graph,
 ) -> nx.Graph:
     for edge in nx_graph.edges():
-        nx_graph.edges[edge]["color"] = params.edge_color
+        nx_graph.edges[edge]["color"] = params.edge_color_uniform
     return nx_graph

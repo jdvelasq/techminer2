@@ -15,7 +15,7 @@ def bar_plot(
 
     fig = px.bar(
         df,
-        x=params.items_order_by.value,
+        x=params.unit_order_by.value,
         y=None,
         hover_data=df.columns.to_list(),
         orientation="h",

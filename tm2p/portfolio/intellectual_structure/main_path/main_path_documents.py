@@ -10,7 +10,7 @@ Smoke tests:
     ...     #
     ...     # ANALYSIS UNIT:
     ...     .having_items_in_top(None)
-    ...     .having_minimum_citation_count(0)
+    ...     .having_minimum_cited_unit_occurrences(0)
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/wos/")

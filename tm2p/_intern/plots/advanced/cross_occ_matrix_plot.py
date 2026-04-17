@@ -43,12 +43,12 @@ def build_cross_occ_matrix_plot(
     nx_graph = set_top_n_node_labels(
         nx_graph,
         matrix.columns.to_list(),
-        params.top_n_node_labels,
+        params.max_node_labels,
     )
     nx_graph = set_top_n_node_labels(
         nx_graph,
         matrix.index.to_list(),
-        params.top_n_node_labels,
+        params.max_node_labels,
     )
 
     nx_graph = scale_edge_weight(params, nx_graph)

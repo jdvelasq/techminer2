@@ -137,18 +137,18 @@ class Matrix(
         metrics = (
             Metrics()
             .update(**self.params.__dict__)
-            .with_source_field(self.params.column_field)
-            .having_items_in_top(self.params.column_top_n)
-            .having_items_ordered_by(self.params.column_items_order_by)
-            .having_item_occurrences_between(
-                self.params.column_item_occurrences_range[0],
-                self.params.column_item_occurrences_range[1],
+            .with_source_field(self.params.column_analysis_unit)
+            .having_top_n_units(self.params.top_n_column_units)
+            .having_units_ordered_by(self.params.column_unit_order_by)
+            .having_unit_occurrence_between(
+                self.params.column_unit_occurrence_range[0],
+                self.params.column_unit_occurrence_range[1],
             )
-            .having_item_citations_between(
-                self.params.column_item_citations_range[0],
-                self.params.column_item_citations_range[1],
+            .having_unit_global_citation_between(
+                self.params.column_unit_citation_range[0],
+                self.params.column_unit_citation_range[1],
             )
-            .having_items_in(self.params.column_items_in)
+            .having_units_in(self.params.column_units_in)
             .run()
         )
         return metrics
@@ -158,18 +158,18 @@ class Matrix(
         metrics = (
             Metrics()
             .update(**self.params.__dict__)
-            .with_source_field(self.params.index_field)
-            .having_items_in_top(self.params.index_top_n)
-            .having_items_ordered_by(self.params.index_items_order_by)
-            .having_item_occurrences_between(
-                self.params.index_item_occurrences_range[0],
-                self.params.index_item_occurrences_range[1],
+            .with_source_field(self.params.index_analysis_unit)
+            .having_top_n_units(self.params.top_n_index_units)
+            .having_units_ordered_by(self.params.index_item_order_by)
+            .having_unit_occurrence_between(
+                self.params.index_unit_occurrence_range[0],
+                self.params.index_unit_occurrence_range[1],
             )
-            .having_item_citations_between(
-                self.params.index_item_citations_range[0],
-                self.params.index_item_citations_range[1],
+            .having_unit_global_citation_between(
+                self.params.index_unit_citation_range[0],
+                self.params.index_unit_citation_range[1],
             )
-            .having_items_in(self.params.index_items_in)
+            .having_units_in(self.params.index_units_in)
             .run()
         )
         return metrics
@@ -181,8 +181,8 @@ class Matrix(
     # -------------------------------------------------------------------------
     def _step_04_create_raw_matrix_list(self, records):
         #
-        columns = self.params.column_field.value
-        rows = self.params.index_field.value
+        columns = self.params.column_analysis_unit.value
+        rows = self.params.index_analysis_unit.value
         #
         raw_matrix_list = records[[columns]].copy()
         raw_matrix_list = raw_matrix_list.rename(columns={columns: "columns"})
@@ -282,7 +282,7 @@ class Matrix(
 
     # -------------------------------------------------------------------------
     def _step_12_remove_counters(self, matrix):
-        if self.params.counters is False:
+        if self.params.use_counters is False:
             matrix_cols = [" ".join(col.split()[:-1]) for col in matrix.columns]
             matrix_rows = [" ".join(row.split()[:-1]) for row in matrix.index]
             matrix.columns = matrix_cols

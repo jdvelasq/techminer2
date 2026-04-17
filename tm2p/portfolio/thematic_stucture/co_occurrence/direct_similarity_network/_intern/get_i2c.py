@@ -24,7 +24,7 @@ def get_i2c(
     params: Params,
 ) -> dict[str, int]:
 
-    use_counters = params.counters
+    use_counters = params.use_counters
 
     if isinstance(params.clustering, (str, dict)):
         i2c = _get_i2c_from_network_based_clustering(params)

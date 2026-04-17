@@ -6,7 +6,7 @@ from tm2p.portfolio.thematic_stucture.tfidf.matrix import Matrix as TfIdf
 
 def compute_tables(params: Params):
 
-    use_counters = params.counters
+    use_counters = params.use_counters
 
     tf_matrix = TfIdf().update(**params.__dict__).using_counters(True).run()
     params.decomposition_algorithm.fit(tf_matrix)  # type: ignore

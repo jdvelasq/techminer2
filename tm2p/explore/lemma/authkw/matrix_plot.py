@@ -95,8 +95,8 @@ class MatrixPlot(
 
         #
         # Node colors
-        row_node_color = self.params.node_colors[0]
-        col_node_color = self.params.node_colors[1]
+        row_node_color = self.params.node_colors_discrete[0]
+        col_node_color = self.params.node_colors_discrete[1]
 
         #
         # Adds rows nodes

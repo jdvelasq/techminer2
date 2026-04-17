@@ -16,6 +16,6 @@ def set_edge_color_by_group(
         if color_0 == color_1:
             nx_graph.edges[edge]["color"] = color_0
         else:
-            nx_graph.edges[edge]["color"] = params.edge_color
+            nx_graph.edges[edge]["color"] = params.edge_color_uniform
 
     return nx_graph

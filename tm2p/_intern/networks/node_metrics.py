@@ -16,13 +16,13 @@ class BaseNodeMetrics(
 
     def run(self):
 
-        use_counters = self.params.counters
-        self.params.counters = True
+        use_counters = self.params.use_counters
+        self.params.use_counters = True
         nx_graph = self.create_nx_graph()
         df = compute_node_metrics(nx_graph=nx_graph)
 
         if use_counters is False:
-            self.params.counters = False
+            self.params.use_counters = False
             names = df.index.tolist()
             names = [remove_counters(name) for name in names]
             df.index = names

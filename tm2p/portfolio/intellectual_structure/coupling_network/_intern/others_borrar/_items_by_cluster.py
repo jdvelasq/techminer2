@@ -12,13 +12,13 @@ class xOtherItemsByCluster(
 
     def run(self):
 
-        use_counters = self.params.counters
-        self.params.counters = True
+        use_counters = self.params.use_counters
+        self.params.use_counters = True
         nx_graph = other_create_nx_graph(self.params)
         nx_graph = cluster_nx_graph(self.params, nx_graph)
         communities = extract_communities(nx_graph)
         if use_counters is False:
-            self.params.counters = False
+            self.params.use_counters = False
             for col in communities.columns:
                 communities[col] = communities[col].apply(remove_counters)
         return communities

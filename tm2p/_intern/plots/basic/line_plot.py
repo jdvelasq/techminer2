@@ -10,7 +10,7 @@ MARKER_LINE_COLOR = "#465c6b"
 
 def line_plot(params: Params, df: pd.DataFrame) -> go.Figure:
 
-    y_col = params.items_order_by.value
+    y_col = params.unit_order_by.value
 
     hover_data = df.columns.to_list()
     title_text = params.title_text

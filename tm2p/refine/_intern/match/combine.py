@@ -56,7 +56,7 @@ def compute_cooc_matrix(params: Params) -> pd.DataFrame:
     matrix_list = (
         MatrixList()
         .update(**params.__dict__)
-        .having_item_occurrences_between(5, None)
+        .having_unit_occurrence_between(5, None)
         .using_counters(True)
         .run()
     )

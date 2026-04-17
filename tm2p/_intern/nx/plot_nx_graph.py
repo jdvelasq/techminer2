@@ -9,7 +9,7 @@ def plot_nx_graph(
     xaxes_range = params.xaxes_range
     yaxes_range = params.yaxes_range
     axes_visible = params.axes_visible
-    draw_arrows = params.draw_arrows
+    # draw_arrows = params.draw_arrows
 
     node_trace = _create_node_trace(nx_graph)
     edge_traces = _create_edge_traces(nx_graph)
@@ -24,7 +24,7 @@ def plot_nx_graph(
 
     fig = _add_node_labels_to_fig(fig, nx_graph)
 
-    fig = __draw_arrows(fig, nx_graph, draw_arrows)
+    # fig = __draw_arrows(fig, nx_graph, draw_arrows)
 
     return fig
 

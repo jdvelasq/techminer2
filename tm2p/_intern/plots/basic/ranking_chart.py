@@ -16,7 +16,7 @@ def ranking_chart(
     fig = px.line(
         df,
         x="Rank",
-        y=params.items_order_by.value,
+        y=params.unit_order_by.value,
         hover_data=df.columns.to_list(),
         markers=True,
     )
@@ -58,13 +58,13 @@ def ranking_chart(
     for name, row in df.iterrows():
         fig.add_annotation(
             x=row["Rank"],
-            y=row[params.items_order_by.value],
+            y=row[params.unit_order_by.value],
             text=name,
             showarrow=False,
             textangle=-90,
             yanchor="bottom",
             font={
-                "size": params.textfont_size,
+                "size": params.textfont_size_uniform,
             },
             yshift=params.yshift,
         )

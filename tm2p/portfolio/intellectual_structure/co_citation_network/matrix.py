@@ -11,11 +11,11 @@ Smoke tests:
     >>> df = (
     ...     Matrix()
     ...     #
-    ...     # CO-CITATION UNIT:
-    ...     .with_co_citation_unit(CoCitationUnit.CITED_REF)
+    ...     # ANALYSIS UNIT:
+    ...     .with_analysis_unit(CoCitationUnit.CITED_REF)
     ...     #
     ...     .having_cited_items_in_top(50)
-    ...     .having_minimum_citation_count(0)
+    ...     .having_minimum_cited_unit_occurrences(0)
     ...     #
     ...     # COUNTERS:
     ...     .using_counters(True)
@@ -48,11 +48,11 @@ Smoke tests:
     >>> df = (
     ...     Matrix()
     ...     #
-    ...     # CO-CITATION UNIT:
+    ...     # ANALYSIS UNIT:
     ...     .with_co_citation_unit(CoCitationUnit.CITED_REF)
     ...     #
     ...     .having_cited_items_in_top(50)
-    ...     .having_minimum_citation_count(0)
+    ...     .having_minimum_cited_unit_occurrences(0)
     ...     #
     ...     # COUNTERS:
     ...     .using_counters(False)
@@ -89,11 +89,11 @@ Smoke tests:
     >>> df = (
     ...     Matrix()
     ...     #
-    ...     # CO-CITATION UNIT:
+    ...     # ANALYSIS UNIT:
     ...     .with_co_citation_unit(CoCitationUnit.CITED_AUTH)
     ...     #
     ...     .having_cited_items_in_top(50)
-    ...     .having_minimum_citation_count(0)
+    ...     .having_minimum_cited_unit_occurrences(0)
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/wos/")
@@ -126,11 +126,11 @@ Smoke tests:
     >>> df = (
     ...     Matrix()
     ...     #
-    ...     # CO-CITATION UNIT:
+    ...     # ANALYSIS UNIT:
     ...     .with_co_citation_unit(CoCitationUnit.CITED_SRC)
     ...     #
     ...     .having_cited_items_in_top(50)
-    ...     .having_minimum_citation_count(0)
+    ...     .having_minimum_cited_unit_occurrences(0)
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/wos/")
@@ -205,7 +205,7 @@ class Matrix(
             occ = counters.split(":")[0]
             df.loc[col, col] = int(occ)
 
-        if self.params.counters is False:
+        if self.params.use_counters is False:
             df.columns = [" ".join(col.split(" ")[:-1]) for col in df.columns]
             df.index = [" ".join(idx.split(" ")[:-1]) for idx in df.index]
 

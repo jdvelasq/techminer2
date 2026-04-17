@@ -24,15 +24,15 @@ class BaseKernelDensityPlot(
 
     def run(self):
 
-        use_counters = self.params.counters
-        self.params.counters = True
+        use_counters = self.params.use_counters
+        self.params.use_counters = True
         nx_graph = self.create_nx_graph()
         nx_graph = detect_communities(self.params, nx_graph)
         nx_graph = compute_clustered_spring_layout_positions(self.params, nx_graph)
         nx_graph = self.assign_textfont_size(nx_graph)  # type: ignore
 
         if use_counters is False:
-            self.params.counters = False
+            self.params.use_counters = False
             for node, data in nx_graph.nodes(data=True):  # type: ignore
                 text = data["text"]
                 nx_graph.nodes[node]["text"] = remove_counters(text)  # type: ignore
