@@ -25,7 +25,6 @@ from ..nx import (
     scale_textfont_size,
     set_edge_color_by_group,
     set_edge_width_from_pandas_adjacency,
-    set_node_color_by_group,
     set_node_color_by_year,
     set_node_group,
     set_node_opacity,
@@ -33,7 +32,6 @@ from ..nx import (
     set_node_textposition,
     set_node_year,
     set_top_n_node_labels,
-    set_uniform_edge_color,
     set_uniform_edge_line_style,
     spring_layout,
 )
