@@ -58,7 +58,7 @@ Smoke tests:
 """
 
 from tm2p._intern import ParamsMixin
-from tm2p.enum import CollaborationUnit, Field
+from tm2p.enum import AnalysisUnit, Field
 
 from ...thematic_stucture.co_occurrence.matrix import Matrix as CoOccurrenceMatrix
 
@@ -71,10 +71,10 @@ class Matrix(
     def run(self):
 
         field = {
-            CollaborationUnit.AUTH: Field.AUTH_FULL_NAME,
-            CollaborationUnit.CTRY: Field.CTRY_ISO3,
-            CollaborationUnit.ORG: Field.ORG,
-        }[self.params.collaboration_unit]
+            AnalysisUnit.AUTH: Field.AUTH_FULL_NAME,
+            AnalysisUnit.CTRY: Field.CTRY_ISO3,
+            AnalysisUnit.ORG: Field.ORG,
+        }[self.params.analysis_unit]
 
         self.with_source_field(field)
 

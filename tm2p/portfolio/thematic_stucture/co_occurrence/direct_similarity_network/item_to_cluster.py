@@ -15,13 +15,13 @@ Smoke tests:
     ...     compute_full_tree=True,  # always True
     ...     compute_distances=True,  # always True
     ... )
-    >>> from tm2p.enum import AssociationIndex, CoOccurrenceUnit, Field, GraphClusteringAlgorithm, ItemOrderBy
+    >>> from tm2p.enum import AssociationIndex, AnalysisUnit, Field, GraphClusteringAlgorithm, ItemOrderBy
     >>> from tm2p.portfolio.thematic_stucture.co_occurrence.direct_similarity_network import ItemToCluster
     >>> mapping = (
     ...     ItemToCluster()
     ...     #
     ...     # UNIT OF ANALYSIS:
-    ...     .with_co_occurrence_unit(CoOccurrenceUnit.KW)
+    ...     .with_co_occurrence_unit(AnalysisUnit.KW)
     ...     #
     ...     .having_items_in_top(20)
     ...     .having_items_ordered_by(ItemOrderBy.OCC)
@@ -76,7 +76,7 @@ Smoke tests:
     ...     ItemToCluster()
     ...     #
     ...     # UNIT OF ANALYSIS:
-    ...     .with_co_occurrence_unit(CoOccurrenceUnit.KW)
+    ...     .with_co_occurrence_unit(AnalysisUnit.KW)
     ...     #
     ...     .having_items_in_top(20)
     ...     .having_items_ordered_by(ItemOrderBy.OCC)
@@ -136,7 +136,7 @@ Smoke tests:
     ...     ItemToCluster()
     ...     #
     ...     # UNIT OF ANALYSIS:
-    ...     .with_co_occurrence_unit(CoOccurrenceUnit.KW)
+    ...     .with_co_occurrence_unit(AnalysisUnit.KW)
     ...     #
     ...     .having_items_in_top(20)
     ...     .having_items_ordered_by(ItemOrderBy.OCC)
@@ -200,7 +200,7 @@ Smoke tests:
     ...     ItemToCluster()
     ...     #
     ...     # UNIT OF ANALYSIS:
-    ...     .with_co_occurrence_unit(CoOccurrenceUnit.KW)
+    ...     .with_co_occurrence_unit(AnalysisUnit.KW)
     ...     #
     ...     .having_items_in_top(20)
     ...     .having_items_ordered_by(ItemOrderBy.OCC)
@@ -264,7 +264,7 @@ Smoke tests:
     ...     ItemToCluster()
     ...     #
     ...     # FIELD:
-    ...     .with_co_occurrence_unit(CoOccurrenceUnit.KW)
+    ...     .with_co_occurrence_unit(AnalysisUnit.KW)
     ...     #
     ...     .having_items_in_top(20)
     ...     .having_items_ordered_by(ItemOrderBy.OCC)
@@ -319,7 +319,7 @@ Smoke tests:
     ...     ItemToCluster()
     ...     #
     ...     # UNIT OF ANALYSIS:
-    ...     .with_co_occurrence_unit(CoOccurrenceUnit.KW)
+    ...     .with_co_occurrence_unit(AnalysisUnit.KW)
     ...     #
     ...     .having_items_in_top(20)
     ...     .having_items_ordered_by(ItemOrderBy.OCC)

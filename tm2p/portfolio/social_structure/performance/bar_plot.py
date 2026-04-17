@@ -48,8 +48,10 @@ Smoke tests:
 import plotly.express as px  # type: ignore
 
 from tm2p._intern import ParamsMixin
-from tm2p.enum.cols import MP, SP
 from tm2p.portfolio.social_structure.performance.metrics import Metrics
+
+MP = "MP"
+SP = "SP"
 
 
 class BarPlot(

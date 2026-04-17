@@ -313,7 +313,7 @@ import pandas as pd  # type: ignore
 from tm2p._intern import ParamsMixin
 from tm2p._intern.data_access import load_filtered_main_csv_zip
 from tm2p._intern.helpers.get_zero_digits import get_zero_digits
-from tm2p.enum import CouplingUnit, Field
+from tm2p.enum import AnalysisUnit, Field
 from tm2p.portfolio.performance_metrics.item_metrics.metrics import Metrics
 
 GCR = Field.GCR_WOS_FORMAT.value
@@ -345,7 +345,7 @@ class MatrixList(
                 )
             return matrix_list
 
-        if self.params.coupling_unit == CouplingUnit.DOC:
+        if self.params.analysis_unit == AnalysisUnit.DOC:
             matrix_list = remove_counters(matrix_list)
             return matrix_list
 
@@ -425,7 +425,7 @@ class MatrixList(
         )
         #
 
-        coupling_unit = self.params.coupling_unit
+        coupling_unit = self.params.analysis_unit
 
         df = load_filtered_main_csv_zip(params=self.params)
         mapping = dict(zip(df[DOC].to_list(), df[coupling_unit.value].to_list()))
@@ -433,13 +433,13 @@ class MatrixList(
         matrix_list["ROWS"] = matrix_list["ROWS"].map(mapping)
         matrix_list["COLUMNS"] = matrix_list["COLUMNS"].map(mapping)
 
-        if coupling_unit == CouplingUnit.AUTH:
+        if coupling_unit == AnalysisUnit.AUTH:
             source_field = Field.AUTH_FULL_NAME
-        elif coupling_unit == CouplingUnit.CTRY:
+        elif coupling_unit == AnalysisUnit.CTRY:
             source_field = Field.CTRY_ISO3
-        elif coupling_unit == CouplingUnit.ORG:
+        elif coupling_unit == AnalysisUnit.ORG:
             source_field = Field.ORG
-        elif coupling_unit == CouplingUnit.SRC:
+        elif coupling_unit == AnalysisUnit.SRC:
             source_field = Field.SRC_ISO4
         else:
             raise ValueError("Invalid coupling unit")

@@ -31,7 +31,11 @@ import pandas as pd  # type: ignore
 
 from tm2p._intern import ParamsMixin
 from tm2p._intern.data_access import load_filtered_main_csv_zip
-from tm2p.enum.cols import COLUMN, COVERAGE, NUM_REC
+from tm2p.enum import Col
+
+COVERAGE = Col.COVERAGE
+FIELD = Col.FIELD
+NUM_REC = Col.NUM_REC
 
 
 class SummarySheet(
@@ -49,7 +53,7 @@ class SummarySheet(
 
         n_documents = len(records)
 
-        report = pd.DataFrame({COLUMN: columns})
+        report = pd.DataFrame({FIELD: columns})
 
         report[NUM_REC] = [n_documents - records[col].isnull().sum() for col in columns]
 

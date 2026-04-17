@@ -18,7 +18,7 @@ Smoke tests:
     ...     Summary()
     ...     #
     ...     # UNIT OF ANALYSIS:
-    ...     .with_co_occurrence_unit(CoOccurrenceUnit.KW)
+    ...     .with_co_occurrence_unit(AnalysisUnit.KW)
     ...     #
     ...     .having_items_in_top(20)
     ...     .having_items_ordered_by(ItemOrderBy.OCC)
@@ -52,7 +52,7 @@ Smoke tests:
     ...     Summary()
     ...     #
     ...     # UNIT OF ANALYSIS:
-    ...     .with_co_occurrence_unit(CoOccurrenceUnit.KW)
+    ...     .with_co_occurrence_unit(AnalysisUnit.KW)
     ...     #
     ...     .having_items_in_top(20)
     ...     .having_items_ordered_by(ItemOrderBy.OCC)

@@ -11,13 +11,13 @@ StrenghtPlot
     height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
-    >>> from tm2p.enum import AssociationIndex, CoOccurrenceUnit, ItemOrderBy
+    >>> from tm2p.enum import AssociationIndex, AnalysisUnit, ItemOrderBy
     >>> from tm2p.portfolio.thematic_stucture.co_occurrence.direct_similarity_network import StrengthPlot
     >>> fig = (
     ...     StrengthPlot()
     ...     #
     ...     # UNIT OF ANALYSIS:
-    ...     .with_co_occurrence_unit(CoOccurrenceUnit.KW)
+    ...     .with_co_occurrence_unit(AnalysisUnit.KW)
     ...     #
     ...     .having_items_in_top(20)
     ...     .having_items_ordered_by(ItemOrderBy.OCC)
@@ -56,7 +56,7 @@ Smoke tests:
     ...     StrengthPlot()
     ...     #
     ...     # UNIT OF ANALYSIS:
-    ...     .with_co_occurrence_unit(CoOccurrenceUnit.KW)
+    ...     .with_co_occurrence_unit(AnalysisUnit.KW)
     ...     #
     ...     .having_items_in_top(20)
     ...     .having_items_ordered_by(ItemOrderBy.OCC)

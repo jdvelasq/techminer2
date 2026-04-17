@@ -4,10 +4,12 @@ from tm2p._intern.nx import (
     collect_node_degrees,
     create_node_degree_dataframe,
 )
-from tm2p.enum.cols import NAME
+from tm2p.enum import Col
 from tm2p.portfolio.intellectual_structure.coupling_network._intern.others_borrar._create_nx_graph import (
     other_create_nx_graph,
 )
+
+NAME = Col.NAME
 
 
 class xOtherNodeDegreeDataFrame(

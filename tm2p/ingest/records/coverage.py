@@ -36,7 +36,7 @@ from tm2p._intern import ParamsMixin
 from tm2p._intern.data_access.load_filtered_main_csv_zip import (
     load_filtered_main_csv_zip,
 )
-from tm2p.enum.cols import COVERAGE, CUM_SUM_DOCS, CUM_SUM_ITEMS, OCC, RID
+from tm2p.enum import Col
 
 
 class Coverage(
@@ -50,7 +50,7 @@ class Coverage(
 
         documents = load_filtered_main_csv_zip(params=self.params)
         documents = documents.reset_index()
-        documents = documents[[FIELD, RID]]
+        documents = documents[[FIELD, Col.RID]]
 
         n_documents = len(documents)
 
@@ -60,22 +60,22 @@ class Coverage(
         documents = documents.explode(FIELD)
 
         documents = documents.groupby(by=[FIELD]).agg(
-            {"num_documents": "count", RID: list}
+            {"num_documents": "count", Col.RID: list}
         )
         documents = documents.sort_values(by=["num_documents"], ascending=False)
 
         documents = documents.reset_index()
 
         documents = documents.groupby(by="num_documents", as_index=False).agg(
-            {RID: list, FIELD: list}
+            {Col.RID: list, FIELD: list}
         )
 
         documents = documents.sort_values(by=["num_documents"], ascending=False)
-        documents[RID] = documents[RID].apply(
+        documents[Col.RID] = documents[Col.RID].apply(
             lambda x: [term for sublist in x for term in sublist]
         )
 
-        documents = documents.assign(cum_sum_documents=documents[RID].cumsum())
+        documents = documents.assign(cum_sum_documents=documents[Col.RID].cumsum())
         documents = documents.assign(
             cum_sum_documents=documents.cum_sum_documents.apply(set)
         )
@@ -93,16 +93,16 @@ class Coverage(
         documents = documents.assign(cum_sum_items=documents.cum_sum_items.apply(set))
         documents = documents.assign(cum_sum_items=documents.cum_sum_items.apply(len))
 
-        documents.drop(RID, axis=1, inplace=True)
+        documents.drop(Col.RID, axis=1, inplace=True)
         documents.drop(FIELD, axis=1, inplace=True)
         documents = documents.reset_index(drop=True)
 
         documents = documents.rename(
             columns={
-                "num_documents": OCC,
-                "cum_sum_documents": CUM_SUM_DOCS,
-                "cum_sum_items": CUM_SUM_ITEMS,
-                "coverage": COVERAGE,
+                "num_documents": Col.OCC,
+                "cum_sum_documents": Col.CUM_SUM_DOCS,
+                "cum_sum_items": Col.CUM_SUM_ITEMS,
+                "coverage": Col.COVERAGE,
             }
         )
 

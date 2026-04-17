@@ -3,13 +3,13 @@ DirectMatrix
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.enum import AssociationIndex, CoOccurrenceUnit, ItemOrderBy
+    >>> from tm2p.enum import AssociationIndex, AnalysisUnit, ItemOrderBy
     >>> from tm2p.portfolio.thematic_stucture.co_occurrence.direct_similarity_network import DirectMatrix
     >>> df = (
     ...     DirectMatrix()
     ...     #
     ...     # UNIT OF ANALYSIS:
-    ...     .with_co_occurrence_unit(CoOccurrenceUnit.KW)
+    ...     .with_co_occurrence_unit(AnalysisUnit.KW)
     ...     #
     ...     .having_items_in_top(10)
     ...     .having_items_ordered_by(ItemOrderBy.OCC)
@@ -58,7 +58,7 @@ Smoke tests:
     ...     DirectMatrix()
     ...     #
     ...     # UNIT OF ANALYSIS:
-    ...     .with_co_occurrence_unit(CoOccurrenceUnit.KW)
+    ...     .with_co_occurrence_unit(AnalysisUnit.KW)
     ...     #
     ...     .having_items_in_top(10)
     ...     .having_items_ordered_by(ItemOrderBy.OCC)
@@ -105,7 +105,7 @@ Smoke tests:
 
 from tm2p._intern import ParamsMixin
 from tm2p._intern.networks.normalize_matrix import normalize_matrix
-from tm2p.enum import CoOccurrenceUnit, Field
+from tm2p.enum import AnalysisUnit, Field
 
 from ..matrix.matrix import Matrix as CoOccurrenceMatrix
 
@@ -118,12 +118,12 @@ class DirectMatrix(
     def run(self):
 
         field = {
-            CoOccurrenceUnit.AUTHKW: Field.AUTHKW_NORM,
-            CoOccurrenceUnit.IDXKW: Field.IDXKW_NORM,
-            CoOccurrenceUnit.KW: Field.KW_NORM,
-            CoOccurrenceUnit.CONCEPT: Field.CONCEPT_NORM,
-            CoOccurrenceUnit.WORD: Field.WORD_NORM,
-        }[self.params.co_occurrence_unit]
+            AnalysisUnit.AUTHKW: Field.AUTHKW_NORM,
+            AnalysisUnit.IDXKW: Field.IDXKW_NORM,
+            AnalysisUnit.KW: Field.KW_NORM,
+            AnalysisUnit.CONCEPT: Field.CONCEPT_NORM,
+            AnalysisUnit.WORD: Field.WORD_NORM,
+        }[self.params.analysis_unit]
 
         self.with_source_field(field)
 

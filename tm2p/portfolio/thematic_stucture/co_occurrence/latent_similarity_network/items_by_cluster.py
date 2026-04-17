@@ -13,13 +13,13 @@ Smoke tests:
     ...     compute_full_tree=True,  #  always
     ...     compute_distances=True,  #  always True
     ... )
-    >>> from tm2p.enum import CoOccurrenceUnit, Field, AssociationIndex, ItemOrderBy
+    >>> from tm2p.enum import AnalysisUnit, Field, AssociationIndex, ItemOrderBy
     >>> from tm2p.portfolio.thematic_stucture.co_occurrence.latent_similarity_network import ItemsByCluster
     >>> df = (
     ...     ItemsByCluster()
     ...     #
     ...     # UNIT OF ANALYSIS:
-    ...     .with_co_occurrence_unit(CoOccurrenceUnit.KW)
+    ...     .with_co_occurrence_unit(AnalysisUnit.KW)
     ...     #
     ...     .having_items_in_top(20)
     ...     .having_items_ordered_by(ItemOrderBy.OCC)
@@ -59,7 +59,7 @@ Smoke tests:
     ...     ItemsByCluster()
     ...     #
     ...     # UNIT OF ANALYSIS:
-    ...     .with_co_occurrence_unit(CoOccurrenceUnit.KW)
+    ...     .with_co_occurrence_unit(AnalysisUnit.KW)
     ...     #
     ...     .having_items_in_top(20)
     ...     .having_items_ordered_by(ItemOrderBy.OCC)

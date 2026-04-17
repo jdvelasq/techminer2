@@ -3,13 +3,13 @@ NodeMetrics
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.enum import AssociationIndex, CoOccurrenceUnit, Field, ItemOrderBy
+    >>> from tm2p.enum import AssociationIndex, AnalysisUnit, Field, ItemOrderBy
     >>> from tm2p.portfolio.thematic_stucture.co_occurrence.latent_similarity_network import NodeMetrics
     >>> df = (
     ...     NodeMetrics()
     ...     #
     ...     # UNIT OF ANALYSIS:
-    ...     .with_co_occurrence_unit(CoOccurrenceUnit.KW)
+    ...     .with_co_occurrence_unit(AnalysisUnit.KW)
     ...     #
     ...     .having_items_in_top(20)
     ...     .having_items_ordered_by(ItemOrderBy.OCC)

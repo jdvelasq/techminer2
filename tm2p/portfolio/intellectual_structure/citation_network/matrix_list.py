@@ -213,7 +213,7 @@ Smoke tests:
 """
 
 from tm2p._intern import ParamsMixin
-from tm2p.enum import CitationUnit
+from tm2p.enum import AnalysisUnit
 
 from ...._intern.helpers.check_database import check_database
 from ._intern.doc import DocMatrixList
@@ -229,7 +229,7 @@ class MatrixList(
 
         check_database(self.params.root_directory)
 
-        if self.params.citation_unit == CitationUnit.DOC:
+        if self.params.analysis_unit == AnalysisUnit.DOC:
             matrix_list = DocMatrixList
         else:
             matrix_list = OtherMatrixList

@@ -181,7 +181,7 @@ import pandas as pd  # type: ignore
 
 from tm2p._intern import ParamsMixin
 from tm2p._intern.data_access import load_filtered_main_csv_zip
-from tm2p.enum import CoCitationUnit, Field
+from tm2p.enum import AnalysisUnit, Field
 
 GCR = Field.GCR_WOS_FORMAT.value
 ROWS = "ROWS"
@@ -298,11 +298,11 @@ class MatrixList(
 
     def _transform_refs_to_cited_units(self, df):
 
-        if self.params.co_citation_unit == CoCitationUnit.CITED_AUTH:
+        if self.params.analysis_unit == AnalysisUnit.CITED_AUTH:
             df[GCR] = df[GCR].apply(_extract_cited_auth)
-        elif self.params.co_citation_unit == CoCitationUnit.CITED_SRC:
+        elif self.params.analysis_unit == AnalysisUnit.CITED_SRC:
             df[GCR] = df[GCR].apply(_extract_cited_src)
-        elif self.params.co_citation_unit == CoCitationUnit.CITED_REF:
+        elif self.params.analysis_unit == AnalysisUnit.CITED_REF:
             df[GCR] = df[GCR].apply(_extract_cited_doc)
         else:
             raise ValueError("Bad analysis unit")

@@ -248,7 +248,7 @@ Smoke tests:
 """
 
 from tm2p._intern import ParamsMixin
-from tm2p.enum import CouplingUnit, UnitOrderBy
+from tm2p.enum import AnalysisUnit, UnitOrderBy
 
 from ...._intern.helpers.check_database import check_database
 
@@ -269,7 +269,7 @@ class KernelDensityPlot(
 
         check_database(self.params.root_directory)
 
-        if self.params.coupling_unit == CouplingUnit.DOC:
+        if self.params.analysis_unit == AnalysisUnit.DOC:
             DensityPlot = DocKernelDensityPlot
         else:
             DensityPlot = OtherKernelDensityPlot

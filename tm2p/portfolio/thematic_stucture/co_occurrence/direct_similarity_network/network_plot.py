@@ -8,13 +8,13 @@ Network Plot
     height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
-    >>> from tm2p.enum import AssociationIndex, CoOccurrenceUnit, GraphClusteringAlgorithm, ItemOrderBy, Scaling
+    >>> from tm2p.enum import AssociationIndex, AnalysisUnit, GraphClusteringAlgorithm, ItemOrderBy, Scaling
     >>> from tm2p.portfolio.thematic_stucture.co_occurrence.direct_similarity_network import NetworkPlot
     >>> fig = (
     ...     NetworkPlot()
     ...     #
     ...     # ANALYSIS UNIT:
-    ...     .with_co_occurrence_unit(CoOccurrenceUnit.KW)
+    ...     .with_co_occurrence_unit(AnalysisUnit.KW)
     ...     #
     ...     .having_items_in_top(40)
     ...     .having_items_ordered_by(ItemOrderBy.OCC)

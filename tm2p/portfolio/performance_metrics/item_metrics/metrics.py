@@ -73,26 +73,26 @@ import pandas as pd  # type: ignore
 
 from tm2p._intern import ParamsMixin
 from tm2p._intern.data_access import load_filtered_main_csv_zip
-from tm2p.enum.cols import (
-    AGE,
-    COUNTERS,
-    G_INDEX,
-    GCS,
-    GCS_PER_DOC,
-    GCS_PER_YEAR,
-    H_INDEX,
-    LCS,
-    LCS_PER_DOC,
-    LCS_PER_YEAR,
-    M_INDEX,
-    OCC,
-    RANK_GCS,
-    RANK_LCS,
-    RANK_OCC,
-    YEAR,
-    YEAR_FIRST,
-    YEAR_LAST,
-)
+
+AGE = "AGE"
+COUNTERS = "COUNTERS"
+G_INDEX = "G_INDEX"
+GCS = "GCS"
+GCS_PER_DOC = "GCS_PER_DOC"
+GCS_PER_YEAR = "GCS_PER_YEAR"
+H_INDEX = "H_INDEX"
+LCS = "LCS"
+LCS_PER_DOC = "LCS_PER_DOC"
+LCS_PER_YEAR = "LCS_PER_YEAR"
+M_INDEX = "M_INDEX"
+OCC = "OCC"
+RANK_GCS = "RANK_GCS"
+RANK_LCS = "RANK_LCS"
+RANK_OCC = "RANK_OCC"
+YEAR = "YEAR"
+YEAR_FIRST = "YEAR_FIRST"
+YEAR_LAST = "YEAR_LAST"
+
 
 POS = "POS"
 POS2 = "POS2"

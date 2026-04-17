@@ -37,10 +37,18 @@ Smoke tests:
 
 from tm2p._intern import ParamsMixin
 from tm2p._intern.data_access import load_filtered_main_csv_zip
-from tm2p.enum.cols import GCS, LCS, MP, MP_RATIO, OCC, RID, SP
+from tm2p.enum import Col
 from tm2p.portfolio.performance_metrics.item_metrics.metrics import (
     Metrics as PerformanceMetrics,
 )
+
+GCS = Col.GCS
+LCS = Col.LCS
+MP = Col.MP
+MP_RATIO = Col.MP_RATIO
+OCC = Col.OCC
+RID = Col.RID
+SP = Col.SP
 
 
 class Metrics(

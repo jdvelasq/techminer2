@@ -1,6 +1,9 @@
 import pandas as pd  # type: ignore
 
-from tm2p.enum.cols import COUNTERS, DEGREE, NAME, NODE
+COUNTERS = "COUNTERS"
+DEGREE = "DEGREE"
+NAME = "NAME"
+NODE = "NODE"
 
 
 def create_node_degree_dataframe(node_degrees):
