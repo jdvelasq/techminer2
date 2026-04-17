@@ -239,6 +239,7 @@ class Params:
 
     color: Optional[str]
     colormap: str
+    colorscale: List[Any]
     line_color: Union[str, float, Sequence[float]]
     line_width: float
     marker_size: float

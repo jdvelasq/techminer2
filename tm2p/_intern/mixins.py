@@ -699,6 +699,10 @@ class ParamsMixin:
         self.params.color = color
         return self
 
+    def using_colorscale(self, colorscale: List[Any]) -> Self:
+        self.params.colorscale = colorscale
+        return self
+
     def using_colormap(self, colormap: str) -> Self:
         colormap = check_required_str(
             value=colormap,

@@ -5,6 +5,7 @@ import plotly.graph_objects as go  # type: ignore
 from tm2p._intern import Params
 
 from ..nx import (
+    add_node_colorscale,
     add_node_labels,
     build_network_figure,
     build_scatter_edge_traces,
@@ -25,6 +26,8 @@ from ..nx import (
     set_edge_color_by_group,
     set_edge_width_from_pandas_adjacency,
     set_node_color_by_group,
+    set_node_color_by_year,
+    set_node_group,
     set_node_opacity,
     set_node_size_properties,
     set_node_textposition,
@@ -40,12 +43,14 @@ def build_co_occ_overlay_plot(
     params: Params,
     similarity_matrix: pd.DataFrame,
     co_occurrence_matrix: pd.DataFrame,
+    i2c: dict[str, int],
     i2y: dict[str, float],
 ) -> go.Figure:
 
     nx_graph = nx.from_pandas_adjacency(similarity_matrix)
     nx_graph = remove_selfloop_edges(nx_graph)
     nx_graph = set_node_size_properties(params, nx_graph, co_occurrence_matrix)
+    nx_graph = set_node_group(nx_graph, i2c)
     nx_graph = set_node_year(nx_graph, i2y)
 
     nx_graph = remove_isolated_nodes(nx_graph)
@@ -65,9 +70,9 @@ def build_co_occ_overlay_plot(
     nx_graph = scale_textfont_size(params, nx_graph)
     nx_graph = scale_textfont_opacity(params, nx_graph)
 
-    nx_graph = set_uniform_edge_color(params, nx_graph)
-    nx_graph = set_node_color_by_group(params, nx_graph)
+    nx_graph = set_node_color_by_year(params, nx_graph)
     nx_graph = set_edge_color_by_group(params, nx_graph)
+
     nx_graph = set_node_opacity(params, nx_graph)
 
     nx_graph = set_edge_width_from_pandas_adjacency(nx_graph, co_occurrence_matrix)
@@ -84,5 +89,6 @@ def build_co_occ_overlay_plot(
     fig = build_network_figure(edge_traces, node_trace)
     fig = configure_figure_axes(params, fig)
     fig = add_node_labels(fig, nx_graph)
+    fig = add_node_colorscale(params, fig, nx_graph)
 
     return fig

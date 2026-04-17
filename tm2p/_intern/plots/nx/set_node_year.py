@@ -6,5 +6,6 @@ def set_node_year(
     i2y: dict[str, float],
 ) -> nx.Graph:
     for node in nx_graph.nodes():
-        nx_graph.nodes[node]["group"] = i2y[node]
+        name = " ".join(node.split(" ")[:-1])
+        nx_graph.nodes[node]["year"] = i2y[name]
     return nx_graph

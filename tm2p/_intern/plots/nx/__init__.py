@@ -1,3 +1,4 @@
+from .add_node_colorscale import add_node_colorscale
 from .add_node_labels import add_node_labels
 from .build_network_density_plot import build_network_density_plot
 from .build_network_figure import build_network_figure
@@ -32,6 +33,7 @@ from .set_cluster_names import set_cluster_names
 from .set_edge_color_by_group import set_edge_color_by_group
 from .set_edge_width_from_pandas_adjacency import set_edge_width_from_pandas_adjacency
 from .set_node_color_by_group import set_node_color_by_group
+from .set_node_color_by_year import set_node_color_by_year
 from .set_node_group import set_node_group
 from .set_node_opacity import set_node_opacity
 from .set_node_size_by_gcs import set_node_size_by_gcs
@@ -48,6 +50,7 @@ from .style_edges_by_weight_bins import style_edges_by_weight_bins
 from .validate_association_index import validate_association_index
 
 __all__ = [
+    "add_node_colorscale",
     "add_node_labels",
     "build_network_density_plot",
     "build_network_figure",
@@ -78,6 +81,7 @@ __all__ = [
     "set_edge_color_by_group",
     "set_edge_width_from_pandas_adjacency",
     "set_node_color_by_group",
+    "set_node_color_by_year",
     "set_node_group",
     "set_node_opacity",
     "set_node_size_by_gcs",
