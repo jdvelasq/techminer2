@@ -9,6 +9,7 @@ from .items_by_cluster import ItemsByCluster
 from .matrix import Matrix
 from .network_plot import NetworkPlot
 from .node_metrics import NodeMetrics
+from .overlay_plot import OverlayPlot
 from .strength_plot import StrengthPlot
 
 __all__ = [
@@ -22,6 +23,7 @@ __all__ = [
     "Matrix",
     "NetworkPlot",
     "NodeMetrics",
+    "OverlayPlot",
     "StrengthPlot",
     "Summary",
 ]

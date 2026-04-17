@@ -38,6 +38,7 @@ from .set_node_size_by_gcs import set_node_size_by_gcs
 from .set_node_size_by_occ import set_node_size_by_occ
 from .set_node_size_properties import set_node_size_properties
 from .set_node_textposition import set_node_textposition
+from .set_node_year import set_node_year
 from .set_top_n_node_labels import set_top_n_node_labels
 from .set_uniform_edge_color import set_uniform_edge_color
 from .set_uniform_edge_line_style import set_uniform_edge_line_style
@@ -83,6 +84,7 @@ __all__ = [
     "set_node_size_by_occ",
     "set_node_size_properties",
     "set_node_textposition",
+    "set_node_year",
     "set_top_n_node_labels",
     "set_uniform_edge_color",
     "set_uniform_edge_line_style",

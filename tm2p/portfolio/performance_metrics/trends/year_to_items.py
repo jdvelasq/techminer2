@@ -3,13 +3,14 @@ YearToItems
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.enum import Field, UnitOrderBy
+    >>> from tm2p.enum import AnalysisUnit, UnitOrderBy
     >>> from tm2p.portfolio.performance_metrics.trends import YearToItems
     >>> mapping = (
     ...     YearToItems()
     ...     #
-    ...     # FIELD:
-    ...     .with_source_field(Field.AUTHKW_NORM)
+    ...     # ANALYSIS UNIT:
+    ...     .with_analysis_unit(AnalysisUnit.KW)
+    ...     #
     ...     .having_top_n_units(20)
     ...     .having_units_ordered_by(UnitOrderBy.OCC)
     ...     .having_unit_occurrence_between(None, None)
@@ -33,25 +34,21 @@ Smoke tests:
     True
     >>> from pprint import pprint
     >>> pprint(mapping)  # doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
-    {2015: ['biometric',
-            'fast identity online',
-            'fido',
-            'password',
-            'pki',
-            'single sign-on'],
-     2016: ['fintech',
-            'innovation',
-            'technology',
-            'content analysis',
-            'digitalization',
-            'popular press',
+    {2015: ['debit cards',
+            'electronic commerce',
+            'financial service',
+            'internet banking',
+            'research and application',
+            'virtual addresses',
     ...
+
 
     >>> mapping = (
     ...     YearToItems()
     ...     #
-    ...     # FIELD:
-    ...     .with_source_field(Field.AUTHKW_NORM)
+    ...     # ANALYSIS UNIT:
+    ...     .with_analysis_unit(AnalysisUnit.KW)
+    ...     #
     ...     .having_top_n_units(20)
     ...     .having_units_ordered_by(UnitOrderBy.OCC)
     ...     .having_unit_occurrence_between(None, None)
@@ -75,19 +72,10 @@ Smoke tests:
     True
     >>> from pprint import pprint
     >>> pprint(mapping)  # doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
-    {2015: ['biometric 001:00001',
-            'fast identity online 001:00001',
-            'fido 001:00001',
-            'password 001:00001',
-            'pki 001:00001',
-            'single sign-on 001:00001'],
-     2016: ['fintech 011:01029',
-            'innovation 003:00685',
-            'technology 002:00650',
-            'content analysis 002:00283',
-            'digitalization 002:00283',
-            'popular press 002:00283',
-            'banking 001:00402',
+    {2015: ['debit cards 001:00018',
+            'electronic commerce 001:00018',
+            'financial service 001:00018',
+            'internet banking 001:00018',
     ...
 
 """

@@ -8,13 +8,13 @@ CumulativeTrendsPlot
     height="600px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
-    >>> from tm2p.enum import Field, UnitOrderBy
+    >>> from tm2p.enum import AnalysisUnit, UnitOrderBy
     >>> from tm2p.portfolio.performance_metrics.trends import CumulativeTrendsPlot
     >>> fig = (
     ...     CumulativeTrendsPlot()
     ...     #
-    ...     # FIELD:
-    ...     .with_source_field(Field.AUTHKW_NORM)
+    ...     # ANALYSIS UNIT:
+    ...     .with_analysis_unit(AnalysisUnit.KW)
     ...     #
     ...     # ITEMS:
     ...     .having_top_n_units(5)

@@ -3,13 +3,14 @@ CumulativeTrends
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.enum import Field, UnitOrderBy
+    >>> from tm2p.enum import AnalysisUnit, UnitOrderBy
     >>> from tm2p.portfolio.performance_metrics.trends import CumulativeTrends
     >>> df = (
     ...     CumulativeTrends()
     ...     #
-    ...     # FIELD:
-    ...     .with_source_field(Field.AUTHKW_NORM)
+    ...     # ANALYSIS UNIT:
+    ...     .with_analysis_unit(AnalysisUnit.KW)
+    ...     #
     ...     .having_top_n_units(20)
     ...     .having_units_ordered_by(UnitOrderBy.OCC)
     ...     .having_unit_occurrence_between(None, None)
@@ -35,17 +36,17 @@ Smoke tests:
     True
     >>> df.head(10)  # doctest: +NORMALIZE_WHITESPACE
     YEAR                     2015  2016  2017  2018  ...  2021  2022  2023  2024
-    AUTHKW_NORM                                      ...
-    fintech                     0    11    22    34  ...    70    83   100   117
+    KW_NORM                                          ...
+    fintech                     0    12    23    35  ...    72    85   102   119
+    finance                     0     3     8    13  ...    18    23    26    29
+    innovation                  0     3     6     7  ...    11    14    19    20
+    china                       0     1     1     1  ...     7    12    15    18
     financial inclusion         0     1     4     5  ...     8    12    15    17
-    financial technology        0     1     2     3  ...    12    12    13    15
-    green finance               0     0     0     0  ...     3     6    11    11
-    blockchain                  0     1     2     3  ...     8     8     9    11
-    banking                     0     1     2     2  ...     4     6     7    10
-    china                       0     1     1     1  ...     4     7     8     9
-    innovation                  0     3     5     6  ...     6     7     9     9
-    artificial intelligence     0     0     0     0  ...     5     5     7     8
-    financial services          0     1     1     5  ...     6     6     6     7
+    financial technology        0     1     2     3  ...    12    12    13    16
+    sustainable development     0     1     1     1  ...     5     6    10    15
+    banking                     0     1     2     2  ...     6     8    10    13
+    sustainability              0     0     0     0  ...     6     6    10    13
+    blockchain                  0     1     2     4  ...     9     9    10    12
     <BLANKLINE>
     [10 rows x 10 columns]
 
@@ -53,8 +54,9 @@ Smoke tests:
     >>> df = (
     ...     CumulativeTrends()
     ...     #
-    ...     # FIELD:
-    ...     .with_source_field(Field.AUTHKW_NORM)
+    ...     # ANALYSIS UNIT:
+    ...     .with_analysis_unit(AnalysisUnit.KW)
+    ...     #
     ...     .having_top_n_units(20)
     ...     .having_units_ordered_by(UnitOrderBy.OCC)
     ...     .having_unit_occurrence_between(None, None)
@@ -80,20 +82,19 @@ Smoke tests:
     True
     >>> df.head(10)  # doctest: +NORMALIZE_WHITESPACE
     YEAR                               2015  2016  2017  ...  2022  2023  2024
-    AUTHKW_NORM                                          ...
-    fintech 117:25478                     0    11    22  ...    83   100   117
+    KW_NORM                                              ...
+    fintech 119:26148                     0    12    23  ...    85   102   119
+    finance 029:07137                     0     3     8  ...    23    26    29
+    innovation 020:03916                  0     3     6  ...    14    19    20
+    china 018:03596                       0     1     1  ...    12    15    18
     financial inclusion 017:03823         0     1     4  ...    12    15    17
-    financial technology 015:02734        0     1     2  ...    12    13    15
-    green finance 011:02844               0     0     0  ...     6    11    11
-    blockchain 011:02023                  0     1     2  ...     8     9    11
-    banking 010:02599                     0     1     2  ...     6     7    10
-    china 009:01947                       0     1     1  ...     7     8     9
-    innovation 009:01703                  0     3     5  ...     7     9     9
-    artificial intelligence 008:01915     0     0     0  ...     5     7     8
-    financial services 007:01673          0     1     1  ...     6     6     7
+    financial technology 016:02809        0     1     2  ...    12    13    16
+    sustainable development 015:02158     0     1     1  ...     6    10    15
+    banking 013:03043                     0     1     2  ...     8    10    13
+    sustainability 013:02308              0     0     0  ...     6    10    13
+    blockchain 012:03450                  0     1     2  ...     9    10    12
     <BLANKLINE>
     [10 rows x 10 columns]
-
 
 
 """

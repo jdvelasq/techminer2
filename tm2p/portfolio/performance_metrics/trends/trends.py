@@ -3,13 +3,14 @@ Matrix
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.enum import Field, UnitOrderBy
+    >>> from tm2p.enum import AnalysisUnit, UnitOrderBy
     >>> from tm2p.portfolio.performance_metrics.trends import Trends
     >>> df = (
     ...     Trends()
     ...     #
-    ...     # FIELD:
-    ...     .with_source_field(Field.AUTHKW_NORM)
+    ...     # ANALYSIS UNIT:
+    ...     .with_analysis_unit(AnalysisUnit.KW)
+    ...     #
     ...     .having_top_n_units(20)
     ...     .having_units_ordered_by(UnitOrderBy.OCC)
     ...     .having_unit_occurrence_between(None, None)
@@ -52,7 +53,8 @@ Smoke tests:
     ...     Trends()
     ...     #
     ...     # FIELD:
-    ...     .with_source_field(Field.AUTHKW_NORM)
+    ...     .with_analysis_unit(AnalysisUnit.AUTHKW)
+    ...     #
     ...     .having_top_n_units(20)
     ...     .having_units_ordered_by(UnitOrderBy.OCC)
     ...     .having_unit_occurrence_between(None, None)
@@ -117,7 +119,7 @@ class Trends(
 
     def _compute_item_occurrences_by_year(self, df):
 
-        field = self.params.source_field.value
+        field = self.params.analysis_unit.value
 
         df = df[[field, YEAR]].copy()
         df = df.dropna()
@@ -151,7 +153,7 @@ class Trends(
 
     def _get_items_mapping(self, df):
 
-        field = self.params.source_field.value
+        field = self.params.analysis_unit.value
 
         df = df[[field, GCS]].copy()
         df = df.dropna()

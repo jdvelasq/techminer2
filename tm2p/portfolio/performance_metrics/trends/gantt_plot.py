@@ -8,18 +8,22 @@ Gantt Plot
     height="600px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
-    >>> from tm2p.enum import Field, UnitOrderBy
+    >>> from tm2p.enum import AnalysisUnit, UnitOrderBy
     >>> from tm2p.portfolio.performance_metrics.trends import GanttPlot
     >>> fig = (
     ...     GanttPlot()
     ...     #
-    ...     # FIELD:
-    ...     .with_source_field(Field.AUTHKW_RAW)
+    ...     # ANALYSIS UNIT:
+    ...     .with_analysis_unit(AnalysisUnit.KW)
+    ...     #
     ...     .having_top_n_units(20)
     ...     .having_units_ordered_by(UnitOrderBy.OCC)
     ...     .having_unit_occurrence_between(None, None)
     ...     .having_unit_global_citation_between(None, None)
     ...     .having_units_in(None)
+    ...     #
+    ...     # COUNTERS:
+    ...     .using_counters(True)
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/scopus/")
@@ -78,17 +82,17 @@ class GanttPlot(
         fig = px.scatter(
             data_frame,
             x="YEAR",
-            y=self.params.source_field.value,
+            y=self.params.analysis_unit.value,
             size="OCC",
             hover_data=data_frame.columns.to_list(),
-            color=self.params.source_field.value,
+            color=self.params.analysis_unit.value,
         )
         fig.update_layout(
             paper_bgcolor="white",
             plot_bgcolor="white",
             showlegend=False,
             xaxis_title=None,
-            yaxis_title=self.params.source_field.value,
+            yaxis_title=self.params.analysis_unit.value,
         )
         fig.update_traces(
             marker={

@@ -1,17 +1,17 @@
 """
-NetworkPlot
+OverlayPlot
 ===============================================================================
 
 .. raw:: html
 
-    <iframe src="../_generated/px.synthes.netw.co_occur.network_plot.html"
+    <iframe src="../_generated/px.synthes.netw.co_occur.overlay_plot.html"
     height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
     >>> from tm2p.enum import AssociationIndex, AnalysisUnit, GraphClusteringAlgorithm, UnitOrderBy, Scaling, NodeSizeMetric
-    >>> from tm2p.portfolio.thematic_stucture.co_occurrence.direct_similarity_network import NetworkPlot
+    >>> from tm2p.portfolio.thematic_stucture.co_occurrence.direct_similarity_network import OverlayPlot
     >>> fig = (
-    ...     NetworkPlot()
+    ...     OverlayPlot()
     ...     #
     ...     # ANALYSIS UNIT:
     ...     .with_analysis_unit(AnalysisUnit.KW)
@@ -87,7 +87,7 @@ Smoke tests:
     ... )
     >>> type(fig).__name__
     'Figure'
-    >>> fig.write_html("docsrc/_generated/px.synthes.netw.co_occur.network_plot.html")
+    >>> fig.write_html("docsrc/_generated/px.synthes.netw.co_occur.overlay_plot.html")
 
 
 """
@@ -100,7 +100,7 @@ from .item_to_cluster import ItemToCluster
 from .matrix import Matrix as CoOccurrenceMatrix
 
 
-class NetworkPlot(
+class OverlayPlot(
     ParamsMixin,
 ):
     """:meta private:"""
