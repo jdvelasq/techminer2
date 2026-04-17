@@ -2,10 +2,10 @@
 ClusterToItems
 ===============================================================================
 
-* **CitationUnit.DOC**
+* **AnalysisUnit.DOC**
 
 Smoke tests:
-    >>> from tm2p.enum import AssociationIndex, CitationUnit, GraphClusteringAlgorithm
+    >>> from tm2p.enum import AssociationIndex, AnalysisUnit, GraphClusteringAlgorithm
     >>> from tm2p.portfolio.intellectual_structure.citation_network import ClusterToItems
     >>> # ---------------------------------------------------------------------
     >>> # DOC
@@ -14,7 +14,7 @@ Smoke tests:
     ...     ClusterToItems()
     ...     #
     ...     # CITATION UNIT:
-    ...     .with_citation_unit(CitationUnit.DOC)
+    ...     .with_analysis_unit(AnalysisUnit.DOC)
     ...     #
     ...     # NETWORK:
     ...     .using_association_index(AssociationIndex.ASSOCIATION_STRENGTH)

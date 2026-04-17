@@ -22,15 +22,15 @@ def _step_02_compute_co_occurrences_between_references(params, records):
         matrix_list = matrix_list.explode(name)
         matrix_list[name] = matrix_list[name].str.strip()
 
-    if params.co_citation_unit == CoCitationUnit.CITED_AUTH:
+    if params.co_citation_unit == AnalysisUnit.CITED_AUTH:
         matrix_list["row"] = matrix_list["row"].str.split(", ").map(lambda x: x[0])
         matrix_list["column"] = matrix_list["column"].str.split(", ").str[0]
         matrix_list = matrix_list.loc[matrix_list["row"] != "[Anonymous]", :]
         matrix_list = matrix_list.loc[matrix_list["column"] != "[Anonymous]", :]
-    elif params.co_citation_unit == CoCitationUnit.CITED_SRC:
+    elif params.co_citation_unit == AnalysisUnit.CITED_SRC:
         matrix_list["row"] = matrix_list["row"].str.split(", ").str[2]
         matrix_list["column"] = matrix_list["column"].str.split(", ").str[2]
-    elif params.co_citation_unit == CoCitationUnit.CITED_REF:
+    elif params.co_citation_unit == AnalysisUnit.CITED_REF:
         matrix_list["row"] = matrix_list["row"].str.split(", ").str[:3].str.join(", ")
         matrix_list["column"] = (
             matrix_list["column"].str.split(", ").str[:3].str.join(", ")
@@ -68,16 +68,16 @@ def _step_03_compute_terms(params, records):
 
     #
     # Transforms each reference into the element of interest
-    if params.co_citation_unit == CoCitationUnit.CITED_AUTH:
+    if params.co_citation_unit == AnalysisUnit.CITED_AUTH:
         global_references = global_references.str.split(", ").str[0]
         global_references = global_references.dropna()
-    elif params.co_citation_unit == CoCitationUnit.CITED_SRC:
+    elif params.co_citation_unit == AnalysisUnit.CITED_SRC:
         global_references = global_references.str.split(", ")
         global_references = global_references.loc[global_references.map(len) >= 3].str[
             2
         ]
         global_references = global_references.dropna()
-    elif params.co_citation_unit == CoCitationUnit.CITED_REF:
+    elif params.co_citation_unit == AnalysisUnit.CITED_REF:
         global_references = (
             global_references.str.split(", ").map(lambda x: x[:3]).str.join(", ")
         )
@@ -156,7 +156,7 @@ def _step_06_create_a_nx_graph(matrix_list):
 # -------------------------------------------------------------------------
 def _step_07_set_text_property_of_nodes(nx_graph, params):
 
-    if params.co_citation_unit == CoCitationUnit.CITED_REF:
+    if params.co_citation_unit == AnalysisUnit.CITED_REF:
         for node in nx_graph.nodes():
             nx_graph.nodes[node]["text"] = ", ".join(node.split(", ")[:2])
 

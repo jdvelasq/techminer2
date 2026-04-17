@@ -2,10 +2,10 @@
 DirectMatrix
 ===============================================================================
 
-* **CitationUnit.DOC**
+* **AnalysisUnit.DOC**
 
 Smoke tests:
-    >>> from tm2p.enum import AssociationIndex, CitationUnit
+    >>> from tm2p.enum import AssociationIndex, AnalysisUnit
     >>> from tm2p.portfolio.intellectual_structure.citation_network import DirectMatrix
     >>> # ---------------------------------------------------------------------
     >>> # DOC
@@ -14,7 +14,7 @@ Smoke tests:
     ...     DirectMatrix()
     ...     #
     ...     # CITATION UNIT:
-    ...     .with_citation_unit(CitationUnit.DOC)
+    ...     .with_analysis_unit(AnalysisUnit.DOC)
     ...     #
     ...     # COUNTERS:
     ...     .using_counters(True)

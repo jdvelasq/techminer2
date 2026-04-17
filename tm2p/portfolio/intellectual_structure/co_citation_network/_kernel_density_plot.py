@@ -10,13 +10,13 @@ KernelDensityPlot
     height="600px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
-    >>> from tm2p import CoCitationUnit
+    >>> from tm2p import AnalysisUnit
     >>> from tm2p.synthesize.netw.co_cit import KernelDensityPlot
     >>> fig = (
     ...     KernelDensityPlot()
     ...     #
     ...     # ANALYSIS UNIT:
-    ...     .with_co_citation_unit(CoCitationUnit.CITED_AUTH)
+    ...     .with_analysis_unit(AnalysisUnit.CITED_AUTH)
     ...     .having_top_n_units(30)
     ...     .having_minimum_cited_unit_occurrences(0)
     ...     .having_units_in(None)
@@ -54,13 +54,13 @@ Smoke tests:
     height="600px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
-    >>> from tm2p import CoCitationUnit
+    >>> from tm2p import AnalysisUnit
     >>> from tm2p.synthesize.netw.co_cit import KernelDensityPlot
     >>> fig = (
     ...     KernelDensityPlot()
     ...     #
     ...     # ANALYSIS UNIT:
-    ...     .with_co_citation_unit(CoCitationUnit.CITED_REF)
+    ...     .with_analysis_unit(AnalysisUnit.CITED_REF)
     ...     .having_top_n_units(30)
     ...     .having_minimum_cited_unit_occurrences(0)
     ...     .having_units_in(None)
@@ -100,13 +100,13 @@ Smoke tests:
 
 
 Smoke tests:
-    >>> from tm2p import CoCitationUnit
+    >>> from tm2p import AnalysisUnit
     >>> from tm2p.synthesize.netw.co_cit import KernelDensityPlot
     >>> fig = (
     ...     KernelDensityPlot()
     ...     #
     ...     # ANALYSIS UNIT:
-    ...     .with_co_citation_unit(CoCitationUnit.CITED_REF)
+    ...     .with_analysis_unit(AnalysisUnit.CITED_REF)
     ...     .having_top_n_units(30)
     ...     .having_minimum_cited_unit_occurrences(0)
     ...     .having_units_in(None)

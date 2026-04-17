@@ -63,7 +63,7 @@ def build_node_degree_plot(params, df):
             showarrow=False,
             textangle=-90,
             yanchor="bottom",
-            font={"size": params.textfont_size},
+            font={"size": params.textfont_size_uniform},
             yshift=params.yshift,
         )
 

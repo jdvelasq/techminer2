@@ -2,7 +2,7 @@
 NetworkPlot
 ===============================================================================
 
-* **CitationUnit.DOC**
+* **AnalysisUnit.DOC**
 
 .. raw:: html
 
@@ -10,7 +10,7 @@ NetworkPlot
     height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
-    >>> from tm2p.enum import AssociationIndex, CitationUnit, GraphClusteringAlgorithm, Scaling
+    >>> from tm2p.enum import AssociationIndex, AnalysisUnit, GraphClusteringAlgorithm, Scaling
     >>> from tm2p.synthesize.netw.cit import NetworkPlot
     >>> # ---------------------------------------------------------------------
     >>> # DOC
@@ -19,7 +19,7 @@ Smoke tests:
     ...     NetworkPlot()
     ...     #
     ...     # CITATION UNIT:
-    ...     .with_citation_unit(CitationUnit.DOC)
+    ...     .with_analysis_unit(AnalysisUnit.DOC)
     ...     #
     ...     # COUNTERS:
     ...     .using_counters(True)
@@ -79,7 +79,7 @@ Smoke tests:
 
 
 
-* **CitationUnit.AUTH**
+* **AnalysisUnit.AUTH**
 
 .. raw:: html
 
@@ -94,7 +94,7 @@ Smoke tests:
     ...     NetworkPlot()
     ...     #
     ...     # CITATION UNIT:
-    ...     .with_citation_unit(CitationUnit.AUTH)
+    ...     .with_analysis_unit(AnalysisUnit.AUTH)
     ...     .having_top_n_units(30)
     ...     .having_units_in(None)
     ...     .having_minimum_cited_unit_occurrences(0)
@@ -133,7 +133,7 @@ Smoke tests:
 
 
 
-* **CitationUnit.CTRY**
+* **AnalysisUnit.CTRY**
 
 .. raw:: html
 
@@ -148,7 +148,7 @@ Smoke tests:
     ...     NetworkPlot()
     ...     #
     ...     # CITATION UNIT:
-    ...     .with_citation_unit(CitationUnit.CTRY)
+    ...     .with_analysis_unit(AnalysisUnit.CTRY)
     ...     .having_top_n_units(30)
     ...     .having_units_in(None)
     ...     .having_minimum_cited_unit_occurrences(0)
@@ -186,7 +186,7 @@ Smoke tests:
     >>> fig.write_html("docsrc/_generated/px.synthes.netw.cit.network_plot_ctry.html")
 
 
-* **CitationUnit.ORG**
+* **AnalysisUnit.ORG**
 
 .. raw:: html
 
@@ -201,7 +201,7 @@ Smoke tests:
     ...     NetworkPlot()
     ...     #
     ...     # CITATION UNIT:
-    ...     .with_citation_unit(CitationUnit.ORG)
+    ...     .with_analysis_unit(AnalysisUnit.ORG)
     ...     .having_top_n_units(30)
     ...     .having_units_in(None)
     ...     .having_minimum_cited_unit_occurrences(0)
@@ -240,7 +240,7 @@ Smoke tests:
 
 
 
-* **CitationUnit.SRC**
+* **AnalysisUnit.SRC**
 
 .. raw:: html
 
@@ -255,7 +255,7 @@ Smoke tests:
     ...     NetworkPlot()
     ...     #
     ...     # CITATION UNIT:
-    ...     .with_citation_unit(CitationUnit.SRC)
+    ...     .with_analysis_unit(AnalysisUnit.SRC)
     ...     .having_top_n_units(30)
     ...     .having_units_in(None)
     ...     .having_minimum_cited_unit_occurrences(0)
@@ -311,7 +311,7 @@ class NetworkPlot(
 
 
 # from tm2p._intern import ParamsMixin
-# from tm2p.enum import CitationUnit, UnitOrderBy
+# from tm2p.enum import AnalysisUnit, UnitOrderBy
 # from tm2p.portfolio.intellectual_structure.citation_network._intern.doc import (
 #     DocNetworkPlot,
 # )
@@ -331,7 +331,7 @@ class NetworkPlot(
 
 #         check_database(self.params.root_directory)
 
-#         if self.params.citation_unit == CitationUnit.DOC:
+#         if self.params.citation_unit == AnalysisUnit.DOC:
 #             Plot = DocNetworkPlot
 #         else:
 #             Plot = OtherNetworkPlot

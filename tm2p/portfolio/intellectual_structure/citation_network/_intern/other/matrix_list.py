@@ -77,21 +77,20 @@ class OtherMatrixList(
 
     def _add_counters_to_citation_units(self, df):
 
-        if self.params.citation_unit == CitationUnit.AUTH:
-            source_field = Field.AUTH_FULL_NAME
-        elif self.params.citation_unit == CitationUnit.CTRY:
-            source_field = Field.CTRY_ISO3
-        elif self.params.citation_unit == CitationUnit.ORG:
-            source_field = Field.ORG
-        elif self.params.citation_unit == CitationUnit.SRC:
-            source_field = Field.SRC_ISO4
-        else:
-            raise ValueError("Invalid citation unit")
+        # if self.params.analysis_unit == AnalysisUnit.AUTH:
+        #     source_field = Field.AUTH_FULL_NAME
+        # elif self.params.analysis_unit == AnalysisUnit.CTRY:
+        #     source_field = Field.CTRY_ISO3
+        # elif self.params.analysis_unit == AnalysisUnit.ORG:
+        #     source_field = Field.ORG
+        # elif self.params.analysis_unit == AnalysisUnit.SRC:
+        #     source_field = Field.SRC_ISO4
+        # else:
+        #     raise ValueError("Invalid citation unit")
 
         metrics = (
-            Metrics()
-            .update(**self.params.__dict__)
-            .with_source_field(source_field)
+            Metrics().update(**self.params.__dict__)
+            # .with_source_field(source_field)
             .run()
         )
 
@@ -155,7 +154,7 @@ class OtherMatrixList(
         df = df.rename(
             columns={
                 LCR: "CITED_UNIT",
-                self.params.citation_unit: "CITING_UNIT",
+                self.params.analysis_unit: "CITING_UNIT",
             }
         )
         df.index = df[REC_ID].copy()
@@ -163,6 +162,6 @@ class OtherMatrixList(
 
     def _get_records(self):
         df = load_filtered_main_csv_zip(self.params)
-        df = df[[REC_ID, self.params.citation_unit, LCR]].copy()
+        df = df[[REC_ID, self.params.analysis_unit, LCR]].copy()
         df = df.dropna()
         return df

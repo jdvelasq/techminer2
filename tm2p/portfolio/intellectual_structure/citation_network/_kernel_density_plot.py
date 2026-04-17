@@ -2,7 +2,7 @@
 KernelDensityPlot
 ===============================================================================
 
-* **CitationUnit.DOC**
+* **AnalysisUnit.DOC**
 
 .. raw:: html
 
@@ -10,7 +10,7 @@ KernelDensityPlot
     height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
-    >>> from tm2p.enum import AssociationIndex, CitationUnit, GraphClusteringAlgorithm
+    >>> from tm2p.enum import AssociationIndex, AnalysisUnit, GraphClusteringAlgorithm
     >>> from tm2p.portfolio.intellectual_structure.citation_network import KernelDensityPlot
     >>> # ---------------------------------------------------------------------
     >>> # DOC
@@ -19,7 +19,7 @@ Smoke tests:
     ...     KernelDensityPlot()
     ...     #
     ...     # CITATION UNIT:
-    ...     .with_citation_unit(CitationUnit.DOC)
+    ...     .with_analysis_unit(AnalysisUnit.DOC)
     ...     #
     ...     # NETWORK:
     ...     .using_association_index(AssociationIndex.ASSOCIATION_STRENGTH)
@@ -54,7 +54,7 @@ Smoke tests:
 
 
 
-* **CitationUnit.AUTH**
+* **AnalysisUnit.AUTH**
 
 .. raw:: html
 
@@ -69,7 +69,7 @@ Smoke tests:
     ...     KernelDensityPlot()
     ...     #
     ...     # CITATION UNIT:
-    ...     .with_citation_unit(CitationUnit.AUTH)
+    ...     .with_analysis_unit(AnalysisUnit.AUTH)
     ...     #
     ...     .having_top_n_units(30)
     ...     .having_units_in(None)
@@ -107,7 +107,7 @@ Smoke tests:
     >>> fig.write_html("docsrc/_generated/px.synthes.netw.cit.kernel_density_plot_auth.html")
 
 
-* **CitationUnit.CTRY**
+* **AnalysisUnit.CTRY**
 
 .. raw:: html
 
@@ -122,7 +122,7 @@ Smoke tests:
     ...     KernelDensityPlot()
     ...     #
     ...     # CITATION UNIT:
-    ...     .with_citation_unit(CitationUnit.CTRY)
+    ...     .with_analysis_unit(AnalysisUnit.CTRY)
     ...     #
     ...     .having_top_n_units(30)
     ...     .having_units_in(None)
@@ -161,7 +161,7 @@ Smoke tests:
 
 
 
-* **CitationUnit.ORG**
+* **AnalysisUnit.ORG**
 
 .. raw:: html
 
@@ -176,7 +176,7 @@ Smoke tests:
     ...     KernelDensityPlot()
     ...     #
     ...     # CITATION UNIT:
-    ...     .with_citation_unit(CitationUnit.ORG)
+    ...     .with_analysis_unit(AnalysisUnit.ORG)
     ...     #
     ...     .having_top_n_units(30)
     ...     .having_units_in(None)
@@ -214,7 +214,7 @@ Smoke tests:
     >>> fig.write_html("docsrc/_generated/px.synthes.netw.cit.kernel_density_plot_org.html")
 
 
-* **CitationUnit.SRC**
+* **AnalysisUnit.SRC**
 
 .. raw:: html
 
@@ -229,7 +229,7 @@ Smoke tests:
     ...     KernelDensityPlot()
     ...     #
     ...     # CITATION UNIT:
-    ...     .with_citation_unit(CitationUnit.SRC)
+    ...     .with_analysis_unit(AnalysisUnit.SRC)
     ...     #
     ...     .having_top_n_units(30)
     ...     .having_units_in(None)

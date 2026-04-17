@@ -6,15 +6,15 @@ Matrix
 
 
 Smoke tests:
-    >>> from tm2p.enum import CoCitationUnit
+    >>> from tm2p.enum import AnalysisUnit
     >>> from tm2p.portfolio.intellectual_structure.co_citation_network import Matrix
     >>> df = (
     ...     Matrix()
     ...     #
     ...     # ANALYSIS UNIT:
-    ...     .with_analysis_unit(CoCitationUnit.CITED_REF)
+    ...     .with_analysis_unit(AnalysisUnit.CITED_REF)
     ...     #
-    ...     .having_cited_items_in_top(50)
+    ...     .having_top_n_cited_units(50)
     ...     .having_minimum_cited_unit_occurrences(0)
     ...     #
     ...     # COUNTERS:
@@ -49,9 +49,9 @@ Smoke tests:
     ...     Matrix()
     ...     #
     ...     # ANALYSIS UNIT:
-    ...     .with_co_citation_unit(CoCitationUnit.CITED_REF)
+    ...     .with_analysis_unit(AnalysisUnit.CITED_REF)
     ...     #
-    ...     .having_cited_items_in_top(50)
+    ...     .having_top_n_cited_units(50)
     ...     .having_minimum_cited_unit_occurrences(0)
     ...     #
     ...     # COUNTERS:
@@ -90,10 +90,13 @@ Smoke tests:
     ...     Matrix()
     ...     #
     ...     # ANALYSIS UNIT:
-    ...     .with_co_citation_unit(CoCitationUnit.CITED_AUTH)
+    ...     .with_analysis_unit(AnalysisUnit.CITED_AUTH)
     ...     #
-    ...     .having_cited_items_in_top(50)
+    ...     .having_top_n_cited_units(50)
     ...     .having_minimum_cited_unit_occurrences(0)
+    ...     #
+    ...     # COUNTERS:
+    ...     .using_counters(False)
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/wos/")
@@ -110,14 +113,14 @@ Smoke tests:
     >>> df.shape[1] > 1
     True
     >>> print(df.iloc[:6, :6].to_string())  # doctest: +NORMALIZE_WHITESPACE
-    COLUMNS          Williams JW 9:0  Magnuson W 9:0  Kurum E 9:0  Brummer C 9:0  Yeung K 8:0  Yang D 8:0
+    COLUMNS      Williams JW  Magnuson W  Kurum E  Brummer C  Yeung K  Yang D
     ROWS
-    Williams JW 9:0                9               0            2              0            1           2
-    Magnuson W 9:0                 0               9            0              4            0           1
-    Kurum E 9:0                    2               0            9              0            0           4
-    Brummer C 9:0                  0               4            0              9            0           0
-    Yeung K 8:0                    1               0            0              0            8           0
-    Yang D 8:0                     2               1            4              0            0           8
+    Williams JW            9           0        2          0        1       2
+    Magnuson W             0           9        0          4        0       1
+    Kurum E                2           0        9          0        0       4
+    Brummer C              0           4        0          9        0       0
+    Yeung K                1           0        0          0        8       0
+    Yang D                 2           1        4          0        0       8
 
 
 * **CITED_SRC**
@@ -127,10 +130,13 @@ Smoke tests:
     ...     Matrix()
     ...     #
     ...     # ANALYSIS UNIT:
-    ...     .with_co_citation_unit(CoCitationUnit.CITED_SRC)
+    ...     .with_analysis_unit(AnalysisUnit.CITED_SRC)
     ...     #
-    ...     .having_cited_items_in_top(50)
+    ...     .having_top_n_cited_units(50)
     ...     .having_minimum_cited_unit_occurrences(0)
+    ...     #
+    ...     # COUNTERS:
+    ...     .using_counters(False)
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/wos/")
@@ -147,14 +153,14 @@ Smoke tests:
     >>> df.shape[1] > 1
     True
     >>> print(df.iloc[:6, :6].to_string())  # doctest: +NORMALIZE_WHITESPACE
-    COLUMNS                       SSRN Electronic Journal 52:0  NW J INT LAW BUS 52:0  J ECON BUS 37:0  REV FINANC STUD 33:0  TECHNOL FORECAST SOC 32:0  J FINANC ECON 31:0
+    COLUMNS                  SSRN Electronic Journal  NW J INT LAW BUS  J ECON BUS  REV FINANC STUD  TECHNOL FORECAST SOC  J FINANC ECON
     ROWS
-    SSRN Electronic Journal 52:0                            52                     25               11                    13                         10                  10
-    NW J INT LAW BUS 52:0                                   25                     52               24                    11                          7                  11
-    J ECON BUS 37:0                                         11                     24               37                     9                         10                   9
-    REV FINANC STUD 33:0                                    13                     11                9                    33                          9                  21
-    TECHNOL FORECAST SOC 32:0                               10                      7               10                     9                         32                  10
-    J FINANC ECON 31:0                                      10                     11                9                    21                         10                  31
+    SSRN Electronic Journal                       52                25          11               13                    10             10
+    NW J INT LAW BUS                              25                52          24               11                     7             11
+    J ECON BUS                                    11                24          37                9                    10              9
+    REV FINANC STUD                               13                11           9               33                     9             21
+    TECHNOL FORECAST SOC                          10                 7          10                9                    32             10
+    J FINANC ECON                                 10                11           9               21                    10             31
 
 
 """

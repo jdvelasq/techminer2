@@ -5,15 +5,15 @@ ClusterToItems
 * **CITED_REF**
 
 Smoke tests:
-    >>> from tm2p.enum import AssociationIndex, CoCitationUnit, GraphClusteringAlgorithm
+    >>> from tm2p.enum import AssociationIndex, AnalysisUnit, GraphClusteringAlgorithm
     >>> from tm2p.portfolio.intellectual_structure.co_citation_network import ClusterToItems
     >>> mapping = (
     ...     ClusterToItems()
     ...     #
     ...     # ANALYSIS UNIT:
-    ...     .with_co_citation_unit(CoCitationUnit.CITED_REF)
+    ...     .with_analysis_unit(AnalysisUnit.CITED_REF)
     ...     #
-    ...     .having_cited_items_in_top(50)
+    ...     .having_top_n_cited_units(50)
     ...     .having_minimum_cited_unit_occurrences(0)
     ...     #
     ...     # COUNTERS:

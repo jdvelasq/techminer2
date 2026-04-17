@@ -2,15 +2,15 @@
 StrengthPlot
 ===============================================================================
 
-* **CitationUnit.DOC**
+* **AnalysisUnit.DOC**
 
-* **CitationUnit.AUTH**
+* **AnalysisUnit.AUTH**
 
-* **CitationUnit.CTRY**
+* **AnalysisUnit.CTRY**
 
-* **CitationUnit.ORG**
+* **AnalysisUnit.ORG**
 
-* **CitationUnit.SRC**
+* **AnalysisUnit.SRC**
 
 
 .. raw:: html
@@ -19,7 +19,7 @@ StrengthPlot
     height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
-    >>> from tm2p.enum import AssociationIndex, CitationUnit
+    >>> from tm2p.enum import AssociationIndex, AnalysisUnit
     >>> from tm2p.portfolio.intellectual_structure.citation_network import StrengthPlot
     >>> # ---------------------------------------------------------------------
     >>> # DOC
@@ -28,7 +28,7 @@ Smoke tests:
     ...     StrengthPlot()
     ...     #
     ...     # CITATION UNIT:
-    ...     .with_citation_unit(CitationUnit.DOC)
+    ...     .with_analysis_unit(AnalysisUnit.DOC)
     ...     #
     ...     # COUNTERS:
     ...     .using_counters(True)

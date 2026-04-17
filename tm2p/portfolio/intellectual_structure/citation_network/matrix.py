@@ -2,10 +2,10 @@
 Matrix
 ===============================================================================
 
-* **CitationUnit.DOC**
+* **AnalysisUnit.DOC**
 
 Smoke tests:
-    >>> from tm2p.enum import CitationUnit
+    >>> from tm2p.enum import AnalysisUnit
     >>> from tm2p.portfolio.intellectual_structure.citation_network import Matrix
     >>> # ---------------------------------------------------------------------
     >>> # DOC
@@ -14,7 +14,7 @@ Smoke tests:
     ...     Matrix()
     ...     #
     ...     # CITATION UNIT:
-    ...     .with_citation_unit(CitationUnit.DOC)
+    ...     .with_analysis_unit(AnalysisUnit.DOC)
     ...     #
     ...     # COUNTERS:
     ...     .using_counters(True)
@@ -50,7 +50,7 @@ Smoke tests:
     <BLANKLINE>
     [10 rows x 10 columns]
 
-* **CitationUnit.AUTH**
+* **AnalysisUnit.AUTH**
 
 Smoke tests:
     >>> # ---------------------------------------------------------------------
@@ -60,7 +60,7 @@ Smoke tests:
     ...     Matrix()
     ...     #
     ...     # ANALYSIS UNIT:
-    ...     .with_citation_unit(CitationUnit.AUTH)
+    ...     .with_analysis_unit(AnalysisUnit.AUTH)
     ...     #
     ...     .having_top_n_units(50)
     ...     .having_minimum_cited_unit_occurrences(0)
@@ -102,7 +102,7 @@ Smoke tests:
     [10 rows x 10 columns]
 
 
-* **CitationUnit.CTRY**
+* **AnalysisUnit.CTRY**
 
 Smoke tests:
     >>> # ---------------------------------------------------------------------
@@ -112,7 +112,7 @@ Smoke tests:
     ...     Matrix()
     ...     #
     ...     # ANALYSIS UNIT:
-    ...     .with_citation_unit(CitationUnit.CTRY)
+    ...     .with_analysis_unit(AnalysisUnit.CTRY)
     ...     #
     ...     .having_top_n_units(30)
     ...     .having_minimum_cited_unit_occurrences(0)
@@ -154,7 +154,7 @@ Smoke tests:
     [10 rows x 10 columns]
 
 
-* **CitationUnit.ORG**
+* **AnalysisUnit.ORG**
 
 Smoke tests:
     >>> # ---------------------------------------------------------------------
@@ -164,7 +164,7 @@ Smoke tests:
     ...     Matrix()
     ...     #
     ...     # ANALYSIS UNIT:
-    ...     .with_citation_unit(CitationUnit.ORG)
+    ...     .with_analysis_unit(AnalysisUnit.ORG)
     ...     #
     ...     .having_top_n_units(30)
     ...     .having_minimum_cited_unit_occurrences(0)
@@ -207,7 +207,7 @@ Smoke tests:
 
 
 
-* **CitationUnit.SRC**
+* **AnalysisUnit.SRC**
 
 Smoke tests:
     >>> # ---------------------------------------------------------------------
@@ -217,7 +217,7 @@ Smoke tests:
     ...     Matrix()
     ...     #
     ...     # UNIT OF ANALYSIS:
-    ...     .with_citation_unit(CitationUnit.SRC)
+    ...     .with_analysis_unit(AnalysisUnit.SRC)
     ...     #
     ...     .having_top_n_units(30)
     ...     .having_minimum_cited_unit_occurrences(0)

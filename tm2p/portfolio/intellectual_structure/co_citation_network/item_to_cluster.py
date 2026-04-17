@@ -5,15 +5,15 @@ ItemToCluster
 * **CITED_REF**
 
 Smoke tests:
-    >>> from tm2p.enum import AssociationIndex, CoCitationUnit, GraphClusteringAlgorithm
+    >>> from tm2p.enum import AssociationIndex, AnalysisUnit, GraphClusteringAlgorithm
     >>> from tm2p.portfolio.intellectual_structure.co_citation_network import ItemToCluster
     >>> mapping = (
     ...     ItemToCluster()
     ...     #
     ...     # ANALYSIS UNIT:
-    ...     .with_co_citation_unit(CoCitationUnit.CITED_REF)
+    ...     .with_analysis_unit(AnalysisUnit.CITED_REF)
     ...     #
-    ...     .having_cited_items_in_top(50)
+    ...     .having_top_n_cited_units(50)
     ...     .having_minimum_cited_unit_occurrences(0)
     ...     #
     ...     # COUNTERS:
@@ -37,18 +37,18 @@ Smoke tests:
     >>> pprint(mapping) # doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
     {'Anagnostopoulos I, 2018, J ECON BUS 31:0': 0,
      'Armstrong P., 2018, DEV REGTECH SUPTECH 5:0': 1,
-     'Arner DW, 2015, SSRN Electronic Journal 15:0': 1,
+     'Arner DW, 2015, SSRN Electronic Journal 15:0': 2,
      'Arner DW, 2016, SSRN Electronic Journal 8:0': 1,
-     'Arner DW, 2017, NW J INT LAW BUS 50:0': 1,
+     'Arner DW, 2017, NW J INT LAW BUS 50:0': 2,
     ...
 
     >>> mapping = (
     ...     ItemToCluster()
     ...     #
     ...     # ANALYSIS UNIT:
-    ...     .with_co_citation_unit(CoCitationUnit.CITED_REF)
+    ...     .with_analysis_unit(AnalysisUnit.CITED_REF)
     ...     #
-    ...     .having_cited_items_in_top(50)
+    ...     .having_top_n_cited_units(50)
     ...     .having_minimum_cited_unit_occurrences(0)
     ...     #
     ...     # COUNTERS:
@@ -71,9 +71,12 @@ Smoke tests:
     >>> pprint(mapping) # doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
     {'Anagnostopoulos I, 2018, J ECON BUS': 0,
      'Armstrong P., 2018, DEV REGTECH SUPTECH': 1,
-     'Arner DW, 2015, SSRN Electronic Journal': 1,
+     'Arner DW, 2015, SSRN Electronic Journal': 2,
      'Arner DW, 2016, SSRN Electronic Journal': 1,
+     'Arner DW, 2017, NW J INT LAW BUS': 2,
+     'Arner DW, 2018, HANDBOOK OF BLOCKCHAIN': 0,
     ...
+
 """
 
 from tm2p._intern.networks.item_to_cluster import BaseItemToCluster
