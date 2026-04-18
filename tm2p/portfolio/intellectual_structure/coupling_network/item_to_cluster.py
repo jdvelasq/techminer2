@@ -41,7 +41,7 @@ Smoke tests:
      'Arsyad I 2025 1:00005': 1,
     ...
 
-* **AnalysisUnit.AUTH**
+* **AnalysisUnit.AUTH** /  **AnalysisUnit.CTRY** /  / **AnalysisUnit.ORG** / **AnalysisUnit.SRC**
 
 Smoke tests:
     >>> mapping = (
@@ -84,132 +84,6 @@ Smoke tests:
      'Nir Kshetri 002:00006': 0,
     ...
 
-* **AnalysisUnit.CTRY**
-
-Smoke tests:
-    >>> mapping = (
-    ...     ItemToCluster()
-    ...     #
-    ...     # COUPLING UNIT:
-    ...     .with_analysis_unit(AnalysisUnit.CTRY)
-    ...     #
-    ...     .having_top_n_units(10)
-    ...     .having_units_ordered_by(UnitOrderBy.OCC)
-    ...     .having_unit_occurrence_between(None, None)
-    ...     .having_unit_global_citation_between(None, None)
-    ...     .having_units_in(None)
-    ...     #
-    ...     # COUNTERS:
-    ...     .using_counters(True)
-    ...     #
-    ...     #
-    ...     # NETWORK:
-    ...     .using_association_index(AssociationIndex.ASSOCIATION_STRENGTH)
-    ...     #
-    ...     # CLUSTERING:
-    ...     .using_clustering(GraphClusteringAlgorithm.LOUVAIN)
-    ...     #
-    ...     # DATABASE:
-    ...     .where_root_directory("tests/wos/")
-    ...     .where_record_years_range(None, None)
-    ...     .where_record_global_citations_range(None, None)
-    ...     .where_records_match(None)
-    ...     #
-    ...     .run()
-    ... )
-    >>> from pprint import pprint
-    >>> pprint(mapping) # doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
-    {'AUS 024:01072': 0,
-     'CAN 008:00054': 0,
-     'CHN 046:01426': 0,
-     'DEU 014:00785': 0,
-     'FRA 009:00232': 0,
-     'GBR 026:01562': 0,
-     'IND 009:00128': 0,
-     'ITA 012:00116': 0,
-     'USA 021:00494': 0}
-
-
-* **AnalysisUnit.ORG**
-
-Smoke tests:
-    >>> mapping = (
-    ...     ItemToCluster()
-    ...     #
-    ...     # COUPLING UNIT:
-    ...     .with_analysis_unit(AnalysisUnit.ORG)
-    ...     #
-    ...     .having_top_n_units(10)
-    ...     .having_units_ordered_by(UnitOrderBy.OCC)
-    ...     .having_unit_occurrence_between(None, None)
-    ...     .having_unit_global_citation_between(None, None)
-    ...     .having_units_in(None)
-    ...     #
-    ...     # COUNTERS:
-    ...     .using_counters(True)
-    ...     #
-    ...     # NETWORK:
-    ...     .using_association_index(AssociationIndex.ASSOCIATION_STRENGTH)
-    ...     #
-    ...     # CLUSTERING:
-    ...     .using_clustering(GraphClusteringAlgorithm.LOUVAIN)
-    ...     #
-    ...     # DATABASE:
-    ...     .where_root_directory("tests/wos/")
-    ...     .where_record_years_range(None, None)
-    ...     .where_record_global_citations_range(None, None)
-    ...     .where_records_match(None)
-    ...     #
-    ...     .run()
-    ... )
-    >>> from pprint import pprint
-    >>> pprint(mapping) # doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
-    {'JIANGSU NORM UNIV 004:00008': 0,
-     'MONASH UNIV 003:00006': 0,
-     'R RD UNIV 003:00024': 1,
-     'UNIV MACAU 003:00019': 0}
-
-* **AnalysisUnit.SRC**
-
-Smoke tests:
-    >>> mapping = (
-    ...     ItemToCluster()
-    ...     #
-    ...     # COUPLING UNIT:
-    ...     .with_analysis_unit(AnalysisUnit.SRC)
-    ...     #
-    ...     .having_top_n_units(10)
-    ...     .having_units_ordered_by(UnitOrderBy.OCC)
-    ...     .having_unit_occurrence_between(None, None)
-    ...     .having_unit_global_citation_between(None, None)
-    ...     .having_units_in(None)
-    ...     #
-    ...     # COUNTERS:
-    ...     .using_counters(True)
-    ...     #
-    ...     # CLUSTERING:
-    ...     .using_clustering(GraphClusteringAlgorithm.LOUVAIN)
-    ...     #
-    ...     # DATABASE:
-    ...     .where_root_directory("tests/wos/")
-    ...     .where_record_years_range(None, None)
-    ...     .where_record_global_citations_range(None, None)
-    ...     .where_records_match(None)
-    ...     #
-    ...     .run()
-    ... )
-    >>> from pprint import pprint
-    >>> pprint(mapping) # doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
-    {'EUR BUS ORGAN LAW REV 005:00506': 0,
-     'EUR J RISK REGUL 002:00038': 0,
-     'FINANC RES LETT 003:00002': 1,
-     'INT REV FINANC ANAL 002:00030': 1,
-     'J BANK REGUL 005:00094': 0,
-     'J ECON BUS 002:00284': 0,
-     'J FINANC REGUL 004:00298': 0,
-     'J FINANC REGUL COMPLIANCE 005:00014': 1,
-     'J MONEY LAUND CONTROL 003:00040': 1,
-     'J TECHNOL 004:00110': 1}
 
 
 """

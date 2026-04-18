@@ -2,7 +2,7 @@
 ItemsByCluster
 ===============================================================================
 
-* **AnalysisUnit.AUTH**
+* **AnalysisUnit.DOC**
 
 Smoke tests:
     >>> from tm2p.enum import AssociationIndex, AnalysisUnit, GraphClusteringAlgorithm, UnitOrderBy
@@ -11,93 +11,7 @@ Smoke tests:
     ...     ItemsByCluster()
     ...     #
     ...     # COUPLING UNIT:
-    ...     .with_analysis_unit(AnalysisUnit.AUTH)
-    ...     #
-    ...     .having_top_n_units(100)
-    ...     .having_units_in(None)
-    ...     .having_minimum_cited_unit_occurrences(0)
-    ...     .having_occurrence_threshold(1)
-    ...     #
-    ...     # COUNTERS:
-    ...     .using_counters(True)
-    ...     #
-    ...     # NETWORK:
-    ...     .using_association_index(AssociationIndex.ASSOCIATION_STRENGTH)
-    ...     #
-    ...     # CLUSTERING:
-    ...     .using_clustering(GraphClusteringAlgorithm.LOUVAIN)
-    ...     #
-    ...     # DATABASE:
-    ...     .where_root_directory("tests/wos/")
-    ...     .where_record_years_range(None, None)
-    ...     .where_record_global_citations_range(None, None)
-    ...     .where_records_match(None)
-    ...     #
-    ...     .run()
-    ... )
-    >>> df.head()  # doctest: +NORMALIZE_WHITESPACE
-    CLUSTER                                  0  ...                                3
-    ITEM                                        ...
-    0        Ioannis Anagnostopoulos 002:00284  ...  Joseph Jye-Cherng Lyu 002:00003
-    1                Johan von Solms 002:00029  ...
-    2                    Nir Kshetri 002:00006  ...
-    3             Lawrence G. Baxter 001:00030  ...
-    <BLANKLINE>
-    [4 rows x 4 columns]
-
-
-* **AnalysisUnit.CTRY**
-
-Smoke tests:
-    >>> df = (
-    ...     ItemsByCluster()
-    ...     #
-    ...     # COUPLING UNIT:
-    ...     .with_analysis_unit(AnalysisUnit.CTRY)
-    ...     .having_top_n_units(30)
-    ...     .having_units_in(None)
-    ...     .having_minimum_cited_unit_occurrences(0)
-    ...     .having_occurrence_threshold(2)
-    ...     #
-    ...     # COUNTERS:
-    ...     .using_counters(False)
-    ...     #
-    ...     # NETWORK:
-    ...     .using_association_index(AssociationIndex.ASSOCIATION_STRENGTH)
-    ...     #
-    ...     # CLUSTERING:
-    ...     .using_clustering(GraphClusteringAlgorithm.LOUVAIN)
-    ...     #
-    ...     # DATABASE:
-    ...     .where_root_directory("tests/wos/")
-    ...     .where_record_years_range(None, None)
-    ...     .where_record_global_citations_range(None, None)
-    ...     .where_records_match(None)
-    ...     #
-    ...     .run()
-    ... )
-    >>> df.head()  # doctest: +NORMALIZE_WHITESPACE
-    CLUSTER    0    1    2
-    ITEM
-    0        GBR  CHN  PAK
-    1        AUS  USA  JOR
-    2        DEU  IND  THA
-    3        ITA  UKR
-    4        FRA  JPN
-
-
-* **AnalysisUnit.DOC**
-
-Smoke tests:
-    >>> df = (
-    ...     ItemsByCluster()
-    ...     #
-    ...     # COUPLING UNIT:
     ...     .with_analysis_unit(AnalysisUnit.DOC)
-    ...     .having_top_n_units(30)
-    ...     .having_units_in(None)
-    ...     .having_minimum_cited_unit_occurrences(0)
-    ...     .having_occurrence_threshold(2)
     ...     #
     ...     # COUNTERS:
     ...     .using_counters(True)
@@ -128,21 +42,25 @@ Smoke tests:
     [5 rows x 9 columns]
 
 
-* **AnalysisUnit.SRC**
+
+
+* **AnalysisUnit.AUTH** /  **AnalysisUnit.CTRY** /  / **AnalysisUnit.ORG** / **AnalysisUnit.SRC**
 
 Smoke tests:
     >>> df = (
     ...     ItemsByCluster()
     ...     #
     ...     # COUPLING UNIT:
-    ...     .with_analysis_unit(AnalysisUnit.SRC)
-    ...     .having_top_n_units(30)
+    ...     .with_analysis_unit(AnalysisUnit.CTRY)
+    ...     #
+    ...     .having_top_n_units(100)
+    ...     .having_units_ordered_by(UnitOrderBy.OCC)
+    ...     .having_unit_occurrence_between(None, None)
+    ...     .having_unit_global_citation_between(None, None)
     ...     .having_units_in(None)
-    ...     .having_minimum_cited_unit_occurrences(0)
-    ...     .having_occurrence_threshold(2)
     ...     #
     ...     # COUNTERS:
-    ...     .using_counters(True)
+    ...     .using_counters(False)
     ...     #
     ...     # NETWORK:
     ...     .using_association_index(AssociationIndex.ASSOCIATION_STRENGTH)
@@ -159,57 +77,15 @@ Smoke tests:
     ...     .run()
     ... )
     >>> df.head()  # doctest: +NORMALIZE_WHITESPACE
-    CLUSTER                                0  ...                              3
-    ITEM                                      ...
-    0        EUR BUS ORGAN LAW REV 005:00506  ...         J BANK REGUL 005:00094
-    1               J FINANC REGUL 004:00298  ...      INT J LAW MANAG 002:00012
-    2                   J ECON BUS 002:00284  ...               COMPUT 002:00006
-    3             EUR J RISK REGUL 002:00038  ...  J ISLAM ACC BUS RES 002:00001
-    4          LAW FINANC MARK REV 002:00009  ...
-    <BLANKLINE>
-    [5 rows x 4 columns]
+    CLUSTER    0    1    2    3    4
+    ITEM
+    0        GBR  CHN  AUS  ISR  CHL
+    1        DEU  USA  TWN  MAR
+    2        ITA  UKR  SRB
+    3        FRA  JPN  COL
+    4        IND  ESP  FIN
 
 
-* **AnalysisUnit.ORG**
-
-Smoke tests:
-    >>> df = (
-    ...     ItemsByCluster()
-    ...     #
-    ...     # COUPLING UNIT:
-    ...     .with_analysis_unit(AnalysisUnit.ORG)
-    ...     .having_top_n_units(30)
-    ...     .having_units_in(None)
-    ...     .having_minimum_cited_unit_occurrences(0)
-    ...     .having_occurrence_threshold(2)
-    ...     #
-    ...     # COUNTERS:
-    ...     .using_counters(True)
-    ...     #
-    ...     # NETWORK:
-    ...     .using_association_index(AssociationIndex.ASSOCIATION_STRENGTH)
-    ...     #
-    ...     # CLUSTERING:
-    ...     .using_clustering(GraphClusteringAlgorithm.LOUVAIN)
-    ...     #
-    ...     # DATABASE:
-    ...     .where_root_directory("tests/wos/")
-    ...     .where_record_years_range(None, None)
-    ...     .where_record_global_citations_range(None, None)
-    ...     .where_records_match(None)
-    ...     #
-    ...     .run()
-    ... )
-    >>> df.head()  # doctest: +NORMALIZE_WHITESPACE
-    CLUSTER                                       0  ...                           2
-    ITEM                                             ...
-    0                   JIANGSU NORM UNIV 004:00008  ...  UNIV SEBEL MARET 002:00005
-    1                           R RD UNIV 003:00024  ...
-    2                          UNIV MACAU 003:00019  ...
-    3                         MONASH UNIV 003:00006  ...
-    4        SOUTHWEST UNIV FINANC & ECON 002:00031  ...
-    <BLANKLINE>
-    [5 rows x 3 columns]
 
 
 

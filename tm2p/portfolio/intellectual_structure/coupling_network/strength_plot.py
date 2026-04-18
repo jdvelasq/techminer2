@@ -2,8 +2,10 @@
 Network Degree Plot
 ===============================================================================
 
-* **AnalysisUnit.AUTH** /  **AnalysisUnit.CTRY** / **AnalysisUnit.DOC** / **AnalysisUnit.ORG** / **AnalysisUnit.SRC**
+* **AnalysisUnit.DOC**
 
+
+* **AnalysisUnit.AUTH** /  **AnalysisUnit.CTRY** /  / **AnalysisUnit.ORG** / **AnalysisUnit.SRC**
 
 .. raw:: html
 
@@ -46,6 +48,7 @@ Smoke tests:
     ...     .run()
     ... )
     >>> fig.write_html("docsrc/_generated/px.synthes.netw.coupl.node_degree_plot_auth.html")
+
 
 
 """
