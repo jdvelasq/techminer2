@@ -37,7 +37,7 @@ Smoke tests:
     ...     .using_line_color("black")
     ...     .using_line_width(1.5)
     ...     .using_marker_size(7)
-    ...     .using_textfont_size(10)
+    ...     .using_uniform_textfont_size(10)
     ...     .using_yshift(4)
     ...     #
     ...     # DATABASE:
@@ -64,6 +64,8 @@ Smoke tests:
     ...     .having_unit_global_citation_between(None, None)
     ...     .having_units_in(None)
     ...     #
+    ...     .using_minimum_pair_co_occurrence(1)
+    ...     #
     ...     # COUNTERS:
     ...     .using_counters(False)
     ...     #
@@ -74,7 +76,7 @@ Smoke tests:
     ...     .using_line_color("black")
     ...     .using_line_width(1.5)
     ...     .using_marker_size(7)
-    ...     .using_textfont_size(10)
+    ...     .using_uniform_textfont_size(10)
     ...     .using_yshift(4)
     ...     #
     ...     # DATABASE:

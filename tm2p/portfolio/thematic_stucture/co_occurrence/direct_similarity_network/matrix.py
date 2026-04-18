@@ -106,7 +106,7 @@ Smoke tests:
 """
 
 from tm2p._intern import ParamsMixin
-from tm2p.enum import AnalysisUnit, Field
+from tm2p.enum import AnalysisUnit
 
 from ..matrix.matrix import Matrix as CoOccurrenceMatrix
 
@@ -118,15 +118,14 @@ class Matrix(
 
     def run(self):
 
-        field = {
-            AnalysisUnit.AUTHKW: Field.AUTHKW_NORM,
-            AnalysisUnit.IDXKW: Field.IDXKW_NORM,
-            AnalysisUnit.KW: Field.KW_NORM,
-            AnalysisUnit.CONCEPT: Field.CONCEPT_NORM,
-            AnalysisUnit.WORD: Field.WORD_NORM,
-        }[self.params.analysis_unit]
-
-        self.with_source_field(field)
+        if self.params.analysis_unit not in (
+            AnalysisUnit.AUTHKW,
+            AnalysisUnit.IDXKW,
+            AnalysisUnit.KW,
+            AnalysisUnit.CONCEPT,
+            AnalysisUnit.WORD,
+        ):
+            raise ValueError(f"Unsupported analysis unit: {self.params.analysis_unit}")
 
         matrix = CoOccurrenceMatrix().update(**self.params.__dict__).run()
 

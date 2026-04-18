@@ -1,21 +1,20 @@
 """
-DensityPlot
+Network Plot
 ===============================================================================
 
 .. raw:: html
 
-    <iframe src="../_generated/px.portfolio.thematic_structure.co_occurrences.direct_similarity_network.density_plot.html"
+    <iframe src="../_generated/px.portfolio.social_structure.collaboration_network.overlay_plot.html"
     height="800px" width="100%" frameBorder="0"></iframe>
 
-
 Smoke tests:
-    >>> from tm2p.enum import AnalysisUnit, AssociationIndex, GraphClusteringAlgorithm, NodeSizeMetric, Scaling, UnitOrderBy
-    >>> from tm2p.portfolio.thematic_stucture.co_occurrence.direct_similarity_network import DensityPlot
+    >>> from tm2p.enum import AssociationIndex, AnalysisUnit, GraphClusteringAlgorithm, UnitOrderBy, Scaling, NodeSizeMetric
+    >>> from tm2p.portfolio.social_structure.collaboration_network import OverlayPlot
     >>> fig = (
-    ...     DensityPlot()
+    ...     OverlayPlot()
     ...     #
     ...     # ANALYSIS UNIT:
-    ...     .with_analysis_unit(AnalysisUnit.KW)
+    ...     .with_analysis_unit(AnalysisUnit.AUTH)
     ...     #
     ...     .having_top_n_units(50)
     ...     .having_units_ordered_by(UnitOrderBy.OCC)
@@ -23,7 +22,7 @@ Smoke tests:
     ...     .having_unit_global_citation_between(None, None)
     ...     .having_units_in(None)
     ...     #
-    ...     .using_minimum_pair_co_occurrence(2)
+    ...     .using_minimum_pair_co_occurrence(1)
     ...     #
     ...     # COUNTERS:
     ...     .using_counters(False)
@@ -35,37 +34,37 @@ Smoke tests:
     ...     .using_clustering(GraphClusteringAlgorithm.LOUVAIN)
     ...     #
     ...     # PLOT:
-    ...     .using_spring_layout_k(0.27)
-    ...     .using_spring_layout_iterations(100)
+    ...     .using_spring_layout_k(0.2)
+    ...     .using_spring_layout_iterations(10)
     ...     .using_spring_layout_seed(0)
     ...     #
     ...     .using_colorscale(
     ...         [
-    ...             [0.00, "#081D58"],
-    ...             [0.25, "#163A63"],
-    ...             [0.50, "#1D6FA5"],
-    ...             [0.72, "#2FB7B5"],
-    ...             [0.88, "#A5DB36"],
-    ...             [0.96, "#FDE725"],
-    ...             [1.00, "#F46D43"],
+    ...             [0.00, "#2C7BB6"],
+    ...             [0.35, "#00A6CA"],
+    ...             [0.65, "#4EBA6F"],
+    ...             [1.00, "#F28E2B"],
     ...         ]
     ...     )
+    ...     .using_uniform_node_opacity(0.75)
     ...     .using_node_size_metric(NodeSizeMetric.TLS)
     ...     .using_node_scaling(Scaling.SQRT)
+    ...     .using_node_size_range(12, 80)
     ...     .using_top_n_nodes(50)
     ...     .using_min_node_degree(2)
     ...     #
-    ...     .using_max_node_labels(100)
+    ...     .using_max_node_labels(15)
     ...     .using_node_label_max_length(20)
     ...     #
-    ...     .using_textfont_opacity_range(0.85, 1.00)
-    ...     .using_textfont_size_range(12, 20)
+    ...     .using_textfont_opacity_range(0.55, 1.00)
+    ...     .using_textfont_size_range(10, 24)
     ...     #
-    ...     .using_kernel_bandwidth(0.1)
-    ...     .using_contour_opacity(1.0)
-    ...     #
+    ...     # https://www.w3schools.com/colors/colors_shades.asp
+    ...     .using_uniform_edge_color("#d8d8d8")
+    ...     .using_edge_opacity_range(0.25, 0.65)
     ...     .using_edge_scaling(Scaling.SQRT)
     ...     .using_global_top_edges(200)
+    ...     .using_edge_width_range(1.5, 5.0)
     ...     .using_top_edges_per_node(5)
     ...     #
     ...     .using_xaxes_range(None, None)
@@ -82,19 +81,21 @@ Smoke tests:
     ... )
     >>> type(fig).__name__
     'Figure'
-    >>> fig.write_html("docsrc/_generated/px.portfolio.thematic_structure.co_occurrences.direct_similarity_network.density_plot.html")
+    >>> fig.write_html("docsrc/_generated/px.portfolio.social_structure.collaboration_network.overlay_plot.html")
+
 
 """
 
 from tm2p._intern import ParamsMixin
-from tm2p._intern.plots.advanced.co_occ_density_plot import build_co_occ_density_plot
+from tm2p._intern.plots.advanced.co_occ_overlay_plot import build_co_occ_overlay_plot
+from tm2p.portfolio.performance_metrics.trends.trends import Trends
 
 from .direct_matrix import DirectMatrix
 from .item_to_cluster import ItemToCluster
 from .matrix import Matrix as CoOccurrenceMatrix
 
 
-class DensityPlot(
+class OverlayPlot(
     ParamsMixin,
 ):
     """:meta private:"""
@@ -112,13 +113,21 @@ class DensityPlot(
             .run()
         )
 
+        trends = Trends().update(**self.params.__dict__).run()
+        years = trends.columns.astype(int)
+        avg_year = (trends * years).sum(axis=1) / trends.sum(axis=1)
+        avg_year = avg_year.round(1)
+
+        i2y = dict(zip(trends.index, avg_year))
+
         i2c = ItemToCluster().update(**self.params.__dict__).using_counters(True).run()
 
-        fig = build_co_occ_density_plot(
+        fig = build_co_occ_overlay_plot(
             params=self.params,
             similarity_matrix=similarity_matrix,
             co_occurrence_matrix=co_occ_matrix,
             i2c=i2c,
+            i2y=i2y,
         )
 
         return fig

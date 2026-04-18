@@ -17,6 +17,8 @@ Smoke test:
     ...     .having_unit_global_citation_between(None, None)
     ...     .having_units_in(None)
     ...     #
+    ...     .using_minimum_pair_co_occurrence(1)
+    ...     #
     ...     # COUNTERS:
     ...     .using_counters(True)
     ...     #

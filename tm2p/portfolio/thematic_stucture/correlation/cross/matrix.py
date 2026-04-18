@@ -152,9 +152,9 @@ class Matrix(
             .update(**self.params.__dict__)
             #
             .with_column_analysis_unit(self.params.source_field)
-            .having_column_items_in_top(self.params.top_n_units)
+            .having_column_units_in_top(self.params.top_n_units)
             .having_column_units_ordered_by(UnitOrderBy.OCC)
-            .having_column_item_occurrence_between(
+            .having_column_unit_occurrence_between(
                 self.params.unit_occurrence_range[0],
                 self.params.unit_occurrence_range[1],
             )
@@ -162,10 +162,10 @@ class Matrix(
                 self.params.unit_global_citation_range[0],
                 self.params.unit_global_citation_range[1],
             )
-            .having_column_items_in(self.params.units_in)
+            .having_column_units_in(self.params.units_in)
             #
             .with_index_analysis_unit(self.params.cross_analysis_unit)
-            .having_index_items_ordered_by(UnitOrderBy.OCC)
+            .having_index_units_ordered_by(UnitOrderBy.OCC)
             .having_index_unit_occurrence_between(None, None)
             .having_index_unit_citation_between(None, None)
             .having_index_units_in(None)

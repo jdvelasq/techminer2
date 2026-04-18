@@ -306,21 +306,21 @@ class ParamsMixin:
         self.params.column_unit_citation_range = (start, end)
         return self
 
-    def having_column_item_occurrence_between(
+    def having_column_unit_occurrence_between(
         self, start: Optional[int], end: Optional[int]
     ) -> Self:
         start, end = check_required_open_ended_int_range(
-            (start, end), "column_item_occurrence_range"
+            (start, end), "having_column_unit_occurrence_between"
         )
         self.params.column_unit_occurrence_range = (start, end)
         return self
 
-    def having_column_items_in(self, column_items_in: Optional[list[str]]) -> Self:
-        column_items_in = check_optional_str_list(
-            value=column_items_in,
-            param_name="column_items_in",
+    def having_column_units_in(self, units_in: Optional[list[str]]) -> Self:
+        units_in = check_optional_str_list(
+            value=units_in,
+            param_name="units_in",
         )
-        self.params.column_units_in = column_items_in
+        self.params.column_units_in = units_in
         return self
 
     def having_column_units_ordered_by(self, column_unit_order_by: UnitOrderBy) -> Self:
@@ -331,7 +331,7 @@ class ParamsMixin:
         self.params.column_unit_order_by = column_unit_order_by
         return self
 
-    def having_column_items_in_top(self, top_n_column_units: Optional[int]) -> Self:
+    def having_column_units_in_top(self, top_n_column_units: Optional[int]) -> Self:
         top_n_column_units = check_optional_positive_int(
             value=top_n_column_units,
             param_name="column_top_n",
@@ -367,12 +367,12 @@ class ParamsMixin:
         self.params.index_units_in = index_units_in
         return self
 
-    def having_index_items_ordered_by(self, index_items_order_by: UnitOrderBy) -> Self:
-        index_items_order_by = check_required_unit_order_by_enum(
-            value=index_items_order_by,
+    def having_index_units_ordered_by(self, index_units_order_by: UnitOrderBy) -> Self:
+        index_units_order_by = check_required_unit_order_by_enum(
+            value=index_units_order_by,
             param_name="index_items_order_by",
         )
-        self.params.index_item_order_by = index_items_order_by
+        self.params.index_item_order_by = index_units_order_by
         return self
 
     def having_index_units_in_top(self, top_n_index_units: Optional[int]) -> Self:

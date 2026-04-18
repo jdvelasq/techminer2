@@ -18,7 +18,7 @@ Smoke tests:
     >>> df = (
     ...     ItemsByCluster()
     ...     #
-    ...     # UNIT OF ANALYSIS:
+    ...     # ANALYSIS UNIT:
     ...     .with_analysis_unit(AnalysisUnit.KW)
     ...     #
     ...     .having_top_n_units(20)
@@ -66,6 +66,8 @@ Smoke tests:
     ...     .having_unit_occurrence_between(None, None)
     ...     .having_unit_global_citation_between(None, None)
     ...     .having_units_in(None)
+    ...     #
+    ...     .using_minimum_pair_co_occurrence(1)
     ...     #
     ...     # COUNTERS:
     ...     .using_counters(False)

@@ -3,26 +3,26 @@ Matrix
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.enum import Field, UnitOrderBy
+    >>> from tm2p.enum import AnalysisUnit, UnitOrderBy
     >>> from tm2p.portfolio.thematic_stucture.cross_occurrence.matrix import Matrix
     >>> df = (
     ...     Matrix()
     ...     #
     ...     # COLUMNS:
-    ...     .with_column_field(Field.AUTHKW_TOK)
-    ...     .having_column_items_in_top(10)
-    ...     .having_column_items_ordered_by(UnitOrderBy.OCC)
-    ...     .having_column_item_occurrences_between(None, None)
-    ...     .having_column_item_citations_between(None, None)
-    ...     .having_column_items_in(None)
+    ...     .with_column_analysis_unit(AnalysisUnit.AUTHKW)
+    ...     .having_column_units_in_top(10)
+    ...     .having_column_units_ordered_by(UnitOrderBy.OCC)
+    ...     .having_column_unit_occurrence_between(None, None)
+    ...     .having_column_unit_citation_between(None, None)
+    ...     .having_column_units_in(None)
     ...     #
     ...     # ROWS:
-    ...     .with_index_field(Field.AUTH_NORM)
-    ...     .having_index_items_in_top(None)
-    ...     .having_index_items_ordered_by(UnitOrderBy.OCC)
-    ...     .having_index_item_occurrences_between(2, None)
-    ...     .having_index_item_citations_between(None, None)
-    ...     .having_index_items_in(None)
+    ...     .with_index_analysis_unit(AnalysisUnit.AUTH)
+    ...     .having_index_units_in_top(None)
+    ...     .having_index_units_ordered_by(UnitOrderBy.OCC)
+    ...     .having_index_unit_occurrence_between(2, None)
+    ...     .having_index_unit_citation_between(None, None)
+    ...     .having_index_units_in(None)
     ...     #
     ...     .using_minimum_pair_co_occurrence(1)
     ...     #
@@ -43,43 +43,45 @@ Smoke tests:
     True
     >>> df.shape[1] > 1
     True
-    >>> df.head(10)  # doctest: +SKIP
-    columns                  fintech 117:25478  ...  financial services 007:01673
-    rows                                        ...
-    Jagtiani J. 005:01156                    5  ...                             0
-    Arner D.W. 003:00911                     2  ...                             0
-    Hornuf L. 003:00904                      3  ...                             0
-    Li X. 003:00894                          3  ...                             0
-    Barberis J. 003:00445                    1  ...                             0
-    Dolata M. 003:00330                      3  ...                             0
-    Schwabe G. 003:00330                     3  ...                             0
-    Zavolokina L. 003:00330                  3  ...                             0
-    Gomber P. 002:02579                      1  ...                             0
-    Kauffman R.J. 002:01445                  0  ...                             0
+    >>> df.head(10)
+    columns                        fintech 117:25478  ...  financial services 007:01673
+    rows                                              ...
+    Julapa A. Jagtiani 005:01156                   5  ...                             0
+    Douglas W. Arner 003:00911                     2  ...                             0
+    Lars Hornuf 003:00904                          3  ...                             0
+    Janos N. Barberis 003:00445                    1  ...                             0
+    Gerhard Schwabe 003:00330                      3  ...                             0
+    Liudmila Zavolokina 003:00330                  3  ...                             0
+    Mateusz Dolata 003:00330                       3  ...                             0
+    Peter Gomber 002:02579                         1  ...                             0
+    Robert J. Kauffman 002:01445                   0  ...                             0
+    Victor Murinde 002:01022                       1  ...                             0
     <BLANKLINE>
     [10 rows x 10 columns]
 
 
-    >>> from tm2p.enum import Field, UnitOrderBy
+
     >>> from tm2p.portfolio.thematic_stucture.cross_occurrence.matrix import Matrix
     >>> df = (
     ...     Matrix()
     ...     #
     ...     # COLUMNS:
-    ...     .with_column_field(Field.AUTHKW_TOK)
-    ...     .having_column_items_in_top(10)
-    ...     .having_column_items_ordered_by(UnitOrderBy.OCC)
-    ...     .having_column_item_occurrences_between(None, None)
-    ...     .having_column_item_citations_between(None, None)
-    ...     .having_column_items_in(None)
+    ...     .with_column_analysis_unit(AnalysisUnit.AUTHKW)
+    ...     .having_column_units_in_top(10)
+    ...     .having_column_units_ordered_by(UnitOrderBy.OCC)
+    ...     .having_column_unit_occurrence_between(None, None)
+    ...     .having_column_unit_citation_between(None, None)
+    ...     .having_column_units_in(None)
     ...     #
     ...     # ROWS:
-    ...     .with_index_field(Field.AUTH_NORM)
-    ...     .having_index_items_in_top(10)
-    ...     .having_index_items_ordered_by(UnitOrderBy.OCC)
-    ...     .having_index_item_occurrences_between(None, None)
-    ...     .having_index_item_citations_between(None, None)
-    ...     .having_index_items_in(None)
+    ...     .with_index_analysis_unit(AnalysisUnit.AUTH)
+    ...     .having_index_units_in_top(10)
+    ...     .having_index_units_ordered_by(UnitOrderBy.OCC)
+    ...     .having_index_unit_occurrence_between(None, None)
+    ...     .having_index_unit_citation_between(None, None)
+    ...     .having_index_units_in(None)
+    ...     #
+    ...     .using_minimum_pair_co_occurrence(1)
     ...     #
     ...     # COUNTERS:
     ...     .using_counters(False)
@@ -102,18 +104,18 @@ Smoke tests:
     True
     >>> df.shape[1] > 1
     True
-    >>> df.head(10)  # doctest: +SKIP
-                      fintech  financial inclusion  ...  banking  financial markets
-    Brooks S.               1                    1  ...        0                  0
-    Gabor D.                1                    1  ...        0                  0
-    Ashta A.                1                    0  ...        1                  1
-    Herrmann H.             1                    0  ...        1                  1
-    Jagtiani J.             1                    0  ...        0                  0
-    Lemieux C.              1                    0  ...        0                  0
-    Muchapondwa E.          1                    0  ...        0                  0
-    Udeagha M.C.            1                    0  ...        0                  0
-    Lagna A.                1                    1  ...        0                  0
-    Ravishankar M.N.        1                    1  ...        0                  0
+    >>> df.head(10)
+                         fintech  financial inclusion  ...  financial services  regtech
+    Julapa A. Jagtiani         5                    0  ...                   0        1
+    Lars Hornuf                3                    0  ...                   0        0
+    Gerhard Schwabe            3                    0  ...                   0        0
+    Liudmila Zavolokina        3                    0  ...                   0        0
+    Mateusz Dolata             3                    0  ...                   0        0
+    Chichuan Lee               2                    0  ...                   0        0
+    Chinhsien Yu               2                    0  ...                   0        0
+    Jinsong Zhao               2                    0  ...                   0        0
+    Huaping Sun                2                    0  ...                   0        1
+    Linnan Yan                 2                    0  ...                   0        1
     <BLANKLINE>
     [10 rows x 10 columns]
 

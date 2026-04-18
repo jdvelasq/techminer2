@@ -22,7 +22,7 @@ Smoke tests:
     ...     .having_unit_global_citation_between(None, None)
     ...     .having_units_in(None)
     ...     #
-    ...     .using_minimum_pair_co_occurrence(2)
+    ...     .using_minimum_pair_co_occurrence(1)
     ...     #
     ...     # COUNTERS:
     ...     .using_counters(False)
@@ -34,8 +34,6 @@ Smoke tests:
     ...     .using_clustering(GraphClusteringAlgorithm.LOUVAIN)
     ...     #
     ...     # PLOT:
-    ...     # .using_spring_layout_intra_scale(0.90)
-    ...     # .using_spring_layout_cluster_scale(5.5)
     ...     .using_spring_layout_k(0.27)
     ...     .using_spring_layout_iterations(100)
     ...     .using_spring_layout_seed(0)

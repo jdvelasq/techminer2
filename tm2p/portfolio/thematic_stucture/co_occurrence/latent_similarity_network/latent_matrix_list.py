@@ -3,14 +3,15 @@ LatentMatrixList
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.enum import AssociationIndex, Field, UnitOrderBy
+    >>> from tm2p.enum import AssociationIndex, AnalysisUnit, UnitOrderBy
     >>> from tm2p.portfolio.thematic_stucture.co_occurrence.latent_similarity_network import LatentMatrixList
     >>> df = (
     ...     LatentMatrixList()
     ...     #
-    ...     # FIELD:
-    ...     .with_source_field(Field.AUTHKW_NORM)
-    ...     .having_top_n_units(10)
+    ...     # ANALYSIS UNIT:
+    ...     .with_analysis_unit(AnalysisUnit.KW)
+    ...     #
+    ...     .having_top_n_units(20)
     ...     .having_units_ordered_by(UnitOrderBy.OCC)
     ...     .having_unit_occurrence_between(None, None)
     ...     .having_unit_global_citation_between(None, None)
@@ -20,6 +21,9 @@ Smoke tests:
     ...     #
     ...     # COUNTERS:
     ...     .using_counters(True)
+    ...     #
+    ...     # NORMALIZATION:
+    ...     .using_association_index(AssociationIndex.ASSOCIATION_STRENGTH)
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/scopus/")
@@ -37,16 +41,16 @@ Smoke tests:
     True
     >>> df.head(10).round(3)
                                     ROWS                            COLUMNS  SIM
-    0                  banking 010:02599                  banking 010:02599  1.0
-    1            green finance 011:02844            green finance 011:02844  1.0
-    2               blockchain 011:02023               blockchain 011:02023  1.0
-    3                    china 009:01947                    china 009:01947  1.0
-    4  artificial intelligence 008:01915  artificial intelligence 008:01915  1.0
-    5     financial technology 015:02734     financial technology 015:02734  1.0
-    6               innovation 009:01703               innovation 009:01703  1.0
-    7       financial services 007:01673       financial services 007:01673  1.0
-    8                  fintech 117:25478                  fintech 117:25478  1.0
-    9      financial inclusion 017:03823      financial inclusion 017:03823  1.0
+    0                  finance 029:07137                  finance 029:07137  1.0
+    1                    china 018:03596                    china 018:03596  1.0
+    2           sustainability 013:02308           sustainability 013:02308  1.0
+    3               blockchain 012:03450               blockchain 012:03450  1.0
+    4          economic growth 009:01654          economic growth 009:01654  1.0
+    5  artificial intelligence 008:01915  artificial intelligence 008:01915  1.0
+    6        financial service 007:02627        financial service 007:02627  1.0
+    7                  banking 013:03043                  banking 013:03043  1.0
+    8            green finance 011:02844            green finance 011:02844  1.0
+    9       financial services 011:02399       financial services 011:02399  1.0
 
 
 """

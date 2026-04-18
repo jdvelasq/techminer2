@@ -84,6 +84,8 @@ Smoke tests:
     ...     .having_unit_global_citation_between(None, None)
     ...     .having_units_in(None)
     ...     #
+    ...     .using_minimum_pair_co_occurrence(1)
+    ...     #
     ...     # COUNTERS:
     ...     .using_counters(False)
     ...     #
@@ -144,6 +146,8 @@ Smoke tests:
     ...     .having_unit_occurrence_between(None, None)
     ...     .having_unit_global_citation_between(None, None)
     ...     .having_units_in(None)
+    ...     #
+    ...     .using_minimum_pair_co_occurrence(1)
     ...     #
     ...     # COUNTERS:
     ...     .using_counters(True)
@@ -210,6 +214,8 @@ Smoke tests:
     ...     .having_unit_global_citation_between(None, None)
     ...     .having_units_in(None)
     ...     #
+    ...     .using_minimum_pair_co_occurrence(1)
+    ...     #
     ...     # COUNTERS:
     ...     .using_counters(True)
     ...     #
@@ -274,6 +280,8 @@ Smoke tests:
     ...     .having_unit_global_citation_between(None, None)
     ...     .having_units_in(None)
     ...     #
+    ...     .using_minimum_pair_co_occurrence(1)
+    ...     #
     ...     # COUNTERS:
     ...     .using_counters(True)
     ...     #
@@ -327,6 +335,8 @@ Smoke tests:
     ...     .having_unit_occurrence_between(None, None)
     ...     .having_unit_global_citation_between(None, None)
     ...     .having_units_in(None)
+    ...     #
+    ...     .using_minimum_pair_co_occurrence(1)
     ...     #
     ...     # COUNTERS:
     ...     .using_counters(True)

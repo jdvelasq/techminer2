@@ -97,7 +97,7 @@ Smoke tests:
 
 from tm2p._intern import ParamsMixin
 
-from ...cross_occurrence.matrix.matrix_list import Matrix as BaseMatrix
+from ...cross_occurrence.matrix.matrix_list import Matrix as CrossOccurrenceMatrix
 
 
 class Matrix(
@@ -107,14 +107,15 @@ class Matrix(
 
     def run(self):
         matrix = (
-            BaseMatrix()
+            CrossOccurrenceMatrix()
+            #
             .update(**self.params.__dict__)
             #
             # COLUMNS:
             .with_column_analysis_unit(self.params.analysis_unit)
-            .having_column_items_in_top(self.params.top_n_units)
+            .having_column_units_in_top(self.params.top_n_units)
             .having_column_units_ordered_by(self.params.unit_order_by)
-            .having_column_item_occurrence_between(
+            .having_column_unit_occurrence_between(
                 self.params.unit_occurrence_range[0],
                 self.params.unit_occurrence_range[1],
             )
@@ -122,12 +123,12 @@ class Matrix(
                 self.params.unit_global_citation_range[0],
                 self.params.unit_global_citation_range[1],
             )
-            .having_column_items_in(self.params.units_in)
+            .having_column_units_in(self.params.units_in)
             #
             # ROWS:
             .with_index_analysis_unit(self.params.analysis_unit)
             .having_index_units_in_top(self.params.top_n_units)
-            .having_index_items_ordered_by(self.params.unit_order_by)
+            .having_index_units_ordered_by(self.params.unit_order_by)
             .having_index_unit_occurrence_between(
                 self.params.unit_occurrence_range[0],
                 self.params.unit_occurrence_range[1],

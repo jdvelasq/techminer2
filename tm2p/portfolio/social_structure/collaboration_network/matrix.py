@@ -58,8 +58,10 @@ Smoke tests:
 """
 
 from tm2p._intern import ParamsMixin
-
-from ...thematic_stucture.co_occurrence.matrix import Matrix as CoOccurrenceMatrix
+from tm2p.enum import AnalysisUnit
+from tm2p.portfolio.thematic_stucture.co_occurrence.matrix import (
+    Matrix as CoOccurrenceMatrix,
+)
 
 
 class Matrix(
@@ -68,6 +70,13 @@ class Matrix(
     """:meta private:"""
 
     def run(self):
+
+        if self.params.analysis_unit not in (
+            AnalysisUnit.AUTH,
+            AnalysisUnit.CTRY,
+            AnalysisUnit.ORG,
+        ):
+            raise ValueError(f"Unsupported analysis unit: {self.params.analysis_unit}")
 
         matrix = CoOccurrenceMatrix().update(**self.params.__dict__).run()
 

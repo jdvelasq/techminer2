@@ -66,6 +66,8 @@ Smoke tests:
     ...     .having_unit_global_citation_between(None, None)
     ...     .having_units_in(None)
     ...     #
+    ...     .using_minimum_pair_co_occurrence(1)
+    ...     #
     ...     # COUNTERS:
     ...     .using_counters(False)
     ...     #
@@ -105,9 +107,8 @@ Smoke tests:
 
 from tm2p._intern import ParamsMixin
 from tm2p._intern.networks.normalize_matrix import normalize_matrix
-from tm2p.enum import AnalysisUnit, Field
 
-from ..matrix.matrix import Matrix as CoOccurrenceMatrix
+from .matrix import Matrix
 
 
 class DirectMatrix(
@@ -117,17 +118,7 @@ class DirectMatrix(
 
     def run(self):
 
-        field = {
-            AnalysisUnit.AUTHKW: Field.AUTHKW_NORM,
-            AnalysisUnit.IDXKW: Field.IDXKW_NORM,
-            AnalysisUnit.KW: Field.KW_NORM,
-            AnalysisUnit.CONCEPT: Field.CONCEPT_NORM,
-            AnalysisUnit.WORD: Field.WORD_NORM,
-        }[self.params.analysis_unit]
-
-        self.with_source_field(field)
-
-        matrix = CoOccurrenceMatrix().update(**self.params.__dict__).run()
+        matrix = Matrix().update(**self.params.__dict__).run()
         matrix = normalize_matrix(
             association_index=self.params.association_index,
             matrix=matrix,

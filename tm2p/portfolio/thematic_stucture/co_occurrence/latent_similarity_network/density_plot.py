@@ -1,23 +1,22 @@
 """
-DensityPlot
+Network Plot
 ===============================================================================
 
 .. raw:: html
 
-    <iframe src="../_generated/px.portfolio.thematic_structure.co_occurrences.direct_similarity_network.density_plot.html"
+    <iframe src="../_generated/px.portfolio.thematic_stucture.co_occurrence.latent_similarity_network.density_plot.html"
     height="800px" width="100%" frameBorder="0"></iframe>
 
-
 Smoke tests:
-    >>> from tm2p.enum import AnalysisUnit, AssociationIndex, GraphClusteringAlgorithm, NodeSizeMetric, Scaling, UnitOrderBy
-    >>> from tm2p.portfolio.thematic_stucture.co_occurrence.direct_similarity_network import DensityPlot
+    >>> from tm2p.enum import AssociationIndex, AnalysisUnit, GraphClusteringAlgorithm, UnitOrderBy, Scaling, NodeSizeMetric
+    >>> from tm2p.portfolio.thematic_stucture.co_occurrence.latent_similarity_network import DensityPlot
     >>> fig = (
     ...     DensityPlot()
     ...     #
     ...     # ANALYSIS UNIT:
     ...     .with_analysis_unit(AnalysisUnit.KW)
     ...     #
-    ...     .having_top_n_units(50)
+    ...     .having_top_n_units(40)
     ...     .having_units_ordered_by(UnitOrderBy.OCC)
     ...     .having_unit_occurrence_between(None, None)
     ...     .having_unit_global_citation_between(None, None)
@@ -82,16 +81,17 @@ Smoke tests:
     ... )
     >>> type(fig).__name__
     'Figure'
-    >>> fig.write_html("docsrc/_generated/px.portfolio.thematic_structure.co_occurrences.direct_similarity_network.density_plot.html")
+    >>> fig.write_html("docsrc/_generated/px.portfolio.thematic_stucture.co_occurrence.latent_similarity_network.density_plot.html")
+
 
 """
 
 from tm2p._intern import ParamsMixin
 from tm2p._intern.plots.advanced.co_occ_density_plot import build_co_occ_density_plot
 
-from .direct_matrix import DirectMatrix
+from ..direct_similarity_network import Matrix as CoOccurrenceMatrix
 from .item_to_cluster import ItemToCluster
-from .matrix import Matrix as CoOccurrenceMatrix
+from .latent_matrix import LatentMatrix
 
 
 class DensityPlot(
@@ -103,7 +103,7 @@ class DensityPlot(
         """:meta private:"""
 
         similarity_matrix = (
-            DirectMatrix().update(**self.params.__dict__).using_counters(True).run()
+            LatentMatrix().update(**self.params.__dict__).using_counters(True).run()
         )
         co_occ_matrix = (
             CoOccurrenceMatrix()

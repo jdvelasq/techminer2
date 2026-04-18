@@ -3,14 +3,15 @@ LatentMatrix
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.enum import AssociationIndex, Field, UnitOrderBy
+    >>> from tm2p.enum import AssociationIndex, AnalysisUnit, UnitOrderBy
     >>> from tm2p.portfolio.thematic_stucture.co_occurrence.latent_similarity_network import LatentMatrix
     >>> df = (
     ...     LatentMatrix()
     ...     #
-    ...     # FIELD:
-    ...     .with_source_field(Field.AUTHKW_NORM)
-    ...     .having_top_n_units(10)
+    ...     # ANALYSIS UNIT:
+    ...     .with_analysis_unit(AnalysisUnit.KW)
+    ...     #
+    ...     .having_top_n_units(20)
     ...     .having_units_ordered_by(UnitOrderBy.OCC)
     ...     .having_unit_occurrence_between(None, None)
     ...     .having_unit_global_citation_between(None, None)
@@ -20,6 +21,9 @@ Smoke tests:
     ...     #
     ...     # COUNTERS:
     ...     .using_counters(True)
+    ...     #
+    ...     # NORMALIZATION:
+    ...     .using_association_index(AssociationIndex.ASSOCIATION_STRENGTH)
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/scopus/")
@@ -36,18 +40,18 @@ Smoke tests:
     >>> df.shape[1] > 1
     True
     >>> print(df.round(3).head(10).to_string())  # doctest: +NORMALIZE_WHITESPACE
-    COLUMNS                            fintech 117:25478  financial inclusion 017:03823  financial technology 015:02734  green finance 011:02844  blockchain 011:02023  banking 010:02599  china 009:01947  innovation 009:01703  artificial intelligence 008:01915  financial services 007:01673
+    COLUMNS                            fintech 119:26148  finance 029:07137  innovation 020:03916  china 018:03596  financial inclusion 017:03823  financial technology 016:02809  sustainable development 015:02158  banking 013:03043  sustainability 013:02308  blockchain 012:03450  green finance 011:02844  financial services 011:02399  covid-19 009:01743  economic growth 009:01654  artificial intelligence 008:01915  financial service 007:02627  technology 007:01409  crowdfunding 007:01245  commerce 006:02013  technology adoption 006:01500
     ROWS
-    fintech 117:25478                              1.000                          0.687                           0.756                    0.512                 0.555              0.649            0.481                 0.542                              0.586                         0.562
-    financial inclusion 017:03823                  0.687                          1.000                           0.549                    0.240                 0.656              0.519            0.259                 0.625                              0.610                         0.464
-    financial technology 015:02734                 0.756                          0.549                           1.000                    0.627                 0.407              0.550            0.132                 0.678                              0.306                         0.056
-    green finance 011:02844                        0.512                          0.240                           0.627                    1.000                 0.273              0.168            0.292                 0.429                              0.312                         0.207
-    blockchain 011:02023                           0.555                          0.656                           0.407                    0.273                 1.000              0.349            0.158                 0.193                              0.317                         0.330
-    banking 010:02599                              0.649                          0.519                           0.550                    0.168                 0.349              1.000            0.454                 0.490                              0.276                         0.448
-    china 009:01947                                0.481                          0.259                           0.132                    0.292                 0.158              0.454            1.000                 0.026                              0.184                         0.684
-    innovation 009:01703                           0.542                          0.625                           0.678                    0.429                 0.193              0.490            0.026                 1.000                              0.235                         0.319
-    artificial intelligence 008:01915              0.586                          0.610                           0.306                    0.312                 0.317              0.276            0.184                 0.235                              1.000                         0.408
-    financial services 007:01673                   0.562                          0.464                           0.056                    0.207                 0.330              0.448            0.684                 0.319                              0.408                         1.000
+    fintech 119:26148                              1.000              0.853                 0.824            0.696                          0.680                           0.696                              0.733              0.759                     0.708                 0.642                    0.640                         0.663               0.648                      0.580                              0.587                        0.528                 0.640                   0.481               0.582                          0.705
+    finance 029:07137                              0.853              1.000                 0.740            0.630                          0.715                           0.660                              0.641              0.634                     0.725                 0.611                    0.523                         0.529               0.581                      0.608                              0.478                        0.443                 0.606                   0.544               0.525                          0.561
+    innovation 020:03916                           0.824              0.740                 1.000            0.692                          0.593                           0.762                              0.767              0.623                     0.784                 0.428                    0.680                         0.540               0.699                      0.623                              0.534                        0.365                 0.616                   0.424               0.426                          0.693
+    china 018:03596                                0.696              0.630                 0.692            1.000                          0.436                           0.640                              0.725              0.588                     0.769                 0.196                    0.805                         0.523               0.670                      0.687                              0.487                        0.243                 0.765                   0.337               0.338                          0.640
+    financial inclusion 017:03823                  0.680              0.715                 0.593            0.436                          1.000                           0.289                              0.433              0.513                     0.341                 0.520                    0.296                         0.674               0.352                      0.324                              0.301                        0.385                 0.234                   0.434               0.440                          0.633
+    financial technology 016:02809                 0.696              0.660                 0.762            0.640                          0.289                           1.000                              0.514              0.677                     0.733                 0.228                    0.604                         0.286               0.713                      0.609                              0.613                        0.361                 0.760                   0.339               0.357                          0.474
+    sustainable development 015:02158              0.733              0.641                 0.767            0.725                          0.433                           0.514                              1.000              0.515                     0.627                 0.338                    0.820                         0.510               0.546                      0.643                              0.426                        0.279                 0.540                   0.375               0.381                          0.637
+    banking 013:03043                              0.759              0.634                 0.623            0.588                          0.513                           0.677                              0.515              1.000                     0.555                 0.355                    0.473                         0.462               0.513                      0.437                              0.478                        0.403                 0.556                   0.219               0.340                          0.587
+    sustainability 013:02308                       0.708              0.725                 0.784            0.769                          0.341                           0.733                              0.627              0.555                     1.000                 0.369                    0.749                         0.356               0.585                      0.611                              0.417                        0.284                 0.654                   0.292               0.302                          0.551
+    blockchain 012:03450                           0.642              0.611                 0.428            0.196                          0.520                           0.228                              0.338              0.355                     0.369                 1.000                    0.147                         0.421               0.180                      0.248                              0.150                        0.470                 0.197                   0.367               0.533                          0.423
 
 
 

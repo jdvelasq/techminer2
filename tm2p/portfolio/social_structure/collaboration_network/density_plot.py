@@ -4,18 +4,18 @@ DensityPlot
 
 .. raw:: html
 
-    <iframe src="../_generated/px.portfolio.thematic_structure.co_occurrences.direct_similarity_network.density_plot.html"
+    <iframe src="../_generated/px.portfolio.social_structure.collaboration_network.density_plot.html"
     height="800px" width="100%" frameBorder="0"></iframe>
 
 
 Smoke tests:
     >>> from tm2p.enum import AnalysisUnit, AssociationIndex, GraphClusteringAlgorithm, NodeSizeMetric, Scaling, UnitOrderBy
-    >>> from tm2p.portfolio.thematic_stucture.co_occurrence.direct_similarity_network import DensityPlot
+    >>> from tm2p.portfolio.social_structure.collaboration_network import DensityPlot
     >>> fig = (
     ...     DensityPlot()
     ...     #
     ...     # ANALYSIS UNIT:
-    ...     .with_analysis_unit(AnalysisUnit.KW)
+    ...     .with_analysis_unit(AnalysisUnit.AUTH)
     ...     #
     ...     .having_top_n_units(50)
     ...     .having_units_ordered_by(UnitOrderBy.OCC)
@@ -82,7 +82,7 @@ Smoke tests:
     ... )
     >>> type(fig).__name__
     'Figure'
-    >>> fig.write_html("docsrc/_generated/px.portfolio.thematic_structure.co_occurrences.direct_similarity_network.density_plot.html")
+    >>> fig.write_html("docsrc/_generated/px.portfolio.social_structure.collaboration_network.density_plot.density_plot.html")
 
 """
 

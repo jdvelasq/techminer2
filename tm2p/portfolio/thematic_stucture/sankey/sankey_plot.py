@@ -85,11 +85,11 @@ class SankeyPlot(
                 # COLUMNS:
                 .with_column_analysis_unit(col_field)
                 .having_column_units_ordered_by(UnitOrderBy.OCC)
-                .having_column_items_in_top(col_top_n)
+                .having_column_units_in_top(col_top_n)
                 #
                 # ROWS:
                 .with_index_analysis_unit(idx)
-                .having_index_items_ordered_by(UnitOrderBy.OCC)
+                .having_index_units_ordered_by(UnitOrderBy.OCC)
                 .having_index_units_in_top(
                     idx_top_n,
                 )
