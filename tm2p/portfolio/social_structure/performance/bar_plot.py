@@ -16,6 +16,7 @@ Smoke tests:
     ...     #
     ...     # FIELD:
     ...     .with_source_field(Field.CTRY_ISO3)
+    ...     #
     ...     .having_top_n_units(10)
     ...     .having_unit_occurrence_between(None, None)
     ...     .having_unit_global_citation_between(None, None)

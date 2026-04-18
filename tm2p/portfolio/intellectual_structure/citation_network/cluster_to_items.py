@@ -41,6 +41,9 @@ Smoke tests:
          'Takeda A 2021 1:00066',
     ...
 
+* **AnalysisUnit.AUTH** / **AnalysisUnit.CTRY** / **AnalysisUnit.ORG** / **AnalysisUnit.SRC**
+
+
 
 """
 

@@ -4,14 +4,6 @@ StrengthPlot
 
 * **AnalysisUnit.DOC**
 
-* **AnalysisUnit.AUTH**
-
-* **AnalysisUnit.CTRY**
-
-* **AnalysisUnit.ORG**
-
-* **AnalysisUnit.SRC**
-
 
 .. raw:: html
 
@@ -54,6 +46,8 @@ Smoke tests:
     >>> type(fig).__name__
     'Figure'
     >>> fig.write_html("docsrc/_generated/px.synthes.netw.cit.node_degree_plot_doc.html")
+
+* **AnalysisUnit.AUTH** / **AnalysisUnit.CTRY** / **AnalysisUnit.ORG** / **AnalysisUnit.SRC**
 
 
 """

@@ -46,6 +46,7 @@ class Scaling(str, Enum):
 
 class NodeSizeMetric(str, Enum):
 
-    OCC = "OCC"
+    GCS = "GCS"
     LINKS = "LINKS"
+    OCC = "OCC"
     TLS = "TLS"

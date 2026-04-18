@@ -17,6 +17,7 @@ def set_node_size_properties(
     nx_graph = _set_occurrences(nx_graph)
     nx_graph = _set_links(nx_graph, matrix)
     nx_graph = _set_tls(nx_graph, matrix)
+    nx_graph = _set_citations(nx_graph)
 
     nx_graph = _set_node_raw_size(params, nx_graph)
 
@@ -34,6 +35,8 @@ def _set_node_raw_size(params, nx_graph):
         metric = "LINKS"
     elif params.node_size_metric == NodeSizeMetric.TLS:
         metric = "TLS"
+    elif params.node_size_metric == NodeSizeMetric.GCS:
+        metric = "GCS"
     else:
         raise ValueError(f"Unsupported node size metric: {params.node_size_metric}")
 
@@ -66,6 +69,13 @@ def _set_occurrences(nx_graph):
     for node in nx_graph.nodes():
         occ = int(node.split(" ")[-1].split(":")[0])
         nx_graph.nodes[node]["OCC"] = occ
+    return nx_graph
+
+
+def _set_citations(nx_graph):
+    for node in nx_graph.nodes():
+        gcs = int(node.split(" ")[-1].split(":")[1])
+        nx_graph.nodes[node]["GCS"] = gcs
     return nx_graph
 
 

@@ -33,7 +33,7 @@ def _get_sorted_nodes(nx_graph):
         counters = x.split(" ")[-1]
         occ = counters.split(":")[0]
         gcs = counters.split(":")[1]
-        return occ, gcs, x
+        return int(occ), int(gcs), x
 
     return sorted(nodes, key=f, reverse=True)
 

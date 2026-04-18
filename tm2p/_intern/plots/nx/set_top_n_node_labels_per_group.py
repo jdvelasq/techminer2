@@ -33,7 +33,7 @@ def __set_top_n_node_labels_per_group(
         counters = x.split(" ")[-1]
         occ = counters.split(":")[0]
         gcs = counters.split(":")[1]
-        return occ, gcs, x
+        return int(occ), int(gcs), x
 
     for ctr, items in c2i.items():
         items = sorted(items, reverse=False)

@@ -54,7 +54,7 @@ Smoke tests:
     <BLANKLINE>
     [10 rows x 10 columns]
 
-
+* **AnalysisUnit.AUTH** / **AnalysisUnit.CTRY** / **AnalysisUnit.ORG** / **AnalysisUnit.SRC**
 
 """
 

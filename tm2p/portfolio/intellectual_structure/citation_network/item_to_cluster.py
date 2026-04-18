@@ -43,6 +43,7 @@ Smoke tests:
      'Arsyad I 2025 1:00005': 5,
     ...
 
+* **AnalysisUnit.AUTH** / **AnalysisUnit.CTRY** / **AnalysisUnit.ORG** / **AnalysisUnit.SRC**
 
 """
 

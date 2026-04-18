@@ -2,27 +2,26 @@
 NetworkPlot
 ===============================================================================
 
+
+* * **CITED_REF** / **CITED_AUTH** / **CITED_SRC**
+
 .. raw:: html
 
-    <iframe src="../_generated/px.synthes.netw.co_occur.network_plot.html"
-    height="800px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../_static/px.portfolio.intelectual_structure.co_citation_network.network_plot_cited_auth.html"
+    height="600px" width="100%" frameBorder="0"></iframe>
+
 
 Smoke tests:
-    >>> from tm2p.enum import AssociationIndex, AnalysisUnit, GraphClusteringAlgorithm, NodeSizeMetric, Scaling, UnitOrderBy
-    >>> from tm2p.portfolio.thematic_stucture.co_occurrence.direct_similarity_network import NetworkPlot
-    >>> fig = (
+    >>> from tm2p.enum import AssociationIndex, AnalysisUnit, GraphClusteringAlgorithm, NodeSizeMetric, Scaling
+    >>> from tm2p.portfolio.intellectual_structure.co_citation_network import NetworkPlot
+    >>> plot = (
     ...     NetworkPlot()
     ...     #
     ...     # ANALYSIS UNIT:
-    ...     .with_analysis_unit(AnalysisUnit.KW)
+    ...     .with_analysis_unit(AnalysisUnit.CITED_REF)
     ...     #
-    ...     .having_top_n_units(50)
-    ...     .having_units_ordered_by(UnitOrderBy.OCC)
-    ...     .having_unit_occurrence_between(None, None)
-    ...     .having_unit_global_citation_between(None, None)
-    ...     .having_units_in(None)
-    ...     #
-    ...     .using_minimum_pair_co_occurrence(2)
+    ...     .having_top_n_cited_units(40)
+    ...     .having_minimum_cited_unit_occurrences(3)
     ...     #
     ...     # COUNTERS:
     ...     .using_counters(False)
@@ -34,9 +33,9 @@ Smoke tests:
     ...     .using_clustering(GraphClusteringAlgorithm.LOUVAIN)
     ...     #
     ...     # NETWORK:
-    ...     .using_spring_layout_k(0.27)
-    ...     .using_spring_layout_iterations(100)
-    ...     .using_spring_layout_seed(0)
+    ...     .using_spring_layout_k(0.30)
+    ...     .using_spring_layout_iterations(50)
+    ...     .using_spring_layout_seed(5)
     ...     #
     ...     .using_discrete_node_colors(
     ...         (
@@ -53,14 +52,14 @@ Smoke tests:
     ...         )
     ...     )
     ...     .using_uniform_node_opacity(0.75)
-    ...     .using_node_size_metric(NodeSizeMetric.TLS)
+    ...     .using_node_size_metric(NodeSizeMetric.OCC)
     ...     .using_node_scaling(Scaling.SQRT)
     ...     .using_node_size_range(12, 80)
     ...     .using_top_n_nodes(50)
     ...     .using_min_node_degree(2)
     ...     #
-    ...     .using_max_node_labels(15)
-    ...     .using_node_label_max_length(20)
+    ...     .using_max_node_labels(20)
+    ...     .using_node_label_max_length(40)
     ...     #
     ...     .using_textfont_opacity_range(0.55, 1.00)
     ...     .using_textfont_size_range(10, 24)
@@ -69,7 +68,7 @@ Smoke tests:
     ...     .using_uniform_edge_color("#d8d8d8")
     ...     .using_edge_opacity_range(0.25, 0.65)
     ...     .using_edge_scaling(Scaling.SQRT)
-    ...     .using_global_top_edges(200)
+    ...     .using_global_top_edges(100)
     ...     .using_edge_width_range(1.5, 5.0)
     ...     .using_top_edges_per_node(5)
     ...     #
@@ -78,17 +77,14 @@ Smoke tests:
     ...     .using_axes_visible(False)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("tests/tinyml/")
+    ...     .where_root_directory("tests/wos/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_global_citations_range(None, None)
     ...     .where_records_match(None)
     ...     #
     ...     .run()
     ... )
-    >>> type(fig).__name__
-    'Figure'
-    >>> fig.write_html("docsrc/_generated/px.synthes.netw.co_occur.network_plot.html")
-
+    >>> plot.write_html("docsrc/_generated/px.portfolio.intelectual_structure.co_citation_network.network_plot_cited_auth.html")
 
 """
 

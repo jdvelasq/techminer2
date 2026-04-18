@@ -4,15 +4,6 @@ NodeMetrics
 
 * **AnalysisUnit.DOC**
 
-* **AnalysisUnit.AUTH**
-
-* **AnalysisUnit.CTRY**
-
-* **AnalysisUnit.ORG**
-
-* **AnalysisUnit.SRC**
-
-
 Smoke tests:
     >>> from tm2p.enum import AssociationIndex, AnalysisUnit
     >>> from tm2p.portfolio.intellectual_structure.citation_network import NodeMetrics
@@ -51,6 +42,7 @@ Smoke tests:
     <BLANKLINE>
     [5 rows x 8 columns]
 
+* **AnalysisUnit.AUTH** / **AnalysisUnit.CTRY** / **AnalysisUnit.ORG** / **AnalysisUnit.SRC**
 
 
 
