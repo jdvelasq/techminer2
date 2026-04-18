@@ -1,11 +1,9 @@
 import plotly.graph_objects as go  # type: ignore
 
 
-def build_network_figure(
-    edge_traces,
-    node_trace,
-):
-    """Creates a network graph from traces using plotly express."""
+def build_density_plot(
+    contour_trace: go.Heatmap,
+) -> go.Figure:
 
     layout = go.Layout(
         title="",
@@ -28,7 +26,7 @@ def build_network_figure(
     )
 
     fig = go.Figure(
-        data=edge_traces + [node_trace],
+        data=[contour_trace],
         layout=layout,
     )
 

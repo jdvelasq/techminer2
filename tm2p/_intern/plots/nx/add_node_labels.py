@@ -29,8 +29,6 @@ def add_node_labels(
             text=f" {text} ",
             showarrow=False,
             font={"size": data["textfont_size"]},
-            # bordercolor="grey",
-            # bgcolor="white",
             xanchor=xanchor,
             yanchor=yanchor,
             xshift=xshift,
@@ -55,4 +53,4 @@ def _map_text_position(textpos):
     if textpos == "bottom left":
         return "right", "top", -4, -4
 
-    return "center", "center", 0, 0
+    return "center", "middle", 0, 0

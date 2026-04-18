@@ -1,7 +1,8 @@
 from .add_node_colorscale import add_node_colorscale
 from .add_node_labels import add_node_labels
-from .build_network_density_plot import build_network_density_plot
-from .build_network_figure import build_network_figure
+from .build_density_plot import build_density_plot
+from .build_heatmap_trace import build_heatmap_trace
+from .build_network_plot import build_network_plot
 from .build_node_degree_plot import build_node_degree_plot
 from .build_scatter_edge_traces import build_scatter_edge_traces
 from .build_scatter_node_trace import build_scatter_node_trace
@@ -30,6 +31,7 @@ from .scale_node_size import scale_node_size
 from .scale_textfont_opacity import scale_textfont_opacity
 from .scale_textfont_size import scale_textfont_size
 from .set_cluster_names import set_cluster_names
+from .set_density_textposition import set_density_textposition
 from .set_edge_color_by_group import set_edge_color_by_group
 from .set_edge_width_from_pandas_adjacency import set_edge_width_from_pandas_adjacency
 from .set_node_color_by_group import set_node_color_by_group
@@ -52,8 +54,10 @@ from .validate_association_index import validate_association_index
 __all__ = [
     "add_node_colorscale",
     "add_node_labels",
-    "build_network_density_plot",
-    "build_network_figure",
+    "build_heatmap_trace",
+    "build_density_plot",
+    "build_network_plot",
+    "build_network_plot",
     "build_node_degree_plot",
     "build_scatter_edge_traces",
     "build_scatter_node_trace",
@@ -78,6 +82,7 @@ __all__ = [
     "scale_textfont_opacity",
     "scale_textfont_size",
     "set_cluster_names",
+    "set_density_textposition",
     "set_edge_color_by_group",
     "set_edge_width_from_pandas_adjacency",
     "set_node_color_by_group",

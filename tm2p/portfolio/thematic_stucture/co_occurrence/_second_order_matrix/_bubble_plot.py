@@ -48,7 +48,7 @@ Smoke tests:
 from tm2p._intern import ParamsMixin
 from tm2p._intern.plots.basic.bubble_plot import bubble_plot
 
-from ..latent_similarity_network.matrix_list import LatentMatrixList
+from ..latent_similarity_network.latent_matrix_list import LatentMatrixList
 
 
 class BubblePlot(

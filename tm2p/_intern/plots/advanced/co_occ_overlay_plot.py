@@ -7,7 +7,7 @@ from tm2p._intern import Params
 from ..nx import (
     add_node_colorscale,
     add_node_labels,
-    build_network_figure,
+    build_network_plot,
     build_scatter_edge_traces,
     build_scatter_node_trace,
     configure_figure_axes,
@@ -84,7 +84,7 @@ def build_co_occ_overlay_plot(
     node_trace = build_scatter_node_trace(nx_graph)
     edge_traces = build_scatter_edge_traces(nx_graph)
 
-    fig = build_network_figure(edge_traces, node_trace)
+    fig = build_network_plot(edge_traces, node_trace)
     fig = configure_figure_axes(params, fig)
     fig = add_node_labels(fig, nx_graph)
     fig = add_node_colorscale(params, fig, nx_graph)

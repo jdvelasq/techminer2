@@ -350,10 +350,10 @@ class Params:
     textfont_size_uniform: float
 
     # -------------------------------------------------------------------------
-    # Kernel density plot:
+    # Density plot:
     # -------------------------------------------------------------------------
 
-    density_contour_opacity: float
+    contour_opacity: float
     kernel_bandwidth: float
 
     # ####################################################################### #

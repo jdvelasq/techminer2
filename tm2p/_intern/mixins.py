@@ -1054,12 +1054,12 @@ class ParamsMixin:
     # Kernel density plot:
     # -------------------------------------------------------------------------
 
-    def using_density_contour_opacity(self, opacity: float) -> Self:
+    def using_contour_opacity(self, opacity: float) -> Self:
         opacity = check_required_float_0_1(
             value=opacity,
             param_name="contour_opacity",
         )
-        self.params.density_contour_opacity = opacity
+        self.params.contour_opacity = opacity
         return self
 
     def using_kernel_bandwidth(self, kernel_bandwidth: float) -> Self:

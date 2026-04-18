@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 
 from tm2p._intern import ParamsMixin, remove_counters
 from tm2p._intern.plots.nx import (
-    build_network_density_plot,
+    build_density_plot,
     compute_clustered_spring_layout_positions,
     detect_communities,
 )
@@ -37,4 +37,4 @@ class BaseKernelDensityPlot(
                 text = data["text"]
                 nx_graph.nodes[node]["text"] = remove_counters(text)  # type: ignore
 
-        return build_network_density_plot(self.params, nx_graph)
+        return build_density_plot(self.params, nx_graph)

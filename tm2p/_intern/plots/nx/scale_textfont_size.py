@@ -24,6 +24,8 @@ def scale_textfont_size(
             raw_sizes = np.sqrt(raw_sizes)  # type: ignore
         if params.node_scaling == Scaling.LOG:
             raw_sizes = np.log1p(raw_sizes)  # type: ignore
+        if params.node_scaling == Scaling.LINEAR:
+            raw_sizes = np.array(raw_sizes)  # type: ignore
 
         width = textfont_size_range[1] - textfont_size_range[0]
         prop = (raw_sizes - raw_sizes.min()) / (raw_sizes.max() - raw_sizes.min())  # type: ignore
