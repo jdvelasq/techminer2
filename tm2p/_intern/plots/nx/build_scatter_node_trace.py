@@ -24,7 +24,7 @@ def build_scatter_node_trace(
         marker={
             "color": node_color,
             "size": node_size,
-            "line": {"width": 1.5, "color": "white"},
+            "line": {"width": 1.0, "color": "white"},
             "opacity": min(1.0, node_opacity + 0.15),
         },
     )

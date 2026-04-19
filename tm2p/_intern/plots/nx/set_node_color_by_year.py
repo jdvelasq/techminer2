@@ -24,7 +24,9 @@ def set_node_color_by_year(
 
     for node in nx_graph.nodes():
         year = nx_graph.nodes[node]["year"]
+        year = round(year, 1)
         nx_graph.nodes[node]["node_color"] = mapping[year]
+
     return nx_graph
 
 

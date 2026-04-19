@@ -20,20 +20,27 @@ def add_node_colorscale(
     vmin = min(years)
     vmax = max(years)
 
-    for trace in fig.data:
-        if getattr(trace, "mode", None) and "markers" in trace.mode:  # type: ignore
-            trace.marker.update(  #  type: ignore
-                color=years,
+    fig.add_trace(
+        go.Scatter(
+            x=[None],
+            y=[None],
+            mode="markers",
+            marker=dict(
                 colorscale=colorscale,
-                showscale=True,
                 cmin=vmin,
                 cmax=vmax,
+                color=[vmin, vmax],  # needed to activate colorscale
+                showscale=True,
                 colorbar={
                     "title": {"text": "Year", "font": {"size": 10}},
                     "thickness": 10,
                     "len": 0.45,
                     "tickfont": {"size": 10},
                 },
-            )
+            ),
+            hoverinfo="none",
+            showlegend=False,
+        )
+    )
 
     return fig

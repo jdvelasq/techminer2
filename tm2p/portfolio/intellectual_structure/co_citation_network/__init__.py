@@ -7,6 +7,7 @@ from .matrix import Matrix
 from .matrix_list import MatrixList
 from .network_plot import NetworkPlot
 from .node_metrics import NodeMetrics
+from .overlay_plot import OverlayPlot
 from .strength_plot import StrengthPlot
 
 __all__ = [
@@ -19,5 +20,6 @@ __all__ = [
     "MatrixList",
     "NetworkPlot",
     "NodeMetrics",
+    "OverlayPlot",
     "StrengthPlot",
 ]
