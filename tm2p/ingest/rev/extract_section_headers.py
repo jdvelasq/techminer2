@@ -40,5 +40,8 @@ class ExtractSectionHeaders(
             .update(**self.params.__dict__)
             .with_source_field(Field.ABSTR_UPPER)
             .having_text_matching(" : ")
+            .where_record_years_range(None, None)
+            .where_record_global_citations_range(None, None)
+            .where_records_match(None)
             .run()
         )

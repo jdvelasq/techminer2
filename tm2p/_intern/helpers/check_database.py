@@ -1,4 +1,4 @@
-from tm2p.ingest.data_source._intern.phases.get_datab_marker import get_datab_marker
+from tm2p.ingest.datasrc._intern.phases.get_datab_marker import get_datab_marker
 
 
 def check_database(root_directory: str):

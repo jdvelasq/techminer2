@@ -16,10 +16,10 @@ import sys
 from typing import Any
 
 from tm2p._intern import ParamsMixin
-from tm2p.ingest.data_source._intern.step import Step
+from tm2p.ingest.datasrc._intern.step import Step
 
-from ..data_source._intern.phases.p12_nlp_prepar import p12_nlp_prepar
-from ..data_source._intern.phases.p13_concept import p13_concept
+from ..datasrc._intern.phases.p12_nlp_prepar import p12_nlp_prepar
+from ..datasrc._intern.phases.p13_concept import p13_concept
 
 __reviewed__ = "2026-01-28"
 

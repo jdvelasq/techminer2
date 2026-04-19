@@ -40,7 +40,7 @@ Smoke test:
 """
 
 from tm2p._intern import ParamsMixin
-from tm2p.ingest.data_source._intern.oper.transform_col import transform_column
+from tm2p.ingest.datasrc._intern.oper.transform_col import transform_column
 from tm2p.ingest.extr._helpers._protected_fields import PROTECTED_FIELDS
 
 

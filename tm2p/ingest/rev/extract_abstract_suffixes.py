@@ -52,6 +52,9 @@ class ExtractAbstractSuffixes(
             RecordMapping()
             .update(**self.params.__dict__)
             .with_source_field(Field.ABSTR_UPPER)
+            .where_record_years_range(None, None)
+            .where_record_global_citations_range(None, None)
+            .where_records_match(None)
             .run()
         )
 
@@ -60,7 +63,7 @@ class ExtractAbstractSuffixes(
 
         suffixes_grouped_by_ending = self._sort_by_suffix(suffixes)
 
-        if self.params.pattern is not None:
+        if "pattern" in self.params.__dict__ and self.params.pattern is not None:
             suffixes_grouped_by_ending = [
                 text
                 for text in suffixes_grouped_by_ending
