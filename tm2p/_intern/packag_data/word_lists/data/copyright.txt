@@ -226,6 +226,7 @@
 \. \d{4} ceur ws \.
 \. \d{4} china international book trading corp\. \( guoji shudian \) \.
 \. \d{4} chinese academy of sciences \.
+\. \d{4} , chinese academy of sciences \.
 \. \d{4} common ground research networks \.
 \. \d{4} convivium , association loi de \d{4} \.$
 \. \d{4} copyright authors$
@@ -348,7 +349,6 @@
 \. \d{4} st \. petersburg state university of architecture and civil engineering \.
 \. \d{4} system safety : human technical facility environment \.
 \. \d{4} tanushri banerjee , arindam banerjee , dhaval maheta , and vivek gupta \.
-\. \d{4} taylor and francis group , london \.$
 \. \d{4} tehran urban research and planning center \.
 \. \d{4} the american risk and insurance association$
 \. \d{4} the association of environmental and resource economists \.
@@ -1116,9 +1116,6 @@ licensee cogitatio \( lisbon , portugal \) \.$
 licensee mdpi , basel , switzerland
 licensee(\s\b[a-z\+]+\b)+
 liver international published by john wiley and sons ltd \.$
-lulea university of technology , sweden \.
-lulea university of technology , sweden \.$
-lulea university of technology , sweden \d{4}\.
 mary ann liebert , inc \.$
 mexican society of soil science
 muhammad ali memon , mohamed hedi karray , agnes letouzey and bernard archimede \. published by emerald publishing limited .
@@ -1317,8 +1314,9 @@ international symposium on project management , china
 \. excelingtech pub , uk \.$
 \. \d{4} jaime martinez_valderrama et al \.$
 \. \d{4} i \. hijazi et al \.$ 
-, lulea university of technology , sweden \.$
-\. \d{4} taylor and francis group , london \.$
+lulea university of technology , sweden \.
+lulea university of technology , sweden \d{4}\.
+\. \d{4} taylor and francis group , london \.
 \. content from this work may be used under the terms of the creative commons attribution \d{1}\.0 license \.
 \. this open access article is distributed under a creative commons attribution \( cc_by \) \d{1}\.0 license \.$
 \. ishs \.$
@@ -1330,8 +1328,57 @@ international symposium on project management , china
 \. the author \( s \) publisher : razi university \.
 \. \( \d{4} \) , \( african scholarly science communications trust \( asscat \) \) \.
 \. \d{4} , polskie towarzystwo inzynierii ekologicznej \( ptie \) \.
-\. \d{1}th international symposium on project management , ispm \d{4} \.
+\d{1}th international symposium on project management , ispm \d{4} \.
 \. \d{4} sociedad mexicana de psicologia \.
 \. \d{4} , daaam international vienna \.
 \. \d{4} , marine technology society inc \.
 \. , cc by_nc_nd$
+\. int \. j \. of geomate \.
+\. \d{4} china mining magazine co \.
+\. \d{4} , publishing house of natural science and technology , vast \.
+\. modsim \d{4}\.all rights reserved \.
+\. , \d{4} , acta simulata systematica sinica \.
+\. , \d{4} , chinese society of agricultural engineering \.
+\. \d{4} , cims \.
+\. \d{4} , editorial office of journal of xi'an university of architecture and technology \.
+\. \d{4} , the editorial department of complex systems and complexity science \.
+\. international congress on modeling and simulation , modsim \d{4}\.
+\. ieee \.
+\. \d{4} jack h \. berryman institute \.
+\. \d{4} editorial matter and selection : scott a \. cohen , james e \. s \. higham , paul peeters and stefan gossling \.
+\. \d{4} edp sciences , roadef , smai \.
+\. \d{4} dayhanna s \. vargas et al \.
+\. \d{4} , asif et al \. \. licensee springer \.
+\. \d{4} selection and editorial matter , dr \. pramod k \. mishra , prof \. sameer prasad , prof \. b \. kamaiah , prof \. b \. raja shekhar , dr \. chinmaya behera and dr \. pratap k \. jena \. individual chapters , the contributors \.
+\. system dynamics review published by john wiley and sons ltd on behalf of system dynamics society \.
+\. \d{4} editorial department of journal of chang'an university \( natural science edition \) \.
+\. \d{4} international business information management association ibima \.
+\. \d{4} , shpmedia sdn bhd \.
+\. \d{4} ais / icis administrative office \.
+\. \d{4} , education and research in computer aided architectural design in europe \.
+\. \d{4} society for innovative agriculture , university of agriculture \.
+\. \d{4} editorial department of advances in aeronautical science and engineering \.
+\. \d{4} , international association for hydro_environment engineering and research \.
+\. \d{4} , southeast asian association for institutional research \.
+\. \d{4} chinese journal of obstetrics and gynecology \/ zhonghua fu chan ke za zhi \.
+\. \d{4} , bioflux srl \.
+\. \d{4} quanguo maofang keji xinxi zhongxin \.
+\. \d{4} china silk association \.
+\. \d{4} fundacao getulio vargas \.
+\. \d{4} , international center for sustainable development of energy , water and environment systems sdewes \.
+\. \d{4} , chinese society of metals \.
+\. \d{4} cims \.
+\. \d{4} , authors \.
+\. \d{4} authors \.
+\. \d{4} selection and editorial matter , jeffrey b \. vancouver , mo wang and justin m \. weinhardt \.
+\. \d{4} editorial department of china geological survey \.
+\. \d{4} namik kemal university_agricultural faculty \.
+\. copyright \d{4} , taiwan pediatric association . published by elsevier taiwan llc \.
+\. modsim 2007 international congress on modeling and simulation land , water and environmental management : integrated systems for sustainability , proceedings .
+\. \d{4} jack h \.
+, sweden \.$
+, london \.$
+\. \d{4} , department of journal of forest engineering \( harbin \) \.
+\. \d{4} , springer_verlag gmbh germany , part of springer nature \.
+\. authors , published by environment and water engineering journal \.
+\. \d{4} selection and editorial material , matthias wolff and mark gardener \.
