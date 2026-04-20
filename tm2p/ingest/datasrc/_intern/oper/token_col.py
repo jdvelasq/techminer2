@@ -364,5 +364,10 @@ def _tokenize(text: pd.Series) -> pd.Series:
     text = text.str.replace(" - ", "-", regex=False)
     text = text.str.replace("- ", "-", regex=False)
     text = text.str.replace("-", "_", regex=False)
+    text = text.str.replace(
+        "http://creativecommons.org/licenses/by nc nd/4.0/",
+        "http://creativecommons.org/licenses/by_nc_nd/4.0/",
+        regex=False,
+    )
 
     return text
