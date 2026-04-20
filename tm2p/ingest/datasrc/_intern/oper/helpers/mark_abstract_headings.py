@@ -4,6 +4,7 @@ from typing import Optional
 import pandas as pd  # type: ignore
 
 COMPOUND_STRUCTURED_ABSTRACT_HEADINGS = [
+    "a summary",
     "actionable insights",
     "advances in knowledge",
     "aim and background",
@@ -25,6 +26,7 @@ COMPOUND_STRUCTURED_ABSTRACT_HEADINGS = [
     "clinical trial registration",
     "conclusion , significance and impact study",
     "conclusion and clinical relevance",
+    "conclusions / significance",
     "conclusion and relevance",
     "conclusions and relevance",
     "contribution of the paper",
@@ -62,6 +64,7 @@ COMPOUND_STRUCTURED_ABSTRACT_HEADINGS = [
     "key results",
     "level of evidence",
     "limitations and implications",
+    "limitations of the investigation",
     "main conclusion",
     "main findings",
     "main measures",
@@ -96,6 +99,7 @@ COMPOUND_STRUCTURED_ABSTRACT_HEADINGS = [
     "patient or public contribution",
     "patients or other participants",
     "place and duration of study",
+    "practical contributions",
     "practical examples",
     "practical implications",
     "practical relevance",
@@ -121,6 +125,7 @@ COMPOUND_STRUCTURED_ABSTRACT_HEADINGS = [
     "result and discussion",
     "results , observations , conclusions",
     "results and discussion",
+    "results and conclusions",
     "results show",
     "review methods",
     "scholarly critique",
@@ -132,6 +137,8 @@ COMPOUND_STRUCTURED_ABSTRACT_HEADINGS = [
     "settings and participants",
     "social implications",
     "some key results",
+    "study region",
+    "study focus",
     "study design",
     "study results",
     "study setting and design",
@@ -144,6 +151,13 @@ COMPOUND_STRUCTURED_ABSTRACT_HEADINGS = [
     "tweetable abstract",
     "type of study",
     "value / originality",
+    "setting and design",
+    "study region",
+    "methods and procedures",
+    "research purposes",
+    "methodology / principal findings",
+    "methods / analysis",
+    "omprehensive failure analysis",
 ]
 
 

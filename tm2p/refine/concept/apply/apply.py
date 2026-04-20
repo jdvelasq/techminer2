@@ -12,8 +12,6 @@ Smoke tests:
 
 """
 
-import sys
-
 from tm2p._intern import ParamsMixin
 from tm2p.enum import Field, ThFile
 from tm2p.refine._intern.apply import BaseApply
@@ -22,10 +20,8 @@ from tm2p.refine._intern.apply import BaseApply
 class Apply(
     ParamsMixin,
 ):
-    def run(self) -> int:
+    def run(self) -> None:
         """:meta private:"""
-
-        results = []
 
         for source, target in (
             #
@@ -40,7 +36,7 @@ class Apply(
             (Field.DESCRIPTOR_RAW, Field.DESCRIPTOR_NORM),
         ):
 
-            results.append(
+            (
                 BaseApply()
                 .with_thesaurus_file(ThFile.CONCEPT)
                 .with_source_field(source)
@@ -48,7 +44,3 @@ class Apply(
                 .where_root_directory(self.params.root_directory)
                 .run()
             )
-
-        sys.stderr.write("\n")
-        sys.stderr.flush()
-        return results[0]

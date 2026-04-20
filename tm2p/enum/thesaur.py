@@ -14,6 +14,7 @@ class ThField(str, Enum):
 
 class ThFile(str, Enum):
 
-    ORG = "org.the.txt"
-    CTRY = "ctry.the.txt"
+    ACRONYM = "acronyms.the.txt"
     CONCEPT = "concept.the.txt"
+    CTRY = "ctry.the.txt"
+    ORG = "org.the.txt"

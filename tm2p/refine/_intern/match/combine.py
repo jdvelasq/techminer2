@@ -77,7 +77,7 @@ def compute_cooc_matrix(params: Params) -> pd.DataFrame:
         lambda x: int(x.split(" ")[-1].split(":")[1]) if isinstance(x, str) else 0
     )
 
-    matrix_list = matrix_list[matrix_list.rows_occ > matrix_list.columns_occ]
+    matrix_list = matrix_list.loc[matrix_list.rows_occ > matrix_list.columns_occ, :]
 
     return matrix_list
 
