@@ -146,7 +146,22 @@ class BaseIngest(
             .run()
         )
 
-        filepath = Path(self.params.root_directory) / "report" / "documents.txt"
+        filepath = Path(self.params.root_directory) / "report" / "documents-raw.txt"
+        with filepath.open("w", encoding="utf-8") as f:
+            for doc in docs:
+                f.write(f"{doc}\n---\n\n")
+
+        docs = (
+            RecordViewer()
+            .update(**self.params.__dict__)
+            .with_source_field(Field.ABSTR_TOK)
+            .where_record_years_range(None, None)
+            .where_record_global_citations_range(None, None)
+            .where_records_match(None)
+            .run()
+        )
+
+        filepath = Path(self.params.root_directory) / "report" / "documents-tok.txt"
         with filepath.open("w", encoding="utf-8") as f:
             for doc in docs:
                 f.write(f"{doc}\n---\n\n")

@@ -29,4 +29,11 @@ def repair_strange_cases(text):
         ". the conclusions can be summarized as follows :",
     )
 
+    text = text.replace("   ", " ")
+    text = text.replace("  ", " ")
+
+    text = text.replace(" ' ' ", " ")
+    text = text.replace(" ' ", " ")
+    text = text.replace(" ' s ", " ")
+
     return text

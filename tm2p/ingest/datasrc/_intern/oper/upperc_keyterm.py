@@ -121,10 +121,10 @@ def _get_compiled_patterns(dataframe: pd.DataFrame) -> list[tuple[str, re.Patter
     if not _COMPILED_PATTERNS:
 
         patterns = _get_project_noun_phrases(dataframe)
-        patterns.update(_get_builtin_noun_phrases())
         patterns.update(_get_acronyms(dataframe))
         patterns = _clean_terms(patterns)
         patterns.update(_get_project_keywords(dataframe))
+        patterns.update(_get_builtin_noun_phrases())
 
         patterns_list = sorted(
             patterns,

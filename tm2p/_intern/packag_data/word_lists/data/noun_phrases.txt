@@ -4813,6 +4813,7 @@ business value creations
 business value of information technologies
 business value of information technology
 business value of it
+business-as-usual
 butler volmer equation
 butler volmer equations
 butterfly optimization algorithm
@@ -5876,6 +5877,7 @@ chronic traumatic encephalopathy
 chronicles based alarm management
 chronicles based alarm managements
 chronotype
+cigarettes
 cigre thermal model
 cigre thermal models
 cinnamic acid derivative
@@ -5887,6 +5889,7 @@ circadian rhythm
 circadian rhythm sleep disorder
 circadian rhythm sleep disorders
 circuit simulation
+circuit-breakers
 circuits and system
 circuits and systems
 circular bio economies
@@ -6202,6 +6205,7 @@ closed loop supply chains
 closed loop system
 closed loop systems
 closed-loop
+closed-loop supply chain
 closest match algorithm
 closest match algorithms
 closing the loop
@@ -6377,6 +6381,7 @@ co word analyses
 co word analysis
 co-designs
 co2
+co2 emission reduction
 co2 emission reductions
 co2 emissions
 coal bed methane
@@ -7294,6 +7299,7 @@ computer mediated learning environments
 computer mediated learnings
 computer model
 computer modelling
+computer models
 computer network performance evaluation
 computer network performance evaluations
 computer network securities
@@ -7970,6 +7976,7 @@ control over network
 control over networks
 control parameter optimization
 control parameter optimizations
+control strategies
 control strategy
 control strategy optimization
 control strategy optimizations
@@ -8439,6 +8446,7 @@ covenant of mayors
 coverage with evidence development
 coverage with evidence developments
 covid
+covid 19
 covid 19 age
 covid 19 crises
 covid 19 crisis
@@ -8693,6 +8701,7 @@ cross validation methods
 cross validation technique
 cross validation techniques
 cross-sectional studies
+cross-sectional study
 crossover and mutation
 crow search algorithm
 crow search algorithms
@@ -9825,6 +9834,7 @@ decision tree technique
 decision tree techniques
 decision trees
 decision-making
+decision-making process
 decision-support-systems
 decisions making
 decisions makings
@@ -10098,6 +10108,7 @@ demand sides
 demand supply balances
 demand uncertainties
 demand uncertainty
+demand-side management
 dematel
 dementia
 democracy and education
@@ -13344,6 +13355,7 @@ emergency medical services
 emergency medicine
 emergency remote teaching and learning
 emergency remote teaching and learnings
+emergency rescue
 emergency response system
 emergency response systems
 emergency response teaching
@@ -13559,6 +13571,7 @@ end user training
 end user trainings
 end-devices
 end-to-end systems
+end-users
 endemic disease
 endocrine disrupting chemicals
 endocrinology
@@ -16974,6 +16987,7 @@ fuel poverties
 fuel poverty
 fuel utilization factor
 fuel utilization factors
+fuels
 fugl meyer assessment for upper extremity
 fukushima nuclear accident
 fukushima nuclear accidents
@@ -21885,6 +21899,7 @@ industrial wireless sensors
 industry and industrial phenomena
 industry and industrial studies
 industry and industrial study
+industry based
 industry case studies
 industry case study
 industry education integration
@@ -23875,6 +23890,7 @@ kindergarten brand images
 kinematics
 kinematics and dynamics
 kinetic monte carlo
+kinetics
 kinetics and thermodynamics
 kingdom of bahrain
 kingdom of saudi arabia
@@ -29286,6 +29302,7 @@ multi zone zip load model
 multi zone zip load models
 multi-criteria decision-making models
 multi-devices
+multi-echelon supply chain
 multi-labels
 multi-modal sensing
 multi-objective optimization
@@ -29293,6 +29310,7 @@ multi-objectives optimization
 multi-scales
 multi-task learning
 multi-value
+multi-value chain
 multiaccess edge computing
 multiagent deep reinforcement learning
 multiagent deep reinforcement learnings
@@ -37548,6 +37566,7 @@ regenerative braking systems
 regenerative electric boilers
 regenerative fuel cell
 regenerative fuel cells
+region
 region of interest
 region of interests
 regional agency for energy and the environment of arm
@@ -38928,6 +38947,7 @@ safety risk assessment
 safety risk assessments
 safety risk management
 safety risk managements
+safety stock
 safety stock level
 safety stock levels
 sahih al bukhari
@@ -42843,6 +42863,7 @@ sub synchronous oscillations
 sub systems
 sub zero temperatures
 sub-saharan africa
+sub-systems
 subcutaneous drug administration
 subcutaneous drug administrations
 subgame perfect equilibria
@@ -44785,6 +44806,7 @@ three way decisions
 three way interaction
 three way interactions
 three-dimensional display
+three-level
 threshold
 threshold current densities
 threshold current density
@@ -45055,6 +45077,7 @@ time-frequency analysis
 time-of flight
 time-of-flight
 time-series analysis
+time-to-market
 timed petri net
 timed petri nets
 timed up and go
@@ -46287,6 +46310,7 @@ university sectors
 university spin off
 university spin offs
 university technology transfer offices
+university-industry cooperation
 unknown input observer
 unknown input observers
 unmanned aerial system
@@ -46757,6 +46781,7 @@ value chain model
 value chain models
 value co creations
 value co destruction
+value co-creation
 value creation
 value creation process
 value creation processes
@@ -47597,6 +47622,7 @@ waste to values
 waste to wealth
 waste to wealth technologies
 waste to wealth technology
+waste treatment
 waste utilization
 waste water management
 waste water managements
@@ -47644,6 +47670,7 @@ water ecological carrying capacities
 water energy
 water energy food
 water energy nexus
+water flow
 water footprint
 water framework directives
 water gas shift
@@ -47731,6 +47758,7 @@ water-resources
 water-resources management
 waters managements
 waters resources
+watershed
 watershed management
 watersheds
 wave current interaction

@@ -1288,3 +1288,50 @@ www : biopharm mag . com
 www : biopharm mag com \.
 wydawnictwo ekonomia i srodowisko
 xiang t \. r \. kong , ray y \. zhong , gangyan xu and george q \. huang \. published by emerald publishing limited \.
+\. open access under cc by_nc_nd license \.$
+\. on behalf of china university of mining and technology \.$
+\. copyright \( c \) \d{4} john wiley and sons , ltd \.$
+\. under cc license \( cc by_nc_nd 4\.0 \) \.$
+\. copyright \d{4} international business information management association \( ibima \) \.
+\. \d{4} , naas \( national academy of agricultural sciences \) \.
+\. author \( s \) \.
+\. copyright \d{4} is held by the owner / author \( s \) \.
+\. international forum of educational technology and society \( ifets \) \.
+\. \d{4} monjezi s \. , momeni m \. , monjezi m \. , monjezi n \. , and hassonizade , h \. \.
+, under exclusive license to tehran university of medical sciences \d{4} \.
+\. coastal education and research foundation , inc \. \d{4} \.
+\. copyright \( \d{4} \) by iapsam and esra \.
+\. \( \d{4} \) trans tech publications , switzerland \.$
+\. \d{4} trans tech publications , switzerland \.$
+\. freund publishing house ltd \.$
+international symposium on project management , china
+\. control short video network public opinion \.
+\. this work has been published under cc by_nc_sa 4\.0 license \.
+\. this is an open access article under the cc by_nc_nd license \.
+\. copyright \d{4} scitepress_science and technology publications all rights reserve \.
+\. \d{4} springer_verlag \.
+\. copyright \d{4} lv , lu and tang \.
+\. copyright \d{4} xing , cheng , wang , jin and wang \.
+\. copyright \d{4} he , yang and gong \.
+\. \d{4} eurosis_eti \.
+\. excelingtech pub , uk \.$
+\. \d{4} jaime martinez_valderrama et al \.$
+\. \d{4} i \. hijazi et al \.$ 
+, lulea university of technology , sweden \.$
+\. \d{4} taylor and francis group , london \.$
+\. content from this work may be used under the terms of the creative commons attribution \d{1}\.0 license \.
+\. this open access article is distributed under a creative commons attribution \( cc_by \) \d{1}\.0 license \.$
+\. ishs \.$
+\. american association of physics teachers \.
+\. copyright \d{4} ni , lv , wang , miao , fang and liu \.
+\. departamento academico de biologia , universidad nacional agraria la molina , lima peru \.
+\. \d{4} , aloki kft \. , budapest , hungary \.$
+\. \d{4} , the author \( s \) under exclusive license to iranian society of environmentalists \( irsen \) and science and research branch , islamic azad university \.
+\. the author \( s \) publisher : razi university \.
+\. \( \d{4} \) , \( african scholarly science communications trust \( asscat \) \) \.
+\. \d{4} , polskie towarzystwo inzynierii ekologicznej \( ptie \) \.
+\. \d{1}th international symposium on project management , ispm \d{4} \.
+\. \d{4} sociedad mexicana de psicologia \.
+\. \d{4} , daaam international vienna \.
+\. \d{4} , marine technology society inc \.
+\. , cc by_nc_nd$

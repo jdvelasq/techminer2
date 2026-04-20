@@ -45,3 +45,17 @@ class ExtractSectionHeaders(
             .where_records_match(None)
             .run()
         )
+
+
+if __name__ == "__main__":
+
+    (
+        KWICConcordance()
+        .where_root_directory("./")
+        .with_source_field(Field.ABSTR_UPPER)
+        .having_text_matching(" : ")
+        .where_record_years_range(None, None)
+        .where_record_global_citations_range(None, None)
+        .where_records_match(None)
+        .run()
+    )

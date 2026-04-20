@@ -82,3 +82,8 @@ class ReprocessNounPhrases(
         self._print_header()
         for step in steps:
             self._execute_step(step)
+
+
+if __name__ == "__main__":
+
+    ReprocessNounPhrases().where_root_directory("./").run()

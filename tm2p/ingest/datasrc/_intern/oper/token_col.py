@@ -360,4 +360,9 @@ def _tokenize(text: pd.Series) -> pd.Series:
         if isinstance(american, str):
             text = text.str.replace(f" {british} ", f" {american} ", regex=False)
 
+    text = text.str.replace(r"\s+", " ", regex=True)
+    text = text.str.replace(" - ", "-", regex=False)
+    text = text.str.replace("- ", "-", regex=False)
+    text = text.str.replace("-", "_", regex=False)
+
     return text

@@ -71,3 +71,8 @@ class ExtractAbstractSuffixes(
             ]
 
         return suffixes_grouped_by_ending
+
+
+if __name__ == "__main__":
+
+    ExtractAbstractSuffixes().having_n_chars(130).where_root_directory("./").run()
