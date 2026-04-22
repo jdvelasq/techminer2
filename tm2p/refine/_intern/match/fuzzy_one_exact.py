@@ -3,12 +3,13 @@ BaseFuzzyOneExactMatch
 ===============================================================================
 
 Smoke test:
-    >>> from tm2p.enum import Field, ThFile
+    >>> from tm2p.enum import Field, ThFile, AnalysisUnit
     >>> from tm2p.refine._intern.match import BaseFuzzyOneExactMatch
     >>> (
     ...     BaseFuzzyOneExactMatch()
     ...     .with_thesaurus_file(ThFile.CONCEPT)
     ...     .with_source_field(Field.DESCRIPTOR_NORM)
+    ...     .with_analysis_unit(AnalysisUnit.DESCIPTOR)
     ...     .using_similarity_cutoff(88)
     ...     .using_fuzzy_threshold(80)
     ...     .where_root_directory("tests/scopus/")
@@ -24,7 +25,7 @@ from fuzzywuzzy import fuzz  # type: ignore
 from tqdm import tqdm  # type: ignore
 
 from tm2p._intern import Params, ParamsMixin
-from tm2p.enum import ThField
+from tm2p.enum import ThField, UnitOrderBy
 
 from ._intern import (
     add_padding,
@@ -105,13 +106,37 @@ def _compute_fuzzy_matches(
 
     from tm2p.portfolio.performance_metrics.item_metrics import Metrics
 
-    metrics = Metrics().update(**params.__dict__).run()
+    metrics = (
+        Metrics()
+        .update(**params.__dict__)
+        #
+        .having_top_n_units(None)
+        .having_units_ordered_by(UnitOrderBy.OCC)
+        .having_unit_occurrence_between(None, None)
+        .having_unit_global_citation_between(None, None)
+        .having_units_in(None)
+        #
+        .where_record_years_range(None, None)
+        .where_record_global_citations_range(None, None)
+        .where_records_match(None)
+        .run()
+    )
     counters = dict(zip(metrics.index, metrics.COUNTERS))
 
     thesaurus_df = thesaurus_df.copy()
     thesaurus_df["matched"] = False
 
     thesaurus_df["WITH_COUNTERS"] = thesaurus_df[PREFERRED].apply(counters.get)
+
+    #
+    thesaurus_df.loc[thesaurus_df["WITH_COUNTERS"].isna(), "WITH_COUNTERS"] = (
+        thesaurus_df.loc[thesaurus_df["WITH_COUNTERS"].isna(), "PREFERRED"]
+        + " "
+        + thesaurus_df.loc[thesaurus_df["WITH_COUNTERS"].isna(), "OCC"].astype(str)
+        + ":0"
+    )
+    #
+
     thesaurus_df["METRICS"] = thesaurus_df["WITH_COUNTERS"].apply(
         lambda x: x.split(" ")[-1].strip()
     )
@@ -176,7 +201,7 @@ def _compute_fuzzy_matches(
 
         thesaurus_df.loc[candidates.index, "matched"] = True
 
-        key_with_counters = counters[key.strip()]
+        key_with_counters = counters.get(key.strip(), key.strip() + " 0:0")
         candidates_with_counters = candidates[PREFERRED].apply(counters.get).tolist()
         mergings[key_with_counters] = candidates_with_counters
 

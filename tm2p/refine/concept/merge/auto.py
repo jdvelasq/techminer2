@@ -36,3 +36,8 @@ class Auto(
         )
 
         return Apply().where_root_directory(self.params.root_directory).run()
+
+
+if __name__ == "__main__":
+
+    Auto().where_root_directory("./").run()

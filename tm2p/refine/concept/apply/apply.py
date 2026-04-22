@@ -12,6 +12,8 @@ Smoke tests:
 
 """
 
+import sys
+
 from tm2p._intern import ParamsMixin
 from tm2p.enum import Field, ThFile
 from tm2p.refine._intern.apply import BaseApply
@@ -44,3 +46,11 @@ class Apply(
                 .where_root_directory(self.params.root_directory)
                 .run()
             )
+
+        sys.stderr.write("\n")
+        sys.stderr.flush()
+
+
+if __name__ == "__main__":
+
+    Apply().where_root_directory("./").run()

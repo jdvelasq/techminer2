@@ -3,21 +3,24 @@ Metrics
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.enum import Field
-    >>> from tm2p.synthesize.emergence import Metrics
+    >>> from tm2p.enum import AnalysisUnit
+    >>> from tm2p.portfolio.emergence.emergence import Metrics
     >>> df = (
     ...     Metrics()
     ...     #
-    ...     # FIELD:
-    ...     .with_source_field(Field.KW_NORM)
+    ...     # ANALYSIS UNIT:
+    ...     .with_analysis_unit(AnalysisUnit.KW)
     ...     #
     ...     # EMERGENCE:
-    ...     .using_baseline_periods(3)
-    ...     .using_recent_periods(3)
-    ...     .using_novelty_threshold(0.15)
-    ...     .using_total_records_threshold(7)
-    ...     .using_periods_with_at_least_one_record(3)
-    ...     .using_ratio_threshold(0.5)
+    ...     .using_emergence_baseline_periods(3)
+    ...     .using_emergence_recent_periods(3)
+    ...     .using_emergence_novelty_threshold(0.15)
+    ...     .using_emergence_min_total_records(7)
+    ...     .using_emergence_min_active_periods(3)
+    ...     .using_emergence_ratio_threshold(0.5)
+    ...     #
+    ...     # COUNTERS:
+    ...     .using_counters(False)
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/scopus/")
@@ -55,8 +58,15 @@ class Metrics(
         return (
             Trends()
             .update(**self.params.__dict__)
-            .update(items_order_by=UnitOrderBy.OCC)
+            #
             .using_cumulative_sum(False)
+            #
+            .having_top_n_units(None)
+            .having_units_ordered_by(UnitOrderBy.OCC)
+            .having_unit_occurrence_between(None, None)
+            .having_unit_global_citation_between(None, None)
+            .having_units_in(None)
+            #
             .run()
         )
 
@@ -126,8 +136,15 @@ class Metrics(
         cum_occurrences_by_year = (
             Trends()
             .update(**self.params.__dict__)
-            .update(terms_order_by="OCC")
+            #
             .using_cumulative_sum(True)
+            #
+            .having_top_n_units(None)
+            .having_units_ordered_by(UnitOrderBy.OCC)
+            .having_unit_occurrence_between(None, None)
+            .having_unit_global_citation_between(None, None)
+            .having_units_in(None)
+            #
             .run()
         )
 
@@ -155,7 +172,7 @@ class Metrics(
             GeneralMetricsDataFrame()
             .update(**self.params.__dict__)
             .run()
-            .loc[("GENERAL", "Annual growth rate %"), "Value"]
+            .loc[("GENERAL", "Annual growth rate %"), "VALUE"]
         )
 
         data_frame["GROWTH_RATE_RATIO"] = data_frame["GROWTH_RATE"].map(

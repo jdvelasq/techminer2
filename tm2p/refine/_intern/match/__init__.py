@@ -6,6 +6,7 @@ from .contains import BaseContainsMatch
 from .daitch_mokotoff import BaseDaitchMokotoffMatch
 from .doublemetaphone import BaseDoubleMetaphoneMatch
 from .endswith import BaseEndsWithMatch
+from .expression import BaseExpressionMatch
 from .fuzzy_one_exact import BaseFuzzyOneExactMatch
 from .fuzzy_zero_exact import BaseFuzzyZeroExactMatch
 from .separator import BaseSeparatorMatch
@@ -23,6 +24,7 @@ __all__ = [
     "BaseDaitchMokotoffMatch",
     "BaseDoubleMetaphoneMatch",
     "BaseEndsWithMatch",
+    "BaseExpressionMatch",
     "BaseFuzzyOneExactMatch",
     "BaseFuzzyZeroExactMatch",
     "BaseSeparatorMatch",

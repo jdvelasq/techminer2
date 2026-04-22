@@ -5,7 +5,7 @@ Reset
 Smoke tests:
     >>> from tm2p.refine.concept.reset import Reset
     >>> (
-    ...     ReplaceInitialWord()
+    ...     Reset()
     ...     .where_root_directory("tests/scopus/")
     ...     .run()
     ... )
@@ -31,3 +31,8 @@ class Reset(
             .with_thesaurus_file(ThFile.CONCEPT)
             .run()
         )
+
+
+if __name__ == "__main__":
+
+    Reset().where_root_directory("./").run()

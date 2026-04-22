@@ -87,7 +87,6 @@ from typing import Union
 
 import numpy as np
 import pandas as pd  # type: ignore
-
 from tm2p._intern import ParamsMixin
 from tm2p._intern.data_access import load_filtered_main_csv_zip
 from tm2p.enum import Field
@@ -214,7 +213,10 @@ class Metrics(
 
         # ---------------------------------------------------------------------
         def average_references_per_document():
-            num_references = dataframe[Field.GCR_FREE_TEXT.value].copy()
+            if Field.GCR_FREE_TEXT in dataframe.columns:
+                num_references = dataframe[Field.GCR_FREE_TEXT.value].copy()
+            else:
+                num_references = dataframe[Field.GCR_WOS_FORMAT.value].copy()
             num_references = num_references.dropna()
             num_references = num_references.str.split(";")
             num_references = num_references.map(len)
@@ -281,7 +283,10 @@ class Metrics(
 
         # ---------------------------------------------------------------------
         def total_cited_references():
-            records = dataframe[Field.GCR_FREE_TEXT.value].copy()
+            if Field.GCR_FREE_TEXT in dataframe.columns:
+                records = dataframe[Field.GCR_FREE_TEXT.value].copy()
+            else:
+                records = dataframe[Field.GCR_WOS_FORMAT.value].copy()
             records = records.dropna()
             records = records.str.split(";")
             records = records.explode()

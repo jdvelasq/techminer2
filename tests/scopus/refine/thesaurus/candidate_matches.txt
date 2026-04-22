@@ -1,2 +1,640 @@
-UNIV YORK 0:0
-    NEW YORK UNIV 0:0
+financial technology 052:09484
+    financial technologies 009:01361
+    finance technology 001:00137
+financial services 031:07105
+    financial service 007:02627
+the development 026:05689
+    their development 001:00206
+    the developments 001:00156
+financial inclusion 022:04623
+    financial exclusion 003:00789
+    financial inclusions 003:00734
+the impact 021:04968
+    the impacts 004:00873
+    their impact 001:00129
+the role 015:02528
+    the roles 001:00232
+green finance 013:03038
+    green finances 002:00179
+fintech services 013:02241
+    fintech service 002:00428
+financial institutions 012:02923
+    financial institution 004:00861
+    the financial institution 001:00255
+    nonfinancial institutions 001:00165
+the effect 012:02564
+    the effects 007:01938
+economic growth 012:01976
+    economic growths 001:00163
+the financial industry 011:04250
+    the finance industry 001:00605
+the financial services industry 011:03454
+    financial services industry 001:00104
+information technology 011:03183
+    information technologies 002:00291
+the world 011:02297
+    the word 001:00105
+the relationship 011:02148
+    the relationships 006:01301
+the challenges 011:01924
+    these challenges 002:00307
+    those challenges 001:00156
+    the challenge 001:00109
+the potential 010:02255
+    their potential 001:00065
+fintech innovation 009:02472
+    fintech innovations 008:02580
+    fintech innovators 001:00236
+the influence 009:01799
+    the influences 001:00605
+fintech adoption 009:01373
+    fintech adoptions 001:00173
+business models 008:03902
+    business model 003:00458
+    business modeling 002:00224
+financial markets 008:02922
+    financial market 004:00766
+commercial banks 008:02015
+    commercial bank 001:00318
+the implications 007:01868
+    the applications 001:00310
+    their implications 001:00011
+financial regulation 007:01651
+    financial regulators 001:00130
+financial innovation 007:00949
+    financial information 002:00370
+    financial innovations 001:00165
+the rise 006:01742
+    the risk 002:00374
+perceived risk 006:01529
+    perceived risks 001:00174
+technology adoption 006:01500
+    technological adoption 001:00192
+financial system 006:01384
+    financial systems 002:00585
+the model 006:00993
+    the models 001:00178
+environmental sustainability 006:00853
+    environment sustainability 001:00095
+the factors 006:00705
+    these factors 001:00149
+natural resources 006:00688
+    natural resource 005:00564
+literature review 005:01826
+    a literature review 002:00195
+structural equation modeling 005:01623
+    a structural equation model 001:00425
+technology acceptance model 005:01290
+    the technology acceptance model 004:00517
+financial industry 005:01010
+    financial industries 001:00517
+these results 005:00938
+    the results 002:00283
+intention to use 005:00875
+    intentions to use 001:00102
+the banks 005:00814
+    the bank 002:00375
+    other banks 001:00363
+the risks 005:00779
+    these risks 001:00122
+    their risks 001:00109
+fintech users 005:00736
+    fintech use 002:00302
+developing countries 005:00696
+    development countries 001:00192
+disruptive innovation 004:01897
+    disruptive innovations 003:00461
+the hypotheses 004:01331
+    the hypothesis 002:00248
+social influence 004:01020
+    social influencers 001:00128
+unified theory of acceptance and use of technology 004:00997
+    the unified theory of acceptance and use of technology 004:00822
+    unified theory of acceptance and use of technology model 001:00236
+financial intermediation 004:00937
+    financial integration 001:00251
+    financial disintermediation 001:00080
+fintech startups 004:00892
+    fintech startup 001:00175
+sustainable development goals 004:00890
+    sustainable development goal 8 001:00175
+the integration 004:00798
+    the interaction 001:00207
+technological development 004:00794
+    technology development 002:00241
+    technological developments 001:00367
+an analysis 004:00779
+    -an analysis 001:00318
+the way 004:00686
+    the ways 003:00297
+the sustainable development 004:00667
+    future sustainable development 001:00248
+credit scoring 004:00664
+    credit sourcing 001:00072
+carbon emission 004:00664
+    carbon emissions 004:00448
+mobile payment 004:00606
+    mobile payments 003:00290
+emerging technologies 004:00592
+    emerging technology 001:00254
+the design 004:00505
+    their design 001:00011
+financing constraints 004:00471
+    financial constraints 001:00354
+green innovation 004:00456
+    green innovations 001:00171
+the book 004:00273
+    the boom 002:00212
+fintech revolution 003:01986
+    fintech evolution 002:00212
+traditional banks 003:01461
+    traditional tasks 001:01152
+    traditional banking 001:00156
+digital technologies 003:01072
+    digital technology 001:00275
+the financial system 003:01025
+    the financial ecosystem 001:00104
+the inclusion 003:00978
+    the conclusion 002:00345
+the formulation 003:00853
+    the formation 001:00102
+green growth 003:00745
+    green growths 002:00238
+supply chains 003:00690
+    supply chain 002:00554
+the global financial crisis 003:00686
+    global financial crisis 002:00615
+continuance intention 003:00663
+    continuance intentions 002:00549
+blockchain technology 003:00660
+    blockchain technologies 001:00069
+the usage 003:00634
+    their usage 001:00236
+empirical evidence 003:00589
+    empirical evidences 001:00047
+technological innovation 003:00582
+    technology innovation 001:01427
+    technological innovations 001:00137
+business strategy 003:00549
+    business strategies 001:00152
+financial sector 003:00539
+    financial sectors 002:00407
+a case study 003:00527
+    case study 002:00581
+regulatory technology 003:00519
+    regulation technology 001:00129
+the services 003:00493
+    their services 003:00246
+    these services 002:00177
+    the service 001:00034
+important implications 003:00482
+    important limitations 001:00139
+the evolution 003:00476
+    the revolution 002:00083
+    their evolution 001:00310
+co2 emissions 003:00466
+    co 2 emission 001:00148
+the field 003:00459
+    the fields 001:00165
+a systematic literature review 003:00424
+    systematic literature review 002:00360
+    systematic literature reviews 001:00064
+perceived security 003:00422
+    perceived securities 001:00254
+the gap 003:00332
+    the gaps 001:01152
+the application 003:00316
+    their application 001:00154
+innovation in financial services 003:00304
+    innovative financial services 002:00193
+digital innovations 003:00295
+    digital innovation 002:00167
+the fintech industry 003:00294
+    entire fintech industry 001:00401
+these changes 002:01274
+    the changes 001:01427
+systemic risk 002:00958
+    systemic risks 001:00148
+a research framework 002:00931
+    research frameworks 001:00605
+the opportunities 002:00769
+    the opportunity 002:00372
+the capacity 002:00715
+    their capacity 001:00110
+the attention 002:00683
+    their attention 001:00116
+green finance products 002:00665
+    green financial products 002:00371
+sustainable investment 002:00641
+    sustainable investing 001:00069
+the past 002:00618
+    the path 001:00165
+green bonds 002:00602
+    green bond 001:00347
+renewable energy resources 002:00542
+    renewable energy sources 002:00371
+industrial revolutions 002:00518
+    the industrial revolution 001:00171
+fourth industrial revolution 002:00490
+    the fourth industrial revolution 002:00490
+perceived benefits 002:00470
+    perceived benefit 001:00296
+representative data 002:00466
+    nonrepresentative data 001:00271
+the outcomes 002:00453
+    the outcome 001:00117
+the findings 002:00438
+    these findings 002:00207
+use of technology 002:00429
+    use of technologies 001:00165
+the benefits 002:00426
+    these benefits 001:00271
+these technologies 002:00420
+    the technologies 001:01152
+three dimensions 002:00390
+    the dimensions 001:00217
+information and communications technology 002:00382
+    information and communication technology 002:00333
+    information and communication technologies 002:00168
+partial least square structural equation modeling 002:00381
+    partial least squares structural equation modeling 002:00239
+    the partial least square structural equation model 001:00114
+    a partial least squares structural equation model 001:00069
+the digitization 002:00378
+    the digitalization 001:00393
+conceptual frameworks 002:00375
+    the conceptual framework 002:00152
+    a conceptual framework 001:00270
+    our conceptual framework 001:00080
+natural resources rent 002:00371
+    natural resource rents 001:00084
+fossil fuels 002:00371
+    fossil fuel 001:00173
+their customers 002:00364
+    the customers 001:00136
+theoretical framework 002:00362
+    theoretical frameworks 002:00131
+    a theoretical framework 001:00254
+structural equation modeling techniques 002:00354
+    the structural equation modeling technique 001:00180
+the intersection 002:00349
+    their intersection 001:00137
+the drivers 002:00342
+    other drivers 001:00173
+these concepts 002:00321
+    the concepts 001:00076
+fintech platforms 002:00306
+    fintech platform 001:00214
+mobile payment services 002:00301
+    mobile payment service 001:00165
+a governance approach 002:00301
+    governance approach 001:00124
+sustainable economic development 002:00286
+    the sustainable economic development 001:00132
+fintech applications 002:00284
+    fintech application 001:00270
+the popular media 002:00283
+    other popular media 001:00105
+their business models 002:00275
+    the business models 001:00031
+the promise 002:00256
+    the premise 001:00080
+regulatory sandbox 002:00255
+    regulatory sandboxes 001:00080
+emerging markets 002:00253
+    an emerging market 001:00132
+the topic 002:00242
+    the topics 001:00218
+comparative analyzes 002:00228
+    comparative analysis 001:00142
+payment innovation 002:00227
+    payment innovations 001:00068
+fintech investment 002:00208
+    fintech investments 001:00333
+a strategic approach 002:00195
+    strategic approach 001:00130
+role of technology 002:00140
+    role of technologies 001:00124
+stakeholder value 001:01427
+    stakeholder values 001:01427
+future research opportunities 001:01152
+    the future research opportunities 001:00065
+financial startups 001:01080
+    nonfinancial startups 001:00517
+the movement 001:00915
+    the moment 001:00105
+the measurement scales 001:00605
+    the measurement scale 001:00326
+the key drivers 001:00605
+    the key driver 001:00531
+the key determinants 001:00605
+    the key determinant 001:00326
+other firms 001:00605
+    other forms 001:00120
+a higher level 001:00605
+    higher level 001:00186
+new ways 001:00563
+    new way 001:00047
+international organization 001:00563
+    international organizations 001:00436
+the infrastructure 001:00531
+    these infrastructures 001:00136
+    the infrastructures 001:00096
+economic and technological determinants 001:00530
+    the economic and technological determinants 001:00530
+new financial technologies 001:00528
+    new financial technology 001:00011
+fintech reduces income inequality 001:00528
+    fintech affects income inequality 001:00528
+green finance related policies 001:00517
+    green finance correlated policies 001:00148
+industrial development 001:00507
+    industry development 001:00065
+green economic growth 001:00507
+    greener economic growth 001:00143
+a competition 001:00482
+    a competitor 001:00071
+the regulators 001:00436
+    the regulator 001:00130
+the financial market law 001:00436
+    the financial markets 001:00177
+other academics 001:00436
+    both academics 001:00403
+action research 001:00436
+    adoption research 001:00214
+a very significant influence 001:00425
+    a more significant influence 001:00235
+the term 001:00402
+    the team 001:00065
+semantic analysis 001:00402
+    thematic analysis 001:00206
+financial activities 001:00402
+    financial activity 001:00248
+these indices 001:00401
+    the indices 001:00132
+the regulatory challenges 001:00393
+    the regulatory changes 001:00058
+the endogeneity issue 001:00382
+    the endogeneity issues 001:00108
+panel regression analysis 001:00382
+    a panel regression analysis 001:00120
+local government 001:00382
+    local governments 001:00382
+ecological environment 001:00382
+    ecological environments 001:00382
+the five subareas 001:00363
+    the five areas 001:00152
+their efforts 001:00350
+    the efforts 001:00270
+the potential endogeneity 001:00350
+    potential endogeneity 001:00134
+smooth transitions 001:00350
+    a smooth transition 001:00350
+global perspective 001:00350
+    a global perspective 001:00350
+environmental improvements 001:00350
+    the environmental improvement 001:00350
+cost and benefits 001:00350
+    costs and benefits 001:00350
+volatility transmission 001:00347
+    volatility transmissions 001:00347
+time and frequency domain connectedness 001:00347
+    the time and frequency domain connectedness 001:00347
+stock market 001:00347
+    stock markets 001:00069
+shock transmission 001:00347
+    shock transmissions 001:00347
+high probability 001:00347
+    a high probability 001:00347
+their expectations 001:00333
+    the expectations 001:00236
+new studies 001:00333
+    few studies 001:00306
+a sensitivity analysis 001:00333
+    sensitivity analysis 001:00142
+the local economy 001:00328
+    the global economy 001:00248
+these attributes 001:00326
+    three attributes 001:00136
+behavioral attributes 001:00326
+    behavioral attitudes 001:00102
+behavior intention 001:00326
+    behavioral intention 001:00128
+    behavioral intentions 001:00069
+their traditional business model 001:00318
+    the traditional bank business model 001:00243
+systematic review 001:00310
+    a systematic review 001:00251
+significant relationship 001:00307
+    significant relationships 001:00254
+practical and policy implications 001:00307
+    practical policy implications 001:00171
+hedonic motivation 001:00307
+    hedonic motivations 001:00307
+game changers 001:00307
+    a game changer 001:00175
+three affordances 001:00306
+    these affordances 001:00306
+those studies 001:00306
+    the studies 001:00154
+user type 001:00296
+    user types 001:00296
+the fintech continuance intention 001:00296
+    fintech continuance intentions 001:00253
+environmental issue 001:00287
+    environmental issues 001:00287
+a fintech ecosystem 001:00275
+    fintech ecosystems 001:00149
+financial service providers 001:00271
+    financial services providers 001:00104
+sustainable business model 001:00270
+    sustainable business models 001:00270
+circular economy 001:00270
+    a circular economy 001:00270
+the recent literature 001:00256
+    the relevant literature 001:00137
+    the current literature 001:00086
+central bank digital currencies 001:00256
+    central bank digital currency 001:00218
+self-efficacy theory 001:00253
+    self-efficacy theories 001:00253
+expectation-confirmation models 001:00253
+    expectation-confirmation model 001:00114
+traditional financial intermediation 001:00251
+    traditional financial intermediaries 001:00251
+a new intermediary 001:00251
+    an intermediary 001:00047
+global economies 001:00248
+    global economics 001:00003
+financial tools 001:00248
+    a financial tool 001:00248
+supply chain finance 001:00244
+    supply chain finances 001:00244
+small-and-medium enterprise 001:00244
+    small-and-medium enterprises 001:00235
+their approach 001:00236
+    this approach 001:00069
+the performance 001:00236
+    their performance 001:00236
+mobile banking 001:00236
+    mobile bankings 001:00236
+mobile applications 001:00236
+    mobile application 001:00047
+a substantial risk 001:00236
+    a substantial rise 001:00095
+a cluster analysis 001:00234
+    cluster analysis 001:00184
+the heterogeneity analysis 001:00226
+    heterogeneity analysis 001:00185
+bank risk-taking 001:00226
+    bank risk taking 001:00226
+fintech regulations 001:00218
+    fintech regulation 001:00080
+distributed ledger technologies 001:00218
+    distributed ledger technology 001:00068
+internet-based service 001:00207
+    internet-based services 001:00207
+china fintech industry 001:00207
+    china fintech industries 001:00102
+a bidirectional causality 001:00198
+    a unidirectional causality 001:00198
+renewable energy 001:00192
+    renewable energies 001:00192
+risk spillover 001:00188
+    risk spillovers 001:00188
+big data analysis 001:00186
+    big data analytics 001:00131
+the western region 001:00185
+    the eastern region 001:00185
+environmental legislation 001:00185
+    environmental regulations 001:00084
+    environmental regulation 001:00084
+representative case 001:00184
+    representative cases 001:00184
+competitive and cooperative mechanisms 001:00184
+    the competitive and cooperative mechanisms 001:00184
+business infrastructure 001:00184
+    business infrastructures 001:00184
+quantitative approach 001:00180
+    a quantitative approach 001:00180
+quality of service 001:00180
+    quality of services 001:00069
+positive and significant impacts 001:00180
+    negative and significant impacts 001:00180
+customer expectation 001:00180
+    customer expectations 001:00065
+the subjects 001:00178
+    the subject 001:00065
+social change 001:00177
+    social changes 001:00058
+scientometric analysis 001:00177
+    a scientometric analysis 001:00177
+digital financial landscape 001:00175
+    the digital financial landscape 001:00111
+growing competition 001:00165
+    a growing competition 001:00108
+fintech market 001:00165
+    fintech markets 001:00086
+elaboration likelihood model 001:00165
+    the elaboration likelihood model 001:00165
+total factor productivity 001:00163
+    the total factor productivity 001:00163
+private enterprise 001:00163
+    private enterprises 001:00163
+chinese enterprise 001:00163
+    chinese enterprises 001:00163
+the insights 001:00159
+    these insights 001:00069
+the finance world 001:00156
+    the financial world 001:00111
+the coefficient 001:00156
+    the coefficients 001:00075
+other researchers 001:00154
+    the researchers 001:00150
+business environment 001:00152
+    business environments 001:00152
+other financial institutions 001:00150
+    the gcc financial institutions 001:00125
+developing and emerging markets 001:00150
+    the developing and emerging markets 001:00150
+industrial emissions 001:00148
+    industrial emission 001:00087
+its relationships 001:00143
+    its relationship 001:00125
+economic activity 001:00143
+    economic activities 001:00143
+euclidean distance measure 001:00142
+    an euclidean distance measure 001:00142
+the area 001:00139
+    the areas 001:00047
+mobile fintech payment service 001:00137
+    mobile fintech payment services 001:00137
+fintech environment 001:00137
+    fintech environments 001:00001
+a positive relationship 001:00137
+    positive relationship 001:00125
+technology ecosystem 001:00136
+    technology ecosystems 001:00136
+attribute cyber threats 001:00133
+    attributes cyber threats 001:00133
+service innovation strategy 001:00132
+    service innovation strategies 001:00132
+hybrid mcdm model 001:00132
+    a hybrid mcdm model 001:00132
+global financial center 001:00130
+    a global financial center 001:00130
+natural resource management 001:00124
+    natural resources management 001:00124
+management of natural resource 001:00124
+    management of natural resources 001:00124
+governance mechanism 001:00124
+    governance mechanisms 001:00124
+belt and road country 001:00124
+    belt and road countries 001:00124
+the new deal 001:00122
+    the new model 001:00114
+fintech disruption 001:00122
+    fintech disruptors 001:00071
+systemic innovation model 001:00117
+    a systemic innovation model 001:00117
+the customer services 001:00116
+    better customer services 001:00062
+digital twin 001:00116
+    digital twins 001:00116
+the story 001:00109
+    the history 001:00016
+malicious behavior 001:00108
+    malicious behaviors 001:00108
+those fintech services 001:00102
+    their fintech services 001:00102
+green environmental index 001:00099
+    the green environmental index 001:00099
+    a green environmental index 001:00099
+the mobile app 001:00098
+    the mobile apps 001:00047
+traditional stock market 001:00086
+    traditional stock markets 001:00086
+mediating role 001:00084
+    mediating roles 001:00084
+government intervention 001:00084
+    governmental interventions 001:00084
+    governmental intervention 001:00084
+    government interventions 001:00084
+carbon emission green finance 001:00084
+    carbon emissions green finance 001:00084
+empirical assessment 001:00075
+    an empirical assessment 001:00075
+tourism and hospitality industry 001:00065
+    the tourism and hospitality industry 001:00065
+transaction cost 001:00064
+    transaction costs 001:00064
+customer relationship management 001:00058
+    the customer relationship management 001:00058
+security control 001:00034
+    security controls 001:00034
+regulatory focus theory 001:00034
+    regulation focus theory 001:00034
+community banks 001:00012
+    community banking 001:00012
+ubiquitous technology 001:00011
+    ubiquitous technologies 001:00011

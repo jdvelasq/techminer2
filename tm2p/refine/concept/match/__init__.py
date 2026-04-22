@@ -6,9 +6,11 @@ from .contains import ContainsMatch
 from .daitch_mokotoff import DaitchMokotoffMatch
 from .doublemetaphone import DoubleMetaphoneMatch
 from .endswith import EndsWithMatch
-from .fuzzy_one_exact import FuzzyOneExactMatch
-from .fuzzy_zero_exact import FuzzyZeroExactMatch
+from .expression import ExpressionMatch
+from .fuzzy_0_exact import FuzzyZeroExactMatch
+from .fuzzy_1_exact import FuzzyOneExactMatch
 from .separator import SeparatorMatch
+from .shell import Shell
 from .startswith import StartsWithMatch
 from .stem import StemMatch
 from .trigram import TrigramMatch
@@ -23,9 +25,11 @@ __all__ = [
     "DaitchMokotoffMatch",
     "DoubleMetaphoneMatch",
     "EndsWithMatch",
+    "ExpressionMatch",
     "FuzzyOneExactMatch",
     "FuzzyZeroExactMatch",
     "SeparatorMatch",
+    "Shell",
     "StartsWithMatch",
     "StemMatch",
     "TrigramMatch",

@@ -15,9 +15,10 @@ class AnalysisUnit(str, Enum):
     # Concept-related units
     #
     AUTHKW = Field.AUTHKW_NORM.value
+    CONCEPT = Field.CONCEPT_NORM.value
+    DESCRIPTOR = Field.DESCRIPTOR_NORM.value
     IDXKW = Field.IDXKW_NORM.value
     KW = Field.KW_NORM.value
-    CONCEPT = Field.CONCEPT_NORM.value
     WORD = Field.WORD_NORM.value
 
     #

@@ -5,4 +5,5 @@ from .terms_by_cluster_summary import TermsByClusterSummary
 
 __all__ = [
     "Metrics",
+    "NetworkPlot",
 ]

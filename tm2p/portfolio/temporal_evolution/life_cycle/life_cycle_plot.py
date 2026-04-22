@@ -13,6 +13,8 @@ Smoke test:
     >>> fig = (
     ...     LifeCyclePlot()
     ...     #
+    ...     .using_title_text("WoS")
+    ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/scopus/")
     ...     .where_record_years_range(None, None)
