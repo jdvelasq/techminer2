@@ -42,7 +42,7 @@ Smoke tests:
 """
 
 from tm2p._intern import ParamsMixin
-from tm2p.portfolio.performance_metrics.item_metrics.metrics import Metrics
+from tm2p.portf.perf_metric.unit.metrics import Metrics
 
 
 class TopItemsExtractor(

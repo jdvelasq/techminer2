@@ -1,6 +1,6 @@
-from .acronyms import ExtractAcronyms
-from .headers import ExtractSectionHeaders
-from .phrases import ReprocessNounPhrases
+from .acro import ExtractAcronyms
+from .header import ExtractSectionHeaders
+from .phrase import ReprocessNounPhrases
 
 __all__ = [
     "ExtractAcronyms",
@@ -11,7 +11,7 @@ __all__ = [
 
 def __getattr__(name):
     if name == "ExtractAbstractSuffixes":
-        from .suffixes import ExtractAbstractSuffixes
+        from .suffix import ExtractAbstractSuffixes
 
         return ExtractAbstractSuffixes
     raise AttributeError(f"module {__name__!r} has no attribute {name!r}")

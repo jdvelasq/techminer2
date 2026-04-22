@@ -9,7 +9,7 @@ SIGNATURE = ThField.SIGNATURE.value
 
 def compute_matches(thesaurus_df: pd.DataFrame, params: Params) -> dict[str, list[str]]:
 
-    from tm2p.portfolio.performance_metrics.item_metrics import Metrics
+    from tm2p.portf.perf_metric.unit import Metrics
 
     metrics = Metrics().update(**params.__dict__).run()
     counters = dict(zip(metrics.index, metrics.COUNTERS))

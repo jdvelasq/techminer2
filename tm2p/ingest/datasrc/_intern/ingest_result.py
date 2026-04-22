@@ -20,7 +20,7 @@ import re
 from dataclasses import dataclass
 from typing import Optional
 
-from tm2p._intern.helpers.colors import (
+from tm2p._intern.helpers.color import (
     RESET,
     TABLEAU10_BLUE,
     TABLEAU10_IRON,

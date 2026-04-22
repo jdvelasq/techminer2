@@ -31,7 +31,7 @@ Smoke tests:
 """
 
 from tm2p._intern import ParamsMixin
-from tm2p.explore.concordance import SentenceConcordance
+from tm2p.explor.concord import SentenceConcordance
 
 
 class GetContexts(

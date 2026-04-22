@@ -104,7 +104,7 @@ def _compute_fuzzy_matches(
 
     #
 
-    from tm2p.portfolio.performance_metrics.item_metrics import Metrics
+    from tm2p.portf.perf_metric.unit import Metrics
 
     metrics = (
         Metrics()

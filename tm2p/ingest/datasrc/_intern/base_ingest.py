@@ -7,7 +7,7 @@ from typing import Any
 
 from tm2p._intern import ParamsMixin
 from tm2p.enum import Field
-from tm2p.ingest.records import RecordViewer
+from tm2p.ingest.rec import RecordViewer
 
 from .._intern import Step
 from .phases.p01_scaffold.p01_project_structure import p01_project_structure
