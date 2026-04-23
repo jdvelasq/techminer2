@@ -5,7 +5,7 @@ Scopus
 
 
 Database for plot comparisons with other software:
-    >>> from tm2p.ingest.data_source import Scopus
+    >>> from tm2p.ingest.datasrc import Scopus
     >>> (
     ...     Scopus()
     ...     .where_root_directory("tests/tinyml/")
@@ -15,7 +15,7 @@ Database for plot comparisons with other software:
 
 
 Smoke test - fintech - successful import:
-    >>> from tm2p.ingest.data_source import Scopus
+    >>> from tm2p.ingest.datasrc import Scopus
     >>> (
     ...     Scopus()
     ...     .where_root_directory("tests/scopus/")

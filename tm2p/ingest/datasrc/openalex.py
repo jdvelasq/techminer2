@@ -4,7 +4,7 @@ OpenAlex
 ===============================================================================
 
 Smoke test - fintech - successful import:
-    >>> from tm2p.ingest.data_source import OpenAlex
+    >>> from tm2p.ingest.datasrc import OpenAlex
     >>> (
     ...     OpenAlex()
     ...     .where_root_directory("tests/openalex/")

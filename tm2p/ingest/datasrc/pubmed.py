@@ -4,7 +4,7 @@ PubMed
 ===============================================================================
 
 Smoke test - fintech - successful import:
-    >>> from tm2p.ingest.data_source import PubMed
+    >>> from tm2p.ingest.datasrc import PubMed
     >>> (
     ...     PubMed()
     ...     .where_root_directory("tests/pubmed/")
