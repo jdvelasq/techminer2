@@ -31,7 +31,7 @@ def load_main_csv_zip(
     path = get_main_csv_zip_path(root_directory)
 
     if not path.exists():
-        raise AssertionError(f"{path.name} not found")
+        raise AssertionError(f"\n\n\n{path.name} not found\n\n\n")
 
     try:
         return pd.read_csv(
@@ -42,4 +42,6 @@ def load_main_csv_zip(
             low_memory=False,
         )
     except ValueError as err:
-        raise AssertionError(f'Columns "{usecols}" not found in {path.name}') from err
+        raise AssertionError(
+            f'\n\n\nColumns "{usecols}" not found in {path.name}\n\n\n'
+        ) from err
