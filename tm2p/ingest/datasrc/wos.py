@@ -7,10 +7,10 @@ Smoke test - fintech - successful import:
     >>> from tm2p.ingest.datasrc import WoS
     >>> (
     ...     WoS()
-    ...     .where_root_directory("tests/wos/")
+    ...     .where_root_directory("tests/system-dynamics-wos/")
     ...     .run()
     ... )  # doctest: +ELLIPSIS
-    Note...
+
 
 """
 
