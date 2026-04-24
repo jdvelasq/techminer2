@@ -4,24 +4,29 @@ Scopus
 ===============================================================================
 
 
-Database for plot comparisons with other software:
+Smoke tests:
     >>> from tm2p.ingest.datasrc import Scopus
     >>> (
     ...     Scopus()
-    ...     .where_root_directory("tests/tinyml/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .run()
     ... )  # doctest: +ELLIPSIS
-    Note...
 
 
-Smoke test - fintech - successful import:
     >>> from tm2p.ingest.datasrc import Scopus
     >>> (
     ...     Scopus()
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/system-dynamics-scopus/")
     ...     .run()
     ... )  # doctest: +ELLIPSIS
-    Note...
+
+
+    >>> from tm2p.ingest.datasrc import Scopus
+    >>> (
+    ...     Scopus()
+    ...     .where_root_directory("tests/regtech-scopus/")
+    ...     .run()
+    ... )  # doctest: +ELLIPSIS
 
 
 """
