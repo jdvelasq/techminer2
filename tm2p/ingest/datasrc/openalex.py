@@ -10,7 +10,7 @@ Smoke test - fintech - successful import:
     ...     .where_root_directory("tests/openalex/")
     ...     .run()
     ... )  # doctest: +ELLIPSIS
-    Note...
+
 
 
 """
