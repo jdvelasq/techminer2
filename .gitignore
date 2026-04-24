@@ -11,41 +11,41 @@ Thumbs.db
 # data for tests
 # ============================================================================
 
-examples/health-analytics-pubmed/analyze/
-examples/health-analytics-pubmed/ingest/process/
-examples/health-analytics-pubmed/refine/
-examples/health-analytics-pubmed/report/
-examples/health-analytics-pubmed//zotero.log
+tests/health-analytics-pubmed/analyze/
+tests/health-analytics-pubmed/ingest/process/
+tests/health-analytics-pubmed/refine/
+tests/health-analytics-pubmed/report/
+tests/health-analytics-pubmed//zotero.log
 
-examples/regtech-openalex/analyze/
-examples/regtech-openalex/ingest/process/
-examples/regtech-openalex/refine/
-examples/regtech-openalex/report/
-examples/regtech-openalex//zotero.log
+tests/regtech-openalex/analyze/
+tests/regtech-openalex/ingest/process/
+tests/regtech-openalex/refine/
+tests/regtech-openalex/report/
+tests/regtech-openalex//zotero.log
 
-examples/regtech-scopus/analyze/
-examples/regtech-scopus/ingest/process/
-examples/regtech-scopus/refine/
-examples/regtech-scopus/report/
-examples/regtech-scopus//zotero.log
+tests/regtech-scopus/analyze/
+tests/regtech-scopus/ingest/process/
+tests/regtech-scopus/refine/
+tests/regtech-scopus/report/
+tests/regtech-scopus//zotero.log
 
-examples/system-dynamics-scopus/analyze/
-examples/system-dynamics-scopus/ingest/process/
-examples/system-dynamics-scopus/refine/
-examples/system-dynamics-scopus/report/
-examples/system-dynamics-scopus//zotero.log
+tests/system-dynamics-scopus/analyze/
+tests/system-dynamics-scopus/ingest/process/
+tests/system-dynamics-scopus/refine/
+tests/system-dynamics-scopus/report/
+tests/system-dynamics-scopus//zotero.log
 
-examples/system-dynamics-wos/analyze/
-examples/system-dynamics-wos/ingest/process/
-examples/system-dynamics-wos/refine/
-examples/system-dynamics-wos/report/
-examples/system-dynamics-wos//zotero.log
+tests/system-dynamics-wos/analyze/
+tests/system-dynamics-wos/ingest/process/
+tests/system-dynamics-wos/refine/
+tests/system-dynamics-wos/report/
+tests/system-dynamics-wos//zotero.log
 
-examples/tinyml-scopus/analyze/
-examples/tinyml-scopus/ingest/process/
-examples/tinyml-scopus/refine/
-examples/tinyml-scopus/report/
-examples/tinyml-scopus//zotero.log
+tests/tinyml-scopus/analyze/
+tests/tinyml-scopus/ingest/process/
+tests/tinyml-scopus/refine/
+tests/tinyml-scopus/report/
+tests/tinyml-scopus//zotero.log
 
 
 # ============================================================================
