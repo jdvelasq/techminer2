@@ -1,3 +1,4 @@
+from ..plots.nx.build_node_treemap import plot_node_treemap
 from .add_weighted_edges_from_matrix_list import add_weighted_edges_from_matrix_list
 from .assign_clusters_to_nodes import assign_clusters_to_nodes
 from .assign_constant_to_edge_colors import assign_constant_to_edge_colors
@@ -52,7 +53,6 @@ from .create_node_degree_dataframe import create_node_degree_dataframe
 from .create_node_degree_plot import create_node_degree_plot
 from .create_nx_graph_from_matrix import create_nx_graph_from_matrix
 from .extract_communities import extract_communities
-from .plot_node_treemap import plot_node_treemap
 from .plot_nx_graph import plot_nx_graph
 from .remove_isolated_nodes_from_matrix_list import (
     remove_isolated_nodes_from_matrix_list,
@@ -97,7 +97,7 @@ __all__ = [
     "create_nx_graph_from_matrix",
     "create_item_to_cluster_mapping",
     "extract_communities",
-    "plot_node_treemap",
+    "build_node_treemap",
     "plot_nx_graph",
     "remove_isolated_nodes_from_matrix_list",
     "remove_nodes_and_links",

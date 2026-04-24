@@ -48,13 +48,7 @@ def build_factor_map(
     nx_graph = remove_edges_below_similarity_threshold(params, nx_graph)
     nx_graph = keep_top_k_edges_per_node(params, nx_graph)
     nx_graph = remove_weak_nodes(params, nx_graph)
-
-    nx_graph = set_top_n_node_labels(
-        nx_graph,
-        matrix.columns.to_list(),
-        params.max_node_labels,
-    )
-
+    nx_graph = set_top_n_node_labels(params, nx_graph)
     nx_graph = set_cluster_names(params, nx_graph)
     nx_graph = style_edges_by_weight_bins(params, nx_graph)
     nx_graph = scale_edge_weight(params, nx_graph)

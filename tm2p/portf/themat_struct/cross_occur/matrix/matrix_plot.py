@@ -73,9 +73,7 @@ Smoke tests:
 """
 
 from tm2p._intern import ParamsMixin
-from tm2p._intern.plots.advanced.cross_occ_matrix_plot import (
-    build_cross_occ_matrix_plot,
-)
+from tm2p._intern.plots.advanced.cross_occ_mtx_plot import build_cross_occ_matrix_plot
 
 from .matrix import Matrix
 

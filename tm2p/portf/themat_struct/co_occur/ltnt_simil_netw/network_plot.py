@@ -93,7 +93,7 @@ Smoke tests:
 """
 
 from tm2p._intern import ParamsMixin
-from tm2p._intern.plots.advanced.co_occ_network_plot import build_co_occ_network_plot
+from tm2p._intern.plots.advanced.co_occ_netw_plot import build_co_occ_network_plot
 
 from .item_to_cluster import ItemToCluster
 from .latent_matrix import LatentMatrix

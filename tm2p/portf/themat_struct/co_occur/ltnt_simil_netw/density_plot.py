@@ -87,7 +87,7 @@ Smoke tests:
 """
 
 from tm2p._intern import ParamsMixin
-from tm2p._intern.plots.advanced.co_occ_density_plot import build_co_occ_density_plot
+from tm2p._intern.plots.advanced.co_occ_dens_plot import build_co_occ_density_plot
 
 from ..drct_simil_netw import Matrix as CoOccurrenceMatrix
 from .item_to_cluster import ItemToCluster
