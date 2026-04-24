@@ -1,22 +1,10 @@
 from pathlib import Path
 
 _DIRECTORIES = [
-    "analyze",
-    "process",
     "ingest/process",
     "refine/thesaurus",
     "refine/word_lists",
-    "report",
-    "report/manuscript/section_1_introduction",
-    "report/manuscript/section_2_literature_review",
-    "report/manuscript/section_3_methodology",
-    "report/manuscript/section_4_results",
-    "report/manuscript/section_5_discussion",
-    "report/manuscript/section_6_synthesis",
-    "report/manuscript/section_7_conclusions",
-    "report/manuscript/section_8_references",
-    "report/manuscript",
-    "report/visualize",
+    "report/",
     "src",
 ]
 
