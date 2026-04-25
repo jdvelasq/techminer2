@@ -5,7 +5,7 @@ Smoke tests:
     >>> (
     ...     BaseSortByAlphabetLeftToRight()
     ...     .with_thesaurus_file(ThFile.CONCEPT)
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .run()
     ... )
     7722

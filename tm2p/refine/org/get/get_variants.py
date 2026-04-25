@@ -12,7 +12,7 @@ Smoke tests:
     ...             "AIN UNIV",
     ...         )
     ...     )
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .run()
     ... )
     >>> terms[:5]

@@ -10,31 +10,31 @@ Smoke test:
     ...     .with_source_field(Field.AUTHKW_RAW)
     ...     .with_target_field(Field.USR0)
     ...     .with_transformation_function(lambda x: x.str.upper())
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .run()
     ... )
-    154
 
     >>> from tm2p.ingest.oper import Query
     >>> (
     ...     Query()
     ...     .with_query_expression("SELECT USR0 FROM database LIMIT 10;")
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_global_citations_range(None, None)
+    ...     .where_records_match(None)
     ...     .run()
-    ... )
+    ... )  # doctest: +SKIP
                                                     USR0
-    0  DIGITAL TRANSFORMATION; FINANCIAL SECTOR; FINT...
-    1                                               None
-    2  ARTIFICIAL INTELLIGENCE; BANKING INDUSTRY SECT...
-    3  CHINA; FINTECH; G38; INTENTION TO USE; L16; M1...
-    4  FINTECH; GREEN ENVIRONMENTAL INDEX; GREEN FINA...
-    5  BANKING; DARK SIDE; FINANCIAL SERVICES; FINTEC...
-    6  ENVIRONMENTAL SUSTAINABILITY; FINTECH; NATURAL...
-    7  CORPORATE CARBON EMISSIONS; CORPORATE GREEN IN...
-    8  A COMPARATIVE STUDY; FINTECH; G11; G14; G15; G...
-    9  CARBON EMISSIONS: GREEN FINANCE; ENVIRONMENTAL...
+    0  AUDIO CLASSIFICATION; INTERPRETABILITY; STATE ...
+    1  EVOLUTIONARY COMPUTATION; HIGH-DIMENSIONAL BEN...
+    2  CONVOLUTIONAL NEURAL NETWORK (CNN); HARDWARE (...
+    3         ANDROID; HDC; HEALTH MONITORING; WEARABLES
+    4  ADAPTIVE MODELING; GEOTECHNICAL ENGINEERING; I...
+    5  CNNS; ENERGY-EFFICIENT TRAINING; MODEL COMPRES...
+    6  HYPERDIMENSIONAL COMPUTING; INTERNET-OF-THINGS...
+    7                ALU; MICROPROCESSOR; RISC-V; TINYML
+    8  EDGE SYSTEMS; FREEMARK; POST-TRAINING; TINY MA...
+    9  DENDRITIC PROCESSING; ENERGY EFFICIENCY; GRADE...
 
 
 """
@@ -49,20 +49,20 @@ class TransformColumn(
 ):
     """:meta private:"""
 
-    def run(self) -> int:
+    def run(self) -> None:
 
         if self.params.source_field == self.params.target_field:
             raise ValueError(
                 f"Source and target fields must differ (got `{self.params.source_field}`)"
             )
 
-        if self.params.source_field in PROTECTED_FIELDS:
+        if self.params.target_field in PROTECTED_FIELDS:
             raise ValueError(f"Field `{self.params.source_field}` is protected")
 
         if self.params.transformation_function is None:
             raise ValueError("Transformation function must be provided")
 
-        return transform_column(
+        transform_column(
             #
             # FIELD:
             source=self.params.source_field,
@@ -70,6 +70,3 @@ class TransformColumn(
             function=self.params.transformation_function,
             root_directory=self.params.root_directory,
         )
-
-
-#

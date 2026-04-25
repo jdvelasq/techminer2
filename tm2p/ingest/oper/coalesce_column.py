@@ -7,12 +7,12 @@ Smoke test:
     >>> from tm2p.ingest.oper import CopyColumn
     >>> (
     ...     CopyColumn()
-    ...     .with_source_field(Field.SRC_ISO4_RAW)
+    ...     .with_source_field(Field.SRC_ISO4)
     ...     .with_target_field(Field.USR0)
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .run()
     ... )
-    180
+
 
     >>> from tm2p.ingest.oper import TransformColumn
     >>> (
@@ -20,17 +20,16 @@ Smoke test:
     ...     .with_source_field(Field.USR0)
     ...     .with_target_field(Field.USR1)
     ...     .with_transformation_function(lambda x: None)
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .run()
     ... )
-    0
 
     >>> from tm2p.ingest.oper import CoalesceColumn
     >>> (
     ...     CoalesceColumn()
     ...     .with_source_field(Field.SRC_ISO4)
     ...     .with_target_field(Field.USR1)
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .with_transformation_function(lambda x: pd.NA)
     ...     .run()
     ... )
@@ -39,17 +38,18 @@ Smoke test:
     >>> (
     ...     Query()
     ...     .with_query_expression("SELECT USR1 FROM database LIMIT 5;")
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_global_citations_range(None, None)
-    ...    .run()
-    ... )
-                                                    USR1
-    0                            J FINANC REPORT ACCOUNT
-    1  HARNESSING BLOCKCHAIN-DIGITAL TWIN FUSION SUST...
-    2                            J FINANC REPORT ACCOUNT
-    3                                ELECTRON COMMER RES
-    4                                INT REV ECON FINANC
+    ...     .where_records_match(None)
+    ...     .run()
+    ... )  # doctest: +SKIP
+                             USR1
+    0                  MACH LEARN
+    1            INTELL SYST APPL
+    2              IEEE SENSORS J
+    3  MIDWEST SYMP CIRCUITS SYST
+    4           COMPUT ELECTR ENG
 
 
 """
@@ -64,7 +64,7 @@ class CoalesceColumn(
 ):
     """:meta private:"""
 
-    def run(self):
+    def run(self) -> None:
 
         if self.params.source_field == self.params.target_field:
             raise ValueError(

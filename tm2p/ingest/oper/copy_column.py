@@ -9,27 +9,27 @@ Smoke Test:
     ...     CopyColumn()
     ...     .with_source_field(Field.AUTHKW_RAW)
     ...     .with_target_field(Field.USR0)
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .run()
     ... )
-    154
 
     >>> from tm2p.ingest.oper import Query
     >>> (
     ...     Query()
     ...     .with_query_expression("SELECT USR0 FROM database LIMIT 5;")
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_global_citations_range(None, None)
+    ...     .where_records_match(None)
     ...     #
     ...     .run()
-    ... )
+    ... )  # doctest: +SKIP
                                                     USR0
-    0  Digital transformation; Financial sector; FinT...
-    1                                               None
-    2  Artificial intelligence; Banking industry sect...
-    3  China; Fintech; G38; Intention to use; L16; M1...
-    4  Fintech; Green environmental index; Green fina...
+    0  audio classification; interpretability; state ...
+    1  evolutionary computation; high-dimensional ben...
+    2  convolutional neural network (cnn); hardware (...
+    3         android; hdc; health monitoring; wearables
+    4  adaptive modeling; geotechnical engineering; i...
 
 
 """
@@ -44,7 +44,7 @@ class CopyColumn(
 ):
     """:meta private:"""
 
-    def run(self) -> int:
+    def run(self) -> None:
 
         if self.params.source_field == self.params.target_field:
             raise ValueError(
@@ -56,11 +56,8 @@ class CopyColumn(
                 f"Cannot overwrite protected field `{self.params.target_field}`"
             )
 
-        return copy_column(
+        copy_column(
             source=self.params.source_field,
             target=self.params.target_field,
             root_directory=self.params.root_directory,
         )
-
-
-#

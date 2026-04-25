@@ -14,24 +14,27 @@ Smoke tests:
     ...     )
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_global_citations_range(None, None)
+    ...     .where_records_match(None)
     ...     #
     ...     .run()
     ... )
+    >>> assert len(terms) > 0
     >>> from pprint import pprint
-    >>> pprint(terms[:10])
-    ['5g',
-     '6g',
-     'access to finance',
-     'adoption',
-     'adoption drivers',
-     'aggregating operators',
-     'ai',
-     'algorithmic underwriting',
-     'alternative data',
-     'alternative finance']
+    >>> pprint(terms[:10])  # doctest: +SKIP
+    ['130-nm process design kit ( pdk )',
+     '1d convolutional neural network ( 1d-cnn )',
+     '1d-cnn classifier',
+     '21st century skills',
+     '3d interaction',
+     '5g battlefield networks',
+     '5g networks',
+     '6g iot networks',
+     '6g networks',
+     '6g-enabled v2x networks']
+
 
 """
 

@@ -8,7 +8,7 @@ Smoke test:
     ...     Metrics()
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_global_citations_range(None, None)
     ...     .where_records_match(None)
@@ -87,6 +87,7 @@ from typing import Union
 
 import numpy as np
 import pandas as pd  # type: ignore
+
 from tm2p._intern import ParamsMixin
 from tm2p._intern.data_access import load_filtered_main_csv_zip
 from tm2p.enum import Field

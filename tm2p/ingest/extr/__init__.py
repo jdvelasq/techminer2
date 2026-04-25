@@ -10,7 +10,6 @@ from tm2p.ingest.extr.match import MatchExtractor
 from tm2p.ingest.extr.startswith import StartsWithExtractor
 from tm2p.ingest.extr.stemming_and import StemmingAndExtractor
 from tm2p.ingest.extr.stemming_or import StemmingOrExtractor
-from tm2p.ingest.extr.topitems import TopItemsExtractor
 
 __all__ = [
     "ContainsExtractor",
@@ -23,5 +22,4 @@ __all__ = [
     "StartsWithExtractor",
     "StemmingAndExtractor",
     "StemmingOrExtractor",
-    "TopItemsExtractor",
 ]

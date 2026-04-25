@@ -14,20 +14,32 @@ Smoke tests:
     ...     # SEARCH:
     ...     .having_text_matching(
     ...         (
-    ...             "financial technology",
+    ...             "tinyml",
     ...             "artificial intelligence",
     ...         ),
     ...     )
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_global_citations_range(None, None)
+    ...     .where_records_match(None)
     ...     #
     ...     .run()
     ... )
+    >>> assert len(terms) > 0
     >>> from pprint import pprint
-    >>> pprint(terms[:10]) # doctest: +SKIP
+    >>> pprint(terms[:10])  # doctest: +SKIP
+    ['ai ( artificial intelligence )',
+     'artificial inteligence',
+     'artificial intelligence',
+     'artificial intelligence ( ai )',
+     'artificial intelligence of things',
+     'artificial intelligence of things ( aiot )',
+     'artificial intelligent',
+     'artificial neural network',
+     'artificial neural network ( ann )',
+     'artificial neural networks']
 
 
 

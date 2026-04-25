@@ -1,10 +1,12 @@
 from .acro import ExtractAcronyms
 from .header import ExtractSectionHeaders
 from .phrase import ReprocessNounPhrases
+from .prefix import ExtractAbstractPrefixes
 
 __all__ = [
     "ExtractAcronyms",
     "ExtractSectionHeaders",
+    "ExtractAbstractPrefixes",
     "ReprocessNounPhrases",
 ]
 

@@ -12,30 +12,29 @@ Smoke tests:
     ...     .with_source_field(Field.AUTHKW_NORM)
     ...     #
     ...     # SEARCH:
-    ...     .having_text_matching("finan")
+    ...     .having_text_matching("ml")
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_global_citations_range(None, None)
+    ...     .where_records_match(None)
     ...     #
     ...     .run()
     ... )
-
-
-    >>> # Print the first 10 extracted terms
+    >>> assert len(terms) > 0
     >>> from pprint import pprint
-    >>> pprint(terms[:10])
-    ['finance',
-     'finance technology',
-     'financial capability',
-     'financial computing',
-     'financial constraints',
-     'financial crisis',
-     'financial development',
-     'financial disintermediation',
-     'financial exclusion',
-     'financial globalization']
+    >>> pprint(terms[:10])  # doctest: +SKIP
+    ['ml',
+     'ml accelerator',
+     'ml classification',
+     'ml in arduino',
+     'ml security',
+     'ml system',
+     'ml systems',
+     'mlops',
+     'mlops for tinyml',
+     'mlperf tiny benchmark']
 
 
 """

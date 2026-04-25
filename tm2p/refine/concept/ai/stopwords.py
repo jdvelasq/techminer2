@@ -21,7 +21,7 @@ Smoke tests:
     ...     .having_unit_occurrence_between(None, None)
     ...     .having_unit_global_citation_between(None, None)
     ...     .having_units_in(None)
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ... ).run()  # doctest: +SKIP
     >>> df # doctest: +SKIP
                            descriptor  is_domain_specific?  is_stopword?

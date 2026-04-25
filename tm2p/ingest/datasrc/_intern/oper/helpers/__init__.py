@@ -12,6 +12,7 @@ from .repair_isbn_issn import repair_isbn_issn
 from .repair_lowercase_text import repair_lowercase_text
 from .repair_measurement_units import repair_measurement_units
 from .repair_roman_numbers import repair_roman_numbers
+from .repair_single_word_noise import repair_single_word_noise
 from .repair_strange_cases import repair_strange_cases
 from .repair_urls import repair_urls
 
@@ -32,4 +33,5 @@ __all__ = [
     "repair_roman_numbers",
     "repair_strange_cases",
     "repair_urls",
+    "repair_single_word_noise",
 ]

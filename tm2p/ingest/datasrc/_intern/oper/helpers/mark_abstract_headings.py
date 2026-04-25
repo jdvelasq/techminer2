@@ -4,6 +4,7 @@ from typing import Optional
 import pandas as pd  # type: ignore
 
 COMPOUND_STRUCTURED_ABSTRACT_HEADINGS = [
+    "the problem",
     "a summary",
     "actionable insights",
     "advances in knowledge",
@@ -17,7 +18,9 @@ COMPOUND_STRUCTURED_ABSTRACT_HEADINGS = [
     "background / purpose",
     "background and aims",
     "background and objective",
+    "background and objectives",
     "background and purpose",
+    "background and purposes",
     "case description",
     "clinical impact",
     "clinical registration",
@@ -190,6 +193,7 @@ def _normalize_heading_match(match: re.Match) -> str:
 
 
 def mark_abstract_headings(text: Optional[str]) -> Optional[str]:
+
     if pd.isna(text):
         return None
 

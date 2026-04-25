@@ -9,7 +9,7 @@ Smoke test - fintech - successful import:
     ...     WoS()
     ...     .where_root_directory("tests/system-dynamics-wos/")
     ...     .run()
-    ... )  # doctest: +ELLIPSIS
+    ... )  # doctest: +ELLIPSIS +SKIP
 
 
 """

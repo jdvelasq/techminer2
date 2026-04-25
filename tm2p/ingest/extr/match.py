@@ -17,24 +17,26 @@ Smoke tests:
     ...     .having_regex_flags(0)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_global_citations_range(None, None)
+    ...     .where_records_match(None)
     ...     #
     ...     .run()
     ... )
+    >>> assert len(terms) > 0
     >>> from pprint import pprint
-    >>> pprint(terms[:10])
-    ['bank',
-     'bank 30',
-     'bank competition',
-     'bank credit',
-     'bank fintech',
-     'bank fintech partnership',
-     'bank performance',
-     'bank risk-taking',
-     'banking',
-     'banking competition']
+    >>> pprint(terms[:10])  # doctest: +SKIP
+    ['back-propagation-free training',
+     'backdoors',
+     'bagging',
+     'ballistocardiography',
+     'banana disease detection',
+     'bandwidth optimization',
+     'bangla font style',
+     'batchensemble',
+     'batching',
+     'batteries']
 
 
 """

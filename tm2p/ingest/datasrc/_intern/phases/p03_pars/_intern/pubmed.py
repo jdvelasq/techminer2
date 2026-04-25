@@ -12,9 +12,9 @@ def pubmed_to_csv(root_directory: str) -> int:
 
     _generate_main_csv_zip_file(root_directory, zip_files)
 
-    from ...p16_review.s04_generate_review_table import s04_generate_review_table
+    from ...p16_review.s05_generate_review_table import s05_generate_review_table
 
-    s04_generate_review_table(root_directory)
+    s05_generate_review_table(root_directory)
 
     return len(zip_files)
 

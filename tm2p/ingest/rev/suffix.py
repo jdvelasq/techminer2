@@ -7,25 +7,24 @@ Smoke test:
     >>> text = (
     ...     ExtractAbstractSuffixes()
     ...     .having_n_chars(90)
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .run()
     ... )
     >>> assert isinstance(text, list)
     >>> assert all(isinstance(t, str) for t in text)
     >>> assert all(len(t) <= 90 for t in text)
     >>> assert len(text) > 0
-    >>> for t in text[:10]: print(t)
-    TION may have for THE_FUTURE_LANDSCAPE of FINANCIAL_INTERMEDIATION . 2021 the author ( s )
-    NVIRONMENTAL_PROTECTION_INITIATIVES that promote GREEN_CONSUMPTION . 2021 the author ( s )
-    or FUTURE_FINTECH_RESEARCH while anticipating THE_CHALLENGES ahead . 2022 the author ( s )
-    complement OTHER_FORMS of CREDIT , rather than substitute for them . 2022 the author ( s )
-    FINTECH_SERVICES in advancing THE_HORIZON of THE_EXTANT_LITERATURE . 2023 the author ( s )
-    at FINTECH is AN_APPROPRIATE_NEW_TECHNOLOGY for FINANCIAL_SERVICES . 2024 the author ( s )
-    ften build PRODUCT_RELATED_COLLABORATIONS with LARGER_FINTECHS . 2020 , the author ( s ) .
-    NTS in MONEY transferring SYSTEMS could help to decrease COSTS . 2021 , the author ( s ) .
-    ORK for BALANCED_FINTECH_SECTOR_GROWTH in DEVELOPING_COUNTRIES . 2022 , the author ( s ) .
-    TORS , REGULATORS , etc . ) , who explore THE_FIELD of FINTECH . 2016 , the author ( s ) .
-
+    >>> for t in text[:10]: print(t)  # doctest: +NORMALIZE_WHITESPACE +SKIP
+    resents a THOROUGH_DISCUSSION of MEC_BASED_IOMT_HEALTHCARE_SYSTEMS . 2022 the_author ( s )
+    e with PRECAUTIONARY_REMARKS and guidelines for FUTURE_RESEARCHERS . 2022 the_author ( s )
+    DEVICES and an alternative for CONNECTION to 2g/3g MOBILE_NETWORKS . 2023 the_author ( s )
+    ution toward REAL_WORLD_DEPLOYMENT of FACE_MASKS_DETECTION_SYSTEMS . 2023 the_author ( s )
+    m achieve ACCURACY comparable to when trained on BALANCED_DATASETS . 2023 the_author ( s )
+     t246187 and ta120 t246189 is 528 BYTES and 744 BYTES respectively . 2023 the_author ( s )
+    ERSPECTIVE on this CHALLENGING_AND_RAPIDLY_EVOLVING_RESEARCH_FIELD . 2024 the_author ( s )
+    ork have been meticulously benchmarked on 13 OPEN_SOURCED_DATASETS . 2024 the_author ( s )
+    efits and challenges of this kind of TINYML_ANALYSIS are described . 2024 the_author ( s )
+    hes EDUCATIONAL_PROGRAMS by encouraging INTERDISCIPLINARY_LEARNING . 2025 the_author ( s )
 
 """
 

@@ -7,7 +7,7 @@ Smoke tests:
     >>> from tm2p.report.manuscript import Zotero
     >>> (
     ...     Zotero()
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .where_root_directory("../tm2_economics_of_wind_energy/")
     ...     .run()
     ... )

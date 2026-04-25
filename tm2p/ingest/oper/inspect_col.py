@@ -9,25 +9,28 @@ Smoke tests:
     ...     InspectColumn()
     ...     #
     ...     # FIELD:
-    ...     .with_source_field(Field.PUBTYPE_NORM)
+    ...     .with_source_field(Field.DOCTYPE)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
+    ...     .where_record_years_range(None, None)
+    ...     .where_record_global_citations_range(None, None)
+    ...     .where_records_match(None)
     ...     #
     ...     .run()
     ... )
     >>> from pprint import pprint
     >>> pprint(items[:10])
-    PUBTYPE_NORM
-    Article             142
-    Review               14
-    Book                  8
-    Conference paper      7
-    Book chapter          3
+    DOCTYPE
+    Conference paper    897
+    Article             503
+    Review               37
+    Book chapter         32
     Editorial             3
-    Retracted             1
-    Note                  1
-    Short survey          1
+    Short survey          3
+    Note                  3
+    Book                  2
+    Letter                1
     Name: count, dtype: int64
 
 

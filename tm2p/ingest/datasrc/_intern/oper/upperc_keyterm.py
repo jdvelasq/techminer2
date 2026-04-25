@@ -24,6 +24,7 @@ from .helpers import (
     repair_lowercase_text,
     repair_measurement_units,
     repair_roman_numbers,
+    repair_single_word_noise,
     repair_strange_cases,
     repair_urls,
 )
@@ -184,6 +185,8 @@ def _normalize(text):
         text = repair_roman_numbers(text)
         text = repair_emails(text)
         text = repair_strange_cases(text)
+        text = repair_single_word_noise(text)
+
     except Exception as e:
         sys.stderr.write(f"Error processing text: {e}\n")
         sys.stderr.flush()

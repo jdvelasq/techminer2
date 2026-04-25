@@ -4,7 +4,7 @@ import pandas as pd  # type: ignore
 
 from tm2p._intern.packag_data.word_lists import (
     load_builtin_word_list,
-    save_text_processing_terms,
+    save_builtin_word_list,
 )
 from tm2p.enum import Field
 
@@ -17,7 +17,7 @@ def s04_builtin_noun_phrases(root_directory: str) -> int:
     keywords = _extract_frequent_raw_keywords(df)
     keywords = keywords - user_noun_phrases
     builtin_noun_phrases.update(keywords)
-    save_text_processing_terms("noun_phrases.txt", sorted(builtin_noun_phrases))
+    save_builtin_word_list("noun_phrases.txt", sorted(builtin_noun_phrases))
 
     return len(keywords)
 

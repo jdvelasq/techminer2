@@ -9,7 +9,7 @@ Smoke test:
     ...     BaseAuto()
     ...     .with_thesaurus_file(ThFile.CONCEPT)
     ...     .with_source_field(Field.DESCRIPTOR_RAW)
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .run()
     ... )
     '7288 → 4623 preferred terms'
@@ -19,8 +19,8 @@ Smoke test:
 
 import sys
 
-from tm2p.enum import ThField
 from tm2p._intern import ParamsMixin
+from tm2p.enum import ThField
 from tm2p.refine._intern.data_access import (
     load_thesaurus_as_dataframe,
     save_dataframe_as_thesaurus,

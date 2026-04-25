@@ -14,33 +14,31 @@ Smoke test:
     ...         )
     ...     )
     ...     .with_target_field(Field.USR0)
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .run()
     ... )
-    162
 
     >>> from tm2p.ingest.oper import Query
     >>> (
     ...     Query()
     ...     .with_query_expression("SELECT USR0 FROM database LIMIT 10;")
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_global_citations_range(None, None)
+    ...     .where_records_match(None)
     ...     .run()
-    ... )
+    ... )  # doctest: +SKIP
                                                     USR0
-    0  Digital transformation; FinTech; FinTech gover...
-    1                                               None
-    2  Artificial intelligence; Banking industry sect...
-    3  China; Fintech; G38; Intention to use; L16; M1...
-    4  Fintech; Green environmental index; Green fina...
-    5  Banking; Dark side; FinTech; FinTech developer...
-    6  CO2 emissions; Carbon; Carbon taxes; China; De...
-    7  Fintech; carbon emission; corporate carbon emi...
-    8  'current; A comparative study; Comparative ana...
-    9  COVID-19; Carbon; Carbon emission: green finan...
-
-/Volumes/GitHub/tm2p
+    0  audio classification; c++ (programming languag...
+    1  artificial intelligence; arts computing; bench...
+    2  cmos integrated circuits; convolutional neural...
+    3  activity tracking; android; android (operating...
+    4  adaptive learning; adaptive modeling; adaptive...
+    5  cnns; comparatives studies; convolutional neur...
+    6  animal images; animal motion; animals; compute...
+    7  % reductions; alu; arithmetic logic unit; c (p...
+    8  arts computing; digital watermarking; edge sys...
+    9  activation energy; article; bioinformatics; bi...
 
 
 
@@ -56,7 +54,7 @@ class MergeColumns(
 ):
     """:meta private:"""
 
-    def run(self) -> int:
+    def run(self) -> None:
 
         for source_field in self.params.source_fields:
             if source_field == self.params.target_field:
@@ -69,7 +67,7 @@ class MergeColumns(
                 f"Cannot overwrite protected field `{self.params.target_field}`"
             )
 
-        return merge_columns(
+        merge_columns(
             sources=self.params.source_fields,
             target=self.params.target_field,
             root_directory=self.params.root_directory,

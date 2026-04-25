@@ -15,24 +15,26 @@ Smoke tests:
     ...     .having_text_matching("ing")
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_global_citations_range(None, None)
+    ...     .where_records_match(None)
     ...     #
     ...     .run()
     ... )
+    >>> assert len(terms) > 0
     >>> from pprint import pprint
     >>> pprint(terms[:10])
-    ['algorithmic underwriting',
-     'alternative lending',
-     'bank risk-taking',
-     'banking',
-     'benefit sharing',
-     'big-data lending',
-     'cloud computing',
-     'credit scoring',
-     'crowdfunding',
-     'data mining']
+    ['3d-modeling',
+     'acoustic emission monitoring',
+     'acoustic monitoring',
+     'active learning',
+     'activity tracking',
+     'adaptive machine learning',
+     'adaptive modeling',
+     'adversarial machine learning',
+     'affective computing',
+     'agroengineering']
 
 """
 

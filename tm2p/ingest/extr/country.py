@@ -18,15 +18,16 @@ Smoke tests:
     ...     .having_regex_search(False)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_global_citations_range(None, None)
+    ...     .where_records_match(None)
     ...     #
     ...     .run()
     ... )
     >>> from pprint import pprint
     >>> pprint(terms[:10])
-    ['China', 'Hong Kong', 'Jordan', 'Russia', 'Saudi Arabia', 'Taiwan', 'Ukraine']
+    ['Egypt', 'India', 'Mali']
 
 
 """

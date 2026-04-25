@@ -6,7 +6,7 @@ Smoke tests:
     >>> from tm2p.refine.concept.match import SeparatorMatch
     >>> (
     ...     SeparatorMatch()
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .run()
     ... )
 

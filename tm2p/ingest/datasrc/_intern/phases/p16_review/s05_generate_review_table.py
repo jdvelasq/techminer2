@@ -1,14 +1,12 @@
 from pathlib import Path
 
-import pandas as pd  # type: ignore
-
 from tm2p._intern.data_access import load_main_csv_zip
 from tm2p.enum import Field
 
 SIZE = 30
 
 
-def s04_generate_review_table(root_directory: str) -> None:
+def s05_generate_review_table(root_directory: str) -> None:
 
     df = load_main_csv_zip(root_directory=root_directory).head(100)
 

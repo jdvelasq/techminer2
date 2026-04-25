@@ -1,7 +1,7 @@
 from pathlib import Path
 
 
-def s03_extract_acronyms(root_directory: str) -> int:
+def s04_extract_acronyms(root_directory: str) -> int:
 
     from .....rev import ExtractAcronyms
 

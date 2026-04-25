@@ -1,4 +1,3 @@
-from ._kernel_density_plot import KernelDensityPlot
 from .clust_to_items import ClusterToItems
 from .direct_mtx import DirectMatrix
 from .item_by_clust import ItemsByCluster
@@ -13,7 +12,6 @@ __all__ = [
     "ClusterToItems",
     "ItemsByCluster",
     "ItemToCluster",
-    "KernelDensityPlot",
     "Matrix",
     "MatrixList",
     "NetworkPlot",

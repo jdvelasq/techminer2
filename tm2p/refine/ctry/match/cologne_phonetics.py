@@ -6,7 +6,7 @@ Smoke tests:
     >>> from tm2p.refine.country.match import ColognePhoneticsMatch
     >>> (
     ...     ColognePhoneticsMatch()
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .run()
     ... )
 

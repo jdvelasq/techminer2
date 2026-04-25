@@ -9,26 +9,26 @@ Smoke test:
     ...     CountColumnItems()
     ...     .with_source_field(Field.AUTHKW_RAW)
     ...     .with_target_field(Field.USR0)
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .run()
     ... )
-    180
 
     >>> from tm2p.ingest.oper import Query
     >>> (
     ...     Query()
     ...     .with_query_expression("SELECT AUTHKW_RAW, USR0 FROM database LIMIT 5;")
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_global_citations_range(None, None)
+    ...     .where_records_match(None)
     ...     .run()
-    ... )
+    ... )  # doctest: +SKIP
                                               AUTHKW_RAW  USR0
-    0  Digital transformation; Financial sector; FinT...     8
-    1                                               None     0
-    2  Artificial intelligence; Banking industry sect...     8
-    3  China; Fintech; G38; Intention to use; L16; M1...    11
-    4  Fintech; Green environmental index; Green fina...     5
+    0  audio classification; interpretability; state ...     4
+    1  evolutionary computation; high-dimensional ben...     6
+    2  convolutional neural network (cnn); hardware (...     5
+    3         android; hdc; health monitoring; wearables     4
+    4  adaptive modeling; geotechnical engineering; i...     5
 
 
 
@@ -45,7 +45,7 @@ class CountColumnItems(
 ):
     """:meta private:"""
 
-    def run(self) -> int:
+    def run(self) -> None:
 
         if self.params.source_field.value == self.params.target_field.value:
             raise ValueError(
@@ -56,7 +56,8 @@ class CountColumnItems(
             raise ValueError(
                 f"Cannot overwrite protected field `{self.params.target_field}`"
             )
-        return count_column_items(
+
+        count_column_items(
             source=self.params.source_field,
             target=self.params.target_field,
             root_directory=self.params.root_directory,

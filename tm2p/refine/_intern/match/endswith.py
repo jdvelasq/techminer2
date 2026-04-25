@@ -12,7 +12,7 @@ Smoke test:
     ...     .having_text_matching("ion")
     ...     .using_similarity_cutoff(88)
     ...     .using_fuzzy_threshold(80)
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .run()
     ... )
 
@@ -22,8 +22,8 @@ import sys
 
 import pandas as pd  # type: ignore
 
-from tm2p.enum import ThField
 from tm2p._intern import Params, ParamsMixin
+from tm2p.enum import ThField
 
 from ._intern import (
     add_padding,

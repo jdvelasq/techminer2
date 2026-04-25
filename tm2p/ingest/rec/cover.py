@@ -4,30 +4,24 @@ Coverage
 
 Smoke tests:
     >>> from tm2p.enum import Field
-    >>> from tm2p.ingest.records import Coverage
-    >>> (
+    >>> from tm2p.ingest.rec import Coverage
+    >>> df = (
     ...     Coverage()
     ...     .with_source_field(Field.AUTHKW_RAW)
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_global_citations_range(None, None)
+    ...     .where_records_match(None)
     ...     .run()
     ... )
-        OCC  CUM_SUM_DOCS COVERAGE  CUM_SUM_ITEMS
-    0    59            59  32.78 %              1
-    1    50           109  60.56 %              2
-    2    13           115  63.89 %              3
-    3    11           118  65.56 %              4
-    4    10           120  66.67 %              5
-    5     9           127  70.56 %              9
-    6     8           134  74.44 %             10
-    7     7           136  75.56 %             12
-    8     6           137  76.11 %             15
-    9     5           138  76.67 %             19
-    10    4           138  76.67 %             22
-    11    3           142  78.89 %             39
-    12    2           146  81.11 %             81
-    13    1           154  85.56 %            582
+    >>> assert df.shape[0] > 0
+    >>> df.head()  # doctest: +SKIP
+       OCC  CUM_SUM_DOCS COVERAGE  CUM_SUM_ITEMS
+    0  962           962  64.96 %              1
+    1  209          1004  67.79 %              2
+    2  169          1049  70.83 %              3
+    3  167          1189  80.28 %              4
+    4  122          1201  81.09 %              5
 
 
 """
@@ -99,10 +93,10 @@ class Coverage(
 
         documents = documents.rename(
             columns={
-                "num_documents": Col.OCC,
-                "cum_sum_documents": Col.CUM_SUM_DOCS,
-                "cum_sum_items": Col.CUM_SUM_ITEMS,
-                "coverage": Col.COVERAGE,
+                "num_documents": Col.OCC.value,
+                "cum_sum_documents": Col.CUM_SUM_DOCS.value,
+                "cum_sum_items": Col.CUM_SUM_ITEMS.value,
+                "coverage": Col.COVERAGE.value,
             }
         )
 

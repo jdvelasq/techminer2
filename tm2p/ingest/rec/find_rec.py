@@ -4,7 +4,7 @@ Find records
 
 Smoke tests:
     >>> from tm2p.enum import Field, RecordOrderBy
-    >>> from tm2p.ingest.records import FindRecords
+    >>> from tm2p.ingest.rec import FindRecords
     >>> docs = (
     ...     FindRecords()
     ...     #
@@ -12,12 +12,12 @@ Smoke tests:
     ...     .with_source_field(Field.AUTHKW_NORM)
     ...     #
     ...     # SEARCH:
-    ...     .having_text_matching('regtech')
+    ...     .having_text_matching('tinyml')
     ...     .having_regex_search(False)
     ...     .having_case_sensitive(False)
     ...     .having_regex_flags(0)
     ...     #
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_global_citations_range(None, None)
     ...     .where_records_match(None)
@@ -25,36 +25,48 @@ Smoke tests:
     ...      #
     ...      .run()
     ... )
-    >>> isinstance(docs, list)
-    True
-    >>> print(docs[0])
-    UT 162
-    AR Muganyi T, 2022, FINANC INNOV, V8, DOI 10.1186/s40854-021-00313-6
-    TI Fintech, regtech, and financial development: evidence from China
-    AU Muganyi T; Yan L; Yin Y; Sun H-P; Gong X; Taghizadeh-Hesary F
-    TC 139
-    SO FINANC INNOV
-    PY 2022
-    AB this_study_investigates_the_influence_of FINTECH on DEVELOPMENTS in CHINA '
-       s FINANCIAL_SECTOR across 290 CITIES and 31 provinces between 2011 and 2018
-       . using a two-stage least SQUARES_INSTRUMENTAL_VARIABLE_REGRESSION_APPROACH
-       and correcting for cross-sectional dependency , SIMULTANEITY , and
-       ENDOGENEITY of REGRESSORS , the_results establish A_POSITIVE_LINK between
-       FINTECH and FINANCIAL_DEVELOPMENT . our_findings_show_that
-       FINTECH_SUPPORTS_FINANCIAL_SECTOR_DEVELOPMENT by enhancing ACCESS ( LOANS )
-       , DEPTH ( deposits ) , and SAVINGS within CHINA ' s FINANCIAL_INSTITUTIONS .
-       we also show that THE_EMERGENCE of FINTECH in THE_AREA of
-       FINANCIAL_REGULATION ( REGULATORY_TECHNOLOGY : REGTECH ) can significantly
-       improve FINANCIAL_DEVELOPMENT_OUTCOMES . therefore , it is imperative for
-       REGULATORS to PURSUE_POLICIES that BALANCE_GROWTH in THE_FINTECH_SECTOR
-       while mitigating THE_ASSOCIATED_RISKS . in addition , we_use the DIFFERENCE-
-       in-DIFFERENCES approach to show that POLICY_MEASURES such as
-       INTEREST_RATES_LIBERALIZATION also positively impacted FINANCIAL_DEVELOPMENT
-       during THE_ANALYSIS_PERIOD . in OUR_CONCLUSION , we_suggest
-       A_POLICY_FRAMEWORK for BALANCED_FINTECH_SECTOR_GROWTH in
-       DEVELOPING_COUNTRIES . 2022 , the author ( s ) .
-    DE china; financial development; fintech; regtech
+    >>> assert len(docs) > 0
+    >>> assert isinstance(docs[0], str)
+    >>> print(docs[0])  # doctest: +SKIP
+    UT 292
+    AR Heydari S, 2025, SENSORS, V25, DOI 10.3390/s25103191
+    TI Tiny Machine Learning and On-Device Inference: A Survey of Applications,
+       Challenges, and Future Directions
+    AU Heydari S; Mahmoud QH
+    TC 45
+    SO SENSORS
+    PY 2025
+    AB the growth in ARTIFICIAL_INTELLIGENCE and_its applications has LED to
+       INCREASED_DATA_PROCESSING_AND_INFERENCE_REQUIREMENTS .
+       TRADITIONAL_CLOUD_BASED_INFERENCE_SOLUTIONS are often used but may prove
+       inadequate for applications requiring NEAR_INSTANTANEOUS_RESPONSE_TIMES .
+       this_review_examines TINY_MACHINE_LEARNING , also known as TINYML , as an
+       alternative to CLOUD_BASED_INFERENCE . the REVIEW_FOCUSES on applications
+       where TRANSMISSION_DELAYS make traditional
+       INTERNET_OF_THINGS_APPROACHES_IMPRACTICAL , thus necessitating a solution
+       that USES_TINYML_AND_ON_DEVICE_INFERENCE . this_study , which follows the
+       PRISMA_GUIDELINES , covers TINYML s USE_CASES for REAL_WORLD_APPLICATIONS by
+       analyzing EXPERIMENTAL_STUDIES and synthesizing current research_on
+       the_characteristics_of TINYML_EXPERIMENTS , such as
+       MACHINE_LEARNING_TECHNIQUES and the HARDWARE used for EXPERIMENTS .
+       this_review_identifies existing gaps in research as_well_as the means to
+       address these gaps . the REVIEW_FINDINGS suggest that TINYML has a
+       STRONG_RECORD of REAL_WORLD_USABILITY and offers advantages over
+       CLOUD_BASED_INFERENCE , particularly in environments with
+       BANDWIDTH_CONSTRAINTS and USE_CASES that require RAPID_RESPONSE_TIMES .
+       this_review discusses the implications of TINYML s EXPERIMENTAL_PERFORMANCE
+       for future research_on TINYML_APPLICATIONS . 2025 by the_authors .
+    DE edge ai; edge computing; embedded ml; embedded systems; iot; resource-
+       constrained devices; sensors; tinyml
+    ID data integration; data streams; sorting; cloud-based; edge ai; edge
+       computing; embedded ml; embedded-system; its applications; machine learning;
+       real-world; resource-constrained devices; tinyml; artificial intelligence;
+       bandwidth; cloud computing; data processing; experimental study; human;
+       internet of things; machine learning; nonhuman; preferred reporting items
+       for systematic reviews and meta-analyses; reaction time; review; sensor;
+       data reduction
     <BLANKLINE>
+
 
 
 

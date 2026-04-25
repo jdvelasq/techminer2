@@ -9,7 +9,7 @@ Smoke test:
     ...     .having_text_matching("ion")
     ...     .using_similarity_cutoff(88)
     ...     .using_fuzzy_threshold(80)
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .run()
     ... )
 

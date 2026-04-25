@@ -83,6 +83,7 @@ def ltwa_column(
 
     with stdout_to_stderr():
         progress_bar = True
+        sys.stderr.write("\n")
         pandarallel.initialize(progress_bar=progress_bar, verbose=0)
         df[target.value] = df[target.value].parallel_apply(
             lambda x: _apply_ltwa_to_words(x) if isinstance(x, list) else x

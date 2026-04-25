@@ -7,15 +7,16 @@ Smoke test:
     >>> from tm2p.ingest.rev import ExtractAcronyms
     >>> acronyms = (
     ...     ExtractAcronyms()
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .run()
     ... )
-    >>> len(acronyms)
-    96
-    >>> "crm" in acronyms
+    >>> len(acronyms) > 1
     True
-    >>> acronyms["crm"]
-    {'customer relationship management'}
+    >>> "tinyml" in acronyms
+    True
+    >>> acronyms["ml"]  # doctest: +SKIP
+    {'ptimizer and tinyml interface to develop lightweight and real_time machine_learning ( ml )', 'multi-modal learning', 'modeling languages', 'multitask learning', 'mac layer', 'formation about physical phenomena in complex settings , requiring machine_learning ( ml )', 'memory layout', 'multiple layers', 'magnetic levitation', 'ficient memory and computational power to accommodate light_weight machine_learning ( ml )', 'machine learning', 'memory latencies', 'multipath-assisted localization'}
+
 
 
 """

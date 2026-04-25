@@ -7,21 +7,24 @@ Smoke test:
     >>> df = (
     ...     Query()
     ...     #
-    ...     .with_query_expression("SELECT SRC_NORM FROM database LIMIT 5;")
+    ...     .with_query_expression("SELECT SRC_ISO4 FROM database LIMIT 5;")
     ...     #
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_global_citations_range(None, None)
+    ...     .where_records_match(None)
     ...     #
     ...     .run()
     ... )
+    >>> assert df.shape[0] > 0
+    >>> assert set(df.columns) == {"SRC_ISO4"}
     >>> df
-                                                SRC_NORM
-    0      Journal of Financial Reporting and Accounting
-    1  Harnessing Blockchain-Digital Twin Fusion for ...
-    2      Journal of Financial Reporting and Accounting
-    3                       Electronic Commerce Research
-    4      International Review of Economics and Finance
+                         SRC_ISO4
+    0                  MACH LEARN
+    1            INTELL SYST APPL
+    2              IEEE SENSORS J
+    3  MIDWEST SYMP CIRCUITS SYST
+    4           COMPUT ELECTR ENG
 
 """
 

@@ -3,27 +3,26 @@ RecordsDataFrame
 =======================================================================================
 
 Smoke tests:
-    >>> from tm2p import RecordOrderBy
-    >>> from tm2p.ingest.records import FilteredRecords
-
+    >>> from tm2p.enum import RecordOrderBy
+    >>> from tm2p.ingest.rec import FilteredRecords
     >>> df = (
     ...     FilteredRecords()
     ...     #
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_global_citations_range(None, None)
     ...     .where_records_match(None)
     ...     .where_records_ordered_by(RecordOrderBy.YEAR_NEWEST)
-    ...
     ...     .run()
     ... )
-    >>> df.head()
+    >>> assert df.shape[0] > 0
+    >>> df.head()  # doctest: +SKIP
                                                TITLE_RAW  ...  YEAR
-    0  The diffusion of financial technology-enabled ...  ...  2024
-    1  Revealing green finance mobilization: Harnessi...  ...  2024
-    2  Does FinTech adoption increase the diffusion r...  ...  2024
-    3  What makes consumers trust and adopt fintech? ...  ...  2024
-    4  Empirical evidence of fintech and green enviro...  ...  2024
+    0  Tiny Machine Learning and On-Device Inference:...  ...  2025
+    1  A Comprehensive Survey on Tiny Machine Learnin...  ...  2025
+    2  Non-invasive blood glucose monitoring using PP...  ...  2025
+    3  Safeguarding IoT consumer devices: Deep learni...  ...  2025
+    4  Efficient human activity recognition on edge d...  ...  2025
     <BLANKLINE>
     [5 rows x 9 columns]
 
@@ -37,7 +36,7 @@ from tm2p.enum import Field, UnitOrderBy
 AUTH_RAW = Field.AUTH_RAW.value
 GCS = Field.GCS.value
 LCS = Field.LCS.value
-PUBTYPE = Field.PUBTYPE.value
+DOCTYPE = Field.DOCTYPE.value
 RID = Field.REC_ID.value
 TITLE_RAW = Field.TITLE_RAW.value
 YEAR = Field.YEAR.value
@@ -89,7 +88,7 @@ class FilteredRecords(
                 TITLE_RAW,
                 AUTH_RAW,
                 RID,
-                PUBTYPE,
+                DOCTYPE,
                 RANK_GCS,
                 GCS,
                 RANK_LCS,

@@ -11,7 +11,7 @@ Smoke test:
     ...     .with_source_field(Field.ABSTR_RAW)
     ...     .having_text_matching("FINTECH")
     ...     #
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_global_citations_range(None, None)
     ...     .where_records_match(None)

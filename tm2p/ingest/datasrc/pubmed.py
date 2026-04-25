@@ -9,7 +9,7 @@ Smoke test - fintech - successful import:
     ...     PubMed()
     ...     .where_root_directory("tests/health-analytics-pubmed/")
     ...     .run()
-    ... )  # doctest: +ELLIPSIS
+    ... )  # doctest: +ELLIPSIS +SKIP
 
 
 

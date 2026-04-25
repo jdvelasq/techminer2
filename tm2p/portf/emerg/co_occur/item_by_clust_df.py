@@ -29,7 +29,7 @@ Smoke tests:
     ...     .using_minimum_number_of_clusters(10)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_global_citations_range(None, None)

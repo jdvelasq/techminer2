@@ -4,26 +4,28 @@ Statistics
 
 Smoke tests:
     >>> from tm2p.enum import Field
-    >>> from tm2p.ingest.records import Statistics
+    >>> from tm2p.ingest.rec import Statistics
     >>> df = (
     ...     Statistics()
     ...     .with_source_field(Field.AUTHKW_RAW)
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_global_citations_range(None, None)
+    ...     .where_records_match(None)
     ...     .run()
     ... )
+    >>> assert df.shape[0] > 0
     >>> df.head() # doctest: +SKIP
-                         ART_NO                            ... REC_NO
-                          count       mean std        min  ...    25%   50%   75%   max
-    AUTH_KEY_RAW                                           ...
-    Actor network theory    0.0        NaN NaN        NaN  ...   23.0  23.0  23.0  23.0
-    Alipay                  1.0  2971643.0 NaN  2971643.0  ...    3.0   3.0   3.0   3.0
-    Alternative finance     0.0        NaN NaN        NaN  ...   19.0  19.0  19.0  19.0
-    Alternative lending     0.0        NaN NaN        NaN  ...   19.0  19.0  19.0  19.0
-    Bank                    1.0  7796617.0 NaN  7796617.0  ...   20.0  20.0  20.0  20.0
+                                             CONF_CODE            ...    YEAR
+                                                 count      mean  ...     75%     max
+    AUTHKW_RAW                                                    ...
+    1-bit quantization                             0.0       NaN  ...  2025.0  2025.0
+    130-nm process design kit (pdk)                0.0       NaN  ...  2023.0  2023.0
+    1d cnn                                         0.0       NaN  ...  2024.0  2024.0
+    1d convolutional neural network                1.0  214104.0  ...  2025.0  2025.0
+    1d convolutional neural network (1d-cnn)       1.0  212711.0  ...  2025.0  2025.0
     <BLANKLINE>
-    [5 rows x 80 columns]
+    [5 rows x 104 columns]
 
 
 

@@ -6,13 +6,13 @@ Smoke tests:
     >>> from tm2p.refine.concept.acronym import Replace
     >>> (
     ...     Replace()
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .run()
     ... )
     >>> from tm2p.refine.concept.reset import Reset
     >>> (
     ...     Reset()
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .run()
     ... )
 

@@ -7,7 +7,7 @@ Smoke test:
     >>> (
     ...     ExpressionMatch()
     ...     .having_text_matching("firm")
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .run()
     ... )
 

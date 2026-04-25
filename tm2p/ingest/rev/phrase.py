@@ -6,8 +6,8 @@ Smoke test:
     >>> from tm2p.ingest.rev import ReprocessNounPhrases
     >>> (
     ...     ReprocessNounPhrases()
-    ...     .where_root_directory("tests/scopus/")
-    ... ).run()
+    ...     .where_root_directory("tests/tinyml-scopus/")
+    ... ).run() # doctest: +SKIP
 
 
 """

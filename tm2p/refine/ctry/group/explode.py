@@ -6,7 +6,7 @@ Smoke tests:
     >>> from tm2p.refine.country.group import Explode
     >>> (
     ...     Explode()
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .run()
     ... )
 

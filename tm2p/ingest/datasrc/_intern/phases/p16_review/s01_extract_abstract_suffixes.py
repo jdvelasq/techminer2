@@ -12,9 +12,7 @@ def s01_extract_abstract_suffixes(root_directory: str) -> int:
         .run()
     )
 
-    filepath = (
-        Path(root_directory) / "refine" / "word_lists" / "abstract_copyright_text.txt"
-    )
+    filepath = Path(root_directory) / "refine" / "word_lists" / "abstract_suffixes.txt"
 
     with open(filepath, "w", encoding="utf-8") as f:
         for t in text:

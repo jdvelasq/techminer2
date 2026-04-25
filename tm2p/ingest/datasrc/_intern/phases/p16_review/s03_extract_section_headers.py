@@ -1,7 +1,7 @@
 from pathlib import Path
 
 
-def s02_extract_section_headers(root_directory: str) -> int:
+def s03_extract_section_headers(root_directory: str) -> int:
 
     from .....rev import ExtractSectionHeaders
 

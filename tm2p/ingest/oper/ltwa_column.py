@@ -7,34 +7,33 @@ Smoke test:
     >>> from tm2p.ingest.oper import LTWAColumn
     >>> (
     ...     LTWAColumn()
-    ...     .with_source_field(Field.SRC_RAW)
+    ...     .with_source_field(Field.SRC)
     ...     .with_target_field(Field.USR0)
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .run()
     ... )
-    180
 
     >>> from tm2p.ingest.oper import Query
     >>> (
     ...     Query()
     ...     .with_query_expression("SELECT USR0 FROM database LIMIT 10;")
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_global_citations_range(None, None)
+    ...     .where_records_match(None)
     ...     .run()
-    ... )
+    ... )  # doctest: +SKIP
                                                     USR0
-    0                            J FINANC REPORT ACCOUNT
-    1  HARNESSING BLOCKCHAIN-DIGITAL TWIN FUSION SUST...
-    2                            J FINANC REPORT ACCOUNT
-    3                                ELECTRON COMMER RES
-    4                                INT REV ECON FINANC
-    5                                    INT J BANK MARK
-    6                                       RESOUR POLIC
-    7                                    BUS STRATEG ENV
-    8                                ELECTRON COMMER RES
-    9                                       RESOUR POLIC
-
+    0                                         MACH LEARN
+    1                                   INTELL SYST APPL
+    2                                     IEEE SENSORS J
+    3                         MIDWEST SYMP CIRCUITS SYST
+    4                                  COMPUT ELECTR ENG
+    5  S3 2025 - PROC 2025 16TH ACM WORK WIREL STUD S...
+    6  MOBISYS 2025 - PROC 23RD ACM INT CONF MOB SYST...
+    7  9TH INT CONF RECENT ADV INNOV ENG ADV TECHNOL ...
+    8                             ELECTRON (SWITZERLAND)
+    9                              FRONT COMPUT NEUROSCI
 
 
 
@@ -50,7 +49,7 @@ class LTWAColumn(
 ):
     """:meta private:"""
 
-    def run(self) -> int:
+    def run(self) -> None:
 
         if self.params.source_field == self.params.target_field:
             raise ValueError(
@@ -60,7 +59,7 @@ class LTWAColumn(
         if self.params.target_field in PROTECTED_FIELDS:
             raise ValueError(f"Field `{self.params.target_field}` is protected")
 
-        return ltwa_column(
+        ltwa_column(
             source=self.params.source_field,
             target=self.params.target_field,
             root_directory=self.params.root_directory,

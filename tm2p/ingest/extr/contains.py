@@ -12,30 +12,31 @@ Smoke tests:
     ...     .with_source_field(Field.AUTHKW_NORM)
     ...     #
     ...     # SEARCH:
-    ...     .having_text_matching("FINTECH")
+    ...     .having_text_matching("tinyml")
     ...     .having_case_sensitive(False)
     ...     .having_regex_flags(0)
     ...     .having_regex_search(False)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_global_citations_range(None, None)
+    ...     .where_records_match(None)
     ...     #
     ...     .run()
     ... )
     >>> from pprint import pprint
     >>> pprint(terms[:10])
-    ['bank fintech',
-     'bank fintech partnership',
-     'financial technology ( fintech )',
-     'fintech',
-     'fintech adoption',
-     'fintech developers',
-     'fintech development',
-     'fintech disruption',
-     'fintech for development',
-     'fintech governance']
+    ['additional key words and phrasestinyml',
+     'distributed tinyml',
+     'hw  and sw co-optimizations for tinyml inference time acceleration',
+     'mlops for tinyml',
+     'multiple tinyml',
+     'neurotransmitters tinyml',
+     'non-static tinyml',
+     'pose-estimation and tinyml',
+     'real-time tiny machine learning ( tinyml ) application',
+     'super-tinyml']
 
 
 """

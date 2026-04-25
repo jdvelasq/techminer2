@@ -28,7 +28,7 @@ Smoke tests:
     ...     .using_textfont_size(10)
     ...     .using_yshift(4)
     ...     #
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_global_citations_range(None, None)
     ...     #
@@ -52,7 +52,7 @@ Smoke tests:
     ...     .using_textfont_size(10)
     ...     .using_yshift(4)
     ...     #
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_global_citations_range(None, None)
     ...     #

@@ -5,7 +5,7 @@ IntersectionExtractor
 Smoke tests:
     >>> from tm2p.enum import Field
     >>> from tm2p.ingest.extr import IntersectionExtractor
-    >>> terms = (
+    >>> items = (
     ...     IntersectionExtractor()
     ...     #
     ...     # FIELDS:
@@ -14,25 +14,26 @@ Smoke tests:
     ...     )
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("tests/scopus/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_global_citations_range(None, None)
+    ...     .where_records_match(None)
     ...     #
     ...     .run()
     ... )
-    >>> # Print the first 10 extracted terms
+    >>> assert len(items) > 0
     >>> from pprint import pprint
-    >>> pprint(terms[:10])
-    ['a comparative study',
-     'actor network theory',
-     'actualization',
-     'agriculture',
-     'agropay',
-     'alipay',
-     'and systemic risk',
-     'apicist 2016',
-     'artificial intelligence',
-     'bank']
+    >>> pprint(items[:10])
+    ['1-bit quantization',
+     '1d convolutional neural network',
+     '1d-cnn',
+     '3d indoor localization',
+     '3d object detection',
+     '3d-modeling',
+     '5g',
+     '5g communication',
+     '5g integration',
+     '6g']
 
 """
 

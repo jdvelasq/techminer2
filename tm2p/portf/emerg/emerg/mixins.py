@@ -1,6 +1,6 @@
 import sys
 
-from tm2p.portf.emerg.emerg import Metrics
+# from tm2p.portf.emerg.emerg import Metrics
 
 # from tm2p.portfolio.thematic_stucture.co_occurrence.first_order_network_ import (
 #     ClusterToItems,

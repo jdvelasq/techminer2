@@ -136,35 +136,25 @@ class BaseIngest(
 
     def _generate_documents_report(self) -> None:
 
-        docs = (
+        viewer = (
             RecordViewer()
             .update(**self.params.__dict__)
-            .with_source_field(Field.ABSTR_RAW)
             .where_record_years_range(None, None)
             .where_record_global_citations_range(None, None)
             .where_records_match(None)
-            .run()
         )
 
-        filepath = Path(self.params.root_directory) / "report" / "documents-raw.txt"
-        with filepath.open("w", encoding="utf-8") as f:
-            for doc in docs:
-                f.write(f"{doc}\n---\n\n")
+        for field, file in [
+            (Field.ABSTR_RAW, "documents-raw.txt"),
+            (Field.ABSTR_TOK, "documents-tok.txt"),
+            (Field.ABSTR_UPPER, "documents-upper.txt"),
+        ]:
+            docs = viewer.with_source_field(field).run()
 
-        docs = (
-            RecordViewer()
-            .update(**self.params.__dict__)
-            .with_source_field(Field.ABSTR_TOK)
-            .where_record_years_range(None, None)
-            .where_record_global_citations_range(None, None)
-            .where_records_match(None)
-            .run()
-        )
-
-        filepath = Path(self.params.root_directory) / "report" / "documents-tok.txt"
-        with filepath.open("w", encoding="utf-8") as f:
-            for doc in docs:
-                f.write(f"{doc}\n---\n\n")
+            filepath = Path(self.params.root_directory) / "report" / file
+            with filepath.open("w", encoding="utf-8") as f:
+                for doc in docs:
+                    f.write(f"{doc}\n---\n\n")
 
     def run(self) -> None:
 

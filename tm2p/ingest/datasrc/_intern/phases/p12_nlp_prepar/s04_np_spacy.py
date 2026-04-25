@@ -8,9 +8,14 @@ from pandarallel import pandarallel  # type: ignore
 
 from tm2p._intern import stdout_to_stderr
 from tm2p._intern.data_access import load_main_csv_zip, save_main_csv_zip
+from tm2p._intern.packag_data.word_lists import load_builtin_word_list
 from tm2p.enum import Field
 
 spacy_nlp = spacy.load("en_core_web_lg")
+
+determiners = load_builtin_word_list("determiners.txt")
+discourse_connectors = load_builtin_word_list("discourse_connectors.txt")
+stopwords = load_builtin_word_list("stopwords.txt")
 
 
 def s04_np_spacy(root_directory: str) -> int:
@@ -52,6 +57,24 @@ def _process_row(row: pd.Series) -> Optional[str]:
 
     if not phrases:
         return None
+
+    for determiner in determiners:
+        phrases = [
+            term[len(determiner) + 1 :] if term.startswith(determiner + " ") else term
+            for term in phrases
+        ]
+
+    for connector in discourse_connectors:
+        phrases = [
+            term[len(connector) + 1 :] if term.startswith(connector + " ") else term
+            for term in phrases
+        ]
+
+    for stopword in stopwords:
+        phrases = [
+            term[len(stopword) + 1 :] if term.startswith(stopword + " ") else term
+            for term in phrases
+        ]
 
     punctuation = set(string.punctuation.replace("_", ""))
     phrases = [
