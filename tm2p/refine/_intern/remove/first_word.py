@@ -6,7 +6,7 @@ Smoke tests:
     ...     BaseFirstWord()
     ...     .with_thesaurus_file(ThFile.CONCEPT)
     ...     .having_word("business")
-    ...     .where_root_directory("tests/tinyml-scopus/")
+    ...     .where_root_directory("tests/regtech-scopus/")
     ...     .using_colored_output(False)
     ...     .run()
     ... )

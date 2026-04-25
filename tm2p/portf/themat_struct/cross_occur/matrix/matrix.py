@@ -139,7 +139,9 @@ class Matrix(
         metrics = (
             Metrics()
             .update(**self.params.__dict__)
+            #
             .with_analysis_unit(self.params.column_analysis_unit)
+            #
             .having_top_n_units(self.params.top_n_column_units)
             .having_units_ordered_by(self.params.column_unit_order_by)
             .having_unit_occurrence_between(
@@ -151,6 +153,7 @@ class Matrix(
                 self.params.column_unit_citation_range[1],
             )
             .having_units_in(self.params.column_units_in)
+            #
             .run()
         )
         return metrics

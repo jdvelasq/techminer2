@@ -3,16 +3,16 @@ BaseAuto
 ===============================================================================
 
 Smoke test:
-    >>> from tm2p.enum import Field, ThFile
+    >>> from tm2p.enum import AnalysisUnit, Field, ThFile
     >>> from tm2p.refine._intern.merge import BaseAuto
     >>> (
     ...     BaseAuto()
     ...     .with_thesaurus_file(ThFile.CONCEPT)
-    ...     .with_source_field(Field.DESCRIPTOR_RAW)
+    ...     .with_analysis_unit(AnalysisUnit.DESCRIPTOR)
     ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .run()
     ... )
-    '7288 → 4623 preferred terms'
+
 
 
 """
@@ -82,7 +82,7 @@ class BaseAuto(
         separator = "=" * self._HEADER_WIDTH
         self._write(f"\n{separator}\nPre-processing Thesaurus\n{separator}\n")
 
-    def run(self) -> str:
+    def run(self) -> None:
 
         self._print_header()
 
@@ -143,5 +143,3 @@ class BaseAuto(
             df = df.sort_values(PREFERRED)  # type: ignore
 
             save_dataframe_as_thesaurus(params=self.params, df=df)
-
-        return f"{initial_length} → {final_length} preferred terms"

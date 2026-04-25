@@ -1,17 +1,20 @@
 """
 Smoke test:
+    >>> from tm2p.enum import ThFile
     >>> from tm2p.refine._intern.data_access import load_thesaurus_as_dataframe
-    >>> load_thesaurus_as_dataframe(params=Params(
-    ...         root_directory="examples/fintech-with-references/",
-    ...         thesaurus_file="concepts.the.txt",
+    >>> df = load_thesaurus_as_dataframe(params=Params(
+    ...         root_directory="tests/regtech-scopus/",
+    ...         thesaurus_file=ThFile.CONCEPT,
     ...     )
-    ... ).head()
-                   PREFERRED_TERM                     VARIANT
-    0        a business ecozystem        a business ecozystem
-    1                a case study                a case study
-    2  a case study investigation  a case study investigation
-    3          a cashless society          a cashless society
-    4                 a challenge                 a challenge
+    ... )
+    >>> assert df.shape[0] > 0
+    >>> df.head()  # doctest: +NORMALIZE_WHITESPACE
+                            PREFERRED                         VARIANT
+    0                       'computer                       'computer
+    1                        'regtech                        'regtech
+    2            'short term projects            'short term projects
+    3  /machine learning applications  /machine learning applications
+    4                              19                              19
 
 
 
@@ -19,8 +22,8 @@ Smoke test:
 
 import pandas as pd  # type: ignore
 
-from tm2p.enum import ThField
 from tm2p._intern import Params
+from tm2p.enum import ThField
 
 from .get_thesaurus_path import get_thesaurus_path
 

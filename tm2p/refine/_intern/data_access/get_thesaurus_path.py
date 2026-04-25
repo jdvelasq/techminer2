@@ -1,10 +1,11 @@
 """
 Smoke test:
-    >>> from tm2p._intern.data_access import get_thesaurus_path
+    >>> from tm2p.enum import ThFile
+    >>> from tm2p.refine._intern.data_access import get_thesaurus_path
     >>> get_thesaurus_path(
-    ...     root_directory="my_root_directory", file="file.the.txt"
+    ...     root_directory="my_root_directory", file=ThFile.CONCEPT
     ... )
-    PosixPath('my_root_directory/data/thesaurus/file.the.txt')
+    PosixPath('my_root_directory/refine/thesaurus/concept.the.txt')
 
 """
 

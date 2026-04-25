@@ -8,7 +8,6 @@ Smoke tests:
     ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .run()
     ... )
-    7722
 
 
 """
@@ -26,7 +25,7 @@ class BaseSortByAlphabetRightToLeft(
 ):
     """:meta private:"""
 
-    def run(self):
+    def run(self) -> None:
         """:meta private:"""
 
         df = load_thesaurus_as_dataframe(params=self.params)
@@ -44,5 +43,3 @@ class BaseSortByAlphabetRightToLeft(
             params=self.params,
             df=df,
         )
-
-        return len(df)

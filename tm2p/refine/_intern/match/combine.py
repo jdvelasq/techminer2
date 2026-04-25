@@ -3,15 +3,15 @@ BaseCombineMatch
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.enum import Field, ThFile
+    >>> from tm2p.enum import ThFile, AnalysisUnit
     >>> from tm2p.refine._intern.match import BaseCombineMatch
     >>> (
     ...     BaseCombineMatch()
     ...     #
     ...     # FIELD:
     ...     .with_thesaurus_file(ThFile.CONCEPT)
-    ...     .with_source_field(Field.DESCRIPTOR_NORM)
-    ...     .where_root_directory("tests/tinyml-scopus/")
+    ...     .with_analysis_unit(AnalysisUnit.DESCRIPTOR)
+    ...     .where_root_directory("tests/regtech-scopus/")
     ...     .run()
     ... )
 
@@ -22,7 +22,7 @@ import sys
 import pandas as pd  # type: ignore
 
 from tm2p._intern import Params, ParamsMixin
-from tm2p.enum import ThField
+from tm2p.enum import ThField, UnitOrderBy
 from tm2p.portf.themat_struct.co_occur.mtx import MatrixList
 
 from ._intern.report_matches import report_matches
@@ -56,24 +56,37 @@ def compute_cooc_matrix(params: Params) -> pd.DataFrame:
     matrix_list = (
         MatrixList()
         .update(**params.__dict__)
+        #
+        .having_top_n_units(None)
+        .having_units_ordered_by(UnitOrderBy.OCC)
         .having_unit_occurrence_between(5, None)
+        .having_unit_global_citation_between(None, None)
+        .having_units_in(None)
+        #
+        .using_minimum_pair_co_occurrence(1)
+        #
+        .where_record_years_range(None, None)
+        .where_record_global_citations_range(None, None)
+        .where_records_match(None)
+        #
         .using_counters(True)
+        #
         .run()
     )
 
-    matrix_list["rows_occ"] = matrix_list["rows"].apply(
+    matrix_list["rows_occ"] = matrix_list["ROWS"].apply(
         lambda x: int(x.split(" ")[-1].split(":")[0]) if isinstance(x, str) else 0
     )
 
-    matrix_list["rows_gc"] = matrix_list["rows"].apply(
+    matrix_list["rows_gc"] = matrix_list["ROWS"].apply(
         lambda x: int(x.split(" ")[-1].split(":")[1]) if isinstance(x, str) else 0
     )
 
-    matrix_list["columns_occ"] = matrix_list["columns"].apply(
+    matrix_list["columns_occ"] = matrix_list["COLUMNS"].apply(
         lambda x: int(x.split(" ")[-1].split(":")[0]) if isinstance(x, str) else 0
     )
 
-    matrix_list["columns_gc"] = matrix_list["columns"].apply(
+    matrix_list["columns_gc"] = matrix_list["COLUMNS"].apply(
         lambda x: int(x.split(" ")[-1].split(":")[1]) if isinstance(x, str) else 0
     )
 
@@ -95,7 +108,7 @@ def compute_probabilities(matrix_list: pd.DataFrame) -> pd.DataFrame:
     matrix_list = matrix_list[matrix_list["combine?"] == "yes"]  #  type: ignore
 
     matrix_list = matrix_list.sort_values(
-        by=["rows_occ", "rows_gc", "probability", "rows"], ascending=False
+        by=["rows_occ", "rows_gc", "probability", "ROWS"], ascending=False
     )
 
     matrix_list = matrix_list.reset_index(drop=True)
@@ -109,8 +122,8 @@ def compute_matches(matrix_list: pd.DataFrame) -> dict[str, list[str]]:
 
     for _, row in matrix_list.iterrows():
 
-        row_key = row["rows"]
-        column_key = row["columns"]
+        row_key = row["ROWS"]
+        column_key = row["COLUMNS"]
 
         if row_key not in mapping:
             mapping[row_key] = []

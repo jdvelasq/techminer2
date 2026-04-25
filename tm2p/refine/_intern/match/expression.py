@@ -3,7 +3,7 @@ BaseExpressionMatch
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.enum import Field, ThFile
+    >>> from tm2p.enum import ThFile, AnalysisUnit
     >>> from tm2p.refine._intern.match import BaseExpressionMatch
     >>> (
     ...     BaseExpressionMatch()
@@ -12,8 +12,8 @@ Smoke tests:
     ...     #
     ...     # FIELD:
     ...     .with_thesaurus_file(ThFile.CONCEPT)
-    ...     .with_source_field(Field.DESCRIPTOR_NORM)
-    ...     .where_root_directory("tests/tinyml-scopus/")
+    ...     .with_analysis_unit(AnalysisUnit.DESCRIPTOR)
+    ...     .where_root_directory("tests/regtech-scopus/")
     ...     .run()
     ... )
 

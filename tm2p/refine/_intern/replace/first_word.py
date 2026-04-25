@@ -50,7 +50,7 @@ class BaseFirstWord(
         )
         df[ThField.PREFERRED.value] = df[ThField.PREFERRED.value].str.replace(
             f"^ {self.params.word} ",
-            f" {self.params.replacement} ",
+            " ",
             regex=True,
         )
         df[ThField.PREFERRED.value] = df[ThField.PREFERRED.value].str.strip()

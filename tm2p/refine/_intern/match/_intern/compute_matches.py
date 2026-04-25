@@ -1,7 +1,7 @@
 import pandas as pd  # type: ignore
 
 from tm2p._intern import Params
-from tm2p.enum import ThField
+from tm2p.enum import ThField, UnitOrderBy
 
 PREFERRED = ThField.PREFERRED.value
 SIGNATURE = ThField.SIGNATURE.value
@@ -11,7 +11,22 @@ def compute_matches(thesaurus_df: pd.DataFrame, params: Params) -> dict[str, lis
 
     from tm2p.portf.perf_metric.unit import Metrics
 
-    metrics = Metrics().update(**params.__dict__).run()
+    metrics = (
+        Metrics()
+        .update(**params.__dict__)
+        #
+        .having_top_n_units(None)
+        .having_units_ordered_by(UnitOrderBy.OCC)
+        .having_unit_occurrence_between(None, None)
+        .having_unit_global_citation_between(None, None)
+        .having_units_in(None)
+        #
+        .where_record_years_range(None, None)
+        .where_record_global_citations_range(None, None)
+        .where_records_match(None)
+        .run()
+    )
+
     counters = dict(zip(metrics.index, metrics.COUNTERS))
 
     mapping_df = thesaurus_df[[SIGNATURE, PREFERRED]].copy()

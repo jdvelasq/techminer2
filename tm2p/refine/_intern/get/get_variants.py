@@ -1,7 +1,7 @@
 """
 Smoke tests:
     >>> from tm2p.enum import ThFile
-    >>> from tm2p.refine._intern.oper import BaseGetVariants
+    >>> from tm2p.refine._intern.get import BaseGetVariants
     >>> terms = (
     ...     BaseGetVariants()
     ...     .with_thesaurus_file(ThFile.CONCEPT)
@@ -11,7 +11,7 @@ Smoke tests:
     ...             "fintech technology",
     ...         )
     ...     )
-    ...     .where_root_directory("tests/tinyml-scopus/")
+    ...     .where_root_directory("tests/regtech-scopus/")
     ...     .run()
     ... )
     >>> terms[:5]

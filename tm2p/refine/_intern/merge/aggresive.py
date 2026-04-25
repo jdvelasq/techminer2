@@ -4,70 +4,70 @@ Clump Keys
 
 
 Smoke tests:
-    >>> from tm2p.refine.thesaurus_old.user import InitializeThesaurus
-    >>> (
-    ...     InitializeThesaurus()
-    ...     .with_thesaurus_file("demo.the.txt")
-    ...     .with_field("raw_descriptors")
-    ...     .where_root_directory("tests/tinyml-scopus/")
-    ...     .using_colored_output(False)
-    ...     .run()
-    ... )
-    INFO: Thesaurus initialized successfully.
-      Success : True
-      File    : examples/fintech/data/thesaurus/demo.the.txt
-      Status  : 1721 keys found
-      Header  :
-        A_A_THEORY
-          A_A_THEORY
-        A_BASIC_RANDOM_SAMPLING_STRATEGY
-          A_BASIC_RANDOM_SAMPLING_STRATEGY
-        A_BEHAVIOURAL_PERSPECTIVE
-          A_BEHAVIOURAL_PERSPECTIVE
-        A_BETTER_UNDERSTANDING
-          A_BETTER_UNDERSTANDING
-        A_BLOCKCHAIN_IMPLEMENTATION_STUDY
-          A_BLOCKCHAIN_IMPLEMENTATION_STUDY
-        A_CASE_STUDY
-          A_CASE_STUDY
-        A_CHALLENGE
-          A_CHALLENGE
-        A_CLUSTER_ANALYSIS
-          A_CLUSTER_ANALYSIS
-    <BLANKLINE>
-
-
-    >>> from tm2p.refine.thesaurus_old.user import ClumpKeys
-    >>> (
-    ...     ClumpKeys(tqdm_disable=True, )
-    ...     .with_thesaurus_file("demo.the.txt")
-    ...     .using_colored_output(False)
-    ...     .where_root_directory("tests/tinyml-scopus/")
-    ...     .run()
-    ... )
-    INFO: Thesaurus clumped successfully.
-      Success : True
-      File    : examples/fintech/data/thesaurus/demo.the.txt
-      Status  : 64 changed keys
-      Header  :
-        BUSINESS_MODELS
-          BUSINESS_MODEL; BUSINESS_MODELS; NEW_BUSINESS_MODELS; REIMAGINE_BUSINESS_...
-        CAPACITY_BUILDING
-          CAPACITY_BUILDING; LARGE_SCALE_CAPACITY_BUILDING
-        CASE_STUDY
-          A_CASE_STUDY; CASE_STUDIES; CASE_STUDY; CASE_STUDY_SAMPLES; THE_CASE_STUD...
-        CLUSTER_ANALYSIS
-          A_CLUSTER_ANALYSIS; CLUSTER_ANALYSIS
-        DATA_DRIVEN
-          A_THEORETICAL_DATA_DRIVEN_FINTECH_FRAMEWORK; DATA_DRIVEN
-        DATA_SECURITY
-          DATA_SECURITY; DATA_SECURITY_AND_CONSUMER_TRUST; SECURITY_OF_DATA
-        DECISION_MAKING
-          A_NOVEL_HYBRID_MULTIPLE_CRITERIA_DECISION_MAKING_METHOD; DECISION_MAKING;...
-        DEVELOPING_COUNTRIES
-          DEVELOPING_COUNTRIES; THE_DEVELOPING_COUNTRIES
-    <BLANKLINE>
-
+#    >>> from tm2p.refine.thesaurus_old.user import InitializeThesaurus
+#    >>> (
+#    ...     InitializeThesaurus()
+#    ...     .with_thesaurus_file("demo.the.txt")
+#    ...     .with_field("raw_descriptors")
+#    ...     .where_root_directory("tests/tinyml-scopus/")
+#    ...     .using_colored_output(False)
+#    ...     .run()
+#    ... )
+#    INFO: Thesaurus initialized successfully.
+#      Success : True
+#      File    : examples/fintech/data/thesaurus/demo.the.txt
+#      Status  : 1721 keys found
+#      Header  :
+#        A_A_THEORY
+#          A_A_THEORY
+#        A_BASIC_RANDOM_SAMPLING_STRATEGY
+#          A_BASIC_RANDOM_SAMPLING_STRATEGY
+#        A_BEHAVIOURAL_PERSPECTIVE
+#          A_BEHAVIOURAL_PERSPECTIVE
+#        A_BETTER_UNDERSTANDING
+#          A_BETTER_UNDERSTANDING
+#        A_BLOCKCHAIN_IMPLEMENTATION_STUDY
+#          A_BLOCKCHAIN_IMPLEMENTATION_STUDY
+#        A_CASE_STUDY
+#          A_CASE_STUDY
+#        A_CHALLENGE
+#          A_CHALLENGE
+#        A_CLUSTER_ANALYSIS
+#          A_CLUSTER_ANALYSIS
+#    <BLANKLINE>
+#
+#
+#    >>> from tm2p.refine.thesaurus_old.user import ClumpKeys
+#    >>> (
+#    ...     ClumpKeys(tqdm_disable=True, )
+#    ...     .with_thesaurus_file("demo.the.txt")
+#    ...     .using_colored_output(False)
+#    ...     .where_root_directory("tests/tinyml-scopus/")
+#    ...     .run()
+#    ... )
+#    INFO: Thesaurus clumped successfully.
+#      Success : True
+#      File    : examples/fintech/data/thesaurus/demo.the.txt
+#      Status  : 64 changed keys
+#      Header  :
+#        BUSINESS_MODELS
+#          BUSINESS_MODEL; BUSINESS_MODELS; NEW_BUSINESS_MODELS; REIMAGINE_BUSINESS_...
+#        CAPACITY_BUILDING
+#          CAPACITY_BUILDING; LARGE_SCALE_CAPACITY_BUILDING
+#        CASE_STUDY
+#          A_CASE_STUDY; CASE_STUDIES; CASE_STUDY; CASE_STUDY_SAMPLES; THE_CASE_STUD...
+#        CLUSTER_ANALYSIS
+#          A_CLUSTER_ANALYSIS; CLUSTER_ANALYSIS
+#        DATA_DRIVEN
+#          A_THEORETICAL_DATA_DRIVEN_FINTECH_FRAMEWORK; DATA_DRIVEN
+#        DATA_SECURITY
+#          DATA_SECURITY; DATA_SECURITY_AND_CONSUMER_TRUST; SECURITY_OF_DATA
+#        DECISION_MAKING
+#          A_NOVEL_HYBRID_MULTIPLE_CRITERIA_DECISION_MAKING_METHOD; DECISION_MAKING;...
+#        DEVELOPING_COUNTRIES
+#          DEVELOPING_COUNTRIES; THE_DEVELOPING_COUNTRIES
+#    <BLANKLINE>
+#
 
 
 

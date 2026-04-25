@@ -1,9 +1,9 @@
 """
 Smoke tests:
     >>> from tm2p.enum import ThFile
-    >>> from tm2p.refine._intern.reset import Reset
+    >>> from tm2p.refine._intern.reset import BaseReset
     >>> (
-    ...     Reset()
+    ...     BaseReset()
     ...     .with_thesaurus_file(ThFile.CONCEPT)
     ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .run()

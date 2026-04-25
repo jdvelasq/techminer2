@@ -6,7 +6,7 @@ from .contains import ContainsMatch
 from .daitch_mokotoff import DaitchMokotoffMatch
 from .doublemetaphone import DoubleMetaphoneMatch
 from .endswith import EndsWithMatch
-from .expression import ExpressionMatch
+from .expr import ExpressionMatch
 from .fuzzy_0_exact import FuzzyZeroExactMatch
 from .fuzzy_1_exact import FuzzyOneExactMatch
 from .separator import SeparatorMatch
