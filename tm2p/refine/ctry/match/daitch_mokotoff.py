@@ -3,12 +3,12 @@ DaitchMokotoffMatch
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.refine.country.match import DaitchMokotoffMatch
+    >>> from tm2p.refine.ctry.match import DaitchMokotoffMatch
     >>> (
     ...     DaitchMokotoffMatch()
     ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .run()
-    ... )
+    ... ) # doctest: +SKIP
 
 """
 

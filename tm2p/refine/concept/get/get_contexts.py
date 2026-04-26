@@ -8,25 +8,33 @@ Smoke tests:
     ...     GetContexts()
     ...     .having_text_matching("fintech")
     ...     .having_n_contexts(10)
-    ...     .where_root_directory("tests/tinyml-scopus/")
+    ...     #
+    ...     .where_root_directory("tests/regtech-scopus/")
+    ...     .where_record_years_range(None, None)
+    ...     .where_record_global_citations_range(None, None)
+    ...     .where_records_match(None)
+    ...     #
     ...     .run()
     ... )
     >>> from pprint import pprint
-    >>> pprint(contexts[:5])
-    ['- this research delves into the transformative potential of integrating '
-     'financial technology ( fintech ) and blockchain in green finance . .',
-     '- purpose : the purpose of this study is to discuss the united arab emirates '
-     "' ( uae ) favorable attitude toward the financial sector digital "
-     'transformation and the development of fintech due to the rise of financial '
-     'technology . .',
-     '- fintech blends innovation and technology to provide financial inclusion to '
-     'stakeholders through various new products and services such metaverse and '
-     'artificial intelligence . .',
-     '- originality / value : this study is critical because the uae banking '
-     'sector serves diverse nationalities , and its success is contingent on '
-     'fintech and its competitive edge . .',
-     '- in recent years , the progress in fintech has emerged a significant source '
-     'to decline the energy which turns to enhance the environmental quality . .']
+    >>> pprint(contexts[:5])  # doctest: +SKIP
+    ['- this study investigates the efficacy of technological solutions by '
+     'examining how financial regulatory technology ( fintech ) , within the '
+     'broader context of corporate digital transformation , inhibits internal '
+     'corruption . .',
+     '- heterogeneity analysis reveals that larger firms , with greater resources '
+     'and more complex structures , derive more significant anti corruption '
+     'benefits from fintech . .',
+     '- fintech based crowdfunding platforms provide innovative green financial '
+     'products and regulatory technologies support in compliance with regulations '
+     '. .',
+     '- over the last 10 years , financial development has been technologically '
+     'advanced , and trends in this area are linked to the fintech phenomenon . .',
+     '- the purpose of this paper is to develop theoretical provisions regarding '
+     'trends and patterns of penetration of fintech into the financial system and '
+     'the methodological basis for assessing the development potential of fintech '
+     'at the country level in the context of financial development and economic '
+     'growth . .']
 
 """
 
@@ -43,9 +51,7 @@ class GetContexts(
 
         from .get_variants import GetVariants
 
-        terms = (
-            GetVariants(quiet=self.params.quiet).update(**self.params.__dict__).run()
-        )
+        terms = GetVariants().update(**self.params.__dict__).run()
 
         complete_contexts = []
 

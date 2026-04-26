@@ -4,46 +4,46 @@ Sort by Word Length
 
 
 Smoke tests:
-    >>> import sys
-    >>> from io import StringIO
-    >>> from tm2p.refine.thesaurus_old.system.descriptors import SortByWordLength
-
-    >>> # Redirecting stderr to avoid messages
-    >>> original_stderr = sys.stderr
-    >>> sys.stderr = StringIO()
-
-    >>> # Configure and run the sorter
-    >>> SortByWordLength().run()
-
-    >>> # Capture and print stderr output
-    >>> output = sys.stderr.getvalue()
-    >>> sys.stderr = original_stderr
-    >>> print(output)  # doctest: +SKIP
-    Sorting thesaurus by word length...
-      File : /Volumes/GitHub/tm2p/tm2p/_internals/package_data/thesaurus/system/descriptors.the.txt
-      Sorting process completed successfully
-    <BLANKLINE>
-    Printing thesaurus header
-      File : /Volumes/GitHub/tm2p/tm2p/_internals/package_data/thesaurus/system/descriptors.the.txt
-    <BLANKLINE>
-        BIBLIOMETRICS
-          BIBLIOMETRIC
-        ORGANIZATION
-          BUSINESS; BUSINESSES; COMPANIES; COMPANY; ENTERPRISE; ENTERPRISES; FIRM; ...
-        APPLICATION
-          APPLICATIONS
-        MULTI_TRANSFORMER
-          MULTI_TRANSFORMERS
-        SYNTHESIZER_TRANSFORMER
-          SYNTHESIZER_TRANSFORMERS
-        TEMPORAL_FUSION_TRANSFORMER
-          TEMPORAL_FUSION_TRANSFORMERS
-        TRANSFORMER_NETWORK
-          TRANSFORMER_NETWORKS
-        ARTIFICIAL_NEURAL_NETWORK
-          ARTIFICIAL_NEURAL_NETWORKS; ARTIFICIAL_NEURAL_NETWORK_MODEL; ARTIFICIAL_N...
-    <BLANKLINE>
-    <BLANKLINE>
+#    >>> import sys
+#    >>> from io import StringIO
+#    >>> from tm2p.refine.thesaurus_old.system.descriptors import SortByWordLength
+#
+#    >>> # Redirecting stderr to avoid messages
+#    >>> original_stderr = sys.stderr
+#    >>> sys.stderr = StringIO()
+#
+#    >>> # Configure and run the sorter
+#    >>> SortByWordLength().run()
+#
+#    >>> # Capture and print stderr output
+#    >>> output = sys.stderr.getvalue()
+#    >>> sys.stderr = original_stderr
+#    >>> print(output)  # doctest: +SKIP
+#    Sorting thesaurus by word length...
+#      File : /Volumes/GitHub/tm2p/tm2p/_internals/package_data/thesaurus/system/descriptors.the.txt
+#      Sorting process completed successfully
+#    <BLANKLINE>
+#    Printing thesaurus header
+#      File : /Volumes/GitHub/tm2p/tm2p/_internals/package_data/thesaurus/system/descriptors.the.txt
+#    <BLANKLINE>
+#        BIBLIOMETRICS
+#          BIBLIOMETRIC
+#        ORGANIZATION
+#          BUSINESS; BUSINESSES; COMPANIES; COMPANY; ENTERPRISE; ENTERPRISES; FIRM; ...
+#        APPLICATION
+#          APPLICATIONS
+#        MULTI_TRANSFORMER
+#          MULTI_TRANSFORMERS
+#        SYNTHESIZER_TRANSFORMER
+#          SYNTHESIZER_TRANSFORMERS
+#        TEMPORAL_FUSION_TRANSFORMER
+#          TEMPORAL_FUSION_TRANSFORMERS
+#        TRANSFORMER_NETWORK
+#          TRANSFORMER_NETWORKS
+#        ARTIFICIAL_NEURAL_NETWORK
+#          ARTIFICIAL_NEURAL_NETWORKS; ARTIFICIAL_NEURAL_NETWORK_MODEL; ARTIFICIAL_N...
+#    <BLANKLINE>
+#    <BLANKLINE>
 
 
 

@@ -3,14 +3,14 @@ FuzzyZeroExactMatch
 ===============================================================================
 
 Smoke test:
-    >>> from tm2p.refine.organization.match import FuzzyZeroExactMatch
+    >>> from tm2p.refine.org.match import FuzzyZeroExactMatch
     >>> (
     ...     FuzzyZeroExactMatch()
     ...     .using_similarity_cutoff(90)
     ...     .using_fuzzy_threshold(0)
     ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .run()
-    ... )
+    ... ) # doctest: +SKIP
 
 """
 

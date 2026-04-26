@@ -3,7 +3,7 @@ Reset
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.refine.organization.reset import Reset
+    >>> from tm2p.refine.org.reset import Reset
     >>> (
     ...     Reset()
     ...     .where_root_directory("tests/tinyml-scopus/")

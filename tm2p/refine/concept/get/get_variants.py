@@ -8,15 +8,15 @@ Smoke tests:
     ...     GetVariants()
     ...     .having_text_matching(
     ...         (
+    ...             "regtech",
     ...             "fintech",
-    ...             "fintech technology",
     ...         )
     ...     )
-    ...     .where_root_directory("tests/tinyml-scopus/")
+    ...     .where_root_directory("tests/regtech-scopus/")
     ...     .run()
     ... )
     >>> terms[:5]
-    ['fintech', 'fintech technology']
+    ['fintech', 'fintechs', 'robust fintech', 'understanding fintech', 'future regtech']
 
 """
 

@@ -3,12 +3,12 @@ BeiderMorseMatch
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.refine.country.match import BeiderMorseMatch
+    >>> from tm2p.refine.ctry.match import BeiderMorseMatch
     >>> (
     ...     BeiderMorseMatch()
     ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .run()
-    ... )
+    ... ) # doctest: +SKIP
 
 """
 

@@ -3,7 +3,7 @@ Apply
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.refine.country.apply import Apply
+    >>> from tm2p.refine.ctry.apply import Apply
     >>> (
     ...     Apply()
     ...     .where_root_directory("tests/tinyml-scopus/")

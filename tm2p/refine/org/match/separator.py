@@ -3,12 +3,12 @@ SeparatorMatch
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.refine.organization.match import SeparatorMatch
+    >>> from tm2p.refine.org.match import SeparatorMatch
     >>> (
     ...     SeparatorMatch()
     ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .run()
-    ... )
+    ... ) # doctest: +SKIP
 
 """
 

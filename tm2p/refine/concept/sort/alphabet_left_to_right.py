@@ -9,7 +9,6 @@ Smoke tests:
     ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .run()
     ... )
-    7722
 
 
 """

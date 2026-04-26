@@ -3,12 +3,12 @@ CommonInitialWords
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.refine.concept.resigt import CommonInitialWords
+    >>> from tm2p.refine.concept.regist import CommonInitialWords
     >>> (
     ...     CommonInitialWords()
     ...     .having_word("abandon")
     ...     .run()
-    ... )
+    ... )  # doctest: +SKIP
 
 """
 

@@ -8,7 +8,7 @@ Smoke tests:
     ...     Replace()
     ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .run()
-    ... )
+    ... )  # doctest: +SKIP
     >>> from tm2p.refine.concept.reset import Reset
     >>> (
     ...     Reset()

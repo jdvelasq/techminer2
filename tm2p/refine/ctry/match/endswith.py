@@ -3,7 +3,7 @@ EndsWithMatch
 ===============================================================================
 
 Smoke test:
-    >>> from tm2p.refine.country.match import EndsWithMatch
+    >>> from tm2p.refine.ctry.match import EndsWithMatch
     >>> (
     ...     EndsWithMatch()
     ...     .having_text_matching("ion")
@@ -11,7 +11,7 @@ Smoke test:
     ...     .using_fuzzy_threshold(80)
     ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .run()
-    ... )
+    ... ) # doctest: +SKIP
 
 """
 

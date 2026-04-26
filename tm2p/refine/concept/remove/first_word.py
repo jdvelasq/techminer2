@@ -3,7 +3,7 @@ FirstWord
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.refine.concept.replace import FirstWord
+    >>> from tm2p.refine.concept.remove import FirstWord
     >>> (
     ...     FirstWord()
     ...     .having_word("business")

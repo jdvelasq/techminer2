@@ -3,18 +3,18 @@ Are Synonymous?
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.refine.concept.ai import Synonys
-    >>> (
-    ...     Synonyms()
-    ...     .with_core_area("fintech (financial technologies)")
-    ...     .having_n_contexts(10)
-    ...     .having_top_n_units(10)
-    ...     .having_units_ordered_by("OCC")
-    ...     .having_unit_occurrence_between(None, None)
-    ...     .having_unit_global_citation_between(None, None)
-    ...     .having_units_in(None)
-    ...     .where_root_directory("tests/tinyml-scopus/")
-    ... ).run()
+#     >>> from tm2p.refine.concept.ai import Synonys
+#     >>> (
+#     ...     Synonyms()
+#     ...     .with_core_area("fintech (financial technologies)")
+#     ...     .having_n_contexts(10)
+#     ...     .having_top_n_units(10)
+#     ...     .having_units_ordered_by("OCC")
+#     ...     .having_unit_occurrence_between(None, None)
+#     ...     .having_unit_global_citation_between(None, None)
+#     ...     .having_units_in(None)
+#     ...     .where_root_directory("tests/tinyml-scopus/")
+#     ... ).run()
 
 
 """

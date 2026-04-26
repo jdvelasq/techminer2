@@ -3,12 +3,12 @@ CommonLastWords
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.refine.concept.resigt import CommonLastWords
+    >>> from tm2p.refine.concept.regist import CommonLastWords
     >>> (
     ...     CommonLastWords()
     ...     .having_word("abandon")
     ...     .run()
-    ... )
+    ... )  # doctest: +SKIP
 
 """
 

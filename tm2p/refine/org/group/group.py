@@ -3,7 +3,7 @@ Group
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.refine.organization.group import Group
+    >>> from tm2p.refine.org.group import Group
     >>> (
     ...     Group()
     ...     .where_root_directory("tests/tinyml-scopus/")

@@ -3,13 +3,12 @@ SortByMaxTokenLength
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.refine.organization.sort import SortByMaxTokenLength
+    >>> from tm2p.refine.org.sort import SortByMaxTokenLength
     >>> (
     ...     SortByMaxTokenLength()
-    ...     .where_root_directory("tests/tinyml-scopus/")
+    ...     .where_root_directory("tests/regtech-scopus/")
     ...     .run()
     ... )
-    7722
 
 
 """

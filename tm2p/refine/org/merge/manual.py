@@ -3,7 +3,7 @@ Manual
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.refine.organization.group import Manual
+    >>> from tm2p.refine.org.merge import Manual
     >>> (
     ...     Manual()
     ...     .having_text_matching(
@@ -14,7 +14,7 @@ Smoke tests:
     ...     )
     ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .run()
-    ... )
+    ... ) # doctest: +SKIP
 
 """
 

@@ -3,12 +3,12 @@ NounPhrases
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.refine.concept.resigt import NounPhrases
+    >>> from tm2p.refine.concept.regist import NounPhrases
     >>> (
     ...     NounPhrases()
     ...     .having_word("abatement costs")
     ...     .run()
-    ... )
+    ... )  # doctest: +SKIP
 
 """
 

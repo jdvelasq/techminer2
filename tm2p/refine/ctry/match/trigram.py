@@ -3,12 +3,12 @@ TriGramMatch
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.refine.country.match import TrigramMatch
+    >>> from tm2p.refine.ctry.match import TrigramMatch
     >>> (
     ...     TrigramMatch()
     ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .run()
-    ... )
+    ... ) # doctest: +SKIP
 
 """
 

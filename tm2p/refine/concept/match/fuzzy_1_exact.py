@@ -8,7 +8,7 @@ Smoke test:
     ...     FuzzyOneExactMatch()
     ...     .using_similarity_cutoff(88)
     ...     .using_fuzzy_threshold(80)
-    ...     .where_root_directory("tests/tinyml-scopus/")
+    ...     .where_root_directory("tests/regtech-scopus/")
     ...     .run()
     ... )
 

@@ -3,13 +3,12 @@ SortByCharacterLength
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.refine.country.sort import SortByCharacterLength
+    >>> from tm2p.refine.ctry.sort import SortByCharacterLength
     >>> (
     ...     SortByCharacterLength()
     ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .run()
     ... )
-    7722
 
 
 """

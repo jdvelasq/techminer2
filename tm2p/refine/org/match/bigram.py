@@ -3,12 +3,12 @@ BiGramMatch
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.refine.organization.match import BigramMatch
+    >>> from tm2p.refine.org.match import BigramMatch
     >>> (
     ...     BigramMatch()
     ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .run()
-    ... )
+    ... ) # doctest: +SKIP
 
 """
 

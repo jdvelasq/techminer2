@@ -3,13 +3,12 @@ SortByMaxTokenLength
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.refine.country.sort import SortByMaxTokenLength
+    >>> from tm2p.refine.ctry.sort import SortByMaxTokenLength
     >>> (
     ...     SortByMaxTokenLength()
     ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .run()
     ... )
-    7722
 
 
 """

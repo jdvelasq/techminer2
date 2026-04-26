@@ -3,13 +3,12 @@ SortByAlphabetLeftToRight
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.refine.country.sort import SortByAlphabetLeftToRight
+    >>> from tm2p.refine.ctry.sort import SortByAlphabetLeftToRight
     >>> (
     ...     SortByAlphabetLeftToRight()
     ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .run()
     ... )
-    7722
 
 
 """

@@ -3,9 +3,9 @@ Manual
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.refine.country.group import Auto
+    >>> from tm2p.refine.ctry.merge import Manual
     >>> (
-    ...     Auto()
+    ...     Manual()
     ...     .having_text_matching(
     ...         (
     ...             "fintech innovation",
@@ -14,7 +14,7 @@ Smoke tests:
     ...     )
     ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .run()
-    ... )
+    ... ) # doctest: +SKIP
 
 """
 

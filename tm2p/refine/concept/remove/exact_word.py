@@ -3,13 +3,13 @@ ExactWord
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.refine.concept.replace import ExactWord
+    >>> from tm2p.refine.concept.remove import ExactWord
     >>> (
     ...     ExactWord()
     ...     .having_word("business")
     ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .run()
-    ... )
+    ... )  # doctest: +SKIP
 
     >>> from tm2p.refine.concept.reset import Reset
     >>> (

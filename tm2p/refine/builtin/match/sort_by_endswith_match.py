@@ -4,52 +4,52 @@ Sort By EndsWith Match
 
 
 Smoke tests:
-    >>> import sys
-    >>> from io import StringIO
-    >>> from tm2p.refine.thesaurus_old.system.descriptors import SortByEndsWithMatch
-
-    >>> # Redirecting stderr to avoid messages
-    >>> original_stderr = sys.stderr
-    >>> sys.stderr = StringIO()
-
-    >>> # Configure and run the sorter
-    >>> (
-    ...     SortByEndsWithMatch()
-    ...     .having_text_matching("BANKS")
-    ...     .run()
-    ... )
-
-    >>> # Capture and print stderr output
-    >>> output = sys.stderr.getvalue()
-    >>> sys.stderr = original_stderr
-    >>> print(output)
-    Sorting thesaurus by endswith match...
-         File : ...tm2p/_internals/package_data/thesaurus/system/descriptors.the.txt
-      Pattern : BANKS
-      0 matching keys found
-      Sorting process completed successfully
-    <BLANKLINE>
-    Printing thesaurus header
-      File : /Volumes/GitHub/tm2p/tm2p/_internals/package_data/thesaurus/system/descriptors.the.txt
-    <BLANKLINE>
-        ANALYSIS
-          ANALYZES
-        APPLICATION
-          APPLICATIONS
-        APPROACH
-          APPROACHES
-        ARTICLE
-          ARTICLES
-        ARTIFICIAL_NEURAL_NETWORK
-          ARTIFICIAL_NEURAL_NETWORKS; ARTIFICIAL_NEURAL_NETWORK_MODEL; ARTIFICIAL_N...
-        AUTHOR
-          AUTHORS
-        BIBLIOMETRICS
-          BIBLIOMETRIC
-        BLOCK_CHAIN
-          BLOCK_CHAINS; BLOCKCHAIN; BLOCKCHAINS
-    <BLANKLINE>
-    <BLANKLINE>
+#    >>> import sys
+#    >>> from io import StringIO
+#    >>> from tm2p.refine.thesaurus_old.system.descriptors import SortByEndsWithMatch
+#
+#    >>> # Redirecting stderr to avoid messages
+#    >>> original_stderr = sys.stderr
+#    >>> sys.stderr = StringIO()
+#
+#    >>> # Configure and run the sorter
+#    >>> (
+#    ...     SortByEndsWithMatch()
+#    ...     .having_text_matching("BANKS")
+#    ...     .run()
+#    ... )
+#
+#    >>> # Capture and print stderr output
+#    >>> output = sys.stderr.getvalue()
+#    >>> sys.stderr = original_stderr
+#    >>> print(output)
+#    Sorting thesaurus by endswith match...
+#         File : ...tm2p/_internals/package_data/thesaurus/system/descriptors.the.txt
+#      Pattern : BANKS
+#      0 matching keys found
+#      Sorting process completed successfully
+#    <BLANKLINE>
+#    Printing thesaurus header
+#      File : /Volumes/GitHub/tm2p/tm2p/_internals/package_data/thesaurus/system/descriptors.the.txt
+#    <BLANKLINE>
+#        ANALYSIS
+#          ANALYZES
+#        APPLICATION
+#          APPLICATIONS
+#        APPROACH
+#          APPROACHES
+#        ARTICLE
+#          ARTICLES
+#        ARTIFICIAL_NEURAL_NETWORK
+#          ARTIFICIAL_NEURAL_NETWORKS; ARTIFICIAL_NEURAL_NETWORK_MODEL; ARTIFICIAL_N...
+#        AUTHOR
+#          AUTHORS
+#        BIBLIOMETRICS
+#          BIBLIOMETRIC
+#        BLOCK_CHAIN
+#          BLOCK_CHAINS; BLOCKCHAIN; BLOCKCHAINS
+#    <BLANKLINE>
+#    <BLANKLINE>
 
 
 """

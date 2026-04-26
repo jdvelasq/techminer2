@@ -3,20 +3,21 @@ GetVariants
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.refine.organization.get import GetVariants
+    >>> from tm2p.refine.org.get import GetVariants
     >>> terms = (
     ...     GetVariants()
     ...     .having_text_matching(
     ...         (
-    ...             "ADDIS ABABA UNIV",
-    ...             "AIN UNIV",
+    ...             "AIN SHAMS UNIV",
+    ...             "AL-BAYT UNIV",
     ...         )
     ...     )
-    ...     .where_root_directory("tests/tinyml-scopus/")
+    ...     .where_root_directory("tests/regtech-scopus/")
     ...     .run()
     ... )
     >>> terms[:5]
-    ['Addis Ababa University, Addis Ababa, Ethiopia', 'College of Business, Al Ain University, Al Ain, Abu Dhabi, United Arab Emirates']
+    ['Ain Shams University, Cairo, Egypt', 'Department of Business Administration, Business School, Al al-Bayt University, Al-Mafraq, Jordan', 'Department of Computer Science, Faculty of Information Technology, Al Al-Bayt University, Al-Mafraq, Jordan']
+
 
 """
 

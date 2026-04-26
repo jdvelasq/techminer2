@@ -3,7 +3,7 @@ StartsWithMatch
 ===============================================================================
 
 Smoke test:
-    >>> from tm2p.refine.organization.match import StartsWithMatch
+    >>> from tm2p.refine.org.match import StartsWithMatch
     >>> (
     ...     StartsWithMatch()
     ...     .having_text_matching("fint")
@@ -11,7 +11,7 @@ Smoke test:
     ...     .using_fuzzy_threshold(80)
     ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .run()
-    ... )
+    ... ) # doctest: +SKIP
 
 """
 

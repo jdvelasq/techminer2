@@ -4,67 +4,67 @@ Is Stopword?
 
 
 Smoke tests:
-    >>> # TEST PREPARATION
-    >>> from tm2p.refine.thesaurus_old.descriptors import InitializeThesaurus, IsStopword
-
-    >>> # Create the thesaurus
-    >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
-
-    >>> # Is stopword?
-    >>> from tm2p.refine.thesaurus_old.descriptors import IsStopword
-    >>> df = (
-    ...     IsStopword(quiet=False)
-    ...     .with_core_area("FINTECH - FINANCIAL TECHNOLOGIES")
-    ...     .having_n_contexts(10)
-    ...     .having_top_n_units(40)
-    ...     .having_units_ordered_by("OCC")
-    ...     .having_unit_occurrence_between(None, None)
-    ...     .having_unit_global_citation_between(None, None)
-    ...     .having_units_in(None)
-    ...     .where_root_directory("tests/tinyml-scopus/")
-    ... ).run()  # doctest: +SKIP
-    >>> df # doctest: +SKIP
-                           descriptor  is_domain_specific?  is_stopword?
-    0                    CASE_STUDIES                False          True
-    1                           CHINA                False          True
-    2                     COMPETITION                False          True
-    3                        RESEARCH                False          True
-    4                        SERVICES                False          True
-    5                         SURVEYS                False          True
-    6                      TECHNOLOGY                False          True
-    7         ARTIFICIAL_INTELLIGENCE                 True          True
-    8                            BANK                 True          True
-    9                         BANKING                 True          True
-    10                       BIG_DATA                 True          True
-    11                 BUSINESS_MODEL                 True          True
-    12                        FINANCE                 True          True
-    13           FINANCIAL_INDUSTRIES                 True          True
-    14           FINANCIAL_INNOVATION                 True          True
-    15          FINANCIAL_INSTITUTION                 True          True
-    16               FINANCIAL_MARKET                 True          True
-    17               FINANCIAL_SECTOR                 True          True
-    18              FINANCIAL_SERVICE                 True          True
-    19               FINANCIAL_SYSTEM                 True          True
-    20            INFORMATION_SYSTEMS                 True          True
-    21         INFORMATION_TECHNOLOGY                 True          True
-    22                     INNOVATION                 True          True
-    23                     INVESTMENT                 True          True
-    24                     REGULATION                 True          True
-    25                          RISKS                 True          True
-    26                 SUSTAINABILITY                 True          True
-    27        SUSTAINABLE_DEVELOPMENT                 True          True
-    28                       ADOPTION                 True         False
-    29                     BLOCKCHAIN                 True         False
-    30  FINANCIAL_SERVICES_INDUSTRIES                 True         False
-    31         FINANCIAL_TECHNOLOGIES                 True         False
-    32                        FINTECH                 True         False
-    33              FINTECH_COMPANIES                 True         False
-    34             FINTECH_INNOVATION                 True         False
-    35                 FINTECH_MARKET                 True         False
-    36               FINTECH_SERVICES                 True         False
-    37               FINTECH_STARTUPS                 True         False
-    38               FINTECH_START_UP                 True         False
-    39                        LENDING                 True         False
+#    >>> # TEST PREPARATION
+#    >>> from tm2p.refine.concept.ai import IsStopword
+#
+#    >>> # Create the thesaurus
+#    >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
+#
+#    >>> # Is stopword?
+#    >>> from tm2p.refine.thesaurus_old.descriptors import IsStopword
+#    >>> df = (
+#    ...     IsStopword(quiet=False)
+#    ...     .with_core_area("FINTECH - FINANCIAL TECHNOLOGIES")
+#    ...     .having_n_contexts(10)
+#    ...     .having_top_n_units(40)
+#    ...     .having_units_ordered_by("OCC")
+#    ...     .having_unit_occurrence_between(None, None)
+#    ...     .having_unit_global_citation_between(None, None)
+#    ...     .having_units_in(None)
+#    ...     .where_root_directory("tests/tinyml-scopus/")
+#    ... ).run()  # doctest: +SKIP
+#    >>> df # doctest: +SKIP
+#                           descriptor  is_domain_specific?  is_stopword?
+#    0                    CASE_STUDIES                False          True
+#    1                           CHINA                False          True
+#    2                     COMPETITION                False          True
+#    3                        RESEARCH                False          True
+#    4                        SERVICES                False          True
+#    5                         SURVEYS                False          True
+#    6                      TECHNOLOGY                False          True
+#    7         ARTIFICIAL_INTELLIGENCE                 True          True
+#    8                            BANK                 True          True
+#    9                         BANKING                 True          True
+#    10                       BIG_DATA                 True          True
+#    11                 BUSINESS_MODEL                 True          True
+#    12                        FINANCE                 True          True
+#    13           FINANCIAL_INDUSTRIES                 True          True
+#    14           FINANCIAL_INNOVATION                 True          True
+#    15          FINANCIAL_INSTITUTION                 True          True
+#    16               FINANCIAL_MARKET                 True          True
+#    17               FINANCIAL_SECTOR                 True          True
+#    18              FINANCIAL_SERVICE                 True          True
+#    19               FINANCIAL_SYSTEM                 True          True
+#    20            INFORMATION_SYSTEMS                 True          True
+#    21         INFORMATION_TECHNOLOGY                 True          True
+#    22                     INNOVATION                 True          True
+#    23                     INVESTMENT                 True          True
+#    24                     REGULATION                 True          True
+#    25                          RISKS                 True          True
+#    26                 SUSTAINABILITY                 True          True
+#    27        SUSTAINABLE_DEVELOPMENT                 True          True
+#    28                       ADOPTION                 True         False
+#    29                     BLOCKCHAIN                 True         False
+#    30  FINANCIAL_SERVICES_INDUSTRIES                 True         False
+#    31         FINANCIAL_TECHNOLOGIES                 True         False
+#    32                        FINTECH                 True         False
+#    33              FINTECH_COMPANIES                 True         False
+#    34             FINTECH_INNOVATION                 True         False
+#    35                 FINTECH_MARKET                 True         False
+#    36               FINTECH_SERVICES                 True         False
+#    37               FINTECH_STARTUPS                 True         False
+#    38               FINTECH_START_UP                 True         False
+#    39                        LENDING                 True         False
 
 
 

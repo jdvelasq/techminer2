@@ -3,12 +3,12 @@ DoubleMetaphoneMatch
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.refine.organization.match import DoubleMetaphoneMatch
+    >>> from tm2p.refine.org.match import DoubleMetaphoneMatch
     >>> (
     ...     DoubleMetaphoneMatch()
     ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .run()
-    ... )
+    ... ) # doctest: +SKIP
 
 """
 

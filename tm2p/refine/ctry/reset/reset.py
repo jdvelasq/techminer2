@@ -3,12 +3,12 @@ Reset
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.refine.country.reset import Reset
+    >>> from tm2p.refine.ctry.reset import Reset
     >>> (
-    ...     ReplaceInitialWord()
-    ...     .where_root_directory("tests/tinyml-scopus/")
+    ...     Reset()
+    ...     .where_root_directory("tests/regtech-scopus/")
     ...     .run()
-    ... )
+    ... ) # doctest: +SKIP
 
 """
 

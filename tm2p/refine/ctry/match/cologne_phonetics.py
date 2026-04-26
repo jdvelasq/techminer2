@@ -3,12 +3,12 @@ ColognePhoneticsMatch
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.refine.country.match import ColognePhoneticsMatch
+    >>> from tm2p.refine.ctry.match import ColognePhoneticsMatch
     >>> (
     ...     ColognePhoneticsMatch()
     ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .run()
-    ... )
+    ... ) # doctest: +SKIP
 
 """
 

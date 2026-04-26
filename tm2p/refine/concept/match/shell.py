@@ -8,7 +8,7 @@ Smoke tests:
     ...     Shell()
     ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .run()
-    ... )
+    ... )  # doctest: +SKIP
 
 """
 

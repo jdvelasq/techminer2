@@ -3,7 +3,7 @@ Explode
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.refine.country.group import Explode
+    >>> from tm2p.refine.ctry.group import Explode
     >>> (
     ...     Explode()
     ...     .where_root_directory("tests/tinyml-scopus/")

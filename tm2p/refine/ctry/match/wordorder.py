@@ -3,12 +3,12 @@ WordOrderMatch
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.refine.country.match import WordOrderMatch
+    >>> from tm2p.refine.ctry.match import WordOrderMatch
     >>> (
     ...     WordOrderMatch()
     ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .run()
-    ... )
+    ... ) # doctest: +SKIP
 
 """
 

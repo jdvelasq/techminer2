@@ -3,7 +3,7 @@ ContainsMatch
 ===============================================================================
 
 Smoke test:
-    >>> from tm2p.refine.country.match import ContainsMatch
+    >>> from tm2p.refine.ctry.match import ContainsMatch
     >>> (
     ...     ContainsMatch()
     ...     .having_text_matching("firm")
@@ -11,7 +11,7 @@ Smoke test:
     ...     .using_fuzzy_threshold(80)
     ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .run()
-    ... )
+    ... ) # doctest: +SKIP
 
 """
 

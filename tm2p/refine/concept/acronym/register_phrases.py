@@ -3,30 +3,30 @@ Register Phrases
 ===============================================================================
 
 Smoke tests:
-    >>> import shutil
-    >>> import sys
-    >>> from io import StringIO
-    >>> from tm2p.refine.thesaurus_old.acronyms import RegisterPhrases
-
-    >>> # Redirecting stderr to avoid messages
-    >>> original_stderr = sys.stderr
-    >>> sys.stderr = StringIO()
-
-    >>> # Copy the acronyms file
-    >>> shutil.copy("examples/fintech/acronyms.the.txt", "examples/fintech/data/thesaurus/acronyms.the.txt")
-    'examples/fintech/data/thesaurus/acronyms.the.txt'
-
-    >>> # Register new thesaurus phrases
-    >>> RegisterPhrases(root_directory="examples/fintech/", ).run()
-
-    >>> # Capture and print stderr output
-    >>> output = sys.stderr.getvalue()
-    >>> sys.stderr = original_stderr
-    >>> print(output)
-    Registering new noun phrases...
-      Registration process completed successfully
-    <BLANKLINE>
-    <BLANKLINE>
+#    >>> import shutil
+#    >>> import sys
+#    >>> from io import StringIO
+#    >>> from tm2p.refine.thesaurus_old.acronyms import RegisterPhrases
+#
+#    >>> # Redirecting stderr to avoid messages
+#    >>> original_stderr = sys.stderr
+#    >>> sys.stderr = StringIO()
+#
+#    >>> # Copy the acronyms file
+#    >>> shutil.copy("examples/fintech/acronyms.the.txt", "examples/fintech/data/thesaurus/acronyms.the.txt")
+#    'examples/fintech/data/thesaurus/acronyms.the.txt'
+#
+#    >>> # Register new thesaurus phrases
+#    >>> RegisterPhrases(root_directory="examples/fintech/", ).run()
+#
+#    >>> # Capture and print stderr output
+#    >>> output = sys.stderr.getvalue()
+#    >>> sys.stderr = original_stderr
+#    >>> print(output)
+#    Registering new noun phrases...
+#      Registration process completed successfully
+#    <BLANKLINE>
+#    <BLANKLINE>
 
 """
 

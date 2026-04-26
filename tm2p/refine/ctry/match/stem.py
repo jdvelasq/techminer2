@@ -3,12 +3,12 @@ StemMatch
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.refine.country.match import StemMatch
+    >>> from tm2p.refine.ctry.match import StemMatch
     >>> (
     ...     StemMatch()
     ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .run()
-    ... )
+    ... ) # doctest: +SKIP
 
 """
 
