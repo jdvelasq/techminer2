@@ -42,7 +42,7 @@ class BaseExpressionMatch(
 
     def run(self) -> None:
 
-        from tm2p.portf.perf_metric.unit import Metrics
+        from tm2p.portfolio.perform_metr.unit import Metrics
 
         if isinstance(self.params.pattern, str):
             self.params.pattern = (self.params.pattern,)

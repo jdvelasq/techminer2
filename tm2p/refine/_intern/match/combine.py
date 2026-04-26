@@ -23,7 +23,7 @@ import pandas as pd  # type: ignore
 
 from tm2p._intern import Params, ParamsMixin
 from tm2p.enum import ThField, UnitOrderBy
-from tm2p.portf.themat_struct.co_occur.mtx import MatrixList
+from tm2p.portfolio.thematic_struct.co_occur.matrix import MatrixList
 
 from ._intern.report_matches import report_matches
 

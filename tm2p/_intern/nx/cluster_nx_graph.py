@@ -1,4 +1,16 @@
-from cdlib import algorithms  # type: ignore
+import contextlib
+import io
+import sys
+
+
+@contextlib.contextmanager
+def suppress_stdout():
+    old = sys.stdout
+    sys.stdout = io.StringIO()
+    try:
+        yield
+    finally:
+        sys.stdout = old
 
 
 def cluster_nx_graph(
@@ -48,6 +60,9 @@ def _apply_cdlib_algorithm(
 ):
     """Network community detection."""
 
+    with suppress_stdout():
+        from cdlib import algorithms  # type: ignore
+
     cdlib_algorithm = {
         "INFOMAP": algorithms.infomap,
         "LEIDEN": algorithms.leiden,
@@ -69,7 +84,8 @@ def _apply_cdlib_algorithm(
         kwargs["weights"] = "weight"
         kwargs["seed"] = 0
 
-    communities = cdlib_algorithm(nx_graph, **kwargs).communities
+    with suppress_stdout():
+        communities = cdlib_algorithm(nx_graph, **kwargs).communities
 
     for i_community, community in enumerate(communities):
         for node in community:

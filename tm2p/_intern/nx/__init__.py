@@ -1,14 +1,8 @@
-from ..plots.nx.build_node_treemap import plot_node_treemap
 from .add_weighted_edges_from_matrix_list import add_weighted_edges_from_matrix_list
 from .assign_clusters_to_nodes import assign_clusters_to_nodes
 from .assign_constant_to_edge_colors import assign_constant_to_edge_colors
 from .assign_constant_to_node_colors import assign_constant_to_node_colors
-from .assign_constant_to_node_sizes import assign_constant_to_node_sizes
-from .assign_constant_to_textfont_opacity import assign_constant_to_textfont_opacity
-from .assign_constant_to_textfont_sizes import assign_constant_textfont_size_to_nodes
 from .assign_degree_to_nodes import assign_degree_to_nodes
-from .assign_edge_color_opacity import assign_edge_color_opacity
-from .assign_edge_colors_based_on_weight import assign_edge_colors_based_on_weight
 from .assign_edge_widths_based_on_weight import assign_edge_widths_based_on_weight
 from .assign_node_colors_based_on_group_attribute import (
     assign_node_colors_based_on_group_attribute,
@@ -46,7 +40,6 @@ from .compute_clustered_spring_layout_positions import (
 from .compute_node_metrics import compute_node_metrics
 from .compute_spring_layout_positions import compute_spring_layout_positions
 from .create_cluster_to_items_mapping import create_cluster_to_items_mapping
-from .create_concept_grid_plot import concept_grid_plot
 from .create_item_to_cluster_mapping import create_item_to_cluster_mapping
 from .create_network_density_plot import create_network_density_plot
 from .create_node_degree_dataframe import create_node_degree_dataframe
@@ -57,20 +50,14 @@ from .plot_nx_graph import plot_nx_graph
 from .remove_isolated_nodes_from_matrix_list import (
     remove_isolated_nodes_from_matrix_list,
 )
-from .remove_nodes_and_links import remove_nodes_and_links
 from .summarize_communities import summarize_communities
 
 __all__ = [
     "add_weighted_edges_from_matrix_list",
     "assign_clusters_to_nodes",
-    "assign_constant_textfont_size_to_nodes",
     "assign_constant_to_edge_colors",
     "assign_constant_to_node_colors",
-    "assign_constant_to_node_sizes",
-    "assign_constant_to_textfont_opacity",
     "assign_degree_to_nodes",
-    "assign_edge_color_opacity",
-    "assign_edge_colors_based_on_weight",
     "assign_edge_widths_based_on_weight",
     "assign_node_colors_based_on_group_attribute",
     "assign_node_sizes_based_on_citations",
@@ -89,7 +76,6 @@ __all__ = [
     "compute_clustered_spring_layout_positions",
     "compute_node_metrics",
     "compute_spring_layout_positions",
-    "concept_grid_plot",
     "create_cluster_to_items_mapping",
     "create_network_density_plot",
     "create_node_degree_dataframe",
@@ -97,10 +83,8 @@ __all__ = [
     "create_nx_graph_from_matrix",
     "create_item_to_cluster_mapping",
     "extract_communities",
-    "build_node_treemap",
     "plot_nx_graph",
     "remove_isolated_nodes_from_matrix_list",
-    "remove_nodes_and_links",
     "summarize_communities",
     "compute_clustered_spring_layout_positions",
 ]
