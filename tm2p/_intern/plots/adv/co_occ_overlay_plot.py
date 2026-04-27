@@ -1,3 +1,5 @@
+from typing import Union
+
 import networkx as nx  # type: ignore
 import pandas as pd  # type: ignore
 import plotly.graph_objects as go  # type: ignore
@@ -42,7 +44,7 @@ def build_co_occ_overlay_plot(
     similarity_matrix: pd.DataFrame,
     co_occurrence_matrix: pd.DataFrame,
     i2c: dict[str, int],
-    i2y: dict[str, float],
+    i2y: dict[str, Union[int, float]],
 ) -> go.Figure:
 
     nx_graph = nx.from_pandas_adjacency(similarity_matrix)
