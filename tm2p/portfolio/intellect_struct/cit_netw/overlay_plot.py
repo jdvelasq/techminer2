@@ -168,6 +168,10 @@ Smoke tests:
 
 """
 
+from typing import Union
+
+from plotly import graph_objects as go  # type: ignore
+
 from tm2p._intern import ParamsMixin
 from tm2p._intern.plots.adv.co_occ_overlay_plot import build_co_occ_overlay_plot
 from tm2p.enum import AnalysisUnit, UnitOrderBy
@@ -183,7 +187,7 @@ class OverlayPlot(
 ):
     """:meta private:"""
 
-    def run(self):
+    def run(self) -> go.Figure:
         """:meta private:"""
 
         similarity_matrix = (
@@ -195,6 +199,8 @@ class OverlayPlot(
             .using_counters(True)
             .run()
         )
+
+        i2y: dict[str, Union[int, float]] = {}
 
         if self.params.analysis_unit == AnalysisUnit.DOC:
             docs = similarity_matrix.index.to_list()
