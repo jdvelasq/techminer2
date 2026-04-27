@@ -7,7 +7,7 @@ from .dir_matrix import DirectMatrix
 from .dir_matrix_list import DirectMatrixList
 from .item_to_clust import ItemToCluster
 from .items_by_clust import ItemsByCluster
-from .mtx import Matrix
+from .matrix import Matrix
 from .netw_plot import NetworkPlot
 from .node_metr import NodeMetrics
 from .overlay_plot import OverlayPlot

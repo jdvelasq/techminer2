@@ -89,7 +89,7 @@ from tm2p._intern.plots.adv.co_occ_dens_plot import build_co_occ_density_plot
 
 from .dir_matrix import DirectMatrix
 from .item_to_clust import ItemToCluster
-from .mtx import Matrix as CoOccurrenceMatrix
+from .matrix import Matrix as CoOccurrenceMatrix
 
 
 class DensityPlot(

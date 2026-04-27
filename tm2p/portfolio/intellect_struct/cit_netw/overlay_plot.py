@@ -1,12 +1,12 @@
 """
-NetworkPlot
+OverlayPlot
 ===============================================================================
 
 * **AnalysisUnit.DOC**
 
 .. raw:: html
 
-    <iframe src="../_generated/px.portfolio.intellect_struct.cit_netw.network_plot_doc.html"
+    <iframe src="../_generated/px.portfolio.intellect_struct.cit_netw.overlay_plot_doc.html"
     height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
@@ -15,12 +15,12 @@ Smoke tests:
     >>> from tm2p.enum import GraphClusteringAlgorithm  # type: ignore
     >>> from tm2p.enum import Scaling  # type: ignore
     >>> from tm2p.enum import NodeSizeMetric  # type: ignore
-    >>> from tm2p.portfolio.intellect_struct.cit_netw import NetworkPlot  # type: ignore
+    >>> from tm2p.portfolio.intellect_struct.cit_netw import OverlayPlot  # type: ignore
     >>> # ---------------------------------------------------------------------
     >>> # DOC
     >>> # ---------------------------------------------------------------------
     >>> fig = (
-    ...     NetworkPlot()
+    ...     OverlayPlot()
     ...     #
     ...     # ANALYSIS UNIT:
     ...     .with_analysis_unit(AnalysisUnit.DOC)
@@ -39,19 +39,13 @@ Smoke tests:
     ...     .using_spring_layout_iterations(100)
     ...     .using_spring_layout_seed(0)
     ...     #
-    ...     .using_discrete_node_colors(
-    ...         (
-    ...             "#1f77b4",
-    ...             "#ff7f0e",
-    ...             "#2ca02c",
-    ...             "#d62728",
-    ...             "#9467bd",
-    ...             "#8c564b",
-    ...             "#e377c2",
-    ...             "#7f7f7f",
-    ...             "#bcbd22",
-    ...             "#17becf",
-    ...         )
+    ...     .using_colorscale(
+    ...         [
+    ...             [0.00, "#2C7BB6"],
+    ...             [0.35, "#00A6CA"],
+    ...             [0.65, "#4EBA6F"],
+    ...             [1.00, "#F28E2B"],
+    ...         ]
     ...     )
     ...     .using_min_node_degree(2)
     ...     .using_node_scaling(Scaling.SQRT)
@@ -86,7 +80,7 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> fig.write_html("docsrc/_generated/px.portfolio.intellect_struct.cit_netw.network_plot_doc.html")
+    >>> fig.write_html("docsrc/_generated/px.portfolio.intellect_struct.cit_netw.overlay_plot_doc.html")
 
 
 
@@ -94,7 +88,7 @@ Smoke tests:
 
 .. raw:: html
 
-    <iframe src="../_generated/px.portfolio.intellect_struct.cit_netw.network_plot_auth.html"
+    <iframe src="../_generated/px.portfolio.intellect_struct.cit_netw.overlay_plot_auth.html"
     height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
@@ -102,7 +96,7 @@ Smoke tests:
     >>> # OTHER
     >>> # ---------------------------------------------------------------------
     >>> fig = (
-    ...     NetworkPlot()
+    ...     OverlayPlot()
     ...     #
     ...     # ANALYSIS UNIT:
     ...     .with_analysis_unit(AnalysisUnit.AUTH)
@@ -126,19 +120,13 @@ Smoke tests:
     ...     .using_spring_layout_iterations(100)
     ...     .using_spring_layout_seed(0)
     ...     #
-    ...     .using_discrete_node_colors(
-    ...         (
-    ...             "#1f77b4",
-    ...             "#ff7f0e",
-    ...             "#2ca02c",
-    ...             "#d62728",
-    ...             "#9467bd",
-    ...             "#8c564b",
-    ...             "#e377c2",
-    ...             "#7f7f7f",
-    ...             "#bcbd22",
-    ...             "#17becf",
-    ...         )
+    ...     .using_colorscale(
+    ...         [
+    ...             [0.00, "#2C7BB6"],
+    ...             [0.35, "#00A6CA"],
+    ...             [0.65, "#4EBA6F"],
+    ...             [1.00, "#F28E2B"],
+    ...         ]
     ...     )
     ...     .using_min_node_degree(2)
     ...     .using_node_scaling(Scaling.SQRT)
@@ -173,7 +161,7 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> fig.write_html("docsrc/_generated/px.portfolio.intellect_struct.cit_netw.network_plot_auth.html")
+    >>> fig.write_html("docsrc/_generated/px.portfolio.intellect_struct.cit_netw.overlay_plot_auth.html")
 
 
 
@@ -181,14 +169,16 @@ Smoke tests:
 """
 
 from tm2p._intern import ParamsMixin
-from tm2p._intern.plots.adv.co_occ_netw_plot import build_co_occ_network_plot
+from tm2p._intern.plots.adv.co_occ_overlay_plot import build_co_occ_overlay_plot
+from tm2p.enum import AnalysisUnit, UnitOrderBy
+from tm2p.portfolio.perform_metr.trend.trend import Trends
 
 from .dir_matrix import DirectMatrix
 from .item_to_clust import ItemToCluster
 from .matrix import Matrix as CoOccurrenceMatrix
 
 
-class NetworkPlot(
+class OverlayPlot(
     ParamsMixin,
 ):
     """:meta private:"""
@@ -206,13 +196,36 @@ class NetworkPlot(
             .run()
         )
 
+        if self.params.analysis_unit == AnalysisUnit.DOC:
+            docs = similarity_matrix.index.to_list()
+            docs = [" ".join(d.split(" ")[:-1]) for d in docs]
+            years = [int(d.split(", ")[1]) for d in docs]
+            i2y = dict(zip(docs, years))
+
+        else:
+            trends = (
+                Trends()
+                .update(**self.params.__dict__)
+                .having_top_n_units(None)
+                .having_unit_global_citation_between(None, None)
+                .having_unit_occurrence_between(None, None)
+                .having_units_in(None)
+                .having_units_ordered_by(UnitOrderBy.OCC)
+                .run()
+            )
+            years = trends.columns.astype(int)
+            avg_year = (trends * years).sum(axis=1) / trends.sum(axis=1)
+            avg_year = avg_year.round(1)
+            i2y = dict(zip(trends.index, avg_year))
+
         i2c = ItemToCluster().update(**self.params.__dict__).using_counters(True).run()
 
-        fig = build_co_occ_network_plot(
+        fig = build_co_occ_overlay_plot(
             params=self.params,
             similarity_matrix=similarity_matrix,
             co_occurrence_matrix=co_occ_matrix,
             i2c=i2c,
+            i2y=i2y,
         )
 
         return fig

@@ -1,9 +1,3 @@
-"""
-Compute the main path in a citation network.
-
-
-"""
-
 import copy
 import sys
 
@@ -14,8 +8,9 @@ from tm2p.enum import Field
 YEAR = Field.YEAR.value
 GCS = Field.GCS.value
 LCS = Field.LCS.value
-RID = Field.REC_ID.value
+REC_ID = Field.REC_ID.value
 LCR = Field.LCR_WOS_FORMAT.value
+SHORT_NAME = Field.REC_SHORT_NAME.value
 
 
 # ------------------------------------------------------------------------------
@@ -28,26 +23,33 @@ def step_01_create_citations_table(params):
     # Extracts the records using the specified parameters
     records = load_filtered_main_csv_zip(params=params)
 
+    short_names = dict(
+        zip(
+            records[REC_ID].to_list(),
+            records[SHORT_NAME].to_list(),
+        )
+    )
+
     records = records.sort_values(
-        [GCS, LCS, YEAR, RID],
+        [GCS, LCS, YEAR, REC_ID],
         ascending=[False, False, False, True],
     )
 
-    if params.citation_threshold is not None:
-        records = records.loc[records[GCS] >= params.citation_threshold, :]
-    if params.top_n is not None:
-        records = records.head(params.top_n)
+    if params.minimum_cited_unit_occurrences is not None:
+        records = records.loc[records[GCS] >= params.minimum_cited_unit_occurrences, :]
+    if params.top_n_units is not None:
+        records = records.head(params.top_n_units)
 
     #
     # Builds a dataframe with citing and cited articles
-    data_frame = records[[RID, LCR, GCS]]
+    data_frame = records[[REC_ID, LCR, GCS]]
 
     data_frame.loc[:, LCR] = data_frame[LCR].str.split(";")
     data_frame = data_frame.explode(LCR)
     data_frame[LCR] = data_frame[LCR].str.strip()
 
     data_frame = data_frame[
-        data_frame[LCR].map(lambda x: x in data_frame[RID].to_list())
+        data_frame[LCR].map(lambda x: x in data_frame[REC_ID].to_list())
     ]
 
     #
@@ -59,27 +61,27 @@ def step_01_create_citations_table(params):
     rename_dict = {
         key: value
         for key, value in zip(
-            records[RID].to_list(),
-            (records[RID] + records[GCS].map(fmt.format)).to_list(),
+            records[REC_ID].to_list(),
+            (records[REC_ID] + records[GCS].map(fmt.format)).to_list(),
         )
     }
     #
-    data_frame[RID] = data_frame[RID].map(rename_dict)
+    data_frame[REC_ID] = data_frame[REC_ID].map(rename_dict)
     data_frame[LCR] = data_frame[LCR].map(rename_dict)
 
     #
     # Creates the citation network
-    data_frame = data_frame[[RID, LCR]]
+    data_frame = data_frame[[REC_ID, LCR]]
     data_frame = data_frame.rename(
         columns={
-            RID: "CITING_DOC",
+            REC_ID: "CITING_DOC",
             LCR: "CITED_DOC",
         }
     )
 
     data_frame = data_frame.dropna()
 
-    return data_frame
+    return data_frame, short_names
 
 
 # ------------------------------------------------------------------------------
@@ -255,9 +257,24 @@ def compute_main_path(
 
     internal__notify_process_start()
 
-    df = step_01_create_citations_table(params)
+    df, short_names = step_01_create_citations_table(params)
     main_path_docs, df = step_02_extracts_main_path_documents(df)
     df = step_03_filter_data_frame(df, main_path_docs)
+
+    units = set(df["CITING_DOC"].tolist() + df["CITED_DOC"].tolist())
+    unit2cit = dict(zip(list(units), [u.split(" ")[-1] for u in units]))
+    unit2short = dict(
+        zip(
+            list(units),
+            [
+                short_names[" ".join(unit.split(" ")[:-1])] + " " + unit2cit[unit]
+                for unit in units
+            ],
+        )
+    )
+
+    df["CITING_DOC"] = df["CITING_DOC"].map(unit2short)
+    df["CITED_DOC"] = df["CITED_DOC"].map(unit2short)
 
     internal__notify_process_end()
 

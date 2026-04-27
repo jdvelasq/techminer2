@@ -51,11 +51,11 @@ def build_co_occ_overlay_plot(
     nx_graph = set_node_group(nx_graph, i2c)
     nx_graph = set_node_year(nx_graph, i2y)
 
-    nx_graph = remove_isolated_nodes(nx_graph)
     nx_graph = keep_top_k_edges_per_node(params, nx_graph)
     nx_graph = keep_top_n_edges(params, nx_graph)
     nx_graph = remove_weak_nodes(params, nx_graph)
     nx_graph = keep_top_n_nodes(params, nx_graph)
+    nx_graph = remove_isolated_nodes(nx_graph)
 
     nx_graph = set_top_n_node_labels(
         params=params,

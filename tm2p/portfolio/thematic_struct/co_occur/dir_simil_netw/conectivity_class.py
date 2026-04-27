@@ -52,7 +52,7 @@ from tm2p._intern import ParamsMixin
 from tm2p._intern.plots.nx import remove_selfloop_edges, set_node_size_properties
 
 from .dir_matrix import DirectMatrix
-from .mtx import Matrix as CoOccurrenceMatrix
+from .matrix import Matrix as CoOccurrenceMatrix
 
 LINKS = "LINKS"
 TLS = "TLS"

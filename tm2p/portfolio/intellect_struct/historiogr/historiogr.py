@@ -1,36 +1,27 @@
 """
-NetworkPlot
+Historiograph
 ===============================================================================
 
 .. raw:: html
 
-    <iframe src="../_generated/px.synthes.netw.co_occur.network_plot.html"
+    <iframe src="../_generated/px.portfolio.intellect_struct.historiogr.historiogr.html"
     height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
-    >>> from tm2p.enum import AssociationIndex  # type: ignore
     >>> from tm2p.enum import AnalysisUnit  # type: ignore
+    >>> from tm2p.enum import AssociationIndex  # type: ignore
     >>> from tm2p.enum import GraphClusteringAlgorithm  # type: ignore
-    >>> from tm2p.enum import NodeSizeMetric  # type: ignore
     >>> from tm2p.enum import Scaling  # type: ignore
-    >>> from tm2p.enum import UnitOrderBy  # type: ignore
-    >>> from tm2p.portfolio.thematic_stuct.co_occur.dir_simil_netw import NetworkPlot  # type: ignore
+    >>> from tm2p.enum import NodeSizeMetric  # type: ignore
+    >>> from tm2p.portfolio.intellect_struct.historiogr import Historiograph  # type: ignore
     >>> fig = (
-    ...     NetworkPlot()
+    ...     Historiograph()
     ...     #
     ...     # ANALYSIS UNIT:
-    ...     .with_analysis_unit(AnalysisUnit.KW)
-    ...     #
-    ...     .having_top_n_units(50)
-    ...     .having_units_ordered_by(UnitOrderBy.OCC)
-    ...     .having_unit_occurrence_between(None, None)
-    ...     .having_unit_global_citation_between(None, None)
-    ...     .having_units_in(None)
-    ...     #
-    ...     .using_minimum_pair_co_occurrence(2)
+    ...     .with_analysis_unit(AnalysisUnit.DOC)
     ...     #
     ...     # COUNTERS:
-    ...     .using_counters(False)
+    ...     .using_counters(True)
     ...     #
     ...     # NORMALIZATION:
     ...     .using_association_index(AssociationIndex.ASSOCIATION_STRENGTH)
@@ -43,19 +34,13 @@ Smoke tests:
     ...     .using_spring_layout_iterations(100)
     ...     .using_spring_layout_seed(0)
     ...     #
-    ...     .using_discrete_node_colors(
-    ...         (
-    ...             "#1f77b4",
-    ...             "#ff7f0e",
-    ...             "#2ca02c",
-    ...             "#d62728",
-    ...             "#9467bd",
-    ...             "#8c564b",
-    ...             "#e377c2",
-    ...             "#7f7f7f",
-    ...             "#bcbd22",
-    ...             "#17becf",
-    ...         )
+    ...     .using_colorscale(
+    ...         [
+    ...             [0.00, "#2C7BB6"],
+    ...             [0.35, "#00A6CA"],
+    ...             [0.65, "#4EBA6F"],
+    ...             [1.00, "#F28E2B"],
+    ...         ]
     ...     )
     ...     .using_min_node_degree(2)
     ...     .using_node_scaling(Scaling.SQRT)
@@ -83,27 +68,28 @@ Smoke tests:
     ...     .using_axes_visible(False)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("tests/tinyml/")
+    ...     .where_root_directory("tests/system-dynamics-wos/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_global_citations_range(None, None)
     ...     .where_records_match(None)
     ...     #
     ...     .run()
     ... )
-    >>> assert type(fig).__name__ == 'Figure'    >>> fig.write_html("docsrc/_generated/px.synthes.netw.co_occur.network_plot.html")
+    >>> fig.write_html("docsrc/_generated/px.portfolio.intellect_struct.historiogr.historiogr.html")
+
+
+
 
 
 """
 
 from tm2p._intern import ParamsMixin
-from tm2p._intern.plots.adv.co_occ_netw_plot import build_co_occ_network_plot
+from tm2p._intern.plots.adv.historiogr import build_historiograph_plot
 
-from .dir_matrix import DirectMatrix
-from .item_to_clust import ItemToCluster
-from .matrix import Matrix as CoOccurrenceMatrix
+from ..cit_netw.dir_matrix import DirectMatrix
 
 
-class NetworkPlot(
+class Historiograph(
     ParamsMixin,
 ):
     """:meta private:"""
@@ -111,23 +97,19 @@ class NetworkPlot(
     def run(self):
         """:meta private:"""
 
-        similarity_matrix = (
+        matrix = (
             DirectMatrix().update(**self.params.__dict__).using_counters(True).run()
         )
-        co_occ_matrix = (
-            CoOccurrenceMatrix()
-            .update(**self.params.__dict__)
-            .using_counters(True)
-            .run()
-        )
 
-        i2c = ItemToCluster().update(**self.params.__dict__).using_counters(True).run()
+        docs = list(matrix.index.to_list() + matrix.columns.to_list())
+        docs = [" ".join(d.split(" ")[:-1]) for d in docs]
+        years = [float(d.split(", ")[1]) for d in docs]
+        i2y = dict(zip(docs, years))
 
-        fig = build_co_occ_network_plot(
+        fig = build_historiograph_plot(
             params=self.params,
-            similarity_matrix=similarity_matrix,
-            co_occurrence_matrix=co_occ_matrix,
-            i2c=i2c,
+            matrix=matrix,
+            i2y=i2y,
         )
 
         return fig
