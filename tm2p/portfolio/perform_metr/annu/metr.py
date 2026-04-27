@@ -12,10 +12,8 @@ Smoke tests:
     ...     .where_records_match(None)
     ...     .run()
     ... )
-    >>> type(df).__name__
-    'DataFrame'
-    >>> df.shape[0] > 0
-    True
+    >>> assert type(df).__name__ == 'DataFrame'
+    >>> assert df.shape[0] > 0
     >>> print(df.to_string())  # doctest: +NORMALIZE_WHITESPACE
           OCC  CUMUL_OCC  CITAB_YEAR   GCS  CUMUL_GCS    MEAN_GCS  MEAN_GCS_PER_YEAR  LCS  CUMUL_LCS  MEAN_LCS  MEAN_LCS_PER_YEAR
     YEAR

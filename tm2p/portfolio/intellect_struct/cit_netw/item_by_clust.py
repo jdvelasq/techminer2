@@ -5,15 +5,17 @@ ItemsByCluster
 * **AnalysisUnit.DOC**
 
 Smoke tests:
-    >>> from tm2p.enum import AssociationIndex, AnalysisUnit, GraphClusteringAlgorithm
-    >>> from tm2p.portfolio.intellect_struct.cit_netw import ItemsByCluster
+    >>> from tm2p.enum import AnalysisUnit  # type: ignore
+    >>> from tm2p.enum import AssociationIndex  # type: ignore
+    >>> from tm2p.enum import GraphClusteringAlgorithm  # type: ignore
+    >>> from tm2p.portfolio.intellect_struct.cit_netw import ItemsByCluster  # type: ignore
     >>> # ---------------------------------------------------------------------
     >>> # DOC
     >>> # ---------------------------------------------------------------------
     >>> df = (
     ...     ItemsByCluster()
     ...     #
-    ...     # CITATION UNIT:
+    ...     # ANALYSIS UNIT:
     ...     .with_analysis_unit(AnalysisUnit.DOC)
     ...     #
     ...     # NETWORK:
@@ -34,15 +36,15 @@ Smoke tests:
     ...     .run()
     ... )
     >>> df.head()  # doctest: +NORMALIZE_WHITESPACE
-    CLUSTER                               0  ...                        7
-    ITEM                                     ...
-    0        Anagnostopoulos I 2018 1:00284  ...    Kraus NM 2020 1:00004
-    1                    Lui A 2018 1:00096  ...  Manzhura O 2022 1:00003
-    2                   Das SR 2019 1:00090  ...
-    3                 Takeda A 2021 1:00066  ...
-    4                Currie WL 2018 1:00043  ...
+    CLUSTER                                              0   ...                                                 39
+    ITEM                                                     ...
+    0        Marzouk M, 2014, RESOUR CONSERV RECYCL 1:00300  ...  Campuzano-Bolarín F, 2025, CENT EUR J OPER RES...
+    1              Liu JK, 2020, ENV SCI POLLUT RES 1:00207  ...       Martin-Méndez A, 2026, J NAT CONSERV 1:00000
+    2                    Ding ZK, 2016, WASTE MANAG 1:00201  ...
+    3                   Ding ZK, 2018, J CLEAN PROD 1:00178  ...
+    4                 Wang JY/1, 2015, J CLEAN PROD 1:00143  ...
     <BLANKLINE>
-    [5 rows x 8 columns]
+    [5 rows x 40 columns]
 
 
 * **AnalysisUnit.AUTH** / **AnalysisUnit.CTRY** / **AnalysisUnit.ORG** / **AnalysisUnit.SRC**
@@ -56,6 +58,7 @@ Smoke tests:
     ...     #
     ...     # ANALYSIS UNIT:
     ...     .with_analysis_unit(AnalysisUnit.AUTH)
+    ...     #
     ...     .having_top_n_units(30)
     ...     .having_minimum_cited_unit_occurrences(0)
     ...     .having_occurrence_threshold(2)
@@ -79,16 +82,13 @@ Smoke tests:
     ...     .run()
     ... )
     >>> df.head()  # doctest: +NORMALIZE_WHITESPACE
-    CLUSTER                            0  ...                             2
-    ITEM                                  ...
-    0         Dirk A. Zetzsche 008:00699  ...         Nir Kshetri 002:00006
-    1          Ross P. Buckley 007:00887  ...        Jamal Wiwoho 002:00005
-    2         Douglas W. Arner 007:00887  ...         Ifan Arsyad 002:00005
-    3           Michael Becker 002:00017  ...  Dona Budi Kharisma 002:00005
-    4        Zakariya Mustapha 002:00016  ...
+    CLUSTER                           0  ...                       4
+    ITEM                                 ...
+    0        Vivian W. Y. Tam 004:00532  ...     Lihong Li 003:00019
+    1         Mohamed Marzouk 003:00323  ...  Chunbing Guo 003:00009
+    2           Jingkuang Liu 003:00284  ...
     <BLANKLINE>
-    [5 rows x 3 columns]
-
+    [3 rows x 5 columns]
 
 
 """

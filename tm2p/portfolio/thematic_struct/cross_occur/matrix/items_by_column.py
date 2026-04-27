@@ -37,8 +37,7 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> type(df).__name__
-    'DataFrame'
+    >>> assert type(df).__name__ == 'DataFrame'
     >>> len(df) > 1
     True
     >>> print(df.head().to_string())  # doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
@@ -82,8 +81,7 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> type(df).__name__
-    'DataFrame'
+    >>> assert type(df).__name__ == 'DataFrame'
     >>> len(df) > 1
     True
     >>> print(df.head().to_string())  # doctest: +NORMALIZE_WHITESPACE +ELLIPSIS

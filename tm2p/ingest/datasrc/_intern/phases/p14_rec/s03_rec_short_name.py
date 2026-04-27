@@ -14,8 +14,9 @@ def s03_rec_short_name(root_directory: str) -> int:
 
         auth_first = row[Field.AUTH_FIRST.value]
         year = row[Field.YEAR.value]
+        src_iso4 = row[Field.SRC_ISO4.value]
 
-        short_name = f"{auth_first} {year}"
+        short_name = f"{auth_first}, {year}, {src_iso4}"
 
         if short_name in assigned_names:
 

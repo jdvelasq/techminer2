@@ -39,9 +39,7 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> type(fig).__name__
-    'Figure'
-    >>> fig.write_html("docsrc/_generated/px.portfolio.thematic_stucture.co_occurrence.first_order_network.heatmap.html")
+    >>> assert type(fig).__name__ == 'Figure'    >>> fig.write_html("docsrc/_generated/px.portfolio.thematic_stucture.co_occurrence.first_order_network.heatmap.html")
 
 
 

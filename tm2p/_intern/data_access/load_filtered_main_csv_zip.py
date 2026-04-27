@@ -13,8 +13,7 @@ Smoke test:
     ...         )
     ...     ).head()
     ... )
-    >>> type(df).__name__
-    'DataFrame'
+    >>> assert type(df).__name__ == 'DataFrame'
     >>> assert len(df) > 0
     >>> assert "YEAR" in df.columns
     >>> df  # doctest: +NORMALIZE_WHITESPACE
@@ -39,8 +38,7 @@ Smoke test:
     ...         )
     ...     ).head()
     ... )
-    >>> type(df).__name__
-    'DataFrame'
+    >>> assert type(df).__name__ == 'DataFrame'
     >>> assert len(df) > 0
     >>> assert "YEAR" in df.columns
     >>> df  # doctest: +NORMALIZE_WHITESPACE

@@ -28,12 +28,9 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> type(df).__name__
-    'DataFrame'
-    >>> df.shape[0] > 0
-    True
-    >>> df.shape[1] > 0
-    True
+    >>> assert type(df).__name__ == 'DataFrame'
+    >>> assert df.shape[0] > 0
+    >>> assert df.shape[1] > 0
     >>> print(df.head(10).to_string())  # doctest: +NORMALIZE_WHITESPACE
     YEAR                     2015  2016  2017  2018  2019  2020  2021  2022  2023  2024
     AUTHKW_NORM
@@ -72,12 +69,9 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> type(df).__name__
-    'DataFrame'
-    >>> df.shape[0] > 0
-    True
-    >>> df.shape[1] > 0
-    True
+    >>> assert type(df).__name__ == 'DataFrame'
+    >>> assert df.shape[0] > 0
+    >>> assert df.shape[1] > 0
     >>> print(df.head(10).to_string())  # doctest: +NORMALIZE_WHITESPACE
     YEAR                               2015  2016  2017  2018  2019  2020  2021  2022  2023  2024
     AUTHKW_NORM

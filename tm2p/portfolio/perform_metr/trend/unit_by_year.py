@@ -28,12 +28,9 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> type(df).__name__
-    'DataFrame'
-    >>> df.shape[0] > 0
-    True
-    >>> df.shape[1] > 0
-    True
+    >>> assert type(df).__name__ == 'DataFrame'
+    >>> assert df.shape[0] > 0
+    >>> assert df.shape[1] > 0
     >>> print(df.head(10).to_string())  # doctest: +NORMALIZE_WHITESPACE
                            2015                   2016                   2017                           2018                         2019                          2020                      2021                 2022                     2023                     2024
     0               debit cards                fintech                fintech                        fintech                      fintech                       fintech                   fintech              fintech                  fintech                  fintech
@@ -70,12 +67,9 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> type(df).__name__
-    'DataFrame'
-    >>> df.shape[0] > 0
-    True
-    >>> df.shape[1] > 0
-    True
+    >>> assert type(df).__name__ == 'DataFrame'
+    >>> assert df.shape[0] > 0
+    >>> assert df.shape[1] > 0
     >>> print(df.head(10).to_string())  # doctest: +NORMALIZE_WHITESPACE
                                      2015                             2016                             2017                                     2018                                   2019                                    2020                                2021                           2022                               2023                               2024
     0               debit cards 001:00018                fintech 012:01094                fintech 011:02846                        fintech 012:04574                      fintech 007:02148                       fintech 013:03639                   fintech 017:04915              fintech 013:03141                  fintech 017:02357                  fintech 017:01434

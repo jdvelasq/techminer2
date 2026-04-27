@@ -8,8 +8,13 @@ NetworkPlot
     height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
-    >>> from tm2p.enum import AssociationIndex, AnalysisUnit, GraphClusteringAlgorithm, NodeSizeMetric, Scaling, UnitOrderBy
-    >>> from tm2p.portfolio.thematic_stucture.co_occurrence.direct_similarity_network import NetworkPlot
+    >>> from tm2p.enum import AssociationIndex  # type: ignore
+    >>> from tm2p.enum import AnalysisUnit  # type: ignore
+    >>> from tm2p.enum import GraphClusteringAlgorithm  # type: ignore
+    >>> from tm2p.enum import NodeSizeMetric  # type: ignore
+    >>> from tm2p.enum import Scaling  # type: ignore
+    >>> from tm2p.enum import UnitOrderBy  # type: ignore
+    >>> from tm2p.portfolio.thematic_stuct.co_occur.dir_simil_netw import NetworkPlot  # type: ignore
     >>> fig = (
     ...     NetworkPlot()
     ...     #
@@ -52,12 +57,12 @@ Smoke tests:
     ...             "#17becf",
     ...         )
     ...     )
-    ...     .using_uniform_node_opacity(0.75)
-    ...     .using_node_size_metric(NodeSizeMetric.TLS)
+    ...     .using_min_node_degree(2)
     ...     .using_node_scaling(Scaling.SQRT)
+    ...     .using_node_size_metric(NodeSizeMetric.TLS)
     ...     .using_node_size_range(12, 80)
     ...     .using_top_n_nodes(50)
-    ...     .using_min_node_degree(2)
+    ...     .using_uniform_node_opacity(0.75)
     ...     #
     ...     .using_max_node_labels(15)
     ...     .using_node_label_max_length(20)
@@ -66,12 +71,12 @@ Smoke tests:
     ...     .using_textfont_size_range(10, 24)
     ...     #
     ...     # https://www.w3schools.com/colors/colors_shades.asp
-    ...     .using_uniform_edge_color("#d8d8d8")
     ...     .using_edge_opacity_range(0.25, 0.65)
     ...     .using_edge_scaling(Scaling.SQRT)
-    ...     .using_global_top_edges(200)
     ...     .using_edge_width_range(1.5, 5.0)
+    ...     .using_global_top_edges(200)
     ...     .using_top_edges_per_node(5)
+    ...     .using_uniform_edge_color("#d8d8d8")
     ...     #
     ...     .using_xaxes_range(None, None)
     ...     .using_yaxes_range(None, None)
@@ -85,9 +90,7 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> type(fig).__name__
-    'Figure'
-    >>> fig.write_html("docsrc/_generated/px.synthes.netw.co_occur.network_plot.html")
+    >>> assert type(fig).__name__ == 'Figure'    >>> fig.write_html("docsrc/_generated/px.synthes.netw.co_occur.network_plot.html")
 
 
 """

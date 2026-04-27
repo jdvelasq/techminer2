@@ -79,9 +79,7 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> type(fig).__name__
-    'Figure'
-    >>> fig.write_html("docsrc/_generated/px.portfolio.intellectual_structure.coupling_network.network_plot_doc.html")
+    >>> assert type(fig).__name__ == 'Figure'    >>> fig.write_html("docsrc/_generated/px.portfolio.intellectual_structure.coupling_network.network_plot_doc.html")
 
 * **AnalysisUnit.AUTH** /  **AnalysisUnit.CTRY** /  / **AnalysisUnit.ORG** / **AnalysisUnit.SRC**
 

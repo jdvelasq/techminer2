@@ -1,7 +1,7 @@
 from tm2p._intern import ParamsMixin
 from tm2p._intern.data_access import load_filtered_main_csv_zip
 from tm2p._intern.helpers.get_zero_digit import get_zero_digits
-from tm2p.enum import AnalysisUnit, Field
+from tm2p.enum import Field, UnitOrderBy
 from tm2p.portfolio.perform_metr.unit import Metrics
 
 GCS = Field.GCS.value
@@ -77,20 +77,13 @@ class OtherMatrixList(
 
     def _add_counters_to_citation_units(self, df):
 
-        # if self.params.analysis_unit == AnalysisUnit.AUTH:
-        #     source_field = Field.AUTH_FULL_NAME
-        # elif self.params.analysis_unit == AnalysisUnit.CTRY:
-        #     source_field = Field.CTRY_ISO3
-        # elif self.params.analysis_unit == AnalysisUnit.ORG:
-        #     source_field = Field.ORG
-        # elif self.params.analysis_unit == AnalysisUnit.SRC:
-        #     source_field = Field.SRC_ISO4
-        # else:
-        #     raise ValueError("Invalid citation unit")
-
         metrics = (
-            Metrics().update(**self.params.__dict__)
-            # .with_source_field(source_field)
+            Metrics()
+            .update(**self.params.__dict__)
+            .having_unit_occurrence_between(None, None)
+            .having_unit_global_citation_between(None, None)
+            .having_units_ordered_by(UnitOrderBy.OCC)
+            # .having_units_in(None)
             .run()
         )
 

@@ -79,9 +79,7 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> type(fig).__name__
-    'Figure'
-    >>> fig.write_html("docsrc/_generated/px.synthes.netw.co_occur.overlay_plot.html")
+    >>> assert type(fig).__name__ == 'Figure'    >>> fig.write_html("docsrc/_generated/px.synthes.netw.co_occur.overlay_plot.html")
 
 
 """

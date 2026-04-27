@@ -34,9 +34,7 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> type(fig).__name__
-    'Figure'
-    >>> fig.write_html("docsrc/_generated/px.portfolio.performance_metrics.annual_metrics.mean_citations_per_year.html")
+    >>> assert type(fig).__name__ == 'Figure'    >>> fig.write_html("docsrc/_generated/px.portfolio.performance_metrics.annual_metrics.mean_citations_per_year.html")
 
     >>> fig = (
     ...     RankingPlot()
@@ -58,9 +56,7 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> type(fig).__name__
-    'Figure'
-    >>> fig.write_html("docsrc/_generated/px.portfolio.performance_metrics.annual_metrics.annual_scientific_production.html")
+    >>> assert type(fig).__name__ == 'Figure'    >>> fig.write_html("docsrc/_generated/px.portfolio.performance_metrics.annual_metrics.annual_scientific_production.html")
 
 
 

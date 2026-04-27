@@ -37,8 +37,7 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> type(df).__name__
-    'DataFrame'
+    >>> assert type(df).__name__ == 'DataFrame'
     >>> assert df.shape[0] > 1
     >>> assert df.shape[1] > 1
     >>> df.head(10)
@@ -96,8 +95,7 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> type(df).__name__
-    'DataFrame'
+    >>> assert type(df).__name__ == 'DataFrame'
     >>> assert df.shape[0] > 1
     >>> assert df.shape[1] > 1
     >>> df.head(10)

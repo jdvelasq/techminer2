@@ -6,35 +6,40 @@ NetworkPlot
 
 .. raw:: html
 
-    <iframe src="../_generated/px.synthes.netw.cit.network_plot_doc.html"
+    <iframe src="../_generated/px.portfolio.intellect_struct.cit_netw.network_plot_doc.html"
     height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
-    >>> from tm2p.enum import AssociationIndex, AnalysisUnit, GraphClusteringAlgorithm, Scaling
-    >>> from tm2p.synthesize.netw.cit import NetworkPlot
+    >>> from tm2p.enum import AnalysisUnit  # type: ignore
+    >>> from tm2p.enum import AssociationIndex  # type: ignore
+    >>> from tm2p.enum import GraphClusteringAlgorithm  # type: ignore
+    >>> from tm2p.enum import Scaling  # type: ignore
+    >>> from tm2p.enum import NodeSizeMetric  # type: ignore
+    >>> from tm2p.portfolio.intellect_struct.cit_netw import NetworkPlot  # type: ignore
     >>> # ---------------------------------------------------------------------
     >>> # DOC
     >>> # ---------------------------------------------------------------------
     >>> fig = (
     ...     NetworkPlot()
     ...     #
-    ...     # CITATION UNIT:
+    ...     # ANALYSIS UNIT:
     ...     .with_analysis_unit(AnalysisUnit.DOC)
     ...     #
     ...     # COUNTERS:
     ...     .using_counters(True)
     ...     #
+    ...     # NORMALIZATION:
+    ...     .using_association_index(AssociationIndex.ASSOCIATION_STRENGTH)
+    ...     #
     ...     # CLUSTERING:
     ...     .using_clustering(GraphClusteringAlgorithm.LOUVAIN)
     ...     #
     ...     # NETWORK:
-    ...     .using_spring_layout_intra_scale(1.0)
-    ...     .using_spring_layout_cluster_scale(10.0)
-    ...     .using_spring_layout_k(None)
-    ...     .using_spring_layout_iterations(30)
+    ...     .using_spring_layout_k(0.27)
+    ...     .using_spring_layout_iterations(100)
     ...     .using_spring_layout_seed(0)
     ...     #
-    ...     .using_node_colors(
+    ...     .using_discrete_node_colors(
     ...         (
     ...             "#1f77b4",
     ...             "#ff7f0e",
@@ -48,20 +53,26 @@ Smoke tests:
     ...             "#17becf",
     ...         )
     ...     )
+    ...     .using_min_node_degree(2)
     ...     .using_node_scaling(Scaling.SQRT)
-    ...     .using_node_size_range(30, 70)
-    ...     .using_textfont_opacity_range(0.35, 1.00)
-    ...     .using_textfont_size_range(10, 20)
-    ...     .using_max_node_labels(5)
+    ...     .using_node_size_metric(NodeSizeMetric.TLS)
+    ...     .using_node_size_range(12, 80)
     ...     .using_top_n_nodes(1000)
+    ...     .using_uniform_node_opacity(0.75)
+    ...     #
+    ...     .using_max_node_labels(15)
+    ...     .using_node_label_max_length(20)
+    ...     #
+    ...     .using_textfont_opacity_range(0.55, 1.00)
+    ...     .using_textfont_size_range(10, 24)
     ...     #
     ...     # https://www.w3schools.com/colors/colors_shades.asp
-    ...     .using_uniform_edge_color("#e0e0e0")
+    ...     .using_edge_opacity_range(0.25, 0.65)
     ...     .using_edge_scaling(Scaling.SQRT)
-    ...     .using_global_top_edges(1000)
-    ...     .using_edge_width_range(0.1, 3.0)
-    ...     .using_min_node_degree(3)
+    ...     .using_edge_width_range(1.5, 5.0)
+    ...     .using_global_top_edges(200)
     ...     .using_top_edges_per_node(5)
+    ...     .using_uniform_edge_color("#d8d8d8")
     ...     #
     ...     .using_xaxes_range(None, None)
     ...     .using_yaxes_range(None, None)
@@ -75,7 +86,7 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> fig.write_html("docsrc/_generated/px.synthes.netw.cit.network_plot_doc.html")
+    >>> fig.write_html("docsrc/_generated/px.portfolio.intellect_struct.cit_netw.network_plot_doc.html")
 
 
 
@@ -83,18 +94,19 @@ Smoke tests:
 
 .. raw:: html
 
-    <iframe src="../_generated/px.synthes.netw.cit.network_plot_auth.html"
+    <iframe src="../_generated/px.portfolio.intellect_struct.cit_netw.network_plot_auth.html"
     height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
     >>> # ---------------------------------------------------------------------
-    >>> # AUTH
+    >>> # OTHER
     >>> # ---------------------------------------------------------------------
     >>> fig = (
     ...     NetworkPlot()
     ...     #
-    ...     # CITATION UNIT:
+    ...     # ANALYSIS UNIT:
     ...     .with_analysis_unit(AnalysisUnit.AUTH)
+    ...     #
     ...     .having_top_n_units(30)
     ...     .having_units_in(None)
     ...     .having_minimum_cited_unit_occurrences(0)
@@ -103,19 +115,51 @@ Smoke tests:
     ...     # COUNTERS:
     ...     .using_counters(True)
     ...     #
+    ...     # NORMALIZATION:
+    ...     .using_association_index(AssociationIndex.ASSOCIATION_STRENGTH)
+    ...     #
     ...     # CLUSTERING:
-    ...     .using_clustering_algorithm_or_dict("louvain")
+    ...     .using_clustering(GraphClusteringAlgorithm.LOUVAIN)
     ...     #
     ...     # NETWORK:
-    ...     .using_spring_layout_k(None)
-    ...     .using_spring_layout_iterations(30)
+    ...     .using_spring_layout_k(0.27)
+    ...     .using_spring_layout_iterations(100)
     ...     .using_spring_layout_seed(0)
     ...     #
-    ...     .using_edge_colors(("#7793a5",))
-    ...     .using_edge_width_range(0.8, 3.0)
-    ...     .using_node_size_range(30, 70)
-    ...     .using_textfont_opacity_range(0.35, 1.00)
-    ...     .using_textfont_size_range(10, 20)
+    ...     .using_discrete_node_colors(
+    ...         (
+    ...             "#1f77b4",
+    ...             "#ff7f0e",
+    ...             "#2ca02c",
+    ...             "#d62728",
+    ...             "#9467bd",
+    ...             "#8c564b",
+    ...             "#e377c2",
+    ...             "#7f7f7f",
+    ...             "#bcbd22",
+    ...             "#17becf",
+    ...         )
+    ...     )
+    ...     .using_min_node_degree(2)
+    ...     .using_node_scaling(Scaling.SQRT)
+    ...     .using_node_size_metric(NodeSizeMetric.TLS)
+    ...     .using_node_size_range(12, 80)
+    ...     .using_top_n_nodes(50)
+    ...     .using_uniform_node_opacity(0.75)
+    ...     #
+    ...     .using_max_node_labels(15)
+    ...     .using_node_label_max_length(20)
+    ...     #
+    ...     .using_textfont_opacity_range(0.55, 1.00)
+    ...     .using_textfont_size_range(10, 24)
+    ...     #
+    ...     # https://www.w3schools.com/colors/colors_shades.asp
+    ...     .using_edge_opacity_range(0.25, 0.65)
+    ...     .using_edge_scaling(Scaling.SQRT)
+    ...     .using_edge_width_range(1.5, 5.0)
+    ...     .using_global_top_edges(200)
+    ...     .using_top_edges_per_node(5)
+    ...     .using_uniform_edge_color("#d8d8d8")
     ...     #
     ...     .using_xaxes_range(None, None)
     ...     .using_yaxes_range(None, None)
@@ -129,56 +173,46 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> fig.write_html("docsrc/_generated/px.synthes.netw.cit.network_plot_auth.html")
+    >>> fig.write_html("docsrc/_generated/px.portfolio.intellect_struct.cit_netw.network_plot_auth.html")
 
 
 
 
 """
 
-from tm2p._intern.netw import BaseStrengthPlot
+from tm2p._intern import ParamsMixin
+from tm2p._intern.plots.adv.co_occ_netw_plot import build_co_occ_network_plot
 
-from .node_metr import NodeMetrics
+from .dir_matrix import DirectMatrix
+from .item_to_clust import ItemToCluster
+from .matrix import Matrix as CoOccurrenceMatrix
 
 
 class NetworkPlot(
-    BaseStrengthPlot,
+    ParamsMixin,
 ):
     """:meta private:"""
 
-    def get_node_metrics(self):
-        return
+    def run(self):
+        """:meta private:"""
 
+        similarity_matrix = (
+            DirectMatrix().update(**self.params.__dict__).using_counters(True).run()
+        )
+        co_occ_matrix = (
+            CoOccurrenceMatrix()
+            .update(**self.params.__dict__)
+            .using_counters(True)
+            .run()
+        )
 
-# from tm2p._intern import ParamsMixin
-# from tm2p.enum import AnalysisUnit, UnitOrderBy
-# from tm2p.portfolio.intellectual_structure.citation_network._intern.doc import (
-#     DocNetworkPlot,
-# )
-# from tm2p.portfolio.intellectual_structure.citation_network._intern.other import (
-#     OtherNetworkPlot,
-# )
+        i2c = ItemToCluster().update(**self.params.__dict__).using_counters(True).run()
 
-# from ...._intern.helpers.check_database import check_database
+        fig = build_co_occ_network_plot(
+            params=self.params,
+            similarity_matrix=similarity_matrix,
+            co_occurrence_matrix=co_occ_matrix,
+            i2c=i2c,
+        )
 
-
-# class NetworkPlot(
-#     ParamsMixin,
-# ):
-#     """:meta private:"""
-
-#     def run(self):
-
-#         check_database(self.params.root_directory)
-
-#         if self.params.citation_unit == AnalysisUnit.DOC:
-#             Plot = DocNetworkPlot
-#         else:
-#             Plot = OtherNetworkPlot
-
-#         return (
-#             Plot()
-#             .update(**self.params.__dict__)
-#             .update(items_order_by=UnitOrderBy.OCC)
-#             .run()
-#         )
+        return fig

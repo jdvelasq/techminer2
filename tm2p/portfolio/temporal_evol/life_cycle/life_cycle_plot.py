@@ -23,9 +23,7 @@ Smoke test:
     ...     #
     ...     .run()
     ... )
-    >>> type(fig).__name__
-    'Figure'
-    >>> fig.write_html("docsrc/_generated/px.portfolio.temporal_evol.life_cycle.life_cycle_plot.html")
+    >>> assert type(fig).__name__ == 'Figure'    >>> fig.write_html("docsrc/_generated/px.portfolio.temporal_evol.life_cycle.life_cycle_plot.html")
 
 
 """

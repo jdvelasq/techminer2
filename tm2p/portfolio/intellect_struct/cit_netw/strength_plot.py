@@ -4,14 +4,14 @@ StrengthPlot
 
 * **AnalysisUnit.DOC**
 
-
 .. raw:: html
 
-    <iframe src="../_generated/px.synthes.netw.cit.node_degree_plot_auth.html"
+    <iframe src="../_generated/px.portfolio.intellect_struct.cit_netw.node_degree_plot_doc.html"
     height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
-    >>> from tm2p.enum import AssociationIndex, AnalysisUnit
+    >>> from tm2p.enum import AnalysisUnit  # type: ignore
+    >>> from tm2p.enum import AssociationIndex  # type: ignore
     >>> from tm2p.portfolio.intellect_struct.cit_netw import StrengthPlot
     >>> # ---------------------------------------------------------------------
     >>> # DOC
@@ -19,7 +19,7 @@ Smoke tests:
     >>> fig = (
     ...     StrengthPlot()
     ...     #
-    ...     # CITATION UNIT:
+    ...     # ANALYSIS UNIT:
     ...     .with_analysis_unit(AnalysisUnit.DOC)
     ...     #
     ...     # COUNTERS:
@@ -29,10 +29,10 @@ Smoke tests:
     ...     .using_association_index(AssociationIndex.ASSOCIATION_STRENGTH)
     ...     #
     ...     # PLOT:
-    ...     .using_textfont_size(10)
-    ...     .using_marker_size(7)
     ...     .using_line_color("black")
     ...     .using_line_width(1.5)
+    ...     .using_marker_size(7)
+    ...     .using_uniform_textfont_size(10)
     ...     .using_yshift(4)
     ...     #
     ...     # DATABASE:
@@ -43,11 +43,54 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> type(fig).__name__
-    'Figure'
-    >>> fig.write_html("docsrc/_generated/px.synthes.netw.cit.node_degree_plot_doc.html")
+    >>> assert type(fig).__name__ == 'Figure'
+    >>> fig.write_html("docsrc/_generated/px.portfolio.intellect_struct.cit_netw.node_degree_plot_doc.html")
 
 * **AnalysisUnit.AUTH** / **AnalysisUnit.CTRY** / **AnalysisUnit.ORG** / **AnalysisUnit.SRC**
+
+.. raw:: html
+
+    <iframe src="../_generated/px.portfolio.intellect_struct.cit_netw.node_degree_plot_auth.html"
+    height="800px" width="100%" frameBorder="0"></iframe>
+
+
+    >>> # ---------------------------------------------------------------------
+    >>> # DOC
+    >>> # ---------------------------------------------------------------------
+    >>> fig = (
+    ...     StrengthPlot()
+    ...     #
+    ...     # ANALYSIS UNIT:
+    ...     .with_analysis_unit(AnalysisUnit.DOC)
+    ...     #
+    ...     .having_top_n_units(50)
+    ...     .having_minimum_cited_unit_occurrences(0)
+    ...     .having_occurrence_threshold(1)
+    ...     .having_units_in(None)
+    ...     #
+    ...     # COUNTERS:
+    ...     .using_counters(True)
+    ...     #
+    ...     # NORMALIZATION:
+    ...     .using_association_index(AssociationIndex.ASSOCIATION_STRENGTH)
+    ...     #
+    ...     # PLOT:
+    ...     .using_line_color("black")
+    ...     .using_line_width(1.5)
+    ...     .using_marker_size(7)
+    ...     .using_uniform_textfont_size(10)
+    ...     .using_yshift(4)
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory("tests/system-dynamics-wos/")
+    ...     .where_record_years_range(None, None)
+    ...     .where_record_global_citations_range(None, None)
+    ...     .where_records_match(None)
+    ...     #
+    ...     .run()
+    ... )
+    >>> assert type(fig).__name__ == 'Figure'
+    >>> fig.write_html("docsrc/_generated/px.portfolio.intellect_struct.cit_netw.node_degree_plot_auth.html")
 
 
 """

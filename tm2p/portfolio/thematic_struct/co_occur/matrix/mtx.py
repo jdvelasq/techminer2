@@ -30,8 +30,7 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> type(df).__name__
-    'DataFrame'
+    >>> assert type(df).__name__ == 'DataFrame'
     >>> assert df.shape[0] > 1
     >>> assert df.shape[1] > 1
     >>> print(df.head(10).to_string())  # doctest: +NORMALIZE_WHITESPACE
@@ -71,8 +70,7 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> type(df).__name__
-    'DataFrame'
+    >>> assert type(df).__name__ == 'DataFrame'
     >>> assert df.shape[0] > 1
     >>> assert df.shape[1] > 1
     >>> print(df.head(10).to_string())  # doctest: +NORMALIZE_WHITESPACE

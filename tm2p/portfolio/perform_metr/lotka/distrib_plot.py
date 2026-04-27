@@ -20,9 +20,7 @@ Smoke tests:
     ...      #
     ...      .run()
     ... )
-    >>> type(fig).__name__
-    'Figure'
-    >>> fig.write_html("docsrc/_generated/px.portfolio.performance_metrics.lotka.distribution_plot.html")
+    >>> assert type(fig).__name__ == 'Figure'    >>> fig.write_html("docsrc/_generated/px.portfolio.performance_metrics.lotka.distribution_plot.html")
 
 
 
