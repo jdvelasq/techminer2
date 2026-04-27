@@ -4,7 +4,7 @@ OverlayPlot
 
 .. raw:: html
 
-    <iframe src="../_generated/px.portfolio.intellectual_structure.coupling_network.overlay_plot_doc.html"
+    <iframe src="../_generated/px.portfolio.intellect_struct.coupling_network.overlay_plot_doc.html"
     height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
@@ -73,7 +73,7 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> assert type(fig).__name__ == 'Figure'    >>> fig.write_html("docsrc/_generated/px.portfolio.intellectual_structure.coupling_network.overlay_plot_doc.html")
+    >>> assert type(fig).__name__ == 'Figure'    >>> fig.write_html("docsrc/_generated/px.portfolio.intellect_struct.coupling_network.overlay_plot_doc.html")
 
 * **AnalysisUnit.AUTH** /  **AnalysisUnit.CTRY** /  / **AnalysisUnit.ORG** / **AnalysisUnit.SRC**
 

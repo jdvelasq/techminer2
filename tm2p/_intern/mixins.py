@@ -761,6 +761,24 @@ class ParamsMixin:
         self.params.pie_hole = pie_hole
         return self
 
+    # -------------------------------------------------------------------------
+    def using_rpys_peaks(self, peaks: int) -> Self:
+        peaks = check_required_positive_int(
+            value=peaks,
+            param_name="rpys_peaks",
+        )
+        self.params.rpys_peaks = peaks
+        return self
+
+    # -------------------------------------------------------------------------
+    def using_top_n_sleeping_beauties(self, n: int) -> Self:
+        n = check_required_positive_int(
+            value=n,
+            param_name="top_n_sleeping_beauties",
+        )
+        self.params.top_n_sleeping_beauties = n
+        return self
+
     # ####################################################################### #
     #                                                                         #
     #                     MAP (SCATTER) -BASED PLOTS                          #
