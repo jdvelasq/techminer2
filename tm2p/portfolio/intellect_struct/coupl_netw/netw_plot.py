@@ -8,8 +8,12 @@ Network Plot
     height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
-    >>> from tm2p.enum import AssociationIndex, AnalysisUnit, GraphClusteringAlgorithm, UnitOrderBy, Scaling, NodeSizeMetric
-    >>> from tm2p.portfolio.intellect_struct.coupl_netw import NetworkPlot
+    >>> from tm2p.enum import AnalysisUnit  # type: ignore
+    >>> from tm2p.enum import AssociationIndex  # type: ignore
+    >>> from tm2p.enum import GraphClusteringAlgorithm  # type: ignore
+    >>> from tm2p.enum import NodeSizeMetric  # type: ignore
+    >>> from tm2p.enum import UnitOrderBy, Scaling  # type: ignore
+    >>> from tm2p.portfolio.intellect_struct.coupl_netw import NetworkPlot  # type: ignore
     >>> fig = (
     ...     NetworkPlot()
     ...     #
@@ -28,7 +32,7 @@ Smoke tests:
     ...     .using_clustering(GraphClusteringAlgorithm.LOUVAIN)
     ...     #
     ...     # PLOT:
-    ...     .using_spring_layout_k(0.27)
+    ...     .using_spring_layout_k(0.9)
     ...     .using_spring_layout_iterations(100)
     ...     .using_spring_layout_seed(0)
     ...     #
@@ -79,7 +83,8 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> assert type(fig).__name__ == 'Figure'    >>> fig.write_html("docsrc/_generated/px.portfolio.intellectual_structure.coupling_network.network_plot_doc.html")
+    >>> assert type(fig).__name__ == 'Figure'
+    >>> fig.write_html("docsrc/_generated/px.portfolio.intellectual_structure.coupling_network.network_plot_doc.html")
 
 * **AnalysisUnit.AUTH** /  **AnalysisUnit.CTRY** /  / **AnalysisUnit.ORG** / **AnalysisUnit.SRC**
 
