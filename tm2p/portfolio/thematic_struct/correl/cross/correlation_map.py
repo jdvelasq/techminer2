@@ -4,13 +4,13 @@ Cross-correlation Map
 
 .. raw:: html
 
-    <iframe src="../_generated/px.portfolio.thematic_stucture.correlation.cross.correlation_map.html"
+    <iframe src="../_generated/px.portfolio.thematic_struct.correlation.cross.correlation_map.html"
     height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
     >>> # grey colors: https://www.w3schools.com/colors/colors_shades.asp
     >>> from tm2p.enum import UnitOrderBy, Field, Correlation, Scaling
-    >>> from tm2p.portfolio.thematic_stucture.correlation.cross import CorrelationMap
+    >>> from tm2p.portfolio.thematic_struct.correlation.cross import CorrelationMap
     >>> plot = (
     ...     CorrelationMap()
     ...     #
@@ -61,7 +61,7 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> plot.write_html("docsrc/_generated/px.portfolio.thematic_stucture.correlation.cross.correlation_map.html")
+    >>> plot.write_html("docsrc/_generated/px.portfolio.thematic_struct.correlation.cross.correlation_map.html")
 
 
 """

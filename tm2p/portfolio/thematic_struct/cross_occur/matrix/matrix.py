@@ -4,7 +4,7 @@ Matrix
 
 Smoke tests:
     >>> from tm2p.enum import AnalysisUnit, UnitOrderBy
-    >>> from tm2p.portfolio.thematic_stucture.cross_occurrence.matrix import Matrix
+    >>> from tm2p.portfolio.thematic_struct.cross_occurrence.matrix import Matrix
     >>> df = (
     ...     Matrix()
     ...     #
@@ -58,7 +58,7 @@ Smoke tests:
 
 
 
-    >>> from tm2p.portfolio.thematic_stucture.cross_occurrence.matrix import Matrix
+    >>> from tm2p.portfolio.thematic_struct.cross_occurrence.matrix import Matrix
     >>> df = (
     ...     Matrix()
     ...     #

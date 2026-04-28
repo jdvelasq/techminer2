@@ -73,7 +73,7 @@ Smoke tests:
     ...     .using_axes_visible(False)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("tests/tinyml/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_global_citations_range(None, None)
     ...     .where_records_match(None)
@@ -90,7 +90,7 @@ Smoke tests:
 from tm2p._intern import ParamsMixin
 from tm2p.portfolio.emerg.emerg.mixins import RecursiveClusteringMixin
 
-# from tm2p.portfolio.thematic_stucture.co_occurrence.first_order_network_ import (
+# from tm2p.portfolio.thematic_struct.co_occur.first_order_network_ import (
 #     NetworkPlot as ClassicalNetworkPlot,
 # )
 

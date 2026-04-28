@@ -4,7 +4,7 @@ MatrixList
 
 Smoke tests:
     >>> from tm2p.enum import Field, UnitOrderBy
-    >>> from tm2p.portfolio.thematic_stucture.co_occurrence.matrix import MatrixList
+    >>> from tm2p.portfolio.thematic_struct.co_occur.matrix import MatrixList
     >>> df = (
     ...     MatrixList()
     ...     #

@@ -15,7 +15,7 @@ Smoke test:
     ...     random_state=0,
     ... )
     >>> from tm2p.enum import Field, UnitOrderBy
-    >>> from tm2p.portfolio.thematic_stucture.factorial_analysis.first_order import ClusterCenters
+    >>> from tm2p.portfolio.thematic_struct.factorial_analysis.first_order import ClusterCenters
     >>> df = (
     ...     ClusterCenters()
     ...     #

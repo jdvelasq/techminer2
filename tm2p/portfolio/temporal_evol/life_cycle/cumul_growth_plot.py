@@ -23,7 +23,8 @@ Smoke test:
     ...     #
     ...     .run()
     ... )
-    >>> assert type(fig).__name__ == 'Figure'    >>> fig.write_html("docsrc/_generated/px.portfolio.temporal_evol.life_cycle.cumul_growth_plot.html")
+    >>> assert type(fig).__name__ == 'Figure'
+    >>> fig.write_html("docsrc/_generated/px.portfolio.temporal_evol.life_cycle.cumul_growth_plot.html")
 
 
 """
@@ -46,9 +47,7 @@ class CumulativeGrowthPlot(
 
     def run(self):
 
-        K, r, t0, years, annual_counts, cumulative = compute_model_parameters(
-            params=self.params
-        )
+        K, r, t0, years, _, cumulative = compute_model_parameters(params=self.params)
 
         peak_year = round(t0)
 

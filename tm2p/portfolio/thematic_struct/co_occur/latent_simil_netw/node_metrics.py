@@ -4,7 +4,7 @@ NodeMetrics
 
 Smoke tests:
     >>> from tm2p.enum import AssociationIndex, AnalysisUnit, Field, UnitOrderBy
-    >>> from tm2p.portfolio.thematic_stucture.co_occurrence.latent_similarity_network import NodeMetrics
+    >>> from tm2p.portfolio.thematic_struct.co_occur.latent_simil_netw import NodeMetrics
     >>> df = (
     ...     NodeMetrics()
     ...     #

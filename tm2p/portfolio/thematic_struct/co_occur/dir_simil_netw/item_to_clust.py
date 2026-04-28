@@ -16,7 +16,7 @@ Smoke tests:
     ...     compute_distances=True,  # always True
     ... )
     >>> from tm2p.enum import AssociationIndex, AnalysisUnit, Field, GraphClusteringAlgorithm, UnitOrderBy
-    >>> from tm2p.portfolio.thematic_stucture.co_occurrence.direct_similarity_network import ItemToCluster
+    >>> from tm2p.portfolio.thematic_struct.co_occur.direct_similarity_network import ItemToCluster
     >>> mapping = (
     ...     ItemToCluster()
     ...     #

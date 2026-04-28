@@ -15,10 +15,8 @@ Smoke test:
     ...     #
     ...     .run()
     ... )
-    >>> isinstance(df.index, pd.MultiIndex)
-    True
-    >>> len(df) > 0
-    True
+    >>> assert isinstance(df.index, pd.MultiIndex)
+    >>> assert len(df) > 0
     >>> df  # doctest: +NORMALIZE_WHITESPACE +SKIP
                                                                      VALUE
     CATEGORY       ITEM

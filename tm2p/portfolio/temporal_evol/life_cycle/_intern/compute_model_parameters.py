@@ -1,17 +1,19 @@
 from scipy.optimize import curve_fit  # type: ignore
 
 from tm2p.portfolio.perform_metr.annu import Metrics as AnnualMetrics
-from tm2p.portfolio.perform_metr.annu.column import Column as AnnualColumn
 
 from .logistic import logistic
+
+OCC = "OCC"
+CUMUL_OCC = "CUMUL_OCC"
 
 
 def compute_model_parameters(params):
 
     metrics = AnnualMetrics().update(**params.__dict__).run()
     years = metrics.index.values
-    annual_counts = metrics[AnnualColumn.OCC.value].values
-    cumulative = metrics[AnnualColumn.CUMUL_OCC.value].values
+    annual_counts = metrics[OCC].values
+    cumulative = metrics[CUMUL_OCC].values
 
     fit_result = curve_fit(
         logistic,

@@ -71,7 +71,7 @@ import plotly.graph_objs as go  # type: ignore
 
 from tm2p._intern import ParamsMixin
 
-# from tm2p.portfolio.thematic_stucture.co_occurrence.latent_similarity_network.item_to_cluster import (
+# from tm2p.portfolio.thematic_struct.co_occur.latent_similarity_network.item_to_cluster import (
 #     terms_to_cluster_mapping,
 # )
 

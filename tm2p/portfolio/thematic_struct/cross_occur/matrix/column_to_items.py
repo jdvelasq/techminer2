@@ -4,7 +4,7 @@ ColumnToItems
 
 Smoke tests:
     >>> from tm2p.enum import Field, UnitOrderBy
-    >>> from tm2p.portfolio.thematic_stucture.cross_occurrence.matrix import ColumnToItems
+    >>> from tm2p.portfolio.thematic_struct.cross_occurrence.matrix import ColumnToItems
     >>> mapping = (
     ...     ColumnToItems()
     ...     #
@@ -45,7 +45,7 @@ Smoke tests:
     >>> pprint(mapping)  # doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
 
     >>> from tm2p.enum import Field, UnitOrderBy
-    >>> from tm2p.portfolio.thematic_stucture.cross_occurrence.matrix import ColumnToItems
+    >>> from tm2p.portfolio.thematic_struct.cross_occurrence.matrix import ColumnToItems
     >>> mapping = (
     ...     ColumnToItems()
     ...     #

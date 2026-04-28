@@ -15,7 +15,7 @@ Smoke test:
     ...     random_state=0,
     ... )
     >>> from tm2p.enum import Field, UnitOrderBy
-    >>> from tm2p.portfolio.thematic_stucture.factorial_analysis.second_order import ItemsByDimension
+    >>> from tm2p.portfolio.thematic_struct.factorial_analysis.second_order import ItemsByDimension
     >>> df = (
     ...     ItemsByDimension()
     ...     #

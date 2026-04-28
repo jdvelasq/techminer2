@@ -4,12 +4,17 @@ Network Plot
 
 .. raw:: html
 
-    <iframe src="../_generated/px.portfolio.thematic_stucture.co_occurrence.latent_similarity_network.html"
+    <iframe src="../_generated/px.portfolio.thematic_struct.co_occur.latent_simil_netw.html"
     height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
-    >>> from tm2p.enum import AssociationIndex, AnalysisUnit, GraphClusteringAlgorithm, UnitOrderBy, Scaling, NodeSizeMetric
-    >>> from tm2p.portfolio.thematic_stucture.co_occurrence.latent_similarity_network import NetworkPlot
+    >>> from tm2p.enum import AssociationIndex  # type: ignore
+    >>> from tm2p.enum import AnalysisUnit  # type: ignore
+    >>> from tm2p.enum import GraphClusteringAlgorithm  # type: ignore
+    >>> from tm2p.enum import NodeSizeMetric  # type: ignore
+    >>> from tm2p.enum import Scaling  # type: ignore
+    >>> from tm2p.enum import UnitOrderBy  # type: ignore
+    >>> from tm2p.portfolio.thematic_struct.co_occur.latent_simil_netw import NetworkPlot
     >>> fig = (
     ...     NetworkPlot()
     ...     #
@@ -78,14 +83,15 @@ Smoke tests:
     ...     .using_axes_visible(False)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("tests/tinyml/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_global_citations_range(None, None)
     ...     .where_records_match(None)
     ...     #
     ...     .run()
     ... )
-    >>> assert type(fig).__name__ == 'Figure'    >>> fig.write_html("docsrc/_generated/px.portfolio.thematic_stucture.co_occurrence.latent_similarity_network.html")
+    >>> assert type(fig).__name__ == 'Figure'
+    >>> fig.write_html("docsrc/_generated/px.portfolio.thematic_struct.co_occur.latent_simil_netw.html")
 
 
 """

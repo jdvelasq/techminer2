@@ -14,7 +14,7 @@ Smoke tests:
     >>> from tm2p.enum import NodeSizeMetric  # type: ignore
     >>> from tm2p.enum import Scaling  # type: ignore
     >>> from tm2p.enum import UnitOrderBy  # type: ignore
-    >>> from tm2p.portfolio.thematic_stuct.co_occur.dir_simil_netw import OverlayPlot  # type: ignore
+    >>> from tm2p.portfolio.thematic_struct.co_occur.dir_simil_netw import OverlayPlot  # type: ignore
     >>> fig = (
     ...     OverlayPlot()
     ...     #
@@ -77,7 +77,7 @@ Smoke tests:
     ...     .using_axes_visible(False)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("tests/tinyml/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_global_citations_range(None, None)
     ...     .where_records_match(None)

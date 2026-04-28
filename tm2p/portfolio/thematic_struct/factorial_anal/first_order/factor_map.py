@@ -4,7 +4,7 @@ FactorMap
 
 .. raw:: html
 
-    <iframe src="../_generated/px.portfolio.thematic_stucture.factorial_analysis.first_order.html"
+    <iframe src="../_generated/px.portfolio.thematic_struct.factorial_analysis.first_order.html"
     height="800px" width="100%" frameBorder="0"></iframe>
 
 
@@ -21,7 +21,7 @@ Smoke test:
     ...     random_state=0,
     ... )
     >>> from tm2p.enum import Field, UnitOrderBy, Scaling
-    >>> from tm2p.portfolio.thematic_stucture.factorial_analysis.first_order import FactorMap
+    >>> from tm2p.portfolio.thematic_struct.factorial_analysis.first_order import FactorMap
     >>> plot = (
     ...     FactorMap()
     ...     #
@@ -73,7 +73,7 @@ Smoke test:
     ...     #
     ...     .run()
     ... )
-    >>> plot.write_html("docsrc/_generated/px.portfolio.thematic_stucture.factorial_analysis.first_order.html")
+    >>> plot.write_html("docsrc/_generated/px.portfolio.thematic_struct.factorial_analysis.first_order.html")
 
 
 

@@ -4,12 +4,12 @@ Network Plot
 
 .. raw:: html
 
-    <iframe src="../_generated/px.portfolio.thematic_stucture.co_occurrence.latent_similarity_network.overlay_plot.html"
+    <iframe src="../_generated/px.portfolio.thematic_struct.co_occur.latent_similarity_network.overlay_plot.html"
     height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
     >>> from tm2p.enum import AssociationIndex, AnalysisUnit, GraphClusteringAlgorithm, UnitOrderBy, Scaling, NodeSizeMetric
-    >>> from tm2p.portfolio.thematic_stucture.co_occurrence.latent_similarity_network import OverlayPlot
+    >>> from tm2p.portfolio.thematic_struct.co_occur.latent_simil_netw import OverlayPlot
     >>> fig = (
     ...     OverlayPlot()
     ...     #
@@ -72,14 +72,14 @@ Smoke tests:
     ...     .using_axes_visible(False)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("tests/tinyml/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_global_citations_range(None, None)
     ...     .where_records_match(None)
     ...     #
     ...     .run()
     ... )
-    >>> assert type(fig).__name__ == 'Figure'    >>> fig.write_html("docsrc/_generated/px.portfolio.thematic_stucture.co_occurrence.latent_similarity_network.overlay_plot.html")
+    >>> assert type(fig).__name__ == 'Figure'    >>> fig.write_html("docsrc/_generated/px.portfolio.thematic_struct.co_occur.latent_similarity_network.overlay_plot.html")
 
 
 """

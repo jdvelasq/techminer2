@@ -59,7 +59,7 @@ from tm2p._intern.packag_data.templates.load_builtin_template import (
     load_builtin_template,
 )
 
-# from tm2p.portfolio.thematic_stucture.co_occurrence.first_order_network_ import (
+# from tm2p.portfolio.thematic_struct.co_occur.first_order_network_ import (
 #     DocumentsByCluster,
 #     Summary,
 # )

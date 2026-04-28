@@ -4,7 +4,7 @@ Matrix
 
 Smoke tests:
     >>> from tm2p.enum import AssociationIndex, AnalysisUnit, UnitOrderBy
-    >>> from tm2p.portfolio.thematic_stucture.co_occurrence.direct_similarity_network import Matrix
+    >>> from tm2p.portfolio.thematic_struct.co_occur.direct_similarity_network import Matrix
     >>> df = (
     ...     Matrix()
     ...     #

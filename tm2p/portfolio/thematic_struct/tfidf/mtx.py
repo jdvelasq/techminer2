@@ -4,7 +4,7 @@ Matrix
 
 Smoke tests:
     >>> from tm2p.enum import Field, UnitOrderBy
-    >>> from tm2p.portfolio.thematic_stucture.tfidf import Matrix
+    >>> from tm2p.portfolio.thematic_struct.tfidf import Matrix
     >>> df = (
     ...     Matrix()
     ...     #

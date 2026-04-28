@@ -4,12 +4,12 @@ MatrixPlot
 
 .. raw:: html
 
-    <iframe src="../_generated/px.portfolio.thematic_stucture.co_occurrence.second_order_matrix.matrix_plot.html"
+    <iframe src="../_generated/px.portfolio.thematic_struct.co_occur.second_order_matrix.matrix_plot.html"
     height="600px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
     >>> from tm2p.enum import AssociationIndex, Field, UnitOrderBy
-    >>> from tm2p.portfolio.thematic_stucture.co_occurrence.second_order_matrix import MatrixPlot
+    >>> from tm2p.portfolio.thematic_struct.co_occur.second_order_matrix import MatrixPlot
     >>> fig = (
     ...     MatrixPlot()
     ...     #
@@ -52,7 +52,7 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> assert type(fig).__name__ == 'Figure'    >>> fig.write_html("docsrc/_generated/px.portfolio.thematic_stucture.co_occurrence.second_order_matrix.matrix_plot.html")
+    >>> assert type(fig).__name__ == 'Figure'    >>> fig.write_html("docsrc/_generated/px.portfolio.thematic_struct.co_occur.second_order_matrix.matrix_plot.html")
 
 """
 

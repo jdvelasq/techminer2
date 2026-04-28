@@ -10,7 +10,7 @@ DensityPlot
 
 Smoke tests:
     >>> from tm2p.enum import AnalysisUnit, AssociationIndex, GraphClusteringAlgorithm, NodeSizeMetric, Scaling, UnitOrderBy
-    >>> from tm2p.portfolio.thematic_stucture.co_occurrence.direct_similarity_network import DensityPlot
+    >>> from tm2p.portfolio.thematic_struct.co_occur.direct_similarity_network import DensityPlot
     >>> fig = (
     ...     DensityPlot()
     ...     #
@@ -73,7 +73,7 @@ Smoke tests:
     ...     .using_axes_visible(False)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("tests/tinyml/")
+    ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_global_citations_range(None, None)
     ...     .where_records_match(None)

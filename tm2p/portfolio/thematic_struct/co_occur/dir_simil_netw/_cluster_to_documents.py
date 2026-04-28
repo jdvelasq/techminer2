@@ -14,7 +14,7 @@ Smoke tests:
     ...     compute_distances=True,  #  always True
     ... )
     >>> from tm2p.enum import AssociationIndex, Field, GraphClusteringAlgorithm, UnitOrderBy, RecordOrderBy
-    >>> from tm2p.portfolio.thematic_stucture.co_occurrence.direct_similarity_network import ClusterToDocuments
+    >>> from tm2p.portfolio.thematic_struct.co_occur.direct_similarity_network import ClusterToDocuments
     >>> mapping = (
     ...     ClusterToDocuments()
     ...     #

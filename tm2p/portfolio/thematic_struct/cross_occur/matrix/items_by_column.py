@@ -4,7 +4,7 @@ ItemsByColumn
 
 Smoke tests:
     >>> from tm2p.enum import Field, UnitOrderBy
-    >>> from tm2p.portfolio.thematic_stucture.cross_occurrence.matrix import ItemsByColumn
+    >>> from tm2p.portfolio.thematic_struct.cross_occurrence.matrix import ItemsByColumn
     >>> df = (
     ...     ItemsByColumn()
     ...     #
@@ -50,7 +50,7 @@ Smoke tests:
 
 
     >>> from tm2p.enum import Field, UnitOrderBy
-    >>> from tm2p.portfolio.thematic_stucture.cross_occurrence.matrix import ItemsByColumn
+    >>> from tm2p.portfolio.thematic_struct.cross_occurrence.matrix import ItemsByColumn
     >>> df = (
     ...     ItemsByColumn()
     ...     #

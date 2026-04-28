@@ -4,7 +4,7 @@ ItemsToCluster
 
 Smoke test:
     >>> from tm2p.enum import AssociationIndex, AnalysisUnit, GraphClusteringAlgorithm, UnitOrderBy
-    >>> from tm2p.portfolio.thematic_stucture.co_occurrence.latent_similarity_network import ItemToCluster
+    >>> from tm2p.portfolio.thematic_struct.co_occur.latent_simil_netw import ItemToCluster
     >>> mapping = (
     ...     ItemToCluster()
     ...     #

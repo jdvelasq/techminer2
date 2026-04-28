@@ -96,7 +96,7 @@ from tm2p.portfolio.thematic_struct.co_occur.latent_simil_netw._cluster_centers_
     cluster_centers_frame,
 )
 
-# from tm2p.portfolio.thematic_stucture.co_occurrence.latent_similarity_network._cluster_to_items_mapping import (
+# from tm2p.portfolio.thematic_struct.co_occur.latent_similarity_network._cluster_to_items_mapping import (
 #     cluster_to_terms_mapping,
 # )
 

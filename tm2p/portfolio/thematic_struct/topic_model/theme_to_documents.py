@@ -18,7 +18,7 @@ Smoke tests:
     ...     random_state=0,
     ... )
     >>> from tm2p.enum import UnitOrderBy, Field
-    >>> from tm2p.portfolio.thematic_stucture.topic_modeling import ThemeToDocuments
+    >>> from tm2p.portfolio.thematic_struct.topic_modeling import ThemeToDocuments
     >>> mapping = (
     ...     ThemeToDocuments()
     ...     #

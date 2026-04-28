@@ -33,22 +33,20 @@ Smoke tests:
 
 from tm2p._intern import ParamsMixin
 from tm2p._intern.data_access import load_filtered_main_csv_zip
+from tm2p.enum import Field
 
-from .column import Column
-
-GCS = Column.GCS.value
-LCS = Column.LCS.value
-YEAR = Column.YEAR.value
-OCC = Column.OCC.value
-CUMUL_OCC = Column.CUMUL_OCC.value
-CUMUL_LCS = Column.CUMUL_LCS.value
-CITAB_YEAR = Column.CITAB_YEAR.value
-MEAN_LCS_PER_YEAR = Column.MEAN_LCS_PER_YEAR.value
-MEAN_GCS_PER_YEAR = Column.MEAN_GCS_PER_YEAR.value
-
-MEAN_GCS = Column.MEAN_GCS.value
-MEAN_LCS = Column.MEAN_LCS.value
-CUMUL_GCS = Column.CUMUL_GCS.value
+CITAB_YEAR = "CITAB_YEAR"
+CUMUL_GCS = "CUMUL_GCS"
+CUMUL_LCS = "CUMUL_LCS"
+CUMUL_OCC = "CUMUL_OCC"
+GCS = Field.GCS.value
+LCS = Field.LCS.value
+MEAN_GCS = "MEAN_GCS"
+MEAN_LCS = "MEAN_LCS"
+MEAN_GCS_PER_YEAR = "MEAN_GCS_PER_YEAR"
+MEAN_LCS_PER_YEAR = "MEAN_LCS_PER_YEAR"
+OCC = "OCC"
+YEAR = Field.YEAR.value
 
 
 class Metrics(

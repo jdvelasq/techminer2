@@ -3,7 +3,7 @@ ConceptGridPlot
 ===============================================================================
 
 
-## >>> from tm2p.portfolio.thematic_stucture.co_occurrence.direct_similarity_network import concept_grid_plot
+## >>> from tm2p.portfolio.thematic_struct.co_occur.direct_similarity_network import concept_grid_plot
 ## >>> chart = concept_grid_plot(
 ## ...     #
 ## ...     # FIELD:

@@ -4,12 +4,12 @@ Heatmap
 
 .. raw:: html
 
-    <iframe src="../_generated/px.portfolio.thematic_stucture.cross_occurrence.matrix.heatmap.html"
+    <iframe src="../_generated/px.portfolio.thematic_struct.cross_occurrence.matrix.heatmap.html"
     height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
     >>> from tm2p.enum import Field, UnitOrderBy
-    >>> from tm2p.portfolio.thematic_stucture.cross_occurrence.matrix import Heatmap
+    >>> from tm2p.portfolio.thematic_struct.cross_occurrence.matrix import Heatmap
     >>> fig = (
     ...     Heatmap()
     ...     #
@@ -46,7 +46,7 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> assert type(fig).__name__ == 'Figure'    >>> fig.write_html("docsrc/_generated/px.portfolio.thematic_stucture.cross_occurrence.matrix.heatmap.html")
+    >>> assert type(fig).__name__ == 'Figure'    >>> fig.write_html("docsrc/_generated/px.portfolio.thematic_struct.cross_occurrence.matrix.heatmap.html")
 
 
 

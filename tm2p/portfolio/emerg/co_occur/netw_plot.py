@@ -47,11 +47,11 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> plot.write_html("docsrc/_generated/px.experimental.co_occurrence.network_plot.html")
+    >>> plot.write_html("docsrc/_generated/px.experimental.co_occur.network_plot.html")
 
 .. raw:: html
 
-    <iframe src="../_generated/px.experimental.co_occurrence.network_plot.html"
+    <iframe src="../_generated/px.experimental.co_occur.network_plot.html"
     height="800px" width="100%" frameBorder="0"></iframe>
 
 
@@ -61,7 +61,7 @@ Smoke tests:
 from tm2p._intern import ParamsMixin
 from tm2p.portfolio.emerg.co_occur.mixins import RecursiveClusteringMixin
 
-# from tm2p.portfolio.thematic_stucture.co_occurrence.first_order_network_ import (
+# from tm2p.portfolio.thematic_struct.co_occur.first_order_network_ import (
 #     NetworkPlot as ClassicalNetworkPlot,
 # )
 

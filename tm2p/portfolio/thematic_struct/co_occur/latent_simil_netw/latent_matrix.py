@@ -4,7 +4,7 @@ LatentMatrix
 
 Smoke tests:
     >>> from tm2p.enum import AssociationIndex, AnalysisUnit, UnitOrderBy
-    >>> from tm2p.portfolio.thematic_stucture.co_occurrence.latent_similarity_network import LatentMatrix
+    >>> from tm2p.portfolio.thematic_struct.co_occur.latent_simil_netw import LatentMatrix
     >>> df = (
     ...     LatentMatrix()
     ...     #
