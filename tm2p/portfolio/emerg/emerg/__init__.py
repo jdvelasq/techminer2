@@ -1,9 +1,7 @@
-from .item_by_clust_df import TermsByClusterDataFrame
-from .item_by_clust_summ import TermsByClusterSummary
-from .metrics import Metrics
-from .netw_plot import NetworkPlot
+from .gantt_plot import GanttPlot
+from .metr import Metrics
 
 __all__ = [
+    "GanttPlot",
     "Metrics",
-    "NetworkPlot",
 ]

@@ -3,8 +3,8 @@ Metrics
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.enum import AnalysisUnit
-    >>> from tm2p.portfolio.emergence.emergence import Metrics
+    >>> from tm2p.enum import AnalysisUnit  # type: ignore
+    >>> from tm2p.portfolio.emerg.emerg import Metrics  # type: ignore
     >>> df = (
     ...     Metrics()
     ...     #
@@ -30,7 +30,17 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
+    >>> assert type(df).__name__ == 'DataFrame'
+    >>> assert df.shape[0] > 0
+    >>> assert df.shape[1] > 0
     >>> print(df.head().to_string())  # doctest: +NORMALIZE_WHITESPACE
+                            OCC  OCC_BASELINE  OCC_RECENT  NONZERO_YEARS   PO  PF  NP GROWTH_RATE GROWTH_RATE_RATIO
+    KW_NORM
+    costs                    28             8          20              4  3.0  10   0           —                 —
+    computing power          23             5          18              4  2.0   9   0           —                 —
+    computational modeling   24             8          16              3  2.0  14   0           —                 —
+    features extraction      17             2          15              4  1.0  11   0           —                 —
+    task analysis            15             0          15              3  1.0  11   0           —                 —
 
 
 """
@@ -193,4 +203,22 @@ class Metrics(
         #     data_frame["OCC_recent"] / data_frame["OCC_baseline"] >= ratio_threshold
         # )
 
-        return data_frame[data_frame.selected].drop(columns=["selected"])
+        data_frame = data_frame[data_frame.selected].drop(columns=["selected"])
+
+        data_frame = data_frame.sort_values(
+            by=[
+                "GROWTH_RATE_RATIO",
+                "GROWTH_RATE",
+                "OCC_RECENT",
+                "OCC",
+            ],
+            ascending=[False, False, False, False],
+        )
+
+        mask = data_frame["NP"] == 0
+        data_frame["GROWTH_RATE"] = data_frame["GROWTH_RATE"].astype(object)
+        data_frame["GROWTH_RATE_RATIO"] = data_frame["GROWTH_RATE_RATIO"].astype(object)
+        data_frame.loc[mask, "GROWTH_RATE"] = "\u2014"
+        data_frame.loc[mask, "GROWTH_RATE_RATIO"] = "\u2014"
+
+        return data_frame

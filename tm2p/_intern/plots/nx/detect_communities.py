@@ -9,7 +9,7 @@ def detect_communities(
     clustering = params.clustering
 
     if isinstance(clustering, str):
-        nx_graph = _apply_cdlib_algorithm(nx_graph, clustering)
+        nx_graph = _apply_cdlib_algorithm(params, nx_graph, clustering)
 
     if isinstance(clustering, dict):
         #
@@ -24,6 +24,7 @@ def detect_communities(
 
 
 def _apply_cdlib_algorithm(
+    params,
     nx_graph,
     algorithm,
 ):
@@ -50,9 +51,31 @@ def _apply_cdlib_algorithm(
         kwargs["weights"] = "weight"
         kwargs["seed"] = 0
 
-    communities = cdlib_algorithm(nx_graph, **kwargs).communities
+    final_communities = cdlib_algorithm(nx_graph, **kwargs).communities
 
-    for i_community, community in enumerate(communities):
+    for _ in range(2, params.max_recursive_clustering_depth + 1):
+
+        min_size = min(len(c) for c in final_communities)
+
+        if min_size > params.min_recursive_cluster_size:
+
+            new_communities = []
+
+            for community in final_communities:
+
+                subgraph = nx_graph.subgraph(community).copy()
+
+                sub_communities = cdlib_algorithm(subgraph, **kwargs).communities
+                min_size = min(len(c) for c in sub_communities)
+                if min_size > params.min_recursive_cluster_size:
+                    new_communities.extend(sub_communities)
+                else:
+                    new_communities.append(community)
+
+            final_communities = new_communities
+
+    final_communities = sorted(final_communities, key=len, reverse=True)
+    for i_community, community in enumerate(final_communities):
         for node in community:
             nx_graph.nodes[node]["group"] = i_community
 

@@ -203,8 +203,8 @@ class Params:
     cluster_coverages: Optional[list[str]]
     cluster_names: Optional[list[str]]
 
-    # minimum_items_in_cluster: int = 5
-    # minimum_number_of_clusters: int = 10
+    max_recursive_clustering_depth: int
+    min_recursive_cluster_size: int
 
     # -------------------------------------------------------------------------
     # Coupling network:

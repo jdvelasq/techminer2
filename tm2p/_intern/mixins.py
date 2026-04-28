@@ -593,6 +593,22 @@ class ParamsMixin:
         self.params.clustering = clustering
         return self
 
+    def using_max_recursive_clustering_depth(self, depth: int) -> Self:
+        depth = check_required_positive_int(
+            value=depth,
+            param_name="max_recursive_clustering_depth",
+        )
+        self.params.max_recursive_clustering_depth = depth
+        return self
+
+    def using_min_recursive_cluster_size(self, size: int) -> Self:
+        size = check_required_positive_int(
+            value=size,
+            param_name="min_recursive_cluster_size",
+        )
+        self.params.min_recursive_cluster_size = size
+        return self
+
     # -------------------------------------------------------------------------
     # Co-citation network:
     # -------------------------------------------------------------------------

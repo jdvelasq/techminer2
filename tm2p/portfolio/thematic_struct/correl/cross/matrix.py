@@ -151,7 +151,7 @@ class Matrix(
             OCCMatrix()
             .update(**self.params.__dict__)
             #
-            .with_column_analysis_unit(self.params.source_field)
+            .with_column_analysis_unit(self.params.analysis_unit)
             .having_column_units_in_top(self.params.top_n_units)
             .having_column_units_ordered_by(UnitOrderBy.OCC)
             .having_column_unit_occurrence_between(

@@ -8,8 +8,13 @@ Network Plot
     height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
-    >>> from tm2p.enum import AssociationIndex, AnalysisUnit, GraphClusteringAlgorithm, UnitOrderBy, Scaling, NodeSizeMetric
-    >>> from tm2p.portfolio.social_structure.collaboration_network import NetworkPlot
+    >>> from tm2p.enum import AnalysisUnit  # type: ignore
+    >>> from tm2p.enum import AssociationIndex  # type: ignore
+    >>> from tm2p.enum import GraphClusteringAlgorithm  # type: ignore
+    >>> from tm2p.enum import NodeSizeMetric  # type: ignore
+    >>> from tm2p.enum import Scaling  # type: ignore
+    >>> from tm2p.enum import UnitOrderBy  # type: ignore
+    >>> from tm2p.portfolio.social_struct.collab_netw import NetworkPlot  # type: ignore
     >>> fig = (
     ...     NetworkPlot()
     ...     #
@@ -85,7 +90,8 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> assert type(fig).__name__ == 'Figure'    >>> fig.write_html("docsrc/_generated/px.portfolio.social_structure.collaboration_network.network_plot.html")
+    >>> assert type(fig).__name__ == 'Figure'
+    >>> fig.write_html("docsrc/_generated/px.portfolio.social_structure.collaboration_network.network_plot.html")
 
 
 """
