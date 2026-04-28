@@ -9,7 +9,7 @@ DistributionPlot
 
 
 Smoke tests:
-    >>> from tm2p.portfolio.perform_metr.lotka import DistributionPlot
+    >>> from tm2p.portfolio.perform_metr.lotka import DistributionPlot  # type: ignore
     >>> fig = (
     ...     DistributionPlot()
     ...     #
