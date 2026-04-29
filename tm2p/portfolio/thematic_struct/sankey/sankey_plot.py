@@ -9,24 +9,24 @@ Sankey Plot
 
 
 Smoke tests:
-    >>> from tm2p.enum import Field
+    >>> from tm2p.enum import AnalysisUnit
     >>> from tm2p.portfolio.thematic_struct.sankey import SankeyPlot
     >>> fig = (
     ...     SankeyPlot()
     ...     #
-    ...     # COLUMNS:
-    ...     .with_source_fields(
+    ...     # ANALYSIS UNITS:
+    ...     .with_analysis_units(
     ...         [
-    ...             Field.CTRY_ISO3,
-    ...             Field.AUTH_NORM,
-    ...             Field.CONCEPT_NORM,
+    ...             AnalysisUnit.CTRY,
+    ...             AnalysisUnit.AUTH,
+    ...             AnalysisUnit.CONCEPT,
     ...         ]
     ...     )
-    ...     .having_sankey_items_in_top_n((20, 20, 10))
+    ...     .having_sankey_top_n_units((20, 20, 10))
     ...     #
     ...     # PLOT:
     ...     .using_color("#7793a5")
-    ...     .using_textfont_size(8)
+    ...     .using_uniform_textfont_size(8)
     ...     .using_title_text("Sankey Plot")
     ...     #
     ...     # COUNTERS:
@@ -40,7 +40,8 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> assert type(fig).__name__ == 'Figure'    >>> fig.write_html("docsrc/_generated/px.portfolio.thematic_struct.sankey.sankey_plot.html")
+    >>> assert type(fig).__name__ == 'Figure'
+    >>> fig.write_html("docsrc/_generated/px.portfolio.thematic_struct.sankey.sankey_plot.html")
 
 
 """
@@ -61,17 +62,17 @@ class SankeyPlot(
     def _step_01_build_matrices(self):
 
         matrices = []
-        fields = self.params.source_fields
+        units = self.params.analysis_units
         top_n = self.params.top_n_sankey_units
 
         for (
             idx,
-            col_field,
+            col_unit,
             idx_top_n,
             col_top_n,
         ) in zip(
-            fields[:-1],
-            fields[1:],
+            units[:-1],
+            units[1:],
             top_n[:-1],
             top_n[1:],
         ):
@@ -81,16 +82,22 @@ class SankeyPlot(
                 .update(**self.params.__dict__)
                 #
                 # COLUMNS:
-                .with_column_analysis_unit(col_field)
+                .with_column_analysis_unit(col_unit)
                 .having_column_units_ordered_by(UnitOrderBy.OCC)
                 .having_column_units_in_top(col_top_n)
+                .having_column_unit_occurrence_between(None, None)
+                .having_column_unit_citation_between(None, None)
+                .having_column_units_in(None)
                 #
                 # ROWS:
                 .with_index_analysis_unit(idx)
                 .having_index_units_ordered_by(UnitOrderBy.OCC)
-                .having_index_units_in_top(
-                    idx_top_n,
-                )
+                .having_index_units_in_top(idx_top_n)
+                .having_index_unit_occurrence_between(None, None)
+                .having_index_unit_citation_between(None, None)
+                .having_index_units_in(None)
+                #
+                .using_minimum_pair_co_occurrence(1)
                 #
                 .run()
             )

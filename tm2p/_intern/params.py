@@ -82,6 +82,7 @@ class Params:
     # -------------------------------------------------------------------------
 
     analysis_unit: AnalysisUnit
+    analysis_units: Tuple[AnalysisUnit, ...]
     column_analysis_unit: AnalysisUnit
     cross_analysis_unit: AnalysisUnit
     index_analysis_unit: AnalysisUnit

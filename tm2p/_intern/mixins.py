@@ -225,6 +225,13 @@ class ParamsMixin:
         self.params.analysis_unit = analysis_unit
         return self
 
+    def with_analysis_units(self, analysis_units: Tuple[AnalysisUnit, ...]) -> Self:
+        for unit in analysis_units:
+            if not isinstance(unit, AnalysisUnit):
+                raise TypeError("analysis_units must be a tuple of AnalysisUnit enum")
+        self.params.analysis_units = analysis_units
+        return self
+
     def with_column_analysis_unit(self, unit: AnalysisUnit) -> Self:
         unit = check_required_analysis_unit(
             unit=unit,
