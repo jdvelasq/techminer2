@@ -11,7 +11,7 @@ Smoke tests:
     >>> mapping = (
     ...     ClusterToItems()
     ...     #
-    ...     # UNIT OF ANALYSIS:
+    ...     # ANALYSIS UNIT:
     ...     .with_analysis_unit(AnalysisUnit.AUTH)
     ...     #
     ...     .having_top_n_units(20)

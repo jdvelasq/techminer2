@@ -8,7 +8,7 @@ Smoke tests:
     >>> df = (
     ...     DirectMatrixList()
     ...     #
-    ...     # UNIT OF ANALYSIS:
+    ...     # ANALYSIS UNIT:
     ...     .with_analysis_unit(AnalysisUnit.AUTH)
     ...     #
     ...     .having_top_n_units(10)
@@ -53,7 +53,7 @@ Smoke tests:
     >>> df = (
     ...     DirectMatrixList()
     ...     #
-    ...     # UNIT OF ANALYSIS:
+    ...     # ANALYSIS UNIT:
     ...     .with_analysis_unit(AnalysisUnit.AUTH)
     ...     #
     ...     .having_top_n_units(10)

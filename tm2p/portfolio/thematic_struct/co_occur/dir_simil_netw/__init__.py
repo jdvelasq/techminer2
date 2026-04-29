@@ -1,5 +1,4 @@
 from ._cluster_to_documents import ClusterToDocuments
-from ._summary import Summary
 from .cluster_to_items import ClusterToItems
 from .conectivity_class import ConectivityClass
 from .dens_plot import DensityPlot
@@ -12,6 +11,7 @@ from .netw_plot import NetworkPlot
 from .node_metr import NodeMetrics
 from .overlay_plot import OverlayPlot
 from .strength_plot import StrengthPlot
+from .summary import Summary
 
 __all__ = [
     "ClusterToDocuments",

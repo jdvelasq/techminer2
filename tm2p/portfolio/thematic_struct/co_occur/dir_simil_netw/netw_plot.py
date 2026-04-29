@@ -37,6 +37,8 @@ Smoke tests:
     ...     #
     ...     # CLUSTERING:
     ...     .using_clustering(GraphClusteringAlgorithm.LOUVAIN)
+    ...     .using_max_recursive_clustering_depth(3)
+    ...     .using_min_recursive_cluster_size(8)
     ...     #
     ...     # NETWORK:
     ...     .using_spring_layout_k(0.27)

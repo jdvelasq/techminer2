@@ -20,7 +20,7 @@ Smoke tests:
     >>> mapping = (
     ...     ClusterToItems()
     ...     #
-    ...     # UNIT OF ANALYSIS:
+    ...     # ANALYSIS UNIT:
     ...     .with_analysis_unit(AnalysisUnit.KW)
     ...     #
     ...     .having_top_n_units(20)
@@ -77,7 +77,7 @@ Smoke tests:
     >>> mapping = (
     ...     ClusterToItems()
     ...     #
-    ...     # UNIT OF ANALYSIS:
+    ...     # ANALYSIS UNIT:
     ...     .with_analysis_unit(AnalysisUnit.KW)
     ...     #
     ...     .having_top_n_units(20)

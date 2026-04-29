@@ -15,17 +15,8 @@ from .assign_node_sizes_based_on_occurrences import (
 from .assign_text_positions_based_on_quadrants import (
     assign_text_positions_based_on_quadrants,
 )
-from .assign_textfont_opacity_based_on_citations import (
-    assign_textfont_opacity_based_on_citations,
-)
-from .assign_textfont_opacity_based_on_degree import (
-    assign_textfont_opacity_based_on_degree,
-)
 from .assign_textfont_opacity_based_on_occurrences import (
     assign_textfont_opacity_based_on_occurrences,
-)
-from .assign_textfont_sizes_based_on_citations import (
-    assign_textfont_sizes_based_on_citations,
 )
 from .assign_textfont_sizes_based_on_degree import assign_textfont_sizes_based_on_degree
 from .assign_textfont_sizes_based_on_occurrences import (
@@ -64,10 +55,7 @@ __all__ = [
     "assign_node_sizes_based_on_degree",
     "assign_node_sizes_based_on_occurrences",
     "assign_text_positions_based_on_quadrants",
-    "assign_textfont_opacity_based_on_citations",
-    "assign_textfont_opacity_based_on_degree",
     "assign_textfont_opacity_based_on_occurrences",
-    "assign_textfont_sizes_based_on_citations",
     "assign_textfont_sizes_based_on_degree",
     "assign_textfont_sizes_based_on_occurrences",
     "cluster_nx_graph",

@@ -15,7 +15,7 @@ Smoke tests:
     >>> fig = (
     ...     NetworkPlot()
     ...     #
-    ...     # UNIT OF ANALYSIS:
+    ...     # ANALYSIS UNIT:
     ...     .having_top_n_units(None)
     ...     .having_minimum_cited_unit_occurrences(0)
     ...     #
