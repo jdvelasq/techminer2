@@ -73,7 +73,7 @@ import pandas as pd  # type: ignore
 from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
 
 from tm2p._intern import ParamsMixin
-from tm2p.portfolio.thematic_struct.tfidf.mtx import Matrix as TfIdf
+from tm2p.portfolio.thematic_struct.tfidf.matrix import Matrix as TfIdf
 
 from .theme_to_items import ThemeToItems
 

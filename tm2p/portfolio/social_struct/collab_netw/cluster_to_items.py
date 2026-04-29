@@ -61,13 +61,13 @@ Smoke tests:
 
 """
 
-from tm2p._intern.netw.clust_to_item import BaseClusterToItems
+from tm2p._intern.netw.clust_to_unit import BaseClusterToUnits
 
 from .item_to_cluster import ItemToCluster
 
 
 class ClusterToItems(
-    BaseClusterToItems,
+    BaseClusterToUnits,
 ):
     """:meta private:"""
 

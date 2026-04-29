@@ -12,7 +12,7 @@ StrenghtPlot
 
 Smoke tests:
     >>> from tm2p.enum import AssociationIndex, AnalysisUnit, UnitOrderBy
-    >>> from tm2p.portfolio.thematic_struct.co_occur.direct_similarity_network import StrengthPlot
+    >>> from tm2p.portfolio.thematic_struct.co_occur.dir_simil_netw import StrengthPlot
     >>> fig = (
     ...     StrengthPlot()
     ...     #
@@ -48,7 +48,8 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> assert type(fig).__name__ == 'Figure'    >>> fig.write_html("docsrc/_generated/px.portfolio.thematic_struct.co_occur.first_order_network.strength_plot_1.html")
+    >>> assert type(fig).__name__ == 'Figure'
+    >>> fig.write_html("docsrc/_generated/px.portfolio.thematic_struct.co_occur.first_order_network.strength_plot_1.html")
 
     >>> fig = (
     ...     StrengthPlot()

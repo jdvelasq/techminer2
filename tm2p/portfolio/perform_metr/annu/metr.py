@@ -3,7 +3,7 @@ DataFrame
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.portfolio.perform_metr.annual_metrics import Metrics
+    >>> from tm2p.portfolio.perform_metr.annu import Metrics
     >>> df = (
     ...     Metrics()
     ...     .where_root_directory("tests/tinyml-scopus/")

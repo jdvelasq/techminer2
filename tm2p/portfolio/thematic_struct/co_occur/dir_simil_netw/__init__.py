@@ -1,31 +1,37 @@
-from ._cluster_to_documents import ClusterToDocuments
-from .cluster_to_items import ClusterToItems
+from .cluster_activity import ClusterActivity
+from .cluster_composition import ClusterComposition
+from .cluster_interpretation import ClusterInterpretation
+from .cluster_to_documents_hard import ClusterToDocumentsHard
+from .cluster_to_documents_soft import ClusterToDocumentsSoft
+from .cluster_to_units import ClusterToUnits
 from .conectivity_class import ConectivityClass
 from .dens_plot import DensityPlot
 from .dir_matrix import DirectMatrix
 from .dir_matrix_list import DirectMatrixList
-from .item_to_clust import ItemToCluster
-from .items_by_clust import ItemsByCluster
 from .matrix import Matrix
 from .netw_plot import NetworkPlot
 from .node_metr import NodeMetrics
 from .overlay_plot import OverlayPlot
 from .strength_plot import StrengthPlot
-from .summary import Summary
+from .unit_to_cluster import UnitToCluster
+from .units_by_cluster import UnitsByCluster
 
 __all__ = [
-    "ClusterToDocuments",
-    "ClusterToItems",
+    "ClusterActivity",
+    "ClusterComposition",
+    "ClusterInterpretation",
+    "ClusterToUnits",
     "ConectivityClass",
     "DensityPlot",
     "DirectMatrix",
     "DirectMatrixList",
-    "ItemsByCluster",
-    "ItemToCluster",
+    "ClusterToDocumentsHard",
     "Matrix",
     "NetworkPlot",
     "NodeMetrics",
     "OverlayPlot",
+    "ClusterToDocumentsSoft",
     "StrengthPlot",
-    "Summary",
+    "UnitsByCluster",
+    "UnitToCluster",
 ]

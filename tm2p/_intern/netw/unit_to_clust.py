@@ -20,7 +20,7 @@ from tm2p._intern.plots.nx import (
 )
 
 
-class BaseItemToCluster(
+class BaseUnitToCluster(
     ABC,
     ParamsMixin,
 ):

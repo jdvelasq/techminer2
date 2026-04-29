@@ -134,7 +134,7 @@ Smoke Test:
 
 from tm2p._intern import ParamsMixin
 
-from ...tfidf.mtx import Matrix as TfIdf
+from ...tfidf.matrix import Matrix as TfIdf
 from .._intern.comput_correl_matrix import comput_correl_matrix
 
 

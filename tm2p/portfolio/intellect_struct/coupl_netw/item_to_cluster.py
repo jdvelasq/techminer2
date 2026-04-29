@@ -88,13 +88,13 @@ Smoke tests:
 
 """
 
-from tm2p._intern.netw.item_to_clust import BaseItemToCluster
+from tm2p._intern.netw.unit_to_clust import BaseUnitToCluster
 
 from .direct_matrix import DirectMatrix
 
 
 class ItemToCluster(
-    BaseItemToCluster,
+    BaseUnitToCluster,
 ):
     """:meta private:"""
 

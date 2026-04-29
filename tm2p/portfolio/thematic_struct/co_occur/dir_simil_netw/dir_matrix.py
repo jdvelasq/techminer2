@@ -4,7 +4,7 @@ DirectMatrix
 
 Smoke tests:
     >>> from tm2p.enum import AssociationIndex, AnalysisUnit, UnitOrderBy
-    >>> from tm2p.portfolio.thematic_struct.co_occur.direct_similarity_network import DirectMatrix
+    >>> from tm2p.portfolio.thematic_struct.co_occur.dir_simil_netw import DirectMatrix
     >>> df = (
     ...     DirectMatrix()
     ...     #
@@ -100,7 +100,7 @@ Smoke tests:
 """
 
 from tm2p._intern import ParamsMixin
-from tm2p._intern.netw.norma_mtx import normalize_matrix
+from tm2p._intern.netw.normaliz_matrix import normalize_matrix
 
 from .matrix import Matrix
 

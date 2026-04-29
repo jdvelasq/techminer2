@@ -1,5 +1,5 @@
 """
-ClusterToItems
+ClusterToUnits
 ===============================================================================
 
 Smoke tests:
@@ -15,10 +15,13 @@ Smoke tests:
     ...     compute_full_tree=True,  #  always
     ...     compute_distances=True,  #  always True
     ... )
-    >>> from tm2p.enum import AssociationIndex, AnalysisUnit, Field, GraphClusteringAlgorithm, UnitOrderBy
-    >>> from tm2p.portfolio.thematic_struct.co_occur.direct_similarity_network import ClusterToItems
+    >>> from tm2p.enum import AssociationIndex  # type: ignore
+    >>> from tm2p.enum import AnalysisUnit  # type: ignore
+    >>> from tm2p.enum import GraphClusteringAlgorithm  # type: ignore
+    >>> from tm2p.enum import UnitOrderBy  # type: ignore
+    >>> from tm2p.portfolio.thematic_struct.co_occur.dir_simil_netw import ClusterToUnits
     >>> mapping = (
-    ...     ClusterToItems()
+    ...     ClusterToUnits()
     ...     #
     ...     # ANALYSIS UNIT:
     ...     .with_analysis_unit(AnalysisUnit.KW)
@@ -50,30 +53,33 @@ Smoke tests:
     ... )
     >>> from pprint import pprint
     >>> pprint(mapping) # doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
-    {0: ['fintech 119:26148',
-         'finance 029:07137',
-         'innovation 020:03916',
-         'china 018:03596',
-         'financial inclusion 017:03823',
-         'sustainable development 015:02158',
-         'banking 013:03043',
-         'sustainability 013:02308',
-         'green finance 011:02844',
-         'financial services 011:02399',
-         'covid-19 009:01743',
-         'economic growth 009:01654'],
-     1: ['blockchain 012:03450', 'crowdfunding 007:01245', 'commerce 006:02013'],
-     2: ['technology 007:01409', 'technology adoption 006:01500'],
-     3: ['financial technology 016:02809'],
-     4: ['artificial intelligence 008:01915'],
-     5: ['financial service 007:02627']}
+    {0: ['tinyml 1031:010091',
+         'machine learning 0766:008244',
+         'tiny machine learning 0388:003654',
+         'internet of things 0346:005415',
+         'learning systems 0343:003524',
+         'deep learning 0269:004143',
+         'neural networks 0266:002432',
+         'microcontrollers 0247:003364',
+         'edge computing 0228:002411',
+         'embedded systems 0186:002145',
+         'energy efficiency 0153:002034',
+         'deep neural networks 0137:001533',
+         'embedded-system 0116:001320'],
+     1: ['convolutional neural networks 0173:001295',
+         'convolutional neural network 0144:001310',
+         'real- time 0121:000533'],
+     2: ['artificial intelligence 0129:001262'],
+     3: ['iot 0118:001423'],
+     4: ['edge ai 0104:001085'],
+     5: ['machine learning models 0104:000937']}
 
 
     >>> # ---------------------------------------------------------------------
     >>> # LOOUVAIN
     >>> # ---------------------------------------------------------------------
     >>> mapping = (
-    ...     ClusterToItems()
+    ...     ClusterToUnits()
     ...     #
     ...     # ANALYSIS UNIT:
     ...     .with_analysis_unit(AnalysisUnit.KW)
@@ -90,10 +96,12 @@ Smoke tests:
     ...     .using_counters(True)
     ...     #
     ...     # NETWORK:
-    ...     .using_association_index(AssociationIndex.JACCARD)
+    ...     .using_association_index(AssociationIndex.ASSOCIATION_STRENGTH)
     ...     #
     ...     # CLUSTERING:
     ...     .using_clustering(GraphClusteringAlgorithm.LOUVAIN)
+    ...     .using_max_recursive_clustering_depth(1)
+    ...     .using_min_recursive_cluster_size(8)
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/tinyml-scopus/")
@@ -105,39 +113,38 @@ Smoke tests:
     ... )
     >>> from pprint import pprint
     >>> pprint(mapping) # doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
-    {0: ['fintech 119:26148',
-         'finance 029:07137',
-         'financial inclusion 017:03823',
-         'blockchain 012:03450',
-         'artificial intelligence 008:01915',
-         'financial service 007:02627',
-         'crowdfunding 007:01245',
-         'commerce 006:02013'],
-     1: ['innovation 020:03916',
-         'china 018:03596',
-         'financial technology 016:02809',
-         'sustainable development 015:02158',
-         'sustainability 013:02308',
-         'green finance 011:02844',
-         'economic growth 009:01654'],
-     2: ['banking 013:03043',
-         'financial services 011:02399',
-         'covid-19 009:01743',
-         'technology 007:01409',
-         'technology adoption 006:01500']}
+    {0: ['tinyml 1031:010091',
+         'machine learning 0766:008244',
+         'tiny machine learning 0388:003654',
+         'internet of things 0346:005415',
+         'learning systems 0343:003524',
+         'deep learning 0269:004143',
+         'edge computing 0228:002411',
+         'energy efficiency 0153:002034',
+         'artificial intelligence 0129:001262',
+         'iot 0118:001423',
+         'edge ai 0104:001085',
+         'machine learning models 0104:000937'],
+     1: ['neural networks 0266:002432',
+         'microcontrollers 0247:003364',
+         'convolutional neural networks 0173:001295',
+         'convolutional neural network 0144:001310',
+         'deep neural networks 0137:001533',
+         'real- time 0121:000533'],
+     2: ['embedded systems 0186:002145', 'embedded-system 0116:001320']}
 
 
 """
 
-from tm2p._intern.netw.clust_to_item import BaseClusterToItems
+from tm2p._intern.netw.clust_to_unit import BaseClusterToUnits
 
-from .item_to_clust import ItemToCluster
+from .unit_to_cluster import UnitToCluster
 
 
-class ClusterToItems(
-    BaseClusterToItems,
+class ClusterToUnits(
+    BaseClusterToUnits,
 ):
     """:meta private:"""
 
     def item_to_cluster(self):
-        return ItemToCluster()
+        return UnitToCluster()

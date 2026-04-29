@@ -93,15 +93,15 @@ Smoke tests:
 
 """
 
-from tm2p._intern.netw.item_by_clust import BaseItemsByCluster
+from tm2p._intern.netw.unit_by_clust import BaseUnitByCluster
 
 from .clust_to_items import ClusterToItems
 
 
 class ItemsByCluster(
-    BaseItemsByCluster,
+    BaseUnitByCluster,
 ):
     """:meta private:"""
 
-    def cluster_to_items(self):
+    def cluster_to_units(self):
         return ClusterToItems()

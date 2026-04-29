@@ -10,7 +10,7 @@ DensityPlot
 
 Smoke tests:
     >>> from tm2p.enum import AnalysisUnit, AssociationIndex, GraphClusteringAlgorithm, NodeSizeMetric, Scaling, UnitOrderBy
-    >>> from tm2p.portfolio.thematic_struct.co_occur.direct_similarity_network import DensityPlot
+    >>> from tm2p.portfolio.thematic_struct.co_occur.dir_simil_netw import DensityPlot
     >>> fig = (
     ...     DensityPlot()
     ...     #
@@ -88,8 +88,8 @@ from tm2p._intern import ParamsMixin
 from tm2p._intern.plots.adv.co_occ_dens_plot import build_co_occ_density_plot
 
 from .dir_matrix import DirectMatrix
-from .item_to_clust import ItemToCluster
 from .matrix import Matrix as CoOccurrenceMatrix
+from .unit_to_cluster import UnitToCluster
 
 
 class DensityPlot(
@@ -110,7 +110,7 @@ class DensityPlot(
             .run()
         )
 
-        i2c = ItemToCluster().update(**self.params.__dict__).using_counters(True).run()
+        i2c = UnitToCluster().update(**self.params.__dict__).using_counters(True).run()
 
         fig = build_co_occ_density_plot(
             params=self.params,

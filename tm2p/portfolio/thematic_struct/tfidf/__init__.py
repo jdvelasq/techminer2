@@ -1,4 +1,4 @@
-from .mtx import Matrix
+from .matrix import Matrix
 
 __all__ = [
     "Matrix",

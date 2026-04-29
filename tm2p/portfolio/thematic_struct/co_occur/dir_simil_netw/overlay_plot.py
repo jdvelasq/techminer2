@@ -94,8 +94,8 @@ from tm2p._intern.plots.adv.co_occ_overlay_plot import build_co_occ_overlay_plot
 from tm2p.portfolio.perform_metr.trend.trend import Trends
 
 from .dir_matrix import DirectMatrix
-from .item_to_clust import ItemToCluster
 from .matrix import Matrix as CoOccurrenceMatrix
+from .unit_to_cluster import UnitToCluster
 
 
 class OverlayPlot(
@@ -123,7 +123,7 @@ class OverlayPlot(
 
         i2y = dict(zip(trends.index, avg_year))
 
-        i2c = ItemToCluster().update(**self.params.__dict__).using_counters(True).run()
+        i2c = UnitToCluster().update(**self.params.__dict__).using_counters(True).run()
 
         fig = build_co_occ_overlay_plot(
             params=self.params,

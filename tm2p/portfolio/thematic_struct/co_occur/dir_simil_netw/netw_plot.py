@@ -102,8 +102,8 @@ from tm2p._intern import ParamsMixin
 from tm2p._intern.plots.adv.co_occ_netw_plot import build_co_occ_network_plot
 
 from .dir_matrix import DirectMatrix
-from .item_to_clust import ItemToCluster
 from .matrix import Matrix as CoOccurrenceMatrix
+from .unit_to_cluster import UnitToCluster
 
 
 class NetworkPlot(
@@ -124,7 +124,7 @@ class NetworkPlot(
             .run()
         )
 
-        i2c = ItemToCluster().update(**self.params.__dict__).using_counters(True).run()
+        i2c = UnitToCluster().update(**self.params.__dict__).using_counters(True).run()
 
         fig = build_co_occ_network_plot(
             params=self.params,

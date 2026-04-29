@@ -4,7 +4,7 @@ DirectMatrixList
 
 Smoke tests:
     >>> from tm2p.enum import AssociationIndex, AnalysisUnit, Field, UnitOrderBy
-    >>> from tm2p.portfolio.thematic_struct.co_occur.direct_similarity_network import DirectMatrixList
+    >>> from tm2p.portfolio.thematic_struct.co_occur.dir_simil_netw import DirectMatrixList
     >>> df = (
     ...     DirectMatrixList()
     ...     #

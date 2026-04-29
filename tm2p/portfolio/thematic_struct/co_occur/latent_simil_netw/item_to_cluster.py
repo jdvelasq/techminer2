@@ -49,13 +49,13 @@ Smoke test:
 
 """
 
-from tm2p._intern.netw.item_to_clust import BaseItemToCluster
+from tm2p._intern.netw.unit_to_clust import BaseUnitToCluster
 
 from .latent_matrix import LatentMatrix
 
 
 class ItemToCluster(
-    BaseItemToCluster,
+    BaseUnitToCluster,
 ):
     """:meta private:"""
 

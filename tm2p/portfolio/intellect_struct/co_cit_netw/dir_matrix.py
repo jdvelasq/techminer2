@@ -85,7 +85,7 @@ Smoke tests:
 """
 
 from tm2p._intern import ParamsMixin
-from tm2p._intern.netw.norma_mtx import normalize_matrix
+from tm2p._intern.netw.normaliz_matrix import normalize_matrix
 
 from .matrix import Matrix
 

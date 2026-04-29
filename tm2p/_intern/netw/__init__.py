@@ -1,14 +1,14 @@
-from .clust_to_item import BaseClusterToItems
-from .item_by_clust import BaseItemsByCluster
-from .item_to_clust import BaseItemToCluster
+from .clust_to_unit import BaseClusterToUnits
 from .node_metric import BaseNodeMetrics
-from .norma_mtx import normalize_matrix
+from .normaliz_matrix import normalize_matrix
 from .strength_plot import BaseStrengthPlot
+from .unit_by_clust import BaseUnitByCluster
+from .unit_to_clust import BaseUnitToCluster
 
 __all__ = [
-    "BaseClusterToItems",
-    "BaseItemsByCluster",
-    "BaseItemToCluster",
+    "BaseClusterToUnits",
+    "BaseUnitByCluster",
+    "BaseUnitToCluster",
     "BaseNodeMetrics",
     "BaseStrengthPlot",
     "normalize_matrix",

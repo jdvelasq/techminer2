@@ -91,17 +91,17 @@ Smoke tests:
 
 """
 
-from tm2p._intern.netw.item_by_clust import BaseItemsByCluster
+from tm2p._intern.netw.unit_by_clust import BaseUnitByCluster
 
 from ...._intern.helpers.check_db import check_database
 from .cluster_to_items import ClusterToItems
 
 
 class ItemsByCluster(
-    BaseItemsByCluster,
+    BaseUnitByCluster,
 ):
     """:meta private:"""
 
-    def cluster_to_items(self):
+    def cluster_to_units(self):
         check_database(self.params.root_directory)
         return ClusterToItems()

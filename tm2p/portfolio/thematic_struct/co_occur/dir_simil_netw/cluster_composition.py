@@ -1,5 +1,5 @@
 """
-Summary
+ClusterComposition
 ===============================================================================
 
 Smoke tests:
@@ -7,9 +7,9 @@ Smoke tests:
     >>> from tm2p.enum import AnalysisUnit  # type: ignore
     >>> from tm2p.enum import GraphClusteringAlgorithm  # type: ignore
     >>> from tm2p.enum import UnitOrderBy  # type: ignore
-    >>> from tm2p.portfolio.thematic_struct.co_occur.dir_simil_netw import Summary
+    >>> from tm2p.portfolio.thematic_struct.co_occur.dir_simil_netw import ClusterComposition
     >>> df = (
-    ...     Summary()
+    ...     ClusterComposition()
     ...     #
     ...     # ANALYSIS UNIT:
     ...     .with_analysis_unit(AnalysisUnit.CONCEPT)
@@ -51,7 +51,7 @@ Smoke tests:
 
 
     >>> df = (
-    ...     Summary()
+    ...     ClusterComposition()
     ...     #
     ...     # ANALYSIS UNIT:
     ...     .with_analysis_unit(AnalysisUnit.CONCEPT)
@@ -98,7 +98,7 @@ import pandas as pd  # type: ignore
 
 from tm2p._intern import ParamsMixin
 
-from .cluster_to_items import ClusterToItems
+from .cluster_to_units import ClusterToUnits
 
 CLUSTER = "CLUSTER"
 NUM_ITEMS = "NUM_ITEMS"
@@ -106,7 +106,7 @@ PERCENTAGE = "PERCENTAGE"
 ITEMS = "ITEMS"
 
 
-class Summary(
+class ClusterComposition(
     ParamsMixin,
 ):
     """:meta private:"""
@@ -114,7 +114,7 @@ class Summary(
     def run(self):
         """:meta private:"""
 
-        communities = ClusterToItems().update(**self.params.__dict__).run()
+        communities = ClusterToUnits().update(**self.params.__dict__).run()
         communities_len = {}
         communities_perc = {}
         communities_dict = {}
