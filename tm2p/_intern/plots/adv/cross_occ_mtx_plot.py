@@ -39,18 +39,8 @@ def build_cross_occ_matrix_plot(
     nx_graph = remove_isolated_nodes(nx_graph)
     nx_graph = keep_top_k_edges_per_node(params, nx_graph)
     nx_graph = remove_weak_nodes(params, nx_graph)
-
-    nx_graph = set_top_n_node_labels(
-        nx_graph,
-        matrix.columns.to_list(),
-        params.max_node_labels,
-    )
-    nx_graph = set_top_n_node_labels(
-        nx_graph,
-        matrix.index.to_list(),
-        params.max_node_labels,
-    )
-
+    nx_graph = set_top_n_node_labels(params, nx_graph)
+    nx_graph = set_top_n_node_labels(params, nx_graph)
     nx_graph = scale_edge_weight(params, nx_graph)
     nx_graph = spring_layout(params, nx_graph)
     nx_graph = scale_node_size(params, nx_graph)
@@ -60,7 +50,6 @@ def build_cross_occ_matrix_plot(
     nx_graph = set_uniform_edge_color(params, nx_graph)
     nx_graph = scale_edge_width(params, nx_graph)
     nx_graph = set_node_textposition(nx_graph)
-
     nx_graph = set_uniform_edge_line_style(nx_graph, "solid")
 
     node_trace = build_scatter_node_trace(nx_graph)
