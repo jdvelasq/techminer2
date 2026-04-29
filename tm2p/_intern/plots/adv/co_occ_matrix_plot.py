@@ -39,13 +39,7 @@ def build_co_occ_matrix_plot(
     nx_graph = remove_isolated_nodes(nx_graph)
     nx_graph = keep_top_k_edges_per_node(params, nx_graph)
     nx_graph = remove_weak_nodes(params, nx_graph)
-
-    nx_graph = set_top_n_node_labels(
-        nx_graph,
-        matrix.columns.to_list(),
-        params.max_node_labels,
-    )
-
+    nx_graph = set_top_n_node_labels(params, nx_graph)
     nx_graph = scale_edge_weight(params, nx_graph)
     nx_graph = spring_layout(params, nx_graph)
     nx_graph = scale_node_size(params, nx_graph)
