@@ -80,5 +80,5 @@ class ClusterToUnits(
 ):
     """:meta private:"""
 
-    def item_to_cluster(self):
+    def unit_to_cluster(self):
         return UnitToCluster()

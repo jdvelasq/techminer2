@@ -63,8 +63,8 @@ import numpy as np  # type: ignore
 from tm2p._intern import ParamsMixin
 from tm2p._intern.netw.normaliz_matrix import normalize_matrix
 from tm2p.enum import GapComputation  # type: ignore
-from tm2p.portfolio.intellect_struct.co_cit_netw.direct import DirectMatrix
-from tm2p.portfolio.intellect_struct.co_cit_netw.latent import LatentMatrix
+from tm2p.portfolio.intellect_struct.co_citation.direct import DirectMatrix
+from tm2p.portfolio.intellect_struct.co_citation.latent import LatentMatrix
 
 
 class Matrix(
@@ -82,7 +82,7 @@ class Matrix(
         )
 
         if self.params.wh_gap_computation == GapComputation.LATENT_MINUS_OBSERVED:
-            white_space = latent.sub(observed).clip(lower=0.0)
+            gap = latent.sub(observed).clip(lower=0.0)
         elif self.params.wh_gap_computation == GapComputation.RELATIVE_LATENT_GAP:
             white_space = latent.sub(observed).div(latent + 1e-12).clip(lower=0.0)
         elif self.params.wh_gap_computation == GapComputation.STRUCTURAL_HOLE_SOFT:
@@ -92,7 +92,7 @@ class Matrix(
                 f"Unknown gap computation method: {self.params.wh_gap_computation}"
             )
 
-        white_space = white_space.where(mask, 0)
+        white_space = gap.where(mask, 0)
         white_space.values[np.diag_indices_from(white_space)] = 0.0
 
         return white_space

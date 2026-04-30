@@ -42,9 +42,9 @@ Smoke tests:
 
 from tm2p._intern import ParamsMixin
 from tm2p.enum import AnalysisUnit  # type: ignore
-from tm2p.portfolio.intellect_struct.cit_netw.matrix import (
-    Matrix as CitNetwMatrix,  # type: ignore
-)
+from tm2p.portfolio.intellect_struct.citation.matrix import (
+    Matrix as CitNetwMatrix,
+)  # type: ignore
 
 
 class Trajectories(

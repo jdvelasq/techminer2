@@ -10,7 +10,7 @@ class BaseClusterToUnits(
     """:meta private:"""
 
     @abstractmethod
-    def item_to_cluster(self):
+    def unit_to_cluster(self):
         pass
 
     def run(self):
@@ -18,21 +18,21 @@ class BaseClusterToUnits(
         use_counters = self.params.use_counters
 
         u2c = (
-            self.item_to_cluster()
+            self.unit_to_cluster()
             .update(**self.params.__dict__)  # type: ignore
             .using_counters(True)
             .run()
         )
 
         c2u = {}
-        for item, cluster in u2c.items():
+        for unit, cluster in u2c.items():
             if cluster not in c2u:
                 c2u[cluster] = []
-            c2u[cluster].append(item)
+            c2u[cluster].append(unit)
 
         if use_counters is False:
 
-            for cluster, items in c2u.items():
-                c2u[cluster] = [" ".join(item.split(" ")[:-1]) for item in items]
+            for cluster, units in c2u.items():
+                c2u[cluster] = [" ".join(unit.split(" ")[:-1]) for unit in units]
 
         return c2u

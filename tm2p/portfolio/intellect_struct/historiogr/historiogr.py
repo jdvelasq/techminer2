@@ -86,7 +86,7 @@ Smoke tests:
 from tm2p._intern import ParamsMixin
 from tm2p._intern.plots.adv.historiogr import build_historiograph_plot
 
-from ..cit_netw.dir_matrix import DirectMatrix
+from ..citation.dir_matrix import DirectMatrix
 
 
 class Historiograph(

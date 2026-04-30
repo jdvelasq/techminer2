@@ -61,8 +61,8 @@ import numpy as np  # type: ignore
 from tm2p._intern import ParamsMixin
 from tm2p._intern.netw.normaliz_matrix import normalize_matrix
 from tm2p.enum import GapComputation  # type: ignore
-from tm2p.portfolio.thematic_struct.co_occur.dir_simil_netw import DirectMatrix
-from tm2p.portfolio.thematic_struct.co_occur.latent_simil_netw import LatentMatrix
+from tm2p.portfolio.thematic_struct.co_occur.direct import DirectMatrix
+from tm2p.portfolio.thematic_struct.co_occur.latent import LatentMatrix
 
 
 class Matrix(

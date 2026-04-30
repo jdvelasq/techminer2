@@ -57,7 +57,9 @@ Smoke tests:
 
 from tm2p._intern import ParamsMixin
 from tm2p.enum import AnalysisUnit
-from tm2p.portfolio.thematic_struct.co_occur.matrix import Matrix as CoOccurrenceMatrix
+from tm2p.portfolio.thematic_struct.co_occur.count import (
+    CountMatrix as CoOccurrenceMatrix,
+)
 
 
 class CountMatrix(

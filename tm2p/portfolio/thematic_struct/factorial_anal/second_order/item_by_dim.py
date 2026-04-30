@@ -58,7 +58,7 @@ import numpy as np
 import pandas as pd  # type: ignore
 
 from tm2p._intern import ParamsMixin
-from tm2p.portfolio.thematic_struct.co_occur.matrix.matrix import Matrix
+from tm2p.portfolio.thematic_struct.co_occur.count.matrix import CountMatrix
 
 
 class ItemsByDimension(
@@ -70,7 +70,7 @@ class ItemsByDimension(
 
         decomposition_algorithm = self.params.decomposition_algorithm
 
-        matrix = Matrix().update(**self.params.__dict__).run()
+        matrix = CountMatrix().update(**self.params.__dict__).run()
         matrix = matrix.astype(float)
 
         decomposition_algorithm.fit(matrix)  # type: ignore

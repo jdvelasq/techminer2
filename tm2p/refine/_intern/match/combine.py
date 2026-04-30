@@ -23,7 +23,7 @@ import pandas as pd  # type: ignore
 
 from tm2p._intern import Params, ParamsMixin
 from tm2p.enum import ThField, UnitOrderBy
-from tm2p.portfolio.thematic_struct.co_occur.matrix import MatrixList
+from tm2p.portfolio.thematic_struct.co_occur.count import CountMatrixList
 
 from ._intern.report_matches import report_matches
 
@@ -54,7 +54,7 @@ class BaseCombineMatch(
 def compute_cooc_matrix(params: Params) -> pd.DataFrame:
 
     matrix_list = (
-        MatrixList()
+        CountMatrixList()
         .update(**params.__dict__)
         #
         .having_top_n_units(None)
