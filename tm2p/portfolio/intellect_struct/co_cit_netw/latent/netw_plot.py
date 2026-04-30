@@ -1,23 +1,24 @@
 """
-OverlayPlot
+NetworkPlot
 ===============================================================================
 
 * **CITED_REF** / **CITED_AUTH** / **CITED_SRC**
 
 .. raw:: html
 
-    <iframe src="../_static/px.portfolio.intellect_struct.co_cit_netw.overlay_plot_cited_auth.html"
+    <iframe src="../_static/px.portfolio.intellect_struct.co_cit_netw.latent.netw_plot_cited_auth.html"
     height="600px" width="100%" frameBorder="0"></iframe>
 
 
 Smoke tests:
-    >>> from tm2p.enum import AnalysisUnit  # type: ignore
     >>> from tm2p.enum import AssociationIndex  # type: ignore
+    >>> from tm2p.enum import AnalysisUnit  # type: ignore
     >>> from tm2p.enum import GraphClusteringAlgorithm  # type: ignore
-    >>> from tm2p.enum import NodeSizeMetric, Scaling  # type: ignore
-    >>> from tm2p.portfolio.intellect_struct.co_cit_netw import OverlayPlot  # type: ignore
+    >>> from tm2p.enum import NodeSizeMetric  # type: ignore
+    >>> from tm2p.enum import Scaling  # type: ignore
+    >>> from tm2p.portfolio.intellect_struct.co_cit_netw.latent import NetworkPlot  # type: ignore
     >>> plot = (
-    ...     OverlayPlot()
+    ...     NetworkPlot()
     ...     #
     ...     # ANALYSIS UNIT:
     ...     .with_analysis_unit(AnalysisUnit.CITED_REF)
@@ -33,19 +34,27 @@ Smoke tests:
     ...     #
     ...     # CLUSTERING:
     ...     .using_clustering(GraphClusteringAlgorithm.LOUVAIN)
+    ...     .using_max_recursive_clustering_depth(1)
+    ...     .using_min_recursive_cluster_size(8)    
     ...     #
     ...     # NETWORK:
     ...     .using_spring_layout_k(0.30)
     ...     .using_spring_layout_iterations(50)
     ...     .using_spring_layout_seed(5)
     ...     #
-    ...     .using_colorscale(
-    ...         [
-    ...             [0.00, "#2C7BB6"],
-    ...             [0.35, "#00A6CA"],
-    ...             [0.65, "#4EBA6F"],
-    ...             [1.00, "#F28E2B"],
-    ...         ]
+    ...     .using_discrete_node_colors(
+    ...         (
+    ...             "#1f77b4",
+    ...             "#ff7f0e",
+    ...             "#2ca02c",
+    ...             "#d62728",
+    ...             "#9467bd",
+    ...             "#8c564b",
+    ...             "#e377c2",
+    ...             "#7f7f7f",
+    ...             "#bcbd22",
+    ...             "#17becf",
+    ...         )
     ...     )
     ...     .using_uniform_node_opacity(0.75)
     ...     .using_node_size_metric(NodeSizeMetric.OCC)
@@ -80,22 +89,19 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> plot.write_html("docsrc/_generated/px.portfolio.intellect_struct.co_cit_netw.overlay_plot_cited_auth.html")
+    >>> plot.write_html("docsrc/_generated/px.portfolio.intellect_struct.co_cit_netw.latent.netw_plot_cited_auth.html")
 
 """
 
-import pandas as pd  # type: ignore
-
 from tm2p._intern import ParamsMixin
-from tm2p._intern.plots.adv.co_occ_overlay_plot import build_co_occ_overlay_plot
-from tm2p.enum import AnalysisUnit
+from tm2p._intern.plots.adv.co_occ_netw_plot import build_co_occ_network_plot
 
-from .dir_matrix import DirectMatrix
+from ..direct.matrix import Matrix as CoOccurrenceMatrix
 from .item_to_cluster import ItemToCluster
-from .matrix import Matrix as CoOccurrenceMatrix
+from .latent_matrix import LatentMatrix
 
 
-class OverlayPlot(
+class NetworkPlot(
     ParamsMixin,
 ):
     """:meta private:"""
@@ -104,7 +110,7 @@ class OverlayPlot(
         """:meta private:"""
 
         similarity_matrix = (
-            DirectMatrix().update(**self.params.__dict__).using_counters(True).run()
+            LatentMatrix().update(**self.params.__dict__).using_counters(True).run()
         )
         co_occ_matrix = (
             CoOccurrenceMatrix()
@@ -113,40 +119,13 @@ class OverlayPlot(
             .run()
         )
 
-        analysis_unit = self.params.analysis_unit
-        units = co_occ_matrix.index.tolist()
-        i2y = {}
-        if analysis_unit == AnalysisUnit.CITED_REF:
-            i2y = {
-                " ".join(unit.split(" ")[:-1]): float(unit.split(",")[1].strip())
-                for unit in units
-            }
-        elif analysis_unit in (
-            AnalysisUnit.CITED_AUTH,
-            AnalysisUnit.CITED_SRC,
-        ):
-            units = co_occ_matrix.index.tolist()
-
-            df = pd.DataFrame(
-                {"year": [float(unit.split(",")[1].strip()) for unit in units]}
-            )
-
-            if analysis_unit == AnalysisUnit.CITED_AUTH:
-                pos = 0
-            else:
-                pos = 2
-            df["unit"] = ([unit.split(",")[pos] for unit in units],)
-            df = df.groupby("unit")["year"].mean()
-            i2y = dict(zip(df.index, df["year"]))
-
         i2c = ItemToCluster().update(**self.params.__dict__).using_counters(True).run()
 
-        fig = build_co_occ_overlay_plot(  # type: ignore
+        fig = build_co_occ_network_plot(
             params=self.params,
             similarity_matrix=similarity_matrix,
             co_occurrence_matrix=co_occ_matrix,
             i2c=i2c,
-            i2y=i2y,  # type: ignore
         )
 
         return fig

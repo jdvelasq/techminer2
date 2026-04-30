@@ -8,7 +8,7 @@ Smoke tests:
     >>> from tm2p.enum import AnalysisUnit  # type: ignore
     >>> from tm2p.enum import AssociationIndex  # type: ignore
     >>> from tm2p.enum import GraphClusteringAlgorithm  # type: ignore
-    >>> from tm2p.portfolio.intellect_struct.co_cit_netw import ItemToCluster  # type: ignore
+    >>> from tm2p.portfolio.intellect_struct.co_cit_netw.latent import ItemToCluster  # type: ignore
     >>> mapping = (
     ...     ItemToCluster()
     ...     #
@@ -26,6 +26,8 @@ Smoke tests:
     ...     #
     ...     # CLUSTERING:
     ...     .using_clustering(GraphClusteringAlgorithm.LOUVAIN)
+    ...     .using_max_recursive_clustering_depth(1)
+    ...     .using_min_recursive_cluster_size(8)    
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/system-dynamics-wos/")
@@ -42,6 +44,8 @@ Smoke tests:
      'BARLAS Y, 1989, EUR J OPER RES 8:0': 0,
      'Barlas Y, 1996, SYST DYNAM REV 27:0': 2,
      'Chaerul M, 2008, WASTE MANAGE 7:0': 1,
+     'Ding ZK, 2016, WASTE MANAGE 12:0': 1,
+     'Ding ZK, 2018, J CLEAN PROD 7:0': 1,
     ...
 
 
@@ -62,6 +66,8 @@ Smoke tests:
     ...     #
     ...     # CLUSTERING:
     ...     .using_clustering(GraphClusteringAlgorithm.LOUVAIN)
+    ...     .using_max_recursive_clustering_depth(1)
+    ...     .using_min_recursive_cluster_size(8)    
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/system-dynamics-wos/")
@@ -79,14 +85,13 @@ Smoke tests:
      'Chaerul M, 2008, WASTE MANAGE': 1,
      'Ding ZK, 2016, WASTE MANAGE': 1,
      'Ding ZK, 2018, J CLEAN PROD': 1,
-     'Dyson B, 2005, WASTE MANAGE': 1,
     ...
 
 """
 
 from tm2p._intern.netw.unit_to_clust import BaseUnitToCluster
 
-from .dir_matrix import DirectMatrix
+from .latent_matrix import LatentMatrix
 
 
 class ItemToCluster(
@@ -97,4 +102,4 @@ class ItemToCluster(
     def get_similarity_matrix(self):
         """:meta private:"""
 
-        return DirectMatrix()
+        return LatentMatrix()

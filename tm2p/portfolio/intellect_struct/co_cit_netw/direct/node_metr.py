@@ -7,7 +7,7 @@ NodeMetrics
 Smoke tests:
     >>> from tm2p.enum import AnalysisUnit  # type: ignore
     >>> from tm2p.enum import AssociationIndex  # type: ignore
-    >>> from tm2p.portfolio.intellect_struct.co_cit_netw import NodeMetrics  # type: ignore
+    >>> from tm2p.portfolio.intellect_struct.co_cit_netw.direct import NodeMetrics  # type: ignore
     >>> df = (
     ...     NodeMetrics()
     ...     #
@@ -45,7 +45,7 @@ Smoke tests:
 
 from tm2p._intern.netw import BaseNodeMetrics
 
-from ._intern.create_nx_graph import create_nx_graph
+from .._intern.create_nx_graph import create_nx_graph
 
 
 class NodeMetrics(

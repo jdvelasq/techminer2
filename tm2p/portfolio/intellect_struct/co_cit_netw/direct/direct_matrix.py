@@ -7,7 +7,7 @@ DirectMatrix
 Smoke tests:
     >>> from tm2p.enum import AnalysisUnit  # type: ignore
     >>> from tm2p.enum import AssociationIndex  # type: ignore
-    >>> from tm2p.portfolio.intellect_struct.co_cit_netw import DirectMatrix  # type: ignore
+    >>> from tm2p.portfolio.intellect_struct.co_cit_netw.direct import DirectMatrix  # type: ignore
     >>> df = (
     ...     DirectMatrix()
     ...     #

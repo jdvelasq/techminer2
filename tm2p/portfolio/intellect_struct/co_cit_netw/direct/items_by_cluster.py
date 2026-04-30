@@ -7,7 +7,7 @@ ItemsByCluster
     >>> from tm2p.enum import AssociationIndex  # type: ignore
     >>> from tm2p.enum import AnalysisUnit  # type: ignore
     >>> from tm2p.enum import GraphClusteringAlgorithm  # type: ignore
-    >>> from tm2p.portfolio.intellect_struct.co_cit_netw import ItemsByCluster  # type: ignore
+    >>> from tm2p.portfolio.intellect_struct.co_cit_netw.direct import ItemsByCluster  # type: ignore
     >>> df = (
     ...     ItemsByCluster()
     ...     #
@@ -25,6 +25,8 @@ ItemsByCluster
     ...     #
     ...     # CLUSTERING:
     ...     .using_clustering(GraphClusteringAlgorithm.LOUVAIN)
+    ...     .using_max_recursive_clustering_depth(1)
+    ...     .using_min_recursive_cluster_size(8)    
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/system-dynamics-wos/")
@@ -36,7 +38,7 @@ ItemsByCluster
     ... ).head()
     >>> print(df)  # doctest: +NORMALIZE_WHITESPACE
     CLUSTER                          0  ...                        2
-    ITEM                                ...
+    UNIT                                ...
     0                Sterman J.D. 81:0  ...  Sterman J.D. J. D. 30:0
     1        Forrester JayWright. 74:0  ...             Ahmad S 25:0
     2                FORRESTER JW 56:0  ...           Saysel AK 20:0
@@ -49,7 +51,7 @@ ItemsByCluster
 * **CITED_REF**
 
     >>> from tm2p.enum import AssociationIndex, AnalysisUnit, GraphClusteringAlgorithm
-    >>> from tm2p.portfolio.intellect_struct.co_cit_netw import ItemsByCluster
+    >>> from tm2p.portfolio.intellect_struct.co_cit_netw.direct import ItemsByCluster
     >>> df = (
     ...     ItemsByCluster()
     ...     #
@@ -68,6 +70,8 @@ ItemsByCluster
     ...     #
     ...     # CLUSTERING:
     ...     .using_clustering(GraphClusteringAlgorithm.LOUVAIN)
+    ...     .using_max_recursive_clustering_depth(1)
+    ...     .using_min_recursive_cluster_size(8)    
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/system-dynamics-wos/")
@@ -79,7 +83,7 @@ ItemsByCluster
     ... ).head()
     >>> print(df)  # doctest: +NORMALIZE_WHITESPACE
     CLUSTER                                                  0  ...                                           3
-    ITEM                                                        ...
+    UNIT                                                        ...
     0        Forrester JayWright., 2013, Industrial dynamic...  ...  Sterman J.D., 2000, BUSINESS DYNAMICS 70:0
     1                 FORRESTER JW, 1958, HARVARD BUS REV 25:0  ...     Homer JB, 2006, AM J PUBLIC HEALTH 18:0
     2                Forrester Jay., 1971, World dynamics 17:0  ...     Sterman JD, 2001, CALIF MANAGE REV 14:0
@@ -93,7 +97,7 @@ ItemsByCluster
 * **CITED_SRC**
 
     >>> from tm2p.enum import AssociationIndex, AnalysisUnit, GraphClusteringAlgorithm
-    >>> from tm2p.portfolio.intellect_struct.co_cit_netw import ItemsByCluster
+    >>> from tm2p.portfolio.intellect_struct.co_cit_netw.direct import ItemsByCluster
     >>> df = (
     ...     ItemsByCluster()
     ...     #
@@ -112,6 +116,8 @@ ItemsByCluster
     ...     #
     ...     # CLUSTERING:
     ...     .using_clustering(GraphClusteringAlgorithm.LOUVAIN)
+    ...     .using_max_recursive_clustering_depth(1)
+    ...     .using_min_recursive_cluster_size(8)    
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/system-dynamics-wos/")
@@ -123,7 +129,7 @@ ItemsByCluster
     ... ).head()
     >>> print(df)  # doctest: +NORMALIZE_WHITESPACE
     CLUSTER                         0  ...                          3
-    ITEM                               ...
+    UNIT                               ...
     0            SYST DYNAM REV 137:0  ...      EXPERT SYST APPL 44:0
     1            EUR J OPER RES 104:0  ...            SAFETY SCI 32:0
     2          BUSINESS DYNAMICS 77:0  ...         BUILD ENVIRON 31:0

@@ -6,7 +6,7 @@ DensityPlot
 
 .. raw:: html
 
-    <iframe src="../_static/px.portfolio.intellect_struct.co_cit_netw.dens_plot_cited_auth.html"
+    <iframe src="../_static/px.portfolio.intellect_struct.co_cit_netw.direct.dens_plot_cited_auth.html"
     height="600px" width="100%" frameBorder="0"></iframe>
 
 
@@ -15,7 +15,7 @@ Smoke tests:
     >>> from tm2p.enum import AssociationIndex  # type: ignore
     >>> from tm2p.enum import GraphClusteringAlgorithm  # type: ignore
     >>> from tm2p.enum import NodeSizeMetric, Scaling  # type: ignore
-    >>> from tm2p.portfolio.intellect_struct.co_cit_netw import DensityPlot  # type: ignore
+    >>> from tm2p.portfolio.intellect_struct.co_cit_netw.direct import DensityPlot  # type: ignore
     >>> plot = (
     ...     DensityPlot()
     ...     #
@@ -33,6 +33,8 @@ Smoke tests:
     ...     #
     ...     # CLUSTERING:
     ...     .using_clustering(GraphClusteringAlgorithm.LOUVAIN)
+    ...     .using_max_recursive_clustering_depth(1)
+    ...     .using_min_recursive_cluster_size(8)    
     ...     #
     ...     # NETWORK:
     ...     .using_spring_layout_k(0.30)
@@ -80,14 +82,14 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> plot.write_html("docsrc/_generated/px.portfolio.intellect_struct.co_cit_netw.dens_plot_cited_auth.html")
+    >>> plot.write_html("docsrc/_generated/px.portfolio.intellect_struct.co_cit_netw.direct.dens_plot_cited_auth.html")
 
 """
 
 from tm2p._intern import ParamsMixin
 from tm2p._intern.plots.adv.co_occ_dens_plot import build_co_occ_density_plot
 
-from .dir_matrix import DirectMatrix
+from .direct_matrix import DirectMatrix
 from .item_to_cluster import ItemToCluster
 from .matrix import Matrix as CoOccurrenceMatrix
 

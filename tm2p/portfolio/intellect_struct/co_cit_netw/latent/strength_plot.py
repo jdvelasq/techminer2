@@ -6,14 +6,14 @@ StrengthPlot
 
 .. raw:: html
 
-    <iframe src="../_static/px.portfolio.intellect_struct.co_cit_netw.node_degree_plot_cited_auth.html"
+    <iframe src="../_static/px.portfolio.intellect_struct.co_cit_netw.latent.node_degree_plot_cited_auth.html"
     height="600px" width="100%" frameBorder="0"></iframe>
 
 
 Smoke tests:
     >>> from tm2p.enum import AnalysisUnit  # type: ignore
     >>> from tm2p.enum import AssociationIndex  # type: ignore
-    >>> from tm2p.portfolio.intellect_struct.co_cit_netw import StrengthPlot  # type: ignore
+    >>> from tm2p.portfolio.intellect_struct.co_cit_netw.latent import StrengthPlot  # type: ignore
     >>> fig = (
     ...     StrengthPlot()
     ...     #
@@ -44,7 +44,7 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> fig.write_html("docsrc/_generated/px.portfolio.intellect_struct.co_cit_netw.node_degree_plot_cited_auth.html")
+    >>> fig.write_html("docsrc/_generated/px.portfolio.intellect_struct.co_cit_netw.latent.node_degree_plot_cited_auth.html")
 
 """
 

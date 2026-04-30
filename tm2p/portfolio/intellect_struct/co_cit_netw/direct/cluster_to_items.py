@@ -8,7 +8,7 @@ Smoke tests:
     >>> from tm2p.enum import AnalysisUnit  # type: ignore
     >>> from tm2p.enum import AssociationIndex  # type: ignore
     >>> from tm2p.enum import GraphClusteringAlgorithm  # type: ignore
-    >>> from tm2p.portfolio.intellect_struct.co_cit_netw import ClusterToItems  # type: ignore
+    >>> from tm2p.portfolio.intellect_struct.co_cit_netw.direct import ClusterToItems  # type: ignore
     >>> mapping = (
     ...     ClusterToItems()
     ...     #
@@ -26,6 +26,8 @@ Smoke tests:
     ...     #
     ...     # CLUSTERING:
     ...     .using_clustering(GraphClusteringAlgorithm.LOUVAIN)
+    ...     .using_max_recursive_clustering_depth(1)
+    ...     .using_min_recursive_cluster_size(8)    
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/system-dynamics-wos/")

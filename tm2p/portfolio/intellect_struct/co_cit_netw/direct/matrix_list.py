@@ -6,7 +6,7 @@ MatrixList
 
 Smoke tests:
     >>> from tm2p.enum import AnalysisUnit  # type: ignore
-    >>> from tm2p.portfolio.intellect_struct.co_cit_netw import MatrixList  # type: ignore
+    >>> from tm2p.portfolio.intellect_struct.co_cit_netw.direct import MatrixList  # type: ignore
     >>> df = (
     ...     MatrixList()
     ...     #
