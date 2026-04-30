@@ -4,15 +4,17 @@ StrenghtPlot
 
 .. raw:: html
 
-    <iframe src="../_generated/px.portfolio.social_structure.collaboration_network.strength_plot_1.html"
+    <iframe src="../_generated/px.portfolio.social_struct.collab.direct.strength_plot_1.html"
     height="800px" width="100%" frameBorder="0"></iframe>
 
-    <iframe src="../_generated/px.portfolio.social_structure.collaboration_network.strength_plot_2.html"
+    <iframe src="../_generated/px.portfolio.social_struct.collab.direct.strength_plot_2.html"
     height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
-    >>> from tm2p.enum import AssociationIndex, AnalysisUnit, UnitOrderBy
-    >>> from tm2p.portfolio.social_structure.collaboration_network import StrengthPlot
+    >>> from tm2p.enum import AnalysisUnit  # type: ignore
+    >>> from tm2p.enum import AssociationIndex  # type: ignore
+    >>> from tm2p.enum import UnitOrderBy  # type: ignore
+    >>> from tm2p.portfolio.social_struct.collab.direct import StrengthPlot  # type: ignore
     >>> fig = (
     ...     StrengthPlot()
     ...     #
@@ -48,7 +50,8 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> assert type(fig).__name__ == 'Figure'    >>> fig.write_html("docsrc/_generated/px.portfolio.social_structure.collaboration_network.strength_plot_1.html")
+    >>> assert type(fig).__name__ == 'Figure'    
+    >>> fig.write_html("docsrc/_generated/px.portfolio.social_struct.collab.direct.strength_plot_1.html")
 
     >>> fig = (
     ...     StrengthPlot()
@@ -85,7 +88,7 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> fig.write_html("docsrc/_generated/px.portfolio.social_structure.collaboration_network.strength_plot_2.html")
+    >>> fig.write_html("docsrc/_generated/px.portfolio.social_struct.collab.direct.strength_plot_2.html")
 
 
 """

@@ -3,8 +3,10 @@ DirectMatrixList
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.enum import AssociationIndex, AnalysisUnit, Field, UnitOrderBy
-    >>> from tm2p.portfolio.social_structure.collaboration_network import DirectMatrixList
+    >>> from tm2p.enum import AssociationIndex  # type: ignore
+    >>> from tm2p.enum import AnalysisUnit  # type: ignore
+    >>> from tm2p.enum import UnitOrderBy  # type: ignore
+    >>> from tm2p.portfolio.social_struct.collab.direct import DirectMatrixList  # type: ignore
     >>> df = (
     ...     DirectMatrixList()
     ...     #
@@ -37,17 +39,17 @@ Smoke tests:
     >>> assert df.shape[0] > 1
     >>> assert df.shape[1] > 1
     >>> df.head(10).round(3)
-                                ROWS                        COLUMNS  ASSOC
-    0      Gerhard Schwabe 003:00330  Liudmila Zavolokina 003:00330  0.333
-    1      Gerhard Schwabe 003:00330       Mateusz Dolata 003:00330  0.333
-    2  Liudmila Zavolokina 003:00330      Gerhard Schwabe 003:00330  0.333
-    3  Liudmila Zavolokina 003:00330       Mateusz Dolata 003:00330  0.333
-    4       Mateusz Dolata 003:00330      Gerhard Schwabe 003:00330  0.333
-    5       Mateusz Dolata 003:00330  Liudmila Zavolokina 003:00330  0.333
-    6         Peter Gomber 002:02579   Robert J. Kauffman 002:01445  0.250
-    7   Robert J. Kauffman 002:01445         Peter Gomber 002:02579  0.250
-    8     Douglas W. Arner 003:00911    Janos N. Barberis 003:00445  0.222
-    9    Janos N. Barberis 003:00445     Douglas W. Arner 003:00911  0.222
+                               ROWS                       COLUMNS  ASSOC
+    0  Ivanovitch Silva 0027:000442    Marianne Silva 0020:000255  0.037
+    1    Marianne Silva 0020:000255  Ivanovitch Silva 0027:000442  0.037
+    2  Ivanovitch Silva 0027:000442   Daniel G. Costa 0016:000312  0.032
+    3   Daniel G. Costa 0016:000312  Ivanovitch Silva 0027:000442  0.032
+    4    Marianne Silva 0020:000255   Daniel G. Costa 0016:000312  0.025
+    5   Daniel G. Costa 0016:000312    Marianne Silva 0020:000255  0.025
+    6       Luca Benini 0041:000706     Michele Magno 0035:000501  0.008
+    7     Michele Magno 0035:000501       Luca Benini 0041:000706  0.008
+    8       Luca Benini 0041:000706       Luca Benini 0041:000706  0.000
+    9       Luca Benini 0041:000706  Ivanovitch Silva 0027:000442  0.000
 
 
     >>> df = (
@@ -82,25 +84,25 @@ Smoke tests:
     >>> assert df.shape[0] > 1
     >>> assert df.shape[1] > 1
     >>> df.head(10).round(3)
-                      ROWS              COLUMNS  ASSOC
-    0      Gerhard Schwabe  Liudmila Zavolokina  0.333
-    1      Gerhard Schwabe       Mateusz Dolata  0.333
-    2  Liudmila Zavolokina      Gerhard Schwabe  0.333
-    3  Liudmila Zavolokina       Mateusz Dolata  0.333
-    4       Mateusz Dolata      Gerhard Schwabe  0.333
-    5       Mateusz Dolata  Liudmila Zavolokina  0.333
-    6         Peter Gomber   Robert J. Kauffman  0.250
-    7   Robert J. Kauffman         Peter Gomber  0.250
-    8     Douglas W. Arner    Janos N. Barberis  0.222
-    9    Janos N. Barberis     Douglas W. Arner  0.222
+                   ROWS           COLUMNS  ASSOC
+    0  Ivanovitch Silva    Marianne Silva  0.037
+    1    Marianne Silva  Ivanovitch Silva  0.037
+    2  Ivanovitch Silva   Daniel G. Costa  0.032
+    3   Daniel G. Costa  Ivanovitch Silva  0.032
+    4    Marianne Silva   Daniel G. Costa  0.025
+    5   Daniel G. Costa    Marianne Silva  0.025
+    6       Luca Benini     Michele Magno  0.008
+    7     Michele Magno       Luca Benini  0.008
+    8       Luca Benini       Luca Benini  0.000
+    9       Luca Benini  Ivanovitch Silva  0.000
 
-
+    
 """
 
 from tm2p._intern import ParamsMixin
 from tm2p._intern.helpers.mtx_to_mtx_list import matrix_to_matrix_list
 
-from .dir_matrix import DirectMatrix
+from .direct_matrix import DirectMatrix
 
 
 class DirectMatrixList(

@@ -4,14 +4,19 @@ Network Plot
 
 .. raw:: html
 
-    <iframe src="../_generated/px.portfolio.social_structure.collaboration_network.overlay_plot.html"
+    <iframe src="../_generated/px.portfolio.social_struct.collab.latent.network_plot.html"
     height="800px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
-    >>> from tm2p.enum import AssociationIndex, AnalysisUnit, GraphClusteringAlgorithm, UnitOrderBy, Scaling, NodeSizeMetric
-    >>> from tm2p.portfolio.social_structure.collaboration_network import OverlayPlot
+    >>> from tm2p.enum import AnalysisUnit  # type: ignore
+    >>> from tm2p.enum import AssociationIndex  # type: ignore
+    >>> from tm2p.enum import GraphClusteringAlgorithm  # type: ignore
+    >>> from tm2p.enum import NodeSizeMetric  # type: ignore
+    >>> from tm2p.enum import Scaling  # type: ignore
+    >>> from tm2p.enum import UnitOrderBy  # type: ignore
+    >>> from tm2p.portfolio.social_struct.collab.latent import NetworkPlot  # type: ignore
     >>> fig = (
-    ...     OverlayPlot()
+    ...     NetworkPlot()
     ...     #
     ...     # ANALYSIS UNIT:
     ...     .with_analysis_unit(AnalysisUnit.AUTH)
@@ -32,19 +37,27 @@ Smoke tests:
     ...     #
     ...     # CLUSTERING:
     ...     .using_clustering(GraphClusteringAlgorithm.LOUVAIN)
+    ...     .using_max_recursive_clustering_depth(1)
+    ...     .using_min_recursive_cluster_size(8)    
     ...     #
     ...     # PLOT:
     ...     .using_spring_layout_k(0.2)
     ...     .using_spring_layout_iterations(10)
     ...     .using_spring_layout_seed(0)
     ...     #
-    ...     .using_colorscale(
-    ...         [
-    ...             [0.00, "#2C7BB6"],
-    ...             [0.35, "#00A6CA"],
-    ...             [0.65, "#4EBA6F"],
-    ...             [1.00, "#F28E2B"],
-    ...         ]
+    ...     .using_discrete_node_colors(
+    ...         (
+    ...             "#1f77b4",
+    ...             "#ff7f0e",
+    ...             "#2ca02c",
+    ...             "#d62728",
+    ...             "#9467bd",
+    ...             "#8c564b",
+    ...             "#e377c2",
+    ...             "#7f7f7f",
+    ...             "#bcbd22",
+    ...             "#17becf",
+    ...         )
     ...     )
     ...     .using_uniform_node_opacity(0.75)
     ...     .using_node_size_metric(NodeSizeMetric.TLS)
@@ -79,21 +92,21 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> assert type(fig).__name__ == 'Figure'    >>> fig.write_html("docsrc/_generated/px.portfolio.social_structure.collaboration_network.overlay_plot.html")
+    >>> assert type(fig).__name__ == 'Figure'
+    >>> fig.write_html("docsrc/_generated/px.portfolio.social_struct.collab.latent.network_plot.html")
 
 
 """
 
 from tm2p._intern import ParamsMixin
-from tm2p._intern.plots.adv.co_occ_overlay_plot import build_co_occ_overlay_plot
-from tm2p.portfolio.perform_metr.trend.trend import Trends
+from tm2p._intern.plots.adv.co_occ_netw_plot import build_co_occ_network_plot
 
-from .dir_matrix import DirectMatrix
-from .item_to_cluster import ItemToCluster
-from .matrix import Matrix as CoOccurrenceMatrix
+from ..direct.count_matrix import CountMatrix as CoOccurrenceMatrix
+from .latent_matrix import LatentMatrix
+from .unit_to_cluster import UnitToCluster
 
 
-class OverlayPlot(
+class NetworkPlot(
     ParamsMixin,
 ):
     """:meta private:"""
@@ -102,7 +115,7 @@ class OverlayPlot(
         """:meta private:"""
 
         similarity_matrix = (
-            DirectMatrix().update(**self.params.__dict__).using_counters(True).run()
+            LatentMatrix().update(**self.params.__dict__).using_counters(True).run()
         )
         co_occ_matrix = (
             CoOccurrenceMatrix()
@@ -111,21 +124,13 @@ class OverlayPlot(
             .run()
         )
 
-        trends = Trends().update(**self.params.__dict__).run()
-        years = trends.columns.astype(int)
-        avg_year = (trends * years).sum(axis=1) / trends.sum(axis=1)
-        avg_year = avg_year.round(1)
+        i2c = UnitToCluster().update(**self.params.__dict__).using_counters(True).run()
 
-        i2y = dict(zip(trends.index, avg_year))
-
-        i2c = ItemToCluster().update(**self.params.__dict__).using_counters(True).run()
-
-        fig = build_co_occ_overlay_plot(
+        fig = build_co_occ_network_plot(
             params=self.params,
             similarity_matrix=similarity_matrix,
             co_occurrence_matrix=co_occ_matrix,
             i2c=i2c,
-            i2y=i2y,
         )
 
         return fig

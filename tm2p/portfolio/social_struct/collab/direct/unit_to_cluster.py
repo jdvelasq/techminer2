@@ -1,5 +1,5 @@
 """
-ItemToCluster
+UnitToCluster
 ===============================================================================
 
 Smoke tests:
@@ -15,10 +15,13 @@ Smoke tests:
     ...     compute_full_tree=True,  # always True
     ...     compute_distances=True,  # always True
     ... )
-    >>> from tm2p.enum import AssociationIndex, AnalysisUnit, Field, GraphClusteringAlgorithm, UnitOrderBy
-    >>> from tm2p.portfolio.social_structure.collaboration_network import ItemToCluster
+    >>> from tm2p.enum import AnalysisUnit  # type: ignore
+    >>> from tm2p.enum import AssociationIndex  # type: ignore
+    >>> from tm2p.enum import GraphClusteringAlgorithm  # type: ignore
+    >>> from tm2p.enum import UnitOrderBy  # type: ignore
+    >>> from tm2p.portfolio.social_struct.collab.direct import UnitToCluster  # type: ignore
     >>> mapping = (
-    ...     ItemToCluster()
+    ...     UnitToCluster()
     ...     #
     ...     # ANALYSIS UNIT:
     ...     .with_analysis_unit(AnalysisUnit.AUTH)
@@ -50,30 +53,30 @@ Smoke tests:
     ... )
     >>> from pprint import pprint
     >>> pprint(mapping) # doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
-    {'Armin Schwienbacher 002:00611': 4,
-     'Chichuan Lee 002:00717': 2,
-     'Chinhsien Yu 002:00717': 2,
-     'Douglas W. Arner 003:00911': 1,
-     'Gerhard Schwabe 003:00330': 0,
-     'Guangyou Zhou 002:00670': 5,
-     'Huaping Sun 002:00656': 3,
-     'Janos N. Barberis 003:00445': 1,
-     'Jinsong Zhao 002:00717': 2,
-     'Julapa A. Jagtiani 005:01156': 0,
-     'Lars Hornuf 003:00904': 4,
-     'Linnan Yan 002:00656': 3,
-     'Liudmila Zavolokina 003:00330': 0,
-     'Mateusz Dolata 003:00330': 0,
-     'Peter Gomber 002:02579': 0,
-     'Robert J. Kauffman 002:01445': 0,
-     'Ross P. Buckley 002:00898': 1,
-     'Sumei Luo 002:00670': 5,
-     'Tadiwanashe Muganyi 002:00656': 3,
-     'Victor Murinde 002:01022': 0}
+    {'Alessio Burrello 0015:000114': 0,
+     'Daniel G. Costa 0016:000312': 1,
+     'Danilo Pau 0021:000125': 1,
+     'Danilo Pietro Pau 0016:000064': 5,
+     'Elisabetta Farella 0015:000129': 0,
+     'Francesco Paissan 0013:000127': 0,
+     'Ibrahim Ouahbi 0015:000178': 2,
+     'Ismail Lamaakal 0014:000176': 2,
+     'Ivanovitch Silva 0027:000442': 1,
+     'Khalid El Makkaoui 0016:000178': 2,
+     'Luca Benini 0041:000706': 0,
+     'Manuel Roveri 0016:000160': 4,
+     'Marco Zennaro 0018:000115': 1,
+     'Marianne Silva 0020:000255': 1,
+     'Michele Magno 0035:000501': 0,
+     'Rajesh Gupta 0014:000003': 3,
+     'Sebastian Bader 0015:000207': 0,
+     'Sudeep Tanwar 0014:000003': 3,
+     'Yassine Maleh 0015:000178': 2,
+     'Yuxuan Zhang 0014:000220': 0}
 
 
     >>> mapping = (
-    ...     ItemToCluster()
+    ...     UnitToCluster()
     ...     #
     ...     # ANALYSIS UNIT:
     ...     .with_analysis_unit(AnalysisUnit.AUTH)
@@ -104,26 +107,26 @@ Smoke tests:
     ...     .run()
     ... )
     >>> pprint(mapping) # doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
-    {'Armin Schwienbacher': 4,
-     'Chichuan Lee': 2,
-     'Chinhsien Yu': 2,
-     'Douglas W. Arner': 1,
-     'Gerhard Schwabe': 0,
-     'Guangyou Zhou': 5,
-     'Huaping Sun': 3,
-     'Janos N. Barberis': 1,
-     'Jinsong Zhao': 2,
-     'Julapa A. Jagtiani': 0,
-     'Lars Hornuf': 4,
-     'Linnan Yan': 3,
-     'Liudmila Zavolokina': 0,
-     'Mateusz Dolata': 0,
-     'Peter Gomber': 0,
-     'Robert J. Kauffman': 0,
-     'Ross P. Buckley': 1,
-     'Sumei Luo': 5,
-     'Tadiwanashe Muganyi': 3,
-     'Victor Murinde': 0}
+    {'Alessio Burrello': 0,
+     'Daniel G. Costa': 1,
+     'Danilo Pau': 1,
+     'Danilo Pietro Pau': 5,
+     'Elisabetta Farella': 0,
+     'Francesco Paissan': 0,
+     'Ibrahim Ouahbi': 2,
+     'Ismail Lamaakal': 2,
+     'Ivanovitch Silva': 1,
+     'Khalid El Makkaoui': 2,
+     'Luca Benini': 0,
+     'Manuel Roveri': 4,
+     'Marco Zennaro': 1,
+     'Marianne Silva': 1,
+     'Michele Magno': 0,
+     'Rajesh Gupta': 3,
+     'Sebastian Bader': 0,
+     'Sudeep Tanwar': 3,
+     'Yassine Maleh': 2,
+     'Yuxuan Zhang': 0}
 
 
     >>> # ---------------------------------------------------------------------
@@ -136,7 +139,7 @@ Smoke tests:
     ...     metric="precomputed",
     ... )
     >>> mapping = (
-    ...     ItemToCluster()
+    ...     UnitToCluster()
     ...     #
     ...     # ANALYSIS UNIT:
     ...     .with_analysis_unit(AnalysisUnit.AUTH)
@@ -167,26 +170,27 @@ Smoke tests:
     ...     .run()
     ... )
     >>> pprint(mapping)
-    {'Armin Schwienbacher 002:00611': 0,
-     'Chichuan Lee 002:00717': 2,
-     'Chinhsien Yu 002:00717': 2,
-     'Douglas W. Arner 003:00911': 0,
-     'Gerhard Schwabe 003:00330': 1,
-     'Guangyou Zhou 002:00670': 0,
-     'Huaping Sun 002:00656': 3,
-     'Janos N. Barberis 003:00445': 0,
-     'Jinsong Zhao 002:00717': 2,
-     'Julapa A. Jagtiani 005:01156': 0,
-     'Lars Hornuf 003:00904': 0,
-     'Linnan Yan 002:00656': 3,
-     'Liudmila Zavolokina 003:00330': 1,
-     'Mateusz Dolata 003:00330': 1,
-     'Peter Gomber 002:02579': 0,
-     'Robert J. Kauffman 002:01445': 0,
-     'Ross P. Buckley 002:00898': 0,
-     'Sumei Luo 002:00670': 0,
-     'Tadiwanashe Muganyi 002:00656': 3,
-     'Victor Murinde 002:01022': 0}
+    {'Alessio Burrello 0015:000114': 0,
+     'Daniel G. Costa 0016:000312': 0,
+     'Danilo Pau 0021:000125': 0,
+     'Danilo Pietro Pau 0016:000064': 0,
+     'Elisabetta Farella 0015:000129': 0,
+     'Francesco Paissan 0013:000127': 0,
+     'Ibrahim Ouahbi 0015:000178': 1,
+     'Ismail Lamaakal 0014:000176': 1,
+     'Ivanovitch Silva 0027:000442': 0,
+     'Khalid El Makkaoui 0016:000178': 1,
+     'Luca Benini 0041:000706': 0,
+     'Manuel Roveri 0016:000160': 0,
+     'Marco Zennaro 0018:000115': 0,
+     'Marianne Silva 0020:000255': 0,
+     'Michele Magno 0035:000501': 0,
+     'Rajesh Gupta 0014:000003': 0,
+     'Sebastian Bader 0015:000207': 0,
+     'Sudeep Tanwar 0014:000003': 0,
+     'Yassine Maleh 0015:000178': 1,
+     'Yuxuan Zhang 0014:000220': 0}
+
 
 
     >>> # ---------------------------------------------------------------------
@@ -203,7 +207,7 @@ Smoke tests:
     ...     n_components=None,  # Used only when eigen_solver="arpack"
     ... )
     >>> mapping = (
-    ...     ItemToCluster()
+    ...     UnitToCluster()
     ...     #
     ...     # ANALYSIS UNIT:
     ...     .with_analysis_unit(AnalysisUnit.AUTH)
@@ -234,26 +238,27 @@ Smoke tests:
     ...     .run()
     ... )
     >>> pprint(mapping) # doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
-    {'Armin Schwienbacher 002:00611': 3,
-     'Chichuan Lee 002:00717': 0,
-     'Chinhsien Yu 002:00717': 0,
-     'Douglas W. Arner 003:00911': 0,
-     'Gerhard Schwabe 003:00330': 1,
-     'Guangyou Zhou 002:00670': 5,
-     'Huaping Sun 002:00656': 2,
-     'Janos N. Barberis 003:00445': 0,
-     'Jinsong Zhao 002:00717': 0,
-     'Julapa A. Jagtiani 005:01156': 0,
-     'Lars Hornuf 003:00904': 3,
-     'Linnan Yan 002:00656': 2,
-     'Liudmila Zavolokina 003:00330': 1,
-     'Mateusz Dolata 003:00330': 1,
-     'Peter Gomber 002:02579': 4,
-     'Robert J. Kauffman 002:01445': 4,
-     'Ross P. Buckley 002:00898': 0,
-     'Sumei Luo 002:00670': 5,
-     'Tadiwanashe Muganyi 002:00656': 2,
-     'Victor Murinde 002:01022': 0}
+    {'Alessio Burrello 0015:000114': 1,
+     'Daniel G. Costa 0016:000312': 2,
+     'Danilo Pau 0021:000125': 0,
+     'Danilo Pietro Pau 0016:000064': 0,
+     'Elisabetta Farella 0015:000129': 4,
+     'Francesco Paissan 0013:000127': 4,
+     'Ibrahim Ouahbi 0015:000178': 0,
+     'Ismail Lamaakal 0014:000176': 0,
+     'Ivanovitch Silva 0027:000442': 2,
+     'Khalid El Makkaoui 0016:000178': 0,
+     'Luca Benini 0041:000706': 1,
+     'Manuel Roveri 0016:000160': 0,
+     'Marco Zennaro 0018:000115': 0,
+     'Marianne Silva 0020:000255': 2,
+     'Michele Magno 0035:000501': 1,
+     'Rajesh Gupta 0014:000003': 5,
+     'Sebastian Bader 0015:000207': 3,
+     'Sudeep Tanwar 0014:000003': 5,
+     'Yassine Maleh 0015:000178': 0,
+     'Yuxuan Zhang 0014:000220': 3}
+
 
 
     >>> # ---------------------------------------------------------------------
@@ -269,7 +274,7 @@ Smoke tests:
     ...     random_state=0,
     ... )
     >>> mapping = (
-    ...     ItemToCluster()
+    ...     UnitToCluster()
     ...     #
     ...     # FIELD:
     ...     .with_analysis_unit(AnalysisUnit.AUTH)
@@ -300,32 +305,32 @@ Smoke tests:
     ...     .run()
     ... )
     >>> pprint(mapping) # doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
-    {'Armin Schwienbacher 002:00611': 19,
-     'Chichuan Lee 002:00717': 13,
-     'Chinhsien Yu 002:00717': 12,
-     'Douglas W. Arner 003:00911': 1,
-     'Gerhard Schwabe 003:00330': 6,
-     'Guangyou Zhou 002:00670': 15,
-     'Huaping Sun 002:00656': 18,
-     'Janos N. Barberis 003:00445': 3,
-     'Jinsong Zhao 002:00717': 11,
-     'Julapa A. Jagtiani 005:01156': 0,
-     'Lars Hornuf 003:00904': 2,
-     'Linnan Yan 002:00656': 17,
-     'Liudmila Zavolokina 003:00330': 5,
-     'Mateusz Dolata 003:00330': 4,
-     'Peter Gomber 002:02579': 7,
-     'Robert J. Kauffman 002:01445': 8,
-     'Ross P. Buckley 002:00898': 10,
-     'Sumei Luo 002:00670': 14,
-     'Tadiwanashe Muganyi 002:00656': 16,
-     'Victor Murinde 002:01022': 9}
+    {'Alessio Burrello 0015:000114': 14,
+     'Daniel G. Costa 0016:000312': 6,
+     'Danilo Pau 0021:000125': 3,
+     'Danilo Pietro Pau 0016:000064': 9,
+     'Elisabetta Farella 0015:000129': 13,
+     'Francesco Paissan 0013:000127': 19,
+     'Ibrahim Ouahbi 0015:000178': 12,
+     'Ismail Lamaakal 0014:000176': 16,
+     'Ivanovitch Silva 0027:000442': 2,
+     'Khalid El Makkaoui 0016:000178': 7,
+     'Luca Benini 0041:000706': 0,
+     'Manuel Roveri 0016:000160': 8,
+     'Marco Zennaro 0018:000115': 5,
+     'Marianne Silva 0020:000255': 4,
+     'Michele Magno 0035:000501': 1,
+     'Rajesh Gupta 0014:000003': 18,
+     'Sebastian Bader 0015:000207': 10,
+     'Sudeep Tanwar 0014:000003': 17,
+     'Yassine Maleh 0015:000178': 11,
+     'Yuxuan Zhang 0014:000220': 15}
 
     >>> # ---------------------------------------------------------------------
     >>> # LOUVAIN
     >>> # ---------------------------------------------------------------------
     >>> mapping = (
-    ...     ItemToCluster()
+    ...     UnitToCluster()
     ...     #
     ...     # ANALYSIS UNIT:
     ...     .with_analysis_unit(AnalysisUnit.AUTH)
@@ -346,6 +351,8 @@ Smoke tests:
     ...     #
     ...     # CLUSTERING:
     ...     .using_clustering(GraphClusteringAlgorithm.LOUVAIN)
+    ...     .using_max_recursive_clustering_depth(1)
+    ...     .using_min_recursive_cluster_size(8)    
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/tinyml-scopus/")
@@ -356,35 +363,36 @@ Smoke tests:
     ...     .run()
     ... )
     >>> pprint(mapping) # doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
-    {'Armin Schwienbacher 002:00611': 4,
-     'Chichuan Lee 002:00717': 2,
-     'Chinhsien Yu 002:00717': 2,
-     'Douglas W. Arner 003:00911': 0,
-     'Gerhard Schwabe 003:00330': 1,
-     'Guangyou Zhou 002:00670': 6,
-     'Huaping Sun 002:00656': 3,
-     'Janos N. Barberis 003:00445': 0,
-     'Jinsong Zhao 002:00717': 2,
-     'Julapa A. Jagtiani 005:01156': 7,
-     'Lars Hornuf 003:00904': 4,
-     'Linnan Yan 002:00656': 3,
-     'Liudmila Zavolokina 003:00330': 1,
-     'Mateusz Dolata 003:00330': 1,
-     'Peter Gomber 002:02579': 5,
-     'Robert J. Kauffman 002:01445': 5,
-     'Ross P. Buckley 002:00898': 0,
-     'Sumei Luo 002:00670': 6,
-     'Tadiwanashe Muganyi 002:00656': 3,
-     'Victor Murinde 002:01022': 8}
+    {'Alessio Burrello 0015:000114': 1,
+     'Daniel G. Costa 0016:000312': 2,
+     'Danilo Pau 0021:000125': 6,
+     'Danilo Pietro Pau 0016:000064': 9,
+     'Elisabetta Farella 0015:000129': 4,
+     'Francesco Paissan 0013:000127': 4,
+     'Ibrahim Ouahbi 0015:000178': 0,
+     'Ismail Lamaakal 0014:000176': 0,
+     'Ivanovitch Silva 0027:000442': 2,
+     'Khalid El Makkaoui 0016:000178': 0,
+     'Luca Benini 0041:000706': 1,
+     'Manuel Roveri 0016:000160': 8,
+     'Marco Zennaro 0018:000115': 7,
+     'Marianne Silva 0020:000255': 2,
+     'Michele Magno 0035:000501': 1,
+     'Rajesh Gupta 0014:000003': 5,
+     'Sebastian Bader 0015:000207': 3,
+     'Sudeep Tanwar 0014:000003': 5,
+     'Yassine Maleh 0015:000178': 0,
+     'Yuxuan Zhang 0014:000220': 3}
+
 
 """
 
 from tm2p._intern.netw.unit_to_clust import BaseUnitToCluster
 
-from .dir_matrix import DirectMatrix
+from .direct_matrix import DirectMatrix
 
 
-class ItemToCluster(
+class UnitToCluster(
     BaseUnitToCluster,
 ):
     """:meta private:"""

@@ -1,15 +1,18 @@
 """
-ClusterToItems
+ClusterToUnits
 ===============================================================================
 
 Smoke tests:
     >>> # ---------------------------------------------------------------------
     >>> # LOUVAIN
     >>> # ---------------------------------------------------------------------
-    >>> from tm2p.enum import AssociationIndex, AnalysisUnit, Field, GraphClusteringAlgorithm, UnitOrderBy
-    >>> from tm2p.portfolio.social_structure.collaboration_network import ClusterToItems
+    >>> from tm2p.enum import AssociationIndex  # type: ignore
+    >>> from tm2p.enum import AnalysisUnit  # type: ignore
+    >>> from tm2p.enum import GraphClusteringAlgorithm  # type: ignore
+    >>> from tm2p.enum import UnitOrderBy  # type: ignore
+    >>> from tm2p.portfolio.social_struct.collab.direct import ClusterToUnits  # type: ignore
     >>> mapping = (
-    ...     ClusterToItems()
+    ...     ClusterToUnits()
     ...     #
     ...     # ANALYSIS UNIT:
     ...     .with_analysis_unit(AnalysisUnit.AUTH)
@@ -30,6 +33,8 @@ Smoke tests:
     ...     #
     ...     # CLUSTERING:
     ...     .using_clustering(GraphClusteringAlgorithm.LOUVAIN)
+    ...     .using_max_recursive_clustering_depth(1)
+    ...     .using_min_recursive_cluster_size(8)    
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/tinyml-scopus/")
@@ -41,35 +46,36 @@ Smoke tests:
     ... )
     >>> from pprint import pprint
     >>> pprint(mapping) # doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
-    {0: ['Douglas W. Arner 003:00911',
-         'Janos N. Barberis 003:00445',
-         'Ross P. Buckley 002:00898'],
-     1: ['Gerhard Schwabe 003:00330',
-         'Liudmila Zavolokina 003:00330',
-         'Mateusz Dolata 003:00330'],
-     2: ['Chichuan Lee 002:00717',
-         'Chinhsien Yu 002:00717',
-         'Jinsong Zhao 002:00717'],
-     3: ['Huaping Sun 002:00656',
-         'Linnan Yan 002:00656',
-         'Tadiwanashe Muganyi 002:00656'],
-     4: ['Lars Hornuf 003:00904', 'Armin Schwienbacher 002:00611'],
-     5: ['Peter Gomber 002:02579', 'Robert J. Kauffman 002:01445'],
-     6: ['Guangyou Zhou 002:00670', 'Sumei Luo 002:00670'],
-     7: ['Julapa A. Jagtiani 005:01156'],
-     8: ['Victor Murinde 002:01022']}
+    {0: ['Khalid El Makkaoui 0016:000178',
+         'Ibrahim Ouahbi 0015:000178',
+         'Yassine Maleh 0015:000178',
+         'Ismail Lamaakal 0014:000176'],
+     1: ['Luca Benini 0041:000706',
+         'Michele Magno 0035:000501',
+         'Alessio Burrello 0015:000114'],
+     2: ['Ivanovitch Silva 0027:000442',
+         'Marianne Silva 0020:000255',
+         'Daniel G. Costa 0016:000312'],
+     3: ['Sebastian Bader 0015:000207', 'Yuxuan Zhang 0014:000220'],
+     4: ['Elisabetta Farella 0015:000129', 'Francesco Paissan 0013:000127'],
+     5: ['Rajesh Gupta 0014:000003', 'Sudeep Tanwar 0014:000003'],
+     6: ['Danilo Pau 0021:000125'],
+     7: ['Marco Zennaro 0018:000115'],
+     8: ['Manuel Roveri 0016:000160'],
+     9: ['Danilo Pietro Pau 0016:000064']}
 
+     
 """
 
 from tm2p._intern.netw.clust_to_unit import BaseClusterToUnits
 
-from .item_to_cluster import ItemToCluster
+from .unit_to_cluster import UnitToCluster
 
 
-class ClusterToItems(
+class ClusterToUnits(
     BaseClusterToUnits,
 ):
     """:meta private:"""
 
     def item_to_cluster(self):
-        return ItemToCluster()
+        return UnitToCluster()
