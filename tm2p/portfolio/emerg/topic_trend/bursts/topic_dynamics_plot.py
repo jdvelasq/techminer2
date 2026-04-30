@@ -4,18 +4,20 @@ TopicDynamicsPlot
 
 .. raw:: html
 
-    <iframe src="../_generated/px.portfolio.emergence.topic_trends.burst.topic_dynamics_plot.html"
+    <iframe src="../_generated/px.portfolio.emerg.topic_trend.bursts.topic_dynamics_plot.html"
     height="600px" width="100%" frameBorder="0"></iframe>
 
 Smoke tests:
-    >>> from tm2p.enum import Field, UnitOrderBy
-    >>> from tm2p.portfolio.emergence.topic_trends.bursts import TopicDynamicsPlot
+    >>> from tm2p.enum import AnalysisUnit  # type: ignore
+    >>> from tm2p.enum import UnitOrderBy  # type: ignore
+    >>> from tm2p.portfolio.emerg.topic_trend.bursts import TopicDynamicsPlot
     >>> fig = (
     ...     TopicDynamicsPlot()
     ...     #
     ...     # FIELD:
-    ...     .with_source_field(Field.CONCEPT_NORM)
-    ...     .having_top_n_units(50)
+    ...     .with_analysis_unit(AnalysisUnit.CONCEPT)
+    ...     #
+    ...     .having_top_n_units(100)
     ...     .having_units_ordered_by(UnitOrderBy.OCC)
     ...     .having_unit_occurrence_between(None, None)
     ...     .having_unit_global_citation_between(None, None)
@@ -36,7 +38,7 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> fig.write_html("docsrc/_generated/px.portfolio.emergence.topic_trends.burst.topic_dynamics_plot.html")
+    >>> fig.write_html("docsrc/_generated/px.portfolio.emerg.topic_trend.bursts.topic_dynamics_plot.html")
 
 
 
@@ -57,6 +59,7 @@ class TopicDynamicsPlot(
     def run(self):
 
         df = TopicDynamics().update(**self.params.__dict__).run()
+
         min_occ = df.OCC.min()
         max_occ = df.OCC.max()
         df["height"] = 0.15 + 0.82 * (df.OCC - min_occ) / (max_occ - min_occ)

@@ -36,7 +36,8 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> assert type(fig).__name__ == 'Figure'    >>> fig.write_html("docsrc/_generated/px.portfolio.emergence.topic_trends.scientopy.topic_dynamics_plot.html")
+    >>> assert type(fig).__name__ == 'Figure'    
+    >>> fig.write_html("docsrc/_generated/px.portfolio.emergence.topic_trends.scientopy.topic_dynamics_plot.html")
 
 
 

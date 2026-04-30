@@ -3,14 +3,16 @@ TopicDynamics
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.enum import Field, UnitOrderBy
-    >>> from tm2p.portfolio.emergence.topic_trends.bursts import TopicDynamics
+    >>> from tm2p.enum import AnalysisUnit  # type: ignore 
+    >>> from tm2p.enum import UnitOrderBy  # type: ignore
+    >>> from tm2p.portfolio.emerg.topic_trend.bursts import TopicDynamics  # type: ignore
     >>> df = (
     ...     TopicDynamics()
     ...     #
-    ...     # FIELD:
-    ...     .with_source_field(Field.CONCEPT_NORM)
-    ...     .having_top_n_units(50)
+    ...     # ANALYSIS UNIT:
+    ...     .with_analysis_unit(AnalysisUnit.CONCEPT)
+    ...     #
+    ...     .having_top_n_units(100)
     ...     .having_units_ordered_by(UnitOrderBy.OCC)
     ...     .having_unit_occurrence_between(None, None)
     ...     .having_unit_global_citation_between(None, None)
@@ -31,22 +33,33 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> df.head()  # doctest: +NORMALIZE_WHITESPACE
-                                   LEVEL  START   END  DURATION  OCC
-    ITEM
-    fintech companies 014:03279        1   2016  2017         1   14
-    china 033:06419                    1   2021  2023         2   33
-    fintech development 015:03625      1   2021  2022         1   15
-    economic growth 012:01976          1   2022  2024         2   12
-    countries 010:02793                1   2022  2024         2   10
+    >>> df.head(15)  # doctest: +NORMALIZE_WHITESPACE
+                                        LEVEL  START   END  DURATION   OCC
+    ITEM                                                                  
+    learning systems 0343:003524            2   2025  2025         0   343
+    green computing 0057:000761             2   2025  2025         0    57
+    controllers 0067:001148                 1   2022  2022         0    67
+    the internet of things 0075:001833      1   2023  2024         1    75
+    tinyml 1175:011915                      1   2024  2025         1  1175
+    machine learning 0807:009343            1   2024  2025         1   807
+    tiny machine learning 0480:005025       1   2024  2025         1   480
+    accuracy 0413:003917                    1   2024  2025         1   413
+    internet of things 0354:005877          1   2024  2025         1   354
+    microcontrollers 0316:003886            1   2024  2025         1   316
+    deep learning 0288:004416               1   2024  2025         1   288
+    neural networks 0281:003048             1   2024  2025         1   281
+    edge computing 0257:003298              1   2024  2025         1   257
+    models 0209:001874                      1   2024  2025         1   209
+    microcontroller 0178:001770             1   2024  2025         1   178
 
 
     >>> df = (
     ...     TopicDynamics()
     ...     #
     ...     # FIELD:
-    ...     .with_source_field(Field.CONCEPT_NORM)
-    ...     .having_top_n_units(50)
+    ...     .with_analysis_unit(AnalysisUnit.CONCEPT)
+    ...     #
+    ...     .having_top_n_units(100)
     ...     .having_units_ordered_by(UnitOrderBy.OCC)
     ...     .having_unit_occurrence_between(None, None)
     ...     .having_unit_global_citation_between(None, None)
@@ -67,15 +80,26 @@ Smoke tests:
     ...     #
     ...     .run()
     ... )
-    >>> df.head()  # doctest: +NORMALIZE_WHITESPACE
-                         LEVEL  START   END  DURATION  OCC
-    ITEM
-    fintech companies        1   2016  2017         1   14
-    china                    1   2021  2023         2   33
-    fintech development      1   2021  2022         1   15
-    economic growth          1   2022  2024         2   12
-    countries                1   2022  2024         2   10
+    >>> df.head(15)  # doctest: +NORMALIZE_WHITESPACE
+                            LEVEL  START   END  DURATION   OCC
+    ITEM                                                      
+    learning systems            2   2025  2025         0   343
+    green computing             2   2025  2025         0    57
+    controllers                 1   2022  2022         0    67
+    the internet of things      1   2023  2024         1    75
+    tinyml                      1   2024  2025         1  1175
+    machine learning            1   2024  2025         1   807
+    tiny machine learning       1   2024  2025         1   480
+    accuracy                    1   2024  2025         1   413
+    internet of things          1   2024  2025         1   354
+    microcontrollers            1   2024  2025         1   316
+    deep learning               1   2024  2025         1   288
+    neural networks             1   2024  2025         1   281
+    edge computing              1   2024  2025         1   257
+    models                      1   2024  2025         1   209
+    microcontroller             1   2024  2025         1   178
 
+    
 """
 
 from math import log

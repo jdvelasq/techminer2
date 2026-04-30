@@ -544,12 +544,12 @@ class ParamsMixin:
         self.params.time_window = time_window
         return self
 
-    def having_top_n_units_per_year(self, items_per_year: int) -> Self:
-        items_per_year = check_required_positive_int(
-            value=items_per_year,
-            param_name="items_per_year",
+    def having_top_n_units_per_year(self, units_per_year: int) -> Self:
+        units_per_year = check_required_positive_int(
+            value=units_per_year,
+            param_name="units_per_year",
         )
-        self.params.top_n_units_per_year = items_per_year
+        self.params.top_n_units_per_year = units_per_year
         return self
 
     # ####################################################################### #

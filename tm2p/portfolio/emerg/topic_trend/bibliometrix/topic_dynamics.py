@@ -3,16 +3,25 @@ Dataframe
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.enum import Field
-    >>> from tm2p.portfolio.emergence.topic_trends.bibliometrix import TopicDynamics
+    >>> from tm2p.enum import AnalysisUnit  # type: ignore
+    >>> from tm2p.enum import UnitOrderBy  # type: ignore
+    >>> from tm2p.portfolio.emerg.topic_trend.bibliometrix import TopicDynamics
     >>> df = (
     ...     TopicDynamics()
     ...     #
     ...     # FIELD:
-    ...     .with_source_field(Field.AUTHKW_RAW)
-    ...     .having_items_per_year(5)
+    ...     .with_analysis_unit(AnalysisUnit.CONCEPT)
+    ...     .having_top_n_units_per_year(5)
+    ...     #
+    ...     .having_top_n_units(100)
+    ...     .having_units_ordered_by(UnitOrderBy.OCC)
+    ...     .having_unit_occurrence_between(None, None)
+    ...     .having_unit_global_citation_between(None, None)
     ...     .having_units_in(None)
     ...     #
+    ...     # COUNTERS:
+    ...     .using_counters(True)    
+    ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .where_record_years_range(None, None)
@@ -22,28 +31,30 @@ Smoke tests:
     ...     .run()
     ... )
     >>> print(df.head().to_string())  # doctest: +NORMALIZE_WHITESPACE
-    YEAR                            OCC  global_citations  year_q1  year_med  year_q3  rn  height  width
-    AUTHKW_RAW
-    biometric 001:00001               1                 1     2015      2015     2015   0    0.15      1
-    fast identity online 001:00001    1                 1     2015      2015     2015   1    0.15      1
-    fido 001:00001                    1                 1     2015      2015     2015   2    0.15      1
-    password 001:00001                1                 1     2015      2015     2015   3    0.15      1
-    pki 001:00001                     1                 1     2015      2015     2015   4    0.15      1
+    YEAR                             OCC   GCS  YEAR_Q1  YEAR_MED  YEAR_Q3  rn    HEIGHT  WIDTH
+    CONCEPT_NORM                                                                               
+    neural network 0056:000412        56   412     2022      2023     2024   3  0.150000      3
+    controllers 0067:001148           67  1148     2022      2023     2024   2  0.158061      3
+    cloud 0076:001385                 76  1385     2022      2023     2024   1  0.164656      3
+    learning algorithms 0094:001714   94  1714     2022      2023     2025   0  0.177846      4
+    edge ai 0118:001164              118  1164     2023      2025     2025   3  0.195433      3
 
 
     >>> df = (
     ...     TopicDynamics()
     ...     #
     ...     # FIELD:
-    ...     .with_source_field(Field.AUTHKW_RAW)
-    ...     .having_items_per_year(5)
-    ...     .having_units_in(
-    ...         [
-    ...             "fintech",
-    ...             "blockchain",
-    ...             "artificial intelligence",
-    ...         ]
-    ...     )
+    ...     .with_analysis_unit(AnalysisUnit.CONCEPT)
+    ...     .having_top_n_units_per_year(5)
+    ...     #
+    ...     .having_top_n_units(100)
+    ...     .having_units_ordered_by(UnitOrderBy.OCC)
+    ...     .having_unit_occurrence_between(None, None)
+    ...     .having_unit_global_citation_between(None, None)
+    ...     .having_units_in(None)
+    ...     #
+    ...     # COUNTERS:
+    ...     .using_counters(False)    
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/tinyml-scopus/")
@@ -54,11 +65,6 @@ Smoke tests:
     ...     .run()
     ... )
     >>> print(df.head().to_string())  # doctest: +NORMALIZE_WHITESPACE
-    YEAR                               OCC  global_citations  year_q1  year_med  year_q3  rn    height  width
-    AUTHKW_RAW
-    blockchain 011:02023                11              2023     2018      2020     2022   0  0.172569      5
-    fintech 117:25478                  117             25478     2018      2021     2023   0  0.970000      6
-    artificial intelligence 008:01915    8              1915     2020      2020     2023   1  0.150000      4
 
 
 """
@@ -67,6 +73,13 @@ import numpy as np
 
 from tm2p._intern import ParamsMixin
 from tm2p.portfolio.perform_metr.trend import Trends
+
+GCS = "GCS"
+WIDTH = "WIDTH"
+HEIGHT = "HEIGHT"
+YEAR_Q1 = "YEAR_Q1"
+YEAR_MED = "YEAR_MED"
+YEAR_Q3 = "YEAR_Q3"
 
 
 class TopicDynamics(
@@ -101,9 +114,9 @@ class TopicDynamics(
             year_med.append(int(round(np.percentile(sequence, 50))))
             year_q3.append(int(round(np.percentile(sequence, 75))))
 
-        self.terms_by_year["year_q1"] = year_q1
-        self.terms_by_year["year_med"] = year_med
-        self.terms_by_year["year_q3"] = year_q3
+        self.terms_by_year["YEAR_Q1"] = year_q1
+        self.terms_by_year["YEAR_MED"] = year_med
+        self.terms_by_year["YEAR_Q3"] = year_q3
 
     # ---------------------------------------------------------------------------
     def internal__extract_total_occurrences_and_citations(self):
@@ -114,16 +127,16 @@ class TopicDynamics(
             )
         )
         self.terms_by_year = self.terms_by_year.assign(
-            global_citations=self.terms_by_year.index.map(
+            GCS=self.terms_by_year.index.map(
                 lambda x: int(x.split(" ")[-1].split(":")[1])
             )
         )
         self.terms_by_year = self.terms_by_year[
-            ["OCC", "global_citations", "year_q1", "year_med", "year_q3"]
+            ["OCC", "GCS", "YEAR_Q1", "YEAR_MED", "YEAR_Q3"]
         ]
 
         self.terms_by_year = self.terms_by_year.sort_values(
-            by=["year_med", "OCC", "global_citations"],
+            by=["YEAR_MED", "OCC", "GCS"],
             ascending=[True, False, False],
         )
 
@@ -131,8 +144,8 @@ class TopicDynamics(
     def internal__select_top_terms_per_year(self):
 
         self.terms_by_year = self.terms_by_year.assign(
-            rn=self.terms_by_year.groupby(["year_med"]).cumcount()
-        ).sort_values(["year_med", "rn"], ascending=[True, True])
+            rn=self.terms_by_year.groupby(["YEAR_MED"]).cumcount()
+        ).sort_values(["YEAR_MED", "rn"], ascending=[True, True])
 
         self.terms_by_year = self.terms_by_year.query(
             f"rn < {self.params.top_n_units_per_year}"
@@ -145,16 +158,16 @@ class TopicDynamics(
         max_occ = self.terms_by_year.OCC.max()
 
         self.terms_by_year = self.terms_by_year.assign(
-            height=0.15
+            HEIGHT=0.15
             + 0.82 * (self.terms_by_year.OCC - min_occ) / (max_occ - min_occ)
         )
 
         self.terms_by_year = self.terms_by_year.assign(
-            width=self.terms_by_year.year_q3 - self.terms_by_year.year_q1 + 1
+            WIDTH=self.terms_by_year.YEAR_Q3 - self.terms_by_year.YEAR_Q1 + 1
         )
 
         self.terms_by_year = self.terms_by_year.sort_values(
-            ["year_q1", "width", "height"], ascending=[True, True, True]
+            ["YEAR_Q1", "WIDTH", "HEIGHT"], ascending=[True, True, True]
         )
 
     # ---------------------------------------------------------------------------
@@ -165,6 +178,3 @@ class TopicDynamics(
         self.internal__select_top_terms_per_year()
         self.internal__compute_bar_height_and_width()
         return self.terms_by_year
-
-
-#
