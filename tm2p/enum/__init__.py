@@ -4,6 +4,7 @@ from .field import Field
 from .methods import (
     AssociationIndex,
     Correlation,
+    GapComputation,
     GraphClusteringAlgorithm,
     NodeSizeMetric,
     Scaling,
@@ -24,4 +25,5 @@ __all__ = [
     "ThField",
     "ThFile",
     "UnitOrderBy",
+    "GapComputation",
 ]

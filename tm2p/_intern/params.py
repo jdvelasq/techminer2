@@ -11,6 +11,7 @@ from tm2p.enum import (
     AssociationIndex,
     Correlation,
     Field,
+    GapComputation,
     GraphClusteringAlgorithm,
     NodeSizeMetric,
     RecordOrderBy,
@@ -116,6 +117,16 @@ class Params:
     # -------------------------------------------------------------------------
 
     correlation_method: Correlation
+
+    # ####################################################################### #
+    #                                                                         #
+    #                               WHITE-SPACE                               #
+    #                                                                         #
+    # ####################################################################### #
+
+    wh_minimum_latent_similarity: float
+    wh_maximum_observed_similarity: float
+    wh_gap_computation: GapComputation
 
     # ####################################################################### #
     #                                                                         #
@@ -388,7 +399,7 @@ class Params:
 
     # ####################################################################### #
     #                                                                         #
-    #                               ZOTERO                                    #
+    #                                 ZOTERO                                  #
     #                                                                         #
     # ####################################################################### #
 

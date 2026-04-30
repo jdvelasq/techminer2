@@ -39,6 +39,7 @@ from tm2p.enum import (
     AssociationIndex,
     Correlation,
     Field,
+    GapComputation,
     GraphClusteringAlgorithm,
     NodeSizeMetric,
     RecordOrderBy,
@@ -398,6 +399,40 @@ class ParamsMixin:
                 "correlation_method must be an instance of Correlation enum"
             )
         self.params.correlation_method = correlation_method
+        return self
+
+    # ####################################################################### #
+    #                                                                         #
+    #                               WHITE-SPACE                               #
+    #                                                                         #
+    # ####################################################################### #
+
+    def using_wh_minimum_latent_similarity(
+        self, minimum_latent_similarity: float
+    ) -> Self:
+        minimum_latent_similarity = check_required_float_0_1(
+            value=minimum_latent_similarity,
+            param_name="minimum_latent_similarity",
+        )
+        self.params.wh_minimum_latent_similarity = minimum_latent_similarity
+        return self
+
+    def using_wh_maximum_observed_similarity(
+        self, maximum_observed_similarity: float
+    ) -> Self:
+        maximum_observed_similarity = check_required_float_0_1(
+            value=maximum_observed_similarity,
+            param_name="maximum_observed_similarity",
+        )
+        self.params.wh_maximum_observed_similarity = maximum_observed_similarity
+        return self
+
+    def using_wh_gap_computation(self, gap_computation: GapComputation) -> Self:
+        if not isinstance(gap_computation, GapComputation):
+            raise TypeError(
+                "gap_computation must be an instance of GapComputation enum"
+            )
+        self.params.wh_gap_computation = gap_computation
         return self
 
     # ####################################################################### #

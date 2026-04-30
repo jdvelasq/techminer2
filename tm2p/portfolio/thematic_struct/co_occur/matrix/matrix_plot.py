@@ -65,7 +65,7 @@ Smoke tests:
 from tm2p._intern import ParamsMixin
 from tm2p._intern.plots.adv.co_occ_matrix_plot import build_co_occ_matrix_plot
 
-from .mtx import Matrix
+from .matrix import Matrix
 
 
 class MatrixPlot(

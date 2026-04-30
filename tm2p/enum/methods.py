@@ -50,3 +50,10 @@ class NodeSizeMetric(str, Enum):
     LINKS = "LINKS"
     OCC = "OCC"
     TLS = "TLS"
+
+
+class GapComputation(str, Enum):
+
+    LATENT_MINUS_OBSERVED = "LATENT_MINUS_OBSERVED"
+    RELATIVE_LATENT_GAP = "RELATIVE_LATENT_GAP"
+    STRUCTURAL_HOLE_SOFT = "STRUCTURAL_HOLE_SOFT"
