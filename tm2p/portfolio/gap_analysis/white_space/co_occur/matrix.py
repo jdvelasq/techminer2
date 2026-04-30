@@ -80,17 +80,17 @@ class Matrix(
         )
 
         if self.params.wh_gap_computation == GapComputation.LATENT_MINUS_OBSERVED:
-            gap = latent.sub(observed).clip(lower=0.0)
+            white_space = latent.sub(observed).clip(lower=0.0)
         elif self.params.wh_gap_computation == GapComputation.RELATIVE_LATENT_GAP:
             white_space = latent.sub(observed).div(latent + 1e-12).clip(lower=0.0)
         elif self.params.wh_gap_computation == GapComputation.STRUCTURAL_HOLE_SOFT:
             white_space = latent.mul(1.0 - observed)
         else:
             raise ValueError(
-                f"Unknown gap computation method: {self.params.wh_gap_computation}"
+                f"Unknown white space computation method: {self.params.wh_gap_computation}"
             )
 
-        white_space = gap.where(mask, 0)
+        white_space = white_space.where(mask, 0)
         white_space.values[np.diag_indices_from(white_space)] = 0.0
 
         return white_space

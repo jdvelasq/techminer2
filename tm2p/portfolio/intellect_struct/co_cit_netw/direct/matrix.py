@@ -31,7 +31,8 @@ Smoke tests:
     >>> assert type(df).__name__ == 'DataFrame'
     >>> assert df.shape[0] > 1
     >>> assert df.shape[1] > 1
-    >>> print(df.iloc[:6, :6].to_string())  # doctest: +NORMALIZE_WHITESPACE
+    >>> print(df.iloc[:10, :10].to_string())  # doctest: +NORMALIZE_WHITESPACE
+
     COLUMNS                                               Forrester JayWright., 2013, Industrial dynamics 74:0  Sterman J.D., 2000, BUSINESS DYNAMICS 70:0  Sterman J.D. J. D., 2000, BUSINESS DYNAMICS SY 30:0  Barlas Y, 1996, SYST DYNAM REV 27:0  FORRESTER JW, 1958, HARVARD BUS REV 25:0  Swanson J, 2002, J OPER RES SOC 21:0
     ROWS
     Forrester JayWright., 2013, Industrial dynamics 74:0                                                    74                                          26                                                   10                                    7                                         8                                     3

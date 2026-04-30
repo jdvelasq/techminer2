@@ -6,12 +6,12 @@ Smoke tests:
     >>> from tm2p.enum import AnalysisUnit  # type: ignore
     >>> from tm2p.enum import AssociationIndex  # type: ignore
     >>> from tm2p.enum import UnitOrderBy  # type: ignore
-    >>> from tm2p.portfolio.gap_analysis.white_space.co_occur import Matrix
+    >>> from tm2p.portfolio.gap_analysis.white_space.co_cit import Matrix
     >>> df = (
     ...     Matrix()
     ...     #
     ...     # ANALYSIS UNIT:
-    ...     .with_analysis_unit(AnalysisUnit.KW)
+    ...     .with_analysis_unit(AnalysisUnit.CITED_REF)
     ...     #
     ...     .having_top_n_units(50)
     ...     .having_units_ordered_by(UnitOrderBy.OCC)
@@ -19,11 +19,12 @@ Smoke tests:
     ...     .having_unit_global_citation_between(None, None)
     ...     .having_units_in(None)
     ...     #
-    ...     .using_minimum_pair_co_occurrence(1)
+    ...     .having_top_n_cited_units(50)
+    ...     .having_minimum_cited_unit_occurrences(0)
     ...     #
     ...     # WHITESPACE ANALYSIS:
     ...     .using_wh_gap_computation(GapComputation.LATENT_MINUS_OBSERVED)
-    ...     .using_wh_minimum_latent_similarity(0.8)
+    ...     .using_wh_minimum_latent_similarity(0.4)
     ...     .using_wh_maximum_observed_similarity(0.1)
     ...     #
     ...     # COUNTERS:
@@ -33,7 +34,7 @@ Smoke tests:
     ...     .using_association_index(AssociationIndex.JACCARD)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("tests/tinyml-scopus/")
+    ...     .where_root_directory("tests/system-dynamics-wos/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_global_citations_range(None, None)
     ...     .where_records_match(None)
@@ -43,14 +44,15 @@ Smoke tests:
     >>> assert type(df).__name__ == 'DataFrame'
     >>> assert df.shape[0] > 1
     >>> assert df.shape[1] > 1
-    >>> print(df.iloc[:5, :5].round(3).to_string())  # doctest: +NORMALIZE_WHITESPACE
-    COLUMNS                            tinyml 1031:010091  machine learning 0766:008244  tiny machine learning 0388:003654  internet of things 0346:005415  learning systems 0343:003524
-    ROWS                                                                                                                                                                                
-    tinyml 1031:010091                                0.0                           0.0                                0.0                             0.0                           0.0
-    machine learning 0766:008244                      0.0                           0.0                                0.0                             0.0                           0.0
-    tiny machine learning 0388:003654                 0.0                           0.0                                0.0                             0.0                           0.0
-    internet of things 0346:005415                    0.0                           0.0                                0.0                             0.0                           0.0
-    learning systems 0343:003524                      0.0                           0.0                                0.0                             0.0                           0.0
+    >>> print(df.iloc[:10, :10].round(3).to_string())  # doctest: +NORMALIZE_WHITESPACE
+    
+    COLUMNS                                               Forrester JayWright., 2013, Industrial dynamics 74:0  Sterman J.D., 2000, BUSINESS DYNAMICS 70:0  Sterman J.D. J. D., 2000, BUSINESS DYNAMICS SY 30:0  Barlas Y, 1996, SYST DYNAM REV 27:0  FORRESTER JW, 1958, HARVARD BUS REV 25:0
+    ROWS                                                                                                                                                                                                                                                                                      
+    Forrester JayWright., 2013, Industrial dynamics 74:0                                                   0.0                                         0.0                                                  0.0                                  0.0                                       0.0
+    Sterman J.D., 2000, BUSINESS DYNAMICS 70:0                                                             0.0                                         0.0                                                  0.0                                  0.0                                       0.0
+    Sterman J.D. J. D., 2000, BUSINESS DYNAMICS SY 30:0                                                    0.0                                         0.0                                                  0.0                                  0.0                                       0.0
+    Barlas Y, 1996, SYST DYNAM REV 27:0                                                                    0.0                                         0.0                                                  0.0                                  0.0                                       0.0
+    FORRESTER JW, 1958, HARVARD BUS REV 25:0                                                               0.0                                         0.0                                                  0.0                                  0.0                                       0.0
 
     
 
@@ -61,8 +63,8 @@ import numpy as np  # type: ignore
 from tm2p._intern import ParamsMixin
 from tm2p._intern.netw.normaliz_matrix import normalize_matrix
 from tm2p.enum import GapComputation  # type: ignore
-from tm2p.portfolio.thematic_struct.co_occur.dir_simil_netw import DirectMatrix
-from tm2p.portfolio.thematic_struct.co_occur.latent_simil_netw import LatentMatrix
+from tm2p.portfolio.intellect_struct.co_cit_netw.direct import DirectMatrix
+from tm2p.portfolio.intellect_struct.co_cit_netw.latent import LatentMatrix
 
 
 class Matrix(
@@ -80,7 +82,7 @@ class Matrix(
         )
 
         if self.params.wh_gap_computation == GapComputation.LATENT_MINUS_OBSERVED:
-            gap = latent.sub(observed).clip(lower=0.0)
+            white_space = latent.sub(observed).clip(lower=0.0)
         elif self.params.wh_gap_computation == GapComputation.RELATIVE_LATENT_GAP:
             white_space = latent.sub(observed).div(latent + 1e-12).clip(lower=0.0)
         elif self.params.wh_gap_computation == GapComputation.STRUCTURAL_HOLE_SOFT:
@@ -90,7 +92,7 @@ class Matrix(
                 f"Unknown gap computation method: {self.params.wh_gap_computation}"
             )
 
-        white_space = gap.where(mask, 0)
+        white_space = white_space.where(mask, 0)
         white_space.values[np.diag_indices_from(white_space)] = 0.0
 
         return white_space

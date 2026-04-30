@@ -21,7 +21,7 @@ Smoke tests:
     ...     .using_counters(True)
     ...     #
     ...     # NORMALIZATION:
-    ...     .using_association_index(AssociationIndex.ASSOCIATION_STRENGTH)
+    ...     .using_association_index(AssociationIndex.JACCARD)
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/system-dynamics-wos/")
@@ -34,7 +34,8 @@ Smoke tests:
     >>> assert type(df).__name__ == 'DataFrame'
     >>> assert df.shape[0] > 1
     >>> assert df.shape[1] > 1
-    >>> print(df.iloc[:6, :6].round(3).to_string())  # doctest: +NORMALIZE_WHITESPACE
+    >>> print(df.iloc[:10, :10].round(3).to_string())  # doctest: +NORMALIZE_WHITESPACE
+    
     COLUMNS                                               Forrester JayWright., 2013, Industrial dynamics 74:0  Sterman J.D., 2000, BUSINESS DYNAMICS 70:0  Sterman J.D. J. D., 2000, BUSINESS DYNAMICS SY 30:0  Barlas Y, 1996, SYST DYNAM REV 27:0  FORRESTER JW, 1958, HARVARD BUS REV 25:0  Swanson J, 2002, J OPER RES SOC 21:0
     ROWS
     Forrester JayWright., 2013, Industrial dynamics 74:0                                                 0.000                                       0.005                                                0.005                                0.004                                     0.004                                 0.002
