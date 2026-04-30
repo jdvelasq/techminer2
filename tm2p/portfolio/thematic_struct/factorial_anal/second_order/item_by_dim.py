@@ -58,7 +58,7 @@ import numpy as np
 import pandas as pd  # type: ignore
 
 from tm2p._intern import ParamsMixin
-from tm2p.portfolio.thematic_struct.co_occur.matrix.mtx import Matrix
+from tm2p.portfolio.thematic_struct.co_occur.matrix.matrix import Matrix
 
 
 class ItemsByDimension(

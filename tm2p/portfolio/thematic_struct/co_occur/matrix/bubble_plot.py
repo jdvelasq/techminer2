@@ -47,7 +47,7 @@ Smoke tests:
 from tm2p._intern import ParamsMixin
 from tm2p._intern.plots.basic.bubble_plot import bubble_plot
 
-from .mtx_list import MatrixList
+from .matrix_list import MatrixList
 
 
 class BubblePlot(

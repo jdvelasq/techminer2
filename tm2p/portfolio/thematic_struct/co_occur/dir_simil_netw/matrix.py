@@ -102,7 +102,7 @@ Smoke tests:
 from tm2p._intern import ParamsMixin
 from tm2p.enum import AnalysisUnit
 
-from ..matrix.mtx import Matrix as CoOccurrenceMatrix
+from ..matrix.matrix import Matrix as CoOccurrenceMatrix
 
 
 class Matrix(

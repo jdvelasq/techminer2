@@ -52,7 +52,7 @@ Smoke tests:
 from tm2p._intern import ParamsMixin
 from tm2p._intern.helpers.mtx_to_mtx_list import matrix_to_matrix_list
 
-from .mtx import Matrix as BaseMatrix
+from .matrix import Matrix as BaseMatrix
 
 
 class MatrixList(
