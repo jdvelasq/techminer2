@@ -84,7 +84,7 @@ class FirstParagraph(
 
         self.records["abstract"] = self.records["abstract"].str.replace(";", ".")
         self.records["abstract"] = self.records["abstract"].str.split(".")
-        self.records = self.records.explode("abstract")
+        self.records = self.records.explode("abstract")  # type: ignore
         self.records["abstract"] = self.records["abstract"].str.strip()
 
         patterns = self.params.pattern

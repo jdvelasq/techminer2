@@ -72,7 +72,7 @@ class LiteratureReview(
             .update(**self.params.__dict__)
             .where_records_match(
                 {
-                    "raw_document_title": titles,
+                    "raw_document_title": titles,  # type: ignore
                 }
             )
         ).run()

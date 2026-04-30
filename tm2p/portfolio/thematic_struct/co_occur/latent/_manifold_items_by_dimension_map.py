@@ -159,7 +159,7 @@ def manifold_terms_by_dimension_map(
         **filters,
     )
 
-    manifold = manifold_estimator.fit_transform(embedding)
+    manifold = manifold_estimator.fit_transform(embedding)  # type: ignore
 
     return manifold_2d_map(
         node_x=manifold[:, 0],

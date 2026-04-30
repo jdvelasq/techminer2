@@ -12,7 +12,7 @@ Smoke tests:
     >>> df = (
     ...     DirectMatrix()
     ...     #
-    ...     # COUPLING UNIT:
+    ...     # ANALYSIS UNIT:
     ...     .with_analysis_unit(AnalysisUnit.DOC)
     ...     #
     ...     # COUNTERS:

@@ -122,7 +122,7 @@ def treemap(
 ):
     """:meta private:"""
 
-    c2t_mapping = terms_to_cluster_mapping(
+    c2t_mapping = terms_to_cluster_mapping(  # type: ignore
         #
         # FUNCTION PARAMS:
         field=field,
@@ -167,7 +167,7 @@ def treemap(
         occ = occ.split(":")[0]
         occ = float(occ)
         node_occ.append(occ)
-        cluster_occ[cluster] += occ
+        cluster_occ[cluster] += occ  # type: ignore
 
         #
         # Uses the same color of clusters
@@ -213,7 +213,5 @@ def treemap(
     #
     # Change the font size of the labels
     fig.update_traces(textfont_size=12)
-
-    return fig
 
     return fig

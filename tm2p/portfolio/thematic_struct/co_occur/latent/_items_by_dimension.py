@@ -87,7 +87,7 @@ def terms_by_dimension_frame(
 ):
     """:meta private:"""
 
-    matrix_values = co_occurrence_matrix(
+    matrix_values = co_occurrence_matrix(  # type: ignore
         #
         # FUNCTION PARAMS:
         columns=field,
@@ -106,14 +106,14 @@ def terms_by_dimension_frame(
         **filters,
     )
 
-    matrix_values = normalize_matrix(matrix_values, association_index)
-    decomposition_estimator.fit(matrix_values)
-    trans_matrix_values = decomposition_estimator.transform(matrix_values)
+    matrix_values = normalize_matrix(matrix_values, association_index)  # type: ignore
+    decomposition_estimator.fit(matrix_values)  # type: ignore
+    trans_matrix_values = decomposition_estimator.transform(matrix_values)  # type: ignore
 
     embedding = pd.DataFrame(
         trans_matrix_values,
         index=matrix_values.index,
-        columns=list(range(decomposition_estimator.n_components)),
+        columns=list(range(decomposition_estimator.n_components)),  # type: ignore
     )
     embedding.columns.name = "dim"
 

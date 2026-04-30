@@ -79,7 +79,7 @@ class ClusterDefinition(
     # -------------------------------------------------------------------------
     def internal__generate_terms_by_cluster_mapping(self):
         data_frame = (
-            Summary()
+            Summary()  # type: ignore
             .update(**self.params.__dict__)
             .with_source_field("descriptors")
             .run()
@@ -100,7 +100,7 @@ class ClusterDefinition(
     # -------------------------------------------------------------------------
     def internal__generate_documents_by_cluster_mapping(self):
         self.documents_by_cluster_mapping = (
-            DocumentsByCluster()
+            DocumentsByCluster()  # type: ignore
             .update(**self.params.__dict__)
             .with_source_field("descriptors")
             .run()
@@ -143,11 +143,11 @@ class ClusterDefinition(
 
                 prompt = self.definition_template.format(
                     core_area=self.params.core_area,
-                    word_length=self.params.word_length[0],
+                    word_length=self.params.word_length[0],  # type: ignore
                     abstracts=docs,
                     cluster_keywords=cluster_keywords,
-                    cluster_name=self.params.cluster_names[cluster],
-                    cluster_coverage=self.params.cluster_coverages[cluster],
+                    cluster_name=self.params.cluster_names[cluster],  # type: ignore
+                    cluster_coverage=self.params.cluster_coverages[cluster],  # type: ignore
                 )
 
                 try:
@@ -218,7 +218,7 @@ class ClusterDefinition(
                 )
                 prompt = template.format(
                     core_area=self.params.core_area,
-                    word_length=self.params.word_length[1],
+                    word_length=self.params.word_length[1],  # type: ignore
                     paragraphs_to_combine=text,
                     cluster_keywords=cluster_keywords,
                 )
@@ -275,7 +275,7 @@ class ClusterDefinition(
 
             prompt = template.format(
                 core_area=self.params.core_area,
-                word_length=self.params.word_length[2],
+                word_length=self.params.word_length[2],  # type: ignore
                 paragraphs_to_combine=paragraphs_to_combine,
                 cluster_keywords=cluster_keywords,
             )

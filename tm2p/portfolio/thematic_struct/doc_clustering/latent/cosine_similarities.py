@@ -51,8 +51,8 @@ Smoke test:
 
 import pandas as pd  # type: ignore
 from sklearn.metrics.pairwise import (
-    cosine_similarity as sklearn_cosine_similarity,  # type: ignore
-)
+    cosine_similarity as sklearn_cosine_similarity,
+)  # type: ignore
 
 from tm2p._intern import ParamsMixin
 from tm2p.portfolio.thematic_struct.factorial_anal.first_order.item_by_dim import (
@@ -134,7 +134,7 @@ def cosine_similarities(
         **filters,
     )
 
-    similarity = sklearn_cosine_similarity(embedding)
+    similarity = sklearn_cosine_similarity(embedding)  # type: ignore
 
     term_similarities = []
     for i in range(similarity.shape[0]):
@@ -143,7 +143,7 @@ def cosine_similarities(
             if i != j and similarity[i, j] > 0:
                 values_to_sort.append(
                     (
-                        embedding.index[j],
+                        embedding.index[j],  # type: ignore
                         similarity[i, j],
                     )
                 )
@@ -154,9 +154,7 @@ def cosine_similarities(
 
     term_similarities = pd.DataFrame(
         {"cosine_similariries": term_similarities},
-        index=embedding.index,
+        index=embedding.index,  # type: ignore
     )
-
-    return term_similarities
 
     return term_similarities

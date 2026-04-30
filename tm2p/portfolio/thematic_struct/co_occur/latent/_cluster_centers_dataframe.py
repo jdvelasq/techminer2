@@ -108,7 +108,7 @@ def cluster_centers_frame(
 ):
     """:meta private:"""
 
-    t2c_mapping = terms_to_cluster_mapping(
+    t2c_mapping = terms_to_cluster_mapping(  # type: ignore
         #
         # FUNCTION PARAMS:
         field=field,

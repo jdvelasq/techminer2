@@ -152,7 +152,7 @@ def cluster_to_terms_mapping(
     )
 
     mapping = {}
-    for term, cluster in t2c_mapping.items():
+    for term, cluster in t2c_mapping.items():  # type: ignore
         if cluster not in mapping:
             mapping[cluster] = []
         mapping[cluster].append(term)

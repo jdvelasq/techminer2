@@ -54,7 +54,7 @@ class SecondParagraph(
         documents = (
             RecordViewer()
             .update(**self.params.__dict__)
-            .where_records_match({"document_type": ["Review"]})
+            .where_records_match({"document_type": ["Review"]})  # type: ignore
         ).run()
 
         documents = "\n\n---\n\n".join(documents)

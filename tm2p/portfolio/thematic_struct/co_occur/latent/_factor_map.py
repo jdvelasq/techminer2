@@ -185,7 +185,7 @@ def factor_map(
         **filters,
     )
 
-    mapping = cluster_to_terms_mapping(
+    mapping = cluster_to_terms_mapping(  # type: ignore
         #
         # PARAMS:
         field=field,
@@ -215,12 +215,12 @@ def factor_map(
     names = [mapping[key] for key in sorted(mapping.keys())]
 
     similarity = pd.DataFrame(
-        cosine_similarity(cluster_centers),
+        cosine_similarity(cluster_centers),  # type: ignore
         index=names,
         columns=names,
     )
 
-    return plot_correl_map(
+    return plot_correl_map(  # type: ignore
         data_frame=similarity,
         #
         # LAYOUT:

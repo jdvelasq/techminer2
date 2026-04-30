@@ -120,7 +120,7 @@ class Abstract(
             RecordMapping()
             #
             .where_root_directory("./")
-            .where_database("main")
+            .where_database("main")  # type: ignore
             .where_record_years_range(None, None)
             .where_record_citations_range(None, None)
             .where_records_ordered_by(None)
@@ -150,7 +150,7 @@ class Abstract(
             clusters_summaries=self.cluster_short_summaries,
             synthesis=self.synthesis,
             examples=self.examples,
-            cluster_names="\n".join(self.params.cluster_names),
+            cluster_names="\n".join(self.params.cluster_names),  # type: ignore
         )
 
         try:

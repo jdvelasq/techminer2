@@ -126,7 +126,7 @@ def terms_by_dimension_map(
 ):
     """:meta private:"""
 
-    embedding = terms_by_dimension_frame(
+    embedding = terms_by_dimension_frame(  # type: ignore
         #
         # FUNCTION PARAMS:
         field=field,
