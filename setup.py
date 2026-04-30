@@ -51,6 +51,12 @@ setup(
         "cologne_phonetics==2.0.0",
         "doublemetaphone==1.2",
     ],
+    extras_require={
+        "dev": [
+            "black==24.8.0",
+            "isort==5.13.2",
+        ],
+    },
     packages=find_packages(),
     package_dir={"tm2p": "tm2p"},
     include_package_data=True,

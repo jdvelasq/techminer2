@@ -10,15 +10,11 @@
     "makefile.configureOnOpen": false,
     "[python]": {
         "editor.defaultFormatter": "ms-python.black-formatter",
-        "editor.formatOnSave": true ,
+        "editor.formatOnSave": true,
         "editor.codeActionsOnSave": {
-            "source.organizeImports": "explicit"
+            "source.organizeImports": "always"
         }
     },
-    "isort.args": [
-        "--profile",
-        "black"
-    ],
     "editor.detectIndentation": false,
     "workbench.colorCustomizations": {
         "activityBar.activeBackground": "#51535a",
@@ -41,7 +37,10 @@
     },
     "peacock.color": "#393a3f",
     "editor.codeActions.triggerOnFocusChange": true,
-    "editor.codeActionsOnSave": {},
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "file",
+    "editor.formatOnSaveTimeout": 5000,
+    "editor.codeActionsOnSaveTimeout": 5000,
     "todo-tree.general.tags": ["CODE_REVIEW"],
     "todo-tree.filtering.useBuiltInExcludes": "file and search excludes",
     "search.exclude": {

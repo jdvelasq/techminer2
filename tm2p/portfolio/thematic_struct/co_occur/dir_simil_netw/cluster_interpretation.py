@@ -42,7 +42,7 @@ Smoke tests:
     ...     .run()
     ... )
     >>> print(df.to_string()) # doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
-       CLUSTER  N_UNITS   OCC    TLS  CENTRALITY  DENSITY  N_DOCS N_DOCS_PERCENTAGE  MEAN_YEAR  MEDIAN_YEAR  FIRST_YEAR  LAST_YEAR  GROWTH_RATE  EMERGENCE_SCORE      STRATEGIC_ROLE                                                             ITEMS
+       CLUSTER  N_UNITS   OCC    TLS  CENTRALITY  DENSITY  N_DOCS N_DOCS_PERCENTAGE  MEAN_YEAR  MEDIAN_YEAR  FIRST_YEAR  LAST_YEAR  GROWTH_RATE  EMERGENCE_SCORE      STRATEGIC_ROLE                                                             UNITS
     0        0       28  4127  26155     12.5674   1.4144    1042           71.22 %     2023.8         2024        2020       2025         5.90            -0.50               Motor                   tinyml; machine learning; tiny machine learning
     1        1       19  1576  11031      9.9776   1.3850     156           10.66 %     2023.9         2024        2020       2025         5.50            -0.34               Motor             internet of things; edge computing; energy efficiency
     2        2       17  1510  10462      9.4214   1.1360     154           10.53 %     2023.4         2024        2020       2025         2.58            -2.03               Motor  neural networks; microcontrollers; convolutional neural networks
@@ -50,7 +50,7 @@ Smoke tests:
     4        4       14   802   5579      7.8727   1.2934      42            2.87 %     2024.5         2025        2021       2025        13.00             2.43  Emerging/Declining                      artificial intelligence; real- time; edge ai
     5        5        7   254   1871      4.3599   1.5927      16            1.09 %     2024.3         2025        2022       2025        15.00             2.34   Specialized/Niche              computer vision; object detection; objects detection
 
-
+    
 """
 
 from collections import defaultdict
@@ -108,7 +108,7 @@ Z_PERSISTENCE = "Z_PERSISTENCE"
 
 EMERGENCE_SCORE = "EMERGENCE_SCORE"
 
-ITEMS = "ITEMS"
+UNITS = "UNITS"
 
 
 class ClusterInterpretation(
@@ -120,6 +120,7 @@ class ClusterInterpretation(
         """:meta private:"""
 
         nx_graph = self._build_nx_graph()
+
         df = self._compute_n_units(nx_graph)
         df = self._compute_occ(df, nx_graph)
         df = self._compute_tls(df, nx_graph)
@@ -145,7 +146,7 @@ class ClusterInterpretation(
                 GROWTH_RATE,
                 EMERGENCE_SCORE,
                 STRATEGIC_ROLE,
-                ITEMS,
+                UNITS,
             ]
         ]
 
@@ -401,12 +402,12 @@ class ClusterInterpretation(
             .run()
         )
 
-        composition[ITEMS] = composition[ITEMS].str.split("; ")
-        composition[ITEMS] = composition[ITEMS].str[:3]
-        composition[ITEMS] = composition[ITEMS].str.join("; ")
+        composition[UNITS] = composition[UNITS].str.split("; ")
+        composition[UNITS] = composition[UNITS].str[:3]
+        composition[UNITS] = composition[UNITS].str.join("; ")
 
         df = df.merge(
-            composition[[CLUSTER, ITEMS]],
+            composition[[CLUSTER, UNITS]],
             on=CLUSTER,
             how="left",
         )

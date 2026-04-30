@@ -42,7 +42,7 @@ Smoke tests:
     ...     .run()
     ... )
     >>> print(df.to_string()) # doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
-       CLUSTER  NUM_ITEMS  PERCENTAGE                                                                                                                                                                                                                                                                                                                                                                                         ITEMS
+       CLUSTER  NUM_ITEMS  PERCENTAGE                                                                                                                                                                                                                                                                                                                                                                                         UNITS
     0        0         15        30.0  microcontrollers 0316:003886; neural networks 0281:003048; microcontroller 0178:001770; energy efficiency 0170:002078; deep neural networks 0142:001568; latency 0133:001232; inference 0126:001489; energy 0125:000891; low power 0122:000923; devices 0120:001779; memory 0118:001335; energy utilization 0100:001389; mcus 0091:001326; energy consumption 0088:000981; power 0087:001424
     1        1         14        28.0                                              models 0209:001874; artificial intelligence 0193:002328; deployment 0185:001146; edge devices 0163:001441; performance 0161:001246; edge 0134:001755; quantization 0129:001440; edge ai 0118:001164; efficiency 0118:000934; ai 0117:001511; sensors 0116:001134; training 0110:001159; ml 0095:001635; resource constrained devices 0095:000888
     2        2         10        20.0                                                                                               tinyml 1175:011915; machine learning 0807:009343; tiny machine learning 0480:005025; internet of things 0354:005877; learning systems 0343:003524; deep learning 0288:004416; edge computing 0257:003298; iot 0233:003713; machine learning models 0148:001181; learning algorithms 0094:001714
@@ -84,7 +84,7 @@ Smoke tests:
     ...     .run()
     ... )
     >>> print(df.to_string()) # doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
-       CLUSTER  NUM_ITEMS  PERCENTAGE                                                                                                                                                                                                     ITEMS
+       CLUSTER  NUM_ITEMS  PERCENTAGE                                                                                                                                                                                                     UNITS
     0        0         15        30.0  microcontrollers; neural networks; microcontroller; energy efficiency; deep neural networks; latency; inference; energy; low power; devices; memory; energy utilization; mcus; energy consumption; power
     1        1         14        28.0                                  models; artificial intelligence; deployment; edge devices; performance; edge; quantization; edge ai; efficiency; ai; sensors; training; ml; resource constrained devices
     2        2         10        20.0                                   tinyml; machine learning; tiny machine learning; internet of things; learning systems; deep learning; edge computing; iot; machine learning models; learning algorithms
@@ -103,7 +103,7 @@ from .cluster_to_units import ClusterToUnits
 CLUSTER = "CLUSTER"
 NUM_ITEMS = "NUM_ITEMS"
 PERCENTAGE = "PERCENTAGE"
-ITEMS = "ITEMS"
+UNITS = "UNITS"
 
 
 class ClusterComposition(
@@ -131,7 +131,7 @@ class ClusterComposition(
                 CLUSTER: list(communities_dict.keys()),
                 NUM_ITEMS: communities_len.values(),
                 PERCENTAGE: communities_perc.values(),
-                ITEMS: communities_dict.values(),
+                UNITS: communities_dict.values(),
             }
         )
 

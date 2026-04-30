@@ -15,6 +15,7 @@ from .overlay_plot import OverlayPlot
 from .strength_plot import StrengthPlot
 from .unit_to_cluster import UnitToCluster
 from .units_by_cluster import UnitsByCluster
+from .strategic_diagram import StrategicDiagram
 
 __all__ = [
     "ClusterActivity",
@@ -34,4 +35,5 @@ __all__ = [
     "StrengthPlot",
     "UnitsByCluster",
     "UnitToCluster",
+    "StrategicDiagram",
 ]
