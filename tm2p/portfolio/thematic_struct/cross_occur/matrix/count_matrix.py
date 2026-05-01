@@ -123,7 +123,7 @@ from tm2p.enum import Field
 from tm2p.portfolio.perform_metr.unit import Metrics
 
 
-class Matrix(
+class CountMatrix(
     ParamsMixin,
 ):
     """:meta private:"""

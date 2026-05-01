@@ -93,7 +93,7 @@ Smoke tests:
 
 from tm2p._intern import ParamsMixin
 
-from .matrix import Matrix
+from .count_matrix import CountMatrix
 
 
 class ColumnToItems(
@@ -103,7 +103,7 @@ class ColumnToItems(
 
     def run(self) -> dict[str, list[str]]:
 
-        matrix = Matrix().update(**self.params.__dict__).run()
+        matrix = CountMatrix().update(**self.params.__dict__).run()
 
         mapping = {}
         for column in matrix.columns:

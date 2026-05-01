@@ -62,11 +62,11 @@ class BubblePlot(
 
     def run(self):
 
-        from tm2p.portfolio.thematic_struct.cross_occur.matrix.matrix_list import (
-            MatrixList,
+        from tm2p.portfolio.thematic_struct.cross_occur.matrix.count_matrix_list import (
+            CountMatrixList,
         )
 
-        data_frame = MatrixList().update(**self.params.__dict__).run()
+        data_frame = CountMatrixList().update(**self.params.__dict__).run()
 
         fig = bubble_plot(
             self.params,

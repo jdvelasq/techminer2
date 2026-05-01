@@ -135,7 +135,7 @@ Smoke tests:
 
 from tm2p._intern import ParamsMixin
 from tm2p.enum import UnitOrderBy
-from tm2p.portfolio.thematic_struct.cross_occur.matrix import Matrix as OCCMatrix
+from tm2p.portfolio.thematic_struct.cross_occur.matrix import CountMatrix as OCCMatrix
 
 from .._intern import comput_correl_matrix
 

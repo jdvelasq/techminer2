@@ -64,8 +64,8 @@ class Heatmap(
 
     def run(self):
 
-        from tm2p.portfolio.thematic_struct.cross_occur.matrix import Matrix
+        from tm2p.portfolio.thematic_struct.cross_occur.matrix import CountMatrix
 
-        data_frame = Matrix().update(**self.params.__dict__).run()
+        data_frame = CountMatrix().update(**self.params.__dict__).run()
         fig = heatmap(self.params, data_frame)
         return fig

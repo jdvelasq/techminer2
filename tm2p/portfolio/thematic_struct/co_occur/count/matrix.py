@@ -91,7 +91,7 @@ Smoke tests:
 
 from tm2p._intern import ParamsMixin
 
-from ...cross_occur.matrix.matrix_list import Matrix as CrossOccurrenceMatrix
+from ...cross_occur.matrix.count_matrix_list import CountMatrix as CrossOccurrenceMatrix
 
 
 class CountMatrix(

@@ -107,10 +107,10 @@ Smoke tests:
 
 from tm2p._intern import ParamsMixin
 
-from . import Matrix
+from . import CountMatrix
 
 
-class MatrixList(
+class CountMatrixList(
     ParamsMixin,
 ):
     """:meta private:"""
@@ -118,7 +118,7 @@ class MatrixList(
     # -------------------------------------------------------------------------
     def _step_01_compute_co_occurence_matrix(self):
         return (
-            Matrix()
+            CountMatrix()
             .update(**self.params.__dict__)
             .update(terms_order_by="OCC")
             .using_counters(True)

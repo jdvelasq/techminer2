@@ -50,7 +50,7 @@ import plotly.graph_objects as go  # type: ignore
 
 from tm2p._intern import ParamsMixin
 from tm2p.enum import UnitOrderBy
-from tm2p.portfolio.thematic_struct.cross_occur.matrix import Matrix
+from tm2p.portfolio.thematic_struct.cross_occur.matrix import CountMatrix
 
 
 class SankeyPlot(
@@ -78,7 +78,7 @@ class SankeyPlot(
         ):
 
             matrix = (
-                Matrix()
+                CountMatrix()
                 .update(**self.params.__dict__)
                 #
                 # COLUMNS:

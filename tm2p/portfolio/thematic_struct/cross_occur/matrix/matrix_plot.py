@@ -73,7 +73,7 @@ Smoke tests:
 from tm2p._intern import ParamsMixin
 from tm2p._intern.plots.adv.cross_occ_mtx_plot import build_cross_occ_matrix_plot
 
-from .matrix import Matrix
+from .count_matrix import CountMatrix
 
 
 class MatrixPlot(
@@ -83,7 +83,7 @@ class MatrixPlot(
 
     def run(self):
 
-        matrix = Matrix().update(**self.params.__dict__).run()
+        matrix = CountMatrix().update(**self.params.__dict__).run()
         fig = build_cross_occ_matrix_plot(self.params, matrix)
 
         return fig

@@ -43,14 +43,20 @@ Smoke tests:
     >>> assert type(df).__name__ == 'DataFrame'
     >>> assert df.shape[0] > 1
     >>> assert df.shape[1] > 1
-    >>> print(df.iloc[:5, :5].round(3).to_string())  # doctest: +NORMALIZE_WHITESPACE
-    COLUMNS                            tinyml 1031:010091  machine learning 0766:008244  tiny machine learning 0388:003654  internet of things 0346:005415  learning systems 0343:003524
-    ROWS                                                                                                                                                                                
-    tinyml 1031:010091                                0.0                           0.0                                0.0                             0.0                           0.0
-    machine learning 0766:008244                      0.0                           0.0                                0.0                             0.0                           0.0
-    tiny machine learning 0388:003654                 0.0                           0.0                                0.0                             0.0                           0.0
-    internet of things 0346:005415                    0.0                           0.0                                0.0                             0.0                           0.0
-    learning systems 0343:003524                      0.0                           0.0                                0.0                             0.0                           0.0
+    >>> print(df.iloc[:10, :10].round(3).to_string())  # doctest: +NORMALIZE_WHITESPACE
+    COLUMNS                            tinyml 1031:010091  machine learning 0766:008244  tiny machine learning 0388:003654  internet of things 0346:005415  learning systems 0343:003524  deep learning 0269:004143  neural networks 0266:002432  microcontrollers 0247:003364  edge computing 0228:002411  embedded systems 0186:002145
+    ROWS                                                                                                                                                                                                                                                                                                                                
+    tinyml 1031:010091                                0.0                           0.0                                0.0                           0.000                           0.0                      0.000                        0.000                         0.000                       0.000                           0.0
+    machine learning 0766:008244                      0.0                           0.0                                0.0                           0.000                           0.0                      0.000                        0.000                         0.000                       0.000                           0.0
+    tiny machine learning 0388:003654                 0.0                           0.0                                0.0                           0.000                           0.0                      0.000                        0.000                         0.000                       0.000                           0.0
+    internet of things 0346:005415                    0.0                           0.0                                0.0                           0.000                           0.0                      0.000                        0.762                         0.000                       0.000                           0.0
+    learning systems 0343:003524                      0.0                           0.0                                0.0                           0.000                           0.0                      0.000                        0.000                         0.000                       0.000                           0.0
+    deep learning 0269:004143                         0.0                           0.0                                0.0                           0.000                           0.0                      0.000                        0.804                         0.723                       0.000                           0.0
+    neural networks 0266:002432                       0.0                           0.0                                0.0                           0.762                           0.0                      0.804                        0.000                         0.000                       0.761                           0.0
+    microcontrollers 0247:003364                      0.0                           0.0                                0.0                           0.000                           0.0                      0.723                        0.000                         0.000                       0.000                           0.0
+    edge computing 0228:002411                        0.0                           0.0                                0.0                           0.000                           0.0                      0.000                        0.761                         0.000                       0.000                           0.0
+    embedded systems 0186:002145                      0.0                           0.0                                0.0                           0.000                           0.0                      0.000                        0.000                         0.000                       0.000                           0.0
+
 
     
 

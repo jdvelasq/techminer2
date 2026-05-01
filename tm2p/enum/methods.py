@@ -16,7 +16,7 @@ class AssociationIndex(str, Enum):
     INCLUSION = "INCLUSION"
     JACCARD = "JACCARD"
     MUTUALINFO = "MUTUALINFO"
-    SALTON = "SALTON"
+    SALTON = "COSINE"
     COSINE = "COSINE"
 
 
