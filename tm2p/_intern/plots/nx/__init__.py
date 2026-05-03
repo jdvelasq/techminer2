@@ -33,6 +33,7 @@ from .scale_textfont_size import scale_textfont_size
 from .set_cluster_names import set_cluster_names
 from .set_density_textposition import set_density_textposition
 from .set_edge_color_by_group import set_edge_color_by_group
+from .set_edge_invisible import set_edge_invisible
 from .set_edge_width_from_pandas_adjacency import set_edge_width_from_pandas_adjacency
 from .set_node_color_by_group import set_node_color_by_group
 from .set_node_color_by_year import set_node_color_by_year
@@ -101,4 +102,5 @@ __all__ = [
     "spring_layout",
     "style_edges_by_weight_bins",
     "validate_association_index",
+    "set_edge_invisible",
 ]

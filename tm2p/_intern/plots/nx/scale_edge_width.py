@@ -12,6 +12,7 @@ def scale_edge_width(
     edge_width_range = params.edge_width_range
 
     widths = np.array([data["width"] for _, _, data in nx_graph.edges(data=True)])
+    mask = widths > 0.001
 
     if max(widths) == min(widths):
         widths = np.array([widths[0]] * len(widths))
@@ -21,7 +22,10 @@ def scale_edge_width(
         prop = (widths - widths.min()) / (widths.max() - widths.min())
         widths = edge_width_range[0] + prop * length
 
-    for width, (u, v) in zip(widths, nx_graph.edges()):
-        nx_graph.edges[u, v]["width"] = width
+    for m, width, (u, v) in zip(mask, widths, nx_graph.edges()):
+        if m:
+            nx_graph.edges[u, v]["width"] = width
+        else:
+            nx_graph.edges[u, v]["width"] = 0.01
 
     return nx_graph

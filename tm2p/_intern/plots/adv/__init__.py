@@ -5,6 +5,7 @@ from .corr_map import build_correlation_map
 from .cross_occ_mtx_plot import build_cross_occ_matrix_plot
 from .factor_map import build_factor_map
 from .historiogr import build_historiograph_plot
+from .wh_overlay_netw_plot import build_wh_overlay_network_plot
 
 __all__ = [
     "build_co_occ_matrix_plot",
@@ -13,4 +14,6 @@ __all__ = [
     "build_correlation_map",
     "build_cross_occ_matrix_plot",
     "build_factor_map",
+    "build_historiograph_plot",
+    "build_wh_overlay_network_plot",
 ]
