@@ -13,6 +13,7 @@ def p16_review(params: Params) -> list[Step]:
     from .s03_extract_section_headers import s03_extract_section_headers
     from .s04_extract_acronyms import s04_extract_acronyms
     from .s05_generate_review_table import s05_generate_review_table
+    from .s06_plain_abstracts import s06_plain_abstracts
 
     common_kwargs = {"root_directory": params.root_directory}
 
@@ -40,6 +41,11 @@ def p16_review(params: Params) -> list[Step]:
         Step(
             name="Generating review table",
             function=s05_generate_review_table,
+            kwargs=common_kwargs,
+        ),
+        Step(
+            name="Generating plain abstracts file",
+            function=s06_plain_abstracts,
             kwargs=common_kwargs,
         ),
     ]
