@@ -24,13 +24,14 @@ Smoke tests:
     >>> assert type(fig).__name__ == 'Figure'
     >>> fig.write_html("docsrc/_generated/px.portfolio.perform_metr.lotka.distrib_plot.html")
 
+    
 
 """
 
 import plotly.graph_objects as go  # type: ignore
 
 from tm2p._intern import ParamsMixin
-from tm2p.portfolio.perform_metr.lotka.metr import Metrics
+from tm2p.portfolio.perform_metr.zipf.lotka.metr import Metrics
 
 
 class DistributionPlot(

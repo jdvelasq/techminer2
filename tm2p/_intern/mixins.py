@@ -29,6 +29,7 @@ from tm2p._intern.valid import (  # check_required_base_estimator,
     check_required_positive_int_tuple,
     check_required_positive_number_range,
     check_required_str,
+    check_required_str_list,
     check_required_str_or_str_tuple,
     check_required_str_tuple,
     check_required_unit_order_by_enum,
@@ -433,6 +434,60 @@ class ParamsMixin:
                 "gap_computation must be an instance of GapComputation enum"
             )
         self.params.wh_gap_computation = gap_computation
+        return self
+
+    # ####################################################################### #
+    #                                                                         #
+    #                            THEMATIC EVOLUTION                           #
+    #                                                                         #
+    # ####################################################################### #
+
+    def using_tmap_minimum_shared_units(self, minimum_shared_units: int) -> Self:
+        minimum_shared_units = check_required_positive_int(
+            value=minimum_shared_units,
+            param_name="tmap_minimum_shared_units",
+        )
+        self.params.tmap_minimum_shared_units = minimum_shared_units
+        return self
+
+    def using_tmap_mininum_jaccard_similarity(
+        self, minimum_jaccard_similarity: float
+    ) -> Self:
+        minimum_jaccard_similarity = check_required_float_0_1(
+            value=minimum_jaccard_similarity,
+            param_name="tmap_minimum_jaccard_similarity",
+        )
+        self.params.tmap_minimum_jaccard_similarity = minimum_jaccard_similarity
+        return self
+
+    def using_tmap_minimum_inclusion_index(
+        self, minimum_inclusion_index: float
+    ) -> Self:
+        minimum_inclusion_index = check_required_float_0_1(
+            value=minimum_inclusion_index,
+            param_name="tmap_minimum_inclusion_index",
+        )
+        self.params.tmap_minimum_inclusion_index = minimum_inclusion_index
+        return self
+
+    def using_clusters_per_period(self, clusters_per_period: Any) -> Self:
+        self.params.tmap_clusters_per_period = clusters_per_period
+        return self
+
+    def using_tmap_period_headers(self, period_headers: list[str]) -> Self:
+        period_headers = check_required_str_list(
+            value=period_headers,
+            param_name="tmap_period_headers",
+        )
+        self.params.tmap_period_headers = period_headers
+        return self
+
+    def using_tmap_n_labels_per_cluster(self, labels_per_cluster: int) -> Self:
+        labels_per_cluster = check_required_positive_int(
+            value=labels_per_cluster,
+            param_name="tmap_n_labels_per_cluster",
+        )
+        self.params.tmap_n_labels_per_cluster = labels_per_cluster
         return self
 
     # ####################################################################### #

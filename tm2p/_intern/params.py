@@ -130,6 +130,19 @@ class Params:
 
     # ####################################################################### #
     #                                                                         #
+    #                               THEMATIC MAP                              #
+    #                                                                         #
+    # ####################################################################### #
+
+    tmap_minimum_shared_units: int
+    tmap_minimum_jaccard_similarity: float
+    tmap_minimum_inclusion_index: float
+    tmap_clusters_per_period: Tuple[Any, ...]
+    tmap_period_headers: list[str]
+    tmap_n_labels_per_cluster: int
+
+    # ####################################################################### #
+    #                                                                         #
     #                            CO-OCCURRENCE                                #
     #                                                                         #
     # ####################################################################### #
