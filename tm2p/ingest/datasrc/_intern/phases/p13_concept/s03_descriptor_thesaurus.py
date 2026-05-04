@@ -6,11 +6,15 @@ from tm2p.enum import Field
 
 def s03_descriptor_thesaurus(root_directory: str) -> int:
 
+    # df = load_main_csv_zip(
+    #     root_directory=root_directory, usecols=[Field.DESCRIPTOR_RAW.value]
+    # )
     df = load_main_csv_zip(
-        root_directory=root_directory, usecols=[Field.DESCRIPTOR_RAW.value]
+        root_directory=root_directory, usecols=[Field.CONCEPT_RAW.value]
     )
     df = df.dropna()
-    series = df[Field.DESCRIPTOR_RAW.value].str.split("; ")
+    # series = df[Field.DESCRIPTOR_RAW.value].str.split("; ")
+    series = df[Field.CONCEPT_RAW.value].str.split("; ")
     series = series.explode()
     series = series.str.strip()
     series = series.drop_duplicates()

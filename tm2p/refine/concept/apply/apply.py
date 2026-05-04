@@ -33,9 +33,9 @@ class Apply(
             (Field.KW_TOK, Field.KW_NORM),
             #
             (Field.CONCEPT_RAW, Field.CONCEPT_NORM),
-            (Field.WORD_RAW, Field.WORD_NORM),
             #
-            (Field.DESCRIPTOR_RAW, Field.DESCRIPTOR_NORM),
+            # (Field.WORD_RAW, Field.WORD_NORM),
+            # (Field.DESCRIPTOR_RAW, Field.DESCRIPTOR_NORM),
         ):
 
             (

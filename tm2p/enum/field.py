@@ -295,10 +295,10 @@ class Field(str, Enum):
     # -------------------------------------------------------------------------
     CONCEPT_RAW = "CONCEPT_RAW"
     CONCEPT_NORM = "CONCEPT_NORM"
-    WORD_RAW = "WORD_RAW"
-    WORD_NORM = "WORD_NORM"
-    DESCRIPTOR_RAW = "DESCRIPTOR_RAW"
-    DESCRIPTOR_NORM = "DESCRIPTOR_NORM"
+    # WORD_RAW = "WORD_RAW"
+    # WORD_NORM = "WORD_NORM"
+    # DESCRIPTOR_RAW = "DESCRIPTOR_RAW"
+    # DESCRIPTOR_NORM = "DESCRIPTOR_NORM"
 
     # ======================================================================= #
     #                                                                         #
