@@ -8,7 +8,6 @@ import spacy
 from gensim.models import Phrases
 from gensim.models.phrases import ENGLISH_CONNECTOR_WORDS, Phraser, Phrases
 from pandarallel import pandarallel  # type: ignore
-
 from tm2p._intern import stdout_to_stderr
 from tm2p._intern.data_access import load_main_csv_zip, save_main_csv_zip
 from tm2p._intern.packag_data.word_lists import load_builtin_word_list
@@ -124,6 +123,8 @@ def _process_row(row: pd.Series) -> Optional[str]:
         phrases.extend(
             collocation for collocation in COLLOCATIONS if collocation in row[abstr]
         )
+
+    if not pd.isna(row[title]):
         phrases.extend(
             collocation for collocation in COLLOCATIONS if collocation in row[title]
         )

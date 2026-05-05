@@ -16,6 +16,7 @@ spacy_nlp = spacy.load("en_core_web_lg")
 determiners = load_builtin_word_list("determiners.txt")
 discourse_connectors = load_builtin_word_list("discourse_connectors.txt")
 stopwords = load_builtin_word_list("stopwords.txt")
+noise = load_builtin_word_list("single_word_noise.txt")
 
 
 def s04_np_spacy(root_directory: str) -> int:
@@ -60,6 +61,10 @@ def _process_row(row: pd.Series) -> Optional[str]:
             chunk.text for chunk in spacy_nlp(row[title]).noun_chunks
         )
         candidate_chunks.extend(chunk.text for chunk in spacy_nlp(row[title]).ents)
+
+    candidate_chunks = [
+        phrase for phrase in candidate_chunks if not any(n in phrase for n in noise)
+    ]
 
     candidate_chunks = [
         chunk

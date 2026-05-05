@@ -17,10 +17,11 @@ def p12_nlp_prepar(params: Params) -> list[Step]:
     from .s07_np_known import s07_np_known
     from .s08_abstract_acronyms import s08_abstract_acronyms
     from .s09_abstr_upper import s09_abstr_upper
-    from .s10_title_upper import s10_title_upper
-    from .s11_np_abstr_raw import s11_np_abstr_raw
-    from .s12_np_title_raw import s12_np_title_raw
-    from .s13_np_raw import s13_np_raw
+    from .s10_review_upper import s10_review_upper
+    from .s11_title_upper import s11_title_upper
+    from .s12_np_abstr_raw import s12_np_abstr_raw
+    from .s13_np_title_raw import s13_np_title_raw
+    from .s14_np_raw import s14_np_raw
 
     common_kwargs = {"root_directory": params.root_directory}
 
@@ -71,23 +72,28 @@ def p12_nlp_prepar(params: Params) -> list[Step]:
             kwargs=common_kwargs,
         ),
         Step(
+            name="Reviewing UPPERCASE",
+            function=s10_review_upper,
+            kwargs=common_kwargs,
+        ),
+        Step(
             name="Uppercasing TITLE",
-            function=s10_title_upper,
+            function=s11_title_upper,
             kwargs=common_kwargs,
         ),
         Step(
             name="Extracting ABSTR phrases",
-            function=s11_np_abstr_raw,
+            function=s12_np_abstr_raw,
             kwargs=common_kwargs,
         ),
         Step(
             name="Extracting TITLE phrases",
-            function=s12_np_title_raw,
+            function=s13_np_title_raw,
             kwargs=common_kwargs,
         ),
         Step(
             name="Merging TITLE and ABSTR phrases",
-            function=s13_np_raw,
+            function=s14_np_raw,
             kwargs=common_kwargs,
         ),
     ]

@@ -321,6 +321,7 @@ active disturbances rejection controls
 active electrode material
 active electrode materials
 active front end
+active learning
 active learning algorithm
 active learning algorithms
 active learning environment
@@ -14029,6 +14030,7 @@ encoder decoder architectures
 encoder decoders
 encoders and decoders
 encoding and decoding
+encounters
 encrypted data processing
 encrypted traffic classification
 encrypted traffic classifications
@@ -20770,6 +20772,7 @@ high resolution mass spectrometries
 high resolution mass spectrometry
 high resolution patterning
 high resolution remote sensing
+high resolution satellite images
 high resolution transmission electron microscopies
 high resolution transmission electron microscopy
 high reversible capacities
@@ -44587,6 +44590,7 @@ subjective and objective measures
 subjective financial well being
 subjective norm
 subjective well being
+subjunctive
 subsidy optimization
 subsidy optimizations
 subsidy system
