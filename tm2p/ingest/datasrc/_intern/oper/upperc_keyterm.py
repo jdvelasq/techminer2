@@ -17,6 +17,8 @@ from .helpers import (
     mark_copyright,
     mark_discursive_patterns,
     mark_scaffolding,
+    remove_single_academic_terms,
+    remove_single_word_noise,
     repair_abstract_headings,
     repair_apostrophes,
     repair_emails,
@@ -24,12 +26,11 @@ from .helpers import (
     repair_lowercase_text,
     repair_measurement_units,
     repair_roman_numbers,
-    repair_single_word_noise,
     repair_strange_cases,
     repair_urls,
 )
 
-_COMPILED_PATTERNS: list[tuple[str, re.Pattern]] = []
+_PATTERNS: list[str] = []
 
 
 # ----------------------------------------------------------------------------
@@ -40,6 +41,9 @@ def _get_project_noun_phrases(dataframe: pd.DataFrame) -> set[str]:
     for column in [
         Field.NP_SPACY.value,
         Field.NP_TEXTBLOB.value,
+        # Field.NP_GENSIM.value,
+        # Field.NP_YAKE.value,
+        Field.NP_KNOWN.value,
     ]:
         if column in dataframe.columns:
             for entry in dataframe[column].dropna():
@@ -105,6 +109,7 @@ def _get_project_keywords(dataframe: pd.DataFrame) -> set[str]:
             series = series.str.replace(r"[\"'#!]", "", regex=True)
             series = series.str.replace(r"\(.*\)", "", regex=True)
             series = series.str.replace(r"\[.*\]", "", regex=True)
+            series = series.str.replace("-", " ", regex=False)
             series = series.str.lower()
             series = series.str.split("; ")
             series = series.explode()
@@ -117,9 +122,9 @@ def _get_project_keywords(dataframe: pd.DataFrame) -> set[str]:
 
 
 # ----------------------------------------------------------------------------
-def _get_compiled_patterns(dataframe: pd.DataFrame) -> list[tuple[str, re.Pattern]]:
+def _get_patterns(dataframe: pd.DataFrame) -> list[str]:
 
-    if not _COMPILED_PATTERNS:
+    if not _PATTERNS:
 
         patterns = _get_project_noun_phrases(dataframe)
         patterns.update(_get_acronyms(dataframe))
@@ -133,16 +138,11 @@ def _get_compiled_patterns(dataframe: pd.DataFrame) -> list[tuple[str, re.Patter
             reverse=True,
         )
 
-        _COMPILED_PATTERNS.extend(
-            (pattern, re.compile(r"\b" + re.escape(pattern) + r"\b"))
-            for pattern in patterns_list
-        )
+        patterns_list = [pattern.replace("-", " ") for pattern in patterns_list]
 
-        _COMPILED_PATTERNS.sort(
-            key=lambda x: (len(x[0].split(" ")), x[0]), reverse=True
-        )
+        _PATTERNS.extend(patterns_list)
 
-    return _COMPILED_PATTERNS
+    return _PATTERNS
 
 
 # ----------------------------------------------------------------------------
@@ -152,9 +152,13 @@ def _highlight_patterns(text):
         return text
 
     text = str(text)
-    for phrase, pattern in _COMPILED_PATTERNS:
-        if phrase in text:
-            text = pattern.sub(lambda m: m.group().upper().replace(" ", "_"), text)
+    for pattern in _PATTERNS:
+
+        if pattern in text:
+
+            text = text.replace(
+                f" {pattern} ", f" {pattern.upper().replace(' ', '_')} "
+            )
 
     return text
 
@@ -185,7 +189,7 @@ def _normalize(text):
         text = repair_roman_numbers(text)
         text = repair_emails(text)
         text = repair_strange_cases(text)
-        text = repair_single_word_noise(text)
+        text = remove_single_word_noise(text)
 
     except Exception as e:
         sys.stderr.write(f"Error processing text: {e}\n")
@@ -216,13 +220,59 @@ def uppercase_keyterms(
             f"Source column '{source.value}' not found in {get_path(root_directory).name}"
         )
 
-    _get_compiled_patterns(dataframe)
+    _get_patterns(dataframe)
 
+    dataframe[target.value] = dataframe[source.value].copy()
+    dataframe[target.value] = dataframe[target.value].map(
+        lambda x: f" {x} " if pd.notna(x) else x
+    )
     with stdout_to_stderr():
         progress_bar = True
         pandarallel.initialize(progress_bar=progress_bar, verbose=0)
-        dataframe[target.value] = dataframe[source.value].parallel_apply(_normalize)
+        dataframe[target.value] = dataframe[target.value].parallel_apply(_normalize)
         sys.stderr.write("\n")
+
+    dataframe[target.value] = dataframe[target.value].str.replace(
+        r"\(\s*([a-z]+)\s*\)",
+        lambda m: f"( {m.group(1).upper()} )",
+        regex=True,
+    )
+
+    pattern_extract = r"\( ([A-Z][A-Z0-9]{0,4}) \)"
+
+    terms = (
+        dataframe[target.value]
+        .str.extractall(pattern_extract)[0]
+        .str.lower()
+        .drop_duplicates()
+        .to_list()
+    )
+
+    terms = [
+        t
+        for t in terms
+        if len(t) > 1
+        and t.lower()
+        not in (
+            "is",
+            "the",
+            "it",
+        )
+    ]
+
+    for term in terms:
+        pattern_word = rf" {re.escape(term)} "
+        dataframe[target.value] = dataframe[target.value].str.replace(
+            pattern_word, f" {term.upper()} ", regex=True, case=False
+        )
+
+    pat = r"\b(?=[A-Za-z_]*[a-z])(?=[A-Za-z_]*[A-Z])[A-Za-z]+(?:_[A-Za-z]+)*\b"
+
+    dataframe[target.value] = dataframe[target.value].str.replace(
+        pat, lambda m: m.group(0).upper(), regex=True
+    )
+
+    dataframe[target.value] = dataframe[target.value].str.strip()
 
     save_data(df=dataframe, root_directory=root_directory)
 

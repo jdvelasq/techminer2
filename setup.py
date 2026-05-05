@@ -16,11 +16,15 @@ setup(
     platforms="any",
     provides=["tm2p"],
     install_requires=[
+        "abydos==0.5.0",
         "cdlib==0.4.0",
+        "cologne_phonetics==2.0.0",
         "colorama==0.4.6",
         "contractions==0.1.73",
+        "doublemetaphone==1.2",
         "duckdb==1.4.4",
         "fuzzywuzzy==0.18.0",
+        "gensim==4.4.0",
         "graphviz==0.21",
         "igraph==1.0.0",
         "kaleido==1.2.0",
@@ -47,9 +51,7 @@ setup(
         "typing_extensions==4.15.0",
         "urllib3==1.26.20",
         "wordcloud==1.9.6",
-        "abydos==0.5.0",
-        "cologne_phonetics==2.0.0",
-        "doublemetaphone==1.2",
+        "yake==0.4.8",
     ],
     extras_require={
         "dev": [

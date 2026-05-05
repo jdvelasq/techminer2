@@ -41,29 +41,31 @@ def s03_np_textblob(root_directory: str) -> int:
 
 def _process_row(row: pd.Series) -> Optional[str]:
 
+    abstr = Field.ABSTR_TOK.value
+    title = Field.TITLE_TOK.value
+
     phrases: list[str] = []
 
-    if not pd.isna(row[Field.ABSTR_TOK.value]):
+    if not pd.isna(row[abstr]):
         phrases.extend(
             [
                 str(phrase)
-                for phrase in list(
-                    TextBlob(row[Field.ABSTR_TOK.value]).noun_phrases  # type: ignore
-                )
+                for phrase in list(TextBlob(row[abstr]).noun_phrases)  # type: ignore
             ]
         )
 
-    if not pd.isna(row[Field.TITLE_TOK.value]):
+    if not pd.isna(row[title]):
         phrases.extend(
             [
                 str(phrase)
-                for phrase in list(
-                    TextBlob(row[Field.TITLE_TOK.value]).noun_phrases  # type: ignore
-                )
+                for phrase in list(TextBlob(row[title]).noun_phrases)  # type: ignore
             ]
         )
+
     if not phrases:
         return None
+
+    phrases = [phrase.strip().lower() for phrase in phrases]
 
     for determiner in determiners:
         phrases = [

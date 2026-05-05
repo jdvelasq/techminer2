@@ -13,6 +13,9 @@ def s01_authkw_idxkw(root_directory: str) -> int:
         if col in df.columns:
             df[col] = df[col].str.lower()
             df[col] = df[col].str.replace("*", "", regex=False)
+            df[col] = df[col].str.replace("    ", " ", regex=False)
+            df[col] = df[col].str.replace("   ", " ", regex=False)
+            df[col] = df[col].str.replace("  ", " ", regex=False)
             save_main_csv_zip(df, root_directory)
 
     return 1

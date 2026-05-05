@@ -12,12 +12,15 @@ def p12_nlp_prepar(params: Params) -> list[Step]:
     from .s02_title_tok import s02_title_tok
     from .s03_np_textblob import s03_np_textblob
     from .s04_np_spacy import s04_np_spacy
-    from .s05_abstract_acronyms import s05_abstract_acronyms
-    from .s06_abstr_upper import s06_abstr_upper
-    from .s07_title_upper import s07_title_upper
-    from .s08_np_abstr_raw import s08_np_abstr_raw
-    from .s09_np_title_raw import s09_np_title_raw
-    from .s10_np_raw import s10_np_raw
+    from .s05_np_gensim import s05_np_gensim
+    from .s06_np_yake import s06_np_yake
+    from .s07_np_known import s07_np_known
+    from .s08_abstract_acronyms import s08_abstract_acronyms
+    from .s09_abstr_upper import s09_abstr_upper
+    from .s10_title_upper import s10_title_upper
+    from .s11_np_abstr_raw import s11_np_abstr_raw
+    from .s12_np_title_raw import s12_np_title_raw
+    from .s13_np_raw import s13_np_raw
 
     common_kwargs = {"root_directory": params.root_directory}
 
@@ -43,33 +46,48 @@ def p12_nlp_prepar(params: Params) -> list[Step]:
             kwargs=common_kwargs,
         ),
         Step(
+            name="Extracting Gensim phrases",
+            function=s05_np_gensim,
+            kwargs=common_kwargs,
+        ),
+        Step(
+            name="Extracting Yake phrases",
+            function=s06_np_yake,
+            kwargs=common_kwargs,
+        ),
+        Step(
+            name="Extracting known phrases",
+            function=s07_np_known,
+            kwargs=common_kwargs,
+        ),
+        Step(
             name="Extracting abstract acronyms",
-            function=s05_abstract_acronyms,
+            function=s08_abstract_acronyms,
             kwargs=common_kwargs,
         ),
         Step(
             name="Uppercasing ABSTR",
-            function=s06_abstr_upper,
+            function=s09_abstr_upper,
             kwargs=common_kwargs,
         ),
         Step(
             name="Uppercasing TITLE",
-            function=s07_title_upper,
+            function=s10_title_upper,
             kwargs=common_kwargs,
         ),
         Step(
             name="Extracting ABSTR phrases",
-            function=s08_np_abstr_raw,
+            function=s11_np_abstr_raw,
             kwargs=common_kwargs,
         ),
         Step(
             name="Extracting TITLE phrases",
-            function=s09_np_title_raw,
+            function=s12_np_title_raw,
             kwargs=common_kwargs,
         ),
         Step(
             name="Merging TITLE and ABSTR phrases",
-            function=s10_np_raw,
+            function=s13_np_raw,
             kwargs=common_kwargs,
         ),
     ]

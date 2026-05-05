@@ -4,6 +4,7 @@ from typing import Optional
 
 import pandas as pd  # type: ignore
 import spacy
+import yake
 from pandarallel import pandarallel  # type: ignore
 
 from tm2p._intern import stdout_to_stderr
@@ -13,19 +14,27 @@ from tm2p.enum import Field
 
 spacy_nlp = spacy.load("en_core_web_lg")
 
-determiners = load_builtin_word_list("determiners.txt")
-discourse_connectors = load_builtin_word_list("discourse_connectors.txt")
-stopwords = load_builtin_word_list("stopwords.txt")
+DETERMINERS = load_builtin_word_list("determiners.txt")
+DISCOURSE_CONNECTORS = load_builtin_word_list("discourse_connectors.txt")
+STOPWORDS = load_builtin_word_list("stopwords.txt")
+
+YAKE_EXTRACTOR = yake.KeywordExtractor(
+    lan="en",
+    n=4,
+    dedupLim=0.9,
+    top=10,
+    features=None,
+)
 
 
-def s04_np_spacy(root_directory: str) -> int:
+def s06_np_yake(root_directory: str) -> int:
 
     df = load_main_csv_zip(root_directory=root_directory)
 
     with stdout_to_stderr():
         progress_bar = True
         pandarallel.initialize(progress_bar=progress_bar, verbose=0)
-        df[Field.NP_SPACY.value] = df.parallel_apply(  # type: ignore
+        df[Field.NP_YAKE.value] = df.parallel_apply(  # type: ignore
             _process_row,
             axis=1,
         )
@@ -33,7 +42,7 @@ def s04_np_spacy(root_directory: str) -> int:
 
     save_main_csv_zip(df=df, root_directory=root_directory)
 
-    phrases = df[Field.NP_SPACY.value].dropna()
+    phrases = df[Field.NP_YAKE.value].dropna()
     phrases = phrases.str.split("; ").explode()
     phrases = phrases.drop_duplicates()
     n_phrases = len(phrases)
@@ -48,44 +57,34 @@ def _process_row(row: pd.Series) -> Optional[str]:
 
     phrases: list[str] = []
 
-    candidate_chunks = []
+    import sys
+
     if not pd.isna(row[abstr]):
-        candidate_chunks.extend(
-            chunk.text for chunk in spacy_nlp(row[abstr]).noun_chunks
-        )
-        candidate_chunks.extend(chunk.text for chunk in spacy_nlp(row[abstr]).ents)
+        terms = YAKE_EXTRACTOR.extract_keywords(row[abstr])
+        phrases.extend(term for term, _ in terms if len(term) > 3)
 
     if not pd.isna(row[title]):
-        candidate_chunks.extend(
-            chunk.text for chunk in spacy_nlp(row[title]).noun_chunks
-        )
-        candidate_chunks.extend(chunk.text for chunk in spacy_nlp(row[title]).ents)
-
-    candidate_chunks = [
-        chunk
-        for chunk in candidate_chunks
-        if len(chunk.split(" ")) > 1 or not chunk.endswith("ing")
-    ]
-    phrases.extend(candidate_chunks)
+        terms = YAKE_EXTRACTOR.extract_keywords(row[title])
+        phrases.extend(term for term, _ in terms if len(term) > 3)
 
     if not phrases:
         return None
 
     phrases = [phrase.strip().lower() for phrase in phrases]
 
-    for determiner in determiners:
+    for determiner in DETERMINERS:
         phrases = [
             term[len(determiner) + 1 :] if term.startswith(determiner + " ") else term
             for term in phrases
         ]
 
-    for connector in discourse_connectors:
+    for connector in DISCOURSE_CONNECTORS:
         phrases = [
             term[len(connector) + 1 :] if term.startswith(connector + " ") else term
             for term in phrases
         ]
 
-    for stopword in stopwords:
+    for stopword in STOPWORDS:
         phrases = [
             term[len(stopword) + 1 :] if term.startswith(stopword + " ") else term
             for term in phrases

@@ -7,7 +7,7 @@ from tm2p._intern.packag_data.word_lists.load_builtin_word_list import (
 WORDS = load_builtin_word_list("single_word_noise.txt")
 
 
-def repair_single_word_noise(text) -> str:
+def remove_single_word_noise(text) -> str:
 
     if pd.isna(text):
         return ""
@@ -15,5 +15,7 @@ def repair_single_word_noise(text) -> str:
 
     for unit in WORDS:
         text = text.replace(f" {unit.upper()} ", f" {unit.lower()} ")
+        text = text.replace(f" {unit.upper()}_", f" {unit.lower()} ")
+        text = text.replace(f"_{unit.upper()} ", f" {unit.lower()} ")
 
     return text

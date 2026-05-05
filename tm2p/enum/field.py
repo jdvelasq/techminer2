@@ -284,8 +284,11 @@ class Field(str, Enum):
     # -------------------------------------------------------------------------
     # Noun phrases
     # -------------------------------------------------------------------------
+    NP_GENSIM = "NP_GENSIM"
     NP_TEXTBLOB = "NP_TEXTBLOB"
     NP_SPACY = "NP_SPACY"
+    NP_YAKE = "NP_YAKE"
+    NP_KNOWN = "NP_KNOWN"
     NP_ABSTR_RAW = "NP_ABSTR_RAW"
     NP_TITLE_RAW = "NP_TITLE_RAW"
     NP_RAW = "NP_RAW"

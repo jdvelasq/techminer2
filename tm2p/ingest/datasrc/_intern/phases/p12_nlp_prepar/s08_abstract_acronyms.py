@@ -18,7 +18,7 @@ def _extract_acronyms_from_text(text: str) -> str:
     return "; ".join(matches)
 
 
-def s05_abstract_acronyms(root_directory: str) -> int:
+def s08_abstract_acronyms(root_directory: str) -> int:
 
     database_file = Path(root_directory) / "ingest" / "process" / "main.csv.zip"
 

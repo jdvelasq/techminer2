@@ -7,7 +7,7 @@ import contractions  # type: ignore
 import pandas as pd  # type: ignore
 from nltk.tokenize import word_tokenize  # type: ignore
 
-from tm2p._intern.packag_data import load_builtin_mapping
+from tm2p._intern.packag_data import load_builtin_mapping, load_builtin_word_list
 from tm2p.enum import Field
 
 from ._file_dispatch import get_file_operations
@@ -363,11 +363,25 @@ def _tokenize(text: pd.Series) -> pd.Series:
     text = text.str.replace(r"\s+", " ", regex=True)
     text = text.str.replace(" - ", "-", regex=False)
     text = text.str.replace("- ", "-", regex=False)
-    text = text.str.replace("-", "_", regex=False)
+    # text = text.str.replace("-", "_", regex=False)
     text = text.str.replace(
         "http://creativecommons.org/licenses/by nc nd/4.0/",
         "http://creativecommons.org/licenses/by_nc_nd/4.0/",
         regex=False,
     )
+
+    text = text.str.replace(" ' ", " ", regex=False)
+    text = text.str.replace("___", "_", regex=False)
+    text = text.str.replace("__", "_", regex=False)
+
+    text = text.str.replace(r"(?<=[^\W\d_])-(?=[^\W_])", " ", regex=True)
+
+    # known_correct_words = load_builtin_word_list("hyphen_correct_words.txt")
+    # for word in known_correct_words:
+    #     text = text.str.replace(word.replace("-", " "), word, regex=False)
+
+    # known_individual_words = load_builtin_word_list("hyphen_individual_words.txt")
+    # for word in known_individual_words:
+    #     text = text.str.replace(word, word.replace("-", " "), regex=False)
 
     return text
