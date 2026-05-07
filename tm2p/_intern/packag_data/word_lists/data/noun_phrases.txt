@@ -2549,6 +2549,7 @@ atmospheric and room temperature plasma mutagenesis
 atmospheric chemistry
 atmospheric circulation anomalies
 atmospheric circulation anomaly
+atmospheric composition
 atmospheric modeling
 atmospheric pollution
 atmospheric pollutions
@@ -4116,6 +4117,7 @@ blended e learning system
 blended e learning systems
 blended efl learning
 blended efl learnings
+blended learning
 blended learning and teaching
 blended learning and teachings
 blended learning ecosystem
@@ -9457,6 +9459,7 @@ damage detection
 damage detections
 damage equivalent load
 damage equivalent loads
+damage level
 damage sensitive features
 dance and movement
 dance and movements
@@ -17349,6 +17352,7 @@ foreign language teachings
 forensic data analyses
 forensic data analysis
 forensic dna phenotyping
+forensic pathology
 forensic psychiatry
 forest
 forest fire detection
@@ -17378,6 +17382,7 @@ formation and evolutions
 formation mechanism
 formative and summative assessment
 formative and summative assessments
+former extremists
 former rebels
 formic acid derivative
 formic acid derivatives
@@ -22386,6 +22391,7 @@ in context learning
 in context learnings
 in context prompting
 in context writing
+in contexts
 in cylinder performance
 in cylinder performances
 in depth analyses
@@ -28278,6 +28284,7 @@ medical education research study quality instrument
 medical education research study quality instruments
 medical equipment managements
 medical ethics
+medical evacuation
 medical expert system
 medical expert systems
 medical history taking
@@ -32752,6 +32759,7 @@ oil recovery technology
 oil removal efficiencies
 oil shale
 oil shale processing
+oil spills
 oil supply chain
 oil supply chains
 oil supply shocks
@@ -35326,6 +35334,7 @@ physical process
 physical resource modelling
 physical robotic system
 physical robotic systems
+physical security
 physical simulation model
 physical simulation models
 physical system modeling
@@ -49397,6 +49406,7 @@ visual communication
 visual communication design
 visual communication designs
 visual content
+visual culture
 visual data analyses
 visual data analysis
 visual data exploration
