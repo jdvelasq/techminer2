@@ -1,3 +1,4 @@
+a promising tool
 abac
 abacate
 aback
@@ -53,8 +54,8 @@ academy
 acanthus
 acariform
 accelerate
-accelerative
 accelerated
+accelerative
 accent
 accentuate
 acceptable
@@ -460,6 +461,7 @@ amrita
 amuse
 amusement
 amylum
+an unusual
 anabatic
 anabolic
 anachronistic
@@ -617,7 +619,6 @@ antitypical
 antiwaste
 antler
 anxious
-an unusual
 apace
 apathetic
 apert
@@ -771,9 +772,9 @@ askar
 asker
 asleep
 asocial
+aspect based
 aspectant
 aspectual
-aspect based
 asper
 asperity
 asphaltic
@@ -942,7 +943,6 @@ azalea
 azine
 azonal
 azophenyl
-a promising tool
 babassu
 bach
 bachelor
@@ -3860,9 +3860,9 @@ eventful
 evermore
 eversion
 evert
+every day
 everyday
 everywhere
-every day
 evict
 eviction
 evident
@@ -4605,9 +4605,9 @@ gelechiid
 gemmer
 genera
 general
+general purpose
 generalistic
 generalize
-general purpose
 generate
 generates
 generic
@@ -5218,6 +5218,9 @@ huckleberry
 huddle
 huge
 hulu
+human centric
+human driven
+human environment
 humane
 humanist
 humanization
@@ -5225,9 +5228,6 @@ humanize
 humankind
 humanlike
 humanness
-human centric
-human driven
-human environment
 humble
 humbler
 humdrum
@@ -5510,6 +5510,7 @@ imprudence
 imprudent
 imputable
 impute
+in depth
 inability
 inaccessibility
 inaccessible
@@ -6123,7 +6124,6 @@ involutory
 involves
 invulnerable
 inwards
-in depth
 iodometric
 iodous
 iolite
@@ -6400,9 +6400,9 @@ lapse
 larceny
 lardy
 large
+large scale
 larger
 largest
-large scale
 largo
 larry
 larvae
@@ -6531,13 +6531,13 @@ lifework
 lifo
 ligamentous
 ligation
+light weight
 lighten
 lighter
 lightful
 lighthouse
 lightness
 lightproof
-light weight
 lignicolous
 lignitic
 likely
@@ -6636,13 +6636,13 @@ login
 logographic
 loiter
 long
+long term
 longan
 longevous
 longhorn
 longicorn
 longtail
 longue
-long term
 lontar
 looker
 looking
@@ -7039,6 +7039,8 @@ microthermic
 microvolume
 microwatt
 microzone
+mid and long term
+mid term
 midbrain
 midday
 midden
@@ -7052,8 +7054,6 @@ midstory
 midstream
 midweek
 midyear
-mid and long term
-mid term
 might
 migrate
 migrative
@@ -7172,13 +7172,13 @@ mobilize
 moble
 mocha
 mock
-modeler
-modeless
 model extended
 model improves
 model incorporates
 model termed
 model the
+modeler
+modeless
 modern
 modernist
 modernistic
@@ -8110,8 +8110,8 @@ oocyst
 oolitic
 opah
 opal
-openable
 open access
+openable
 opera
 operable
 operatable
@@ -8204,6 +8204,7 @@ otological
 otoscopic
 otter
 ounce
+out of sample
 outbid
 outboard
 outby
@@ -8252,7 +8253,6 @@ outwash
 outweigh
 outwit
 outwith
-out of sample
 overabundant
 overaccumulate
 overage
@@ -9317,13 +9317,13 @@ probative
 probeable
 prober
 probity
+problem driven
 problematical
 problematize
-problem driven
 procercoid
+process driven
 processional
 processive
-process driven
 proclaim
 procompetition
 procrastinate
@@ -9346,8 +9346,8 @@ professorial
 proffer
 proficiency
 proficient
-profitless
 profit driven
+profitless
 profligate
 profound
 profuse
@@ -9360,9 +9360,9 @@ prohibit
 prohibition
 prohibitive
 projectile
+projection free
 projectional
 projectionist
-projection free
 proleptic
 proliferate
 prolific
@@ -9540,9 +9540,9 @@ purifier
 purify
 purist
 purlin
+purpose driven
 purposeful
 purposeless
-purpose driven
 purposive
 pursuant
 pursue
@@ -9730,12 +9730,12 @@ reaffirm
 reaggregate
 realign
 realignment
-realises business value
 realise business value
+realises business value
 realistic
 realizable
-realizes business value
 realize business value
+realizes business value
 reallocate
 reamer
 reanalyze
@@ -10590,11 +10590,11 @@ select
 selectable
 selected
 selenian
-selfless
-selfsame
 self adaptation
 self diagnosis
 self driven
+selfless
+selfsame
 sellable
 sellie
 selva
@@ -10652,8 +10652,8 @@ senseless
 sensical
 sensitive
 sensitize
-sensorial
 sensor driven
+sensorial
 sensual
 sensuous
 sentential
@@ -10694,8 +10694,8 @@ serrate
 serration
 servable
 serval
-serviceable
 service driven
+serviceable
 servient
 servile
 servomotor
@@ -10791,12 +10791,12 @@ shoji
 shook
 shoplifter
 shoreside
+short and long term
+short term
 shorten
 shorthand
 shorts
 shortsightedness
-short and long term
-short term
 shouldnt
 shout
 shovel
@@ -11002,6 +11002,7 @@ snowless
 snowplow
 snowscape
 snowy
+so called
 soak
 soapbox
 soapstone
@@ -11087,7 +11088,6 @@ southwesternmost
 souvenir
 sower
 soya
-so called
 spacious
 spade
 spader
@@ -11691,8 +11691,8 @@ sympatric
 symphonious
 symphony
 symposium
-symptomatic
 symptom driven
+symptomatic
 synactic
 synchromesh
 synchronic
@@ -12072,8 +12072,8 @@ titular
 toast
 toaster
 today
-toenail
 toe driven
+toenail
 toggle
 toilless
 tolerability
@@ -12133,8 +12133,8 @@ towel
 towline
 toxicant
 trabeculation
-traceless
 trace driven
+traceless
 trackable
 trackside
 tract
@@ -13294,9 +13294,9 @@ weldable
 welder
 weldment
 welkin
+well known
 wellknown
 wellsite
-well known
 welsh
 wenzel
 werent
