@@ -195,8 +195,10 @@ an important role in
 an increase in the number of
 an increasing number of scholars
 an overview of
+analaysis contributes
 analysis of covariance (ancova)
 analysis of variance (anova)
+analysis shows
 and at the end of
 and its
 and provide a theoretical basis for
@@ -419,6 +421,7 @@ data were collected
 data were extracted from
 data were gathered
 data were obtained from
+decades ago
 demonstrate for the first time
 demonstrate the effectiveness
 demonstrate the effectiveness of the proposed method
@@ -444,6 +447,7 @@ due to the limited sample size
 due to the small sample size
 due to this
 e effect of
+effect reveals
 effors to
 efforts to
 emerging evidence suggests that
@@ -478,9 +482,11 @@ few examples of
 few studies have examined
 few studies have explored
 few studies have investigated
+fill a gap in
 findings are discussed in terms of
 findings based on the results
 findings of this study suggest that
+findings reveal
 first results of
 first, second
 firstly, at first, first of all
@@ -564,6 +570,7 @@ future studies should evaluate
 future studies should examine
 future studies should explore
 future studies should investigate
+gap contributes
 given the limited sample size
 given the small sample size
 given these points
@@ -1803,6 +1810,7 @@ method(s) was/were used to determine
 methods are used to determine
 methods have been developed for
 methods were used to determine
+model shows
 more accurately
 more importantly
 more research is needed
@@ -2221,6 +2229,7 @@ particular attention was paid to
 pearson correlation coefficient
 performed to understand
 play a crucial role
+play a role
 plays a central role in
 plays a critical role in
 plays a crucial role
@@ -2935,6 +2944,7 @@ that results from
 that the proposed
 that there is a relationship between
 that there was a relationship between
+the
 the 20st century
 the 21st century
 the ability of
@@ -4546,6 +4556,7 @@ the characterization results showed that
 the circulation of
 the city of
 the clinical implications of
+the combined effects of
 the complex role of
 the concept of
 the conceptual paper
@@ -6117,6 +6128,7 @@ the intention of this study was to test
 the intention of this study was to test the hypothesis that
 the intention of this study was to verify the results of
 the intention of this study was to verify the validity of
+the introduction of
 the issue of
 the key aim of
 the key aim of this study
@@ -6476,6 +6488,7 @@ the main aim of this study was to test the hypothesis that
 the main aim of this study was to verify the results of
 the main aim of this study was to verify the validity of
 the main challenges facing
+the main contribution is
 the main contribution of
 the main contribution of this article
 the main contribution of this conceptual paper
@@ -12048,6 +12061,7 @@ this essay uses
 this essay was
 this essay will
 this exploratory study
+this gap in
 this instant
 this introduction presents
 this introduction provides
@@ -16153,16 +16167,3 @@ worth mentioning
 written informed consent was obtained
 written informed consent was obtained from
 your understanding of
-the introduction of
-fill a gap in
-this gap in
-the
-the combined effects of
-the main contribution is
-findings reveal
-model shows
-analysis shows
-analaysis contributes
-effect reveals
-gap contributes
-play a role
