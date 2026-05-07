@@ -67,7 +67,13 @@ def _process_row(row: pd.Series) -> Optional[str]:
         return None
 
     phrases = [phrase.strip().lower() for phrase in phrases]
-    phrases = [phrase for phrase in phrases if not any(n in phrase for n in noise)]
+
+    # ***
+    phrases = [
+        phrase for phrase in phrases if not any(n in phrase.split() for n in noise)
+    ]
+    phrases = [phrase for phrase in phrases if len(phrase.split()) < 7]
+    # ***
 
     for determiner in determiners:
         phrases = [

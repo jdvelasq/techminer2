@@ -62,9 +62,16 @@ def _process_row(row: pd.Series) -> Optional[str]:
         )
         candidate_chunks.extend(chunk.text for chunk in spacy_nlp(row[title]).ents)
 
+    # ***
     candidate_chunks = [
-        phrase for phrase in candidate_chunks if not any(n in phrase for n in noise)
+        phrase
+        for phrase in candidate_chunks
+        if not any(n in phrase.split() for n in noise)
     ]
+    candidate_chunks = [
+        phrase for phrase in candidate_chunks if len(phrase.split()) < 7
+    ]
+    # ***
 
     candidate_chunks = [
         chunk

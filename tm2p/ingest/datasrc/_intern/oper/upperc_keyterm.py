@@ -17,7 +17,6 @@ from .helpers import (
     mark_copyright,
     mark_discursive_patterns,
     mark_scaffolding,
-    remove_single_academic_terms,
     remove_single_word_noise,
     repair_abstract_headings,
     repair_apostrophes,
@@ -33,132 +32,147 @@ from .helpers import (
 _PATTERNS: list[str] = []
 
 
-# ----------------------------------------------------------------------------
-def _get_project_noun_phrases(dataframe: pd.DataFrame) -> set[str]:
+def _prepare_patterns(df: pd.DataFrame) -> None:
 
-    noun_phrases = set()
+    def _update_with_project_noun_phrases(patterns: set[str]) -> set[str]:
+        for column in [
+            Field.NP_SPACY.value,
+            Field.NP_TEXTBLOB.value,
+            # -----------------------
+            # Field.NP_GENSIM.value,
+            # Field.NP_YAKE.value,
+            # -----------------------
+            Field.NP_KNOWN.value,
+        ]:
+            if column in df.columns:
+                for entry in df[column].dropna():
+                    phrases = [phrase.strip() for phrase in entry.split(";")]
+                    patterns.update(phrases)
+        return patterns
 
-    for column in [
-        Field.NP_SPACY.value,
-        Field.NP_TEXTBLOB.value,
-        # Field.NP_GENSIM.value,
-        # Field.NP_YAKE.value,
-        Field.NP_KNOWN.value,
-    ]:
-        if column in dataframe.columns:
-            for entry in dataframe[column].dropna():
+    def _update_with_acronyms(patterns: set[str]) -> set[str]:
+        if Field.ACRONYM.value in df.columns:
+            for entry in df[Field.ACRONYM.value].dropna():
                 phrases = [phrase.strip() for phrase in entry.split(";")]
-                noun_phrases.update(phrases)
+                patterns.update(phrases)
+        return patterns
 
-    return noun_phrases
+    def _update_with_project_keywords(patterns: set[str]) -> set[str]:
+        for column in [
+            Field.AUTHKW_TOK.value,
+            Field.IDXKW_TOK.value,
+        ]:
+            if column in df.columns:
+                series = df[column].dropna()
+                series = series.str.replace(r"[\"'#!]", "", regex=True)
+                series = series.str.replace(r"\(.*\)", "", regex=True)
+                series = series.str.replace(r"\[.*\]", "", regex=True)
+                series = series.str.replace("-", " ", regex=False)
+                series = series.str.lower()
+                series = series.str.split("; ")
+                series = series.explode()
+                series = series.str.strip()
+                series = series[series.str.len() > 2]
+                series = series[~series.str.contains(r"\d", regex=True)]
+                series = series.str.strip()
+                patterns.update(series)
+        return patterns
 
+    def _update_with_builtin_noun_phrases(patterns: set[str]) -> set[str]:
+        patterns.update(
+            phrase.strip().lower().replace("_", " ").strip()
+            for phrase in load_builtin_word_list("noun_phrases.txt")
+            if phrase.strip()
+        )
+        return patterns
 
-# ----------------------------------------------------------------------------
-def _get_builtin_noun_phrases() -> set[str]:
-    noun_phrases = load_builtin_word_list("noun_phrases.txt")
-    processed_noun_phrases = {
-        phrase.strip().lower().replace("_", " ")
-        for phrase in noun_phrases
-        if phrase.strip()
-    }
-    return processed_noun_phrases
+    def _clean_patterns(patterns: set[str]) -> set[str]:
 
-
-# ----------------------------------------------------------------------------
-def _get_acronyms(dataframe: pd.DataFrame) -> set[str]:
-
-    acronyms = set()
-
-    if Field.ACRONYM.value in dataframe.columns:
-        for entry in dataframe[Field.ACRONYM.value].dropna():
-            phrases = [phrase.strip() for phrase in entry.split(";")]
-            acronyms.update(phrases)
-
-    return acronyms
-
-
-# ----------------------------------------------------------------------------
-def _clean_terms(terms: set[str]) -> set[str]:
-
-    stopwords = load_builtin_word_list("stopwords.txt")
-    cleaned_terms = set()
-    for term in terms:
-        term_lower = term.lower()
-        if (
-            term_lower not in stopwords
-            and len(term_lower) > 1
-            and "(" not in term_lower
-            and "," not in term_lower
-            and not any(char.isdigit() for char in term)
-        ):
-            cleaned_terms.add(term)
-    return cleaned_terms
-
-
-# ----------------------------------------------------------------------------
-def _get_project_keywords(dataframe: pd.DataFrame) -> set[str]:
-
-    keywords: set[str] = set()
-
-    for column in [
-        Field.AUTHKW_TOK.value,
-        Field.IDXKW_TOK.value,
-    ]:
-        if column in dataframe.columns:
-            series = dataframe[column].dropna()
-            series = series.str.replace(r"[\"'#!]", "", regex=True)
-            series = series.str.replace(r"\(.*\)", "", regex=True)
-            series = series.str.replace(r"\[.*\]", "", regex=True)
-            series = series.str.replace("-", " ", regex=False)
-            series = series.str.lower()
-            series = series.str.split("; ")
-            series = series.explode()
-            series = series.str.strip()
-            series = series[series.str.len() > 2]
-            series = series[~series.str.contains(r"\d", regex=True)]
-            keywords.update(series)
-
-    return keywords
-
-
-# ----------------------------------------------------------------------------
-def _get_patterns(dataframe: pd.DataFrame) -> list[str]:
-
-    if not _PATTERNS:
-
-        patterns = _get_project_noun_phrases(dataframe)
-        patterns.update(_get_acronyms(dataframe))
-        patterns = _clean_terms(patterns)
-        patterns.update(_get_project_keywords(dataframe))
-        patterns.update(_get_builtin_noun_phrases())
-
-        patterns_list = sorted(
-            patterns,
-            key=lambda x: (len(x.split(" ")), x),
-            reverse=True,
+        stopwords = load_builtin_word_list("stopwords.txt")
+        patterns = patterns - set(
+            t.strip()
+            for t in patterns
+            if t in stopwords
+            or len(t) <= 1
+            or "(" in t
+            or "," in t
+            or any(char.isdigit() for char in t)
         )
 
-        patterns_list = [pattern.replace("-", " ") for pattern in patterns_list]
+        return patterns
 
-        _PATTERNS.extend(patterns_list)
+    patterns: set[str] = set()
 
-    return _PATTERNS
+    patterns = _update_with_project_noun_phrases(patterns)
+    patterns = _update_with_acronyms(patterns)
+    patterns = _update_with_project_keywords(patterns)
+    patterns = _update_with_builtin_noun_phrases(patterns)
+    patterns = _clean_patterns(patterns)
+
+    patterns_list = sorted(
+        patterns,
+        key=lambda x: (len(x.split(" ")), x),
+        reverse=True,
+    )
+
+    patterns_list = [pattern.replace("-", " ") for pattern in patterns_list]
+
+    _PATTERNS.extend(patterns_list)
 
 
 # ----------------------------------------------------------------------------
-def _highlight_patterns(text):
+def _highlight_meaningful_terms(text):
 
     if pd.isna(text):
         return text
-
     text = str(text)
     for pattern in _PATTERNS:
-
         if pattern in text:
-
             text = text.replace(
                 f" {pattern} ", f" {pattern.upper().replace(' ', '_')} "
             )
+    return text
+
+
+def _repair_meaningful_terms(text):
+
+    def _repair_parenthetical_terms(text):
+        text = re.sub(
+            r"\( ([a-z]+) \)",
+            lambda m: f"( {m.group(1).upper()} )",
+            text,
+        )
+        return text
+
+    def _propagate_parenthetical_terms(text):
+
+        pat = r"\( ([A-Z][A-Z0-9]{0,4}) \)"
+
+        terms = list({match.lower() for match in re.findall(pat, text)})
+        terms = [
+            t for t in terms if len(t) > 1 and t.lower() not in ("is", "the", "it")
+        ]
+        for term in terms:
+            pattern_word = rf" {re.escape(term)} "
+            text = re.sub(pattern_word, f" {term.upper()} ", text, flags=re.IGNORECASE)
+
+        return text
+
+    def _repair_mixed_case_terms(text):
+
+        pat = r" (?=[A-Za-z_]*[a-z])(?=[A-Za-z_]*[A-Z])[A-Za-z]+(?:_[A-Za-z]+)* "
+
+        text = re.sub(
+            pat,
+            lambda m: m.group(0).upper(),
+            text,
+        )
+
+        return text
+
+    text = _repair_parenthetical_terms(text)
+    text = _propagate_parenthetical_terms(text)
+    text = _repair_mixed_case_terms(text)
 
     return text
 
@@ -176,7 +190,7 @@ def _normalize(text):
         text = mark_discursive_patterns(text)
         text = mark_scaffolding(text)
         #
-        text = _highlight_patterns(text)
+        text = _highlight_meaningful_terms(text)
         #
         text = repair_apostrophes(text)
         text = join_consecutive_descriptors(text)
@@ -190,6 +204,8 @@ def _normalize(text):
         text = repair_emails(text)
         text = repair_strange_cases(text)
         text = remove_single_word_noise(text)
+
+        text = _repair_meaningful_terms(text)
 
     except Exception as e:
         sys.stderr.write(f"Error processing text: {e}\n")
@@ -220,57 +236,19 @@ def uppercase_keyterms(
             f"Source column '{source.value}' not found in {get_path(root_directory).name}"
         )
 
-    _get_patterns(dataframe)
+    _prepare_patterns(dataframe)
 
     dataframe[target.value] = dataframe[source.value].copy()
+
     dataframe[target.value] = dataframe[target.value].map(
         lambda x: f" {x} " if pd.notna(x) else x
     )
+
     with stdout_to_stderr():
         progress_bar = True
         pandarallel.initialize(progress_bar=progress_bar, verbose=0)
         dataframe[target.value] = dataframe[target.value].parallel_apply(_normalize)
         sys.stderr.write("\n")
-
-    dataframe[target.value] = dataframe[target.value].str.replace(
-        r"\(\s*([a-z]+)\s*\)",
-        lambda m: f"( {m.group(1).upper()} )",
-        regex=True,
-    )
-
-    pattern_extract = r"\( ([A-Z][A-Z0-9]{0,4}) \)"
-
-    terms = (
-        dataframe[target.value]
-        .str.extractall(pattern_extract)[0]
-        .str.lower()
-        .drop_duplicates()
-        .to_list()
-    )
-
-    terms = [
-        t
-        for t in terms
-        if len(t) > 1
-        and t.lower()
-        not in (
-            "is",
-            "the",
-            "it",
-        )
-    ]
-
-    for term in terms:
-        pattern_word = rf" {re.escape(term)} "
-        dataframe[target.value] = dataframe[target.value].str.replace(
-            pattern_word, f" {term.upper()} ", regex=True, case=False
-        )
-
-    pat = r"\b(?=[A-Za-z_]*[a-z])(?=[A-Za-z_]*[A-Z])[A-Za-z]+(?:_[A-Za-z]+)*\b"
-
-    dataframe[target.value] = dataframe[target.value].str.replace(
-        pat, lambda m: m.group(0).upper(), regex=True
-    )
 
     dataframe[target.value] = dataframe[target.value].str.strip()
 

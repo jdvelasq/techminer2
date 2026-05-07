@@ -9,7 +9,7 @@ Smoke test - fintech - successful import:
     ...     OpenAlex()
     ...     .where_root_directory("tests/regtech-openalex/")
     ...     .run()
-    ... )  # doctest: +ELLIPSIS +SKIP
+    ... )  # doctest: +ELLIPSIS
 
 
 

@@ -14,6 +14,7 @@ COMPOUND_STRUCTURED_ABSTRACT_HEADINGS = [
     "application design",
     "applications of this study",
     "authors ' conclusions",
+    "author conclusions",
     "background / objectives",
     "background / purpose",
     "background and aims",
@@ -100,6 +101,7 @@ COMPOUND_STRUCTURED_ABSTRACT_HEADINGS = [
     "outcome measures",
     "paper aims",
     "patient or public contribution",
+    "patients and methods",
     "patients or other participants",
     "place and duration of study",
     "practical contributions",
@@ -160,7 +162,8 @@ COMPOUND_STRUCTURED_ABSTRACT_HEADINGS = [
     "research purposes",
     "methodology / principal findings",
     "methods / analysis",
-    "omprehensive failure analysis",
+    "comprehensive failure analysis",
+    "participants and setting",
 ]
 
 
@@ -170,7 +173,7 @@ _PATTERN_CACHE: dict[str, list[re.Pattern]] = {}
 def _build_heading_pattern(prefix: str, heading: str) -> re.Pattern:
     escaped_heading = re.escape(heading)
     if prefix == r"^":
-        return re.compile(f"^({escaped_heading})( :)", re.IGNORECASE)
+        return re.compile(f"^ ({escaped_heading})( :)", re.IGNORECASE)
     return re.compile(f"({prefix})({escaped_heading})( :)", re.IGNORECASE)
 
 
@@ -199,7 +202,7 @@ def mark_abstract_headings(text: Optional[str]) -> Optional[str]:
 
     text = str(text)
 
-    for prefix in (r"^", r"\. ", r"\? ", r"\) "):
+    for prefix in (r"^", r"\. ", r"\? ", r"\) ", r": "):
         for pattern in _get_patterns_for_prefix(prefix):
             text = pattern.sub(_normalize_heading_match, text)
 

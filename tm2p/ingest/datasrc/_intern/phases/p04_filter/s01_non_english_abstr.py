@@ -32,12 +32,13 @@ def s01_non_english_abstr(root_directory: str) -> int:
         return 0
 
     df["abs_lang"] = df[abstr_col].apply(_detect_language)
-    df = df[df["abs_lang"] == "en"]
 
     n_before = len(df)
-    df = df.drop(columns=["abs_lang"])
+    df = df[df["abs_lang"] == "en"]
     n_after = len(df)
     n_removed = n_before - n_after
+
+    df = df.drop(columns=["abs_lang"])
 
     if n_removed > 0:
         save_main_csv_zip(df, root_directory)

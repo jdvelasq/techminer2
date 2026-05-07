@@ -16,8 +16,8 @@ SINGLE_STRUCTURED_ABSTRACT_HEADINGS = [
     "approach",
     "background",
     "conclusion",
-    "condusion",
     "conclusions",
+    "condusion",
     "context",
     "contribution",
     "design",
@@ -44,6 +44,7 @@ SINGLE_STRUCTURED_ABSTRACT_HEADINGS = [
     "limitations",
     "meaning",
     "method",
+    "mediations",
     "methodology",
     "methods",
     "objective",
@@ -83,45 +84,158 @@ def _get_compiled_patterns() -> list[tuple[str, re.Pattern]]:
 
 
 def repair_abstract_headings(text: Optional[str]) -> Optional[str]:
-    if pd.isna(text):
+    if text is None or pd.isna(text):
         return None
     text = str(text)
-    for term in (
+    for t in (
         COMPOUND_STRUCTURED_ABSTRACT_HEADINGS + SINGLE_STRUCTURED_ABSTRACT_HEADINGS
     ):
 
-        # Corrects structured abstract markers at the beginning of the paragraph:
-        regex = re.compile(r"^" + term.replace(" ", "_") + " :", re.IGNORECASE)
-        text = re.sub(regex, term.lower() + " :", text)
+        t_lower = t.lower()
+        t_under = t.replace(" ", "_")
 
-        # Corrects structured abstract markers inside the paragraph:
-        regex = re.compile(r"\. " + term.replace(" ", "_") + " :", re.IGNORECASE)
-        text = re.sub(regex, ". " + term.lower() + " :", text)
+        text = re.sub(
+            re.compile(rf": {t_under} :", re.IGNORECASE),
+            f": {t_lower} :",
+            text,
+        )
 
-        regex = re.compile(r"\) " + term.replace(" ", "_") + " :", re.IGNORECASE)
-        text = re.sub(regex, ") " + term.lower() + " :", text)
+        text = re.sub(
+            re.compile(rf": {t} :", re.IGNORECASE),
+            f": {t_lower} :",
+            text,
+        )
 
-        regex = re.compile(r"\? " + term.replace(" ", "_") + " :", re.IGNORECASE)
-        text = re.sub(regex, "? " + term.lower() + " :", text)
+        text = re.sub(
+            re.compile(rf"^ {t_under} :", re.IGNORECASE),
+            f" {t_lower} :",
+            text,
+        )
 
-        regex = re.compile(r"' " + term.replace(" ", "_") + " :", re.IGNORECASE)
-        text = re.sub(regex, "' " + term.lower() + " :", text)
+        text = re.sub(
+            re.compile(rf"^ {t} :", re.IGNORECASE),
+            f" {t_lower} :",
+            text,
+        )
 
-        ## ending with [
+        text = re.sub(
+            re.compile(rf" {t_under} \.", re.IGNORECASE),
+            f" {t_lower} .",
+            text,
+        )
 
-        regex = re.compile(r"^" + term.replace(" ", "_") + r" \[", re.IGNORECASE)
-        text = re.sub(regex, term.lower() + " :", text)
+        text = re.sub(
+            re.compile(rf" {t} \.", re.IGNORECASE),
+            f" {t_lower} .",
+            text,
+        )
 
-        regex = re.compile(r"\. " + term.replace(" ", "_") + r" \[", re.IGNORECASE)
-        text = re.sub(regex, ". " + term.lower() + " [", text)
+        text = re.sub(
+            re.compile(rf"\. {t_under} :", re.IGNORECASE),
+            f". {t_lower} :",
+            text,
+        )
 
-        regex = re.compile(r"\) " + term.replace(" ", "_") + r" \[", re.IGNORECASE)
-        text = re.sub(regex, ") " + term.lower() + " [", text)
+        text = re.sub(
+            re.compile(rf"\. {t} :", re.IGNORECASE),
+            f". {t_lower} :",
+            text,
+        )
 
-        regex = re.compile(r"\? " + term.replace(" ", "_") + r" \[", re.IGNORECASE)
-        text = re.sub(regex, "? " + term.lower() + " [", text)
+        text = re.sub(
+            re.compile(rf"\) {t_under} :", re.IGNORECASE),
+            f") {t_lower} :",
+            text,
+        )
 
-        regex = re.compile(r"' " + term.replace(" ", "_") + r" \[", re.IGNORECASE)
-        text = re.sub(regex, "' " + term.lower() + " [", text)
+        text = re.sub(
+            re.compile(rf"\) {t} :", re.IGNORECASE),
+            f") {t_lower} :",
+            text,
+        )
+
+        text = re.sub(
+            re.compile(rf"\? {t_under} :", re.IGNORECASE),
+            f"? {t_lower} :",
+            text,
+        )
+
+        text = re.sub(
+            re.compile(rf"\? {t} :", re.IGNORECASE),
+            f"? {t_lower} :",
+            text,
+        )
+
+        text = re.sub(
+            re.compile(rf"' {t_under} :", re.IGNORECASE),
+            f"' {t_lower} :",
+            text,
+        )
+
+        text = re.sub(
+            re.compile(rf"' {t} :", re.IGNORECASE),
+            f"' {t_lower} :",
+            text,
+        )
+
+        text = re.sub(
+            re.compile(rf" {t_under} \[", re.IGNORECASE),
+            f" {t_lower} [",
+            text,
+        )
+
+        text = re.sub(
+            re.compile(rf" {t} \[", re.IGNORECASE),
+            f" {t_lower} [",
+            text,
+        )
+
+        text = re.sub(
+            re.compile(rf"\. {t_under} \[", re.IGNORECASE),
+            f". {t_lower} [",
+            text,
+        )
+
+        text = re.sub(
+            re.compile(rf"\. {t} \[", re.IGNORECASE),
+            f". {t_lower} [",
+            text,
+        )
+
+        text = re.sub(
+            re.compile(rf"\) {t_under} \[", re.IGNORECASE),
+            f") {t_lower} [",
+            text,
+        )
+
+        text = re.sub(
+            re.compile(rf"\) {t} \[", re.IGNORECASE),
+            f") {t_lower} [",
+            text,
+        )
+
+        text = re.sub(
+            re.compile(rf"\? {t_under} \[", re.IGNORECASE),
+            f"? {t_lower} [",
+            text,
+        )
+
+        text = re.sub(
+            re.compile(rf"\? {t} \[", re.IGNORECASE),
+            f"? {t_lower} [",
+            text,
+        )
+
+        text = re.sub(
+            re.compile(rf"' {t_under} \[", re.IGNORECASE),
+            f"' {t_lower} [",
+            text,
+        )
+
+        text = re.sub(
+            re.compile(rf"' {t} \[", re.IGNORECASE),
+            f"' {t_lower} [",
+            text,
+        )
 
     return text

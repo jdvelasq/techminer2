@@ -17,7 +17,7 @@ def p12_nlp_prepar(params: Params) -> list[Step]:
     from .s07_np_known import s07_np_known
     from .s08_abstract_acronyms import s08_abstract_acronyms
     from .s09_abstr_upper import s09_abstr_upper
-    from .s10_review_upper import s10_review_upper
+    from .s10_abstr_metr import s10_abstr_metrics
     from .s11_title_upper import s11_title_upper
     from .s12_np_abstr_raw import s12_np_abstr_raw
     from .s13_np_title_raw import s13_np_title_raw
@@ -72,8 +72,8 @@ def p12_nlp_prepar(params: Params) -> list[Step]:
             kwargs=common_kwargs,
         ),
         Step(
-            name="Reviewing UPPERCASE",
-            function=s10_review_upper,
+            name="Computing ABSTR metrics",
+            function=s10_abstr_metrics,
             kwargs=common_kwargs,
         ),
         Step(
