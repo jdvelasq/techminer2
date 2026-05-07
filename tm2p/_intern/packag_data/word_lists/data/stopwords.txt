@@ -25,8 +25,8 @@ also
 alternatively
 although
 always
-am not
 am
+am not
 among
 amongst
 amoungst
@@ -46,8 +46,8 @@ appear
 appeared
 appearing
 appears
-are not
 are
+are not
 around
 as
 at
@@ -77,8 +77,8 @@ bottom
 but
 by
 call
-can not
 can
+can not
 cannot
 cant
 case
@@ -96,8 +96,8 @@ contained
 containing
 contains
 corresponding
-could not
 could
+could not
 couldnt
 create
 cry
@@ -108,14 +108,14 @@ describe
 described
 desired
 detail
-did not
 did
+did not
 different
 disclosure
-do not
 do
-does not
+do not
 does
+does not
 doing
 done
 down
@@ -190,24 +190,24 @@ give
 go
 good
 great
-had not
 had
+had not
 half
-has not
 has
+has not
 hasnt
-have not
 have
+have not
 having
+he
 he is
 he will
 he would
-he
 he/she
 hence
 her
-here is
 here
+here is
 hereafter
 hereby
 herein
@@ -220,15 +220,15 @@ him/her
 himself
 his
 his/her
-how is
 how
+how is
 however
 hundred
+i
 i am
 i have
 i will
 i would
-i
 ie
 if
 ii
@@ -244,10 +244,10 @@ instead
 interest
 into
 invention
-is not
 is
-it is
+is not
 it
+it is
 its
 itself
 just
@@ -279,8 +279,8 @@ me
 means
 meanwhile
 mentioned
-might not
 might
+might not
 mill
 million
 mine
@@ -292,14 +292,14 @@ mostly
 move
 much
 multiple
-must not
 must
+must not
 my
 myself
 name
 namely
-need not
 need
+need not
 neither
 never
 nevertheless
@@ -386,16 +386,16 @@ seventeen
 seventh
 seventy
 several
-shall not
 shall
+shall not
 shan not
+she
 she is
 she will
 she would
-she
 short
-should not
 should
+should not
 show
 side
 significant
@@ -431,10 +431,10 @@ take
 ten
 tenth
 than
+that
 that is
 that will
 that'll
-that
 the
 their
 theirs
@@ -442,8 +442,8 @@ them
 themselves
 then
 thence
-there is
 there
+there is
 thereafter
 therebetween
 thereby
@@ -459,11 +459,11 @@ thereto
 thereupon
 therewith
 these
+they
 they are
 they have
 they will
 they would
-they
 thick
 thin
 third
@@ -510,25 +510,25 @@ very
 via
 vice
 viceversa
-was not
 was
+was not
+we
 we are
 we have
 we will
 we would
-we
 well
-were not
 were
-what is
+were not
 what
+what is
 whatever
-when is
 when
+when is
 whence
 whenever
-where is
 where
+where is
 whereafter
 whereas
 whereat
@@ -542,29 +542,29 @@ whichever
 while
 whilst
 whither
-who is
 who
+who is
 whoever
 whole
 whom
 whomever
 whose
-why is
 why
-will not
+why is
 will
+will not
 with
 within
 without
-would not
 would
+would not
 y
 yet
+you
 you are
 you have
 you will
 you would
-you
 your
 yours
 yourself
