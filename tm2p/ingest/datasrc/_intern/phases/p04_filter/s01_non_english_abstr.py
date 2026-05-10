@@ -41,6 +41,7 @@ def s01_non_english_abstr(root_directory: str) -> int:
     df = df.drop(columns=["abs_lang"])
 
     if n_removed > 0:
+
         save_main_csv_zip(df, root_directory)
 
     return n_removed

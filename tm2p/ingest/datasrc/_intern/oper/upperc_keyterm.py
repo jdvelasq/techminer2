@@ -138,7 +138,7 @@ def _repair_meaningful_terms(text):
 
     def _repair_parenthetical_terms(text):
         text = re.sub(
-            r"\( ([a-z]+) \)",
+            r"\( ([a-z][a-z]+) \)",
             lambda m: f"( {m.group(1).upper()} )",
             text,
         )
@@ -205,6 +205,7 @@ def _normalize(text):
         text = repair_strange_cases(text)
         text = remove_single_word_noise(text)
 
+        text = mark_copyright(text)
         text = _repair_meaningful_terms(text)
 
     except Exception as e:

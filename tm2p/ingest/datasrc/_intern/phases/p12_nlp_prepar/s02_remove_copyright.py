@@ -23,65 +23,23 @@ def s02_remove_copyright(root_directory: str) -> int:
 
     df = df.drop_duplicates(subset=[Field.ABSTR_RAW.value])
 
-    df[Field.ABSTR_TOK.value] = df[Field.ABSTR_TOK.value].str.replace(
-        r"\. all rights reserved \.$", "", regex=True
-    )
-
-    df[Field.ABSTR_TOK.value] = df[Field.ABSTR_TOK.value].str.replace(
-        r"this is an open access article\b.*$", "", regex=True
-    )
-
-    df[Field.ABSTR_TOK.value] = df[Field.ABSTR_TOK.value].str.replace(
-        r"clinical trial registration :\b.*$", "", regex=True
-    )
-
-    df[Field.ABSTR_TOK.value] = df[Field.ABSTR_TOK.value].str.replace(
+    for regex in [
+        r"\. all rights reserved \.$",
+        r"this is an open access article\b.*$",
+        r"clinical trial registration :\b.*$",
         r"this article is distributed under the terms of\b.*$",
-        "",
-        regex=True,
-    )
-
-    df[Field.ABSTR_TOK.value] = df[Field.ABSTR_TOK.value].str.replace(
         r"los articulos publicados por el sello editorial\b.*$",
-        "",
-        regex=True,
-    )
-
-    df[Field.ABSTR_TOK.value] = df[Field.ABSTR_TOK.value].str.replace(
         r"\. the open access version of this book\b.*$",
-        "",
-        regex=True,
-    )
-
-    df[Field.ABSTR_TOK.value] = df[Field.ABSTR_TOK.value].str.replace(
         r"\. contributors include :\b.*$",
-        "",
-        regex=True,
-    )
-
-    df[Field.ABSTR_TOK.value] = df[Field.ABSTR_TOK.value].str.replace(
         r"\. \d{4} selection and editorial matter ,.*$",
-        "",
-        regex=True,
-    )
-
-    df[Field.ABSTR_TOK.value] = df[Field.ABSTR_TOK.value].str.replace(
         r"\. prospero registration number.*$",
-        "",
-        regex=True,
-    )
-
-    df[Field.ABSTR_TOK.value] = df[Field.ABSTR_TOK.value].str.replace(
         r"\. copyright \d{4}.*$",
-        "",
-        regex=True,
-    )
-
-    df[Field.ABSTR_TOK.value] = df[Field.ABSTR_TOK.value].str.replace(
         r"\. trial sponsor :.*$",
-        "",
-        regex=True,
-    )
+    ]:
+
+        df[Field.ABSTR_TOK.value] = df[Field.ABSTR_TOK.value].str.replace(
+            regex, "", regex=True
+        )
 
     with stdout_to_stderr():
         progress_bar = True

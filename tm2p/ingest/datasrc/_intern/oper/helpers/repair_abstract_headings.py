@@ -20,6 +20,7 @@ SINGLE_STRUCTURED_ABSTRACT_HEADINGS = [
     "condusion",
     "context",
     "contribution",
+    "contributions",
     "design",
     "discussion",
     "evaluation",
@@ -59,6 +60,7 @@ SINGLE_STRUCTURED_ABSTRACT_HEADINGS = [
     "program",
     "purpose",
     "recommendations",
+    "recommendation",
     "result",
     "results",
     "setting",
@@ -69,6 +71,8 @@ SINGLE_STRUCTURED_ABSTRACT_HEADINGS = [
     "summary",
     "uniqueness",
     "value",
+    "intent",
+    "content",
 ]
 
 _COMPILED_PATTERNS: list[tuple[str, re.Pattern]] = []

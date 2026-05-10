@@ -1,12 +1,17 @@
+import re
 import sys
-from typing import Callable, Optional
 
 import pandas as pd  # type: ignore
-from pandas import Series  # type: ignore
+from pandarallel import pandarallel  # type: ignore
 
+from tm2p._intern import stdout_to_stderr
+from tm2p._intern.packag_data.word_lists import load_builtin_word_list
 from tm2p.enum import Field
 
 from ._file_dispatch import get_file_operations
+from .helpers import repair_abstract_headings
+
+_COPYRIGHT_PATTERNS: list[re.Pattern] = []
 
 ABSTR = Field.ABSTR_UPPER.value
 WORD_RAW = "WORD_RAW"
@@ -209,6 +214,45 @@ def _review_mixed_letters_cases(
         )
 
 
+def _correct_abstract_headings_and_copyright(root_directory: str) -> None:
+
+    load_data, save_data, get_path = get_file_operations()
+
+    dataframe = load_data(root_directory=root_directory, usecols=None)
+
+    dataframe[ABSTR] = dataframe[ABSTR].map(lambda x: f" {x} " if pd.notna(x) else x)
+
+    with stdout_to_stderr():
+        progress_bar = True
+        pandarallel.initialize(progress_bar=progress_bar, verbose=0)
+        # dataframe[ABSTR] = dataframe[ABSTR].parallel_apply(mark_copyright)
+        dataframe[ABSTR] = dataframe[ABSTR].parallel_apply(repair_abstract_headings)
+        sys.stderr.write("\n")
+
+    dataframe[ABSTR] = dataframe[ABSTR].str.strip()
+
+    save_data(df=dataframe, root_directory=root_directory)
+
+
+def _compile_copyrigth_patterns() -> list[re.Pattern]:
+    if not _COPYRIGHT_PATTERNS:
+        copyright_regex = load_builtin_word_list("copyright.txt")
+        sorted_copyright_regex = sorted(copyright_regex, key=len, reverse=True)
+        _COPYRIGHT_PATTERNS.extend(
+            re.compile(r"(" + regex + r")") for regex in sorted_copyright_regex
+        )
+    return _COPYRIGHT_PATTERNS
+
+
+def mark_copyright(text) -> str:
+    if pd.isna(text):
+        return text
+    text = str(text)
+    for pattern in _compile_copyrigth_patterns():
+        text = pattern.sub(lambda m: m.group().replace(" ", "_"), text)
+    return text
+
+
 def abstr_metrics(
     root_directory: str,
 ) -> int:
@@ -218,6 +262,16 @@ def abstr_metrics(
     _repair_mixed_letters_cases(root_directory)
 
     _print_header()
+
+    _review_mixed_cases(root_directory)
+    _review_one_letter_cases(root_directory)
+    _review_mixed_letters_cases(root_directory)
+
+    _print_footer()
+
+    _correct_abstract_headings_and_copyright(root_directory)
+
+    _print_footer()
 
     _review_mixed_cases(root_directory)
     _review_one_letter_cases(root_directory)

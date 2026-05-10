@@ -9,6 +9,10 @@ def load_builtin_word_list(filename: str) -> frozenset[str]:
     lines = content.splitlines()
 
     lines = [line.strip() for line in lines]
-    lines = [line for line in lines if line]
+    lines = sorted(set(line for line in lines if line))
+
+    # from .save_builtin_word_list import save_builtin_word_list
+
+    # save_builtin_word_list(filename, lines)
 
     return frozenset(lines)

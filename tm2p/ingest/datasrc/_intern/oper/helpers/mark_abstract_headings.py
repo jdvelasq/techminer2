@@ -33,6 +33,7 @@ COMPOUND_STRUCTURED_ABSTRACT_HEADINGS = [
     "conclusions / significance",
     "conclusion and relevance",
     "conclusions and relevance",
+    "conclusion and recommendations",
     "contribution of the paper",
     "data collection and analysis",
     "data sources and analytic sample",
@@ -115,6 +116,7 @@ COMPOUND_STRUCTURED_ABSTRACT_HEADINGS = [
     "purpose of review",
     "purpose of the article",
     "purpose of the study",
+    "purpose of_the_study",
     "recent findings",
     "recommendations for future research",
     "reporting methods",
@@ -123,6 +125,7 @@ COMPOUND_STRUCTURED_ABSTRACT_HEADINGS = [
     "research background",
     "research design",
     "research findings",
+    "research implications",
     "research limitation",
     "research limitations / implications",
     "research method",
@@ -145,6 +148,7 @@ COMPOUND_STRUCTURED_ABSTRACT_HEADINGS = [
     "study region",
     "study focus",
     "study design",
+    "study selection",
     "study results",
     "study setting and design",
     "subjects and methods",
@@ -164,6 +168,8 @@ COMPOUND_STRUCTURED_ABSTRACT_HEADINGS = [
     "methods / analysis",
     "comprehensive failure analysis",
     "participants and setting",
+    "public abstract",
+    "academic abstract",
 ]
 
 

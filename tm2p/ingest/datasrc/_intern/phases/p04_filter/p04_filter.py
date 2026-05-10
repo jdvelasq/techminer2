@@ -16,5 +16,6 @@ def p04_filter(params: Params) -> list[Step]:
             name="Removing non-English abstracts from WoS data",
             function=s01_non_english_abstr,
             kwargs=common_kwargs,
+            count_message="{count} records removed",
         ),
     ]
