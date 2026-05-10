@@ -2,7 +2,7 @@ from tm2p.enum import Field
 from tm2p.ingest.datasrc._intern.oper import merge_columns
 
 
-def s14_np_raw(root_directory: str) -> int:
+def s15_np_raw(root_directory: str) -> int:
 
     return merge_columns(
         sources=(

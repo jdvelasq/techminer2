@@ -108,15 +108,32 @@ def _tokenize(text: pd.Series) -> pd.Series:
     )
 
     # -------------------------------------------------------------------------
+    text = text.str.replace("©", "", regex=False)
+
+    # -------------------------------------------------------------------------
     # find all URLs in the pandas series
 
-    urls = text.str.findall(_URL_PATTERN).explode().dropna().unique().tolist()
+    urls = (
+        text.str.findall(r"\(" + _URL_PATTERN + r"\)")
+        .explode()
+        .dropna()
+        .unique()
+        .tolist()
+    )
+    urls += text.str.findall(_URL_PATTERN).explode().dropna().unique().tolist()
 
     # Replace URLs with the by "__url{i}__" where i is the index
     # of the URL in the list of unique URLs.
-    for i, url in enumerate(urls):
-        placeholder = f" . . . url{i} . . . "
-        text = text.str.replace(url, placeholder, regex=False)
+    # for i, url in enumerate(urls):
+    #     placeholder = f" . . . url{i} . . . "
+    #     text = text.str.replace(url, placeholder, regex=False)
+
+    for url in urls:
+        text = text.str.replace(url, "", regex=False).str.strip()
+
+    text = text.str.replace("   ", " ", regex=False)
+    text = text.str.replace("  ", " ", regex=False)
+
     # -------------------------------------------------------------------------
 
     # Normalize unicode
@@ -346,11 +363,11 @@ def _tokenize(text: pd.Series) -> pd.Series:
             continue
 
     # Restore URLs
-    for i, url in enumerate(urls):
-        placeholder = f". . . url{i} . . ."
-        text = text.str.replace(placeholder, url, regex=False)
+    # for i, url in enumerate(urls):
+    #     placeholder = f". . . url{i} . . ."
+    #     text = text.str.replace(placeholder, url, regex=False)
 
-    text = text.str.replace(" :http", " : http", regex=False)
+    # text = text.str.replace(" :http", " : http", regex=False)
 
     for old, new in _NOUN_PHRASE_CORRECTIONS:
         text = text.str.replace(old, new, regex=False)
@@ -364,11 +381,11 @@ def _tokenize(text: pd.Series) -> pd.Series:
     text = text.str.replace(" - ", "-", regex=False)
     text = text.str.replace("- ", "-", regex=False)
     # text = text.str.replace("-", "_", regex=False)
-    text = text.str.replace(
-        "http://creativecommons.org/licenses/by nc nd/4.0/",
-        "http://creativecommons.org/licenses/by_nc_nd/4.0/",
-        regex=False,
-    )
+    # text = text.str.replace(
+    #     "http://creativecommons.org/licenses/by nc nd/4.0/",
+    #     "http://creativecommons.org/licenses/by_nc_nd/4.0/",
+    #     regex=False,
+    # )
 
     text = text.str.replace(" ' ", " ", regex=False)
     text = text.str.replace("___", "_", regex=False)
@@ -384,4 +401,4 @@ def _tokenize(text: pd.Series) -> pd.Series:
     # for word in known_individual_words:
     #     text = text.str.replace(word, word.replace("-", " "), regex=False)
 
-    return text
+    return text.str.strip()

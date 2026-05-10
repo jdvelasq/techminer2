@@ -9,19 +9,20 @@ from ...step import Step
 def p12_nlp_prepar(params: Params) -> list[Step]:
 
     from .s01_abstr_tok import s01_abstr_tok
-    from .s02_title_tok import s02_title_tok
-    from .s03_np_textblob import s03_np_textblob
-    from .s04_np_spacy import s04_np_spacy
-    from .s05_np_gensim import s05_np_gensim
-    from .s06_np_yake import s06_np_yake
-    from .s07_np_known import s07_np_known
-    from .s08_abstract_acronyms import s08_abstract_acronyms
-    from .s09_abstr_upper import s09_abstr_upper
-    from .s10_abstr_metr import s10_abstr_metrics
-    from .s11_title_upper import s11_title_upper
-    from .s12_np_abstr_raw import s12_np_abstr_raw
-    from .s13_np_title_raw import s13_np_title_raw
-    from .s14_np_raw import s14_np_raw
+    from .s02_remove_copyright import s02_remove_copyright
+    from .s03_title_tok import s03_title_tok
+    from .s04_np_textblob import s04_np_textblob
+    from .s05_np_spacy import s05_np_spacy
+    from .s06_np_gensim import s06_np_gensim
+    from .s07_np_yake import s07_np_yake
+    from .s08_np_known import s08_np_known
+    from .s09_abstract_acronyms import s09_abstract_acronyms
+    from .s10_abstr_upper import s10_abstr_upper
+    from .s11_abstr_metr import s11_abstr_metrics
+    from .s12_title_upper import s12_title_upper
+    from .s13_np_abstr_raw import s13_np_abstr_raw
+    from .s14_np_title_raw import s14_np_title_raw
+    from .s15_np_raw import s15_np_raw
 
     common_kwargs = {"root_directory": params.root_directory}
 
@@ -32,68 +33,73 @@ def p12_nlp_prepar(params: Params) -> list[Step]:
             kwargs=common_kwargs,
         ),
         Step(
+            name="Removing copyright",
+            function=s02_remove_copyright,
+            kwargs=common_kwargs,
+        ),
+        Step(
             name="Tokenizing TITLE",
-            function=s02_title_tok,
+            function=s03_title_tok,
             kwargs=common_kwargs,
         ),
         Step(
             name="Extracting TextBlob phrases",
-            function=s03_np_textblob,
+            function=s04_np_textblob,
             kwargs=common_kwargs,
         ),
         Step(
             name="Extracting spaCy phrases",
-            function=s04_np_spacy,
+            function=s05_np_spacy,
             kwargs=common_kwargs,
         ),
         Step(
             name="Extracting Gensim phrases",
-            function=s05_np_gensim,
+            function=s06_np_gensim,
             kwargs=common_kwargs,
         ),
         Step(
             name="Extracting Yake phrases",
-            function=s06_np_yake,
+            function=s07_np_yake,
             kwargs=common_kwargs,
         ),
         Step(
             name="Extracting known phrases",
-            function=s07_np_known,
+            function=s08_np_known,
             kwargs=common_kwargs,
         ),
         Step(
             name="Extracting abstract acronyms",
-            function=s08_abstract_acronyms,
+            function=s09_abstract_acronyms,
             kwargs=common_kwargs,
         ),
         Step(
             name="Uppercasing ABSTR",
-            function=s09_abstr_upper,
+            function=s10_abstr_upper,
             kwargs=common_kwargs,
         ),
         Step(
             name="Computing ABSTR metrics",
-            function=s10_abstr_metrics,
+            function=s11_abstr_metrics,
             kwargs=common_kwargs,
         ),
         Step(
             name="Uppercasing TITLE",
-            function=s11_title_upper,
+            function=s12_title_upper,
             kwargs=common_kwargs,
         ),
         Step(
             name="Extracting ABSTR phrases",
-            function=s12_np_abstr_raw,
+            function=s13_np_abstr_raw,
             kwargs=common_kwargs,
         ),
         Step(
             name="Extracting TITLE phrases",
-            function=s13_np_title_raw,
+            function=s14_np_title_raw,
             kwargs=common_kwargs,
         ),
         Step(
             name="Merging TITLE and ABSTR phrases",
-            function=s14_np_raw,
+            function=s15_np_raw,
             kwargs=common_kwargs,
         ),
     ]

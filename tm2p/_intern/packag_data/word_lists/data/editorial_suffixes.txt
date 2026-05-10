@@ -1,0 +1,862 @@
+ \d{4} \( ludek stavinoha \) \.$
+, \d{4} australian institute of international affairs \.$
+, springer science\+business media b \. v \.$
+\. -g.m.sheail
+\. , copyright taylor and francis \.$
+\. , copyright taylor and francis group , llc \.$
+\. \. rusi journal \d{4} \.$
+\. \( \d{4} \) , \( adonis and abbey publishers ltd \)
+\. \( \d{4} \) , \( centro estudios derecho penal \)$
+\. \( \d{4} \) , \( elite scientific publications \)
+\. \( \d{4} \) , \( hbz open publishing environment \)
+\. \( \d{4} \) , \( international center for counter terrorism \( icct \) \)
+\. \( \d{4} \) , \( iscte \)
+\. \( \d{4} \) , \( science and information organization \)
+\. \( \d{4} \) , \( universitat de valencia \)
+\. \( \d{4} \) , \( university of defense \) , all rights reserved \.$
+\. \( \d{4} \) , \( university of defense \) \. all right reserved \.$
+\. \( \d{4} \) , all rights reserved \.$
+\. \( \d{4} \) by the ais / icis administrative office all rights reserved \.$
+\. \[ \d{4} \] by the author \. licensee studies in digital heritage , iu , bloomington \( in \) , usa
+\. \d{4}
+\. \d{4} , \d{4} by american association of geographers \.$
+\. \d{4} , \d{4} by the american academy of political and social science \.$
+\. \d{4} , \d{4} commonwealth secretariat \.$
+\. \d{4} , \d{4} informa uk limited , trading as taylor and francis group \.$
+\. \d{4} , \d{4} organization for diaspora initiatives , new delhi \.$
+\. \d{4} , \d{4} taylor and francis \.$
+\. \d{4} , \d{4} taylor and francis group , llc \.$
+\. \d{4} , \d{4} the author \( s \) \. published by informa uk limited , trading as taylor and francis group \.$
+\. \d{4} , \d{4} un women \.$
+\. \d{4} , academic research and publishing ug
+\. \d{4} , addleton academic publishers
+\. \d{4} , adonis and abbey publishers ltd
+\. \d{4} , advances \. in ltd
+\. \d{4} , alexander von humboldt institute for internet and society
+\. \d{4} , american sociological association \d{4} \.$
+\. \d{4} , american university in cairo
+\. \d{4} , associacao brasileira de pos graduacao them saude coletiva
+\. \d{4} , athabasca university \.$
+\. \d{4} , babes bolyai university
+\. \d{4} , berghahn journals
+\. \d{4} , bright publisher
+\. \d{4} , ca and c press ab
+\. \d{4} , cahaya ilmu cendekia publisher
+\. \d{4} , casa editrice leo s \. olschki
+\. \d{4} , ceur ws
+\. \d{4} , chr \. michelsen institute
+\. \d{4} , copyright taylor and francis group , llc \.$
+\. \d{4} , curran associates inc
+\. \d{4} , cv najaha
+\. \d{4} , department of peace studies and international development , university of bradford
+\. \d{4} , editorial department of resources science \. all right reserved \.$
+\. \d{4} , edward elgar publishing ltd
+\. \d{4} , emerald publishing limited \.$
+\. \d{4} , essachess
+\. \d{4} , european journal of legal studies
+\. \d{4} , faculty of law , universitas hasanuddin
+\. \d{4} , faculty of navigation , gdynia maritime university
+\. \d{4} , fakultas ilmu budaya universitas andalas
+\. \d{4} , felix chari and bethuel sibongiseni ngcamu \.$
+\. \d{4} , green publication
+\. \d{4} , harvard kennedy school
+\. \d{4} , if ac \( international federation of automatic control \) hosting by elsevier ltd
+\. \d{4} , ifac \( international federation of automatic control \) hosting by elsevier ltd
+\. \d{4} , iffca \( internaitional fedreation of automatic control \) hosting by elsevier ltd
+\. \d{4} , ifip international federation for information processing \.$
+\. \d{4} , igi global
+\. \d{4} , igi global \. copying or distributing in print or electronic forms without written permission of igi global is prohibited \.$
+\. \d{4} , igi global \.$
+\. \d{4} , igi global scientific publishing
+\. \d{4} , igi global scientific publishing \.$
+\. \d{4} , ikatan ahli informatika indonesia
+\. \d{4} , institute for human rehabilitation
+\. \d{4} , institute of law studies of the polish academy of sciences and the committee on legal sciences of the polish academy of sciences
+\. \d{4} , intelektual pustaka media utama
+\. \d{4} , international society of global health
+\. \d{4} , islamic research institute
+\. \d{4} , j \. ilm \. peuradeun
+\. \d{4} , jagiellonian university press
+\. \d{4} , john paul ii catholic university of lublin
+\. \d{4} , jonathan atta aidoo , saidi bizoza , ester cosmas matthew and abdulkarim onah saleh \.$
+\. \d{4} , kirschbaum verlag gmbh
+\. \d{4} , library philosophy and practice \.$
+\. \d{4} , maggioli s \. p \. a \.$
+\. \d{4} , malque publishing
+\. \d{4} , mary ann liebert , inc \.$
+\. \d{4} , modern education and computer science press
+\. \d{4} , muhammed mustafa kulu
+\. \d{4} , nature \.$
+\. \d{4} , observare
+\. \d{4} , pakistan society of criminology
+\. \d{4} , partnership for peace consortium of defense academies and security studies institutes
+\. \d{4} , penerbit universiti kebangsaan malaysia
+\. \d{4} , perspectives on terrorism
+\. \d{4} , pontificia universidad javeriana
+\. \d{4} , pontificia universidade catolica do rio de janeiro
+\. \d{4} , published with license by taylor and francis group , llc \. \d{4} sarah cherry \.$
+\. \d{4} , publishing house helvetica
+\. \d{4} , randolph kent \.$
+\. \d{4} , rudn university
+\. \d{4} , smw supporting association
+\. \d{4} , society for international development \.$
+\. \d{4} , springer international publishing ag , part of springer nature \.$
+\. \d{4} , springer international publishing switzerland \.$
+\. \d{4} , springer nature b \. v \.$
+\. \d{4} , springer nature singapore pte ltd \.$
+\. \d{4} , springer nature switzerland ag \.$
+\. \d{4} , springer science\+business media , llc , part of springer nature \.$
+\. \d{4} , springer science\+business media b \. v \.$
+\. \d{4} , springer science\+business media b.v. , part of springer nature \.$
+\. \d{4} , springer science\+business media new york \.$
+\. \d{4} , springer science+business media , llc , part of springer nature \.$
+\. \d{4} , springer science+business media , llc , part of springer nature \.$
+\. \d{4} , springer science+business media b \. v \.$
+\. \d{4} , springer science+business media b \. v \.$
+\. \d{4} , springer science+business media b.v. , part of springer nature \.$
+\. \d{4} , springer science+business media new york \.$
+\. \d{4} , springer verlag gmbh austria , part of springer nature \.$
+\. \d{4} , springer verlag gmbh germany , part of springer nature \.$
+\. \d{4} , stanford law school
+\. \d{4} , suranaree university of technology
+\. \d{4} , surveillance studies network
+\. \d{4} , thammasat university
+\. \d{4} , the author \( s \) , under exclusive license to springer nature b \. v \.$
+\. \d{4} , the author \( s \) , under exclusive license to springer nature b.v \. part of springer nature \.$
+\. \d{4} , the author \( s \) , under exclusive license to springer nature limited \.$
+\. \d{4} , the author \( s \) , under exclusive license to springer nature singapore pte ltd \.$
+\. \d{4} , the author \( s \) , under exclusive license to springer nature switzerland ag \.$
+\. \d{4} , the author \( s \) , under exclusive license to springer science+business media , llc , part of springer nature \.$
+\. \d{4} , the author \( s \) , under exclusive license to springer verlag gmbh austria , part of springer nature \.$
+\. \d{4} , the author \( s \) , under exclusive license to springer verlag london ltd \. , part of springer nature \.$
+\. \d{4} , the author \( s \) \.$
+\. \d{4} , the author \( s \) \d{4} \.$
+\. \d{4} , the author \( s \) under exclusive license to institute of geophysics , polish academy of sciences and polish academy of sciences \.$
+\. \d{4} , the editor \( s \) \( if applicable \) and the author \( s \) , under exclusive license to springer nature switzerland ag \.$
+\. \d{4} , united states army war college
+\. \d{4} , universidad complutense madrid
+\. \d{4} , universidad de caldas
+\. \d{4} , universidad de la sabana
+\. \d{4} , universidad del zulia
+\. \d{4} , universidad politecnica de valencia
+\. \d{4} , universitaet bielefeld
+\. \d{4} , universiti kebangsaan malaysia press
+\. \d{4} , university of arizona libraries
+\. \d{4} , university of defense
+\. \d{4} , university of ilorin , faculty of engineering and technology
+\. \d{4} , university of medellin
+\. \d{4} , university of north carolina press
+\. \d{4} , vfast publisher
+\. \d{4} , visualcom scientific publications
+\. \d{4} , zrc sazu , zalozba zrc
+\. \d{4} \. helena octavianne , et \. al \.$
+\. \d{4} \. international journal of cyber criminology \( diamond open access journal \) \.$
+\. \d{4} \. los autores \.$
+\. \d{4} \. published by ahfe open access
+\. \d{4} \. sukindar , et \. al \.$
+\. \d{4} \. tydskrif vir letterkunde \.$
+\. \d{4} \( balca arda \) \. licensed under the creative commons attribution non commercial no derivatives \( by nc nd \) \. available at
+\. \d{4} \( jeslyn lemke \) \. licensed under the creative commons attribution non commercial no derivatives \( by nc nd \) \. available at
+\. \d{4} \( mirca madianou , liezel longboan , and jonathan corpus ong \) \.$
+\. \d{4} \( zakaria sajir and miriyam aouragh \) \.$
+\. \d{4} \d{2}th asian conference on remote sensing , acrs 2024
+\. \d{4} 42nd international conference on information systems , icis \d{4} treos : building sustainability and resilience with is : a call for action
+\. \d{4} aadil bouhlaoui \.$
+\. \d{4} abdul basid \.$
+\. \d{4} academic conferences limited
+\. \d{4} acm \.$
+\. \d{4} adonis and abbey publishers ltd
+\. \d{4} african studies association of india
+\. \d{4} altrimedia edizioni
+\. \d{4} american association for geriatric psychiatry \.$
+\. \d{4} american political science association \.$
+\. \d{4} american psychological association
+\. \d{4} american society for photogrammetry and remote sensing \.$
+\. \d{4} americas conference on information systems , amcis \d{4}
+\. \d{4} an najah national university
+\. \d{4} andreea nicoleta dragomir , daiana maura vesmas and ana morari \( bayraktar \) \.$
+\. \d{4} annual reviews inc \.$
+\. \d{4} anpad associacao nacional de pos graduacao e pesquisa them administracao
+\. \d{4} anton tornberg and petter tornberg \.$
+\. \d{4} ars interpretandi \.$
+\. \d{4} association for comparative economic studies
+\. \d{4} association for computational linguistics \.$
+\. \d{4} association for computing machinery \.$
+\. \d{4} association for the study of ethnicity and nationalism and john wiley and sons ltd
+\. \d{4} association for the study of ethnicity and nationalism and john wiley and sons ltd \.$
+\. \d{4} australian feminist law journal inc \.$
+\. \d{4} australian institute of international affairs \.$
+\. \d{4} australian political studies association \.$
+\. \d{4} austrian acedemy of sciences press
+\. \d{4} author \( s \) \.$
+\. \d{4} authors \.$
+\. \d{4} bentham science publishers \.$
+\. \d{4} berghahn journals
+\. \d{4} better advances press
+\. \d{4} blackwell publishing ltd
+\. \d{4} blerina gjerazi \.$
+\. \d{4} boston university law review
+\. \d{4} branka panic and paige arthur \.$
+\. \d{4} brazilian operations research society \.$
+\. \d{4} brian d \. loader , selection and editorial matter \. individual chapters , the contributors \.$
+\. \d{4} brill
+\. \d{4} brill academic publishers
+\. \d{4} british cartographic society \.$
+\. \d{4} british international studies association \.$
+\. \d{4} by american association of geographers \.$
+\. \d{4} by annual reviews 
+\. \d{4} by association of american geographers \.$
+\. \d{4} by author \( s \) \.$
+\. \d{4} by daniel eromosere omoruan , sam erevbenagie usadolo and tanya van der walt
+\. \d{4} by editors \.$
+\. \d{4} by emerald publishing limited \.$
+\. \d{4} by igi global 
+\. \d{4} by igi global \.$
+\. \d{4} by igi global scientific publishing
+\. \d{4} by igi global scientific publishing \.$
+\. \d{4} by imperial college press 
+\. \d{4} by javed m \. shah and tamanna m \. shah \.$
+\. \d{4} by john wiley and sons , inc
+\. \d{4} by michelle cho and jesook song 
+\. \d{4} by nanyang technological university , singapore
+\. \d{4} by pablo antonio fernandez sanchez \. published by koninklijke brill nv , leiden , the netherlands \.$
+\. \d{4} by princeton university press \.$
+\. \d{4} by sahar f \. aziz and khaled a \. beydoun \.$
+\. \d{4} by tamanna m \. shah \.$
+\. \d{4} by tamanna m \. shah and javed m \. shah published under exclusive license by emerald publishing limited \.$
+\. \d{4} by taylor and francis group , llc \.$
+\. \d{4} by the american academy of arts and sciences \.$
+\. \d{4} by the american academy of pediatrics \.$
+\. \d{4} by the american anthropological association 
+\. \d{4} by the author \. licensee cogitatio \( lisbon , portugal \) \.$
+\. \d{4} by the author \. licensee mdpi , basel , switzerland \.$
+\. \d{4} by the author \.$
+\. \d{4} by the author \( s \) \.$
+\. \d{4} by the authors \. \.$
+\. \d{4} by the authors \. koninklijke brill bv , leiden , the netherlands \.$
+\. \d{4} by the authors \. licensee cogitatio \( lisbon , portugal \) \.$
+\. \d{4} by the authors \. licensee learning gate \.$
+\. \d{4} by the authors \. licensee mdpi , basel , switzerland \.$
+\. \d{4} by the authors \.$
+\. \d{4} by the ontario institute for studies in education of the university of toronto \.$
+\. \d{4} by the rowman and littlefield publishing group , inc
+\. \d{4} by the rowman and littlefield publishing group , inc \.$
+\. \d{4} cambridge university press
+\. \d{4} cambridge university press \.$
+\. \d{4} canadian association of slavists \.$
+\. \d{4} cartography and geographic information society \.$
+\. \d{4} center for policing , intelligence and counter terrorism \.$
+\. \d{4} centers for disease control and prevention \( cdc \)
+\. \d{4} cleverley , sergeant , zamberlin , medina , tam and gill \.$
+\. \d{4} columbia law review association
+\. \d{4} common ground research networks
+\. \d{4} commonwealth secretariat \.$
+\. \d{4} communication and society \.$
+\. \d{4} copernicus gmbh
+\. \d{4} copyright for this paper by its authors \. use permitted under creative commons license attribution 4\.0 international \( cc by 4\.0 \) \.$
+\. \d{4} copyright for this paper by its authors \.$
+\. \d{4} copyright held by the owner / author \( s \)
+\. \d{4} copyright held by the owner / author \( s \) \. publication rights licensed to acm \.$
+\. \d{4} copyright held by the owner / author \( s \) \. publication rights licensed to association for computing machinery \.$
+\. \d{4} copyright held by the owner / author \( s \) \. publication rights licensed to the association for computing machinery \.$
+\. \d{4} copyright held by the owner / author \( s \) \.$
+\. \d{4} copyright is held by the owner / author \( s \) \.$
+\. \d{4} copyright spie the international society for optical engineering \.$
+\. \d{4} copyright taylor and francis group , llc \.$
+\. \d{4} cospar
+\. \d{4} curran associates inc \.$
+\. \d{4} danielle keats citron \.$
+\. \d{4} david carment and martin rudner
+\. \d{4} de gruyter mouton
+\. \d{4} de gruyter saur
+\. \d{4} denisa kostovicova et al \. , published by de gruyter , berlin / boston \.$
+\. \d{4} department of agribusiness , universitas muhammadiyah yogyakarta
+\. \d{4} department of politics and international studies \.$
+\. \d{4} department of security studies and criminology \.$
+\. \d{4} dsr publishers/ the university of jordan \.$
+\. \d{4} durham university and john wiley and sons ltd \.$
+\. \d{4} eca \.$
+\. \d{4} editora puc minas
+\. \d{4} editors of middle east critique \.$
+\. \d{4} eduardo missoni and daniele alesani \.$
+\. \d{4} elise feron and tarja vayrynen \.$
+\. \d{4} elra language resource association : cc by nc 4\.0 \.$
+\. \d{4} elra language resource association \.$
+\. \d{4} elsevier b \. v \.$
+\. \d{4} elsevier inc
+\. \d{4} elsevier inc \. all rights are reserved , including those for text and data mining , ai training , and similar technologies \.$
+\. \d{4} elsevier inc \. all rights are reserved \.$
+\. \d{4} elsevier inc \.$
+\. \d{4} elsevier ltd
+\. \d{4} elsevier ltd \. all rights are reserved , including those for text and data mining , ai training , and similar technologies \.$
+\. \d{4} elsevier ltd \. all rights reserved \. \.$
+\. \d{4} elsevier ltd \.$
+\. \d{4} elsevier ltd all rights reserved \.$
+\. \d{4} emerald publishing limited
+\. \d{4} federica d'alessandra and ross james gildea \. published with license by koninklijke brill bv \.$
+\. \d{4} flacso ecuador
+\. \d{4} florian hartleb , published by tallinn university of technology \.$
+\. \d{4} francesca panzironi and katharine gelber \.$
+\. \d{4} gabrielle rifkind and giandomenico picco
+\. \d{4} german institute on radicalization and de radicalization studies \( girds \)
+\. \d{4} german institute on radicalization and de radicalization studies \( girds \) \.$
+\. \d{4} gi forum
+\. \d{4} iadis \.$
+\. \d{4} icct
+\. \d{4} icrc \.$
+\. \d{4} icros \.$
+\. \d{4} ieee \.$
+\. \d{4} ieee computer society
+\. \d{4} igi global
+\. \d{4} ilzamudin ma'mur , et al \.$
+\. \d{4} imasa \.$
+\. \d{4} inderscience enterprises ltd \.$
+\. \d{4} indian council of world affairs \.$
+\. \d{4} informa uk limited , trading as taylor and francis group \.$
+\. \d{4} information systems for crisis response and management , iscram
+\. \d{4} inst francais proche orient
+\. \d{4} institute of advanced engineering and science
+\. \d{4} institute of electrical and electronics engineers inc \.$
+\. \d{4} institute of geography of the slovak academy of science
+\. \d{4} institute of psychiatry and johns hopkins university \.$
+\. \d{4} intellect ltd \.$
+\. \d{4} intellect ltd article \. english language \.$
+\. \d{4} intellect ltd article \.$
+\. \d{4} international association for conflict management \.$
+\. \d{4} international conference of young professionals geoterrace \d{4}
+\. \d{4} international conference of young professionals geoterrace \d{4}
+\. \d{4} international conference of young professionals geoterrace \d{4}
+\. \d{4} international conference of young professionals geoterrace 2023
+\. \d{4} international conference on information systems
+\. \d{4} international council of museums \( icom \) \.$
+\. \d{4} international institute of forecasters
+\. \d{4} international institute of forecasters \.$
+\. \d{4} international islamic university malaysia
+\. \d{4} international joint conferences on artificial intelligence
+\. \d{4} international journal of cyber criminology
+\. \d{4} international multidisciplinary scientific geoconference
+\. \d{4} international society for photogrammetry and remote sensing
+\. \d{4} international society for photogrammetry and remote sensing , inc \. \( isprs \)
+\. \d{4} international society of political psychology
+\. \d{4} iscram \.$
+\. \d{4} ivana stepanovic
+\. \d{4} iw3c2 \( international world wide web conference committee \) , published under creative commons cc by 4\.0 license \.$
+\. \d{4} james f \. keeley and rob huebert \.$
+\. \d{4} jinane el baroudy , \.$
+\. \d{4} jmir publications
+\. \d{4} john wiley and sons , inc
+\. \d{4} john wiley and sons , inc \.$
+\. \d{4} john wiley and sons \.$
+\. \d{4} john wiley and sons ltd
+\. \d{4} john wiley and sons ltd \.$
+\. \d{4} journal of contemporary asia \.$
+\. \d{4} journal of peacebuilding and development \.$
+\. \d{4} kelley school of business , indiana university
+\. \d{4} king college london \.$
+\. \d{4} kluwer academic publishers \.$
+\. \d{4} koninklijke brill nv
+\. \d{4} koninklijke brill nv , leiden \.$
+\. \d{4} macmillan publishers ltd \.$
+\. \d{4} marie segrave and laura vitis
+\. \d{4} marusa t \. veber , published by sciendo \.$
+\. \d{4} masaryk university
+\. \d{4} mass communication and society division of the association for education in journalism and mass communication \.$
+\. \d{4} max kramer
+\. \d{4} michal mochtak \.$
+\. \d{4} nanyang technological university , singapore
+\. \d{4} national academy of sciences
+\. \d{4} national communication association \.$
+\. \d{4} nato ccd coe \.$
+\. \d{4} nato ccdcoe \.$
+\. \d{4} nova science publishers , inc
+\. \d{4} nova science publishers , inc \. \.$
+\. \d{4} nova science publishers , inc \.$
+\. \d{4} odi global \.$
+\. \d{4} ongoing jatit and lls \.$
+\. \d{4} owner / author \.$
+\. \d{4} oxford university press \d{4}
+\. \d{4} parijata majumdar , aniruddha nag , and diego alberto oliva navarro \. individual chapters and \d{4} the authors \.$
+\. \d{4} paul j \. zwier
+\. \d{4} peace and conflict studies
+\. \d{4} penn state university press
+\. \d{4} peter lang group ag , lausanne \.$
+\. \d{4} peter lang group ag , lausanne \( switzerland \)
+\. \d{4} peter lang publishing
+\. \d{4} pham and vinck \.$
+\. \d{4} policy studies organization
+\. \d{4} policy studies organization \.$
+\. \d{4} policy studies organization published by wiley periodicals , inc \.$
+\. \d{4} proceedings of the international conferences iadis information systems \d{4} and e society \d{4}
+\. \d{4} public library of science
+\. \d{4} published under license by iop publishing ltd \.$
+\. \d{4} redfame publishing inc \.$
+\. \d{4} rejnaldo gjerazi \.$
+\. \d{4} religion and politics section of the american political science association \.$
+\. \d{4} roger mac ginty and jenny h peterson \.$
+\. \d{4} rui wang
+\. \d{4} sage publications \.$
+\. \d{4} samuel henkin et al \. , published by de gruyter \.$
+\. \d{4} san diego state university
+\. \d{4} sara m \. smyth \.$
+\. \d{4} sciendo
+\. \d{4} scrivener publishing llc \.$
+\. \d{4} seas society for south east asian studies
+\. \d{4} selection and editorial material , anne aly , stuart macdonald , lee jarvis and thomas chen \.$
+\. \d{4} selection and editorial matter , adeyemi abel ajibesin and narasimha rao vajjhala \. individual chapters , the contributors \.$
+\. \d{4} selection and editorial matter , ana beduschi , massimo marelli , and aaron martin \. individual chapters , the contributors \. 
+\. \d{4} selection and editorial matter , ana maria herman \.$
+\. \d{4} selection and editorial matter , anita ferrara and beatrice canossi \. individual chapters , the contributors \.$
+\. \d{4} selection and editorial matter , artur gruszczak and sebastian kaempf 
+\. \d{4} selection and editorial matter , bijan rouhani and xavier romao \. individual chapters , the contributors \.$
+\. \d{4} selection and editorial matter , carol a \. ireland , michael lewis , anthony c \. lopez , jane l \. ireland \. individual chapters , the contributors \.$
+\. \d{4} selection and editorial matter , christophe declercq and koen kerremans \. individual chapters , the contributors \.$
+\. \d{4} selection and editorial matter , daniel koehler and miroslav mares \. individual chapters , the contributors
+\. \d{4} selection and editorial matter , devin proctor \. individual chapters , the contributors \.$
+\. \d{4} selection and editorial matter , dr \. raja m \. , dr \. satya subrahmanyam , dr \. r \. raja subramanian and dr \. j \. karthikeyan \. individual chapters , the contributors \.$
+\. \d{4} selection and editorial matter , graham d \. bodie , debra l \. worthingon , and zenebe beyene individual chapters , the contributors \.$
+\. \d{4} selection and editorial matter , ibrahim natil \. individual chapters , the contributors
+\. \d{4} selection and editorial matter , ingrid roestenburg morgan and tim murithi \. individual chapters , the contributors \.$
+\. \d{4} selection and editorial matter , jacinta maweu and admire mare \.$
+\. \d{4} selection and editorial matter , james n \. sater \.$
+\. \d{4} selection and editorial matter , kees boersma and chiara fonio \. individual chapters , the contributors \.$
+\. \d{4} selection and editorial matter , landon e \. hancock and christopher mitchell \. individual chapters , the contributors \.$
+\. \d{4} selection and editorial matter , lisa schirch \. individual chapters , the contributors \.$
+\. \d{4} selection and editorial matter , marc andre argentino and amarnath amarasingam \. individual chapters , the contributors \.$
+\. \d{4} selection and editorial matter , maria power and maggi savin baden \. individual chapters , the contributors \.$
+\. \d{4} selection and editorial matter , marzena zakowska and david last \.$
+\. \d{4} selection and editorial matter , mehmet emin erendor \. individual chapters , the contributors \.$
+\. \d{4} selection and editorial matter , michal givoni \.$
+\. \d{4} selection and editorial matter , monika banas and vesa puuronen \.$
+\. \d{4} selection and editorial matter , mphathisi ndlovu and lungile augustine tshuma \. individual chapters , the contributors \.$
+\. \d{4} selection and editorial matter , nicole dahmen and t.j \. thomson 
+\. \d{4} selection and editorial matter , rachel charlotte smith , daria loi , heike winschiers theophihis , liesbeth huybrechts and jesper simonsen \. 
+\. \d{4} selection and editorial matter , rainer greifeneder , mariela e \. jaffe , eryn j \. newman , and norbert schwarz \. 
+\. \d{4} selection and editorial matter , stacey l \. connaughton and stefanie pukallus individual chapters , the contributors \.$
+\. \d{4} selection and editorial matter , stefanie ullmann and marcus tomalin \. individual chapters , the contributors \.$
+\. \d{4} selection and editorial matter , sue gonzalez hauck , raffaela kunz , max milas \. 
+\. \d{4} selection and editorial matter , tabe bergman and jesse owen hearns branaman \. individual chapters , the contributors \.$
+\. \d{4} selection and editorial matter , tanya sheehan \. individual chapters , the contributors \.$
+\. \d{4} selection and editorial matter , thipendra p \. singh , niharika singh , amar ramdane cherif , ravi tomar , and richa choudhary \. individual chapters , the contributors \.$
+\. \d{4} selection and editorial matter , tinuade adekunbi ojo and bhaso ndzendze \. individual chapters , the contributors \.$
+\. \d{4} selection and editorial matter , tore bjrgo and miroslav mares \.$
+\. \d{4} selection and editorial matter , v \. adefemi isumonah and nathaniel umukoro \.$
+\. \d{4} selection and editorial matter , zizi papacharissi \. individual chapters , the contributors \.$
+\. \d{4} seventh sense research group
+\. \d{4} sgerman institute on radicalization and de radicalization studies \( girds \)$
+\. \d{4} society for risk analysis \.$
+\. \d{4} society for terrorism research \.$
+\. \d{4} southern political science association
+\. \d{4} southseries inc \. , www \. thirdworldquarterly \. com \.$
+\. \d{4} spie \.$
+\. \d{4} springer netherlands \.$
+\. \d{4} springer science\+business media b \. v \.$
+\. \d{4} springer science+business media b \. v \.$
+\. \d{4} springer verlag berlin heidelberg \.$
+\. \d{4} taylor and francis
+\. \d{4} taylor and francis \.$
+\. \d{4} taylor and francis group , llc \.$
+\. \d{4} taylor and francis ltd \.$
+\. \d{4} technology , pedagogy and education association \.$
+\. \d{4} terrorism research initiative \.$
+\. \d{4} tesol international association \.$
+\. \d{4} the author
+\. \d{4} the author \. antipode \d{4} antipode foundation ltd \.$
+\. \d{4} the author \. published by elsevier inc \. this is an open access article under the cc by license \.$
+\. \d{4} the author \.$
+\. \d{4} the author \( s \)
+\. \d{4} the author \( s \) , published by de gruyter , berlin / boston \.$
+\. \d{4} the author \( s \) \. american journal of community psychology published by wiley periodicals llc on behalf of society for community research and action \.$
+\. \d{4} the author \( s \) \. american journal of political science published by wiley periodicals llc on behalf of midwest political science association \.$
+\. \d{4} the author \( s \) \. campbell systematic reviews published by john wiley and sons ltd on behalf of the campbell collaboration \.$
+\. \d{4} the author \( s \) \. co published by unisa press and informa uk limited , trading as taylor and francis group \.$
+\. \d{4} the author \( s \) \. european journal of education published by john wiley and sons ltd \.$
+\. \d{4} the author \( s \) \. published by cambridge university press on behalf of the icrc \.$
+\. \d{4} the author \( s \) \. published by informa uk limited , trading as taylor and francis group \.$
+\. \d{4} the author \( s \) \. published by informa uk limited , trading as taylor and francis group on behalf of the nagasaki university \.$
+\. \d{4} the author \( s \) \. published by iop publishing ltd
+\. \d{4} the author \( s \) \. published by iop publishing ltd \.$
+\. \d{4} the author \( s \) \. published by oxford university press
+\. \d{4} the author \( s \) \. published by oxford university press \.$
+\. \d{4} the author \( s \) \. published by oxford university press on behalf of the international studies association \.$
+\. \d{4} the author \( s \) \. published by oxford university press on behalf of the royal institute of international affairs
+\. \d{4} the author \( s \) \. published by oxford university press on behalf of the world association for public opinion research
+\. \d{4} the author \( s \) \. published by pnas \. this open access article is distributed under creative commons attribution noncommercial noderivatives license 4\.0 \( cc by nc nd \) \.$
+\. \d{4} the author \( s \) \. published with license by taylor and francis group , llc \.$
+\. \d{4} the author \( s \) \. this is an open access article distributed under the terms of the creative commons attribution 4\.0 \.$
+\. \d{4} the author \( s \) \.$
+\. \d{4} the author \( s \) \( \d{4} \) \. published by oxford university press
+\. \d{4} the author \( s \) \( \d{4} \) \. published by oxford university press on behalf of the international studies association \.$
+\. \d{4} the author \( s \) \d{4} \. published by oxford university press on behalf of the royal institute of international affairs \. all rights reserved \. for permissions , please email : journals \. permissions@oup \. com \.$
+\. \d{4} the author journal compilation \d{4} department of geography , national university of singapore and blackwell publishing asia pty ltd \.$
+\. \d{4} the authors
+\. \d{4} the authors \. american ethnologist published by wiley periodicals llc on behalf of american anthropological association \.$
+\. \d{4} the authors \. british journal of learning disabilities published by john wiley and sons ltd \.$
+\. \d{4} the authors \. earth future published by wiley periodicals llc on behalf of american geophysical union \.$
+\. \d{4} the authors \. earth future published by wiley periodicals llc on behalf of american geophysical union \.$
+\. \d{4} the authors \. earth future published by wiley periodicals llc on behalf of american geophysical union \.$
+\. \d{4} the authors \. earth future published by wiley periodicals llc on behalf of american geophysical union \.$
+\. \d{4} the authors \. information systems journal published by john wiley and sons ltd \.$
+\. \d{4} the authors \. journal of contingencies and crisis management published by john wiley and sons ltd \.$
+\. \d{4} the authors \. population , space and place published by john wiley and sons ltd \.$
+\. \d{4} the authors \. production and operations management published by wiley periodicals llc on behalf of production and operations management society \.$
+\. \d{4} the authors \. published by elsevier b \. v \.$
+\. \d{4} the authors \. published by elsevier b.v \. this is an open access article under the cc by license \.$
+\. \d{4} the authors \. published by elsevier ltd \.$
+\. \d{4} the authors \. transactions in gis published by john wiley and sons ltd
+\. \d{4} the authors \.$
+\. \d{4} the authors and ios press \.$
+\. \d{4} the authors european association of geoscientists and engineers \.$
+\. \d{4} the editor , journal of comparative policy analysis : research and practice \.$
+\. \d{4} the editor \( s \) \( if applicable \) and the author \( s \) , under exclusive license to springer nature singapore pte ltd \.$
+\. \d{4} the editor \( s \) \( if applicable \) and the author \( s \) , under exclusive license to springer nature switzerland ag \.$
+\. \d{4} the io foundation \.$
+\. \d{4} the korean society of management information systems \.$
+\. \d{4} the pennsylvania state university \.$
+\. \d{4} the royal society for asian affairs \.$
+\. \d{4} the society of urban technology \.$
+\. \d{4} tine munk \.$
+\. \d{4} universidad de valladolid
+\. \d{4} universidade da beira interior
+\. \d{4} universidade de brasilia
+\. \d{4} university of california press
+\. \d{4} university of kent \.$
+\. \d{4} university of maryland \.$
+\. \d{4} university of minnesota
+\. \d{4} university of pennsylvania law school
+\. \d{4} university of split , fesb \.$
+\. \d{4} velasco trujillo \.$
+\. \d{4} vita e pensiero
+\. \d{4} vivek sehrawat
+\. \d{4} walter de gruyter gmbh , berlin / boston
+\. \d{4} walter de gruyter gmbh , berlin / boston \.$
+\. \d{4} western social science association \.$
+\. \d{4} wiley periodicals , inc \.$
+\. \d{4} wiley periodicals llc \.$
+\. \d{4} woodward et al \. . licensee biomed central ltd \.$
+\. \d{4} world health organization
+\. \d{4} world scientific publishing company \.$
+\. \d{4} wuhan university \. published by informa uk limited , trading as taylor and francis group \.$
+\. \d{4}-\d{4} ibm \.$
+\. \d{4}-\d{4} ieee \.$
+\. \d{4}-ios press
+\. \d{4}-ios press and the authors
+\. a \. i \. al naana a , s \. a \. al tawalbeh , s \. n \. alquraan , \d{4} \.$
+\. a \. walter dorn and cono giardullo , \d{4}
+\. akil n \. awan and james r \. lewis \d{4}
+\. all authors / taylor and francis group \d{4} \.$
+\. allied business academies \.$
+\. amcis \d{4} \.$
+\. amic / wkwsci ntu \d{4} \.$
+\. andreas t \. hirblinger , \d{4} \.$
+\. araa al jaramani and nadia sonneveld , \d{4} \.$
+\. arcdm zashchita \.$
+\. association for information technology trust \d{4} \.$
+\. ateneo de manila university \.$
+\. author \( s \) \( or their employer \( s \) \) \d{4} \. re use permitted under cc by nc \. no commercial re use \. see rights and permissions \. published by bmj group \.$
+\. author \( s \) \( or their employer \( s \) \) \d{4} \.$
+\. author \( s \) \d{4} \. cc by 4\.0 license \.$
+\. author \( s \) \d{4} \.$
+\. authors \d{4} \. cc by 4\.0 license \.$
+\. authors \d{4} \.$
+\. authors retain all \.$
+\. authour \( s \) \.$
+\. by the author \( s \) \.$
+\. cadernos de dereito actual \.$
+\. cambridge university press \d{4}
+\. cambridge university press \d{4} \.$
+\. cambridge university press and assessment \d{4} \.$
+\. case \d{4}-proceedings of the \d{1}th workshop on challenges and applications of automated extraction of socio political events from text , associated with 14th international conference on recent advances in natural language processing , ranlp \d{4} \.$
+\. code and llm prompt templates are at \d{4} international joint conferences on artificial intelligence
+\. common ground , kerric harvey , all rights reserved \.$
+\. copyright : \d{4} van der vet i and malkki l \.$
+\. copyright \( c \) \d{4} the authors \. this work is licensed under a creative commons attribution noncommercial noderivatives 4\.0 international license \.$
+\. copyright \d{4} , american association for artificial intelligence
+\. copyright \d{4} , association for the advancement of artificial intelligence
+\. copyright \d{4} , association for the advancement of artificial intelligence \( www \. aaai \. org \)
+\. copyright \d{4} , mary ann liebert , inc \. , publishers \d{4} \.$
+\. copyright \d{4} , society of petroleum engineers \.$
+\. copyright \d{4} \. published by elsevier ltd \.$
+\. copyright \d{4} \( jeff deutch \) \.$
+\. copyright \d{4} acm \.$
+\. copyright \d{4} by annual reviews
+\. copyright \d{4} by koninklijke brill nv , leiden , the netherlands \.$
+\. copyright \d{4} by the authors \.$
+\. copyright \d{4} by the international astronautical federation \.$
+\. copyright \d{4} by the international astronautical federation \( iaf \)
+\. copyright \d{4} cambridge university press \.$
+\. copyright \d{4} cosic , kopilas and jovanovic \.$
+\. copyright \d{4} dia kayyali the text in this work is licensed under the creative commons by license \.$
+\. copyright \d{4} edler , glasze , kinzelbach and walker \.$
+\. copyright \d{4} fatehkia , del villar , koebe , letouze , lozano , al feel , mrad and weber \.$
+\. copyright \d{4} ganaie \.$
+\. copyright \d{4} ifac \.$
+\. copyright \d{4} inderscience enterprises ltd \.$
+\. copyright \d{4} international committee of the red cross \.$
+\. copyright \d{4} isca \.$
+\. copyright \d{4} ivaskevics and haller \.$
+\. copyright \d{4} john wiley and sons , ltd \.$
+\. copyright \d{4} kobilke , kulichkina , baghumyan and pipal \.$
+\. copyright \d{4} l \. boudinaud \.$
+\. copyright \d{4} leahy , restrepo , sear and johnson \.$
+\. copyright \d{4} lipianina honcharenko , bodyanskiy , kustra and ivasechk \.$
+\. copyright \d{4} margarita skamantzari et al \.$
+\. copyright \d{4} megersa and minaye \.$
+\. copyright \d{4} paez valdez , rendon cardona , betancurth becerra , aristizabal and garcia ruiz \.$
+\. copyright \d{4} qandeel \.$
+\. copyright \d{4} qasrawi , vicuna polo , abu khader , abu al halawa , hallaq , abu halaweh and abdeen \.$
+\. copyright \d{4} rendon cardona , rivera henao , betancurth becerra , aristizabal and paez valdez \.$
+\. copyright \d{4} rocca , tamagnone , fekih , contla and rekabsaz \.$
+\. copyright \d{4} roy , singh and kamruzzaman \.$
+\. copyright \d{4} sage publications \.$
+\. copyright \d{4} semiosis research center at hankuk university of foreign studies
+\. copyright \d{4} shaheed \.$
+\. copyright \d{4} sithole \.$
+\. copyright \d{4} society for disaster medicine and public health , inc \. \.$
+\. copyright \d{4} tan , de vera , abrazaldo and ng \.$
+\. copyright \d{4} the author \( s \) \.$
+\. copyright \d{4} the authors \.$
+\. copyright \d{4} vintila , lazarescu , kalaitzaki , tudorel and goian \.$
+\. copyright \d{4} waheeb , andersen and wheib \.$
+\. copyright \d{4} widjanarko , chusjairi and sunaryo \.$
+\. copyright by the authors \. doi :
+\. copyright by the paper s authors \.$
+\. copyright cambridge university press \d{4} \.$
+\. copyright international committee of the red cross \d{4} \.$
+\. copyright is held by the author / owner \( s \) \.$
+\. copyright is held by the owner / author \( s \) \.$
+\. copyright the author \( s \) , \d{4} \. published by cambridge university press on behalf of the carnegie council for ethics in international affairs \.$
+\. copyright the authors , \d{4}
+\. copyright the io foundation \d{4} \.$
+\. copyright world association for disaster and emergency medicine \d{4} \.$
+\. cultural anthropology journal content published since \d{4} is freely available to download , save , reproduce , and transmit for noncommercial , scholarly , and educational purposes under the creative commons by nc 4\.0 license \.$
+\. duncan b \. hollis and jens david ohlin \d{4} \.$
+\. emerald group publishing limited \.$
+\. emre eren korkmaz \d{4} \.$
+\. foundation for scientific research and technological innovation \d{4} \.$
+\. fudan university \d{4} \.$
+\. gary d \. rawnsley , yiben ma and kruakae pothong 2021
+\. gilbert ramsay , \d{4}
+\. greenleaf publishing \d{4} \.$
+\. grenze scientific society , \d{4} \.$
+\. hall et al \. published by bcs learning and development ltd \.$
+\. hila segal , arriel benis , shirley saar , iris shachar lavie , silvana fennig \.$
+\. hordiichuk v \. , snitsarenko p \. , andriianova n \. , molodetskyi b \. , kapran ye \. , \d{4} \.$
+\. iadis 2020.all rights reserved \.$
+\. iberamia and ibanez , m \. m \. et al \.$
+\. icrc 2020
+\. icst institute for computer sciences , social informatics and telecommunications engineering \d{4} \.$
+\. ifip international federation for information processing \d{4} \.$
+\. individual authors , \d{4} \.$
+\. inna shkolnyk , inna tiutiunyk , andrii semenog , yuliia kovalenko , liudmyla pavlenko , \d{4} \.$
+\. institute for computer sciences , social informatics and telecommunications engineering \d{4} \.$
+\. institute of mathematical statistics , \d{4} \.$
+\. international society of criminology , \d{4} \.$
+\. iste ltd \d{4} \.$
+\. izarova iryna , \d{4} \.$
+\. janaina v pinto , caroline hunt , brian o'toole \.$
+\. john benjamins publishing company \.$
+\. jonathan fisher , 2022
+\. kate orton johnson and nick prior \d{4} and their respective authors \d{4} \.$
+\. kaunas university of technology \.$
+\. keywords \d{4} authors
+\. koninklijke brill nv , leiden , \d{4} \.$
+\. kumar s \. , \d{4} \.$
+\. latvian academy of culture , yuliia kovalenko all rights reserved \.$
+\. level of evidence : not gradable the author \( s \) , under exclusive license to springer verlag gmbh germany , part of springer nature \d{4} \.$
+\. licensed under creative commons attribution 3.0 license
+\. little lion scientific
+\. lorna mcgregor \d{4} \.$
+\. m \. c \. giorgi , g \. m \. m \. villela , a \. oliveira , and h \. m \. santana junior , \d{4}
+\. matthew ford and andrew hoskins , \d{4}
+\. michael sexton , eliza campbell \d{4} \.$
+\. millennium : journal of international studies , \d{4} \.$
+\. nataliia khoma , \d{4} \.$
+\. oksana pankova , olexandr kasperovich , \d{4} \.$
+\. oqab jabali and hanadi dwikat , \d{4} \.$
+\. overseas development institute , \d{4} \.$
+\. oxford university press \d{4}
+\. oxford university press \d{4} \.$
+\. oxford university press 2024
+\. paul reilly 2021
+\. peer review : the peer review history for this article is available at : \d{4} , emerald publishing limited \.$
+\. peter lang gmbh 2017
+\. peter lang gmbh internationaler verlag der wissenschaften berlin \d{4}
+\. proceedings iscram \d{4} \.$
+\. published by elsevier b \. v \.$
+\. published under license by iop publishing ltd \.$
+\. published with license by koninklijke brill bv \.$
+\. rachel schmidt \d{4} \.$
+\. rhiannon neilsen , \d{4} \.$
+\. robin gei and henning lahmann \d{4} \.$
+\. s \. n \. chambers and j \. a \. tabor , \d{4} \.$
+\. sage publications \d{4} \.$
+\. savita pawnday , \d{4} \.$
+\. see :
+\. see credit lines of images or other third party material in this article for license information \.$
+\. sergio palomino gamez , luz elena malagon castro and jose carlos vazquez parra \.$
+\. seumas miller , adam henschke and jonas feltes \d{4} \.$
+\. shunin o \. , maslov o \. , \d{4} \.$
+\. siddharth peter de souza , nida rehman , saba sharma \d{4} \.$
+\. some rights reserved \.$
+\. springer fachmedien wiesbaden gmbh , ein teil von springer nature \d{4} \.$
+\. springer fachmedien wiesbaden gmbh , part of springer nature \d{4}
+\. springer international publishing ag \d{4} \.$
+\. springer international publishing switzerland \d{4} \.$
+\. springer nature limited \d{4} \.$
+\. springer nature singapore pte ltd \d{4} \.$
+\. springer nature switzerland ag \d{4}
+\. springer nature switzerland ag \d{4}
+\. springer nature switzerland ag \d{4} \. \.$
+\. springer nature switzerland ag \d{4} \.$
+\. springer science\+business media dordrecht \( outside the usa \) \d{4} \.$
+\. springer science\+business media new york \d{4} \.$
+\. springer science+business media dordrecht \( outside the usa \) \d{4} \.$
+\. springer science+business media dordrecht \( outside the usa \) \d{4} \.$
+\. springer science+business media dordrecht \( outside the usa \) \d{4} \.$
+\. springer science+business media new york \d{4} \.$
+\. springer verlag berlin heidelberg \d{4} \. all rights are reserved \.$
+\. springer verlag berlin heidelberg \d{4} \.$
+\. springer verlag london \d{4} \.$
+\. stakhiv i \. r. , klypa a \. v. , zatserkovnyi v \. i. , pastushenko t \. v. , vorokh v \. v. , \d{4}
+\. stakhiv ryna , zatserkovnyi vitalii , de donatis mauro , tetiana pastushenko , hordiichuk sofiya , malik tetiana , \d{4} \.$
+\. t \. m \. c \. asser press and the authors \d{4} \.$
+\. the author \( \d{4} \) \.$
+\. the author \( s \)
+\. the author \( s \) , \d{4}
+\. the author \( s \) , \d{4} \. published by cambridge university press \.$
+\. the author \( s \) , \d{4} \. published by cambridge university press on behalf of american political science association \.$
+\. the author \( s \) , \d{4} \. published by cambridge university press on behalf of icrc \.$
+\. the author \( s \) , \d{4} \. published by cambridge university press on behalf of international committee of the red cross \.$
+\. the author \( s \) , \d{4} \. published by cambridge university press on behalf of society for disaster medicine and public health , inc \.$
+\. the author \( s \) , \d{4} \. published by cambridge university press on behalf of the icrc \.$
+\. the author \( s \) , \d{4} \.$
+\. the author \( s \) , under exclusive license to springer nature b.v. \d{4} \.$
+\. the author \( s \) , under exclusive license to springer nature singapore pte ltd \. \d{4} \.$
+\. the author \( s \) , under exclusive license to springer nature switzerland ag \d{4}
+\. the author \( s \) , under exclusive license to springer nature switzerland ag \d{4} \.$
+\. the author \( s \) , under exclusive license to springer science\+business media , llc , part of springer nature \d{4} \.$
+\. the author \( s \) , under exclusive license to springer science+business media , llc , part of springer nature \d{4} \.$
+\. the author \( s \) , under exclusive license to springer science+business media , llc , part of springer nature \d{4} \.$
+\. the author \( s \) , under exclusive license to springer verlag london ltd \. , part of springer nature \d{4} \.$
+\. the author \( s \) \.$
+\. the author \( s \) \( \d{4} \) \. published by oxford university press \.$
+\. the author \( s \) \( \d{4} \) \. published by oxford university press on behalf of the international studies association \.$
+\. the author \( s \) \d{4}
+\. the author \( s \) \d{4} , essachess
+\. the author \( s \) \d{4} \. published by oxford university press
+\. the author \( s \) \d{4} \. published by oxford university press \.$
+\. the author \( s \) \d{4} \. published by oxford university press on behalf of faculty of public health \.$
+\. the author \( s \) \d{4} \. published by oxford university press on behalf of national academy of sciences \.$
+\. the author \( s \) \d{4} \. published by oxford university press on behalf of the royal institute of international affairs
+\. the author \( s \) \d{4} \. published by oxford university press on behalf of the world association for public opinion research \.$
+\. the author \( s \) \d{4} \.$
+\. the author \( s \) of individual chapters , \d{4} \.$
+\. the author \( s \) under exclusive license to international union for physical and engineering sciences in medicine \( iupesm \) \d{4} \.$
+\. the author \d{4} \.$
+\. the authors , published by edp sciences , \d{4} \.$
+\. the british association of hand therapists ltd \d{4} \.$
+\. the chatbot is available by link here : \d{4} copyright held by the owner / author \( s \) \.$
+\. the code and data can be found in this link \.1 \d{4} ieee \.$
+\. the code and data is accessible on \d{4} copyright held by the owner / author \( s \)
+\. the code and data is accessible on \d{4} owner / author \.$
+\. the dataset is available at \d{4} association for computational linguistics \.$
+\. the dataset is available at \d{4} ieee \.$
+\. the editor \( s \) \( if applicable \) and the author \( s \) , under exclusive license to springer fachmedien wiesbaden gmbh , part of springer nature \d{4} \.$
+\. the editor \( s \) \( if applicable \) and the author \( s \) , under exclusive license to springer nature singapore pte ltd \. \d{4} \.$
+\. the editor \( s \) \( if applicable \) and the author \( s \) , under exclusive license to springer nature switzerland ag \d{4}
+\. the editor \( s \) \( if applicable \) and the author \( s \) , under exclusive license to springer nature switzerland ag \d{4} , corrected publication \d{4}
+\. the editor \( s \) \( if applicable \) and the author \( s \) , under exclusive license to springer nature switzerland ag \d{4} , corrected publication \d{4} \.$
+\. the editor \( s \) \( if applicable \) and the author \( s \) , under exclusive license to springer nature switzerland ag \d{4} \.$
+\. the editor \( s \) \( if applicable \) and the author \( s \) \d{4}
+\. the editor \( s \) \( if applicable \) and the author \( s \) \d{4} \. this book is an open access publication \.$
+\. the editor \( s \) \( if applicable \) and the author \( s \) \d{4} \.$
+\. the editor \( s \) and the author \( s \) \d{4} \.$
+\. the editors and contributing authors severally \d{4}
+\. the editors and contributing authors severally \d{4} \.$
+\. the editors and contributors severally \d{4}
+\. the editors and contributors severally \d{4} \.$
+\. the institution of engineering and technology \d{4} \.$
+\. the several contributors 2024
+\. this article is an open access article distributed under the terms and conditions of the creative commons attribution license \( cc by nc \) \.$
+\. to the editors and contributors severally \d{4} \.$
+\. trial registration :not applicable
+\. trial sponsor : dalhousie university , \d{4} south st , halifax , ns b3h 4r2 , canada \. trial registration :clinicaltrials \. gov , nct06412679 registered 15 may \d{4}
+\. university of tehran , faculty of management \.$
+\. usenix security \d{4}
+\d{4} \. international journal of information , diversity and inclusion
+copyright \d{4} held by author \( s \) \.$
+the author \( s \) , under exclusive license to springer nature switzerland ag \d{4} \.$
+this paper is licensed under a creative commons attribution 4\.0 international license \.$
+\. \d{4} , politechnika lubelska
+\. \d{4} , the author \( s \) , under exclusive license to springer science\+business media , llc , part of springer nature \.$
+\. \d{4} 42nd international conference on information systems , icis \d{4} treos : building sustainability and resilience with is : a call for action
+\. \d{4} \. \( sara monaci \) \. licensed under the creative commons attribution non commercial no derivatives \( by nc nd \) \. available at all rights reserved \.$
+\. \d{4} african conflict and peacebuilding review
+\. \d{4} by kehinde christopher adewumi 
+\. \d{4} by nova science publishers , inc
+\. \d{4} by the international astronautical federation 
+\. \d{4} casana , laugier \.$
+\. \d{4} domenech burin et al \.$
+\. \d{4} eage
+\. \d{4} international conference of young professionals geoterrace \d{4}
+\. \d{4} king college london \.$
+\. \d{4} king s college london \.$
+\. \d{4} klabbers et al \.$
+\. \d{4} lin et al \.$
+\. \d{4} mazzoli et al \.$
+\. \d{4} poole et al \.$
+\. \d{4} selection and editorial matter , ahlad kumar , naveen kumar chaudhary , apoorva s \. shastri , mangal singh , anand j \. kulkarni \. individual chapters , the contributors \. 
+\. \d{4} selection and editorial matter , christelle molima bameka , jastine c \. barrett , mohamed kamara , karl hanson , and mark a \. drumbl \. individual chapters , the contributors \. 
+\. \d{4} selection and editorial matter , diego brasioli , laura guercio , giovanna gnerre landini and andrea de giorgio \. individual chapters , the contributors 
+\. \d{4} selection and editorial matter , joel busher , leena malkki and sarah marsden \. individual chapters , the contributors \. 
+\. \d{4} selection and editorial matter , stephanie loveless , tullis rennie , morten sndergaard , and freya zinovieff \. individual chapters , the contributors \. 
+\. \d{4} selection and editorial matter , the sir heinz koeppler trust , represented by nick hopkinson \. individual chapters , the contributors \. 
+\. \d{4} selection and editorial matter , venkat ram reddy minampati , dylan yanano mangani , pradeep mallik , and jean chrysostome k \. kiyala \. individual chapters , the contributors \. 
+\. \d{4} selection and editorial matter lokanath mishra individual chapters the contributors \. 
+\. \d{4} the author \. published by elsevier inc \.$
+\. \d{4} the authors \. earth future published by wiley periodicals llc on behalf of american geophysical union \.$
+\. \d{4} the authors \. published by elsevier b.v \.$
+\. copyright \d{4} by the society of critical care medicine and wolters kluwer health , inc
+\. copyright for this article is retained by the author \( s \) , with first publication rights granted to the journal \.$
+\. copyright kamel khurshid murad , najm a \. kh \. alhatimi aleessawi , samar y \. makanai , khalaf lafee alhammad , ismat thalji haddad , redfame publishing inc \.$
+\. eve mitleton kelly , lse , author of corporate governance and complexity theory and editor of co evolution of intelligent socio technical systems springer international publishing switzerland \d{4} \.$
+\. prospero registration numbercrd42023388617 \. author \( s \) \( or their employer \( s \) \) \d{4} \. re use permitted under cc by nc \. no commercial re use \. see rights and permissions \. published by bmj group \. \.$
+\. reporting quality assessment tool : prisma \. methodological quality assessment tools include : axis , distiller sr , robis , and srdr
+\. the author \d{4} \. this is an openaccess article distributed under the terms of the creative commons attribution 4\.0 international license , which permits redistribution , commercial and noncommercial , provided that the article is properly cited \.$
+\. this article is categorized under : technologies > machine learning application areas > science and technology technologies > classification
+\. this conference note sums up the key takeaways of this workshop for researchers and practitioners who work within the fields of radicalisation and violent extremism
+\. this title is also available as open access on cambridge core
+\. trial registration :not applicable
+\. trial sponsor : dalhousie university , \d{4} south st , halifax , ns b3h 4r2 , canada \. trial registration :clinicaltrials \. gov , nct06412679 registered 15 may \d{4}
+\d{4} the authors
+the author \( s \) \d{4} \.$
+\( ottawa police services \d{4} \)$
+\. \d{4} \d{2}nd international conference on information systems , icis \d{4} treos : building sustainability and resilience with is : a call for action
+\. \d{4} computers and industrial engineering
+\. \d{4} international conference of young professionals geoterrace \d{4}
+\. \d{4} the authors \. earth future published by wiley periodicals llc on behalf of american geophysical union \.$
+\. achille bapolisi , jennifer foucart , deborah kabambi , raissa mirishe , elvis musa , aline ruvunangiza , joyce bosomi , victor bulabula , marc ilunga , emmanuel kajibwami , odile bapolisi , arsene daniel nyalundja , marie helene igega , pacifique mwene batu , philippe de timary , yasser khazaal \.$
+\. all our resources are made available at \d{4} , alliance of digital humanities organizations
+\. copyright : \d{4} el jardali et al \.$
+\. copyright \d{4} abi ramia , khoury , armani , cuijpers , carswell , van t hof , zoghbi , sijbrandij and el chammay \.$
+\. the author \( s \) \( \d{4} \) \. published by oxford university press on behalf of the international studies association
+\. the contributors : eric blinderman , patrick carmichael , helen darbishire , stephanie farrior , alison des forges , peter krug , dan de luce , julie mertus , jamie metzl , philip taylor , david wimhurst \. in this edition edinburgh university press \d{4} \.$
+\. this chapter provides an overview of all chapters in this book
+\. this title is also available as open access on cambridge core
+copyright \d{4} fitz gerald and hennebry \.$
+\. \( c \) \d{4} cospar \. published by elsevier b.v \. all rights are reserved , including those for text and data mining , ai training , and similar technologies \.$
+\. \( c \) \d{4} elsevier b.v
+\. \( c \) \d{4} elsevier inc
+\. \( c \) \d{4} international institute of forecasters \. published by elsevier b.v
+\. \( c \) \d{4} international institute of forecasters \. published by elsevier b.v \. all rights are reserved , including those for text and data mining , ai training , and similar technologies \.$
+\. \( c \) \d{4} kelley school of business , indiana university \. published by elsevier inc \. all rights are reserved , including those for text and data mining , ai training , and similar technologies \.$
+\. \( c \) \d{4} setac \.$
+\. \( c \) \d{4} the author \( s \) \. published by elsevier b.v \. on behalf of international institute of forecasters \.$
+\. \( c \) \d{4} the author \( s \)$
+\. \( c \) \d{4} the authors \. published by iase \.$
+\. \( c \) \d{4} vivek sehrawat \.$
+\. \( c \) the authors \. published by spie under a creative commons attribution 4\.0 unported license \.$
+\. crown copyright \( c \) \d{4} published by elsevier ltd
+\. international registered report identifier \( irrid \) : prr1-10.2196/73773
+\. publishing services by elsevier b.v \. on behalf of keai communications co \. ltd \.$
+\. trial registrationnot applicable \.$

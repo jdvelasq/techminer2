@@ -1218,6 +1218,7 @@ the national bureau of asian research
 the online demo is available at
 the society for reliability engineering , quality and operations management \( sreqom \) , india
 the terms and conditions of the creative commons attribution
+the terms and conditions of the creative commons attribution license
 the views represented in the paper do not necessarily represent the views of the institutions or of all the co authors \.$
 the youtube link of the full recorded interview can be accessed at
 this article also appears , with a number of url links , on the biopharm web site
@@ -1382,3 +1383,91 @@ lulea university of technology , sweden \d{4}\.
 \. \d{4} , springer_verlag gmbh germany , part of springer nature \.
 \. authors , published by environment and water engineering journal \.
 \. \d{4} selection and editorial material , matthias wolff and mark gardener \.
+, publishers \d{4} \.$
+\( cc by nc \) \.$
+\( outside the usa \) \d{4} \.$
+\. \d{4} , advances \.
+\. \d{4} , american sociological association \d{4} \.$
+\. \d{4} \. sukindar , et \. al \.$
+\. \d{4} \( ludek stavinoha \) \.
+\. \d{4} \( mirca madianou , liezel longboan , and jonathan corpus ong \) \.
+\. \d{4} \( zakaria sajir and miriyam aouragh \) \.
+\. \d{4} african studies association of india
+\. \d{4} american psychological association$
+\. \d{4} andreea nicoleta dragomir , daiana maura vesmas and ana morari \( bayraktar \) \.
+\. \d{4} copyright held by the owner / author \( s \)$
+\. \d{4} copyright is held by the owner / author \( s \) \.
+\. \d{4} icct
+\. \d{4} icct$
+\. \d{4} icros \.$
+\. \d{4} international council of museums \( icom \) \.
+\. \d{4} jinane el baroudy , \.
+\. \d{4} kelley school of business , indiana university
+\. \d{4} ongoing jatit and lls \.$
+\. \d{4} sara m \. smyth \.
+\. \d{4} southseries inc \. , www \. thirdworldquarterly \. com \.
+\. all authors / taylor and francis group \d{4} \.$
+\. amcis \d{4} \.$
+\. andreas t \. hirblinger , \d{4} \.$
+\. araa al jaramani and nadia sonneveld , \d{4} \.$
+\. authors retain all \.$
+\. cambridge university press and assessment \d{4} \.
+\. copyright \d{4} \( jeff deutch \) \.
+\. copyright \d{4} tan , de vera , abrazaldo and ng \.
+copyright international committee of the red cross
+\. copyright is held by the author / owner \( s \) \.
+\. copyright is held by the owner / author \( s \) \.
+\. copyright the io foundation \d{4} \.$
+\. duncan b \. hollis and jens david ohlin \d{4} \.$
+\. emre eren korkmaz \d{4} \.$
+\. foundation for scientific research and technological innovation \d{4} \.$
+\. fudan university \d{4} \.$
+\. greenleaf publishing \d{4} \.$
+\. hordiichuk v \. , snitsarenko p \. , andriianova n \. , molodetskyi b \. , kapran ye \. , \d{4} \.$
+\. icrc \d{4}
+\. individual authors , \d{4} \.$
+\. inna shkolnyk , inna tiutiunyk , andrii semenog , yuliia kovalenko , liudmyla pavlenko
+\. institute for computer sciences , social informatics and telecommunications engineering \d{4} \.$
+\. international society of criminology , \d{4} \.$
+\. iste ltd \d{4} \.
+\. izarova iryna , \d{4} \.$
+\. koninklijke brill nv , leiden , \d{4} \.
+\. kumar s \. , \d{4} \.
+\. little lion scientific
+\. lorna mcgregor \d{4} \.$
+\. michael sexton , eliza campbell \d{4} \.$
+\. nataliia khoma , \d{4} \.$
+\. oksana pankova , olexandr kasperovich , \d{4} \.$
+\. oqab jabali and hanadi dwikat , \d{4} \.
+\. population , space and place published by john wiley and sons ltd \.
+\. proceedings iscram \d{4} \.$
+\. rachel schmidt \d{4} \.$
+\. rhiannon neilsen , \d{4} \.$
+\. robin gei and henning lahmann \d{4} \.$
+\. sage publications \d{4} \.
+\. savita pawnday , \d{4} \.$
+\. seumas miller , adam henschke and jonas feltes \d{4} \.$
+\. shunin o \. , maslov o \. , \d{4} \.$
+\. siddharth peter de souza , nida rehman , saba sharma \d{4} \.$
+\. the author \( s \) of individual chapters , \d{4} \.$
+\. the editors and contributing authors severally \d{4} \.
+\( lisbon , portugal \) \.$
+cc by nc 4\.0 \.$
+corrected publication \d{4} \.$
+de donatis mauro 
+hordiichuk sofiya 
+https://us.sagepub.com/en us/nam/open access at sage
+international conference on recent advances in natural language processing , ranlp \d{4} \.$
+international union for physical and engineering sciences in medicine \( iupesm \) \d{4} \.$
+malik tetiana
+noncommercial noderivatives license 4\.0 \( cc by nc nd \) \.$
+reproduction and distribution of the work without further permission provided the original work is attributed as specified on the sage and open access page
+stakhiv ryna
+tetiana pastushenko 
+this article is distributed under the terms of the creative commons attribution-noncommercial 4\.0 license
+this title is also available as open access on cambridge core \.
+which permits non-commercial use
+zatserkovnyi vitalii 
+\. copyright world association for disaster and emergency medicine \d{4} \.
+\. antipode \d{4} antipode foundation ltd \.
+\. \d{4} , american sociological association \d{4} \.

@@ -15,7 +15,7 @@ from tm2p.enum import Field
 NOUN_PHRASES = load_builtin_word_list("noun_phrases.txt")
 
 
-def s07_np_known(root_directory: str) -> int:
+def s08_np_known(root_directory: str) -> int:
 
     df = load_main_csv_zip(root_directory=root_directory)
 

@@ -2,7 +2,7 @@ from tm2p.enum import Field
 from tm2p.ingest.datasrc._intern.oper import uppercase_keyterms
 
 
-def s09_abstr_upper(root_directory: str) -> int:
+def s10_abstr_upper(root_directory: str) -> int:
 
     return uppercase_keyterms(
         source=Field.ABSTR_TOK,
