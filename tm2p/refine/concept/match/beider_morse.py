@@ -29,6 +29,6 @@ class BeiderMorseMatch(
             BaseBeiderMorseMatch()
             .update(**self.params.__dict__)
             .with_thesaurus_file(ThFile.CONCEPT)
-            .with_analysis_unit(AnalysisUnit.DESCRIPTOR)
+            .with_analysis_unit(AnalysisUnit.CONCEPT)
             .run()
         )

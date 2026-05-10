@@ -117,7 +117,6 @@ class Matrix(
             AnalysisUnit.IDXKW,
             AnalysisUnit.KW,
             AnalysisUnit.CONCEPT,
-            AnalysisUnit.WORD,
         ):
             raise ValueError(f"Unsupported analysis unit: {self.params.analysis_unit}")
 

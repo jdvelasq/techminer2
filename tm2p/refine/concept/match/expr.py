@@ -30,8 +30,8 @@ class ExpressionMatch(
             BaseExpressionMatch()
             .update(**self.params.__dict__)
             .with_thesaurus_file(ThFile.CONCEPT)
-            .with_source_field(Field.DESCRIPTOR_NORM)
-            .with_analysis_unit(AnalysisUnit.DESCRIPTOR)
+            .with_source_field(Field.CONCEPT_NORM)
+            .with_analysis_unit(AnalysisUnit.CONCEPT)
             .run()
         )
 
