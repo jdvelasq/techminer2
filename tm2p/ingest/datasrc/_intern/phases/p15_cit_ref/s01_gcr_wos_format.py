@@ -12,7 +12,7 @@ from tm2p.ingest.datasrc._intern.phases.get_datab_marker import get_datab_marker
 
 AUTH_FIRST = Field.AUTH_FIRST.value
 AUTH_RAW = Field.AUTH_RAW.value
-GCR_WOS_FORMAT = Field.GCR_WOS_FORMAT.value
+GCR_WOS_FORMAT = Field.GCR_WOS_FORMAT_RAW.value
 GCR_FREE_TEXT = Field.GCR_FREE_TEXT.value
 REC_ID = Field.REC_ID.value
 SRC = Field.SRC.value
@@ -36,11 +36,27 @@ def s01_gcr_wos_format(root_directory: str) -> int:
         "OpenAlex": None,
         "PubMed": None,
         "Scopus": _scopus,
-        "WoS": None,
+        "WoS": _wos,
     }[marker]
 
     if function:
         return function(root_directory=root_directory)
+
+    return 0
+
+
+def _wos(root_directory: str) -> int:
+
+    df = load_main_csv_zip(root_directory=root_directory)
+    df[Field.GCR_WOS_FORMAT_NORM] = df[Field.GCR_WOS_FORMAT_RAW]
+    save_main_csv_zip(df=df, root_directory=root_directory)
+
+    mapping = {}
+    refs = df[Field.GCR_WOS_FORMAT_RAW].copy()
+    refs = refs.str.split("; ")
+    refs = refs.explode().drop_duplicates()
+    mapping = {str(r): [r] for r in sorted(refs.to_list())}
+    _save_thesaurus_file(mapping=mapping, root_directory=root_directory)  # type: ignore
 
     return 0
 
@@ -50,17 +66,17 @@ def _scopus(root_directory: str) -> int:
     df = load_main_csv_zip(root_directory=root_directory)
 
     if Field.GCR_FREE_TEXT.value not in df.columns:
-        df[Field.GCR_WOS_FORMAT.value] = pd.NA
+        df[Field.GCR_WOS_FORMAT_NORM.value] = pd.NA
         save_main_csv_zip(df=df, root_directory=root_directory)
         return 0
 
-    mapping = _generate_gcr_thesaurus_file(root_directory=root_directory)
+    mapping = _generate_scopus_gcr_thesaurus_file(root_directory=root_directory)
     result = _process_references(mapping=mapping, root_directory=root_directory)
 
     return result
 
 
-def _generate_gcr_thesaurus_file(root_directory: str) -> dict[str, list[str]]:
+def _generate_scopus_gcr_thesaurus_file(root_directory: str) -> dict[str, list[str]]:
 
     df = load_main_csv_zip(root_directory=root_directory)
     df = df[SELECTED_FIELDS].dropna()
@@ -193,7 +209,7 @@ def _get_reverse_mapping(mapping: dict[str, list[str]]) -> dict[str, str]:
 def _save_thesaurus_file(mapping: dict[str, list[str]], root_directory: str) -> None:
 
     filepath1 = Path(root_directory) / "refine" / "thesaurus" / "gcr.the.txt"
-    filepath2 = Path(root_directory) / "ingest" / "process" / "_gcr.the.txt"
+    filepath2 = Path(root_directory) / "refine" / "thesaurus" / "gcr.the.bak"
 
     for filepath in [filepath1, filepath2]:
 

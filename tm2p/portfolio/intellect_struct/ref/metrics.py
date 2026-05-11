@@ -56,7 +56,7 @@ class Metrics(
     def run(self):
 
         df = load_filtered_main_csv_zip(params=self.params)
-        series = df[Field.GCR_WOS_FORMAT.value].dropna()
+        series = df[Field.GCR_WOS_FORMAT_NORM.value].dropna()
         series = series.str.split("; ").explode()
         series = series.str.strip()
         series = series.value_counts()

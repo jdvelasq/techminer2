@@ -8,7 +8,7 @@ LCS = Field.LCS.value
 YEAR = Field.YEAR.value
 RID = Field.REC_ID.value
 LCR = Field.LCR_WOS_FORMAT.value
-GCR = Field.GCR_WOS_FORMAT.value
+GCR = Field.GCR_WOS_FORMAT_NORM.value
 OCC = "OCC"
 SHORT_NAME = Field.REC_SHORT_NAME.value
 

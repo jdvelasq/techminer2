@@ -196,7 +196,7 @@ WOS_TO_TM2 = {
     "BN": Field.ISBN.value,
     "BP": Field.PG_FIRST.value,
     "C1": Field.AFFIL.value,
-    "CR": Field.GCR_WOS_FORMAT.value,
+    "CR": Field.GCR_WOS_FORMAT_RAW.value,
     "DE": Field.AUTHKW_RAW.value,
     "DI": Field.DOI.value,
     "DT": Field.DOCTYPE.value,

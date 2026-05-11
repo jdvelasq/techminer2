@@ -23,7 +23,7 @@ def _compute(root_directory: str) -> int:
 
     df = load_main_csv_zip(root_directory)
 
-    if Field.GCR_WOS_FORMAT.value not in df.columns:
+    if Field.GCR_WOS_FORMAT_NORM.value not in df.columns:
         return 0
 
     lcr = df[Field.LCR_WOS_FORMAT.value].dropna()

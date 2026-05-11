@@ -5,7 +5,7 @@ from tm2p.enum import Field
 from tm2p.ingest.datasrc._intern.phases.get_datab_marker import get_datab_marker
 
 REC_ID = Field.REC_ID.value
-GCR_WOS_FORMAT = Field.GCR_WOS_FORMAT.value
+GCR_WOS_FORMAT = Field.GCR_WOS_FORMAT_NORM.value
 LCR_WOS_FORMAT = Field.LCR_WOS_FORMAT.value
 
 

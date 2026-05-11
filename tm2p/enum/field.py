@@ -356,7 +356,8 @@ class Field(str, Enum):
     # Global cited references
     #
     GCR_FREE_TEXT = "GCR_FREE_TEXT"
-    GCR_WOS_FORMAT = "GCR_WOS_FORMAT"
+    GCR_WOS_FORMAT_RAW = "GCR_WOS_FORMAT_RAW"
+    GCR_WOS_FORMAT_NORM = "GCR_WOS_FORMAT_NORM"
 
     #
     # Local cited references in WOS format (normalized)

@@ -21,7 +21,7 @@ def s02_rec_id(root_directory: str) -> int:
 def _wos(root_directory: str) -> int:
 
     def get_cited_refs_list():
-        cited_refs = df[Field.GCR_WOS_FORMAT.value].copy()
+        cited_refs = df[Field.GCR_WOS_FORMAT_RAW.value].copy()
         cited_refs = cited_refs.dropna().str.split("; ")
         cited_refs = cited_refs.explode().str.strip()
         cited_refs = cited_refs.drop_duplicates().to_list()

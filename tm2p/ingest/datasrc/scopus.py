@@ -18,7 +18,7 @@ Smoke tests:
     ...     Scopus()
     ...     .where_root_directory("tests/system-dynamics-scopus/")
     ...     .run()
-    ... )  # doctest: +ELLIPSIS +SKIP
+    ... )  # doctest: +ELLIPSIS
 
 
     >>> from tm2p.ingest.datasrc import Scopus
@@ -26,7 +26,7 @@ Smoke tests:
     ...     Scopus()
     ...     .where_root_directory("tests/regtech-scopus/")
     ...     .run()
-    ... )  # doctest: +ELLIPSIS
+    ... )  # doctest: +ELLIPSIS +SKIP
 
 
 """

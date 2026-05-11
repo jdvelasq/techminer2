@@ -217,7 +217,7 @@ class Metrics(
             if Field.GCR_FREE_TEXT in dataframe.columns:
                 num_references = dataframe[Field.GCR_FREE_TEXT.value].copy()
             else:
-                num_references = dataframe[Field.GCR_WOS_FORMAT.value].copy()
+                num_references = dataframe[Field.GCR_WOS_FORMAT_NORM.value].copy()
             num_references = num_references.dropna()
             num_references = num_references.str.split(";")
             num_references = num_references.map(len)
@@ -287,7 +287,7 @@ class Metrics(
             if Field.GCR_FREE_TEXT in dataframe.columns:
                 records = dataframe[Field.GCR_FREE_TEXT.value].copy()
             else:
-                records = dataframe[Field.GCR_WOS_FORMAT.value].copy()
+                records = dataframe[Field.GCR_WOS_FORMAT_NORM.value].copy()
             records = records.dropna()
             records = records.str.split(";")
             records = records.explode()

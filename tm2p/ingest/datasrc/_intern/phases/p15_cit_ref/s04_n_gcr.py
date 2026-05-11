@@ -6,13 +6,13 @@ def s04_n_gcr(root_directory: str) -> int:
 
     df = load_main_csv_zip(root_directory)
 
-    if Field.GCR_WOS_FORMAT.value in df.columns:
+    if Field.GCR_WOS_FORMAT_NORM.value in df.columns:
         # check if all column is empty
-        if df[Field.GCR_WOS_FORMAT.value].isnull().all():
+        if df[Field.GCR_WOS_FORMAT_NORM.value].isnull().all():
             df[Field.N_GCR.value] = 0
         else:
             df[Field.N_GCR.value] = (
-                df[Field.GCR_WOS_FORMAT.value].str.split("; ").str.len()
+                df[Field.GCR_WOS_FORMAT_NORM.value].str.split("; ").str.len()
             )
     else:
         df[Field.N_GCR.value] = 0

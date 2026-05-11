@@ -93,7 +93,7 @@ from tm2p._intern.helpers.get_zero_digit import get_zero_digits
 from tm2p.enum import AnalysisUnit, Field
 from tm2p.portfolio.perform_metr.unit.metr import Metrics
 
-GCR = Field.GCR_WOS_FORMAT.value
+GCR = Field.GCR_WOS_FORMAT_NORM.value
 DOC = Field.REC_SHORT_NAME.value
 GCS = Field.GCS.value
 
