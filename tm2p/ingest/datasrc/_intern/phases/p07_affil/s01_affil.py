@@ -1,7 +1,6 @@
 from pathlib import Path
 
 import pandas as pd  # type: ignore
-
 from tm2p._intern.data_access import load_main_csv_zip, save_main_csv_zip
 from tm2p.enum import Field
 from tm2p.ingest.datasrc._intern.phases.get_datab_marker import get_datab_marker
@@ -79,6 +78,7 @@ def _save_wos_aff(root_directory: str) -> None:
 
     with open(filepath, "w", encoding="utf-8") as file:
         for a in aff:
-            name = a.split("] ")[0]
-            org = a.split("] ")[1]
-            file.write(f"{name[1:]}\n    {org}\n")
+            if "]" in a:
+                name = a.split("] ")[0]
+                org = a.split("] ")[1]
+                file.write(f"{name[1:]}\n    {org}\n")

@@ -4,11 +4,10 @@ from pathlib import Path
 
 import Levenshtein  # type: ignore
 import pandas as pd  # type: ignore
-from tqdm import tqdm  # type: ignore
-
 from tm2p._intern.data_access import load_main_csv_zip, save_main_csv_zip
 from tm2p.enum import Field
 from tm2p.ingest.datasrc._intern.phases.get_datab_marker import get_datab_marker
+from tqdm import tqdm  # type: ignore
 
 AUTH_FIRST = Field.AUTH_FIRST.value
 AUTH_RAW = Field.AUTH_RAW.value
@@ -53,6 +52,7 @@ def _wos(root_directory: str) -> int:
 
     mapping = {}
     refs = df[Field.GCR_WOS_FORMAT_RAW].copy()
+    refs = refs.dropna()
     refs = refs.str.split("; ")
     refs = refs.explode().drop_duplicates()
     mapping = {str(r): [r] for r in sorted(refs.to_list())}
