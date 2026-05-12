@@ -8,7 +8,7 @@ Smoke test:
     >>> (
     ...     BaseAuto()
     ...     .with_thesaurus_file(ThFile.CONCEPT)
-    ...     .with_analysis_unit(AnalysisUnit.DESCRIPTOR)
+    ...     .with_analysis_unit(AnalysisUnit.CONCEPT)
     ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .run()
     ... )
@@ -29,6 +29,7 @@ from tm2p.refine._intern.oper.sort_thesaurus_df_by_occ import sort_thesaurus_df_
 
 from ..group.group import _explode_variants, _group_variants
 from ._intern import (
+    apply_british_to_american_rule,
     apply_chemical_compounds_rule,
     apply_common_and_basic_rule,
     apply_error_metrics_rule,
@@ -91,6 +92,7 @@ class BaseAuto(
 
         phases = [
             [
+                ("british to american", apply_british_to_american_rule),
                 ("single letters and digits", apply_single_letters_and_digits_rule),
                 ("exact match", apply_exact_match_rule),
                 ("geographic names", apply_geographic_names_rule),
@@ -111,9 +113,9 @@ class BaseAuto(
                 ("common and basic", apply_common_and_basic_rule),
                 ("scientific and academic", apply_scientific_and_academic_rule),
                 ("inflected verb forms", apply_inflected_verb_forms_rule),
-                ("leading noise removal", apply_leading_noise_removal_rule),
+                # ("leading noise removal", apply_leading_noise_removal_rule),
                 ("punctuation variation", apply_punctuation_variation_rule),
-                ("trailing noise removal", apply_trailing_noise_removal_rule),
+                # ("trailing noise removal", apply_trailing_noise_removal_rule),
                 ("punctuation variation", apply_punctuation_variation_rule),
             ],
         ] * 4

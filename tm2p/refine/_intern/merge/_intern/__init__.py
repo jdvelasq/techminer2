@@ -1,3 +1,4 @@
+from .british_to_american import apply_british_to_american_rule
 from .chemical_compounds import apply_chemical_compounds_rule
 from .common_and_basic import apply_common_and_basic_rule
 from .error_metrics import apply_error_metrics_rule
@@ -18,6 +19,7 @@ from .white_space_normalization import apply_white_space_normalization_rule
 from .xml_encoding import apply_xml_encoding_rule
 
 __all__ = [
+    "apply_british_to_american_rule",
     "apply_chemical_compounds_rule",
     "apply_common_and_basic_rule",
     "apply_error_metrics_rule",
