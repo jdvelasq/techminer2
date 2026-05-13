@@ -40,7 +40,7 @@ class Coverage(
 
     def run(self):
 
-        FIELD = self.params.source_field.value
+        FIELD = self.params.analysis_unit.value
 
         documents = load_filtered_main_csv_zip(params=self.params)
         documents = documents.reset_index()

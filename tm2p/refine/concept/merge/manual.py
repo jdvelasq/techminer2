@@ -41,3 +41,36 @@ class Manual(
         )
 
         return Apply().where_root_directory(self.params.root_directory).run()
+
+
+def run():
+
+    preferred = None
+    variant = None
+
+    print()
+    while True:
+
+        msg = "Prefered > " if preferred is None else f"Prefered [{preferred}] > "
+        entry = input(msg).strip()
+
+        if entry == "":
+            break
+
+        preferred = entry
+
+        variant = input("Variant > ").strip()
+        if variant == "":
+            break
+
+        (
+            Manual()
+            .having_text_matching((preferred, variant))
+            .where_root_directory("./")
+            .run()
+        )
+        print("\n\n")
+
+
+if __name__ == "__main__":
+    run()

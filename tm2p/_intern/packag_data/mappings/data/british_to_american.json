@@ -1341,6 +1341,7 @@
     "quantising": "quantizing",
     "quarrelled": "quarreled",
     "quarrelling": "quarreling",
+    "radicalisation": "radicalization",
     "radicalise": "radicalize",
     "radicalised": "radicalized",
     "radicalises": "radicalizes",
@@ -1930,6 +1931,7 @@
     "amongst": "among",
     "calibre-specific": "caliber-specific",
     "centimetre-thick": "centimeter-thick",
+    "characterisation": "characterization",
     "characterisation-based": "characterization-based",
     "colour-blind": "color-blind",
     "colour-blindness": "color-blindness",
@@ -2073,5 +2075,15 @@
     "electrolysers": "electrolyzers",
     "pyrolyse": "pyrolyze",
     "maximisers": "maximizers",
-    "randomiser": "randomizer"
+    "randomiser": "randomizer",
+    "weaponisation": "weaponization",
+    "conceptualisation": "conceptualization",
+    "militarisation": "militarization",
+    "organisationally": "organizationally",
+    "memorialisation": "memorialization",
+    "securitisation": "securitization",
+    "platformisation": "platformization",
+    "legitimisation": "legitimization",
+    "categorisation": "categorization",
+    "individualisation": "individualization"
 }
