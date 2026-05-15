@@ -11,6 +11,8 @@ Thumbs.db
 # data for tests
 # ============================================================================
 
+temp/
+
 tests/health-analytics-pubmed/analyze/
 tests/health-analytics-pubmed/ingest/process/
 tests/health-analytics-pubmed/refine/
