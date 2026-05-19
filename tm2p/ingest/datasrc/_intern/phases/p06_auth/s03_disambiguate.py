@@ -15,7 +15,11 @@ def s03_disambiguate(root_directory: str) -> int:
         return series.str.split(";").apply(
             lambda ids: (
                 "; ".join(
-                    [full_name_to_name[x.strip()] for x in ids if x.strip() != ""]
+                    [
+                        full_name_to_name.get(x.strip(), x.strip())
+                        for x in ids
+                        if x.strip() != ""
+                    ]  #  type: ignore
                 )
                 if isinstance(ids, list)
                 else None
