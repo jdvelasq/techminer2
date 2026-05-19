@@ -1,3 +1,6 @@
+additional
+actual
+abnormal
 accelerate
 accelerates
 accelerating
@@ -395,6 +398,7 @@ undergoes
 underlying
 undermine
 undermines
+understanding
 unifies
 update
 uses
@@ -406,4 +410,3 @@ valorizes
 varies
 visualize
 visualizes
-understanding
