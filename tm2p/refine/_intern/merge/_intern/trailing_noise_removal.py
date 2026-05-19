@@ -23,7 +23,7 @@ def _initialize_ahocorasick_automaton():
     for file in [
         "stopwords.txt",
         "determiners.txt",
-        "common_initial_words.txt",
+        "common_last_words.txt",
     ]:
         for phrase in load_builtin_word_list(file):
             automaton.add_word(phrase.lower(), phrase)
@@ -84,8 +84,8 @@ def apply_trailing_noise_removal_rule(
 
     thesaurus_df[OLD] = thesaurus_df[PREFERRED]
     thesaurus_df[PREFERRED] = thesaurus_df[PREFERRED].apply(_process)
-    is_keyword = thesaurus_df[IS_KEYWORD]
-    thesaurus_df.loc[is_keyword, PREFERRED] = thesaurus_df.loc[is_keyword, OLD]
+    # is_keyword = thesaurus_df[IS_KEYWORD]
+    # thesaurus_df.loc[is_keyword, PREFERRED] = thesaurus_df.loc[is_keyword, OLD]
 
     thesaurus_df.pop(OLD)
 
