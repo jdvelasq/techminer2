@@ -113,9 +113,9 @@ class BaseAuto(
                 ("common and basic", apply_common_and_basic_rule),
                 ("scientific and academic", apply_scientific_and_academic_rule),
                 ("inflected verb forms", apply_inflected_verb_forms_rule),
-                # ("leading noise removal", apply_leading_noise_removal_rule),
+                ("leading noise removal", apply_leading_noise_removal_rule),
                 ("punctuation variation", apply_punctuation_variation_rule),
-                # ("trailing noise removal", apply_trailing_noise_removal_rule),
+                ("trailing noise removal", apply_trailing_noise_removal_rule),
                 ("punctuation variation", apply_punctuation_variation_rule),
             ],
         ] * 4
@@ -133,7 +133,7 @@ class BaseAuto(
 
             df = sort_thesaurus_df_by_occ(params=self.params, thesaurus_df=df)
             df = _explode_variants(df)
-            df = mark_keywords(df, self.params)
+            # df = mark_keywords(df, self.params)
 
             for msg, rule in phase:
 
