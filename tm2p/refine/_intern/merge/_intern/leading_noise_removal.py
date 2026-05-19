@@ -78,8 +78,8 @@ def apply_leading_noise_removal_rule(
 
     thesaurus_df[OLD] = thesaurus_df[PREFERRED]
     thesaurus_df[PREFERRED] = thesaurus_df[PREFERRED].apply(_process)
-    is_keyword = thesaurus_df[IS_KEYWORD]
-    thesaurus_df.loc[is_keyword, PREFERRED] = thesaurus_df.loc[is_keyword, OLD]
+    # is_keyword = thesaurus_df[IS_KEYWORD]
+    # thesaurus_df.loc[is_keyword, PREFERRED] = thesaurus_df.loc[is_keyword, OLD]
 
     thesaurus_df.pop(OLD)
 
