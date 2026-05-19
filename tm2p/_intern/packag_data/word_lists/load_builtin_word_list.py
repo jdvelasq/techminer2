@@ -11,8 +11,13 @@ def load_builtin_word_list(filename: str) -> frozenset[str]:
     lines = [line.strip() for line in lines]
     lines = sorted(set(line for line in lines if line))
 
-    # from .save_builtin_word_list import save_builtin_word_list
+    if filename in (
+        "common_initial_words.txt",
+        "common_last_words.txt",
+    ):
 
-    # save_builtin_word_list(filename, lines)
+        from .save_builtin_word_list import save_builtin_word_list
+
+        save_builtin_word_list(filename, lines)
 
     return frozenset(lines)
