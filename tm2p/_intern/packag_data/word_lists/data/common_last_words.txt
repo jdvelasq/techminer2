@@ -455,6 +455,8 @@ expound
 expounds
 express
 expresses
+extend
+extends
 exterminate
 exterminates
 facilitate
@@ -912,5 +914,3 @@ weaken
 weakens
 widen
 widens
-extend
-extends
