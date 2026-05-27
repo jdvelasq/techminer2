@@ -124,6 +124,7 @@ class Shell(
         """:meta private:"""
 
         from ..apply import Apply
+        from ..group import Group
 
         self.with_thesaurus_file(ThFile.CONCEPT)
         df = load_thesaurus_as_dataframe(params=self.params)
@@ -136,6 +137,7 @@ class Shell(
             df=df,  # type: ignore
         )
 
+        Group().where_root_directory(self.params.root_directory).run()
         Apply().where_root_directory(self.params.root_directory).run()
 
 

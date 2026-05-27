@@ -68,7 +68,6 @@ Smoke tests:
 """
 
 import pandas as pd  # type: ignore
-
 from tm2p._intern import ParamsMixin
 from tm2p._intern.data_access import load_filtered_main_csv_zip
 
@@ -388,22 +387,24 @@ class Metrics(
     # -------------------------------------------------------------------------
     def _create_counters_column(self, grouped_df):
 
-        from tm2p._intern.helpers.get_zero_digit import get_zero_digits
+        from tm2p._intern.helpers.get_zero_digit import get_zero_digits  # type: ignore
 
         occ_zeros, gcs_zeros = get_zero_digits(
             root_directory=self.params.root_directory
         )
 
-        grouped_df = grouped_df.copy()
-        grouped_df[COUNTERS] = grouped_df.index.astype(str)
+        if not grouped_df.empty:
 
-        grouped_df[COUNTERS] += " " + grouped_df[OCC].map(
-            lambda x: f"{x:0{occ_zeros}d}"
-        )
+            grouped_df = grouped_df.copy()
+            grouped_df[COUNTERS] = grouped_df.index.astype(str)
 
-        grouped_df[COUNTERS] += ":" + grouped_df[GCS].map(
-            lambda x: f"{x:0{gcs_zeros}d}"
-        )
+            grouped_df[COUNTERS] += " " + grouped_df[OCC].map(
+                lambda x: f"{x:0{occ_zeros}d}"
+            )
+
+            grouped_df[COUNTERS] += ":" + grouped_df[GCS].map(
+                lambda x: f"{x:0{gcs_zeros}d}"
+            )
 
         return grouped_df
 

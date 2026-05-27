@@ -49,7 +49,7 @@ class BaseExactWord(
         )
         df[ThField.PREFERRED.value] = df[ThField.PREFERRED.value].str.replace(
             f" {self.params.word} ",
-            " ",
+            f" {self.params.replacement} ",
             regex=False,
         )
         df[ThField.PREFERRED.value] = df[ThField.PREFERRED.value].str.strip()

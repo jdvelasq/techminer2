@@ -40,6 +40,7 @@ DOCTYPE = Field.DOCTYPE.value
 RID = Field.REC_ID.value
 TITLE_RAW = Field.TITLE_RAW.value
 YEAR = Field.YEAR.value
+REC_NO = Field.REC_NO.value
 
 GCS_PER_YEAR = UnitOrderBy.GCS_PER_YEAR.value
 LCS_PER_YEAR = UnitOrderBy.LCS_PER_YEAR.value
@@ -94,6 +95,7 @@ class FilteredRecords(
                 RANK_LCS,
                 LCS,
                 YEAR,
+                REC_NO,
             ]
         ]
 

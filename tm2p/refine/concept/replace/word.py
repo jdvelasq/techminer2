@@ -40,3 +40,40 @@ class Word(
             .with_thesaurus_file(ThFile.CONCEPT)
             .run()
         )
+
+
+def run():
+
+    from ..apply import Apply
+    from ..group import Group
+
+    preferred = None
+    variant = None
+
+    print()
+    while True:
+
+        preferred = input("Prefered > ").strip()
+        if preferred == "":
+            break
+
+        variant = input("Variant > ").strip()
+        if variant == "":
+            break
+
+        (
+            Word()
+            .having_word(preferred)
+            .having_replacement(variant)
+            .where_root_directory("./")
+            .run()
+        )
+
+        Group().where_root_directory("./").run()
+        Apply().where_root_directory("./").run()
+
+        print("\n\n")
+
+
+if __name__ == "__main__":
+    run()

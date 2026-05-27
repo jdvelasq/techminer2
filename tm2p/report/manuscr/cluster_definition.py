@@ -11,7 +11,7 @@ Smoke tests:
     >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
     >>> ApplyThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
-    >>> from tm2p.report.manuscript.discussion import ClusterDefinition
+    >>> from tm2p.report.manuscr import ClusterDefinition
     >>> (
     ...     ClusterDefinition()
     ...     #
@@ -58,6 +58,7 @@ from tm2p._intern import ParamsMixin
 from tm2p._intern.packag_data.templates.load_builtin_template import (
     load_builtin_template,
 )
+from tm2p.portfolio.thematic_struct.co_occur.direct import ClusterToDocumentsSoft
 
 # from tm2p.portfolio.thematic_struct.co_occur.first_order_network_ import (
 #     DocumentsByCluster,
@@ -78,12 +79,7 @@ class ClusterDefinition(
 
     # -------------------------------------------------------------------------
     def internal__generate_terms_by_cluster_mapping(self):
-        data_frame = (
-            Summary()  # type: ignore
-            .update(**self.params.__dict__)
-            .with_source_field("descriptors")
-            .run()
-        )
+        data_frame = Summary().update(**self.params.__dict__).run()  # type: ignore
 
         data_frame["Terms"] = data_frame["Terms"].str.split("; ")
         data_frame["Terms"] = data_frame["Terms"].apply(
@@ -100,7 +96,7 @@ class ClusterDefinition(
     # -------------------------------------------------------------------------
     def internal__generate_documents_by_cluster_mapping(self):
         self.documents_by_cluster_mapping = (
-            DocumentsByCluster()  # type: ignore
+            ClusterToDocumentsSoft()  # type: ignore
             .update(**self.params.__dict__)
             .with_source_field("descriptors")
             .run()

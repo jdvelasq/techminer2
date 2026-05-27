@@ -36,12 +36,17 @@ import os
 from openai import OpenAI
 from tqdm import tqdm  # type: ignore
 
-from tm2p._intern import ParamsMixin
+from tm2p._intern import ParamsMixin  # type: ignore
 from tm2p._intern.packag_data.templates.load_builtin_template import (
     load_builtin_template,
 )
+from tm2p.enum import Field  # type: ignore
 from tm2p.ingest.rec import FilteredRecords  # type: ignore
 from tm2p.ingest.rec import RecordViewer  # type: ignore
+
+DOCTYPE = Field.DOCTYPE
+TITLE_RAW = Field.TITLE_RAW
+REC_NO = Field.REC_NO
 
 
 class LiteratureReview(
@@ -52,11 +57,11 @@ class LiteratureReview(
     # -------------------------------------------------------------------------
     def internal_load_records(self):
 
-        frame = (FilteredRecords().update(**self.params.__dict__)).run()
+        frame = FilteredRecords().update(**self.params.__dict__).run()
 
         frame = frame[
-            (frame.document_type == "Review")
-            | (frame.raw_document_title.str.lower().str.contains("review"))
+            (frame[DOCTYPE] == "Review")
+            | (frame[TITLE_RAW].str.lower().str.contains("review"))
         ]
         frame = frame.reset_index(drop=True)
 
@@ -65,14 +70,15 @@ class LiteratureReview(
     # -------------------------------------------------------------------------
     def internal_get_documents(self, frame):
 
-        titles = frame.raw_document_title.to_list()
+        titles = frame[TITLE_RAW].to_list()
 
         documents = (
             RecordViewer()
             .update(**self.params.__dict__)
+            .with_source_field(Field.ABSTR_RAW)
             .where_records_match(
                 {
-                    "raw_document_title": titles,  # type: ignore
+                    TITLE_RAW: titles,  # type: ignore
                 }
             )
         ).run()
@@ -103,7 +109,7 @@ class LiteratureReview(
         ) as file:
 
             for i, (document, ut) in tqdm(
-                enumerate(zip(documents, records.record_no)),
+                enumerate(zip(documents, records[REC_NO.value])),
                 total=len(documents),
                 desc="  Document",
                 ncols=73,

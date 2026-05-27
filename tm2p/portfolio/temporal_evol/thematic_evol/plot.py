@@ -306,8 +306,8 @@ class Plot(
         fig.update_layout(
             title=self.params.title_text,
             font=dict(size=12),
-            width=1100,
-            height=700,
+            # width=1100,
+            # height=700,
         )
 
         x_range = 1.0

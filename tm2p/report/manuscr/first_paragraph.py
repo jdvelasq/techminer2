@@ -5,7 +5,7 @@ First Paragraph
 Smoke tests:
 
     >>> # Create, configure, and run the Text generator
-    >>> from tm2p.report.manuscript.introduction.first_paragraph import FirstParagraph
+    >>> from tm2p.report.manuscr.first_paragraph import FirstParagraph
     >>> (
     ...     FirstParagraph()
     ...     #
@@ -36,13 +36,18 @@ import sys
 
 import pandas as pd  # type: ignore
 from openai import OpenAI
-from tqdm import tqdm  # type: ignore
-
 from tm2p._intern import ParamsMixin
 from tm2p._intern.data_access import load_filtered_main_csv_zip
 from tm2p._intern.packag_data.templates.load_builtin_template import (
     load_builtin_template,
 )
+from tm2p.enum import Field  # type: ignore
+from tqdm import tqdm  # type: ignore
+
+REC_ID = Field.REC_ID
+TITLE_RAW = Field.TITLE_RAW
+ABSTR_RAW = Field.ABSTR_RAW
+REC_NO = Field.REC_NO
 
 
 class FirstParagraph(
@@ -57,7 +62,7 @@ class FirstParagraph(
     # -------------------------------------------------------------------------
     def internal__set_record_index(self):
         self.records.index = pd.Index(
-            self.records.record_id + " / " + self.records.raw_document_title
+            self.records[REC_ID] + " / " + self.records[TITLE_RAW]
         )
 
     # -------------------------------------------------------------------------
@@ -72,7 +77,7 @@ class FirstParagraph(
         for search_for in patterns:
 
             self.records["_found_"] = self.records["_found_"] | (
-                self.records["abstract"]
+                self.records[ABSTR_RAW]
                 .astype(str)
                 .str.contains(r"\b" + search_for + r"\b", regex=True)
             )
@@ -82,10 +87,10 @@ class FirstParagraph(
     # -------------------------------------------------------------------------
     def internal__select_phrases_containing_patterns(self):
 
-        self.records["abstract"] = self.records["abstract"].str.replace(";", ".")
-        self.records["abstract"] = self.records["abstract"].str.split(".")
-        self.records = self.records.explode("abstract")  # type: ignore
-        self.records["abstract"] = self.records["abstract"].str.strip()
+        self.records[ABSTR_RAW] = self.records[ABSTR_RAW].str.replace(";", ".")
+        self.records[ABSTR_RAW] = self.records[ABSTR_RAW].str.split(".")
+        self.records = self.records.explode(ABSTR_RAW)  # type: ignore
+        self.records[ABSTR_RAW] = self.records[ABSTR_RAW].str.strip()
 
         patterns = self.params.pattern
         if isinstance(patterns, str):
@@ -96,7 +101,7 @@ class FirstParagraph(
         for search_for in patterns:
 
             self.records["_found_"] = self.records["_found_"] | (
-                self.records["abstract"]
+                self.records[ABSTR_RAW]
                 .astype(str)
                 .str.contains(r"\b" + search_for + r"\b", regex=True)
             )
@@ -106,22 +111,22 @@ class FirstParagraph(
     # -------------------------------------------------------------------------
     def internal__select_records_by_phrase_length(self):
 
-        self.records = self.records[self.records["abstract"].str.len() > 60]
+        self.records = self.records[self.records[ABSTR_RAW].str.len() > 60]
 
     # -------------------------------------------------------------------------
     def internal__add_record_ut_to_phrases(self):
 
-        self.records["abstract"] = (
-            self.records["abstract"].astype(str)
+        self.records[ABSTR_RAW] = (
+            self.records[ABSTR_RAW].astype(str)
             + " [UT "
-            + self.records["record_no"].astype(str)
+            + self.records[REC_NO].astype(str)
             + "]"
         )
 
     # -------------------------------------------------------------------------
     def internal__set_context_phrases(self):
 
-        phrases = self.records["abstract"].to_list()
+        phrases = self.records[ABSTR_RAW].to_list()
         phrases = phrases[:100]
         phrases = [phrases[i : i + 10] for i in range(0, len(phrases), 10)]
         self.context_phrases = phrases

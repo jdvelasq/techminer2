@@ -133,7 +133,7 @@ class CountMatrix(
             )
             .having_index_units_in(self.params.units_in)
             #
-            .using_minimum_pair_co_occurrence(1)
+            .using_minimum_pair_co_occurrence(self.params.minimum_pair_co_occurrence)
             #
             .run()
         )
