@@ -1,39 +1,39 @@
 """
-Terms by Cluster Frame
+ClusterDefinition
 ===============================================================================
-
 
 Smoke tests:
 
-    >>> from tm2p.refine.thesaurus_old.descriptors import ApplyThesaurus, InitializeThesaurus
-
-    >>> # Restore the column values to initial values
-    >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
-    >>> ApplyThesaurus(root_directory="examples/fintech/", quiet=True).run()
-
-    >>> from tm2p.report.manuscr import ClusterDefinition
+    >>> from tm2p.portfolio.thematic_struct.co_occur.direct import ClusterDefinition
     >>> (
     ...     ClusterDefinition()
     ...     #
-    ...     # FIELD:
-    ...     .with_field("descriptors")
-    ...     .having_top_n_units(30)
-    ...     .having_units_ordered_by("OCC")
+    ...     # ANALYSIS UNIT:
+    ...     .with_analysis_unit(AnalysisUnit.CONCEPT)
+    ...     #
+    ...     .having_top_n_units(50)
+    ...     .having_units_ordered_by(UnitOrderBy.OCC)
     ...     .having_unit_occurrence_between(None, None)
     ...     .having_unit_global_citation_between(None, None)
     ...     .having_units_in(None)
     ...     #
+    ...     .using_minimum_pair_co_occurrence(2)    
+    ...     #
     ...     # NETWORK:
-    ...     .using_clustering_algorithm_or_dict("louvain")
-    ...     .using_association_index("association")
+    ...     .using_association_index(AssociationIndex.JACCARD)
+    ...     #
+    ...     # CLUSTERING:
+    ...     .using_clustering(GraphClusteringAlgorithm.LOUVAIN)
+    ...     .using_max_recursive_clustering_depth(1)
+    ...     .using_min_recursive_cluster_size(8)
     ...     #
     ...     # TEXT:
     ...     .with_core_area("fintech")
-    ...     .with_word_length((200, 400, 300))
+    ...     .using_word_length(400)
+    ...     .using_gpt_model("gpt-4.1")
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("tests/tinyml-scopus/")
-    ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_global_citations_range(None, None)
     ...     .where_records_match(None)
@@ -41,29 +41,22 @@ Smoke tests:
     ...     .run()
     ... )
 
-       Cluster  ...                                              Terms
-    0        0  ...  FINTECH 38:6131; THE_FINANCIAL_INDUSTRY 09:200...
-    1        1  ...  TECHNOLOGIES 15:1633; FINANCIAL_TECHNOLOGIES 1...
-    <BLANKLINE>
-    [2 rows x 4 columns]
+
 
 """
 
 import os
 
 from openai import OpenAI  # type: ignore
-from tqdm import tqdm  # type: ignore
-
 from tm2p._intern import ParamsMixin
 from tm2p._intern.packag_data.templates.load_builtin_template import (
     load_builtin_template,
 )
-from tm2p.portfolio.thematic_struct.co_occur.direct import ClusterToDocumentsSoft
+from tqdm import tqdm  # type: ignore
 
-# from tm2p.portfolio.thematic_struct.co_occur.first_order_network_ import (
-#     DocumentsByCluster,
-#     Summary,
-# )
+CLUSTER = "CLUSTER"
+PERCENTAGE = "PERCENTAGE"
+UNITS = "UNITS"
 
 
 class ClusterDefinition(
@@ -79,26 +72,30 @@ class ClusterDefinition(
 
     # -------------------------------------------------------------------------
     def internal__generate_terms_by_cluster_mapping(self):
-        data_frame = Summary().update(**self.params.__dict__).run()  # type: ignore
 
-        data_frame["Terms"] = data_frame["Terms"].str.split("; ")
-        data_frame["Terms"] = data_frame["Terms"].apply(
-            lambda x: [y.split()[0] for y in x]
-        )
-        data_frame["Terms"] = data_frame["Terms"].apply(
-            lambda x: [y.strip() for y in x]
-        )
-        data_frame["Terms"] = data_frame["Terms"].str.join("; ")
+        from .cluster_composition import ClusterComposition
+
+        df = ClusterComposition().update(**self.params.__dict__).run()  # type: ignore
+
+        df[UNITS] = df[UNITS].str.split("; ")
+        df[UNITS] = df[UNITS].apply(lambda x: [y.split()[0] for y in x])
+        df[UNITS] = df[UNITS].apply(lambda x: [y.strip() for y in x])
+        df[UNITS] = df[UNITS].str.join("; ")
+
+        self.cluster_coverages = df[PERCENTAGE].to_list()
+
         self.terms_by_cluster_mapping = {
-            key: value for key, value in zip(data_frame["Cluster"], data_frame["Terms"])
+            key: value for key, value in zip(df[CLUSTER], df[UNITS])
         }
 
     # -------------------------------------------------------------------------
     def internal__generate_documents_by_cluster_mapping(self):
+
+        from .cluster_to_documents_soft import ClusterToDocumentsSoft
+
         self.documents_by_cluster_mapping = (
             ClusterToDocumentsSoft()  # type: ignore
             .update(**self.params.__dict__)
-            .with_source_field("descriptors")
             .run()
         )
 
@@ -120,9 +117,7 @@ class ClusterDefinition(
             cluster_keywords = cluster_keywords.lower().replace("_", " ")
 
             documents = self.documents_by_cluster_mapping.get(cluster, [])
-            ##
             documents = documents[:100]
-            ##
             documents = [documents[i : i + 10] for i in range(0, len(documents), 10)]
 
             answers = []
@@ -139,16 +134,16 @@ class ClusterDefinition(
 
                 prompt = self.definition_template.format(
                     core_area=self.params.core_area,
-                    word_length=self.params.word_length[0],  # type: ignore
+                    word_length=self.params.word_length,  # type: ignore
                     abstracts=docs,
                     cluster_keywords=cluster_keywords,
                     cluster_name=self.params.cluster_names[cluster],  # type: ignore
-                    cluster_coverage=self.params.cluster_coverages[cluster],  # type: ignore
+                    cluster_coverage=self.cluster_coverages[cluster],  # type: ignore
                 )
 
                 try:
                     response = client.responses.create(
-                        model="gpt-4.1",
+                        model=self.params.gpt_model,
                         input=prompt,
                     )
                     answer = response.output_text
@@ -170,7 +165,7 @@ class ClusterDefinition(
         path = os.path.join(
             self.params.root_directory, "outputs", "section_5_discussion"
         )
-        # delete the content of the directory if it exists
+
         if os.path.exists(path):
             for file in os.listdir(path):
                 file_path = os.path.join(path, file)
@@ -214,7 +209,7 @@ class ClusterDefinition(
                 )
                 prompt = template.format(
                     core_area=self.params.core_area,
-                    word_length=self.params.word_length[1],  # type: ignore
+                    word_length=self.params.word_length,  # type: ignore
                     paragraphs_to_combine=text,
                     cluster_keywords=cluster_keywords,
                 )
@@ -223,7 +218,7 @@ class ClusterDefinition(
 
                 try:
                     response = client.responses.create(
-                        model="gpt-4.1",
+                        model=self.params.gpt_model,
                         input=prompt,
                     )
                     answer = response.output_text
@@ -271,14 +266,14 @@ class ClusterDefinition(
 
             prompt = template.format(
                 core_area=self.params.core_area,
-                word_length=self.params.word_length[2],  # type: ignore
+                word_length=self.params.word_length,  # type: ignore
                 paragraphs_to_combine=paragraphs_to_combine,
                 cluster_keywords=cluster_keywords,
             )
 
             try:
                 response = client.responses.create(
-                    model="gpt-4.1",
+                    model=self.params.gpt_model,
                     input=prompt,
                 )
                 answer = response.output_text

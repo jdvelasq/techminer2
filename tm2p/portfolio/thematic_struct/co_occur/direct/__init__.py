@@ -1,5 +1,6 @@
 from .cluster_activity import ClusterActivity
 from .cluster_composition import ClusterComposition
+from .cluster_definition import ClusterDefinition
 from .cluster_interpretation import ClusterInterpretation
 from .cluster_to_documents_hard import ClusterToDocumentsHard
 from .cluster_to_documents_soft import ClusterToDocumentsSoft
@@ -20,6 +21,7 @@ from .units_by_cluster import UnitsByCluster
 __all__ = [
     "ClusterActivity",
     "ClusterComposition",
+    "ClusterDefinition",
     "ClusterInterpretation",
     "ClusterToUnits",
     "ConectivityClass",

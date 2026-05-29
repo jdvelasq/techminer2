@@ -44,6 +44,8 @@ Do not use surname (year) citation style. Use the UT value between brackets to
 indicate the reference to the record. For example, [UT 1] means that the 
 information is in the UT 1. Use only phrases appearing in the provided text. 
 Any citation that does not meet this requirement must be considered invalid.
+Also any citation in styles like "[UT Monroy-Hernández A, 2012]" is invalid. 
+Use always the style "[UT #]". Do not use any other style of citation.
 
 
 REQUIREMENTS:

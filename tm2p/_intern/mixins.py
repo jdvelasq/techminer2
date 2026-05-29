@@ -213,6 +213,19 @@ class ParamsMixin:
 
     # ####################################################################### #
     #                                                                         #
+    #                             GENERATIVE AI                               #
+    #                                                                         #
+    # ####################################################################### #
+    def using_gpt_model(self, gpt_model: str) -> Self:
+        gpt_model = check_required_str(
+            value=gpt_model,
+            param_name="gpt_model",
+        )
+        self.params.gpt_model = gpt_model
+        return self
+
+    # ####################################################################### #
+    #                                                                         #
     #                      PORTFOLIO GENERIC PARAMETERS                       #
     #                                                                         #
     # ####################################################################### #
