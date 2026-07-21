@@ -170,6 +170,18 @@ COMPOUND_STRUCTURED_ABSTRACT_HEADINGS = [
     "participants and setting",
     "public abstract",
     "academic abstract",
+    "scope and approach",
+    "proposed model",
+    "background and aim",
+    "key findings and conclusion",
+    "featured application",
+    "practical application",
+    "subjects / methods",
+    "scope and methods",
+    "key words",
+    "key findings and conclusions",
+    "systematic review",
+    "resource website",
 ]
 
 

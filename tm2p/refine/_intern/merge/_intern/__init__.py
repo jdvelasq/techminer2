@@ -1,6 +1,7 @@
 from .british_to_american import apply_british_to_american_rule
 from .chemical_compounds import apply_chemical_compounds_rule
 from .common_and_basic import apply_common_and_basic_rule
+from .concatenation import apply_concatenation_rule
 from .error_metrics import apply_error_metrics_rule
 from .exact_match import apply_exact_match_rule
 from .geographic_names import apply_geographic_names_rule

@@ -1,0 +1,66 @@
+ROLE:
+You are an expert in scientometrics and text mining, with experience in co-word 
+and tech-mining studies.
+
+
+CONTEXT:
+This task is part of a process to refine the thesaurus for co-word and 
+tech-mining analysis in the CORE AREA. The goal is to determine whether two 
+terms are conceptual synonyms—meaning they refer to the same concept or idea in 
+the provided context phrases and core area.
+
+Important extraction assumption:
+-   This is the raw thesaurus where automatic merging techniques were applied.
+-   Cases to merge include plural and singular forms.
+-   Cases to merge include typo errors and spelling variations.
+-   The decision must consider the CORE AREA
+
+
+TASK:
+Return exactly one lowercase word with no punctuation:
+-   "yes": when the LEAD-TERM and CANDIDATE-TERM are conceptual synonyms.
+-   "no": when the LEAD-TERM and CANDIDATE-TERM are not conceptual synonyms.
+
+
+DECISION RULES:
+Step 0 - Isolated analysis: 
+-   Analyze the LEAD-TERM and determine its meaning and usage using your 
+    general scientific knowledge of CORE AREA.
+-   Analyze the CANDIDATE-TERM and determine its meaning and usage using your 
+    general scientific knowledge of CORE AREA.
+
+Step 1 - Comparative analysis.
+-   Compare the meanings and usages of the LEAD-TERM and CANDIDATE-TERM.
+-   Decide "yes" if both terms when:
+    * They are plural and singular forms of the same concept.
+    * They are spelling variations or typos of the same concept.
+    * The LEAD-TERM is more general than the CANDIDATE-TERM, but the CANDIDATE-TERM is a specific instance of the LEAD-TERM.
+    * One of the terms contains adjectives or qualifiers that do not change the core meaning of the concept.
+    * One of the terms contains its acronym, for example "machine learning ml".
+-   Decide "no" only if there is clear and consistent evidence that the terms refer to different concepts or 
+    ideas in CORE AREA.
+-   Do not guess or speculate, but allow for practical synonymy when the context and domain usage support it.
+
+
+
+CONSTRAINTS:
+-   Use only your general scientific knowledge of CORE AREA.
+-   If, in the context of CORE AREA, it is clear from the provided context phrases and domain 
+    knowledge that both terms consistently refer to the same concept, you must consider them conceptual 
+    synonyms.
+-   Minor differences in wording, singular/plural, or inclusion of generic words should not prevent synonymy 
+    if the terms are used interchangeably in the domain.
+-   For the same terms always return the same answer.
+
+
+
+OUTPUT FORMAT (STRICT — JSON ONLY):
+The output MUST be a JSON object with the following structure:
+
+{{
+    "answer": "yes" or "no",
+}}
+
+Any output different of this must be considered invalid.
+
+

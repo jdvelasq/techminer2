@@ -4,6 +4,10 @@ ClusterDefinition
 
 Smoke tests:
 
+    >>> from tm2p.enum import AssociationIndex  # type: ignore
+    >>> from tm2p.enum import AnalysisUnit  # type: ignore
+    >>> from tm2p.enum import GraphClusteringAlgorithm  # type: ignore
+    >>> from tm2p.enum import UnitOrderBy  # type: ignore
     >>> from tm2p.portfolio.thematic_struct.co_occur.direct import ClusterDefinition
     >>> (
     ...     ClusterDefinition()
@@ -48,15 +52,20 @@ Smoke tests:
 import os
 
 from openai import OpenAI  # type: ignore
+from tqdm import tqdm  # type: ignore
+
 from tm2p._intern import ParamsMixin
 from tm2p._intern.packag_data.templates.load_builtin_template import (
     load_builtin_template,
 )
-from tqdm import tqdm  # type: ignore
+from tm2p.enum import Field
+from tm2p.enum.order_by import RecordOrderBy
+from tm2p.ingest.rec.rec_view import RecordViewer
 
 CLUSTER = "CLUSTER"
 PERCENTAGE = "PERCENTAGE"
 UNITS = "UNITS"
+REC_ID = "REC_ID"
 
 
 class ClusterDefinition(
@@ -75,7 +84,7 @@ class ClusterDefinition(
 
         from .cluster_composition import ClusterComposition
 
-        df = ClusterComposition().update(**self.params.__dict__).run()  # type: ignore
+        df = ClusterComposition().update(**self.params.__dict__).using_counters(False).run()  # type: ignore
 
         df[UNITS] = df[UNITS].str.split("; ")
         df[UNITS] = df[UNITS].apply(lambda x: [y.split()[0] for y in x])
@@ -91,13 +100,31 @@ class ClusterDefinition(
     # -------------------------------------------------------------------------
     def internal__generate_documents_by_cluster_mapping(self):
 
+        from tm2p.ingest.rec import RecordViewer
+
         from .cluster_to_documents_soft import ClusterToDocumentsSoft
 
-        self.documents_by_cluster_mapping = (
+        cluster_to_documents = (
             ClusterToDocumentsSoft()  # type: ignore
             .update(**self.params.__dict__)
             .run()
         )
+
+        self.documents_by_cluster_mapping = {}
+
+        for cluster, documents in cluster_to_documents.items():
+
+            docs = (
+                RecordViewer()
+                #
+                .with_source_field(Field.ABSTR_RAW)
+                .update(**self.params.__dict__)
+                .where_records_match({Field.REC_ID: documents})
+                .where_records_ordered_by(RecordOrderBy.YEAR_NEWEST)
+                .run()
+            )
+
+            self.documents_by_cluster_mapping[cluster] = docs
 
     # -------------------------------------------------------------------------
     def internal__generate_raw_summaries_by_cluster_mapping(self):

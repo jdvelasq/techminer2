@@ -10,6 +10,7 @@ from .expression import BaseExpressionMatch
 from .fuzzy_one_exact import BaseFuzzyOneExactMatch
 from .fuzzy_zero_exact import BaseFuzzyZeroExactMatch
 from .separator import BaseSeparatorMatch
+from .shared_words import BaseSharedWordsMatch
 from .startswith import BaseStartsWithMatch
 from .stem import BaseStemMatch
 from .trigram import BaseTrigramMatch
@@ -22,6 +23,7 @@ __all__ = [
     "BaseCombineMatch",
     "BaseContainsMatch",
     "BaseDaitchMokotoffMatch",
+    "BaseSharedWordsMatch",
     "BaseDoubleMetaphoneMatch",
     "BaseEndsWithMatch",
     "BaseExpressionMatch",

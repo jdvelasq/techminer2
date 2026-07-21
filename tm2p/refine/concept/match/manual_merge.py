@@ -25,7 +25,7 @@ PREFERRED = ThField.PREFERRED.value
 VARIANT = ThField.VARIANT.value
 
 
-class Shell(
+class ManualMerge(
     ParamsMixin,
 ):
     """:meta private:"""
@@ -143,4 +143,4 @@ class Shell(
 
 if __name__ == "__main__":
 
-    Shell().where_root_directory("./").run()
+    ManualMerge().where_root_directory("./").run()

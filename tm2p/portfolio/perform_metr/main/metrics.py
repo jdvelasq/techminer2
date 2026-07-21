@@ -631,40 +631,10 @@ class Metrics(
             ),
         )
 
-        # stats = self.insert_stats(
-        #     stats,
-        #     category="NLP",
-        #     item="Number of abstract words (tok)",
-        #     value=self.count_unique_items(
-        #         dataframe,
-        #         Field.ABSTR_TOK,
-        #     ),
-        # )
-
-        # stats = self.insert_stats(
-        #     stats,
-        #     category="NLP",
-        #     item="Number of title words (tok)",
-        #     value=self.count_unique_items(
-        #         dataframe,
-        #         Field.TITLE_WORD_TOK,
-        #     ),
-        # )
-
-        # stats = self.insert_stats(
-        #     stats,
-        #     category="NLP",
-        #     item="Number of words (tok)",
-        #     value=self.count_unique_items(
-        #         dataframe,
-        #         Field.WORD_TOK,
-        #     ),
-        # )
-
         stats = self.insert_stats(
             stats,
             category="NLP",
-            item="Number of abstract NP phrases (tok)",
+            item="Number of abstract NP phrases (raw))",
             value=self.count_unique_items(
                 dataframe,
                 Field.NP_ABSTR_RAW,
@@ -674,7 +644,7 @@ class Metrics(
         stats = self.insert_stats(
             stats,
             category="NLP",
-            item="Number of title NP phrases (tok)",
+            item="Number of title NP phrases (raw)",
             value=self.count_unique_items(
                 dataframe,
                 Field.NP_TITLE_RAW,
@@ -684,50 +654,30 @@ class Metrics(
         stats = self.insert_stats(
             stats,
             category="NLP",
-            item="Number of NP phrases (tok)",
+            item="Number of NP phrases (raw)",
             value=self.count_unique_items(
                 dataframe,
                 Field.NP_RAW,
             ),
         )
 
-        # stats = self.insert_stats(
-        #     stats,
-        #     category="NLP",
-        #     item="Number of keywords + words (tok)",
-        #     value=self.count_unique_items(
-        #         dataframe,
-        #         Field.KEY_AND_WORD_TOK,
-        #     ),
-        # )
-
-        # stats = self.insert_stats(
-        #     stats,
-        #     category="NLP",
-        #     item="Number of keywords + words (norm)",
-        #     value=self.count_unique_items(
-        #         dataframe,
-        #         Field.KEY_AND_WORD_NORM,
-        #     ),
-        # )
-
         stats = self.insert_stats(
             stats,
             category="NLP",
-            item="Number of keywords + NP phrases (tok)",
+            item="Number of concepts (raw)",
             value=self.count_unique_items(
                 dataframe,
-                Field.KW_TOK,
+                Field.CONCEPT_RAW,
             ),
         )
 
         stats = self.insert_stats(
             stats,
             category="NLP",
-            item="Number of keywords + NP phrases (norm)",
+            item="Number of concepts (norm)",
             value=self.count_unique_items(
                 dataframe,
-                Field.KW_NORM,
+                Field.CONCEPT_NORM,
             ),
         )
 

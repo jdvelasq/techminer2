@@ -1471,3 +1471,171 @@ zatserkovnyi vitalii
 \. copyright world association for disaster and emergency medicine \d{4} \.
 \. antipode \d{4} antipode foundation ltd \.
 \. \d{4} , american sociological association \d{4} \.
+\. \d{4} , facultad de informatica , universidad nacional de la plata
+\. \d{4} academy publisher \.
+\. \d{4} by elsevier inc
+\. \d{4} the institution of chemical engineers \.
+\. copyright indian meat science association
+\. copyrights for components of this work owned by others than acm
+\. food science and nutrition published by wiley periodicals llc \.
+\. the complete code and dataset for our project are available at \d{4} ieee \.
+\. \d{4} woodhead publishing limited all rights reserved \.
+\. \( \d{4} \) , \( engineering \)
+\. \( \d{4} \) , \( faculty of economics and management \)
+\. \( \d{4} \) , \( science publications \)
+\. \( \d{4} \) trans tech publications , switzerland \.
+\. \d{4} , association for the advancement of artificial intelligence \( www \. aaai \. org \)
+\. \d{4} , association of food scientists and technologists \( india \) \.
+\. \d{4} , chinese chamber of commerce
+\. \d{4} , chinese society of agricultural engineering
+\. \d{4} , cimne , barcelona , spain \.
+\. \d{4} , collegium basilea
+\. \d{4} , department of agribusiness , universitas muhammadiyah yogyakarta
+\. \d{4} , faculty of engineering , khon kaen university
+\. \d{4} , icic international
+\. \d{4} , iicm
+\. \d{4} , indian academy of sciences \.
+\. \d{4} , institution of russian academy of sciences
+\. \d{4} , international association for food protection \.
+\. \d{4} , islamic republic of iran meteorological organization
+\. \d{4} , ismail saritas
+\. \d{4} , mathematical modeling of engineering problems
+\. \d{4} , medinlin soft
+\. \d{4} , meriam trabelsi , elena casprini , niccolo fiorini and lorenzo zanni \.
+\. \d{4} , politeknik negeri padang
+\. \d{4} , research center of computing and biomedical informatics
+\. \d{4} , sistemi evoluti per basi di dati \( sebd \)
+\. \d{4} , the new york academy of medicine \.
+\. \d{4} \( yilang peng and john b \. jemmott iii \) \.
+\. \d{4} abdul razzaq , umar ijaz ahmed , sarfraz hashim , aamir hussain , salman qadri , sami ullah , ali nawaz shah , ali imran and attika asghar \.
+\. \d{4} academy of nutrition and dietetics
+\. \d{4} adhikari and mcfadden
+\. \d{4} agricultural and applied economics association \.
+\. \d{4} akademische verlagsgesellschaft aka gmbh , berlin
+\. \d{4} amia all rights reserved \.
+\. \d{4} amit kumar tyagi and shrikant tiwari \.
+\. \d{4} anirban mukherjee , arpan deyasi , soumen mukherjee , pampa debnath and lidia ghosh \.
+\. \d{4} antonio p \. volpentesta et al \.
+\. \d{4} association for supply chain management , inc \.
+\. \d{4} association for consumer research
+\. \d{4} authors
+\. \d{4} chinese assoc of automati \.
+\. \d{4} chinese chamber of commerce
+\. \d{4} copyright for the individual papers remains with the authors \.
+\. \d{4} copyright for the individual papers remains with the authors \.
+\. \d{4} copyright for the individual papers remains with the authors \.
+\. \d{4} dragan vukolic , tamara gajic , oscar cabral , sonja veljovic and snezana knezevic
+\. \d{4} edp sciences
+\. \d{4} elsevier inc \. all rights are reserved including those for text and data mining ai training and similar technologies \.
+\. \d{4} engineers australia \.
+\. \d{4} european microwave association \( euma \) \.
+\. \d{4} eurosis eti \.
+\. \d{4} for the individual papers by the papers authors \.
+\. \d{4} for this paper by its authors \.
+\. \d{4} fruct \.
+\. \d{4} icic international
+\. \d{4} icic international \.
+\. \d{4} international journal of mathematical , engineering and management sciences
+\. \d{4} inventive research organization \.
+\. \d{4} issn \d{4}-\d{4} \.
+\. \d{4} journees francophones d'ingenierie des connaissances , ic \d{4}
+\. \d{4} khan \.
+\. \d{4} ksii \.
+\. \d{4} li , jia , yang , li , yuan , zhang and sun \.
+\. \d{4} manojit chowdhury , nand lal kushwaha and gourav dhar bhowmick \.
+\. \d{4} mustafa berktas , rector , abdulkadir hiziroglu , ahmet emin erbaycu , orhan er and sezer bozkus kahyaoglu \.
+\. \d{4} national agricultural and food center \( slovakia \) \.
+\. \d{4} new york academy of sciences \.
+\. \d{4} newswood limited \.
+\. \d{4} publishing house o kratkoe
+\. \d{4} rayda ben ayed and mohsen hanana \.
+\. \d{4} sakshi gupta , gargi ghoshal
+\. \d{4} seventh sense research group \.
+\. \d{4} shouji shi , published by sciendo \.
+\. \d{4} sociedad espanola de nutricion comunitaria
+\. \d{4} society of photo optical instrumentation engineers \.
+\. \d{4} society of chemical industry
+\. \d{4} t \. bharath kumar et al \.
+\. \d{4} taylor and francis group , london \.
+\. \d{4} the british dietetic association ltd \.
+\. \d{4} the institution of engineering and technology \.
+\. \d{4} the author \( s \) \. nutrition and dietetics published by john wiley and sons australia , ltd on behalf of dietitians australia \.
+\. \d{4} the author \( s \) \. the laryngoscope published by wiley periodicals llc on behalf of the american laryngological , rhinological and otological society , inc \.
+\. \d{4} totem publisher , inc
+\. \d{4} tu delft
+\. \d{4} walter de gruyter gmbh , berlin / boston , genthiner strae 13 , \d{4}5 berlin
+\. \d{4} , china food publishing company \. all right reserved \.
+\. \d{4} by scitepress science and technology publications , lda
+\. \d{4} by world scientific publishing europe ltd
+\. \d{4} institute of food , science and technology \( ifsttf \) \.
+\. \d{4} institute of food science and technology \( ifst \) \.
+\. \d{4} international life sciences institute \( ilsi \) published by elsevier inc
+\. \d{4} the electrochemical society \( ecs \) \. published on behalf of ecs by iop publishing limited \.
+\. all these resources are available in github
+\. all rights are reserved , including those for text and data mining , ai training , and similar technologies \.
+\. annual meeting of the association for information science and technology \. nov \. 14 18 , \d{4} \. washington , dc , usa \.
+\. association of food scientists and technologists \( india \) \d{4} \.
+\. beijing academy of food sciences \d{4} \.
+\. bu calsma tekirdag namk kemal youniversitesi tarafndan creative commons lisans \.
+\. ceur workshop proceedings \( ceur ws \. org \)
+\. code and dataset are available at \d{4}-\d{4} ieee \.
+\. code and resource :
+\. code is available at \d{4} copyright held by the owner / author \( s \) \.
+\. codes will be released upon publication \. code and models are available at \d{4}-\d{4} ieee \.
+\. efood published by john wiley and sons australia
+on behalf of international association of dietetic nutrition and safety \.
+\. food and machinery \d{4}\.all rights reserved \.
+\. food safety and health published by john wiley and sons australia
+ltd on behalf of international association of dietetic nutrition and safety \.
+\. foreign copyright protection may apply \d{4} \.
+\. icic international \d{4} \.
+\. ieee \d{4} \.
+\. isarob \d{4} \.
+\. jiakun zheng , junjie wang , jing shen , ruopeng an \.
+\. kgaa on behalf of the european food safety authority \.
+\. lin yang , zhen guo , xiaowei xu , hongyu kang , jianqiang lai , jiao li \.
+\. maxwell scientific organization , \d{4} \.
+\. minki chun , ha jin yu , hyunggu jung \.
+\. more details are at \d{4} acm \.
+\. myu k \. k \.
+\. project page is available at \d{4} acm \.
+\. published by edp sciences , roadef , smai \d{4} \.
+\. published by elsevier b\.v \. on behalf of institution of chemical engineers \.
+\. published by elsevier masson sas on behalf of societe francaise de nutrition \( sfn \) \.
+\. published with license by taylor and francis group , llc \d{4} , hans j \. p \. marvin , esmee m \. janssen , yamine bouzembrak , peter j \. m \. hendriksen , and martijn staats \.
+\. research india publications \.
+\. robin de croon , daniela segovia lizano , paul finglas , vero vanden abeele , katrien verbert \.
+\. rouzbeh razavi , guisen xue \.
+\. source code is available at \d{4} ieee \.
+\. study is performed using the coding environment of matlab
+\. suhermi1 , rinto , singgih , sri watini , nova ramadhona \.
+\. the code and dataset are available at \d{4} held by the owner / author \( s \) \. publication rights licensed to acm \.
+\. the code is public available at \d{4} amia all rights reserved \.
+\. the database is freely accessible at \d{4} the author \( s \)
+\. the korean society of food science and technology \d{4} \.
+\. the project code and dataset resources are publicly available at : \d{4} copyright held by the owner / author \( s \) \.
+\. the project website is \d{4} copyright held by the owner / author \( s \) . publication rights licensed to acm \.
+\. the resource is available at \d{4} copyright held by the owner / author \( s \) \.
+\. the royal society of chemistry \d{4}
+\. the source code will be made publicly available upon publication of the article
+\. the workshop proceedings can be found at : \d{4} owner / author \.
+\. the author \( s \) , under exclusive license to society for reliability and safety \( sresa \) \d{4} \.
+license details :
+\. this article is published by iieta and is licensed under the cc by 4.0 license \.
+\. wageningen academic publishers \. the netherlands , \d{4}
+\. wageningen academic publishers \. the netherlands , \d{4} \.
+\. wageningen academic publishers the netherlands , \d{4} \.
+\. we make all these datasets and methods public at \d{4} acm \.
+\. we open sourced cheffusion at \d{4} acm \.
+\. wichmann verlag , vde verlag gmbh berlin \.
+\. world scientific publishing company \.
+\. wyzsza szkoa logistyki , poznan , polska \.
+\. wyzsza szkoa logistyki , poznan , polska \.
+\( figure presented \. \)
+\( the data and code are publicly available at the following link \)
+\. \d{4} woodhead publishing limited all rights reserved \.
+\. \d{4} , strojarski facultet
+\. \d{4} enbiosis biotechnologies limited \. published with license by taylor and francis group , llc \.
+\. \( \d{4} \) trans tech publications , switzerland \.
+\. \d{4} woodhead publishing limited all rights reserved \.
+\. \d{4} ceur ws

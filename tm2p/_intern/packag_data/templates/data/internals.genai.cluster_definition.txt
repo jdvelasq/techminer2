@@ -39,14 +39,32 @@ KEYWORDS DEFINING THE THEMATIC FAMILY:
 
 
 CITATION RULES:
-Use the UT record number provided in the files as reference numbers in the text. 
-Do not use surname (year) citation style. Use the UT value between brackets to 
-indicate the reference to the record. For example, [UT 1] means that the 
-information is in the UT 1. Use only phrases appearing in the provided text. 
-Any citation that does not meet this requirement must be considered invalid.
-Also any citation in styles like "[UT Monroy-Hernández A, 2012]" is invalid. 
-Use always the style "[UT #]". Do not use any other style of citation.
+Use the UT record number provided in the input files for each record as the only citation format.
+A valid citation must have exactly this form:
 
+[UT #]
+
+where # is the UT record number provided in the input. Examples of valid citations:
+[UT 1]
+[UT 2]
+[UT 15]
+
+Do not use surname-year citations, author names, publication years, numeric-only citations,
+or any modified UT citation style.
+
+Invalid citation examples:
+- [UT Monroy-Hernández A, 2012]
+- (Monroy-Hernández, 2012)
+- [Monroy-Hernández, 2012]
+- [1]
+- [UT: 1]
+- [UT-1]
+- [UT1]
+
+Only the exact style [UT #] is valid.
+
+Every factual claim must be supported by at least one valid UT citation. A citation is valid
+only if the cited UT record contains the information used in the sentence.
 
 REQUIREMENTS:
 - Use only the information and phrases from the provided abstracts. Do not add 
