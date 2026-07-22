@@ -46,6 +46,7 @@ COMPOUND_STRUCTURED_ABSTRACT_HEADINGS = [
     "design methodology approach",
     "discussion and conclusions",
     "discussion and evaluation",
+    "discussion / conclusion",
     "diverse perspectives",
     "ethical considerations",
     "ethics and dissemination",
