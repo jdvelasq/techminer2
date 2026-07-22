@@ -931,6 +931,7 @@ advise and assist
 advisory committees
 advisory systems
 advocacy
+aegean wi fi intrusion dataset
 aerial access network
 aerial access networks
 aerial base station
@@ -989,6 +990,8 @@ africa south of the sahara
 african american
 african continental ancestry group
 african continental ancestry groups
+african peace processes
+african region
 african swine fever
 african vulture optimizer
 african vulture optimizers
@@ -1053,6 +1056,7 @@ agent-based
 agent-based model
 agent-based modeling
 agent-based modelling
+agent-based simulation
 agentic artificial intelligence
 agentic artificial intelligences
 agglomeration
@@ -1063,6 +1067,7 @@ aggregated datum
 aggregation induced emission
 aggregation induced emissions
 aggregation interaction propagation
+aggregation operators
 aggression
 agile architecture in action
 agile architecture in actions
@@ -1783,6 +1788,7 @@ american heart association
 american indian
 american institute of chemical engineer
 american institute of chemical engineers
+american schools of oriental research
 american sign language
 american sign languages
 american society of anaesthesiologists score
@@ -2512,6 +2518,7 @@ armed attack
 armed confl ict
 armed conflict
 armed conflict location and event data
+armed conflict location and event data project
 armed conflicts
 armed forces
 armed-conflict
@@ -2896,6 +2903,7 @@ athletes
 athletic injuries
 athletic training services
 atlantic ocean
+atlas narodov mira
 atmospheric and room temperature plasma mutagenesis
 atmospheric chemistry
 atmospheric circulation anomalies
@@ -2942,6 +2950,7 @@ attendance management systems
 attendance systems
 attended home deliveries
 attended home delivery
+attending at least one
 attention
 attention aware learning
 attention aware learnings
@@ -3001,6 +3010,8 @@ attitudes toward technology
 attitudes towards ict
 attitudes towards mathematics
 attractive targeted sugar baits
+attributable fraction
+attributable fractions
 attribute association error probabilities
 attribute association error probability
 attribute based access control
@@ -3434,6 +3445,7 @@ autoregressive distributed lag model
 autoregressive distributed lag models
 autoregressive exogenous model
 autoregressive exogenous models
+autoregressive fractionally integrated moving average
 autoregressive integrated moving average
 autoregressive integrated moving average model
 autoregressive integrated moving average models
@@ -3616,10 +3628,12 @@ bandt pompe transformation
 bandt pompe transformations
 bandwidth
 bandwidth compression
+bangla religious aggression comments
 bangladesh bureau of statistics
 bangladesh power development board
 bangladesh power development boards
 bangsamoro autonomous region of muslim mindanao
+bangsamoro basic law
 bangsamoro mindanao
 bani framework
 bank business model
@@ -3994,6 +4008,7 @@ behavior pattern
 behavior prediction
 behavior therapy
 behavior-based
+behavioral activation
 behavioral analytic
 behavioral bias
 behavioral biases
@@ -4052,6 +4067,7 @@ behind the meter solar
 behind the meters
 beijing
 beijing tianjin hebei regions
+belfast good friday agreement
 belgium
 belief desire intentions
 belief rule base
@@ -4089,6 +4105,7 @@ benefits distribution
 benefits distributions
 benefits matrix
 benemerita universidad autonoma de puebla
+bengalis
 benign paroxysmal positional vertigo
 benzodiazepine receptor stimulating agent
 benzodiazepine receptor stimulating agents
@@ -4358,6 +4375,7 @@ bilirubin blood level
 bilirubin blood levels
 bill of material
 bill of materials
+bill of quantities
 bill payment
 billing and claims
 bin packing problem
@@ -4678,6 +4696,7 @@ blended teamwork
 blended wing body
 blended-learning
 blending
+blessing in disguise
 blind and visually impaired
 blind source separation
 blinder oaxaca decomposition
@@ -4840,6 +4859,7 @@ body meridian
 body movement
 body of knowledge
 body position
+body remains
 body sensor network
 body sensor networks
 body sensor node
@@ -4867,6 +4887,8 @@ body worn sensors
 boil off gas
 boil off gases
 boilers
+boko haram
+boko haram insurgency
 bolted flange connection
 bolted flange connections
 bolts
@@ -4904,6 +4926,7 @@ border control security
 border gateway protocol
 border gateway protocols
 border region
+border security
 borderline synthetic minority oversampling technique
 borderline synthetic minority oversampling techniques
 boredom
@@ -6250,6 +6273,7 @@ center for epidemiological studies depression scale
 center for epidemiological studies depression scales
 center for medicare and medicaid service
 center for medicare and medicaid services
+center for research training and publications
 center for responsive information for safety and security
 center for strategic counterterrorism communications
 center for technological information
@@ -6269,6 +6293,7 @@ centers for medicare and medicaid services
 central african republic
 central agency for public mobilization and statistics
 central air conditioning
+central america
 central bank communication
 central bank communications
 central bank digital currency
@@ -6612,6 +6637,7 @@ child computer interaction
 child computer interactions
 child day care center
 child day care centers
+child death
 child depression inventories
 child depression inventory
 child development
@@ -6635,6 +6661,7 @@ child sexual abuse
 child welfare
 child-computer interaction
 childhood cancer survivor
+childhood mortality
 childhood obesity intervention
 childhood obesity interventions
 children
@@ -6658,6 +6685,7 @@ chimp optimization algorithms
 china
 china banking industries
 china banking industry
+china global investment tracker
 china new environmental protection law
 china new environmental protection laws
 china pakistan economic corridor
@@ -6870,6 +6898,7 @@ civil
 civil aviation
 civil buildings
 civil defense
+civil disorder
 civil dispute
 civil engineering
 civil engineering programs
@@ -7010,6 +7039,7 @@ climate effects
 climate energy nexus
 climate finance
 climate finances
+climate hazards center infrared precipitation with station
 climate hazards group infrared precipitation station
 climate hazards group infrared precipitation with station data
 climate impacts
@@ -7776,6 +7806,7 @@ combined technology acceptance model
 combined technology acceptance models
 combined-heat and power
 combustion pro cess
+comma separated values
 command and control
 command and control system
 command and control systems
@@ -7965,6 +7996,7 @@ community resilience
 community resiliences
 community resource management
 community resource managements
+community violence interventions
 community-based
 comorbidities
 comorbidity
@@ -8148,6 +8180,7 @@ complex regional pain syndromes
 complex relationships
 complex social network
 complex social networks
+complex social systems
 complex sociotechnical system
 complex sociotechnical systems
 complex software system
@@ -8225,6 +8258,7 @@ comprehensive learning
 comprehensive modeling
 comprehensive performance evaluation
 comprehensive performance evaluations
+comprehensive planning and performance assessment system
 comprehensive research
 compressed air energy storage
 compressed air energy storages
@@ -8346,6 +8380,7 @@ computer aided analyses
 computer aided analysis
 computer aided assessment
 computer aided assessments
+computer aided communication
 computer aided design
 computer aided design computer aided manufacturing
 computer aided design model
@@ -8780,6 +8815,7 @@ conditional value at risk
 conditional value at risks
 conditional variational autoencoder
 conditional wasserstein gans
+conduct and discipline units
 conduct disorder
 conduction band minimum
 conduction band offset
@@ -8804,15 +8840,21 @@ configure to orders
 confirmatory factor analyses
 confirmatory factor analysis
 conflict
+conflict and peace data bank
 conflict and security
+conflict cause
 conflict early warning and response network
 conflict early warning and response network ( cewarn )
 conflict early warning systems
+conflict issues dataset
 conflict monitoring
+conflict monitoring tool
 conflict of interest
 conflict of interests
 conflict reconciliation
+conflict related violence
 conflict situation
+conflict-affected regions
 conflict-management
 conflicts
 conflicts analysis
@@ -9153,6 +9195,7 @@ context modeling
 context models
 context of use
 context of uses
+context representation
 context sensitive grammars
 context sensitive language
 context sensitive languages
@@ -9397,6 +9440,7 @@ convergence optimizer function
 convergence optimizer functions
 convergent beam electron diffraction
 convergent beam electron diffractions
+convergent cross mapping
 conversational agent
 conversational ai
 conversational artificial intelligence
@@ -9980,6 +10024,7 @@ crises
 crises situations
 crisis
 crisis communications
+crisis early warnings
 crisis informatics
 crisis information management
 crisis management
@@ -9987,6 +10032,7 @@ crisis mapping
 crisis mapping system
 crisis mapping systems
 crisis mappings
+crisis of interest
 crisis perception
 crisis situations
 crisis-mapping
@@ -10302,6 +10348,7 @@ cultural and creative industries
 cultural and social implications
 cultural anthropology
 cultural changes
+cultural conflict
 cultural difference
 cultural discourse studies
 cultural factor
@@ -10940,6 +10987,7 @@ data environment
 data ethic
 data expert
 data experts
+data extraction
 data feature
 data feminism
 data flow analyses
@@ -11192,6 +11240,7 @@ data stream managements
 data stream mining
 data stream minings
 data stream processing
+data streaming
 data streams
 data streams mining
 data streams minings
@@ -11293,6 +11342,7 @@ database engineered application
 database engineered applications
 database management system
 database management systems
+database on political institutions
 database query processing
 database research
 database systems
@@ -11323,6 +11373,7 @@ day ahead market
 day ahead markets
 day ahead planning
 day ahead scheduling
+day and night band
 day care medical
 day of the week effect
 day of the week effects
@@ -11385,6 +11436,7 @@ de-identification
 dea tobit model
 dea tobit models
 dead reckoning
+deadly electoral conflict
 deaf and hard of hearing
 deaf and hard of hearing student
 deaf and hard of hearing students
@@ -11683,6 +11735,7 @@ deep learning machine
 deep learning machines
 deep learning model training
 deep learning model trainings
+deep learning object based detection system
 deep learning securities
 deep learning security
 deep learnings
@@ -11909,8 +11962,10 @@ democratic republic of the congo
 democratic state
 democratisation
 democratization
+demographic and health survey
 demographic surveillance system
 demographic surveillance systems
+demographic survey
 demographics
 demography
 demolition
@@ -12322,6 +12377,7 @@ diagnostic test approval
 diagnostic tests investigation
 diagnostic tests routine
 diagnostics and prognostics
+diagram predicate framework
 diagrammatic reasoning
 dial a ride
 dial a ride problem
@@ -12343,6 +12399,7 @@ diamond like carbon
 diamond like carbons
 diaries as topic
 diaries as topics
+diarrhea
 diaspora
 diastolic blood pressure
 diastolic blood pressures
@@ -12405,6 +12462,7 @@ difference in differences method
 difference in differences methods
 difference in differences model
 difference in differences models
+difference in geographic discontinuity
 difference of convex functions
 difference-in-differences
 differences in differences
@@ -12629,6 +12687,7 @@ digital game based learnings
 digital game-based learning
 digital green innovation
 digital green innovations
+digital health
 digital health < general
 digital health assistant
 digital health assistants
@@ -12994,6 +13053,7 @@ disabled person
 disabled students
 disamenity cost
 disamenity costs
+disarmament demobilization and reintegration
 disassembly line balancing
 disassembly sequence planning
 disassortative graph learning
@@ -13001,12 +13061,14 @@ disassortative graph learnings
 disaster
 disaster assessment
 disaster communications
+disaster management
 disaster management system
 disaster management systems
 disaster mapping
 disaster planning
 disaster prevention
 disaster reduction
+disaster relief
 disaster relief supply chain
 disaster relief supply chains
 disaster risk reduction
@@ -13619,6 +13681,7 @@ domestic energy usages
 domestic hot water
 domestic hot water consumption
 domestic hot waters
+domestic violence
 domestic violent extremism
 domestic waste water treatment
 domestic waste water treatments
@@ -13976,6 +14039,7 @@ duty of cares
 duty-cycle
 dwell time
 dwelling detection
+dyadic conflict
 dye sensitized solar cell
 dye sensitized solar cells
 dyes reagents indicators markers and buffers
@@ -14147,6 +14211,7 @@ dynamic reconfigurable battery
 dynamic recurrent neural network
 dynamic recurrent neural networks
 dynamic reliability
+dynamic representation
 dynamic resource allocation
 dynamic resource allocations
 dynamic resource provisioning
@@ -14163,6 +14228,7 @@ dynamic shear rheometer
 dynamic simulation
 dynamic simulation models
 dynamic simulations
+dynamic social network analysis
 dynamic spatial dubin model
 dynamic spatial dubin models
 dynamic spatial durbin model
@@ -14482,6 +14548,7 @@ east africa
 east asian people
 east asian peoples
 eastern europe
+eastern hemisphere
 easy of use
 easy of uses
 easy to read
@@ -14883,6 +14950,7 @@ effect of pressure
 effect of pressures
 effect of temperature
 effect of temperatures
+effect size
 effective analysis
 effective approaches
 effective electron densities
@@ -15017,6 +15085,7 @@ elective surgical procedures
 electoral campaigns
 electoral politics
 electoral processes
+electoral system
 electoral violence
 electre i method
 electre i methods
@@ -15459,6 +15528,7 @@ electromagnetic field analyses
 electromagnetic field analysis
 electromagnetic field effect
 electromagnetic field effects
+electromagnetic induction
 electromagnetic inductions
 electromagnetic property sensing
 electromagnetic pulse
@@ -15744,6 +15814,7 @@ emergency severity index
 emergency severity indexes
 emergency severity indices
 emergency situation
+emergency situations
 emergency supply chain
 emergency supply chains
 emergency traffic control
@@ -16666,6 +16737,7 @@ english as foreign language
 english as foreign languages
 english as second language
 english as second languages
+english defense league
 english educations
 english for academic purpose
 english for academic purposes
@@ -16962,6 +17034,7 @@ environmental social governance
 environmental social governances
 environmental sound classification
 environmental sound classifications
+environmental stress
 environmental supply chain
 environmental supply chain management
 environmental supply chain managements
@@ -17278,6 +17351,7 @@ european innovation scoreboard
 european integration
 european interoperability framework
 european interoperability frameworks
+european language resources association
 european laws
 european levels
 european manufacturing survey
@@ -17377,6 +17451,7 @@ event based surveillance
 event based surveillances
 event based vision processing
 event coding
+event data on conflict and security
 event detection algorithm
 event detection algorithms
 event detection and tracking
@@ -17392,10 +17467,12 @@ event driven simulation
 event driven simulations
 event history analyses
 event history analysis
+event location
 event log analyses
 event log analysis
 event log qualities
 event log quality
+event prediction
 event processing
 event related potential
 event related potentials
@@ -17673,6 +17750,7 @@ explainable deep learnings
 explainable learning analytic
 explainable machine learning
 explainable machine learnings
+explainable prediction system
 explainable reinforcement learning
 explainable reinforcement learnings
 explicit domain specific knowledge retrieval module
@@ -17765,6 +17843,7 @@ extended berkeley packet filter
 extended berkeley packet filters
 extended boolean model
 extended boolean models
+extended convergent cross mapping
 extended fuzzy logic
 extended fuzzy logics
 extended isolation forest
@@ -17816,6 +17895,7 @@ external quantum efficiency
 external r and d
 external resources
 external short circuits
+external support
 external thermal insulation composite systems
 external wall insulations
 externally displaced persons
@@ -17857,6 +17937,7 @@ extraction transformation loadings
 extraction transformation loads
 extreme edge
 extreme edge ai
+extreme event
 extreme gradient boost
 extreme gradient boosting
 extreme gradient boosting algorithm
@@ -17946,6 +18027,7 @@ eye-tracking
 eye-tracking studies
 eye-tracking technology
 eyetracking
+eyewitness news
 f-measure
 f-score
 fabrication and characterizations
@@ -18186,6 +18268,7 @@ family centered care
 family centered cares
 family centred care
 family centred cares
+family characteristics
 family doctor contract service
 family nurse practitioner
 family nurse practitioners
@@ -18662,6 +18745,7 @@ fifth grade student
 fifth grade students
 fifth industrial revolution
 fifth industrial revolutions
+fight flight freeze
 fighter aircraft
 figure of merit
 figures of speech
@@ -19898,6 +19982,7 @@ frequency monitoring networks
 frequency multiplying circuits
 frequency of use
 frequency of uses
+frequency ratio
 frequency regulation auxiliary service
 frequency regulation auxiliary services
 frequency regulation service
@@ -20558,6 +20643,7 @@ gated recurrent unit networks
 gated recurrent unit neural network
 gated recurrent unit neural networks
 gated recurrent units
+gatekeeping theory
 gaussian assisted signal smoothing
 gaussian distribution
 gaussian graphical model
@@ -20677,6 +20763,7 @@ general health questionnaire
 general health questionnaires
 general health status assessment
 general health status assessments
+general household survey
 general matrix multiplication
 general matrix multiplications
 general mental disease assessment
@@ -20705,6 +20792,7 @@ general systems theory
 general variable neighborhood search
 general variable neighborhood searches
 generalisation
+generalized additive mixed model
 generalized additive model
 generalized additive models
 generalized additive models for location scale and shape
@@ -20750,6 +20838,7 @@ generalized second price
 generalized second price auction
 generalized second price auctions
 generalized second prices
+generalized structural equation model
 generalized traveling salesman problem
 generalized traveling salesman problems
 generalized zero shot detection
@@ -20884,6 +20973,7 @@ genital system diseases
 genital tract infection
 genital tract infections
 genocide
+genocide transcript corpus
 genome wide association studies
 genome wide association study
 genome-wide association study
@@ -20966,14 +21056,17 @@ geometry
 geoparsing
 geophysical prospecting
 geopolitic
+geopolitical entities
 geopolitics
 georeferenced event data
+georeferencing of ethnic groups
 geoscience big data
 geospatial
 geospatial artificial intelligence
 geospatial artificial intelligences
 geospatial feature extraction
 geospatial feature extractions
+geospatial intelligence
 geostationary satellites
 geothermal energies
 geothermal energy
@@ -21064,6 +21157,7 @@ global business environments
 global carbon emission
 global carbon emissions
 global challenges
+global challenges research fund
 global change
 global climate
 global climate assessment model
@@ -21072,11 +21166,13 @@ global climate changes
 global climate model
 global climate models
 global climates
+global conflict risk index
 global cost
 global cost per emission savings
 global costs
 global database of events language and tone
 global disease burden
+global early warning system
 global economic growth
 global economic growths
 global economics
@@ -21106,6 +21202,7 @@ global governance of educations
 global health
 global horizontal irradiance
 global horizontal irradiances
+global human settlement layer
 global hunger index
 global immediacy
 global information network
@@ -21164,6 +21261,8 @@ global rating of change scales
 global regulatories
 global reporting initiative
 global risks
+global roads inventory project
+global rural urban mapping project
 global satellite mapping of precipitation
 global scale
 global search abilities
@@ -21190,8 +21289,11 @@ global supply networks
 global sustainability
 global system for mobile communication
 global system for mobile communications
+global systems analysis and simulation
+global systems science
 global terrorism database
 global tilted irradiation
+global trade alerts
 global value chain
 global value chains
 global warming
@@ -21204,6 +21306,7 @@ globalisation
 globalization
 globalization in education
 globalization in educations
+globally distributed decision support system
 glocal classroom
 glomerular filtration rate
 glomerular filtration rates
@@ -21339,6 +21442,7 @@ government supports
 government technology adoption
 government technology programs
 government to community services
+government to person
 governmental regulations
 governors
 gps based mobile app
@@ -21580,6 +21684,7 @@ gravitational wave detection
 gravitational wave detections
 gravity energy storage
 gravity energy storages
+gravity model
 gravity recovery and climate experiment
 gravity recovery and climate experiments
 gravo aeroelastic scaling
@@ -22005,6 +22110,7 @@ group key management
 group key managements
 group method of data handling
 group model building
+group of governmental experts
 group purchasing organization
 group purchasing organizations
 group recommendations
@@ -22920,6 +23026,7 @@ hedonic pricing model
 hedonic pricing models
 height of hub
 height of hubs
+hekima institute of peace studies and international relations
 hela cell line
 hela cell lines
 hellenic open university
@@ -23074,6 +23181,7 @@ hierarchical control architectures
 hierarchical decision model
 hierarchical decision modeling
 hierarchical decision models
+hierarchical density based spatial clustering of applications with noise
 hierarchical dirichlet process
 hierarchical dirichlet processes
 hierarchical energy management
@@ -23245,6 +23353,7 @@ high frequency components
 high frequency data
 high frequency hf
 high frequency microprocessor
+high frequency phone survey
 high frequency switching
 high frequency trading
 high frequency transformer
@@ -23720,6 +23829,7 @@ hispanic or latino
 histogram
 histogram based gradient boosting
 histogram of gradient
+histogram of oriented gradient
 histogram of oriented gradients
 histology
 histone deacetylase inhibitor
@@ -23736,6 +23846,7 @@ historical buildings
 historical controls
 historical data
 historical performance data
+historical perspective
 historical reconstruction
 historical records
 historical weather data
@@ -23857,6 +23968,7 @@ horizontal federated learning
 horizontal federated learnings
 horizontal gene transfer
 horizontal gene transfers
+horizontal inequalities
 hormonal contraceptive agent
 hormonal contraceptive agents
 hormone blood level
@@ -24162,6 +24274,7 @@ human form model
 human form models
 human growth hormone
 human growth hormones
+human guided machine learning
 human human interaction
 human human interactions
 human immunodeficiency virus
@@ -24281,6 +24394,7 @@ human robot interactions
 human robot team
 human robot teams
 human securities
+human security
 human serum albumin
 human serum albumins
 human settlement
@@ -24344,6 +24458,7 @@ humanitarian analytics
 humanitarian assistances
 humanitarian crises
 humanitarian crisis
+humanitarian data exchange
 humanitarian decision makers
 humanitarian development peace
 humanitarian forensic action
@@ -24783,6 +24898,7 @@ identity authentication protocols
 identity based encryption
 identity based encryptions
 identity based signcryption
+identity fusion
 identity management system
 identity management systems
 identity verification
@@ -24881,6 +24997,7 @@ image quality assessments
 image quality index
 image quality indexes
 image quality indices
+image recognition
 image recognition system
 image recognition systems
 image recognition technologies
@@ -25132,6 +25249,7 @@ improving classroom teachings
 improving educational software
 improving energy efficiency of buildings
 improving learning
+improvised explosive device
 improvised explosive devices
 improvised explosives devices
 impulse buying tendency
@@ -25749,6 +25867,7 @@ information and communication
 information and communication system
 information and communication systems
 information and communication technologies
+information and communication technologies for violence prevention
 information and communication technology
 information and communication technology applications
 information and communication technology development
@@ -26236,6 +26355,7 @@ instantaneous heart rates
 instituciones de educacion superior
 institute examination system
 institute examination systems
+institute for economics and peace
 institute of electrical and electronics engineer
 institute of electrical and electronics engineers
 institute of physics
@@ -26742,6 +26862,7 @@ inter disciplinary study
 inter firm collaboration
 inter firm collaborations
 inter firm relationships
+inter governmental authority on development
 inter modality hybrid fusion
 inter organisational project
 inter organisational projects
@@ -26851,6 +26972,7 @@ interagency food safety analytics collaboration
 interconnected network
 interconnected power grid
 interconnected power grids
+interdependency
 interdependent supply chain network
 interdependent supply chain networks
 interdisciplinary communication
@@ -26958,6 +27080,7 @@ internally displaced people
 internally displaced peoples
 internally displaced person
 internally displaced persons
+international aviation network
 international classification for nursing practice
 international classification for nursing practices
 international classification of disease
@@ -26968,6 +27091,7 @@ international collaborations
 international commission on microbiological specifications for foods
 international conferences
 international conflict
+international conflict network
 international cooperation
 international covenant on civil and political rights
 international criminal court
@@ -26983,6 +27107,7 @@ international federation of gynecology and obstetrics
 international financial reporting standard
 international financial reporting standards
 international fund for agricultural development
+international governmental organization
 international health regulations
 international health service
 international health services
@@ -27006,6 +27131,7 @@ international new ventures
 international normalized ratio
 international normalized ratios
 international organization
+international organization for migration
 international organization for standardization
 international organization for standardizations
 international organizations
@@ -27207,6 +27333,7 @@ interval optimizations
 interval partial least squares
 interval type-2 fuzzy set
 interval valued data
+interval valued fermatean fuzzy sets
 interval valued fuzzy numbers
 interval valued fuzzy sets
 interval valued intuitionistic fuzzy number
@@ -27238,6 +27365,7 @@ interviews as topic
 interviews as topics
 intestine flora
 intestine mucosa permeability
+intimate partner violence
 intolerance of uncertainty scale
 intolerance of uncertainty scales
 intra abdominal fat
@@ -27465,6 +27593,7 @@ iot-based health monitoring
 ip multimedia subsystem
 ip multimedia subsystems
 iraqi security forces
+irish republican army
 iron and steel
 iron and steel industries
 iron and steel industry
@@ -27525,7 +27654,9 @@ islamic banking and finances
 islamic financial services marketing
 islamic financial services marketings
 islamic state
+islamic state in iraq and the syria
 islamic state of iraq and syria
+islamic state of iraq and the levant
 islamism
 islamist extremist narratives
 islanded ac microgrid
@@ -27737,6 +27868,7 @@ joint decision makings
 joint empirical probabilities
 joint industry projects
 joint learning
+joint mission analysis center
 joint operation
 joint operations
 joint probability distributions
@@ -28173,6 +28305,7 @@ kolmogorov smirnov test
 kolmogorov smirnov tests
 kompetitive allele specific polymerase chain reaction
 kompetitive allele specific polymerase chain reactions
+konstanz one sided violence event dataset
 kookaburra optimization algorithm
 kookaburra optimization algorithms
 korea
@@ -28293,6 +28426,7 @@ land atmosphere coupling
 land atmosphere couplings
 land atmosphere interaction
 land atmosphere interactions
+land cover and land use
 land cover change
 land cover change trajectory
 land cover changes
@@ -28397,6 +28531,7 @@ language related episodes
 language specific modeling
 language teaching and learning
 language teaching and learnings
+language technology
 language to code
 language to codes
 lanthanum
@@ -29329,6 +29464,7 @@ levy flight strategy
 lewis acid base
 lewy body disease
 lewy body diseases
+lexical analysis
 lexicon based approach
 lexicon based approaches
 lexicon-based approach
@@ -29362,6 +29498,7 @@ library impact
 library instruction
 library user education
 library user educations
+libyan arab jamahiriya
 license clearance
 license plate detection
 license plate detections
@@ -29989,6 +30126,7 @@ logic in memory
 logic programming
 logic-programming
 logical analysis of data
+logical interpretable learning
 logical proofs
 logically definable causality
 logistic and supply chain
@@ -30256,6 +30394,7 @@ loss of performance
 loss of performances
 loss of power supply probabilities
 loss of power supply probability
+loss of strength gradient
 loss reduction
 loss to follow up
 loss to follow ups
@@ -31165,6 +31304,7 @@ marine power system
 marine power systems
 marine predator algorithm
 marine predator algorithms
+marine protected areas
 marine renewable energies
 marine renewable energy
 marine robotics
@@ -31373,6 +31513,7 @@ master of sciences
 master planning
 masts and towers
 matched filtering
+matching event data by location time and type
 matchings
 matchmaking algorithms
 material cultures
@@ -31409,6 +31550,7 @@ materials science and engineering
 materials science and engineerings
 maternal and child health
 maternal and child healths
+maternal care
 maternal child health care
 maternal child health cares
 maternal child health service
@@ -31656,8 +31798,10 @@ measurement and verification
 measurement and verifications
 measurement based analyses
 measurement based analysis
+measurement method
 measurement of alternative and ranking according to compromize solution
 measurement of alternative and ranking according to compromize solutions
+measurement of alternatives and ranking according to compromise solution
 measurement system
 measurement tool to assess systematic review
 measurement tool to assess systematic reviews
@@ -31709,6 +31853,7 @@ mechatronic concept designer
 mechatronics and robotics
 medecins sans frontieres
 media aesthetics
+media and politics
 media arts
 media business
 media companies
@@ -31913,6 +32058,7 @@ mediterranean climate
 mediterranean climates
 mediterranean diet
 mediterranean environment
+mediterranean region
 medium
 medium access control
 medium access control protocols
@@ -32017,6 +32163,7 @@ mental health analyse
 mental health analyses
 mental health analysis
 mental health and psychiatry
+mental health and psychosocial support
 mental health and well being
 mental health and wellbeing
 mental health care
@@ -32234,6 +32381,7 @@ methicillin resistant staphylococcus aureus infections
 method and technique
 method and techniques
 method based on the removal effect of criteria
+method based on the removal effects of criteria
 method detection limit
 method detection limits
 method for reconciliation process
@@ -32485,6 +32633,9 @@ migration
 mild acid leaching
 mild cognitive impairment
 mild cognitive impairments
+militarized international dispute
+military applications
+military capabilities
 military communications
 military data processing
 military electronic countermeasures
@@ -32495,6 +32646,7 @@ military medicine
 military occupation
 military organizations
 military personnels
+military phenomena
 military photography
 military robotics
 military satellites
@@ -33227,6 +33379,8 @@ moderate intensity continuous training
 moderate intensity continuous trainings
 moderate intensity exercise
 moderate intensity exercises
+moderate resolution
+moderate resolution imaging spectroradiometer
 moderate to vigorous physical activities
 moderate to vigorous physical activity
 moderated mediation
@@ -33261,6 +33415,7 @@ modern technologies
 modern technology
 modes of operation
 modes of operations
+modifiable areal unit problem
 modified activated alumina
 modified ashworth scale
 modified ashworth scales
@@ -34471,6 +34626,7 @@ multimodality cancer therapies
 multimodality cancer therapy
 multimode process monitoring
 multimorbidity
+multinational enterprises
 multinomial logistic regression
 multinomial logistic regression model
 multinomial logistic regression models
@@ -34488,6 +34644,7 @@ multiobjective optimizations
 multiobjective programming
 multiomics
 multiparametric magnetic resonance imaging
+multipath forecasting
 multiplatform mobile application
 multiplatform mobile applications
 multiple access channels
@@ -34549,7 +34706,9 @@ multiple failure modes
 multiple heat source
 multiple heat sources
 multiple image
+multiple imputation
 multiple indicators
+multiple indicators multiple causes
 multiple input multiple output
 multiple input multiple output communication
 multiple input multiple output communications
@@ -34732,6 +34891,7 @@ municipal waste management
 municipal waste managements
 municipal wireless network
 municipal wireless networks
+munitions and explosives of concern
 musa x paradisiaca
 muscarinic receptor blocking agent
 muscarinic receptor blocking agents
@@ -34893,6 +35053,7 @@ national aeronautics and space administrations
 national airspace system
 national airspace systems
 national defense
+national democratic front
 national department of statistics
 national digital health mission
 national digital health missions
@@ -34936,6 +35097,7 @@ national institutes of health stroke scales
 national institutes of healths
 national level
 national levels
+national liberation army
 national mental health program
 national oceanic and atmospheric administration
 national oceanic and atmospheric administrations
@@ -34957,11 +35119,13 @@ national renewable energy laboratories
 national renewable energy laboratory
 national rental affordability scheme
 national rental affordability schemes
+national resistance movement
 national science foundations
 national security
 national security personnel system
 national student clearinghouse
 national transformation plan
+national unity day
 national university of singapore
 national university of tainan
 national vital statistics system
@@ -35086,6 +35250,7 @@ natural resource based view
 natural resource based view theories
 natural resource based view theory
 natural resource based views
+natural resource conflicts
 natural resource conservation
 natural resource economics
 natural resource management
@@ -35242,6 +35407,7 @@ neglected tropical diseases
 negotiation
 neighbor joining method
 neighbor joining methods
+neighborhood
 neighborhood cleaning rule
 neighborhood cleaning rules
 neighborhood component analyses
@@ -35443,6 +35609,7 @@ network traffic monitoring and analysis
 network traffic prediction
 network traffic predictions
 network-based
+network-based approach
 network-based controllers
 network-on-chip
 network-text analysis
@@ -35466,6 +35633,7 @@ neural causal models
 neural collaborative filtering
 neural differential equation
 neural differential equations
+neural forward intensity poisson process
 neural fuzzy inference system
 neural fuzzy inference systems
 neural language processing
@@ -35600,6 +35768,7 @@ neutrons
 neutrophil gelatinase associated lipocalin
 neutrophil lymphocyte ratio
 neutrophil lymphocyte ratios
+neutrosophic multinomial logistic regression
 new approach
 new approach methodologies
 new approaches
@@ -35690,6 +35859,7 @@ new york times
 new york times news data
 new zealand
 new zealand ministry of health
+newborn
 newborn intensive care
 newborn intensive cares
 newcastle ottawa scale
@@ -35767,12 +35937,15 @@ niger
 niger delta
 nigeria
 nigeria communications commission
+nigeria security tracker
 nigerians
+night time light changes
 night time lights
 night-time lights
 nighttime light image
 nighttime light remote sensing
 nighttime light variation index
+nighttime lights
 nine hole peg test
 nine hole peg tests
 nitrates
@@ -36026,6 +36199,7 @@ non parametric test
 non parametric tests
 non participant observation
 non participant observations
+non partner physical violence
 non performing assets
 non performing loan
 non performing loans
@@ -36119,6 +36293,7 @@ non-profit organizations
 non-relational databases
 non-residential buildings
 non-state actors
+non-state conflict
 non-technical barriers
 non-technical users
 non-thermal technology
@@ -36216,6 +36391,7 @@ nonpoint source pollution
 nonpoint source pollutions
 nonsteroid antiinflammatory agent
 nonsteroid antiinflammatory agents
+nonviolent action
 nonviolent defense
 nonviral gene delivery system
 nonviral gene delivery systems
@@ -36239,6 +36415,7 @@ normal strength concretes
 normalization process theories
 normalization process theory
 normalized burn ratio
+normalized difference built up index
 normalized difference vegetation index
 normalized difference vegetation indexes
 normalized difference vegetation indices
@@ -36256,6 +36433,7 @@ normalized root mean square errors
 norms
 north africa
 north america
+north atlantic treaty organization
 north carolina
 north carolina insurance underwriting association
 north china plain
@@ -36665,6 +36843,7 @@ offensive cyberspace operations capabilities
 office building
 office buildings
 office location
+official development assistance
 offline modes
 offline password guessing attack
 offline password guessing attacks
@@ -37124,6 +37303,7 @@ one to one
 one to one computing
 one way carsharing
 one-dimensional
+one-sided violence
 one-stop shop
 one-stop shops
 one-stop-shop
@@ -37168,6 +37348,7 @@ online competency based learning
 online competency based learnings
 online competitors
 online conferencing
+online conflict dynamics matrix
 online consumer behavior
 online consumer behaviors
 online consumer review
@@ -37297,6 +37478,7 @@ online retail platforms
 online retails
 online review platform
 online review platforms
+online safety
 online searching
 online self help
 online self-regulated learning
@@ -37940,6 +38122,7 @@ ordinary differential equations
 ordinary least square
 ordinary least squares
 ordinary least squares regressions
+ordnance
 oregon health decisions
 orexin receptor antagonist
 orexin receptor antagonists
@@ -38293,6 +38476,7 @@ paired t tests
 pairing based cryptographies
 pairing based cryptography
 pairwise comparison matrices
+palestina
 palestine
 palliative care
 palliative therapy
@@ -38625,6 +38809,7 @@ password based authentication
 past and present
 pastoral conflict
 pastoralism
+pastoralist
 patch based
 patch based feature learning
 patch based feature learnings
@@ -38839,13 +39024,17 @@ pdm to pcm conversions
 pdm-to-pcm conversion
 peace
 peace and conflict
+peace and conflict resolution evidence platform
 peace and conflict studies
 peace and security
 peace communication
 peace dialogues
 peace engineering
 peace journalism
+peace negotiations in civil conflicts
 peace operations
+peace research institute oslo
+peace support operations
 peace-building
 peace-keeping operations
 peacebuilders
@@ -38855,6 +39044,9 @@ peacekeepers
 peacekeeping
 peacekeeping intelligence
 peacekeeping missions
+peacekeeping operations
+peacekeeping troops to tasks problem
+peacemakers at risk
 peacemaking
 peacetech
 peak current mode control
@@ -38994,6 +39186,7 @@ penicillin binding protein
 penicillin binding proteins
 penman monteith equation
 penman monteith equations
+penn resist peradeniya war problems questionnaire
 penn state worry questionnaire
 penn state worry questionnaires
 pension funds
@@ -39560,6 +39753,7 @@ photoelectrochemical hydrogen productions
 photoelectrochemical water oxidation
 photogenerated charge carriers
 photogrammetry
+photography
 photointerpretation
 photomapping
 photon correlation spectroscopies
@@ -40154,6 +40348,7 @@ policymaking
 polish citizen
 politic ideology detection
 politic ideology detections
+political change
 political conflict
 political decision
 political decisions
@@ -40175,6 +40370,8 @@ political relations
 political science
 political system
 political unrest
+political violence targeting women
+politicized segregation index
 politics
 politics of education
 politics of educations
@@ -40280,6 +40477,7 @@ population health informatics
 population health management
 population health managements
 population migration
+population pressure
 population research
 population statistics
 population study
@@ -40383,6 +40581,7 @@ post compulsory education
 post compulsory educations
 post concussion syndrome
 post concussion syndromes
+post conflict justice
 post conflict reconstruction
 post covid lockdown
 post disaster reconstruction
@@ -40829,6 +41028,7 @@ power uprate
 power uprates
 power voltage characteristics
 power-generation
+power-sharing
 powerful indicators
 powersim
 powersim studio
@@ -41455,6 +41655,7 @@ problem definition
 problem frames approach
 problem frames approaches
 problem identification
+problem oriented innovation systems
 problem oriented language
 problem oriented languages
 problem oriented medical record
@@ -42156,6 +42357,7 @@ psychiatric status rating scales
 psychiatry
 psychodidae
 psychogenic nonepileptic seizure
+psycholinguistic analysis module
 psychologic assessment
 psychological adjustment
 psychological and psychiatric procedure
@@ -42307,6 +42509,7 @@ public speaking
 public spending
 public street lighting
 public subsidies
+public symbolic displays
 public transit network
 public transit networks
 public transit system
@@ -42963,6 +43166,7 @@ radical scavenging activities
 radical scavenging activity
 radicalisation
 radicalism
+radicalism intention scale
 radicalization
 radio access network
 radio access networks
@@ -43070,6 +43274,7 @@ random forest classifier
 random forest classifiers
 random forest method
 random forest methods
+random forest model
 random forest modeling
 random forest regression
 random forest regressions
@@ -43095,6 +43300,7 @@ random oversampling
 random process
 random processes
 random sample consensus
+random survival forest
 random under sampling
 random under samplings
 random vector functional link network
@@ -43864,6 +44070,7 @@ red fox optimization
 red fox optimizations
 red green blues
 red river delta
+red sea marine peace park
 red tailed hawk algorithm
 red tailed hawk algorithms
 reddit
@@ -44207,6 +44414,7 @@ remanufacturing
 remanufacturing supply chain
 remanufacturing supply chains
 remediation
+remittance
 remote and virtual labs
 remote autonomous control
 remote autonomous controls
@@ -44230,6 +44438,7 @@ remote sensing
 remote sensing and gis
 remote sensing data
 remote sensing image
+remote sensing imagery
 remote sensing images
 remote sensing interpretation
 remote sensing technique
@@ -44956,6 +45165,7 @@ revised bloom taxonomy
 revised blooms taxonomy
 revised universal soil loss equation
 revitalization
+revolutionary armed forces of colombia
 revolutions per minute
 revolutions per minutes
 reward
@@ -45483,6 +45693,7 @@ russian-ukrainian war
 russo-ukrainian war
 rutherford backscattering spectroscopies
 rutherford backscattering spectroscopy
+rwandan patriotic front
 s and oe
 s and op
 s d logic
@@ -45902,6 +46113,8 @@ search query data
 search spaces
 search system
 seashore
+season
+seasonal autoregressive integrated moving average
 seasonal autoregressive integrated moving average with exogenous factors model
 seasonal autoregressive integrated moving average with exogenous factors models
 seasonal autoregressive integrated moving averages
@@ -46079,6 +46292,7 @@ security risk assessment
 security risk assessments
 security risk managements
 security risks
+security sector reform
 security systems
 security threat
 security threats
@@ -46593,6 +46807,7 @@ sentimental analysis
 sentinel
 sentinel lymph node biopsy
 separable self attention
+separable temporal exponential random graph
 separate hydrolysis and fermentation
 separate hydrolysis and fermentations
 separated by semicolons
@@ -46785,6 +47000,7 @@ sex difference
 sex discrimination--prevention and control
 sex distribution
 sex factors
+sexism
 sexual abuse
 sexual and gender minorities
 sexual and gender minority
@@ -46792,6 +47008,7 @@ sexual and reproductive health
 sexual and reproductive health and rights
 sexual dysfunction physiological
 sexual dysfunctions psychological
+sexual exploitation and abuse
 sexual health
 sexual health information
 sexual health informations
@@ -47031,6 +47248,7 @@ siamese convolutional neural network
 siamese convolutional neural networks
 siamese neural network
 siamese neural networks
+sibling
 sick building syndrome
 sick building syndromes
 sickle cell anemia
@@ -47134,6 +47352,7 @@ simile
 simons decision framework
 simons decision frameworks
 simple additive weighting
+simple conflict event generator
 simple electroencephalograph
 simple genetic algorithm
 simple genetic algorithms
@@ -47945,6 +48164,7 @@ social cognitive theory
 social collaborative e learning
 social collaborative e learnings
 social computing
+social conflict in africa database
 social connection
 social construction of technologies
 social construction of technology
@@ -47991,6 +48211,7 @@ social housing
 social housing buildings
 social housings
 social identification
+social identity
 social identity theories
 social identity theory
 social impact
@@ -48124,6 +48345,7 @@ social set analyses
 social set analysis
 social signal processing
 social simulation
+social simulations
 social skills training
 social skills trainings
 social software
@@ -48182,6 +48404,7 @@ socio demographic factors
 socio demographic index
 socio demographic indexes
 socio demographic indices
+socio demographic infrastructural economic geographic and environmental
 socio demographic variables
 socio economic benefits
 socio economic change
@@ -48449,6 +48672,7 @@ soil and water assessment tool model
 soil and water assessment tool models
 soil and water assessment tools
 soil and waters
+soil cover
 soil microbial fuel cell
 soil microbial fuel cells
 soil moisture active passive
@@ -48763,6 +48987,7 @@ southeast asian economies
 southeast asian people
 southeast asian peoples
 southeastern united states
+southern europe
 sovereignty
 space air ground integrated network
 space air ground integrated networks
@@ -48885,6 +49110,7 @@ spatial impacts
 spatial informations
 spatial interpolation method
 spatial interpolation methods
+spatial model of urban stability
 spatial modelling
 spatial non stationarity
 spatial online analytical processing
@@ -48965,6 +49191,7 @@ spatio-temporal data
 spatio-temporal data mining
 spatio-temporal database
 spatio-temporal dynamics
+spatio-temporal evolution
 spatio-temporal evolving map
 spatio-temporal models
 spatio-temporal prediction
@@ -48977,6 +49204,7 @@ spatiotemporal data inference
 spatiotemporal data inferences
 spatiotemporal distributions
 spatiotemporal dynamics
+spatiotemporal event
 spatiotemporal evolving map
 spatiotemporal graph neural network
 spatiotemporal graph neural networks
@@ -48997,6 +49225,7 @@ special interest group on decision support system
 special interest group on decision support systems
 special interest groups
 special issues and sections
+special jurisdiction for peace
 special libraries
 special monitoring mission
 special needs
@@ -49618,6 +49847,7 @@ stepwise inertial controls
 stepwise regression
 stepwise weight assessment ratio analyse
 stepwise weight assessment ratio analyses
+stepwise weight assessment ratio analysis
 stereo image processing
 stereotype threat
 stick slip vibration
@@ -49822,6 +50052,7 @@ strategic petroleum reserves
 strategic planning
 strategic planning process
 strategic planning processes
+strategic revitalization index
 strategic risk management
 strategic risk managements
 strategic stability
@@ -49910,6 +50141,7 @@ strongest relations
 structural analyses
 structural analysis
 structural and optical properties
+structural balance
 structural build up
 structural build ups
 structural causal model
@@ -49993,6 +50225,7 @@ structure properties relationships
 structure property relationships
 structure query language
 structure query languages
+structure time series
 structure-activity relationship
 structured analysis and design technique
 structured analysis and design techniques
@@ -50284,6 +50517,8 @@ summary report
 summary rgdp
 summer bridge program
 summer vacations
+suomi national polar-orbiting partnership-visible infrared imaging radiometer suite
+super efficiency
 super efficiency dea
 super efficiency slacks based measure model
 super efficiency slacks based measure models
@@ -50720,6 +50955,7 @@ survival rate
 survivors
 survivorship
 susceptible exposed infected recovered
+susceptible infected recovered
 suspended particulate matter
 suspended particulate matters
 suspended sediment concentrations
@@ -51268,6 +51504,7 @@ tacit and explicit knowledge
 tacit knowledge sharing
 tactical decision making
 tactical decision makings
+tactical medical
 tactile sensing system
 tactile sensing systems
 tactile sensors
@@ -51304,6 +51541,7 @@ target audience
 target drones
 target tracking algorithm
 target tracking algorithms
+targeted absolute deviation with direction augmentation
 targeted drug deliveries
 targeted drug delivery
 targeted killings
@@ -51855,6 +52093,7 @@ temporal difference learnings
 temporal distance aware recurrent network
 temporal distance aware recurrent networks
 temporal dynamics
+temporal exponential random graph model
 temporal fusion transformer
 temporal fusion transformers
 temporal graph neural network
@@ -51941,6 +52180,7 @@ territorial dispute
 territory
 terror
 terrorism
+terrorism informatics
 terrorist attacks and armed conflicts
 terrorist groups
 terrorist incidents
@@ -51979,6 +52219,7 @@ testosterone blood levels
 text analyses
 text analysis
 text analytics
+text analytics of unstructured data
 text as data
 text attributed graph
 text attributed graphs
@@ -52444,6 +52685,7 @@ three machine learning methods
 three orders of magnitude
 three part tariff
 three part tariffs
+three period timescan
 three phase
 three phase currents
 three phase heuristic
@@ -53013,6 +53255,7 @@ tracking by detections
 tracking control algorithm
 tracking control algorithms
 tracking data
+tracking political violence
 tracking radar
 tracking refugees information system
 tracking system
@@ -53279,6 +53522,7 @@ transition to practices
 transition to retirement
 transitional cell carcinoma
 transitional justice
+transitional justice in peace processes
 transitions
 translation quality estimation
 translation quality estimations
@@ -53347,6 +53591,7 @@ transport of dangerous goods
 transport policy
 transport poverties
 transport poverty
+transport system modeling
 transportation and logistics
 transportation and sustainability
 transportation asset management
@@ -53364,6 +53609,7 @@ transportation resource sharing
 transportation routes
 transportation supply demand ratio
 transportation system
+transregional shock transmission
 transshipment location problem
 transshipment location problems
 transtheoretical model of change
@@ -53507,6 +53753,7 @@ tropical rainfall measuring mission
 tropical rainfall measuring missions
 tropics
 troponin
+tropospheric monitoring instrument
 truck and drone
 truck and drone routing
 truck and drone routing algorithm
@@ -53567,6 +53814,7 @@ trustworthy machine learning
 trustworthy machine learnings
 truth and reconciliation
 truth and reconciliation commission
+truth and reconciliation commissions
 truth commissions
 truth data discovery
 tsk fuzzy system
@@ -53629,6 +53877,7 @@ turbulent wind fields
 turing machines
 turkey
 turkish constitutional court
+turkish statepkk conflict event database
 turkishs
 tutored problem solving
 tutored problem-solving
@@ -53944,6 +54193,7 @@ ultrasound
 ultrasound guided biopsy
 ultraviolet a radiation
 ultraviolet a radiations
+ultraviolet aerosol index
 ultraviolet c radiation
 ultraviolet c radiations
 ultraviolet photoelectron spectroscopies
@@ -53998,6 +54248,7 @@ uncertainty reduction theories
 uncertainty reduction theory
 unclassified drug
 unclassified drugs
+under five crude mortality rate
 under five mortality
 under frequency load shedding
 under represented group
@@ -54124,6 +54375,7 @@ united kingdom
 united nations
 united nations children fund
 united nations children funds
+united nations committee for refugees
 united nations conference on trade and development
 united nations convention
 united nations development program
@@ -54133,10 +54385,15 @@ united nations framework of analysis on atrocity crimes
 united nations global service center
 united nations high commissioner for refugees
 united nations humanitarian air service
+united nations military observers
 united nations mission in south sudan
+united nations peacekeeping mission
+united nations peacekeeping operations
 united nations satellite center
+united nations security council
 united network for organ sharing
 united states
+united states agency for international development
 united states air force
 united states air forces
 united states department of agriculture standard reference
@@ -54289,6 +54546,7 @@ unsupervised transfer learnings
 untutored problem solving
 untutored problem-solving
 up flow anaerobic sludge blanket reactors
+updated un general debate corpus
 upflow anaerobic filter
 upflow anaerobic filters
 upgrading of industrial structure
@@ -54393,6 +54651,7 @@ urban redevelopment
 urban regeneration
 urban renewal
 urban residential buildings
+urban resilience
 urban road network
 urban road networks
 urban rural difference
@@ -54668,6 +54927,7 @@ vacuum insulation panel
 vacuum insulation panels
 vaginal birth after cesarean
 vagus nerve stimulation
+valence aware dictionary for sentiment reasoning
 validation
 validation and verification
 validation and verifications
@@ -54745,6 +55005,7 @@ value in use
 value in uses
 value method
 value methods
+value network
 value of data
 value of information
 value of information analyses
@@ -55144,10 +55405,15 @@ village
 ville de paris
 vineyard
 violence
+violence against children and youth survey
+violence against civilians
 violence against women in politics
+violence perception index
 violencia de genero
 violent extremism
+violent extremist organization
 violent extremist organizations
+violent political protest
 violent radicalization
 viper foodnet
 viral gene delivery system
@@ -55393,6 +55659,7 @@ visual analytics system
 visual analytics systems
 visual attention mechanism
 visual attention mechanisms
+visual basic for applications
 visual communication
 visual communication design
 visual communication designs
@@ -55486,6 +55753,7 @@ visually impaired persons
 vital sensor web layer
 vital sign monitoring
 vital signs monitoring
+vital statistics
 vitamin b complex
 vitamin b complexes
 vitamin blood level
@@ -55605,6 +55873,7 @@ von willebrand factor
 von willebrand factors
 vortex bladeless wind turbines
 vortex induced vibration
+voting behavior
 voxel based morphometry
 vr applications
 vr based training
@@ -55654,7 +55923,9 @@ warehouse management system
 warehouse management systems
 warehouses
 warfare
+warfare and armed conflicts
 wargaming
+warning alert and response network
 wart virus
 wart virus vaccine
 warwick edinburgh mental well being scale
@@ -56717,6 +56988,7 @@ women in engineering
 women in engineerings
 women in stem
 women participation
+women peace and security
 women wage peace
 womens economic empowerment
 womens health
@@ -56820,6 +57092,7 @@ world class manufacturing
 world energies
 world energy
 world energy consumption
+world events interaction survey
 world food atlas
 world food program
 world food programme
@@ -56832,6 +57105,7 @@ world heritage site
 world heritage sites
 world trade organization
 world trade organizations
+world values survey
 world wide network
 world wide networks
 world wide web
@@ -57208,5 +57482,6 @@ zonation
 zone of inhibition
 zone of proximal development
 zone of proximal developments
+zones most affected by the conflict
 zoning
 zoonoses
