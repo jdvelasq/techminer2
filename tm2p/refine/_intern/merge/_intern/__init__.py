@@ -2,6 +2,7 @@ from .british_to_american import apply_british_to_american_rule
 from .chemical_compounds import apply_chemical_compounds_rule
 from .common_and_basic import apply_common_and_basic_rule
 from .concatenation import apply_concatenation_rule
+from .double import apply_double_rule
 from .error_metrics import apply_error_metrics_rule
 from .exact_match import apply_exact_match_rule
 from .geographic_names import apply_geographic_names_rule
@@ -23,6 +24,8 @@ __all__ = [
     "apply_british_to_american_rule",
     "apply_chemical_compounds_rule",
     "apply_common_and_basic_rule",
+    "apply_concatenation_rule",
+    "apply_double_rule",
     "apply_error_metrics_rule",
     "apply_exact_match_rule",
     "apply_geographic_names_rule",
