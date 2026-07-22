@@ -33,6 +33,7 @@ from ._intern import (
     apply_chemical_compounds_rule,
     apply_common_and_basic_rule,
     apply_concatenation_rule,
+    apply_double_rule,
     apply_error_metrics_rule,
     apply_exact_match_rule,
     apply_geographic_names_rule,
@@ -105,12 +106,13 @@ class BaseAuto(
                 ("chemical compounds", apply_chemical_compounds_rule),
                 ("technology", apply_technology_rule),
                 ("punctuation variation", apply_punctuation_variation_rule),
+                ("double", apply_double_rule),
             ]
         ] + [
             [
                 ("geographic names", apply_geographic_names_rule),
-                ("plural singular", apply_plural_singular_rule),
                 ("prefer singular over plural", apply_prefer_singular_over_plural_rule),
+                ("plural singular", apply_plural_singular_rule),
                 ("concatenation", apply_concatenation_rule),
                 ("common and basic", apply_common_and_basic_rule),
                 ("scientific and academic", apply_scientific_and_academic_rule),
@@ -119,6 +121,7 @@ class BaseAuto(
                 ("punctuation variation", apply_punctuation_variation_rule),
                 ("trailing noise removal", apply_trailing_noise_removal_rule),
                 ("punctuation variation", apply_punctuation_variation_rule),
+                ("double", apply_double_rule),
             ],
         ] * 4
 
