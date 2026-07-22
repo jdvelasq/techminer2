@@ -860,3 +860,80 @@ copyright \d{4} fitz gerald and hennebry \.$
 \. international registered report identifier \( irrid \) : prr1-10.2196/73773
 \. publishing services by elsevier b.v \. on behalf of keai communications co \. ltd \.$
 \. trial registrationnot applicable \.$
+\. \d{4} conference of latin american geography \( clag  \)$
+\. \d{4} , american scientific publishing group \( aspg  \)$
+\. \( \d{4} \) , \( universidad nacional autonoma de mexico \)$
+\. \( \d{4} \) , \( editorial department of world regional studies \)$
+\. copyright the european political science association \d{4} \.$
+\. nomos verlagsgesellschaft , baden baden , germany \d{4} \.$
+\. american political science association \d{4} \.$
+\. w \. s \. maney and son ltd \d{4} \.$
+\. talip alkhayer and timo kivimaki , \d{4} \.$
+\. alexander garinther and nathan meehan , \d{4} \.$
+\. springer \d{4} \.$
+\. nuno morgado et al \. , \d{4} \.$
+\. publisher ph akademperiodyka of the nas of ukraine , \d{4} \.$
+\. hanna yarovenko , olena pakhnenko , liudmyla riabushka , iryna tarasenko , viktoriia khmurova , \d{4} \.$
+\. publisher ph akademperiodyka of the nas of ukraine , \d{4} \.$
+\. eco vector , \d{4} \.$
+under exclusive license to operational research society of india \d{4} \.$
+\. giuditta fontana , argyro kartsonaki , natascha s \. neudorfer , and stefan wolff \d{4} \.$
+\. indian national science academy \d{4} \.$
+\. \d{4} copyright the io foundation \d{4} \.$
+\. the european political science association \d{4} \.$
+\. \d{4} , oksana nemyrovska \. publisher : john paul ii university in biaa podlaska , poland \.$
+\. \d{4} icpr org committee \.$
+\. \d{4} d'orazio , yonamine \.$
+\. \d{4} uchitel publishing house \.$
+\. \d{4} verein fur socialpolitik \.$
+\. american psychological association \.$
+\. \d{4} american sociological association \.$
+\. \d{4} international studies association \.$
+\d{4} international studies association \.$
+\. international studies review published by wiley periodicals , inc \. on behalf of international studies association \.$
+\. \d{4} , crown \.$
+\. \d{4} alessandro moro \.$
+\. \d{4} , laura k \. taylor and celia bahr \.$
+\. \d{4} the authors risk analysis published by wiley periodicals , inc \. on behalf of society for risk analysis \.$
+\. \d{4} pion and its licensors \.$
+\. copyriaht jasss \.$
+\. copyright jasss \.$
+\. \d{4} bulletin of the atomic scientists \.$
+\. \d{4} european bank for reconstruction and development \.$
+\. economics of transition and institutional change \d{4} the european bank for reconstruction and development \.$
+\. \d{4} , aloki kft \. , budapest , hungary \.$
+\. \d{4} fundacion universitaria konrad lorenz \.$
+\. \d{4} european review of international studies \. all right reserved \.$
+\. you can access the dataset from \d{4} ieee \.$
+\. \d{4} , in accordance with section 105 of the us copyright act , this work has been produced by a us government employee and shall be considered a public domain work , as copyright protection is not available \.$
+\. \d{4} the authors disasters \d{4} odi \.$
+\. population and development review published by wiley periodicals llc on behalf of population council \.$
+\. \d{4} international association for conflict management and wiley periodicals , inc \.$
+\. icail \d{4}$
+\. british international studies association \d{4}$
+\. \d{4} , nikiforov russian center of emergency and radiation medicine , emercom of russia$
+\. \d{4} nikiforov russian center of emergency and radiation medicine , emercom of russia$
+\. \d{4} , center for security governance$
+\. \d{4} , american association for the advancement of science$
+\. \d{4} international energy initiative$
+\. \d{4} brill nijhoff$
+\. \d{4} , university of zagreb , faculty of mining , geology and petroleum engineering$
+\. \d{4} hipatia editorial$
+\. \d{4} , information systems for crisis response and management , iscram$
+\. \d{4} , psychopen$
+\. funding : the doris duke charitable foundation , and the center for global child health at the hospital for sick children$
+\. \d{4} ai access foundation$
+\. \d{4} , american political science association$
+\. \d{4} , midwest political science association$
+\. \d{4} american medical association$
+\. \d{4} de gruyter$
+\. \d{4} , russian academy of sciences$
+\. \d{4} editorial department of world regional studies$
+\. \d{4} los autores$
+\. \d{4} university of rijeka , faculty of economics and business$
+\. \d{4} editorial department of mineral deposits$
+\. \d{4} japanese association for mathematical sociology$
+\. \d{4} maria paula rincon martinez$
+\. \d{4} , taylor \.\.\. francis group , llc$
+\. \d{4} board of trustees of the bulletin of economic research and john wiley and sons ltd$
+\. our code is publicly available$
