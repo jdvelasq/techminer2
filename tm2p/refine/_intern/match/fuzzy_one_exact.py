@@ -78,7 +78,7 @@ def _prepare_fuzzy_candidates(thesaurus_df: pd.DataFrame) -> pd.DataFrame:
     thesaurus_df = thesaurus_df.copy()
 
     thesaurus_df["char_length"] = thesaurus_df[PREFERRED].str.len()
-    thesaurus_df["word_count"] = thesaurus_df[PREFERRED].str.split().str.len()
+    thesaurus_df["word_count"] = thesaurus_df[PREFERRED].str.split().apply(len)
     thesaurus_df[OCC] = list(range(len(thesaurus_df)))
     thesaurus_df = thesaurus_df.sort_values(
         by=["word_count", "char_length", OCC, PREFERRED],

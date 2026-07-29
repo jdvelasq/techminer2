@@ -28449,6 +28449,7 @@ land surface models
 land surface temperature
 land surface temperatures
 land transformation
+land use
 land use and land cover
 land use and land cover change
 land use and land cover changes

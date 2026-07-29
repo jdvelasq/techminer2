@@ -27,15 +27,19 @@ def apply_double_rule(
 
         words = signature.split()
 
-        if len(words) % 2 == 0:
+        if len(words) % 2 != 0:
             return signature
 
         mid = len(words) // 2
+
         first_half = words[:mid]
-        second_half = words[mid + 1 :]
+        first_half = " ".join(first_half).strip()
+
+        second_half = words[mid:]
+        second_half = " ".join(second_half).strip()
 
         if first_half == second_half:
-            return " ".join(first_half)
+            return first_half
 
         return signature
 
