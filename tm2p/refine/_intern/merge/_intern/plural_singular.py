@@ -17,6 +17,7 @@ def apply_plural_singular_rule(
 
     thesaurus_df[SIGNATURE] = thesaurus_df[PREFERRED]
 
+    thesaurus_df[SIGNATURE] = thesaurus_df[SIGNATURE].str.replace("-", " ", regex=False)
     thesaurus_df[SIGNATURE] = thesaurus_df[SIGNATURE].str.split()
 
     thesaurus_df[SIGNATURE] = thesaurus_df[SIGNATURE].apply(

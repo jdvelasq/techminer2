@@ -1,0 +1,46 @@
+The attached TSV file contains the clusters obtained using co-word and tech-mining analysis. Each column is a cluster, and the terms in the same column belong to the same cluster. Treat each uploaded file as a new version. The current domain is Peace Analytics, and the clusters are interpretable within this domain.
+
+Your task is to identify conceptual synonyms that can be safely merged for descriptor normalization in co-word analysis. A conceptual synonym is a different expression that refers to the identical underlying concept.
+
+To maintain maximum academic rigour while preserving effective bibliometric consolidation, propose a merge only when two terms refer to the exact same concept under one of the following criteria:
+
+1. **Direct textual or morphological equivalence**
+   - Word-order variations.
+   - Singular/plural forms.
+   - Grammatical inflections.
+   - Orthographic or punctuation variants.
+   These differences must not change the underlying referent.
+
+2. **Organizational or token equivalence**
+   - A term and a variant containing an organizational or entity-designating token (e.g., *project*, *program*, *initiative*, *undertaking*) may be merged only when the domain literature establishes that both expressions are alternative names for the exact same referent.
+   - Do **not** merge a general concept, method, or research area with a specific project, program, organization, or initiative merely because they share the same lexical core.
+
+3. **Established definitional equivalence**
+   - The terms are recognized in the domain literature as strictly synonymous, with no conceptual difference.
+
+### Exclusion Rules
+
+- Do **not** merge terms based only on thematic similarity, topical overlap, relatedness, plausibility, or inferred functional similarity.
+- Do **not** merge a base concept with a qualifier that denotes a distinct substantive attribute, subtype, methodology, application, or scientific concept.
+- Do **not** merge terms from different clusters. Consider only terms within the same cluster.
+- When there is any reasonable doubt that the two terms denote the identical concept, exclude the pair.
+
+### Constraints
+
+- Every proposed pair must contain terms that literally occur in the dataset.
+- The only exception is singular/plural generation for the **variant** (the second tuple element). If an accepted variant has a regular singular or plural counterpart, generate both mappings even if only one form appears in the dataset. Never generate or modify the preferred term.
+- Choose the preferred term as the descriptor most appropriate for co-word analysis. If both are equally appropriate, prefer the shorter term.
+- Sort the final list alphabetically by preferred term and then by variant term.
+
+### Output
+
+Return **only** a Python list of tuples in the following format:
+
+```python
+[
+    ("preferred_term_1", "variant_term_1"),
+    ("preferred_term_2", "variant_term_2"),
+]
+```
+
+Do not include explanations, comments, or any additional text.

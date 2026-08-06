@@ -1,5 +1,5 @@
-from .stopword import StopWord
+from .stopword import Stopword
 
 __all__ = [
-    "StopWord",
+    "Stopword",
 ]

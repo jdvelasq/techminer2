@@ -19,7 +19,7 @@ def s03_disambiguate(root_directory: str) -> int:
                         full_name_to_name.get(x.strip(), x.strip())
                         for x in ids
                         if x.strip() != ""
-                    ]  #  type: ignore
+                    ]  # type: ignore #  type: ignore
                 )
                 if isinstance(ids, list)
                 else None

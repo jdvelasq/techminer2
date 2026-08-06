@@ -1,25 +1,99 @@
 a
+a small proportion
+abandon
+abandoned mine
+abandoned mines
+abate
+abide
 ability
 able
 about
 above
+absence
+absent
+absolute
+absolute amount
 abstract
 abstracts
+abundant
+accept
+acceptable means
+accepts
 access
+accessible
+accommodate garbage
+accomplishment
+accomplishments
+accord
 accordance
 according
 accordingly
+accords
+account
+accumulate
+accurate
+accurate distributed
+accurate near
+accurate prior
+accurate reducing
+acknowledge
+acquire
+acquired
 across
+action
+actions
+active
+active ones
+activities
 activity
+actual
+actual system
+actual use
+actuals
+addition
 additional
 additionally
+additions
+address
+address emerging
 addressing
+adequacy
+adequate
+adjacent
+adjust
+adjusted or
+administrate
+administrating
+adopt
+adopt improved
+advance
+advances
+advantage
+advantageous
+advantageous ones
+advantages
+advice
+affect
+affected ones
+afore
+afore mentioned use case
+afresh
 after
+afternoon
 afterwards
 again
 against
+aged
+agree
+agrees
 aims
+ain
 al
+al ain
+al-ain
+albeit weak
+alike
+alike system
 all
 allow
 allowed
@@ -28,9 +102,18 @@ allows
 almost
 alone
 along
+aloud
+alphabet
+alphabet inc
+alphabets
 already
 also
+alter
+alternate
+alternating current
+alternative
 alternatively
+alternatives
 although
 always
 am
@@ -41,10 +124,14 @@ amoungst
 amount
 amounts
 an
+analyze
 and
 and/or
+annual
+annually
 another
 answer
+answers
 any
 anybody
 anyhow
@@ -52,100 +139,543 @@ anyone
 anything
 anyway
 anywhere
+apparent
+apparent spread
 appear
+appearance
 appeared
 appearing
 appears
+applicability
 appropriate
+appropriate changes
+appropriate representative
+appropriate sentences
+approval
+approximate
+approximately
+approximates
+april
+arbitrary
+arbitrary shape
 are
 are not
 area
+areas
+argument
 arguments
 around
+arrange
+arrive
+arrives
+arriving
 article
 articles
+articulate
+articulated
 as
 asking
+asleep
 aspect
+aspects
+assess
+assesses outputs
+assist
+assistance
+assistant
+assisted
+associate
+associates
+assumption
+assumptions
 at
-author
-authors
+attain
+attains
+attempt
+attempts
+attend
+attendings
+attractive option
+atypical
+atypicals
+automatically generated data
+auxiliary
+auxiliary means
+auxiliary system
+auxiliary systems
+avail
+availability
+available
+available nowadays
+available public
+available worldwide
+average
+average increased
+avoid
+aware
 back
 backward
+banner
+banners
 based
+baseline identification
+baseline situation
+baseline versus
+basic
+basic characteristics
+basic human need
+basic outline
+basics
+basis
 be
 became
 because
 become
 becomes
 becoming
+becouse
 been
 before
 beforehand
+begin
+beginning
+behalf
+behave
 behind
 being
 below
+benefit
+benefits
 beside
 besides
+best
+best guess
+best performing ones
 better
 between
 beyond
 bill
+bill of quantities
 billion
+blank
+bodies
+body
+body remains
+bold
+boq
+borrow
+borrowings
 both
 bottom
+break
+break even
+break-even
+brief
+briefs
+brilliant
+broad applicability
+broaden
+broadening
+broader
+broadest
+broadest shape
+broken
+broken down
+build
+build accurate
+build comprehensive
+build efficient
+building
+building level
+buildings
+bunch
+bunches
 but
 by
+calculate
+calculating
 call
 can
 can not
 cannot
 cant
+capable
+capture cumulative
+capture precise
+carry
+carrying current
 case
+case projects
 cases
 cause
+causes
+caution
+cautious interpretation
+cease
+ceaseless
+central
+centuries
+century
 certain
+certainties
+certainty
+chance
+chances
+change
+changes
 chapter
 chapters
+characteristic
+characteristic changes
+characteristic ideas
+characteristics
+cheap
+cheapest replacement
+check
+chief
+choice
+choices
+choose
+ci
+circumstance
+circumstances
 claim
+claims
+clarification
+clarify
+clarifying
+clarity
+classifieds
+classify
+clean
+cleaning
 clear
+clear and concise manner
+clearer insight
+close
+closer
+closer look
 co
+coherent
+coherent manner
+coincidence
+colleagues
+collect
+collecting
+collecting rubbish
 combination
+combinations
+combine
+combined
+combines accurate
+combines efficient
+combines emerging
+combining distributed
+combining highly accurate
+combining sophisticated
+come
+coming
+comment
+commercial
+commercial level
 common
+compare
 compared
 comparison
+comparisons
+compelling offer
+complete
+complete integrated system
+completed projects
+completely
+completely new level
+completion
 complex
+complex alternatives
+complex and ambitious projects
+complex depending
+complex distributed
+complicate
+complicated needs
+complicated system
+complicated systems
+complies
+comply
+compose
 composed
+composes
+comprehensible
+comprehensible means
+comprehensive
+comprehensive and intuitive manner
+comprehensive and reasonable use
+comprehensive distributed system
+comprehensive exhibit
+comprehensive list
 comprises
+compulsory
+compulsory use
 con
+conceive
+conceived system
+concept
+concepts
+concern
+concerningly
+concerns
+concise
+concluding remarks
 conclusion
 conclusions
+conclusive remarks
+concurrent
+concurrent need
+concurrent use
+condition
+conditions
+conduct
+confidential
+confidential manner
+confirm
+confirms
+conjunction
+consecutive
+consequence
+consequences
+consequences result
+consequent
+consequent changes
+consequent difficulty
+consequent forgetting
+consequent raising
+consequential
 consequently
+considerable changes
+considerable effort
+considerable improvement
+consideration
+considerations
+consist
+consistency
+consistent
+consistent and predictable amount
+consists
+consolidate
+consolidated
+consolidated manner
+consolidating
+constrain priors
+contact
+contacts
 contain
 contained
 containing
 contains
+content
+contents
+context
+continual
+continued effectiveness
+contrary
+contrast
+convenience
+convenient
+convenient system
+conventional
+conventional system
+conventional systems
+conventionally
+conventionally means
+convey
+conveying
+coordinates distributed
+copy
+correct
+corrected fig
+corrected result
+corrected results
+correspond
 corresponding
+corresponds
 could
 could not
 couldnt
+count
+countries
+country
+counts
+couple
+cover
 create
+creation
+critical
+critical case
+critical need
+critical ones
+crucial importance
+crucial insights
+crucial nowadays
 cry
+cu
+cumulative
+cumulative case
 current
+current situation
+current status
 d
+daily
+daily living
+dangerous
+dangerous ones
 data
+date
+dates
+day
+days
 de
+dead
+decade
+decades
+december
+decent
+decide
+decisive
+decisive part
+decline
+decrease
+deepen
+deepening
+deepens
+default
+defer
+deferred it
+defi ned
+define
+defined level
+defined shapes
+defining
+definitely
+definitely low use
+definition
+definitions
+definitive
+definitive guide
+definitive system
+deliver
+delivers
+delivers accurate
+delivers certainty
+delivers efficient
+delivers near
+delve
+delves
+demonstration
+demonstrations
+demonstrative
+demonstrative system
+demonstrative use case
+deny
+depend
+dependable
+dependable means
+dependent
+dependent use
+dependents
+depending
+depict
+depict comprehensive
+depicts
 describe
 described
+description
+descriptions
 desired
+despite
+despites
+destine
 detail
+detailed and intuitive manner
+detailed insight
+details
+detect and avoid
+detect changes
+detect subtle
+detect worsening
+deter
+determination
+determine
+determined level
+determiner
+determiners
+detrimental
+develop
+develop accurate
+develop efficient
+develop sophisticated
+developed system
+developing
+devise
+diagnose mild
 did
 did not
+differ
+difference
+differences
 different
+differentiate
+differentiate good
+differs depending
+difficult nowadays
+difficulties
+difficulty
+diffuse dominant
+dint
+direct
+direct relevance
+direct repeat
 directly
+dis cuss
+disadvantage
+disadvantages
+discern
+disclose
+disclosed
+disclosed use
 disclosure
+disclosures
+discover
+discovered ones
+discus
+discuss
+discuss needs
 discussion
 discussions
+dislike
+dislikes
+display
+displays
+disregard
+dissatisfied
+dissatisfy
+dissimilar
+dissimilar ones
+distinct
+distinct purposes
+distinctive
+distinctive lack
+distribute
+distributed
+distributed manner
+distributed near
+distributed ones
+distributed system
+distributed system use
+distributed systems
+distributed systems remains
+diverse
+diverse and interchangeable use
+divide
+divide and conquer
 do
 do not
 document
@@ -153,37 +683,123 @@ documents
 does
 does not
 doing
+dollar
+dollars
+dominant
+dominants
 done
+double
+double use
+doubt
 down
 downward
+dozen
+dozens
+dramatic changes
+dramatically
+dramatically decrease
+drastic changes
+draw
+draws
 due
+duplicate
 during
 each
+early
+early invention
+ease
+easier
+easier use
 easily
 easy
+economically
+effec tive
+effect
+effective
+effective buildings
+effective use relies
+effectiveness
+effectiveness needs
+effects
+efficient
+efficient and capable system
+efficient near
+efficient tiny
+efficients
+effort
+efforts
 eg
 eight
 eighteen
 eighth
 eighty
 either
+elaboration
+elaborations
 eleven
 eleventh
 else
 elsewhere
 embodiment
+embodiments
+emerge
+emerging
+emerging distributed ones
+emerging overall characteristics
+emphasis
+employ
+employing
 empty
 enable
 enabled
 enables
 enabling
+encounter
+end
+engage
+engaged
+engaging manner
+english
+enhance
+enhanced
+enhanced insights
+enhanced sentences
 enough
+enquire
+enquires
 ensure
+ensure accurate
+ensure comprehensive
+ensure efficient
+ensure near
+ensure rigorous
 ensured
+enter
+enters
 entire
+entirety
+entry
+equal
+equal amount
+equals
+equivalent
+escalating content
 especially
+essential
+essential characteristics
+essential nowadays
+essential priors
 essentially
+essentials
+establish
 established
+established employing
+establishing
+establishment
+estimate
+estimated changes
+estimated generalized
+estimates
 et
 etc
 even
@@ -191,17 +807,96 @@ eventually
 ever
 every
 everybody
+everyday
 everyone
 everything
 everywhere
+exact
+exact need
+exactly the situation
+examine
 example
+examples
 excellent
 except
+exception
+exceptional
+exceptions
+excess
+exclusive
+excuse
+excuses
+exemplifies
+exemplify
+exert
+exerting
+exerts
+exhibit
+exhibits
+exist
+existed system
+existence
+existent
 existing
+exists near
+expand
+expanded means
+expanded use
+expect
+expectation
+expectations
+expected
+expected consequences
+expectedly
+expedite
+expeditious
+expeditious manner
+expensive option
+explanation
+explanations
+explanatory
+explanatory manner
+explicit
+explicit ones
+explorative
+expose
+exposed to
+express
+express feelings
+expressed need
+expressed needs
+extend
+extent
+external
+extra
+extract comprehensive
+extras
+facilitate
+facilitated use
 fact
+facts
+fail
+false
+false front
+familiar
+familiarity
+familiars
+famous
+famous one
+fast
+fasting
+favor
+favorite
+february
+feel
+feeling
+feelings
 few
+field
+fields
 fifteen
 fifth
+fifthly
 fifty
 figure
 figures
@@ -210,38 +905,151 @@ finally
 find
 finding
 findings
+finish
+finishing
 fire
 first
+firstly
 five
+fluent
+foci
+focus
+follow
 following
+follows
 for
+forasmuch
+forego
+foregoing
+forget
+forgetting
+form
+formal
+formal part
+formal use
+format
 former
+former superiors
 formerly
+forms
+forth
 forty
 forward
+foster
 found
 four
 fourteen
+fourteenth
 fourth
+fourthly
+free
+free fall
+frequently
+frequently depend
+fresh insights
+friday
 from
 front
 full
+full potential depend
+fully distributed manner
+fundamental
+fundamental changes
+fundamentals
+furthemore
 further
+further effort
 furthermore
+furthest
+furthest use
 future
+future efficient
+future improvements
+future project
+future projects
+future releases
+future status
+future wants
+gain insight
+gain insights
+garbage
+gather
+gather precise
+gatherings
 general
+general inquires
+general lack
+general public
+generalize
+generalized
+generalized coordinates
+generalized ones
+generalized use
+generalizes
 generally
+generate
+generate accessible
+generate accurate
+generate near
+generate precise
+generate tiny
+generated current
+generating
+generic
+generic interest
+genuine
+genuine embodiment
+genuine invention
+genuine ones
 get
+gigantic
+gigantic amount
 give
+given sentence
+glad
+glance
+globally
 go
 good
+goodness
 great
+greater certainty
+greater changes
+greater effort
+greater focus
+greater insight
+greater success
+group
+groups
+growing body
+growing field
+growing focus
+growing importance
+growing inability
+guarantee
+guarantee helps
+guarantees
+guess
+guesses
+guide
+guide precise
 had
 had not
 half
+half a century
+half a million words
+handful
+handl
+handle
+handling
+happen
+hard
+hard system
+harmful content
 has
 has not
 hasnt
+haste
 have
 have not
 having
@@ -250,6 +1058,19 @@ he is
 he will
 he would
 he/she
+heightened focus
+help
+help advance
+help assist
+help close
+help decide
+help discover
+help generate
+help improve
+help maintain
+help select
+help separate
+helpful
 hence
 her
 here
@@ -257,220 +1078,1010 @@ here is
 hereafter
 hereby
 herein
+hereto
 hereupon
 hers
 herself
+hidden
+hidden ones
+hide
+hidings
 high
+high efficient
+high reliable
+highlight
+highlight near
+highly accurate
+highly available
+highly distributed manner
 him
 him/her
 himself
+hinder
+hinder project progress
+hinders
 his
 his/her
+hitherto
+hold
+hour
+hours
 how
 how is
 however
+http
+human
+human well being
+humankind
+humans
 hundred
+hurry
+hypothetical projects
 i
 i am
 i have
 i will
 i would
+idea
+ideal
+ideals
+ideas
+identifiable
+identifiable advance
+identification
+identify
+identify changes
+identify effectiveness
+identify longer
+identify near
+idle
+idle current
 ie
 if
 ii
 iii
+illustrate
+illustrated case
+illustrative
+imaginable
+imaginable level
+imagine
+imagined
+imaginings
+immediate
+immense
+importance
 important
+impossibility
+improper
+improper use
+improve
+improved
+improved efficient
+improvement
+improvements
 in
+inability
+inappropriate
+inappropriate use
 inc
+incapability
+incapacity
+incidental
 including
+inclusion
+incomplete
+incomplete disclosure
+inconsistencies
+inconsistency
+inconvenience
+inconveniences
+inconvenient
+inconvenient use
+incorporate
+incorporated
+incorporation
+incorrect
+increase
+increased
+increased focus
+increased usage
+increased waits
+increasingly
 indeed
+indentification
+independent
+independent case
+indicative
+indicatives
+indirect
+indirectly
+indiscriminate
+indiscriminate use
+indispensable auxiliary systems
+individual
+individuals
+inefficient
+inefficient use
 inf
+influential
+inform
+informal
+information
+informative
+informative ones
+informative part
+inherent characteristics
+initial
+initial efforts
+initial guess
+initial guesses
+initial interpretation
+initial self
+initial success
+initial versus
+inner
+inner part
+innovate project
+innovative possibilities
+innovative projects
+input
+inputs
+inquire
+inquiring system
+insert
 inside
+insight
+insights
+insignificant
+insignificant ones
+instant
+instant ones
+instant use
+instants
 instead
+insufficient
+integrate
+integrating influential
+intense
+intense interest
+intense level
+intensify efforts
+interchangeable
 interest
+interesting idea
+interesting ideas
+interests
+internal
+internal ones
+international
+interpretation
 into
+introduce
+introduced system
 introduction
 introductions
+introductory
+introductory level
+intuitive
+intuitive capture
+intuitive manner remains
+intuitive system
+invaluable insights
 invention
+inventions
 investigation
 investigations
+invisible
+invisible o
+involvement
+irrelevant
+irrelevant ones
+irresponsible
+irresponsible use
 is
 is not
+issue
+issues
 it
 it is
 its
 itself
-journal
-journals
+january
+join
+joining
+jointly
+judicious
+judicious use
+july
+jump
+jumps
+june
 just
+keen
+keen interest
 keep
+key
+key characteristics
+key insight
+key insights
+key new insights
+key particulars
+key project
+key successes
+key words
+keyword
+keywords
+kind
+kinds
+know
+known amount
+laborious
+laborious manner
+lack
+lack adequate consistent
+lack comprehensive
+lacks comprehensive
 large
+large proportion
+larger project
 last
+late
+late use
 later
+latest stuff
 latter
 latterly
+lay forth
+lays forth
+lazy
 lead
+learn
+learn improved
+learns near
 least
+leave
+leave one out
+leaves
+leaving
 left
+legitimate
+legitimate interest
+legitimate interests
+legitimate use
+lend
+lending
 length
 less
+lessen
+lessening
+lessens
+lesser
 let us
 level
+level characteristic
+levels
+leverage consolidated
 light
 like
+likely
+likely assist
+likely help improve
+likely insufficient
+likewise
+limit
+limited efforts
+limited insight
+limits
 line
+lines
+list
+lists
 literature
 little
+little as two days
+live
+local
+local level
+local needs
+local s
+locals
+logical
+logical level
+logical side
 long
+longer
+longer depend
+longer efficient
+longer reflects
+loo
+look
+lose
+loses
 lost
+lot
 low
+lower
+lower focus
+lower level depicts
 ltd
 m
 ma
 made
 main
+mainly
+mainly becouse
+maintain
 major
+majority
 make
-manuscript
-manuscripts
+making accurate
+making efficient
+making guesses
+making sophisticated
+managing distributed
+mandatory
+mandatory disclosure
+mandatory use
+mankind
+manner
 many
+map improved
+maps helpful
+margin
+marginal
+margins
+mature
+maximum
+maximum dollar amount
+maximum proportion
 may
 me
+mean
+meaning
+meaningful
+meaningful insight
+meaningful insights
+meanings
 means
 meanwhile
+measurable
+measurables
+measure analyse improve
+measure consists
+measure success
+meet
+meeting
+mention
 mentioned
+mentions
 merely
 method
 methodologies
 methodology
 methods
+meticulous outline
+middle
+midst
 might
 might not
+mild
+mild level
 mill
 million
 mine
+minimal
+minimal coherent system
 minimum
 minor
+minute
+minutes
+mistake
+mistakes
+moderate
+moderate changes
+modern
+modern needs
+modern zero
+modest
+modified discern
+modified system
+modify
+moment
+moments
+month
+monthly
+monthly bill
+months
 more
 moreover
+morevover
 most
+most likely
 mostly
+motivate
+motivated use
 move
 much
+multi
 multiple
+multiply
+multiply add
+multitude
 must
 must not
+mutual
+mutual interest
 my
+myriad
 myself
 name
 namely
+names
+narrow
+narrowing
+near
+near neutral
+near perfect
+nearly
+nearly half
+necessary nowadays
+necessity
 need
 need not
 needed
+needs
+negative
+negative ones
 neither
+neutral
+neutral current
+neutral currents
+neutral one
+neutral ones
 never
+nevermind
 nevertheless
 new
+new insights
+new system depending
+new system improved
 next
+nice
+night
 nine
 nineteen
 ninety
 ninth
 no
 nobody
+non
 none
+noon
 noone
 nor
+normal
 not
+note
 nothing
+notice
+noticeable worldwide
+noun
+nouns
+novel
+novel distributed
+novel enhanced
+novel generalized
+novel improved
+novel insights
+november
 now
+nowadays
+nowadays evolves
+nowadays part
 nowhere
+nuanced insights
+null
+null result
+number
+numbers
 numerous
 o
+objective
+objectives
+observe
+observed lack
+obtain
+obtain accurate
+obtain comprehensive
+obtain efficient
+obtain meaningful
+obtain near
+obtain precise
+obtaining
+obtaining complete
+obtains
+occasion
+occupies mankind
+occur
+occurrence
+occurrences
+occurs
+occurs daily
+occurs frequently
+october
 of
+of use exerts
 off
+offer
+offerings
+official
+officials
 often
 old
+older
+older ones
 on
 once
 one
 ones
+oneself
+ongoing changes
+ongoing efforts
+ongoing projects
+online
+online system
+online systems
 only
 onto
+open
+operate
+operating system
+opposite
+opposite result
+optimal alternative
+optimal characteristics
+optimal stopping
+optimized system improved
+option
+optional
+optional use
+optionally
+options
 or
+order
+ordering
+orderly
+orderly manner
+orders
+ordinary
+ordinary system
+organization
+organizations
+organize
+organized manner
+organized system
+organized use
+original
+original system
 other
 others
 otherwise
 ought
 our
+our system generalizes
 ours
 ourselves
 out
+outline
+output
+outputs
+outset
 outside
 over
+over complete
+over-complete
 overall
+overall effectiveness
+overcome
+overcoming
+overestimate
 overview
 overviews
+overwhelm
+overwhelming focus
+overwhelming majority
 own
+own situations
+pa
+page
+pages
 paper
 papers
+paramount
 part
+partial
+partially
+participate
+participates
+particular
+particular focus
+particular project
+particular words
 particularly
+particulars
+partly
+parts
+pass
+past
+people
 per
+perceive
+perceived
+perceived ease of use
+perceived usefulness
+percent
+percentage
+percentages
+perfect
+perform
+performs approximately
 perhaps
+period
+periods
+permissible
+permissible level
+permit
 person
+personal
+personal level
+persons
+pertain
+pertaining
+phenomena
+phenomenon
+phrase
+phrases
+pick
+piece
+pieces
+pioneering representatives
+pivotal insights
+place
+plain
+plains
 please
+plenty
+plus
+plus or
+point
+points
+policies
 policy
+poor
+poor level
+popular
+popular nowadays
+por
+portion
+portions
+portrays oneself
+position
+positions
+positive
+possession
+possibilities
+possibility
 possible
+possible options
+potential
+potential applicability
+potential change
+potential nowadays
+potentially
+potentially enhanced sentences
+powerful and efficient means
+powerful feelings
+powerful self
+practical
+practical alternative
+practical importance
+practical insights
+practically
+practically none
+precede
+preceding
+precise
+precise instants
+precisely
+precisely what
+predictable
+predominant
+predominant means
+prefer
+prefer system
 preferably
 preferred
+prefers
+preliminaries
+preliminary
+preliminary preparation
+preparation
+prepare
+prepared
+prerequisite
+prerequisites
+presence
 present
+presented project
+prevalent
+prevalent use
+prevent
 previous
+primary
+primary focus
+primary importance
+principally
+principally new level
+print
+printing
+prior
+priors
+private
+private use
+privates
+proactive
+problem
+problematic
+problematics
+problems
+process
+processes
 produce
+proficient
+proficient system
+profound changes
+progress refers
+project
+project aims
+project bill
+project case
+project level
+project progress
+project show
+projects
+projects lead
+pronoun
+pronouns
+proper choose
+properly selecting
+proportion
+proportions
+propose
+proposed
+proposed alternatives
+proposed modified
+proposed project
+proposed system exemplifies
+proposed system improved
+proposed system increased
+proposed system lessens
+proposed system participates
+prove
 provide
 provided
 provides
-publication
-publications
+public
+public good
+public goods
+public level
+purpose
+purposes
+pursuant
+pursue
 put
+qualifies
+qualify
+quantitatively
+quantitatively manner
+quantities
+quantity
+question
+questions
+quick
+quickly
+quintessentially
 quite
+quote
+quotes
+raise
+random
+range
+rapid
+rapid changes
+rapid worsening
 rare
 rather
 re
+re closers
+reach
+read
+read across
+read-across
+readable
+readable manner
+ready
+ready level
+ready to use
+real
+real needs
 really
+reason
+reasonable
+reasonable amount
+reasons
+recap
 recent
+recent centuries
+recent changes
 recently
+recently proposed updates
+recognize
+recommend
+recommended system
+recommended systems
+record
+records
+recover
+recovered
+reduce
+reduced writing
+reducing
+redundant
+redundant ones
+redundant system
+redundant systems
+refer
 reference
 references
+reflect
+reflects
+regard
 regarding
+regardless
+regards
+regular
+regular need
+regular use
+relationship
+relationships
+relative
+relative neglect
 relatively
+release
+relevance
 relevant
+reliable
+relies
+rely
 remain
+remainder
 remained
+remains absent
+remains insufficient
+remark
 remarkably
+remind
+reminder
+reminders
+reminds
+removal
+repeat
+replacement
+replacements
 report
 reports
+repost
+reposts
+represent
+representative
+representative case
+representative cases
+representatively
+representatives
+request
 require
 required
 requires
 requiring
+requisite
+requisites
 research
+resolve
+respect
+respectable
+respectable amount
 respectively
+respond
+responsible
+responsible use
+rest
+restrict
+restricted use
 results
+retrieve
+retrieves
+return
+reuse projects
 review
 reviews
+right
+right level
+rightfully
+rightfully ours
+rights
+rigorous
+robust generalized
+roughly
+roughly half
+roughly one
+roughly one third
+routine
+routinely
+routinely use
+routines
+rows
+rubbish
 s
+safe
 said
 same
+sans
+satisfactory
+save
+save approximately
+save yearly
+saving approximately
+savings
 say
+science
+seamless usage
+search
+search result
+searches
 second
+second best
+second level reflects
+second-best
+secondary
 see
+seek
 seem
 seemed
 seeming
+seemingly practical applicability
 seems
 seen
+select
+select qualified ones
+selected projects
+selecting
+self
+self interest
+send
+sending
+sent
+sentence
+sentences
+separate
+september
 serious
+serve
+servings
+set
+set forth
+sets
+sets forth
 seven
 seventeen
 seventh
@@ -479,25 +2090,56 @@ several
 shall
 shall not
 shan not
+share
+shared use
 she
 she is
 she will
 she would
+shift accumulate
 short
+shorten
+shortening
+shorter
 should
 should not
 show
 side
+sides
+sign
+signifies
+signify
+signs
 similar
+simple
+simple and intuitive use
 simply
 since
 sincere
+single
+single case
+situation
+situations
 six
 sixteen
 sixth
+sixthly
 sixty
+sizable
+sizable amount
+slightly
+slow replacement
 small
+smaller projects
 so
+sole
+sole use
+solely
+soles
+solicit
+solicited
+solve
+solving
 some
 somebody
 somehow
@@ -506,25 +2148,132 @@ something
 sometime
 sometimes
 somewhere
+sophisticated
+sort
+special
+special case
+special part
+specific
+specific case pertains
+specific characteristics
+specific focus
+specific projects
+specific situations
 specifically
+specifics
+specified amount
+specify
+speculate
+speculates
+spend
+spending
+stable near
+stable tiny
+stand
+start
+start and end dates
+start of the
+starting level
+state
+statement
+statements
+states
+status
+stay
+step
+steps
 still
+stop
+store
+stored
 straight
+straightforward
+strengthen
+strengthening
+strong coincidence
+strong consideration
+strong request
+stronger focus
+studied projects
 studies
 study
+stuff
+subdivide
+subdividing
 subject
+subjective
+subjective will
 subjects
+substantial change
+substantial changes
+substantial effort
+substantial efforts
+substantial improvements
+substantial proportion
 substantially
+subtle
+succeed relies
+success
+successes
+successful
+successful projects
 such
+sudden
+sudden decrease
 sufficient
+suggestion
+suggestions
 suitable
+sum
+superficial
+superficials
+superior
+superlative
+support
+support accurate
+support coherent
+support distributed
+support emerging
+support enhanced
+support improved
+support near
+support proactive
+support selecting
+support start up
+supportive
+supportive use
+suppose
+synergic efforts
 system
+system relies
+systematic checks
+systematic identification
+systems
+systems relies
 t
 table
 tables
 take
+taking approximately
+task
+tasks
+technical
+technical level
+technical means
+tedious
+tell
+tell me
+temporary
+temporary use
 ten
+tens of thousands
+tentative
 tenth
+term
+terms
+text
 than
+thank
 that
 that is
 that will
@@ -533,9 +2282,11 @@ the
 their
 theirs
 them
+thematic focus
 themselves
 then
 thence
+theoretically
 theories
 theory
 there
@@ -562,10 +2313,14 @@ they will
 they would
 thick
 thin
+thing
+things
+think
 third
 thirteen
 thirty
 this
+thorough respond
 those
 though
 thousand
@@ -575,46 +2330,177 @@ through
 throughout
 thru
 thus
+time
+timely reflect
+times
+tiny
+tiny falls short
+tiny part
+tiny parts
 to
+today
 together
+tolerable
+tolerable level
+tomorrow
 too
 top
 total
 toward
 towards
+traditional
+traditional one
+transcend specifics
+transform distributed systems
+transformative change
+transformative changes
+transparent
+trigger increased
+trillion
+trillions
+true
+true need
+true shape
+true system
+turn
 twelfth
 twelve
 twenty
+twenty first century
 twice
+twice exceptional
 two
+twofold
+type
+types
 typical
 typically
+ubiquitous
+ubiquitous use
+ultimate pick
+ultimately
+ultimately its use
 un
+una
+unacceptable
+uncertain
+uncertain i
+uncover meaningful
 under
+under represented
+understand
+understandable
+understandable manner
+understanding
+understandings
+undertake
+underwent
+undesirable
+undesirable her
+unexpected
+unexpected result
+unforeseen
+unique
+unique buildings
+unique characteristics
+universal
+universal use
+unknown
+unknowns
 unless
+unlikely
+unprecedented effort
+unreliable
+unreliable system
+unsatisfactory
+unsatisfactory ones
+unsuccessful
+unsuccessful top
 until
+unto
+unto others
 up
+update
+updates
+updating
 upon
+upper
+upper level
 upward
 us
+usage
 use
 used
+useful and timely insight
+useful insights
+usefulness
 uses
 using
 usually
+utilize
+utilized it
+vague
+vain
+valuable insights
+value
+values
+varied
 various
+vary
+varying needs
+varying t
+vast majority
+vast quantities
+verb
+verbs
+verified result
+verifies
+verify
+veritable
+veritable means
+veritable part
 versa
+versatile
+version
+versions
+versus
 very
+very basics
 via
+viable project
+viable projects
 vice
 viceversa
+view
+views
+vital
+vitals
+wait
+waits
+walk
+walks
+want
+wants
+warn
 was
 was not
+way
+ways
 we
 we are
 we have
 we will
 we would
+weak
+weaker
+weaker side
+week
+weekend
+weekends
+weekly
+weeks
+weigh
+weighing
 well
 were
 were not
@@ -639,6 +2525,7 @@ which
 whichever
 while
 whilst
+white
 whither
 who
 who is
@@ -651,18 +2538,44 @@ why
 why is
 will
 will not
+wish
+wishes
 with
 within
 without
+word
+words
+work
+works
+world
+world wide web
+worldwide
+worsen
+worsening
+worst
+worth
 would
 would not
+writ
+write
+writs
+wrong
+wrong result
+wrong results
+wrong side
+xvi
 y
+year
+yearly
+years
+yesterday
 yet
 you
 you are
 you have
 you will
 you would
+young
 your
 yours
 yourself

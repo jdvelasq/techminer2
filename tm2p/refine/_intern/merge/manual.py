@@ -57,5 +57,3 @@ class BaseManual(
             params=self.params,
             df=grouped_df,  # type: ignore
         )
-
-        return 1

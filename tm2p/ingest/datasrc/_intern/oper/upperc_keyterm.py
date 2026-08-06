@@ -71,7 +71,7 @@ def _prepare_patterns(df: pd.DataFrame) -> None:
                 series = series.str.lower()
                 series = series.str.split("; ")
                 series = series.explode()
-                series = series.str.strip()
+                series = series.str.strip()  # type: ignore
                 series = series[series.str.len() > 2]
                 series = series[~series.str.contains(r"\d", regex=True)]
                 series = series.str.strip()

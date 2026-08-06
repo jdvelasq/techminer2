@@ -24,7 +24,7 @@ def assert_no_empty_terms(
         .str.replace(r"\s*;\s*", ";", regex=True)
         .str.split(";")
         .explode()
-        .str.strip()
+        .str.strip()  # type: ignore
     )
 
     if (series == "").any():

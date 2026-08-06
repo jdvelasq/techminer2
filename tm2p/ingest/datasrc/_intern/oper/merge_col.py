@@ -41,7 +41,7 @@ def merge_columns(
     )
     all_items = all_items.apply(lambda x: sorted(set(x)) if x else [])
 
-    dataframe[target.value] = all_items.map(lambda x: "; ".join(x) if x else pd.NA)
+    dataframe[target.value] = all_items.map(lambda x: "; ".join(x) if x else pd.NA)  # type: ignore
 
     non_null_count = int(dataframe[target.value].notna().sum())
 

@@ -1,9 +1,7 @@
 from .auto import Auto
 from .manual import Manual
-from .synonym import Synonym
 
 __all__ = [
     "Auto",
     "Manual",
-    "Synonym",
 ]

@@ -16,7 +16,9 @@ def create_node_degree_dataframe(node_degrees):
             DEGREE,
         ],
     )
-    dataframe[COUNTERS] = dataframe[NAME].map(lambda x: x.split(" ")[-1])
+    dataframe[COUNTERS] = dataframe[NAME].map(
+        lambda x: x.split(" ")[-1]  # type: ignore
+    )
     dataframe = dataframe.sort_values(
         by=[DEGREE, COUNTERS, NAME],
         ascending=[False, False, True],

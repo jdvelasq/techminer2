@@ -1,12 +1,13 @@
 """
-Stopword
+Phrase
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.refine.concept.replace import Stopword
+    >>> from tm2p.refine.concept.replace import Phrase
     >>> (
-    ...     Stopword()
+    ...     Phrase()
     ...     .having_word("business")
+    ...     .having_replacement("BUSINESS")
     ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .run()
     ... )
@@ -22,10 +23,10 @@ Smoke tests:
 
 from tm2p._intern import ParamsMixin
 from tm2p.enum import ThFile
-from tm2p.refine._intern.stop import BaseGenericStopword
+from tm2p.refine._intern.replace import BasePhrase
 
 
-class Stopword(
+class Phrase(
     ParamsMixin,
 ):
     """:meta private:"""
@@ -33,21 +34,21 @@ class Stopword(
     def run(self):
         """:meta private:"""
 
-        from ..apply import Apply
-
-        (
-            BaseGenericStopword()
+        return (
+            BasePhrase()
             .update(**self.params.__dict__)
             .with_thesaurus_file(ThFile.CONCEPT)
             .run()
         )
 
-        return Apply().where_root_directory(self.params.root_directory).run()
-
 
 def run():
 
+    from ..apply import Apply
+    from ..group import Group
+
     preferred = None
+    variant = None
 
     print()
     while True:
@@ -56,7 +57,21 @@ def run():
         if preferred == "":
             break
 
-        Stopword().having_word(preferred).where_root_directory("./").run()
+        variant = input("Variant > ").strip()
+        if variant == "":
+            break
+
+        (
+            Phrase()
+            .having_word(preferred)
+            .having_replacement(variant)
+            .where_root_directory("./")
+            .run()
+        )
+
+        Group().where_root_directory("./").run()
+        Apply().where_root_directory("./").run()
+
         print("\n\n")
 
 

@@ -1,5 +1,5 @@
-from .stop_word import BaseStopWord
+from .generic_stopword import BaseGenericStopword
 
 __all__ = [
-    "BaseStopWord",
+    "BaseGenericStopword",
 ]

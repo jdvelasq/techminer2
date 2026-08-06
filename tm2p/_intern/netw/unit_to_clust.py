@@ -34,7 +34,7 @@ class BaseUnitToCluster(
 
         matrix = (
             self.get_similarity_matrix()
-            .update(**self.params.__dict__)  #  type: ignore
+            .update(**self.params.__dict__)  # type: ignore
             .using_counters(True)
             .run()
         )

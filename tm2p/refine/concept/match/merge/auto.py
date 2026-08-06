@@ -1,20 +1,30 @@
 """
-Shell
+Auto
 ===============================================================================
 
 Smoke tests:
-    >>> from tm2p.refine.concept.match import Shell
+    >>> from tm2p.refine.concept.match import Auto
     >>> (
-    ...     Shell()
+    ...     Auto()
     ...     .where_root_directory("tests/tinyml-scopus/")
     ...     .run()
     ... )  # doctest: +SKIP
 
 """
 
+import json
+import os
+import time
 from pathlib import Path
 
+import openai
+from openai import OpenAI
+
 from tm2p._intern import ParamsMixin
+from tm2p._intern.packag_data import update_core_thesaurus
+from tm2p._intern.packag_data.templates.load_builtin_template import (
+    load_builtin_template,
+)
 from tm2p.enum import ThField, ThFile
 from tm2p.refine._intern.data_access import (
     load_thesaurus_as_dataframe,
@@ -25,7 +35,7 @@ PREFERRED = ThField.PREFERRED.value
 VARIANT = ThField.VARIANT.value
 
 
-class ManualMerge(
+class Auto(
     ParamsMixin,
 ):
     """:meta private:"""
@@ -46,7 +56,7 @@ class ManualMerge(
 
         return grouped_df
 
-    def _run_shell(self, df):
+    def _run_auto(self, df):
 
         filepath = (
             Path(self.params.root_directory)
@@ -63,7 +73,10 @@ class ManualMerge(
         preferred = None
         n_lines = len(lines)
         print(f"Processing {n_lines} lines...")
+
         for idx, line in enumerate(lines):
+
+            time.sleep(0.5)
 
             if line.startswith("    "):
 
@@ -73,18 +86,20 @@ class ManualMerge(
                 if preferred is None:
                     raise ValueError("Variant found before preferred term.")
 
-                choice = self._show_diff(
-                    idx=idx, n_lines=n_lines, preferred=preferred, variant=variant
+                preferred = preferred.strip()
+                variant = variant.strip()
+                if preferred == "" or variant == "":
+                    raise ValueError("Preferred or variant term is empty.")
+
+                print(f"{idx}/{n_lines}  '{preferred}' <---- '{variant}'", flush=True)
+
+                choice = update_core_thesaurus(
+                    preferred=preferred,
+                    variant=variant,
                 )
 
-                if choice == "y":
+                if choice is True:
                     df[PREFERRED] = df[PREFERRED].replace(variant, preferred)
-                    print("✓ Merged.\n")
-                elif choice == "q":
-                    break
-                else:
-                    print("✗ Skipped.\n")
-                    continue
 
             else:
                 preferred = line.strip()
@@ -92,44 +107,16 @@ class ManualMerge(
 
         return df
 
-    def _show_diff(self, idx, n_lines, preferred, variant, indent=4):
-
-        pad = " " * indent
-        min_len = min(len(preferred), len(variant))
-        diff_pos = next(
-            (i for i in range(min_len) if preferred[i] != variant[i]), min_len
-        )
-        len1_tail = len(preferred) - diff_pos
-        len2_tail = len(variant) - diff_pos
-        marker = " " * diff_pos
-
-        print(f"{idx+1}/{n_lines}\n")
-        if len1_tail >= len2_tail:
-            print(marker + "v")
-        print(preferred)
-        print(pad + variant)
-        if len2_tail >= len1_tail:
-            print(pad + marker + "^")
-        else:
-            print()
-
-        print()
-        print("Merge? (y/[n]/q) : ", end="")
-        choice = input().strip().lower()
-        print()
-
-        return choice
-
     def run(self) -> None:
         """:meta private:"""
 
-        from ..apply import Apply
-        from ..group import Group
+        from ...apply import Apply
+        from ...group import Group
 
         self.with_thesaurus_file(ThFile.CONCEPT)
         df = load_thesaurus_as_dataframe(params=self.params)
         df = self._explode(df=df)  # type: ignore
-        df = self._run_shell(df=df)
+        df = self._run_auto(df=df)
         df = self._merge(df=df)
 
         save_dataframe_as_thesaurus(
@@ -143,4 +130,4 @@ class ManualMerge(
 
 if __name__ == "__main__":
 
-    ManualMerge().where_root_directory("./").run()
+    Auto().where_root_directory("./").run()

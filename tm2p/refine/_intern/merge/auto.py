@@ -44,6 +44,7 @@ from ._intern import (
     apply_plural_singular_rule,
     apply_prefer_singular_over_plural_rule,
     apply_punctuation_variation_rule,
+    apply_reusable_core_thesaurus_rule,
     apply_scientific_and_academic_rule,
     apply_single_letters_and_digits_rule,
     apply_technology_rule,
@@ -92,38 +93,52 @@ class BaseAuto(
         initial_length = None
         final_length = None
 
-        phases = [
+        phases = (
             [
-                ("british to american", apply_british_to_american_rule),
-                ("single letters and digits", apply_single_letters_and_digits_rule),
-                ("exact match", apply_exact_match_rule),
-                ("geographic names", apply_geographic_names_rule),
-                ("error metrics", apply_error_metrics_rule),
-                ("number to letter", apply_number_to_letter_rule),
-                ("num punct to space", apply_num_punct_to_space_rule),
-                ("xml encoding", apply_xml_encoding_rule),
-                ("white space normalization", apply_white_space_normalization_rule),
-                ("chemical compounds", apply_chemical_compounds_rule),
-                ("technology", apply_technology_rule),
-                ("punctuation variation", apply_punctuation_variation_rule),
-                ("double", apply_double_rule),
+                [
+                    ("british to american", apply_british_to_american_rule),
+                    ("single letters and digits", apply_single_letters_and_digits_rule),
+                    ("exact match", apply_exact_match_rule),
+                    ("geographic names", apply_geographic_names_rule),
+                    ("error metrics", apply_error_metrics_rule),
+                    ("number to letter", apply_number_to_letter_rule),
+                    ("num punct to space", apply_num_punct_to_space_rule),
+                    ("xml encoding", apply_xml_encoding_rule),
+                    ("white space normalization", apply_white_space_normalization_rule),
+                    ("chemical compounds", apply_chemical_compounds_rule),
+                    ("technology", apply_technology_rule),
+                    ("punctuation variation", apply_punctuation_variation_rule),
+                    ("double", apply_double_rule),
+                ]
             ]
-        ] + [
-            [
-                ("geographic names", apply_geographic_names_rule),
-                ("prefer singular over plural", apply_prefer_singular_over_plural_rule),
-                ("plural singular", apply_plural_singular_rule),
-                ("concatenation", apply_concatenation_rule),
-                ("common and basic", apply_common_and_basic_rule),
-                ("scientific and academic", apply_scientific_and_academic_rule),
-                ("inflected verb forms", apply_inflected_verb_forms_rule),
-                ("leading noise removal", apply_leading_noise_removal_rule),
-                ("punctuation variation", apply_punctuation_variation_rule),
-                ("trailing noise removal", apply_trailing_noise_removal_rule),
-                ("punctuation variation", apply_punctuation_variation_rule),
-                ("double", apply_double_rule),
-            ],
-        ] * 4
+            + [
+                [
+                    ("geographic names", apply_geographic_names_rule),
+                    (
+                        "prefer singular over plural",
+                        apply_prefer_singular_over_plural_rule,
+                    ),
+                    ("plural singular", apply_plural_singular_rule),
+                    ("concatenation", apply_concatenation_rule),
+                    ("common and basic", apply_common_and_basic_rule),
+                    ("scientific and academic", apply_scientific_and_academic_rule),
+                    ("inflected verb forms", apply_inflected_verb_forms_rule),
+                    ("leading noise removal", apply_leading_noise_removal_rule),
+                    ("punctuation variation", apply_punctuation_variation_rule),
+                    ("trailing noise removal", apply_trailing_noise_removal_rule),
+                    ("punctuation variation", apply_punctuation_variation_rule),
+                    ("double", apply_double_rule),
+                ],
+            ]
+            * 4
+            + [
+                [
+                    ("core thesaurus (1st pass)", apply_reusable_core_thesaurus_rule),
+                    ("core thesaurus (2nd pass)", apply_reusable_core_thesaurus_rule),
+                    ("core thesaurus (3rd pass)", apply_reusable_core_thesaurus_rule),
+                ]
+            ]
+        )
 
         for index, phase in enumerate(phases):
 
@@ -138,7 +153,6 @@ class BaseAuto(
 
             df = sort_thesaurus_df_by_occ(params=self.params, thesaurus_df=df)
             df = _explode_variants(df)
-            # df = mark_keywords(df, self.params)
 
             for msg, rule in phase:
 

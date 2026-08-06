@@ -1,43 +1,87 @@
+abbr
+abbrev
+abbreviation
+abbreviations
+academia
+academic
+academic interest
+academic level
+academic publications
+academic studies
+academic study
+academics
 acceptance
 accuracy
+acknowledgment
+acronym
 adoption
+affiliation
+affiliation address
+affiliations
 aggregate
 aggregation
+aim
+aims
+algorithm
 algorithmic
 algorithms
 analyses
 analysis
 analyst
+analysts
 analytics
 annotation
 annotations
 appendices
 appendix
 application
+applications
 applied
 approach
 approaches
+appropriate correspondence
 architecture
+architectures
+archive
+archives
+asce
 assessment
 assessments
 authentication
+author
+authors
+authorship
+authorships
+autor
 avoidance
+backgorund
+background
+backgrounds
 baseline
+baselines
 bayesian
 behavior
+behaviors
 benchmark
 benchmarks
+beneficial supplement
 bias
 biases
+bibl
 bibliographic
+bibliographical
 bibliographies
 bibliography
 bibliometric
 bibliometrics
+bigram
+bigrams
 biometric
 book
 books
+broad readership
 capabilities
+capability
 case report
 case reports
 case series
@@ -45,11 +89,16 @@ case studies
 case study
 causal
 certification
+ceur-w
+ceur-ws
 channel
+channels
 checklist
 checklists
 citation
 citations
+cite
+cites
 classification
 classifications
 clinical studies
@@ -66,63 +115,108 @@ cohorts
 collaboration
 collection
 collections
+colloquium
 commentaries
 commentary
+commonly used abbreviations
 communication
 comparative
 comparative studies
 comparative study
+comprehensive treatise
 computer simulation
 computer simulations
-concept
-concepts
 conceptual
+conceptualization
 conference
+conference paper
 conferences
 confusion matrix
 consensus
 content analysis
 content-analysis
-context
 contribution
 contributions
+contributor
+contributors
 control
 controlled studies
 controlled study
 controls
 convergence
+copyright
+copyrights
+corpora
+corpus
+correct affiliation
+correct affiliations
+correction
 correlation
 correlations
+correspondence
+corrigendum
 covariate
 covariates
+creator
+creators
 criteria
 criterion
+critical review
+critical reviews
 cross-sectional
 cross-sectional studies
 cross-sectional study
 cross-validation
+cte
+daily volume
+data availability
+data collection
 database
 databases
 dataset
 datasets
+department
+departments
 dependent variable
 dependent variables
 descriptive
 descriptive statistics
 design
+design/methodology/approach
 designs
+disclaimer
+disclaimers
+dissemination
+dissertation
+dissertation validates
 distribution
 distributions
+diverse readership
+draft
+drafts
+earlier work
+ebsco
+edition
+editor
 editorial
 editorials
+editors
 effect size
+effect sizes
+embase
 empirical
+empirical literature
+empirical research
+empirical results
+empirical settings
 empirical studies
 empirical study
 endpoint
 endpoints
+erratum
 error
 errors
+essay
 ethnographic
 ethnography
 evaluation
@@ -130,41 +224,73 @@ evaluations
 evidence
 examination
 examinations
+excerpt
+excerpts
 exclusion criteria
 experiment
+experiment methods
 experimental
 experimental data
+experimental results
 experimental studies
 experimental study
+experimental/empirical
 experiments
 exploration
 explorations
 f1 score
 factor
 factors
+feasible proposal
 feature extraction
 feature selection
 field studies
 field study
 fig
 figs
+final proposal assumes
+finding statistically significant relationships
+findings challenge
 focus group
 focus groups
 follow-up
+footnote
+footnotes
 forecast
 forecasting
+forecasts
+foreword
+forthcome
+forthcoming
 framework
 frameworks
+funder
+funders
+general corpora
+given corpus
+glossaries
+glossary
 ground truth
 grounded theory
 guideline
 guidelines
+handbook
+handbooks
 heterogeneity
+hy pothesize
 hypotheses
 hypothesis
+hypothesize
+ibid
+identifier
+identifiers
+ieee
+illustration
+illustrations
 implication
 implications
 inclusion criteria
+increased plagiarism
 independent variable
 independent variables
 index
@@ -174,12 +300,35 @@ indicators
 indices
 informant
 informants
+initial drafts
+institute
+institutes
+institution
+institutions
+institutions mediate
 instrumentation
 intercept
+intercepts
 intervention
 interventions
 interview
 interviews
+investigator
+investigators
+ishs
+issn
+jama
+jamas
+journal
+journals
+larger corpus
+latex
+latexes
+learn abbreviations
+lemma
+lemmas
+letter
+license
 likelihood
 limitation
 limitations
@@ -188,15 +337,24 @@ literature review
 literature reviews
 logistic regression
 logit
+logits
 longitudinal studies
 longitudinal study
+magazine
+magazines
+manuscript
+manuscripts
 measure
 measurement
 measurements
 measures
+medline
 meta-analyses
 meta-analysis
+metadata
+method
 methodological
+methodology
 metric
 metrics
 mixed methods
@@ -204,141 +362,281 @@ model
 modeling
 modelling
 models
+monograph
+monograph generalizes
+n investigations
+n studies
 narrative
 narratives
+new abbreviations
+novel corpus
 null hypothesis
-objective
-objectives
 observation
 observational
 observational data
 observational studies
 observational study
 observations
+open access
+openaccess
 optimization
 outcome
 outcomes
 outlier
 outliers
 p-value
+p-values
+pagination
 panel studies
 panel study
+paragraph
 participant
 participants
-phenomena
+patent
+patents
+pdfs
+peer
+peers
+periodical
+periodicals
+permission
 phenomenological
 phenomenology
-phenomenon
 pilot
 pilot studies
 pilot study
+plagiarism
+plos
 population
 populations
+poster
 precision
 prediction
 predictions
 predictive model
 predictive models
+preface
+preprint
+presentation
+presentations
+previous approaches
+previous findings
+previous literature
+previous research
+previous work
 primary data
 principal component analysis
+principal findings
+prior research studies
+priori
+priority journal
 procedure
 procedures
 proceedings
+proposal
+proposals
+proposals aim
+proquest
 prospective
 protocol
 protocols
+psycinfo
+publication
+publications
+publish
+publisher
+publishers
+publishing
 qualitative
+qualitative and quantitative
 qualitative data
 qualitative research
+qualitatively
+qualitatively new level
 quality control
 quantitative
 quantitative data
 quantitative research
+quartile
+quartiles
 quasi-experimental
 questionnaire
 questionnaires
 randomized
 randomized controlled trial
 randomized controlled trials
+rationale
 rct
+readership
 recall
 receiver operating characteristic
+recent proposal
+recent scholarship
+redaction
+redactions
+reference figures
 regression
+regression analyses
 regression analysis
 regression model
+regression models
+regressions
+relevant affiliation
+relevant departments
 reliability
 replication
+replications
+reprint
+reprints
+research
+research design
+research literature
+research objective
+research objectives
 research question
 research questions
+research studies
+research work
+researcher
 researchers
 respondent
 respondents
 result
+results
+retraction
 retrospective
+reviewer
+reviewers
+revise
+revised
 risk assessment
+risk assessments
 roc
 roc curve
 sample
 sample size
+sample sizes
 samples
 sampling
+satisfactory proposals
+scholar
 scholarly
+scholarly literature
+scholars
+scholarship
+scholarship exists
+sciencedirect
+scientific
+scientific interest
+scope
 scoping review
 scoping reviews
+scopus
 score
 scores
 secondary data
+secondly
+section
 semi-structured
 semi-structured interview
+semi-structured interviews
 sensitivity
 sensitivity analysis
+serial
 significance
 significant
 significantly
+simple corrections
 simulation
 simulations
+specific abbreviations
 specificity
+springer
 standardization
 stata
+statistic
 statistical
+statistical analyses
 statistical analysis
 statistical model
+statistical models
 statistical test
+statistical tests
+statistically
+statistically significant decrease
+statistically significant effect
+statistically significant results
 statistics
+strong institutions
 structured
+studies point
+submission
+submit
+submitted amount
+subsection
+subsections
+substantial corpus
+summaries
+summary
+summary background
+supplement
+supplemental
 supplementary
+supplementary data
+surname
 survey
 surveys
+symposium
+synopsis
 systematic review
 systematic reviews
 t-test
+t-tests
 technique
 techniques
 test
 test set
+test sets
 testing
 tests
 textbook
 textbooks
+thematic analyses
 thematic analysis
 theoretical
+theoretical framework
+theoretical frameworks
 theses
 thesis
+thirdly
+title
 training data
 training set
+training sets
 transcript
 transcripts
+treatise
 treatment
 treatments
 trial
 trials
 triangulation
 univariate
+universities
+university
+university a
 unstructured
+urls
+useful editors
 validation
 validation set
+validation sets
 validity
 variable
 variables
 variance
+venue
 verification
+volume
+volumes
+wide readership

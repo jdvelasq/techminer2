@@ -77,11 +77,11 @@ def _from_pandas_cross_occ_matrix(matrix: pd.DataFrame):
 
             if i_col > i_row:
 
-                if matrix.loc[row, col] > 0:
+                if matrix.loc[row, col] > 0:  # type: ignore
 
                     weight = matrix.loc[row, col]
                     nx_graph.add_weighted_edges_from(
-                        ebunch_to_add=[(row, col, weight)],
+                        ebunch_to_add=[(row, col, weight)],  # type: ignore
                         dash="solid",
                     )
 

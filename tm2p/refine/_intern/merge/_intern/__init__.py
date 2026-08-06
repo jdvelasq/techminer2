@@ -13,6 +13,7 @@ from .number_to_letter import apply_number_to_letter_rule
 from .plural_singular import apply_plural_singular_rule
 from .prefer_singular_over_plural import apply_prefer_singular_over_plural_rule
 from .punctuation_variation import apply_punctuation_variation_rule
+from .reusable_core_thesaurus import apply_reusable_core_thesaurus_rule
 from .scientific_and_academic import apply_scientific_and_academic_rule
 from .single_letters_and_digits import apply_single_letters_and_digits_rule
 from .technology import apply_technology_rule
@@ -36,6 +37,7 @@ __all__ = [
     "apply_plural_singular_rule",
     "apply_prefer_singular_over_plural_rule",
     "apply_punctuation_variation_rule",
+    "apply_reusable_core_thesaurus_rule",
     "apply_scientific_and_academic_rule",
     "apply_single_letters_and_digits_rule",
     "apply_technology_rule",

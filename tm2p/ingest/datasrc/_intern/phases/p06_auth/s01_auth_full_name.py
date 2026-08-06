@@ -26,7 +26,7 @@ def s01_auth_full_name_wos(root_directory: str) -> int:
 
     auth = df[AUTH_FULL_NAME].copy().dropna()
     auth = auth.str.split("; ").explode()
-    auth = auth.str.strip()
+    auth = auth.str.strip()  # type: ignore
     auth = auth.drop_duplicates()
 
     mapping = {a: [a] for a in sorted(auth.to_list())}
@@ -43,7 +43,7 @@ def _save_scopus_aff(root_directory: str) -> None:
 
     df = load_main_csv_zip(root_directory)
     aff = df[AUTH_WITH_AFFIL].dropna().str.split("; ").explode()
-    aff = aff.str.strip()
+    aff = aff.str.strip()  # type: ignore
     aff = aff.drop_duplicates()
     aff = sorted(aff.to_list())
 
@@ -61,7 +61,7 @@ def _save_wos_aff(root_directory: str) -> None:
 
     df = load_main_csv_zip(root_directory)
     aff = df[AUTH_WITH_AFFIL].dropna().str.split("; ").explode()
-    aff = aff.str.strip()
+    aff = aff.str.strip()  # type: ignore
     aff = aff.drop_duplicates()
     aff = sorted(aff.to_list())
 

@@ -35,3 +35,12 @@ class Group(
         )
 
         return Apply().where_root_directory(self.params.root_directory).run()
+
+
+def run():
+
+    Group().where_root_directory("./").run()
+
+
+if __name__ == "__main__":
+    run()

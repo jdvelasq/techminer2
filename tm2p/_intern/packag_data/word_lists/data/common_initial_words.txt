@@ -705,6 +705,7 @@ foster
 fosters
 foundational
 fragmented
+freely
 frequent
 frequently
 fresh
@@ -1528,6 +1529,7 @@ unrolls
 unsettle
 unsettles
 untapped
+unusual
 unveil
 unveils
 upcoming

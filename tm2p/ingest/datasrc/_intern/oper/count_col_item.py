@@ -58,7 +58,7 @@ def count_column_items(
         )
 
     dataframe[target.value] = (
-        dataframe[source.value].str.split("; ").str.len().fillna(0).astype(int)
+        dataframe[source.value].str.split("; ").str.len().fillna(0).astype(int)  # type: ignore
     )
 
     save_data(df=dataframe, root_directory=root_directory)
