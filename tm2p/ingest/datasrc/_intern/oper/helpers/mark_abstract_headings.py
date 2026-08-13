@@ -4,6 +4,7 @@ from typing import Optional
 import pandas as pd  # type: ignore
 
 COMPOUND_STRUCTURED_ABSTRACT_HEADINGS = [
+    "objectives of research",
     "the problem",
     "a summary",
     "actionable insights",

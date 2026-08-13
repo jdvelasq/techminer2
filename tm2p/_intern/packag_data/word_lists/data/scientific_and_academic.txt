@@ -205,6 +205,7 @@ effect size
 effect sizes
 embase
 empirical
+empirical findings
 empirical literature
 empirical research
 empirical results
@@ -251,6 +252,8 @@ figs
 final proposal assumes
 finding statistically significant relationships
 findings challenge
+findings highlight limitations
+findings underline
 focus group
 focus groups
 follow-up
@@ -264,6 +267,7 @@ forthcome
 forthcoming
 framework
 frameworks
+free access
 funder
 funders
 general corpora
@@ -313,6 +317,7 @@ intervention
 interventions
 interview
 interviews
+introductory section
 investigator
 investigators
 ishs
@@ -490,6 +495,7 @@ reprint
 reprints
 research
 research design
+research highlights
 research literature
 research objective
 research objectives

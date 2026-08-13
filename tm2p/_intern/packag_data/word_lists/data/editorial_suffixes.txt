@@ -937,3 +937,26 @@ under exclusive license to operational research society of india \d{4} \.$
 \. \d{4} , taylor \.\.\. francis group , llc$
 \. \d{4} board of trustees of the bulletin of economic research and john wiley and sons ltd$
 \. our code is publicly available$
+\. \( \d{4} \) , \( sociedad de estadistica e investigacion operativa \)$
+\. \d{4} by the information systems and computing academic professionals , inc \. \( iscap \)$
+\. \d{4} , society for learning analytics research \( solar \)$
+\. \( \d{4} \) , \( iscap information systems and computing academic professionals \)$
+\. \( \d{4} \) , \( american physiological society \)$
+\. \d{4} copyright is held by the author \( s \) \.$
+\. institute of technology petronas sdn bhd \( universiti teknologi petronas \) \d{4} \.$
+\. association for educational communications and technology \d{4} \.$
+\. bayode ogunleye , kudirat ibilola zakariyyah , oluwaseun ajao , olakunle olayinka and hemlata sharma \.$
+\. \d{4} stowarzyszenie ksiegowych w polsce \.$
+\. this article of educational technology and society is available under creative commons cc by nc nd \d{1}\.\d{1} license \.$
+\. \d{4} xuebin wei and xinyue ye \.$
+\. \d{4} amit kumar tyagi \.$
+\. \d{4} elshall , badir and gebremedhin \.
+\. \d{4} british educational research association \.$
+\. \d{4} teaching statistics trust \.$
+\. stat published by john wiley and sons ltd \.$
+\. teaching statistics published by john wiley and sons ltd on behalf of teaching statistics trust \.$
+\. \d{4} , american society for engineering education$
+\. \d{4} , global chinese society for computers in education$
+\. \d{4} , iquz galaxy publisher$
+\. \d{4} , association for information systems$
+\. \d{4} mary ann liebert , inc \. , publishers$

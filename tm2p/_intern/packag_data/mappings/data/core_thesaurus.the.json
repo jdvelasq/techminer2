@@ -2,6 +2,9 @@
     "accountability": [
         "acconntability"
     ],
+    "accounting curriculum": [
+        "accounting curricula"
+    ],
     "active and passive retrofit measures": [
         "active and passive retrofitting measures"
     ],
@@ -57,8 +60,38 @@
     "agriculture and industrial sectors": [
         "agricultural and industrial sectors"
     ],
+    "ai": [
+        "artificial intelligence"
+    ],
+    "ai agent": [
+        "artificial intelligence agent",
+        "artificial intelligence agents"
+    ],
     "ai enabled social bots": [
         "ai-enabled social bot"
+    ],
+    "ai impact": [
+        "artificial intelligence impact"
+    ],
+    "ai learning": [
+        "artificial intelligence learning"
+    ],
+    "ai powered educational support": [
+        "artificial intelligence-powered educational support"
+    ],
+    "ai technologies": [
+        "artificial intelligence technologies",
+        "artificial intelligence technology"
+    ],
+    "ai tool": [
+        "artificial intelligence tool",
+        "artificial intelligence tools"
+    ],
+    "ai-driven assessment": [
+        "artificial intelligence-driven assessment"
+    ],
+    "ai-powered enterprise resource planning": [
+        "artificial intelligence-powered enterprise resource planning"
     ],
     "air to water heat pump": [
         "air water heat pump"
@@ -201,6 +234,10 @@
     "artificial intelligence capabilities": [
         "artificial intelligence ai capabilities"
     ],
+    "artificial intelligence in education": [
+        "ai in education",
+        "artificial intelligence ai in education"
+    ],
     "artificial intelligence technique": [
         "artificial intelligent technique"
     ],
@@ -242,6 +279,9 @@
     ],
     "automatic extraction": [
         "automated extraction"
+    ],
+    "automatic item generation": [
+        "automatic item creation"
     ],
     "autoregressive": [
         "autoregression"
@@ -303,6 +343,9 @@
     "biometric database": [
         "biometric databases"
     ],
+    "blockchain technologies": [
+        "block chain technology"
+    ],
     "bosnian war": [
         "bosnian civil war"
     ],
@@ -347,6 +390,9 @@
     ],
     "bundle": [
         "bundl"
+    ],
+    "business administration and management": [
+        "management and business administration"
     ],
     "businesse": [
         "business"
@@ -480,6 +526,9 @@
         "co 2 emission",
         "co 2 emissions"
     ],
+    "code generation": [
+        "generating code"
+    ],
     "coe": [
         "coes"
     ],
@@ -594,6 +643,9 @@
     "congressional voting": [
         "congressional voting data"
     ],
+    "contextual bandit": [
+        "contextual banditti"
+    ],
     "contextualization": [
         "contextualisation"
     ],
@@ -703,6 +755,9 @@
         "covid-19",
         "novel coronavirus"
     ],
+    "crisp-dm": [
+        "cross industry standard process for data mining"
+    ],
     "croatia homeland war": [
         "croatian homeland war"
     ],
@@ -726,6 +781,12 @@
     ],
     "curated database": [
         "curated databases"
+    ],
+    "curriculum": [
+        "curricula"
+    ],
+    "curriculum design": [
+        "curricula design"
     ],
     "custom convolutional neural network model": [
         "customized convolutional neural network model"
@@ -785,6 +846,13 @@
     ],
     "data science": [
         "data science methods"
+    ],
+    "data science ai tutor": [
+        "data science artificial intelligence tutor",
+        "data science artificial intelligence tutors"
+    ],
+    "data science learning": [
+        "learning data science"
     ],
     "data sharing": [
         "sharing data"
@@ -1055,11 +1123,17 @@
     "economic trade offs": [
         "economical trade offs"
     ],
+    "education chatbot": [
+        "educational chatbot"
+    ],
     "education governance": [
         "educational governance"
     ],
     "education institution": [
         "educational institution"
+    ],
+    "education pedagogy": [
+        "educational pedagogy"
     ],
     "education policymaking": [
         "educational policymaking"
@@ -1069,6 +1143,9 @@
     ],
     "education technology": [
         "educational technology"
+    ],
+    "educational assessment": [
+        "education assessment"
     ],
     "educational building": [
         "education building"
@@ -1320,6 +1397,9 @@
     "evolutionary game theoretical method": [
         "evolutionary game theoretic method"
     ],
+    "evolving with ai": [
+        "evolving with artificial intelligence"
+    ],
     "excel": [
         "excell"
     ],
@@ -1550,6 +1630,10 @@
         "gaussian process model",
         "gaussian process models"
     ],
+    "genai-use competence": [
+        "generative ai-use competence",
+        "generative artificial intelligence use competence"
+    ],
     "gender politics": [
         "gender gender politics"
     ],
@@ -1579,6 +1663,44 @@
     ],
     "generation source": [
         "generating source"
+    ],
+    "generative ai": [
+        "generative artificial intelligence"
+    ],
+    "generative ai agent": [
+        "generative artificial intelligence agent",
+        "generative artificial intelligence agents"
+    ],
+    "generative ai assistant": [
+        "generative artificial intelligence assistant",
+        "generative artificial intelligence assistants"
+    ],
+    "generative ai in teaching": [
+        "generative artificial intelligence in teaching"
+    ],
+    "generative ai technologies": [
+        "generative artificial intelligence technologies",
+        "generative artificial intelligence technology"
+    ],
+    "generative ai tools": [
+        "generative artificial intelligence tool",
+        "generative artificial intelligence tools"
+    ],
+    "generative ai usage ratio": [
+        "generative artificial intelligence usage ratio",
+        "generative artificial intelligence usage ratios"
+    ],
+    "generative artificial intelligence": [
+        "generative artificial ingelligence"
+    ],
+    "generative pretrained transformer abilities": [
+        "generative pretrained transformer capabilities"
+    ],
+    "generative pretrained transformer models": [
+        "generative pre trained transformer model"
+    ],
+    "generative pretrained transformer versions": [
+        "generative pretrained transformer model versions"
     ],
     "genoa": [
         "genova"
@@ -1839,6 +1961,9 @@
     "humanitarian workers": [
         "humanitarian aid workers"
     ],
+    "hybrid ai human framework": [
+        "hybrid artificial intelligence-human framework"
+    ],
     "hybrid analytic hierarchy process": [
         "hybrid analytical hierarchy process"
     ],
@@ -1951,6 +2076,9 @@
     "installed generation capacity": [
         "installed generating capacity"
     ],
+    "instructional effectiveness": [
+        "instruction effectiveness"
+    ],
     "insurgency": [
         "insurgence"
     ],
@@ -2055,6 +2183,9 @@
     "interview participants": [
         "interviewed participants"
     ],
+    "introductory data science course": [
+        "introduction to data science course"
+    ],
     "investment and operating costs": [
         "investment and operation costs"
     ],
@@ -2087,6 +2218,12 @@
     ],
     "jus ad bellum": [
         "jus ad bella"
+    ],
+    "k means cluster analysis": [
+        "k means clustering analysis"
+    ],
+    "k-means clustering": [
+        "k means cluster analysis"
     ],
     "karma modeling": [
         "karma model",
@@ -2776,6 +2913,9 @@
     "operational simulation": [
         "operation simulation"
     ],
+    "operations research": [
+        "operational research"
+    ],
     "oral poliomyelitis vaccine": [
         "poliovirus vaccine oral",
         "poliovirus vaccines oral"
@@ -2880,6 +3020,9 @@
     "pearson- crame statistic": [
         "pearson- cramer statistics"
     ],
+    "pedagogical practices": [
+        "pedagogic practice"
+    ],
     "people army": [
         "people s army"
     ],
@@ -2916,6 +3059,9 @@
     ],
     "phenotype": [
         "phenotyp"
+    ],
+    "phillips curve": [
+        "phillips curves"
     ],
     "physics based urban building energy modeling": [
         "physics based urban building energy model"
@@ -2984,6 +3130,9 @@
     "prebound and rebound effects": [
         "rebound and prebound effects"
     ],
+    "predictive analytics": [
+        "predictive data analytics"
+    ],
     "predictive modeling": [
         "predictive model",
         "predictive models"
@@ -3017,6 +3166,9 @@
     ],
     "pro islamic state of iraq and syria twitterers": [
         "pro islamic state of iraq and syria twitter users"
+    ],
+    "professional competency": [
+        "professional competence"
     ],
     "professional ethical negotiation": [
         "professional and ethical negotiation"
@@ -3138,6 +3290,9 @@
     "real time sentiment analysis": [
         "real time sentiment analytics"
     ],
+    "real world": [
+        "real-world"
+    ],
     "real-world process": [
         "real world processes"
     ],
@@ -3248,8 +3403,14 @@
     "resource efficient faades": [
         "resource efficient facades"
     ],
+    "responsible ai": [
+        "responsible artificial intelligence"
+    ],
     "responsive drip irrigation": [
         "responsive drip irrigationf"
+    ],
+    "retrieval augmented generation": [
+        "retrieval-augmented generation retrieval augmented generation"
     ],
     "retrieval-augmented large language model": [
         "retrieval augmented large language models"
@@ -3293,6 +3454,9 @@
     ],
     "root mean square error": [
         "root mean squared error"
+    ],
+    "rpa": [
+        "robotic process automation"
     ],
     "russia ukraine conflict": [
         "russia ukraine war",
@@ -3360,6 +3524,9 @@
     ],
     "scientific databases": [
         "scientific database"
+    ],
+    "scopus database": [
+        "scopus databases"
     ],
     "screening regimes": [
         "screening regimens"
@@ -3522,9 +3689,15 @@
     "statistic modeling": [
         "statistical modeling"
     ],
+    "statistical competence": [
+        "statistical competencies"
+    ],
     "statistical modeling": [
         "statistical model",
         "statistical models"
+    ],
+    "statistics education": [
+        "statistical education"
     ],
     "stepwise weight assessment ratio analysis": [
         "stepwise weight assessment ratio analysis method"
@@ -3568,6 +3741,9 @@
         "structural equation modeling approach",
         "structural equation modeling technique",
         "structural equation models"
+    ],
+    "students self regulation of learning skills": [
+        "self regulation of learning skills students"
     ],
     "sub saharan africa": [
         "africa south of the sahara",
@@ -3625,6 +3801,12 @@
     ],
     "target": [
         "targete"
+    ],
+    "teaching learning activities": [
+        "teaching and learning activities"
+    ],
+    "teaching/learning paradigm": [
+        "teaching-learning paradigm"
     ],
     "technical and economic analysis": [
         "technical and economical analysis",
@@ -3811,6 +3993,9 @@
     "turbine": [
         "turbin"
     ],
+    "tutor": [
+        "tutore"
+    ],
     "uncertain conditions": [
         "uncertainty conditions"
     ],
@@ -3822,6 +4007,9 @@
     ],
     "united nations children s fund": [
         "united nations children fund"
+    ],
+    "university industry collaboration": [
+        "university-industry collaboration"
     ],
     "unsupervised learning": [
         "unsupervised learning method",

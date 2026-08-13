@@ -734,6 +734,7 @@ eighteen
 eighth
 eighty
 either
+elaborate
 elaboration
 elaborations
 eleven
@@ -783,6 +784,7 @@ equal
 equal amount
 equals
 equivalent
+era
 escalating content
 especially
 essential
@@ -852,6 +854,7 @@ expedite
 expeditious
 expeditious manner
 expensive option
+explain
 explanation
 explanations
 explanatory

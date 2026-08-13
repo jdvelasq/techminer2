@@ -634,7 +634,7 @@ class Metrics(
         stats = self.insert_stats(
             stats,
             category="NLP",
-            item="Number of abstract NP phrases (raw))",
+            item="Number of abstract NP phrases (raw)",
             value=self.count_unique_items(
                 dataframe,
                 Field.NP_ABSTR_RAW,

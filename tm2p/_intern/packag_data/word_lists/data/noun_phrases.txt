@@ -954,6 +954,7 @@ advance demand information
 advance demand informations
 advance metering infrastructure
 advance metering infrastructures
+advanced analytics
 advanced cardiac life support
 advanced cardiac life supports
 advanced computing environment
@@ -1640,9 +1641,12 @@ ai text detection
 ai text detections
 ai text to image generator
 ai text to image generators
+ai tutoring
 ai writing tool
 ai writing tools
 ai-assisted control
+ai-assisted grading
+ai-assisted learning
 ai-based algorithms
 ai-based assessment
 ai-based control
@@ -2311,6 +2315,7 @@ analysis of variance
 analysis of variances
 analysis of various
 analysis ready data
+analysis skills
 analysis social network
 analysis social networks
 analysis softwares
@@ -2392,6 +2397,10 @@ anchorings
 ancient warfare
 ancillary service
 ancillary services markets
+and distance learning
+and distributed computing
+and environmental engineering
+and measurement materials
 androgen
 androgen receptor antagonist
 androgen receptor antagonists
@@ -3873,6 +3882,7 @@ automated quantification tool
 automated quantification tools
 automated question generation
 automated question generations
+automated questionanswer generation
 automated readability index
 automated readability indexes
 automated readability indices
@@ -3946,6 +3956,7 @@ automatic guided vehicles
 automatic identification system
 automatic identification systems
 automatic interactions
+automatic item generation
 automatic labelling
 automatic loading
 automatic machines
@@ -4306,6 +4317,7 @@ bag of words model
 bag of words models
 bagg albino mouse
 baggage handling system
+baha institute for higher education
 baihetan dam
 baihetan hydropower project
 baihetan hydropower projects
@@ -6570,6 +6582,7 @@ business data
 business data analytic
 business data analytics
 business data processing
+business decision analysis
 business decision support
 business decision supports
 business decision-making
@@ -6692,6 +6705,7 @@ business risks
 business rule
 business security
 business simulation
+business statistics virtual professor
 business strategy
 business support system
 business support systems
@@ -9164,12 +9178,14 @@ cognitive levels
 cognitive load analyze
 cognitive load theories
 cognitive load theory
+cognitive loads
 cognitive maps
 cognitive radio network
 cognitive radio networks
 cognitive remediation therapies
 cognitive remediation therapy
 cognitive reserve
+cognitive skills
 cognitive strategy
 cognitive systems
 cognitive task analyses
@@ -9768,6 +9784,7 @@ competing values frameworks
 competition
 competition and cooperation
 competition and cooperations
+competition based learning
 competitive advantage
 competitive analysis
 competitive bidding
@@ -10132,6 +10149,7 @@ computational thinking assessment
 computational thinking assessments
 computational thinking skill
 computational thinking skills
+computational thinkings
 compute express link
 compute express links
 compute in memories
@@ -13529,10 +13547,12 @@ data reduction algorithms
 data resource managements
 data retrieval model
 data sanitization and restoration
+data science
 data science application in education
 data science application in educations
 data science applications in education
 data science applications in educations
+data science artificial intelligence tutor
 data science education
 data science educations
 data science in education
@@ -13540,8 +13560,10 @@ data science innovation
 data science innovations
 data science methodologies
 data science methodology
+data science problem solving
 data science project management
 data science project managements
+data science tool
 data securities
 data security
 data security and privacy
@@ -15219,6 +15241,7 @@ difficult to treat asthma
 difficulties in emotion regulation scale
 difficulties in emotion regulation scales
 difficulty estimations
+difficulty index
 diffie hellman
 diffraction gratings
 diffuse horizontal irradiance
@@ -17951,14 +17974,17 @@ education of intellectually disabled
 education policy and politics
 education problem
 education programmes
+education research
 education social science
 education social sciences
+education technology
 education tool
 education training
 educational activity detection
 educational analytic
 educational and promotional material
 educational and promotional materials
+educational assessment
 educational attainments
 educational big data
 educational building
@@ -17966,6 +17992,7 @@ educational buildings
 educational challenge
 educational chatbot
 educational content creation
+educational contents
 educational conversational agent
 educational conversational agents
 educational course
@@ -20155,6 +20182,7 @@ engineering research
 engineering researches
 engineering science
 engineering service
+engineering skills
 engineering societies
 engineering student
 engineering tasks
@@ -20814,6 +20842,7 @@ ethics
 ethics and ai
 ethics committees research
 ethics committees researches
+ethics decision log
 ethics in ai
 ethics in e-learning
 ethics in health informatics
@@ -21294,6 +21323,7 @@ expected transmission counts
 expected utility theories
 expected utility theory
 experience
+experience application programming interfaces
 experience based learning
 experience based learnings
 experience design
@@ -22339,6 +22369,7 @@ feed-in-tariff policy
 feed-rate optimization
 feedback
 feedback control
+feedback generation
 feedback learning
 feedback loop
 feedback loop structure
@@ -23164,6 +23195,7 @@ flight to safety
 flight-control systems
 flip classroom
 flip flop circuits
+flipped classroom
 flipped classroom education
 flipped classroom educations
 flipped learning readiness
@@ -25111,6 +25143,7 @@ generative ai language models
 generative ai music
 generative artifcial intelligence
 generative artifcial intelligences
+generative artificial ingelligence
 generative artificial intelligence
 generative artificial intelligence chatbot
 generative artificial intelligence chatbots
@@ -25852,6 +25885,7 @@ graduate medical educations
 graduate nursing student
 graduate nursing students
 graduate programme
+graduate student
 graduate studies
 graduate work readiness
 graft recipient
@@ -27772,6 +27806,7 @@ heuristic optimization algorithms
 heuristic programming
 heuristics algorithm
 heuristics and biases
+heutagogical deep learning
 hexagonal boron nitride
 hexagonal boron nitrides
 hexagonal image processing
@@ -28019,6 +28054,7 @@ high growth rate
 high growth rates
 high impact low probabilities
 high impact low probability
+high impact practices
 high impedance fault
 high impedance fault detection
 high impedance fault detections
@@ -28449,6 +28485,7 @@ high-voltages
 higher alcohols
 higher alcohols synthesis
 higher and further educations
+higher degree by research
 higher dimensional features
 higher dimensions
 higher edu cation
@@ -28596,6 +28633,7 @@ historical reconstruction
 historical records
 historical weather data
 historical weather datum
+historically black colleges and universities
 history
 history adjusted marginal structural model
 history adjusted marginal structural models
@@ -32114,6 +32152,7 @@ intelligent transportation system
 intelligent transportation systems
 intelligent tutorial system
 intelligent tutorial systems
+intelligent tutoring
 intelligent tutoring system
 intelligent tutoring systems
 intelligent user interface
@@ -33779,6 +33818,7 @@ knowledge co constructions
 knowledge co creation
 knowledge co creations
 knowledge communities
+knowledge components
 knowledge construction process
 knowledge creations
 knowledge database
@@ -34761,8 +34801,10 @@ learning analytic implementation
 learning analytic model
 learning analytic models
 learning analytical dashboard
+learning analytics
 learning analytics adoption
 learning analytics adoptions
+learning analytics dashboards
 learning analytics for learners
 learning analytics implementation
 learning analytics implementations
@@ -34803,6 +34845,7 @@ learning at scale
 learning at scales
 learning at work
 learning at works
+learning augmentation index
 learning based algorithm
 learning based algorithms
 learning based approach
@@ -34843,6 +34886,7 @@ learning communities
 learning companions
 learning contents
 learning controllers
+learning course
 learning cultures
 learning curve analyses
 learning curve analysis
@@ -34850,6 +34894,7 @@ learning curve model
 learning curve models
 learning curve theories
 learning curve theory
+learning data
 learning dataset
 learning design practice
 learning design practices
@@ -34939,6 +34984,7 @@ learning process model
 learning projects
 learning rates
 learning record
+learning record store
 learning reinforcements
 learning resource
 learning satisfactions
@@ -34955,6 +35001,7 @@ learning style detection
 learning style detections
 learning style prediction
 learning style predictions
+learning support
 learning support system
 learning support systems
 learning support tool
@@ -36609,6 +36656,7 @@ low noise amplifiers
 low number sense
 low pass filter
 low pass filters
+low performing students
 low power
 low power application
 low power applications
@@ -36826,6 +36874,7 @@ lower extremity injury
 lower frequencies
 lower operating cost
 lower operating costs
+lower order thinking skills
 lower power consumption
 lower precision
 lower resolution
@@ -37021,6 +37070,7 @@ machine learning pipelines
 machine learning privacy
 machine learning problem
 machine learning problems
+machine learning query language
 machine learning repositories
 machine learning repository
 machine learning research
@@ -39351,6 +39401,7 @@ minimum spanning tree
 minimum spanning trees
 minimum sum of squares clustering
 minimum variance
+minimum viable product
 minimums panning tree
 minimums panning trees
 mining
@@ -39695,6 +39746,7 @@ mobile homes
 mobile language learning
 mobile language learnings
 mobile laser scanning
+mobile learning
 mobile learning model
 mobile learning models
 mobile learning system
@@ -39889,6 +39941,7 @@ model eliciting activities
 model ensembles
 model extraction
 model factors
+model feedback
 model fine tuning
 model fine-tuning
 model for end stage liver disease score
@@ -46415,6 +46468,7 @@ p y curves
 p-doping
 p-values
 p2p
+pace learning center
 paced auditory serial addition test
 paced auditory serial addition tests
 pacific decadal oscillation
@@ -48369,6 +48423,7 @@ pilot programs
 pilot projects
 pilot randomized controlled trial
 pilot randomized controlled trials
+pilot studies
 pilot study
 pilot-free
 pima indian diabetes
@@ -52120,6 +52175,7 @@ question difficulty estimation
 question difficulty estimations
 question difficulty prediction
 question difficulty predictions
+question generation
 question prompt list
 question-answer pairs
 questionnaire
@@ -54668,6 +54724,7 @@ reuse of residue
 reuse of residues
 revealed causal mapping
 revealed causal mappings
+revenue management
 revenue sharing contract
 revenue sharing contracts
 reverse auction
@@ -55798,6 +55855,7 @@ science applications
 science citation index
 science citation indexes
 science citation indices
+science course
 science education
 science inquiries
 science laboratories
@@ -55813,6 +55871,7 @@ science of learning
 science of learnings
 science of science
 science of sciences
+science projects
 science research
 science standards
 science studies
@@ -56336,6 +56395,7 @@ self regulated learnings
 self regulation learning
 self regulation learnings
 self regulation of learning
+self regulation of learning skills
 self regulation of learnings
 self regulation theories
 self regulation theory
@@ -60408,8 +60468,11 @@ statistics and research method
 statistics and research methods
 statistics as topic
 statistics as topics
+statistics collaboration
+statistics curriculum development
 statistics education research
 statistics education researches
+statistics educations
 stator winding inter-turn faults
 stator winding interturn fault
 stators
@@ -61068,6 +61131,7 @@ student evaluation of teaching
 student evaluation of teachings
 student evaluations of teaching
 student evaluations of teachings
+student experiences
 student experiments
 student facing dashboard
 student facing dashboards
@@ -61130,6 +61194,7 @@ student well being
 student well-being
 student with disabilities
 student with disability
+student writing
 student-based
 student-centered
 student-centered learning
@@ -62089,6 +62154,7 @@ switching control
 switching converter
 switching strategy generation
 switching strategy generations
+switzerland
 swollen joint count
 swollen joint counts
 sword
@@ -62869,6 +62935,7 @@ technological learning
 technological organizational environmental framework
 technological organizational environmental frameworks
 technological pedagogical and content knowledge
+technological pedagogical content knowledge
 technological solution
 technological solutions
 technological support in online education
@@ -65893,8 +65960,10 @@ undergraduate engineering educations
 undergraduate engineering students
 undergraduate mathematics education
 undergraduate mathematics educations
+undergraduate projects
 undergraduate software engineering
 undergraduate software engineerings
+undergraduate statistical education
 undergraduate stem education
 undergraduate stem educations
 undergraduate student
@@ -66097,6 +66166,7 @@ university spin off
 university spin offs
 university student
 university technology transfer offices
+university-industry collaboration
 university-industry cooperation
 unknown fault detection
 unknown input observer
@@ -67567,6 +67637,7 @@ visual font recognition
 visual framing
 visual geometry group
 visual geometry groups
+visual hermeneutic prompting
 visual image
 visual impacts
 visual impairment
