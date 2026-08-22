@@ -2,9 +2,9 @@
 
 import pandas as pd  # type: ignore
 
-from tm2p.enum import ThField
 from tm2p._intern import Params
 from tm2p._intern.packag_data import load_builtin_mapping
+from tm2p.enum import ThField
 
 PREFERRED = ThField.PREFERRED.value
 
@@ -19,7 +19,7 @@ def apply_number_to_letter_rule(
     for number, letter in number_to_letter.items():
 
         thesaurus_df[PREFERRED] = thesaurus_df[PREFERRED].str.replace(
-            rf"^{number} ",
+            rf"^ {number} ",
             f" {letter} ",
             regex=True,
         )

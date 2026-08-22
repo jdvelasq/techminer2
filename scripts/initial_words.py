@@ -38,7 +38,7 @@ df = load_thesaurus_as_dataframe(
     )
 )
 
-df = df.loc[df[PREFERRED].str.split(" ").str.len() > 1, :]
+df = df.loc[df[PREFERRED].str.split(" ").str.len() > 1, :]  # type: ignore
 df = df.reset_index(drop=True)
 
 df[GROUP] = [int(i / 4000) for i in df.index.to_list()]

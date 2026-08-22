@@ -92,11 +92,8 @@ def _prepare_patterns(df: pd.DataFrame) -> None:
         patterns = patterns - set(
             t.strip()
             for t in patterns
-            if t in stopwords
-            or len(t) <= 1
-            or "(" in t
-            or "," in t
-            or any(char.isdigit() for char in t)
+            if t in stopwords or len(t) <= 1 or "(" in t or "," in t
+            # or any(char.isdigit() for char in t)
         )
 
         return patterns
@@ -131,6 +128,15 @@ def _highlight_meaningful_terms(text):
             text = text.replace(
                 f" {pattern} ", f" {pattern.upper().replace(' ', '_')} "
             )
+
+            if "co2" in pattern:
+                print()
+                print("----- co2 -----")
+                print()
+                print(text)
+                print()
+                print()
+
     return text
 
 

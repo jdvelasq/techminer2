@@ -7091,12 +7091,14 @@ carbon cycle
 carbon cycles
 carbon dioxide
 carbon dioxide adsorption
+carbon dioxide concentration
 carbon dioxide concentrations
 carbon dioxide conversion
 carbon dioxide conversions
 carbon dioxide emission
 carbon dioxide emissions
 carbon dioxide equivalent
+carbon dioxide equivalents
 carbon dioxide fixation
 carbon dioxide process
 carbon dioxide processes
@@ -8947,6 +8949,7 @@ co occurrence network
 co occurrence networks
 co operative control
 co operative controls
+co opetition relationship
 co opetitive supply chain
 co opetitive supply chains
 co ordinate system
@@ -8998,10 +9001,24 @@ co-simulation architecture
 co-solvent
 co-word analysis
 co2
+co2 adsorption
+co2 concentrations
+co2 conversion
+co2 conversions
+co2 emission
 co2 emission reduction
 co2 emission reductions
 co2 emissions
+co2 equivalent
+co2 equivalents
+co2 fixation
+co2 process
+co2 processes
 co2 reduction
+co2 removal
+co2 removals
+co2 utilization
+co2 utilizations
 coal bed methane
 coal bed methanes
 coal deposits

@@ -60,6 +60,12 @@ class Replace(
                 regex=False,
             )
 
+            df[PREFERRED] = df[PREFERRED].str.replace(
+                f" {key}-",
+                f" {value[0]}-",
+                regex=False,
+            )
+
         return df
 
     def _load_acronyms(self):

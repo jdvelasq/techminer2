@@ -37,6 +37,7 @@ from ._intern import (
     apply_error_metrics_rule,
     apply_exact_match_rule,
     apply_geographic_names_rule,
+    apply_hyphen_space_plural_rule,
     apply_inflected_verb_forms_rule,
     apply_leading_noise_removal_rule,
     apply_num_punct_to_space_rule,
@@ -90,13 +91,11 @@ class BaseAuto(
 
         self._print_header()
 
-        initial_length = None
-        final_length = None
-
         phases = (
             [
                 [
                     ("british to american", apply_british_to_american_rule),
+                    ("chemical compounds", apply_chemical_compounds_rule),
                     ("single letters and digits", apply_single_letters_and_digits_rule),
                     ("exact match", apply_exact_match_rule),
                     ("geographic names", apply_geographic_names_rule),
@@ -105,10 +104,10 @@ class BaseAuto(
                     ("num punct to space", apply_num_punct_to_space_rule),
                     ("xml encoding", apply_xml_encoding_rule),
                     ("white space normalization", apply_white_space_normalization_rule),
-                    ("chemical compounds", apply_chemical_compounds_rule),
                     ("technology", apply_technology_rule),
                     ("punctuation variation", apply_punctuation_variation_rule),
                     ("double", apply_double_rule),
+                    ("hyphen/space + plural", apply_hyphen_space_plural_rule),
                 ]
             ]
             + [
@@ -128,6 +127,7 @@ class BaseAuto(
                     ("trailing noise removal", apply_trailing_noise_removal_rule),
                     ("punctuation variation", apply_punctuation_variation_rule),
                     ("double", apply_double_rule),
+                    ("hyphen/space + plural", apply_hyphen_space_plural_rule),
                 ],
             ]
             * 4
@@ -144,23 +144,15 @@ class BaseAuto(
 
             self._write(f"\n[{index+1}] {self._ORDINAL[index]} Pass\n")
 
-            df = load_thesaurus_as_dataframe(params=self.params)
-
-            if initial_length is None:
-                initial_length = df.shape[0]
-            else:
-                final_length = df.shape[0]
-
-            df = sort_thesaurus_df_by_occ(params=self.params, thesaurus_df=df)
-            df = _explode_variants(df)
-
             for msg, rule in phase:
 
+                df = load_thesaurus_as_dataframe(params=self.params)
+                df = sort_thesaurus_df_by_occ(params=self.params, thesaurus_df=df)
+                df = _explode_variants(df)
                 self._write(f"{self._STEP_PREFIX}{msg}\n")
                 df = rule(df, self.params)
+                df = df[[PREFERRED, VARIANT]].copy()
+                df = _group_variants(df)
+                df = df.sort_values(PREFERRED)  # type: ignore
 
-            df = df[[PREFERRED, VARIANT]].copy()
-            df = _group_variants(df)
-            df = df.sort_values(PREFERRED)  # type: ignore
-
-            save_dataframe_as_thesaurus(params=self.params, df=df)
+                save_dataframe_as_thesaurus(params=self.params, df=df)

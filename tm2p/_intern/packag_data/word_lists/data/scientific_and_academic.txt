@@ -5,8 +5,10 @@ abbreviations
 academia
 academic
 academic interest
+academic journal
 academic level
 academic publications
+academic purposes
 academic studies
 academic study
 academics
@@ -27,6 +29,7 @@ algorithmic
 algorithms
 analyses
 analysis
+analysis results
 analyst
 analysts
 analytics
@@ -49,6 +52,7 @@ assessment
 assessments
 authentication
 author
+author prof
 authors
 authorship
 authorships
@@ -101,6 +105,7 @@ cite
 cites
 classification
 classifications
+clinical article
 clinical studies
 clinical study
 clinical trial
@@ -123,11 +128,13 @@ communication
 comparative
 comparative studies
 comparative study
+competing interests
 comprehensive treatise
 computer simulation
 computer simulations
 conceptual
 conceptualization
+concise review
 conference
 conference paper
 conferences
@@ -239,6 +246,8 @@ experimental/empirical
 experiments
 exploration
 explorations
+extended version
+extended versions
 f1 score
 factor
 factors
@@ -313,6 +322,7 @@ institutions mediate
 instrumentation
 intercept
 intercepts
+international conferences
 intervention
 interventions
 interview
@@ -428,6 +438,7 @@ previous approaches
 previous findings
 previous literature
 previous research
+previous similar studies
 previous work
 primary data
 principal component analysis
@@ -534,6 +545,7 @@ scholarship exists
 sciencedirect
 scientific
 scientific interest
+scientific reference
 scope
 scoping review
 scoping reviews

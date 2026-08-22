@@ -29,6 +29,7 @@ from ._intern import (
     remove_punctuation,
     remove_thesaurus_stopwords,
     report_matches,
+    sort_words,
     string_to_words,
     words_to_string,
 )
@@ -53,6 +54,7 @@ class BaseStemMatch(
         thesaurus_df = remove_thesaurus_stopwords(thesaurus_df=thesaurus_df)
         thesaurus_df = string_to_words(thesaurus_df=thesaurus_df)
         thesaurus_df = _words_to_stems(thesaurus_df=thesaurus_df)
+        thesaurus_df = sort_words(thesaurus_df=thesaurus_df)
         thesaurus_df = words_to_string(thesaurus_df=thesaurus_df)
 
         matches = compute_matches(thesaurus_df=thesaurus_df, params=self.params)

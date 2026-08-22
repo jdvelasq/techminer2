@@ -184,6 +184,8 @@ COMPOUND_STRUCTURED_ABSTRACT_HEADINGS = [
     "key findings and conclusions",
     "systematic review",
     "resource website",
+    "purpose / significance",
+    "purpose/ significance",
 ]
 
 
@@ -222,7 +224,7 @@ def mark_abstract_headings(text: Optional[str]) -> Optional[str]:
 
     text = str(text)
 
-    for prefix in (r"^", r"\. ", r"\? ", r"\) ", r": "):
+    for prefix in (r"^", r"\. ", r"\? ", r"\) ", r": ", r"\[ "):
         for pattern in _get_patterns_for_prefix(prefix):
             text = pattern.sub(_normalize_heading_match, text)
 

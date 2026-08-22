@@ -27,28 +27,29 @@ DECISION RULE:
 
 Return "yes" only when both terms clearly denote the same concept and their difference is exclusively:
 
-singular/plural or grammatical variation;
-spelling, hyphenation, spacing, punctuation, or harmless word-order variation;
-a clear typographical error;
-an unambiguous acronym, abbreviation, or expanded form;
-an established shortened, informal, or alternative technical name;
-an optional generic word whose addition or removal does not change the referent, scope, or entity type.
-missing hyphens in a compound word or phrase;
-iis a clear error like duplication of words, wrong hypenation, or plural/singular mismatch.
+- singular/plural or grammatical variation;
+- spelling, hyphenation, spacing, punctuation, or harmless word-order variation;
+- a clear typographical error;
+- an unambiguous acronym, abbreviation, or expanded form;
+- an established shortened, informal, or alternative technical name;
+- an optional generic word whose addition or removal does not change the referent, scope, or entity type.
+- missing hyphens in a compound word or phrase;
+- it is a clear error like duplication of words, wrong hypenation, or plural/singular mismatch.
+- it is a proper noun or a named entity, and the difference is a minor variation in spelling, hyphenation, spacing, punctuation, or word order. include software names and product names, but not project names, database names, dataset names, framework names, system names, model names, code names, or tool names.
 
 The terms need not be interchangeable in every sentence, but replacing them with one descriptor must preserve the conceptual information required for co-word analysis and tech mining.
 
 Return "no" when:
 
-one term is broader, narrower, or a subtype of the other;
-a qualifier changes the scope, object, population, location, method, purpose, attribute, or level of analysis;
-one term denotes a method and the other its result, measure, output, implementation, application, or data source;
-one term denotes a project, program, organization, database, dataset, index, framework, platform, system, model, code, or tool associated with the other;
-the terms are merely related, associated, co-occurring, or members of the same conceptual family;
-equivalence depends on a particular corpus, discipline, application, period, or local usage;
-an acronym or shortened form has multiple plausible meanings;
-either term is unfamiliar or its established usage cannot be confidently determined;
-there is reasonable doubt that the terms denote exactly the same concept.
+- one term is broader, narrower, or a subtype of the other;
+- a qualifier changes the scope, object, population, location, method, purpose, attribute, or level of analysis;
+- one term denotes a method and the other its result, measure, output, implementation, application, or data source;
+- one term denotes a project, program, organization, database, dataset, index, framework, platform, system, model, code, or tool associated with the other;
+- the terms are merely related, associated, co-occurring, or members of the same conceptual family;
+- equivalence depends on a particular corpus, discipline, application, period, or local usage;
+- an acronym or shortened form has multiple plausible meanings;
+- either term is unfamiliar or its established usage cannot be confidently determined;
+- there is reasonable doubt that the terms denote exactly the same concept.
 
 Lexical similarity, substring inclusion, or a shared lexical core is not sufficient evidence. Organizational or resource-designating words such as "project", "program", "database", "dataset", "framework", "system", and "tool" are not automatically removable.
 
@@ -56,23 +57,24 @@ Use maximum academic rigour. When uncertain, return "no".
 
 CALIBRATION EXAMPLES:
 
-"neural network" | "neural networks" → yes
-"external stimulus" | "external stimuli" → yes
-"agent-based modelling" | "agent-based modeling" → yes
-"agent based modeling" | "agent-based modeling" → yes
-"e-government" | "electronic governance" → yes
-"neural networks" | "neural nets" → yes
-"peace agreement" | "peace accord" → yes
-"social network analysis" | "SNA" → yes
-"convolutional neural network" | "convolutional neural network network" → yes
+- "neural network" | "neural networks" → yes
+- "external stimulus" | "external stimuli" → yes
+- "agent-based modelling" | "agent-based modeling" → yes
+- "agent based modeling" | "agent-based modeling" → yes
+- "e-government" | "electronic governance" → yes
+- "neural networks" | "neural nets" → yes
+- "peace agreement" | "peace accord" → yes
+- "social network analysis" | "SNA" → yes
+- "convolutional neural network" | "convolutional neural network network" → yes
+- "vensim" | "vensim software" → yes
 
-"neural networks" | "deep neural networks" → no
-"intermarriage" | "ethnic intermarriage" → no
-"data architecture" | "big data architecture" → no
-"social network analysis" | "social network analysis measures" → no
-"georeferencing of ethnic groups" | "georeferencing of ethnic groups dataset" → no
-"global systems analysis and simulation" | "global systems analysis and simulation project" → no
-"system dynamics" | "SD" → no
+- "neural networks" | "deep neural networks" → no
+- "intermarriage" | "ethnic intermarriage" → no
+- "data architecture" | "big data architecture" → no
+- "social network analysis" | "social network analysis measures" → no
+- "georeferencing of ethnic groups" | "georeferencing of ethnic groups dataset" → no
+- "global systems analysis and simulation" | "global systems analysis and simulation project" → no
+- "system dynamics" | "SD" → no
 
 INPUT:
 

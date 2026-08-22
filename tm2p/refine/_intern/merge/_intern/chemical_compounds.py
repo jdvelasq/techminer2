@@ -2,8 +2,8 @@
 
 import pandas as pd  # type: ignore
 
-from tm2p.enum import ThField
 from tm2p._intern import Params
+from tm2p.enum import ThField
 
 PREFERRED = ThField.PREFERRED.value
 
@@ -13,7 +13,7 @@ _CHEMICAL_COMPOUNDS = {
     #
     "chlorobenzene": "chlorobenzene",
     "co-2": "carbon dioxide",
-    "co": "carbon monoxide",
+    # "co": "carbon monoxide",
     "co2": "carbon dioxide",
     "co3o4": "cobalt oxide",
     "h2o": "water",

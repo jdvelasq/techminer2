@@ -242,4 +242,10 @@ def repair_abstract_headings(text: Optional[str]) -> Optional[str]:
             text,
         )
 
+        text = re.sub(
+            re.compile(rf"\[ {t} \]", re.IGNORECASE),
+            f"[ {t_lower} ]",
+            text,
+        )
+
     return text

@@ -39,9 +39,9 @@ df = load_thesaurus_as_dataframe(
 )
 
 
-df = df.loc[df[PREFERRED].str.split(" ").str.len() > 1, :]
+df = df.loc[df[PREFERRED].str.split(" ").str.len() > 1, :]  # type: ignore
 df[REVERSED] = df[PREFERRED].str[::-1]
-df = df.sort_values(by=REVERSED, ascending=True)
+df = df.sort_values(by=REVERSED, ascending=True)  # type: ignore
 df = df.drop(columns=REVERSED)
 df = df.reset_index(drop=True)
 

@@ -1,4 +1,5 @@
 # pylint: disable=unused-argument
+import re
 
 import pandas as pd  # type: ignore
 from textblob import Word  # type: ignore
@@ -24,7 +25,7 @@ def apply_reusable_core_thesaurus_rule(
 
         for variant in variants:
             thesaurus_df[PREFERRED] = thesaurus_df[PREFERRED].str.replace(
-                rf"^ {variant} $",
+                rf"^ {re.escape(variant)} $",
                 f" {preferred} ",
                 regex=True,
             )

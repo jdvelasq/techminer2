@@ -960,3 +960,89 @@ under exclusive license to operational research society of india \d{4} \.$
 \. \d{4} , iquz galaxy publisher$
 \. \d{4} , association for information systems$
 \. \d{4} mary ann liebert , inc \. , publishers$
+\. \( \d{4} \) , \( african scholarly science communications trust \( asscat \) \)$
+\. funding : this study was supported by a research grant from the biotechnology and biological sciences research council \( bbsrc \) \( grant reference : bb / t\d{6}/\d{1} \)$
+\. \d{4} , science press \( china \)$
+\. \d{4} , polskie towarzystwo inzynierii ekologicznej \( ptie \)$
+\. \d{4} , department of journal of forest engineering \( harbin \)$
+\. \d{4} editorial department of journal of chang'an university \( natural science edition \)$
+\. copyright : the author \( s \)$
+\. iwa publishing \d{4} \.$
+\. conference proceedings of the 10th international symposium on project management , china , ispm \d{4} \.$
+\. copyright american society for engineering management , \d{4} \.$
+\. korean society of civil engineers \d{4} \.$
+\. metallurgical and mining industry , \d{4} \.$
+\. african association of insect scientists \d{4} \.$
+\. copyright asce \d{4} \.$
+\. american society for engineering management , \d{4} \.$
+\. \d{4} sersc australia \.$
+\. \d{4} sociedade brasileira de hematologia e hemoterapia \.$
+\. \d{4} inesc coimbra \.$
+\. \d{4} , idea group inc \.$
+\. \d{4} trans tech publications , switzerland \.$
+\. asce \.$
+\. \d{4} farai nyabadza and lezanie coetzee \.$
+\. \d{4} kiie \.$
+\( cc by \) 4\.0 license \.$
+under cc by nc sa 4\.0 license \.$
+\. \d{4} xi gang yuan and xiao qing zhang \.$
+\. \d{4} indian council of agricultural research \.$
+\. \d{4} weibin wang and renyong chi \.$
+\. excelingtech pub , uk \.$
+\. \d{4} i \. hijazi et al \.$
+\. \d{4} ciwem \.$
+\. \d{4} , the society for reliability engineering , quality and operations management \( sreqom \) , india and the division of operation and maintenance , lulea university of technology , sweden \.$
+\. \d{4} zhou huiping and yang yuxin \.$
+\. \d{4} taylor and francis group , london \.$
+\. \d{4} asian network for scientific information \.$
+\. \d{4} dengfeng wu and hongyi mao \.$
+\. \d{4} xing li and fuzhou luo \.$
+\. \d{4} , iahr \.$
+\. \d{4} ijstr \.$
+\. \d{4} , saudi society for geosciences \.$
+\. ishs \.$
+\. \d{4} united nations \.$
+\. \d{4} picmet \.$
+\. \d{4} xiaoqian zhu and fengming liu \.$
+\. \d{4} published by elsevier b\.v \. on behalf of china university of mining and technology \.$
+\. school of engineering , taylor university \.$
+\. freund publishing house ltd \.$
+\. licensee researcherslinks ltd , england , uk \. this article is an open access article distributed under the terms and conditions of the creative commons attribution \( cc by \) license \.$
+\. \d{4} , issn \d{4}-803x \.$
+\. 8th international symposium on project management , ispm \d{4}$
+\. conference proceedings of the 6th international symposium on project management , ispm \d{4}$
+\. \d{4} gheorghe asachi technical university of iasi , romania$
+\. \d{4} , daaam international vienna$
+\. \d{4} , scanditale ab$
+\. \d{4} , marine technology society inc$
+\. \d{4} , shpmedia sdn bhd$
+\. \d{4} , scibulcom ltd$
+\. \d{4} ais / icis administrative office$
+\. ieee$
+\. \d{4} society for innovative agriculture , university of agriculture$
+\. int \. j \. of geomate$
+\. \d{4} editorial department of advances in aeronautical science and engineering$
+\. \d{4} , international association for hydro environment engineering and research$
+\. \d{4} , southeast asian association for institutional research$
+\. \d{4} chinese journal of obstetrics and gynecology / zhonghua fu chan ke za zhi$
+\. \d{4} franco angeli edizioni$
+\. \d{4} , bioflux srl$
+\. \d{4} ciwem$
+\. \d{4} quanguo maofang keji xinxi zhongxin$
+\. control short video network public opinion$
+\. \d{4} china silk association$
+\. \d{4} , associacao brasileira de engenharia de producao$
+\. \d{4} editorial department of modern electric power$
+\. \d{4} fundacao getulio vargas$
+\. \d{4} , chinese academy of sciences$
+, chinese academy of agricultural sciences$
+\. \d{4} informs inst \. for operations res \. and the management sciences$
+\. \d{4} , international center for sustainable development of energy , water and environment systems sdewes$
+\. modsim \d{4}-international congress on modeling and simulation land , water and environmental management : integrated systems for sustainability , proceedings$
+\. \d{4} , chinese society of metals$
+\. \d{4} cims$
+\. \d{4} latin american and caribbean consortium of engineering institutions$
+\. \d{4} , authors$
+\. \d{4} , uk simulation society$
+\. clinical trial number : not applicable$
+\. \d{4} , publishing house of natural science and technology , vast$

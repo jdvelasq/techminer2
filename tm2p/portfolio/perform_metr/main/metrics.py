@@ -128,7 +128,7 @@ class Metrics(
         series = series.dropna()
         series = series.str.split(";")
         series = series.explode()
-        series = series.str.strip()
+        series = series.str.strip()  # type: ignore
         series = series.drop_duplicates()
 
         return len(series)
@@ -291,7 +291,7 @@ class Metrics(
             records = records.dropna()
             records = records.str.split(";")
             records = records.explode()
-            records = records.str.strip()
+            records = records.str.strip()  # type: ignore
             return len(records)
 
         stats = self.insert_stats(

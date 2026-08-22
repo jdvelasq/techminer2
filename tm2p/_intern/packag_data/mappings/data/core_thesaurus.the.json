@@ -1,4 +1,10 @@
 {
+    "a2 scenario": [
+        "scenario a2"
+    ],
+    "accident cost": [
+        "cost of accident"
+    ],
     "accountability": [
         "acconntability"
     ],
@@ -7,6 +13,9 @@
     ],
     "active and passive retrofit measures": [
         "active and passive retrofitting measures"
+    ],
+    "activity simulation": [
+        "simulation activity"
     ],
     "acute child malnutrition": [
         "child acute malnutrition"
@@ -22,6 +31,9 @@
     ],
     "adiabatic compressed air energy storage systems": [
         "adiabatic compressed air energy storage"
+    ],
+    "adolescent cyberbullying victims": [
+        "cyberbullying victims adolescent"
     ],
     "advertizing technology": [
         "advertising technology"
@@ -48,6 +60,18 @@
         "agent based model and simulation",
         "agent based modeling and simulations"
     ],
+    "aging population": [
+        "population aging"
+    ],
+    "agricultural industry cluster": [
+        "agriculture industrial cluster"
+    ],
+    "agricultural saline drainage": [
+        "saline agricultural drainage"
+    ],
+    "agricultural sector": [
+        "agriculture sector"
+    ],
     "agricultural supply chain": [
         "agriculture supply chain"
     ],
@@ -59,6 +83,9 @@
     ],
     "agriculture and industrial sectors": [
         "agricultural and industrial sectors"
+    ],
+    "agriculture ministry": [
+        "ministry of agriculture"
     ],
     "ai": [
         "artificial intelligence"
@@ -93,8 +120,14 @@
     "ai-powered enterprise resource planning": [
         "artificial intelligence-powered enterprise resource planning"
     ],
+    "air pollution control": [
+        "control air pollution"
+    ],
     "air to water heat pump": [
         "air water heat pump"
+    ],
+    "air traffic flow model": [
+        "air traffic flow model model"
     ],
     "aleppo": [
         "halab"
@@ -132,8 +165,17 @@
     "ambient air temperature": [
         "ambient temperature"
     ],
+    "american alligator": [
+        "alligator mississippiensis"
+    ],
+    "analysis and simulation": [
+        "simulation and analysis"
+    ],
     "analysis of data": [
         "analysis data"
+    ],
+    "analysis of variance": [
+        "variance analysis"
     ],
     "analytic hierarchy process": [
         "analytic hierarchy process method",
@@ -174,6 +216,9 @@
     "anti-personnel mines": [
         "anti-personnel landmine",
         "anti-personnel landmines"
+    ],
+    "anylogic": [
+        "anylogic software"
     ],
     "application of a system dynamics model": [
         "application of system dynamics model",
@@ -247,6 +292,9 @@
     "artificial neural network": [
         "artificial neuronal network"
     ],
+    "assembly plant": [
+        "assembling plant"
+    ],
     "association": [
         "associazione"
     ],
@@ -255,6 +303,9 @@
     ],
     "ativismo textil": [
         "activismo textil"
+    ],
+    "atlantic salmon": [
+        "salmo salar"
     ],
     "attention mechanism": [
         "attentional mechanism"
@@ -283,6 +334,18 @@
     "automatic item generation": [
         "automatic item creation"
     ],
+    "automobile": [
+        "car"
+    ],
+    "automobile manufacture": [
+        "automobile manufacturing"
+    ],
+    "automobile supply chain": [
+        "automotive supply chain"
+    ],
+    "automotive industry": [
+        "automotive sector"
+    ],
     "autoregressive": [
         "autoregression"
     ],
@@ -291,6 +354,9 @@
     ],
     "bacteria growth": [
         "bacterial growth"
+    ],
+    "badan perencanaan pembangunan nasional": [
+        "bappenas"
     ],
     "bag of words": [
         "bag of words model",
@@ -301,6 +367,18 @@
     ],
     "balochistan": [
         "baluchistan"
+    ],
+    "bank business": [
+        "banking business"
+    ],
+    "bank industry": [
+        "banking industry"
+    ],
+    "bank resilience": [
+        "resilient banking"
+    ],
+    "bank solvency risk": [
+        "banking solvency risk"
     ],
     "battery storage": [
         "batery storage"
@@ -315,8 +393,23 @@
     "beach recreation demand": [
         "beach recreational demand"
     ],
+    "behavior model": [
+        "behavioral model"
+    ],
+    "behavior pattern": [
+        "behavioral patterns"
+    ],
+    "behavior patterns": [
+        "behavior pattern"
+    ],
     "behavior reproduction test": [
         "behavioral reproduction test"
+    ],
+    "behavior strategies": [
+        "behavioral strategies"
+    ],
+    "behavioral change": [
+        "behavior change"
     ],
     "belfast": [
         "belfast [ belfast dst ]",
@@ -327,6 +420,9 @@
     ],
     "benefit cost ratio": [
         "benefit to cost ratio"
+    ],
+    "benefit society": [
+        "society benefits"
     ],
     "benefitcost analysis": [
         "benefit/cost analysis"
@@ -339,6 +435,15 @@
     ],
     "bidirectional long short term memory": [
         "bidirectional long short term memory model"
+    ],
+    "biogas production": [
+        "production of biogas"
+    ],
+    "biological pest control": [
+        "pest control biological"
+    ],
+    "biomedical technology assessment": [
+        "technology assessment biomedical"
     ],
     "biometric database": [
         "biometric databases"
@@ -354,6 +459,12 @@
     ],
     "brake": [
         "breake"
+    ],
+    "branch model simulation": [
+        "simulation branch model"
+    ],
+    "brand operation ability": [
+        "brand operation capability"
     ],
     "brazilian wind power industry": [
         "brazil wind power industry"
@@ -397,6 +508,10 @@
     "businesse": [
         "business"
     ],
+    "c and e industry": [
+        "convention and exhibition industries",
+        "convention and exhibition industry"
+    ],
     "calf predation": [
         "calf depredation"
     ],
@@ -415,11 +530,17 @@
     "cancer diagnosis": [
         "cancer diagnostics"
     ],
+    "capita gross domestic production": [
+        "gross domestic production per capita"
+    ],
     "capital and operating expenditures": [
         "capital and operational expenditures"
     ],
     "capital expenditure": [
         "capital expenduture"
+    ],
+    "capital expenditures and operational expenditures": [
+        "capital and operating expenditures"
     ],
     "capitalisation effect": [
         "capitalization effect"
@@ -430,19 +551,82 @@
     "carbon conscious gamification strategies": [
         "carbon conscious gamification design strategies"
     ],
+    "carbon dioxide emission reduction": [
+        "reduction of carbon dioxide emission"
+    ],
+    "carbon emission forecast": [
+        "carbon emission forecasting"
+    ],
+    "carbon emission reduction intensity": [
+        "carbon emission intensity reduction"
+    ],
+    "carbon peak": [
+        "peak carbon"
+    ],
+    "carbon trade": [
+        "carbon trading"
+    ],
+    "carbon trade market": [
+        "carbon market trading",
+        "carbon trading market"
+    ],
     "catalyst": [
         "]+ catalyst"
+    ],
+    "causal analysis": [
+        "causality analysis"
+    ],
+    "causal feedback loop": [
+        "causality feedback loops"
     ],
     "causal feedback relationship": [
         "causal feedback relations"
     ],
+    "causal loop diagram": [
+        "casual loop diagram",
+        "loop diagram of causality"
+    ],
+    "causal loop model": [
+        "causal model loop"
+    ],
+    "causal relationship": [
+        "causality relationships"
+    ],
+    "causal relationship model": [
+        "model causal relationships"
+    ],
+    "causal relationships": [
+        "causal relationship"
+    ],
+    "causality graph": [
+        "causal graph"
+    ],
+    "causative factors": [
+        "causing factors"
+    ],
+    "cause-and-effect diagram": [
+        "cause-effect diagram"
+    ],
+    "cause-and-effect relationships": [
+        "cause-effect relationships"
+    ],
+    "cause-effect relationships": [
+        "cause-and-effect relationships"
+    ],
+    "ccus retrofits": [
+        "ccus retrofitting"
+    ],
     "central and southern chile": [
         "central southern chile"
+    ],
+    "cervical cancer": [
+        "uterine cervix cancer"
     ],
     "challenge": [
         "chanllenge"
     ],
     "challenges and opportunities": [
+        "challenge and opportunity",
         "opportunities and challenges"
     ],
     "change behavior": [
@@ -450,6 +634,12 @@
     ],
     "change detection": [
         "change detection analysis"
+    ],
+    "change rates": [
+        "rate of change"
+    ],
+    "change trend": [
+        "changing trends"
     ],
     "characterization": [
         "characterisation"
@@ -468,6 +658,12 @@
     ],
     "child undernutrition": [
         "childhood undernutrition"
+    ],
+    "china banking industry": [
+        "china bank industry"
+    ],
+    "chinese centers for disease control and prevention": [
+        "china cdc"
     ],
     "cite": [
         "cte"
@@ -500,14 +696,26 @@
     "climate and economic conditions": [
         "climatic and economic conditions"
     ],
+    "climate change": [
+        "climatic change"
+    ],
     "climate cobenefits": [
         "climate co-benefit"
+    ],
+    "climate conditions": [
+        "climatic conditions"
     ],
     "climate hazards center infrared precipitation with station data": [
         "climate hazards center infrared precipitation with station"
     ],
     "climate resilience": [
         "climate resiliency"
+    ],
+    "climate scenario": [
+        "climatic scenarios"
+    ],
+    "climate scenarios": [
+        "climate scenario"
     ],
     "climate variability": [
         "climate variation"
@@ -532,11 +740,17 @@
     "coe": [
         "coes"
     ],
+    "coefficient of determination": [
+        "determination coefficient"
+    ],
     "coherence": [
         "coherency"
     ],
     "coherence change detection": [
         "coherent change detection"
+    ],
+    "collaborative resource allocation": [
+        "resource collaborative allocation"
     ],
     "colombian armed conflict": [
         "colombia armed conflict"
@@ -567,6 +781,13 @@
     ],
     "combating misinformation": [
         "combat misinformation"
+    ],
+    "combination weight": [
+        "combined weight"
+    ],
+    "combined policies": [
+        "combination policies",
+        "policy combination"
     ],
     "commercialization": [
         "commercialisation"
@@ -606,6 +827,9 @@
         "computer modeling method",
         "computer modeling methods"
     ],
+    "computer software": [
+        "software"
+    ],
     "concrete frame building": [
         "concrete framed buildings"
     ],
@@ -643,8 +867,17 @@
     "congressional voting": [
         "congressional voting data"
     ],
+    "constructed simulated dynamic model": [
+        "constructed simulation dynamic model"
+    ],
+    "construction and demolition waste": [
+        "construction and demolition wastes construction and demolition waste"
+    ],
     "contextual bandit": [
         "contextual banditti"
+    ],
+    "contextual behavioral science": [
+        "contextual-behavioural science"
     ],
     "contextualization": [
         "contextualisation"
@@ -661,8 +894,18 @@
     "contributing factors": [
         "contribution factors"
     ],
+    "control carbon emissions": [
+        "controlling carbon emissions"
+    ],
     "control infectious and endemic diseases": [
-        "controlling infectious and endemic diseases"
+        "controlling infectious and endemic diseases",
+        "infectious and endemic disease control"
+    ],
+    "control schistosomiasis": [
+        "schistosomiasis control"
+    ],
+    "controlling parameter": [
+        "control parameter"
     ],
     "conventional energy source": [
         "conventional energy sources"
@@ -686,14 +929,33 @@
     "convolutional neural networks convolutional neural network": [
         "convolutional neural network convolution neural network"
     ],
+    "cooperation game": [
+        "cooperative game"
+    ],
     "cooperative evolutionary game model": [
         "cooperative and evolutionary game model"
     ],
     "coordinated development": [
+        "coordinative development",
         "coovdinated development"
+    ],
+    "core competence logistics enterprises": [
+        "logistics enterprise core competence"
+    ],
+    "coronavirus disease 2019": [
+        "covid19"
+    ],
+    "corporate social responsibility": [
+        "corporate social responsibilities corporate social responsibilities"
     ],
     "cost and benefit items": [
         "cost benefit items"
+    ],
+    "cost benefit": [
+        "benefits and costs"
+    ],
+    "cost control": [
+        "controlling costs"
     ],
     "cost curve": [
         "cost curves"
@@ -703,6 +965,9 @@
     ],
     "cost estimating": [
         "cost estimation"
+    ],
+    "cost incremental": [
+        "incremental costs"
     ],
     "cost minimization": [
         "cost minimisation"
@@ -746,6 +1011,12 @@
     "coupling coordination degree": [
         "coupling and coordination degree"
     ],
+    "coupling model": [
+        "model coupling"
+    ],
+    "coupling risk": [
+        "risk coupling"
+    ],
     "covid19": [
         "corona virus virus",
         "coronavirus",
@@ -755,14 +1026,26 @@
         "covid-19",
         "novel coronavirus"
     ],
+    "coyote": [
+        "canis latrans"
+    ],
     "crisp-dm": [
         "cross industry standard process for data mining"
     ],
     "croatia homeland war": [
         "croatian homeland war"
     ],
+    "crop water requirement": [
+        "water requirement crops"
+    ],
     "crop yield": [
         "crop yieldt"
+    ],
+    "cropping pattern": [
+        "crop pattern"
+    ],
+    "crops agricultural": [
+        "agricultural crops"
     ],
     "cross-organizational workflow": [
         "cross organizational workflows"
@@ -824,6 +1107,15 @@
     "cybercrime": [
         "cyber-crimes"
     ],
+    "cyclic nature": [
+        "cyclical nature"
+    ],
+    "daerah istimewa yogyakarta": [
+        "diy"
+    ],
+    "data analysis": [
+        "analysis of data"
+    ],
     "data analytic tools": [
         "data analytical tools"
     ],
@@ -870,20 +1162,17 @@
     "day ahead bidding": [
         "day head bidding"
     ],
-    "decarbonisation": [
-        "decarbonization"
-    ],
-    "decarbonisation pathway": [
-        "decarbonization pathway"
-    ],
-    "decarbonising the residential buildings stock": [
-        "de-carbonizing the residential building stock"
+    "decarbonization": [
+        "decarbonisation"
     ],
     "decarbonization goals": [
         "decarbonisation goals"
     ],
     "decarbonization options": [
         "decarbonisation options"
+    ],
+    "decarbonization pathway": [
+        "decarbonisation pathway"
     ],
     "decarbonization scenario": [
         "decarbonisation scenario"
@@ -897,14 +1186,23 @@
     "decarbonizing homes": [
         "decarbonising homes"
     ],
+    "decarbonizing the residential buildings stock": [
+        "de-carbonising the residential building stock"
+    ],
+    "decision maker": [
+        "decision makers"
+    ],
+    "decision making": [
+        "decision-making"
+    ],
     "decision making abilities": [
         "decision making capabilities"
     ],
     "decision making trial and evaluation laboratory method": [
         "decision making trial and evaluation laboratory"
     ],
-    "deep decarbonisation": [
-        "deep decarbonization"
+    "deep decarbonization": [
+        "deep decarbonisation"
     ],
     "deep learning": [
         "deep learning approach",
@@ -922,6 +1220,12 @@
     "demand": [
         "deman"
     ],
+    "demand forecast": [
+        "forecast demand"
+    ],
+    "demand process management": [
+        "management demand process"
+    ],
     "democratic republic of congo": [
         "democratic republic congo"
     ],
@@ -932,11 +1236,17 @@
     "demographic and health surveys": [
         "demographic and health survey"
     ],
+    "demographic and salary risk": [
+        "salary and demographic risk"
+    ],
     "dependence structure": [
         "dependency structure"
     ],
     "dependency": [
         "dependence"
+    ],
+    "desalination": [
+        "desalinization"
     ],
     "desecuritisation": [
         "desecuritizacion",
@@ -945,6 +1255,9 @@
     "desecuritization": [
         "de-securitization",
         "desecuritisacion"
+    ],
+    "design and analysis": [
+        "analysis and design"
     ],
     "design and operation strategy": [
         "design and operating strategy"
@@ -959,8 +1272,17 @@
     "development opportunities": [
         "developmental opportunities"
     ],
+    "development planning": [
+        "planning and development"
+    ],
+    "development scenarios": [
+        "developing scenarios"
+    ],
     "development stage": [
         "developmental stage"
+    ],
+    "development trend": [
+        "developing trends"
     ],
     "diebold and mariano test": [
         "diebold mariano test"
@@ -1026,17 +1348,35 @@
         "domain-specific ontologies",
         "domain-specific ontology"
     ],
+    "domestic animals": [
+        "domesticated animals"
+    ],
     "donald trump": [
         "donald j trump"
     ],
     "dow jones industrial average index": [
         "dow jones industrial average"
     ],
+    "drainage water": [
+        "drain water"
+    ],
+    "drainage water salinity": [
+        "saline drainage water"
+    ],
     "drug dependence": [
         "drug dependency"
     ],
+    "drug prices": [
+        "drug pricing"
+    ],
+    "dry": [
+        "dry ["
+    ],
     "dsml 3 development/pre-production data science output have been rolled out/validated across multiple domain/problem": [
         "dsml 3 development/pre-production data science output has been rolled out/validated across multiple domains/problems"
+    ],
+    "dual carbon target": [
+        "dual car bonq target"
     ],
     "dual process theory": [
         "dual-process theories"
@@ -1045,14 +1385,39 @@
         "dynamical"
     ],
     "dynamic and modeling software vensim": [
-        "dynamics modeling software vensim"
+        "dynamics modeling software vensim",
+        "vensim system dynamics modeling software"
+    ],
+    "dynamic and static penalty strategies": [
+        "static and dynamic penalty strategies"
+    ],
+    "dynamic behavior": [
+        "behavior dynamics"
+    ],
+    "dynamic characteristic": [
+        "dynamical characteristics"
+    ],
+    "dynamic characteristics": [
+        "dynamic characteristic"
     ],
     "dynamic complexity rules": [
         "ynamic complexity rules"
     ],
+    "dynamic evolution": [
+        "dynamical evolution"
+    ],
     "dynamic evolution process": [
         "dynamic evolutionary process",
         "dynamical evolution process"
+    ],
+    "dynamic h0 hypothesis": [
+        "dynamic hypothesis h0"
+    ],
+    "dynamic mechanism": [
+        "dynamical mechanism"
+    ],
+    "dynamic modeling approach": [
+        "dynamic model approach"
     ],
     "dynamic replanning": [
         "dynamic replanning technique"
@@ -1060,17 +1425,55 @@
     "dynamic reward and punishment mechanism": [
         "dynamic reward punishment mechanism"
     ],
+    "dynamic sd model": [
+        "dynamics sd model"
+    ],
     "dynamic simulation modeling": [
         "dynamic simulating modeling"
     ],
     "dynamic sustainability balance scorecard methodology": [
         "dynamic sustainability balanced scorecard methodology"
     ],
+    "dynamic systems": [
+        "dynamical systems"
+    ],
+    "dynamic urban ecosystem modeling": [
+        "urban ecosystem dynamic modeling"
+    ],
     "dynamical risk assessment": [
         "dynamic risk assessment"
     ],
     "dynamics approach": [
         "dynamics approache"
+    ],
+    "dynamics methodological approach": [
+        "dynamics methodology approach"
+    ],
+    "dynamics model": [
+        "dynamical model",
+        "modeling of dynamics"
+    ],
+    "dynamics sd model": [
+        "dynamics model sd"
+    ],
+    "dynamics simulation": [
+        "dynamical simulation"
+    ],
+    "dynamics simulation model": [
+        "simulation dynamic model"
+    ],
+    "dynamics simulation software vensim": [
+        "vensim dynamic system simulation software"
+    ],
+    "dynamics software vensim": [
+        "dynamics vensim software",
+        "vensim system dynamics software"
+    ],
+    "dynamics study": [
+        "dynamical study"
+    ],
+    "dynamics tool vensim": [
+        "vensim system dynamics tool"
     ],
     "dyslipidemia": [
         "dyslipidaemia"
@@ -1094,16 +1497,29 @@
     "ebola hemorrhagic fever": [
         "hemorrhagic fever ebola"
     ],
+    "ebolavirus": [
+        "ebov"
+    ],
     "echo state neural network": [
         "echo state network",
         "echo state networks",
         "echo state neural networks"
     ],
+    "eco-industrial chain": [
+        "ecological industry chain"
+    ],
     "economic and environmental benefits": [
+        "environmental and economic benefits",
         "term economic and environmental benefits"
     ],
     "economic and environmental implications": [
         "term economic and environmental implications"
+    ],
+    "economic and social development": [
+        "social and economic development"
+    ],
+    "economic aspect": [
+        "economical aspect"
     ],
     "economic cost and benefit analysis": [
         "economic cost benefit analysis"
@@ -1119,6 +1535,9 @@
     ],
     "economic mathematical model": [
         "economic and mathematical model"
+    ],
+    "economic model": [
+        "models economic"
     ],
     "economic trade offs": [
         "economical trade offs"
@@ -1154,6 +1573,7 @@
         "education infrastructure"
     ],
     "educational institutions": [
+        "education institution",
         "education institutions"
     ],
     "efficacy": [
@@ -1162,14 +1582,24 @@
     "efficiency": [
         "efficience"
     ],
+    "efficiency coefficients": [
+        "coefficient of efficiencies"
+    ],
     "electric energy storage": [
         "electrical energy storage"
     ],
     "electric energy supply exceeds demand": [
         "electricity supply exceeds demand"
     ],
+    "electric equipment": [
+        "electrical equipment"
+    ],
     "electric generator size": [
         "electrical generator size"
+    ],
+    "electric industry": [
+        "electrical industry",
+        "electricity industry"
     ],
     "electric load profile": [
         "electrical load profile"
@@ -1195,8 +1625,17 @@
     "electricity and gas consumption": [
         "electric and gas consumption"
     ],
+    "electricity demand": [
+        "electrical demand"
+    ],
     "electricity generating source": [
         "electricity generation source"
+    ],
+    "electricity market": [
+        "power market"
+    ],
+    "electricity power": [
+        "electric power"
     ],
     "electroencephalogram signals": [
         "electroencephalography signals"
@@ -1211,6 +1650,13 @@
         "e mediation",
         "e mediation technology"
     ],
+    "electronic waste": [
+        "e-waste"
+    ],
+    "electronic waste generation": [
+        "e-waste generation",
+        "generated electronic waste"
+    ],
     "elman recurrent neural network": [
         "elman neural network",
         "elman neural networks",
@@ -1224,6 +1670,9 @@
     ],
     "endogenous and exogenous variables": [
         "exogenous and endogenous variables"
+    ],
+    "endotracheal intubation": [
+        "intubation intratracheal"
     ],
     "energiewende": [
         "energiwende"
@@ -1241,7 +1690,11 @@
         "term energy and water efficiency"
     ],
     "energy consumption": [
+        "consumption of energy",
         "energy consumptin"
+    ],
+    "energy costs": [
+        "cost of energy"
     ],
     "energy database": [
         "energy databases"
@@ -1283,14 +1736,20 @@
     "energy saving retrofit measures": [
         "energy saving retrofitting measures"
     ],
-    "energy supply decarbonisation": [
-        "energy supply decarbonization"
+    "energy sources": [
+        "source of energy"
+    ],
+    "energy supply decarbonization": [
+        "energy supply decarbonisation"
     ],
     "energy weatherization assistance program": [
         "energy weatherisation assistance program"
     ],
     "ensemble model": [
         "ensembled model"
+    ],
+    "entropy weight method": [
+        "entropy weighting method"
     ],
     "environment fund": [
         "environmental fund"
@@ -1313,6 +1772,9 @@
     "environmental factor": [
         "environment factor"
     ],
+    "environmental factors": [
+        "environmental factor"
+    ],
     "environmental feasibility": [
         "environment feasibility"
     ],
@@ -1325,6 +1787,9 @@
     "environmental protection": [
         "environment protection"
     ],
+    "environmental quality": [
+        "environment quality"
+    ],
     "environmental social and governance": [
         "environmental social governance"
     ],
@@ -1333,6 +1798,9 @@
     ],
     "environmental specialists": [
         "environment specialists"
+    ],
+    "environmental systems": [
+        "environment systems"
     ],
     "environmentally friendly energy source": [
         "environmental friendly energy sources"
@@ -1437,6 +1905,9 @@
     "external stimulus": [
         "external stimuli"
     ],
+    "extreme condition tests": [
+        "extreme conditions testing"
+    ],
     "faade construction industry": [
         "facade construction industry"
     ],
@@ -1455,6 +1926,9 @@
     "factual database": [
         "databases factual"
     ],
+    "failure mode and effect analysis": [
+        "fmea"
+    ],
     "fake and real news": [
         "real and fake news"
     ],
@@ -1467,8 +1941,14 @@
     "fast-track": [
         "fast tracks"
     ],
+    "feed in tariff": [
+        "feed-in tarrif"
+    ],
     "feed-in tariff": [
         "feed-in tarif"
+    ],
+    "fees pharmaceutical": [
+        "pharmaceutical fees"
     ],
     "fenetylline": [
         "fenetheylline",
@@ -1497,6 +1977,9 @@
     ],
     "fiscal and financial incentive policies": [
         "financial and fiscal incentive policies"
+    ],
+    "fixed assets reproduction": [
+        "reproduction of fixed assets"
     ],
     "flavor": [
         "flavore"
@@ -1568,6 +2051,9 @@
     "forecast stock price volatility": [
         "forecasting stock price volatility"
     ],
+    "forecasting accuracy": [
+        "forecast accuracy"
+    ],
     "forecasting crude oil volatility": [
         "forecast crude oil volatility"
     ],
@@ -1603,6 +2089,9 @@
     ],
     "fuzzy analytic hierarchy process": [
         "fuzzy analytical hierarchy process"
+    ],
+    "fuzzy cognitive map": [
+        "fuzzy cognitive mappings"
     ],
     "fuzzy decision making and trial evaluation laboratory": [
         "fuzzy decision making trial and evaluation laboratory",
@@ -1729,6 +2218,9 @@
     "geographic information system technology": [
         "geographical information systems technology"
     ],
+    "geographic information systems": [
+        "geographical information systems"
+    ],
     "geographic potential": [
         "geographical potential"
     ],
@@ -1765,6 +2257,9 @@
     "geographical regions": [
         "geographic regions"
     ],
+    "geologic models": [
+        "geological model"
+    ],
     "georeferenced event data": [
         "georeferenced event dataset"
     ],
@@ -1788,8 +2283,14 @@
     "global energy model using a biophysical approach": [
         "global energy model using a biophysical approach model"
     ],
+    "global energy modeling": [
+        "global energy model"
+    ],
     "global warming potential": [
         "e global warming potential"
+    ],
+    "gotvand reservoir": [
+        "gotvand dam reservoir"
     ],
     "government agencies": [
         "governmental agencies"
@@ -1862,6 +2363,9 @@
         "graph-based model",
         "graph-based models"
     ],
+    "graphical method": [
+        "graphic methods"
+    ],
     "graphical user interface": [
         "gui"
     ],
@@ -1876,6 +2380,12 @@
     ],
     "gross domestic production growth rate": [
         "gross domestic production growth"
+    ],
+    "groundwater": [
+        "ground waters"
+    ],
+    "groundwater head lift": [
+        "groundwater lift head"
     ],
     "gulf war": [
         "persian gulf war"
@@ -1892,6 +2402,12 @@
     "harm minimisation strategies": [
         "harm minimization strategies"
     ],
+    "harvest area": [
+        "harvested area"
+    ],
+    "harvesting strategies": [
+        "harvest strategies"
+    ],
     "hateful content": [
         "hatful contents"
     ],
@@ -1901,14 +2417,31 @@
     "head": [
         "heade"
     ],
+    "health and environmental problems": [
+        "environmental and health problems"
+    ],
+    "health care": [
+        "healthcare"
+    ],
+    "health care delivery": [
+        "delivery of health care"
+    ],
+    "health care service": [
+        "health care services",
+        "healthcare service",
+        "healthcare services"
+    ],
     "healthcare facilities": [
         "health care facility"
+    ],
+    "healthy and stable development": [
+        "healthy and steady development"
     ],
     "healthy and unhealthy foods": [
         "healthy and unhealthy food items"
     ],
-    "heat decarbonisation": [
-        "heat decarbonization"
+    "heat decarbonization": [
+        "heat decarbonisation"
     ],
     "heate": [
         "heat"
@@ -1919,8 +2452,20 @@
     "hemorrhagic shock": [
         "shock hemorrhagic"
     ],
+    "herd immunity": [
+        "immunity herd"
+    ],
+    "hernia inguinal": [
+        "inguinal hernia"
+    ],
     "heterogenous food data": [
         "heterogeneous food data"
+    ],
+    "highway passenger transport": [
+        "highway passenger transportation"
+    ],
+    "hilsa fish": [
+        "tenualosa ilisha"
     ],
     "hipersecuritizacion": [
         "hyper-securitization"
@@ -1930,6 +2475,12 @@
     ],
     "holistic view": [
         "wholistic view"
+    ],
+    "home appliances": [
+        "domestic appliances"
+    ],
+    "homosexuality male": [
+        "male homosexuality"
     ],
     "host countries": [
         "hosting countries"
@@ -1942,6 +2493,9 @@
     ],
     "hous": [
         "house"
+    ],
+    "household appliances": [
+        "home appliances"
     ],
     "household energy efficient retrofit": [
         "household energy efficient retrofitting"
@@ -1967,6 +2521,9 @@
     "hybrid analytic hierarchy process": [
         "hybrid analytical hierarchy process"
     ],
+    "hybrid modeling": [
+        "hybrid model"
+    ],
     "hybrid offshore wind solar photovoltaic plants": [
         "hybrid offshore wind solar photovoltaic power plants"
     ],
@@ -1985,6 +2542,12 @@
     "hydrological processes": [
         "hydrologic processes"
     ],
+    "hydropower": [
+        "hydroelectric power"
+    ],
+    "hydropower plants": [
+        "hydroelectric power plants"
+    ],
     "hyperuricemia": [
         "hyperuricaemia"
     ],
@@ -1994,17 +2557,26 @@
     "ikonos": [
         "ikonos data"
     ],
+    "illegal wildlife trade": [
+        "illicit wildlife trade"
+    ],
     "image database": [
         "image databases"
     ],
     "impact": [
         "impacto"
     ],
+    "import": [
+        "importation"
+    ],
     "import dependency": [
         "import dependence"
     ],
     "improve": [
         "imporve"
+    ],
+    "improvement performance": [
+        "performance improvement"
     ],
     "incentivisation": [
         "incentivization"
@@ -2015,14 +2587,50 @@
     "individual energy efficiency measures": [
         "individual energy efficient measures"
     ],
+    "individual-based modeling": [
+        "individual based modeling"
+    ],
     "indoor environmental quality": [
         "indoor environment quality"
+    ],
+    "industrial cluster": [
+        "industry cluster"
+    ],
+    "industrial development": [
+        "industry development"
+    ],
+    "industrial ecosystem": [
+        "industry ecosystem"
+    ],
+    "industrial output": [
+        "industry output"
+    ],
+    "industrial policies": [
+        "industry policy"
+    ],
+    "industrial structure": [
+        "industry structure"
+    ],
+    "industry chain": [
+        "industrial chain"
     ],
     "inefficient buildings": [
         "non efficient buildings"
     ],
+    "infectious disease models": [
+        "infectious diseases modeling"
+    ],
     "influence": [
         "inuence"
+    ],
+    "influence factor analysis": [
+        "influencing factors analysis"
+    ],
+    "influencing factors": [
+        "influence factors"
+    ],
+    "influencing variables": [
+        "influence variables"
     ],
     "information and communication technology": [
         "information communication technology"
@@ -2032,6 +2640,9 @@
     ],
     "information and communications technology agency": [
         "information and and communications technology agency"
+    ],
+    "information asymmetry": [
+        "informational asymmetries"
     ],
     "information gaps": [
         "informational gaps"
@@ -2067,6 +2678,15 @@
     "infrastructural development": [
         "infrastructure development"
     ],
+    "inland river dangerous chemicals transportation": [
+        "transportation of inland river dangerous chemical"
+    ],
+    "inland river hazardous chemical transportation": [
+        "inland river dangerous chemicals transportation"
+    ],
+    "input data": [
+        "data input"
+    ],
     "input-output analysis": [
         "input/output analysis"
     ],
@@ -2082,6 +2702,9 @@
     "insurgency": [
         "insurgence"
     ],
+    "integrated and sustainable management": [
+        "sustainable and integrated management"
+    ],
     "integrated crisis early warning system dataset": [
         "integrated crisis early warning system data"
     ],
@@ -2094,6 +2717,9 @@
     "integrated parametric simulation model": [
         "integrated and parametric simulation model"
     ],
+    "integrated system dynamics": [
+        "integrative system dynamics"
+    ],
     "intelligence": [
         "inteligence"
     ],
@@ -2105,6 +2731,9 @@
     ],
     "inter organizational relations": [
         "inter-organisational relations"
+    ],
+    "interacting variables": [
+        "variable interactions"
     ],
     "interconnection": [
         "interconnexion"
@@ -2166,6 +2795,9 @@
     "internet of things and big data analysis": [
         "internet of things and big data analytics"
     ],
+    "internet of things technology": [
+        "technologies internet of things"
+    ],
     "internet-based intervention": [
         "internet based interventions"
     ],
@@ -2198,6 +2830,15 @@
     "iron steel interface": [
         "iron and steel interface"
     ],
+    "irrigated area": [
+        "irrigation area"
+    ],
+    "irrigation agriculture": [
+        "irrigated agriculture"
+    ],
+    "isba land surface scheme": [
+        "land surface scheme isba"
+    ],
     "islamic state of iraq and syria": [
         "islamic state in iraq and the syria"
     ],
@@ -2213,8 +2854,28 @@
     "iterated prisoner dilemma": [
         "iterated prisoner-s dilemma"
     ],
+    "ithink": [
+        "ithink dynamic simulation software",
+        "ithink software",
+        "ithink software package",
+        "ithinktm",
+        "ithinktm software",
+        "simulation software ithink"
+    ],
+    "ithink analyst system dynamics software program": [
+        "ithink analyst system dynamics program"
+    ],
     "ithink computer simulation package": [
         "ithinktm computer simulation package"
+    ],
+    "ithink software": [
+        "software ithink"
+    ],
+    "ithink software package": [
+        "software package ithink"
+    ],
+    "ithinktm simulation": [
+        "ithinktm computer simulation software"
     ],
     "jus ad bellum": [
         "jus ad bella"
@@ -2244,11 +2905,23 @@
     "knowledge aware attention graph convolutional neural network": [
         "knowledge aware attention graph convolutional network"
     ],
+    "knowledge sharing": [
+        "sharing knowledge"
+    ],
+    "knowledge transfer": [
+        "transfer knowledge"
+    ],
+    "knowledge transfer simulation": [
+        "simulation of knowledge transfer"
+    ],
     "kyoto encyclopedia of genes and genomes pathway enrichment": [
         "kyoto encyclopedia of genes and genomes enrichment pathway"
     ],
     "labor intensive": [
         "labour-intensive"
+    ],
+    "lake urmia": [
+        "urmia lake"
     ],
     "land cover land": [
         "land cover / land"
@@ -2272,6 +2945,12 @@
     ],
     "lc-ms/m": [
         "lc-ms-m"
+    ],
+    "lean manufacturing": [
+        "lean production"
+    ],
+    "lean techniques": [
+        "lean technics"
     ],
     "learning based approach": [
         "learning-based approaches"
@@ -2330,6 +3009,9 @@
     "liquified natural gas": [
         "liquefied natural gas"
     ],
+    "liver fibrosis": [
+        "hepatic fibrosis"
+    ],
     "load": [
         "loade"
     ],
@@ -2368,17 +3050,35 @@
     "mainstream": [
         "mainstreame"
     ],
+    "maize": [
+        "zea mays"
+    ],
+    "maize growth period": [
+        "maize growing period"
+    ],
     "malaysia tertiary students satisfaction": [
         "malaysian tertiary students satisfaction"
     ],
     "malaysian united nations military observer": [
         "malaysian united nations military observers"
     ],
+    "management process": [
+        "process management"
+    ],
+    "mango supply chain": [
+        "supply chain mango"
+    ],
     "mankind": [
         "humankind"
     ],
     "manufacturer power curve": [
         "manufacturer power curves"
+    ],
+    "manufacturing companies": [
+        "manufacturing enterprises"
+    ],
+    "manufacturing resource sharing": [
+        "sharing manufacturing resources"
     ],
     "marginal abatement cost curves": [
         "marginal abatement cost curve"
@@ -2388,6 +3088,9 @@
     ],
     "marketisation": [
         "marketization"
+    ],
+    "material flow": [
+        "flows of materials"
     ],
     "mathematical modeling": [
         "mathematical model",
@@ -2405,17 +3108,32 @@
     "media and peace": [
         "peace and media"
     ],
+    "mediating role": [
+        "mediation role"
+    ],
     "mediator functions": [
         "mediation functions"
     ],
     "medical education": [
         "education medical"
     ],
+    "medical service pricing": [
+        "pricing medical services"
+    ],
+    "medicinal supply chain": [
+        "medicine supply chain"
+    ],
     "medium sized buildings": [
         "medium size buildings"
     ],
+    "mega project innovation": [
+        "innovations in mega projects"
+    ],
     "megalopolis": [
         "megapolis"
+    ],
+    "megaproject social responsibility behavior": [
+        "megaproject social responsibility megaproject social responsibility behavior"
     ],
     "micro data": [
         "micro datasets"
@@ -2432,14 +3150,49 @@
     "minimization": [
         "minimisation"
     ],
+    "ministry of health": [
+        "health ministry"
+    ],
+    "ministry of health malaysia": [
+        "malaysia ministry of health"
+    ],
     "mixed integer linear programming model": [
         "mixed integer linear programming model model"
+    ],
+    "mixed policies": [
+        "policy mixes"
+    ],
+    "model parameters": [
+        "modeling parameters"
+    ],
+    "model resilience": [
+        "resilience model"
+    ],
+    "model results": [
+        "modeling results"
     ],
     "model scenarios": [
         "model ce scenarios"
     ],
+    "model test": [
+        "model testing",
+        "test model"
+    ],
+    "model validation test": [
+        "model validity tests"
+    ],
     "modeling and simulation": [
-        "modeling simulation"
+        "modeling simulation",
+        "simulation and modeling"
+    ],
+    "modeling complex systems": [
+        "model complex systems"
+    ],
+    "modeling framework": [
+        "model framework"
+    ],
+    "modeling methods": [
+        "method of modeling"
     ],
     "modernization": [
         "modernisation"
@@ -2452,6 +3205,9 @@
     ],
     "monitore": [
         "monitor"
+    ],
+    "mountain region": [
+        "mountainous regions"
     ],
     "multi element composition": [
         "multi elemental composition"
@@ -2486,6 +3242,12 @@
     "multi-source satellite imagery": [
         "multi source satellite imageries"
     ],
+    "multicriteria analysis": [
+        "multicriterion analysis"
+    ],
+    "multicriteria analysis method": [
+        "multicriteria analyze method"
+    ],
     "multidimensional problem": [
         "multi-dimensional problems"
     ],
@@ -2494,6 +3256,9 @@
     ],
     "multimodal large models": [
         "multi-modal large model"
+    ],
+    "multimodal transportation": [
+        "multimodal transport"
     ],
     "multiobjective optimization": [
         "multi-objectives optimization"
@@ -2506,6 +3271,9 @@
     ],
     "national database": [
         "national databases"
+    ],
+    "national economy": [
+        "nation economy"
     ],
     "national energy consumption": [
         "nation energy consumption"
@@ -2527,6 +3295,9 @@
         "natural language processing techniques",
         "natural llanguage pprocessing"
     ],
+    "natural resource based tourism": [
+        "natural resource-based tourism"
+    ],
     "navroud asalem watershed": [
         "navroud assalem watershed"
     ],
@@ -2545,6 +3316,9 @@
     ],
     "net benefit curve": [
         "net benefit curves"
+    ],
+    "net present value": [
+        "net present value value"
     ],
     "net present value to investment ratio": [
         "net present value to investment ratio ratio"
@@ -2628,6 +3402,15 @@
     ],
     "novelty versus regularity": [
         "regularity versus novelty"
+    ],
+    "nurse": [
+        "nurses"
+    ],
+    "nurses aides": [
+        "nursing aides"
+    ],
+    "nursing assistant": [
+        "nurses aides"
     ],
     "nutrition analysis tools": [
         "nutritional analysis tools"
@@ -2735,6 +3518,9 @@
     "nutritional value": [
         "nutrition value"
     ],
+    "nw china": [
+        "northwest china"
+    ],
     "object based image analysis": [
         "object-based image analysis"
     ],
@@ -2743,6 +3529,12 @@
     ],
     "object-based classification": [
         "object based classifications"
+    ],
+    "observed and simulated values": [
+        "simulated and observed values"
+    ],
+    "offline business model": [
+        "offline business model model"
     ],
     "offshore and onshore wind development": [
         "onshore and offshore wind development",
@@ -2823,6 +3615,9 @@
     "operating and maintenance cost": [
         "operational and maintenance cost"
     ],
+    "operating condition": [
+        "operation conditions"
+    ],
     "operation and maintenance": [
         "operations maintenance"
     ],
@@ -2842,6 +3637,7 @@
         "operational capacity"
     ],
     "operation cost": [
+        "operating cost",
         "operational cost"
     ],
     "operation data": [
@@ -2857,18 +3653,27 @@
         "operational management approach"
     ],
     "operation mechanism": [
+        "operating mechanism",
         "operational mechanism"
     ],
     "operation modes": [
+        "modes of operation",
         "operational modes"
     ],
     "operation optimization": [
         "operational optimization"
     ],
+    "operation policies": [
+        "operating policies"
+    ],
     "operation status": [
         "operational status"
     ],
+    "operation strategy": [
+        "operational strategies"
+    ],
     "operational characteristics": [
+        "operating characteristics",
         "operation characteristics"
     ],
     "operational constraints": [
@@ -2878,6 +3683,7 @@
         "operation costs"
     ],
     "operational efficiency": [
+        "operating efficiency",
         "operation efficiency"
     ],
     "operational energy savings": [
@@ -2893,19 +3699,27 @@
         "operation frequency"
     ],
     "operational management": [
-        "operation management"
+        "operation management",
+        "operations management"
+    ],
+    "operational parameters": [
+        "operating parameters"
     ],
     "operational period": [
         "operation period"
     ],
     "operational phase": [
-        "operation phase"
+        "operation phase",
+        "operational phasis"
     ],
     "operational phasis": [
         "operation phasis"
     ],
     "operational process": [
         "operation process"
+    ],
+    "operational processes": [
+        "operational process"
     ],
     "operational profitability": [
         "operation profitability"
@@ -2915,6 +3729,9 @@
     ],
     "operations research": [
         "operational research"
+    ],
+    "optimization tool": [
+        "optimizer tool"
     ],
     "oral poliomyelitis vaccine": [
         "poliovirus vaccine oral",
@@ -2938,6 +3755,9 @@
     "orphaned child": [
         "child orphaned"
     ],
+    "otoritas jasa keuangan": [
+        "ojk"
+    ],
     "outbreak of war": [
         "war outbreak"
     ],
@@ -2953,6 +3773,12 @@
     "pair": [
         "paire",
         "pir"
+    ],
+    "parameter changes": [
+        "changed parameters"
+    ],
+    "parameter estimation": [
+        "estimation of parameters"
     ],
     "parameterization": [
         "parametrization"
@@ -3014,6 +3840,9 @@
     "peak": [
         "peake"
     ],
+    "peak hours": [
+        "peaking hours"
+    ],
     "peak valley fluctuations": [
         "peak and valley fluctuation"
     ],
@@ -3030,11 +3859,17 @@
         "perfomance",
         "performace"
     ],
+    "performance indicators": [
+        "performance indicator indicators"
+    ],
     "performance metrics": [
         "performance metrices"
     ],
     "performance of buildings": [
         "performance buildings"
+    ],
+    "period of time": [
+        "time period"
     ],
     "persistence": [
         "persistency"
@@ -3053,6 +3888,9 @@
     ],
     "persuasion process": [
         "persuasive process"
+    ],
+    "pest discrete event simulation petits ruminant control": [
+        "peste discrete event simulation petits ruminants control"
     ],
     "pharmaceutic": [
         "pharmaceutical"
@@ -3075,8 +3913,17 @@
     "planning phases": [
         "planning phasis"
     ],
+    "planning strategies": [
+        "strategy planning"
+    ],
     "platform x": [
         "x platform"
+    ],
+    "policy development": [
+        "developing policies"
+    ],
+    "policy dialog model": [
+        "policy dialog model model"
     ],
     "policymaker": [
         "policy makers"
@@ -3086,6 +3933,15 @@
     ],
     "political and economic uncertainty": [
         "economic and political uncertainty"
+    ],
+    "pollutant emission": [
+        "pollution emissions"
+    ],
+    "pollutant emissions": [
+        "pollutant emission"
+    ],
+    "pollutant source": [
+        "pollution sources"
     ],
     "population estimate": [
         "population estimation"
@@ -3105,6 +3961,9 @@
     "post conflict reconstruction": [
         "post-conflict reconstruction post conflict reconstruction"
     ],
+    "post covid-19": [
+        "post covid"
+    ],
     "post traumatic stress disorder": [
         "stress disorders post-traumatic",
         "post-traumatic stress disorder"
@@ -3115,6 +3974,9 @@
     "posttraumatic stress disorder": [
         "stress disorders posttraumatic"
     ],
+    "poverty indicators": [
+        "poverty indices"
+    ],
     "power curve": [
         "power curves"
     ],
@@ -3124,11 +3986,31 @@
     "power relations": [
         "power relationships"
     ],
+    "powersim": [
+        "powersim program",
+        "powersim software",
+        "powersim studio tool",
+        "software package powersim",
+        "software program powersim"
+    ],
+    "powersim studio": [
+        "powersim studio software",
+        "powersim studiotm"
+    ],
+    "powersim studio software": [
+        "software powersim studio"
+    ],
     "practicality": [
         "practicability"
     ],
     "prebound and rebound effects": [
         "rebound and prebound effects"
+    ],
+    "preceding studies": [
+        "precedent studies"
+    ],
+    "prediction accuracy": [
+        "predictive accuracy"
     ],
     "predictive analytics": [
         "predictive data analytics"
@@ -3136,6 +4018,9 @@
     "predictive modeling": [
         "predictive model",
         "predictive models"
+    ],
+    "prefabricated building incentive policies": [
+        "incentive policies for prefabricated buildings"
     ],
     "preschool child": [
         "child preschool"
@@ -3149,8 +4034,17 @@
     "preventing/countering violent extremism": [
         "preventing counter violent extremism"
     ],
+    "prevention strategies": [
+        "preventive strategies"
+    ],
     "preventive healthcare": [
         "preventative healthcare"
+    ],
+    "pricing policy": [
+        "price policy"
+    ],
+    "pricing strategy": [
+        "price strategies"
     ],
     "principal agent relations": [
         "principal agent relationship"
@@ -3167,6 +4061,20 @@
     "pro islamic state of iraq and syria twitterers": [
         "pro islamic state of iraq and syria twitter users"
     ],
+    "probability of occurrence": [
+        "happening probability",
+        "occurrence probability"
+    ],
+    "production forecast": [
+        "forecast production",
+        "production forecasting"
+    ],
+    "production of solid waste": [
+        "solid waste production"
+    ],
+    "production process": [
+        "producing process"
+    ],
     "professional competency": [
         "professional competence"
     ],
@@ -3178,6 +4086,9 @@
     ],
     "program on negotiation": [
         "harvard university program on negotiation"
+    ],
+    "programming languages": [
+        "program languages"
     ],
     "promotion effect": [
         "promotional effect"
@@ -3215,6 +4126,12 @@
     "public private partnership": [
         "publicprivate partnerships"
     ],
+    "public private partnership wastewater treatment projects": [
+        "public private partnership sewage treatment projects"
+    ],
+    "public-private partnership": [
+        "public private partnership public-private partnership"
+    ],
     "public/private partnerships": [
         "public-private partnerships ppps"
     ],
@@ -3229,6 +4146,9 @@
     ],
     "purchase energy": [
         "purchased energy"
+    ],
+    "qinghai tibet plateau": [
+        "qinghai-xizang plateau"
     ],
     "qualitative and quantitative assessment": [
         "quantitative and qualitative assessments"
@@ -3263,6 +4183,12 @@
     ],
     "rabitmq": [
         "rabbitmq"
+    ],
+    "railway": [
+        "railroad"
+    ],
+    "railway transportation": [
+        "railway transport"
     ],
     "random forest": [
         "random forest methods",
@@ -3327,6 +4253,9 @@
     "red chillies": [
         "red chilies"
     ],
+    "red deer": [
+        "cervus elaphus"
+    ],
     "reference database": [
         "reference databases"
     ],
@@ -3336,14 +4265,24 @@
     "reggio calabria": [
         "reggio di calabria"
     ],
+    "region population": [
+        "regional population"
+    ],
     "region water resources": [
         "regional water resources"
+    ],
+    "regional development": [
+        "region development"
     ],
     "regional economic management": [
         "regional economical management"
     ],
+    "regional economy": [
+        "region economy"
+    ],
     "regional sustainable development": [
-        "region sustainable development"
+        "region sustainable development",
+        "sustainable regional development"
     ],
     "regulation capability": [
         "regulating capability"
@@ -3370,6 +4309,9 @@
     "renewable energy curtailment participation": [
         "renewable energy power curtailment participation"
     ],
+    "renewable energy source": [
+        "renewable energy sources"
+    ],
     "renewable energy sources": [
         "renewable energy resources"
     ],
@@ -3388,6 +4330,9 @@
     "residential energy efficiency retrofit": [
         "residential energy efficiency retrofitting"
     ],
+    "residential energy modeling": [
+        "residential energy models"
+    ],
     "residential heat decarbonization": [
         "residential heat decarbonisation"
     ],
@@ -3396,6 +4341,9 @@
     ],
     "resilience building": [
         "building resilience"
+    ],
+    "resilient governance": [
+        "resilience governance"
     ],
     "resource dependence": [
         "resource dependencies"
@@ -3440,11 +4388,26 @@
     "risk": [
         "isk"
     ],
+    "risk dynamic evolution": [
+        "dynamic risk evolution"
+    ],
+    "risk factors coupling": [
+        "risk coupling factors"
+    ],
+    "risk perception": [
+        "perceptions of risks"
+    ],
     "risk-based inspection and maintenance analyze risk based inspection and maintenance analysis": [
         "risk-based inspection and maintenance analysis risk based inspection and maintenance analysis"
     ],
+    "river basin": [
+        "river basins"
+    ],
     "rmb cross border settlement": [
         "cross border rmb settlement"
+    ],
+    "road transportation": [
+        "road transport"
     ],
     "role social media": [
         "role of social media"
@@ -3478,11 +4441,20 @@
     "russo ukrainian war": [
         "russian ukrainian war"
     ],
+    "safety behavior decision making": [
+        "safety decision making behavior"
+    ],
+    "sales forecasting": [
+        "sales forecast"
+    ],
     "salience": [
         "saliency"
     ],
     "salinization": [
         "salinisation"
+    ],
+    "sars-cov-2": [
+        "severe acute respiratory syndrome coronavirus 2"
     ],
     "satellite imagery": [
         "satellite image"
@@ -3522,6 +4494,9 @@
     "scenarios": [
         "escenarios"
     ],
+    "scientific basis": [
+        "scientific base"
+    ],
     "scientific databases": [
         "scientific database"
     ],
@@ -3531,6 +4506,15 @@
     "screening regimes": [
         "screening regimens"
     ],
+    "sd prediction model": [
+        "sd predictive model"
+    ],
+    "sd simulation model": [
+        "sd model simulation"
+    ],
+    "sea water": [
+        "seawater"
+    ],
     "search and rescue operations": [
         "search and resque operations"
     ],
@@ -3539,6 +4523,12 @@
     ],
     "sector gross domestic production": [
         "sectoral gross domestic production"
+    ],
+    "security of data": [
+        "data security"
+    ],
+    "sediment transport": [
+        "sediment transportation"
     ],
     "segment anything model": [
         "sam segment anything model"
@@ -3552,6 +4542,12 @@
     "sens": [
         "sense"
     ],
+    "sensitivity test": [
+        "sensitivity testing"
+    ],
+    "sensitivity tests": [
+        "sensitivity test"
+    ],
     "sensor fusion": [
         "sensor data fusion"
     ],
@@ -3564,11 +4560,17 @@
     "sentiment polarity": [
         "sentimental polarity"
     ],
+    "service quality": [
+        "quality of service"
+    ],
     "servitization": [
         "servitisation"
     ],
     "seville": [
         "sevilla"
+    ],
+    "sexually transmitted infection": [
+        "sexually transmitted infections"
     ],
     "shalow renovation": [
         "shallow renovation"
@@ -3585,6 +4587,9 @@
     "sharing economy": [
         "sharing econonmy"
     ],
+    "ship piston compressor": [
+        "ship/s piston compressor"
+    ],
     "shot automatic exploratory data analysis": [
         "shot automatic exploration data analysis"
     ],
@@ -3597,14 +4602,30 @@
     "simmelian filtering": [
         "simmelian filtration"
     ],
+    "simulacion generico": [
+        "simulacao generico"
+    ],
+    "simulated data": [
+        "simulation data"
+    ],
+    "simulation analysis": [
+        "simulation simulation analysis"
+    ],
     "simulation model": [
-        "simulation models"
+        "simulation models",
+        "simulative model"
     ],
     "simulation modeling": [
         "simulation-modell"
     ],
+    "simulation results": [
+        "simulated results"
+    ],
     "simulation tool": [
         "simulating tool"
+    ],
+    "simulation year": [
+        "thesimulation year"
     ],
     "situation assessment": [
         "situational assessment"
@@ -3612,6 +4633,10 @@
     "situational awareness": [
         "situation awareness",
         "situation awareness sa"
+    ],
+    "skin absorption": [
+        "dermal absorption",
+        "dermal absorptions"
     ],
     "slacktivism": [
         "slacktivim"
@@ -3646,11 +4671,38 @@
     "social network analysis": [
         "social network analysis techniques"
     ],
+    "social networking services": [
+        "social networking service social networking service"
+    ],
+    "society economy": [
+        "economy society"
+    ],
+    "socio economic": [
+        "socio economical"
+    ],
+    "socio technical": [
+        "social-technical"
+    ],
     "socio-economic": [
         "social-economic"
     ],
+    "socioeconomically vulnerable groups": [
+        "socioeconomically vulnerable populations"
+    ],
     "software": [
         "softwear"
+    ],
+    "software stella professional": [
+        "stella professional software"
+    ],
+    "software veneta simulation": [
+        "veneta simulation software"
+    ],
+    "software vensimple": [
+        "vensimple software"
+    ],
+    "soil and water assessment tool model": [
+        "swat model"
     ],
     "solid wall insulation": [
         "solid wall 1nsulation"
@@ -3699,6 +4751,28 @@
     "statistics education": [
         "statistical education"
     ],
+    "steam boiler": [
+        "steam boilers"
+    ],
+    "stella": [
+        "stella software",
+        "stella software package"
+    ],
+    "stella architect": [
+        "stella architect software"
+    ],
+    "stella architect software": [
+        "software stella architect"
+    ],
+    "stella model diagrams": [
+        "stella modeling diagrams"
+    ],
+    "stella software": [
+        "stella software program"
+    ],
+    "stella software package": [
+        "software package stella"
+    ],
     "stepwise weight assessment ratio analysis": [
         "stepwise weight assessment ratio analysis method"
     ],
@@ -3715,17 +4789,26 @@
     "stock and flow model": [
         "stock flow model"
     ],
+    "stock flow structure": [
+        "stock and flow structures"
+    ],
     "storage": [
         "starage"
     ],
     "strategic conflict avoidance": [
         "strategic conflict avoidance behavior"
     ],
+    "strategic management": [
+        "strategy management"
+    ],
     "strategic revitalization index lanka": [
         "strategic revitalization index lankan"
     ],
     "strategy": [
         "trategy"
+    ],
+    "strategy optimization": [
+        "optimization strategy"
     ],
     "stratified random sampling": [
         "stratified random sampling approach"
@@ -3737,13 +4820,20 @@
         "structural equation modeling and system dynamics"
     ],
     "structural equation modeling": [
+        "sem",
         "structural equation model",
         "structural equation modeling approach",
         "structural equation modeling technique",
         "structural equation models"
     ],
+    "structure analysis": [
+        "structural analysis"
+    ],
     "students self regulation of learning skills": [
         "self regulation of learning skills students"
+    ],
+    "study model": [
+        "model study"
     ],
     "sub saharan africa": [
         "africa south of the sahara",
@@ -3762,20 +4852,47 @@
     "supervised machine learning": [
         "supervised machine learning model"
     ],
+    "supply and demand": [
+        "demand and supply",
+        "demand side and supply",
+        "supply demand"
+    ],
+    "supply chain resilience": [
+        "resilient supply chain"
+    ],
     "supply curve": [
         "supply curves"
     ],
     "supply demand balance": [
+        "balance supply and demand",
         "supply and demand balance"
     ],
     "supply demand interaction": [
         "supply and demand interaction"
     ],
+    "supply demand ratio": [
+        "supply and demand ratio"
+    ],
     "supply side faade innovations": [
         "supply side facade innovations"
     ],
+    "surface water": [
+        "surface waters"
+    ],
     "suriname electricity mix": [
         "surinamese electricity mix"
+    ],
+    "susceptible infected recovered model": [
+        "susceptible infected recovered epidemic model"
+    ],
+    "sustainability performance": [
+        "sustainable performance"
+    ],
+    "sustainable agricultural development": [
+        "agriculture sustainable development"
+    ],
+    "sustainable agricultural policies": [
+        "sustainable agriculture policy"
     ],
     "sustainable development goals": [
         "sustainability development goals"
@@ -3783,11 +4900,26 @@
     "sustainable energy source": [
         "sustainable energy resource"
     ],
+    "sustainable groundwater": [
+        "groundwater sustainability"
+    ],
+    "sustainable management": [
+        "sustainability management"
+    ],
+    "sustainable transport": [
+        "sustainable transportation"
+    ],
+    "synergy mechanism": [
+        "synergetic mechanism"
+    ],
     "syrian civil war": [
         "syria civil war"
     ],
     "syrian war": [
         "syria war"
+    ],
+    "systemic approach": [
+        "systems approach"
     ],
     "systemisation": [
         "systematization"
@@ -3795,6 +4927,9 @@
     "systems analysis": [
         "systems analysis method",
         "systems analysis methods"
+    ],
+    "systems and control theory": [
+        "systems theory and control theory"
     ],
     "taiwan wind power industry": [
         "taiwanese wind power industry"
@@ -3870,14 +5005,27 @@
     "technologic integration": [
         "technological integration"
     ],
+    "technological affordances": [
+        "technology affordances"
+    ],
     "technological development": [
-        "technologies development"
+        "technologies development",
+        "technology development"
+    ],
+    "technological innovation": [
+        "technology innovation"
     ],
     "technology": [
         "technologie"
     ],
+    "technology commercialization capability": [
+        "technology commercialization ability"
+    ],
     "technology development envelop": [
         "technology development envelope"
+    ],
+    "tehran [ iran ]": [
+        "tehran iran"
     ],
     "temperature and humidities": [
         "temperature/ humidities"
@@ -3890,6 +5038,9 @@
     ],
     "term sustainable reconstruction": [
         "sustainable reconstruction"
+    ],
+    "test results": [
+        "testing results"
     ],
     "text classification": [
         "text classifiers"
@@ -3913,6 +5064,9 @@
     "theoretical and philosophical framework": [
         "philosophical and theoretical framework"
     ],
+    "theoretical model": [
+        "models theoretical"
+    ],
     "thermal": [
         "themeal"
     ],
@@ -3934,11 +5088,21 @@
     "tigray people liberation": [
         "tigray people s liberation"
     ],
+    "time delay": [
+        "delay time"
+    ],
+    "time delays": [
+        "time delay"
+    ],
     "time series analysis": [
         "time series analysis methodologies"
     ],
+    "time-to-market": [
+        "product time to market"
+    ],
     "tobacco attributable mortality": [
-        "tobacco attibutable mortality"
+        "tobacco attibutable mortality",
+        "tobacco attributable deaths"
     ],
     "tokenization": [
         "tokenisation"
@@ -3952,6 +5116,9 @@
     ],
     "topic modeling algorithms": [
         "topic model algorithms"
+    ],
+    "tourist destination": [
+        "tourism destinations"
     ],
     "tradable green certificates": [
         "tradeable green certificates"
@@ -3984,11 +5151,41 @@
     "translog production function": [
         "trans-log production functions"
     ],
+    "transport demand": [
+        "transportation demand"
+    ],
+    "transport efficiency": [
+        "transportation efficiency"
+    ],
+    "transport indicators": [
+        "transportation indicators"
+    ],
+    "transport mode": [
+        "transportation modes"
+    ],
+    "transport sector": [
+        "transportation sector"
+    ],
+    "transportation": [
+        "transport"
+    ],
     "transportation command": [
         "ustranscom"
     ],
+    "transportation delay": [
+        "transport delays"
+    ],
+    "transportation infrastructure": [
+        "transport infrastructure"
+    ],
+    "transportation modeling": [
+        "transport modeling"
+    ],
     "triple layer business model canvas": [
         "triple layered business model canvas"
+    ],
+    "tuberculosis": [
+        "tb"
     ],
     "turbine": [
         "turbin"
@@ -4007,6 +5204,9 @@
     ],
     "united nations children s fund": [
         "united nations children fund"
+    ],
+    "united nations sustainable development goals": [
+        "sdgs"
     ],
     "university industry collaboration": [
         "university-industry collaboration"
@@ -4029,11 +5229,20 @@
     "urban resilience": [
         "urban resiliency"
     ],
+    "urban sustainable development": [
+        "sustainable urban development"
+    ],
+    "urban transportation": [
+        "urban transport"
+    ],
     "user based collaborative filtering": [
         "user collaborative filtering"
     ],
     "valence aware dictionary and sentiment reasoning sentiment analyze model": [
         "vader valence aware dictionary and sentiment reasoning sentiment analysis model"
+    ],
+    "validity test": [
+        "validity testing"
     ],
     "valorization": [
         "valorisation"
@@ -4047,12 +5256,52 @@
     "vegetation change": [
         "vegetatation change"
     ],
+    "vensim": [
+        "vensim application",
+        "vensim environment",
+        "vensim modeling software",
+        "vensim package",
+        "vensim software package",
+        "vensim tool",
+        "vensimtm"
+    ],
+    "vensim decision support system program": [
+        "program vensim decision support"
+    ],
+    "vensim dynamic model": [
+        "dynamics model vensim"
+    ],
     "vensim modeling environment": [
         "vensimtm modeling environment"
     ],
     "vensim personal learning edition": [
         "vensim personal learing edition",
+        "vensim personal learning edition simulation software",
+        "vensim personal learning edition software",
         "vensimtm personal learning edition"
+    ],
+    "vensim personal learning edition simulation software": [
+        "simulation software vensim personal learning edition"
+    ],
+    "vensim personal learning edition software": [
+        "software vensim personal learning edition"
+    ],
+    "vensim simulation software": [
+        "simulation software vensim",
+        "simulations vensim software",
+        "vensim software simulation"
+    ],
+    "vensim software": [
+        "software vensim"
+    ],
+    "vensim software package": [
+        "software package vensim"
+    ],
+    "vensim-dss": [
+        "vensim decision support system software"
+    ],
+    "vensimple": [
+        "software vensimple"
     ],
     "vigilantism": [
         "vigiliantism"
@@ -4087,6 +5336,9 @@
     "voltage source converter high voltage dc transmission": [
         "voltage source converter high voltage dc power transmission"
     ],
+    "volume waste": [
+        "waste volume"
+    ],
     "volunteered geographic information": [
         "volunteer geographic information"
     ],
@@ -4096,14 +5348,36 @@
     "war-torn countries": [
         "war torn country"
     ],
+    "waste generation": [
+        "generated waste"
+    ],
     "waste heat recover": [
         "waste heat recovery"
     ],
+    "waste material": [
+        "material wastes"
+    ],
+    "waste materials": [
+        "waste material"
+    ],
+    "waste recycling": [
+        "recycling waste"
+    ],
     "waste resources": [
+        "resource waste",
         "waste of resources"
     ],
     "wasted wind energy": [
         "waste wind energy"
+    ],
+    "water and soil resources": [
+        "soil and water resources"
+    ],
+    "water demand forecasting": [
+        "water demand prediction"
+    ],
+    "water ecological carrying capacity evaluation": [
+        "evaluation of water ecological carrying capacity"
     ],
     "water energy food nexus": [
         "water energy and food nexus"
@@ -4111,8 +5385,38 @@
     "water energy food security nexus": [
         "water energy and food security nexus"
     ],
+    "water flow": [
+        "flow of water"
+    ],
+    "water quality": [
+        "quality of water"
+    ],
     "water quality and quantity": [
         "water quantity and quality"
+    ],
+    "water quality modeling": [
+        "model of water quality"
+    ],
+    "water resource": [
+        "water resources"
+    ],
+    "water resources allocation": [
+        "allocation of water resources"
+    ],
+    "water resources assessment": [
+        "assessment of water resources"
+    ],
+    "water storage": [
+        "storage water"
+    ],
+    "water supply and demand": [
+        "water demand and supply"
+    ],
+    "water supply capacity": [
+        "capacity of water supply"
+    ],
+    "water transport": [
+        "water transportation"
     ],
     "weather-controled central": [
         "weather-controlled central"
@@ -4125,6 +5429,9 @@
     ],
     "western and eastern european countries": [
         "eastern and western european countries"
+    ],
+    "wild boar": [
+        "sus scrofa"
     ],
     "wind energy potential and economic viability": [
         "wind energy potential and economic feasibility"
@@ -4150,13 +5457,22 @@
     "wind shear": [
         "wind shears"
     ],
+    "wire and cable company": [
+        "wire and cable firm"
+    ],
     "word-to-vec": [
         "word to vec model",
         "word to vec models"
     ],
+    "workers behavior safety": [
+        "workers safety behaviors"
+    ],
     "world events interaction survey": [
         "world events interaction survey data",
         "world events interaction survey series"
+    ],
+    "year 2030": [
+        "year of 2030"
     ],
     "yemeni population": [
         "yemen population"

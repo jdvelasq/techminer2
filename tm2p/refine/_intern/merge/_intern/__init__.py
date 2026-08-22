@@ -6,6 +6,7 @@ from .double import apply_double_rule
 from .error_metrics import apply_error_metrics_rule
 from .exact_match import apply_exact_match_rule
 from .geographic_names import apply_geographic_names_rule
+from .hyphen_space_plural import apply_hyphen_space_plural_rule
 from .inflected_verb_forms import apply_inflected_verb_forms_rule
 from .leading_noise_removal import apply_leading_noise_removal_rule
 from .num_punct_to_space import apply_num_punct_to_space_rule
@@ -30,6 +31,7 @@ __all__ = [
     "apply_error_metrics_rule",
     "apply_exact_match_rule",
     "apply_geographic_names_rule",
+    "apply_hyphen_space_plural_rule",
     "apply_inflected_verb_forms_rule",
     "apply_leading_noise_removal_rule",
     "apply_num_punct_to_space_rule",
