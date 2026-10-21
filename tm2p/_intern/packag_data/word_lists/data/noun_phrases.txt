@@ -1675,6 +1675,7 @@ ai-enhanced learning
 ai-generated content
 ai-generated misinformation
 ai-powered analytics
+ai-powered risk assessment
 ai-powered system
 aid competition
 aided designs
@@ -7685,6 +7686,7 @@ cephalometry
 ceramic casing
 ceramic fuel cells
 ceramic hollow fibers
+ceramic materials
 ceramic matrix composite
 ceramic matrix composites
 ceramics
@@ -9492,6 +9494,7 @@ combined technology acceptance model
 combined technology acceptance models
 combined-heat and power
 combining model
+combustion
 combustion chambers
 combustion equipment
 combustion furnaces
@@ -13637,6 +13640,7 @@ data to text
 data to texts
 data tools
 data transaction
+data transfer
 data transfer rate
 data transfer rates
 data transmission delay
@@ -15425,6 +15429,7 @@ digital framing
 digital game based learning
 digital game based learnings
 digital game-based learning
+digital geography
 digital green innovation
 digital green innovations
 digital health
@@ -16014,6 +16019,7 @@ disease outbreak
 disease outbreaks
 disease progression
 disease registry
+disease resistance
 disease risk assessment
 disease risk assessments
 disease risk modeling
@@ -20763,6 +20769,7 @@ escalation of care
 escalation of cares
 escape room game
 escape room games
+escherichia coli
 escherichia coli infection
 escherichia coli infections
 escherichia coli protein
@@ -22876,6 +22883,7 @@ finite-time control
 finnish
 fintech
 fintech innovation
+fintech sector
 fintech threat attribution
 fir automation
 fir filters
@@ -24315,6 +24323,7 @@ functional enrichment analysis
 functional food ingredients
 functional food product
 functional food products
+functional foods
 functional group distributions
 functional independence measure
 functional independence measures
@@ -31480,6 +31489,7 @@ inhalational drug administration
 inhalational drug administrations
 inherited arrhythmia syndrome
 inherited arrhythmia syndromes
+inhibition
 initial and boundary condition
 initial and boundary conditions
 initial coin offering
@@ -37451,6 +37461,7 @@ manganese-cobalt oxides
 mangifera
 mango peel extract
 mangrove
+manihot
 manipulator arms
 mann kendall test
 mann kendall tests
@@ -37548,6 +37559,7 @@ mappp
 mapreduce
 mapreduce frameworks
 mara patani
+marca
 margin based maximum likelihood estimator
 marginal abatement cost curve
 marginal cost
@@ -53600,6 +53612,7 @@ refractive surgical procedures
 refractory materials
 refractory metal compounds
 refractory metals
+refractory quality
 refreshable braille display
 refreshable braille displays
 refrigerant direct cooling
@@ -55044,6 +55057,7 @@ rna binding proteins
 rna directed dna polymerase inhibitor
 rna directed dna polymerase inhibitors
 rna directed rna polymerase
+rna interference
 rna long noncoding
 rna sequence
 rna small interfering
@@ -56212,6 +56226,7 @@ security-by-design
 sedative agent
 sediment microbial fuel cell
 sediment microbial fuel cells
+sediment transport
 seebeck
 seebeck effect
 seed oil
@@ -57019,6 +57034,7 @@ service oriented system
 service oriented systems
 service performance evaluation
 service placements
+service platform
 service platforms
 service provider
 service providers
@@ -61334,6 +61350,7 @@ substitution reactions
 substrate integrated waveguides
 substrate utilization rate
 substrate utilization rates
+substrates
 subsurface drip irrigation
 subsurface flow constructed wetlands
 subsynchronous oscillations
